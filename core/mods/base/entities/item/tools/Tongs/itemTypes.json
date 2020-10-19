@@ -1,0 +1,13 @@
+[{
+  "itemTypeName": "Tool-Tongs",
+  "itemGroup": "TOOL",
+  "materialTypes": ["METAL"],
+  "primaryMaterialType": "METAL",
+  "maxStackSize": 1,
+  "maxHauledAtOnce": 1,
+  "stockpileGroupName": "Tools",
+  "holdPosition": "RIGHT_HAND",
+  "impedesMovement": false,
+  "blocksMovement": false,
+  "relatedCraftingTypeNames": ["BLACKSMITHING", "SMELTING"]
+}]

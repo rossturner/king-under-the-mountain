@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Tree-Beech-Size3-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Beech", "Gabon Ebony", "Pecan", "Sycamore"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "beech-2-t.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": -5,
+        "y": 100
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": -2,
+            "y": 54
+          }
+        }
+      ]
+    }
+  }
+}]

@@ -1,0 +1,22 @@
+[
+  {
+    "uniqueName": "lantern-1x1-metal",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "BASIC_LANTERN",
+    "furnitureLayoutName": "1x1",
+    "validMaterialTypes": ["METAL"],
+    "tags": {
+      "ATTACHES_LIGHT_SOURCE": ["GREEN"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Lantern Side Front.png",
+        "scale": 0.5,
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Potato-Shoots",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Potato", "Carrot"],
+  "growthStages": [1],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_potato_shoots.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -15
+      }
+    }
+  }
+}]

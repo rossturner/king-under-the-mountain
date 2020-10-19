@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Tool-Small-Hammer-On-Ground",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Tool-Small-Hammer",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Tool-Small-Hammer-On-Ground.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      },
+      "coloringLayer": "METAL_COLOR"
+    }
+  }
+}]

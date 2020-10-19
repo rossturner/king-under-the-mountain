@@ -1,0 +1,122 @@
+[{
+  "uniqueName": "Resource-Metal-Ingot-Single",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Metal-Ingot",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 2,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Metal-Ingot-Single.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 8,
+            "y": -8
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -8,
+            "y": -8
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Metal-Ingot-Single.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": -4,
+        "y": -6
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -8,
+            "y": -8
+          }
+        },
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": 8,
+            "y": -8
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Metal-Ingot-Single.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": 4,
+        "y": -6
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 8,
+            "y": -8
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": -8,
+            "y": -8
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Resource-Metal-Ingot-Single.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "offsetPixels": {
+            "x": -8,
+            "y": -8
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Metal-Ingot-Single.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "offsetPixels": {
+            "x": 8,
+            "y": -8
+          }
+        }
+      ]
+    }
+  }
+}]

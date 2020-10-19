@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Hops-Base",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Hops"],
+  "growthStages": [0, 1, 2, 3, 4, 5, 6],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_hops_base.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 8.5
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": 0,
+            "y": -4
+          }
+        }
+      ]
+    }
+  }
+}]

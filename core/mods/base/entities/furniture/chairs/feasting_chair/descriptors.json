@@ -1,0 +1,166 @@
+[
+  {
+    "uniqueName": "chair-1x1N-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1N",
+    "validMaterialTypes": ["STONE"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "-0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1N-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "chair-1x1E-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1E",
+    "validMaterialTypes": ["STONE"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1EW-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "chair-1x1W-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1W",
+    "validMaterialTypes": ["STONE"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1EW-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "flipX": "true",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "chair-1x1S-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1S",
+    "validMaterialTypes": ["STONE"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1S-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "chair-1x1N-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1N",
+    "validMaterialTypes": ["WOOD"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "-0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1N-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "chair-1x1E-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1E",
+    "validMaterialTypes": ["WOOD"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1EW-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "chair-1x1W-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1W",
+    "validMaterialTypes": ["WOOD"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1EW-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "flipX": "true",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "chair-1x1S-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_CHAIR"],
+    "furnitureLayoutName": "1x1S",
+    "validMaterialTypes": ["WOOD"],
+    "tags": {
+      "OFFSET_POSITION": ["0", "0.15"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "chair-1x1S-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  }
+]

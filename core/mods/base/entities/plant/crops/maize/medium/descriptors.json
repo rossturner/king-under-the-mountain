@@ -1,0 +1,21 @@
+[{
+  "uniqueName": "Maize-Medium",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Maize"],
+  "growthStages": [3, 4],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_maize_medium.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 19.5
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_FRUIT"
+        }
+      ]
+    }
+  }
+}]

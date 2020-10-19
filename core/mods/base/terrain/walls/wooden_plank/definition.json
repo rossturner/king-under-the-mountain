@@ -1,0 +1,15 @@
+{
+  "wallTypeName": "wooden_plank_wall",
+  "i18nKey": "WALL.WOODEN",
+  "materialType": "WOOD",
+  "useMaterialColor": true,
+  "craftingTypeName": "CARPENTRY",
+  "requirements": {
+    "WOOD": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 3
+      }
+    ]
+  }
+}

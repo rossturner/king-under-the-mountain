@@ -1,0 +1,934 @@
+KEY,NOTES,ENGLISH,POLISH
+
+ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},Usuwanie {{plantDescription}}
+ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},Wytwarzanie {{targetDescription}}
+ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},Usuwa {{targetDescription}}
+ACTION.JOB.DIGGING,,Digging {{targetDescription}},Kopanie {{targetDescription}}
+ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},Wypełnienie {{targetDescription}}
+ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},Zbiera {{targetPlant}}
+ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,Wstrzykiwanie grzyba tarła
+ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},{{profession.verb}} {{targetPlant}}
+ACTION.JOB.PLANTING,,Planting {{requiredItem}},Sadzi {{requiredItem}}
+ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},Usuwa szkodniki z {{targetPlant}}
+ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},Łopata {{targetDescription}}
+ACTION.JOB.TILLING,,Tilling the earth,Uprawia ziemię
+ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},Wypełnia {{targetDescription}}
+ACTION.PREPARATION.VERB,,Preparing,Przygotowuję się
+ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Szuka pracy
+ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},Śpi w {{containerDescription}}
+ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},Śpi na {{tileDescription}}
+
+CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},W budowie: {{materialType.adjective}} {{furnitureType.noun}}
+CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,Liczba przydzielonych {{itemDescription}}: {{quantity}}
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,Usuwanie innych przedmiotów
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE.TOOLTIP,,There are items that need to be removed from this furniture’s construction area before it can progress.,"Są przedmioty, które należy usunąć z obszaru budowy tego mebla, zanim będzie się rozwijać."
+CONSTRUCTION.STATUS.SELECTING_MATERIALS,E.g. “Waiting for more wooden planks to be available”,Waiting for more {{materialType}} {{itemDescription.plural}} to be available,Oczekuje aż będzie dostępne więcej {{materialType}} {{itemDescription.plural}}
+CONSTRUCTION.STATUS.WAITING_FOR_COMPLETION,This is displayed once all resources are in place and the construction is being worked on,Under construction,W budowie
+CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction is waiting for resource items to be placed in the build area,Waiting for resources to arrive,Oczekuje na dostawę zasobów
+
+COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{{materialDescription}} chleb
+COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} i {{materialTwo}}
+COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,Zupa z {{materialDescription}}
+
+CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,Zaatakowane przez szkodniki
+CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,"Uprawa ta została dotknięta nadmierną liczbą mszyc i innych owadów, które muszą zostać usunięte przez {{PROFESSION.FARMER}}, zanim będzie mogła ponownie rozkwitnąć. Nie usunięcie szkodników w czasie może oznaczać, że ta plona umiera!"
+CROP.DESCRIPTION,,{{materialType.noun}} plant,Roślina {{materialType.noun}}
+CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,Postępy zbierania: {{progress}}%
+
+DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,Spadające szczątki
+DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,Odwodnienie
+DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,Wyczerpanie
+DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,Zatrucie pokarmowe
+DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,Głód
+DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,Tajemnicze okoliczności
+
+EARTH.DIRT,,Dirt,Brud
+EARTH.GRASS,,Grass,Trawa
+
+FLOOR.COBBLESTONE,,Cobblestone,Bruk
+FLOOR.DESCRIPTION,,{{floorType.noun}},{{floorType.noun}}
+FLOOR.DIRT,,Dirt,Ziemia
+FLOOR.GRASS,,Grass,Trawa
+FLOOR.GRAVEL,,Gravel,Żwir
+FLOOR.RIVER,,River,Rzeka
+FLOOR.ROUGH_STONE,,Rough stone floor,Kamienna podłoga
+FLOOR.STONE_SLAB,,Stone slab,Kamienna płyta
+FLOOR.TILLED_EARTH,,Tilled earth,Ziemia uprawna
+FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,Nieodkryte
+
+FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,Rockbread
+FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,"Jest to niesławnie twardy chleb, który jest tak twardy i praktycznie niejadalny, że bardzo zajmuje dużo czasu, aby zmienić pleśń. Człowiek odkrywca J. A. Moffatt określił kiedyś jedzenie go jako „podobne do żucia żwiru, który został pogłębiony z bagna”. Na szczęście większość krasnoludów nie ma nic przeciwko."
+FOODSTUFF.WHEAT-BREAD,"Actually just to describe “wheat” as a foodstuff, not specifically bread",Wheat,Pszenica
+
+FUEL.SACK,,Fuel,Paliwo
+FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}.","Do produkcji metalu wymagane jest paliwo, zarówno przez {{FURNITURE.BLOOMERY_FURNACE}}, jak i {{FURNITURE.FORGE}}."
+
+FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,Blat piekarza
+FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,"{{PROFESSION.CHEF}} pracuje tutaj, aby zmienić {{RESOURCE.FLOUR.SACK.PLURAL}} w {{INGREDIENT.DOUGH}}."
+FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,Piec do chleba
+FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,A {{PROFESSION.CHEF}} piecze tutaj bochenki używając przygotowanego {{INGREDIENT.DOUGH}}.
+FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,Piec Bloomery
+FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,{{PROFESSION.BLACKSMITH}} używa tego ręcznego pieca do przekształcenia {{RESOURCE.ORE.CRUSHED.PLURAL}} i {{FUEL.SACK}} w {{MATERIAL_TYPE.METAL.ADJECTIVE}}.
+FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,Stół cieśli
+FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.","Tutaj produkowana jest większość drewnianych elementów i narzędzi, takich jak {{PRODUCT.BUCKET.PLURAL}} i {{PRODUCT.BARREL.PLURAL}}."
+FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,Kocioł
+FURNITURE.CAULDRON.TOOLTIP,,A cauldron is used to serve a large quantity of soup to hungry settlers. The soup is produced in a {{ROOMS.KITCHEN}} before being moved to a {{ROOMS.FEASTING_HALL}} for serving.,"Kocioł służy do serwowania dużej ilości zupy głodnym osadnikom. Zupa jest produkowana w {{ROOMS.KITCHEN}}, zanim zostanie przeniesiona do {{ROOMS.FEASTING_HALL}}."
+FURNITURE.CHAIR,,Chair,Krzesło
+FURNITURE.CHARCOAL_CLAMP,,Charcoal clamp,Zacisk węglowy
+FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} covered with {{MATERIAL_TYPE.EARTH}} and slowly burned to produce {{ORE.CHARCOAL.NOUN}}, which can then be used as {{FUEL.SACK}}.","Jest to stos {{RESOURCE.LOGS.PLURAL}} pokrytych {{MATERIAL_TYPE.EARTH}} i powoli spłonął, aby wyprodukować {{ORE.CHARCOAL.NOUN}}, który następnie może być użyty jako {{FUEL.SACK}}."
+FURNITURE.COKE_OVEN,,Coke oven,Piec koksowy
+FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,"Piec koksownikowy zamienia {{ORE.BITUMINOUS_COAL.NOUN}} na {{ORE.COKE.NOUN}}, dzięki czemu może być użyty jako {{FUEL.SACK}}."
+FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{furnitureType.noun}}
+FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,Postęp do ukończenia: {{progress}}%
+FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,Postęp do dokończenia niewinności: {{progress}}%
+FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,Postęp do dziennika wstrząsów grzybów: {{progress}}%
+FURNITURE.DESCRIPTION.WAITING_FOR_ITEM,,Waiting for {{itemType.noun}},Oczekiwanie na {{itemType.noun}}
+FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,Czekając na wypełnienie
+FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,Oczekiwanie na wstrzyknięcie grzyba tarła
+FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,Stół biesiadny
+FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.","Z {{FURNITURE.CHAIR}}, twoi osadnicy będą cieszyć się posiłkami przy tym stole."
+FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,Gristmill
+FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,"Gristmill zmiela {{VEGETABLE.WHEAT}} do {{RESOURCE.FLOUR.SACK.NOUN}}, aby mógł być używany przez {{PROFESSION.CHEF}}."
+FURNITURE.FORGE,,Forge,Kuźnia
+FURNITURE.FORGE.TOOLTIP,,This is where a {{PROFESSION.BLACKSMITH}} works with {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} and {{FUEL.SACK}} to craft items and weapons.,W tym miejscu {{PROFESSION.BLACKSMITH}} współpracuje z {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} i {{FUEL.SACK}} w celu tworzenia przedmiotów i broni.
+FURNITURE.GRAVE,,Grave,Grób
+FURNITURE.GRAVE.TOOLTIP,,A hastily-dug grave for deceased settlers that can only be placed in {{MATERIAL_TYPE.EARTH}}.,"Pospiesznie wykopany grób dla zmarłych osadników, który można umieścić tylko w {{MATERIAL_TYPE.EARTH}}."
+FURNITURE.KITCHEN_WORKTOP,Simple piece of furniture in a kitchen used to hold ingredients on top of it,Kitchen worktop,Blat kuchenny
+FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSION.CHEF}} to cook soup.,Obszar do przechowywania składników dla {{PROFESSION.CHEF}} do gotowania zupy.
+FURNITURE.LANTERN,,Lantern,Latarnia
+FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,Latarnia zapewnia światło — obecnie nie ma efektu w grze.
+FURNITURE.LARGE_TABLE,,Large table,Duży stół
+FURNITURE.MUSHROOM_LOG,,Mushroom log,Dziennik grzybowy
+FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.","Dziennik, który został wstrzyknięty {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}}, aby wyprodukować kilka plonów pysznych, soczystych grzybów."
+FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,Zbiornik uderzeniowy
+FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to “shock” the mushroom colony and encourage it to grow mushrooms.","Po niewinności w zbiorniku umieszcza się {{FURNITURE.MUSHROOM_LOG}}, aby „wstrząsnąć” kolonią grzybów i zachęcić ją do uprawy grzybów."
+FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,Stacja kruszenia rud
+FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,"Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} jest kruszony do bardziej wykonalnego rozmiaru, dzięki czemu można go używać w {{FURNITURE.BLOOMERY_FURNACE}}."
+FURNITURE.PILLAR,A pillar used to support a roof,Pillar,Filar
+FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas from collapsing. An area of 7x7 tiles that have been mined without any pillars or other supports in place will eventually collapse.,"Filar jest wymagany, aby zapobiec zawalaniu się dużych obszarów wydobytych. Powierzchnia płytek 7x7, które zostały wydobyte bez żadnych filarów lub innych podpór w miejscu, ostatecznie zapadnie się."
+FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,Sarkofag
+FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,Ten wyszukany kamienny pojemnik jest ostatnim miejscem spoczynku zmarłego osadnika.
+FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,Stół do podawania posiłków
+FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.,{{PRODUCT.BREAD.LOAF.PLURAL}} są umieszczane tutaj w celu podania po pieczeniu w {{FURNITURE.BAKING_OVEN}}.
+FURNITURE.SINGLE_BED,,Bed,Łóżko
+FURNITURE.SINGLE_BED.TOOLTIP,,"A bed is the best place for a comfortable night’s rest. ",Łóżko to najlepsze miejsce na komfortowy odpoczynek w nocy.
+FURNITURE.SINGLE_DOOR,,Door,Drzwi
+FURNITURE.SINGLE_DOOR_FRAME,,Door frame,Futryna
+FURNITURE.SMALL_TABLE,,Small table,Mały stół
+FURNITURE.STONEMASON_WORKBENCH,,Stonemason workbench,Stół kamieniarza
+FURNITURE.STONEMASON_WORKBENCH.TOOLTIP,,A {{PROFESSION.STONEMASON}} works here with {{MATERIAL_TYPE.STONE.ADJECTIVE}} resources.,{{PROFESSION.STONEMASON}} pracuje tutaj z zasobami {{MATERIAL_TYPE.STONE.ADJECTIVE}}.
+FURNITURE.STOOL,,Stool,Stołek
+FURNITURE.WATER_BARREL,,Water barrel,Beczka na wodę
+FURNITURE.WATER_BARREL.TOOLTIP,,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.","Beczka z wodą to miejsce dla osadników, aby dostać napój gaszący pragnienie, zamiast szukać naturalnego źródła wody, takiego jak rzeka."
+FURNITURE.WOODCUTTERS_BENCH,,Woodcutting bench,Stół do cięcia drewna
+FURNITURE.WOODCUTTERS_BENCH.TOOLTIP,,A {{PROFESSION.WOODCUTTER}} works here to turn {{RESOURCE.LOGS.PLURAL}} into {{RESOURCE.PLANKS.PLURAL}}.,"{{PROFESSION.WOODCUTTER}} pracuje tutaj, aby zmienić {{RESOURCE.LOGS.PLURAL}} w {{RESOURCE.PLANKS.PLURAL}}."
+
+GEM.AMETHYST.ADJECTIVE,,Amethyst,Ametystowy
+GEM.AMETHYST.NOUN,,Amethyst,Ametyst
+GEM.AMETHYST.TOOLTIP,,A violet-hued variety of quartz. Ancient humans believed it could magically protect them from becoming too drunk. For this reason it is not very popular in dwarven culture.,"Fioletowy odmiana kwarcu. Starożytni ludzie wierzyli, że może magicznie ochronić ich przed zbyt pijanym. Z tego powodu nie jest zbyt popularny w kulturze krasnoludowej."
+GEM.AMMOLITE.ADJECTIVE,,Ammolite,Ammolit
+GEM.AMMOLITE.NOUN,,Ammolite,Ammolit
+GEM.AMMOLITE.TOOLTIP,,An opal-like gemstone which has a red to green iridescence. It is known as the “hunting stone” and amulets made from it are meant to bring good luck to a hunt.,"Kamień przypominający opal, który ma czerwoną do zielonego opalizowania. Znany jest jako „kamień myśliwski”, a wykonane z niego amulety mają przynieść szczęście na polowanie."
+GEM.AQUAMARINE.ADJECTIVE,,Aquamarine,Akwamarynowy
+GEM.AQUAMARINE.NOUN,,Aquamarine,Akwamaryna
+GEM.AQUAMARINE.TOOLTIP,,A cyan-coloured variety of beryl. Some humans believe it offers magical protection against the dangers of the seas. This is because an ancient mage used a combination of sky and ice magic to protect trading ships during the age of darkness.,"Odmiana berylu w kolorze cyjanowym. Niektórzy ludzie uważają, że oferuje magiczną ochronę przed niebezpieczeństwami mórz. Dzieje się tak dlatego, że starożytny maga użył kombinacji magii nieba i lodu do ochrony statków handlowych w dobie ciemności."
+GEM.BIXBITE.ADJECTIVE,,Bixbite,Bixbite
+GEM.BIXBITE.NOUN,,Bixbite,Bixbite
+GEM.BIXBITE.TOOLTIP,,"Also known as red beryl, it is a very rare gemstone. It is often confused for a red-coloured emerald.","Znany również jako czerwony beryl, jest to bardzo rzadki kamień szlachetny. Często jest mylony z czerwonym szmaragdem."
+GEM.CINNABAR.ADJECTIVE,,Cinnabar,Cinnabar
+GEM.CINNABAR.NOUN,,Cinnabar,Cinnabar
+GEM.CINNABAR.TOOLTIP,,An ore of mercury which is often used in jewellery due to its deep-red hue. It is also used to produce the dye known as vermillion.,"Ruda rtęci, która jest często używana w biżuterii ze względu na jej głębokoczerwony odcień. Jest również stosowany do produkcji barwnika znanego jako vermillion."
+GEM.CITRINE.ADJECTIVE,,Citrine,Cytrynowy
+GEM.CITRINE.NOUN,,Citrine,Cytryn
+GEM.CITRINE.TOOLTIP,,"A yellowish variety of quartz. It is the gemstone most similar in colour to gold, so most dwarves think citrine is lucky.","Żółtawa odmiana kwarcu. Jest to kamień szlachetny najbardziej zbliżony do złota, więc większość krasnoludów uważa, że cytryn ma szczęście."
+GEM.DIAMOND.ADJECTIVE,,Diamond,Diamentowy
+GEM.DIAMOND.NOUN,,Diamond,Diament
+GEM.DIAMOND.TOOLTIP,,The hardest known material and one of the most important of the seven heavenly stones. Diamonds are the most condensed form of the neutral element known as “spirit” or “aether”.,Najtrudniejszy znany materiał i jeden z najważniejszych z siedmiu niebiańskich kamieni. Diamenty są najbardziej skondensowaną formą neutralnego pierwiastka znanego jako „duch” lub „eter”.
+GEM.EMERALD.ADJECTIVE,,Emerald,Szmaragdowy
+GEM.EMERALD.NOUN,,Emerald,Szmaragd
+GEM.EMERALD.TOOLTIP,,A vibrant green variety of beryl. It is thought that engraving on an emerald brings great misfortune. Emeralds are closely related to elemental life and associated magic.,"Żywa zielona odmiana berylu. Uważa się, że grawerowanie na szmaragdzie przynosi wielkie nieszczęście. Szmaragdy są ściśle związane z życiem żywiołów i związaną z nią magią."
+GEM.GARNET.ADJECTIVE,,Garnet,Granatowy
+GEM.GARNET.NOUN,,Garnet,Granat
+GEM.GARNET.TOOLTIP,,"Garnets cover a variety of minerals used as gemstones, all with a deep red colour. Some garnet gems are actually a condensed form of elemental fire.","Granaty pokrywają różne minerały używane jako kamienie szlachetne, a wszystkie mają głęboki czerwony kolor. Niektóre klejnoty granatowe są w rzeczywistości skondensowaną formą ognia żywiołów."
+GEM.JADE.ADJECTIVE,,Jade,Jadeitowy
+GEM.JADE.NOUN,,Jade,Jadeit
+GEM.JADE.TOOLTIP,,"A mineral with a light-green colour often used for decoration. Also, elves have been known to use jade to produce medicine which can cure ailments of the gut.","Minerał o jasnozielonym kolorze często używany do dekoracji. Elfy są również znane z używania jadeitu do produkcji leków, które mogą leczyć dolegliwości jelit."
+GEM.JASPER.ADJECTIVE,,Jasper,Jaspisowy
+GEM.JASPER.NOUN,,Jasper,Jaspis
+GEM.JASPER.TOOLTIP,,"An impure variety of silica which can occur in several colours, but most commonly red. Jasper is favoured as a decoration material by orcs due to its variety.","Nieczysta odmiana krzemionki, która może występować w kilku kolorach, ale najczęściej czerwona. Jasper jest faworyzowany jako materiał dekoracyjny przez orków ze względu na swoją różnorodność."
+GEM.LABRADORITE.ADJECTIVE,,Labradorite,Labradoryt
+GEM.LABRADORITE.NOUN,,Labradorite,Labradoryt
+GEM.LABRADORITE.TOOLTIP,,A rock which shines with a typically light-blue iridescence. Rarer specimens can reflect a wide range of colours.,"Skała, która świeci jasnoniebieskim opalizowaniem. Rzadsze okazy mogą odzwierciedlać szeroką gamę kolorów."
+GEM.LAPIS.ADJECTIVE,,Lapis lazuli,Lapis lazuli
+GEM.LAPIS.NOUN,,Lapis lazuli,Lapis lazuli
+GEM.LAPIS.TOOLTIP,,A rock with a brilliant deep blue hue which is used as a precious stone.,"Kamień o jasnoniebieskim odcieniu, który jest używany jako kamień szlachetny."
+GEM.MAGNESITE.ADJECTIVE,,Magnesite,Magnezyt
+GEM.MAGNESITE.NOUN,,Magnesite,Magnezyt
+GEM.MAGNESITE.TOOLTIP,,A mineral which can be polished into beads for use in jewellery. These beads can by dyed into many different colours.,"Minerał, który można polerować na koraliki do użytku w biżuterii. Koraliki te mogą być barwione na wiele różnych kolorów."
+GEM.MOONSTONE.ADJECTIVE,,Moonstone,Księżycowy
+GEM.MOONSTONE.NOUN,,Moonstone,Kamień księżycowy
+GEM.MOONSTONE.TOOLTIP,,"Thought to be formed by moonlight captured in rock, which makes this gemstone a favourite of the elves.","Uważa się, że tworzy światło księżyca zrobione w skale, co sprawia, że ten kamień jest ulubieńcem elfów."
+GEM.MORGANITE.ADJECTIVE,,Morganite,Morganitowy
+GEM.MORGANITE.NOUN,,Morganite,Morganit
+GEM.MORGANITE.TOOLTIP,,A rose-coloured variety of beryl. It was named after being popularised by a particularly wealthy merchant in the age of myth.,Różowa odmiana berylu. Nazwa została nazwana po spopularyzowaniu przez szczególnie zamożnego kupca w dobie mitu.
+GEM.OPAL.ADJECTIVE,,Opal,Opalowy
+GEM.OPAL.NOUN,,Opal,Opal
+GEM.OPAL.TOOLTIP,,"A form of silica infused with the magic of the oceans, which makes this a favourite of sailors and fishermen.","Krzemionka nasycona magią oceanów, co czyni go faworytem żeglarzy i rybaków."
+GEM.PAINITE.ADJECTIVE,,Painite,Painit
+GEM.PAINITE.NOUN,,Painite,Painit
+GEM.PAINITE.TOOLTIP,,A very rare gemstone which is often identified as an off-colour sapphire. The crystals are naturally hexagonal in shape and a favourite of tacticians.,"Bardzo rzadki kamień szlachetny, który jest często identyfikowany jako szafir niebarwny. Kryształy mają naturalnie sześciokątny kształt i są ulubionymi taktykami."
+GEM.RHODOCHROSITE.ADJECTIVE,,Rhodochrosite,Rodochrosite
+GEM.RHODOCHROSITE.NOUN,,Rhodochrosite,Rodochrosite
+GEM.RHODOCHROSITE.TOOLTIP,,Found in varying shades of red to pink. It is not as hard as most gemstones making it a poor choice for rings and other high-impact jewellery.,"Znaleziono w różnych odcieniach czerwieni do różu. Nie jest tak trudny jak większość kamieni szlachetnych, co czyni go złym wyborem do pierścionków i innych biżuterii o dużej wytrzymałości."
+GEM.ROCK_CRYSTAL.ADJECTIVE,,Rock crystal,Kryształowy
+GEM.ROCK_CRYSTAL.NOUN,,Rock crystal,Kryształ
+GEM.ROCK_CRYSTAL.TOOLTIP,,The purest form of quartz. Rock crystals often feature in magical artifacts as they are a condensed form of the element of ice.,"najczystsza forma kwarcu. Kryształy skalne często znajdują się w magicznych artefaktach, ponieważ są skondensowaną formą żywiołu lodu."
+GEM.RUBY.ADJECTIVE,,Ruby,Rubinowy
+GEM.RUBY.NOUN,,Ruby,Rubin
+GEM.RUBY.TOOLTIP,,"One of the seven heavenly stones, rubies are the element of fire condensed into a solid form.","Jeden z siedmiu niebiańskich kamieni, rubiny są elementem ognia skondensowanego w solidną formę."
+GEM.SAPPHIRE.ADJECTIVE,,Sapphire,Szafirowy
+GEM.SAPPHIRE.NOUN,,Sapphire,Szafir
+GEM.SAPPHIRE.TOOLTIP,,"Often believed to protect the wearer from the attention of daemons, sapphires are much sought-after by mages for use in sky and air-based magic.","Często uważa się, że chroni użytkownika przed uwagą demonów, szafiry są bardzo poszukiwane przez magów do stosowania w niebie i magii powietrznej."
+GEM.SPINEL.ADJECTIVE,,Spinel,Spinelowy
+GEM.SPINEL.NOUN,,Spinel,Spinel
+GEM.SPINEL.TOOLTIP,,"Often confused with heavenly stones like true rubies and sapphires, spinels are a lesser form of magic-infused gem which can be associated with any of the elements, depending on colour.","Często mylone z niebiańskimi kamieniami, takimi jak prawdziwe rubiny i szafiry, spinels są mniejszą formą magicznego klejnotu, który w zależności od koloru może być powiązany z dowolnym elementem."
+GEM.TANZANITE.ADJECTIVE,,Tanzanite,Tanzanitowy
+GEM.TANZANITE.NOUN,,Tanzanite,Tanzanit
+GEM.TANZANITE.TOOLTIP,,A rare gemstone that can alternate between blue and violet. It is thought to be formed from the material body of a dead god.,"Rzadki kamień szlachetny, który może naprzemiennie między niebieskim i fioletowym. Uważa się, że powstał z materialnego ciała martwego boga."
+GEM.TOPAZ.ADJECTIVE,,Topaz,Topazowy
+GEM.TOPAZ.NOUN,,Topaz,Topaz
+GEM.TOPAZ.TOOLTIP,,"Sometimes confused with the more common {{GEM.CITRINE.NOUN}} gem, topaz can be found in several colours but most commonly a yellowish brown. It was first discovered on an island which no longer exists.","Czasami mylone z bardziej powszechnym klejnotem {{GEM.CITRINE.NOUN}}, topaz można znaleźć w kilku kolorach, ale najczęściej żółtawo-brązowym. Po raz pierwszy odkryto go na wyspie, która już nie istnieje."
+GEM.TOURMALINE.ADJECTIVE,,Tourmaline,Turmalinowy
+GEM.TOURMALINE.NOUN,,Tourmaline,Turmalin
+GEM.TOURMALINE.TOOLTIP,,Often found alongside {{ORE.CASSITERITE.ADJECTIVE}} ore. It is sometimes associated with earth magic.,Często spotykane obok {{ORE.CASSITERITE.ADJECTIVE}} rudy. Czasami kojarzy się z magią ziemi.
+GEM.TURQUOISE.ADJECTIVE,,Turquoise,Turkusowy
+GEM.TURQUOISE.NOUN,,Turquoise,Turkus
+GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,"Niebiesko-zielony minerał często używany w dekoracjach. Uważa się, że przyniesie szczęście na okaziciela. Często jest podawany z żywiołem ziemi."
+
+GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},Zbieranie {{targetDescription}}
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetZoneMaterial}},Picie {{targetZoneMaterial}}
+GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},Jedzenie {{targetDescription}}
+GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},Transportowanie {{itemDescription}}
+GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,Bezczynny
+GOAL.SLEEP.DESCRIPTION,,Going to sleep,Idzie spać
+GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},Przenosi {{targetZoneMaterial}}
+
+GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,Dodaj/usuń kafelki
+GUI.ADD_TILES,This should be as short as possible,Add tiles,Dodaj kafelki
+GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,Objętość efektu atmosfery otoczenia:
+GUI.BACK_LABEL,This should be as short as possible,Back,"Wstecz "
+GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,Most
+GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,Drzwi
+GUI.BUILD.WALLS,,Walls,Ściany
+GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,Kształt L
+GUI.BUILD.WALLS.QUAD,For building 4 walls at once,Quad,Poczwórny
+GUI.BUILD.WALLS.SINGLE,For building a single wall,Single,Pojedynczy
+GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,Meble
+GUI.BUILD_LABEL,This should be as short as possible,Build,Buduj
+GUI.CANCEL_LABEL,This should be as short as possible,Cancel,"Anuluj "
+GUI.CHANGE_PROFESSION_LABEL,,Change profession,Zmień zawód
+GUI.CROP_SELECTION,,Crop:,Plon:
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}","{{timeOfDay}} , dzień {{dayNumber}} , {{season}}"
+GUI.DIALOG.DISMISS,,Dismiss,Oddalenie
+GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,Pokój o tej nazwie już istnieje.
+GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,"Plik zapisu nie mógł zostać załadowany, ponieważ jest niezgodny z tą wersją gry."
+GUI.DIALOG.ERROR_TITLE,Shown as the title of an error dialog,An error has occurred,Wystąpił jakiś błąd
+GUI.DIALOG.ERROR_WHILE_LOADING,Unexpected error while loading a previous save,There was an unexpected error while loading the game.,Wystąpił nieoczekiwany błąd podczas ładowania gry.
+GUI.DIALOG.ERROR_WHILE_SAVING,Unexpected error while saving the game,There was an unexpected error while saving the game.,Wystąpił nieoczekiwany błąd podczas zapisywania gry.
+GUI.DIALOG.INFO_TITLE,,Information,Informacje
+GUI.DIALOG.JUMP_TO,,Go to location,Przejdź do lokalizacji
+GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,Wybrane tłumaczenie językowe jest obecnie niekompletne i brakuje jakiegoś tekstu. Zostanie użyty język awarski.
+GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,"Wybrałeś inny zestaw modów, które mają być stosowane do gry. Zostaną one zastosowane po ponownym uruchomieniu gry."
+GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,Jeden lub więcej modów jest niezgodnych z tą wersją gry i zostały wyłączone. Możesz sprawdzić dostępność aktualizacji w menu modów.
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,Ok
+GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,Zmiana nazwy pokoju
+GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,"Musisz ponownie uruchomić grę, aby ta zmiana zaczęła obowiązywać."
+GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},Przypisano do {{name}}
+GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,Trwa usuwanie
+GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,Meble te muszą być umieszczone na {{materialType}}.
+GUI.GRAPHICS.FULLSCREEN,,Fullscreen,"Pełny ekran "
+GUI.GRAPHICS.RESOLUTION,,Resolution,"Rozdzielczość "
+GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),Brak (pozostawić odłogiem)
+GUI.MINIMAP.LABEL,,Minimap,Minimapa
+GUI.MUSIC_VOLUME,,Music volume:,Głośność muzyki:
+GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,Nowa wersja już dostępna na Ich.io
+GUI.NEXT_LABEL,This should be as short as possible,Next,Dalej
+GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,Meble te nie mogą być obracane w tej wersji gry
+GUI.OK_LABEL,This should be as short as possible,Ok,OK
+GUI.OPTIONS.AUDIO.TITLE,,Sound Options,Opcje dźwięku
+GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes trees partially transparent when a settler moves behind them,Make trees transparent when obscuring settlers,Uczyń drzewa przezroczyste podczas zasłaniania osadników
+GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,Przerwa na powiadomienia
+GUI.OPTIONS.GAMEPLAY.TITLE,,"Gameplay Options ","Ustawienia Gry "
+GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,"Przewiń, gdy kursor znajduje się na krawędzi ekranu"
+GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ","Ustawienia Grafiki "
+GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,Zezwalaj na automatyczne raporty awarii
+GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.TITLE,,Miscellaneous,Różne
+GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,Rąb
+GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,Sprzątaj
+GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,Zbieraj
+GUI.ORDERS.MINE,This should be as short as possible,Mine,Kop
+GUI.ORDERS_LABEL,This should be as short as possible,Orders,Rozkazy
+GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,Most musi pokrywać obie strony rzeki i mieć co najmniej 3x3 płytki w rozmiarze
+GUI.REMOVE_LABEL,This should be as short as possible,Remove,Usuń
+GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Usuń kafelki
+GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,Zasoby
+GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},Dostępne: {{count}}
+GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,"Wciśnij (R), aby obrócić mebel"
+GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,Zapisywanie...
+GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},Martwy: {{count}}
+GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},Populacja: {{count}}
+GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,Osadnicy
+GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},Łącznie: {{count}}
+GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,"Głośność efektów "
+GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,Rozmiar interfejsu:
+GUI.ZONES_LABEL,This should be as short as possible,Zones,Strefy
+
+HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,Zjadł ładnie przygotowany posiłek
+HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,Nosił martwe ciało.
+HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,Pił wodę z rzeki
+HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,Umieram z głodu
+HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,Krytycznie odwodniony
+HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,,Optimistic about new settlement,Optymistycznie nastawiony do nowej osady
+HAPPINESS_MODIFIER.POISONED,,Poisoned,Zatruty
+HAPPINESS_MODIFIER.SAW_DEAD_BODY,,Saw a dead body,Zobaczył martwe ciało.
+HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,,"Slept in a spacious, private bedroom","Spał w przestronnej, prywatnej sypialni"
+HAPPINESS_MODIFIER.SLEPT_IN_PRIVATE_BEDROOM,,Slept in a private bedroom,Spał w prywatnej sypialni
+HAPPINESS_MODIFIER.SLEPT_IN_SHARED_BEDROOM,,Shared a bedroom with others,Wspólna sypialnia z innymi
+HAPPINESS_MODIFIER.SLEPT_IN_SMALL_BEDROOM,,Slept in a cramped bedroom,Spał w ciasnej sypialni
+HAPPINESS_MODIFIER.SLEPT_ON_GROUND,,Slept on rough ground,Spał na nierównym podłożu
+HAPPINESS_MODIFIER.SLEPT_OUTSIDE,,Slept under the stars,Spał pod gwiazdami
+HAPPINESS_MODIFIER.TITLE,,Happiness:,Szczęście:
+HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,Bardzo głodny.
+HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,Bardzo spragniony
+HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,Niezwykle zmęczony
+
+HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},{{quantity}} przypisane do {{targetDescription}}
+
+HINT.BUTTON.DISABLE_ALL,,Disable all hints,Wyłącz wszystkie wskazówki
+HINT.BUTTON.DISMISS,,Dismiss,
+HINT.BUTTON.HINTS_ONLY,,Hints only,Tylko wskazówki
+HINT.BUTTON.NEXT,,Next,Następny
+HINT.BUTTON.TUTORIAL,,Tutorial,Samouczek
+HINT.PROGRESS.HEADER,,Progress:,
+HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","Witamy w świecie Króla pod Górą! Jest to wczesna wersja alfa gry z wieloma innymi funkcjami i elementami rozgrywki jeszcze do wdrożenia. Wasza nieustraszona grupa krasnoludowych osadników wybrała to miejsce, by znaleźć nową kolonię swojego królestwa. Zapewnienie pożywienia, schronienia i dobrobytu, a kto wie, może pewnego dnia to będzie stolicą własnego królestwa!"
+HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",TEKST
+
+HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}","{{name}}, {{madness.adjective}} {{race.noun}}"
+HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
+
+INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,Ciasto
+INGREDIENT.FLOUR,,Flour,Mąka
+INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,Bochenek
+INGREDIENT.LOAF.PLURAL,,Loaves,Bochenki
+INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,Grzyby tarło
+INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,Grzyby tarło
+INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.","Znany również jako grzybnia, można to uznać za „nasiona”, z których można uprawiać grzyby w {{ROOMS.MUSHROOM_FARM}}."
+INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,Nasiono
+INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,Nasiona
+INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,Nasiona odpowiedniego typu są wymagane do sadzenia w {{ROOMS.FARM}}. Muszą być również dostępne w magazynie {{STOCKPILE.GRANARY}}.
+INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,Worek
+
+INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,Zapas:
+
+ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},{{materialType.adjective}} {{itemType.noun_or_plural}}: {{quantity_if_multiple}}
+ITEM.INGREDIENT.DESCRIPTION,E.g. “2 potatoes”,{{quantity_if_multiple}}{{materialType.noun_or_plural}},{{quantity_if_multiple}}{{materialType.noun_or_plural}}
+
+ITEM_GROUP.FUEL.PLURAL,,Fuel,Paliwo
+ITEM_GROUP.PRODUCT.PLURAL,,Products,Produkty
+ITEM_GROUP.RESOURCE.PLURAL,,Resources,Zasoby
+ITEM_GROUP.TOOL.PLURAL,,Tools,Narzędzia
+
+LANGUAGE.LABEL,,Language,Język
+
+LIQUID.WATER.NOUN,,Water,Woda
+
+MADNESS.BROKEN.ADJECTIVE,,Broken,Złamany
+MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ","Ten osadnik był tak nieszczęśliwy, że zostali przepchnięci przez punkt przełomowy i nie będą już pracować ani nawet jeść!"
+
+MATERIAL,Used for specifying which material something is made out of,Material,Materiał
+
+MATERIAL_TYPE,,Type,Rodzaj
+MATERIAL_TYPE.ANY,For allowing any kind of material to be used,Any,Każdy
+MATERIAL_TYPE.EARTH.ADJECTIVE,,Earthen,Ziemiane
+MATERIAL_TYPE.EARTH.NOUN,,Earth,Ziemia
+MATERIAL_TYPE.FOODSTUFF.NOUN,,Food,Jedzenie
+MATERIAL_TYPE.GEM.NOUN,This is only used as a noun,Gem,Klejnot
+MATERIAL_TYPE.METAL.ADJECTIVE,,Metallic,Metalowy
+MATERIAL_TYPE.METAL.NOUN,,Metal,Metal
+MATERIAL_TYPE.ORE.NOUN,This is only used as a noun,Ore,Ruda
+MATERIAL_TYPE.OTHER.NOUN,This isn't actually used in-game yet so won't be combined with other words,Other,Inne
+MATERIAL_TYPE.SEED.NOUN,For saying something is “made up of seed”,Seed,Nasiono
+MATERIAL_TYPE.STONE.ADJECTIVE,,,Kamienny
+MATERIAL_TYPE.STONE.NOUN,,Stone,Kamień
+MATERIAL_TYPE.VEGETABLE.NOUN,Used to make up “Vegetable soup”,Vegetable,Warzywo
+MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,Vitriol
+MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,Vitriol
+MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,Drewniany
+MATERIAL_TYPE.WOOD.NOUN,,Wood,Drewno
+
+MENU.CONTINUE_GAME,,Continue game,Kontynuuj
+MENU.MODS,,Mods,Mody
+MENU.NEW_GAME,,Start new game,Nowa gra
+MENU.OPTIONS,,Options,Ustawienia
+MENU.QUIT,,Quit,Wyjdź
+MENU.TOGGLE_FULLSCREEN,,Toggle fullscreen,Pełen ekran
+
+METAL.BRONZE.ADJECTIVE,,Bronze,Brązowy
+METAL.BRONZE.NOUN,,Bronze,Brąz
+METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and much more durable than copper alone. (Alloys have not yet been implemented in King under the Mountain),Brąz jest stopem miedzi i cyny. Jest twardszy i znacznie trwalszy niż sama miedź. (Stopy nie zostały jeszcze wdrożone w Królu pod Górą)
+METAL.COPPER.ADJECTIVE,,Copper,Miedziany
+METAL.COPPER.NOUN,,Copper,Miedź
+METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.","Oprócz naturalnie występujących {{ORE.NATIVE_COPPER.NOUN}}, łatwo jest wypachniać z {{ORE.MALACHITE.NOUN}} rudy. Miedź ma wiele zastosowań, szczególnie w przypadku coinage, choć nie jest wystarczająco trudna do stworzenia skutecznej broni."
+METAL.GOLD.ADJECTIVE,,Golden,Złoty
+METAL.GOLD.NOUN,,Gold,Złoto
+METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.","Król metali. Chociaż nie jest to najrzadsze lub najcenniejsze, złoto jest najbardziej pożądanym metalem przez większość ras — szczególnie krasnoludy."
+METAL.IRON.ADJECTIVE,,Iron,Żelazny
+METAL.IRON.NOUN,,Iron,Żelazo
+METAL.IRON.TOOLTIP,,It is a poor military which does not have access to iron. Dwarven metalsmiths know the secrets of working this into {{METAL.STEEL.NOUN}}.,"To biedny wojsko, które nie ma dostępu do żelaza. Krasnoludzcy metalowcy znają sekrety pracy nad tym {{METAL.STEEL.NOUN}}."
+METAL.PLATINUM.ADJECTIVE,,Platinum,Platyna
+METAL.PLATINUM.NOUN,,Platinum,Platyna
+METAL.PLATINUM.TOOLTIP,,A silver-white metal that is highly resistant to corrosion. Platinum is rarer and therefore more valuable than {{METAL.GOLD.NOUN}}.,"Srebrno-biały metal, który jest bardzo odporny na korozję. Platyna jest rzadsza i dlatego bardziej wartościowa niż {{METAL.GOLD.NOUN}}."
+METAL.SILVER.ADJECTIVE,,Silver,Srebrna
+METAL.SILVER.NOUN,,Silver,Srebro
+METAL.SILVER.TOOLTIP,,"Like {{METAL.GOLD.NOUN}}, silver is often used for coinage and as solid bars for the trading of wealth. ","Podobnie jak {{METAL.GOLD.NOUN}}, srebro jest często używane do montowania i jako solidne sztabki do handlu bogactwem."
+METAL.STEEL.ADJECTIVE,,Steel,Stalowy
+METAL.STEEL.NOUN,,Steel,Stal
+METAL.STEEL.TOOLTIP,,"Far stronger than {{METAL.IRON.NOUN}} which makes for superior weapons and tools, only the dwarves know the secret of creating steel.","Znacznie silniejszy niż {{METAL.IRON.NOUN}}, co czyni doskonałą broń i narzędzia, tylko krasnoludy znają sekret tworzenia stali."
+METAL.TIN.ADJECTIVE,,Tin,- Cyna
+METAL.TIN.NOUN,,Tin,Cyna
+METAL.TIN.TOOLTIP,,Tin can be smelted from {{ORE.CASSITERITE.NOUN}} and alloyed with {{METAL.COPPER.NOUN}} to produce {{METAL.BRONZE.NOUN}}. (Alloys have not yet been implemented in King under the Mountain),Cynę można wytapiać z {{ORE.CASSITERITE.NOUN}} i stopować za pomocą {{METAL.COPPER.NOUN}} w celu wytworzenia {{METAL.BRONZE.NOUN}}. (Stopy nie zostały jeszcze wdrożone w Królu pod Górą)
+
+MODS.APPLY,,Apply,Zastosuj
+MODS.COMPATIBILITY.COMPATIBLE,,Yes,Tak
+MODS.COMPATIBILITY.INCOMPATIBLE,,No,Nie
+MODS.COMPATIBILITY.UNKNOWN,,Unknown,Nieznany
+MODS.MISSING_MODS_DIALOG_TEXT,,This save file was last used while the following mods were active. These mods are now missing or disabled so the save may not load correctly.,"Ten plik zapisu był ostatnio używany, gdy następujące mody były aktywne. Te mody są teraz brakujące lub wyłączone, więc zapisz może nie ładować się poprawnie."
+MODS.MISSING_MODS_SAVE_EXCEPTION_DIALOG_TEXT,,"The save file could not be loaded because either it is incompatible with this version of the game, or because some mods have been disabled or removed since this save was last loaded. The following mods were expected but are no longer active:","Plik zapisu nie mógł zostać załadowany, ponieważ jest niezgodny z tą wersją gry lub dlatego, że niektóre mody zostały wyłączone lub usunięte od ostatniego załadowania tego zapisu. Oczekiwano następujące mody, ale nie są już aktywne:"
+MODS.TABLE.COMPATIBILITY,,Compatible?,Kompatybilny?
+MODS.TABLE.ENABLED,,Enabled?,Włączone?
+MODS.TABLE.NAME,,Mod Name,Nazwa modu
+MODS.TABLE.ORDERING,,Re-order,Ponowne zamówienie
+MODS.TABLE.VERSION,,Mod Version,Wersja modów
+
+MUSHROOM.DESCRIPTION,E.g. “Toadstool mushroom”,{{materialType.noun}},{{materialType.noun}}
+
+NEEDS.DRINK,,Drink,Pij
+NEEDS.FOOD,,Food,Jedzenie
+NEEDS.SLEEP,,Sleep,Sen
+
+NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,Twoi górnicy odkryli nowy obszar!
+NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,Eksploracja
+NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.","{{character}}, zmarł z powodu {{reason}}."
+NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},Zmarł z powodu {{reason}}
+NOTIFICATION.DEATH.TITLE,,Settler death,Śmierć osadnika
+NOTIFICATION.GAME_OVER.DESCRIPTION,,All things must come to an end. Your settlement lies abandoned.,Wszystko musi się skończyć. Twoja osada leży porzucona.
+NOTIFICATION.GAME_OVER.TITLE,,Game Over,Koniec gry
+NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,Dobrobyt waszej osady przyciągnął wielu nowych imigrantów do zwiększenia populacji.
+NOTIFICATION.IMMIGRANTS_ARRIVED.TITLE,,Immigration,Imigracja
+NOTIFICATION.MINING_COLLAPSE.DESCRIPTION,,An area has caved in due to a lack of pillars and supports.,Obszar zawalił się z powodu braku filarów i podpór.
+NOTIFICATION.MINING_COLLAPSE.TITLE,,Mining collapse,Upadek górnictwa
+NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,"Trudność okazała się zbyt duża, aby poradzić sobie z {{character}}."
+NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,Przerwa psychiczna
+
+ORE.BAUXITE.ADJECTIVE,,Bauxite,- Boksyt
+ORE.BAUXITE.NOUN,,Bauxite,- Boksyt
+ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a means of aluminium production is yet to be discovered.","Boksyt jest pierwotną rudą aluminium. Niestety, jeszcze nie odkryto sposobu produkcji aluminium."
+ORE.BITUMINOUS_COAL.ADJECTIVE,,Bituminous coal,Węgiel bitumiczny
+ORE.BITUMINOUS_COAL.NOUN,,Bituminous coal,Węgiel bitumiczny
+ORE.BITUMINOUS_COAL.TOOLTIP,,This can be converted into {{ORE.COKE.NOUN}} using a {{FURNITURE.COKE_OVEN}}.,Można to zamienić na {{ORE.COKE.NOUN}} przy użyciu {{FURNITURE.COKE_OVEN}}.
+ORE.CASSITERITE.ADJECTIVE,,Cassiterite,Kasytryt
+ORE.CASSITERITE.NOUN,,Cassiterite,Kasyteryt
+ORE.CASSITERITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.TIN.NOUN}}.,"Ruda, którą można wytapiać w celu wyprodukowania {{METAL.TIN.NOUN}}."
+ORE.CHARCOAL.ADJECTIVE,,Charcoal,Węgiel drzewny
+ORE.CHARCOAL.NOUN,,Charcoal,Węgiel drzewny
+ORE.CHARCOAL.TOOLTIP,,{{FUEL.SACK}} produced from wooden {{RESOURCE.LOGS.PLURAL}}.,{{FUEL.SACK}} wyprodukowane z drewna {{RESOURCE.LOGS.PLURAL}}.
+ORE.CHRYSOCOLLA.ADJECTIVE,,Chrysocolla,Chrysocolla
+ORE.CHRYSOCOLLA.NOUN,,Chrysocolla,Chrysocolla
+ORE.CHRYSOCOLLA.TOOLTIP,,"Often confused with turquoise, it is actually an ore of {{METAL.COPPER}}.","Często mylone z turkusem, to rzeczywiście ruda {{METAL.COPPER}}."
+ORE.COKE.ADJECTIVE,,Coke,Koks
+ORE.COKE.NOUN,,Coke,Koks
+ORE.COKE.TOOLTIP,,A refined form of {{ORE.BITUMINOUS_COAL}} which can be used as {{FUEL.SACK}}.,"Udoskonalona forma {{ORE.BITUMINOUS_COAL}}, która może być używana jako {{FUEL.SACK}}."
+ORE.GALENA.ADJECTIVE,,Galena,Galena
+ORE.GALENA.NOUN,,Galena,Galena
+ORE.GALENA.TOOLTIP,,An ore that can be smelted to produce {{METAL.SILVER}}.,"Ruda, którą można wytapiać do produkcji {{METAL.SILVER}}."
+ORE.HEMATITE.ADJECTIVE,,Hematite,Hematyt
+ORE.HEMATITE.NOUN,,Hematite,Hematyt
+ORE.HEMATITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.IRON}}.,"Ruda, którą można wytapiać w celu wyprodukowania {{METAL.IRON}}."
+ORE.ILMENITE.ADJECTIVE,,Ilmenite,- Ilmenit
+ORE.ILMENITE.NOUN,,Ilmenite,- Ilmenit
+ORE.ILMENITE.TOOLTIP,,"Ilmenite is the primary ore of titanium. Unfortunately, a means of titanium production is yet to be discovered.","Ilmenit jest pierwotną rudą tytanu. Niestety, środki produkcji tytanu nie zostały jeszcze odkryte."
+ORE.MALACHITE.ADJECTIVE,,Malachite,Malachit
+ORE.MALACHITE.NOUN,,Malachite,Malachit
+ORE.MALACHITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.COPPER}}.,"Ruda, która może być wytapiana do produkcji {{METAL.COPPER}}."
+ORE.NATIVE_COPPER.ADJECTIVE,,Native copper,Miedź natywna
+ORE.NATIVE_COPPER.NOUN,,Native copper,Miedź rodzima
+ORE.NATIVE_COPPER.TOOLTIP,,Naturally-occuring {{METAL.COPPER}} which must be smelted before use.,"Naturalnie występujące {{METAL.COPPER}}, które przed użyciem należy wytapiać."
+ORE.NATIVE_GOLD.ADJECTIVE,,Native gold,Rdzenne złoto
+ORE.NATIVE_GOLD.NOUN,,Native gold,Złoto rodzime
+ORE.NATIVE_GOLD.TOOLTIP,,Naturally-occuring {{METAL.GOLD}} which must be smelted before use.,"Naturalnie występujące {{METAL.GOLD}}, które przed użyciem należy wytapiać."
+ORE.NATIVE_PLATINUM.ADJECTIVE,,Native platinum,Native platyna
+ORE.NATIVE_PLATINUM.NOUN,,Native platinum,Native platyna
+ORE.NATIVE_PLATINUM.TOOLTIP,,Naturally-occuring {{METAL.PLATINUM}} which must be smelted before use.,"Naturalnie występujące {{METAL.PLATINUM}}, które przed użyciem należy wytapiać."
+ORE.NATIVE_SILVER.ADJECTIVE,,Native silver,Native srebro
+ORE.NATIVE_SILVER.NOUN,,Native silver,Srebro rodzime
+ORE.NATIVE_SILVER.TOOLTIP,,Naturally-occuring {{METAL.SILVER}} which must be smelted before use.,"Naturalnie występujące {{METAL.SILVER}}, które przed użyciem należy wytapiać."
+ORE.POLLUCITE.ADJECTIVE,,Pollucite,Zanieczyszczenie
+ORE.POLLUCITE.NOUN,,Pollucite,Zanieczyszczenie
+ORE.POLLUCITE.TOOLTIP,,"Pollucite is an ore of Caesium, which is currently too dangerous to produce. Particularly crazy dwarven metalsmiths are currently trying to find a reliable method of production.","Zanieczyca jest rudą cezu, która jest obecnie zbyt niebezpieczna do produkcji. Szczególnie szaleni krasnoludzcy metalowcy próbują obecnie znaleźć niezawodną metodę produkcji."
+ORE.PYRITE.ADJECTIVE,,Fool's gold,Złoto głupca
+ORE.PYRITE.NOUN,,Fool's gold,Złoto głupca
+ORE.PYRITE.TOOLTIP,,"Also known as Pyrite, its pale-yellow appearance causes some to mistake it for gold. It has several uses when crushed, but care must be taken as it sparks when struck.","Znany również jako Piryt, jego blado-żółty wygląd powoduje, że niektórzy pomylili go ze złotem. Ma kilka zastosowań po zmiażdżeniu, ale należy zachować ostrożność, ponieważ iskra po uderzeniu."
+ORE.THORIUM.ADJECTIVE,,Thorium,Tor
+ORE.THORIUM.NOUN,,Thorium,Tor
+ORE.THORIUM.TOOLTIP,,A silvery metallic ore which turns black when exposed to air. It is strangely warm to the touch.,"Srebrzysta metaliczna ruda, która staje się czarna po wystawieniu na działanie powietrza. Jest dziwnie ciepły w dotyku."
+ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,Wolframite
+ORE.WOLFRAMITE.NOUN,,Wolframite,Wolframite
+ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,"Metaliczna ruda, która komplikuje wytapianie cyny. Ma zbyt wysoką temperaturę topnienia, aby można było wytapiać w normalnych procesach."
+
+OTHER.BRICK.NOUN,,Brick,Cegła
+OTHER.CLAY_SOIL.NOUN,,Clay soil,Glina
+OTHER.GRASS.NOUN,,,Trawa
+
+PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,Akceptuję
+PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,Wyłącz raportowanie
+PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,Król pod Górą jest w aktywnym rozwoju. Aby pomóc
+PRIVACY.OPT_IN.LINE_10,,- The stack trace of the exception which caused the crash,"- Ślad stosu wyjątku, który spowodował awarię"
+PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to","diagnozowania i naprawiania błędów, proszę kliknąć „Akceptuję” poniżej, aby"
+PRIVACY.OPT_IN.LINE_3,,send anonymous crash reports automatically.,automatyczne wysyłanie anonimowych raportów o awariach.
+PRIVACY.OPT_IN.LINE_4,," "," "
+PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,Skład ten składa się tylko z następujących danych:
+PRIVACY.OPT_IN.LINE_6,,- The version of the game client,- Wersja klienta gry
+PRIVACY.OPT_IN.LINE_7,,- Your operating system,- Twój system operacyjny
+PRIVACY.OPT_IN.LINE_8,,- Your graphics card and display settings,- Ustawienia karty graficznej i wyświetlania
+PRIVACY.OPT_IN.LINE_9,,- Your options settings,- Ustawienia opcji
+
+PRODUCT.ANVIL,,Anvil,Kowadło
+PRODUCT.ANVIL.TOOLTIP,,A large block of metal used to hammer heated metal into shape. Required to construct a {{FURNITURE.FORGE}.,Duży blok metalu używany do młotkowania podgrzewanego metalu w kształt. Wymagane do skonstruowania {{FURITURE.FORGE}}.
+PRODUCT.BARREL.HOOPS,,Barrel hoops,Obręcze beczek
+PRODUCT.BARREL.HOOPS.TOOLTIP,,Metal hoops used to construct a {{PRODUCT.BARREL.NOUN}}. Also used in some machinery.,Metalowe obręcze używane do budowy {{PRODUCT.BARREL.NOUN}}. Stosowany również w niektórych maszynach.
+PRODUCT.BARREL.NOUN,,Barrel,Beczka
+PRODUCT.BARREL.PLURAL,,Barrels,Beczki
+PRODUCT.BARREL.STAVES,,Barrel staves,Deszczułki beczek
+PRODUCT.BARREL.STAVES.TOOLTIP,,Curved wooden planks used to construct a {{PRODUCT.BARREL.NOUN}}.,Zakrzywione drewniane deski używane do budowy {{PRODUCT.BARREL.NOUN}}.
+PRODUCT.BARREL.TOOLTIP,,A cylindrical container for liquids. The curved shape makes it easier to roll around.,Cylindryczny pojemnik na ciecze. Zakrzywiony kształt ułatwia toczyć się wokół.
+PRODUCT.BOWL,A bowl for eating from,Bowl,Miska
+PRODUCT.BOWL.DESCRIPTION,E.g. “Bowl of vegetable soup”,Bowl of {{cooking.soup.description}},Miska {{cooking.soup.description}}
+PRODUCT.BREAD.DOUGH.NOUN,,Dough,Ciasto
+PRODUCT.BREAD.DOUGH.PLURAL,,Dough,Ciasto
+PRODUCT.BREAD.DOUGH.TOOLTIP,,A mix of ingredients that can be baked into {{PRODUCT.BREAD.LOAF.PLURAL}} using an {{FURNITURE.BAKING_OVEN}}.,"Mieszanka składników, które można wypiekać do {{PRODUCT.BREAD.LOAF.PLURAL}} przy użyciu {{FURNITURE.BAKING_OVEN}}."
+PRODUCT.BREAD.LOAF.NOUN,Translations incorrect and need fixing,Bread loaf,Chleb
+PRODUCT.BREAD.LOAF.PLURAL,Translations incorrect and need fixing,Bread loaves,Chleb
+PRODUCT.BREAD.LOAF.TOOLTIP,,"Prepared bread, ready to eat!","Przygotowany chleb, gotowy do jedzenia!"
+PRODUCT.BUCKET.NOUN,,Bucket,Wiadro
+PRODUCT.BUCKET.PLURAL,,Buckets,Wiadra
+PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,Mały pojemnik używany do ręcznego przemieszczania płynów.
+PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,Kocioł
+PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.","Używany przez {{PROFESSION.CHEF}} do przygotowania zupy w {{ROOMS.KITCHEN}}, gdzie zostaje ona przeniesiona do {{ROOMS.FEASTING_HALL}}."
+PRODUCT.MILLSTONE,,Millstone,Millstone
+PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mill harvested crops. Used to construct a {{FURNITURE.FLOUR_MILL}}.,"Dwie duże kamienne krążki, które są mielone razem do młyna zebranych plonach. Służy do skonstruowania {{FURNITURE.FLOUR_MILL}}."
+PRODUCT.RATION.NOUN,,Ration,Racja
+PRODUCT.RATION.PLURAL,,Rations,Racje
+PRODUCT.RATION.TOOLTIP,,"These will last a long time to feed your settlers, but you will need other sources of food as a priority.","Będą one trwać długo, aby nakarmić swoich osadników, ale będziesz potrzebował innych źródeł żywności jako priorytetu."
+
+PROFESSION.BAKER.VERB,,Baking,Piec
+PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,Kowalka
+PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,Kowal
+PROFESSION.BLACKSMITH.TOOLTIP,,Crafts items using metal and also produces metal from ore.,"Rzemiosło przedmioty za pomocą metalu, a także produkuje metal z rudy."
+PROFESSION.BLACKSMITH.VERB,,Forging,Wykuwać
+PROFESSION.CARPENTER.FEMALE_NOUN,,Carpenter,Stolarka
+PROFESSION.CARPENTER.MALE_NOUN,,Carpenter,Stolarz
+PROFESSION.CARPENTER.TOOLTIP,,Creates wooden furniture and items.,Tworzy drewniane meble i przedmioty.
+PROFESSION.CARPENTER.VERB,,Crafting,Tworzyć
+PROFESSION.CHEF.FEMALE_NOUN,,Chef,Kucharz
+PROFESSION.CHEF.MALE_NOUN,,Chef,Kucharz
+PROFESSION.CHEF.TOOLTIP,,Prepares all of the food to be consumed by your settlers.,Przygotowuje wszystkie jedzenie do spożycia przez osadników.
+PROFESSION.CHEF.VERB,,Cooking,Gotować
+PROFESSION.FARMER.FEMALE_NOUN,,Farmer,Farmerka
+PROFESSION.FARMER.MALE_NOUN,,Farmer,Farmer
+PROFESSION.FARMER.PLURAL,,Farmers,Rolnicy
+PROFESSION.FARMER.TOOLTIP,,"Plants, tends and harvests crops.","Rośliny, tendencje i zbiera plony."
+PROFESSION.FARMER.VERB,,Farming,Uprawiać
+PROFESSION.FISHER.FEMALE_NOUN,This could be “fisherman” and “fisherwoman”,Fisher,Rybaczka
+PROFESSION.FISHER.MALE_NOUN,,Fisher,Rybak
+PROFESSION.FISHER.TOOLTIP,,Catches fish from bodies of water for use as food and resources.,Łowiska ryby z wód w celu wykorzystania jako żywność i zasoby.
+PROFESSION.FISHER.VERB,,Fishing,Łowić
+PROFESSION.HUNTER.FEMALE_NOUN,This could be “huntsman” and “huntress”,Hunter,Myśliwa
+PROFESSION.HUNTER.MALE_NOUN,,Hunter,Myśliwy
+PROFESSION.HUNTER.TOOLTIP,,Tracks and kills wild animals for their meat and pelts.,Śledzi i zabija dzikie zwierzęta dla ich mięsa i skóry.
+PROFESSION.HUNTER.VERB,,Hunting,Polować
+PROFESSION.MAYOR.FEMALE_NOUN,"In English at least, “mayoress” is incorrect",Mayor,Burmistrzyni
+PROFESSION.MAYOR.MALE_NOUN,,Mayor,Burmistrz
+PROFESSION.MAYOR.VERB,,Governing,Rządzić
+PROFESSION.MERCHANT.FEMALE_NOUN,,Merchant,Handlarka
+PROFESSION.MERCHANT.MALE_NOUN,,Merchant,Handlarz
+PROFESSION.MERCHANT.VERB,,Trading,Handlować
+PROFESSION.MILLER.VERB,"Not a fully implemented profession, just used to describe “Milling flour”",Milling,Frezowanie
+PROFESSION.MINER.FEMALE_NOUN,,Miner,Górniczka
+PROFESSION.MINER.MALE_NOUN,,Miner,Górnik
+PROFESSION.MINER.TOOLTIP,,Excavates new areas using a {{TOOL.PICKAXE}}.,Wykopuje nowe obszary przy użyciu {{TOOL.PICKAXE}}.
+PROFESSION.MINER.VERB,,Mining,Wydobywać
+PROFESSION.NOBLE.FEMALE_NOUN,,Noble,Szlachcianka
+PROFESSION.NOBLE.MALE_NOUN,,Noble,Szlachcic
+PROFESSION.NOBLE.TOOLTIP,,"Nobles do not fulfil jobs in the same way as common settlers, but bring fame and prestige to your settlement.","Szlachta nie wypełnia miejsc pracy w taki sam sposób jak zwykli osadnicy, ale przynoszą sławę i prestiż do waszej osady."
+PROFESSION.NOBLE.VERB,,Reigning,Panować
+PROFESSION.RUNESMITH.FEMALE_NOUN,from “runes” and “blacksmith”,Runesmith,Runarka
+PROFESSION.RUNESMITH.MALE_NOUN,"This is an invented term for the game, but should be derived",Runesmith,Runarz
+PROFESSION.RUNESMITH.TOOLTIP,,"Enchants weapons, armour and items with magical runes to boost their abilities.","Urzeka broń, pancerz i przedmioty magicznymi runami, aby zwiększyć ich umiejętności."
+PROFESSION.RUNESMITH.VERB,,Enchanting,Zaklinać
+PROFESSION.STONEMASON.FEMALE_NOUN,,Stonemason,Kamieniarka
+PROFESSION.STONEMASON.MALE_NOUN,,Stonemason,Kamieniarz
+PROFESSION.STONEMASON.TOOLTIP,,Crafts furniture and items from stone.,Rzemiosło meble i przedmioty z kamienia.
+PROFESSION.STONEMASON.VERB,,Sculpting,Rzeźbić
+PROFESSION.TINKERER.FEMALE_NOUN,,Tinker,Majsterka
+PROFESSION.TINKERER.MALE_NOUN,,Tinker,Majster
+PROFESSION.TINKERER.VERB,,Tinkering,Majstrować
+PROFESSION.VILLAGER.FEMALE_NOUN,,Villager,Wieśniaczka
+PROFESSION.VILLAGER.MALE_NOUN,,Villager,Wieśniak
+PROFESSION.VILLAGER.TOOLTIP,,This settler does not have any specific professions and will fulfil any mundane tasks like hauling items.,"Ten osadnik nie posiada żadnych konkretnych zawodów i będzie wykonywać wszelkie przyziemne zadania, takie jak transport przedmiotów."
+PROFESSION.VILLAGER.VERB,,Working,Pracować
+PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberjane”,Woodcutter,Drwalka
+PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,Drwal
+PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,"Wycina drzewa jako tarcicę, która może być używana w {{ROOMS.SAWMILL}}."
+PROFESSION.WOODCUTTER.VERB,,Chopping,Ścinać
+
+RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,Krasnoludzka
+RACE.DWARF.FEMALE_NOUN,,Dwarf,Krasnoludka
+RACE.DWARF.FEMALE_PLURAL,,Dwarves,Krasnoludki
+RACE.DWARF.MALE_ADJECTIVE,,Dwarven,Krasnoludzki
+RACE.DWARF.MALE_NOUN,The male and female forms are only for languages that need them,Dwarf,Krasnolud
+RACE.DWARF.MALE_PLURAL,Note that I'm going with Tolkein's spelling of “dwarves” rather than “dwarfs”,Dwarves,Krasnoludy
+RACE.DWARF.TOOLTIP,,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,Krasnoludy są krótkimi i krępymi humanoidami. Są mistrzami pracy z kamieniem i metalem. Większość krasnoludów nie ufają niebu i woli pozostać pod ziemią.
+
+RESOURCE.CRUSHED.VITRIOL.NOUN,,Vitriol,Vitriol
+RESOURCE.CRUSHED.VITRIOL.PLURAL,,Vitriol,Vitriol
+RESOURCE.CRUSHED.VITRIOL.TOOLTIP,,A salt of sulphuric acid with many uses in industry. (Usages of vitriol are not yet implemented in King under the Mountain),Sól kwasu siarkowego o wielu zastosowaniach w przemyśle. (Użytek witriolu nie zostały jeszcze wdrożone w Królu pod Górą)
+RESOURCE.FLOUR.SACK.NOUN,,Flour,Mąka
+RESOURCE.FLOUR.SACK.PLURAL,,Flour,Mąka
+RESOURCE.FLOUR.SACK.TOOLTIP,,Grain that has been milled into a fine powder ready to be used as an ingredient in the production of food.,"Ziarno, które zostało zmielone na drobny proszek gotowy do użycia jako składnik do produkcji żywności."
+RESOURCE.GEM.NOUN,,Gem,Klejnot
+RESOURCE.GEM.PLURAL,,Gems,Klejnoty
+RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beauty. Most commonly used as ornamentation.,"Klejnoty, które zostały wycięte i polerowane, aby poprawić ich piękno. Najczęściej używany jako ozdoby."
+RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,Nieoszlifowany klejnot
+RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,Nieoszlifowane klejnoty
+RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,Skała zawierająca klejnoty gotowe do cięcia i polerowania.
+RESOURCE.LOGS.NOUN,,Log,Pień
+RESOURCE.LOGS.PLURAL,,Logs,Pnie
+RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.","Sekcje drzewa, które są najczęściej przygotowywane do {{RESOURCE.PLANKS.PLURAL}}, ale mają też inne zastosowania."
+RESOURCE.METAL.BLOOM.NOUN,,Bloom,Bloom
+RESOURCE.METAL.BLOOM.PLURAL,,Blooms,Kwitnie
+RESOURCE.METAL.BLOOM.TOOLTIP,,A lump of metal mixed with slag which must be hammered into a usable form.,"Kawałek metalu zmieszany z żużlem, który musi być wbity do użytecznej formy."
+RESOURCE.METAL.INGOT.NOUN,,Ingot,Sztabka
+RESOURCE.METAL.INGOT.PLURAL,,Ingots,Sztabki
+RESOURCE.METAL.INGOT.TOOLTIP,,"Refined metal blocks, ready to be used as a crafting ingredient.","Wyrafinowane metalowe bloki, gotowe do użycia jako składnik rzemieślniczy."
+RESOURCE.METAL.PLATE.NOUN,,Plate,Płytka
+RESOURCE.METAL.PLATE.PLURAL,,Plates,Talerze
+RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the larger machinery.","Duże, płaskie płyty, które są używane w niektórych większych maszynach."
+RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,Dziennik grzybowy
+RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,Kłody grzybowe
+RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,"Dziennik, który został podany z {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. Ciało samego dziennika jest miejscem, z którego grzyby pobierają składniki odżywcze. Wymaga to oblewania w {{FURNITURE.MUSHROOM_SHOCK_TANK}} po tym, jak został całkowicie niewinny."
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,Pień
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,Pnie
+RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,"Sekcje gigantycznego grzyba, które mogą być używane w taki sam sposób jak drewniane {{RESOURCE.LOGS.PLURAL}}."
+RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,Zgniatana ruda
+RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,Zgniatana ruda
+RESOURCE.ORE.CRUSHED.TOOLTIP,,"A metallic sand created by breaking down raw metal ore, ready for use in a {{FURNITURE.BLOOMERY_FURNACE}}.","Piasek metaliczny powstały w wyniku rozbicia rudy metali surowych, gotowy do użycia w {{FURNITURE.BLOOMERY_FURNACE}}."
+RESOURCE.ORE.UNREFINED.NOUN,,Ore,Ruda
+RESOURCE.ORE.UNREFINED.PLURAL,,Ore,Rudy
+RESOURCE.ORE.UNREFINED.TOOLTIP,,Stone that contains metallic ores which can be processed into usable metal.,"Kamień zawierający rudy metaliczne, które mogą być przetwarzane na metal użyteczny."
+RESOURCE.PLANKS.NOUN,,Plank,Deska
+RESOURCE.PLANKS.PLURAL,,Planks,Deski
+RESOURCE.PLANKS.TOOLTIP,,Sections of wood of a fixed size so they can be easily used in constructions and crafting.,"Sekcje drewna o stałym rozmiarze, dzięki czemu można je łatwo stosować w konstrukcjach i rzemieślnictwie."
+RESOURCE.SHOCKED.MUSHROOM.LOG.NOUN,,Mushroom log,Dziennik grzybowy
+RESOURCE.SHOCKED.MUSHROOM.LOG.PLURAL,,Mushroom logs,Kłody grzybowe
+RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,This mushroom-infused log has been “shocked” in water to encourage the mushrooms to develop and should produce a harvest soon.,"Ten pieczarkowy dziennik został „zszokowany” w wodzie, aby zachęcić grzyby do rozwoju i powinien wkrótce przynieść zbiory."
+RESOURCE.STONE.BLOCK.NOUN,,Block,Blok
+RESOURCE.STONE.BLOCK.PLURAL,,Blocks,Bloki
+RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,"Kamień, który został ukształtowany w kostkę, dzięki czemu można go łatwo wykorzystać w budownictwie lub rzemieślnictwie."
+RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,Nieociosany głaz
+RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,Nieociosane głazy
+RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,"Ogromny kawałek kamienia, który musi zostać wyrzeźbiony w bardziej użyteczny kształt przez {{PROFESSION.STONEMASON}}."
+
+ROOMS.BEDROOM,,Bedroom,Sypialnia
+ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.","Miejsce dla osadników do spania. Wolą mieć pojedyncze sypialnie, które mają co najmniej 9 płytek, a najlepiej co najmniej 13 płytek."
+ROOMS.BRIDGE,,Bridge,Most
+ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.,"Umieszczony po drugiej stronie rzeki, aby umożliwić dostęp do drugiej strony."
+ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,Warsztat stolarski
+ROOMS.CARPENTRY_WORKSHOP.TOOLTIP,,This workshop produces most wooden tools and items.,Ten warsztat produkuje większość drewnianych narzędzi i przedmiotów.
+ROOMS.COMPONENT.STOCKPILE.DESCRIPTION,,{{allocated}} of {{total}} spaces currently in use,{{allocated}} z {{total}} spacji aktualnie używanych
+ROOMS.EARTHWORKS,,Earthworks,Roboty ziemne
+ROOMS.EARTHWORKS.TOOLTIP,,An outdoor area for large constructions.,Powierzchnia zewnętrzna dla dużych konstrukcji.
+ROOMS.FARM,,Farm plot,Działka rolna
+ROOMS.FARM.PLURAL,,Farm plots,Działki rolnicze
+ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.,Uprawa upraw przy użyciu {{INGREDIENT.SEEDS.PLURAL}}. Musi być umieszczony na {{MATERIAL_TYPE.EARTH.NOUN}}.
+ROOMS.FEASTING_HALL,,Feasting hall,Święto Hall
+ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!","Miejsce dla osadników, by jeść, pić i być wesołym!"
+ROOMS.GRAVEYARD,,Graveyard,Cmentarz
+ROOMS.GRAVEYARD.TOOLTIP,,Deceased settlers are laid to rest here.,Zmarli osadnicy mają tu odpocząć.
+ROOMS.KITCHEN,,Kitchen,Kuchnia
+ROOMS.KITCHEN.TOOLTIP,,Most food is prepared here before being served in a {{ROOMS.FEASTING_HALL}}.,Większość żywności przygotowywana jest tutaj przed podaniem w {{ROOMS.FEASTING_HALL}}.
+ROOMS.MASONRY_WORKSHOP,,Masonry workshop,Warsztat murarski
+ROOMS.MASONRY_WORKSHOP.TOOLTIP,,This workshop produces most items made out of stone.,Ten warsztat produkuje większość przedmiotów wykonanych z kamienia.
+ROOMS.METALWORKS,,Metalworks,Hala metalowa
+ROOMS.METALWORKS.TOOLTIP,,Metal ore is refined and used in crafting here.,Ruda metalu jest rafinowana i wykorzystywana w rzemieślniczych tutaj.
+ROOMS.MUSHROOM_FARM,,Mushroom farm,Gospodarstwo grzybowe
+ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,Grzyby mogą być uprawiane przy użyciu {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} i drewnianych {{RESOURCE.LOGS.PLURAL}}.
+ROOMS.SAWMILL,,Sawmill,Tartak
+ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,Drewniane {{RESOURCE.LOGS.PLURAL}} są tutaj udoskonalane do {{RESOURCE.PLANKS.PLURAL}}.
+ROOMS.STOCKPILES,,Stockpiles,Skład
+ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,Niewykorzystane przedmioty są umieszczane w zapasach dla łatwego dostępu.
+
+SEASON.AUTUMN,,Autumn,Jesień
+SEASON.SPRING,,Spring,Wiosna
+SEASON.SUMMER,,Summer,Lato
+SEASON.WINTER,,Winter,Zima
+
+SEED.BARLEY_SEED,,Barley,Jęczmień
+SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Ziarno używane tylko do produkcji piwa. Można sadzić w {{SEASON.SPRING}}, {{SEASON.SUMMER}} lub {{SEASON.AUTUMN}}."
+SEED.BERSERKER_MUSHROOM_SPAWN,,Berserker,Berserkera
+SEED.BERSERKER_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP}},A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,"Grzyb z różowo-czerwoną czapką z białymi plamami. Ma właściwości halucynogenne, których wojownicy czasami używają w przygotowaniach do bitwy."
+SEED.CARROT_SEED,,Carrot,Marchewka
+SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Warzywo korzeniowe, które przetrwa mróz {{SEASON.WINTER}}. Marchewki rosną szybko, ale tylko produkują małe plony. Można sadzić w {{SEASON.SPRING}}, {{SEASON.SUMMER}} lub {{SEASON.AUTUMN}}."
+SEED.CORN_SEED,,Corn,Kukurydza
+SEED.CORN_SEED.TOOLTIP,{{VEGETABLE.CORN.TOOLTIP}},"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.","Ziarno zbóż znane również jako kukurydza. Wytwarza obfity plon, ale trwa około 2 sezony i nie może przetrwać {{SEASON.WINTER}}, więc wymaga sadzenia na początku {{SEASON.SPRING}}."
+SEED.DEATH_CAP_SPAWN,,Death cap,Czapka śmierci
+SEED.DEATH_CAP_SPAWN.TOOLTIP,{{VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP}},"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.","Bardzo trujący grzyb z szeroką, płaską czapką. Jedzenie nawet niewielkiej ilości prawie na pewno spowoduje zatrucie, które może doprowadzić do śmierci."
+SEED.ELFSBANE_SPAWN,,Elfsbane,Elfsbane
+SEED.ELFSBANE_SPAWN.TOOLTIP,{{VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP}},"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.","Ten grzyb ma prosty, bezsmakowy smak dla większości humanoidów. O dziwo, smakuje absolutnie obrzydliwie dla elfów, które często reagują z wybuchowymi wymiotami po spożyciu lub w skrajnych przypadkach ataku serca."
+SEED.FIST_SPAWN,,Fist,Pięść
+SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,Czarno-niebieski grzyb o metalicznym smaku. Nazwa pochodzi od grupy bardów z epoki ciemności.
+SEED.GLOW_SPAWN,,Glow,- Błok
+SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,"Grzyb w postaci magii, który emituje światło i zmienia kolor wraz z porami roku."
+SEED.HOPS_SEED,,Hops,Chmiel
+SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,Kwiat używany do aromatyzowania piwa. Muszą być sadzone w {{SEASON.SPRING}}.
+SEED.MILTONIA_SPAWN,,Miltonia,Miltonia
+SEED.MILTONIA_SPAWN.TOOLTIP,{{VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP}},"Once thought to exist only in the Hudds region, it is now found throughout the world.","Kiedyś uważano, że istnieje tylko w regionie Hudds, obecnie znajduje się na całym świecie."
+SEED.POTATO_SEED,,Potato,Ziemniak
+SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Warzywo korzeniowe skrobiowe, które może przetrwać {{SEASON.WINTER}}, co czyni go dobrym wyborem dla większości osad. Można sadzić w {{SEASON.SPRING}}, {{SEASON.SUMMER}} lub {{SEASON.AUTUMN}}."
+SEED.PURPLE_HELMET_SPAWN,,Purple helmet,Fioletowy kask
+SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Plump Turban, Puffy kask; Ten legendarny grzyb przechodzi przez wiele nazw. Legenda głosi, że dawno temu wiele społeczności krasnoludów utrzymywało się w całości na udomowionym szczepie tego grzyba."
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN,,Rociomycota,Rociomycota
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP}},A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,"Biały i czarny grzyb cętkowany. Wiadomo, że wpływa na wygląd tych, którzy go spożywają."
+SEED.SUNGLOW_SPAWN,,Sunglow,Sunglow
+SEED.SUNGLOW_SPAWN.TOOLTIP,{{VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP}},A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,"Jasnożółty grzyb, który świeci wraz z pojawieniem się światła słonecznego. Traci ten blask w momencie, gdy jest zbierany."
+SEED.SYRUP_POWDER_SPAWN,,Syrup powder,Syrop w proszku
+SEED.SYRUP_POWDER_SPAWN.TOOLTIP,{{VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP}},"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.","Okrągły pomarańczowy/żółty grzyb z białym spodem. Mówi się, że były używane przez magów dawno temu, ale w jakim celu nikt nie wie."
+SEED.TOMATO_SEED,,Tomato,Pomidor
+SEED.TOMATO_SEED.TOOLTIP,{{VEGETABLE.TOMATO.TOOLTIP}},A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,"Roślina, która rośnie duże czerwone jagody często używane jako warzywo. Można sadzić tylko w {{SEASON.SPRING}}."
+SEED.WHEAT_SEED,,Wheat,Pszenica
+SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.","Ziarno zbóż powszechnie używane do produkcji chleba. Może przetrwać {{SEASON.WINTER}}, ale zajmuje trochę czasu, aby rosnąć, więc jest albo sadzone w {{SEASON.SPRING}} lub {{SEASON.AUTUMN}}."
+
+SHRUB.DESCRIPTION,Shrub or bush should do,Bush,Krzak
+
+STOCKPILE.GRANARY,,Granary,Spichlerz
+STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,"Przechowuje ziarna i nasiona, które nie wygasną."
+STOCKPILE.PANTRY,,Pantry,Spiżarnia
+STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,"Sklepy zebrane owoce i warzywa, które mogą wygasnąć."
+STOCKPILE.RESOURCES,,Resources,Zasoby
+STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,"Przechowuje większość rodzajów zasobów, które nie należą do innych rodzajów zapasów."
+STOCKPILE.TOOLS,,Tools,Narzędzia
+STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,Przechowuje narzędzia wymagane do pracy na zadaniach.
+
+STONE.BASALT.ADJECTIVE,,Basalt,Bazaltowy
+STONE.BASALT.NOUN,,Basalt,Bazalt
+STONE.BASALT.TOOLTIP,,An igneous rock formed by the rapid cooling of lava. Almost all of the volcanic rock in the world is basalt.,Skała magmowa utworzona przez szybkie chłodzenie lawy. Prawie cała skała wulkaniczna na świecie jest bazalt.
+STONE.DOLOSTONE.ADJECTIVE,,Dolostone,Dolomitowy
+STONE.DOLOSTONE.NOUN,,Dolostone,Dolomit
+STONE.DOLOSTONE.TOOLTIP,,"A sedimentary rock mostly made up of the mineral dolomite, so it is also known as dolomite rock.","Skała osadowa składa się głównie z dolomitu mineralnego, więc znana jest również jako skała dolomitowa."
+STONE.FRONITE.ADJECTIVE,,Frónite,Frónite
+STONE.FRONITE.NOUN,,Frónite,Frónite
+STONE.FRONITE.TOOLTIP,,A blue-hued rock mostly found on an icy island to the north. It has a high iron content.,Niebieskobarwiona skała najczęściej znaleziona na lodowatej wyspie na północy. Ma wysoką zawartość żelaza.
+STONE.GRANITE.ADJECTIVE,,Granite,Granitowy
+STONE.GRANITE.NOUN,,Granite,Granit
+STONE.GRANITE.TOOLTIP,,"A common type of igneous rock. It has a large proportion of quartz, making it good for locating certain gemstones.","Powszechny rodzaj skały magmowej. Ma dużą część kwarcu, co czyni go dobrym do lokalizowania niektórych kamieni szlachetnych."
+STONE.LIMESTONE.ADJECTIVE,,Limestone,Wapienny
+STONE.LIMESTONE.NOUN,,Limestone,Wapień
+STONE.LIMESTONE.TOOLTIP,,A lightly-coloured sedimentary rock which makes for a good building material. It is also used as a flux in the production of {{METAL.STEEL.NOUN}}.,"Jasnokolorowa skała osadowa, która tworzy dobry materiał budowlany. Jest on również stosowany jako strumień w produkcji {{METAL.STEEL.NOUN}}."
+STONE.MARBLE.ADJECTIVE,,Marble,Marmurowy
+STONE.MARBLE.NOUN,,Marble,Marmur
+STONE.MARBLE.TOOLTIP,,A metamorphic rock which is used as a high-quality material for sculpture and masonry due to its brilliant appearance.,"Metamorficzna skała, która jest wykorzystywana jako wysokiej jakości materiał do rzeźby i murów ze względu na swój wspaniały wygląd."
+STONE.SANDSTONE.ADJECTIVE,,Sandstone,Piaskowcowy
+STONE.SANDSTONE.NOUN,,Sandstone,Piaskowiec
+STONE.SANDSTONE.TOOLTIP,,"A sedimentary rock composed of sand-like fragments. ",Skała osadowa złożona z fragmentów przypominających piasek.
+STONE.SHALE.ADJECTIVE,,Shale,Ilasty
+STONE.SHALE.NOUN,,Shale,Iłołupek
+STONE.SHALE.TOOLTIP,,A fine-grained sedimentary rock composed of pressurized mud. It can be easily broken into thin layers.,Drobnoziarnista skała osadowa złożona z błota pod ciśnieniem. Można go łatwo podzielić na cienkie warstwy.
+STONE.SLATE.ADJECTIVE,,Slate,Łupkowy
+STONE.SLATE.NOUN,,Slate,Łupek
+STONE.SLATE.TOOLTIP,,A metamorphic rock that is usually formed out of {{STONE.SHALE.NOUN}}. It is often made into tiles for roofing or writing.,"Skała metamorficzna, która jest zwykle utworzona z {{STONE.SHALE.NOUN}}. Często jest wykonany w płytki do pokrycia dachowego lub pisania."
+
+TOOL.AXE.NOUN,,Axe,Siekiera
+TOOL.AXE.TOOLTIP,,Used to chop down trees. The primary tool of a {{PROFESSION.WOODCUTTER}}.,Służy do ścinania drzew. Podstawowym narzędziem {{PROFESSION.WOODCUTTER}}.
+TOOL.CHISEL.NOUN,,Chisel,Dłuto
+TOOL.CHISEL.TOOLTIP,,Used to sculpt rock into shape. One of the tools used by a {{PROFESSION.STONEMASON}}.,Używany do rzeźbienia skały w kształt. Jedno z narzędzi używanych przez {{PROFESSION.STONEMASON}}.
+TOOL.FISHING.ROD.NOUN,,Fishing rod,Wędka
+TOOL.FISHING.ROD.TOOLTIP,,Used to catch fish from a body of water. The primary tool of a {{PROFESSION.FISHER}}.,Służy do połowu ryb z wody. Podstawowym narzędziem {{PROFESSION.FISHER}}.
+TOOL.KITCHEN.KNIFE.NOUN,,Kitchen knife,Nóż kuchenny
+TOOL.KITCHEN.KNIFE.TOOLTIP,,"Used to prepare food, particularly meat.","Używany do przygotowywania żywności, w szczególności mięsa."
+TOOL.LARGE.HAMMER.NOUN,,Large hammer,Duży młot
+TOOL.LARGE.HAMMER.TOOLTIP,,Used to bash large items of stone and metal into shape. The primary tool of a {{PROFESSION.BLACKSMITH}}.,Służy do rozwalania dużych przedmiotów z kamienia i metalu w kształt. Podstawowym narzędziem {{PROFESSION.BLACKSMITH}}.
+TOOL.PICKAXE.NOUN,,Pickaxe,Kilof
+TOOL.PICKAXE.TOOLTIP,,Used to break stone into smaller pieces. The primary tool of a {{PROFESSION.MiNER}}.,Służy do rozbicia kamienia na mniejsze kawałki. Podstawowe narzędzie {{PROFESSION.MiNER}}.
+TOOL.PLANE.NOUN,A carpenter's plane,Plane,Hebel
+TOOL.PLANE.TOOLTIP,,Used to shave wooden furniture and items into shape. The primary tool of a {{PROFESSION.CARPENTER}}.,Służy do golenia drewnianych mebli i przedmiotów w kształt. Podstawowym narzędziem {{PROFESSION.CARPENTER}}.
+TOOL.ROLLING.PIN.NOUN,,Rolling pin,Wałek do ciasta
+TOOL.ROLLING.PIN.TOOLTIP,,Used to prepare dough. One of the tools used by a {{PROFESSION.CHEF}}.,Używany do przygotowania ciasta. Jedno z narzędzi używanych przez {{PROFESSION.CHEF}}.
+TOOL.SAW.NOUN,A carpenter's saw,Saw,Piła
+TOOL.SAW.TOOLTIP,,Used to cut wood into shape. Required for cutting lumber in the {{ROOMS.SAWMILL}}.,Służy do cięcia drewna na kształt. Wymagane do cięcia tarcicy w {{ROOMS.SAWMILL}}.
+TOOL.SMALL.HAMMER.NOUN,,Hammer,Młot
+TOOL.SMALL.HAMMER.TOOLTIP,,Used to bash small items of stone and metal into shape. One of the tools used by a {{PROFESSION.BLACKSMITH}}.,Służy do rozwalania drobnych przedmiotów z kamienia i metalu w kształt. Jedno z narzędzi używanych przez {{PROFESSION.BLACKSMITH}}.
+TOOL.TONGS.NOUN,A blacksmith's tongs,Tongs,Cęgi
+TOOL.TONGS.TOOLTIP,,Used to hold extremely hot metal items. Used in the process of smelting metal ore.,Służy do przechowywania bardzo gorących elementów metalowych. Stosowany w procesie wytapiania rudy metalu.
+
+TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,Drzewo {{materialType.noun}}
+
+TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.","Twoi osadnicy mają do spełnienia trzy podstawowe potrzeby: jedzenie, picie i miejsce do spania. Chociaż na razie będą na to narzekać, mogą pić z pobliskiej rzeki i spać na ziemi. To czego nie mogą zrobić, to magiczne jedzenie znikąd (przynajmniej nie bez maga w pobliżu!) więc skupimy się na żywności na początek."
+TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.","Pierwszą rzeczą, którą powinieneś zrobić każdej wiosny, jest zapewnienie, że jesienią zasadzono wystarczającą ilość plonów. Rolnictwo jest niezawodnym i zrównoważonym źródłem żywności, ale musisz upewnić się, że masz wystarczającą ilość upraw, aby wyżywić swoją populację między poszczególnymi rocznymi zbiorami."
+TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.","Dobrą zasadą jest zapewnienie, że każdy osadnik w twojej populacji wysiewa się 10 płytek upraw. Obecnie istnieje 7 osadników, więc śmiało kliknij „{{GUI.ZONES_LABEL}}” > „{{ROOMS.FARM}}” i wyznacz/przeciągaj kilka działek rolnych na trawiastym obszarze."
+TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","Nie mając nic innego do roboty, twoi osadnicy zaczną przygotowywać te {{ROOMS.FARM.PLURAL}}, uprawiając ziemię, aby być gotowym do wysiewu nasion. Nie wymaga to żadnych specjalnych narzędzi ani wiedzy, więc każdy powinien się zaangażować."
+TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.","To przygotowuje działkę do wysiewu, ale musisz wybrać, które uprawy rosną na każdej działce, zanim rolnik przyjdzie i zasadzi odpowiednie nasiona. Twoi osadnicy przynieśli ze sobą wybór różnych nasion. Możesz kliknąć „Zasoby” w prawym górnym rogu, aby uzyskać podział wszystkich pozycji w rozliczeniu."
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ","Aby nasiona były dostępne dla twoich rolników, muszą znajdować się w magazynie, w porównaniu z byciem przechowywanym w ekwipunku karła, tak jak obecnie. Kliknij {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (kliknij prawym przyciskiem myszy, aby powrócić do poprzedniego menu) i wyznaczyć obszar, który ma być używany jako {{STOCKPILE.GRANARY}}, w którym przechowywane są nasiona i ziarna."
+TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.","Po pewnym czasie twoi osadnicy powinni umieścić przedmioty, których nie używają do zapasów, jak nasiona, które mają być wysiewane."
+TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.","Kliknij lewym przyciskiem myszy na każdym z {{ROOMS.FARM.PLURAL}} i wybierz uprawy, które mają być tam posadzone. Na razie nie wybieraj {{VEGETABLE.BARLEY}} ani {{VEGETABLE.HOPS}}, ponieważ te rośliny są wykorzystywane do produkcji piwa, a nie żywności."
+TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,"Twoje {{PROFESSION.FARMER.PLURAL}} będą teraz pracować nad siewem wybranych nasion {{ROOMS.FARM.PLURAL}}. Siew nasion nie wymaga żadnych specjalnych narzędzi, ale można przypisać więcej osadników jako {{PROFESSION.FARMER.PLURAL}}. Kliknij lewym przyciskiem myszy na osadnika, który wędruje bez celu."
+TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.","Kliknięcie na osadnika pozwala zobaczyć ich nazwę, zawody, inwentarz, potrzeby i szczęście. Kliknij pusty kwadratowy przycisk obok innych zawodów, aby ustawić trzeci i ostatni zawód jako {{PROFESSION.FARMER.NOUN}}."
+TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","Należy pamiętać, że niektóre zadania wymagają, aby osadnik miał określone narzędzie w swoim magazynie, a jeśli żadne z nich nie są dostępne w rozliczeniu, nie będzie działać na zadaniach, które go wymagają. Można na przykład przypisać więcej osadników jako {{PROFESSION.WOODCUTTER}}, ale nie można ścinać drzew bez dostępnego {{TOOL.AXE.NOUN}}."
+TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.","Twoje uprawy będą teraz rosnąć i ostatecznie zostaną zebrane przez {{PROFESSION.FARMER.PLURAL}} w {{SEASON.AUTUMN}}. Niektóre rośliny mogą być sadzone ponownie później w ciągu roku i przetrwać przez {{SEASON.WINTER}}, ale niektóre nie. Aby jak najlepiej wykorzystać swoje uprawy, najlepiej jest wyprodukować zupę z zebranych warzyw lub chleb z ziarna."
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","Zróbmy {{ROOMS.KITCHEN}} {{ZONES.LABEL}}, aby wyprodukować zupę, gdy twoje zbiory będą gotowe. Przejdź do menu najwyższego poziomu, a następnie {{ROOMS.KITCHEN}} > {{ROOMS.KITCHEN}} i przeciągnij obszar {{ROOMS.Kitchen}}. W tym momencie w rozwoju króla pod Górą nie ma znaczenia, czy jest na zewnątrz czy w pomieszczeniu, ale w przyszłości będziesz chciał, aby wszystkie pokoje miały sufit, aby chronić je przed żywiołami."
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","W przeciwieństwie do działek rolnych, kuchnie (i większość innych pomieszczeń) potrzebują mebli do funkcjonowania. Kliknij „Meble”, gdy umieścisz strefę kuchenną, a zobaczysz meble, które można dodać. Aby wyprodukować zupę, musisz zbudować {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} i {{FURNITURE.CAULDRON}} w tej samej strefie kuchennej. Należy również wyznaczyć obszar {{STOCKPILE.PANTRY}}, aby przechowywać wszystkie zebrane rośliny."
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CHEFS_CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","Po zebraniu plonów kucharze przyniosą warzywa do {{FURNITURE.KITCHEN_WORKTOP}}, zanim dodają je do {{FURNITURE.CHEFS_CAULDRON}} z wodą i produkują zupę! Robienie zupy i pieczenie chleba oznacza, że twoje zapasy żywności pójdą znacznie dalej - jedno warzywo nakarmi karła na jeden posiłek, ale 3 warzywa ugotowane do zupy zapewnią 12 posiłków!"
+TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.","W końcu ta kuchnia wytworzy kocioł pełen gorącej zupy, ale kucharze nie lubią innych krasnoludów wchodząc w drogę do kuchni, więc zamiast tego trzeba mieć zupę przywieziony do sali ucztowej, aby cała osada się cieszyć. Wyznacz salę ucztową klikając na {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, a następnie dodaj do niej {{FURNITURE.CAULDRON}}. Pamiętaj, że kocioł w sali ucztowej nie zostanie umieszczony, dopóki nie będzie dostępny kocioł zawierający gęstą, pyszną zupę."
+TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,"Z biegiem czasu będziesz chciał rozszerzyć swoją produkcję żywności, ale dzięki temu nasza mała osada będzie pożywiona na nadchodzącą zimę - twoi osadnicy przynieśli racje, aby utrzymać je podczas pierwszych upraw."
+TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.","Większość elementów i mebli jest produkowana z {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} lub {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. Ważne jest, aby utrzymać duży zapas tych. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} są produkowane w {{ROOMS.SAWMILL}} i {{MATERIAL_TYPE.STONE.ADJECTIVE}} w {{RESOURCE.STONE.BLOCK.PLURAL}}. Umieść jedną z tych stref i zbuduj w nich {{PROFESSION.STONEMASON}} i {{ROOMS.MASONRY_WORKSHOP}}."
+TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.",Teraz jesteś gotowy do produkcji {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} i {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} {{MATERIAL_TYPE.WOOD.ADJECTIVE}} Udoskonalony. PLURAL}}. Na szczęście te zazwyczaj mogą być zbierane ze świata gry dość łatwo.
+TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each.,"Wybierz {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} i kliknij i przeciągnij drzewa, aby poinformować drwali o ich ścięciu. Podobnie można wybrać {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} i kliknij i przeciągnij obszar góry, aby wyznaczyć do wydobycia. Wybierz wystarczającą ilość obu, aby zbudować zapasy z powrotem do 40 z każdego."
+TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",Bądź ostrożny z górnictwa! Wywydobywany obszar 7 na 7 płytek bez {{FURNITURE.PILLAR}} w tym obszarze zapadnie się!
+TUTORIAL.CAMERA.A,,"You can use the W, A, S and D keys or the arrow keys to pan the camera around. Moving the cursor to the edge of the screen also pans the camera, but this can be disabled in the options menu.",
+TUTORIAL.CAMERA.B,,Scrolling the mouse wheel or pressing the Q and E keys zooms the camera in or out.,
+TUTORIAL.CAMERA.C,,"In the lower-right section of the screen is the minimap, and you can click on this to jump the camera to that point. Click on the “Minimap” label to show or hide the minimap.",
+TUTORIAL.CAMERA.D,,Try out these camera controls and then click “Next” to proceed.,
+TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. For your next challenge, aim to set up a functioning {{ROOMS.METALWORKS}} with a {{FURNITURE.FORGE}} provided with fuel and refined metal ore. Refined metal ores are produced at the {{FURNITURE.ORE_CRUSHING_STATION}}, and fuel can be crushed from coal or produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} with a {{FURNITURE.CHARCOAL_CLAMP}} in an {{ROOMS.EARTHWORKS}}. Good luck!","Obejmuje to podstawy gry Króla pod Górą. W następnym wyzwaniem zmierz się na stworzenie funkcjonującego {{ROOMS.METALWORKS}} z {{FURNITURE.FORGE}} wyposażonego w paliwo i rudę metali rafinowanych. Rafinowane rudy metali są wytwarzane w {{FURNITURE.ORE_CRUSHING_STATION}}, a paliwo może zostać zmiażdżone z węgla lub wyprodukowane z {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} z {{FURNITURE.CHARCOAL_CLAMP}}. Powodzenia!"
+TUTORIAL.PROGRESS_DESCRIPTION.FARM_PLOT_SELECTIONS,Used to show a progress indicator for how many farm plots have a crop selected e.g. 2 of 10 farm plots with a crop assigned,{{ROOMS.FARM.PLURAL}} with a crop assigned,{{ROOMS.FARM.PLURAL}} z przydzieloną uprawą
+TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indicator for how many of a certain profession have been assigned e.g. 2 of 10 farmers assigned,{{professionPlural}} assigned,Przypisane {{professionPlural}}
+TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},{{currentQuantity}} {{requiredQuantity}} {{targetDescription}}
+TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,Płytki {{roomName}}
+TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
+TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
+TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
+TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
+TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",
+TUTORIAL.TIME.D,,You can also click the speed icons to change the speed or pause the game.,
+
+VEGETABLE.BARLEY,,Barley,Jęczmień
+VEGETABLE.BARLEY.PLURAL,,Barley,Jęczmień
+VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Ziarno używane tylko do produkcji piwa. Można sadzić w {{SEASON.SPRING}}, {{SEASON.SUMMER}} lub {{SEASON.AUTUMN}}."
+VEGETABLE.BERSERKER_MUSHROOM,,Berserker mushroom,Grzyb Berserker
+VEGETABLE.BERSERKER_MUSHROOM.PLURAL,,Berserker mushrooms,Grzyby berserkowe
+VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP,,A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,"Grzyb z różowo-czerwoną czapką z białymi plamami. Ma właściwości halucynogenne, których wojownicy czasami używają w przygotowaniach do bitwy."
+VEGETABLE.CARROT,,Carrot,Marchewka
+VEGETABLE.CARROT.PLURAL,,Carrots,Marchewki
+VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Warzywo korzeniowe, które przetrwa mróz {{SEASON.WINTER}}. Marchewki rosną szybko, ale tylko produkują małe plony. Można sadzić w {{SEASON.SPRING}}, {{SEASON.SUMMER}} lub {{SEASON.AUTUMN}}."
+VEGETABLE.CORN,,Sweetcorn,Słodka kukurydza
+VEGETABLE.CORN.PLURAL,,Sweetcorn,Słodka kukurydza
+VEGETABLE.CORN.TOOLTIP,,"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.","Ziarno zbóż znane również jako kukurydza. Wytwarza obfity plon, ale trwa około 2 sezony i nie może przetrwać {{SEASON.WINTER}}, więc wymaga sadzenia na początku {{SEASON.SPRING}}."
+VEGETABLE.DEATH_CAP_MUSHROOM,,Death cap mushroom,Śmierć czapka grzyb
+VEGETABLE.DEATH_CAP_MUSHROOM.PLURAL,,Death cap mushrooms,Grzyby z czapką śmierci
+VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP,,"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.","Bardzo trujący grzyb z szeroką, płaską czapką. Jedzenie nawet niewielkiej ilości prawie na pewno spowoduje zatrucie, które może doprowadzić do śmierci."
+VEGETABLE.DRAGONFRUIT,,Dragonfruit,Dragonfruit
+VEGETABLE.DRAGONFRUIT.PLURAL,,Dragonfruits,Smoki
+VEGETABLE.ELFSBANE_MUSHROOM,,Elfsbane mushroom,Grzyb Elfsbane
+VEGETABLE.ELFSBANE_MUSHROOM.PLURAL,,Elfsbane mushrooms,Grzyby Elfsbane
+VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP,,"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.","Ten grzyb ma prosty, bezsmakowy smak dla większości humanoidów. O dziwo, smakuje absolutnie obrzydliwie dla elfów, które często reagują z wybuchowymi wymiotami po spożyciu lub w skrajnych przypadkach ataku serca."
+VEGETABLE.FIST_MUSHROOM,,Fist mushroom,Grzyb pięści
+VEGETABLE.FIST_MUSHROOM.PLURAL,,Fist mushrooms,Grzyby pięści
+VEGETABLE.FIST_MUSHROOM.TOOLTIP,,A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,Czarno-niebieski grzyb o metalicznym smaku. Nazwa pochodzi od grupy bardów z epoki ciemności.
+VEGETABLE.GLOW_MUSHROOM,,Glow mushroom,Grzyby świecące
+VEGETABLE.GLOW_MUSHROOM.PLURAL,,Glow mushrooms,Grzyby świecące
+VEGETABLE.GLOW_MUSHROOM.TOOLTIP,,A magic-infused mushroom that gives off light and changes colour with the seasons.,"Grzyb w postaci magii, który emituje światło i zmienia kolor wraz z porami roku."
+VEGETABLE.HOPS,,Hops,Chmiel
+VEGETABLE.HOPS.PLURAL,,Hops,Chmiel
+VEGETABLE.HOPS.TOOLTIP,,A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,Kwiat używany do aromatyzowania piwa. Muszą być sadzone w {{SEASON.SPRING}}.
+VEGETABLE.LOQUAT,,Loquat,Loquat
+VEGETABLE.LOQUAT.PLURAL,,Loquats,Loquats
+VEGETABLE.MILTONIA_MUSHROOM,,Miltonia mushroom,Miltonia grzyb
+VEGETABLE.MILTONIA_MUSHROOM.PLURAL,,Miltonia mushrooms,Grzyby Miltonia
+VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP,,"Once thought to exist only in the Hudds region, it is now found throughout the world.","Kiedyś uważano, że istnieje tylko w regionie Hudds, obecnie znajduje się na całym świecie."
+VEGETABLE.POTATO,,Potato,Ziemniak
+VEGETABLE.POTATO.PLURAL,,Potatoes,Ziemniaki
+VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Warzywo korzeniowe skrobiowe, które może przetrwać {{SEASON.WINTER}}, co czyni go dobrym wyborem dla większości osad. Można sadzić w {{SEASON.SPRING}}, {{SEASON.SUMMER}} lub {{SEASON.AUTUMN}}."
+VEGETABLE.PURPLE_HELMET_MUSHROOM,,Purple helmet mushroom,Fioletowy kask grzyb
+VEGETABLE.PURPLE_HELMET_MUSHROOM.PLURAL,,Purple helmet mushrooms,Fioletowy hełm grzyby
+VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Plump Turban, Puffy kask; Ten legendarny grzyb przechodzi przez wiele nazw. Legenda głosi, że dawno temu wiele społeczności krasnoludów utrzymywało się w całości na udomowionym szczepie tego grzyba."
+VEGETABLE.ROCIOMYCOTA_MUSHROOM,,Rociomycota mushroom,Rociomycota grzyb
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.PLURAL,,Rociomycota mushrooms,Grzyby Rociomycota
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP,,A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,"Biały i czarny grzyb cętkowany. Wiadomo, że wpływa na wygląd tych, którzy go spożywają."
+VEGETABLE.SUNGLOW_MUSHROOM,,Sunglow mushroom,Sunglow grzyb
+VEGETABLE.SUNGLOW_MUSHROOM.PLURAL,,Sunglow mushrooms,Grzyby Sunglow
+VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP,,A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,"Jasnożółty grzyb, który świeci wraz z pojawieniem się światła słonecznego. Traci ten blask w momencie, gdy jest zbierany."
+VEGETABLE.SYRUP_POWDER_MUSHROOM,,Syrup powder mushroom,Syrop w proszku grzyb
+VEGETABLE.SYRUP_POWDER_MUSHROOM.PLURAL,,Syrup powder mushrooms,Syrop w proszku grzyby
+VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP,,"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.","Okrągły pomarańczowy/żółty grzyb z białym spodem. Mówi się, że były używane przez magów dawno temu, ale w jakim celu nikt nie wie."
+VEGETABLE.TAMARILLO,,Tamarillo,Tamarillo
+VEGETABLE.TAMARILLO.PLURAL,,Tamarillos,Tamarylosy
+VEGETABLE.THIMBLEBERRY,,Thimbleberry,Thimbleberry
+VEGETABLE.THIMBLEBERRY.PLURAL,,Thimbleberries,Thimbleberries
+VEGETABLE.TOMATO,,Tomato,Pomidor
+VEGETABLE.TOMATO.PLURAL,,Tomatoes,Pomidory
+VEGETABLE.TOMATO.TOOLTIP,,A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,"Roślina, która rośnie duże czerwone jagody często używane jako warzywo. Można sadzić tylko w {{SEASON.SPRING}}."
+VEGETABLE.WHEAT,,Wheat,Pszenica
+VEGETABLE.WHEAT.PLURAL,,Wheat,Pszenica
+VEGETABLE.WHEAT.TOOLTIP,,"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.","Ziarno zbóż powszechnie używane do produkcji chleba. Może przetrwać {{SEASON.WINTER}}, ale zajmuje trochę czasu, aby rosnąć, więc jest albo sadzone w {{SEASON.SPRING}} lub {{SEASON.AUTUMN}}."
+
+VITRIOL.GREEN_VITRIOL.ADJECTIVE,,Green,Zielony
+VITRIOL.GREEN_VITRIOL.NOUN,,Green,Zielony
+VITRIOL.GREEN_VITRIOL.TOOLTIP,,"Also known as iron sulfate, this salt has several uses, including as a soil additive to improve crop farming. (Usages of vitriol are not yet implemented in King under the Mountain)","Znana również jako siarczan żelaza, sól ta ma kilka zastosowań, w tym jako dodatek do gleby w celu poprawy upraw. (Użytek witriolu nie zostały jeszcze wdrożone w Królu pod Górą)"
+
+WALL.DESCRIPTION,"E.g. “Granite rock wall”, “Granite smooth stone wall”",{{materialType.adjective}} {{wallType.noun}},{{wallType.noun}}: {{materialType.adjective}}
+WALL.GEMS.NOUN,,Gems,Klejnoty
+WALL.ORE.NOUN,,Ore,Ruda
+WALL.ROUGH_STONE.NOUN,,Rock wall,Skalna ściana
+WALL.STONE_BLOCK.NOUN,,Smooth stone wall,Gładka skalna ściana
+WALL.WOODEN.NOUN,,Wood wall,Drewniana ściana
+
+WOOD.ASPEN.ADJECTIVE,,Aspen,Aspen
+WOOD.ASPEN.NOUN,,Aspen,Aspen
+WOOD.BAOBAB.ADJECTIVE,,Baobab,Baobab
+WOOD.BAOBAB.NOUN,,Baobab,Baobab
+WOOD.BARKSHROOM.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,Barkshroom
+WOOD.BARKSHROOM.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,Barkshroom
+WOOD.BEECH.ADJECTIVE,,Beech,Bukowe
+WOOD.BEECH.NOUN,,Beech,Buk
+WOOD.BIRCH.ADJECTIVE,,Birch,Brzozowe
+WOOD.BIRCH.NOUN,,Birch,Brzoza
+WOOD.EBONY.ADJECTIVE,,Ebony,Heban
+WOOD.EBONY.NOUN,,Ebony,Heban
+WOOD.FIR.ADJECTIVE,,Fir,Jodłowe
+WOOD.FIR.NOUN,,Fir,Jodła
+WOOD.FUNGIWOOD.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,Drewno grzybowe
+WOOD.FUNGIWOOD.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,Drewno grzybowe
+WOOD.IRONWOOD.ADJECTIVE,,Ironwood,Ironwood
+WOOD.IRONWOOD.NOUN,,Ironwood,Ironwood
+WOOD.MAPLE.ADJECTIVE,,Maple,Klonowe
+WOOD.MAPLE.NOUN,,Maple,Klon
+WOOD.NUYTSIA.ADJECTIVE,,Nuytsia,Nuytsia
+WOOD.NUYTSIA.NOUN,,Nuytsia,Nuytsia
+WOOD.OAK.ADJECTIVE,,Oaken,Dębowe
+WOOD.OAK.NOUN,,Oak,Dąb
+WOOD.PECAN.ADJECTIVE,,Pecan,Pecan
+WOOD.PECAN.NOUN,,Pecan,Pecan
+WOOD.PINE.ADJECTIVE,,Pine,Sosnowe
+WOOD.PINE.NOUN,,Pine,Sosna
+WOOD.RED_CEDAR.ADJECTIVE,,Red cedar,Cedr czerwony
+WOOD.RED_CEDAR.NOUN,,Red cedar,Cedr czerwony
+WOOD.RED_EMPEROR.ADJECTIVE,,Red emperor,Cesarz czerwony
+WOOD.RED_EMPEROR.NOUN,,Red emperor,Cesarz czerwony
+WOOD.ROSEWOOD.ADJECTIVE,,Rosewood,Palisander
+WOOD.ROSEWOOD.NOUN,,Rosewood,Palisander
+WOOD.SPRUCE.ADJECTIVE,,Spruce,Świerk
+WOOD.SPRUCE.NOUN,,Spruce,Świerk
+WOOD.STAR_PINE.ADJECTIVE,,Star pine,Sosna gwiazda
+WOOD.STAR_PINE.NOUN,,Star pine,Sosna gwiazda
+WOOD.SYCAMORE.ADJECTIVE,,Sycamore,jawor
+WOOD.SYCAMORE.NOUN,,Sycamore,jawor

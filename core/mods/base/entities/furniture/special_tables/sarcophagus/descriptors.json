@@ -1,0 +1,163 @@
+[
+  {
+    "uniqueName": "sarcophagus-1x2N-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "1x2N",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 1 x 2.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 42
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "sarcophagus-1x2S-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "1x2S",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 1 x 2.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 42
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "sarcophagus-2x1W-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "2x1W",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 2 x 1.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 16
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "sarcophagus-2x1E-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "2x1E",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 2 x 1.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 16
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "sarcophagus-1x2N-statue",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "1x2N",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 1 x 2 Statue.png",
+        "coloringLayer": "STONE_COLOR",
+        "flipX": true,
+        "flipY": true,
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "sarcophagus-1x2S-statue",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "1x2S",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 1 x 2 Statue.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "sarcophagus-2x1W-statue",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "2x1W",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 2 x 1 Statue.png",
+        "coloringLayer": "STONE_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "sarcophagus-2x1E-statue",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["SARCOPHAGUS"],
+    "furnitureLayoutName": "2x1E",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sarcophagus 2 x 1 Statue.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 16
+        }
+      }
+    }
+  }
+]

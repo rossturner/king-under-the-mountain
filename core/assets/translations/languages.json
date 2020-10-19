@@ -1,0 +1,165 @@
+[ {
+  "label" : "English",
+  "labelEn" : "English",
+  "code" : "en-gb",
+  "icon" : "United-Kingdom",
+  "filename" : "translations.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Deutsch",
+  "labelEn" : "German",
+  "code" : "de",
+  "icon" : "Germany",
+  "fallback" : "en-gb",
+  "filename" : "german.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Français",
+  "labelEn" : "French",
+  "code" : "fr",
+  "icon" : "France",
+  "fallback" : "en-gb",
+  "filename" : "french.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Italiano",
+  "labelEn" : "Italian",
+  "code" : "it",
+  "icon" : "Italy",
+  "fallback" : "en-gb",
+  "filename" : "italian.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Español",
+  "labelEn" : "Spanish",
+  "code" : "es",
+  "icon" : "Spain",
+  "fallback" : "en-gb",
+  "filename" : "spanish.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Português",
+  "labelEn" : "Portuguese",
+  "code" : "pt",
+  "icon" : "Portugal",
+  "fallback" : "en-gb",
+  "filename" : "portuguese.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Português Brasileiro",
+  "labelEn" : "Portuguese BR",
+  "code" : "pt-br",
+  "icon" : "Brazil",
+  "fallback" : "pt",
+  "filename" : "portuguese br.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Polski",
+  "labelEn" : "Polish",
+  "code" : "pl",
+  "icon" : "Poland",
+  "fallback" : "en-gb",
+  "filename" : "polish.csv",
+  "enabled" : false,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Pусский",
+  "labelEn" : "Russian",
+  "code" : "ru",
+  "icon" : "Russia",
+  "fallback" : "en-gb",
+  "filename" : "russian.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Dansk",
+  "labelEn" : "Danish",
+  "code" : "da",
+  "icon" : "Denmark",
+  "fallback" : "en-gb",
+  "filename" : "danish.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Nederlands",
+  "labelEn" : "Dutch",
+  "code" : "nl",
+  "icon" : "Netherlands",
+  "fallback" : "en-gb",
+  "filename" : "dutch.csv",
+  "enabled" : false,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Svenska",
+  "labelEn" : "Swedish",
+  "code" : "sv",
+  "icon" : "Sweden",
+  "fallback" : "en-gb",
+  "filename" : "swedish.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Norsk Bokmål",
+  "labelEn" : "Norwegian",
+  "code" : "no",
+  "icon" : "Norway",
+  "fallback" : "en-gb",
+  "filename" : "norwegian.csv",
+  "enabled" : false,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Magyar",
+  "labelEn" : "Hungarian",
+  "code" : "hu",
+  "icon" : "Hungary",
+  "fallback" : "en-gb",
+  "filename" : "hungarian.csv",
+  "enabled" : false,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "Suomi",
+  "labelEn" : "Finnish",
+  "code" : "fi",
+  "icon" : "Finland",
+  "fallback" : "en-gb",
+  "filename" : "finnish.csv",
+  "enabled" : false,
+  "breakAfterLineLength" : 120
+}, {
+  "label" : "日本語",
+  "labelEn" : "Japanese",
+  "code" : "ja",
+  "icon" : "Japan",
+  "fallback" : "en-gb",
+  "filename" : "japanese.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 20,
+  "fontName" : "NotoSansCJKjp-Bold.otf"
+}, {
+  "label" : "简体中文",
+  "labelEn" : "Simplified Chinese",
+  "code" : "zh-cn",
+  "icon" : "China",
+  "fallback" : "en-gb",
+  "filename" : "simplified-chinese.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 20,
+  "fontName" : "NotoSansCJKjp-Bold.otf"
+}, {
+  "label" : "한국어",
+  "labelEn" : "Korean",
+  "code" : "ko",
+  "icon" : "South-Korea",
+  "fallback" : "en-gb",
+  "filename" : "korean.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 20,
+  "fontName" : "NotoSansCJKjp-Bold.otf"
+} ]

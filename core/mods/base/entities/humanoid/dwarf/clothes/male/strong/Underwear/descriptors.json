@@ -1,0 +1,55 @@
+[{
+  "uniqueName": "Dwarf-Male-Strong-Underwear",
+  "type": "BODY_CLOTHING",
+  "race": "DWARF",
+  "bodyType": "STRONG",
+  "gender": "MALE",
+  "profession": "VILLAGER",
+  "sanity": "BROKEN",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Strong-Underwear-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -17
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Strong-Underwear-F34.png",
+      "offsetPixels": {
+        "x": -3,
+        "y": -14
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Strong-Underwear-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 3,
+        "y": -14
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Strong-Underwear-B34.png",
+      "offsetPixels": {
+        "x": -3,
+        "y": -13
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Strong-Underwear-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 3,
+        "y": -13
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Strong-Underwear-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -13
+      }
+    }
+  }
+}]

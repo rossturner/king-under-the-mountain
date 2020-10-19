@@ -1,0 +1,102 @@
+[
+  {
+    "recipeName": "Create soup",
+    "inputItemOptions": [
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Carrot"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Sack",
+        "materialName": "Corn"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Sack",
+        "materialName": "Potato"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Tomato"
+      },
+
+
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Purple Helmet Mushroom"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Berserker Mushroom"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Rociomycota Mushroom"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Miltonia Mushroom"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Elfsbane Mushroom"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Sunglow Mushroom"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Glow Mushroom"
+      },
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Syrup Powder Mushroom"
+      },
+
+
+      {
+        "itemTypeName": "Ingredient-Vegetable-Crate",
+        "materialName": "Tamarillo"
+      }
+    ],
+    "inputItemQuantity": 3,
+
+    "inputLiquidOptions": [
+      {
+        "itemTypeName": "Product-Bucket",
+        "materialName": "Water"
+      }
+    ],
+    "inputLiquidQuantity": 1,
+
+    "cookedInFurnitureName": "CHEFS_CAULDRON",
+
+    "outputDescriptionI18nKey": "COOKING.SOUP.DESCRIPTION",
+    "outputMaterialType": "LIQUID",
+    "outputQuantity": 12,
+    "outputProcess": "COMBINE_ITEM_MATERIALS"
+  },
+  {
+    "recipeName": "Bake bread",
+    "inputItemOptions": [
+      {
+        "itemTypeName": "Product-Bread-Dough",
+        "materialName": "Wheat"
+      }
+    ],
+    "inputItemQuantity": 6,
+
+    "inputLiquidOptions": [],
+    "inputLiquidQuantity": 0,
+
+    "cookedInFurnitureName": "BAKING_OVEN",
+
+    "verbOverrideI18nKey": "PROFESSION.BAKER",
+    "outputDescriptionI18nKey": "COOKING.BREAD.DESCRIPTION",
+    "outputMaterialType": "FOODSTUFF",
+    "outputQuantity": 13,
+    "outputProcess": "SPECIFIED_MATERIAL",
+    "outputMaterialName": "Wheat-Bread",
+    "outputItemTypeName": "Product-Bread-Loaf"
+  }
+]

@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Wheat-Late",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Wheat", "Barley"],
+  "growthStages": [3, 4, 5],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_wheat_late.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 16
+      }
+    }
+  }
+}]

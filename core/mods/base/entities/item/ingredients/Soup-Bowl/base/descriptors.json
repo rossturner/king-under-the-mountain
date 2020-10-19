@@ -1,0 +1,99 @@
+[
+  {
+    "uniqueName": "Ingredient-Soup-Bowl-Wood-Base",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Ingredient-Soup-Bowl",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Ingredient-Soup-Bowl-Wood-Base.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -10,
+              "y": -3
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Ingredient-Soup-Bowl-Wood-Base.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Ingredient-Soup-Bowl-Wood-Base.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Ingredient-Soup-Bowl-Wood-Base.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Ingredient-Soup-Bowl-Wood-Base.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Ingredient-Soup-Bowl-Wood-Base.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER"
+          }
+        ]
+      }
+    }
+  }
+]

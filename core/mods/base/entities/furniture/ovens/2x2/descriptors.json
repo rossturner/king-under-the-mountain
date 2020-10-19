@@ -1,0 +1,19 @@
+[
+  {
+    "uniqueName": "oven-2x2-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["BAKING_OVEN"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Stone oven.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 32
+        }
+      }
+    }
+  }
+]

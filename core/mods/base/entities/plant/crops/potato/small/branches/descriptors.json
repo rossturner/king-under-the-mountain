@@ -1,0 +1,21 @@
+[{
+  "uniqueName": "Potato-Small-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Potato", "Carrot"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_potato_small_branches.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -8
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES"
+        }
+      ]
+    }
+  }
+}]

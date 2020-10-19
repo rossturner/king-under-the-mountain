@@ -1,0 +1,147 @@
+[{
+  "uniqueName": "Ingredient-Seeds-Bag-Ground",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeNames": ["Ingredient-Seeds", "Ingredient-Mushroom-Spawn"],
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 50,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bag.png",
+      "scale": 0.7,
+      "coloringLayer": "SEED_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 8,
+            "y": 9.5
+          }
+        }
+      ]
+    }
+  }
+},  {
+  "uniqueName": "Ingredient-Seeds-Bag-Carried",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeNames": ["Ingredient-Seeds", "Ingredient-Mushroom-Spawn"],
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 50,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bag.png",
+      "scale": 0.7,
+      "coloringLayer": "SEED_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 8,
+            "y": 9.5
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "offsetPixels": {
+            "x": 0,
+            "y": -4
+          },
+          "overrideRenderLayer": 100
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Bag.png",
+      "scale": 0.7,
+      "coloringLayer": "SEED_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 8,
+            "y": 9.5
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "offsetPixels": {
+            "x": 0,
+            "y": -4
+          },
+          "overrideRenderLayer": 100
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Bag.png",
+      "scale": 0.7,
+      "coloringLayer": "SEED_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 8,
+            "y": 9.5
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "offsetPixels": {
+            "x": 0,
+            "y": -4
+          },
+          "overrideRenderLayer": 100
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Bag.png",
+      "scale": 0.7,
+      "coloringLayer": "SEED_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 8,
+            "y": 9.5
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Bag.png",
+      "scale": 0.7,
+      "coloringLayer": "SEED_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 8,
+            "y": 9.5
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Bag.png",
+      "scale": 0.7,
+      "coloringLayer": "SEED_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 8,
+            "y": 9.5
+          }
+        }
+      ]
+    }
+  }
+}]

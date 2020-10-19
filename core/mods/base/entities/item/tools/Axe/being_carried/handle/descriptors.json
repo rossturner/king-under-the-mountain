@@ -1,0 +1,144 @@
+[{
+  "uniqueName": "Tool-Axe-Handle-Being-Carried",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Tool-Axe",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Tool-Axe-Handle-Being-Carried-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      },
+      "coloringLayer": "WOOD_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": -4,
+            "y": 20
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "offsetPixels": {
+            "x": 0,
+            "y": -4
+          },
+          "overrideRenderLayer": 100
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Tool-Axe-Handle-Being-Carried-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      },
+      "coloringLayer": "WOOD_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 6,
+            "y": 18
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "offsetPixels": {
+            "x": 0,
+            "y": -4
+          },
+          "overrideRenderLayer": 100
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Tool-Axe-Handle-Being-Carried-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      },
+      "coloringLayer": "WOOD_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": -6,
+            "y": 18
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "offsetPixels": {
+            "x": 0,
+            "y": -4
+          },
+          "overrideRenderLayer": 100
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Tool-Axe-Handle-Being-Carried-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 5
+      },
+      "coloringLayer": "WOOD_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 16
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Tool-Axe-Handle-Being-Carried-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 5
+      },
+      "coloringLayer": "WOOD_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 6,
+            "y": 16
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Tool-Axe-Handle-Being-Carried-B.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 5
+      },
+      "coloringLayer": "WOOD_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": -6,
+            "y": 16
+          }
+        }
+      ]
+    }
+  }
+}]

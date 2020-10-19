@@ -1,0 +1,27 @@
+[
+  {
+    "name": "FEASTING_CHAIR",
+    "i18nKey": "FURNITURE.CHAIR",
+    "categoryName": "CHAIR",
+    "defaultLayoutName": "1x1E",
+    "colorCode": "#e0a275",
+    "iconName": "stone-throne",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 2
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 2
+        }
+      ]
+    },
+    "tags": {
+      "FEASTING_LOCATION": []
+    }
+  }
+]

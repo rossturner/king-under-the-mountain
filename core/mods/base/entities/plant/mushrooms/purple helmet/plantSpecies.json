@@ -1,0 +1,44 @@
+[{
+  "speciesName": "Purple Helmet",
+  "plantType": "MUSHROOM",
+  "materialName": "Purple Helmet Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 2,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#efe2df"
+    },
+    "LEAF_COLOR": {
+      "swatch": "purple-helmet-leaf-base-swatch.png"
+    },
+    "FRUIT_COLOR": {
+      "swatch": "purple-helmet-fruit-base-swatch.png"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Purple Helmet Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Purple Helmet Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Purple Helmet Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

@@ -1,0 +1,348 @@
+[
+  {
+    "uniqueName": "Product-Cauldron-Underside-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Carried-Underside.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Cauldron-Carried-Underside.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Cauldron-Carried-Underside.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Cauldron-Carried-Underside.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Cauldron-Carried-Underside.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Cauldron-Carried-Underside.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "ITEM_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": -8
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Cauldron-Body-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Body-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Cauldron-Body-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Cauldron-Body-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Cauldron-Body-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Cauldron-Body-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Cauldron-Body-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Cauldron-Liquid-Carried",
+    "type": "ITEM_LIQUID_LAYER",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Liquid-Carried.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 4.5
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Cauldron-Liquid-Carried.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 4.5
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Cauldron-Liquid-Carried.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 4.5
+        }
+      },
+      "UP": {
+        "filename": "Cauldron-Liquid-Carried.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 4.5
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Cauldron-Liquid-Carried.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 4.5
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Cauldron-Liquid-Carried.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 4.5
+        }
+      }
+    }
+  }
+]

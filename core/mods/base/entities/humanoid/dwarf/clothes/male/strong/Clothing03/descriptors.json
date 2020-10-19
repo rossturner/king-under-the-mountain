@@ -1,0 +1,30 @@
+[{
+  "uniqueName": "Dwarf-Male-Strong-Clothing03",
+  "type": "BODY_CLOTHING",
+  "race": "DWARF",
+  "bodyType": "STRONG",
+  "gender": "MALE",
+  "profession": "BREWER",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Strong-Clothing03-F.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Strong-Clothing03-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Strong-Clothing03-F34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Strong-Clothing03-B34.png"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Strong-Clothing03-B34.png",
+      "flipX": true
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Strong-Clothing03-B.png"
+    }
+  }
+}]

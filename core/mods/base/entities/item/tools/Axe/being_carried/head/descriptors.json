@@ -1,0 +1,36 @@
+[{
+  "uniqueName": "Tool-Axe-Head-Being-Carried",
+  "type": "ABOVE_LAYER_1",
+  "itemTypeName": "Tool-Axe",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Tool-Axe-Head-Being-Carried-F.png",
+      "coloringLayer": "METAL_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Tool-Axe-Head-Being-Carried-F34.png",
+      "coloringLayer": "METAL_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "Tool-Axe-Head-Being-Carried-F34.png",
+      "flipX": true,
+      "coloringLayer": "METAL_COLOR"
+    },
+    "UP": {
+      "filename": "Tool-Axe-Head-Being-Carried-B.png",
+      "coloringLayer": "METAL_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "Tool-Axe-Head-Being-Carried-B34.png",
+      "coloringLayer": "METAL_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "Tool-Axe-Head-Being-Carried-B34.png",
+      "flipX": true,
+      "coloringLayer": "METAL_COLOR"
+    }
+  }
+}]

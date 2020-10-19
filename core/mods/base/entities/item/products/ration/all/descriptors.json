@@ -1,0 +1,71 @@
+[
+  {
+    "uniqueName": "Product-Ration",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Ration",
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Product-Bread-Loaf.png",
+        "scale": 0.3,
+        "coloringLayer": "FOODSTUFF_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -10,
+              "y": -3
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Product-Bread-Loaf.png",
+        "scale": 0.3,
+        "coloringLayer": "FOODSTUFF_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Product-Bread-Loaf.png",
+        "scale": 0.3,
+        "coloringLayer": "FOODSTUFF_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Product-Bread-Loaf.png",
+        "scale": 0.3,
+        "coloringLayer": "FOODSTUFF_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Product-Bread-Loaf.png",
+        "scale": 0.3,
+        "coloringLayer": "FOODSTUFF_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Product-Bread-Loaf.png",
+        "scale": 0.3,
+        "coloringLayer": "FOODSTUFF_COLOR"
+      }
+    }
+  }
+]

@@ -1,0 +1,82 @@
+[{
+  "uniqueName": "Resource-Ore-Crushed-Contents-Ground",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Ore-Crushed", "Fuel-Sack"],
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 32,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Crushed Ore Contents.png",
+      "scale": 0.8,
+      "offsetPixels": {
+        "x": -1.2,
+        "y": 12.8
+      },
+      "coloringLayer": "ORE_COLOR"
+    }
+  }
+},  {
+  "uniqueName": "Resource-Ore-Crushed-Contents-Carried",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Ore-Crushed", "Fuel-Sack"],
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 16,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Crushed Ore Contents.png",
+      "scale": 0.7,
+      "coloringLayer": "ORE_COLOR",
+      "offsetPixels": {
+        "x": -1.05,
+        "y": 11.2
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Crushed Ore Contents.png",
+      "scale": 0.7,
+      "coloringLayer": "ORE_COLOR",
+      "offsetPixels": {
+        "x": -1.05,
+        "y": 11.2
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Crushed Ore Contents.png",
+      "scale": 0.7,
+      "coloringLayer": "ORE_COLOR",
+      "offsetPixels": {
+        "x": -1.05,
+        "y": 11.2
+      }
+    },
+    "UP": {
+      "filename": "Crushed Ore Contents.png",
+      "scale": 0.7,
+      "coloringLayer": "ORE_COLOR",
+      "offsetPixels": {
+        "x": -1.05,
+        "y": 11.2
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Crushed Ore Contents.png",
+      "scale": 0.7,
+      "coloringLayer": "ORE_COLOR",
+      "offsetPixels": {
+        "x": -1.05,
+        "y": 11.2
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Crushed Ore Contents.png",
+      "scale": 0.7,
+      "coloringLayer": "ORE_COLOR",
+      "offsetPixels": {
+        "x": -1.05,
+        "y": 11.2
+      }
+    }
+  }
+}]

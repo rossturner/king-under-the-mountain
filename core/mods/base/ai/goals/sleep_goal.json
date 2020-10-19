@@ -1,0 +1,48 @@
+{
+  "name": "Sleep in bed goal",
+  "i18nDescription": "GOAL.SLEEP.DESCRIPTION",
+  "selectors": [
+    {
+      "conditions": [
+        {
+          "type": "NEED",
+          "need": "SLEEP",
+          "operator": "LESS_THAN_OR_EQUAL_TO",
+          "value": 10
+        }
+      ],
+      "priority": "NEED_URGENT",
+      "scheduleCategory": "ANY"
+    },
+    {
+      "conditions": [
+        {
+          "type": "NEED",
+          "need": "SLEEP",
+          "operator": "LESS_THAN_OR_EQUAL_TO",
+          "value": 55
+        }
+      ],
+      "priority": "WANT_NORMAL",
+      "scheduleCategory": "SLEEP"
+    }
+  ],
+  "initialActions": ["LocateBed"],
+  "actionRelationships": {
+    "LocateBed": {
+      "pass": ["GoToLocation"],
+      "fail": ["GoToRandomLocation", "SleepOnFloor"]
+    },
+    "GoToLocation": {
+      "pass": ["SleepInBed"],
+      "fail": ["UnassignFurniture", "SleepOnFloor"]
+    },
+    "SleepInBed": {
+      "pass": ["UnassignFurniture"],
+      "fail": ["GoToLocation"]
+    },
+    "GoToRandomLocation": {},
+    "SleepOnFloor": {},
+    "UnassignFurniture": {}
+  }
+}

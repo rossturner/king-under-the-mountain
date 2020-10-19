@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Resource-Logs-Small-Pile01-Interior",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Logs"],
+  "itemSize": "SMALL",
+  "itemStyle": "DEFAULT",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 0,
+  "maxQuantity": 0,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Small-Pile01-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    }
+  }
+}]

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "HeavyStoneItem",
+    "filenames": [
+      "HeavyStoneItem.wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  },
+  {
+    "name": "HeavyWoodItem",
+    "filenames": [
+      "HeavyWoodItem.wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  }
+]

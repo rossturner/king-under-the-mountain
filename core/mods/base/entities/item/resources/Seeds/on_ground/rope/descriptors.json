@@ -1,0 +1,55 @@
+[
+  {
+    "uniqueName": "Ingredient-Seeds-Bag-Rope-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeNames": ["Ingredient-Seeds", "Ingredient-Mushroom-Spawn"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Bag-Rope.png",
+        "scale": 0.7,
+        "coloringLayer": "ROPE_COLOR"
+      }
+    }
+  }, {
+  "uniqueName": "Ingredient-Seeds-Bag-Rope-Carried",
+  "type": "ABOVE_LAYER_1",
+  "itemTypeNames": ["Ingredient-Seeds", "Ingredient-Mushroom-Spawn"],
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 50,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bag-Rope.png",
+      "scale": 0.7,
+      "coloringLayer": "ROPE_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Bag-Rope.png",
+      "scale": 0.7,
+      "coloringLayer": "ROPE_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "Bag-Rope.png",
+      "scale": 0.7,
+      "coloringLayer": "ROPE_COLOR"
+    },
+    "UP": {
+      "filename": "Bag-Rope.png",
+      "scale": 0.7,
+      "coloringLayer": "ROPE_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "Bag-Rope.png",
+      "scale": 0.7,
+      "coloringLayer": "ROPE_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "Bag-Rope.png",
+      "scale": 0.7,
+      "coloringLayer": "ROPE_COLOR"
+    }
+  }
+}]

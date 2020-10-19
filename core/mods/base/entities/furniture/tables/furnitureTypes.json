@@ -1,0 +1,341 @@
+[
+  {
+    "name": "WOODCUTTERS_BENCH",
+    "i18nKey": "FURNITURE.WOODCUTTERS_BENCH",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x3BL1R",
+    "colorCode": "#f19144",
+    "iconName": "hand-saw",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Saw",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Axe",
+          "quantity": 1
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Saw",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Axe",
+          "quantity": 1
+        }
+      ],
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 8
+        },
+        {
+          "itemTypeName": "Tool-Saw",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Axe",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["WOODCUTTING", "CRAFT_ITEM", "HAULING"],
+      "DECORATION_FROM_INPUT": ["Tool-Saw", "Tool-Axe"]
+    }
+  },
+  {
+    "name": "CARPENTRY_WORKBENCH",
+    "i18nKey": "FURNITURE.CARPENTRY_WORKBENCH",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x3L3R",
+    "colorCode": "#e7c467",
+    "iconName": "planks",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Plane",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Saw",
+          "quantity": 1
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Plane",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Saw",
+          "quantity": 1
+        }
+      ],
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 8
+        },
+        {
+          "itemTypeName": "Tool-Plane",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Saw",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["CARPENTRY", "CRAFT_ITEM", "HAULING"],
+      "DECORATION_FROM_INPUT": ["Tool-Plane", "Tool-Saw"]
+    }
+  },
+  {
+    "name": "STONEMASON_WORKBENCH",
+    "i18nKey": "FURNITURE.STONEMASON_WORKBENCH",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "3x2",
+    "colorCode": "#c9c9c9",
+    "iconName": "stone-pile",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 6
+        },
+        {
+          "itemTypeName": "Tool-Small-Hammer",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Chisel",
+          "quantity": 1
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 6
+        },
+        {
+          "itemTypeName": "Tool-Small-Hammer",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Chisel",
+          "quantity": 1
+        }
+      ],
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 12
+        },
+        {
+          "itemTypeName": "Tool-Small-Hammer",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Chisel",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["STONEMASONRY", "CRAFT_ITEM", "HAULING"],
+      "DECORATION_FROM_INPUT": ["Tool-Small-Hammer", "Tool-Chisel"]
+    }
+  },
+
+
+
+  {
+    "name": "SERVING_TABLE",
+    "i18nKey": "FURNITURE.SERVING_TABLE",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "4x1 with workspaces",
+    "colorCode": "#ab8a49",
+    "iconName": "chicken-oven",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ]
+    },
+    "tags": {
+      "COLLECT_ITEMS_BEHAVIOUR": ["PREPARED_FOOD", "4", "CHEF", "ALLOW_DUPLICATES"],
+      "INVENTORY_ITEMS_UNALLOCATED": []
+    }
+  },
+  {
+    "name": "FEASTING_TABLE",
+    "i18nKey": "FURNITURE.FEASTING_TABLE",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "4x2",
+    "colorCode": "#e0a275",
+    "iconName": "meal",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 8
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 8
+        }
+      ]
+    }
+  },
+
+
+  {
+    "name": "KITCHEN_WORKTOP",
+    "i18nKey": "FURNITURE.KITCHEN_WORKTOP",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x1 with workspaces",
+    "colorCode": "#27bd09",
+    "iconName": "kitchen-knives",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 3
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 3
+        }
+      ]
+    },
+    "tags": {
+      "COLLECT_ITEMS_BEHAVIOUR": ["COOKING_INGREDIENTS", "2", "CHEF"],
+      "INVENTORY_ITEMS_UNALLOCATED": []
+    }
+  },
+  {
+    "name": "FLOUR_MILL",
+    "i18nKey": "FURNITURE.FLOUR_MILL",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "3x1 with workspaces",
+    "colorCode": "#d7ce86",
+    "iconName": "grain",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 3
+        },
+        {
+          "itemTypeName": "Product-Millstone",
+          "quantity": 1
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 3
+        },
+        {
+          "itemTypeName": "Product-Millstone",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["MILLING", "CRAFT_ITEM", "HAULING"],
+      "DECORATION_FROM_INPUT": ["Product-Millstone"],
+      "EXTRA_MATERIAL_TYPES": ["ROPE"]
+    }
+  },
+  {
+    "name": "BAKERS_WORKTOP",
+    "i18nKey": "FURNITURE.BAKERS_WORKTOP",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x3BL1R",
+    "colorCode": "#b8ad4e",
+    "iconName": "swap-bag",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Rolling-Pin",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Kitchen-Knife",
+          "quantity": 1
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Rolling-Pin",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Kitchen-Knife",
+          "quantity": 1
+        }
+      ],
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 8
+        },
+        {
+          "itemTypeName": "Tool-Rolling-Pin",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Kitchen-Knife",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["FOOD_PREPARATION", "CRAFT_ITEM", "HAULING"],
+      "CRAFTING_OVERRIDE": ["DO_NOT_HAUL_OUTPUT"],
+      "DECORATION_FROM_INPUT": ["Tool-Rolling-Pin", "Tool-Kitchen-Knife"]
+    }
+  }
+]

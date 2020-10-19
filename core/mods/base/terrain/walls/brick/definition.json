@@ -1,0 +1,15 @@
+{
+  "wallTypeName": "brickwall",
+  "i18nKey": "WALL.STONE_BLOCK",
+  "materialType": "STONE",
+  "useMaterialColor": true,
+  "craftingTypeName": "STONEMASONRY",
+  "requirements": {
+    "STONE": [
+      {
+        "itemTypeName": "Resource-Stone-Block",
+        "quantity": 3
+      }
+    ]
+  }
+}

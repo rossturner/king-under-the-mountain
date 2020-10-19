@@ -1,0 +1,75 @@
+[{
+  "speciesName": "Nuytsia",
+  "materialName": "Nuytsia",
+  "plantType": "TREE",
+  "maxGrowthSpeedVariance": 0.2,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "swatch": "nuytsia-branch-base-swatch.png"
+    },
+    "LEAF_COLOR": {
+      "swatch": "nuytsia-leaf-base-swatch.png"
+    }
+  },
+  "seasons": {
+    "SUMMER": {
+      "colors": {
+        "LEAF_COLOR": {
+          "transitionSwatch": "nuytsia-leaf-transition-swatch.png"
+        }
+      }
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Size 1",
+      "seasonsUntilComplete": 1,
+      "nextGrowthStage": 1,
+      "tileHeight": 1
+    },
+    {
+      "name": "Size 2",
+      "seasonsUntilComplete": 1,
+      "nextGrowthStage": 2,
+      "tileHeight": 2
+    },
+    {
+      "name": "Size 3",
+      "seasonsUntilComplete": 2,
+      "nextGrowthStage": 3,
+      "tileHeight": 3,
+      "onCompletion": [
+        "DISPERSE_SEEDS"
+      ],
+      "harvestType": "LOGGING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "materialName": "Nuytsia",
+          "quantity": 2,
+          "itemSize": "SMALL",
+          "itemStyle": "STYLE_1"
+        }
+      ]
+    },
+    {
+      "name": "Size 4",
+      "seasonsUntilComplete": 3,
+      "nextGrowthStage": 3,
+      "tileHeight": 4,
+      "onCompletion": [
+        "DISPERSE_SEEDS"
+      ],
+      "harvestType": "LOGGING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "materialName": "Nuytsia",
+          "quantity": 3,
+          "itemSize": "SMALL",
+          "itemStyle": "STYLE_1"
+        }
+      ]
+    }
+  ]
+}]

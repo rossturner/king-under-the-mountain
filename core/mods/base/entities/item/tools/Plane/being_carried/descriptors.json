@@ -1,0 +1,156 @@
+[
+  {
+    "uniqueName": "Tool-Plane-Extra-Being-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Plane",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Plane-Extra-Being-Carried-F.png",
+        "offsetPixels": {
+          "x": -5,
+          "y": 5
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 5,
+              "y": -3
+            },
+            "overrideRenderLayer": -100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Plane-Extra-Being-Carried-F34.png",
+        "offsetPixels": {
+          "x": 15,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Plane-Extra-Being-Carried-F34.png",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -15,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Tool-Plane-Extra-Being-Carried-B.png",
+        "offsetPixels": {
+          "x": 5,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Plane-Extra-Being-Carried-B34.png",
+        "offsetPixels": {
+          "x": 5,
+          "y": -10
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Plane-Extra-Being-Carried-B34.png",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -5,
+          "y": -10
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Plane-Body-Being-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Plane",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Plane-Body-Being-Carried-F.png",
+        "coloringLayer": "WOOD_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Plane-Body-Being-Carried-F34.png",
+        "coloringLayer": "WOOD_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Plane-Body-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR"
+      },
+      "UP": {
+        "filename": "Tool-Plane-Body-Being-Carried-B.png",
+        "coloringLayer": "WOOD_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Plane-Body-Being-Carried-B34.png",
+        "coloringLayer": "WOOD_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Plane-Body-Being-Carried-B34.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR"
+      }
+    }
+  }
+]

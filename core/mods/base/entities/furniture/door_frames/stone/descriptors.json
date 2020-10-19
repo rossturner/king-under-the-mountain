@@ -1,0 +1,36 @@
+[
+  {
+    "uniqueName": "doorframe-stone-single-ew",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_FRAME",
+    "furnitureLayoutName": "1x1EW",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "StoneFrame_Single_EW.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 50
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "doorframe-stone-single-ns",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_FRAME",
+    "furnitureLayoutName": "1x1NS",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "StoneFrame_Single_NS.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 64
+        }
+      }
+    }
+  }
+]

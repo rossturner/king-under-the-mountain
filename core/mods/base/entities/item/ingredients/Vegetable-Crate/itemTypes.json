@@ -1,0 +1,12 @@
+[{
+  "itemTypeName": "Ingredient-Vegetable-Crate",
+  "itemGroup": "INGREDIENT",
+  "materialTypes": ["VEGETABLE", "WOOD"],
+  "primaryMaterialType": "VEGETABLE",
+  "stockpileGroupName": "Pantry",
+  "hoursInInventoryUntilUnused": 2,
+  "maxStackSize": 30,
+  "maxHauledAtOnce": 30,
+  "equippedWhileWorkingOnJob": true,
+  "consumeSoundAssetName": "EatFood"
+}]

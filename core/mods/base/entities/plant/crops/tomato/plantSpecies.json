@@ -1,0 +1,116 @@
+[{
+  "speciesName": "Tomato",
+  "plantType": "CROP",
+  "materialName": "Plant",
+  "maxGrowthSpeedVariance": 0.03,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#3d8f3d"
+    },
+    "FRUIT_COLOR": {
+      "colorCode": "#ed0303"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Seeds",
+    "materialName": "Tomato Seed",
+    "plantingSeasons": [
+      "SPRING"
+    ]
+  },
+  "seasons": {
+    "WINTER": {
+      "switchToGrowthStage": 7
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Seeds",
+      "nextGrowthStage": 1,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Shoots",
+      "nextGrowthStage": 2,
+      "seasonsUntilComplete": 0.4,
+      "tileHeight": 1
+    },
+    {
+      "name": "Small-growth",
+      "nextGrowthStage": 3,
+      "seasonsUntilComplete": 0.4,
+      "tileHeight": 1
+    },
+    {
+      "name": "Mid-growth no fruit",
+      "nextGrowthStage": 4,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Mid-growth with fruit",
+      "nextGrowthStage": 5,
+      "seasonsUntilComplete": 0.3,
+      "tileHeight": 1,
+      "showFruit": true,
+      "initialFruitScale": 0.4,
+      "completionFruitScale": 1,
+      "colors": {
+        "FRUIT_COLOR": {
+          "transitionSwatch": "tomato-fruit-early-transition-swatch.png"
+        }
+      }
+    },
+    {
+      "name": "Late growth",
+      "nextGrowthStage": 6,
+      "seasonsUntilComplete": 0.3,
+      "tileHeight": 1,
+      "showFruit": true,
+      "colors": {
+        "FRUIT_COLOR": {
+          "transitionSwatch": "tomato-fruit-late-transition-swatch.png"
+        }
+      }
+    },
+    {
+      "name": "Ripe",
+      "nextGrowthStage": 7,
+      "seasonsUntilComplete": 0.6,
+      "tileHeight": 1,
+      "showFruit": true,
+      "colors": {
+        "FRUIT_COLOR": {
+          "colorCode": "#ed0303"
+        }
+      },
+      "harvestType": "FARMING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Tomato",
+          "quantity": 3
+        },
+        {
+          "itemTypeName": "Ingredient-Seeds",
+          "materialName": "Tomato Seed",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "name": "Decaying",
+      "seasonsUntilComplete": 0.05,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "colorCode": "#746b1b"
+        }
+      },
+      "onCompletion": [
+        "DESTROY_PLANT"
+      ]
+    }
+  ]
+}]

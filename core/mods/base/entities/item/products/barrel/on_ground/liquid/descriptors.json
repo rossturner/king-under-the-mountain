@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Product-Barrel-Contents-Floor",
+  "type": "ITEM_LIQUID_LAYER",
+  "itemTypeName": "Product-Barrel",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Barrel-Contents-Floor.png",
+      "coloringLayer": "LIQUID_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 13
+      }
+    }
+  }
+}]

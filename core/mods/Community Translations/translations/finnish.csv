@@ -1,0 +1,934 @@
+KEY,NOTES,ENGLISH,FINNISH
+
+ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},Poistaminen: {{plantDescription}}
+ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},
+ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},
+ACTION.JOB.DIGGING,,Digging {{targetDescription}},
+ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},
+ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},
+ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,
+ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},
+ACTION.JOB.PLANTING,,Planting {{requiredItem}},
+ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},
+ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},
+ACTION.JOB.TILLING,,Tilling the earth,
+ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},
+ACTION.PREPARATION.VERB,,Preparing,
+ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Etsii työtä
+ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},
+ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},
+
+CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},Rakentaminen: {{materialType.adjective}} {{furnitureType.noun}}
+CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE.TOOLTIP,,There are items that need to be removed from this furniture’s construction area before it can progress.,
+CONSTRUCTION.STATUS.SELECTING_MATERIALS,E.g. “Waiting for more wooden planks to be available”,Waiting for more {{materialType}} {{itemDescription.plural}} to be available,
+CONSTRUCTION.STATUS.WAITING_FOR_COMPLETION,This is displayed once all resources are in place and the construction is being worked on,Under construction,
+CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction is waiting for resource items to be placed in the build area,Waiting for resources to arrive,
+
+COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,
+COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},
+COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,
+
+CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,
+CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,
+CROP.DESCRIPTION,,{{materialType.noun}} plant,
+CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,
+
+DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,
+DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,
+DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,
+DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,
+DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,
+DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,
+
+EARTH.DIRT,,Dirt,
+EARTH.GRASS,,Grass,
+
+FLOOR.COBBLESTONE,,Cobblestone,
+FLOOR.DESCRIPTION,,{{floorType.noun}},
+FLOOR.DIRT,,Dirt,
+FLOOR.GRASS,,Grass,
+FLOOR.GRAVEL,,Gravel,
+FLOOR.RIVER,,River,
+FLOOR.ROUGH_STONE,,Rough stone floor,
+FLOOR.STONE_SLAB,,Stone slab,
+FLOOR.TILLED_EARTH,,Tilled earth,
+FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,
+
+FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,
+FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,
+FOODSTUFF.WHEAT-BREAD,"Actually just to describe “wheat” as a foodstuff, not specifically bread",Wheat,
+
+FUEL.SACK,,Fuel,
+FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}.",
+
+FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,
+FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,
+FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,
+FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,
+FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,
+FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,
+FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,Höyläpenkki
+FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.",
+FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,
+FURNITURE.CAULDRON.TOOLTIP,,A cauldron is used to serve a large quantity of soup to hungry settlers. The soup is produced in a {{ROOMS.KITCHEN}} before being moved to a {{ROOMS.FEASTING_HALL}} for serving.,
+FURNITURE.CHAIR,,Chair,Tuoli
+FURNITURE.CHARCOAL_CLAMP,,Charcoal clamp,
+FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} covered with {{MATERIAL_TYPE.EARTH}} and slowly burned to produce {{ORE.CHARCOAL.NOUN}}, which can then be used as {{FUEL.SACK}}.",
+FURNITURE.COKE_OVEN,,Coke oven,
+FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,
+FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{furnitureType.noun}}
+FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,
+FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,
+FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,
+FURNITURE.DESCRIPTION.WAITING_FOR_ITEM,,Waiting for {{itemType.noun}},
+FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,
+FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,
+FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,
+FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.",
+FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,
+FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,
+FURNITURE.FORGE,,Forge,
+FURNITURE.FORGE.TOOLTIP,,This is where a {{PROFESSION.BLACKSMITH}} works with {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} and {{FUEL.SACK}} to craft items and weapons.,
+FURNITURE.GRAVE,,Grave,
+FURNITURE.GRAVE.TOOLTIP,,A hastily-dug grave for deceased settlers that can only be placed in {{MATERIAL_TYPE.EARTH}}.,
+FURNITURE.KITCHEN_WORKTOP,Simple piece of furniture in a kitchen used to hold ingredients on top of it,Kitchen worktop,
+FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSION.CHEF}} to cook soup.,
+FURNITURE.LANTERN,,Lantern,Lyhty
+FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,
+FURNITURE.LARGE_TABLE,,Large table,Suuri pöytä
+FURNITURE.MUSHROOM_LOG,,Mushroom log,
+FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.",
+FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,
+FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to “shock” the mushroom colony and encourage it to grow mushrooms.",
+FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,
+FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,
+FURNITURE.PILLAR,A pillar used to support a roof,Pillar,
+FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas from collapsing. An area of 7x7 tiles that have been mined without any pillars or other supports in place will eventually collapse.,
+FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,
+FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,
+FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,
+FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.,
+FURNITURE.SINGLE_BED,,Bed,
+FURNITURE.SINGLE_BED.TOOLTIP,,"A bed is the best place for a comfortable night’s rest. ",
+FURNITURE.SINGLE_DOOR,,Door,Ovi
+FURNITURE.SINGLE_DOOR_FRAME,,Door frame,Oven karmi
+FURNITURE.SMALL_TABLE,,Small table,Pieni pöytä
+FURNITURE.STONEMASON_WORKBENCH,,Stonemason workbench,Kivenhakkaajan työpenkki
+FURNITURE.STONEMASON_WORKBENCH.TOOLTIP,,A {{PROFESSION.STONEMASON}} works here with {{MATERIAL_TYPE.STONE.ADJECTIVE}} resources.,
+FURNITURE.STOOL,,Stool,Jakkara
+FURNITURE.WATER_BARREL,,Water barrel,
+FURNITURE.WATER_BARREL.TOOLTIP,,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.",
+FURNITURE.WOODCUTTERS_BENCH,,Woodcutting bench,Sahapukki
+FURNITURE.WOODCUTTERS_BENCH.TOOLTIP,,A {{PROFESSION.WOODCUTTER}} works here to turn {{RESOURCE.LOGS.PLURAL}} into {{RESOURCE.PLANKS.PLURAL}}.,
+
+GEM.AMETHYST.ADJECTIVE,,Amethyst,Ametistinen
+GEM.AMETHYST.NOUN,,Amethyst,Ametisti
+GEM.AMETHYST.TOOLTIP,,A violet-hued variety of quartz. Ancient humans believed it could magically protect them from becoming too drunk. For this reason it is not very popular in dwarven culture.,
+GEM.AMMOLITE.ADJECTIVE,,Ammolite,
+GEM.AMMOLITE.NOUN,,Ammolite,
+GEM.AMMOLITE.TOOLTIP,,An opal-like gemstone which has a red to green iridescence. It is known as the “hunting stone” and amulets made from it are meant to bring good luck to a hunt.,
+GEM.AQUAMARINE.ADJECTIVE,,Aquamarine,Akvamariininen
+GEM.AQUAMARINE.NOUN,,Aquamarine,Akvamariini
+GEM.AQUAMARINE.TOOLTIP,,A cyan-coloured variety of beryl. Some humans believe it offers magical protection against the dangers of the seas. This is because an ancient mage used a combination of sky and ice magic to protect trading ships during the age of darkness.,
+GEM.BIXBITE.ADJECTIVE,,Bixbite,
+GEM.BIXBITE.NOUN,,Bixbite,
+GEM.BIXBITE.TOOLTIP,,"Also known as red beryl, it is a very rare gemstone. It is often confused for a red-coloured emerald.",
+GEM.CINNABAR.ADJECTIVE,,Cinnabar,
+GEM.CINNABAR.NOUN,,Cinnabar,
+GEM.CINNABAR.TOOLTIP,,An ore of mercury which is often used in jewellery due to its deep-red hue. It is also used to produce the dye known as vermillion.,
+GEM.CITRINE.ADJECTIVE,,Citrine,Sitriininen
+GEM.CITRINE.NOUN,,Citrine,Sitriini
+GEM.CITRINE.TOOLTIP,,"A yellowish variety of quartz. It is the gemstone most similar in colour to gold, so most dwarves think citrine is lucky.",
+GEM.DIAMOND.ADJECTIVE,,Diamond,Timanttinen
+GEM.DIAMOND.NOUN,,Diamond,Timantti
+GEM.DIAMOND.TOOLTIP,,The hardest known material and one of the most important of the seven heavenly stones. Diamonds are the most condensed form of the neutral element known as “spirit” or “aether”.,
+GEM.EMERALD.ADJECTIVE,,Emerald,Smaragdinen
+GEM.EMERALD.NOUN,,Emerald,Smaragdi
+GEM.EMERALD.TOOLTIP,,A vibrant green variety of beryl. It is thought that engraving on an emerald brings great misfortune. Emeralds are closely related to elemental life and associated magic.,
+GEM.GARNET.ADJECTIVE,,Garnet,Granaattinen
+GEM.GARNET.NOUN,,Garnet,Granaatti
+GEM.GARNET.TOOLTIP,,"Garnets cover a variety of minerals used as gemstones, all with a deep red colour. Some garnet gems are actually a condensed form of elemental fire.",
+GEM.JADE.ADJECTIVE,,Jade,Jadekivinen
+GEM.JADE.NOUN,,Jade,Jade
+GEM.JADE.TOOLTIP,,"A mineral with a light-green colour often used for decoration. Also, elves have been known to use jade to produce medicine which can cure ailments of the gut.",
+GEM.JASPER.ADJECTIVE,,Jasper,Jaspiskivinen
+GEM.JASPER.NOUN,,Jasper,Jaspiskivi
+GEM.JASPER.TOOLTIP,,"An impure variety of silica which can occur in several colours, but most commonly red. Jasper is favoured as a decoration material by orcs due to its variety.",
+GEM.LABRADORITE.ADJECTIVE,,Labradorite,
+GEM.LABRADORITE.NOUN,,Labradorite,
+GEM.LABRADORITE.TOOLTIP,,A rock which shines with a typically light-blue iridescence. Rarer specimens can reflect a wide range of colours.,
+GEM.LAPIS.ADJECTIVE,,Lapis lazuli,
+GEM.LAPIS.NOUN,,Lapis lazuli,
+GEM.LAPIS.TOOLTIP,,A rock with a brilliant deep blue hue which is used as a precious stone.,
+GEM.MAGNESITE.ADJECTIVE,,Magnesite,
+GEM.MAGNESITE.NOUN,,Magnesite,
+GEM.MAGNESITE.TOOLTIP,,A mineral which can be polished into beads for use in jewellery. These beads can by dyed into many different colours.,
+GEM.MOONSTONE.ADJECTIVE,,Moonstone,Kuukivinen
+GEM.MOONSTONE.NOUN,,Moonstone,Kuukivi
+GEM.MOONSTONE.TOOLTIP,,"Thought to be formed by moonlight captured in rock, which makes this gemstone a favourite of the elves.",
+GEM.MORGANITE.ADJECTIVE,,Morganite,Morganiittinen
+GEM.MORGANITE.NOUN,,Morganite,Morganiitti
+GEM.MORGANITE.TOOLTIP,,A rose-coloured variety of beryl. It was named after being popularised by a particularly wealthy merchant in the age of myth.,
+GEM.OPAL.ADJECTIVE,,Opal,Opaalinen
+GEM.OPAL.NOUN,,Opal,Opaali
+GEM.OPAL.TOOLTIP,,"A form of silica infused with the magic of the oceans, which makes this a favourite of sailors and fishermen.",
+GEM.PAINITE.ADJECTIVE,,Painite,
+GEM.PAINITE.NOUN,,Painite,
+GEM.PAINITE.TOOLTIP,,A very rare gemstone which is often identified as an off-colour sapphire. The crystals are naturally hexagonal in shape and a favourite of tacticians.,
+GEM.RHODOCHROSITE.ADJECTIVE,,Rhodochrosite,
+GEM.RHODOCHROSITE.NOUN,,Rhodochrosite,
+GEM.RHODOCHROSITE.TOOLTIP,,Found in varying shades of red to pink. It is not as hard as most gemstones making it a poor choice for rings and other high-impact jewellery.,
+GEM.ROCK_CRYSTAL.ADJECTIVE,,Rock crystal,Vuorikristallinen
+GEM.ROCK_CRYSTAL.NOUN,,Rock crystal,Vuorikristalli
+GEM.ROCK_CRYSTAL.TOOLTIP,,The purest form of quartz. Rock crystals often feature in magical artifacts as they are a condensed form of the element of ice.,
+GEM.RUBY.ADJECTIVE,,Ruby,Rubiininen
+GEM.RUBY.NOUN,,Ruby,Rubiini
+GEM.RUBY.TOOLTIP,,"One of the seven heavenly stones, rubies are the element of fire condensed into a solid form.",
+GEM.SAPPHIRE.ADJECTIVE,,Sapphire,Safiirinen
+GEM.SAPPHIRE.NOUN,,Sapphire,Safiiri
+GEM.SAPPHIRE.TOOLTIP,,"Often believed to protect the wearer from the attention of daemons, sapphires are much sought-after by mages for use in sky and air-based magic.",
+GEM.SPINEL.ADJECTIVE,,Spinel,Spinellinen
+GEM.SPINEL.NOUN,,Spinel,Spinelli
+GEM.SPINEL.TOOLTIP,,"Often confused with heavenly stones like true rubies and sapphires, spinels are a lesser form of magic-infused gem which can be associated with any of the elements, depending on colour.",
+GEM.TANZANITE.ADJECTIVE,,Tanzanite,Tansaniittinen
+GEM.TANZANITE.NOUN,,Tanzanite,Tansaniitti
+GEM.TANZANITE.TOOLTIP,,A rare gemstone that can alternate between blue and violet. It is thought to be formed from the material body of a dead god.,
+GEM.TOPAZ.ADJECTIVE,,Topaz,Topaasinen
+GEM.TOPAZ.NOUN,,Topaz,Topaasi
+GEM.TOPAZ.TOOLTIP,,"Sometimes confused with the more common {{GEM.CITRINE.NOUN}} gem, topaz can be found in several colours but most commonly a yellowish brown. It was first discovered on an island which no longer exists.",
+GEM.TOURMALINE.ADJECTIVE,,Tourmaline,Turmaliininen
+GEM.TOURMALINE.NOUN,,Tourmaline,Turmaliini
+GEM.TOURMALINE.TOOLTIP,,Often found alongside {{ORE.CASSITERITE.ADJECTIVE}} ore. It is sometimes associated with earth magic.,
+GEM.TURQUOISE.ADJECTIVE,,Turquoise,Turkoosinen
+GEM.TURQUOISE.NOUN,,Turquoise,Turkoosi
+GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,
+
+GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetZoneMaterial}},
+GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},
+GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},Kuljetus: {{itemDescription}}
+GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,Joutilas
+GOAL.SLEEP.DESCRIPTION,,Going to sleep,
+GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},
+
+GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,
+GUI.ADD_TILES,This should be as short as possible,Add tiles,Lisää ruutuja
+GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,
+GUI.BACK_LABEL,This should be as short as possible,Back,Taakse
+GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,
+GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,
+GUI.BUILD.WALLS,,Walls,
+GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,
+GUI.BUILD.WALLS.QUAD,For building 4 walls at once,Quad,
+GUI.BUILD.WALLS.SINGLE,For building a single wall,Single,
+GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,Huonekalut
+GUI.BUILD_LABEL,This should be as short as possible,Build,Rakenna
+GUI.CANCEL_LABEL,This should be as short as possible,Cancel,Peruuta
+GUI.CHANGE_PROFESSION_LABEL,,Change profession,
+GUI.CROP_SELECTION,,Crop:,
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}",
+GUI.DIALOG.DISMISS,,Dismiss,
+GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,
+GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,
+GUI.DIALOG.ERROR_TITLE,Shown as the title of an error dialog,An error has occurred,
+GUI.DIALOG.ERROR_WHILE_LOADING,Unexpected error while loading a previous save,There was an unexpected error while loading the game.,
+GUI.DIALOG.ERROR_WHILE_SAVING,Unexpected error while saving the game,There was an unexpected error while saving the game.,
+GUI.DIALOG.INFO_TITLE,,Information,
+GUI.DIALOG.JUMP_TO,,Go to location,
+GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,
+GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,
+GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,
+GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,
+GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,
+GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},
+GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,
+GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,
+GUI.GRAPHICS.FULLSCREEN,,Fullscreen,
+GUI.GRAPHICS.RESOLUTION,,Resolution,
+GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),
+GUI.MINIMAP.LABEL,,Minimap,
+GUI.MUSIC_VOLUME,,Music volume:,
+GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,
+GUI.NEXT_LABEL,This should be as short as possible,Next,Eteen
+GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,
+GUI.OK_LABEL,This should be as short as possible,Ok,OK
+GUI.OPTIONS.AUDIO.TITLE,,Sound Options,
+GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes trees partially transparent when a settler moves behind them,Make trees transparent when obscuring settlers,
+GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,
+GUI.OPTIONS.GAMEPLAY.TITLE,,"Gameplay Options ",
+GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,
+GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ","Grafiikka-asetukset "
+GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,
+GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.TITLE,,Miscellaneous,
+GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,Hakkaa
+GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,Tyhjentää
+GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,Korjaa
+GUI.ORDERS.MINE,This should be as short as possible,Mine,Louhi
+GUI.ORDERS_LABEL,This should be as short as possible,Orders,Käskyt
+GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,
+GUI.REMOVE_LABEL,This should be as short as possible,Remove,Poista
+GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Poista ruutuja
+GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,
+GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},
+GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Kierrä huonekaluja painamalla (R)
+GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,
+GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},
+GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},
+GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,
+GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},
+GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,
+GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,
+GUI.ZONES_LABEL,This should be as short as possible,Zones,Vyöhykkeet
+
+HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,
+HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,
+HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,
+HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,
+HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,
+HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,,Optimistic about new settlement,
+HAPPINESS_MODIFIER.POISONED,,Poisoned,
+HAPPINESS_MODIFIER.SAW_DEAD_BODY,,Saw a dead body,
+HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,,"Slept in a spacious, private bedroom",
+HAPPINESS_MODIFIER.SLEPT_IN_PRIVATE_BEDROOM,,Slept in a private bedroom,
+HAPPINESS_MODIFIER.SLEPT_IN_SHARED_BEDROOM,,Shared a bedroom with others,
+HAPPINESS_MODIFIER.SLEPT_IN_SMALL_BEDROOM,,Slept in a cramped bedroom,
+HAPPINESS_MODIFIER.SLEPT_ON_GROUND,,Slept on rough ground,
+HAPPINESS_MODIFIER.SLEPT_OUTSIDE,,Slept under the stars,
+HAPPINESS_MODIFIER.TITLE,,Happiness:,
+HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,
+HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,
+HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,
+
+HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},
+
+HINT.BUTTON.DISABLE_ALL,,Disable all hints,
+HINT.BUTTON.DISMISS,,Dismiss,
+HINT.BUTTON.HINTS_ONLY,,Hints only,
+HINT.BUTTON.NEXT,,Next,
+HINT.BUTTON.TUTORIAL,,Tutorial,
+HINT.PROGRESS.HEADER,,Progress:,
+HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!",
+HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",
+
+HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}",
+HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
+
+INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,
+INGREDIENT.FLOUR,,Flour,
+INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,
+INGREDIENT.LOAF.PLURAL,,Loaves,
+INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,
+INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,
+INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.",
+INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,
+INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,
+INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,
+INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,
+
+INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,
+
+ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}}
+ITEM.INGREDIENT.DESCRIPTION,E.g. “2 potatoes”,{{quantity_if_multiple}}{{materialType.noun_or_plural}},
+
+ITEM_GROUP.FUEL.PLURAL,,Fuel,
+ITEM_GROUP.PRODUCT.PLURAL,,Products,
+ITEM_GROUP.RESOURCE.PLURAL,,Resources,
+ITEM_GROUP.TOOL.PLURAL,,Tools,
+
+LANGUAGE.LABEL,,Language,Kieli
+
+LIQUID.WATER.NOUN,,Water,
+
+MADNESS.BROKEN.ADJECTIVE,,Broken,
+MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",
+
+MATERIAL,Used for specifying which material something is made out of,Material,
+
+MATERIAL_TYPE,,Type,Materiaali tyyppi
+MATERIAL_TYPE.ANY,For allowing any kind of material to be used,Any,
+MATERIAL_TYPE.EARTH.ADJECTIVE,,Earthen,
+MATERIAL_TYPE.EARTH.NOUN,,Earth,
+MATERIAL_TYPE.FOODSTUFF.NOUN,,Food,
+MATERIAL_TYPE.GEM.NOUN,This is only used as a noun,Gem,Jalokivi
+MATERIAL_TYPE.METAL.ADJECTIVE,,Metallic,Metallinen
+MATERIAL_TYPE.METAL.NOUN,,Metal,Metalli
+MATERIAL_TYPE.ORE.NOUN,This is only used as a noun,Ore,{{BLANK}}
+MATERIAL_TYPE.OTHER.NOUN,This isn't actually used in-game yet so won't be combined with other words,Other,Muu
+MATERIAL_TYPE.SEED.NOUN,For saying something is “made up of seed”,Seed,
+MATERIAL_TYPE.STONE.ADJECTIVE,,,Kivinen
+MATERIAL_TYPE.STONE.NOUN,,Stone,Kivi
+MATERIAL_TYPE.VEGETABLE.NOUN,Used to make up “Vegetable soup”,Vegetable,
+MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,
+MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,
+MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,Puinen
+MATERIAL_TYPE.WOOD.NOUN,,Wood,Puu
+
+MENU.CONTINUE_GAME,,Continue game,Jatka peliä
+MENU.MODS,,Mods,
+MENU.NEW_GAME,,Start new game,Aloita uusi peli
+MENU.OPTIONS,,Options,Asetukset
+MENU.QUIT,,Quit,Lopeta
+MENU.TOGGLE_FULLSCREEN,,Toggle fullscreen,Vaihda koko näyttöön
+
+METAL.BRONZE.ADJECTIVE,,Bronze,Pronssinen
+METAL.BRONZE.NOUN,,Bronze,Pronssi
+METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and much more durable than copper alone. (Alloys have not yet been implemented in King under the Mountain),
+METAL.COPPER.ADJECTIVE,,Copper,Kuparinen
+METAL.COPPER.NOUN,,Copper,Kupari
+METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.",
+METAL.GOLD.ADJECTIVE,,Golden,Kultainen
+METAL.GOLD.NOUN,,Gold,Kulta
+METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.",
+METAL.IRON.ADJECTIVE,,Iron,Rautainen
+METAL.IRON.NOUN,,Iron,Rauta
+METAL.IRON.TOOLTIP,,It is a poor military which does not have access to iron. Dwarven metalsmiths know the secrets of working this into {{METAL.STEEL.NOUN}}.,
+METAL.PLATINUM.ADJECTIVE,,Platinum,
+METAL.PLATINUM.NOUN,,Platinum,
+METAL.PLATINUM.TOOLTIP,,A silver-white metal that is highly resistant to corrosion. Platinum is rarer and therefore more valuable than {{METAL.GOLD.NOUN}}.,
+METAL.SILVER.ADJECTIVE,,Silver,
+METAL.SILVER.NOUN,,Silver,
+METAL.SILVER.TOOLTIP,,"Like {{METAL.GOLD.NOUN}}, silver is often used for coinage and as solid bars for the trading of wealth. ",
+METAL.STEEL.ADJECTIVE,,Steel,Teräksinen
+METAL.STEEL.NOUN,,Steel,Teräs
+METAL.STEEL.TOOLTIP,,"Far stronger than {{METAL.IRON.NOUN}} which makes for superior weapons and tools, only the dwarves know the secret of creating steel.",
+METAL.TIN.ADJECTIVE,,Tin,
+METAL.TIN.NOUN,,Tin,
+METAL.TIN.TOOLTIP,,Tin can be smelted from {{ORE.CASSITERITE.NOUN}} and alloyed with {{METAL.COPPER.NOUN}} to produce {{METAL.BRONZE.NOUN}}. (Alloys have not yet been implemented in King under the Mountain),
+
+MODS.APPLY,,Apply,
+MODS.COMPATIBILITY.COMPATIBLE,,Yes,
+MODS.COMPATIBILITY.INCOMPATIBLE,,No,
+MODS.COMPATIBILITY.UNKNOWN,,Unknown,
+MODS.MISSING_MODS_DIALOG_TEXT,,This save file was last used while the following mods were active. These mods are now missing or disabled so the save may not load correctly.,
+MODS.MISSING_MODS_SAVE_EXCEPTION_DIALOG_TEXT,,"The save file could not be loaded because either it is incompatible with this version of the game, or because some mods have been disabled or removed since this save was last loaded. The following mods were expected but are no longer active:",
+MODS.TABLE.COMPATIBILITY,,Compatible?,
+MODS.TABLE.ENABLED,,Enabled?,
+MODS.TABLE.NAME,,Mod Name,
+MODS.TABLE.ORDERING,,Re-order,
+MODS.TABLE.VERSION,,Mod Version,
+
+MUSHROOM.DESCRIPTION,E.g. “Toadstool mushroom”,{{materialType.noun}},
+
+NEEDS.DRINK,,Drink,
+NEEDS.FOOD,,Food,
+NEEDS.SLEEP,,Sleep,
+
+NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,
+NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,
+NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.",
+NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},
+NOTIFICATION.DEATH.TITLE,,Settler death,
+NOTIFICATION.GAME_OVER.DESCRIPTION,,All things must come to an end. Your settlement lies abandoned.,
+NOTIFICATION.GAME_OVER.TITLE,,Game Over,
+NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,
+NOTIFICATION.IMMIGRANTS_ARRIVED.TITLE,,Immigration,
+NOTIFICATION.MINING_COLLAPSE.DESCRIPTION,,An area has caved in due to a lack of pillars and supports.,
+NOTIFICATION.MINING_COLLAPSE.TITLE,,Mining collapse,
+NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,
+NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,
+
+ORE.BAUXITE.ADJECTIVE,,Bauxite,
+ORE.BAUXITE.NOUN,,Bauxite,
+ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a means of aluminium production is yet to be discovered.",
+ORE.BITUMINOUS_COAL.ADJECTIVE,,Bituminous coal,
+ORE.BITUMINOUS_COAL.NOUN,,Bituminous coal,Rasvahiili
+ORE.BITUMINOUS_COAL.TOOLTIP,,This can be converted into {{ORE.COKE.NOUN}} using a {{FURNITURE.COKE_OVEN}}.,
+ORE.CASSITERITE.ADJECTIVE,,Cassiterite,
+ORE.CASSITERITE.NOUN,,Cassiterite,Tinakivi
+ORE.CASSITERITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.TIN.NOUN}}.,
+ORE.CHARCOAL.ADJECTIVE,,Charcoal,
+ORE.CHARCOAL.NOUN,,Charcoal,
+ORE.CHARCOAL.TOOLTIP,,{{FUEL.SACK}} produced from wooden {{RESOURCE.LOGS.PLURAL}}.,
+ORE.CHRYSOCOLLA.ADJECTIVE,,Chrysocolla,
+ORE.CHRYSOCOLLA.NOUN,,Chrysocolla,
+ORE.CHRYSOCOLLA.TOOLTIP,,"Often confused with turquoise, it is actually an ore of {{METAL.COPPER}}.",
+ORE.COKE.ADJECTIVE,,Coke,
+ORE.COKE.NOUN,,Coke,
+ORE.COKE.TOOLTIP,,A refined form of {{ORE.BITUMINOUS_COAL}} which can be used as {{FUEL.SACK}}.,
+ORE.GALENA.ADJECTIVE,,Galena,
+ORE.GALENA.NOUN,,Galena,Lyijyhohde
+ORE.GALENA.TOOLTIP,,An ore that can be smelted to produce {{METAL.SILVER}}.,
+ORE.HEMATITE.ADJECTIVE,,Hematite,
+ORE.HEMATITE.NOUN,,Hematite,Hematiitti
+ORE.HEMATITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.IRON}}.,
+ORE.ILMENITE.ADJECTIVE,,Ilmenite,
+ORE.ILMENITE.NOUN,,Ilmenite,
+ORE.ILMENITE.TOOLTIP,,"Ilmenite is the primary ore of titanium. Unfortunately, a means of titanium production is yet to be discovered.",
+ORE.MALACHITE.ADJECTIVE,,Malachite,
+ORE.MALACHITE.NOUN,,Malachite,Malakiitti
+ORE.MALACHITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.COPPER}}.,
+ORE.NATIVE_COPPER.ADJECTIVE,,Native copper,
+ORE.NATIVE_COPPER.NOUN,,Native copper,Pelkkä kupari
+ORE.NATIVE_COPPER.TOOLTIP,,Naturally-occuring {{METAL.COPPER}} which must be smelted before use.,
+ORE.NATIVE_GOLD.ADJECTIVE,,Native gold,
+ORE.NATIVE_GOLD.NOUN,,Native gold,Pelkkä kulta
+ORE.NATIVE_GOLD.TOOLTIP,,Naturally-occuring {{METAL.GOLD}} which must be smelted before use.,
+ORE.NATIVE_PLATINUM.ADJECTIVE,,Native platinum,
+ORE.NATIVE_PLATINUM.NOUN,,Native platinum,
+ORE.NATIVE_PLATINUM.TOOLTIP,,Naturally-occuring {{METAL.PLATINUM}} which must be smelted before use.,
+ORE.NATIVE_SILVER.ADJECTIVE,,Native silver,
+ORE.NATIVE_SILVER.NOUN,,Native silver,Pelkkä hopea
+ORE.NATIVE_SILVER.TOOLTIP,,Naturally-occuring {{METAL.SILVER}} which must be smelted before use.,
+ORE.POLLUCITE.ADJECTIVE,,Pollucite,
+ORE.POLLUCITE.NOUN,,Pollucite,
+ORE.POLLUCITE.TOOLTIP,,"Pollucite is an ore of Caesium, which is currently too dangerous to produce. Particularly crazy dwarven metalsmiths are currently trying to find a reliable method of production.",
+ORE.PYRITE.ADJECTIVE,,Fool's gold,
+ORE.PYRITE.NOUN,,Fool's gold,
+ORE.PYRITE.TOOLTIP,,"Also known as Pyrite, its pale-yellow appearance causes some to mistake it for gold. It has several uses when crushed, but care must be taken as it sparks when struck.",
+ORE.THORIUM.ADJECTIVE,,Thorium,
+ORE.THORIUM.NOUN,,Thorium,
+ORE.THORIUM.TOOLTIP,,A silvery metallic ore which turns black when exposed to air. It is strangely warm to the touch.,
+ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,
+ORE.WOLFRAMITE.NOUN,,Wolframite,
+ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,
+
+OTHER.BRICK.NOUN,,Brick,Tiili
+OTHER.CLAY_SOIL.NOUN,,Clay soil,Savimaa
+OTHER.GRASS.NOUN,,,Ruoho
+
+PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,
+PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,
+PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,
+PRIVACY.OPT_IN.LINE_10,,- The stack trace of the exception which caused the crash,
+PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to",
+PRIVACY.OPT_IN.LINE_3,,send anonymous crash reports automatically.,
+PRIVACY.OPT_IN.LINE_4,," ",
+PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,
+PRIVACY.OPT_IN.LINE_6,,- The version of the game client,
+PRIVACY.OPT_IN.LINE_7,,- Your operating system,
+PRIVACY.OPT_IN.LINE_8,,- Your graphics card and display settings,
+PRIVACY.OPT_IN.LINE_9,,- Your options settings,
+
+PRODUCT.ANVIL,,Anvil,
+PRODUCT.ANVIL.TOOLTIP,,A large block of metal used to hammer heated metal into shape. Required to construct a {{FURNITURE.FORGE}.,
+PRODUCT.BARREL.HOOPS,,Barrel hoops,
+PRODUCT.BARREL.HOOPS.TOOLTIP,,Metal hoops used to construct a {{PRODUCT.BARREL.NOUN}}. Also used in some machinery.,
+PRODUCT.BARREL.NOUN,,Barrel,
+PRODUCT.BARREL.PLURAL,,Barrels,
+PRODUCT.BARREL.STAVES,,Barrel staves,
+PRODUCT.BARREL.STAVES.TOOLTIP,,Curved wooden planks used to construct a {{PRODUCT.BARREL.NOUN}}.,
+PRODUCT.BARREL.TOOLTIP,,A cylindrical container for liquids. The curved shape makes it easier to roll around.,
+PRODUCT.BOWL,A bowl for eating from,Bowl,
+PRODUCT.BOWL.DESCRIPTION,E.g. “Bowl of vegetable soup”,Bowl of {{cooking.soup.description}},
+PRODUCT.BREAD.DOUGH.NOUN,,Dough,
+PRODUCT.BREAD.DOUGH.PLURAL,,Dough,
+PRODUCT.BREAD.DOUGH.TOOLTIP,,A mix of ingredients that can be baked into {{PRODUCT.BREAD.LOAF.PLURAL}} using an {{FURNITURE.BAKING_OVEN}}.,
+PRODUCT.BREAD.LOAF.NOUN,Translations incorrect and need fixing,Bread loaf,
+PRODUCT.BREAD.LOAF.PLURAL,Translations incorrect and need fixing,Bread loaves,
+PRODUCT.BREAD.LOAF.TOOLTIP,,"Prepared bread, ready to eat!",
+PRODUCT.BUCKET.NOUN,,Bucket,
+PRODUCT.BUCKET.PLURAL,,Buckets,
+PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,
+PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,
+PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.",
+PRODUCT.MILLSTONE,,Millstone,
+PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mill harvested crops. Used to construct a {{FURNITURE.FLOUR_MILL}}.,
+PRODUCT.RATION.NOUN,,Ration,
+PRODUCT.RATION.PLURAL,,Rations,
+PRODUCT.RATION.TOOLTIP,,"These will last a long time to feed your settlers, but you will need other sources of food as a priority.",
+
+PROFESSION.BAKER.VERB,,Baking,Leivonta
+PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,Seppä
+PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,Seppä
+PROFESSION.BLACKSMITH.TOOLTIP,,Crafts items using metal and also produces metal from ore.,
+PROFESSION.BLACKSMITH.VERB,,Forging,Taonta
+PROFESSION.CARPENTER.FEMALE_NOUN,,Carpenter,Puuseppä
+PROFESSION.CARPENTER.MALE_NOUN,,Carpenter,Puuseppä
+PROFESSION.CARPENTER.TOOLTIP,,Creates wooden furniture and items.,
+PROFESSION.CARPENTER.VERB,,Crafting,Valmistus
+PROFESSION.CHEF.FEMALE_NOUN,,Chef,
+PROFESSION.CHEF.MALE_NOUN,,Chef,
+PROFESSION.CHEF.TOOLTIP,,Prepares all of the food to be consumed by your settlers.,
+PROFESSION.CHEF.VERB,,Cooking,
+PROFESSION.FARMER.FEMALE_NOUN,,Farmer,Maanviljelijä
+PROFESSION.FARMER.MALE_NOUN,,Farmer,Maanviljelijä
+PROFESSION.FARMER.PLURAL,,Farmers,
+PROFESSION.FARMER.TOOLTIP,,"Plants, tends and harvests crops.",
+PROFESSION.FARMER.VERB,,Farming,Maanviljely
+PROFESSION.FISHER.FEMALE_NOUN,This could be “fisherman” and “fisherwoman”,Fisher,Kalastaja
+PROFESSION.FISHER.MALE_NOUN,,Fisher,Kalastaja
+PROFESSION.FISHER.TOOLTIP,,Catches fish from bodies of water for use as food and resources.,
+PROFESSION.FISHER.VERB,,Fishing,Kalastus
+PROFESSION.HUNTER.FEMALE_NOUN,This could be “huntsman” and “huntress”,Hunter,Metsästäjä
+PROFESSION.HUNTER.MALE_NOUN,,Hunter,Metsästäjä
+PROFESSION.HUNTER.TOOLTIP,,Tracks and kills wild animals for their meat and pelts.,
+PROFESSION.HUNTER.VERB,,Hunting,Metsästys
+PROFESSION.MAYOR.FEMALE_NOUN,"In English at least, “mayoress” is incorrect",Mayor,Pormestari
+PROFESSION.MAYOR.MALE_NOUN,,Mayor,Pormestari
+PROFESSION.MAYOR.VERB,,Governing,Hallinto
+PROFESSION.MERCHANT.FEMALE_NOUN,,Merchant,Kauppias
+PROFESSION.MERCHANT.MALE_NOUN,,Merchant,Kauppias
+PROFESSION.MERCHANT.VERB,,Trading,Kaupankäynti
+PROFESSION.MILLER.VERB,"Not a fully implemented profession, just used to describe “Milling flour”",Milling,
+PROFESSION.MINER.FEMALE_NOUN,,Miner,Kaivostyöläinen
+PROFESSION.MINER.MALE_NOUN,,Miner,Kaivostyöläinen
+PROFESSION.MINER.TOOLTIP,,Excavates new areas using a {{TOOL.PICKAXE}}.,
+PROFESSION.MINER.VERB,,Mining,Louhinta
+PROFESSION.NOBLE.FEMALE_NOUN,,Noble,Aatelinen
+PROFESSION.NOBLE.MALE_NOUN,,Noble,Aatelinen
+PROFESSION.NOBLE.TOOLTIP,,"Nobles do not fulfil jobs in the same way as common settlers, but bring fame and prestige to your settlement.",
+PROFESSION.NOBLE.VERB,,Reigning,Hallitseminen
+PROFESSION.RUNESMITH.FEMALE_NOUN,from “runes” and “blacksmith”,Runesmith,Riimuseppä
+PROFESSION.RUNESMITH.MALE_NOUN,"This is an invented term for the game, but should be derived",Runesmith,Riimuseppä
+PROFESSION.RUNESMITH.TOOLTIP,,"Enchants weapons, armour and items with magical runes to boost their abilities.",
+PROFESSION.RUNESMITH.VERB,,Enchanting,Loitsinta
+PROFESSION.STONEMASON.FEMALE_NOUN,,Stonemason,Kivenhakkaaja
+PROFESSION.STONEMASON.MALE_NOUN,,Stonemason,Kivenhakkaaja
+PROFESSION.STONEMASON.TOOLTIP,,Crafts furniture and items from stone.,
+PROFESSION.STONEMASON.VERB,,Sculpting,Kivenhakkuu
+PROFESSION.TINKERER.FEMALE_NOUN,,Tinker,Kelloseppä
+PROFESSION.TINKERER.MALE_NOUN,,Tinker,Kelloseppä
+PROFESSION.TINKERER.VERB,,Tinkering,Korjaaminen
+PROFESSION.VILLAGER.FEMALE_NOUN,,Villager,Kyläläinen
+PROFESSION.VILLAGER.MALE_NOUN,,Villager,Kyläläinen
+PROFESSION.VILLAGER.TOOLTIP,,This settler does not have any specific professions and will fulfil any mundane tasks like hauling items.,
+PROFESSION.VILLAGER.VERB,,Working,Työnteko
+PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberjane”,Woodcutter,Puunhakkaaja
+PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,Puunhakkaaja
+PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,
+PROFESSION.WOODCUTTER.VERB,,Chopping,Puunhakkuu
+
+RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,kääpiöihin kuuluva
+RACE.DWARF.FEMALE_NOUN,,Dwarf,Kääpiö
+RACE.DWARF.FEMALE_PLURAL,,Dwarves,Kääpiöt
+RACE.DWARF.MALE_ADJECTIVE,,Dwarven,kääpiöihin kuuluva
+RACE.DWARF.MALE_NOUN,The male and female forms are only for languages that need them,Dwarf,Kääpiö
+RACE.DWARF.MALE_PLURAL,Note that I'm going with Tolkein's spelling of “dwarves” rather than “dwarfs”,Dwarves,Kääpiöt
+RACE.DWARF.TOOLTIP,,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,
+
+RESOURCE.CRUSHED.VITRIOL.NOUN,,Vitriol,
+RESOURCE.CRUSHED.VITRIOL.PLURAL,,Vitriol,
+RESOURCE.CRUSHED.VITRIOL.TOOLTIP,,A salt of sulphuric acid with many uses in industry. (Usages of vitriol are not yet implemented in King under the Mountain),
+RESOURCE.FLOUR.SACK.NOUN,,Flour,
+RESOURCE.FLOUR.SACK.PLURAL,,Flour,
+RESOURCE.FLOUR.SACK.TOOLTIP,,Grain that has been milled into a fine powder ready to be used as an ingredient in the production of food.,
+RESOURCE.GEM.NOUN,,Gem,Jalokivi
+RESOURCE.GEM.PLURAL,,Gems,Jalokivet
+RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beauty. Most commonly used as ornamentation.,
+RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,Hiomaton jalokivi
+RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,Hiomattomat jalokivet
+RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,
+RESOURCE.LOGS.NOUN,,Log,Hirsi
+RESOURCE.LOGS.PLURAL,,Logs,Hirret
+RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.",
+RESOURCE.METAL.BLOOM.NOUN,,Bloom,
+RESOURCE.METAL.BLOOM.PLURAL,,Blooms,
+RESOURCE.METAL.BLOOM.TOOLTIP,,A lump of metal mixed with slag which must be hammered into a usable form.,
+RESOURCE.METAL.INGOT.NOUN,,Ingot,Harkko
+RESOURCE.METAL.INGOT.PLURAL,,Ingots,Harkot
+RESOURCE.METAL.INGOT.TOOLTIP,,"Refined metal blocks, ready to be used as a crafting ingredient.",
+RESOURCE.METAL.PLATE.NOUN,,Plate,
+RESOURCE.METAL.PLATE.PLURAL,,Plates,
+RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the larger machinery.",
+RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,
+RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,
+RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,Hirsi
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,Hirret
+RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,
+RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,
+RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,
+RESOURCE.ORE.CRUSHED.TOOLTIP,,"A metallic sand created by breaking down raw metal ore, ready for use in a {{FURNITURE.BLOOMERY_FURNACE}}.",
+RESOURCE.ORE.UNREFINED.NOUN,,Ore,Malmi
+RESOURCE.ORE.UNREFINED.PLURAL,,Ore,Malmit
+RESOURCE.ORE.UNREFINED.TOOLTIP,,Stone that contains metallic ores which can be processed into usable metal.,
+RESOURCE.PLANKS.NOUN,,Plank,Lankku
+RESOURCE.PLANKS.PLURAL,,Planks,Lankut
+RESOURCE.PLANKS.TOOLTIP,,Sections of wood of a fixed size so they can be easily used in constructions and crafting.,
+RESOURCE.SHOCKED.MUSHROOM.LOG.NOUN,,Mushroom log,
+RESOURCE.SHOCKED.MUSHROOM.LOG.PLURAL,,Mushroom logs,
+RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,This mushroom-infused log has been “shocked” in water to encourage the mushrooms to develop and should produce a harvest soon.,
+RESOURCE.STONE.BLOCK.NOUN,,Block,Tiili
+RESOURCE.STONE.BLOCK.PLURAL,,Blocks,Tiilet
+RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,
+RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,Kivilohkare
+RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,Kivilohkareet
+RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,
+
+ROOMS.BEDROOM,,Bedroom,
+ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",
+ROOMS.BRIDGE,,Bridge,
+ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.,
+ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,Puusepän verstas
+ROOMS.CARPENTRY_WORKSHOP.TOOLTIP,,This workshop produces most wooden tools and items.,
+ROOMS.COMPONENT.STOCKPILE.DESCRIPTION,,{{allocated}} of {{total}} spaces currently in use,
+ROOMS.EARTHWORKS,,Earthworks,
+ROOMS.EARTHWORKS.TOOLTIP,,An outdoor area for large constructions.,
+ROOMS.FARM,,Farm plot,
+ROOMS.FARM.PLURAL,,Farm plots,
+ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.,
+ROOMS.FEASTING_HALL,,Feasting hall,
+ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!",
+ROOMS.GRAVEYARD,,Graveyard,
+ROOMS.GRAVEYARD.TOOLTIP,,Deceased settlers are laid to rest here.,
+ROOMS.KITCHEN,,Kitchen,
+ROOMS.KITCHEN.TOOLTIP,,Most food is prepared here before being served in a {{ROOMS.FEASTING_HALL}}.,
+ROOMS.MASONRY_WORKSHOP,,Masonry workshop,Kivenhakkaajan verstas
+ROOMS.MASONRY_WORKSHOP.TOOLTIP,,This workshop produces most items made out of stone.,
+ROOMS.METALWORKS,,Metalworks,
+ROOMS.METALWORKS.TOOLTIP,,Metal ore is refined and used in crafting here.,
+ROOMS.MUSHROOM_FARM,,Mushroom farm,
+ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,
+ROOMS.SAWMILL,,Sawmill,Saha
+ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,
+ROOMS.STOCKPILES,,Stockpiles,
+ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,
+
+SEASON.AUTUMN,,Autumn,Syksy
+SEASON.SPRING,,Spring,Kevät
+SEASON.SUMMER,,Summer,Kesä
+SEASON.WINTER,,Winter,Talvi
+
+SEED.BARLEY_SEED,,Barley,
+SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",
+SEED.BERSERKER_MUSHROOM_SPAWN,,Berserker,
+SEED.BERSERKER_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP}},A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,
+SEED.CARROT_SEED,,Carrot,
+SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",
+SEED.CORN_SEED,,Corn,
+SEED.CORN_SEED.TOOLTIP,{{VEGETABLE.CORN.TOOLTIP}},"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",
+SEED.DEATH_CAP_SPAWN,,Death cap,
+SEED.DEATH_CAP_SPAWN.TOOLTIP,{{VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP}},"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",
+SEED.ELFSBANE_SPAWN,,Elfsbane,
+SEED.ELFSBANE_SPAWN.TOOLTIP,{{VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP}},"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.",
+SEED.FIST_SPAWN,,Fist,
+SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,
+SEED.GLOW_SPAWN,,Glow,
+SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,
+SEED.HOPS_SEED,,Hops,
+SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,
+SEED.MILTONIA_SPAWN,,Miltonia,
+SEED.MILTONIA_SPAWN.TOOLTIP,{{VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP}},"Once thought to exist only in the Hudds region, it is now found throughout the world.",
+SEED.POTATO_SEED,,Potato,
+SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",
+SEED.PURPLE_HELMET_SPAWN,,Purple helmet,
+SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.",
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN,,Rociomycota,
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP}},A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,
+SEED.SUNGLOW_SPAWN,,Sunglow,
+SEED.SUNGLOW_SPAWN.TOOLTIP,{{VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP}},A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,
+SEED.SYRUP_POWDER_SPAWN,,Syrup powder,
+SEED.SYRUP_POWDER_SPAWN.TOOLTIP,{{VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP}},"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.",
+SEED.TOMATO_SEED,,Tomato,
+SEED.TOMATO_SEED.TOOLTIP,{{VEGETABLE.TOMATO.TOOLTIP}},A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,
+SEED.WHEAT_SEED,,Wheat,
+SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",
+
+SHRUB.DESCRIPTION,Shrub or bush should do,Bush,Pensas
+
+STOCKPILE.GRANARY,,Granary,
+STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,
+STOCKPILE.PANTRY,,Pantry,
+STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,
+STOCKPILE.RESOURCES,,Resources,
+STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,
+STOCKPILE.TOOLS,,Tools,
+STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,
+
+STONE.BASALT.ADJECTIVE,,Basalt,Basalttinen
+STONE.BASALT.NOUN,,Basalt,Basaltti
+STONE.BASALT.TOOLTIP,,An igneous rock formed by the rapid cooling of lava. Almost all of the volcanic rock in the world is basalt.,
+STONE.DOLOSTONE.ADJECTIVE,,Dolostone,Dolomiittikivinen
+STONE.DOLOSTONE.NOUN,,Dolostone,Dolomiittikivi
+STONE.DOLOSTONE.TOOLTIP,,"A sedimentary rock mostly made up of the mineral dolomite, so it is also known as dolomite rock.",
+STONE.FRONITE.ADJECTIVE,,Frónite,
+STONE.FRONITE.NOUN,,Frónite,
+STONE.FRONITE.TOOLTIP,,A blue-hued rock mostly found on an icy island to the north. It has a high iron content.,
+STONE.GRANITE.ADJECTIVE,,Granite,Graniittinen
+STONE.GRANITE.NOUN,,Granite,Graniitti
+STONE.GRANITE.TOOLTIP,,"A common type of igneous rock. It has a large proportion of quartz, making it good for locating certain gemstones.",
+STONE.LIMESTONE.ADJECTIVE,,Limestone,Kalkkikivinen
+STONE.LIMESTONE.NOUN,,Limestone,Kalkkikivi
+STONE.LIMESTONE.TOOLTIP,,A lightly-coloured sedimentary rock which makes for a good building material. It is also used as a flux in the production of {{METAL.STEEL.NOUN}}.,
+STONE.MARBLE.ADJECTIVE,,Marble,Marmorinen
+STONE.MARBLE.NOUN,,Marble,Marmori
+STONE.MARBLE.TOOLTIP,,A metamorphic rock which is used as a high-quality material for sculpture and masonry due to its brilliant appearance.,
+STONE.SANDSTONE.ADJECTIVE,,Sandstone,Hiekkakivinen
+STONE.SANDSTONE.NOUN,,Sandstone,Hiekkakivi
+STONE.SANDSTONE.TOOLTIP,,"A sedimentary rock composed of sand-like fragments. ",
+STONE.SHALE.ADJECTIVE,,Shale,Liuskakivinen
+STONE.SHALE.NOUN,,Shale,Liuskakivi
+STONE.SHALE.TOOLTIP,,A fine-grained sedimentary rock composed of pressurized mud. It can be easily broken into thin layers.,
+STONE.SLATE.ADJECTIVE,,Slate,Savikivinen
+STONE.SLATE.NOUN,,Slate,Savikivi
+STONE.SLATE.TOOLTIP,,A metamorphic rock that is usually formed out of {{STONE.SHALE.NOUN}}. It is often made into tiles for roofing or writing.,
+
+TOOL.AXE.NOUN,,Axe,Kirves
+TOOL.AXE.TOOLTIP,,Used to chop down trees. The primary tool of a {{PROFESSION.WOODCUTTER}}.,
+TOOL.CHISEL.NOUN,,Chisel,Taltta
+TOOL.CHISEL.TOOLTIP,,Used to sculpt rock into shape. One of the tools used by a {{PROFESSION.STONEMASON}}.,
+TOOL.FISHING.ROD.NOUN,,Fishing rod,Onki
+TOOL.FISHING.ROD.TOOLTIP,,Used to catch fish from a body of water. The primary tool of a {{PROFESSION.FISHER}}.,
+TOOL.KITCHEN.KNIFE.NOUN,,Kitchen knife,Keittiöveitsi
+TOOL.KITCHEN.KNIFE.TOOLTIP,,"Used to prepare food, particularly meat.",
+TOOL.LARGE.HAMMER.NOUN,,Large hammer,Leka
+TOOL.LARGE.HAMMER.TOOLTIP,,Used to bash large items of stone and metal into shape. The primary tool of a {{PROFESSION.BLACKSMITH}}.,
+TOOL.PICKAXE.NOUN,,Pickaxe,Hakku
+TOOL.PICKAXE.TOOLTIP,,Used to break stone into smaller pieces. The primary tool of a {{PROFESSION.MiNER}}.,
+TOOL.PLANE.NOUN,A carpenter's plane,Plane,Höylä
+TOOL.PLANE.TOOLTIP,,Used to shave wooden furniture and items into shape. The primary tool of a {{PROFESSION.CARPENTER}}.,
+TOOL.ROLLING.PIN.NOUN,,Rolling pin,Kaulin
+TOOL.ROLLING.PIN.TOOLTIP,,Used to prepare dough. One of the tools used by a {{PROFESSION.CHEF}}.,
+TOOL.SAW.NOUN,A carpenter's saw,Saw,Saha
+TOOL.SAW.TOOLTIP,,Used to cut wood into shape. Required for cutting lumber in the {{ROOMS.SAWMILL}}.,
+TOOL.SMALL.HAMMER.NOUN,,Hammer,Vasara
+TOOL.SMALL.HAMMER.TOOLTIP,,Used to bash small items of stone and metal into shape. One of the tools used by a {{PROFESSION.BLACKSMITH}}.,
+TOOL.TONGS.NOUN,A blacksmith's tongs,Tongs,Pihdit
+TOOL.TONGS.TOOLTIP,,Used to hold extremely hot metal items. Used in the process of smelting metal ore.,
+
+TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,
+
+TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.",
+TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.",
+TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",
+TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.",
+TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ",
+TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.",
+TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.",
+TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,
+TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.",
+TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.",
+TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.",
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.",
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CHEFS_CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!",
+TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",
+TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,
+TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.",
+TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.",
+TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each.,
+TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",
+TUTORIAL.CAMERA.A,,"You can use the W, A, S and D keys or the arrow keys to pan the camera around. Moving the cursor to the edge of the screen also pans the camera, but this can be disabled in the options menu.",
+TUTORIAL.CAMERA.B,,Scrolling the mouse wheel or pressing the Q and E keys zooms the camera in or out.,
+TUTORIAL.CAMERA.C,,"In the lower-right section of the screen is the minimap, and you can click on this to jump the camera to that point. Click on the “Minimap” label to show or hide the minimap.",
+TUTORIAL.CAMERA.D,,Try out these camera controls and then click “Next” to proceed.,
+TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. For your next challenge, aim to set up a functioning {{ROOMS.METALWORKS}} with a {{FURNITURE.FORGE}} provided with fuel and refined metal ore. Refined metal ores are produced at the {{FURNITURE.ORE_CRUSHING_STATION}}, and fuel can be crushed from coal or produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} with a {{FURNITURE.CHARCOAL_CLAMP}} in an {{ROOMS.EARTHWORKS}}. Good luck!",
+TUTORIAL.PROGRESS_DESCRIPTION.FARM_PLOT_SELECTIONS,Used to show a progress indicator for how many farm plots have a crop selected e.g. 2 of 10 farm plots with a crop assigned,{{ROOMS.FARM.PLURAL}} with a crop assigned,
+TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indicator for how many of a certain profession have been assigned e.g. 2 of 10 farmers assigned,{{professionPlural}} assigned,
+TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},
+TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,
+TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
+TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
+TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
+TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
+TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",
+TUTORIAL.TIME.D,,You can also click the speed icons to change the speed or pause the game.,
+
+VEGETABLE.BARLEY,,Barley,
+VEGETABLE.BARLEY.PLURAL,,Barley,
+VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",
+VEGETABLE.BERSERKER_MUSHROOM,,Berserker mushroom,
+VEGETABLE.BERSERKER_MUSHROOM.PLURAL,,Berserker mushrooms,
+VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP,,A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,
+VEGETABLE.CARROT,,Carrot,
+VEGETABLE.CARROT.PLURAL,,Carrots,
+VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",
+VEGETABLE.CORN,,Sweetcorn,
+VEGETABLE.CORN.PLURAL,,Sweetcorn,
+VEGETABLE.CORN.TOOLTIP,,"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",
+VEGETABLE.DEATH_CAP_MUSHROOM,,Death cap mushroom,
+VEGETABLE.DEATH_CAP_MUSHROOM.PLURAL,,Death cap mushrooms,
+VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP,,"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",
+VEGETABLE.DRAGONFRUIT,,Dragonfruit,
+VEGETABLE.DRAGONFRUIT.PLURAL,,Dragonfruits,
+VEGETABLE.ELFSBANE_MUSHROOM,,Elfsbane mushroom,
+VEGETABLE.ELFSBANE_MUSHROOM.PLURAL,,Elfsbane mushrooms,
+VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP,,"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.",
+VEGETABLE.FIST_MUSHROOM,,Fist mushroom,
+VEGETABLE.FIST_MUSHROOM.PLURAL,,Fist mushrooms,
+VEGETABLE.FIST_MUSHROOM.TOOLTIP,,A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,
+VEGETABLE.GLOW_MUSHROOM,,Glow mushroom,
+VEGETABLE.GLOW_MUSHROOM.PLURAL,,Glow mushrooms,
+VEGETABLE.GLOW_MUSHROOM.TOOLTIP,,A magic-infused mushroom that gives off light and changes colour with the seasons.,
+VEGETABLE.HOPS,,Hops,
+VEGETABLE.HOPS.PLURAL,,Hops,
+VEGETABLE.HOPS.TOOLTIP,,A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,
+VEGETABLE.LOQUAT,,Loquat,
+VEGETABLE.LOQUAT.PLURAL,,Loquats,
+VEGETABLE.MILTONIA_MUSHROOM,,Miltonia mushroom,
+VEGETABLE.MILTONIA_MUSHROOM.PLURAL,,Miltonia mushrooms,
+VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP,,"Once thought to exist only in the Hudds region, it is now found throughout the world.",
+VEGETABLE.POTATO,,Potato,
+VEGETABLE.POTATO.PLURAL,,Potatoes,
+VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",
+VEGETABLE.PURPLE_HELMET_MUSHROOM,,Purple helmet mushroom,
+VEGETABLE.PURPLE_HELMET_MUSHROOM.PLURAL,,Purple helmet mushrooms,
+VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.",
+VEGETABLE.ROCIOMYCOTA_MUSHROOM,,Rociomycota mushroom,
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.PLURAL,,Rociomycota mushrooms,
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP,,A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,
+VEGETABLE.SUNGLOW_MUSHROOM,,Sunglow mushroom,
+VEGETABLE.SUNGLOW_MUSHROOM.PLURAL,,Sunglow mushrooms,
+VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP,,A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,
+VEGETABLE.SYRUP_POWDER_MUSHROOM,,Syrup powder mushroom,
+VEGETABLE.SYRUP_POWDER_MUSHROOM.PLURAL,,Syrup powder mushrooms,
+VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP,,"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.",
+VEGETABLE.TAMARILLO,,Tamarillo,
+VEGETABLE.TAMARILLO.PLURAL,,Tamarillos,
+VEGETABLE.THIMBLEBERRY,,Thimbleberry,
+VEGETABLE.THIMBLEBERRY.PLURAL,,Thimbleberries,
+VEGETABLE.TOMATO,,Tomato,
+VEGETABLE.TOMATO.PLURAL,,Tomatoes,
+VEGETABLE.TOMATO.TOOLTIP,,A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,
+VEGETABLE.WHEAT,,Wheat,
+VEGETABLE.WHEAT.PLURAL,,Wheat,
+VEGETABLE.WHEAT.TOOLTIP,,"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",
+
+VITRIOL.GREEN_VITRIOL.ADJECTIVE,,Green,
+VITRIOL.GREEN_VITRIOL.NOUN,,Green,
+VITRIOL.GREEN_VITRIOL.TOOLTIP,,"Also known as iron sulfate, this salt has several uses, including as a soil additive to improve crop farming. (Usages of vitriol are not yet implemented in King under the Mountain)",
+
+WALL.DESCRIPTION,"E.g. “Granite rock wall”, “Granite smooth stone wall”",{{materialType.adjective}} {{wallType.noun}},{{materialType.adjective}} {{wallType.noun}}
+WALL.GEMS.NOUN,,Gems,{{BLANK}}
+WALL.ORE.NOUN,,Ore,{{BLANK}}
+WALL.ROUGH_STONE.NOUN,,Rock wall,Kiviseinä
+WALL.STONE_BLOCK.NOUN,,Smooth stone wall,Laattaseinä
+WALL.WOODEN.NOUN,,Wood wall,Puuseinä
+
+WOOD.ASPEN.ADJECTIVE,,Aspen,
+WOOD.ASPEN.NOUN,,Aspen,
+WOOD.BAOBAB.ADJECTIVE,,Baobab,
+WOOD.BAOBAB.NOUN,,Baobab,
+WOOD.BARKSHROOM.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,
+WOOD.BARKSHROOM.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,
+WOOD.BEECH.ADJECTIVE,,Beech,Pyökistä tehty
+WOOD.BEECH.NOUN,,Beech,Pyökki
+WOOD.BIRCH.ADJECTIVE,,Birch,Koivusta tehty
+WOOD.BIRCH.NOUN,,Birch,Koivu
+WOOD.EBONY.ADJECTIVE,,Ebony,
+WOOD.EBONY.NOUN,,Ebony,
+WOOD.FIR.ADJECTIVE,,Fir,Kuusesta tehty
+WOOD.FIR.NOUN,,Fir,Kuusi
+WOOD.FUNGIWOOD.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,
+WOOD.FUNGIWOOD.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,
+WOOD.IRONWOOD.ADJECTIVE,,Ironwood,
+WOOD.IRONWOOD.NOUN,,Ironwood,
+WOOD.MAPLE.ADJECTIVE,,Maple,Vaahterasta tehty
+WOOD.MAPLE.NOUN,,Maple,Vaahtera
+WOOD.NUYTSIA.ADJECTIVE,,Nuytsia,
+WOOD.NUYTSIA.NOUN,,Nuytsia,
+WOOD.OAK.ADJECTIVE,,Oaken,Tammesta tehty
+WOOD.OAK.NOUN,,Oak,Tammi
+WOOD.PECAN.ADJECTIVE,,Pecan,
+WOOD.PECAN.NOUN,,Pecan,
+WOOD.PINE.ADJECTIVE,,Pine,Männystä tehty
+WOOD.PINE.NOUN,,Pine,Mänty
+WOOD.RED_CEDAR.ADJECTIVE,,Red cedar,
+WOOD.RED_CEDAR.NOUN,,Red cedar,
+WOOD.RED_EMPEROR.ADJECTIVE,,Red emperor,
+WOOD.RED_EMPEROR.NOUN,,Red emperor,
+WOOD.ROSEWOOD.ADJECTIVE,,Rosewood,
+WOOD.ROSEWOOD.NOUN,,Rosewood,
+WOOD.SPRUCE.ADJECTIVE,,Spruce,
+WOOD.SPRUCE.NOUN,,Spruce,
+WOOD.STAR_PINE.ADJECTIVE,,Star pine,
+WOOD.STAR_PINE.NOUN,,Star pine,
+WOOD.SYCAMORE.ADJECTIVE,,Sycamore,
+WOOD.SYCAMORE.NOUN,,Sycamore,

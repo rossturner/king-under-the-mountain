@@ -1,0 +1,85 @@
+[{
+  "uniqueName": "Resource-Ore-Unrefined03",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Ore-Unrefined",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Ore-Unrefined03.png",
+      "coloringLayer": "ORE_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Ore-Unrefined03.png",
+      "coloringLayer": "ORE_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Ore-Unrefined03.png",
+      "coloringLayer": "ORE_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Resource-Ore-Unrefined03.png",
+      "coloringLayer": "ORE_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Ore-Unrefined03.png",
+      "coloringLayer": "ORE_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Resource-Ore-Unrefined03.png",
+      "coloringLayer": "ORE_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  }
+}]

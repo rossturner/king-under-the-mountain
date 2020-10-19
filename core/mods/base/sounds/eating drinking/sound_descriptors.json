@@ -1,0 +1,30 @@
+[
+  {
+    "name": "EatFood",
+    "filenames": [
+      "EatingPlate.wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  },
+  {
+    "name": "DrinkSoup",
+    "filenames": [
+      "DrinkSoup (Polite).wav",
+      "DrinkSoup (Uncouth).wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  },
+  {
+    "name": "BeerTap",
+    "filenames": [
+      "BeerTap.wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  }
+]

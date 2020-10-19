@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Wheat-Mid",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Wheat", "Barley"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_wheat_mid.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 16
+      }
+    }
+  }
+}]

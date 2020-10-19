@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Potato-Small",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Potato", "Carrot"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_potato_small_leaves.png",
+      "coloringLayer": "LEAF_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 3.5
+      }
+    }
+  }
+}]

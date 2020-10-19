@@ -1,0 +1,63 @@
+[
+  {
+    "uniqueName": "Ingredient-Soup-Bowl-Liquid",
+    "type": "ITEM_LIQUID_LAYER",
+    "itemTypeName": "Ingredient-Soup-Bowl",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Ingredient-Soup-Bowl-Liquid.png",
+        "scale": 0.5,
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2.25
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Ingredient-Soup-Bowl-Liquid.png",
+        "scale": 0.5,
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2.25
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Ingredient-Soup-Bowl-Liquid.png",
+        "scale": 0.5,
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2.25
+        }
+      },
+      "UP": {
+        "filename": "Ingredient-Soup-Bowl-Liquid.png",
+        "scale": 0.5,
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2.25
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Ingredient-Soup-Bowl-Liquid.png",
+        "scale": 0.5,
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2.25
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Ingredient-Soup-Bowl-Liquid.png",
+        "scale": 0.5,
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 2.25
+        }
+      }
+    }
+  }
+]

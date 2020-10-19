@@ -1,0 +1,103 @@
+[{
+  "speciesName": "Barley",
+  "plantType": "CROP",
+  "materialName": "Plant",
+  "maxGrowthSpeedVariance": 0.02,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#f4b63d"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Seeds",
+    "materialName": "Barley Seed",
+    "plantingSeasons": [
+      "SPRING",
+      "SUMMER",
+      "AUTUMN"
+    ]
+  },
+  "seasons": {
+    "WINTER": {
+      "growth": false
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Seeds",
+      "nextGrowthStage": 1,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Shoots",
+      "nextGrowthStage": 2,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "colorCode": "#8fa926"
+        }
+      }
+    },
+    {
+      "name": "Mid-growth",
+      "nextGrowthStage": 3,
+      "seasonsUntilComplete": 0.4,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "transitionSwatch": "barley-mid-transition-swatch.png"
+        }
+      }
+    },
+    {
+      "name": "Nearly-grown",
+      "nextGrowthStage": 4,
+      "seasonsUntilComplete": 0.4,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "transitionSwatch": "barley-late-transition-swatch.png"
+        }
+      }
+    },
+    {
+      "name": "Fully-grown",
+      "nextGrowthStage": 5,
+      "seasonsUntilComplete": 0.4,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "colorCode": "#f4b63d"
+        }
+      },
+      "harvestType": "FARMING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Grain-Sack",
+          "materialName": "Barley",
+          "quantity": 2
+        },
+        {
+          "itemTypeName": "Ingredient-Seeds",
+          "materialName": "Barley Seed",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "name": "Decaying",
+      "seasonsUntilComplete": 0.15,
+      "tileHeight": 1,
+      "onCompletion": [
+        "DESTROY_PLANT"
+      ],
+      "colors": {
+        "BRANCHES_COLOR": {
+          "transitionSwatch": "barley-decay-transition-swatch.png"
+        }
+      }
+    }
+  ]
+}]

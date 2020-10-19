@@ -1,0 +1,31 @@
+[{
+  "uniqueName": "Resource-Logs-Large-Pile01-Interior",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Logs"],
+  "itemSize": "LARGE",
+  "itemStyle": "DEFAULT",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 0,
+  "maxQuantity": 0,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Large-Pile01-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    }
+  }
+},{
+  "uniqueName": "Resource-Mushroom-Logs-Pile01-Interior",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Mushroom-Log", "Resource-Shocked-Mushroom-Log"],
+  "itemSize": "AVERAGE",
+  "itemStyle": "DEFAULT",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 0,
+  "maxQuantity": 0,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Large-Pile01-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    }
+  }
+}]

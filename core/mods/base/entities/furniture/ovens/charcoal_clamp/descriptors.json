@@ -1,0 +1,53 @@
+[
+  {
+    "uniqueName": "Charcoal-Clamp-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["CHARCOAL_CLAMP"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Charcoal Clamp Wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 32
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Charcoal-Clamp-Covered",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["CHARCOAL_CLAMP_COVERED"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Charcoal Clamp Earth.png",
+        "coloringLayer": "EARTH_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 32
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Charcoal-Clamp-Completed",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["CHARCOAL_CLAMP_COMPLETED"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Charcoal Clamp Wood.png",
+        "coloringLayer": "ORE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 32
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,11 @@
+[{
+  "itemTypeName": "Product-Ration",
+  "itemGroup": "PRODUCT",
+  "materialTypes": ["FOODSTUFF"],
+  "primaryMaterialType": "FOODSTUFF",
+  "stockpileGroupName": "Pantry",
+  "hoursInInventoryUntilUnused": 999999999,
+  "maxStackSize": 50,
+  "maxHauledAtOnce": 50,
+  "equippedWhileWorkingOnJob": false
+}]

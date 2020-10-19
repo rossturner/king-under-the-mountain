@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Product-Bucket-Contents-Floor",
+  "type": "ITEM_LIQUID_LAYER",
+  "itemTypeName": "Product-Bucket",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bucket-Contents-Floor.png",
+      "coloringLayer": "LIQUID_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 8.5
+      }
+    }
+  }
+}]

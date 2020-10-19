@@ -1,0 +1,46 @@
+[{
+  "speciesName": "Glow",
+  "plantType": "MUSHROOM",
+  "materialName": "Glow Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 0.2,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "transitionSwatch": "rainbow-transition-swatch.png"
+    },
+    "LEAF_COLOR": {
+      "transitionSwatch": "rainbow-transition-swatch.png"
+    },
+    "FRUIT_COLOR": {
+      "colorCode": "#fffeed"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Glow Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "nextGrowthStage": 0,
+      "seasonsUntilComplete": 4,
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Glow Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Glow Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

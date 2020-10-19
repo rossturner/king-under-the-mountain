@@ -1,0 +1,44 @@
+[{
+  "speciesName": "Death Cap",
+  "plantType": "MUSHROOM",
+  "materialName": "Death Cap Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 0.02,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#423d3d"
+    },
+    "LEAF_COLOR": {
+      "colorCode": "#423d3d"
+    },
+    "FRUIT_COLOR": {
+      "swatch": "death-cap-swatch.png"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Death Cap Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Death Cap Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Death Cap Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

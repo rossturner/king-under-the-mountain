@@ -1,0 +1,117 @@
+[
+  {
+    "uniqueName": "Ore-Crushing-Station-E",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["ORE_CRUSHING_STATION"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Ore Crushing Station E.png",
+        "coloringLayer": "MISC_COLOR_1",
+        "offsetPixels": {
+          "x": 32,
+          "y": 36.5
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 2,
+              "y": -10.5
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 2,
+              "y": -10.5
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": 2,
+              "y": -10.5
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_4",
+            "offsetPixels": {
+              "x": 2,
+              "y": -10.5
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Ore-Crushing-Station-D",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["ORE_CRUSHING_STATION"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Ore Crushing Station D.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -20.5,
+          "y": 3
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Ore-Crushing-Station-C",
+    "type": "FURNITURE_ABOVE_LAYER_2",
+    "furnitureTypeNames": ["ORE_CRUSHING_STATION"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Ore Crushing Station C.png",
+        "coloringLayer": "MISC_COLOR_2",
+        "offsetPixels": {
+          "x": 9.5,
+          "y": -9
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Ore-Crushing-Station-B",
+    "type": "FURNITURE_ABOVE_LAYER_3",
+    "furnitureTypeNames": ["ORE_CRUSHING_STATION"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Ore Crushing Station B.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": -19.5,
+          "y": -9.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Ore-Crushing-Station-A",
+    "type": "FURNITURE_ABOVE_LAYER_4",
+    "furnitureTypeNames": ["ORE_CRUSHING_STATION"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Ore Crushing Station A.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

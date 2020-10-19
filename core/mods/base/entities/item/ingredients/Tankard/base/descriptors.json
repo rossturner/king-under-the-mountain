@@ -1,0 +1,206 @@
+[
+  {
+    "uniqueName": "Wooden tankard",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Ingredient-Tankard",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Wooden tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -10,
+              "y": -3
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Wooden tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Wooden tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Wooden tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Wooden tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Wooden tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "WOOD_COLOR"
+      }
+    }
+  },
+
+  {
+    "uniqueName": "Metal tankard",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Ingredient-Tankard",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Metal tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -10,
+              "y": -3
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Metal tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Metal tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Metal tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Metal tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Metal tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "Stone tankard",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Ingredient-Tankard",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Stone tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -10,
+              "y": -3
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Stone tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Stone tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -15,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Stone tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Stone tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Stone tankard.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR"
+      }
+    }
+  }
+]

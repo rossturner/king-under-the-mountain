@@ -1,0 +1,289 @@
+[
+  {
+    "uniqueName": "table-2x3L1R-metal",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["CARPENTRY_WORKBENCH"],
+    "furnitureLayoutName": "2x3L1R",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3L1R-metal.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 64,
+          "y": 40
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": -64,
+              "y": -14
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-2x3L1R-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["CARPENTRY_WORKBENCH"],
+    "furnitureLayoutName": "2x3L1R",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3L1R-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 64,
+          "y": 40
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": -64,
+              "y": -14
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-2x3L1R-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["CARPENTRY_WORKBENCH"],
+    "furnitureLayoutName": "2x3L1R",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3L1R-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 64,
+          "y": 40
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": -64,
+              "y": -14
+            }
+          }
+        ]
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "table-2x3BL3R-metal",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["WOODCUTTERS_BENCH", "BAKERS_WORKTOP"],
+    "furnitureLayoutName": "2x3BL3R",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3L1R-metal.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": -64,
+          "y": 40
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": -64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": -14
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-2x3BL3R-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["WOODCUTTERS_BENCH", "BAKERS_WORKTOP"],
+    "furnitureLayoutName": "2x3BL3R",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3L1R-stone.png",
+        "flipX": true,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -64,
+          "y": 40
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": -64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": -14
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-2x3BL3R-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["WOODCUTTERS_BENCH", "BAKERS_WORKTOP"],
+    "furnitureLayoutName": "2x3BL3R",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3L1R-wood.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -64,
+          "y": 40
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": -64,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 50
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": -14
+            }
+          }
+        ]
+      }
+    }
+  }
+]

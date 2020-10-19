@@ -1,0 +1,20 @@
+[{
+  "uniqueName": "Bush-B5-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Loquat bush", "Thimbleberry bush", "Breadfruit tree"],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "shrub_05_l.png",
+      "coloringLayer": "LEAF_COLOR",
+      "childAssets": [
+        {
+          "type": "PLANT_FRUIT",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  }
+}]

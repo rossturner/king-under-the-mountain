@@ -1,0 +1,96 @@
+[{
+  "uniqueName": "Resource-Planks-Single",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Planks",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 2,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Planks-Single-F.png",
+      "coloringLayer": "WOOD_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -8,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Planks-Single-F34.png",
+      "coloringLayer": "WOOD_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -8,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Planks-Single-F34.png",
+      "flipX": true,
+      "coloringLayer": "WOOD_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -8,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Resource-Planks-Single-F.png",
+      "coloringLayer": "WOOD_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 8,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Planks-Single-F34.png",
+      "flipX": true,
+      "coloringLayer": "WOOD_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 8,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Resource-Planks-Single-F34.png",
+      "coloringLayer": "WOOD_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": 6,
+            "y": 2
+          }
+        }
+      ]
+    }
+  }
+}]

@@ -1,0 +1,98 @@
+[
+  {
+    "uniqueName": "Resource-Mushroom-Lumber-Pile01",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": [
+      "Resource-Mushroom-Lumber"
+    ],
+    "itemSize": "SMALL",
+    "itemStyle": "STYLE_1",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom Single Pile.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 1.5,
+          "y": -1.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Mushroom-Lumber-Pile02",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": [
+      "Resource-Mushroom-Lumber"
+    ],
+    "itemSize": "SMALL",
+    "itemStyle": "STYLE_1",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 3,
+    "maxQuantity": 6,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom Small Pile.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -1.0,
+          "y": 3.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Mushroom-Lumber-Pile03",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": [
+      "Resource-Mushroom-Lumber"
+    ],
+    "itemSize": "SMALL",
+    "itemStyle": "STYLE_1",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 7,
+    "maxQuantity": 11,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom Medium Pile.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 2.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Mushroom-Lumber-Pile04",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": [
+      "Resource-Mushroom-Lumber"
+    ],
+    "itemSize": "SMALL",
+    "itemStyle": "STYLE_1",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 12,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom Large Pile.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 7
+        }
+      }
+    }
+  }
+]

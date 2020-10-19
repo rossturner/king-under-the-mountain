@@ -1,0 +1,128 @@
+[{
+  "uniqueName": "Resource-Metal-Bloom-Ground",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeNames": ["Resource-Metal-Bloom"],
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bloom.png",
+      "scale": 0.8,
+      "coloringLayer": "METAL_COLOR"
+    }
+  }
+},  {
+  "uniqueName": "Resource-Metal-Bloom-Carried",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeNames": ["Resource-Metal-Bloom"],
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bloom.png",
+      "scale": 0.7,
+      "coloringLayer": "METAL_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 18,
+            "y": -16
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -18,
+            "y": -16
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Bloom.png",
+      "scale": 0.7,
+      "coloringLayer": "METAL_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -16,
+            "y": -16
+          }
+        },
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": 22,
+            "y": -10
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Bloom.png",
+      "scale": 0.7,
+      "coloringLayer": "METAL_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 16,
+            "y": -16
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": -22,
+            "y": -10
+          }
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Bloom.png",
+      "scale": 0.7,
+      "coloringLayer": "METAL_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "Bloom.png",
+      "scale": 0.7,
+      "coloringLayer": "METAL_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 16,
+            "y": -16
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Bloom.png",
+      "scale": 0.7,
+      "coloringLayer": "METAL_COLOR",
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -16,
+            "y": -16
+          }
+        }
+      ]
+    }
+  }
+}]

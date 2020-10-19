@@ -1,0 +1,61 @@
+[
+  {
+    "uniqueName": "Ingredient-Vegetable-Sack-Label-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeNames": ["Ingredient-Vegetable-Sack", "Resource-Wheat-Sack", "Resource-Grain-Sack"],
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack label.png",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "coloringLayer": "VEGETABLE_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Ingredient-Vegetable-Sack-Label-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeNames": ["Ingredient-Vegetable-Sack", "Resource-Wheat-Sack", "Resource-Grain-Sack"],
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack label.png",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -6.4
+        },
+        "coloringLayer": "VEGETABLE_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Sack label.png",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -6.4
+        },
+        "coloringLayer": "VEGETABLE_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "Sack label.png",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -6.4
+        },
+        "coloringLayer": "VEGETABLE_COLOR"
+      }
+    }
+  }
+]

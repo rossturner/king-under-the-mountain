@@ -1,0 +1,61 @@
+[
+  {
+    "uniqueName": "Tool-Pickaxe-Handle-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Pickaxe",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Pickaxe-Handle-On-Ground.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Pickaxe-Head-On-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Pickaxe",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Pickaxe-Head-On-Ground.png",
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Pickaxe-Extras-On-Ground",
+    "type": "BELOW_LAYER_1",
+    "itemTypeName": "Tool-Pickaxe",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Pickaxe-Extras-On-Ground.png"
+      }
+    }
+  }
+]

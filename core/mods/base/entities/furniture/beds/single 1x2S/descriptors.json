@@ -1,0 +1,116 @@
+[
+  {
+    "uniqueName": "bed-1x2S-base-cover",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "1x2S",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "tags": {
+      "BED_SLEEPING_POSITION": ["UP"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-1x2S-base-cover.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "childAssets": [
+          {
+            "type": "CLOTH_LAYER",
+            "specificAssetName": "bed-1x2S-cover",
+            "offsetPixels": {
+              "x": 0,
+              "y": 14.5
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "specificAssetName": "bed-1x2S-pillows",
+            "offsetPixels": {
+              "x": 0,
+              "y": -29.5
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "specificAssetName": "bed-1x2S-frame",
+            "offsetPixels": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-1x2S-cover",
+    "type": "CLOTH_LAYER",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "1x2S",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-1x2S-cover.png",
+        "coloringLayer": "ACCESSORY_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-1x2S-pillows",
+    "type": "ATTACHMENT_DECO_1",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "1x2S",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-1x2S-pillows.png",
+        "coloringLayer": "ACCESSORY_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 12
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-1x2S-frame",
+    "type": "ATTACHMENT_DECO_2",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "1x2S",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-1x2S-frame.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

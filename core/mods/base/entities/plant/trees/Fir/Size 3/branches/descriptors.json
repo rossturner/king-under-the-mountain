@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Tree-Fir-Size3-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Fir", "Spruce"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "fir-2-t.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": -5,
+        "y": 70
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": -3.5,
+            "y": 26
+          }
+        }
+      ]
+    }
+  }
+}]

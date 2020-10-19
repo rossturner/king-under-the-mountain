@@ -1,0 +1,127 @@
+[
+  {
+    "uniqueName": "Giant-Mushroom-Sapling-Branches",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": ["Fungiwood", "Barkshroom"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom Sapling Stem.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 1.5,
+          "y": -16
+        },
+        "childAssets": [
+          {
+            "type": "PLANT_LEAVES",
+            "offsetPixels": {
+              "x": -1.5,
+              "y": 16
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Giant-Mushroom-Sapling-Leaves",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Fungiwood", "Barkshroom"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom Sapling Head.png",
+        "coloringLayer": "LEAF_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 6
+        }
+      }
+    }
+  },
+
+  {
+    "uniqueName": "Giant-Mushroom-Size1-Branches",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": ["Fungiwood", "Barkshroom"],
+    "growthStages": [1],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom 1 Tile Stem.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 2.5,
+          "y": -12
+        },
+        "childAssets": [
+          {
+            "type": "PLANT_LEAVES",
+            "offsetPixels": {
+              "x": -2.5,
+              "y": 16
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Giant-Mushroom-Size1-Leaves",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Fungiwood", "Barkshroom"],
+    "growthStages": [1],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom 1 Tile Head.png",
+        "coloringLayer": "LEAF_COLOR",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": 16
+        }
+      }
+    }
+  },
+
+  {
+    "uniqueName": "Giant-Mushroom-Size2-Branches",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": ["Fungiwood", "Barkshroom"],
+    "growthStages": [2],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom 2 Tiles High Stem.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": -1,
+          "y": 8.5
+        },
+        "childAssets": [
+          {
+            "type": "PLANT_LEAVES",
+            "offsetPixels": {
+              "x": 1,
+              "y": 23.5
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Giant-Mushroom-Size2-Leaves",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Fungiwood", "Barkshroom"],
+    "growthStages": [2],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom 2 Tiles High Head.png",
+        "coloringLayer": "LEAF_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 33.5
+        }
+      }
+    }
+  }
+]

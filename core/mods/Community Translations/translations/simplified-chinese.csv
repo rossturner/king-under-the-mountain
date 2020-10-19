@@ -1,0 +1,934 @@
+KEY,NOTES,ENGLISH,SIMPLIFIED CHINESE
+
+ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},清除 {{targetPlant}}
+ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}}
+ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},生产 {{targetDescription}}
+ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},删除 {{targetDescription}}
+ACTION.JOB.DIGGING,,Digging {{targetDescription}},挖掘 {{targetDescription}}
+ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},填写 {{targetDescription}}
+ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}}
+ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},收获 {{targetPlant}}
+ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,注射蘑菇产卵
+ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},{{专业. 动词}} {{profession.verb}}
+ACTION.JOB.PLANTING,,Planting {{requiredItem}},种植 {{requiredItem}}
+ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},去除 {{targetPlant}} 中的害虫
+ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},铲 {{targetDescription}}
+ACTION.JOB.TILLING,,Tilling the earth,耕地
+ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},填写 {{targetDescription}}
+ACTION.PREPARATION.VERB,,Preparing,准备
+ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,寻找工作要做
+ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},睡在 {{containerDescription}}
+ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},睡在 {{tileDescription}}
+
+CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{材料类型. 形容词}} {{家具. 名词}} 的构造
+CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,已分配 {{quantity}} {{itemDescription}}
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,移除其他商品
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE.TOOLTIP,,There are items that need to be removed from this furniture’s construction area before it can progress.,有些物品需要从这个家具的建筑区域中移除，然后才能进行。
+CONSTRUCTION.STATUS.SELECTING_MATERIALS,E.g. “Waiting for more wooden planks to be available”,Waiting for more {{materialType}} {{itemDescription.plural}} to be available,等待更多 {{materialType}} {{商品描述 .复数}} 可用
+CONSTRUCTION.STATUS.WAITING_FOR_COMPLETION,This is displayed once all resources are in place and the construction is being worked on,Under construction,正在施工
+CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction is waiting for resource items to be placed in the build area,Waiting for resources to arrive,等待资源到达
+
+COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{{materialDescription}} 面包
+COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} 和 {{materialTwo}}
+COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,{{materialDescription}} 汤
+
+CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,受害虫影响
+CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,这种作物受到了大量蚜虫和其他昆虫的影响，这些昆虫需要通过 {{PROFESSION.FARMER}} 去除才能再次繁荣。 不去除害虫的时间可能意味着这种作物死亡！
+CROP.DESCRIPTION,,{{materialType.noun}} plant,{材料型. 名词}} 植物
+CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,收获方面的进展：{{progress}}%
+
+DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,落碎片
+DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,脱水
+DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,疲惫
+DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,食物中毒
+DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,饥饿
+DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,神秘情境
+
+EARTH.DIRT,,Dirt,污垢
+EARTH.GRASS,,Grass,草
+
+FLOOR.COBBLESTONE,,Cobblestone,鹅卵石
+FLOOR.DESCRIPTION,,{{floorType.noun}},{{地板类型. 名词}}
+FLOOR.DIRT,,Dirt,污垢
+FLOOR.GRASS,,Grass,草
+FLOOR.GRAVEL,,Gravel,砾石
+FLOOR.RIVER,,River,河流
+FLOOR.ROUGH_STONE,,Rough stone floor,粗糙的石地板
+FLOOR.STONE_SLAB,,Stone slab,石板
+FLOOR.TILLED_EARTH,,Tilled earth,耕地
+FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,未开发
+
+FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,摇滚饼
+FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,"这是一个臭名昭著的坚韧面包，它是如此的硬，实际上不可食用，它需要很长的时间才能变成发霉。 人类探险家 J.A. 莫法特曾经把食用它描述为 ""类似于咀嚼从沼泽中挖出的碎石""。 幸运的是，大多数矮人似乎不介意。"
+FOODSTUFF.WHEAT-BREAD,"Actually just to describe “wheat” as a foodstuff, not specifically bread",Wheat,麦子
+
+FUEL.SACK,,Fuel,燃料
+FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}.",在生产金属时需要燃料，既需要 {{家具，也需要 {{家具. FORG}} 和 {{家具. FORG}}。
+
+FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,貝克的台面
+FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,一个 {{PROFESSION.CHEF}} 在这里工作将 {{资源. 面粉. 沙包. 复数}} 变成 {{成分. 面团}}。
+FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,貝克烤箱
+FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,一个 {{PROFESSION.CHEF}} 烘烤面包在这里使用准备 {{成分. 面团}}。
+FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,花火炉
+FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,A {{{{专业. 铁匠}} 使用这个手动操作的炉子将 {{资源. 金属. 复数}} 和 {{燃料. 麻袋}} 转化为 {{材料 _ 类型. 金属. 形容词}}} {{资源. 金属. 复数}}。
+FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,木工工作台
+FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.",大多数木制物品和工具都在这里生产，例如 {{产品. 桶. 复数}} 和 {{产品. 桶. 复数}}。
+FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,大锅
+FURNITURE.CAULDRON.TOOLTIP,,A cauldron is used to serve a large quantity of soup to hungry settlers. The soup is produced in a {{ROOMS.KITCHEN}} before being moved to a {{ROOMS.FEASTING_HALL}} for serving.,大锅用来为饥饿的定居者提供大量的汤。 汤在 {{ROOMS.KITCHEN}} 中生产，然后转移到 {{室内餐厅 _ 厅}} 供服务。
+FURNITURE.CHAIR,,Chair,椅子
+FURNITURE.CHARCOAL_CLAMP,,Charcoal clamp,木炭夹
+FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} covered with {{MATERIAL_TYPE.EARTH}} and slowly burned to produce {{ORE.CHARCOAL.NOUN}}, which can then be used as {{FUEL.SACK}}.",这是一堆 {{资源. 日志. 复数}}，覆盖 {{材料 _Type.Earth}}，慢慢燃烧，产生 {{RESOURCE.LOGS.PLURAL}}，然后可以用作 {{燃料. 袋子}}}。
+FURNITURE.COKE_OVEN,,Coke oven,焦炉
+FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,焦炭烤箱可将 {{{奥利. 比图数字 _ 煤炭. 名词}} 转换为 {{奥利. 可克. 名词}}，以便它可以用作 {{燃料. 袋子}}}。
+FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{材料类型. 形容词}} {{家具. 名词}}
+FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,完成进度：{{progress}}%
+FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,完成无效的进度：{{progress}}%
+FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,冲击蘑菇对数的进展：{{progress}}%
+FURNITURE.DESCRIPTION.WAITING_FOR_ITEM,,Waiting for {{itemType.noun}},等待 {{商品类型. 名词}}}
+FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,等待填写
+FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,等待被注入蘑菇产卵
+FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,餐桌
+FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.",随着 {{{家具 .CAR}} 到位，您的定居者将在此餐桌上享用他们的餐点。
+FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,格斯米尔
+FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,水晶磨坊将 {{{蔬菜. 小麦}} 研磨成 {{资源. 面粉. 沙克. 名词}}，以便 {{专业. 厨师}} 可以使用它。
+FURNITURE.FORGE,,Forge,伪造
+FURNITURE.FORGE.TOOLTIP,,This is where a {{PROFESSION.BLACKSMITH}} works with {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} and {{FUEL.SACK}} to craft items and weapons.,在这里，{{{专业. 铁匠}}} 与 {{材料 _ 类型. 金属. 形容词}} {{资源. 金属. 复数}} 和 {{燃料. 袋子}} 合作来制造物品和武器。
+FURNITURE.GRAVE,,Grave,坟墓
+FURNITURE.GRAVE.TOOLTIP,,A hastily-dug grave for deceased settlers that can only be placed in {{MATERIAL_TYPE.EARTH}}.,只能放置在 {{材料 _Type.Earth}} 中的已故定居者仓促挖掘的坟墓。
+FURNITURE.KITCHEN_WORKTOP,Simple piece of furniture in a kitchen used to hold ingredients on top of it,Kitchen worktop,厨房台面
+FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSION.CHEF}} to cook soup.,一个存储食材的区域，供 {{PROFESSION.CHEF}} 煮汤。
+FURNITURE.LANTERN,,Lantern,灯笼
+FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,灯笼提供光线-这目前没有游戏内效果。
+FURNITURE.LARGE_TABLE,,Large table,大桌
+FURNITURE.MUSHROOM_LOG,,Mushroom log,蘑菇原木
+FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.",已经注入 {{成分. 蘑菇. SPOWN. 复数}}} 来产生多种美味多汁的蘑菇收获的日志。
+FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,减震罐
+FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to “shock” the mushroom colony and encourage it to grow mushrooms.",无害后，一个 {{家具 .蘑菇 _LOG}} 被放置在这个罐子里，以 “震撼” 蘑菇菌落，并鼓励它种植蘑菇。
+FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,矿石破碎站
+FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,原始 {{{资源. ORE.ORE.O. 未精炼. 复数}}} 被粉碎成一个更可行的尺寸，以便它可以在 {{家具. 布鲁尼亚 _炉子}} 中使用。
+FURNITURE.PILLAR,A pillar used to support a roof,Pillar,支柱
+FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas from collapsing. An area of 7x7 tiles that have been mined without any pillars or other supports in place will eventually collapse.,需要使用柱子来阻止大型开采区域倒塌。 在没有任何柱子或其他支撑的情况下开采的 7x7 瓷砖区域最终会崩溃。
+FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,石棺
+FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,这个精心设计的石头容器是一个已故定居者的最后安息地。
+FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,服务表
+FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.,{{产品. 面包. 乐福. 复数}}} 被放置在这里供在 {{家具. 烤箱}} 烘烤后供应。
+FURNITURE.SINGLE_BED,,Bed,床
+FURNITURE.SINGLE_BED.TOOLTIP,,"A bed is the best place for a comfortable night’s rest. ",一张床是舒适的夜间休息的最佳场所。
+FURNITURE.SINGLE_DOOR,,Door,门
+FURNITURE.SINGLE_DOOR_FRAME,,Door frame,门框
+FURNITURE.SMALL_TABLE,,Small table,小桌
+FURNITURE.STONEMASON_WORKBENCH,,Stonemason workbench,斯托尼马森工作台
+FURNITURE.STONEMASON_WORKBENCH.TOOLTIP,,A {{PROFESSION.STONEMASON}} works here with {{MATERIAL_TYPE.STONE.ADJECTIVE}} resources.,一个 {{专业 .Stonemason}} 在这里与 {{材料 _ 类型 .STONE. 形容词}} 资源一起工作。
+FURNITURE.STOOL,,Stool,凳子
+FURNITURE.WATER_BARREL,,Water barrel,水桶
+FURNITURE.WATER_BARREL.TOOLTIP,,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.",水桶是您的定居者获得口渴淬火饮料的地方，而不必找到像河流这样的天然水源。
+FURNITURE.WOODCUTTERS_BENCH,,Woodcutting bench,木材切割长凳
+FURNITURE.WOODCUTTERS_BENCH.TOOLTIP,,A {{PROFESSION.WOODCUTTER}} works here to turn {{RESOURCE.LOGS.PLURAL}} into {{RESOURCE.PLANKS.PLURAL}}.,{{专业. 伐木机}}} 在这里作品将 {{资源. 日志. 复数}} 变成 {{资源. 浮游. 复数}}。
+
+GEM.AMETHYST.ADJECTIVE,,Amethyst,紫水晶
+GEM.AMETHYST.NOUN,,Amethyst,紫水晶
+GEM.AMETHYST.TOOLTIP,,A violet-hued variety of quartz. Ancient humans believed it could magically protect them from becoming too drunk. For this reason it is not very popular in dwarven culture.,一种紫色色调的石英品种。 古代人类相信它可以神奇地保护他们不会变得太醉 出于这个原因，它不是很受欢迎的侏儒文化。
+GEM.AMMOLITE.ADJECTIVE,,Ammolite,氨基矿
+GEM.AMMOLITE.NOUN,,Ammolite,氨基矿
+GEM.AMMOLITE.TOOLTIP,,An opal-like gemstone which has a red to green iridescence. It is known as the “hunting stone” and amulets made from it are meant to bring good luck to a hunt.,一种蛋白石般的宝石，具有红色到绿色的虹彩。 它被称为 “狩猎石”，用它制成的护身符旨在为狩猎带来好运。
+GEM.AQUAMARINE.ADJECTIVE,,Aquamarine,海蓝宝石
+GEM.AQUAMARINE.NOUN,,Aquamarine,海蓝宝石
+GEM.AQUAMARINE.TOOLTIP,,A cyan-coloured variety of beryl. Some humans believe it offers magical protection against the dangers of the seas. This is because an ancient mage used a combination of sky and ice magic to protect trading ships during the age of darkness.,绿柱石的绿柱石。 有些人认为它提供了神奇的保护，抵御海洋的危险。 这是因为一个古老的法师利用天空和冰神的组合来保护贸易船只在黑暗时代。
+GEM.BIXBITE.ADJECTIVE,,Bixbite,比克斯咬
+GEM.BIXBITE.NOUN,,Bixbite,比克斯咬
+GEM.BIXBITE.TOOLTIP,,"Also known as red beryl, it is a very rare gemstone. It is often confused for a red-coloured emerald.",它也被称为红绿柱石，是一种非常罕见的宝石。 它经常被混淆为红色的祖母绿。
+GEM.CINNABAR.ADJECTIVE,,Cinnabar,金纳巴
+GEM.CINNABAR.NOUN,,Cinnabar,金纳巴
+GEM.CINNABAR.TOOLTIP,,An ore of mercury which is often used in jewellery due to its deep-red hue. It is also used to produce the dye known as vermillion.,由于其深红色，经常用于珠宝首饰的汞矿石。 它也被用来生产被称为红百万的染料。
+GEM.CITRINE.ADJECTIVE,,Citrine,黄水晶
+GEM.CITRINE.NOUN,,Citrine,黄水晶
+GEM.CITRINE.TOOLTIP,,"A yellowish variety of quartz. It is the gemstone most similar in colour to gold, so most dwarves think citrine is lucky.",一种淡黄色的石英。 它是颜色与黄金最相似的宝石，所以大多数矮人认为黄水晶是幸运的。
+GEM.DIAMOND.ADJECTIVE,,Diamond,钻石
+GEM.DIAMOND.NOUN,,Diamond,钻石
+GEM.DIAMOND.TOOLTIP,,The hardest known material and one of the most important of the seven heavenly stones. Diamonds are the most condensed form of the neutral element known as “spirit” or “aether”.,最难已知的材料和最重要的七个天堂石头之一。 钻石是中性元素中最浓缩的形式，称为 “精神” 或 “AEther”。
+GEM.EMERALD.ADJECTIVE,,Emerald,翡翠
+GEM.EMERALD.NOUN,,Emerald,翡翠
+GEM.EMERALD.TOOLTIP,,A vibrant green variety of beryl. It is thought that engraving on an emerald brings great misfortune. Emeralds are closely related to elemental life and associated magic.,绿柱石是一个充满活力的绿色品种。 据认为，雕刻在翡翠带来了巨大的不幸。 祖母绿是密切相关的元素生命和相关的魔法。
+GEM.GARNET.ADJECTIVE,,Garnet,石榴石
+GEM.GARNET.NOUN,,Garnet,石榴石
+GEM.GARNET.TOOLTIP,,"Garnets cover a variety of minerals used as gemstones, all with a deep red colour. Some garnet gems are actually a condensed form of elemental fire.",石榴石覆盖了各种用作宝石的矿物质，所有矿物质均呈深红色。 有些石榴石宝石实际上是元素火的浓缩形式。
+GEM.JADE.ADJECTIVE,,Jade,玉石
+GEM.JADE.NOUN,,Jade,玉石
+GEM.JADE.TOOLTIP,,"A mineral with a light-green colour often used for decoration. Also, elves have been known to use jade to produce medicine which can cure ailments of the gut.",经常用于装饰的浅绿色矿物。 此外，精灵们已经知道使用玉制造可以治愈肠道疾病的药物。
+GEM.JASPER.ADJECTIVE,,Jasper,贾斯珀
+GEM.JASPER.NOUN,,Jasper,贾斯珀
+GEM.JASPER.TOOLTIP,,"An impure variety of silica which can occur in several colours, but most commonly red. Jasper is favoured as a decoration material by orcs due to its variety.",一种不纯净的二氧化硅，可以有多种颜色出现，但最常见的是红色。 Jasper 由于其种类繁多，被兽人喜欢作为装饰材料。
+GEM.LABRADORITE.ADJECTIVE,,Labradorite,拉布拉多石
+GEM.LABRADORITE.NOUN,,Labradorite,拉布拉多石
+GEM.LABRADORITE.TOOLTIP,,A rock which shines with a typically light-blue iridescence. Rarer specimens can reflect a wide range of colours.,一块闪耀着典型的浅蓝色虹彩的岩石。 罕见的标本可以反映各种颜色。
+GEM.LAPIS.ADJECTIVE,,Lapis lazuli,青金石
+GEM.LAPIS.NOUN,,Lapis lazuli,青金石
+GEM.LAPIS.TOOLTIP,,A rock with a brilliant deep blue hue which is used as a precious stone.,作为宝石使用的宝石，具有辉煌深蓝色色调的岩石。
+GEM.MAGNESITE.ADJECTIVE,,Magnesite,麦格尼斯
+GEM.MAGNESITE.NOUN,,Magnesite,麦格尼斯
+GEM.MAGNESITE.TOOLTIP,,A mineral which can be polished into beads for use in jewellery. These beads can by dyed into many different colours.,一种矿物，可以抛光成珠子，用于珠宝。 这些珠子可以通过染成许多不同的颜色。
+GEM.MOONSTONE.ADJECTIVE,,Moonstone,月光石
+GEM.MOONSTONE.NOUN,,Moonstone,月光石
+GEM.MOONSTONE.TOOLTIP,,"Thought to be formed by moonlight captured in rock, which makes this gemstone a favourite of the elves.",被认为是由岩石拍摄的月光形成的，这使得这颗宝石成为精灵的最爱。
+GEM.MORGANITE.ADJECTIVE,,Morganite,摩根石
+GEM.MORGANITE.NOUN,,Morganite,摩根石
+GEM.MORGANITE.TOOLTIP,,A rose-coloured variety of beryl. It was named after being popularised by a particularly wealthy merchant in the age of myth.,玫瑰色的绿柱石。 它是在神话时代被一位特别富有的商人推广而命名的。
+GEM.OPAL.ADJECTIVE,,Opal,蛋白石
+GEM.OPAL.NOUN,,Opal,蛋白石
+GEM.OPAL.TOOLTIP,,"A form of silica infused with the magic of the oceans, which makes this a favourite of sailors and fishermen.",一种二氧化硅融入了海洋的魔力，这使得它成为水手和渔民的最爱。
+GEM.PAINITE.ADJECTIVE,,Painite,疼痛
+GEM.PAINITE.NOUN,,Painite,疼痛
+GEM.PAINITE.TOOLTIP,,A very rare gemstone which is often identified as an off-colour sapphire. The crystals are naturally hexagonal in shape and a favourite of tacticians.,一种非常罕见的宝石，通常被认定为无色蓝宝石。 晶体自然是六角形的形状，是最喜欢的战术。
+GEM.RHODOCHROSITE.ADJECTIVE,,Rhodochrosite,红色矿物
+GEM.RHODOCHROSITE.NOUN,,Rhodochrosite,红色矿物
+GEM.RHODOCHROSITE.TOOLTIP,,Found in varying shades of red to pink. It is not as hard as most gemstones making it a poor choice for rings and other high-impact jewellery.,在红色到粉红色的不同色调中发现。 它并不像大多数宝石那么难，使其成为戒指和其他高冲击力珠宝的不佳选择。
+GEM.ROCK_CRYSTAL.ADJECTIVE,,Rock crystal,岩石水晶
+GEM.ROCK_CRYSTAL.NOUN,,Rock crystal,岩石水晶
+GEM.ROCK_CRYSTAL.TOOLTIP,,The purest form of quartz. Rock crystals often feature in magical artifacts as they are a condensed form of the element of ice.,石英的最纯粹的形式。 岩石晶体通常具有神奇的文物，因为它们是冰元素的浓缩形式。
+GEM.RUBY.ADJECTIVE,,Ruby,红宝石
+GEM.RUBY.NOUN,,Ruby,红宝石
+GEM.RUBY.TOOLTIP,,"One of the seven heavenly stones, rubies are the element of fire condensed into a solid form.",七颗天上的石头之一，红宝石是火的元素凝聚成一个坚实的形式。
+GEM.SAPPHIRE.ADJECTIVE,,Sapphire,蓝宝石
+GEM.SAPPHIRE.NOUN,,Sapphire,蓝宝石
+GEM.SAPPHIRE.TOOLTIP,,"Often believed to protect the wearer from the attention of daemons, sapphires are much sought-after by mages for use in sky and air-based magic.",蓝宝石通常被认为能够保护佩戴者免受守护进程的注意，因此在天空中和基于空气的魔法中非常受到法师的追捧。
+GEM.SPINEL.ADJECTIVE,,Spinel,尖晶石
+GEM.SPINEL.NOUN,,Spinel,尖晶石
+GEM.SPINEL.TOOLTIP,,"Often confused with heavenly stones like true rubies and sapphires, spinels are a lesser form of magic-infused gem which can be associated with any of the elements, depending on colour.",尖晶石经常与真正的红宝石和蓝宝石等天堂宝石混淆，是一种较小形式的神奇注入宝石，可以与任何元素相关联，具体取决于颜色。
+GEM.TANZANITE.ADJECTIVE,,Tanzanite,坦桑石
+GEM.TANZANITE.NOUN,,Tanzanite,坦桑石
+GEM.TANZANITE.TOOLTIP,,A rare gemstone that can alternate between blue and violet. It is thought to be formed from the material body of a dead god.,一种罕见的宝石，可以在蓝色和紫色之间交替。 它被认为是从死神的物质身体形成的。
+GEM.TOPAZ.ADJECTIVE,,Topaz,黄玉
+GEM.TOPAZ.NOUN,,Topaz,黄玉
+GEM.TOPAZ.TOOLTIP,,"Sometimes confused with the more common {{GEM.CITRINE.NOUN}} gem, topaz can be found in several colours but most commonly a yellowish brown. It was first discovered on an island which no longer exists.",有时与较常见的 {{GEM.CITRINE .NON}} 宝石混淆，黄玉有多种颜色，但最常见的是淡黄褐色。 它首次发现在一个不再存在的岛屿上。
+GEM.TOURMALINE.ADJECTIVE,,Tourmaline,电气石
+GEM.TOURMALINE.NOUN,,Tourmaline,电气石
+GEM.TOURMALINE.TOOLTIP,,Often found alongside {{ORE.CASSITERITE.ADJECTIVE}} ore. It is sometimes associated with earth magic.,经常与 {{ORE.锡石. 形容词}} 矿石一起发现。 它有时与地球魔术有关。
+GEM.TURQUOISE.ADJECTIVE,,Turquoise,绿松石
+GEM.TURQUOISE.NOUN,,Turquoise,绿松石
+GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,蓝绿色矿物经常用于装饰品。 它被认为是给持有人带来好运。 它经常注入地球的元素。
+
+GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},收集 {{targetDescription}}
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetZoneMaterial}},饮用 {{targetZoneMaterial}}
+GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},吃 {{targetDescription}}
+GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},拖运 {{targetDescription}}
+GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,闲置
+GOAL.SLEEP.DESCRIPTION,,Going to sleep,去睡觉
+GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},转移 {{targetZoneMaterial}}
+
+GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,添加/删除瓷砖
+GUI.ADD_TILES,This should be as short as possible,Add tiles,添加磁贴
+GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,环境大气效应体积：
+GUI.BACK_LABEL,This should be as short as possible,Back,后退
+GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,桥梁
+GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,门
+GUI.BUILD.WALLS,,Walls,墙壁
+GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,L 型
+GUI.BUILD.WALLS.QUAD,For building 4 walls at once,Quad,四
+GUI.BUILD.WALLS.SINGLE,For building a single wall,Single,单身
+GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,家具
+GUI.BUILD_LABEL,This should be as short as possible,Build,建立
+GUI.CANCEL_LABEL,This should be as short as possible,Cancel,取消
+GUI.CHANGE_PROFESSION_LABEL,,Change profession,变革行业
+GUI.CROP_SELECTION,,Crop:,裁剪：
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}",{{timeOfDay}}，天 {{dayNumber}}
+GUI.DIALOG.DISMISS,,Dismiss,解雇
+GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,这个名字的房间已经存在。
+GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,无法加载保存文件，因为它与此版本的游戏不兼容。
+GUI.DIALOG.ERROR_TITLE,Shown as the title of an error dialog,An error has occurred,发生错误
+GUI.DIALOG.ERROR_WHILE_LOADING,Unexpected error while loading a previous save,There was an unexpected error while loading the game.,加载游戏时出现意想不到的错误。
+GUI.DIALOG.ERROR_WHILE_SAVING,Unexpected error while saving the game,There was an unexpected error while saving the game.,保存游戏时出现意想不到的错误。
+GUI.DIALOG.INFO_TITLE,,Information,信息
+GUI.DIALOG.JUMP_TO,,Go to location,前往位置
+GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,选定的语言翻译目前不完整，将缺少一些文本。 将使用后备语言。
+GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,您已经选择了一组不同的 MODS 来应用到游戏中。 这些将在游戏下次重新启动时应用。
+GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,一个或多个 MODS 与这个版本的游戏不兼容，并已停用. 您可以在 MODS 菜单中检查更新。
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,好
+GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,重命名房间
+GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,您必须重新启动游戏才能使此更改生效
+GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},分配给 {{name}}
+GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,当前正在删除
+GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,此家具必须放置在 {{materialType}} 上。
+GUI.GRAPHICS.FULLSCREEN,,Fullscreen,全屏
+GUI.GRAPHICS.RESOLUTION,,Resolution,决议
+GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),无（休假）
+GUI.MINIMAP.LABEL,,Minimap,最低限度
+GUI.MUSIC_VOLUME,,Music volume:,音乐音量：
+GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,新版本现已在 iTch.io 上推出
+GUI.NEXT_LABEL,This should be as short as possible,Next,下一个
+GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,这个家具不能在这个版本的游戏旋转
+GUI.OK_LABEL,This should be as short as possible,Ok,好
+GUI.OPTIONS.AUDIO.TITLE,,Sound Options,声音选项
+GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes trees partially transparent when a settler moves behind them,Make trees transparent when obscuring settlers,在遮挡定居者时使树木透明
+GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,暂停通知
+GUI.OPTIONS.GAMEPLAY.TITLE,,"Gameplay Options ",游戏选项
+GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,当光标位于屏幕边缘时滚动
+GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ",图形选项
+GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,允许自动崩溃报告
+GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.TITLE,,Miscellaneous,杂项
+GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,印章
+GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,清除
+GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,收获
+GUI.ORDERS.MINE,This should be as short as possible,Mine,我的
+GUI.ORDERS_LABEL,This should be as short as possible,Orders,命令
+GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,桥梁必须覆盖河流两侧，大小至少为 3x3 的瓷砖
+GUI.REMOVE_LABEL,This should be as short as possible,Remove,删除
+GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,移除磁贴
+GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,资源
+GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},可用：{{count}}
+GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,按 (R) 旋转家具
+GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,保存...
+GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},死亡：{{count}}
+GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},人口：{{count}}
+GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,定居者
+GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},共计：{{count}}
+GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,音效音量
+GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,UI 缩放：
+GUI.ZONES_LABEL,This should be as short as possible,Zones,区域
+
+HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,吃了一顿精心准备的餐
+HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,带着一具尸体
+HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,喝河水
+HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,饿死了
+HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,严重脱水
+HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,,Optimistic about new settlement,对新结算持乐观态度
+HAPPINESS_MODIFIER.POISONED,,Poisoned,中毒
+HAPPINESS_MODIFIER.SAW_DEAD_BODY,,Saw a dead body,看见一具尸体
+HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,,"Slept in a spacious, private bedroom",睡在宽敞的私人卧室
+HAPPINESS_MODIFIER.SLEPT_IN_PRIVATE_BEDROOM,,Slept in a private bedroom,睡在私人卧室
+HAPPINESS_MODIFIER.SLEPT_IN_SHARED_BEDROOM,,Shared a bedroom with others,与他人共用一间卧室
+HAPPINESS_MODIFIER.SLEPT_IN_SMALL_BEDROOM,,Slept in a cramped bedroom,睡在狭窄的卧室
+HAPPINESS_MODIFIER.SLEPT_ON_GROUND,,Slept on rough ground,睡在粗糙的地面
+HAPPINESS_MODIFIER.SLEPT_OUTSIDE,,Slept under the stars,在星空下睡觉
+HAPPINESS_MODIFIER.TITLE,,Happiness:,幸福：
+HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,非常饥饿
+HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,非常口渴
+HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,极度疲惫
+
+HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},{{quantity}} 已分配给 {{targetDescription}}
+
+HINT.BUTTON.DISABLE_ALL,,Disable all hints,禁用所有提示
+HINT.BUTTON.DISMISS,,Dismiss,
+HINT.BUTTON.HINTS_ONLY,,Hints only,仅提示
+HINT.BUTTON.NEXT,,Next,下一个
+HINT.BUTTON.TUTORIAL,,Tutorial,教程
+HINT.PROGRESS.HEADER,,Progress:,
+HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!",欢迎来到山下王的世界！ 这是游戏的早期 alpha 版本，还有更多的功能和游戏元素有待实现。 你们勇敢的矮人定居者们选择了这个位置，找到了他们王国的新殖民地。 提供食物，住所和繁荣，谁知道，也许有一天，这将是自己的王国的首都！
+HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",文本
+
+HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}",{{name}}，{{疯狂. 形容词}} {{种族. 名词}}
+HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}",{{name}}，{{种族. 形容词}} {{专业. 名词}}
+
+INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,面团
+INGREDIENT.FLOUR,,Flour,面粉
+INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,面包
+INGREDIENT.LOAF.PLURAL,,Loaves,面包
+INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,蘑菇产卵
+INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,蘑菇产卵
+INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.",也被称为菌丝，这可以被认为是 “种子”，从中种植蘑菇在 {{HOUSS.蘑菇 _FORM}}。
+INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,种子
+INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,种子
+INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,在 {{ROOMS.FARM}} 中种植需要正确类型的种子。 它们还需要在 {{储存 .粮仓}} 库存中提供。
+INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,麻袋
+
+INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,库存：
+
+ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},{{数量 _ 如果 _ 多个}} {{物质类型. 形容词}} {{商品类型. 名词 _ 复数}}
+ITEM.INGREDIENT.DESCRIPTION,E.g. “2 potatoes”,{{quantity_if_multiple}}{{materialType.noun_or_plural}},{{数量 _ 如果 _ 多个}} {{物质类型. 名词 _ 或复数}}}
+
+ITEM_GROUP.FUEL.PLURAL,,Fuel,燃料
+ITEM_GROUP.PRODUCT.PLURAL,,Products,产品
+ITEM_GROUP.RESOURCE.PLURAL,,Resources,资源
+ITEM_GROUP.TOOL.PLURAL,,Tools,工具
+
+LANGUAGE.LABEL,,Language,语言
+
+LIQUID.WATER.NOUN,,Water,水
+
+MADNESS.BROKEN.ADJECTIVE,,Broken,坏了
+MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",这个定居者是如此不高兴，他们已经被推过破裂点，将不再工作，甚至不吃东西！
+
+MATERIAL,Used for specifying which material something is made out of,Material,材质
+
+MATERIAL_TYPE,,Type,类型
+MATERIAL_TYPE.ANY,For allowing any kind of material to be used,Any,任何
+MATERIAL_TYPE.EARTH.ADJECTIVE,,Earthen,土
+MATERIAL_TYPE.EARTH.NOUN,,Earth,地球
+MATERIAL_TYPE.FOODSTUFF.NOUN,,Food,食物
+MATERIAL_TYPE.GEM.NOUN,This is only used as a noun,Gem,宝石
+MATERIAL_TYPE.METAL.ADJECTIVE,,Metallic,金属
+MATERIAL_TYPE.METAL.NOUN,,Metal,金属
+MATERIAL_TYPE.ORE.NOUN,This is only used as a noun,Ore,矿石
+MATERIAL_TYPE.OTHER.NOUN,This isn't actually used in-game yet so won't be combined with other words,Other,其他
+MATERIAL_TYPE.SEED.NOUN,For saying something is “made up of seed”,Seed,种子
+MATERIAL_TYPE.STONE.ADJECTIVE,,,
+MATERIAL_TYPE.STONE.NOUN,,Stone,石头
+MATERIAL_TYPE.VEGETABLE.NOUN,Used to make up “Vegetable soup”,Vegetable,蔬菜
+MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,维特里奥尔
+MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,维特里奥尔
+MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,木制的
+MATERIAL_TYPE.WOOD.NOUN,,Wood,木
+
+MENU.CONTINUE_GAME,,Continue game,继续游戏
+MENU.MODS,,Mods,MODS
+MENU.NEW_GAME,,Start new game,开始新游戏
+MENU.OPTIONS,,Options,选项
+MENU.QUIT,,Quit,退出
+MENU.TOGGLE_FULLSCREEN,,Toggle fullscreen,切换全屏
+
+METAL.BRONZE.ADJECTIVE,,Bronze,青铜
+METAL.BRONZE.NOUN,,Bronze,青铜
+METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and much more durable than copper alone. (Alloys have not yet been implemented in King under the Mountain),青铜是铜和锡的合金。 它比单纯铜更硬，更耐用。 (合金尚未在山下王实施)
+METAL.COPPER.ADJECTIVE,,Copper,铜
+METAL.COPPER.NOUN,,Copper,铜
+METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.",除了自然发生作为 {{ORE.NATIVE_COPPER.NOUN}}，它也很容易从 {{ORE.MALACHITE.NOUN}} 矿石中熔化。 铜有许多用途，特别是在硬币方面，虽然不难制造有效的武器。
+METAL.GOLD.ADJECTIVE,,Golden,金色
+METAL.GOLD.NOUN,,Gold,黄金
+METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.",金属之王 虽然黄金不是最稀有或最有价值的，但黄金是大多数种族 —— 尤其是矮人 —— 最令人垂涎的金属。
+METAL.IRON.ADJECTIVE,,Iron,铁
+METAL.IRON.NOUN,,Iron,铁
+METAL.IRON.TOOLTIP,,It is a poor military which does not have access to iron. Dwarven metalsmiths know the secrets of working this into {{METAL.STEEL.NOUN}}.,这是一个可怜的军队，没有获得铁。 矮人的金属工匠知道将此操作成 {{METAL.STEEL.NOUN}} 的秘密。
+METAL.PLATINUM.ADJECTIVE,,Platinum,铂金
+METAL.PLATINUM.NOUN,,Platinum,铂金
+METAL.PLATINUM.TOOLTIP,,A silver-white metal that is highly resistant to corrosion. Platinum is rarer and therefore more valuable than {{METAL.GOLD.NOUN}}.,一种银白色金属，具有高度耐腐蚀性。 铂金比 {{金属. 金属名词}} 更稀有，因此更有价值。
+METAL.SILVER.ADJECTIVE,,Silver,银色
+METAL.SILVER.NOUN,,Silver,银色
+METAL.SILVER.TOOLTIP,,"Like {{METAL.GOLD.NOUN}}, silver is often used for coinage and as solid bars for the trading of wealth. ",与 {{METAL.GOLD.NOUN}} 一样，银通常用于硬币，并用作财富交易的实心条。
+METAL.STEEL.ADJECTIVE,,Steel,钢铁
+METAL.STEEL.NOUN,,Steel,钢铁
+METAL.STEEL.TOOLTIP,,"Far stronger than {{METAL.IRON.NOUN}} which makes for superior weapons and tools, only the dwarves know the secret of creating steel.",比 {{METAL.IRON.NOUN}} 强得多，它使得优越的武器和工具，只有矮人知道创造钢铁的秘诀。
+METAL.TIN.ADJECTIVE,,Tin,锡
+METAL.TIN.NOUN,,Tin,锡
+METAL.TIN.TOOLTIP,,Tin can be smelted from {{ORE.CASSITERITE.NOUN}} and alloyed with {{METAL.COPPER.NOUN}} to produce {{METAL.BRONZE.NOUN}}. (Alloys have not yet been implemented in King under the Mountain),锡可以从 {{奥利. 锡石. 名词}} 中熔炼，并用 {{金属. 铜. 名词}} 合金制成 {{金属. 铜. 名词}}}。 (合金尚未在山下王实施)
+
+MODS.APPLY,,Apply,申请
+MODS.COMPATIBILITY.COMPATIBLE,,Yes,是
+MODS.COMPATIBILITY.INCOMPATIBLE,,No,否
+MODS.COMPATIBILITY.UNKNOWN,,Unknown,未知
+MODS.MISSING_MODS_DIALOG_TEXT,,This save file was last used while the following mods were active. These mods are now missing or disabled so the save may not load correctly.,这个保存文件是在以下 MODS 处于活动状态时使用的。 这些 MODS 现在丢失或禁用，所以保存可能无法正确加载。
+MODS.MISSING_MODS_SAVE_EXCEPTION_DIALOG_TEXT,,"The save file could not be loaded because either it is incompatible with this version of the game, or because some mods have been disabled or removed since this save was last loaded. The following mods were expected but are no longer active:","无法加载保存文件，因为它与这个版本的游戏不兼容, 或者因为一些 MODS 已被禁用或删除，因为这个保存上次加载. 以下 MODS 是预期的，但不再活动："
+MODS.TABLE.COMPATIBILITY,,Compatible?,兼容？
+MODS.TABLE.ENABLED,,Enabled?,已启用？
+MODS.TABLE.NAME,,Mod Name,国防部名称
+MODS.TABLE.ORDERING,,Re-order,重新排序
+MODS.TABLE.VERSION,,Mod Version,国防部版本
+
+MUSHROOM.DESCRIPTION,E.g. “Toadstool mushroom”,{{materialType.noun}},{{材料类型. 名词}}
+
+NEEDS.DRINK,,Drink,饮料
+NEEDS.FOOD,,Food,食物
+NEEDS.SLEEP,,Sleep,睡觉
+
+NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,你的矿工已经发现了一个新的领域！
+NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,探索
+NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.",{{character}}，已因 {{reason}} 死亡。
+NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},因 {{reason}} 死亡
+NOTIFICATION.DEATH.TITLE,,Settler death,定居者死亡
+NOTIFICATION.GAME_OVER.DESCRIPTION,,All things must come to an end. Your settlement lies abandoned.,一切都必须结束。 你的定居点就放弃了
+NOTIFICATION.GAME_OVER.TITLE,,Game Over,游戏结束
+NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,你们定居点的繁荣吸引了许多新移民来增加你们的人口。
+NOTIFICATION.IMMIGRANTS_ARRIVED.TITLE,,Immigration,移民局
+NOTIFICATION.MINING_COLLAPSE.DESCRIPTION,,An area has caved in due to a lack of pillars and supports.,由于缺乏支柱和支撑，一个区域已经陷入。
+NOTIFICATION.MINING_COLLAPSE.TITLE,,Mining collapse,矿业崩溃
+NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,对于 {{character}} 来说，艰难的困难已被证明太多，无法处理。
+NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,精神破裂
+
+ORE.BAUXITE.ADJECTIVE,,Bauxite,铝土矿
+ORE.BAUXITE.NOUN,,Bauxite,铝土矿
+ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a means of aluminium production is yet to be discovered.",铝土矿是铝的主要矿石。 遗憾的是，一种生产铝的手段尚未发现。
+ORE.BITUMINOUS_COAL.ADJECTIVE,,Bituminous coal,沥青煤
+ORE.BITUMINOUS_COAL.NOUN,,Bituminous coal,沥青煤
+ORE.BITUMINOUS_COAL.TOOLTIP,,This can be converted into {{ORE.COKE.NOUN}} using a {{FURNITURE.COKE_OVEN}}.,这可以使用 {{家具. COKE_烤箱}} 转换为 {{ORE.COKE. 名词}}。
+ORE.CASSITERITE.ADJECTIVE,,Cassiterite,锡石
+ORE.CASSITERITE.NOUN,,Cassiterite,锡石
+ORE.CASSITERITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.TIN.NOUN}}.,一种可以熔炼以生产 {{METAL.TIN.NOUN}} 的矿石。
+ORE.CHARCOAL.ADJECTIVE,,Charcoal,木炭
+ORE.CHARCOAL.NOUN,,Charcoal,木炭
+ORE.CHARCOAL.TOOLTIP,,{{FUEL.SACK}} produced from wooden {{RESOURCE.LOGS.PLURAL}}.,{{燃料. 麻袋}} 由木制 {{资源. 日志. 复数}} 生产。
+ORE.CHRYSOCOLLA.ADJECTIVE,,Chrysocolla,温石胶
+ORE.CHRYSOCOLLA.NOUN,,Chrysocolla,温石胶
+ORE.CHRYSOCOLLA.TOOLTIP,,"Often confused with turquoise, it is actually an ore of {{METAL.COPPER}}.",经常与绿松石混淆，它实际上是 {{METAL.COPPER}} 的矿石。
+ORE.COKE.ADJECTIVE,,Coke,可乐
+ORE.COKE.NOUN,,Coke,可乐
+ORE.COKE.TOOLTIP,,A refined form of {{ORE.BITUMINOUS_COAL}} which can be used as {{FUEL.SACK}}.,一种可用作 {{燃料袋 _煤炭}} 的精致形式。
+ORE.GALENA.ADJECTIVE,,Galena,加琳娜
+ORE.GALENA.NOUN,,Galena,加琳娜
+ORE.GALENA.TOOLTIP,,An ore that can be smelted to produce {{METAL.SILVER}}.,可以熔炼以生产 {{METAL.SILVER}} 的矿石。
+ORE.HEMATITE.ADJECTIVE,,Hematite,赤铁矿
+ORE.HEMATITE.NOUN,,Hematite,赤铁矿
+ORE.HEMATITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.IRON}}.,可以熔炼以生产 {{METAL.IRON}} 的矿石。
+ORE.ILMENITE.ADJECTIVE,,Ilmenite,伊尔米尼石
+ORE.ILMENITE.NOUN,,Ilmenite,伊尔米尼石
+ORE.ILMENITE.TOOLTIP,,"Ilmenite is the primary ore of titanium. Unfortunately, a means of titanium production is yet to be discovered.",伊尔米土是钛的主要矿石。 不幸的是，钛生产手段尚未发现。
+ORE.MALACHITE.ADJECTIVE,,Malachite,孔雀石
+ORE.MALACHITE.NOUN,,Malachite,孔雀石
+ORE.MALACHITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.COPPER}}.,可以熔炼以生产 {{METAL.COPPER}} 的矿石。
+ORE.NATIVE_COPPER.ADJECTIVE,,Native copper,原生铜
+ORE.NATIVE_COPPER.NOUN,,Native copper,原生铜
+ORE.NATIVE_COPPER.TOOLTIP,,Naturally-occuring {{METAL.COPPER}} which must be smelted before use.,自然发生 {{METAL.COPPER}}，必须在使用前熔炼。
+ORE.NATIVE_GOLD.ADJECTIVE,,Native gold,原生黄金
+ORE.NATIVE_GOLD.NOUN,,Native gold,原生黄金
+ORE.NATIVE_GOLD.TOOLTIP,,Naturally-occuring {{METAL.GOLD}} which must be smelted before use.,自然发生 {{METAL.GOLD}}，必须在使用前熔炼。
+ORE.NATIVE_PLATINUM.ADJECTIVE,,Native platinum,原生铂金
+ORE.NATIVE_PLATINUM.NOUN,,Native platinum,原生铂金
+ORE.NATIVE_PLATINUM.TOOLTIP,,Naturally-occuring {{METAL.PLATINUM}} which must be smelted before use.,自然存在 {{METAL.PLATINUM}}，必须在使用前熔炼。
+ORE.NATIVE_SILVER.ADJECTIVE,,Native silver,原生银
+ORE.NATIVE_SILVER.NOUN,,Native silver,原生银
+ORE.NATIVE_SILVER.TOOLTIP,,Naturally-occuring {{METAL.SILVER}} which must be smelted before use.,自然发生 {{METAL.SILVER}}，必须在使用前熔炼。
+ORE.POLLUCITE.ADJECTIVE,,Pollucite,有礼貌
+ORE.POLLUCITE.NOUN,,Pollucite,有礼貌
+ORE.POLLUCITE.TOOLTIP,,"Pollucite is an ore of Caesium, which is currently too dangerous to produce. Particularly crazy dwarven metalsmiths are currently trying to find a reliable method of production.",有粉石是铯的矿石，这是目前太危险的生产。 特别是疯狂的侏儒金属工匠目前正在试图找到一个可靠的生产方法。
+ORE.PYRITE.ADJECTIVE,,Fool's gold,傻瓜金子
+ORE.PYRITE.NOUN,,Fool's gold,傻瓜金子
+ORE.PYRITE.TOOLTIP,,"Also known as Pyrite, its pale-yellow appearance causes some to mistake it for gold. It has several uses when crushed, but care must be taken as it sparks when struck.",也被称为黄铁矿，其淡黄色的外观导致一些人误认为黄金。 粉碎时，它有几种用途，但必须小心，因为它在撞击时火花。
+ORE.THORIUM.ADJECTIVE,,Thorium,钍
+ORE.THORIUM.NOUN,,Thorium,钍
+ORE.THORIUM.TOOLTIP,,A silvery metallic ore which turns black when exposed to air. It is strangely warm to the touch.,一种银色金属矿石，暴露在空气中时变黑。 这是奇怪的温暖的触摸。
+ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,金刚石
+ORE.WOLFRAMITE.NOUN,,Wolframite,金刚石
+ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,一种金属矿石，使锡的冶炼复杂化。 它的熔点太高，无法通过正常工艺进行熔炼。
+
+OTHER.BRICK.NOUN,,Brick,砖块
+OTHER.CLAY_SOIL.NOUN,,Clay soil,黏土
+OTHER.GRASS.NOUN,,,
+
+PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,我接受
+PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,禁用报告
+PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,山下的国王正在积极发展。 为了帮助
+PRIVACY.OPT_IN.LINE_10,,- The stack trace of the exception which caused the crash,-导致崩溃的异常的堆栈跟踪
+PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to",诊断和修复错误，请点击下面的 “我接受”
+PRIVACY.OPT_IN.LINE_3,,send anonymous crash reports automatically.,自动发送匿名崩溃报告。
+PRIVACY.OPT_IN.LINE_4,," "," "
+PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,这仅由以下数据组成：
+PRIVACY.OPT_IN.LINE_6,,- The version of the game client,-游戏客户端的版本
+PRIVACY.OPT_IN.LINE_7,,- Your operating system,-您的操作系统
+PRIVACY.OPT_IN.LINE_8,,- Your graphics card and display settings,-您的显卡和显示设置
+PRIVACY.OPT_IN.LINE_9,,- Your options settings,-您的选项设置
+
+PRODUCT.ANVIL,,Anvil,铁砧
+PRODUCT.ANVIL.TOOLTIP,,A large block of metal used to hammer heated metal into shape. Required to construct a {{FURNITURE.FORGE}.,用于将加热金属锤成形的大块金属。 需要建造 {{家具. 锻造}}。
+PRODUCT.BARREL.HOOPS,,Barrel hoops,桶箍
+PRODUCT.BARREL.HOOPS.TOOLTIP,,Metal hoops used to construct a {{PRODUCT.BARREL.NOUN}}. Also used in some machinery.,用于构造 {{产品. 名词}}} 的金属箍。 也用于某些机械。
+PRODUCT.BARREL.NOUN,,Barrel,桶
+PRODUCT.BARREL.PLURAL,,Barrels,桶
+PRODUCT.BARREL.STAVES,,Barrel staves,桶木棒
+PRODUCT.BARREL.STAVES.TOOLTIP,,Curved wooden planks used to construct a {{PRODUCT.BARREL.NOUN}}.,用于构造 {{产品. 名词}}} 的弯曲木板。
+PRODUCT.BARREL.TOOLTIP,,A cylindrical container for liquids. The curved shape makes it easier to roll around.,用于液体的圆柱形容器。 弯曲的形状使其更容易滚动。
+PRODUCT.BOWL,A bowl for eating from,Bowl,碗
+PRODUCT.BOWL.DESCRIPTION,E.g. “Bowl of vegetable soup”,Bowl of {{cooking.soup.description}},碗 {{cooking.soup.description}}
+PRODUCT.BREAD.DOUGH.NOUN,,Dough,面团
+PRODUCT.BREAD.DOUGH.PLURAL,,Dough,面团
+PRODUCT.BREAD.DOUGH.TOOLTIP,,A mix of ingredients that can be baked into {{PRODUCT.BREAD.LOAF.PLURAL}} using an {{FURNITURE.BAKING_OVEN}}.,可以使用 {{家具. 烤箱}} 烘烤成 {{产品. 面包. 乐福. 复数}}} 的混合成分。
+PRODUCT.BREAD.LOAF.NOUN,Translations incorrect and need fixing,Bread loaf,麵包
+PRODUCT.BREAD.LOAF.PLURAL,Translations incorrect and need fixing,Bread loaves,麵包
+PRODUCT.BREAD.LOAF.TOOLTIP,,"Prepared bread, ready to eat!",准备好面包，准备吃！
+PRODUCT.BUCKET.NOUN,,Bucket,桶
+PRODUCT.BUCKET.PLURAL,,Buckets,水桶
+PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,用于手动移动液体的小容器。
+PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,大锅
+PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.",由 {{PROFESSION.CHEF}} 用于在 {{ROOMS.KITCHEN}} 中准备汤，然后将其移至 {{ROOMS.FEASTING_HALL}} 中。
+PRODUCT.MILLSTONE,,Millstone,米尔斯通
+PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mill harvested crops. Used to construct a {{FURNITURE.FLOUR_MILL}}.,两个大型石盘一起研磨收获的农作物。 用于构建 {{家具. 面粉 _ 磨坊}}。
+PRODUCT.RATION.NOUN,,Ration,口粮
+PRODUCT.RATION.PLURAL,,Rations,口粮
+PRODUCT.RATION.TOOLTIP,,"These will last a long time to feed your settlers, but you will need other sources of food as a priority.",这些将持续很长一段时间来养活你的定居者，但你需要其他来源的食物作为优先事项。
+
+PROFESSION.BAKER.VERB,,Baking,烘烤
+PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,铁匠
+PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,铁匠
+PROFESSION.BLACKSMITH.TOOLTIP,,Crafts items using metal and also produces metal from ore.,工艺品使用金属，也从矿石生产金属。
+PROFESSION.BLACKSMITH.VERB,,Forging,锻造
+PROFESSION.CARPENTER.FEMALE_NOUN,,Carpenter,木匠
+PROFESSION.CARPENTER.MALE_NOUN,,Carpenter,木匠
+PROFESSION.CARPENTER.TOOLTIP,,Creates wooden furniture and items.,创建木制家具和物品。
+PROFESSION.CARPENTER.VERB,,Crafting,手工制作
+PROFESSION.CHEF.FEMALE_NOUN,,Chef,厨师
+PROFESSION.CHEF.MALE_NOUN,,Chef,厨师
+PROFESSION.CHEF.TOOLTIP,,Prepares all of the food to be consumed by your settlers.,准备所有的食物，供你的工人消耗。
+PROFESSION.CHEF.VERB,,Cooking,烹饪
+PROFESSION.FARMER.FEMALE_NOUN,,Farmer,农民
+PROFESSION.FARMER.MALE_NOUN,,Farmer,农民
+PROFESSION.FARMER.PLURAL,,Farmers,农民
+PROFESSION.FARMER.TOOLTIP,,"Plants, tends and harvests crops.",植物，倾向和收获作物。
+PROFESSION.FARMER.VERB,,Farming,农业
+PROFESSION.FISHER.FEMALE_NOUN,This could be “fisherman” and “fisherwoman”,Fisher,费舍尔
+PROFESSION.FISHER.MALE_NOUN,,Fisher,费舍尔
+PROFESSION.FISHER.TOOLTIP,,Catches fish from bodies of water for use as food and resources.,从水体中捕获鱼类，用作食物和资源。
+PROFESSION.FISHER.VERB,,Fishing,钓鱼
+PROFESSION.HUNTER.FEMALE_NOUN,This could be “huntsman” and “huntress”,Hunter,亨特
+PROFESSION.HUNTER.MALE_NOUN,,Hunter,亨特
+PROFESSION.HUNTER.TOOLTIP,,Tracks and kills wild animals for their meat and pelts.,追踪和杀死野生动物的肉和毛皮。
+PROFESSION.HUNTER.VERB,,Hunting,打猎
+PROFESSION.MAYOR.FEMALE_NOUN,"In English at least, “mayoress” is incorrect",Mayor,市长
+PROFESSION.MAYOR.MALE_NOUN,,Mayor,市长
+PROFESSION.MAYOR.VERB,,Governing,管理
+PROFESSION.MERCHANT.FEMALE_NOUN,,Merchant,商人
+PROFESSION.MERCHANT.MALE_NOUN,,Merchant,商人
+PROFESSION.MERCHANT.VERB,,Trading,交易
+PROFESSION.MILLER.VERB,"Not a fully implemented profession, just used to describe “Milling flour”",Milling,铣削
+PROFESSION.MINER.FEMALE_NOUN,,Miner,矿工
+PROFESSION.MINER.MALE_NOUN,,Miner,矿工
+PROFESSION.MINER.TOOLTIP,,Excavates new areas using a {{TOOL.PICKAXE}}.,使用 {{{工具. 皮卡克斯}} 挖掘新区域。
+PROFESSION.MINER.VERB,,Mining,采矿
+PROFESSION.NOBLE.FEMALE_NOUN,,Noble,高贵
+PROFESSION.NOBLE.MALE_NOUN,,Noble,高贵
+PROFESSION.NOBLE.TOOLTIP,,"Nobles do not fulfil jobs in the same way as common settlers, but bring fame and prestige to your settlement.",贵族不像普通定居者那样完成工作，而是为您的定居点带来名声和声望。
+PROFESSION.NOBLE.VERB,,Reigning,在位
+PROFESSION.RUNESMITH.FEMALE_NOUN,from “runes” and “blacksmith”,Runesmith,鲁尼斯米特
+PROFESSION.RUNESMITH.MALE_NOUN,"This is an invented term for the game, but should be derived",Runesmith,鲁尼斯米特
+PROFESSION.RUNESMITH.TOOLTIP,,"Enchants weapons, armour and items with magical runes to boost their abilities.",魔法武器，盔甲和神奇的符文物品，以提高他们的能力。
+PROFESSION.RUNESMITH.VERB,,Enchanting,迷人的
+PROFESSION.STONEMASON.FEMALE_NOUN,,Stonemason,斯托尼马森
+PROFESSION.STONEMASON.MALE_NOUN,,Stonemason,斯托尼马森
+PROFESSION.STONEMASON.TOOLTIP,,Crafts furniture and items from stone.,从石头工艺家具和物品。
+PROFESSION.STONEMASON.VERB,,Sculpting,雕刻
+PROFESSION.TINKERER.FEMALE_NOUN,,Tinker,小叮当
+PROFESSION.TINKERER.MALE_NOUN,,Tinker,小叮当
+PROFESSION.TINKERER.VERB,,Tinkering,修补
+PROFESSION.VILLAGER.FEMALE_NOUN,,Villager,村民
+PROFESSION.VILLAGER.MALE_NOUN,,Villager,村民
+PROFESSION.VILLAGER.TOOLTIP,,This settler does not have any specific professions and will fulfil any mundane tasks like hauling items.,这个定居者没有任何特定的职业，将完成任何平凡的任务，如运送物品。
+PROFESSION.VILLAGER.VERB,,Working,工作
+PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberjane”,Woodcutter,伐木机
+PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,伐木机
+PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,砍伐树木作为木材，可以在 {{ROOMS.SAWMILL}} 中使用。
+PROFESSION.WOODCUTTER.VERB,,Chopping,切断
+
+RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,矮人
+RACE.DWARF.FEMALE_NOUN,,Dwarf,矮人
+RACE.DWARF.FEMALE_PLURAL,,Dwarves,矮人
+RACE.DWARF.MALE_ADJECTIVE,,Dwarven,矮人
+RACE.DWARF.MALE_NOUN,The male and female forms are only for languages that need them,Dwarf,矮人
+RACE.DWARF.MALE_PLURAL,Note that I'm going with Tolkein's spelling of “dwarves” rather than “dwarfs”,Dwarves,矮人
+RACE.DWARF.TOOLTIP,,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,矮人是短而矮胖的人形。 他们是石头和金属工作的主人。 大多数矮人不信任天空，宁愿留在地下。
+
+RESOURCE.CRUSHED.VITRIOL.NOUN,,Vitriol,维特里奥尔
+RESOURCE.CRUSHED.VITRIOL.PLURAL,,Vitriol,维特里奥尔
+RESOURCE.CRUSHED.VITRIOL.TOOLTIP,,A salt of sulphuric acid with many uses in industry. (Usages of vitriol are not yet implemented in King under the Mountain),在工业中有许多用途的硫酸盐。 （玻璃醇的使用尚未在山下王中实施）
+RESOURCE.FLOUR.SACK.NOUN,,Flour,面粉
+RESOURCE.FLOUR.SACK.PLURAL,,Flour,面粉
+RESOURCE.FLOUR.SACK.TOOLTIP,,Grain that has been milled into a fine powder ready to be used as an ingredient in the production of food.,已经研磨成精细粉末的谷物，准备用作食品生产的成分。
+RESOURCE.GEM.NOUN,,Gem,宝石
+RESOURCE.GEM.PLURAL,,Gems,宝石
+RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beauty. Most commonly used as ornamentation.,经过切割和抛光的宝石，以增强他们的美丽。 最常用作装饰。
+RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,未切割宝石
+RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,未切割的宝石
+RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,一块石头，含有准备进行切割和抛光的宝石。
+RESOURCE.LOGS.NOUN,,Log,日志
+RESOURCE.LOGS.PLURAL,,Logs,日志
+RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.",最常用于 {{{资源. 浮游. 复数}}} 中，但也有其他用途的树的部分。
+RESOURCE.METAL.BLOOM.NOUN,,Bloom,绽放
+RESOURCE.METAL.BLOOM.PLURAL,,Blooms,绽放
+RESOURCE.METAL.BLOOM.TOOLTIP,,A lump of metal mixed with slag which must be hammered into a usable form.,一块金属与炉渣混合，必须敲定成可用的形式。
+RESOURCE.METAL.INGOT.NOUN,,Ingot,锭
+RESOURCE.METAL.INGOT.PLURAL,,Ingots,锭
+RESOURCE.METAL.INGOT.TOOLTIP,,"Refined metal blocks, ready to be used as a crafting ingredient.",精制金属块，可用作工艺成分。
+RESOURCE.METAL.PLATE.NOUN,,Plate,盘子
+RESOURCE.METAL.PLATE.PLURAL,,Plates,盘子
+RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the larger machinery.",在一些较大的机械中使用的大型平板。
+RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,蘑菇原木
+RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,蘑菇原木
+RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,已经注入 {{成分. 蘑菇. 草. 名词}}} 的日志。 原木本身就是蘑菇吸收营养的地方。 在完全无害后，它需要在 {{家具。蘑菇 _Shok_Tank}} 中冲洗。
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,日志
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,日志
+RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,一个巨型蘑菇的部分，可以用相同的方式作为木 {{资源. LOGS.複数}}。
+RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,碎矿石
+RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,碎矿石
+RESOURCE.ORE.CRUSHED.TOOLTIP,,"A metallic sand created by breaking down raw metal ore, ready for use in a {{FURNITURE.BLOOMERY_FURNACE}}.",通过分解原始金属矿石而形成的金属砂，可用于 {{家具 .BLOMERY_FARE}} 中。
+RESOURCE.ORE.UNREFINED.NOUN,,Ore,矿石
+RESOURCE.ORE.UNREFINED.PLURAL,,Ore,矿石
+RESOURCE.ORE.UNREFINED.TOOLTIP,,Stone that contains metallic ores which can be processed into usable metal.,含有金属矿石的石头，可以加工成可用的金属。
+RESOURCE.PLANKS.NOUN,,Plank,木板
+RESOURCE.PLANKS.PLURAL,,Planks,木板
+RESOURCE.PLANKS.TOOLTIP,,Sections of wood of a fixed size so they can be easily used in constructions and crafting.,固定尺寸的木材部分，因此它们可以很容易地用于建筑和工艺。
+RESOURCE.SHOCKED.MUSHROOM.LOG.NOUN,,Mushroom log,蘑菇原木
+RESOURCE.SHOCKED.MUSHROOM.LOG.PLURAL,,Mushroom logs,蘑菇原木
+RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,This mushroom-infused log has been “shocked” in water to encourage the mushrooms to develop and should produce a harvest soon.,这种注入蘑菇的原木已经在水中 “震惊”，以鼓励蘑菇发育，并应该很快产生收获。
+RESOURCE.STONE.BLOCK.NOUN,,Block,块
+RESOURCE.STONE.BLOCK.PLURAL,,Blocks,块
+RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,已经形成立方体的石头，因此可以很容易地用于建筑或制作。
+RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,粗石巨石
+RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,粗石巨石
+RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,一块巨大的石头，必须由 {{PROFESSION.STONEMASON}} 切成更有用的形状。
+
+ROOMS.BEDROOM,,Bedroom,卧室
+ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",你的工人睡觉的地方。 他们更喜欢拥有至少 9 个瓷砖大小的单独卧室，最好至少 13 个瓷砖大小。
+ROOMS.BRIDGE,,Bridge,桥梁
+ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.,放置在河对面，以允许访问的另一边。
+ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,木工车间
+ROOMS.CARPENTRY_WORKSHOP.TOOLTIP,,This workshop produces most wooden tools and items.,这个工作坊生产大多数木制工具和物品。
+ROOMS.COMPONENT.STOCKPILE.DESCRIPTION,,{{allocated}} of {{total}} spaces currently in use,{{allocated}} 个当前正在使用的空格中的 {{total}} 个
+ROOMS.EARTHWORKS,,Earthworks,土方工程
+ROOMS.EARTHWORKS.TOOLTIP,,An outdoor area for large constructions.,用于大型建筑的户外区域。
+ROOMS.FARM,,Farm plot,農場
+ROOMS.FARM.PLURAL,,Farm plots,農業地
+ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.,使用 {{成分. 种子. 复数}} 种植作物. 必须放置在 {{材料 _ 类型. 地球名词}} 上。
+ROOMS.FEASTING_HALL,,Feasting hall,宴會館
+ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!",定居者聚集在一起吃饭、喝酒和快乐的地方！
+ROOMS.GRAVEYARD,,Graveyard,墓地
+ROOMS.GRAVEYARD.TOOLTIP,,Deceased settlers are laid to rest here.,已故的定居者安置在这里休息。
+ROOMS.KITCHEN,,Kitchen,厨房
+ROOMS.KITCHEN.TOOLTIP,,Most food is prepared here before being served in a {{ROOMS.FEASTING_HALL}}.,大多数食物都是在这里准备好的，然后在 {{房间盛宴 _HOL}} 中供应。
+ROOMS.MASONRY_WORKSHOP,,Masonry workshop,砌体车间
+ROOMS.MASONRY_WORKSHOP.TOOLTIP,,This workshop produces most items made out of stone.,这个工作坊生产大多数由石头制成的物品。
+ROOMS.METALWORKS,,Metalworks,金属制品
+ROOMS.METALWORKS.TOOLTIP,,Metal ore is refined and used in crafting here.,金属矿石经过精炼并用于这里的制作。
+ROOMS.MUSHROOM_FARM,,Mushroom farm,蘑菇農場
+ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,蘑菇可以使用 {{成分. 蘑菇. 香菇}} 和木制 {{资源. 日志. 复数}} 种植。
+ROOMS.SAWMILL,,Sawmill,锯木厂
+ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,木制 {{资源. 日志. 复数}} 在这里精炼成 {{资源. 浮游. 复数}}。
+ROOMS.STOCKPILES,,Stockpiles,库存
+ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,未使用的物品被放置在库存中，以便轻松获取。
+
+SEASON.AUTUMN,,Autumn,秋天
+SEASON.SPRING,,Spring,春天
+SEASON.SUMMER,,Summer,夏天
+SEASON.WINTER,,Winter,冬天
+
+SEED.BARLEY_SEED,,Barley,大麦
+SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",只用于生产啤酒的谷物。 可以在 {{季节. 春季}}，{{季节. 夏季}} 或 {{季节. 秋季}} 种植。
+SEED.BERSERKER_MUSHROOM_SPAWN,,Berserker,-是狂暴者
+SEED.BERSERKER_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP}},A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,蘑菇与粉红色的帽子轴承白色斑点。 它具有致幻特性，战士有时用于战斗准备。
+SEED.CARROT_SEED,,Carrot,胡萝卜
+SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",一种耐寒的根茎蔬菜，能够在 {{季节. 冬季}} 霜冻中生存下来。 胡萝卜生长迅速，但只产生一个小作物。 可以在 {{季节. 春季}}，{{季节. 夏季}} 或 {{季节. 秋季}} 种植。
+SEED.CORN_SEED,,Corn,玉米
+SEED.CORN_SEED.TOOLTIP,{{VEGETABLE.CORN.TOOLTIP}},"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",谷物也被称为玉米。 它产生丰富的作物，但大约需要 2 个季节才能生长，无法生存 {{SEASON.WINTER}}，所以它需要在早期种植 {{SEASON.SPRING}}。
+SEED.DEATH_CAP_SPAWN,,Death cap,死亡帽
+SEED.DEATH_CAP_SPAWN.TOOLTIP,{{VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP}},"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",一个非常有毒的蘑菇，宽，扁平的帽子。 饮食甚至少量几乎肯定会导致中毒，这可能导致死亡。
+SEED.ELFSBANE_SPAWN,,Elfsbane,埃尔夫斯巴内
+SEED.ELFSBANE_SPAWN.TOOLTIP,{{VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP}},"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.",这种蘑菇对大多数人形人体都有一种简单、无味的味道。 奇怪的是，它的味道绝对恶心的精灵，他们经常会在食用时发生爆炸性呕吐反应，或在极端情况下，心脏病发作。
+SEED.FIST_SPAWN,,Fist,拳头
+SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,具有金属味道的黑蓝蘑菇。 它被命名为黑暗时代的一群诗人。
+SEED.GLOW_SPAWN,,Glow,发光
+SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,一种神奇的蘑菇，散发光线，并随着季节变化颜色。
+SEED.HOPS_SEED,,Hops,啤酒花
+SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,用于啤酒调味的花。 必须在 {{季节. 春天}} 种植。
+SEED.MILTONIA_SPAWN,,Miltonia,米尔托尼亚
+SEED.MILTONIA_SPAWN.TOOLTIP,{{VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP}},"Once thought to exist only in the Hudds region, it is now found throughout the world.",曾经被认为只存在于哈德地区，现在已遍布世界各地。
+SEED.POTATO_SEED,,Potato,马铃薯
+SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",一种淀粉根植物，可以存活 {{SEASON.WINTER}}，使其成为大多数定居点的不错选择。 可以在 {{季节. 春季}}，{{季节. 夏季}} 或 {{季节. 秋季}} 种植。
+SEED.PURPLE_HELMET_SPAWN,,Purple helmet,紫色头盔
+SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.",胖帽子，丰满的头巾，浮肿头盔; 这个传说中的蘑菇通过许多名字。 传说认为，很久以前，许多矮人群体完全靠这种真菌的驯化菌株生存。
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN,,Rociomycota,红霉菌
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP}},A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,白色和黑色的斑点蘑菇。 已知会影响那些摄取它的人的外观。
+SEED.SUNGLOW_SPAWN,,Sunglow,太阳光
+SEED.SUNGLOW_SPAWN.TOOLTIP,{{VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP}},A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,一种明亮的黄色蘑菇，随着阳光的外观发光。 它在收获的那一刻就失去了这个光芒。
+SEED.SYRUP_POWDER_SPAWN,,Syrup powder,糖浆粉
+SEED.SYRUP_POWDER_SPAWN.TOOLTIP,{{VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP}},"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.",圆形橙色/黄色蘑菇与白色底部。 据说法师很久以前就已经使用过，但出于什么目的，没有人知道。
+SEED.TOMATO_SEED,,Tomato,番茄
+SEED.TOMATO_SEED.TOOLTIP,{{VEGETABLE.TOMATO.TOOLTIP}},A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,植物生长大的红色浆果经常用作蔬菜。 只能在 {{季节. 春天}} 种植。
+SEED.WHEAT_SEED,,Wheat,麦子
+SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",谷物谷物通常用于生产面包。 它可以存活 {{季节. 冬季}}，但需要一段时间才能生长，所以它要么是在 {{季节. 春季}} 或 {{季节. 秋季}} 中种植。
+
+SHRUB.DESCRIPTION,Shrub or bush should do,Bush,布什
+
+STOCKPILE.GRANARY,,Granary,粮仓
+STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,存储不会过期的谷物和种子。
+STOCKPILE.PANTRY,,Pantry,茶水间
+STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,存储收获的水果和蔬菜，可以过期。
+STOCKPILE.RESOURCES,,Resources,资源
+STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,存储大多数不属于其他类型库存的资源。
+STOCKPILE.TOOLS,,Tools,工具
+STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,存储处理作业所需的工具。
+
+STONE.BASALT.ADJECTIVE,,Basalt,玄武岩
+STONE.BASALT.NOUN,,Basalt,玄武岩
+STONE.BASALT.TOOLTIP,,An igneous rock formed by the rapid cooling of lava. Almost all of the volcanic rock in the world is basalt.,熔岩快速冷却形成的火成岩石。 几乎所有的火山岩在世界上是玄武岩。
+STONE.DOLOSTONE.ADJECTIVE,,Dolostone,多洛斯通
+STONE.DOLOSTONE.NOUN,,Dolostone,多洛斯通
+STONE.DOLOSTONE.TOOLTIP,,"A sedimentary rock mostly made up of the mineral dolomite, so it is also known as dolomite rock.",主要由矿物白云石组成的沉积岩，因此也被称为白云石岩。
+STONE.FRONITE.ADJECTIVE,,Frónite,弗洛尼特
+STONE.FRONITE.NOUN,,Frónite,弗洛尼特
+STONE.FRONITE.TOOLTIP,,A blue-hued rock mostly found on an icy island to the north. It has a high iron content.,一块蓝色的岩石大多发现在北部的冰岛上。 它具有高铁含量。
+STONE.GRANITE.ADJECTIVE,,Granite,花岗岩
+STONE.GRANITE.NOUN,,Granite,花岗岩
+STONE.GRANITE.TOOLTIP,,"A common type of igneous rock. It has a large proportion of quartz, making it good for locating certain gemstones.",火成岩的常见类型。 它含有很大比例的石英，非常适合定位某些宝石。
+STONE.LIMESTONE.ADJECTIVE,,Limestone,石灰石
+STONE.LIMESTONE.NOUN,,Limestone,石灰石
+STONE.LIMESTONE.TOOLTIP,,A lightly-coloured sedimentary rock which makes for a good building material. It is also used as a flux in the production of {{METAL.STEEL.NOUN}}.,一种浅色的沉积岩，使其成为一种良好的建筑材料。 它也被用作生产 {{金属. 钢铁. 名词}} 的助剂。
+STONE.MARBLE.ADJECTIVE,,Marble,大理石
+STONE.MARBLE.NOUN,,Marble,大理石
+STONE.MARBLE.TOOLTIP,,A metamorphic rock which is used as a high-quality material for sculpture and masonry due to its brilliant appearance.,由于其辉煌的外观，被用作雕塑和砌体的高品质材料的变质岩石。
+STONE.SANDSTONE.ADJECTIVE,,Sandstone,砂岩
+STONE.SANDSTONE.NOUN,,Sandstone,砂岩
+STONE.SANDSTONE.TOOLTIP,,"A sedimentary rock composed of sand-like fragments. ",由沙状碎片组成的沉积岩。
+STONE.SHALE.ADJECTIVE,,Shale,页岩
+STONE.SHALE.NOUN,,Shale,页岩
+STONE.SHALE.TOOLTIP,,A fine-grained sedimentary rock composed of pressurized mud. It can be easily broken into thin layers.,由加压泥组成的细粒沉积岩。 它可以很容易地分解成薄层。
+STONE.SLATE.ADJECTIVE,,Slate,石板
+STONE.SLATE.NOUN,,Slate,石板
+STONE.SLATE.TOOLTIP,,A metamorphic rock that is usually formed out of {{STONE.SHALE.NOUN}}. It is often made into tiles for roofing or writing.,一种变质岩石，通常由 {{石头 .SHALE.NON}} 形成。 它通常被制成瓦屋顶或写作。
+
+TOOL.AXE.NOUN,,Axe,斧头
+TOOL.AXE.TOOLTIP,,Used to chop down trees. The primary tool of a {{PROFESSION.WOODCUTTER}}.,用来砍树木。 {{专业. 伐木机}} 的主要工具。
+TOOL.CHISEL.NOUN,,Chisel,凿子
+TOOL.CHISEL.TOOLTIP,,Used to sculpt rock into shape. One of the tools used by a {{PROFESSION.STONEMASON}}.,用于将岩石雕刻成形状。 {{PROFESSION.STONEMASON}} 使用的工具之一。
+TOOL.FISHING.ROD.NOUN,,Fishing rod,钓竿
+TOOL.FISHING.ROD.TOOLTIP,,Used to catch fish from a body of water. The primary tool of a {{PROFESSION.FISHER}}.,用来捕鱼从水体。 {{专业. 费舍尔}} 的主要工具。
+TOOL.KITCHEN.KNIFE.NOUN,,Kitchen knife,厨刀
+TOOL.KITCHEN.KNIFE.TOOLTIP,,"Used to prepare food, particularly meat.",用于准备食物，特别是肉类。
+TOOL.LARGE.HAMMER.NOUN,,Large hammer,大锤
+TOOL.LARGE.HAMMER.TOOLTIP,,Used to bash large items of stone and metal into shape. The primary tool of a {{PROFESSION.BLACKSMITH}}.,用于将石头和金属的大型物品打成形状。 {{PROFESSION.BLACKSMITH}} 的主要工具。
+TOOL.PICKAXE.NOUN,,Pickaxe,扒手
+TOOL.PICKAXE.TOOLTIP,,Used to break stone into smaller pieces. The primary tool of a {{PROFESSION.MiNER}}.,用于将石头分解成较小的碎片。 {{专业. 矿工}} 的主要工具。
+TOOL.PLANE.NOUN,A carpenter's plane,Plane,飞机
+TOOL.PLANE.TOOLTIP,,Used to shave wooden furniture and items into shape. The primary tool of a {{PROFESSION.CARPENTER}}.,用于将木制家具和物品刮成形状。 {{PROFESSION.CARPENTER}} 的主要工具。
+TOOL.ROLLING.PIN.NOUN,,Rolling pin,滚针
+TOOL.ROLLING.PIN.TOOLTIP,,Used to prepare dough. One of the tools used by a {{PROFESSION.CHEF}}.,用来准备面团。 {{PROFESSION.CHEF}} 使用的工具之一。
+TOOL.SAW.NOUN,A carpenter's saw,Saw,看到了
+TOOL.SAW.TOOLTIP,,Used to cut wood into shape. Required for cutting lumber in the {{ROOMS.SAWMILL}}.,用于将木材切成形状。 用于切割 {{ROOMS.SAWMILL}} 中的木材。
+TOOL.SMALL.HAMMER.NOUN,,Hammer,锤子
+TOOL.SMALL.HAMMER.TOOLTIP,,Used to bash small items of stone and metal into shape. One of the tools used by a {{PROFESSION.BLACKSMITH}}.,用于将石头和金属的小物品打成形状。 {{PROFESSION.BLACKSMITH}} 使用的工具之一。
+TOOL.TONGS.NOUN,A blacksmith's tongs,Tongs,钳子
+TOOL.TONGS.TOOLTIP,,Used to hold extremely hot metal items. Used in the process of smelting metal ore.,用于容纳极其热的金属物品。 用于冶炼金属矿石的过程。
+
+TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{物质类型. 名词}} 树
+
+TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.",您的定居者有三个基本需求需要满足：食物、饮料和睡觉的地方。 虽然他们现在会抱怨它，但他们可以从附近的河流喝酒，睡在地上。 他们不能做的是魔法了一些食物从哪里（至少，不是没有一个法师！） 所以我们将重点放在食物上。
+TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.",每个春天你应该做的第一件事是确保有足够的作物种植在秋季的收获。 农业是一种可靠和可持续的食物来源，但您需要确保每年收获期间有足够的作物来养活您的人口。
+TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",遵循的一个很好的经验法则是确保您的人口中每个定居者都有 10 块庄稼播种。 目前有 7 个定居者在四处铣削，所以继续点击 “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”，并在草地区指定/拖出几个农场地块。
+TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.",没有别的事情可做，你的定居者将开始准备这些 {{ROOMS.FARM.PLURAL}}，通过耕作地球准备播种的种子。 这不需要任何特殊的工具或知识，所以每个人都应该参与。
+TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",这将准备播种的地块，但是在农民来种植相关种子之前，您需要选择在每个农场地上种植哪个作物。 你的定居者带来了一系列不同的种子。 您可以单击右上角的 “资源”，获取结算中所有商品的明细。
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ",为了让你的农民真正获得这些种子，他们需要储存在一个矮人的库存中，而不是像现在那样储存在一个矮人的库存中。 点击 {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{储存储存 .粮仓}}（您可以右键单击返回到上一个菜单），并指定一个区域用作 {{储存 .粮仓}}，其中种子和谷物存储。
+TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.",经过一段时间之后，您的定居者应该把他们没有使用的物品放入库中，就像要播种的种子一样。
+TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.",左键单击每个 {{{ROMS.FARM. 复数}}，然后选择要在那里种植的作物。 现在不要选择 {{{蔬菜. 大麦}} 或 {{蔬菜. 啤酒花}}，因为这些作物用于生产啤酒，而不是食物。
+TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,您的 {{{{专业. 农民. 复数}} 现在将开始工作，播种您选择的种子 {{Rooms.FARM. 复数}}}。 播种种子不需要任何特殊的工具，但您可能希望将更多的定居者分配为 {{{ORTI.GER .複数}}}。 左键点击一个定居者谁是漫无目的地徘徊。
+TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.",点击定居者可以看到他们的名字、职业、库存、需求和幸福。 点击其他职业旁边的空白方形按钮，将第三个职业也就是最后一个职业设置为 {{{职业. 灰天. NON}}}。
+TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.",请注意，某些作业要求工作人员在其库存中具有特定的工具，如果结算中没有可用的工具，则不会处理需要该工具的作业。 例如，您可以将更多定居者分配为 {{{{专业. 伐木刀}}}，但如果没有可用的 {{PROFESSION.WOODCUTTER}}，他们就无法砍伐树木。
+TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",您的农作物现在将在 {{季节. 秋季}} 中生长并最终由您的 {{{职业. 农民. 复数}} 收获。 有些农作物可以在今年晚些时候再次种植，并通过 {{PROFESSION.FARMER.PLURAL}} 生存，但有些农作物不能生存。 为了充分利用你的作物，最好是生产汤从收获的蔬菜，或面包从谷物。
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.",一旦你的作物准备就绪，让我们得到一个 {{ROOMS.KITCHEN}} 设置来生产汤。 转到顶层菜单，然后 {{ZONES.LABEL}} > {{房间. 厨房}} 并拖出 {{房间. 厨房}}} 区域。 在山下国王的发展这一点上，无论它是在室外还是室内都没关系，但在未来，你会希望你所有的房间都有一个天花板来保护他们免受元素的影响。
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.",与农场地块不同，厨房（和大多数其他房间）需要家具才能发挥作用。 当您放置了厨房区域时，点击 “家具”，您将看到可以添加的家具。 要生产汤，你需要在同一个厨房区域建立 {{家具. 水桶}}，{{家具. 厨房 _ 工作台式}} 和 {{家具. 锅炉}}}。 此外，指定一个 {{储存 .SCAVER}} 区域来存储任何收获的作物。
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CHEFS_CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!",当你的农作物收获后，厨师会把蔬菜带到 {{家具 .Kitchen_WORKTOP}}，然后将它们添加到 {{家具 .厨师 _CULDRON}} 中，用水和生产汤！ 制作汤和烘烤面包意味着你的食物供应将更进一步-一个蔬菜将喂一个矮人一顿饭，但 3 个蔬菜煮成汤将提供 12 餐！
+TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",最终，这个厨房会生产一个充满蒸热汤的大锅，但厨师们不喜欢其他矮人在他们的厨房里得到的方式，所以你需要把汤带到一个宴会厅，以便整个定居点享受。 点击 {{ZONES.LABEL}} > {{房间节奏 _ 大厅}} 指定一个宴会厅，然后添加一个 {{家具. 大厅}}。 请注意，在提供含有浓厚美味汤的大锅之前，不会放置一个宴会厅大锅。
+TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,随着时间的推移，你会希望扩大你的粮食生产，但这将使我们的小定居点在即将到来的冬天得到营养-你的定居者带来了口粮来维持粮食生产，同时第一批作物生长。
+TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.",大多数物品和家具都是从 {{材料 _ 类型. 木材. 形容词}} {{资源. 浮游. 复数}} 或 {{材料 _ 类型. 石头. 形容词}}} {{资源. 块. 复数}} 生产的。 重要的是要保持大量的这些。 {{材料 _ 类型. 木材. 形容词}} {{资源. 浮游. 复数}}} 中产生，{{材料 _ 类型. 石头形容词}} {{{资源. 石头. 复数}} 是由 {{专业. 石头}} 中的 {{MATERIAL_TYPE.WOOD.ADJECTIVE}} 中制作的。 放置这些区域中的一个区域，并在其中建立一个 {{家具. 木材切割机 _ 工作台}} 和 {{家具. 石材 _ 工作台}}。
+TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.",现在你已经准备好生产 {{{材料 _ 类型. 木材. 形容词}} {{资源. 浮游. 复数}} 和 {{材料 _ 类型. 石头形容词}} {{资源. 块. 复数}}，但它们需要其他资源来制造它们-{{材料 _ 类型. 木材. 形容词}} {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{资源. {{RESOURCE.PLANKS.PLURAL}}。 幸运的是，这些通常可以很容易地从游戏世界收获.
+TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each.,选择 {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}}，然后单击并拖动树木，让您的伐木师知道要砍伐它们。 同样，您可以选择 {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}}，然后单击并拖动要指定开采的山区。 从两者中选择足够多的备份库存，可以建立多达 40 个库存。
+TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",小心采矿！ 在该区域内没有 {{家具 .PARE}}} 的开采区域将崩溃！
+TUTORIAL.CAMERA.A,,"You can use the W, A, S and D keys or the arrow keys to pan the camera around. Moving the cursor to the edge of the screen also pans the camera, but this can be disabled in the options menu.",
+TUTORIAL.CAMERA.B,,Scrolling the mouse wheel or pressing the Q and E keys zooms the camera in or out.,
+TUTORIAL.CAMERA.C,,"In the lower-right section of the screen is the minimap, and you can click on this to jump the camera to that point. Click on the “Minimap” label to show or hide the minimap.",
+TUTORIAL.CAMERA.D,,Try out these camera controls and then click “Next” to proceed.,
+TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. For your next challenge, aim to set up a functioning {{ROOMS.METALWORKS}} with a {{FURNITURE.FORGE}} provided with fuel and refined metal ore. Refined metal ores are produced at the {{FURNITURE.ORE_CRUSHING_STATION}}, and fuel can be crushed from coal or produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} with a {{FURNITURE.CHARCOAL_CLAMP}} in an {{ROOMS.EARTHWORKS}}. Good luck!",这涵盖了在山下玩王的基础知识。 对于您的下一个挑战，目标是建立一个可运作的 {{ROOMS.METALWORKS}}，提供燃料和精炼金属矿石。 精制金属矿石是在 {{{家具 .ORE_CLOG}} 生产的，燃料可以从煤粉碎或从 {{材料 _ 类型. 木材. 形容词}} {{资源. LOG. 复数}} 中加上 {{家具 .CARC}} 在 {{房间. 土方工程}}} 中生产的。 祝你好运！
+TUTORIAL.PROGRESS_DESCRIPTION.FARM_PLOT_SELECTIONS,Used to show a progress indicator for how many farm plots have a crop selected e.g. 2 of 10 farm plots with a crop assigned,{{ROOMS.FARM.PLURAL}} with a crop assigned,{{房间. 法院. 复数}}，并指定了一个裁剪
+TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indicator for how many of a certain profession have been assigned e.g. 2 of 10 farmers assigned,{{professionPlural}} assigned,{{professionPlural}} 分配
+TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},{{currentQuantity}} {{requiredQuantity}} {{targetDescription}}
+TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,{{roomName}} 张瓷砖
+TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
+TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
+TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
+TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
+TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",
+TUTORIAL.TIME.D,,You can also click the speed icons to change the speed or pause the game.,
+
+VEGETABLE.BARLEY,,Barley,大麦
+VEGETABLE.BARLEY.PLURAL,,Barley,大麦
+VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",只用于生产啤酒的谷物。 可以在 {{季节. 春季}}，{{季节. 夏季}} 或 {{季节. 秋季}} 种植。
+VEGETABLE.BERSERKER_MUSHROOM,,Berserker mushroom,柏瑟克蘑菇
+VEGETABLE.BERSERKER_MUSHROOM.PLURAL,,Berserker mushrooms,野生蘑菇
+VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP,,A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,蘑菇与粉红色的帽子轴承白色斑点。 它具有致幻特性，战士有时用于战斗准备。
+VEGETABLE.CARROT,,Carrot,胡萝卜
+VEGETABLE.CARROT.PLURAL,,Carrots,胡萝卜
+VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",一种耐寒的根茎蔬菜，能够在 {{季节. 冬季}} 霜冻中生存下来。 胡萝卜生长迅速，但只产生一个小作物。 可以在 {{季节. 春季}}，{{季节. 夏季}} 或 {{季节. 秋季}} 种植。
+VEGETABLE.CORN,,Sweetcorn,甜玉米
+VEGETABLE.CORN.PLURAL,,Sweetcorn,甜玉米
+VEGETABLE.CORN.TOOLTIP,,"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",谷物也被称为玉米。 它产生丰富的作物，但大约需要 2 个季节才能生长，无法生存 {{SEASON.WINTER}}，所以它需要在早期种植 {{SEASON.SPRING}}。
+VEGETABLE.DEATH_CAP_MUSHROOM,,Death cap mushroom,死亡帽蘑菇
+VEGETABLE.DEATH_CAP_MUSHROOM.PLURAL,,Death cap mushrooms,死亡帽蘑菇
+VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP,,"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",一个非常有毒的蘑菇，宽，扁平的帽子。 饮食甚至少量几乎肯定会导致中毒，这可能导致死亡。
+VEGETABLE.DRAGONFRUIT,,Dragonfruit,龙果
+VEGETABLE.DRAGONFRUIT.PLURAL,,Dragonfruits,龙果
+VEGETABLE.ELFSBANE_MUSHROOM,,Elfsbane mushroom,埃尔夫斯巴根蘑菇
+VEGETABLE.ELFSBANE_MUSHROOM.PLURAL,,Elfsbane mushrooms,埃尔夫斯巴根蘑菇
+VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP,,"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.",这种蘑菇对大多数人形人体都有一种简单、无味的味道。 奇怪的是，它的味道绝对恶心的精灵，他们经常会在食用时发生爆炸性呕吐反应，或在极端情况下，心脏病发作。
+VEGETABLE.FIST_MUSHROOM,,Fist mushroom,拳頭蘑菇
+VEGETABLE.FIST_MUSHROOM.PLURAL,,Fist mushrooms,拳头蘑菇
+VEGETABLE.FIST_MUSHROOM.TOOLTIP,,A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,具有金属味道的黑蓝蘑菇。 它被命名为黑暗时代的一群诗人。
+VEGETABLE.GLOW_MUSHROOM,,Glow mushroom,辉光蘑菇
+VEGETABLE.GLOW_MUSHROOM.PLURAL,,Glow mushrooms,辉光蘑菇
+VEGETABLE.GLOW_MUSHROOM.TOOLTIP,,A magic-infused mushroom that gives off light and changes colour with the seasons.,一种神奇的蘑菇，散发光线，并随着季节变化颜色。
+VEGETABLE.HOPS,,Hops,啤酒花
+VEGETABLE.HOPS.PLURAL,,Hops,啤酒花
+VEGETABLE.HOPS.TOOLTIP,,A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,用于啤酒调味的花。 必须在 {{季节. 春天}} 种植。
+VEGETABLE.LOQUAT,,Loquat,洛卡特
+VEGETABLE.LOQUAT.PLURAL,,Loquats,木头
+VEGETABLE.MILTONIA_MUSHROOM,,Miltonia mushroom,米尔托尼蘑菇
+VEGETABLE.MILTONIA_MUSHROOM.PLURAL,,Miltonia mushrooms,米尔托尼蘑菇
+VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP,,"Once thought to exist only in the Hudds region, it is now found throughout the world.",曾经被认为只存在于哈德地区，现在已遍布世界各地。
+VEGETABLE.POTATO,,Potato,马铃薯
+VEGETABLE.POTATO.PLURAL,,Potatoes,土豆
+VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",一种淀粉根植物，可以存活 {{SEASON.WINTER}}，使其成为大多数定居点的不错选择。 可以在 {{季节. 春季}}，{{季节. 夏季}} 或 {{季节. 秋季}} 种植。
+VEGETABLE.PURPLE_HELMET_MUSHROOM,,Purple helmet mushroom,紫色头盔蘑菇
+VEGETABLE.PURPLE_HELMET_MUSHROOM.PLURAL,,Purple helmet mushrooms,紫色头盔蘑菇
+VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.",胖帽子，丰满的头巾，浮肿头盔; 这个传说中的蘑菇通过许多名字。 传说认为，很久以前，许多矮人群体完全靠这种真菌的驯化菌株生存。
+VEGETABLE.ROCIOMYCOTA_MUSHROOM,,Rociomycota mushroom,红霉菌蘑菇
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.PLURAL,,Rociomycota mushrooms,红霉菌蘑菇
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP,,A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,白色和黑色的斑点蘑菇。 已知会影响那些摄取它的人的外观。
+VEGETABLE.SUNGLOW_MUSHROOM,,Sunglow mushroom,太阳菇
+VEGETABLE.SUNGLOW_MUSHROOM.PLURAL,,Sunglow mushrooms,太阳菇
+VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP,,A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,一种明亮的黄色蘑菇，随着阳光的外观发光。 它在收获的那一刻就失去了这个光芒。
+VEGETABLE.SYRUP_POWDER_MUSHROOM,,Syrup powder mushroom,糖浆粉蘑菇
+VEGETABLE.SYRUP_POWDER_MUSHROOM.PLURAL,,Syrup powder mushrooms,糖浆粉蘑菇
+VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP,,"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.",圆形橙色/黄色蘑菇与白色底部。 据说法师很久以前就已经使用过，但出于什么目的，没有人知道。
+VEGETABLE.TAMARILLO,,Tamarillo,塔马里洛
+VEGETABLE.TAMARILLO.PLURAL,,Tamarillos,塔马里洛斯
+VEGETABLE.THIMBLEBERRY,,Thimbleberry,顶纹莓
+VEGETABLE.THIMBLEBERRY.PLURAL,,Thimbleberries,顶纹莓
+VEGETABLE.TOMATO,,Tomato,番茄
+VEGETABLE.TOMATO.PLURAL,,Tomatoes,西红柿
+VEGETABLE.TOMATO.TOOLTIP,,A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,植物生长大的红色浆果经常用作蔬菜。 只能在 {{季节. 春天}} 种植。
+VEGETABLE.WHEAT,,Wheat,麦子
+VEGETABLE.WHEAT.PLURAL,,Wheat,麦子
+VEGETABLE.WHEAT.TOOLTIP,,"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",谷物谷物通常用于生产面包。 它可以存活 {{季节. 冬季}}，但需要一段时间才能生长，所以它要么是在 {{季节. 春季}} 或 {{季节. 秋季}} 中种植。
+
+VITRIOL.GREEN_VITRIOL.ADJECTIVE,,Green,绿色
+VITRIOL.GREEN_VITRIOL.NOUN,,Green,绿色
+VITRIOL.GREEN_VITRIOL.TOOLTIP,,"Also known as iron sulfate, this salt has several uses, including as a soil additive to improve crop farming. (Usages of vitriol are not yet implemented in King under the Mountain)",这种盐也被称为硫酸铁，有多种用途，包括作为土壤添加剂，以改善作物种植。 （玻璃醇的使用尚未在山下王中实施）
+
+WALL.DESCRIPTION,"E.g. “Granite rock wall”, “Granite smooth stone wall”",{{materialType.adjective}} {{wallType.noun}},{{物质类型. 形容词}} {{墙型. 名词}}
+WALL.GEMS.NOUN,,Gems,宝石
+WALL.ORE.NOUN,,Ore,矿石
+WALL.ROUGH_STONE.NOUN,,Rock wall,石牆
+WALL.STONE_BLOCK.NOUN,,Smooth stone wall,光滑石墙
+WALL.WOODEN.NOUN,,Wood wall,木墙
+
+WOOD.ASPEN.ADJECTIVE,,Aspen,阿斯彭
+WOOD.ASPEN.NOUN,,Aspen,阿斯彭
+WOOD.BAOBAB.ADJECTIVE,,Baobab,猴面包树
+WOOD.BAOBAB.NOUN,,Baobab,猴面包树
+WOOD.BARKSHROOM.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,巴克什鲁姆
+WOOD.BARKSHROOM.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,巴克什鲁姆
+WOOD.BEECH.ADJECTIVE,,Beech,山毛榉
+WOOD.BEECH.NOUN,,Beech,山毛榉
+WOOD.BIRCH.ADJECTIVE,,Birch,桦木
+WOOD.BIRCH.NOUN,,Birch,桦木
+WOOD.EBONY.ADJECTIVE,,Ebony,乌木
+WOOD.EBONY.NOUN,,Ebony,乌木
+WOOD.FIR.ADJECTIVE,,Fir,冷杉
+WOOD.FIR.NOUN,,Fir,冷杉
+WOOD.FUNGIWOOD.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,真菌伍德
+WOOD.FUNGIWOOD.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,真菌伍德
+WOOD.IRONWOOD.ADJECTIVE,,Ironwood,铁木
+WOOD.IRONWOOD.NOUN,,Ironwood,铁木
+WOOD.MAPLE.ADJECTIVE,,Maple,枫树
+WOOD.MAPLE.NOUN,,Maple,枫树
+WOOD.NUYTSIA.ADJECTIVE,,Nuytsia,滋养症
+WOOD.NUYTSIA.NOUN,,Nuytsia,滋养症
+WOOD.OAK.ADJECTIVE,,Oaken,奥肯
+WOOD.OAK.NOUN,,Oak,橡树
+WOOD.PECAN.ADJECTIVE,,Pecan,山核桃
+WOOD.PECAN.NOUN,,Pecan,山核桃
+WOOD.PINE.ADJECTIVE,,Pine,松树
+WOOD.PINE.NOUN,,Pine,松树
+WOOD.RED_CEDAR.ADJECTIVE,,Red cedar,紅雪松
+WOOD.RED_CEDAR.NOUN,,Red cedar,紅雪松
+WOOD.RED_EMPEROR.ADJECTIVE,,Red emperor,红色皇帝
+WOOD.RED_EMPEROR.NOUN,,Red emperor,红色皇帝
+WOOD.ROSEWOOD.ADJECTIVE,,Rosewood,紫檀木
+WOOD.ROSEWOOD.NOUN,,Rosewood,紫檀木
+WOOD.SPRUCE.ADJECTIVE,,Spruce,云杉
+WOOD.SPRUCE.NOUN,,Spruce,云杉
+WOOD.STAR_PINE.ADJECTIVE,,Star pine,星松
+WOOD.STAR_PINE.NOUN,,Star pine,星松
+WOOD.SYCAMORE.ADJECTIVE,,Sycamore,雪卡莫尔
+WOOD.SYCAMORE.NOUN,,Sycamore,雪卡莫尔

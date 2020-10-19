@@ -1,0 +1,9 @@
+{
+  "name": "Idle goal",
+  "i18nDescription": "GOAL.IDLE.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["Idle"],
+  "actionRelationships": {
+    "Idle": {}
+  }
+}

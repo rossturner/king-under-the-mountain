@@ -1,0 +1,82 @@
+[
+  {
+    "uniqueName": "shock-tank-2x1-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["MUSHROOM_SHOCK_TANK"],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 Stone tank trench.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_LIQUID_LAYER"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "shock-tank-2x1-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["MUSHROOM_SHOCK_TANK"],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 Wooden tank trench.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_LIQUID_LAYER"
+          }
+        ]
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "shock-tank-2x1-stone-liquid",
+    "type": "FURNITURE_LIQUID_LAYER",
+    "furnitureTypeNames": ["MUSHROOM_SHOCK_TANK"],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 Stone tank trench liquid.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 12.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "shock-tank-2x1-wood-liquid",
+    "type": "FURNITURE_LIQUID_LAYER",
+    "furnitureTypeNames": ["MUSHROOM_SHOCK_TANK"],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 Wooden tank trench liquid.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 10.5
+        }
+      }
+    }
+  }
+]

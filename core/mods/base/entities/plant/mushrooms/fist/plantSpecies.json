@@ -1,0 +1,44 @@
+[{
+  "speciesName": "Fist",
+  "plantType": "MUSHROOM",
+  "materialName": "Fist Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 0.05,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#4e4c4c"
+    },
+    "LEAF_COLOR": {
+      "colorCode": "#4e4c4c"
+    },
+    "FRUIT_COLOR": {
+      "swatch": "fist-stripe-swatch.png"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Fist Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Fist Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Fist Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

@@ -1,0 +1,64 @@
+[
+  {
+    "name": "INNOCULATION_LOG",
+    "i18nKey": "FURNITURE.MUSHROOM_LOG",
+    "categoryName": "LOG",
+    "defaultLayoutName": "1x1EW with workspaces",
+    "colorCode": "#963482",
+    "iconName": "mushroom-gills",
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "INNOCULATION_LOG_BEHAVIOUR": ["Ingredient-Mushroom-Spawn", "INNOCULATED_LOG"]
+    }
+  },
+  {
+    "name": "INNOCULATED_LOG",
+    "i18nKey": "FURNITURE.MUSHROOM_LOG",
+    "categoryName": "LOG",
+    "defaultLayoutName": "1x1EW with workspaces",
+    "colorCode": "#963482",
+    "iconName": "mushroom-gills",
+    "autoConstructed": true,
+    "hiddenFromPlacementMenu": true,
+    "requirements": {
+      "SEED": [
+        {
+          "itemTypeName": "Resource-Mushroom-Log",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "REPLACEMENT_DESCONSTRUCTION_RESOURCES": []
+    }
+  },
+  {
+    "name": "SHOCKED_LOG",
+    "i18nKey": "FURNITURE.MUSHROOM_LOG",
+    "categoryName": "LOG",
+    "defaultLayoutName": "1x1EW with workspaces",
+    "colorCode": "#963482",
+    "iconName": "mushroom-gills",
+    "autoConstructed": true,
+    "hiddenFromPlacementMenu": true,
+    "requirements": {
+      "SEED": [
+        {
+          "itemTypeName": "Resource-Shocked-Mushroom-Log",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "MUSHROOM_LOG_BEHAVIOUR": [],
+      "REPLACEMENT_DESCONSTRUCTION_RESOURCES": ["Ingredient-Mushroom-Spawn"]
+    }
+  }
+]

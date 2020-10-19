@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Tool-Rolling-Pin-On-Ground",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Tool-Rolling-Pin",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Tool-Rolling-Pin-On-Ground.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      },
+      "coloringLayer": "WOOD_COLOR"
+    }
+  }
+}]

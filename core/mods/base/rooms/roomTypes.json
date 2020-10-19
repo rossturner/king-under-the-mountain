@@ -1,0 +1,185 @@
+[
+  {
+    "roomName": "STOCKPILE_RESOURCES",
+    "i18nKey": "STOCKPILE.RESOURCES",
+    "colorCode": "#F2ED5A",
+    "iconName": "brick-pile",
+    "tags": {
+      "STOCKPILE": ["Resources"]
+    },
+    "furnitureNames": []
+  },
+  {
+    "roomName": "STOCKPILE_TOOLS",
+    "i18nKey": "STOCKPILE.TOOLS",
+    "colorCode": "#c6c6c6",
+    "iconName": "stone-crafting",
+    "tags": {
+      "STOCKPILE": ["Tools"]
+    },
+    "furnitureNames": []
+  },
+  {
+    "roomName": "STOCKPILE_GRANARY",
+    "i18nKey": "STOCKPILE.GRANARY",
+    "colorCode": "#eda948",
+    "iconName": "grain",
+    "tags": {
+      "STOCKPILE": ["Granary"]
+    },
+    "furnitureNames": []
+  },
+  {
+    "roomName": "STOCKPILE_PANTRY",
+    "i18nKey": "STOCKPILE.PANTRY",
+    "colorCode": "#7cb167",
+    "iconName": "fruit-bowl",
+    "tags": {
+      "STOCKPILE": ["Pantry"]
+    },
+    "furnitureNames": []
+  },
+
+  {
+    "roomName": "FARM_PLOT",
+    "i18nKey": "ROOMS.FARM",
+    "colorCode": "#47301f",
+    "iconName": "wheat",
+    "requiredFloorMaterialType": "EARTH",
+    "tags": {
+      "FARM_PLOT": ["tilled_earth", "Tilled earth", "TILLING", "PLANTING", "HARVESTING"]
+    },
+    "furnitureNames": []
+  },
+  {
+    "roomName": "MUSHROOM_FARM",
+    "i18nKey": "ROOMS.MUSHROOM_FARM",
+    "colorCode": "#e1cebf",
+    "iconName": "mushrooms",
+    "tags": {
+      "MUSHROOM_FARM_BEHAVIOUR": []
+    },
+    "furnitureNames": ["INNOCULATION_LOG", "INNOCULATED_LOG", "SHOCKED_LOG", "MUSHROOM_SHOCK_TANK"]
+  },
+  {
+    "roomName": "EARTHWORKS",
+    "i18nKey": "ROOMS.EARTHWORKS",
+    "colorCode": "#79ba78",
+    "iconName": "grass",
+    "requiredFloorMaterialType": "EARTH",
+    "tags": {
+    },
+    "furnitureNames": [
+      "CHARCOAL_CLAMP",
+      "CHARCOAL_CLAMP_COVERED",
+      "CHARCOAL_CLAMP_COMPLETED"
+    ]
+  },
+  {
+    "roomName": "SAWMILL",
+    "i18nKey": "ROOMS.SAWMILL",
+    "colorCode": "#f19144",
+    "iconName": "log",
+    "furnitureNames": [
+      "WOODCUTTERS_BENCH"
+    ]
+  },
+  {
+    "roomName": "CARPENTRY_WORKSHOP",
+    "i18nKey": "ROOMS.CARPENTRY_WORKSHOP",
+    "colorCode": "#be926e",
+    "iconName": "hammer-nails",
+    "furnitureNames": [
+      "CARPENTRY_WORKBENCH"
+    ]
+  },
+  {
+    "roomName": "MASONRY_WORKSHOP",
+    "i18nKey": "ROOMS.MASONRY_WORKSHOP",
+    "colorCode": "#c9c9c9",
+    "iconName": "stone-pile",
+    "furnitureNames": [
+      "STONEMASON_WORKBENCH"
+    ]
+  },
+  {
+    "roomName": "METALWORKS",
+    "i18nKey": "ROOMS.METALWORKS",
+    "colorCode": "#8e8e8e",
+    "iconName": "black-bar",
+    "furnitureNames": [
+      "ORE_CRUSHING_STATION",
+      "COKE_OVEN",
+      "BLOOMERY_FURNACE",
+      "FORGE"
+    ]
+  },
+  {
+    "roomName": "BEDROOM",
+    "i18nKey": "ROOMS.BEDROOM",
+    "colorCode": "#c17200",
+    "iconName": "bed",
+    "furnitureNames": [
+      "SINGLE_BED"
+    ]
+  },
+  {
+    "roomName": "KITCHEN",
+    "i18nKey": "ROOMS.KITCHEN",
+    "colorCode": "#1d8898",
+    "iconName": "chef-toque",
+    "tags": {
+      "KITCHEN_BEHAVIOUR": []
+    },
+    "furnitureNames": [
+      "WATER_BARREL",
+      "KITCHEN_WORKTOP",
+      "CHEFS_CAULDRON",
+      "FLOUR_MILL",
+      "BAKERS_WORKTOP",
+      "BAKING_OVEN"
+    ]
+  },
+  {
+    "roomName": "FEASTING_HALL",
+    "i18nKey": "ROOMS.FEASTING_HALL",
+    "colorCode": "#a42f1f",
+    "iconName": "knife-fork",
+    "furnitureNames": [
+      "SERVING_TABLE",
+      "FEASTING_TABLE",
+      "FEASTING_CHAIR",
+      "FEASTING_CAULDRON",
+      "BEER_TAPPER",
+      "WATER_BARREL"
+    ]
+  },
+  {
+    "roomName": "BREWERY",
+    "i18nKey": "ROOMS.BREWERY",
+    "colorCode": "#e5b95b",
+    "iconName": "beer-stein",
+    "furnitureNames": [
+      "WATER_BARREL",
+      "MALTING_STATION",
+      "MASH_TUN",
+      "BREW_KETTLE",
+      "FERMENTATION_TANK"
+    ]
+  },
+
+  {
+    "roomName": "GRAVEYARD",
+    "i18nKey": "ROOMS.GRAVEYARD",
+    "colorCode": "#7b7575",
+    "iconName": "graveyard",
+    "tags": {
+      "GRAVEYARD_BEHAVIOUR": []
+    },
+    "furnitureNames": [
+      "SARCOPHAGUS",
+      "DUG_GRAVE",
+      "FILLED_GRAVE"
+    ]
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "uniqueName": "Mushroom-Cap01-Stripes-Glowing",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Sunglow"],
+    "growthStages": [0],
+    "tags": {
+      "ATTACHES_LIGHT_SOURCE": ["YELLOW"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Stripes.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Mushroom-Cap02-Stripes-Glowing",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Sunglow"],
+    "growthStages": [0],
+    "tags": {
+      "ATTACHES_LIGHT_SOURCE": ["YELLOW"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Stripes.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  }
+]

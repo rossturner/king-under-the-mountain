@@ -1,0 +1,21 @@
+[{
+  "uniqueName": "Basic dwarf eyes",
+  "type": "HUMANOID_EYES",
+  "race": "DWARF",
+  "consciousness": "AWAKE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Eyes-F.png",
+      "coloringLayer": "EYE_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Eyes-F34.png",
+      "coloringLayer": "EYE_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Eyes-F34.png",
+      "flipX": true,
+      "coloringLayer": "EYE_COLOR"
+    }
+  }
+}]

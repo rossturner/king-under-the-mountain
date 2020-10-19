@@ -1,0 +1,20 @@
+[{
+  "uniqueName": "Bush-B1-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Loquat bush", "Thimbleberry bush", "Tamarillo bush", "Shrub"],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "shrub_01_l.png",
+      "coloringLayer": "LEAF_COLOR",
+      "childAssets": [
+        {
+          "type": "PLANT_FRUIT",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  }
+}]

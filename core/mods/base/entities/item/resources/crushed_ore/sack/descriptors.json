@@ -1,0 +1,191 @@
+[{
+  "uniqueName": "Resource-Ore-Crushed-Bag-Ground",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeNames": ["Resource-Ore-Crushed", "Fuel-Sack"],
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 32,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Crushed Ore Cloth Top.png",
+      "scale": 0.8,
+      "coloringLayer": "CLOTH_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  }
+},  {
+  "uniqueName": "Resource-Ore-Crushed-Bag-Carried",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeNames": ["Resource-Ore-Crushed", "Fuel-Sack"],
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 16,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Crushed Ore Cloth Top.png",
+      "scale": 0.7,
+      "coloringLayer": "CLOTH_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 18,
+            "y": -16
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -18,
+            "y": -16
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Crushed Ore Cloth Top.png",
+      "scale": 0.7,
+      "coloringLayer": "CLOTH_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -16,
+            "y": -16
+          }
+        },
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": 22,
+            "y": -10
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Crushed Ore Cloth Top.png",
+      "scale": 0.7,
+      "coloringLayer": "CLOTH_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 16,
+            "y": -16
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": -22,
+            "y": -10
+          }
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Crushed Ore Cloth Top.png",
+      "scale": 0.7,
+      "coloringLayer": "CLOTH_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Crushed Ore Cloth Top.png",
+      "scale": 0.7,
+      "coloringLayer": "CLOTH_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 16,
+            "y": -16
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Crushed Ore Cloth Top.png",
+      "scale": 0.7,
+      "coloringLayer": "CLOTH_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -16,
+            "y": -16
+          }
+        }
+      ]
+    }
+  }
+}]

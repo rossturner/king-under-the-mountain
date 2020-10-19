@@ -1,0 +1,108 @@
+[ {
+  "floorTypeName" : "brown_rock",
+  "i18nKey" : "FLOOR.BROWN_ROCK",
+  "floorTypeId" : 1,
+  "materialType" : "STONE",
+  "layer" : 5,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : false
+}, {
+  "floorTypeName" : "clay_soil",
+  "i18nKey" : "FLOOR.CLAY_SOIL",
+  "floorTypeId" : 2,
+  "materialType" : "OTHER",
+  "layer" : 4,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : false
+}, {
+  "floorTypeName" : "dirt",
+  "i18nKey" : "FLOOR.DIRT",
+  "floorTypeId" : 3,
+  "materialType" : "EARTH",
+  "layer" : 5,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : false,
+  "lowColorCode" : "#583923",
+  "highColorCode" : "#b1896c"
+}, {
+  "floorTypeName" : "grass",
+  "i18nKey" : "FLOOR.GRASS",
+  "floorTypeId" : 4,
+  "materialType" : "EARTH",
+  "layer" : 10,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : false,
+  "lowColorCode" : "#587446",
+  "highColorCode" : "#d1e59a"
+}, {
+  "floorTypeName" : "gravel",
+  "i18nKey" : "FLOOR.GRAVEL",
+  "floorTypeId" : 5,
+  "materialType" : "OTHER",
+  "layer" : 4,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : false,
+  "lowColorCode" : "#494643",
+  "highColorCode" : "#a69e90"
+}, {
+  "floorTypeName" : "cobblestone",
+  "i18nKey" : "FLOOR.COBBLESTONE",
+  "floorTypeId" : 6,
+  "materialType" : "STONE",
+  "layer" : 1,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : true
+}, {
+  "floorTypeName" : "rough_stone",
+  "i18nKey" : "FLOOR.ROUGH_STONE",
+  "floorTypeId" : 7,
+  "materialType" : "STONE",
+  "layer" : 1,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : true
+}, {
+  "floorTypeName" : "stone_slab",
+  "i18nKey" : "FLOOR.STONE_SLAB",
+  "floorTypeId" : 8,
+  "materialType" : "STONE",
+  "layer" : 0,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : true
+}, {
+  "floorTypeName" : "tilled_earth",
+  "i18nKey" : "FLOOR.TILLED_EARTH",
+  "floorTypeId" : 9,
+  "materialType" : "EARTH",
+  "layer" : 3,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "organic"
+  },
+  "useMaterialColor" : false,
+  "lowColorCode" : "#583923",
+  "highColorCode" : "#b1896c"
+} ]

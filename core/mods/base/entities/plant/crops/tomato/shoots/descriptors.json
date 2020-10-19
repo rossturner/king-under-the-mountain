@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Tomato-Shoots",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Tomato"],
+  "growthStages": [1],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_tomato_shoots.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6.5
+      }
+    }
+  }
+}]

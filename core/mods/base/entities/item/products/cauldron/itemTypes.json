@@ -1,0 +1,14 @@
+[{
+  "itemTypeName": "Product-Cauldron",
+  "itemGroup": "PRODUCT",
+  "materialTypes": ["METAL", "WOOD", "ROPE"],
+  "primaryMaterialType": "METAL",
+  "stockpileGroupName": "Resources",
+  "hoursInInventoryUntilUnused": 1,
+  "maxStackSize": 1,
+  "maxHauledAtOnce": 1,
+  "equippedWhileWorkingOnJob": true,
+  "tags": {
+    "LIQUID_CONTAINER": ["6"]
+  }
+}]

@@ -1,0 +1,12 @@
+[{
+  "uniqueName": "Tree-Birch-Size3-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Birch", "Bull-oak", "Rosewood", "Aspen"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "birch_03_l.png",
+      "coloringLayer": "LEAF_COLOR"
+    }
+  }
+}]

@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Closed dwarf eyes",
+  "type": "HUMANOID_EYES",
+  "race": "DWARF",
+  "consciousness": "SLEEPING",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Eyes-Closed-F.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Eyes-Closed-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Eyes-Closed-F34.png",
+      "flipX": true
+    }
+  }
+}]

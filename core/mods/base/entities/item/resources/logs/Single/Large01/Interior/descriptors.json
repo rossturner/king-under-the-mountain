@@ -1,0 +1,71 @@
+[{
+  "uniqueName": "Resource-Logs-Large-Single-Interior",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Logs"],
+  "itemSize": "LARGE",
+  "itemStyle": "DEFAULT",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 0,
+  "maxQuantity": 0,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Large-Single-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP": {
+      "filename": "Resource-Logs-Large-Single-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    }
+  }
+},{
+  "uniqueName": "Resource-Mushroom-Logs-Single-Interior",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Mushroom-Log", "Resource-Shocked-Mushroom-Log"],
+  "itemSize": "AVERAGE",
+  "itemStyle": "DEFAULT",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 0,
+  "maxQuantity": 0,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Large-Single-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP": {
+      "filename": "Resource-Logs-Large-Single-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "Resource-Logs-Large-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    }
+  }
+}]

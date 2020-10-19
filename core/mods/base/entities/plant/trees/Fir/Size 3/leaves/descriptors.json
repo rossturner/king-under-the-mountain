@@ -1,0 +1,12 @@
+[{
+  "uniqueName": "Tree-Fir-Size3-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Fir", "Spruce"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "fir-2-l.png",
+      "coloringLayer": "LEAF_COLOR"
+    }
+  }
+}]

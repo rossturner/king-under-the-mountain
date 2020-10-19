@@ -1,0 +1,185 @@
+[
+  {
+    "uniqueName": "Resource-Metal-Plate-Pile01",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Resource-Metal-Plate",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Metal Plate Single.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 3
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Metal-Plate-Pile02",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Resource-Metal-Plate",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 3,
+    "maxQuantity": 6,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Metal Plate Small Pile.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Metal-Plate-Pile03",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Resource-Metal-Plate",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 7,
+    "maxQuantity": 12,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Metal Plate Medium Pile.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 11.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Metal-Plate-Single01",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Resource-Metal-Plate",
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Metal Plate Single.png",
+        "scale": 0.6,
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -6
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Metal Plate Single.png",
+        "scale": 0.6,
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": -4,
+          "y": -6
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Metal Plate Single.png",
+        "scale": 0.6,
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 4,
+          "y": -6
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": -22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Metal Plate Single.png",
+        "scale": 0.6,
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -6
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Metal Plate Single.png",
+        "scale": 0.6,
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -6
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          }
+        ]
+      }
+    }
+  }
+]

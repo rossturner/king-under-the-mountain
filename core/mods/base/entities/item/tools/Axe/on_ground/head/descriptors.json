@@ -1,0 +1,14 @@
+[{
+  "uniqueName": "Tool-Axe-Head-On-Ground",
+  "type": "ABOVE_LAYER_1",
+  "itemTypeName": "Tool-Axe",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Tool-Axe-Head-On-Ground.png",
+      "coloringLayer": "METAL_COLOR"
+    }
+  }
+}]

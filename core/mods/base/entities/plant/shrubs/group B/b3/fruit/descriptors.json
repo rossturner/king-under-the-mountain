@@ -1,0 +1,11 @@
+[{
+  "uniqueName": "Bush-B3-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Tamarillo bush"],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "fruit_03_f.png",
+      "coloringLayer": "FRUIT_COLOR"
+    }
+  }
+}]

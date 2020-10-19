@@ -1,0 +1,11 @@
+[{
+  "uniqueName": "Bush-B2-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Thimbleberry bush"],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "fruit_02_f.png",
+      "coloringLayer": "FRUIT_COLOR"
+    }
+  }
+}]

@@ -1,0 +1,184 @@
+[{
+  "uniqueName": "Product-Barrel-Body-Carried",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Product-Barrel",
+  "itemPlacements": [
+    "BEING_CARRIED"
+  ],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Barrel-Body-Carried-NS.png",
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -17
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 18,
+            "y": 16
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -18,
+            "y": 16
+          }
+        }
+      ],
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Barrel-Body-Carried-Omni.png",
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": -0.5,
+        "y": -16.5
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -16,
+            "y": 10
+          }
+        },
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": 18,
+            "y": 18
+          }
+        }
+      ],
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Barrel-Body-Carried-Omni.png",
+      "coloringLayer": "WOOD_COLOR",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0.5,
+        "y": -16.5
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 16,
+            "y": 10
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": -18,
+            "y": 18
+          }
+        }
+      ],
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Barrel-Body-Carried-Omni.png",
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": -0.5,
+        "y": -1.5
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -10,
+            "y": 10
+          }
+        }
+      ],
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Barrel-Body-Carried-Omni.png",
+      "flipX": true,
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": 0.5,
+        "y": -1.5
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 10,
+            "y": 10
+          }
+        }
+      ],
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Barrel-Body-Carried-NS.png",
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_LEFT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 18,
+            "y": 16
+          }
+        },
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -18,
+            "y": 16
+          }
+        }
+      ],
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        }
+      ]
+    }
+  }
+}]

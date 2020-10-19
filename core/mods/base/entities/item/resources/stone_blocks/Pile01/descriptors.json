@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Resource-Stone-Block-Pile01",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Stone-Block",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 2,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Stone-Block-Pile01.png",
+      "coloringLayer": "STONE_COLOR",
+      "offsetPixels": {
+        "x": -11,
+        "y": 10
+      }
+    }
+  }
+}]

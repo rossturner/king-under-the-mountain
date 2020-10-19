@@ -1,0 +1,15 @@
+[{
+  "uniqueName": "Bush-B5-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Breadfruit tree"],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "fruit_05_f.png",
+      "coloringLayer": "FRUIT_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -10
+      }
+    }
+  }
+}]

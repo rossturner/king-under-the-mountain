@@ -1,0 +1,36 @@
+{
+  "name": "Add to inventory goal",
+  "expiryHours": 12,
+  "i18nDescription": "GOAL.ADD_TO_INVENTORY.DESCRIPTION",
+  "selectors": [
+    {
+      "conditions": [
+        {
+          "type": "MEMORY",
+          "memoryType": "LACKING_REQUIRED_ITEM"
+        }
+      ],
+      "priority": "JOB_NORMAL",
+      "scheduleCategory": "WORK"
+    }
+  ],
+  "initialActions": ["RememberRequiredItem"],
+  "actionRelationships": {
+    "RememberRequiredItem": {
+      "pass": ["FindItem"]
+    },
+    "FindItem": {
+      "pass": ["GoToLocation"]
+    },
+    "GoToLocation": {
+      "pass": ["PickUpEntity"],
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "PickUpEntity": {
+      "pass": ["ForgetRelevantMemory"],
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "CancelHaulingAllocation": {},
+    "ForgetRelevantMemory": {}
+  }
+}

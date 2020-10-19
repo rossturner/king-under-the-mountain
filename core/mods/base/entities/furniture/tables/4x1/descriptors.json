@@ -1,0 +1,96 @@
+[
+  {
+    "uniqueName": "table-4x1-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["SERVING_TABLE"],
+    "furnitureLayoutName": "4x1 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "4x1 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -30,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 30,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_3",
+            "offsetPixels": {
+              "x": 92,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_4",
+            "offsetPixels": {
+              "x": -92,
+              "y": 14
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-4x1-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["SERVING_TABLE"],
+    "furnitureLayoutName": "4x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "4x1 wooden table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -30,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 30,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_3",
+            "offsetPixels": {
+              "x": 92,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_4",
+            "offsetPixels": {
+              "x": -92,
+              "y": 14
+            }
+          }
+        ]
+      }
+    }
+  }
+]

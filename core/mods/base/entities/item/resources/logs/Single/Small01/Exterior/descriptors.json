@@ -1,0 +1,158 @@
+[{
+  "uniqueName": "Resource-Logs-Small01-Single-Exterior",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeNames": ["Resource-Logs"],
+  "itemSize": "SMALL",
+  "itemStyle": "STYLE_1",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Small01-Single-Exterior.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "specificAssetName": "Resource-Logs-Small-Single-Interior",
+          "offsetPixels": {
+            "x": 0,
+            "y": -18
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -6,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Logs-Small01-Single-Exterior-34.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "specificAssetName": "Resource-Logs-Small-Single-Interior",
+          "offsetPixels": {
+            "x": 11,
+            "y": -13
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -6,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Logs-Small01-Single-Exterior-34.png",
+      "flipX": true,
+      "coloringLayer": "BRANCHES_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "specificAssetName": "Resource-Logs-Small-Single-Interior",
+          "offsetPixels": {
+            "x": -11,
+            "y": -13
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -6,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Resource-Logs-Small01-Single-Exterior.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "specificAssetName": "Resource-Logs-Small-Single-Interior",
+          "offsetPixels": {
+            "x": 0,
+            "y": -18
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 6,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Logs-Small01-Single-Exterior-34.png",
+      "flipX": true,
+      "coloringLayer": "BRANCHES_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "specificAssetName": "Resource-Logs-Small-Single-Interior",
+          "offsetPixels": {
+            "x": -11,
+            "y": -13
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": 6,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Resource-Logs-Small01-Single-Exterior-34.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "specificAssetName": "Resource-Logs-Small-Single-Interior",
+          "offsetPixels": {
+            "x": 11,
+            "y": -13
+          }
+        }
+      ],
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": 4,
+            "y": 2
+          }
+        }
+      ]
+    }
+  }
+}]

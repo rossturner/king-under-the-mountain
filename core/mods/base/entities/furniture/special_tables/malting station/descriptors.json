@@ -1,0 +1,447 @@
+[
+  {
+    "uniqueName": "malting-station-1x4-NS-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "1x4 NS",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -88
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 96
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 46
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-1x4-NS-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "1x4 NS",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -88
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 96
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 46
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-1x4-SN-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "1x4 SN",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 90
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -88
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 46
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-1x4-SN-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "1x4 SN",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 90
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -88
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 46
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-4x1-WE-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "4x1 WE",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 84,
+              "y": -10
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -80,
+              "y": 0
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -24,
+              "y": 24
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 24,
+              "y": 24
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-4x1-WE-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "4x1 WE",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 84,
+              "y": -10
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -80,
+              "y": 0
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -24,
+              "y": 24
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 24,
+              "y": 24
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-4x1-EW-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "4x1 EW",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -80,
+              "y": -10
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 84,
+              "y": 0
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -24,
+              "y": 24
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 24,
+              "y": 24
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-4x1-EW-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "furnitureLayoutName": "4x1 EW",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -80,
+              "y": -10
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 84,
+              "y": 0
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -24,
+              "y": 24
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 24,
+              "y": 24
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "malting-station-kiln-above",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": [
+      "MALTING_STATION"
+    ],
+    "validMaterialTypes": [
+      "WOOD",
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Kiln.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

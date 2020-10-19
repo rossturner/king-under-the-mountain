@@ -1,0 +1,44 @@
+[{
+  "speciesName": "Rociomycota",
+  "plantType": "MUSHROOM",
+  "materialName": "Rociomycota Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 0.2,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "swatch": "rociomycota-base-swatch.png"
+    },
+    "LEAF_COLOR": {
+      "swatch": "rociomycota-base-swatch.png"
+    },
+    "FRUIT_COLOR": {
+      "swatch": "rociomycota-spot-swatch.png"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Rociomycota Mushroom Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Rociomycota Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Rociomycota Mushroom Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

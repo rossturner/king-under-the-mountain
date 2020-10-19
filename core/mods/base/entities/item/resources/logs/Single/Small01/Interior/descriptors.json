@@ -1,0 +1,36 @@
+[{
+  "uniqueName": "Resource-Logs-Small-Single-Interior",
+  "type": "BELOW_LAYER_1",
+  "itemTypeNames": ["Resource-Logs"],
+  "itemSize": "SMALL",
+  "itemStyle": "DEFAULT",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 0,
+  "maxQuantity": 0,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Small-Single-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Logs-Small-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Logs-Small-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP": {
+      "filename": "Resource-Logs-Small-Single-Interior.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Logs-Small-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "Resource-Logs-Small-Single-Interior-34.png",
+      "coloringLayer": "WOOD_COLOR"
+    }
+  }
+}]

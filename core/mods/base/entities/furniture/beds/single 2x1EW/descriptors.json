@@ -1,0 +1,237 @@
+[
+  {
+    "uniqueName": "bed-2x1E-wood-base",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1E",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "tags": {
+      "BED_SLEEPING_POSITION": ["DOWN_RIGHT"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-frame.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "CLOTH_LAYER",
+            "specificAssetName": "bed-2x1E-base-cover",
+            "offsetPixels": {
+              "x": 23.5,
+              "y": 0
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "specificAssetName": "bed-2x1E-pillows",
+            "offsetPixels": {
+              "x": 38,
+              "y": 6
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "specificAssetName": "bed-2x1E-cover",
+            "offsetPixels": {
+              "x": -13,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-2x1E-base-cover",
+    "type": "CLOTH_LAYER",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1E",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-base-cover.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-2x1E-pillows",
+    "type": "ATTACHMENT_DECO_1",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1E",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-pillows.png",
+        "coloringLayer": "ACCESSORY_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -8,
+              "y": 4
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-2x1E-cover",
+    "type": "ATTACHMENT_DECO_2",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1E",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-cover.png",
+        "coloringLayer": "ACCESSORY_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+
+
+
+  {
+    "uniqueName": "bed-2x1W-wood-base",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1W",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "tags": {
+      "BED_SLEEPING_POSITION": ["DOWN_LEFT"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-frame.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 8
+        },
+        "childAssets": [
+          {
+            "type": "CLOTH_LAYER",
+            "specificAssetName": "bed-2x1W-base-cover",
+            "offsetPixels": {
+              "x": -23.5,
+              "y": 0
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "specificAssetName": "bed-2x1W-pillows",
+            "offsetPixels": {
+              "x": -38,
+              "y": 6
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "specificAssetName": "bed-2x1W-cover",
+            "offsetPixels": {
+              "x": 13,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-2x1W-base-cover",
+    "type": "CLOTH_LAYER",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1W",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-base-cover.png",
+        "flipX": true,
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-2x1W-pillows",
+    "type": "ATTACHMENT_DECO_1",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1W",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-pillows.png",
+        "flipX": true,
+        "coloringLayer": "ACCESSORY_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 8,
+              "y": 4
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "bed-2x1W-cover",
+    "type": "ATTACHMENT_DECO_2",
+    "furnitureTypeName": "SINGLE_BED",
+    "furnitureLayoutName": "2x1W",
+    "validMaterialTypes": [
+      "CLOTH"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "bed-2x1E-cover.png",
+        "flipX": true,
+        "coloringLayer": "ACCESSORY_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

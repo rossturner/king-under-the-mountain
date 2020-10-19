@@ -1,0 +1,82 @@
+[{
+  "uniqueName": "Resource-Gem-Single",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Gem",
+  "itemPlacements": ["BEING_CARRIED"],
+  "minQuantity": 1,
+  "maxQuantity": 4,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Gem-Cut-Single.png",
+      "coloringLayer": "GEM_COLOR",
+      "offsetPixels": {
+        "x": -10,
+        "y": -4
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -6,
+            "y": -6
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Resource-Gem-Cut-Single.png",
+      "coloringLayer": "GEM_COLOR",
+      "offsetPixels": {
+        "x": -16,
+        "y": -4
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -6,
+            "y": -6
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Resource-Gem-Cut-Single.png",
+      "coloringLayer": "GEM_COLOR",
+      "offsetPixels": {
+        "x": -3,
+        "y": -4
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": -100,
+          "offsetPixels": {
+            "x": 2,
+            "y": -6
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Resource-Gem-Cut-Single.png",
+      "coloringLayer": "GEM_COLOR",
+      "offsetPixels": {
+        "x": 6,
+        "y": -4
+      },
+      "parentEntityAssets": [
+        {
+          "type": "HUMANOID_RIGHT_HAND",
+          "overrideRenderLayer": 100,
+          "offsetPixels": {
+            "x": -6,
+            "y": -6
+          }
+        }
+      ]
+    }
+  }
+}]

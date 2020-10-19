@@ -1,0 +1,771 @@
+[
+  {
+    "recipeName": "Cut planks",
+    "craftingTypeName": "WOODCUTTING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Logs",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 2
+      }
+    ],
+    "materialTypesToCopyOver": ["WOOD"]
+  },
+  {
+    "recipeName": "Cut mushroom planks",
+    "craftingTypeName": "WOODCUTTING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Mushroom-Lumber",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 2
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Axe",
+    "materialTypesToCopyOver": ["WOOD"]
+  },
+
+  {
+    "recipeName": "Cut stone blocks",
+    "craftingTypeName": "STONEMASONRY",
+    "input": [
+      {
+        "itemTypeName": "Resource-Stone-Unrefined",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Stone-Block",
+        "quantity": 2
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Chisel",
+    "materialTypesToCopyOver": ["STONE"]
+  },
+  {
+    "recipeName": "Cut gems",
+
+    "craftingTypeName": "STONEMASONRY",
+    "input": [
+      {
+        "itemTypeName": "Resource-Gems-Unrefined",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Gem",
+        "quantity": 4
+      }
+    ],
+    "materialTypesToCopyOver": ["GEM"]
+  },
+  {
+    "recipeName": "Craft millstone",
+    "craftingTypeName": "STONEMASONRY",
+    "input": [
+      {
+        "itemTypeName": "Resource-Stone-Block",
+        "quantity": 3
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Millstone",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["STONE"]
+  },
+
+  {
+    "recipeName": "Craft barrel hoops",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Barrel-Hoops",
+        "quantity": 3
+      }
+    ],
+    "materialTypesToCopyOver": ["METAL"]
+  },
+  {
+    "recipeName": "Craft metal plates",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 4
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Plate",
+        "quantity": 2
+      }
+    ],
+    "materialTypesToCopyOver": ["METAL"]
+  },
+  {
+    "recipeName": "Craft liquid tank",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Plate",
+        "quantity": 4
+      },
+      {
+        "itemTypeName": "Product-Barrel-Hoops",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Liquid-Tank",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["METAL"]
+  },
+  {
+    "recipeName": "Craft cauldron",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 8
+      },
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Cauldron",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["METAL", "WOOD"]
+  },
+  {
+    "recipeName": "Craft anvil",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 8
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Anvil",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["METAL"]
+  },
+  {
+    "recipeName": "Craft tool axe",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 2
+      },
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Axe",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL", "WOOD"]
+  },
+  {
+    "recipeName": "Craft tool chisel",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Chisel",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL", "WOOD"]
+  },
+  {
+    "recipeName": "Craft tool kitchen knife",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Kitchen-Knife",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL"]
+  },
+  {
+    "recipeName": "Craft tool large hammer",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 2
+      },
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Large-Hammer",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL", "WOOD"]
+  },
+  {
+    "recipeName": "Craft tool pickaxe",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 2
+      },
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Pickaxe",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL", "WOOD"]
+  },
+  {
+    "recipeName": "Craft tool saw",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 2
+      },
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Saw",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL", "WOOD"]
+  },
+  {
+    "recipeName": "Craft tool small hammer",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Small-Hammer",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL"]
+  },
+  {
+    "recipeName": "Craft tool tongs",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Tongs",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Tongs",
+    "materialTypesToCopyOver": ["METAL"]
+  },
+
+  {
+    "recipeName": "Craft barrel staves",
+    "craftingTypeName": "CARPENTRY",
+    "input": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 3
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Barrel-Staves",
+        "quantity": 5
+      }
+    ],
+    "materialTypesToCopyOver": ["WOOD"]
+  },
+  {
+    "recipeName": "Craft barrel",
+    "craftingTypeName": "CARPENTRY",
+    "input": [
+      {
+        "itemTypeName": "Product-Barrel-Staves",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Product-Barrel-Hoops",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Barrel",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["WOOD", "METAL"]
+  },
+  {
+    "recipeName": "Craft bucket",
+    "craftingTypeName": "CARPENTRY",
+    "input": [
+      {
+        "itemTypeName": "Product-Barrel-Staves",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Product-Barrel-Hoops",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Bucket",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Saw",
+    "materialTypesToCopyOver": ["WOOD", "METAL"]
+  },
+  {
+    "recipeName": "Craft tool fishing rod",
+    "craftingTypeName": "CARPENTRY",
+    "input": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Fishing-Rod",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["WOOD"]
+  },
+  {
+    "recipeName": "Craft tool plane",
+    "craftingTypeName": "CARPENTRY",
+    "input": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Plane",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Saw",
+    "materialTypesToCopyOver": ["WOOD"]
+  },
+  {
+    "recipeName": "Craft tool rolling pin",
+    "craftingTypeName": "CARPENTRY",
+    "input": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Tool-Rolling-Pin",
+        "quantity": 1
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Plane",
+    "materialTypesToCopyOver": ["WOOD"]
+  },
+
+  {
+    "recipeName": "Mill wheat",
+    "verbOverrideI18nKey": "PROFESSION.MILLER",
+    "craftingTypeName": "MILLING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Wheat-Sack",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Flour-Sack",
+        "quantity": 3
+      }
+    ],
+    "materialTypesToCopyOver": ["VEGETABLE"]
+  },
+
+  {
+    "recipeName": "Create dough",
+    "verbOverrideI18nKey": "ACTION.PREPARATION",
+    "craftingTypeName": "FOOD_PREPARATION",
+    "input": [
+      {
+        "itemTypeName": "Resource-Flour-Sack",
+        "quantity": 3
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Bread-Dough",
+        "quantity": 7
+      }
+    ],
+    "materialTypesToCopyOver": ["VEGETABLE"]
+  },
+
+  {
+    "recipeName": "Crush ore",
+    "craftingTypeName": "ORE_CRUSHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Ore-Unrefined",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "quantity": 5
+      }
+    ],
+    "materialTypesToCopyOver": ["ORE"]
+  },
+  {
+    "recipeName": "Crush pyrite to iron sulfate / green vitriol",
+    "craftingTypeName": "ORE_CRUSHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Pyrite",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Crushed-Vitriol",
+        "materialName": "Green Vitriol",
+        "quantity": 2
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Large-Hammer"
+  },
+
+  {
+    "recipeName": "Smelt iron",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Hematite",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Iron",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 3.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+  {
+    "recipeName": "Smelt tin",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Cassiterite",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Tin",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 3.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+  {
+    "recipeName": "Smelt copper from native",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Native Copper",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Copper",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 3.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+  {
+    "recipeName": "Smelt copper from malachite",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Malachite",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Copper",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 3.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+  {
+    "recipeName": "Smelt copper from chrysocolla",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Chrysocolla",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Copper",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 3.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+  {
+    "recipeName": "Smelt gold",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Native Gold",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Gold",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 3.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+  {
+    "recipeName": "Smelt silver from Galena",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Galena",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Silver",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 3.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+  {
+    "recipeName": "Smelt silver from native",
+    "craftingTypeName": "SMELTING",
+    "input": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Native Silver",
+        "quantity": 5
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "materialName": "Silver",
+        "quantity": 1
+      }
+    ],
+    "extraGameHoursToComplete": 4.0,
+    "itemTypeRequiredName": "Tool-Tongs"
+  },
+
+  {
+    "recipeName": "Hammer bloom into ingots",
+    "craftingTypeName": "BLACKSMITHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Bloom",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 6
+      }
+    ],
+    "itemTypeRequiredName": "Tool-Large-Hammer",
+    "materialTypesToCopyOver": ["METAL"]
+  },
+
+
+  {
+    "recipeName": "Convert coal to coke",
+    "craftingTypeName": "COKE_OVEN_BAKING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Ore-Crushed",
+        "materialName": "Bituminous Coal",
+        "quantity": 16
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Fuel-Sack",
+        "materialName": "Coke",
+        "quantity": 16
+      }
+    ],
+    "extraGameHoursToComplete": 28.0
+  }
+]

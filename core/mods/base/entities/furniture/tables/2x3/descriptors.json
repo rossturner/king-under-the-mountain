@@ -1,0 +1,143 @@
+[
+  {
+    "uniqueName": "table-2x3-metal",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["STONEMASON_WORKBENCH"],
+    "furnitureLayoutName": "2x3",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3-metal.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 70
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -32,
+              "y": -46
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 32,
+              "y": 82
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -32,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 32,
+              "y": 14
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-2x3-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["STONEMASON_WORKBENCH"],
+    "furnitureLayoutName": "2x3",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 70
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -32,
+              "y": -46
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 32,
+              "y": 82
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -32,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 32,
+              "y": 14
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-2x3-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["STONEMASON_WORKBENCH"],
+    "furnitureLayoutName": "2x3",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-2x3-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 70
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -32,
+              "y": -46
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 32,
+              "y": 82
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -32,
+              "y": 14
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 32,
+              "y": 14
+            }
+          }
+        ]
+      }
+    }
+  }
+]

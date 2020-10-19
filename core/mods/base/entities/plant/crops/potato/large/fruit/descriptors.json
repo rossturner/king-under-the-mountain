@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Potato-Large-Flowers",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Potato", "Carrot"],
+  "growthStages": [5, 6],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_potato_large_flowers.png",
+      "coloringLayer": "FRUIT_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 19
+      }
+    }
+  }
+}]

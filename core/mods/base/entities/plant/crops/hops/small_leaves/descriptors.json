@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Hops-Small-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Hops"],
+  "growthStages": [1],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_hops_small_leaves.png",
+      "coloringLayer": "LEAF_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

@@ -1,0 +1,158 @@
+[
+  {
+    "uniqueName": "Product-Millstone-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Millstone",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Product-Millstone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Millstone-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Millstone",
+    "itemPlacements": ["BEING_CARRIED"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Product-Millstone.png",
+        "scale": 0.8,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Product-Millstone.png",
+        "scale": 0.8,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Product-Millstone.png",
+        "scale": 0.8,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Product-Millstone.png",
+        "scale": 0.8,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Product-Millstone.png",
+        "scale": 0.8,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Product-Millstone.png",
+        "scale": 0.8,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+]

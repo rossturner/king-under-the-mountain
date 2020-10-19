@@ -1,0 +1,66 @@
+[
+  {
+    "uniqueName": "Product-Bucket-Hoops-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Product-Bucket",
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Bucket-Hoops-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -3.2
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Bucket-Hoops-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -3.2
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Bucket-Hoops-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -3.2
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Bucket-Hoops-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -3.2
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Bucket-Hoops-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -3.2
+        }
+      },
+      "UP": {
+        "filename": "Bucket-Hoops-Carried.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0,
+          "y": -3.2
+        }
+      }
+    }
+  }
+]

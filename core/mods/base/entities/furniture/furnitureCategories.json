@@ -1,0 +1,41 @@
+[
+  {
+    "name": "TABLE",
+    "blocksMovement": true
+  },
+  {
+    "name": "NAVIGABLE"
+  },
+  {
+    "name": "OVEN",
+    "blocksMovement": true
+  },
+  {
+    "name": "DOOR_FRAME"
+  },
+  {
+    "name": "CHAIR"
+  },
+  {
+    "name": "BED",
+    "blocksMovement": true,
+    "impedesMovement": true
+  },
+  {
+    "name": "LANTERN"
+  },
+  {
+    "name": "DOOR"
+  },
+  {
+    "name": "DOOR_PLACEMENT"
+  },
+  {
+    "name": "LIQUID_CONTAINER",
+    "blocksMovement": true
+  },
+  {
+    "name": "LOG",
+    "blocksMovement": true
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "uniqueName": "door-metal-single-ew",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR",
+    "furnitureLayoutName": "1x1EW",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "isAnimated": true,
+        "filename": "MetalDoor_Single_EW",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -43
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "door-placement-metal-single-ew",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_PLACEMENT",
+    "furnitureLayoutName": "1x1EW",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "MetalDoor_Single_EW_0.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -4
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "door-metal-single-ns",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR",
+    "furnitureLayoutName": "1x1NS",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "isAnimated": true,
+        "filename": "MetalDoor_Single_NS",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        }
+      }
+    }
+  }
+]

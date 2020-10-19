@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Tomato-Large-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Tomato"],
+  "growthStages": [5, 6, 7],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_tomato_large_branches.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 16
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_FRUIT",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  }
+}]

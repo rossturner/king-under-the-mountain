@@ -1,0 +1,94 @@
+[{
+  "uniqueName": "Dwarf-HairF",
+  "type": "HUMANOID_HAIR",
+  "race": "DWARF",
+  "gender": "FEMALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-HairF-Color-F.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -8
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairF-Outline"
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-HairF-Color-F34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": -2,
+        "y": -8
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairF-Outline"
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-HairF-Color-F34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 2,
+        "y": -8
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairF-Outline"
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-HairF-Color-B34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": -2,
+        "y": -8
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairF-Outline"
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-HairF-Color-B34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 2,
+        "y": -8
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairF-Outline"
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Dwarf-HairF-Color-B.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -8
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairF-Outline"
+        }
+      ]
+    }
+  }
+}]

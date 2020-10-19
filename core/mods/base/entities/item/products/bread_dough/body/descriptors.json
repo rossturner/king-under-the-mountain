@@ -1,0 +1,130 @@
+[
+  {
+    "uniqueName": "Product-Bread-Dough-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Bread-Dough",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 28,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Product-Bread-Dough.png",
+        "coloringLayer": "VEGETABLE_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Bread-Dough-Body-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Bread-Dough",
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 7,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Product-Bread-Dough.png",
+        "coloringLayer": "VEGETABLE_COLOR",
+        "scale": 0.8,
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": -6
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Product-Bread-Dough.png",
+        "coloringLayer": "VEGETABLE_COLOR",
+        "scale": 0.8,
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -6
+            }
+          },
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Product-Bread-Dough.png",
+        "coloringLayer": "VEGETABLE_COLOR",
+        "scale": 0.8,
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -6
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Product-Bread-Dough.png",
+        "coloringLayer": "VEGETABLE_COLOR",
+        "scale": 0.8,
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Product-Bread-Dough.png",
+        "coloringLayer": "VEGETABLE_COLOR",
+        "scale": 0.8,
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Product-Bread-Dough.png",
+        "coloringLayer": "VEGETABLE_COLOR",
+        "scale": 0.8
+      }
+    }
+  }
+]

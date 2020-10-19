@@ -1,0 +1,112 @@
+[{
+  "speciesName": "Potato",
+  "plantType": "CROP",
+  "materialName": "Plant",
+  "maxGrowthSpeedVariance": 0.02,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#d2b989"
+    },
+    "LEAF_COLOR": {
+      "swatch": "potato-leaf-swatch.png"
+    },
+    "FRUIT_COLOR": {
+      "swatch": "potato-flower-swatch.png"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Seeds",
+    "materialName": "Potato Seed",
+    "plantingSeasons": [
+      "SPRING", "SUMMER", "AUTUMN"
+    ]
+  },
+  "seasons": {
+    "WINTER": {
+      "growth": false,
+      "colors": {
+        "FRUIT_COLOR": {
+          "hidden": true
+        }
+      }
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Seeds",
+      "nextGrowthStage": 1,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Shoots",
+      "nextGrowthStage": 2,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Small-growth",
+      "nextGrowthStage": 3,
+      "seasonsUntilComplete": 0.3,
+      "tileHeight": 1
+    },
+    {
+      "name": "Mid-growth no fruit",
+      "nextGrowthStage": 4,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Mid-growth with fruit",
+      "nextGrowthStage": 5,
+      "seasonsUntilComplete": 0.3,
+      "tileHeight": 1,
+      "showFruit": true,
+      "initialFruitScale": 0.4,
+      "completionFruitScale": 1
+    },
+    {
+      "name": "Late growth",
+      "nextGrowthStage": 6,
+      "seasonsUntilComplete": 0.5,
+      "tileHeight": 1,
+      "showFruit": true
+    },
+    {
+      "name": "Ripe",
+      "nextGrowthStage": 7,
+      "seasonsUntilComplete": 0.5,
+      "tileHeight": 1,
+      "showFruit": true,
+      "harvestType": "FARMING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Sack",
+          "materialName": "Potato",
+          "quantity": 2
+        },
+        {
+          "itemTypeName": "Ingredient-Seeds",
+          "materialName": "Potato Seed",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "name": "Decaying",
+      "seasonsUntilComplete": 0.05,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "colorCode": "#746b1b"
+        },
+        "LEAF_COLOR": {
+          "colorCode": "#929b47"
+        }
+      },
+      "onCompletion": [
+        "DESTROY_PLANT"
+      ]
+    }
+  ]
+}]

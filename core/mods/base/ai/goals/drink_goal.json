@@ -1,0 +1,77 @@
+{
+  "name": "Drink goal",
+  "i18nDescription": "GOAL.DRINK.DESCRIPTION",
+  "selectors": [
+    {
+      "conditions": [
+        {
+          "type": "NEED",
+          "need": "DRINK",
+          "operator": "LESS_THAN_OR_EQUAL_TO",
+          "value": 25
+        }
+      ],
+      "priority": "NEED_URGENT",
+      "scheduleCategory": "ANY"
+    },
+    {
+      "conditions": [
+        {
+          "type": "NEED",
+          "need": "DRINK",
+          "operator": "LESS_THAN_OR_EQUAL_TO",
+          "value": 55
+        }
+      ],
+      "priority": "WANT_NORMAL",
+      "scheduleCategory": "NOURISHMENT"
+    }
+  ],
+  "initialActions": ["LocateDrink"],
+  "actionRelationships": {
+    "LocateDrink": {
+      "pass": ["GoToDrinkLocation"],
+      "fail": []
+    },
+    "GoToDrinkLocation": {
+      "pass": ["FaceTowardsLocation"],
+      "fail": ["CancelLiquidAllocation"]
+    },
+    "FaceTowardsLocation": {
+      "pass": ["PourDrinkIntoTankard"],
+      "fail": ["CancelLiquidAllocation"]
+    },
+    "PourDrinkIntoTankard": {
+      "pass": ["FindPlaceToEat"],
+      "fail": ["ConsumeLiquidFromContainer"]
+    },
+
+
+    "FindPlaceToEat": {
+      "pass": ["GoToLocation"],
+      "fail": ["GoToRandomLocation"]
+    },
+    "GoToLocation": {
+      "pass": ["PlaceFoodOrDrinkOnFurniture", "ConsumeLiquidFromTankard"],
+      "fail": ["ConsumeLiquidFromTankard"]
+    },
+    "GoToRandomLocation": {
+      "pass": ["ConsumeLiquidFromTankard"],
+      "fail": ["ConsumeLiquidFromTankard"]
+    },
+    "PlaceFoodOrDrinkOnFurniture": {},
+    "ConsumeLiquidFromTankard": {
+      "pass": ["UnassignFurniture"],
+      "fail": ["UnassignFurniture"]
+    },
+    
+    
+    
+    "ConsumeLiquidFromContainer": {
+      "pass": [],
+      "fail": ["CancelLiquidAllocation"]
+    },
+    "UnassignFurniture": {},
+    "CancelLiquidAllocation": {}
+  }
+}

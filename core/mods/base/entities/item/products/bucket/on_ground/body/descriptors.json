@@ -1,0 +1,29 @@
+[{
+  "uniqueName": "Product-Bucket-Body-Floor",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Product-Bucket",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bucket-Body-Floor.png",
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -4.5
+      },
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        },
+        {
+          "type": "ABOVE_LAYER_2"
+        },
+        {
+          "type": "ITEM_LIQUID_LAYER"
+        }
+      ]
+    }
+  }
+}]

@@ -1,0 +1,26 @@
+[{
+  "uniqueName": "Resource-Logs-Large02-Pile02-Exterior",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Logs",
+  "itemSize": "LARGE",
+  "itemStyle": "STYLE_2",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 2,
+  "maxQuantity": 4,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Logs-Large02-Pile02-Exterior.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "childAssets": [
+        {
+          "type": "BELOW_LAYER_1",
+          "specificAssetName": "Resource-Logs-Large-Pile02-Interior",
+          "offsetPixels": {
+            "x": 0,
+            "y": -17
+          }
+        }
+      ]
+    }
+  }
+}]

@@ -1,0 +1,12 @@
+[{
+  "uniqueName": "Tree-Beech-Size1-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Beech", "Gabon Ebony", "Pecan", "Sycamore"],
+  "growthStages": [0],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "beech-0-l.png",
+      "coloringLayer": "LEAF_COLOR"
+    }
+  }
+}]

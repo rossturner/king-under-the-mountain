@@ -1,0 +1,11 @@
+[{
+  "itemTypeName": "Resource-Gems-Unrefined",
+  "itemGroup": "RESOURCE",
+  "materialTypes": ["STONE", "GEM"],
+  "primaryMaterialType": "GEM",
+  "maxStackSize": 1,
+  "maxHauledAtOnce": 1,
+  "stockpileGroupName": "Resources",
+  "impedesMovement": true,
+  "blocksMovement": false
+}]

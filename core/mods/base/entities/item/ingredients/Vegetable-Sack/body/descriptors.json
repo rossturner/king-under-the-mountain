@@ -1,0 +1,341 @@
+[
+  {
+    "uniqueName": "Ingredient-Vegetable-Sack-Body-Floor",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Ingredient-Vegetable-Sack", "Resource-Wheat-Sack", "Resource-Grain-Sack"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack body.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Unlabelled-Vegetable-Sack-Body-Floor",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Resource-Flour-Sack", "Ingredient-Malt-Sack", "Ingredient-Milled-Malt-Sack"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "VEGETABLE_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Ingredient-Vegetable-Sack-Body-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Ingredient-Vegetable-Sack", "Resource-Wheat-Sack", "Resource-Grain-Sack"],
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "CLOTH_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "CLOTH_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "CLOTH_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": -22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "CLOTH_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "CLOTH_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "CLOTH_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Unlabelled-Vegetable-Sack-Body-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Resource-Flour-Sack", "Ingredient-Malt-Sack", "Ingredient-Milled-Malt-Sack"],
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VEGETABLE_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VEGETABLE_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VEGETABLE_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": -22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VEGETABLE_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VEGETABLE_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VEGETABLE_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ]
+      }
+    }
+  }
+]

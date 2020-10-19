@@ -1,0 +1,107 @@
+{
+  "_info" : "This file defines for each entity type, the order of rendering for asset parts from bottom to top in each direction",
+  "PLANT" : {
+    "UP_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN" : {
+      "ordering" : [ "PLANT_BRANCHES", "PLANT_LEAVES", "PLANT_FRUIT" ]
+    },
+    "DOWN_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP" : {
+      "sameAs" : "DOWN"
+    }
+  },
+  "ITEM" : {
+    "UP_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN" : {
+      "ordering" : [ "BELOW_LAYER_2", "BELOW_LAYER_1", "ITEM_BASE_LAYER", "ITEM_LIQUID_LAYER", "ABOVE_LAYER_1", "ABOVE_LAYER_2", "ITEM_COVER_LAYER" ]
+    },
+    "DOWN_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP" : {
+      "sameAs" : "DOWN"
+    }
+  },
+  "HUMANOID" : {
+    "UP_RIGHT" : {
+      "sameAs" : "UP"
+    },
+    "DOWN_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN" : {
+      "ordering" : [ "HUMANOID_BODY", "BODY_CLOTHING", "BODY_OUTLINE", "ATTACHMENT_ON_RIGHT_SHOULDER", "HUMANOID_HEAD", "HUMANOID_EYES", "HUMANOID_HAIR", "HAIR_OUTLINE", "HUMANOID_BEARD", "BEARD_ACCESSORY", "BEARD_OUTLINE", "HUMANOID_EYEBROWS", "HUMANOID_HELMET", "ATTACHMENT_FRONT_OF_BODY", "ATTACHMENT_LEFT_HAND", "ATTACHMENT_RIGHT_HAND", "HUMANOID_LEFT_HAND", "HUMANOID_RIGHT_HAND" ]
+    },
+    "DOWN_LEFT" : {
+      "ordering" : [ "HUMANOID_BODY", "BODY_CLOTHING", "BODY_OUTLINE", "ATTACHMENT_ON_RIGHT_SHOULDER", "ATTACHMENT_RIGHT_HAND", "HUMANOID_HEAD", "HUMANOID_EYES", "HUMANOID_HAIR", "HAIR_OUTLINE", "HUMANOID_BEARD", "BEARD_ACCESSORY", "BEARD_OUTLINE", "HUMANOID_EYEBROWS", "HUMANOID_HELMET", "ATTACHMENT_FRONT_OF_BODY", "ATTACHMENT_LEFT_HAND", "HUMANOID_LEFT_HAND", "HUMANOID_RIGHT_HAND" ]
+    },
+    "LEFT" : {
+      "sameAs" : "DOWN_LEFT"
+    },
+    "UP_LEFT" : {
+      "ordering" : [ "ATTACHMENT_ON_RIGHT_SHOULDER", "ATTACHMENT_FRONT_OF_BODY", "ATTACHMENT_LEFT_HAND", "ATTACHMENT_RIGHT_HAND", "HUMANOID_LEFT_HAND", "HUMANOID_RIGHT_HAND", "HUMANOID_BEARD", "BEARD_ACCESSORY", "BEARD_OUTLINE", "HUMANOID_EYES", "HUMANOID_EYEBROWS", "HUMANOID_HEAD", "HUMANOID_HAIR", "HAIR_OUTLINE", "HUMANOID_HELMET", "HUMANOID_BODY", "BODY_CLOTHING", "BODY_OUTLINE" ]
+    },
+    "RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP" : {
+      "ordering" : [ "ATTACHMENT_FRONT_OF_BODY", "ATTACHMENT_LEFT_HAND", "ATTACHMENT_RIGHT_HAND", "HUMANOID_LEFT_HAND", "HUMANOID_RIGHT_HAND", "HUMANOID_BEARD", "BEARD_ACCESSORY", "BEARD_OUTLINE", "HUMANOID_EYES", "HUMANOID_EYEBROWS", "HUMANOID_HEAD", "HUMANOID_HAIR", "HAIR_OUTLINE", "HUMANOID_HELMET", "HUMANOID_BODY", "BODY_CLOTHING", "BODY_OUTLINE", "ATTACHMENT_ON_RIGHT_SHOULDER" ]
+    }
+  },
+  "FURNITURE" : {
+    "UP_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN" : {
+      "ordering" : [ "FURNITURE_BELOW_LAYER_3", "FURNITURE_BELOW_LAYER_2", "FURNITURE_BELOW_LAYER_1", "BASE_LAYER", "FURNITURE_LIQUID_LAYER", "FURNITURE_ABOVE_LAYER_1", "FURNITURE_ABOVE_LAYER_2", "FURNITURE_ABOVE_LAYER_3", "FURNITURE_ABOVE_LAYER_4", "FURNITURE_ABOVE_LAYER_5", "ITEM_COVER_LAYER", "CLOTH_LAYER", "ATTACHMENT_DECO_3", "ATTACHMENT_DECO_2", "ATTACHMENT_DECO_1", "ATTACHMENT_WORKSPACE_8", "ATTACHMENT_WORKSPACE_7", "ATTACHMENT_WORKSPACE_6", "ATTACHMENT_WORKSPACE_5", "ATTACHMENT_WORKSPACE_4", "ATTACHMENT_WORKSPACE_3", "ATTACHMENT_WORKSPACE_2", "ATTACHMENT_WORKSPACE_1", "FURNITURE_ABOVE_LAYER_6", "FURNITURE_ABOVE_LAYER_7" ]
+    },
+    "DOWN_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP" : {
+      "sameAs" : "DOWN"
+    }
+  }
+}

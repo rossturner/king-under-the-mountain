@@ -1,0 +1,1366 @@
+[ {
+  "uniqueName" : "1x1",
+  "extraTiles" : [ ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x1 with workspaces",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "1x1NS",
+  "rotatesToName" : "1x1EW",
+  "extraTiles" : [ ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x1EW",
+  "rotatesToName" : "1x1NS",
+  "extraTiles" : [ ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x1NS with workspaces",
+  "rotatesToName" : "1x1EW with workspaces",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "1x1EW with workspaces",
+  "rotatesToName" : "1x1NS with workspaces",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  } ]
+}, {
+  "uniqueName" : "1x1N",
+  "rotatesToName" : "1x1E",
+  "extraTiles" : [ ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x1E",
+  "rotatesToName" : "1x1S",
+  "extraTiles" : [ ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x1S",
+  "rotatesToName" : "1x1W",
+  "extraTiles" : [ ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x1W",
+  "rotatesToName" : "1x1N",
+  "extraTiles" : [ ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x2",
+  "rotatesToName" : "2x1",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "2x1",
+  "rotatesToName" : "1x2",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ ]
+}, {
+  "uniqueName" : "1x2 with workspaces",
+  "rotatesToName" : "2x1 with workspaces",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x1 with workspaces",
+  "rotatesToName" : "1x2 with workspaces",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x2 with lower workspaces",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "2x2+SW with lower workspaces",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  }, {
+    "x" : -1,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  } ]
+}, {
+  "uniqueName" : "1x3 with workspaces",
+  "rotatesToName" : "3x1 with workspaces",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : -1
+  }, {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "3x1 with workspaces",
+  "rotatesToName" : "1x3 with workspaces",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "1x4 with workspaces",
+  "rotatesToName" : "4x1 with workspaces",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : -1
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : -1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : -1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 2
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 2
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 2
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 2
+    }
+  } ]
+}, {
+  "uniqueName" : "4x1 with workspaces",
+  "rotatesToName" : "1x4 with workspaces",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 2,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : -1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : -1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 2,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 2,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "1x4 NS",
+  "rotatesToName" : "4x1 EW",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : -1
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "4x1 WE",
+  "rotatesToName" : "1x4 NS",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 2,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "1x4 SN",
+  "rotatesToName" : "4x1 WE",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : -1
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "4x1 EW",
+  "rotatesToName" : "1x4 SN",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 2,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "1x2N",
+  "rotatesToName" : "2x1E",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x1E",
+  "rotatesToName" : "1x2S",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  } ]
+}, {
+  "uniqueName" : "1x2S",
+  "rotatesToName" : "2x1W",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "2x1W",
+  "rotatesToName" : "1x2N",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3L",
+  "rotatesToName" : "2x3L1R",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  }, {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3L1R",
+  "rotatesToName" : "2x3L2R",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 1
+  }, {
+    "x" : 2,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3L2R",
+  "rotatesToName" : "2x3L3R",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  }, {
+    "x" : -1,
+    "y" : 2
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3L3R",
+  "rotatesToName" : "2x3L",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3BL",
+  "rotatesToName" : "2x3BL1R",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3BL1R",
+  "rotatesToName" : "2x3BL2R",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 2,
+    "y" : 0
+  }, {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3BL2R",
+  "rotatesToName" : "2x3BL3R",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  }, {
+    "x" : 1,
+    "y" : 2
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3BL3R",
+  "rotatesToName" : "2x3BL",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : -1,
+    "y" : 1
+  }, {
+    "x" : -2,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : -1,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "3x2",
+  "rotatesToName" : "2x3",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : -1,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 2
+    }
+  } ]
+}, {
+  "uniqueName" : "2x3",
+  "rotatesToName" : "3x2",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  }, {
+    "x" : 1,
+    "y" : 2
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 1
+    }
+  } ]
+}, {
+  "uniqueName" : "mashtun layout",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 0
+    }
+  } ]
+}, {
+  "uniqueName" : "4x2",
+  "rotatesToName" : "2x4",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  }, {
+    "x" : -1,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  }, {
+    "x" : 2,
+    "y" : 0
+  }, {
+    "x" : 2,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : -1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : -1,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 2
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 2
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 2
+    }
+  }, {
+    "location" : {
+      "x" : 2,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : -1
+    }
+  }, {
+    "location" : {
+      "x" : 2,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 2
+    }
+  } ]
+}, {
+  "uniqueName" : "2x4",
+  "rotatesToName" : "4x2",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 1
+  }, {
+    "x" : 0,
+    "y" : 2
+  }, {
+    "x" : 1,
+    "y" : 2
+  }, {
+    "x" : 0,
+    "y" : 3
+  }, {
+    "x" : 1,
+    "y" : 3
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 0
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 1
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 2
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 2
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 2
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 2
+    }
+  }, {
+    "location" : {
+      "x" : 0,
+      "y" : 3
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 3
+    }
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 3
+    },
+    "accessedFrom" : {
+      "x" : 2,
+      "y" : 3
+    }
+  } ]
+}, {
+  "uniqueName" : "inverted-U",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 1
+  }, {
+    "x" : 2,
+    "y" : 0
+  }, {
+    "x" : 2,
+    "y" : 1
+  } ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  } ]
+} ]

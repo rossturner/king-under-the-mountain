@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Resource-Planks-Pile04",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Planks",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 10,
+  "maxQuantity": 16,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Planks-Pile04.png",
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 7
+      }
+    }
+  }
+}]

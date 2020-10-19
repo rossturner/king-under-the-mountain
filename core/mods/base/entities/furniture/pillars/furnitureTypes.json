@@ -1,0 +1,28 @@
+[
+  {
+    "name": "PILLAR",
+    "i18nKey": "FURNITURE.PILLAR",
+    "categoryName": "NAVIGABLE",
+    "defaultLayoutName": "1x1",
+    "colorCode": "#988568",
+    "iconName": "ionic-column",
+    "placeAnywhere": true,
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ]
+    },
+    "tags": {
+      "SUPPORTS_ROOF": []
+    }
+  }
+]

@@ -1,0 +1,11 @@
+[{
+  "itemTypeName": "Product-Barrel-Hoops",
+  "itemGroup": "PRODUCT",
+  "materialTypes": ["METAL"],
+  "primaryMaterialType": "METAL",
+  "stockpileGroupName": "Resources",
+  "hoursInInventoryUntilUnused": 2,
+  "maxStackSize": 12,
+  "maxHauledAtOnce": 3,
+  "equippedWhileWorkingOnJob": true
+}]

@@ -1,0 +1,54 @@
+[
+  {
+    "uniqueName": "Mushroom-Stem01",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": ["Purple Helmet", "Death Cap", "Fist", "Berserker", "Rociomycota", "Miltonia", "Elfsbane", "Sunglow", "Glow", "Syrup Powder"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Stem01.png",
+        "scale": 0.75,
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -4
+        },
+        "childAssets": [
+          {
+            "type": "PLANT_LEAVES",
+            "offsetPixels": {
+              "x": 1.75,
+              "y": 15
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Mushroom-Stem02",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": ["Purple Helmet", "Death Cap", "Fist", "Berserker", "Rociomycota", "Miltonia", "Elfsbane", "Sunglow", "Glow", "Syrup Powder"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Stem02.png",
+        "scale": 0.75,
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "PLANT_LEAVES",
+            "offsetPixels": {
+              "x": -1,
+              "y": 16
+            }
+          }
+        ]
+      }
+    }
+  }
+]

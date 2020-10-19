@@ -1,0 +1,14 @@
+[{
+  "uniqueName": "Resource-Gem-Pile01",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Gem",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 2,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Gem-Cut-Pile01.png",
+      "coloringLayer": "GEM_COLOR"
+    }
+  }
+}]

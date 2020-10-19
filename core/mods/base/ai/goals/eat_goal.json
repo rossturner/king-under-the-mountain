@@ -1,0 +1,68 @@
+{
+  "name": "Eat food goal",
+  "i18nDescription": "GOAL.EAT.DESCRIPTION",
+  "selectors": [
+    {
+      "conditions": [
+        {
+          "type": "NEED",
+          "need": "FOOD",
+          "operator": "LESS_THAN_OR_EQUAL_TO",
+          "value": 25
+        }
+      ],
+      "priority": "NEED_URGENT",
+      "scheduleCategory": "ANY"
+    },
+    {
+      "conditions": [
+        {
+          "type": "NEED",
+          "need": "FOOD",
+          "operator": "LESS_THAN_OR_EQUAL_TO",
+          "value": 65
+        }
+      ],
+      "priority": "WANT_NORMAL",
+      "scheduleCategory": "NOURISHMENT"
+    }
+  ],
+  "initialActions": ["LocateFood"],
+  "actionRelationships": {
+    "LocateFood": {
+      "pass": ["GoToFoodLocation"],
+      "fail": []
+    },
+    "GoToFoodLocation": {
+      "pass": ["PickUpEntity"],
+      "fail": ["CancelFoodAllocation"]
+    },
+    "PickUpEntity": {
+      "pass": ["EquipItemFromFoodAllocation"],
+      "fail": ["CancelFoodAllocation"]
+    },
+    "EquipItemFromFoodAllocation": {
+      "pass": ["FindPlaceToEat"],
+      "fail": ["CancelFoodAllocation"]
+    },
+    "FindPlaceToEat": {
+      "pass": ["GoToLocation"],
+      "fail": ["GoToRandomLocation"]
+    },
+    "GoToLocation": {
+      "pass": ["PlaceFoodOrDrinkOnFurniture", "ConsumeFood"],
+      "fail": ["ConsumeFood"]
+    },
+    "GoToRandomLocation": {
+      "pass": ["ConsumeFood"],
+      "fail": ["ConsumeFood"]
+    },
+    "PlaceFoodOrDrinkOnFurniture": {},
+    "ConsumeFood": {
+      "pass": ["UnassignFurniture"],
+      "fail": ["UnassignFurniture"]
+    },
+    "UnassignFurniture": {},
+    "CancelFoodAllocation": {}
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Place item goal",
+  "i18nDescription": "GOAL.HAULING.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["GoToLocation"],
+  "actionRelationships": {
+    "GoToLocation": {
+      "pass": ["PlaceEntity"],
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "PlaceEntity": {
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "CancelHaulingAllocation": {}
+  }
+}

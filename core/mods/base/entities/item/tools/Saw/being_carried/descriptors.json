@@ -1,0 +1,216 @@
+[
+  {
+    "uniqueName": "Tool-Saw-Handle-Being-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Saw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Saw-Handle-Being-Carried-F.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -8,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 8,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Saw-Handle-Being-Carried-F34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 10,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -10,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Saw-Handle-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -10,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 10,
+              "y": -2
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Tool-Saw-Handle-Being-Carried-B.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 10,
+          "y": 5
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1",
+            "offsetPixels": {
+              "x": -10,
+              "y": -10
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Saw-Handle-Being-Carried-B34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 15,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Saw-Handle-Being-Carried-B34.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -15,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Saw-Blade-Being-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Saw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Saw-Blade-Being-Carried-F.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Saw-Blade-Being-Carried-F34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Saw-Blade-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP": {
+        "filename": "Tool-Saw-Blade-Being-Carried-B.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Saw-Blade-Being-Carried-B34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Saw-Blade-Being-Carried-B34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Saw-Extras-Being-Carried",
+    "type": "BELOW_LAYER_1",
+    "itemTypeName": "Tool-Saw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Saw-Extras-Being-Carried-F.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Saw-Extras-Being-Carried-F34.png"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Saw-Extras-Being-Carried-F34.png",
+        "flipX": true
+      },
+      "UP": {
+        "filename": "Tool-Saw-Extras-Being-Carried-B.png"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Saw-Extras-Being-Carried-B34.png"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Saw-Extras-Being-Carried-B34.png",
+        "flipX": true
+      }
+    }
+  }
+]

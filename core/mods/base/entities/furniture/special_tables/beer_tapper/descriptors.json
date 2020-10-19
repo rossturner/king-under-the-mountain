@@ -1,0 +1,118 @@
+[
+  {
+    "uniqueName": "beer-tapper-2x1-base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "BEER_TAPPER"
+    ],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 beer tapper table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.7,
+        "offsetPixels": {
+          "x": 32,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_6"
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 34,
+              "y": 20
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "beer-tapper-2x1-equipment",
+    "type": "FURNITURE_ABOVE_LAYER_6",
+    "furnitureTypeNames": [
+      "BEER_TAPPER"
+    ],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 beer tapper equipment.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.7,
+        "offsetPixels": {
+          "x": -32,
+          "y": 28
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "beer-tapper-1x2-base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "BEER_TAPPER"
+    ],
+    "furnitureLayoutName": "1x2 with workspaces",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 beer tapper table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.8,
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 42
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_6"
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 1,
+              "y": 45
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "beer-tapper-1x2-equipment",
+    "type": "FURNITURE_ABOVE_LAYER_6",
+    "furnitureTypeNames": [
+      "BEER_TAPPER"
+    ],
+    "furnitureLayoutName": "1x2 with workspaces",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 beer tapper equipment.png",
+        "coloringLayer": "METAL_COLOR",
+        "scale": 0.7,
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -12.0
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "floorTypeName": "stone_slab",
+  "i18nKey": "FLOOR.STONE_SLAB",
+  "materialType": "STONE",
+  "type": "floor",
+  "numSprites": 5,
+  "layer": 0,
+  "overlapType": {
+    "overlapName": "organic"
+  },
+  "useMaterialColor": true
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "uniqueName": "door-stone-single-ew",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR",
+    "furnitureLayoutName": "1x1EW",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "isAnimated": true,
+        "filename": "StoneDoor_Single_EW",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -36
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "door-placement-stone-single-ew",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_PLACEMENT",
+    "furnitureLayoutName": "1x1EW",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "StoneDoor_Single_EW_0.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -4
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "door-stone-single-ns",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR",
+    "furnitureLayoutName": "1x1NS",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "isAnimated": true,
+        "filename": "StoneDoor_Single_NS",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -6,
+          "y": 0
+        }
+      }
+    }
+  }
+]

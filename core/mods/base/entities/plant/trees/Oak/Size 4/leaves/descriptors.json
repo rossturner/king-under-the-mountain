@@ -1,0 +1,12 @@
+[{
+  "uniqueName": "Tree-Oak-Size4-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Oak", "Baobab"],
+  "growthStages": [3],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "oak-3-l.png",
+      "coloringLayer": "LEAF_COLOR"
+    }
+  }
+}]

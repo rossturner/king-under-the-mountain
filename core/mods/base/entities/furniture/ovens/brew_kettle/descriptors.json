@@ -1,0 +1,41 @@
+[
+  {
+    "uniqueName": "Brew-Kettle-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["BREW_KETTLE"],
+    "furnitureLayoutName": "mashtun layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Copper.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 28,
+          "y": 32
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Brew-Kettle-Tank",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["BREW_KETTLE"],
+    "furnitureLayoutName": "mashtun layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Hopback whirlpool.png",
+        "coloringLayer": "MISC_COLOR_1",
+        "offsetPixels": {
+          "x": -70,
+          "y": -8
+        }
+      }
+    }
+  }
+]

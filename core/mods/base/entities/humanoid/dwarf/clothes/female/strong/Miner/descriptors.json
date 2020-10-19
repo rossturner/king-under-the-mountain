@@ -1,0 +1,57 @@
+[{
+  "uniqueName": "Dwarf-Female-Strong-Miner-Clothing",
+  "type": "BODY_CLOTHING",
+  "race": "DWARF",
+  "bodyType": "STRONG",
+  "gender": "FEMALE",
+  "profession": "MINER",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Strong-Miner-Clothing-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Strong-Miner-Clothing-F34.png",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Strong-Miner-Clothing-F34.png",
+      "flipX": true,
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Strong-Miner-Clothing-B34.png",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": -1,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Strong-Miner-Clothing-B34F.png",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 1,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Strong-Miner-Clothing-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

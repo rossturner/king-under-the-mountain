@@ -1,0 +1,146 @@
+[
+  {
+    "uniqueName": "Product-Bucket-Body-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Bucket",
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Bucket-Body-Carried.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.8,
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": -6
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Bucket-Body-Carried.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.8,
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -6
+            }
+          },
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Bucket-Body-Carried.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.8,
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -6
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Bucket-Body-Carried.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.8,
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Bucket-Body-Carried.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.8,
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Bucket-Body-Carried.png",
+        "coloringLayer": "WOOD_COLOR",
+        "scale": 0.8,
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "uniqueName": "Product-Cauldron-Body-Floor",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Body-Floor.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 5.5
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 1
+            }
+          },
+          {
+            "type": "ITEM_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": 0,
+              "y": 1
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 1
+            }
+          },
+          {
+            "type": "ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Cauldron-Fireplace-Floor",
+    "type": "BELOW_LAYER_1",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Fireplace-Floor.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -22
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Cauldron-Liquid-Floor",
+    "type": "ITEM_LIQUID_LAYER",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Liquid-Floor.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 2.5,
+          "y": 6
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Cauldron-Stand-Floor",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Stand-Floor.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Cauldron-Rope-Floor",
+    "type": "ABOVE_LAYER_2",
+    "itemTypeName": "Product-Cauldron",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Cauldron-Rope-Floor.png",
+        "coloringLayer": "ROPE_COLOR",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": 12
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,574 @@
+package technology.rocketjump.undermount.mapping;
+
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.IntMap;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.model.FloorType;
+import technology.rocketjump.undermount.assets.model.WallType;
+import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.mapping.tile.*;
+import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
+import technology.rocketjump.undermount.mapping.tile.wall.Wall;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.*;
+import technology.rocketjump.undermount.rooms.Room;
+import technology.rocketjump.undermount.rooms.RoomFactory;
+import technology.rocketjump.undermount.rooms.RoomStore;
+import technology.rocketjump.undermount.rooms.RoomTile;
+import technology.rocketjump.undermount.settlement.notifications.Notification;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
+import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
+import technology.rocketjump.undermount.zones.Zone;
+
+import java.util.*;
+
+import static technology.rocketjump.undermount.settlement.notifications.NotificationType.AREA_REVEALED;
+
+@Singleton
+public class MapMessageHandler implements Telegraph, GameContextAware {
+
+	private final MessageDispatcher messageDispatcher;
+	private final OutdoorLightProcessor outdoorLightProcessor;
+	private final GameInteractionStateContainer interactionStateContainer;
+	private final RoomFactory roomFactory;
+	private final RoomStore roomStore;
+
+	private GameContext gameContext;
+
+	@Inject
+	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
+							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory, RoomStore roomStore) {
+		this.messageDispatcher = messageDispatcher;
+		this.outdoorLightProcessor = outdoorLightProcessor;
+		this.interactionStateContainer = interactionStateContainer;
+		this.roomFactory = roomFactory;
+		this.roomStore = roomStore;
+
+		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
+		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
+		messageDispatcher.addListener(this, MessageType.ROOM_PLACEMENT);
+		messageDispatcher.addListener(this, MessageType.ADD_WALL);
+		messageDispatcher.addListener(this, MessageType.REMOVE_WALL);
+		messageDispatcher.addListener(this, MessageType.REMOVE_ROOM);
+		messageDispatcher.addListener(this, MessageType.REMOVE_ROOM_TILES);
+		messageDispatcher.addListener(this, MessageType.CHANGE_FLOOR);
+		messageDispatcher.addListener(this, MessageType.REPLACE_REGION);
+	}
+
+	@Override
+	public boolean handleMessage(Telegram msg) {
+		switch (msg.message) {
+			case MessageType.AREA_SELECTION: {
+				return handle((AreaSelectionMessage) msg.extraInfo);
+			}
+			case MessageType.ROOM_PLACEMENT: {
+				return handle((RoomPlacementMessage) msg.extraInfo);
+			}
+			case MessageType.ENTITY_POSITION_CHANGED: {
+				return handle((EntityPositionChangedMessage) msg.extraInfo);
+			}
+			case MessageType.ADD_WALL: {
+				AddWallMessage message = (AddWallMessage) msg.extraInfo;
+				return addWall(message.location, message.material, message.wallType);
+			}
+			case MessageType.REMOVE_WALL: {
+				GridPoint2 location = (GridPoint2) msg.extraInfo;
+				return handleRemoveWall(location);
+			}
+			case MessageType.REMOVE_ROOM: {
+				Room roomToRemove = (Room) msg.extraInfo;
+				this.removeRoomTiles(new HashSet<>(roomToRemove.getRoomTiles().keySet()));
+				return true;
+			}
+			case MessageType.REMOVE_ROOM_TILES: {
+				Set<GridPoint2> roomTilesToRemove = (Set) msg.extraInfo;
+				this.removeRoomTiles(roomTilesToRemove);
+				return true;
+			}
+			case MessageType.CHANGE_FLOOR: {
+				ChangeFloorMessage message = (ChangeFloorMessage) msg.extraInfo;
+				this.changeFloor(message.targetLocation, message.newFloorType, message.newMaterial);
+				return true;
+			}
+			case MessageType.REPLACE_REGION: {
+				ReplaceRegionMessage message = (ReplaceRegionMessage) msg.extraInfo;
+				replaceRegion(message.tileToReplace, message.replacementRegionId);
+				return true;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
+		}
+	}
+
+	private boolean handle(RoomPlacementMessage roomPlacementMessage) {
+		// Need to create separate rooms if across different areas
+		Map<GridPoint2, RoomTile> roomTilesToPlace = roomPlacementMessage.getRoomTiles();
+
+		List<Room> newRooms = new LinkedList<>();
+
+		while (!roomTilesToPlace.isEmpty()) {
+			Room newRoom = roomFactory.create(roomPlacementMessage.getRoomType(), roomTilesToPlace);
+			newRooms.add(newRoom);
+		}
+
+		for (Room newRoom : newRooms) {
+			long thisRoomId = newRoom.getRoomId();
+			Set<Long> roomsToMergeFrom = new HashSet<>();
+			for (Map.Entry<GridPoint2, RoomTile> entry : newRoom.entrySet()) {
+				if (entry.getValue().isAtRoomEdge()) {
+					for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(entry.getKey().x, entry.getKey().y).values()) {
+						if (neighbourTile.hasRoom()) {
+							Room neighbourRoom = neighbourTile.getRoomTile().getRoom();
+							if (neighbourRoom.getRoomId() != thisRoomId && neighbourRoom.getRoomType().equals(newRoom.getRoomType())) {
+								// Different room of same type
+								roomsToMergeFrom.add(neighbourRoom.getRoomId());
+							}
+						}
+					}
+				}
+			}
+
+			if (!roomsToMergeFrom.isEmpty()) {
+				while (!roomsToMergeFrom.isEmpty()) {
+					long roomId = roomsToMergeFrom.iterator().next();
+					roomsToMergeFrom.remove(roomId);
+					Room roomToMergeFrom = roomStore.getById(roomId);
+					newRoom.mergeFrom(roomToMergeFrom);
+					roomStore.remove(roomToMergeFrom);
+				}
+
+				// Update all tile layouts
+				newRoom.updateLayout(gameContext.getAreaMap());
+			}
+		}
+
+		return true;
+	}
+
+	private boolean handle(AreaSelectionMessage areaSelectionMessage) {
+		GridPoint2 minTile = new GridPoint2(MathUtils.floor(areaSelectionMessage.getMinPoint().x), MathUtils.floor(areaSelectionMessage.getMinPoint().y));
+		GridPoint2 maxTile = new GridPoint2(MathUtils.floor(areaSelectionMessage.getMaxPoint().x), MathUtils.floor(areaSelectionMessage.getMaxPoint().y));
+
+		Set<GridPoint2> roomTilesToRemove = new HashSet<>();
+
+		for (int x = minTile.x; x <= maxTile.x; x++) {
+			for (int y = minTile.y; y <= maxTile.y; y++) {
+				MapTile tile = gameContext.getAreaMap().getTile(x, y);
+				if (tile != null) {
+					if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.REMOVE_DESIGNATIONS)) {
+						if (tile.getDesignation() != null) {
+							messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
+						}
+					} else if (interactionStateContainer.getInteractionMode().designationCheck != null) {
+						if (interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(tile)) {
+							if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.REMOVE_ROOMS)) {
+								roomTilesToRemove.add(tile.getTilePosition());
+							} else {
+								TileDesignation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
+								tile.setDesignation(designationToApply);
+								messageDispatcher.dispatchMessage(MessageType.DESIGNATION_APPLIED, new ApplyDesignationMessage(tile, designationToApply));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if (!roomTilesToRemove.isEmpty()) {
+			removeRoomTiles(roomTilesToRemove);
+		}
+		return true;
+	}
+
+	private void removeRoomTiles(Set<GridPoint2> roomTilesToRemove) {
+		Set<Room> roomsWithRemovedTiles = new HashSet<>();
+
+		for (GridPoint2 tileLocation : roomTilesToRemove) {
+			MapTile tile = gameContext.getAreaMap().getTile(tileLocation);
+			if (tile != null) {
+				RoomTile roomTile = tile.getRoomTile();
+				if (roomTile != null) {
+					roomsWithRemovedTiles.add(roomTile.getRoom());
+					roomTile.getRoom().removeTile(tileLocation);
+					tile.setRoomTile(null);
+				}
+			}
+		}
+
+		for (Room modifiedRoom : roomsWithRemovedTiles) {
+			if (modifiedRoom.isEmpty()) {
+				roomStore.remove(modifiedRoom);
+			} else {
+				// Need to see if this room has been split into more than 1 section
+				splitRoomIfNecessary(modifiedRoom);
+			}
+
+		}
+
+	}
+
+	private void splitRoomIfNecessary(Room modifiedRoom) {
+		Set<GridPoint2> traversed = new HashSet<>();
+		IntMap<Set<GridPoint2>> tileGroups = new IntMap<>();
+		int cursor = 1;
+
+		Set<GridPoint2> allRoomTiles = modifiedRoom.keySet();
+		for (GridPoint2 roomTile : allRoomTiles) {
+			if (!traversed.contains(roomTile)) {
+				Set<GridPoint2> roomTileGroup = new HashSet<>();
+				tileGroups.put(cursor, roomTileGroup);
+				cursor++;
+
+				addAdjacentTilesToGroup(roomTile, traversed, roomTileGroup, modifiedRoom);
+			}
+		}
+
+		if (tileGroups.size > 1) {
+			// Need to create new room for each other section
+			for (int groupCursor = 1; groupCursor < tileGroups.size; groupCursor++) {
+				Set<GridPoint2> newRoomGroup = tileGroups.get(groupCursor);
+
+				Room newRoom = roomFactory.createBasedOn(modifiedRoom);
+
+				for (GridPoint2 positionToMove : newRoomGroup) {
+					RoomTile roomTileToMove = modifiedRoom.removeTile(positionToMove);
+					roomTileToMove.setRoom(newRoom);
+					newRoom.addTile(roomTileToMove);
+				}
+				newRoom.updateLayout(gameContext.getAreaMap());
+			}
+		}
+		modifiedRoom.updateLayout(gameContext.getAreaMap());
+	}
+
+	private void addAdjacentTilesToGroup(GridPoint2 currentTile, Set<GridPoint2> traversed, Set<GridPoint2> roomTileGroup, Room currentRoom) {
+		roomTileGroup.add(currentTile);
+		traversed.add(currentTile);
+
+		for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(currentTile.x, currentTile.y).values()) {
+			if (traversed.contains(neighbourTile.getTilePosition())) {
+				continue;
+			}
+			if (neighbourTile.hasRoom() && neighbourTile.getRoomTile().getRoom().getRoomId() == currentRoom.getRoomId()) {
+				addAdjacentTilesToGroup(neighbourTile.getTilePosition(), traversed, roomTileGroup, currentRoom);
+			}
+		}
+	}
+
+	private boolean handle(EntityPositionChangedMessage message) {
+		Entity entity = message.movingEntity;
+		if (entity == null) {
+			Logger.error(message.getClass().getSimpleName() + " handled with null entity");
+			return true;
+		}
+		if (message.oldPosition != null) {
+			MapTile oldCell = gameContext.getAreaMap().getTile(message.oldPosition);
+			if (oldCell != null) {
+				Entity removed = oldCell.removeEntity(entity.getId());
+				if (removed == null) {
+					Logger.error("Could not find entity " + entity.toString() + " in tile at " + message.oldPosition);
+				}
+
+				for (GridPoint2 otherTilePosition : entity.calculateOtherTilePositions()) {
+					MapTile otherTile = gameContext.getAreaMap().getTile(otherTilePosition);
+					if (otherTile != null) {
+						otherTile.removeEntity(entity.getId());
+					}
+				}
+			}
+		}
+
+		if (message.newPosition != null) {
+			MapTile newCell = gameContext.getAreaMap().getTile(message.newPosition);
+			if (newCell == null) {
+				Logger.error("Entity " + entity.toString() + " appears to have moved off the map and/or a tile has disappeared, needs investigating");
+			} else {
+				newCell.addEntity(entity);
+				for (GridPoint2 otherTilePosition : entity.calculateOtherTilePositions(message.newPosition)) {
+					MapTile otherTile = gameContext.getAreaMap().getTile(otherTilePosition);
+					if (otherTile != null) {
+						otherTile.addEntity(entity);
+					}
+				}
+			}
+
+		}
+		return true;
+	}
+
+	private boolean addWall(GridPoint2 location, GameMaterial wallMaterial, WallType wallType) {
+		MapTile tileToAddWallTo = gameContext.getAreaMap().getTile(location);
+
+		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
+		WallLayout wallLayout = new WallLayout(tileNeighbours);
+		TileRoof newRoof = TileRoof.CONSTRUCTED;
+		if (tileToAddWallTo.getRoof().equals(TileRoof.MOUNTAIN_ROOF)) {
+			newRoof = TileRoof.MOUNTAIN_ROOF;
+		} else if (tileToAddWallTo.getRoof().equals(TileRoof.MINED)) {
+			newRoof = TileRoof.MINED;
+		}
+		tileToAddWallTo.setWall(new Wall(wallLayout, wallType, wallMaterial), newRoof);
+		updateTile(tileToAddWallTo, gameContext);
+		messageDispatcher.dispatchMessage(MessageType.WALL_CREATED, location);
+
+		// if inside, propagate outwards "darkness" from tile vertices that are now totally indoors, then propagate light inwards from each endpoint
+		if (tileToAddWallTo.getRoof().equals(TileRoof.MOUNTAIN_ROOF)) {
+			EnumMap<CompassDirection, MapVertex> cellVertices = gameContext.getAreaMap().getVertexNeighboursOfCell(tileToAddWallTo);
+			for (MapVertex cellVertex : cellVertices.values()) {
+				TileNeighbours neighboursOfCellVertex = gameContext.getAreaMap().getTileNeighboursOfVertex(cellVertex);
+				boolean vertexSurroundedByIndoorCells = true;
+				for (MapTile vertexNeighbour : neighboursOfCellVertex.values()) {
+					if (vertexNeighbour != null && vertexNeighbour.getRoof().equals(TileRoof.OPEN)) {
+						vertexSurroundedByIndoorCells = false;
+						break;
+					}
+				}
+				if (vertexSurroundedByIndoorCells) {
+					outdoorLightProcessor.propagateDarknessFromVertex(gameContext.getAreaMap(), cellVertex);
+				}
+			}
+
+		}
+
+		MapTile north = tileNeighbours.get(CompassDirection.NORTH);
+		MapTile south = tileNeighbours.get(CompassDirection.SOUTH);
+		MapTile east = tileNeighbours.get(CompassDirection.EAST);
+		MapTile west = tileNeighbours.get(CompassDirection.WEST);
+
+		// Change the tile's region to be neighbouring wall region, or else a new region
+		Integer neighbourRegionId = null;
+		for (MapTile neighbourTile : Arrays.asList(north, south, east, west)) {
+			if (neighbourTile != null && neighbourTile.hasWall()) {
+				if (neighbourRegionId == null) {
+					neighbourRegionId = neighbourTile.getRegionId();
+					tileToAddWallTo.setRegionId(neighbourRegionId);
+				} else if (neighbourTile.getRegionId() != neighbourRegionId) {
+					// Encountered a different neighbour region ID, merge together
+					replaceRegion(neighbourTile, neighbourRegionId);
+				}
+			}
+		}
+		if (neighbourRegionId == null) {
+			neighbourRegionId = gameContext.getAreaMap().createNewRegionId();
+			tileToAddWallTo.setRegionId(neighbourRegionId);
+		}
+
+		// Figure out if new wall has split region into two - if so, create new region on one side
+		boolean emptyEitherSide = false;
+		MapTile sideA = null;
+		MapTile sideB = null;
+
+		List<List<MapTile>> pairings = Arrays.asList(
+				Arrays.asList(north, south),
+				Arrays.asList(east, west),
+
+				Arrays.asList(north, west),
+				Arrays.asList(north, east),
+				Arrays.asList(south, east),
+				Arrays.asList(south, west)
+		);
+
+		for (List<MapTile> pair : pairings) {
+			if (pair.get(0) != null && !pair.get(0).hasWall() && pair.get(1) != null && !pair.get(1).hasWall()) {
+				emptyEitherSide = true;
+				sideA = pair.get(0);
+				sideB = pair.get(1);
+				break;
+			}
+		}
+
+		if (emptyEitherSide) {
+			// Flood fill from one side until the other side is found, otherwise set all area of flood fill to new region
+			Set<MapTile> explored = new HashSet<>();
+			Deque<MapTile> frontier = new ArrayDeque<>();
+			frontier.add(sideA);
+
+			boolean otherSideFound = false;
+
+			while (!frontier.isEmpty()) {
+				MapTile current = frontier.pop();
+
+				if (current.equals(sideB)) {
+					otherSideFound = true;
+					break;
+				}
+
+				explored.add(current);
+
+				for (MapTile orthogonalNeighbour : gameContext.getAreaMap().getOrthogonalNeighbours(current.getTileX(), current.getTileY()).values()) {
+					if (!explored.contains(orthogonalNeighbour) && !frontier.contains(orthogonalNeighbour)) {
+						if (!orthogonalNeighbour.hasWall() && !orthogonalNeighbour.isWaterSource()) {
+							frontier.add(orthogonalNeighbour);
+						}
+					}
+				}
+
+			}
+
+			if (!otherSideFound) {
+				int newRegionId = gameContext.getAreaMap().createNewRegionId();
+				replaceRegion(sideA, newRegionId);
+			}
+		}
+
+		return true;
+	}
+
+	private boolean handleRemoveWall(GridPoint2 location) {
+		MapTile tile = gameContext.getAreaMap().getTile(location);
+		if (tile != null && tile.hasWall()) {
+			GameMaterial floorMaterial = tile.getWall().getMaterial();
+			if (tile.getRoofMaterial() != null) {
+				floorMaterial = tile.getRoofMaterial();
+			}
+
+			if (tile.getRoof().equals(TileRoof.MOUNTAIN_ROOF)) {
+				tile.setRoof(TileRoof.MINED);
+			}
+
+			tile.setWall(null, tile.getRoof());
+			TileDesignation tileDesignation = tile.getDesignation();
+			if (tileDesignation != null) {
+				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
+			}
+			tile.getFloor().setMaterial(floorMaterial);
+			for (MapVertex vertex : gameContext.getAreaMap().getVertexNeighboursOfCell(tile).values()) {
+				outdoorLightProcessor.propagateLightFromMapVertex(gameContext.getAreaMap(), vertex, vertex.getOutsideLightAmount());
+			}
+
+
+			updateTile(tile, gameContext);
+
+			Integer neighbourRegionId = null;
+			MapTile unexploredTile = null;
+			for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(location.x, location.y).values()) {
+				if (neighbourTile.hasFloor() && !neighbourTile.getFloor().isRiverTile()) {
+					if (!neighbourTile.getExploration().equals(TileExploration.EXPLORED)) {
+						unexploredTile = neighbourTile;
+					}
+					if (neighbourRegionId == null) {
+						neighbourRegionId = neighbourTile.getRegionId();
+						tile.setRegionId(neighbourRegionId);
+					} else if (neighbourTile.getRegionId() != neighbourRegionId) {
+						// Encountered a different neighbour region ID, merge together
+						replaceRegion(neighbourTile, neighbourRegionId);
+					}
+				}
+				if (neighbourTile.hasDoorway()) {
+					messageDispatcher.dispatchMessage(MessageType.DECONSTRUCT_DOOR, neighbourTile.getDoorway());
+				}
+			}
+			if (unexploredTile != null) {
+				Notification areaUncoveredNotification = new Notification(AREA_REVEALED, unexploredTile.getWorldPositionOfCenter());
+				messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, areaUncoveredNotification);
+			}
+			if (neighbourRegionId == null) {
+				neighbourRegionId = gameContext.getAreaMap().createNewRegionId();
+				tile.setRegionId(neighbourRegionId);
+			}
+			messageDispatcher.dispatchMessage(MessageType.WALL_REMOVED, location);
+		}
+		return true;
+	}
+
+	/**
+	 * This method flood-fills the region specified in targetTile with replacementRegionId
+	 */
+	private void replaceRegion(MapTile initialTargetTile, int replacementRegionId) {
+		int regionToReplace = initialTargetTile.getRegionId();
+		Set<MapTile> visited = new HashSet<>();
+		Queue<MapTile> frontier = new LinkedList<>();
+		Set<Zone> zonesEncountered = new HashSet<>();
+		frontier.add(initialTargetTile);
+
+		while (!frontier.isEmpty()) {
+			MapTile currentTile = frontier.poll();
+			if (visited.contains(currentTile)) {
+				continue;
+			}
+			currentTile.setRegionId(replacementRegionId);
+			zonesEncountered.addAll(currentTile.getZones());
+			visited.add(currentTile);
+
+			for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(currentTile.getTileX(), currentTile.getTileY()).values()) {
+				if (visited.contains(neighbourTile)) {
+					continue;
+				}
+				if (neighbourTile.getRegionId() == regionToReplace) {
+					frontier.add(neighbourTile);
+				}
+			}
+		}
+
+		for (Zone movedZone : zonesEncountered) {
+			gameContext.getAreaMap().removeZone(movedZone);
+			movedZone.recalculate(gameContext.getAreaMap());
+			movedZone.setRegionId(replacementRegionId);
+			if (!movedZone.isEmpty()) {
+				gameContext.getAreaMap().addZone(movedZone);
+			}
+		}
+	}
+
+	public static void updateTile(MapTile tile, GameContext gameContext) {
+		TileNeighbours neighbours = gameContext.getAreaMap().getNeighbours(tile.getTileX(), tile.getTileY());
+		tile.update(neighbours, gameContext.getAreaMap().getVertices(tile.getTileX(), tile.getTileY()));
+
+		for (MapTile cellNeighbour : neighbours.values()) {
+			cellNeighbour.update(gameContext.getAreaMap().getNeighbours(cellNeighbour.getTileX(), cellNeighbour.getTileY()),
+					gameContext.getAreaMap().getVertices(cellNeighbour.getTileX(), cellNeighbour.getTileY()));
+		}
+
+		for (Zone zone : new ArrayList<>(tile.getZones())) {
+			zone.recalculate(gameContext.getAreaMap());
+			if (zone.isEmpty()) {
+				gameContext.getAreaMap().removeZone(zone);
+			}
+		}
+
+	}
+
+	public void changeFloor(GridPoint2 location, FloorType floorType, GameMaterial material) {
+		MapTile cell = gameContext.getAreaMap().getTile(location);
+
+		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
+		cell.getFloor().setFloorType(floorType);
+		cell.getFloor().setMaterial(material);
+		cell.update(tileNeighbours, gameContext.getAreaMap().getVertices(location.x, location.y));
+
+		for (MapTile neighbourCell : tileNeighbours.values()) {
+			neighbourCell.update(gameContext.getAreaMap().getNeighbours(neighbourCell.getTileX(), neighbourCell.getTileY()),
+					gameContext.getAreaMap().getVertices(neighbourCell.getTileX(), neighbourCell.getTileY()));
+		}
+	}
+
+	public void markAsOutside(int tileX, int tileY) {
+		MapTile cell = gameContext.getAreaMap().getTile(tileX, tileY);
+		cell.setRoof(TileRoof.OPEN);
+
+		for (MapVertex vertex : gameContext.getAreaMap().getVertexNeighboursOfCell(cell).values()) {
+			vertex.setOutsideLightAmount(1.0f);
+			outdoorLightProcessor.propagateLightFromMapVertex(gameContext.getAreaMap(), vertex, 1f);
+		}
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
+	}
+}

@@ -1,0 +1,909 @@
+
+diffuse-terrain.png
+size: 4096,256
+format: RGBA8888
+filter: MipMapLinearLinear,Linear
+repeat: none
+Horizontal Stone Bridge Bottom Left
+  rotate: false
+  xy: 138, 18
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Bottom Middle
+  rotate: false
+  xy: 206, 98
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Bottom Right
+  rotate: false
+  xy: 274, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Middle Left
+  rotate: false
+  xy: 206, 30
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Middle Middle
+  rotate: false
+  xy: 274, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Middle Right
+  rotate: false
+  xy: 342, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Top Left
+  rotate: false
+  xy: 2, 162
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Top Middle
+  rotate: false
+  xy: 2, 82
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+Horizontal Stone Bridge Top Right
+  rotate: false
+  xy: 70, 162
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Bottom Left
+  rotate: false
+  xy: 274, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Bottom Middle
+  rotate: false
+  xy: 342, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Bottom Right
+  rotate: false
+  xy: 410, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Middle Left
+  rotate: false
+  xy: 342, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Middle Middle
+  rotate: false
+  xy: 410, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Middle Right
+  rotate: false
+  xy: 478, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Top Left
+  rotate: false
+  xy: 2, 2
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Top Middle
+  rotate: false
+  xy: 70, 82
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+Horizontal Wooden Bridge Top Right
+  rotate: false
+  xy: 138, 162
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Bottom Left
+  rotate: false
+  xy: 410, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Bottom Middle
+  rotate: false
+  xy: 478, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Bottom Right
+  rotate: false
+  xy: 546, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Middle Left
+  rotate: false
+  xy: 478, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Middle Middle
+  rotate: false
+  xy: 546, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Middle Right
+  rotate: false
+  xy: 614, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Top Left
+  rotate: false
+  xy: 70, 6
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Top Middle
+  rotate: false
+  xy: 138, 86
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+Vertical Stone Bridge Top Right
+  rotate: false
+  xy: 206, 166
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Bottom Left
+  rotate: false
+  xy: 546, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Bottom Middle
+  rotate: false
+  xy: 614, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Bottom Right
+  rotate: false
+  xy: 682, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Middle Left
+  rotate: false
+  xy: 614, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Middle Middle
+  rotate: false
+  xy: 682, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Middle Right
+  rotate: false
+  xy: 750, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Top Left
+  rotate: false
+  xy: 682, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Top Middle
+  rotate: false
+  xy: 750, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Vertical Wooden Bridge Top Right
+  rotate: false
+  xy: 818, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+basic_gems_0
+  rotate: false
+  xy: 750, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_24
+  rotate: false
+  xy: 818, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_255
+  rotate: false
+  xy: 886, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_66
+  rotate: false
+  xy: 818, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_90
+  rotate: false
+  xy: 886, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_overlay_0
+  rotate: false
+  xy: 954, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_overlay_24
+  rotate: false
+  xy: 886, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_overlay_255
+  rotate: false
+  xy: 954, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_overlay_66
+  rotate: false
+  xy: 1022, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_gems_overlay_90
+  rotate: false
+  xy: 954, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_0
+  rotate: false
+  xy: 1022, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_24
+  rotate: false
+  xy: 1090, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_255
+  rotate: false
+  xy: 1022, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_66
+  rotate: false
+  xy: 1090, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_90
+  rotate: false
+  xy: 1158, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_overlay_0
+  rotate: false
+  xy: 1090, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_overlay_24
+  rotate: false
+  xy: 1158, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_overlay_255
+  rotate: false
+  xy: 1226, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_overlay_66
+  rotate: false
+  xy: 1158, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+basic_ore_overlay_90
+  rotate: false
+  xy: 1226, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+brickwall_0
+  rotate: false
+  xy: 1294, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+brickwall_24
+  rotate: false
+  xy: 1226, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+brickwall_255
+  rotate: false
+  xy: 1294, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+brickwall_66
+  rotate: false
+  xy: 1362, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+brickwall_90
+  rotate: false
+  xy: 1294, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+brown_rock
+  rotate: false
+  xy: 1362, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+brown_rock
+  rotate: false
+  xy: 1430, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+brown_rock
+  rotate: false
+  xy: 1362, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+brown_rock
+  rotate: false
+  xy: 1430, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+brown_rock
+  rotate: false
+  xy: 1498, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+clay_soil
+  rotate: false
+  xy: 1430, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+clay_soil
+  rotate: false
+  xy: 1498, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+clay_soil
+  rotate: false
+  xy: 1566, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+clay_soil
+  rotate: false
+  xy: 1498, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+clay_soil
+  rotate: false
+  xy: 1566, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+cobblestone
+  rotate: false
+  xy: 1634, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+cobblestone
+  rotate: false
+  xy: 1566, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+cobblestone
+  rotate: false
+  xy: 1634, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+cobblestone
+  rotate: false
+  xy: 1702, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+cobblestone
+  rotate: false
+  xy: 1634, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+dirt
+  rotate: false
+  xy: 1702, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+dirt
+  rotate: false
+  xy: 1770, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+dirt
+  rotate: false
+  xy: 1702, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+dirt
+  rotate: false
+  xy: 1770, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+dirt
+  rotate: false
+  xy: 1838, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+grass
+  rotate: false
+  xy: 1770, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+grass
+  rotate: false
+  xy: 1838, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+grass
+  rotate: false
+  xy: 1906, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+grass
+  rotate: false
+  xy: 1838, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+grass
+  rotate: false
+  xy: 1906, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+gravel
+  rotate: false
+  xy: 1974, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+gravel
+  rotate: false
+  xy: 1906, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+gravel
+  rotate: false
+  xy: 1974, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+gravel
+  rotate: false
+  xy: 2042, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+gravel
+  rotate: false
+  xy: 1974, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+rough_stone
+  rotate: false
+  xy: 2042, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+rough_stone
+  rotate: false
+  xy: 2110, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+rough_stone
+  rotate: false
+  xy: 2042, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+rough_stone
+  rotate: false
+  xy: 2110, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+rough_stone
+  rotate: false
+  xy: 2178, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+rough_stone_wall_0
+  rotate: false
+  xy: 2110, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+rough_stone_wall_24
+  rotate: false
+  xy: 2178, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+rough_stone_wall_255
+  rotate: false
+  xy: 2246, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+rough_stone_wall_66
+  rotate: false
+  xy: 2178, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+rough_stone_wall_90
+  rotate: false
+  xy: 2246, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+soft
+  rotate: false
+  xy: 2314, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+soft
+  rotate: false
+  xy: 2246, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 24
+soft
+  rotate: false
+  xy: 2314, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 66
+soft
+  rotate: false
+  xy: 2382, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 90
+stone_block_0
+  rotate: false
+  xy: 2314, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+stone_block_24
+  rotate: false
+  xy: 2382, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+stone_block_255
+  rotate: false
+  xy: 2450, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+stone_block_66
+  rotate: false
+  xy: 2382, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+stone_block_90
+  rotate: false
+  xy: 2450, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+stone_slab
+  rotate: false
+  xy: 2518, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+stone_slab
+  rotate: false
+  xy: 2450, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+stone_slab
+  rotate: false
+  xy: 2518, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+stone_slab
+  rotate: false
+  xy: 2586, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+stone_slab
+  rotate: false
+  xy: 2518, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+straight
+  rotate: false
+  xy: 2586, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+straight
+  rotate: false
+  xy: 2654, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 24
+straight
+  rotate: false
+  xy: 2586, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 66
+straight
+  rotate: false
+  xy: 2654, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 90
+tilled_earth
+  rotate: false
+  xy: 2722, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+tilled_earth
+  rotate: false
+  xy: 2654, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+tilled_earth
+  rotate: false
+  xy: 2722, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+tilled_earth
+  rotate: false
+  xy: 2790, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+tilled_earth
+  rotate: false
+  xy: 2722, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+wooden_plank_wall_0
+  rotate: false
+  xy: 2790, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+wooden_plank_wall_24
+  rotate: false
+  xy: 2858, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+wooden_plank_wall_255
+  rotate: false
+  xy: 2790, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+wooden_plank_wall_66
+  rotate: false
+  xy: 2858, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+wooden_plank_wall_90
+  rotate: false
+  xy: 2926, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0

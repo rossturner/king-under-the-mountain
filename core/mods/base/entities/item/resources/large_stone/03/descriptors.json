@@ -1,0 +1,216 @@
+[
+  {
+    "uniqueName": "Resource-Stone-Unrefined03",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Resource-Stone-Unrefined",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 28,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -28,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 28,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -28,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Attachment-Stone03",
+    "type": "BELOW_LAYER_1",
+    "itemTypeNames": ["Resource-Gems-Unrefined", "Resource-Ore-Unrefined"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 28,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -28,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 28,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -28,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Resource-Stone-Unrefined03.png",
+        "coloringLayer": "STONE_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+]

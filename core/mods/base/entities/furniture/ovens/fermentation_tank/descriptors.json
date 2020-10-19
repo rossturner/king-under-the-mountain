@@ -1,0 +1,36 @@
+[
+  {
+    "uniqueName": "fermentation-tank-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FERMENTATION_TANK"],
+    "furnitureLayoutName": "1x1 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Stone tank.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 26
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "fermentation-tank-metal",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FERMENTATION_TANK"],
+    "furnitureLayoutName": "1x1 with workspaces",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Metal tank.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 32
+        }
+      }
+    }
+  }
+]

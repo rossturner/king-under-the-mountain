@@ -1,0 +1,73 @@
+[ {
+  "wallTypeName" : "basic_gems",
+  "wallTypeId" : 1,
+  "materialType" : "GEM",
+  "useMaterialColor" : true,
+  "overlayWallTypeName" : "basic_gems_overlay",
+  "i18nKey" : "WALL.GEMS",
+  "constructed" : false
+}, {
+  "wallTypeName" : "basic_gems_overlay",
+  "wallTypeId" : 2,
+  "materialType" : "GEM",
+  "useMaterialColor" : false,
+  "i18nKey" : "WALL.ORE",
+  "constructed" : false
+}, {
+  "wallTypeName" : "basic_ore",
+  "wallTypeId" : 3,
+  "materialType" : "ORE",
+  "useMaterialColor" : true,
+  "overlayWallTypeName" : "basic_ore_overlay",
+  "i18nKey" : "WALL.ORE",
+  "constructed" : false
+}, {
+  "wallTypeName" : "basic_ore_overlay",
+  "wallTypeId" : 4,
+  "materialType" : "STONE",
+  "useMaterialColor" : false,
+  "i18nKey" : "WALL.ORE",
+  "constructed" : false
+}, {
+  "wallTypeName" : "brickwall",
+  "wallTypeId" : 5,
+  "materialType" : "STONE",
+  "useMaterialColor" : true,
+  "craftingTypeName" : "STONEMASONRY",
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 3
+    } ]
+  },
+  "i18nKey" : "WALL.STONE_BLOCK",
+  "constructed" : true
+}, {
+  "wallTypeName" : "rough_stone_wall",
+  "wallTypeId" : 6,
+  "materialType" : "STONE",
+  "useMaterialColor" : true,
+  "i18nKey" : "WALL.ROUGH_STONE",
+  "constructed" : false
+}, {
+  "wallTypeName" : "stone_block",
+  "wallTypeId" : 7,
+  "materialType" : "STONE",
+  "useMaterialColor" : true,
+  "i18nKey" : "WALL.STONE_BLOCK",
+  "constructed" : false
+}, {
+  "wallTypeName" : "wooden_plank_wall",
+  "wallTypeId" : 8,
+  "materialType" : "WOOD",
+  "useMaterialColor" : true,
+  "craftingTypeName" : "CARPENTRY",
+  "requirements" : {
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 3
+    } ]
+  },
+  "i18nKey" : "WALL.WOODEN",
+  "constructed" : true
+} ]

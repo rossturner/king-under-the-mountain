@@ -1,0 +1,99 @@
+[
+  {
+    "uniqueName": "Forge-C",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FORGE"],
+    "furnitureLayoutName": "inverted-U",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Forge C.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 64,
+          "y": 44
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 5.5,
+              "y": 16
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 5.5,
+              "y": 16
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -58,
+              "y": 28
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 62,
+              "y": -28
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_3",
+            "offsetPixels": {
+              "x": -58,
+              "y": -28
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 28
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Forge-B",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["FORGE"],
+    "furnitureLayoutName": "inverted-U",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Forge B.png",
+        "coloringLayer": "ORE_COLOR",
+        "offsetPixels": {
+          "x": 67.5,
+          "y": 13
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Forge-A",
+    "type": "FURNITURE_ABOVE_LAYER_2",
+    "furnitureTypeNames": ["FORGE"],
+    "furnitureLayoutName": "inverted-U",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Forge A.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 68,
+          "y": 36
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "name": "Move liquid in item goal",
+  "i18nDescription": "GOAL.TRANSFER_LIQUID.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["GoToLocation", "PickUpEntity"],
+  "actionRelationships": {
+    "GoToLocation": {
+      "fail": ["UnassignJob"]
+    },
+    "PickUpEntity": {
+      "pass": ["GoToJobLocation"],
+      "fail": ["UnassignJob"]
+    },
+    "GoToJobLocation": {
+      "pass": ["FaceTowardsLocation", "WorkOnJob"],
+      "fail": ["UnassignJob"]
+    },
+    "WorkOnJob": {
+      "fail": ["UnassignJob"]
+    },
+    "FaceTowardsLocation": {},
+    "UnassignJob": {
+      "pass": ["CancelLiquidAllocation", "CancelHaulingAllocation"],
+      "fail": ["CancelLiquidAllocation", "CancelHaulingAllocation"]
+    },
+    "CancelLiquidAllocation": {},
+    "CancelHaulingAllocation": {}
+  }
+}

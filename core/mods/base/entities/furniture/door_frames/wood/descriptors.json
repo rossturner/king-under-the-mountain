@@ -1,0 +1,36 @@
+[
+  {
+    "uniqueName": "doorframe-wood-single-ew",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_FRAME",
+    "furnitureLayoutName": "1x1EW",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "WoodFrame_Single_EW.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 55.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "doorframe-wood-single-ns",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_FRAME",
+    "furnitureLayoutName": "1x1NS",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "WoodFrame_Single_NS.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 1,
+          "y": 68
+        }
+      }
+    }
+  }
+]

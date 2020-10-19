@@ -1,0 +1,53 @@
+[
+  {
+    "uniqueName": "table-1x1-metal",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SMALL_TABLE",
+    "furnitureLayoutName": "1x1",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-1x1-metal.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 6
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "table-1x1-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SMALL_TABLE",
+    "furnitureLayoutName": "1x1",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-1x1-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 6
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "table-1x1-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SMALL_TABLE",
+    "furnitureLayoutName": "1x1",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-1x1-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 6
+        }
+      }
+    }
+  }
+]

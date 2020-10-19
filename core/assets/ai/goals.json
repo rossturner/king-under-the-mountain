@@ -1,0 +1,385 @@
+[ {
+  "i18nDescription" : "GOAL.ADD_TO_INVENTORY.DESCRIPTION",
+  "expiryHours" : 12,
+  "name" : "Add to inventory goal",
+  "actionRelationships" : {
+    "CancelHaulingAllocation" : { },
+    "FindItem" : {
+      "pass" : [ "GoToLocation" ]
+    },
+    "GoToLocation" : {
+      "fail" : [ "CancelHaulingAllocation" ],
+      "pass" : [ "PickUpEntity" ]
+    },
+    "RememberRequiredItem" : {
+      "pass" : [ "FindItem" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "CancelHaulingAllocation" ],
+      "pass" : [ "ForgetRelevantMemory" ]
+    },
+    "ForgetRelevantMemory" : { }
+  },
+  "selectors" : [ {
+    "scheduleCategory" : "WORK",
+    "conditions" : [ {
+      "memoryType" : "LACKING_REQUIRED_ITEM",
+      "type" : "MEMORY"
+    } ],
+    "priority" : "JOB_NORMAL"
+  } ],
+  "initialActions" : [ "RememberRequiredItem" ]
+}, {
+  "i18nDescription" : "GOAL.DRINK.DESCRIPTION",
+  "name" : "Drink goal",
+  "actionRelationships" : {
+    "LocateDrink" : {
+      "fail" : [ ],
+      "pass" : [ "GoToDrinkLocation" ]
+    },
+    "CancelLiquidAllocation" : { },
+    "GoToDrinkLocation" : {
+      "fail" : [ "CancelLiquidAllocation" ],
+      "pass" : [ "FaceTowardsLocation" ]
+    },
+    "PourDrinkIntoTankard" : {
+      "fail" : [ "ConsumeLiquidFromContainer" ],
+      "pass" : [ "FindPlaceToEat" ]
+    },
+    "GoToLocation" : {
+      "fail" : [ "ConsumeLiquidFromTankard" ],
+      "pass" : [ "PlaceFoodOrDrinkOnFurniture", "ConsumeLiquidFromTankard" ]
+    },
+    "GoToRandomLocation" : {
+      "fail" : [ "ConsumeLiquidFromTankard" ],
+      "pass" : [ "ConsumeLiquidFromTankard" ]
+    },
+    "UnassignFurniture" : { },
+    "FindPlaceToEat" : {
+      "fail" : [ "GoToRandomLocation" ],
+      "pass" : [ "GoToLocation" ]
+    },
+    "ConsumeLiquidFromTankard" : {
+      "fail" : [ "UnassignFurniture" ],
+      "pass" : [ "UnassignFurniture" ]
+    },
+    "PlaceFoodOrDrinkOnFurniture" : { },
+    "FaceTowardsLocation" : {
+      "fail" : [ "CancelLiquidAllocation" ],
+      "pass" : [ "PourDrinkIntoTankard" ]
+    },
+    "ConsumeLiquidFromContainer" : {
+      "fail" : [ "CancelLiquidAllocation" ],
+      "pass" : [ ]
+    }
+  },
+  "selectors" : [ {
+    "scheduleCategory" : "ANY",
+    "conditions" : [ {
+      "need" : "DRINK",
+      "type" : "NEED",
+      "value" : 25,
+      "operator" : "LESS_THAN_OR_EQUAL_TO"
+    } ],
+    "priority" : "NEED_URGENT"
+  }, {
+    "scheduleCategory" : "NOURISHMENT",
+    "conditions" : [ {
+      "need" : "DRINK",
+      "type" : "NEED",
+      "value" : 55,
+      "operator" : "LESS_THAN_OR_EQUAL_TO"
+    } ],
+    "priority" : "WANT_NORMAL"
+  } ],
+  "initialActions" : [ "LocateDrink" ]
+}, {
+  "i18nDescription" : "GOAL.HAULING.DESCRIPTION",
+  "name" : "Dump item goal",
+  "actionRelationships" : {
+    "PlaceEntity" : { },
+    "GoToRandomLocation" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "GoToRandomLocation", "PlaceEntity" ]
+}, {
+  "i18nDescription" : "GOAL.EAT.DESCRIPTION",
+  "name" : "Eat food goal",
+  "actionRelationships" : {
+    "GoToFoodLocation" : {
+      "fail" : [ "CancelFoodAllocation" ],
+      "pass" : [ "PickUpEntity" ]
+    },
+    "ConsumeFood" : {
+      "fail" : [ "UnassignFurniture" ],
+      "pass" : [ "UnassignFurniture" ]
+    },
+    "GoToLocation" : {
+      "fail" : [ "ConsumeFood" ],
+      "pass" : [ "PlaceFoodOrDrinkOnFurniture", "ConsumeFood" ]
+    },
+    "CancelFoodAllocation" : { },
+    "GoToRandomLocation" : {
+      "fail" : [ "ConsumeFood" ],
+      "pass" : [ "ConsumeFood" ]
+    },
+    "UnassignFurniture" : { },
+    "FindPlaceToEat" : {
+      "fail" : [ "GoToRandomLocation" ],
+      "pass" : [ "GoToLocation" ]
+    },
+    "EquipItemFromFoodAllocation" : {
+      "fail" : [ "CancelFoodAllocation" ],
+      "pass" : [ "FindPlaceToEat" ]
+    },
+    "PlaceFoodOrDrinkOnFurniture" : { },
+    "LocateFood" : {
+      "fail" : [ ],
+      "pass" : [ "GoToFoodLocation" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "CancelFoodAllocation" ],
+      "pass" : [ "EquipItemFromFoodAllocation" ]
+    }
+  },
+  "selectors" : [ {
+    "scheduleCategory" : "ANY",
+    "conditions" : [ {
+      "need" : "FOOD",
+      "type" : "NEED",
+      "value" : 25,
+      "operator" : "LESS_THAN_OR_EQUAL_TO"
+    } ],
+    "priority" : "NEED_URGENT"
+  }, {
+    "scheduleCategory" : "NOURISHMENT",
+    "conditions" : [ {
+      "need" : "FOOD",
+      "type" : "NEED",
+      "value" : 65,
+      "operator" : "LESS_THAN_OR_EQUAL_TO"
+    } ],
+    "priority" : "WANT_NORMAL"
+  } ],
+  "initialActions" : [ "LocateFood" ]
+}, {
+  "i18nDescription" : "GOAL.HAULING.DESCRIPTION",
+  "name" : "Haul item goal",
+  "actionRelationships" : {
+    "CancelHaulingAllocation" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "UnassignJob" ]
+    },
+    "PlaceEntity" : {
+      "fail" : [ "CancelHaulingAllocation" ],
+      "pass" : [ "JobCompleted" ]
+    },
+    "GoToLocation" : {
+      "fail" : [ "CancelHaulingAllocation" ],
+      "pass" : [ "PlaceEntity" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "CancelHaulingAllocation" ],
+      "pass" : [ "GoToLocation" ]
+    },
+    "JobCompleted" : { },
+    "UnassignJob" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+}, {
+  "i18nDescription" : "GOAL.IDLE.DESCRIPTION",
+  "name" : "Idle goal",
+  "actionRelationships" : {
+    "Idle" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "Idle" ]
+}, {
+  "i18nDescription" : "GOAL.TRANSFER_LIQUID.DESCRIPTION",
+  "name" : "Move liquid in item goal",
+  "actionRelationships" : {
+    "WorkOnJob" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "CancelHaulingAllocation" : { },
+    "CancelLiquidAllocation" : { },
+    "GoToLocation" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "GoToJobLocation" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "FaceTowardsLocation", "WorkOnJob" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToJobLocation" ]
+    },
+    "UnassignJob" : {
+      "fail" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ],
+      "pass" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ]
+    },
+    "FaceTowardsLocation" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+}, {
+  "i18nDescription" : "GOAL.HAULING.DESCRIPTION",
+  "name" : "Place item goal",
+  "actionRelationships" : {
+    "CancelHaulingAllocation" : { },
+    "PlaceEntity" : {
+      "fail" : [ "CancelHaulingAllocation" ]
+    },
+    "GoToLocation" : {
+      "fail" : [ "CancelHaulingAllocation" ],
+      "pass" : [ "PlaceEntity" ]
+    }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "GoToLocation" ]
+}, {
+  "i18nDescription" : "GOAL.TRANSFER_LIQUID.DESCRIPTION",
+  "name" : "Remove liquid goal",
+  "actionRelationships" : {
+    "CancelHaulingAllocation" : { },
+    "CancelLiquidAllocation" : { },
+    "GoToLocation" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "FillContainer" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "JobCompleted" ]
+    },
+    "GoToJobLocation" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToJobLocation", "FillContainer" ]
+    },
+    "JobCompleted" : { },
+    "UnassignJob" : {
+      "fail" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ],
+      "pass" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ]
+    }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+}, {
+  "i18nDescription" : "GOAL.SLEEP.DESCRIPTION",
+  "name" : "Sleep in bed goal",
+  "actionRelationships" : {
+    "SleepInBed" : {
+      "fail" : [ "GoToLocation" ],
+      "pass" : [ "UnassignFurniture" ]
+    },
+    "GoToLocation" : {
+      "fail" : [ "UnassignFurniture", "SleepOnFloor" ],
+      "pass" : [ "SleepInBed" ]
+    },
+    "GoToRandomLocation" : { },
+    "UnassignFurniture" : { },
+    "SleepOnFloor" : { },
+    "LocateBed" : {
+      "fail" : [ "GoToRandomLocation", "SleepOnFloor" ],
+      "pass" : [ "GoToLocation" ]
+    }
+  },
+  "selectors" : [ {
+    "scheduleCategory" : "ANY",
+    "conditions" : [ {
+      "need" : "SLEEP",
+      "type" : "NEED",
+      "value" : 10,
+      "operator" : "LESS_THAN_OR_EQUAL_TO"
+    } ],
+    "priority" : "NEED_URGENT"
+  }, {
+    "scheduleCategory" : "SLEEP",
+    "conditions" : [ {
+      "need" : "SLEEP",
+      "type" : "NEED",
+      "value" : 55,
+      "operator" : "LESS_THAN_OR_EQUAL_TO"
+    } ],
+    "priority" : "WANT_NORMAL"
+  } ],
+  "initialActions" : [ "LocateBed" ]
+}, {
+  "i18nDescription" : "GOAL.TRANSFER_LIQUID.DESCRIPTION",
+  "name" : "Transfer liquid goal",
+  "actionRelationships" : {
+    "WorkOnJob" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "CancelHaulingAllocation" : { },
+    "CancelLiquidAllocation" : { },
+    "GoToLocation" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "FillContainer" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToJobLocation", "FaceTowardsLocation", "WorkOnJob" ]
+    },
+    "GoToJobLocation" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToLocation", "FillContainer" ]
+    },
+    "UnassignJob" : {
+      "fail" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ],
+      "pass" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ]
+    },
+    "FaceTowardsLocation" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+}, {
+  "i18nDescription" : "ACTION.SELECT_JOB.DESCRIPTION",
+  "name" : "Work on job goal",
+  "actionRelationships" : {
+    "WorkOnJob" : {
+      "fail" : [ "UnequipItemForJob", "UnassignJob" ],
+      "pass" : [ "UnequipItemForJob", "RequeueThisGoal" ]
+    },
+    "UnequipItemForJob" : { },
+    "GoToLocation" : {
+      "fail" : [ "UnequipItemForJob", "UnassignJob" ],
+      "pass" : [ "FaceTowardsLocation", "EquipItemForJobFromFurniture", "WorkOnJob" ]
+    },
+    "EquipItemForJobFromFurniture" : { },
+    "RequeueThisGoal" : { },
+    "SelectJob" : {
+      "pass" : [ "EquipItemForJobFromInventory", "GoToLocation" ]
+    },
+    "EquipItemForJobFromInventory" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "UnassignJob" : { },
+    "FaceTowardsLocation" : { }
+  },
+  "selectors" : [ {
+    "scheduleCategory" : "ANY",
+    "conditions" : [ {
+      "need" : "FOOD",
+      "type" : "NEED",
+      "value" : 15,
+      "operator" : "GREATER_THAN_OR_EQUAL_TO"
+    }, {
+      "need" : "DRINK",
+      "type" : "NEED",
+      "value" : 15,
+      "operator" : "GREATER_THAN_OR_EQUAL_TO"
+    }, {
+      "need" : "SLEEP",
+      "type" : "NEED",
+      "value" : 15,
+      "operator" : "GREATER_THAN_OR_EQUAL_TO"
+    } ],
+    "priority" : "LOWEST"
+  } ],
+  "initialActions" : [ "SelectJob" ]
+} ]

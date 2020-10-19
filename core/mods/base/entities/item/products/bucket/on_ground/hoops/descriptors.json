@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Product-Bucket-Hoops-Floor",
+  "type": "ABOVE_LAYER_1",
+  "itemTypeName": "Product-Bucket",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bucket-Hoops-Floor.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": -1.5,
+        "y": -12
+      }
+    }
+  }
+}]

@@ -1,0 +1,26 @@
+[{
+  "uniqueName": "rough_stone_wall_cap_stone_doorway_single_EW",
+  "type": "BASE_LAYER",
+  "wallTypeName": "rough_stone_wall",
+  "doorwayMaterialType": "STONE",
+  "doorwayOrientation": "EAST_WEST",
+  "doorwaySize": "SINGLE",
+  "spriteDescriptors": {
+    "LEFT": {
+      "filename": "rough_stone_wall_cap_stone_doorway_single_EW_LEFT.png",
+      "coloringLayer": "STONE_COLOR",
+      "offsetPixels": {
+        "x": -24,
+        "y": -32
+      }
+    },
+    "RIGHT": {
+      "filename": "rough_stone_wall_cap_stone_doorway_single_EW_RIGHT.png",
+      "coloringLayer": "STONE_COLOR",
+      "offsetPixels": {
+        "x": 24.5,
+        "y": -32
+      }
+    }
+  }
+}]

@@ -1,0 +1,152 @@
+[
+  {
+    "uniqueName": "table-4x2-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_TABLE"],
+    "furnitureLayoutName": "4x2",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-4x2-stone.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 38
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -92,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": -92,
+              "y": 40
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_3",
+            "offsetPixels": {
+              "x": -30,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_4",
+            "offsetPixels": {
+              "x": -30,
+              "y": 40
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_5",
+            "offsetPixels": {
+              "x": 30,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_6",
+            "offsetPixels": {
+              "x": 30,
+              "y": 40
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_7",
+            "offsetPixels": {
+              "x": 94,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_8",
+            "offsetPixels": {
+              "x": 94,
+              "y": 40
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-4x2-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FEASTING_TABLE"],
+    "furnitureLayoutName": "4x2",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "table-4x2-wood.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 38
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -92,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": -92,
+              "y": 40
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_3",
+            "offsetPixels": {
+              "x": -30,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_4",
+            "offsetPixels": {
+              "x": -30,
+              "y": 40
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_5",
+            "offsetPixels": {
+              "x": 30,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_6",
+            "offsetPixels": {
+              "x": 30,
+              "y": 40
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_7",
+            "offsetPixels": {
+              "x": 94,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_8",
+            "offsetPixels": {
+              "x": 94,
+              "y": 40
+            }
+          }
+        ]
+      }
+    }
+  }
+]

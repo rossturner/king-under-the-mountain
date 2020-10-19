@@ -1,0 +1,68 @@
+[{
+  "speciesName": "Star pine",
+  "plantType": "TREE",
+  "materialName": "Star pine",
+  "maxGrowthSpeedVariance": 0.2,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "swatch": "star-pine-branch-base-swatch.png"
+    },
+    "LEAF_COLOR": {
+      "swatch": "star-pine-leaf-base-swatch.png"
+    }
+  },
+  "seasons": {
+  },
+  "growthStages": [
+    {
+      "name": "Size 1",
+      "seasonsUntilComplete": 2,
+      "nextGrowthStage": 1,
+      "tileHeight": 1
+    },
+    {
+      "name": "Size 2",
+      "seasonsUntilComplete": 2,
+      "nextGrowthStage": 2,
+      "tileHeight": 2
+    },
+    {
+      "name": "Size 3",
+      "seasonsUntilComplete": 2,
+      "nextGrowthStage": 3,
+      "tileHeight": 3,
+      "onCompletion": [
+        "DISPERSE_SEEDS"
+      ],
+      "harvestType": "LOGGING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "materialName": "Star pine",
+          "quantity": 2,
+          "itemSize": "SMALL",
+          "itemStyle": "STYLE_1"
+        }
+      ]
+    },
+    {
+      "name": "Size 4",
+      "seasonsUntilComplete": 2,
+      "nextGrowthStage": 3,
+      "tileHeight": 4,
+      "onCompletion": [
+        "DISPERSE_SEEDS"
+      ],
+      "harvestType": "LOGGING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "materialName": "Star pine",
+          "quantity": 3,
+          "itemSize": "SMALL",
+          "itemStyle": "STYLE_1"
+        }
+      ]
+    }
+  ]
+}]

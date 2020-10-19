@@ -1,0 +1,44 @@
+[{
+  "speciesName": "Sunglow",
+  "plantType": "MUSHROOM",
+  "materialName": "Sunglow Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 0.15,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#fffeed"
+    },
+    "LEAF_COLOR": {
+      "colorCode": "#fffeed"
+    },
+    "FRUIT_COLOR": {
+      "swatch": "sunglow-markings-swatch.png"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Sunglow Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Sunglow Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Sunglow Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

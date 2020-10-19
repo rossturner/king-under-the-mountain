@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Tomato-Large-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Tomato"],
+  "growthStages": [5, 6],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_tomato_large_fruit.png",
+      "coloringLayer": "FRUIT_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

@@ -1,0 +1,29 @@
+[{
+  "uniqueName": "Dwarf-Male-Average-Outline",
+  "type": "BODY_OUTLINE",
+  "race": "DWARF",
+  "bodyType": "AVERAGE",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Average-Outline-F+B.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Average-Outline-F34+B34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Average-Outline-F34+B34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Average-Outline-F34+B34.png"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Average-Outline-F34+B34.png",
+      "flipX": true
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Average-Outline-F+B.png"
+    }
+  }
+}]

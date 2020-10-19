@@ -1,0 +1,454 @@
+[
+  {
+    "speciesName": "Loquat bush",
+    "plantType": "SHRUB",
+    "maxGrowthSpeedVariance": 0.3,
+    "materialName": "Loquat bush wood",
+    "defaultColors": {
+      "BRANCHES_COLOR": {
+        "swatch": "loquat-branch-base-swatch.png"
+      },
+      "LEAF_COLOR": {
+        "swatch": "loquat-leaf-base-swatch.png"
+      },
+      "FRUIT_COLOR": {
+        "colorCode": "#fcc04a"
+      }
+    },
+    "seasons": {
+      "WINTER": {
+        "growth": false,
+        "colors": {
+          "LEAF_COLOR": {
+            "hidden": true
+          }
+        },
+        "switchToGrowthStage": 4
+      }
+    },
+    "growthStages": [
+      {
+        "name": "Initial",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 2,
+        "initialPlantScale": 0.35,
+        "completionPlantScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Growing fruit",
+        "nextGrowthStage": 2,
+        "seasonsUntilComplete": 1.7,
+        "showFruit": true,
+        "initialFruitScale": 0.4,
+        "completionFruitScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit in bloom",
+        "nextGrowthStage": 3,
+        "seasonsUntilComplete": 0.7,
+        "showFruit": true,
+        "tileHeight": 1,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Crate",
+            "materialName": "Loquat",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "name": "Fruit decaying",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 0.2,
+        "showFruit": true,
+        "tileHeight": 1,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Crate",
+            "materialName": "Loquat",
+            "quantity": 1
+          }
+        ],
+        "onCompletion": ["DISPERSE_SEEDS"]
+      },
+      {
+        "name": "Fallow",
+        "nextGrowthStage": 1,
+        "seasonsUntilComplete": 0.3
+      }
+    ]
+  },
+
+
+  {
+    "speciesName": "Thimbleberry bush",
+    "plantType": "SHRUB",
+    "maxGrowthSpeedVariance": 0.3,
+    "materialName" : "Thimbleberry bush wood",
+    "defaultColors": {
+      "BRANCHES_COLOR": {
+        "swatch": "thimbleberry-branch-base-swatch.png"
+      },
+      "LEAF_COLOR": {
+        "swatch": "thimbleberry-leaf-base-swatch.png"
+      },
+      "FRUIT_COLOR": {
+        "colorCode": "#c7323f"
+      }
+    },
+    "seasons": {
+      "WINTER": {
+        "colors": {
+          "LEAF_COLOR": {
+            "hidden": true
+          }
+        },
+        "growth": false,
+        "switchToGrowthStage": 4
+      }
+    },
+    "growthStages": [
+      {
+        "name": "Initial",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 2,
+        "initialPlantScale": 0.35,
+        "completionPlantScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Growing fruit",
+        "nextGrowthStage": 2,
+        "seasonsUntilComplete": 1.7,
+        "showFruit": true,
+        "initialFruitScale": 0.4,
+        "completionFruitScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit in bloom",
+        "nextGrowthStage": 3,
+        "seasonsUntilComplete": 0.7,
+        "showFruit": true,
+        "tileHeight": 1,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Crate",
+            "materialName": "Thimbleberry",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "name": "Fruit decaying",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 0.2,
+        "showFruit": true,
+        "tileHeight": 1,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Crate",
+            "materialName": "Thimbleberry",
+            "quantity": 1
+          }
+        ],
+        "onCompletion": ["DISPERSE_SEEDS"]
+      },
+      {
+        "name": "Fallow",
+        "nextGrowthStage": 1,
+        "seasonsUntilComplete": 0.3
+      }
+    ]
+  },
+  {
+    "speciesName": "Tamarillo bush",
+    "plantType": "SHRUB",
+    "maxGrowthSpeedVariance": 0.3,
+    "materialName" : "Tamarillo bush wood",
+    "defaultColors": {
+      "BRANCHES_COLOR": {
+        "swatch": "tamarillo-branch-base-swatch.png"
+      },
+      "LEAF_COLOR": {
+        "swatch": "tamarillo-leaf-base-swatch.png"
+      },
+      "FRUIT_COLOR": {
+        "colorCode": "#de4720"
+      }
+    },
+    "seasons": {
+      "WINTER": {
+        "colors": {
+          "LEAF_COLOR": {
+            "hidden": true
+          }
+        },
+        "growth": false,
+        "switchToGrowthStage": 4
+      }
+    },
+    "growthStages": [
+      {
+        "name": "Initial",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 2,
+        "initialPlantScale": 0.35,
+        "completionPlantScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Growing fruit",
+        "nextGrowthStage": 2,
+        "seasonsUntilComplete": 1.7,
+        "showFruit": true,
+        "initialFruitScale": 0.4,
+        "completionFruitScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit in bloom",
+        "nextGrowthStage": 3,
+        "seasonsUntilComplete": 0.7,
+        "showFruit": true,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Crate",
+            "materialName": "Tamarillo",
+            "quantity": 1
+          }
+        ],
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit decaying",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 0.2,
+        "showFruit": true,
+        "tileHeight": 1,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Crate",
+            "materialName": "Tamarillo",
+            "quantity": 1
+          }
+        ],
+        "onCompletion": ["DISPERSE_SEEDS"]
+      },
+      {
+        "name": "Fallow",
+        "nextGrowthStage": 1,
+        "seasonsUntilComplete": 0.3
+      }
+    ]
+  },
+  {
+    "speciesName": "Dragonfruit tree",
+    "plantType": "SHRUB",
+    "maxGrowthSpeedVariance": 0.3,
+    "materialName": "Dragonfruit tree wood",
+    "defaultColors": {
+      "BRANCHES_COLOR": {
+        "swatch": "dragonfruit-branch-base-swatch.png"
+      },
+      "LEAF_COLOR": {
+        "swatch": "dragonfruit-leaf-base-swatch.png"
+      },
+      "FRUIT_COLOR": {
+        "colorCode": "#c52660"
+      }
+    },
+    "seasons": {
+      "WINTER": {
+        "colors": {
+          "LEAF_COLOR": {
+            "hidden": true
+          }
+        },
+        "growth": false,
+        "switchToGrowthStage": 4
+      }
+    },
+    "growthStages": [
+      {
+        "name": "Initial",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 2,
+        "initialPlantScale": 0.35,
+        "completionPlantScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Growing fruit",
+        "nextGrowthStage": 2,
+        "seasonsUntilComplete": 1.7,
+        "showFruit": true,
+        "initialFruitScale": 0.4,
+        "completionFruitScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit in bloom",
+        "nextGrowthStage": 3,
+        "seasonsUntilComplete": 0.7,
+        "showFruit": true,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Sack",
+            "materialName": "Dragonfruit",
+            "quantity": 1
+          }
+        ],
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit decaying",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 0.2,
+        "showFruit": true,
+        "harvestType": "FORAGING",
+        "harvestSwitchesToGrowthStage": 4,
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Vegetable-Sack",
+            "materialName": "Dragonfruit",
+            "quantity": 1
+          }
+        ],
+        "tileHeight": 1,
+        "onCompletion": ["DISPERSE_SEEDS"]
+      },
+      {
+        "name": "Fallow",
+        "nextGrowthStage": 1,
+        "seasonsUntilComplete": 0.3
+      }
+    ]
+  },
+  {
+    "speciesName": "Breadfruit tree",
+    "plantType": "SHRUB",
+    "maxGrowthSpeedVariance": 0.3,
+    "materialName" : "Breadfruit tree wood",
+    "defaultColors": {
+      "BRANCHES_COLOR": {
+        "swatch": "breadfruit-branch-base-swatch.png"
+      },
+      "LEAF_COLOR": {
+        "swatch": "breadfruit-leaf-base-swatch.png"
+      },
+      "FRUIT_COLOR": {
+        "colorCode": "#b1c165"
+      }
+    },
+    "seasons": {
+      "WINTER": {
+        "colors": {
+          "LEAF_COLOR": {
+            "hidden": true
+          }
+        },
+        "growth": false,
+        "switchToGrowthStage": 4
+      }
+    },
+    "growthStages": [
+      {
+        "name": "Initial",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 2,
+        "initialPlantScale": 0.35,
+        "completionPlantScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Growing fruit",
+        "nextGrowthStage": 2,
+        "seasonsUntilComplete": 1.7,
+        "showFruit": true,
+        "initialFruitScale": 0.4,
+        "completionFruitScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit in bloom",
+        "nextGrowthStage": 3,
+        "seasonsUntilComplete": 0.7,
+        "showFruit": true,
+        "tileHeight": 1
+      },
+      {
+        "name": "Fruit decaying",
+        "nextGrowthStage": 4,
+        "seasonsUntilComplete": 0.2,
+        "showFruit": true,
+        "tileHeight": 1,
+        "onCompletion": ["DISPERSE_SEEDS"]
+      },
+      {
+        "name": "Fallow",
+        "nextGrowthStage": 1,
+        "seasonsUntilComplete": 0.3
+      }
+    ]
+  },
+
+
+  {
+    "speciesName": "Shrub",
+    "plantType": "SHRUB",
+    "maxGrowthSpeedVariance": 0.3,
+    "materialName": "Shrub branch wood",
+    "defaultColors": {
+      "BRANCHES_COLOR": {
+        "swatch": "generic-shrub-b-branch-base-swatch.png"
+      },
+      "LEAF_COLOR": {
+        "swatch": "generic-shrub-b-leaf-base-swatch.png"
+      }
+    },
+    "seasons": {
+      "WINTER": {
+        "colors": {
+          "LEAF_COLOR": {
+            "hidden": true
+          }
+        },
+        "growth": false
+      }
+    },
+    "growthStages": [
+      {
+        "name": "Initial",
+        "nextGrowthStage": 1,
+        "seasonsUntilComplete": 2,
+        "initialPlantScale": 0.35,
+        "completionPlantScale": 1,
+        "tileHeight": 1
+      },
+      {
+        "name": "Fully grown",
+        "nextGrowthStage": 1,
+        "seasonsUntilComplete": 2.5,
+        "tileHeight": 1,
+        "onCompletion": ["DISPERSE_SEEDS"]
+      }
+    ]
+  }
+]

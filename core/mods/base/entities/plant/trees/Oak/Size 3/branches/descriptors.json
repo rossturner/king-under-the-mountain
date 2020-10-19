@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Tree-Oak-Size3-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Oak", "Baobab"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "oak-2-t.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 1,
+        "y": 80
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": -2,
+            "y": 36
+          }
+        }
+      ]
+    }
+  }
+}]

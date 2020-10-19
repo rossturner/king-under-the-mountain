@@ -1,0 +1,4631 @@
+[ {
+  "speciesName" : "Barley",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.02,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#f4b63d",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : { }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Seeds",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Shoots",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#8fa926",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "barley-mid-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Nearly-grown",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "barley-late-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fully-grown",
+    "nextGrowthStage" : 5,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#f4b63d",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Grain-Sack",
+      "materialName" : "Barley",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Barley Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Decaying",
+    "seasonsUntilComplete" : 0.15,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "barley-decay-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ "DESTROY_PLANT" ],
+    "harvestedItems" : [ ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Barley Seed",
+    "plantingSeasons" : [ "SPRING", "SUMMER", "AUTUMN" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#f4b63d",
+    "hidden" : false
+  }, {
+    "colorCode" : "#8fa926",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "barley-mid-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "barley-late-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#f4b63d",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "barley-decay-transition-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Carrot",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.02,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#d2b989",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "carrot-leaf-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "carrot-flower-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "FRUIT_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Seeds",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.1,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Shoots",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.1,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Small-growth",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth no flowers",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth with flowers",
+    "nextGrowthStage" : 5,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Late growth",
+    "nextGrowthStage" : 6,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Ripe",
+    "nextGrowthStage" : 7,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Carrot",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Carrot Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Decaying",
+    "seasonsUntilComplete" : 0.05,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#746b1b",
+        "hidden" : false
+      },
+      "LEAF_COLOR" : {
+        "colorCode" : "#929b47",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ "DESTROY_PLANT" ],
+    "harvestedItems" : [ ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Carrot Seed",
+    "plantingSeasons" : [ "SPRING", "SUMMER", "AUTUMN" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#d2b989",
+    "hidden" : false
+  }, {
+    "swatch" : "carrot-leaf-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "carrot-flower-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  }, {
+    "colorCode" : "#746b1b",
+    "hidden" : false
+  }, {
+    "colorCode" : "#929b47",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Hops",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.01,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#9f803c",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "hops-leaf-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#9dd248",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : { },
+      "switchToGrowthStage" : 0
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Bare",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Stage 1",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Stage 2",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Stage 3",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Stage 4",
+    "nextGrowthStage" : 5,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Stage 5",
+    "nextGrowthStage" : 6,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Ready",
+    "nextGrowthStage" : 0,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Sack",
+      "materialName" : "Hops",
+      "quantity" : 4,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Hops Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Hops Seed",
+    "plantingSeasons" : [ "SPRING" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#9f803c",
+    "hidden" : false
+  }, {
+    "swatch" : "hops-leaf-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#9dd248",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Maize",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.01,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#86ba3d",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#f2d119",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : true,
+      "colors" : { },
+      "switchToGrowthStage" : 7
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Seeds",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Shoots",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Small-growth",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth no fruit",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth with fruit",
+    "nextGrowthStage" : 5,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "maize-early-transition-swatch.png",
+        "hidden" : false
+      },
+      "FRUIT_COLOR" : {
+        "transitionSwatch" : "maize-fruit-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Late growth",
+    "nextGrowthStage" : 6,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "maize-late-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Ripe",
+    "nextGrowthStage" : 7,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#d5c83b",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Sack",
+      "materialName" : "Corn",
+      "quantity" : 3,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Corn Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Decaying",
+    "seasonsUntilComplete" : 0.05,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#746b1b",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ "DESTROY_PLANT" ],
+    "harvestedItems" : [ ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Corn Seed",
+    "plantingSeasons" : [ "SPRING" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#86ba3d",
+    "hidden" : false
+  }, {
+    "colorCode" : "#f2d119",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "maize-early-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "maize-fruit-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "maize-late-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#d5c83b",
+    "hidden" : false
+  }, {
+    "colorCode" : "#746b1b",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Potato",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.02,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#d2b989",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "potato-leaf-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "potato-flower-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "FRUIT_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Seeds",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Shoots",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Small-growth",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth no fruit",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth with fruit",
+    "nextGrowthStage" : 5,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Late growth",
+    "nextGrowthStage" : 6,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Ripe",
+    "nextGrowthStage" : 7,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Sack",
+      "materialName" : "Potato",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Potato Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Decaying",
+    "seasonsUntilComplete" : 0.05,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#746b1b",
+        "hidden" : false
+      },
+      "LEAF_COLOR" : {
+        "colorCode" : "#929b47",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ "DESTROY_PLANT" ],
+    "harvestedItems" : [ ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Potato Seed",
+    "plantingSeasons" : [ "SPRING", "SUMMER", "AUTUMN" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#d2b989",
+    "hidden" : false
+  }, {
+    "swatch" : "potato-leaf-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "potato-flower-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  }, {
+    "colorCode" : "#746b1b",
+    "hidden" : false
+  }, {
+    "colorCode" : "#929b47",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Tomato",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#3d8f3d",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#ed0303",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : true,
+      "colors" : { },
+      "switchToGrowthStage" : 7
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Seeds",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Shoots",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Small-growth",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth no fruit",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth with fruit",
+    "nextGrowthStage" : 5,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : {
+      "FRUIT_COLOR" : {
+        "transitionSwatch" : "tomato-fruit-early-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Late growth",
+    "nextGrowthStage" : 6,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : {
+      "FRUIT_COLOR" : {
+        "transitionSwatch" : "tomato-fruit-late-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Ripe",
+    "nextGrowthStage" : 7,
+    "seasonsUntilComplete" : 0.6,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : {
+      "FRUIT_COLOR" : {
+        "colorCode" : "#ed0303",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Tomato",
+      "quantity" : 3,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Tomato Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Decaying",
+    "seasonsUntilComplete" : 0.05,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#746b1b",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ "DESTROY_PLANT" ],
+    "harvestedItems" : [ ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Tomato Seed",
+    "plantingSeasons" : [ "SPRING" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#3d8f3d",
+    "hidden" : false
+  }, {
+    "colorCode" : "#ed0303",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "tomato-fruit-early-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "tomato-fruit-late-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#ed0303",
+    "hidden" : false
+  }, {
+    "colorCode" : "#746b1b",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Wheat",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.02,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#FFFFFF",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : { }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Seeds",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Shoots",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#a7c337",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "wheat-mid-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Nearly-grown",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "wheat-late-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fully-grown",
+    "nextGrowthStage" : 5,
+    "seasonsUntilComplete" : 0.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#ffe010",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Wheat-Sack",
+      "materialName" : "Wheat",
+      "quantity" : 3,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Wheat Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Decaying",
+    "seasonsUntilComplete" : 0.15,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "transitionSwatch" : "wheat-decay-transition-swatch.png",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ "DESTROY_PLANT" ],
+    "harvestedItems" : [ ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Wheat Seed",
+    "plantingSeasons" : [ "SPRING", "AUTUMN" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#FFFFFF",
+    "hidden" : false
+  }, {
+    "colorCode" : "#a7c337",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "wheat-mid-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "wheat-late-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#ffe010",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "wheat-decay-transition-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Berserker",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Berserker Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#fcf2f0",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "berserker-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#fff0ec",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Berserker Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Berserker Mushroom Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Berserker Mushroom Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.2,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#fcf2f0",
+    "hidden" : false
+  }, {
+    "swatch" : "berserker-base-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#fff0ec",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Death Cap",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Death Cap Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#423d3d",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "colorCode" : "#423d3d",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "death-cap-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Death Cap Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Death Cap Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Death Cap Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.02,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#423d3d",
+    "hidden" : false
+  }, {
+    "colorCode" : "#423d3d",
+    "hidden" : false
+  }, {
+    "swatch" : "death-cap-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Elfsbane",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Elfsbane Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#f4f2bb",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "elfsbane-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "elfsbane-markings-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Elfsbane Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Elfsbane Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Elfsbane Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.4,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#f4f2bb",
+    "hidden" : false
+  }, {
+    "swatch" : "elfsbane-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "elfsbane-markings-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Fist",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Fist Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#4e4c4c",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "colorCode" : "#4e4c4c",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "fist-stripe-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Fist Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Fist Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Fist Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.05,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#4e4c4c",
+    "hidden" : false
+  }, {
+    "colorCode" : "#4e4c4c",
+    "hidden" : false
+  }, {
+    "swatch" : "fist-stripe-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Glow",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Glow Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "transitionSwatch" : "rainbow-transition-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "transitionSwatch" : "rainbow-transition-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#fffeed",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "nextGrowthStage" : 0,
+    "seasonsUntilComplete" : 4.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Glow Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Glow Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Glow Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.2,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "transitionSwatch" : "rainbow-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "rainbow-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#fffeed",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Miltonia",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Miltonia Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#185BBF",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "colorCode" : "#185BBF",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#dedede",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Miltonia Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Miltonia Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Miltonia Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.3,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#185BBF",
+    "hidden" : false
+  }, {
+    "colorCode" : "#185BBF",
+    "hidden" : false
+  }, {
+    "colorCode" : "#dedede",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Purple Helmet",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Purple Helmet Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#efe2df",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "purple-helmet-leaf-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "purple-helmet-fruit-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Purple Helmet Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Purple Helmet Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Purple Helmet Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 2.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#efe2df",
+    "hidden" : false
+  }, {
+    "swatch" : "purple-helmet-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "purple-helmet-fruit-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Rociomycota",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Rociomycota Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "rociomycota-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "rociomycota-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "rociomycota-spot-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Rociomycota Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Rociomycota Mushroom Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Rociomycota Mushroom Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.2,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "rociomycota-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "rociomycota-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "rociomycota-spot-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Sunglow",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Sunglow Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#fffeed",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "colorCode" : "#fffeed",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "swatch" : "sunglow-markings-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Sunglow Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Sunglow Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Sunglow Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.15,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#fffeed",
+    "hidden" : false
+  }, {
+    "colorCode" : "#fffeed",
+    "hidden" : false
+  }, {
+    "swatch" : "sunglow-markings-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Syrup Powder",
+  "plantType" : "MUSHROOM",
+  "materialName" : "Syrup Powder Mushroom",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "syrup-powder-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "syrup-powder-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#e3f1e3",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Eternal",
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Syrup Powder Mushroom",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Mushroom-Spawn",
+      "materialName" : "Syrup Powder Spawn",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Mushroom-Spawn",
+    "materialName" : "Syrup Powder Spawn",
+    "plantingSeasons" : [ ]
+  },
+  "occurenceWeight" : 0.1,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "syrup-powder-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "syrup-powder-base-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#e3f1e3",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Barkshroom",
+  "plantType" : "MUSHROOM_TREE",
+  "materialName" : "Barkshroom",
+  "maxGrowthSpeedVariance" : 0.5,
+  "replacesOtherPlantsInRegion" : 26,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "barkshroom-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "barkshroom-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Sapling",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 1",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Mushroom-Lumber",
+      "materialName" : "Barkshroom",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.01,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "barkshroom-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "barkshroom-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Fungiwood",
+  "plantType" : "MUSHROOM_TREE",
+  "materialName" : "Fungiwood",
+  "maxGrowthSpeedVariance" : 0.5,
+  "replacesOtherPlantsInRegion" : 26,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "fungiwood-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "fungiwood-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Sapling",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 1",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Mushroom-Lumber",
+      "materialName" : "Fungiwood",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.01,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "fungiwood-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "fungiwood-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Loquat bush",
+  "plantType" : "SHRUB",
+  "materialName" : "Loquat bush wood",
+  "maxGrowthSpeedVariance" : 0.3,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "loquat-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "loquat-leaf-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#fcc04a",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      },
+      "switchToGrowthStage" : 4
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Initial",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 0.35,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Growing fruit",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fruit in bloom",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Loquat",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fruit decaying",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Loquat",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fallow",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "loquat-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "loquat-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#fcc04a",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Thimbleberry bush",
+  "plantType" : "SHRUB",
+  "materialName" : "Thimbleberry bush wood",
+  "maxGrowthSpeedVariance" : 0.3,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "thimbleberry-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "thimbleberry-leaf-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#c7323f",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      },
+      "switchToGrowthStage" : 4
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Initial",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 0.35,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Growing fruit",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fruit in bloom",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Thimbleberry",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fruit decaying",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Thimbleberry",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fallow",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "thimbleberry-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "thimbleberry-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#c7323f",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Tamarillo bush",
+  "plantType" : "SHRUB",
+  "materialName" : "Tamarillo bush wood",
+  "maxGrowthSpeedVariance" : 0.3,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "tamarillo-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "tamarillo-leaf-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#de4720",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      },
+      "switchToGrowthStage" : 4
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Initial",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 0.35,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Growing fruit",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fruit in bloom",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Tamarillo",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fruit decaying",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Crate",
+      "materialName" : "Tamarillo",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fallow",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "tamarillo-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "tamarillo-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#de4720",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Dragonfruit tree",
+  "plantType" : "SHRUB",
+  "materialName" : "Dragonfruit tree wood",
+  "maxGrowthSpeedVariance" : 0.3,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "dragonfruit-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "dragonfruit-leaf-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#c52660",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      },
+      "switchToGrowthStage" : 4
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Initial",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 0.35,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Growing fruit",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fruit in bloom",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Sack",
+      "materialName" : "Dragonfruit",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fruit decaying",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "FORAGING",
+    "harvestSwitchesToGrowthStage" : 4,
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Vegetable-Sack",
+      "materialName" : "Dragonfruit",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Fallow",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "dragonfruit-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "dragonfruit-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#c52660",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Breadfruit tree",
+  "plantType" : "SHRUB",
+  "materialName" : "Breadfruit tree wood",
+  "maxGrowthSpeedVariance" : 0.3,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "breadfruit-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "breadfruit-leaf-base-swatch.png",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#b1c165",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      },
+      "switchToGrowthStage" : 4
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Initial",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 0.35,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Growing fruit",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 0.4,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fruit in bloom",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 0.7,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fruit decaying",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.2,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : true,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fallow",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.3,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "breadfruit-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "breadfruit-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "colorCode" : "#b1c165",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Shrub",
+  "plantType" : "SHRUB",
+  "materialName" : "Shrub branch wood",
+  "maxGrowthSpeedVariance" : 0.3,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "generic-shrub-b-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "generic-shrub-b-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Initial",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 0.35,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Fully grown",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 2.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestedItems" : [ ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "generic-shrub-b-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "generic-shrub-b-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Aspen",
+  "plantType" : "TREE",
+  "materialName" : "Aspen",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "aspen-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "aspen-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "aspen-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Aspen",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Aspen",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "aspen-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "aspen-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "aspen-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Baobab",
+  "plantType" : "TREE",
+  "materialName" : "Baobab",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "baobab-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "baobab-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Baobab",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_2"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Baobab",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_2"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "baobab-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "baobab-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Beech",
+  "plantType" : "TREE",
+  "materialName" : "Beech",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "beech-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "beech-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "beech-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Beech",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Beech",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "beech-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "beech-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "beech-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Birch",
+  "plantType" : "TREE",
+  "materialName" : "Birch",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "birch-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "birch-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "birch-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Birch",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Birch",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "birch-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "birch-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "birch-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Bull-oak",
+  "plantType" : "TREE",
+  "materialName" : "Ironwood",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "bull-oak-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "bull-oak-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : { }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Ironwood",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Ironwood",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "bull-oak-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "bull-oak-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Fir",
+  "plantType" : "TREE",
+  "materialName" : "Fir",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "fir-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "fir-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Fir",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Fir",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "fir-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "fir-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Gabon Ebony",
+  "plantType" : "TREE",
+  "materialName" : "Ebony",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "ebony-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "ebony-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "beech-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Ebony",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Ebony",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "ebony-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "ebony-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "beech-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Maple",
+  "plantType" : "TREE",
+  "materialName" : "Maple",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "maple-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "maple-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "maple-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Maple",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Maple",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "maple-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "maple-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "maple-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Nuytsia",
+  "plantType" : "TREE",
+  "materialName" : "Nuytsia",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "nuytsia-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "nuytsia-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "SUMMER" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "nuytsia-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Nuytsia",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Nuytsia",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "nuytsia-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "nuytsia-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "nuytsia-leaf-transition-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Oak",
+  "plantType" : "TREE",
+  "materialName" : "Oak",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "oak-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "oak-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "oak-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Oak",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_2"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Oak",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_2"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "oak-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "oak-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "oak-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Pecan",
+  "plantType" : "TREE",
+  "materialName" : "Pecan",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "pecan-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "pecan-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "pecan-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Pecan",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Pecan",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "pecan-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "pecan-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "pecan-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Pine",
+  "plantType" : "TREE",
+  "materialName" : "Pine",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "pine-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "pine-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Pine",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Pine",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "pine-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "pine-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Red cedar",
+  "plantType" : "TREE",
+  "materialName" : "Red cedar",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "red-cedar-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "red-cedar-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : false,
+      "colors" : { }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Red cedar",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Red cedar",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "red-cedar-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "red-cedar-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Red emperor",
+  "plantType" : "TREE",
+  "materialName" : "Red emperor",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "red-emperor-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "red-emperor-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "SPRING" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "red-emperor-spring-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "red-emperor-autumn-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Red emperor",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Red emperor",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "red-emperor-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "red-emperor-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "red-emperor-spring-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "red-emperor-autumn-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Rosewood",
+  "plantType" : "TREE",
+  "materialName" : "Rosewood",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "rosewood-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "rosewood-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "rosewood-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Rosewood",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Rosewood",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_2"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "rosewood-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "rosewood-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "rosewood-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+}, {
+  "speciesName" : "Spruce",
+  "plantType" : "TREE",
+  "materialName" : "Spruce",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "spruce-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "spruce-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Spruce",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Spruce",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "spruce-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "spruce-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Star pine",
+  "plantType" : "TREE",
+  "materialName" : "Star pine",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "star-pine-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "star-pine-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : { },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Star pine",
+      "quantity" : 2,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Star pine",
+      "quantity" : 3,
+      "itemSize" : "SMALL",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "star-pine-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "star-pine-leaf-base-swatch.png",
+    "hidden" : false
+  } ]
+}, {
+  "speciesName" : "Sycamore",
+  "plantType" : "TREE",
+  "materialName" : "Sycamore",
+  "maxGrowthSpeedVariance" : 0.2,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "swatch" : "sycamore-branch-base-swatch.png",
+      "hidden" : false
+    },
+    "LEAF_COLOR" : {
+      "swatch" : "sycamore-leaf-base-swatch.png",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "AUTUMN" : {
+      "growth" : true,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "transitionSwatch" : "sycamore-leaf-transition-swatch.png",
+          "hidden" : false
+        }
+      }
+    },
+    "WINTER" : {
+      "growth" : false,
+      "colors" : {
+        "LEAF_COLOR" : {
+          "hidden" : true
+        }
+      }
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Size 1",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 2",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 1.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 2,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Size 3",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 2.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 3,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Sycamore",
+      "quantity" : 2,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  }, {
+    "name" : "Size 4",
+    "nextGrowthStage" : 3,
+    "seasonsUntilComplete" : 3.0,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 4,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ "DISPERSE_SEEDS" ],
+    "harvestType" : "LOGGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Logs",
+      "materialName" : "Sycamore",
+      "quantity" : 3,
+      "itemSize" : "LARGE",
+      "itemStyle" : "STYLE_1"
+    } ]
+  } ],
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "swatch" : "sycamore-branch-base-swatch.png",
+    "hidden" : false
+  }, {
+    "swatch" : "sycamore-leaf-base-swatch.png",
+    "hidden" : false
+  }, {
+    "transitionSwatch" : "sycamore-leaf-transition-swatch.png",
+    "hidden" : false
+  }, {
+    "hidden" : true
+  } ]
+} ]

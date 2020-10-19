@@ -1,0 +1,54 @@
+[{
+  "uniqueName": "Dwarf-Female-Fat-Blacksmith-Clothing",
+  "type": "BODY_CLOTHING",
+  "race": "DWARF",
+  "bodyType": "FAT",
+  "gender": "FEMALE",
+  "profession": "BLACKSMITH",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Fat-Blacksmith-Clothing-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Blacksmith-Clothing-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Fat-Blacksmith-Clothing-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Blacksmith-Clothing-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Fat-Blacksmith-Clothing-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Fat-Blacksmith-Clothing-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

@@ -1,0 +1,34 @@
+[
+  {
+    "uniqueName": "Mushroom-Cap01-Spots-Glowing",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Glow"],
+    "growthStages": [0],
+    "tags": {
+      "ATTACHES_LIGHT_SOURCE": ["PARENT_BODY_COLOR"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Spots.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Mushroom-Cap02-Stripes-Spots",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Glow"],
+    "growthStages": [0],
+    "tags": {
+      "ATTACHES_LIGHT_SOURCE": ["PARENT_BODY_COLOR"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Spots.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  }
+]

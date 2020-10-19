@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Potato-Large-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Potato", "Carrot"],
+  "growthStages": [5, 6, 7],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_potato_large_leaves.png",
+      "coloringLayer": "LEAF_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 16
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_FRUIT",
+          "offsetPixels": {
+            "x": 0,
+            "y": -8
+          }
+        }
+      ]
+    }
+  }
+}]

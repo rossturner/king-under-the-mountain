@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Maize-Small",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Maize"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_maize_small.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 12
+      }
+    }
+  }
+}]

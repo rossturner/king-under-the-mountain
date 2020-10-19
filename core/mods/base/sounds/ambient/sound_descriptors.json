@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Daytime",
+    "filenames": [
+      "Daytime Ambiance (Loop).wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 0.8,
+    "looping": true
+  },
+  {
+    "name": "Nighttime",
+    "filenames": [
+      "Nighttime Ambiance (Loop).wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 0.8,
+    "looping": true
+  },
+  {
+    "name": "River",
+    "filenames": [
+      "River Flowing (Loop).wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 0.5,
+    "looping": true
+  },
+  {
+    "name": "Flies",
+    "filenames": [
+      "Flies (Loop).wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 0.5,
+    "looping": true
+  }
+]

@@ -1,0 +1,100 @@
+[{
+  "uniqueName": "Dwarf-HairE",
+  "type": "HUMANOID_HAIR",
+  "race": "DWARF",
+  "gender": "FEMALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-HairE-Color-F.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": -3
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairE-Outline"
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-HairE-Color-F34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": -2,
+        "y": -3
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairE-Outline"
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-HairE-Color-F34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 2,
+        "y": -3
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairE-Outline"
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-HairE-Color-B34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": -2,
+        "y": -3
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairE-Outline"
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-HairE-Color-B34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 2,
+        "y": -3
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairE-Outline"
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Dwarf-HairE-Color-B.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": -3
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairE-Outline"
+        }
+      ]
+    }
+  }
+}]

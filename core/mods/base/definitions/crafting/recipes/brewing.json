@@ -1,0 +1,108 @@
+[
+
+  {
+    "recipeName": "Malt barley",
+    "craftingTypeName": "MALTING",
+    "verbOverrideI18nKey": "ACTION.MALTING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Grain-Sack",
+        "materialName": "Barley",
+        "quantity": 4
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Ingredient-Malt-Sack",
+        "quantity": 3
+      }
+    ],
+    "materialTypesToCopyOver": ["VEGETABLE"],
+    "extraGameHoursToComplete": 4
+  },
+  {
+    "recipeName": "Mill malt",
+    "verbOverrideI18nKey": "PROFESSION.MILLER",
+    "craftingTypeName": "MILLING",
+    "input": [
+      {
+        "itemTypeName": "Ingredient-Malt-Sack",
+        "quantity": 2
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Ingredient-Milled-Malt-Sack",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["VEGETABLE"]
+  },
+
+  {
+    "recipeName": "Mash milled malt to wort",
+    "craftingTypeName": "MALT_MASHING",
+    "input": [
+      {
+        "itemTypeName": "Ingredient-Milled-Malt-Sack",
+        "quantity": 1
+      },
+      {
+        "liquid": true,
+        "materialName": "Water",
+        "quantity": 12
+      }
+    ],
+    "output": [
+      {
+        "liquid": true,
+        "materialName": "Wort",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "recipeName": "Brew wort",
+    "craftingTypeName": "WORT_BREWING",
+    "input": [
+      {
+        "itemTypeName": "Ingredient-Vegetable-Sack",
+        "materialName": "Hops",
+        "quantity": 1
+      },
+      {
+        "liquid": true,
+        "materialName": "Wort",
+        "quantity": 12
+      }
+    ],
+    "output": [
+      {
+        "liquid": true,
+        "materialName": "Hopped Wort",
+        "quantity": 12
+      }
+    ],
+    "extraGameHoursToComplete": 1
+  },
+  {
+    "recipeName": "Ferment to beer",
+    "verbOverrideI18nKey": "PROFESSION.BREWER",
+    "craftingTypeName": "FERMENTING",
+    "input": [
+      {
+        "liquid": true,
+        "materialName": "Hopped Wort",
+        "quantity": 6
+      }
+    ],
+    "output": [
+      {
+        "liquid": true,
+        "materialName": "Beer",
+        "quantity": 6
+      }
+    ],
+    "extraGameHoursToComplete": 72
+  }
+]

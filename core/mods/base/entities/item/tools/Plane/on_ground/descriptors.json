@@ -1,0 +1,42 @@
+[
+  {
+    "uniqueName": "Tool-Plane-Extra-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Plane",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Plane-Extra-On-Ground.png",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Plane-Body-On-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Plane",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Plane-Body-On-Ground.png",
+        "coloringLayer": "WOOD_COLOR"
+      }
+    }
+  }
+]

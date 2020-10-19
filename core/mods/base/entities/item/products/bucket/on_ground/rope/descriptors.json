@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Product-Bucket-Rope-Floor",
+  "type": "ABOVE_LAYER_2",
+  "itemTypeName": "Product-Bucket",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Bucket-Rope-Floor.png",
+      "coloringLayer": "ROPE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 24.5
+      }
+    }
+  }
+}]

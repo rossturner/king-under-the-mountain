@@ -1,0 +1,62 @@
+[{
+  "uniqueName": "Product-Barrel-Hoops-Carried",
+  "type": "ABOVE_LAYER_1",
+  "itemTypeName": "Product-Barrel",
+  "itemPlacements": [
+    "BEING_CARRIED"
+  ],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Barrel-Hoops-Carried-NS.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": -1,
+        "y": 0.5
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Barrel-Hoops-Carried-Omni.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": 1.5,
+        "y": 0.5
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Barrel-Hoops-Carried-Omni.png",
+      "flipX": true,
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": -1.5,
+        "y": 0.5
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Barrel-Hoops-Carried-Omni.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": 1.5,
+        "y": 0.5
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Barrel-Hoops-Carried-Omni.png",
+      "flipX": true,
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": -1.5,
+        "y": 0.5
+      }
+    },
+    "UP": {
+      "filename": "Barrel-Hoops-Carried-NS.png",
+      "coloringLayer": "METAL_COLOR",
+      "offsetPixels": {
+        "x": -1,
+        "y": 0.5
+      }
+    }
+  }
+}]

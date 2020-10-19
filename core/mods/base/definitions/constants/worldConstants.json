@@ -1,0 +1,13 @@
+{
+  "backgroundColor": "#666666FF",
+
+  "maxItemStackSize": 50,
+  "maxNeighbouringShrubs": 2,
+  "attachedLightSourceTogglePoint": 0.75,
+  "corpseDecayHours": 480.0,
+  "corpseDecayColor": "#8b9d89",
+
+  "stoneHarvestedItemType": "Resource-Stone-Unrefined",
+  "oreHarvestedItemType": "Resource-Ore-Unrefined",
+  "gemHarvestedItemType": "Resource-Gems-Unrefined"
+}

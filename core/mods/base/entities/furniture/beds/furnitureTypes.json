@@ -1,0 +1,22 @@
+[
+  {
+    "name": "SINGLE_BED",
+    "i18nKey": "FURNITURE.SINGLE_BED",
+    "categoryName": "BED",
+    "defaultLayoutName": "1x2N",
+    "colorCode": "#a04b00",
+    "iconName": "bed",
+    "placeAnywhere": false,
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ]
+    },
+    "tags": {
+      "EXTRA_MATERIAL_TYPES": ["CLOTH"]
+    }
+  }
+]

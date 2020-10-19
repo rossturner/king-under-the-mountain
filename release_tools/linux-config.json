@@ -1,0 +1,18 @@
+{
+	"platform": "linux64",
+	"jdk": "jdks/linux_jdk-11.0.7+10",
+	"executable": "King under the Mountain",
+	"classpath": [
+		"../desktop/build/libs/undermount-desktop.jar"
+	],
+	"mainclass": "technology.rocketjump.undermount.launcher.DesktopLauncher",
+	"vmargs": ["Xms1200m"],
+	"resources": [
+		"../core/seed.txt",
+		"../core/changelog.txt",
+		"../core/assets",
+		"../core/mods",
+		"log.txt"
+	],
+	"output": "linux64_release"
+}

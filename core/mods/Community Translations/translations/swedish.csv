@@ -1,0 +1,934 @@
+KEY,NOTES,ENGLISH,SWEDISH
+
+ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},Rensa {{plantDescription}}
+ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},Producerar {{targetDescription}}
+ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},Ta bort {{targetDescription}}
+ACTION.JOB.DIGGING,,Digging {{targetDescription}},Gräva {{targetDescription}
+ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},Fyllning {{targetDescription}
+ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},Skörd {{targetPlant}}
+ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,Injicera svamp leka
+ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},{{profession.verb}} {{targetPlant}}
+ACTION.JOB.PLANTING,,Planting {{requiredItem}},Plantering {{RequireDem}}
+ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},Ta bort skadedjur från {{targetPlant}}
+ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},Skovning {{targetDescription}
+ACTION.JOB.TILLING,,Tilling the earth,Jordbearbetning
+ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},Fyllning {{targetDescription}
+ACTION.PREPARATION.VERB,,Preparing,Förbereder
+ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Söker efter arbete
+ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},Sova i {{ContainerDescription}
+ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},Sova på {{TileDescription}
+
+CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},Konstruktion av {{materialType.adjective}} {{furnitureType.noun}}
+CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,{{kvantitet}} av {{itemDescription}} allokerade
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,Ta bort andra objekt
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE.TOOLTIP,,There are items that need to be removed from this furniture’s construction area before it can progress.,Det finns föremål som måste tas bort från möbelns byggområde innan det kan utvecklas.
+CONSTRUCTION.STATUS.SELECTING_MATERIALS,E.g. “Waiting for more wooden planks to be available”,Waiting for more {{materialType}} {{itemDescription.plural}} to be available,Väntar på att fler {{MaterialType}} {{itemDescription.plural}} är tillgängliga
+CONSTRUCTION.STATUS.WAITING_FOR_COMPLETION,This is displayed once all resources are in place and the construction is being worked on,Under construction,Under konstruktion
+CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction is waiting for resource items to be placed in the build area,Waiting for resources to arrive,Väntar på resurser att komma fram
+
+COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{{MaterialDescription}} bröd
+COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{MaterialAlone}} och {{MaterialTwo}}
+COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,{{MaterialDescription}} soppa
+
+CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,Pådrabbad av skadedjur
+CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,Denna gröda har drabbats av ett alltför stort antal bladlöss och andra insekter som måste avlägsnas av en {{PROFER.FARMER}} innan den kan blomstra igen. Att inte ta bort skadedjur i tid kan innebära att denna gröda dör!
+CROP.DESCRIPTION,,{{materialType.noun}} plant,{{MaterialType.noun}} växt
+CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,Framsteg mot skörd: {{framsteg}}%
+
+DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,Fallande skräp
+DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,Uttorkning
+DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,Utmattning
+DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,Matförgiftning
+DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,Svält
+DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,Mystiska omständigheter
+
+EARTH.DIRT,,Dirt,Smuts
+EARTH.GRASS,,Grass,Gräs
+
+FLOOR.COBBLESTONE,,Cobblestone,Kullersten
+FLOOR.DESCRIPTION,,{{floorType.noun}},{{Floortype.noun}}
+FLOOR.DIRT,,Dirt,Smuts
+FLOOR.GRASS,,Grass,Gräs
+FLOOR.GRAVEL,,Gravel,Grus
+FLOOR.RIVER,,River,Floden
+FLOOR.ROUGH_STONE,,Rough stone floor,Grovt stengolv
+FLOOR.STONE_SLAB,,Stone slab,Stenplatta
+FLOOR.TILLED_EARTH,,Tilled earth,Jordbrukad jord
+FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,Outforskad
+
+FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,Rockbread
+FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,Detta är ett skamligt tufft bröd som är så svårt och praktiskt oätligt att det tar mycket lång tid att bli mögligt. Den mänskliga upptäcktsresanden J. A. Moffatt beskrev en gång att äta den som ”besläktad med att tugga grus som har muddrats från ett träsk”. Lyckligtvis verkar de flesta dvärgar inte bry sig.
+FOODSTUFF.WHEAT-BREAD,"Actually just to describe “wheat” as a foodstuff, not specifically bread",Wheat,Vete
+
+FUEL.SACK,,Fuel,Bränsle
+FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}.","Bränsle krävs vid tillverkning av metall, både av {{FEBURITURE.BLOOMERY_UGE}} och {{FURNITURE.FORGE}}."
+
+FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,Baker bänkskiva
+FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,A {{PROCESS.CHEF}} fungerar här för att förvandla {{RESOURCE.FLOUR.SACK.PLURAL}} till {{INDERENT.DEG}}.
+FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,Bakers ugn
+FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,En {{PROCISC.CHEF}} bakar bröd här med hjälp av preparerade {{INDERENT.DEG}}.
+FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,Bloomery ugn
+FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,En {{PROFESSI.BLAKSMITH}} använder denna handdrivna ugn för att omvandla {{RESOURCE.ORE.CRUSHED.PLURAL}} och {FUEL.SACK}} till {{MATERIAL_TYPE.METAL.INGOT.PLURAL}}.
+FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,Snickarbänk
+FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.","De flesta träartiklar och verktyg produceras här, till exempel {{PRODUCT.BOCKET.PLURAL} och {{PRODUCT.BARREL.PLURAL}}."
+FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,Kittel
+FURNITURE.CAULDRON.TOOLTIP,,A cauldron is used to serve a large quantity of soup to hungry settlers. The soup is produced in a {{ROOMS.KITCHEN}} before being moved to a {{ROOMS.FEASTING_HALL}} for serving.,En kittel används för att servera en stor mängd soppa till hungriga bosättare. Soppan produceras i en {{ROOMS.CITY}} innan den flyttas till en {{ROOPS.FEASTING_HALL}} för servering.
+FURNITURE.CHAIR,,Chair,Stol
+FURNITURE.CHARCOAL_CLAMP,,Charcoal clamp,Klämma av träkol
+FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} covered with {{MATERIAL_TYPE.EARTH}} and slowly burned to produce {{ORE.CHARCOAL.NOUN}}, which can then be used as {{FUEL.SACK}}.","Detta är en hög med {{RESOURCE.LOGS.PLURAL}} täckt med {{MATERIAL_TYPE.EARD}} och långsamt brändes för att producera {{ORE.CHARCOAL.NOUN}}, som sedan kan användas som {FUEL.SACK}}."
+FURNITURE.COKE_OVEN,,Coke oven,Koksugn
+FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,En koksugn omvandlar {{ORE.BITUMINOUS_COAL.NOUN}} till {{ORE.COKE.NOUN}} så att den kan användas som {{FUEL.SACK}}.
+FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{FurnitureType.substantiv}}
+FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,Framsteg till slutförande: {{framsteg}}%
+FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,Framsteg till fullständig oskulation: {{framsteg}}%
+FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,Framsteg till chock svamp logg: {{progress}}%
+FURNITURE.DESCRIPTION.WAITING_FOR_ITEM,,Waiting for {{itemType.noun}},Väntar på {{itemType.noun}
+FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,Väntar på att fyllas
+FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,Väntar på att injiceras med svampspawn
+FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,Festbord
+FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.","Med en {{Furniture.COOR}} på plats, kommer dina nybyggare njuta av sina måltider vid detta bord."
+FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,Gristmill
+FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,Gristmill malar {{VEETABL.VETE}} i {{RESOURCE.FLOUR.SACK.NOUN}} så att den kan användas av en {{PROCESTI.CHEF}}.
+FURNITURE.FORGE,,Forge,Smida
+FURNITURE.FORGE.TOOLTIP,,This is where a {{PROFESSION.BLACKSMITH}} works with {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} and {{FUEL.SACK}} to craft items and weapons.,Här arbetar en {{PROCESS.BLAKSMITH}} med {{MATERIAL_TYPE.METAL.ADJECTIVE} {RESOURCE.METAL.INGOT.PLURAL}} och {FUEL.SACK}} för att tillverka föremål och vapen.
+FURNITURE.GRAVE,,Grave,Grav
+FURNITURE.GRAVE.TOOLTIP,,A hastily-dug grave for deceased settlers that can only be placed in {{MATERIAL_TYPE.EARTH}}.,En hastigt grävd grav för avlidna bosättare som endast kan placeras i {{MATERIAL_TYPE.EARD}}.
+FURNITURE.KITCHEN_WORKTOP,Simple piece of furniture in a kitchen used to hold ingredients on top of it,Kitchen worktop,Kök bänkskiva
+FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSION.CHEF}} to cook soup.,Ett område för att lagra ingredienser för en {{PROCUS.CHEF}} för att laga soppa.
+FURNITURE.LANTERN,,Lantern,Lykta
+FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,En lykta ger ljus — detta har för närvarande ingen effekt i spelet.
+FURNITURE.LARGE_TABLE,,Large table,Stort bord
+FURNITURE.MUSHROOM_LOG,,Mushroom log,Svamp logg
+FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.","En logg som injicerats med {{INDERENENT.MUSTOM.SPAWN.PLURAL}} för att producera flera skördar av läckra, saftiga svampar."
+FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,Shock tank
+FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to “shock” the mushroom colony and encourage it to grow mushrooms.",Efter oskulation placeras en {{FEBRUARIET.MUSTOM_LOG}} i denna tank för att ”chocka” svampkolonin och uppmuntra den att odla svamp.
+FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,Krossningsstation för malm
+FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,Raw {RESOURCE.ORE.UNREFERED.PLURAL}} är krossad till en mer användbar storlek så att den kan användas i {{FURCE.BLOOMERY_UGE}}.
+FURNITURE.PILLAR,A pillar used to support a roof,Pillar,Pelare
+FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas from collapsing. An area of 7x7 tiles that have been mined without any pillars or other supports in place will eventually collapse.,En pelare krävs för att stoppa stora utvinda områden från att kollapsa. Ett område med 7x7 plattor som har utvinns utan några pelare eller andra stöd på plats kommer så småningom att kollapsa.
+FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,Sarkofagen
+FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,Denna genomarbetade stenbehållare är den sista viloplatsen för en avliden bosättare.
+FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,Serveringsbord
+FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.,{{PRODUCT.BREAD.LOAF.PLURAL}} är placerade här för servering efter att ha bakats i en {{FURNITURE.BAKING_OVN}}.
+FURNITURE.SINGLE_BED,,Bed,Säng
+FURNITURE.SINGLE_BED.TOOLTIP,,"A bed is the best place for a comfortable night’s rest. ",En säng är den bästa platsen för en bekväm natts vila.
+FURNITURE.SINGLE_DOOR,,Door,Dörr
+FURNITURE.SINGLE_DOOR_FRAME,,Door frame,Dörrkarm
+FURNITURE.SMALL_TABLE,,Small table,Litet bord
+FURNITURE.STONEMASON_WORKBENCH,,Stonemason workbench,Stenhuggarbänk
+FURNITURE.STONEMASON_WORKBENCH.TOOLTIP,,A {{PROFESSION.STONEMASON}} works here with {{MATERIAL_TYPE.STONE.ADJECTIVE}} resources.,A {{PROFESSI.STONEMASON}} arbetar här med {{MATERIAL_TYPE.STONE.ADJECTIVE}} resurser.
+FURNITURE.STOOL,,Stool,Pall
+FURNITURE.WATER_BARREL,,Water barrel,Vatten fat
+FURNITURE.WATER_BARREL.TOOLTIP,,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.","Ett vattenfat är en plats för dina nybyggare att få en törstsläckande dryck, snarare än att behöva hitta en naturlig vattenkälla som floden."
+FURNITURE.WOODCUTTERS_BENCH,,Woodcutting bench,Huggkubb
+FURNITURE.WOODCUTTERS_BENCH.TOOLTIP,,A {{PROFESSION.WOODCUTTER}} works here to turn {{RESOURCE.LOGS.PLURAL}} into {{RESOURCE.PLANKS.PLURAL}}.,A {{PROCESS.WOOKCUTER}} fungerar här för att förvandla {{RESOURCE.LOGS.PLURAL}} till {{RESOURCE.PLURAL}}.
+
+GEM.AMETHYST.ADJECTIVE,,Amethyst,Ametist-
+GEM.AMETHYST.NOUN,,Amethyst,Ametist
+GEM.AMETHYST.TOOLTIP,,A violet-hued variety of quartz. Ancient humans believed it could magically protect them from becoming too drunk. For this reason it is not very popular in dwarven culture.,En violett-hued sort av kvarts. Forntida människor trodde att det kunde skydda dem från att bli för fulla. Av denna anledning är det inte särskilt populärt i dvärgkultur.
+GEM.AMMOLITE.ADJECTIVE,,Ammolite,Ammolit
+GEM.AMMOLITE.NOUN,,Ammolite,Ammolit
+GEM.AMMOLITE.TOOLTIP,,An opal-like gemstone which has a red to green iridescence. It is known as the “hunting stone” and amulets made from it are meant to bring good luck to a hunt.,En opalliknande ädelsten som har en röd till grön iridescens. Det är känt som ”jaktsten” och amuletter gjorda av den är avsedda att bringa lycka till en jakt.
+GEM.AQUAMARINE.ADJECTIVE,,Aquamarine,Akvamarin-
+GEM.AQUAMARINE.NOUN,,Aquamarine,Akvamarin
+GEM.AQUAMARINE.TOOLTIP,,A cyan-coloured variety of beryl. Some humans believe it offers magical protection against the dangers of the seas. This is because an ancient mage used a combination of sky and ice magic to protect trading ships during the age of darkness.,En cyanfärgad sort av beryl. Vissa människor tror att det erbjuder magiskt skydd mot farorna i haven. Detta beror på att en uråldrig magiker använde en kombination av himmel och is magi för att skydda handelsfartyg under mörkrets tid.
+GEM.BIXBITE.ADJECTIVE,,Bixbite,Bixbite
+GEM.BIXBITE.NOUN,,Bixbite,Bixbite
+GEM.BIXBITE.TOOLTIP,,"Also known as red beryl, it is a very rare gemstone. It is often confused for a red-coloured emerald.","Även känd som röd beryl, det är en mycket sällsynt ädelsten. Det är ofta förvirrad för en rödfärgad smaragd."
+GEM.CINNABAR.ADJECTIVE,,Cinnabar,Cinnabar
+GEM.CINNABAR.NOUN,,Cinnabar,Cinnabar
+GEM.CINNABAR.TOOLTIP,,An ore of mercury which is often used in jewellery due to its deep-red hue. It is also used to produce the dye known as vermillion.,En kvicksilvermalm som ofta används i smycken på grund av sin djupröda nyans. Det används också för att producera färgämnet som kallas vermillion.
+GEM.CITRINE.ADJECTIVE,,Citrine,Citron-
+GEM.CITRINE.NOUN,,Citrine,Citrin
+GEM.CITRINE.TOOLTIP,,"A yellowish variety of quartz. It is the gemstone most similar in colour to gold, so most dwarves think citrine is lucky.","En gulaktig sort av kvarts. Det är ädelstenen som är mest lik guld, så de flesta dvärgar tycker att citrin har tur."
+GEM.DIAMOND.ADJECTIVE,,Diamond,Diamant-
+GEM.DIAMOND.NOUN,,Diamond,Diamant
+GEM.DIAMOND.TOOLTIP,,The hardest known material and one of the most important of the seven heavenly stones. Diamonds are the most condensed form of the neutral element known as “spirit” or “aether”.,Det svåraste kända materialet och en av de viktigaste av de sju himmelska stenarna. Diamanter är den mest kondenserade formen av det neutrala elementet som kallas ”ande” eller ”eter”.
+GEM.EMERALD.ADJECTIVE,,Emerald,Smaragd-
+GEM.EMERALD.NOUN,,Emerald,Smaragd
+GEM.EMERALD.TOOLTIP,,A vibrant green variety of beryl. It is thought that engraving on an emerald brings great misfortune. Emeralds are closely related to elemental life and associated magic.,En livfull grön variation av beryl. Man tror att gravyr på en smaragd ger stor olycka. Smaragder är nära besläktade med elementärt liv och tillhörande magi.
+GEM.GARNET.ADJECTIVE,,Garnet,Granat-
+GEM.GARNET.NOUN,,Garnet,Granat
+GEM.GARNET.TOOLTIP,,"Garnets cover a variety of minerals used as gemstones, all with a deep red colour. Some garnet gems are actually a condensed form of elemental fire.","Granat täcker en mängd mineraler som används som ädelstenar, alla med en djup röd färg. Vissa granatpärlor är faktiskt en kondenserad form av elementär eld."
+GEM.JADE.ADJECTIVE,,Jade,Jade-
+GEM.JADE.NOUN,,Jade,Jade
+GEM.JADE.TOOLTIP,,"A mineral with a light-green colour often used for decoration. Also, elves have been known to use jade to produce medicine which can cure ailments of the gut.",Ett mineral med ljusgrön färg som ofta används för dekoration. Dessutom har alver varit kända för att använda jade för att producera medicin som kan bota sjukdomar i tarmen.
+GEM.JASPER.ADJECTIVE,,Jasper,Jaspis-
+GEM.JASPER.NOUN,,Jasper,Jaspis
+GEM.JASPER.TOOLTIP,,"An impure variety of silica which can occur in several colours, but most commonly red. Jasper is favoured as a decoration material by orcs due to its variety.","En oren sort av kiseldioxid som kan förekomma i flera färger, men oftast röd. Jasper gynnas som dekorationsmaterial av orcher på grund av dess mångfald."
+GEM.LABRADORITE.ADJECTIVE,,Labradorite,Labradorit
+GEM.LABRADORITE.NOUN,,Labradorite,Labradorit
+GEM.LABRADORITE.TOOLTIP,,A rock which shines with a typically light-blue iridescence. Rarer specimens can reflect a wide range of colours.,En sten som lyser med en typiskt ljusblå iridescens. Sällare exemplar kan spegla ett brett spektrum av färger.
+GEM.LAPIS.ADJECTIVE,,Lapis lazuli,Lapis lazuli
+GEM.LAPIS.NOUN,,Lapis lazuli,Lapis lazuli
+GEM.LAPIS.TOOLTIP,,A rock with a brilliant deep blue hue which is used as a precious stone.,En sten med en lysande djupblå nyans som används som en ädelsten.
+GEM.MAGNESITE.ADJECTIVE,,Magnesite,Magnesit
+GEM.MAGNESITE.NOUN,,Magnesite,Magnesit
+GEM.MAGNESITE.TOOLTIP,,A mineral which can be polished into beads for use in jewellery. These beads can by dyed into many different colours.,Ett mineral som kan poleras till pärlor för användning i smycken. Dessa pärlor kan färgas i många olika färger.
+GEM.MOONSTONE.ADJECTIVE,,Moonstone,Månsten-
+GEM.MOONSTONE.NOUN,,Moonstone,Månsten
+GEM.MOONSTONE.TOOLTIP,,"Thought to be formed by moonlight captured in rock, which makes this gemstone a favourite of the elves.","Trodde bildas av månskenet fångat i sten, vilket gör denna ädelsten till en favorit bland alverna."
+GEM.MORGANITE.ADJECTIVE,,Morganite,Morganit-
+GEM.MORGANITE.NOUN,,Morganite,Morganit
+GEM.MORGANITE.TOOLTIP,,A rose-coloured variety of beryl. It was named after being popularised by a particularly wealthy merchant in the age of myth.,En rosafärgad sort av beryl. Det namngavs efter att ha blivit populär av en särskilt rik köpman i mytens tidsålder.
+GEM.OPAL.ADJECTIVE,,Opal,Opal-
+GEM.OPAL.NOUN,,Opal,Opal
+GEM.OPAL.TOOLTIP,,"A form of silica infused with the magic of the oceans, which makes this a favourite of sailors and fishermen.","En form av kiseldioxid fylld med havens magi, vilket gör detta till en favorit bland sjömän och fiskare."
+GEM.PAINITE.ADJECTIVE,,Painite,Smärtsamt
+GEM.PAINITE.NOUN,,Painite,Smärtsamt
+GEM.PAINITE.TOOLTIP,,A very rare gemstone which is often identified as an off-colour sapphire. The crystals are naturally hexagonal in shape and a favourite of tacticians.,En mycket sällsynt ädelsten som ofta identifieras som en ofärgad safir. Kristallerna är naturligt sexkantiga i form och en favorit hos taktiker.
+GEM.RHODOCHROSITE.ADJECTIVE,,Rhodochrosite,Rhodokrosit
+GEM.RHODOCHROSITE.NOUN,,Rhodochrosite,Rhodokrosit
+GEM.RHODOCHROSITE.TOOLTIP,,Found in varying shades of red to pink. It is not as hard as most gemstones making it a poor choice for rings and other high-impact jewellery.,"Finns i olika nyanser av rött till rosa. Det är inte lika svårt som de flesta ädelstenar, vilket gör det till ett dåligt val för ringar och andra stora smycken."
+GEM.ROCK_CRYSTAL.ADJECTIVE,,Rock crystal,Bergkristall-
+GEM.ROCK_CRYSTAL.NOUN,,Rock crystal,Bergkristall
+GEM.ROCK_CRYSTAL.TOOLTIP,,The purest form of quartz. Rock crystals often feature in magical artifacts as they are a condensed form of the element of ice.,Den renaste formen av kvarts. Stenkristaller förekommer ofta i magiska artefakter eftersom de är en kondenserad form av iselementet.
+GEM.RUBY.ADJECTIVE,,Ruby,Rubin-
+GEM.RUBY.NOUN,,Ruby,Rubin
+GEM.RUBY.TOOLTIP,,"One of the seven heavenly stones, rubies are the element of fire condensed into a solid form.","En av de sju himmelska stenarna, rubiner är eldens element kondenserad till en fast form."
+GEM.SAPPHIRE.ADJECTIVE,,Sapphire,Safir-
+GEM.SAPPHIRE.NOUN,,Sapphire,Safir
+GEM.SAPPHIRE.TOOLTIP,,"Often believed to protect the wearer from the attention of daemons, sapphires are much sought-after by mages for use in sky and air-based magic.","Ofta tros skydda bäraren från demonernas uppmärksamhet, safirer är mycket eftertraktade av magiker för användning i himlen och luftbaserad magi."
+GEM.SPINEL.ADJECTIVE,,Spinel,Spinell-
+GEM.SPINEL.NOUN,,Spinel,Spinell
+GEM.SPINEL.TOOLTIP,,"Often confused with heavenly stones like true rubies and sapphires, spinels are a lesser form of magic-infused gem which can be associated with any of the elements, depending on colour.","Ofta förväxlas med himmelska stenar som äkta rubiner och safirer, spineller är en mindre form av magisk infunderad pärla som kan associeras med något av elementen, beroende på färg."
+GEM.TANZANITE.ADJECTIVE,,Tanzanite,Tanzanite-
+GEM.TANZANITE.NOUN,,Tanzanite,Tanzanite
+GEM.TANZANITE.TOOLTIP,,A rare gemstone that can alternate between blue and violet. It is thought to be formed from the material body of a dead god.,En sällsynt ädelsten som kan växla mellan blå och violett. Det tros vara bildat av en död guds materiella kropp.
+GEM.TOPAZ.ADJECTIVE,,Topaz,Topas-
+GEM.TOPAZ.NOUN,,Topaz,Topas
+GEM.TOPAZ.TOOLTIP,,"Sometimes confused with the more common {{GEM.CITRINE.NOUN}} gem, topaz can be found in several colours but most commonly a yellowish brown. It was first discovered on an island which no longer exists.","Ibland förväxlas med den vanligare ädelstenen {{GEM.CITRINE.NOUN}}, finns topas i flera färger men oftast gulbrun. Den upptäcktes först på en ö som inte längre existerar."
+GEM.TOURMALINE.ADJECTIVE,,Tourmaline,Turmalin-
+GEM.TOURMALINE.NOUN,,Tourmaline,Turmalin
+GEM.TOURMALINE.TOOLTIP,,Often found alongside {{ORE.CASSITERITE.ADJECTIVE}} ore. It is sometimes associated with earth magic.,Ofta hittas tillsammans med {{ORE.CASSITERITE.ADJEKTIVAL}} malm. Det är ibland förknippat med jordmagi.
+GEM.TURQUOISE.ADJECTIVE,,Turquoise,Turkos-
+GEM.TURQUOISE.NOUN,,Turquoise,Turkos
+GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,Ett blågrönt mineral som ofta används i dekorationer. Det är tänkt att bringa lycka till bäraren. Det är ofta infunderat med jordens element.
+
+GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},Samla {{targetDescription}}
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetZoneMaterial}},Dricka {{targetZoneMaterial}}
+GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},Äta {{targetDescription}}
+GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},Släpa {{itemDescription}}
+GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,Inaktiv
+GOAL.SLEEP.DESCRIPTION,,Going to sleep,Gå till sängs
+GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},Överföra {{targetZoneMaterial}}
+
+GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,Lägg till/ta bort brickor
+GUI.ADD_TILES,This should be as short as possible,Add tiles,Lägg till paneler
+GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,Volym för omgivande atmosfär:
+GUI.BACK_LABEL,This should be as short as possible,Back,"Tillbaka "
+GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,Bron
+GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,Dörrar
+GUI.BUILD.WALLS,,Walls,Väggar
+GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,L-form
+GUI.BUILD.WALLS.QUAD,For building 4 walls at once,Quad,Quad
+GUI.BUILD.WALLS.SINGLE,For building a single wall,Single,Singel
+GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,Möbler
+GUI.BUILD_LABEL,This should be as short as possible,Build,Bygg
+GUI.CANCEL_LABEL,This should be as short as possible,Cancel,"Avbryt "
+GUI.CHANGE_PROFESSION_LABEL,,Change profession,Byt yrke
+GUI.CROP_SELECTION,,Crop:,Beskära:
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}","{{TimeofDay}}, dag {{dayNumber}}, {{säsong}}"
+GUI.DIALOG.DISMISS,,Dismiss,Avfärda
+GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,Ett rum med det namnet finns redan.
+GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,Spara filen kunde inte laddas eftersom den är inkompatibel med den här versionen av spelet.
+GUI.DIALOG.ERROR_TITLE,Shown as the title of an error dialog,An error has occurred,Ett fel har inträffat
+GUI.DIALOG.ERROR_WHILE_LOADING,Unexpected error while loading a previous save,There was an unexpected error while loading the game.,Det var ett oväntat fel när du laddade spelet.
+GUI.DIALOG.ERROR_WHILE_SAVING,Unexpected error while saving the game,There was an unexpected error while saving the game.,Det var ett oväntat fel när du räddade spelet.
+GUI.DIALOG.INFO_TITLE,,Information,Information
+GUI.DIALOG.JUMP_TO,,Go to location,Gå till plats
+GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,Den valda språköversättningen är för närvarande ofullständig och kommer att sakna en del text. Ett reservspråk kommer att användas.
+GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,Du har valt en annan uppsättning mods som ska tillämpas på spelet. Dessa kommer att tillämpas när spelet startas nästa gång.
+GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,En eller flera mods är inkompatibla med den här versionen av spelet och har avaktiverats. Du kan söka efter uppdateringar i mods-menyn.
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,OKEJ
+GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,Byt namn på rum
+GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,Du måste starta om spelet för att ändringen ska träda i kraft
+GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},Tilldelas till {{name}}
+GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,För närvarande tas bort
+GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,Möblerna måste placeras på {{MaterialType}}.
+GUI.GRAPHICS.FULLSCREEN,,Fullscreen,Helskärm
+GUI.GRAPHICS.RESOLUTION,,Resolution,Upplösning
+GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),Ingen (Lämna träda)
+GUI.MINIMAP.LABEL,,Minimap,Minimap
+GUI.MUSIC_VOLUME,,Music volume:,Musik volym:
+GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,Ny version nu tillgänglig på Itch.io
+GUI.NEXT_LABEL,This should be as short as possible,Next,Nästa
+GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,Dessa möbler kan inte roteras i den här versionen av spelet
+GUI.OK_LABEL,This should be as short as possible,Ok,OK
+GUI.OPTIONS.AUDIO.TITLE,,Sound Options,Alternativ för ljud
+GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes trees partially transparent when a settler moves behind them,Make trees transparent when obscuring settlers,Gör träd genomskinliga när dölja bosättare
+GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,Paus för meddelanden
+GUI.OPTIONS.GAMEPLAY.TITLE,,"Gameplay Options ",Spelalternativ
+GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,Rulla när markören är vid kanten av skärmen
+GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ","Grafikinställningar "
+GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,Tillåt automatiska kraschrapporter
+GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.TITLE,,Miscellaneous,Diverse
+GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,Hugga
+GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,Rensa
+GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,Skörda
+GUI.ORDERS.MINE,This should be as short as possible,Mine,Gräva
+GUI.ORDERS_LABEL,This should be as short as possible,Orders,Order
+GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,En bro måste täcka båda sidor av floden och vara minst 3x3 plattor i storlek
+GUI.REMOVE_LABEL,This should be as short as possible,Remove,Ta bort
+GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Ta bort paneler
+GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,Resurser
+GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},Tillgänglig: {{count}}
+GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Tryck på (R) för att rotera möbler
+GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,Räddar...
+GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},Döda: {{count}}
+GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},Befolkning: {{count}}
+GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,Nybyggare
+GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},Totalt: {{count}}
+GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,Ljudeffektvolym
+GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,Gränssnittskala:
+GUI.ZONES_LABEL,This should be as short as possible,Zones,Zoner
+
+HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,Åt en fint tillagad måltid
+HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,Bär en död kropp
+HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,Drack flod vatten
+HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,Svältande
+HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,Kritiskt uttorkad
+HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,,Optimistic about new settlement,Optimistiska om ny bosättning
+HAPPINESS_MODIFIER.POISONED,,Poisoned,Förgiftad
+HAPPINESS_MODIFIER.SAW_DEAD_BODY,,Saw a dead body,Såg en död kropp
+HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,,"Slept in a spacious, private bedroom","Sov i ett rymligt, privat sovrum"
+HAPPINESS_MODIFIER.SLEPT_IN_PRIVATE_BEDROOM,,Slept in a private bedroom,Sov i ett privat sovrum
+HAPPINESS_MODIFIER.SLEPT_IN_SHARED_BEDROOM,,Shared a bedroom with others,Delat sovrum med andra
+HAPPINESS_MODIFIER.SLEPT_IN_SMALL_BEDROOM,,Slept in a cramped bedroom,Sov i ett trångt sovrum
+HAPPINESS_MODIFIER.SLEPT_ON_GROUND,,Slept on rough ground,Sov på grov mark
+HAPPINESS_MODIFIER.SLEPT_OUTSIDE,,Slept under the stars,Sov under stjärnorna
+HAPPINESS_MODIFIER.TITLE,,Happiness:,Lycka:
+HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,Mycket hungrig
+HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,Mycket törstig
+HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,Extremt trött
+
+HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},{{kvantitet}} tilldelad till {{targetDescription}}
+
+HINT.BUTTON.DISABLE_ALL,,Disable all hints,Inaktivera alla tips
+HINT.BUTTON.DISMISS,,Dismiss,
+HINT.BUTTON.HINTS_ONLY,,Hints only,Endast tips
+HINT.BUTTON.NEXT,,Next,Nästa
+HINT.BUTTON.TUTORIAL,,Tutorial,Handledning
+HINT.PROGRESS.HEADER,,Progress:,
+HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","Välkommen till kungens värld under berget! Detta är en tidig alfa-version av spelet med många fler funktioner och spelelement som fortfarande återstår att implementera. Ert orädda band av dvärgbosättare har valt den här platsen för att hitta en ny koloni i sitt kungarike. Ge mat, skydd och välstånd och vem vet, kanske en dag kommer detta att vara huvudstad i ett eget rike!"
+HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",TEXT
+
+HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}","{{name}}, {{madness.adjektiv}} {{race.noun}}"
+HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
+
+INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,- Degen
+INGREDIENT.FLOUR,,Flour,Mjöl
+INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,- Brödet
+INGREDIENT.LOAF.PLURAL,,Loaves,Bröden
+INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,Svamp leka
+INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,Svamp leka
+INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.","Även känt som mycelium, kan detta ses som ”frön” för att odla svamp i en {{ROOPS.MUSROOM_FARM}}."
+INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,Frö
+INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,Frön
+INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,Frön av rätt typ krävs för plantering i {{ROOMS.FARM}}. De måste också finnas tillgängliga i en {{STOCKPILE.GRANARY}} -lagerlucka.
+INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,Säck
+
+INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,Inventering:
+
+ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}}
+ITEM.INGREDIENT.DESCRIPTION,E.g. “2 potatoes”,{{quantity_if_multiple}}{{materialType.noun_or_plural}},{{quantity_if_multiple}} {{MaterialType.noun_or_plural}}
+
+ITEM_GROUP.FUEL.PLURAL,,Fuel,Bränsle
+ITEM_GROUP.PRODUCT.PLURAL,,Products,Produkter
+ITEM_GROUP.RESOURCE.PLURAL,,Resources,Resurser
+ITEM_GROUP.TOOL.PLURAL,,Tools,Verktyg
+
+LANGUAGE.LABEL,,Language,Språk
+
+LIQUID.WATER.NOUN,,Water,Vatten
+
+MADNESS.BROKEN.ADJECTIVE,,Broken,Bruten
+MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",Denna bosättare var så olycklig att de har drivit förbi brytpunkten och kommer inte längre att fungera eller ens äta!
+
+MATERIAL,Used for specifying which material something is made out of,Material,Material
+
+MATERIAL_TYPE,,Type,Sort
+MATERIAL_TYPE.ANY,For allowing any kind of material to be used,Any,Någon
+MATERIAL_TYPE.EARTH.ADJECTIVE,,Earthen,Jord
+MATERIAL_TYPE.EARTH.NOUN,,Earth,Jorden
+MATERIAL_TYPE.FOODSTUFF.NOUN,,Food,Mat
+MATERIAL_TYPE.GEM.NOUN,This is only used as a noun,Gem,Ädelsten
+MATERIAL_TYPE.METAL.ADJECTIVE,,Metallic,Metallisk
+MATERIAL_TYPE.METAL.NOUN,,Metal,Metall
+MATERIAL_TYPE.ORE.NOUN,This is only used as a noun,Ore,Malm
+MATERIAL_TYPE.OTHER.NOUN,This isn't actually used in-game yet so won't be combined with other words,Other,Annat
+MATERIAL_TYPE.SEED.NOUN,For saying something is “made up of seed”,Seed,Frö
+MATERIAL_TYPE.STONE.ADJECTIVE,,,Sten-
+MATERIAL_TYPE.STONE.NOUN,,Stone,Sten
+MATERIAL_TYPE.VEGETABLE.NOUN,Used to make up “Vegetable soup”,Vegetable,Grönsaker
+MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,Vitriol av
+MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,Vitriol
+MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,Trä-
+MATERIAL_TYPE.WOOD.NOUN,,Wood,Trä
+
+MENU.CONTINUE_GAME,,Continue game,Fortsätt spela
+MENU.MODS,,Mods,Mods
+MENU.NEW_GAME,,Start new game,Starta ett nytt spel
+MENU.OPTIONS,,Options,Inställningar
+MENU.QUIT,,Quit,Avsluta
+MENU.TOGGLE_FULLSCREEN,,Toggle fullscreen,Växla helskärm
+
+METAL.BRONZE.ADJECTIVE,,Bronze,Brons-
+METAL.BRONZE.NOUN,,Bronze,Brons
+METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and much more durable than copper alone. (Alloys have not yet been implemented in King under the Mountain),Brons är en legering av koppar och tenn. Det är svårare och mycket mer hållbart än koppar ensam. (Legeringar har ännu inte genomförts i King under berget)
+METAL.COPPER.ADJECTIVE,,Copper,Koppar-
+METAL.COPPER.NOUN,,Copper,Koppar
+METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.","Förutom att den förekommer naturligt som {{ORE.NATIVE_COPPER.NOUN}} är den också lätt att smälta från {{ORE.MALACHITE.NOUN}} malm. Koppar har många användningsområden, särskilt i mynt, men det är inte svårt nog att skapa effektiva vapen."
+METAL.GOLD.ADJECTIVE,,Golden,Guld-
+METAL.GOLD.NOUN,,Gold,Guld
+METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.",Kungen av metaller. Även om det inte är den mest sällsynta eller värdefulla är guld den mest eftertraktade metallen av de flesta raser — särskilt dvärgar.
+METAL.IRON.ADJECTIVE,,Iron,Järn-
+METAL.IRON.NOUN,,Iron,Järn
+METAL.IRON.TOOLTIP,,It is a poor military which does not have access to iron. Dwarven metalsmiths know the secrets of working this into {{METAL.STEEL.NOUN}}.,Det är en fattig militär som inte har tillgång till järn. Dvärgmetallsmider känner till hemligheterna bakom att arbeta in detta i {{MEAL.STEEL.NOUN}}.
+METAL.PLATINUM.ADJECTIVE,,Platinum,Platina
+METAL.PLATINUM.NOUN,,Platinum,Platina
+METAL.PLATINUM.TOOLTIP,,A silver-white metal that is highly resistant to corrosion. Platinum is rarer and therefore more valuable than {{METAL.GOLD.NOUN}}.,En silvervit metall som är mycket motståndskraftig mot korrosion. Platina är ovanligare och därför mer värdefullt än {{MEAL.GOLD.NOUN}}.
+METAL.SILVER.ADJECTIVE,,Silver,Silver
+METAL.SILVER.NOUN,,Silver,Silver
+METAL.SILVER.TOOLTIP,,"Like {{METAL.GOLD.NOUN}}, silver is often used for coinage and as solid bars for the trading of wealth. ",Liksom {{MEAL.GOLD.NOUN}} används silver ofta för mynt och som solida barer för handel med rikedom.
+METAL.STEEL.ADJECTIVE,,Steel,Stål-
+METAL.STEEL.NOUN,,Steel,Stål
+METAL.STEEL.TOOLTIP,,"Far stronger than {{METAL.IRON.NOUN}} which makes for superior weapons and tools, only the dwarves know the secret of creating steel.","Mycket starkare än {MEAL.IRON.NOUN}} som gör för överlägsna vapen och verktyg, bara dvärgarna känner till hemligheten med att skapa stål."
+METAL.TIN.ADJECTIVE,,Tin,Tenn
+METAL.TIN.NOUN,,Tin,Tenn
+METAL.TIN.TOOLTIP,,Tin can be smelted from {{ORE.CASSITERITE.NOUN}} and alloyed with {{METAL.COPPER.NOUN}} to produce {{METAL.BRONZE.NOUN}}. (Alloys have not yet been implemented in King under the Mountain),Tenn kan smältas från {{ORE.CASSITERITE.NOUN}} och legeras med {{MEAL.COPPER.NOUN}} för att producera {{META.BRONZE.NOUN}}. (Legeringar har ännu inte genomförts i King under berget)
+
+MODS.APPLY,,Apply,Applicera
+MODS.COMPATIBILITY.COMPATIBLE,,Yes,Javisst
+MODS.COMPATIBILITY.INCOMPATIBLE,,No,- Nej
+MODS.COMPATIBILITY.UNKNOWN,,Unknown,Okänd
+MODS.MISSING_MODS_DIALOG_TEXT,,This save file was last used while the following mods were active. These mods are now missing or disabled so the save may not load correctly.,Den här sparfilen användes senast medan följande mods var aktiva. Dessa mods saknas nu eller inaktiveras så att spara kanske inte laddas korrekt.
+MODS.MISSING_MODS_SAVE_EXCEPTION_DIALOG_TEXT,,"The save file could not be loaded because either it is incompatible with this version of the game, or because some mods have been disabled or removed since this save was last loaded. The following mods were expected but are no longer active:","Spara filen kunde inte laddas eftersom den antingen är inkompatibel med den här versionen av spelet, eller eftersom vissa mods har inaktiverats eller tagits bort sedan den här sparningen senast laddades. Följande mods förväntades men är inte längre aktiva:"
+MODS.TABLE.COMPATIBILITY,,Compatible?,Kompatibel?
+MODS.TABLE.ENABLED,,Enabled?,Aktiverad?
+MODS.TABLE.NAME,,Mod Name,Mod Namn
+MODS.TABLE.ORDERING,,Re-order,Order om
+MODS.TABLE.VERSION,,Mod Version,Mod version
+
+MUSHROOM.DESCRIPTION,E.g. “Toadstool mushroom”,{{materialType.noun}},{{materialType.substantiv}}
+
+NEEDS.DRINK,,Drink,Drick
+NEEDS.FOOD,,Food,Mat
+NEEDS.SLEEP,,Sleep,Sova
+
+NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,Dina gruvarbetare har upptäckt ett nytt område!
+NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,Utforskning
+NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.","{{character}}, har dött på grund av {{reason}}."
+NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},Död på grund av {{reason}}
+NOTIFICATION.DEATH.TITLE,,Settler death,Settler död
+NOTIFICATION.GAME_OVER.DESCRIPTION,,All things must come to an end. Your settlement lies abandoned.,Allt måste komma till ett slut. Din bosättning ligger övergiven.
+NOTIFICATION.GAME_OVER.TITLE,,Game Over,Game Over
+NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,Välståndet i er bosättning har lockat ett antal nya invandrare för att öka er befolkning.
+NOTIFICATION.IMMIGRANTS_ARRIVED.TITLE,,Immigration,Invandring
+NOTIFICATION.MINING_COLLAPSE.DESCRIPTION,,An area has caved in due to a lack of pillars and supports.,Ett område har rasat in på grund av brist på pelare och stöd.
+NOTIFICATION.MINING_COLLAPSE.TITLE,,Mining collapse,Gruvkollaps
+NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,De hårda svårigheterna har visat sig vara för mycket att hantera för {{character}}.
+NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,Mental paus
+
+ORE.BAUXITE.ADJECTIVE,,Bauxite,Bauxit
+ORE.BAUXITE.NOUN,,Bauxite,Bauxit
+ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a means of aluminium production is yet to be discovered.",Bauxit är den primära malmen av aluminium. Tyvärr har man ännu inte upptäckt ett sätt att tillverka aluminium.
+ORE.BITUMINOUS_COAL.ADJECTIVE,,Bituminous coal,Bituminöst kol
+ORE.BITUMINOUS_COAL.NOUN,,Bituminous coal,Stenkol
+ORE.BITUMINOUS_COAL.TOOLTIP,,This can be converted into {{ORE.COKE.NOUN}} using a {{FURNITURE.COKE_OVEN}}.,Detta kan konverteras till {{ORE.COKE.NOUN}} med hjälp av en {{FURITURE.COKE_OVEN}.
+ORE.CASSITERITE.ADJECTIVE,,Cassiterite,Kassiterit
+ORE.CASSITERITE.NOUN,,Cassiterite,Kassiterit
+ORE.CASSITERITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.TIN.NOUN}}.,En malm som kan smältas för att producera {{METAL.TIN.NOUN}}.
+ORE.CHARCOAL.ADJECTIVE,,Charcoal,Träkol
+ORE.CHARCOAL.NOUN,,Charcoal,Träkol
+ORE.CHARCOAL.TOOLTIP,,{{FUEL.SACK}} produced from wooden {{RESOURCE.LOGS.PLURAL}}.,{{FUEL.SACK}} producerat av trä {{RESOURCE.LOGS.PLURAL}}.
+ORE.CHRYSOCOLLA.ADJECTIVE,,Chrysocolla,Chrysocolla
+ORE.CHRYSOCOLLA.NOUN,,Chrysocolla,Chrysocolla
+ORE.CHRYSOCOLLA.TOOLTIP,,"Often confused with turquoise, it is actually an ore of {{METAL.COPPER}}.","Ofta förväxlas med turkos, det är faktiskt en malm av {MEAL.COPER}}."
+ORE.COKE.ADJECTIVE,,Coke,Cola
+ORE.COKE.NOUN,,Coke,Cola
+ORE.COKE.TOOLTIP,,A refined form of {{ORE.BITUMINOUS_COAL}} which can be used as {{FUEL.SACK}}.,En raffinerad form av {{ORE.BITUMINOUS_COAL}} som kan användas som {{FUEL.SACK}}.
+ORE.GALENA.ADJECTIVE,,Galena,Galena
+ORE.GALENA.NOUN,,Galena,Blyglans
+ORE.GALENA.TOOLTIP,,An ore that can be smelted to produce {{METAL.SILVER}}.,En malm som kan smältas för att producera {{MEAL.SILVER}}.
+ORE.HEMATITE.ADJECTIVE,,Hematite,Hematit
+ORE.HEMATITE.NOUN,,Hematite,Hematit
+ORE.HEMATITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.IRON}}.,En malm som kan smältas för att producera {{MEAL.Iron}}.
+ORE.ILMENITE.ADJECTIVE,,Ilmenite,Ilmenit
+ORE.ILMENITE.NOUN,,Ilmenite,Ilmenit
+ORE.ILMENITE.TOOLTIP,,"Ilmenite is the primary ore of titanium. Unfortunately, a means of titanium production is yet to be discovered.",Ilmenit är den primära malmen av titan. Tyvärr har ett sätt att producera titan ännu inte upptäckts.
+ORE.MALACHITE.ADJECTIVE,,Malachite,Malakit
+ORE.MALACHITE.NOUN,,Malachite,Malakit
+ORE.MALACHITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.COPPER}}.,En malm som kan smältas för att producera {{MEAL.COPER}}.
+ORE.NATIVE_COPPER.ADJECTIVE,,Native copper,Native koppar
+ORE.NATIVE_COPPER.NOUN,,Native copper,Koppar
+ORE.NATIVE_COPPER.TOOLTIP,,Naturally-occuring {{METAL.COPPER}} which must be smelted before use.,Naturligt förekommande {{MEAL.COPER}} som måste smältas före användning.
+ORE.NATIVE_GOLD.ADJECTIVE,,Native gold,Nativt guld
+ORE.NATIVE_GOLD.NOUN,,Native gold,Guldklimp
+ORE.NATIVE_GOLD.TOOLTIP,,Naturally-occuring {{METAL.GOLD}} which must be smelted before use.,Naturligt förekommande {{MEAL.GOLD}} som måste smältas före användning.
+ORE.NATIVE_PLATINUM.ADJECTIVE,,Native platinum,Ursprungligt platina
+ORE.NATIVE_PLATINUM.NOUN,,Native platinum,Ursprungligt platina
+ORE.NATIVE_PLATINUM.TOOLTIP,,Naturally-occuring {{METAL.PLATINUM}} which must be smelted before use.,Naturligt förekommande {{MEAL.PLATINUM}} som måste smältas före användning.
+ORE.NATIVE_SILVER.ADJECTIVE,,Native silver,Nativt silver
+ORE.NATIVE_SILVER.NOUN,,Native silver,Silver
+ORE.NATIVE_SILVER.TOOLTIP,,Naturally-occuring {{METAL.SILVER}} which must be smelted before use.,Naturligt förekommande {{MEAL.SILVER}} som måste smältas före användning.
+ORE.POLLUCITE.ADJECTIVE,,Pollucite,Pollusit
+ORE.POLLUCITE.NOUN,,Pollucite,Pollusit
+ORE.POLLUCITE.TOOLTIP,,"Pollucite is an ore of Caesium, which is currently too dangerous to produce. Particularly crazy dwarven metalsmiths are currently trying to find a reliable method of production.","Pollusit är en malm av cesium, som för närvarande är för farlig för att producera. Särskilt galna dvärgmetallsmider försöker för närvarande hitta en pålitlig produktionsmetod."
+ORE.PYRITE.ADJECTIVE,,Fool's gold,Dårens guld
+ORE.PYRITE.NOUN,,Fool's gold,Dårens guld
+ORE.PYRITE.TOOLTIP,,"Also known as Pyrite, its pale-yellow appearance causes some to mistake it for gold. It has several uses when crushed, but care must be taken as it sparks when struck.","Även känd som Pyrite, orsakar dess blekgula utseende vissa att missta det för guld. Det har flera användningsområden när det krossas, men försiktighet måste tas eftersom det gnistor när det slås."
+ORE.THORIUM.ADJECTIVE,,Thorium,Torium
+ORE.THORIUM.NOUN,,Thorium,Torium
+ORE.THORIUM.TOOLTIP,,A silvery metallic ore which turns black when exposed to air. It is strangely warm to the touch.,En silverfärgad metallmalm som blir svart när den utsätts för luft. Det är konstigt varmt att ta på.
+ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,Wolframit
+ORE.WOLFRAMITE.NOUN,,Wolframite,Wolframit
+ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,En metallisk malm som försvårar smältning av tenn. Den har för hög smältpunkt för att smältas med normala processer.
+
+OTHER.BRICK.NOUN,,Brick,Tegelsten
+OTHER.CLAY_SOIL.NOUN,,Clay soil,Lerjord
+OTHER.GRASS.NOUN,,,Gräs
+
+PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,Jag accepterar
+PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,Inaktivera rapportering
+PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,Kung under berget är i aktiv utveckling. För att hjälpa
+PRIVACY.OPT_IN.LINE_10,,- The stack trace of the exception which caused the crash,- Stacken spår av undantaget som orsakade kraschen
+PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to","diagnostisera och åtgärda fel, klicka på ”Jag accepterar” nedan för att"
+PRIVACY.OPT_IN.LINE_3,,send anonymous crash reports automatically.,skicka anonyma kraschrapporter automatiskt.
+PRIVACY.OPT_IN.LINE_4,," "," "
+PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,Detta består av endast följande data:
+PRIVACY.OPT_IN.LINE_6,,- The version of the game client,- Versionen av spelet klienten
+PRIVACY.OPT_IN.LINE_7,,- Your operating system,- Ditt operativsystem
+PRIVACY.OPT_IN.LINE_8,,- Your graphics card and display settings,- Dina grafikkort och bildskärmsinställningar
+PRIVACY.OPT_IN.LINE_9,,- Your options settings,- Inställningar för dina alternativ
+
+PRODUCT.ANVIL,,Anvil,städ
+PRODUCT.ANVIL.TOOLTIP,,A large block of metal used to hammer heated metal into shape. Required to construct a {{FURNITURE.FORGE}.,Ett stort block av metall som används för att hamra uppvärmd metall i form. Krävs för att konstruera en {{FURNITURE.FORGE}.
+PRODUCT.BARREL.HOOPS,,Barrel hoops,Fat hoops
+PRODUCT.BARREL.HOOPS.TOOLTIP,,Metal hoops used to construct a {{PRODUCT.BARREL.NOUN}}. Also used in some machinery.,Metallbågar som används för att konstruera en {{PRODUCT.BARREL.NOUN}}. Används även i vissa maskiner.
+PRODUCT.BARREL.NOUN,,Barrel,Fat
+PRODUCT.BARREL.PLURAL,,Barrels,Fat
+PRODUCT.BARREL.STAVES,,Barrel staves,Fat stavar
+PRODUCT.BARREL.STAVES.TOOLTIP,,Curved wooden planks used to construct a {{PRODUCT.BARREL.NOUN}}.,Böjda träplankor som används för att konstruera en {{PRODUCT.BARREL.NOUN}}.
+PRODUCT.BARREL.TOOLTIP,,A cylindrical container for liquids. The curved shape makes it easier to roll around.,En cylindrisk behållare för vätskor. Den krökta formen gör det lättare att rulla runt.
+PRODUCT.BOWL,A bowl for eating from,Bowl,Skål
+PRODUCT.BOWL.DESCRIPTION,E.g. “Bowl of vegetable soup”,Bowl of {{cooking.soup.description}},Skål av {{cooking.soup.description}
+PRODUCT.BREAD.DOUGH.NOUN,,Dough,- Degen
+PRODUCT.BREAD.DOUGH.PLURAL,,Dough,- Degen
+PRODUCT.BREAD.DOUGH.TOOLTIP,,A mix of ingredients that can be baked into {{PRODUCT.BREAD.LOAF.PLURAL}} using an {{FURNITURE.BAKING_OVEN}}.,En blandning av ingredienser som kan bakas in i {{PRODUCT.BREAD.LOAF.PLURAL}} med hjälp av en {{FURNITURE.BAKING_OVN}}.
+PRODUCT.BREAD.LOAF.NOUN,Translations incorrect and need fixing,Bread loaf,Bröd limpa
+PRODUCT.BREAD.LOAF.PLURAL,Translations incorrect and need fixing,Bread loaves,Bröd bröd
+PRODUCT.BREAD.LOAF.TOOLTIP,,"Prepared bread, ready to eat!","Förberedt bröd, redo att äta!"
+PRODUCT.BUCKET.NOUN,,Bucket,Hink
+PRODUCT.BUCKET.PLURAL,,Buckets,Hinkar
+PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,En liten behållare som används för att flytta vätskor runt för hand.
+PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,Kittel
+PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.","Används av en {{PROFESSI.CHEF}} för att tillaga soppa i en {{ROOMS.CITY}}, där den sedan flyttas till en {{ROOMS.FEASTING_HALL}}."
+PRODUCT.MILLSTONE,,Millstone,Kvarnsten
+PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mill harvested crops. Used to construct a {{FURNITURE.FLOUR_MILL}}.,Två stora stenskivor som är malda tillsammans för att fräs skördade grödor. Används för att konstruera en {{FURITURE.FLOUR_MILL}}.
+PRODUCT.RATION.NOUN,,Ration,Ration
+PRODUCT.RATION.PLURAL,,Rations,Rationer
+PRODUCT.RATION.TOOLTIP,,"These will last a long time to feed your settlers, but you will need other sources of food as a priority.","Dessa kommer att pågå länge för att mata dina bosättare, men du behöver andra matkällor som en prioritet."
+
+PROFESSION.BAKER.VERB,,Baking,Bakning
+PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,Smed
+PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,Smed
+PROFESSION.BLACKSMITH.TOOLTIP,,Crafts items using metal and also produces metal from ore.,Hantverk med metall och producerar också metall från malm.
+PROFESSION.BLACKSMITH.VERB,,Forging,Smida
+PROFESSION.CARPENTER.FEMALE_NOUN,,Carpenter,Snickare
+PROFESSION.CARPENTER.MALE_NOUN,,Carpenter,Snickare
+PROFESSION.CARPENTER.TOOLTIP,,Creates wooden furniture and items.,Skapar trämöbler och föremål.
+PROFESSION.CARPENTER.VERB,,Crafting,Snickra
+PROFESSION.CHEF.FEMALE_NOUN,,Chef,Kocken
+PROFESSION.CHEF.MALE_NOUN,,Chef,Kocken
+PROFESSION.CHEF.TOOLTIP,,Prepares all of the food to be consumed by your settlers.,Förbereder all mat som ska konsumeras av dina nybyggare.
+PROFESSION.CHEF.VERB,,Cooking,Matlagning
+PROFESSION.FARMER.FEMALE_NOUN,,Farmer,Lantbrukare
+PROFESSION.FARMER.MALE_NOUN,,Farmer,Lantbrukare
+PROFESSION.FARMER.PLURAL,,Farmers,Bönder
+PROFESSION.FARMER.TOOLTIP,,"Plants, tends and harvests crops.","Växter, tenderar och skördar grödor."
+PROFESSION.FARMER.VERB,,Farming,Odla
+PROFESSION.FISHER.FEMALE_NOUN,This could be “fisherman” and “fisherwoman”,Fisher,Fiskare
+PROFESSION.FISHER.MALE_NOUN,,Fisher,Fiskare
+PROFESSION.FISHER.TOOLTIP,,Catches fish from bodies of water for use as food and resources.,Fångster fisk från vattenförekomster för användning som livsmedel och resurser.
+PROFESSION.FISHER.VERB,,Fishing,Fiska
+PROFESSION.HUNTER.FEMALE_NOUN,This could be “huntsman” and “huntress”,Hunter,Jägare
+PROFESSION.HUNTER.MALE_NOUN,,Hunter,Jägare
+PROFESSION.HUNTER.TOOLTIP,,Tracks and kills wild animals for their meat and pelts.,Spår och dödar vilda djur för deras kött och skinn.
+PROFESSION.HUNTER.VERB,,Hunting,Jaga
+PROFESSION.MAYOR.FEMALE_NOUN,"In English at least, “mayoress” is incorrect",Mayor,Borgmästare
+PROFESSION.MAYOR.MALE_NOUN,,Mayor,Borgmästare
+PROFESSION.MAYOR.VERB,,Governing,Styra
+PROFESSION.MERCHANT.FEMALE_NOUN,,Merchant,Handlare
+PROFESSION.MERCHANT.MALE_NOUN,,Merchant,Handlare
+PROFESSION.MERCHANT.VERB,,Trading,Handla
+PROFESSION.MILLER.VERB,"Not a fully implemented profession, just used to describe “Milling flour”",Milling,Fräsning
+PROFESSION.MINER.FEMALE_NOUN,,Miner,Gruvarbetare
+PROFESSION.MINER.MALE_NOUN,,Miner,Gruvarbetare
+PROFESSION.MINER.TOOLTIP,,Excavates new areas using a {{TOOL.PICKAXE}}.,Grävar nya områden med hjälp av en {{TOOL.PICKAXE}}.
+PROFESSION.MINER.VERB,,Mining,Gruvdrift
+PROFESSION.NOBLE.FEMALE_NOUN,,Noble,Adelskvinna
+PROFESSION.NOBLE.MALE_NOUN,,Noble,Adelsman
+PROFESSION.NOBLE.TOOLTIP,,"Nobles do not fulfil jobs in the same way as common settlers, but bring fame and prestige to your settlement.","Adelsmän uppfyller inte jobb på samma sätt som vanliga bosättare, men ger berömmelse och prestige till din bosättning."
+PROFESSION.NOBLE.VERB,,Reigning,Regera
+PROFESSION.RUNESMITH.FEMALE_NOUN,from “runes” and “blacksmith”,Runesmith,Runsmed
+PROFESSION.RUNESMITH.MALE_NOUN,"This is an invented term for the game, but should be derived",Runesmith,Runsmed
+PROFESSION.RUNESMITH.TOOLTIP,,"Enchants weapons, armour and items with magical runes to boost their abilities.","Förtrollar vapen, rustningar och föremål med magiska runor för att öka deras förmågor."
+PROFESSION.RUNESMITH.VERB,,Enchanting,Förtrolla
+PROFESSION.STONEMASON.FEMALE_NOUN,,Stonemason,Stenhuggare
+PROFESSION.STONEMASON.MALE_NOUN,,Stonemason,Stenhuggare
+PROFESSION.STONEMASON.TOOLTIP,,Crafts furniture and items from stone.,Hantverk möbler och föremål från sten.
+PROFESSION.STONEMASON.VERB,,Sculpting,Skulptera
+PROFESSION.TINKERER.FEMALE_NOUN,,Tinker,Tennsmed
+PROFESSION.TINKERER.MALE_NOUN,,Tinker,Tennsmed
+PROFESSION.TINKERER.VERB,,Tinkering,Lappa
+PROFESSION.VILLAGER.FEMALE_NOUN,,Villager,Bybo
+PROFESSION.VILLAGER.MALE_NOUN,,Villager,Bybo
+PROFESSION.VILLAGER.TOOLTIP,,This settler does not have any specific professions and will fulfil any mundane tasks like hauling items.,Denna bosättare har inga specifika yrken och kommer att uppfylla några vardagliga uppgifter som att transportera föremål.
+PROFESSION.VILLAGER.VERB,,Working,Arbeta
+PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberjane”,Woodcutter,Skogshuggare
+PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,Skogshuggare
+PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,Klipper ner träd som virke som kan användas i en {{ROOMS.SAWMILL}}.
+PROFESSION.WOODCUTTER.VERB,,Chopping,Hugga
+
+RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,Dvärg-
+RACE.DWARF.FEMALE_NOUN,,Dwarf,Dvärg
+RACE.DWARF.FEMALE_PLURAL,,Dwarves,Dvärgar
+RACE.DWARF.MALE_ADJECTIVE,,Dwarven,Dvärg-
+RACE.DWARF.MALE_NOUN,The male and female forms are only for languages that need them,Dwarf,Dvärg
+RACE.DWARF.MALE_PLURAL,Note that I'm going with Tolkein's spelling of “dwarves” rather than “dwarfs”,Dwarves,Dvärgar
+RACE.DWARF.TOOLTIP,,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,Dvärgar är korta och slitna humanoider. De är mästare på att arbeta med sten och metall. De flesta dvärgar misstror himlen och föredrar att stanna under jorden.
+
+RESOURCE.CRUSHED.VITRIOL.NOUN,,Vitriol,Vitriol
+RESOURCE.CRUSHED.VITRIOL.PLURAL,,Vitriol,Vitriol
+RESOURCE.CRUSHED.VITRIOL.TOOLTIP,,A salt of sulphuric acid with many uses in industry. (Usages of vitriol are not yet implemented in King under the Mountain),Ett salt av svavelsyra med många användningsområden inom industrin. (Användningar av vitriol har ännu inte genomförts i King under berget)
+RESOURCE.FLOUR.SACK.NOUN,,Flour,Mjöl
+RESOURCE.FLOUR.SACK.PLURAL,,Flour,Mjöl
+RESOURCE.FLOUR.SACK.TOOLTIP,,Grain that has been milled into a fine powder ready to be used as an ingredient in the production of food.,Korn som har malts till ett fint pulver redo att användas som ingrediens vid framställning av livsmedel.
+RESOURCE.GEM.NOUN,,Gem,Ädelsten
+RESOURCE.GEM.PLURAL,,Gems,Ädelstenar
+RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beauty. Most commonly used as ornamentation.,Ädelstenar som har klippts och polerats för att förbättra deras skönhet. Oftast används som prydnad.
+RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,Oslipad ädelsten
+RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,Oslipade ädelstenar
+RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,En bit sten som innehåller ädelstenar redo att skäras och poleras.
+RESOURCE.LOGS.NOUN,,Log,Stock
+RESOURCE.LOGS.PLURAL,,Logs,Stockar
+RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.","Delar av ett träd som oftast är beredda i {{RESOURCE.PLURC.PLURAL}}, men som också har andra användningsområden."
+RESOURCE.METAL.BLOOM.NOUN,,Bloom,Blommar
+RESOURCE.METAL.BLOOM.PLURAL,,Blooms,Blommar
+RESOURCE.METAL.BLOOM.TOOLTIP,,A lump of metal mixed with slag which must be hammered into a usable form.,En klump av metall blandad med slagg som måste hamras i en användbar form.
+RESOURCE.METAL.INGOT.NOUN,,Ingot,Tacka
+RESOURCE.METAL.INGOT.PLURAL,,Ingots,Tackor
+RESOURCE.METAL.INGOT.TOOLTIP,,"Refined metal blocks, ready to be used as a crafting ingredient.","Raffinerade metallblock, redo att användas som en hantverksingrediens."
+RESOURCE.METAL.PLATE.NOUN,,Plate,Plattan
+RESOURCE.METAL.PLATE.PLURAL,,Plates,Plattor
+RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the larger machinery.","Stora, platta plattor som används i några av de större maskinerna."
+RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,Svamp logg
+RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,Svamp stockar
+RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,En logg som har infunderats med {{VERGENT.MUSTOM.SPAWN.NOUN}}. Kroppen i själva loggen är där svampen drar näringsämnen från. Det kräver dousing i en {{FEBRUARIET.MUSTOM_SHOCK_TANK}} efter att ha blivit helt oskulerad.
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,Stock
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,Stockar
+RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,Sektioner av en jätte svamp som kan användas på samma sätt som trä {{RESOURCE.LOGS.PLURAL}}.
+RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,Krossad malm
+RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,Krossad malm
+RESOURCE.ORE.CRUSHED.TOOLTIP,,"A metallic sand created by breaking down raw metal ore, ready for use in a {{FURNITURE.BLOOMERY_FURNACE}}.","En metallisk sand skapad genom att bryta ner råmetallmalm, klar för användning i en {{FURNITURE.BLOOMERY_UGE}}."
+RESOURCE.ORE.UNREFINED.NOUN,,Ore,Mineral
+RESOURCE.ORE.UNREFINED.PLURAL,,Ore,Mineraler
+RESOURCE.ORE.UNREFINED.TOOLTIP,,Stone that contains metallic ores which can be processed into usable metal.,Sten som innehåller metallmalm som kan bearbetas till användbar metall.
+RESOURCE.PLANKS.NOUN,,Plank,Planka
+RESOURCE.PLANKS.PLURAL,,Planks,Plankor
+RESOURCE.PLANKS.TOOLTIP,,Sections of wood of a fixed size so they can be easily used in constructions and crafting.,Sektioner av trä av fast storlek så att de enkelt kan användas i konstruktioner och hantverk.
+RESOURCE.SHOCKED.MUSHROOM.LOG.NOUN,,Mushroom log,Svamp logg
+RESOURCE.SHOCKED.MUSHROOM.LOG.PLURAL,,Mushroom logs,Svamp stockar
+RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,This mushroom-infused log has been “shocked” in water to encourage the mushrooms to develop and should produce a harvest soon.,Denna svampinfunderade logg har blivit ”chockad” i vatten för att uppmuntra svampen att utvecklas och bör producera en skörd snart.
+RESOURCE.STONE.BLOCK.NOUN,,Block,Block
+RESOURCE.STONE.BLOCK.PLURAL,,Blocks,Block
+RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,Sten som har formats till en kub så att den lätt kan användas i konstruktion eller tillverkning.
+RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,Grovt stenblock
+RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,Grova stenblock
+RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,En stor sten som måste mejslas till en mer användbar form av en {{PROFCTION.STONEMASON}}.
+
+ROOMS.BEDROOM,,Bedroom,Sovrummet
+ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.","En plats för dina nybyggare att sova. De föredrar att ha individuella sovrum som är minst 9 plattor i storlek, och helst minst 13 plattor i storlek."
+ROOMS.BRIDGE,,Bridge,Bron
+ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.,Placerad tvärs över floden för att ge tillgång till andra sidan.
+ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,Snickarbod
+ROOMS.CARPENTRY_WORKSHOP.TOOLTIP,,This workshop produces most wooden tools and items.,Denna verkstad producerar de flesta träverktyg och föremål.
+ROOMS.COMPONENT.STOCKPILE.DESCRIPTION,,{{allocated}} of {{total}} spaces currently in use,{{allokerad}} av {{total}} blanksteg som för närvarande används
+ROOMS.EARTHWORKS,,Earthworks,Jordarbeten
+ROOMS.EARTHWORKS.TOOLTIP,,An outdoor area for large constructions.,En utomhusyta för stora konstruktioner.
+ROOMS.FARM,,Farm plot,Lantgård
+ROOMS.FARM.PLURAL,,Farm plots,Gårdsområden
+ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.,Växer grödor med {{INDERENT.SEEDS.PLURAL}}. Måste placeras på {{MATERIAL_TYPE.EARH.NOUN}}.
+ROOMS.FEASTING_HALL,,Feasting hall,Festsalen
+ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!","En plats för nybyggare att samlas för att äta, dricka och vara glada!"
+ROOMS.GRAVEYARD,,Graveyard,Kyrkogård
+ROOMS.GRAVEYARD.TOOLTIP,,Deceased settlers are laid to rest here.,Avlidna bosättare läggs för att vila här.
+ROOMS.KITCHEN,,Kitchen,Kök
+ROOMS.KITCHEN.TOOLTIP,,Most food is prepared here before being served in a {{ROOMS.FEASTING_HALL}}.,De flesta livsmedel tillagas här innan de serveras i {{ROOPS.FEASTING_HALL}}.
+ROOMS.MASONRY_WORKSHOP,,Masonry workshop,Murarverkstad
+ROOMS.MASONRY_WORKSHOP.TOOLTIP,,This workshop produces most items made out of stone.,Denna verkstad producerar de flesta föremål gjorda av sten.
+ROOMS.METALWORKS,,Metalworks,Metallarbeten
+ROOMS.METALWORKS.TOOLTIP,,Metal ore is refined and used in crafting here.,Metallmalm är raffinerad och används i hantverk här.
+ROOMS.MUSHROOM_FARM,,Mushroom farm,Svamp gård
+ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,Svampar kan odlas med {{EXTRENENENT.MUSTOM.SPAWN.NOUN}} och trä {{RESOURCE.LOGS.PLURAL}}.
+ROOMS.SAWMILL,,Sawmill,Såg
+ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,Trä {{RESOURCE.LOGS.PLURAL}} raffineras till {{RESOURCE.PLURAL}} här.
+ROOMS.STOCKPILES,,Stockpiles,Lagerpålar
+ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,Oanvända föremål placeras i lager för enkel åtkomst.
+
+SEASON.AUTUMN,,Autumn,Höst
+SEASON.SPRING,,Spring,Vår
+SEASON.SUMMER,,Summer,Sommar
+SEASON.WINTER,,Winter,Vinter
+
+SEED.BARLEY_SEED,,Barley,Korn
+SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Ett korn som endast används vid produktion av öl. Kan planteras i {{SEASON.SPRING}}, {{SEASON.SOMR}} eller {{SEASON.HENT}}"
+SEED.BERSERKER_MUSHROOM_SPAWN,,Berserker,Berserkern
+SEED.BERSERKER_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP}},A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,En svamp med en rosa-röd mössa med vita fläckar. Det har hallucinogena egenskaper som krigare ibland använder för att förbereda sig för strid.
+SEED.CARROT_SEED,,Carrot,Morot
+SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","En härdig rotgrönsak som överlever {{SEASON.WINTER} -frosten. Morötter växer snabbt men producerar bara en liten gröda. Kan planteras i {{SEASON.SPRING}}, {{SEASON.SOMR}} eller {{SEASON.HENT}}"
+SEED.CORN_SEED,,Corn,Majs
+SEED.CORN_SEED.TOOLTIP,{{VEGETABLE.CORN.TOOLTIP}},"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.","En spannmålskorn även känd som majs. Den producerar en riklig gröda men tar cirka 2 säsonger att växa och kan inte överleva {{SEASON.WINTER}}, så den kräver plantering i början av {{SEASON.SPRING}}."
+SEED.DEATH_CAP_SPAWN,,Death cap,Död mössa
+SEED.DEATH_CAP_SPAWN.TOOLTIP,{{VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP}},"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.","En mycket giftig svamp med en bred, platt keps. Att äta även en liten mängd kommer nästan säkert att orsaka förgiftning som kan leda till döden."
+SEED.ELFSBANE_SPAWN,,Elfsbane,Elfsbane
+SEED.ELFSBANE_SPAWN.TOOLTIP,{{VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP}},"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.","Denna svamp har en enkel, smaklös smak för de flesta humanoider. Konstigt nog smakar det helt äckligt för älvor, som ofta reagerar med explosiv kräkningar vid konsumtion eller i extrema fall hjärtinfarkt."
+SEED.FIST_SPAWN,,Fist,Knytnäve
+SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,En svartblå svamp med metallisk smak. Det är uppkallat efter en grupp bards från mörkrets ålder.
+SEED.GLOW_SPAWN,,Glow,Glöd
+SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,En magisk svamp som avger ljus och ändrar färg med årstiderna.
+SEED.HOPS_SEED,,Hops,Humle
+SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,En blomma som används för smaksättning av öl. Måste planteras i {{SEASON.SPRING}}.
+SEED.MILTONIA_SPAWN,,Miltonia,Miltonia
+SEED.MILTONIA_SPAWN.TOOLTIP,{{VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP}},"Once thought to exist only in the Hudds region, it is now found throughout the world.","En gång tänkt att existera endast i Hudds-regionen, finns det nu över hela världen."
+SEED.POTATO_SEED,,Potato,Potatis
+SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","En stärkelserik rotgrönsak som kan överleva {{SEASON.WINTER}} vilket gör det till ett bra val för de flesta bosättningar. Kan planteras i {{SEASON.SPRING}}, {{SEASON.SOMR}} eller {{SEASON.HENT}}"
+SEED.PURPLE_HELMET_SPAWN,,Purple helmet,Lila hjälm
+SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Plump Turban, Puffy Hjälm; Denna mytomspunna svamp går med många namn. Legenden hävdar att många samhällen av dvärgar levde helt på en domesticerad stam av denna svamp."
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN,,Rociomycota,Rociomycota
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP}},A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,En vit och svart fläckig svamp. Det har varit känt att påverka utseendet hos dem som intar det.
+SEED.SUNGLOW_SPAWN,,Sunglow,Sunglow
+SEED.SUNGLOW_SPAWN.TOOLTIP,{{VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP}},A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,En ljusgul svamp som lyser med uppkomsten av solljus. Den förlorar denna glöd när den skördas.
+SEED.SYRUP_POWDER_SPAWN,,Syrup powder,Sirap pulver
+SEED.SYRUP_POWDER_SPAWN.TOOLTIP,{{VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP}},"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.","En rund orange/gul svamp med vit undersida. Det sägs ha använts av magiker för länge sedan, men för vilket ändamål vet ingen."
+SEED.TOMATO_SEED,,Tomato,Tomat
+SEED.TOMATO_SEED.TOOLTIP,{{VEGETABLE.TOMATO.TOOLTIP}},A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,En växt som växer stora röda bär används ofta som grönsak. Kan endast planteras i {{SEASON.SPRING}}.
+SEED.WHEAT_SEED,,Wheat,Vete
+SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.","En spannmålskorn som vanligtvis används för produktion av bröd. Den kan överleva {{SEASON.WINTER}} men tar ett tag att växa, så den är antingen planterad i {{SEASON.SPRING}} eller {{SEASON.HÖSTEN}}."
+
+SHRUB.DESCRIPTION,Shrub or bush should do,Bush,Buske
+
+STOCKPILE.GRANARY,,Granary,spannmålsmagasin
+STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,Lagrar korn och frön som inte upphör att gälla.
+STOCKPILE.PANTRY,,Pantry,Skafferi
+STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,Butiker skördade frukt och grönsaker som kan löpa ut.
+STOCKPILE.RESOURCES,,Resources,Resurser
+STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,Lagrar de flesta typer av resurser som inte tillhör andra typer av lager.
+STOCKPILE.TOOLS,,Tools,Verktyg
+STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,Lagrar verktyg som krävs för att arbeta med jobb.
+
+STONE.BASALT.ADJECTIVE,,Basalt,Basalt-
+STONE.BASALT.NOUN,,Basalt,Basalt
+STONE.BASALT.TOOLTIP,,An igneous rock formed by the rapid cooling of lava. Almost all of the volcanic rock in the world is basalt.,En magmatisk sten som bildas av snabb kylning av lava. Nästan alla vulkaniska stenar i världen är basalt.
+STONE.DOLOSTONE.ADJECTIVE,,Dolostone,Dolomit-
+STONE.DOLOSTONE.NOUN,,Dolostone,Dolomit
+STONE.DOLOSTONE.TOOLTIP,,"A sedimentary rock mostly made up of the mineral dolomite, so it is also known as dolomite rock.","En sedimentär bergart som oftast består av mineralet dolomit, så det är också känt som dolomitbergart."
+STONE.FRONITE.ADJECTIVE,,Frónite,Frónite
+STONE.FRONITE.NOUN,,Frónite,Frónite
+STONE.FRONITE.TOOLTIP,,A blue-hued rock mostly found on an icy island to the north. It has a high iron content.,En blåaktig sten som oftast finns på en isig ö i norr. Den har en hög järnhalt.
+STONE.GRANITE.ADJECTIVE,,Granite,Granit-
+STONE.GRANITE.NOUN,,Granite,Granit
+STONE.GRANITE.TOOLTIP,,"A common type of igneous rock. It has a large proportion of quartz, making it good for locating certain gemstones.","En vanlig typ av magmatisk sten. Den har en stor andel kvarts, vilket gör det bra för att lokalisera vissa ädelstenar."
+STONE.LIMESTONE.ADJECTIVE,,Limestone,Kalkstens-
+STONE.LIMESTONE.NOUN,,Limestone,Kalksten
+STONE.LIMESTONE.TOOLTIP,,A lightly-coloured sedimentary rock which makes for a good building material. It is also used as a flux in the production of {{METAL.STEEL.NOUN}}.,En ljusfärgad sedimentär bergart som ger ett bra byggmaterial. Det används också som ett flöde i produktionen av {{MEAL.STEEL.NOUN}}.
+STONE.MARBLE.ADJECTIVE,,Marble,Marmor-
+STONE.MARBLE.NOUN,,Marble,Marmor
+STONE.MARBLE.TOOLTIP,,A metamorphic rock which is used as a high-quality material for sculpture and masonry due to its brilliant appearance.,En metamorf sten som används som ett högkvalitativt material för skulptur och murverk på grund av dess briljanta utseende.
+STONE.SANDSTONE.ADJECTIVE,,Sandstone,Sandstens-
+STONE.SANDSTONE.NOUN,,Sandstone,Sandsten
+STONE.SANDSTONE.TOOLTIP,,"A sedimentary rock composed of sand-like fragments. ",En sedimentär bergart bestående av sandliknande fragment.
+STONE.SHALE.ADJECTIVE,,Shale,Lerskiffer-
+STONE.SHALE.NOUN,,Shale,Lerskiffer
+STONE.SHALE.TOOLTIP,,A fine-grained sedimentary rock composed of pressurized mud. It can be easily broken into thin layers.,En finkornig sedimentär bergart bestående av trycksatt lera. Det kan lätt brytas i tunna lager.
+STONE.SLATE.ADJECTIVE,,Slate,Skiffer-
+STONE.SLATE.NOUN,,Slate,Skiffer
+STONE.SLATE.TOOLTIP,,A metamorphic rock that is usually formed out of {{STONE.SHALE.NOUN}}. It is often made into tiles for roofing or writing.,En metamorf sten som vanligen bildas av {{STONE.SHALE.NOUN}}. Det görs ofta till plattor för takläggning eller skrivning.
+
+TOOL.AXE.NOUN,,Axe,Yxa
+TOOL.AXE.TOOLTIP,,Used to chop down trees. The primary tool of a {{PROFESSION.WOODCUTTER}}.,Används för att hugga ner träd. Det primära verktyget för en {{PROCUS.WOOKCUTER}}.
+TOOL.CHISEL.NOUN,,Chisel,Mejsel
+TOOL.CHISEL.TOOLTIP,,Used to sculpt rock into shape. One of the tools used by a {{PROFESSION.STONEMASON}}.,Används för att skulptera sten till form. Ett av verktygen som används av en {{PROCUS.STONEMASON}}.
+TOOL.FISHING.ROD.NOUN,,Fishing rod,Fiskespö
+TOOL.FISHING.ROD.TOOLTIP,,Used to catch fish from a body of water. The primary tool of a {{PROFESSION.FISHER}}.,Används för att fånga fisk från en vattenkropp. Det primära verktyget för en {{PROFUS.FISHER}}.
+TOOL.KITCHEN.KNIFE.NOUN,,Kitchen knife,Kökskniv
+TOOL.KITCHEN.KNIFE.TOOLTIP,,"Used to prepare food, particularly meat.","Används för att laga mat, särskilt kött."
+TOOL.LARGE.HAMMER.NOUN,,Large hammer,Stor hammare
+TOOL.LARGE.HAMMER.TOOLTIP,,Used to bash large items of stone and metal into shape. The primary tool of a {{PROFESSION.BLACKSMITH}}.,Används för att bash stora föremål av sten och metall i form. Det primära verktyget för en {{PROCUS.BLAKSMITH}}.
+TOOL.PICKAXE.NOUN,,Pickaxe,Hacka
+TOOL.PICKAXE.TOOLTIP,,Used to break stone into smaller pieces. The primary tool of a {{PROFESSION.MiNER}}.,Används för att bryta sten i mindre bitar. Det primära verktyget för en {{Profession.miner}}.
+TOOL.PLANE.NOUN,A carpenter's plane,Plane,Hyvel
+TOOL.PLANE.TOOLTIP,,Used to shave wooden furniture and items into shape. The primary tool of a {{PROFESSION.CARPENTER}}.,Används för att raka trämöbler och föremål i form. Det primära verktyget för en {{PROCUS.CARPENTER}}.
+TOOL.ROLLING.PIN.NOUN,,Rolling pin,Brödkavel
+TOOL.ROLLING.PIN.TOOLTIP,,Used to prepare dough. One of the tools used by a {{PROFESSION.CHEF}}.,Används för att förbereda deg. Ett av de verktyg som används av en {{PROCUS.CHEF}}.
+TOOL.SAW.NOUN,A carpenter's saw,Saw,Såg
+TOOL.SAW.TOOLTIP,,Used to cut wood into shape. Required for cutting lumber in the {{ROOMS.SAWMILL}}.,Används för att skära trä i form. Krävs för skärning av virke i {{ROOMS.SAWMILL}}.
+TOOL.SMALL.HAMMER.NOUN,,Hammer,Hammare
+TOOL.SMALL.HAMMER.TOOLTIP,,Used to bash small items of stone and metal into shape. One of the tools used by a {{PROFESSION.BLACKSMITH}}.,Används för att bash små föremål av sten och metall i form. Ett av verktygen som används av en {{PROCUS.BLACKSMITH}}.
+TOOL.TONGS.NOUN,A blacksmith's tongs,Tongs,Täng
+TOOL.TONGS.TOOLTIP,,Used to hold extremely hot metal items. Used in the process of smelting metal ore.,Används för att hålla extremt heta metallföremål. Används vid smältning av metallmalm.
+
+TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{{MaterialType.noun}} träd
+
+TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.","Era nybyggare har tre grundläggande behov att uppfylla: mat, dryck och någonstans att sova. Även om de kommer att klaga på det för nu, kan de dricka från den närliggande floden och sova på marken. Vad de inte kan göra är att magi upp lite mat från ingenstans (åtminstone inte utan en magiker runt!) så vi kommer att fokusera på mat till att börja med."
+TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.","Det första du bör göra varje vår är att se till att tillräckligt många grödor har planterats för skörden på hösten. Jordbruk är en pålitlig och hållbar livsmedelskälla, men du måste se till att du har tillräckligt med grödor för att mata din befolkning mellan varje årlig skörd."
+TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.","En bra tumregel att följa är att se till att du har 10 plattor av grödor som sås för varje bosättare i din befolkning. För närvarande finns det 7 nybyggare som fräsar runt, så gå vidare och klicka på ”{{GUI.ZONES_LABEL}}” > ”{{ROOMS.FARM}}”, och ange/dra ut flera gårdsområden på en gräsbevuxen yta."
+TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","Med inget annat att göra, kommer dina nybyggare att börja förbereda dessa {{ROOMS.FARM.PLURAL}} genom att odla jorden för att vara redo för sådd. Detta kräver inga speciella verktyg eller kunskaper så alla bör engagera sig."
+TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.","Detta förbereder tomten som ska sås, men du måste välja vilken gröda som ska odlas på varje gård innan en jordbrukare kommer och planterar relevanta frön. Dina bosättare har tagit med sig ett urval av olika frön. Du kan klicka på ”Resurser” längst upp till höger för att få en uppdelning av alla objekt i din kvittning."
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ","För att fröna faktiskt ska vara tillgängliga för dina jordbrukare måste de vara i lager jämfört med att de hålls i en dvärgs inventering som de är för närvarande. Klicka på {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (du kan högerklicka för att gå tillbaka till en tidigare meny) och ange ett område som ska användas som en {{STOCKPILE.GRANARY}}, där frön och korn lagras."
+TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.","Efter en tid bör dina bosättare lägga saker som de inte använder i lager, som de frön som ska sås."
+TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.","Vänsterklicka på var och en av {{ROOMS.FARM.PLURAL}} och välj en gröda som ska planteras där. Välj inte {{VEGETABLE.BARLEY}} eller {{VEGETABLE.HOPS}} för tillfället, eftersom dessa grödor används i produktionen av öl, inte mat."
+TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,"Din {{PROFESSION.FARMER.PLURAL}} kommer nu att få arbeta sådd frön du har valt till dessa {{ROOMS.FARM.PLURAL}}. Såning av frön kräver inga specialverktyg, men du kanske vill tilldela fler bosättare som {{PROFESSION.FARMER.PLURAL}}. Vänsterklicka på en bosättare som vandrar runt planlöst."
+TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.","Genom att klicka på en nybyggare kan du se deras namn, yrken, inventering, behov och lycka. Klicka på den tomma fyrkantiga knappen bredvid sina andra yrken för att ställa in ett tredje och sista yrke som {{PROFESSION.FARMER.NOUN}}."
+TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","Observera att vissa jobb kräver att bosättaren har ett specifikt verktyg i sitt lager, och om inga är tillgängliga i kvittningen fungerar de inte på de jobb som kräver det. Du kan till exempel tilldela fler nybyggare som {{PROFESSION.WOODCUTTER}}, men de kan inte hugga ner träd utan en tillgänglig {{TOOL.AXE.NOUN}}."
+TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.","Dina grödor kommer nu att växa och så småningom skördas av din {{PROFESSION.FARMER.PLURAL}} i {{SEASON.AUTUMN}}. Vissa grödor kan planteras igen senare under året och överleva genom {{SEASON.WINTER}}, men vissa gör det inte. För att få ut det mesta av dina grödor är det bäst att producera soppa från de skördade grönsakerna eller bröd från spannmål."
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","Låt oss få en {{ROOMS.KITCHEN}} inställd för att producera soppa när dina grödor är klara. Gå till menyn på översta nivån och sedan {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} och dra ut ett {{ROOMS.KITCHEN}} -område. Vid denna punkt i utvecklingen av kung under berget spelar det ingen roll om det är ute eller inomhus, men i framtiden vill du att alla dina rum ska ha ett tak för att skydda dem från elementen."
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","Till skillnad från gårdsområden behöver kök (och de flesta andra rum) möbler för att fungera. Klicka på ”Möbler” när du har placerat en kökszon och du kommer att presenteras med de möbler som kan läggas till. För att producera soppa måste du bygga en {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} och {{FURNITURE.CAULDRON}} i samma kökszon. Ange också ett {{STOCKPILE.PANTRY}} -område för att lagra alla skördade grödor."
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CHEFS_CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","När dina grödor har skördats kommer kockar att ta med grönsaker till {{FURNITURE.KITCHEN_WORKTOP}} innan de lägger till dem i {{FURNITURE.CHEFS_CAULDRON}} med vatten och Att göra soppa och baka bröd innebär att dina matvaror kommer att gå mycket längre - en enda grönsak kommer att mata en dvärg för en enda måltid, men 3 grönsaker tillagade i soppa kommer att ge 12 måltider!"
+TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.","Så småningom kommer det här köket att producera en kittel full av ångande varm soppa, men kockarna gillar inte att andra dvärgar kommer i vägen i deras kök, så istället måste du ha soppan till en festsal för hela bosättningen att njuta av. Utse en festsal genom att klicka på {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}} och lägg sedan till en {{FURNITURE.CAULDRON}} till den. Observera att en festsal kittel inte kommer att placeras förrän en kittel med tjock, läcker soppa finns tillgänglig."
+TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,Med tiden kommer du att vilja utöka din livsmedelsproduktion men detta kommer att hålla vår lilla bosättning näring för den kommande vintern - dina nybyggare har fört ransoner för att upprätthålla dem medan de första grödorna växer.
+TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.","De flesta föremål och möbler tillverkas av {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} eller {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. Det är viktigt att upprätthålla ett stort utbud av dessa. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} är producerade i {{ROOMS.SAWMILL}} och {{MATERIAL_TYPE.STONE.ADJECTIVE}} är tillverkade av en {{RESOURCE.STONE.BLOCK.PLURAL}} i en {{PROFESSION.STONEMASON}} i {{ROOMS.MASONRY_WORKSHOP}} i {{{{{{{ROM Placera en av var och en av dessa zoner, och bygg en {{FURNITURE.WOODCUTTERS_BENCH}} och {{FURNITURE.STONEMASON_WORKBENCH}} i dem."
+TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.",Nu är du redo att producera {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} och {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} {{MATERIAL_TYPE.WOOD.ADJECTIVE}} och {{RESOURCE.LOGS.PLURAL}} STONE.OREDERADER.PLURAL}}. Lyckligtvis kan dessa vanligtvis skördas från spelvärlden ganska lätt.
+TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each.,Välj {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} och klicka och dra över träden för att låta dina skogshuggare veta att hugga ner dem. På samma sätt kan du välja {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} och klicka och dra ett område på berget för att ange att brytas. Välj tillräckligt av båda för att bygga upp dina lager upp till 40 av varje.
+TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",Var försiktig med gruvdrift! Ett utbrytt område på 7 av 7 brickor utan {{FURNITURE.PILLAR}} byggt inom det området kommer att kollapsa!
+TUTORIAL.CAMERA.A,,"You can use the W, A, S and D keys or the arrow keys to pan the camera around. Moving the cursor to the edge of the screen also pans the camera, but this can be disabled in the options menu.",
+TUTORIAL.CAMERA.B,,Scrolling the mouse wheel or pressing the Q and E keys zooms the camera in or out.,
+TUTORIAL.CAMERA.C,,"In the lower-right section of the screen is the minimap, and you can click on this to jump the camera to that point. Click on the “Minimap” label to show or hide the minimap.",
+TUTORIAL.CAMERA.D,,Try out these camera controls and then click “Next” to proceed.,
+TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. For your next challenge, aim to set up a functioning {{ROOMS.METALWORKS}} with a {{FURNITURE.FORGE}} provided with fuel and refined metal ore. Refined metal ores are produced at the {{FURNITURE.ORE_CRUSHING_STATION}}, and fuel can be crushed from coal or produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} with a {{FURNITURE.CHARCOAL_CLAMP}} in an {{ROOMS.EARTHWORKS}}. Good luck!","Detta täcker grunderna i att spela kung under berget. För din nästa utmaning, sikta på att skapa en fungerande {{ROOMS.METALWORKS}} med en {{FURNITURE.FORGE}} försedd med bränsle och raffinerad metallmalm. Raffinerade metallmalmer produceras på {{FURNITURE.ORE_CRUSHING_STATION}}, och bränsle kan krossas från kol eller produceras av {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} med en {{FURNITURE.CHARCOAL_CLAMP}}. Lycka till!"
+TUTORIAL.PROGRESS_DESCRIPTION.FARM_PLOT_SELECTIONS,Used to show a progress indicator for how many farm plots have a crop selected e.g. 2 of 10 farm plots with a crop assigned,{{ROOMS.FARM.PLURAL}} with a crop assigned,{{ROOMS.FARM.PLURAL}} med en gröda tilldelad
+TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indicator for how many of a certain profession have been assigned e.g. 2 of 10 farmers assigned,{{professionPlural}} assigned,{{professionPlural}} tilldelad
+TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},{{currentQuantity}} av {{requiredQuantity}} {{targetDescription}}
+TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,{{roomName}} plattor
+TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
+TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
+TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
+TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
+TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",
+TUTORIAL.TIME.D,,You can also click the speed icons to change the speed or pause the game.,
+
+VEGETABLE.BARLEY,,Barley,Korn
+VEGETABLE.BARLEY.PLURAL,,Barley,Korn
+VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Ett korn som endast används vid produktion av öl. Kan planteras i {{SEASON.SPRING}}, {{SEASON.SOMR}} eller {{SEASON.HENT}}"
+VEGETABLE.BERSERKER_MUSHROOM,,Berserker mushroom,Berserker svamp
+VEGETABLE.BERSERKER_MUSHROOM.PLURAL,,Berserker mushrooms,Berserker svamp
+VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP,,A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,En svamp med en rosa-röd mössa med vita fläckar. Det har hallucinogena egenskaper som krigare ibland använder för att förbereda sig för strid.
+VEGETABLE.CARROT,,Carrot,Morot
+VEGETABLE.CARROT.PLURAL,,Carrots,Morötter
+VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","En härdig rotgrönsak som överlever {{SEASON.WINTER} -frosten. Morötter växer snabbt men producerar bara en liten gröda. Kan planteras i {{SEASON.SPRING}}, {{SEASON.SOMR}} eller {{SEASON.HENT}}"
+VEGETABLE.CORN,,Sweetcorn,Sockermajs
+VEGETABLE.CORN.PLURAL,,Sweetcorn,Sockermajs
+VEGETABLE.CORN.TOOLTIP,,"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.","En spannmålskorn även känd som majs. Den producerar en riklig gröda men tar cirka 2 säsonger att växa och kan inte överleva {{SEASON.WINTER}}, så den kräver plantering i början av {{SEASON.SPRING}}."
+VEGETABLE.DEATH_CAP_MUSHROOM,,Death cap mushroom,Död mössa svamp
+VEGETABLE.DEATH_CAP_MUSHROOM.PLURAL,,Death cap mushrooms,Död mössa svamp
+VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP,,"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.","En mycket giftig svamp med en bred, platt keps. Att äta även en liten mängd kommer nästan säkert att orsaka förgiftning som kan leda till döden."
+VEGETABLE.DRAGONFRUIT,,Dragonfruit,Drakfrukt
+VEGETABLE.DRAGONFRUIT.PLURAL,,Dragonfruits,Drakfrukter
+VEGETABLE.ELFSBANE_MUSHROOM,,Elfsbane mushroom,Elfsbane svamp
+VEGETABLE.ELFSBANE_MUSHROOM.PLURAL,,Elfsbane mushrooms,Elfsbane svamp
+VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP,,"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.","Denna svamp har en enkel, smaklös smak för de flesta humanoider. Konstigt nog smakar det helt äckligt för älvor, som ofta reagerar med explosiv kräkningar vid konsumtion eller i extrema fall hjärtinfarkt."
+VEGETABLE.FIST_MUSHROOM,,Fist mushroom,Knäve svamp
+VEGETABLE.FIST_MUSHROOM.PLURAL,,Fist mushrooms,Knäve svamp
+VEGETABLE.FIST_MUSHROOM.TOOLTIP,,A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,En svartblå svamp med metallisk smak. Det är uppkallat efter en grupp bards från mörkrets ålder.
+VEGETABLE.GLOW_MUSHROOM,,Glow mushroom,Glödsvamp
+VEGETABLE.GLOW_MUSHROOM.PLURAL,,Glow mushrooms,Glödsvamp
+VEGETABLE.GLOW_MUSHROOM.TOOLTIP,,A magic-infused mushroom that gives off light and changes colour with the seasons.,En magisk svamp som avger ljus och ändrar färg med årstiderna.
+VEGETABLE.HOPS,,Hops,Humle
+VEGETABLE.HOPS.PLURAL,,Hops,Humle
+VEGETABLE.HOPS.TOOLTIP,,A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,En blomma som används för smaksättning av öl. Måste planteras i {{SEASON.SPRING}}.
+VEGETABLE.LOQUAT,,Loquat,Loquat
+VEGETABLE.LOQUAT.PLURAL,,Loquats,Loquats
+VEGETABLE.MILTONIA_MUSHROOM,,Miltonia mushroom,Miltonia svamp
+VEGETABLE.MILTONIA_MUSHROOM.PLURAL,,Miltonia mushrooms,Miltonia svamp
+VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP,,"Once thought to exist only in the Hudds region, it is now found throughout the world.","En gång tänkt att existera endast i Hudds-regionen, finns det nu över hela världen."
+VEGETABLE.POTATO,,Potato,Potatis
+VEGETABLE.POTATO.PLURAL,,Potatoes,Potatis
+VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","En stärkelserik rotgrönsak som kan överleva {{SEASON.WINTER}} vilket gör det till ett bra val för de flesta bosättningar. Kan planteras i {{SEASON.SPRING}}, {{SEASON.SOMR}} eller {{SEASON.HENT}}"
+VEGETABLE.PURPLE_HELMET_MUSHROOM,,Purple helmet mushroom,Lila hjälm svamp
+VEGETABLE.PURPLE_HELMET_MUSHROOM.PLURAL,,Purple helmet mushrooms,Lila hjälm svamp
+VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Plump Turban, Puffy Hjälm; Denna mytomspunna svamp går med många namn. Legenden hävdar att många samhällen av dvärgar levde helt på en domesticerad stam av denna svamp."
+VEGETABLE.ROCIOMYCOTA_MUSHROOM,,Rociomycota mushroom,Rociomycota svamp
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.PLURAL,,Rociomycota mushrooms,Rociomycota svamp
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP,,A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,En vit och svart fläckig svamp. Det har varit känt att påverka utseendet hos dem som intar det.
+VEGETABLE.SUNGLOW_MUSHROOM,,Sunglow mushroom,Sunglow svamp
+VEGETABLE.SUNGLOW_MUSHROOM.PLURAL,,Sunglow mushrooms,Sunglow svamp
+VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP,,A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,En ljusgul svamp som lyser med uppkomsten av solljus. Den förlorar denna glöd när den skördas.
+VEGETABLE.SYRUP_POWDER_MUSHROOM,,Syrup powder mushroom,Sirap pulver svamp
+VEGETABLE.SYRUP_POWDER_MUSHROOM.PLURAL,,Syrup powder mushrooms,Sirap pulver svamp
+VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP,,"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.","En rund orange/gul svamp med vit undersida. Det sägs ha använts av magiker för länge sedan, men för vilket ändamål vet ingen."
+VEGETABLE.TAMARILLO,,Tamarillo,Tamarillo
+VEGETABLE.TAMARILLO.PLURAL,,Tamarillos,Tamarillos
+VEGETABLE.THIMBLEBERRY,,Thimbleberry,Thimbleberry
+VEGETABLE.THIMBLEBERRY.PLURAL,,Thimbleberries,Thimblebär
+VEGETABLE.TOMATO,,Tomato,Tomat
+VEGETABLE.TOMATO.PLURAL,,Tomatoes,Tomater
+VEGETABLE.TOMATO.TOOLTIP,,A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,En växt som växer stora röda bär används ofta som grönsak. Kan endast planteras i {{SEASON.SPRING}}.
+VEGETABLE.WHEAT,,Wheat,Vete
+VEGETABLE.WHEAT.PLURAL,,Wheat,Vete
+VEGETABLE.WHEAT.TOOLTIP,,"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.","En spannmålskorn som vanligtvis används för produktion av bröd. Den kan överleva {{SEASON.WINTER}} men tar ett tag att växa, så den är antingen planterad i {{SEASON.SPRING}} eller {{SEASON.HÖSTEN}}."
+
+VITRIOL.GREEN_VITRIOL.ADJECTIVE,,Green,Grön
+VITRIOL.GREEN_VITRIOL.NOUN,,Green,Grön
+VITRIOL.GREEN_VITRIOL.TOOLTIP,,"Also known as iron sulfate, this salt has several uses, including as a soil additive to improve crop farming. (Usages of vitriol are not yet implemented in King under the Mountain)","Även känt som järnsulfat, har detta salt flera användningsområden, bland annat som jordtillsats för att förbättra odlingen. (Användningar av vitriol har ännu inte genomförts i King under berget)"
+
+WALL.DESCRIPTION,"E.g. “Granite rock wall”, “Granite smooth stone wall”",{{materialType.adjective}} {{wallType.noun}},{{materialType.adjective}} {{wallType.noun}}
+WALL.GEMS.NOUN,,Gems,Ädelstenar
+WALL.ORE.NOUN,,Ore,Malm
+WALL.ROUGH_STONE.NOUN,,Rock wall,Stenmur
+WALL.STONE_BLOCK.NOUN,,Smooth stone wall,Slät stenmur
+WALL.WOODEN.NOUN,,Wood wall,Trävägg
+
+WOOD.ASPEN.ADJECTIVE,,Aspen,Aspen
+WOOD.ASPEN.NOUN,,Aspen,Aspen
+WOOD.BAOBAB.ADJECTIVE,,Baobab,Baobab
+WOOD.BAOBAB.NOUN,,Baobab,Baobab
+WOOD.BARKSHROOM.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,Barkshroom
+WOOD.BARKSHROOM.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,Barkshroom
+WOOD.BEECH.ADJECTIVE,,Beech,Bok-
+WOOD.BEECH.NOUN,,Beech,Bok
+WOOD.BIRCH.ADJECTIVE,,Birch,Björk-
+WOOD.BIRCH.NOUN,,Birch,Björk
+WOOD.EBONY.ADJECTIVE,,Ebony,Ebenholts
+WOOD.EBONY.NOUN,,Ebony,Ebenholts
+WOOD.FIR.ADJECTIVE,,Fir,Gran-
+WOOD.FIR.NOUN,,Fir,Gran
+WOOD.FUNGIWOOD.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,Svampträ
+WOOD.FUNGIWOOD.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,Svampträ
+WOOD.IRONWOOD.ADJECTIVE,,Ironwood,- Järnträ
+WOOD.IRONWOOD.NOUN,,Ironwood,- Järnträ
+WOOD.MAPLE.ADJECTIVE,,Maple,Lönn-
+WOOD.MAPLE.NOUN,,Maple,Lönn
+WOOD.NUYTSIA.ADJECTIVE,,Nuytsia,Nuytsia
+WOOD.NUYTSIA.NOUN,,Nuytsia,Nuytsia
+WOOD.OAK.ADJECTIVE,,Oaken,Ek-
+WOOD.OAK.NOUN,,Oak,Ek
+WOOD.PECAN.ADJECTIVE,,Pecan,Pekan
+WOOD.PECAN.NOUN,,Pecan,Pekan
+WOOD.PINE.ADJECTIVE,,Pine,Tall-
+WOOD.PINE.NOUN,,Pine,Tall
+WOOD.RED_CEDAR.ADJECTIVE,,Red cedar,Röd ceder
+WOOD.RED_CEDAR.NOUN,,Red cedar,Röd ceder
+WOOD.RED_EMPEROR.ADJECTIVE,,Red emperor,Röd kejsare
+WOOD.RED_EMPEROR.NOUN,,Red emperor,Röd kejsare
+WOOD.ROSEWOOD.ADJECTIVE,,Rosewood,Rosenträ
+WOOD.ROSEWOOD.NOUN,,Rosewood,Rosenträ
+WOOD.SPRUCE.ADJECTIVE,,Spruce,Gran
+WOOD.SPRUCE.NOUN,,Spruce,Gran
+WOOD.STAR_PINE.ADJECTIVE,,Star pine,Stjärna tall
+WOOD.STAR_PINE.NOUN,,Star pine,Stjärna tall
+WOOD.SYCAMORE.ADJECTIVE,,Sycamore,Sycamore
+WOOD.SYCAMORE.NOUN,,Sycamore,Sycamore

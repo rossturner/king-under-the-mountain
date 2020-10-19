@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Planted-Seeds",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Wheat", "Barley", "Tomato", "Potato", "Carrot", "Maize"],
+  "growthStages": [0],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_planted_seeds.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

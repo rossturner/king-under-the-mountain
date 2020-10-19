@@ -1,0 +1,27 @@
+[{
+  "uniqueName": "Tool-Axe-Handle-On-Ground",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Tool-Axe",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Tool-Axe-Handle-On-Ground.png",
+      "offsetPixels": {
+        "x": -14,
+        "y": -10
+      },
+      "coloringLayer": "WOOD_COLOR",
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1",
+          "offsetPixels": {
+            "x": 21,
+            "y": 14
+          }
+        }
+      ]
+    }
+  }
+}]

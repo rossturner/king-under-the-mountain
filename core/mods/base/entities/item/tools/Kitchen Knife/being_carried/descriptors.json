@@ -1,0 +1,156 @@
+[
+  {
+    "uniqueName": "Tool-Kitchen-Knife-Handle-Being-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Kitchen-Knife",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Kitchen-Knife-Handle-Being-Carried-F.png",
+        "offsetPixels": {
+          "x": -5,
+          "y": 15
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 5,
+              "y": -17
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Kitchen-Knife-Handle-Being-Carried-F34.png",
+        "offsetPixels": {
+          "x": 4,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -4,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Kitchen-Knife-Handle-Being-Carried-F34.png",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -4,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 4,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Tool-Kitchen-Knife-Handle-Being-Carried-B.png",
+        "offsetPixels": {
+          "x": 5,
+          "y": 15
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Kitchen-Knife-Handle-Being-Carried-B.png",
+        "offsetPixels": {
+          "x": 5,
+          "y": 15
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Kitchen-Knife-Handle-Being-Carried-B.png",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -5,
+          "y": 15
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Kitchen-Knife-Blade-Being-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Kitchen-Knife",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Kitchen-Knife-Blade-Being-Carried-F.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Kitchen-Knife-Blade-Being-Carried-F34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Kitchen-Knife-Blade-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP": {
+        "filename": "Tool-Kitchen-Knife-Blade-Being-Carried-B.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Kitchen-Knife-Blade-Being-Carried-B34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Kitchen-Knife-Blade-Being-Carried-B34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  }
+]

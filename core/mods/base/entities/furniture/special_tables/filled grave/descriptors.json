@@ -1,0 +1,36 @@
+[
+  {
+    "uniqueName": "filled-grave-1x2",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FILLED_GRAVE"],
+    "furnitureLayoutName": "1x2 with workspaces",
+    "validMaterialTypes": ["EARTH"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Filled Grave 1 x 2.png",
+        "coloringLayer": "EARTH_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 32
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "filled-grave-2x1",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FILLED_GRAVE"],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": ["EARTH"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Filled Grave 2 x 1.png",
+        "coloringLayer": "EARTH_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 0
+        }
+      }
+    }
+  }
+]

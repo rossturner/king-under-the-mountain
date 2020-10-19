@@ -1,0 +1,16 @@
+[{
+  "itemTypeName": "Tool-Plane",
+  "itemGroup": "TOOL",
+  "materialTypes": ["WOOD"],
+  "primaryMaterialType": "WOOD",
+  "maxStackSize": 1,
+  "maxHauledAtOnce": 1,
+  "stockpileGroupName": "Tools",
+  "holdPosition": "RIGHT_HAND",
+  "impedesMovement": false,
+  "blocksMovement": false,
+  "relatedCraftingTypeNames": ["CARPENTRY"],
+  "tags": {
+    "USAGE_SOUND": ["Sawing"]
+  }
+}]

@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Tree-Birch-Size2-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Birch", "Bull-oak", "Rosewood", "Aspen"],
+  "growthStages": [1],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "birch_02_t.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": -7,
+        "y": 37
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": -2,
+            "y": 28
+          }
+        }
+      ]
+    }
+  }
+}]

@@ -1,0 +1,36 @@
+[
+  {
+    "uniqueName": "pillar-1x1-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["PILLAR"],
+    "furnitureLayoutName": "1x1",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Stone Pillar.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 14
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "pillar-1x1-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["PILLAR"],
+    "furnitureLayoutName": "1x1",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Wood Pillar.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 14
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,29 @@
+[{
+  "uniqueName": "Product-Barrel-Body-Floor",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Product-Barrel",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 1,
+  "maxQuantity": 1,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Barrel-Body-Floor.png",
+      "coloringLayer": "WOOD_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 1.5
+      },
+      "childAssets": [
+        {
+          "type": "ABOVE_LAYER_1"
+        },
+        {
+          "type": "ITEM_LIQUID_LAYER"
+        },
+        {
+          "type": "ITEM_COVER_LAYER"
+        }
+      ]
+    }
+  }
+}]

@@ -1,0 +1,61 @@
+[
+  {
+    "uniqueName": "Tool-Saw-Blade-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Saw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Saw-Blade-On-Ground.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Saw-Handle-On-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Saw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Saw-Handle-On-Ground.png",
+        "coloringLayer": "WOOD_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Saw-Extras-On-Ground",
+    "type": "BELOW_LAYER_1",
+    "itemTypeName": "Tool-Saw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Saw-Extras-On-Ground.png"
+      }
+    }
+  }
+]

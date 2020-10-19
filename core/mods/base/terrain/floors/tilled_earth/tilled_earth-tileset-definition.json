@@ -1,0 +1,14 @@
+{
+  "floorTypeName": "tilled_earth",
+  "i18nKey": "FLOOR.TILLED_EARTH",
+  "materialType": "EARTH",
+  "type": "floor",
+  "numSprites": 5,
+  "layer": 3,
+  "overlapType": {
+    "overlapName": "organic"
+  },
+  "useMaterialColor": false,
+  "lowColorCode": "#583923",
+  "highColorCode": "#b1896c"
+}

@@ -1,0 +1,141 @@
+[
+  {
+    "uniqueName": "Bloomery-Furnace-F",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["BLOOMERY_FURNACE"],
+    "furnitureLayoutName": "2x2+SW with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furnace F.png",
+        "coloringLayer": "MISC_COLOR_1",
+        "offsetPixels": {
+          "x": 36.5,
+          "y": 65
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -46.5,
+              "y": -33
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": -46.5,
+              "y": -33
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": -46.5,
+              "y": -33
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_4",
+            "offsetPixels": {
+              "x": -46.5,
+              "y": -33
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_5",
+            "offsetPixels": {
+              "x": -46.5,
+              "y": -33
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Bloomery-Furnace-E",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["BLOOMERY_FURNACE"],
+    "furnitureLayoutName": "2x2+SW with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furnace E.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": -46.5,
+          "y": -27
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Bloomery-Furnace-D",
+    "type": "FURNITURE_ABOVE_LAYER_2",
+    "furnitureTypeNames": ["BLOOMERY_FURNACE"],
+    "furnitureLayoutName": "2x2+SW with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furnace D.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": -68,
+          "y": -40.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Bloomery-Furnace-C",
+    "type": "FURNITURE_ABOVE_LAYER_3",
+    "furnitureTypeNames": ["BLOOMERY_FURNACE"],
+    "furnitureLayoutName": "2x2+SW with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furnace C.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -61.5,
+          "y": -33.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Bloomery-Furnace-B",
+    "type": "FURNITURE_ABOVE_LAYER_4",
+    "furnitureTypeNames": ["BLOOMERY_FURNACE"],
+    "furnitureLayoutName": "2x2+SW with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furnace B.png",
+        "coloringLayer": "MISC_COLOR_2",
+        "offsetPixels": {
+          "x": 46.5,
+          "y": 2.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Bloomery-Furnace-A",
+    "type": "FURNITURE_ABOVE_LAYER_5",
+    "furnitureTypeNames": ["BLOOMERY_FURNACE"],
+    "furnitureLayoutName": "2x2+SW with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furnace A.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 38,
+          "y": -44
+        }
+      }
+    }
+  }
+]

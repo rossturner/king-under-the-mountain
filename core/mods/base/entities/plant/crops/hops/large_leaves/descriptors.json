@@ -1,0 +1,21 @@
+[{
+  "uniqueName": "Hops-Large-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Hops"],
+  "growthStages": [3, 4],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_hops_large_leaves.png",
+      "coloringLayer": "LEAF_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_FRUIT"
+        }
+      ]
+    }
+  }
+}]

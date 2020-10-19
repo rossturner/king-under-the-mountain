@@ -1,0 +1,77 @@
+[
+  {
+    "materialName": "Sandstone",
+    "materialType": "STONE",
+    "rockGroup": "Sedimentary",
+    "prevalence": 1,
+    "colorCode": "#F0C297",
+    "oreNames": ["Hematite", "Bituminous Coal", "Cassiterite", "Pyrite", "Bauxite"]
+  },
+  {
+    "materialName": "Limestone",
+    "materialType": "STONE",
+    "rockGroup": "Sedimentary",
+    "prevalence": 2,
+    "colorCode": "#FFFFE6",
+    "isFluxMaterial": true,
+    "oreNames": ["Hematite", "Bituminous Coal", "Cassiterite", "Pyrite", "Bauxite"]
+  },
+  {
+    "materialName": "Dolostone",
+    "materialType": "STONE",
+    "rockGroup": "Sedimentary",
+    "prevalence": 1,
+    "colorCode": "#F3D8D8",
+    "isFluxMaterial": true,
+    "oreNames": ["Hematite", "Bituminous Coal", "Cassiterite", "Pyrite", "Ilmenite", "Bauxite"]
+  },
+  {
+    "materialName": "Shale",
+    "materialType": "STONE",
+    "rockGroup": "Sedimentary",
+    "prevalence": 1,
+    "colorCode": "#8A6565",
+    "oreNames": ["Hematite", "Chrysocolla", "Bituminous Coal", "Cassiterite", "Ilmenite", "Bauxite"]
+  },
+  {
+    "materialName": "Slate",
+    "materialType": "STONE",
+    "rockGroup": "Metamorphic",
+    "prevalence": 1,
+    "colorCode": "#8C8C8C",
+    "oreNames": ["Malachite", "Chrysocolla", "Galena", "Thorium", "Pyrite", "Ilmenite"]
+  },
+  {
+    "materialName": "Marble",
+    "materialType": "STONE",
+    "rockGroup": "Metamorphic",
+    "prevalence": 1,
+    "colorCode": "#FAFAFA",
+    "oreNames": ["Malachite", "Chrysocolla", "Galena", "Wolframite", "Pyrite", "Ilmenite"]
+  },
+  {
+    "materialName": "Granite",
+    "materialType": "STONE",
+    "rockGroup": "Igneous",
+    "prevalence": 4,
+    "colorCode": "#4D4D4D",
+    "oreNames": ["Native Gold", "Native Platinum", "Hematite", "Native Copper", "Native Silver", "Wolframite", "Pollucite"]
+  },
+  {
+    "materialName": "Basalt",
+    "materialType": "STONE",
+    "rockGroup": "Igneous",
+    "prevalence": 1,
+    "colorCode": "#8C8C8C",
+    "oreNames": ["Native Gold", "Native Platinum", "Hematite", "Native Copper", "Wolframite", "Ilmenite"]
+  },
+  {
+    "materialName": "Fronite",
+    "materialType": "STONE",
+    "rockGroup": "Igneous",
+    "prevalence": 0.2,
+    "colorCode": "#404e73",
+    "useInRandomGeneration": false,
+    "oreNames": ["Native Gold", "Native Platinum", "Hematite", "Native Copper"]
+  }
+]

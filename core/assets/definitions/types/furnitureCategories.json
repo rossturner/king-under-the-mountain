@@ -1,0 +1,45 @@
+[ {
+  "name" : "TABLE",
+  "blocksMovement" : true,
+  "impedesMovement" : false
+}, {
+  "name" : "NAVIGABLE",
+  "blocksMovement" : false,
+  "impedesMovement" : false
+}, {
+  "name" : "OVEN",
+  "blocksMovement" : true,
+  "impedesMovement" : false
+}, {
+  "name" : "DOOR_FRAME",
+  "blocksMovement" : false,
+  "impedesMovement" : false
+}, {
+  "name" : "CHAIR",
+  "blocksMovement" : false,
+  "impedesMovement" : false
+}, {
+  "name" : "BED",
+  "blocksMovement" : true,
+  "impedesMovement" : true
+}, {
+  "name" : "LANTERN",
+  "blocksMovement" : false,
+  "impedesMovement" : false
+}, {
+  "name" : "DOOR",
+  "blocksMovement" : false,
+  "impedesMovement" : false
+}, {
+  "name" : "DOOR_PLACEMENT",
+  "blocksMovement" : false,
+  "impedesMovement" : false
+}, {
+  "name" : "LIQUID_CONTAINER",
+  "blocksMovement" : true,
+  "impedesMovement" : false
+}, {
+  "name" : "LOG",
+  "blocksMovement" : true,
+  "impedesMovement" : false
+} ]

@@ -1,0 +1,6633 @@
+[ {
+  "uniqueName" : "bed-1x2N-wood-base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2N",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "BED_SLEEPING_POSITION" : [ "DOWN" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2N-frame.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "CLOTH_LAYER",
+        "specificAssetName" : "bed-1x2N-base-cover",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_1",
+        "specificAssetName" : "bed-1x2N-pillows",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 42.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "specificAssetName" : "bed-1x2N-cover",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -23.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-1x2N-base-cover",
+  "type" : "CLOTH_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2N",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2N-base-cover.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-1x2N-pillows",
+  "type" : "ATTACHMENT_DECO_1",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2N",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2N-pillows.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-1x2N-cover",
+  "type" : "ATTACHMENT_DECO_2",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2N",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2N-cover.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-1x2S-base-cover",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2S",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "BED_SLEEPING_POSITION" : [ "UP" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2S-base-cover.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "CLOTH_LAYER",
+        "specificAssetName" : "bed-1x2S-cover",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 14.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_1",
+        "specificAssetName" : "bed-1x2S-pillows",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -29.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "specificAssetName" : "bed-1x2S-frame",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-1x2S-cover",
+  "type" : "CLOTH_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2S",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2S-cover.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-1x2S-pillows",
+  "type" : "ATTACHMENT_DECO_1",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2S",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2S-pillows.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-1x2S-frame",
+  "type" : "ATTACHMENT_DECO_2",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "1x2S",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-1x2S-frame.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1E-wood-base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1E",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "BED_SLEEPING_POSITION" : [ "DOWN_RIGHT" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-frame.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "CLOTH_LAYER",
+        "specificAssetName" : "bed-2x1E-base-cover",
+        "offsetPixels" : {
+          "x" : 23.5,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_1",
+        "specificAssetName" : "bed-2x1E-pillows",
+        "offsetPixels" : {
+          "x" : 38.0,
+          "y" : 6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "specificAssetName" : "bed-2x1E-cover",
+        "offsetPixels" : {
+          "x" : -13.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1E-base-cover",
+  "type" : "CLOTH_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1E",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-base-cover.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1E-pillows",
+  "type" : "ATTACHMENT_DECO_1",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1E",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-pillows.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -8.0,
+          "y" : 4.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1E-cover",
+  "type" : "ATTACHMENT_DECO_2",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1E",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-cover.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1W-wood-base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1W",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "BED_SLEEPING_POSITION" : [ "DOWN_LEFT" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-frame.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "CLOTH_LAYER",
+        "specificAssetName" : "bed-2x1W-base-cover",
+        "offsetPixels" : {
+          "x" : -23.5,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_1",
+        "specificAssetName" : "bed-2x1W-pillows",
+        "offsetPixels" : {
+          "x" : -38.0,
+          "y" : 6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "specificAssetName" : "bed-2x1W-cover",
+        "offsetPixels" : {
+          "x" : 13.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1W-base-cover",
+  "type" : "CLOTH_LAYER",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1W",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-base-cover.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1W-pillows",
+  "type" : "ATTACHMENT_DECO_1",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1W",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-pillows.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 8.0,
+          "y" : 4.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "bed-2x1W-cover",
+  "type" : "ATTACHMENT_DECO_2",
+  "furnitureTypeName" : "SINGLE_BED",
+  "furnitureLayoutName" : "2x1W",
+  "validMaterialTypes" : [ "CLOTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bed-2x1E-cover.png",
+      "coloringLayer" : "ACCESSORY_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1N-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1N",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "-0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1N-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1E-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1E",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1EW-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1W-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1W",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1EW-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1S-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1S",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1S-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1N-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1N",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "-0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1N-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1E-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1E",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1EW-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1W-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1W",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1EW-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "chair-1x1S-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
+  "furnitureLayoutName" : "1x1S",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : {
+    "OFFSET_POSITION" : [ "0", "0.15" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "chair-1x1S-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-metal-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "MetalDoor_Single_EW",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -43.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-placement-metal-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_PLACEMENT",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "MetalDoor_Single_EW_0.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -4.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-metal-single-ns",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR",
+  "furnitureLayoutName" : "1x1NS",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "MetalDoor_Single_NS",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -6.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-stone-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "StoneDoor_Single_EW",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -36.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-placement-stone-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_PLACEMENT",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "StoneDoor_Single_EW_0.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -4.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-stone-single-ns",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR",
+  "furnitureLayoutName" : "1x1NS",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "StoneDoor_Single_NS",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -6.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-wood-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "WoodDoor_Single_EW",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -37.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-placement-wood-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_PLACEMENT",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "WoodDoor_Single_EW_0.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -5.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "door-wood-single-ns",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR",
+  "furnitureLayoutName" : "1x1NS",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "WoodDoor_Single_NS",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -6.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "doorframe-metal-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_FRAME",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "MetalFrame_Single_EW.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 55.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "doorframe-metal-single-ns",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_FRAME",
+  "furnitureLayoutName" : "1x1NS",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "MetalFrame_Single_NS.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "doorframe-stone-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_FRAME",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "StoneFrame_Single_EW.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 50.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "doorframe-stone-single-ns",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_FRAME",
+  "furnitureLayoutName" : "1x1NS",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "StoneFrame_Single_NS.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 64.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "doorframe-wood-single-ew",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_FRAME",
+  "furnitureLayoutName" : "1x1EW",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "WoodFrame_Single_EW.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 55.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "doorframe-wood-single-ns",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SINGLE_DOOR_FRAME",
+  "furnitureLayoutName" : "1x1NS",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "WoodFrame_Single_NS.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : 68.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "lantern-1x1-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "BASIC_LANTERN",
+  "furnitureLayoutName" : "1x1",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : {
+    "ATTACHES_LIGHT_SOURCE" : [ "GREEN" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Lantern Side Front.png",
+      "isAnimated" : false,
+      "scale" : 0.5,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Cauldron-Body-Floor",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CHEFS_CAULDRON", "FEASTING_CAULDRON" ],
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Cauldron-Body-Floor.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 5.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 1.0,
+          "zero" : false,
+          "unit" : true
+        }
+      }, {
+        "type" : "FURNITURE_LIQUID_LAYER",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 1.0,
+          "zero" : false,
+          "unit" : true
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 1.0,
+          "zero" : false,
+          "unit" : true
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 1.0,
+          "zero" : false,
+          "unit" : true
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Cauldron-Fireplace-Floor",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "CHEFS_CAULDRON", "FEASTING_CAULDRON" ],
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Cauldron-Fireplace-Floor.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -22.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Cauldron-Liquid-Floor",
+  "type" : "FURNITURE_LIQUID_LAYER",
+  "furnitureTypeNames" : [ "CHEFS_CAULDRON", "FEASTING_CAULDRON" ],
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Cauldron-Liquid-Floor.png",
+      "coloringLayer" : "LIQUID_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 2.5,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Cauldron-Stand-Floor",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "CHEFS_CAULDRON", "FEASTING_CAULDRON" ],
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Cauldron-Stand-Floor.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Cauldron-Rope-Floor",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "CHEFS_CAULDRON", "FEASTING_CAULDRON" ],
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Cauldron-Rope-Floor.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : 12.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Barrel-Body-Floor",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "WATER_BARREL",
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Barrel-Body-Floor.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 1.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_LIQUID_LAYER",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_COVER_LAYER",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Barrel-Hoops-Floor",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeName" : "WATER_BARREL",
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Barrel-Hoops-Floor.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -4.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Barrel-Lid-Floor",
+  "type" : "FURNITURE_COVER_LAYER",
+  "furnitureTypeName" : "WATER_BARREL",
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Barrel-Lid-Floor.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 11.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Barrel-Contents-Floor",
+  "type" : "FURNITURE_LIQUID_LAYER",
+  "furnitureTypeName" : "WATER_BARREL",
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Barrel-Contents-Floor.png",
+      "coloringLayer" : "LIQUID_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 13.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1EW-base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "INNOCULATION_LOG", "INNOCULATED_LOG" ],
+  "furnitureLayoutName" : "1x1EW with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furniture-Log-EW02-Exterior.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1EW-base-shocked",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SHOCKED_LOG" ],
+  "furnitureLayoutName" : "1x1EW with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furniture-Log-EW02-Exterior.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -16.0,
+          "y" : 12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 16.0,
+          "y" : 12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1EW-underlayer",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "INNOCULATION_LOG", "INNOCULATED_LOG", "SHOCKED_LOG" ],
+  "furnitureLayoutName" : "1x1EW with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furniture-Log-EW-Interior.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 3.2,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1EW-shocked-detail",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "SHOCKED_LOG" ],
+  "furnitureLayoutName" : "1x1EW with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Farmable-Mushroom-DetailEW.png",
+      "coloringLayer" : "SEED_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1NS-base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "INNOCULATION_LOG", "INNOCULATED_LOG" ],
+  "furnitureLayoutName" : "1x1NS with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furniture-Log-NS02-Exterior.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1NS-base-shocked",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SHOCKED_LOG" ],
+  "furnitureLayoutName" : "1x1NS with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furniture-Log-NS02-Exterior.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -2.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1NS-underlayer",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "INNOCULATION_LOG", "INNOCULATED_LOG", "SHOCKED_LOG" ],
+  "furnitureLayoutName" : "1x1NS with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furniture-Log-NS-Interior.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mushroom-log-1x1NS-detail",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "SHOCKED_LOG" ],
+  "furnitureLayoutName" : "1x1NS with workspaces",
+  "validMaterialTypes" : [ "WOOD", "SEED" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Farmable-Mushroom-DetailNS.png",
+      "coloringLayer" : "SEED_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.7,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "oven-2x2-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "BAKING_OVEN" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Stone oven.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Bloomery-Furnace-F",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "BLOOMERY_FURNACE" ],
+  "furnitureLayoutName" : "2x2+SW with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furnace F.png",
+      "coloringLayer" : "MISC_COLOR_1",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 36.5,
+        "y" : 65.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : -46.5,
+          "y" : -33.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : -46.5,
+          "y" : -33.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_3",
+        "offsetPixels" : {
+          "x" : -46.5,
+          "y" : -33.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_4",
+        "offsetPixels" : {
+          "x" : -46.5,
+          "y" : -33.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_5",
+        "offsetPixels" : {
+          "x" : -46.5,
+          "y" : -33.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Bloomery-Furnace-E",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "BLOOMERY_FURNACE" ],
+  "furnitureLayoutName" : "2x2+SW with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furnace E.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -46.5,
+        "y" : -27.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Bloomery-Furnace-D",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "BLOOMERY_FURNACE" ],
+  "furnitureLayoutName" : "2x2+SW with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furnace D.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -68.0,
+        "y" : -40.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Bloomery-Furnace-C",
+  "type" : "FURNITURE_ABOVE_LAYER_3",
+  "furnitureTypeNames" : [ "BLOOMERY_FURNACE" ],
+  "furnitureLayoutName" : "2x2+SW with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furnace C.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -61.5,
+        "y" : -33.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Bloomery-Furnace-B",
+  "type" : "FURNITURE_ABOVE_LAYER_4",
+  "furnitureTypeNames" : [ "BLOOMERY_FURNACE" ],
+  "furnitureLayoutName" : "2x2+SW with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furnace B.png",
+      "coloringLayer" : "MISC_COLOR_2",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 46.5,
+        "y" : 2.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Bloomery-Furnace-A",
+  "type" : "FURNITURE_ABOVE_LAYER_5",
+  "furnitureTypeNames" : [ "BLOOMERY_FURNACE" ],
+  "furnitureLayoutName" : "2x2+SW with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Furnace A.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 38.0,
+        "y" : -44.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Brew-Kettle-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "BREW_KETTLE" ],
+  "furnitureLayoutName" : "mashtun layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Copper.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 28.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Brew-Kettle-Tank",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "BREW_KETTLE" ],
+  "furnitureLayoutName" : "mashtun layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hopback whirlpool.png",
+      "coloringLayer" : "MISC_COLOR_1",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -70.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Charcoal-Clamp-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CHARCOAL_CLAMP" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Charcoal Clamp Wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Charcoal-Clamp-Covered",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CHARCOAL_CLAMP_COVERED" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Charcoal Clamp Earth.png",
+      "coloringLayer" : "EARTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Charcoal-Clamp-Completed",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CHARCOAL_CLAMP_COMPLETED" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Charcoal Clamp Wood.png",
+      "coloringLayer" : "ORE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "fermentation-tank-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FERMENTATION_TANK" ],
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Stone tank.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 26.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "fermentation-tank-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FERMENTATION_TANK" ],
+  "furnitureLayoutName" : "1x1 with workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Metal tank.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Mash-Tun-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MASH_TUN" ],
+  "furnitureLayoutName" : "mashtun layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Mash tun wooden bottom.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 28.0,
+        "y" : 22.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Mash-Tun-Top",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "MASH_TUN" ],
+  "furnitureLayoutName" : "mashtun layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Mash tun metal top.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Mash-Tun-Tank",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "MASH_TUN" ],
+  "furnitureLayoutName" : "mashtun layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Heated water tank.png",
+      "coloringLayer" : "MISC_COLOR_1",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -70.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "pillar-1x1-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "PILLAR" ],
+  "furnitureLayoutName" : "1x1",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Stone Pillar.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 14.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "pillar-1x1-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "PILLAR" ],
+  "furnitureLayoutName" : "1x1",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Wood Pillar.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 14.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-1x2-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 Stone tank trench.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 42.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_LIQUID_LAYER",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-1x2-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 Wooden tank trench.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 42.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_LIQUID_LAYER",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-1x2-stone-liquid",
+  "type" : "FURNITURE_LIQUID_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 Stone tank trench liquid.png",
+      "coloringLayer" : "LIQUID_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-1x2-wood-liquid",
+  "type" : "FURNITURE_LIQUID_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 Wooden tank trench liquid.png",
+      "coloringLayer" : "LIQUID_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-2x1-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 Stone tank trench.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_LIQUID_LAYER",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-2x1-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 Wooden tank trench.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_LIQUID_LAYER",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-2x1-stone-liquid",
+  "type" : "FURNITURE_LIQUID_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 Stone tank trench liquid.png",
+      "coloringLayer" : "LIQUID_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 12.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "shock-tank-2x1-wood-liquid",
+  "type" : "FURNITURE_LIQUID_LAYER",
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 Wooden tank trench liquid.png",
+      "coloringLayer" : "LIQUID_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 10.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "beer-tapper-2x1-base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "BEER_TAPPER" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 beer tapper table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.7,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_6",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 34.0,
+          "y" : 20.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "beer-tapper-2x1-equipment",
+  "type" : "FURNITURE_ABOVE_LAYER_6",
+  "furnitureTypeNames" : [ "BEER_TAPPER" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 beer tapper equipment.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.7,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 28.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "beer-tapper-1x2-base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "BEER_TAPPER" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 beer tapper table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 42.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_6",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 45.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "beer-tapper-1x2-equipment",
+  "type" : "FURNITURE_ABOVE_LAYER_6",
+  "furnitureTypeNames" : [ "BEER_TAPPER" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 beer tapper equipment.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.7,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -12.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "coke-oven-stone-outer",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "COKE_OVEN" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Coke Oven Stone Top.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "coke-oven-wood-door",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "COKE_OVEN" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Coke Oven Wood Door Bottom.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -15.0,
+        "y" : -35.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "dug-grave-1x2",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "DUG_GRAVE" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "EARTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Dug Grave 1 x 2.png",
+      "coloringLayer" : "EARTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "dug-grave-2x1",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "DUG_GRAVE" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "EARTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Dug Grave 2 x 1.png",
+      "coloringLayer" : "EARTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "filled-grave-1x2",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FILLED_GRAVE" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "EARTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Filled Grave 1 x 2.png",
+      "coloringLayer" : "EARTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "filled-grave-2x1",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FILLED_GRAVE" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "EARTH" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Filled Grave 2 x 1.png",
+      "coloringLayer" : "EARTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Forge-C",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FORGE" ],
+  "furnitureLayoutName" : "inverted-U",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Forge C.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 64.0,
+        "y" : 44.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 5.5,
+          "y" : 16.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : 5.5,
+          "y" : 16.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -58.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 62.0,
+          "y" : -28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_3",
+        "offsetPixels" : {
+          "x" : -58.0,
+          "y" : -28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Forge-B",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "FORGE" ],
+  "furnitureLayoutName" : "inverted-U",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Forge B.png",
+      "coloringLayer" : "ORE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 67.5,
+        "y" : 13.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Forge-A",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "FORGE" ],
+  "furnitureLayoutName" : "inverted-U",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Forge A.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 68.0,
+        "y" : 36.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-1x4-NS-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "1x4 NS",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -88.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 96.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-1x4-NS-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "1x4 NS",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -88.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 96.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-1x4-SN-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "1x4 SN",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 90.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -88.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-1x4-SN-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "1x4 SN",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 90.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -88.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-4x1-WE-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "4x1 WE",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 84.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -80.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-4x1-WE-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "4x1 WE",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 84.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -80.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-4x1-EW-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "4x1 EW",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : -80.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 84.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-4x1-EW-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "furnitureLayoutName" : "4x1 EW",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : -80.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 84.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "malting-station-kiln-above",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "MALTING_STATION" ],
+  "validMaterialTypes" : [ "WOOD", "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Kiln.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Ore-Crushing-Station-E",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "ORE_CRUSHING_STATION" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Ore Crushing Station E.png",
+      "coloringLayer" : "MISC_COLOR_1",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 36.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 2.0,
+          "y" : -10.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : 2.0,
+          "y" : -10.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_3",
+        "offsetPixels" : {
+          "x" : 2.0,
+          "y" : -10.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_4",
+        "offsetPixels" : {
+          "x" : 2.0,
+          "y" : -10.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Ore-Crushing-Station-D",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "ORE_CRUSHING_STATION" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Ore Crushing Station D.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -20.5,
+        "y" : 3.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Ore-Crushing-Station-C",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "ORE_CRUSHING_STATION" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Ore Crushing Station C.png",
+      "coloringLayer" : "MISC_COLOR_2",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 9.5,
+        "y" : -9.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Ore-Crushing-Station-B",
+  "type" : "FURNITURE_ABOVE_LAYER_3",
+  "furnitureTypeNames" : [ "ORE_CRUSHING_STATION" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Ore Crushing Station B.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -19.5,
+        "y" : -9.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Ore-Crushing-Station-A",
+  "type" : "FURNITURE_ABOVE_LAYER_4",
+  "furnitureTypeNames" : [ "ORE_CRUSHING_STATION" ],
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Ore Crushing Station A.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-1x2N-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "1x2N",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 1 x 2.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 42.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-1x2S-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "1x2S",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 1 x 2.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 42.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-2x1W-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "2x1W",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 2 x 1.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-2x1E-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "2x1E",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 2 x 1.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-1x2N-statue",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "1x2N",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 1 x 2 Statue.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : true,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-1x2S-statue",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "1x2S",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 1 x 2 Statue.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-2x1W-statue",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "2x1W",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 2 x 1 Statue.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "sarcophagus-2x1E-statue",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "SARCOPHAGUS" ],
+  "furnitureLayoutName" : "2x1E",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Sarcophagus 2 x 1 Statue.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-1x2-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "KITCHEN_WORKTOP" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-1x2-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "KITCHEN_WORKTOP" ],
+  "furnitureLayoutName" : "1x2 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x2 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mill-1x3-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FLOUR_MILL" ],
+  "furnitureLayoutName" : "1x3 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Mill 1x3 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 68.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -60.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mill-1x3-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FLOUR_MILL" ],
+  "furnitureLayoutName" : "1x3 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Mill 1x3 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : 2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 68.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -60.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-1x4-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SERVING_TABLE" ],
+  "furnitureLayoutName" : "1x4 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x4 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 34.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -88.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 96.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-1x4-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SERVING_TABLE" ],
+  "furnitureLayoutName" : "1x4 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "1x4 wooden table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 34.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -88.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 96.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x1-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "KITCHEN_WORKTOP" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x1-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "KITCHEN_WORKTOP" ],
+  "furnitureLayoutName" : "2x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "2x1 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 24.0,
+          "y" : 24.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "STONEMASON_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "STONEMASON_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "STONEMASON_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L1R-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L1R",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L1R-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 64.0,
+        "y" : 40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L1R-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L1R",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L1R-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 64.0,
+        "y" : 40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L1R-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L1R",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L1R-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 64.0,
+        "y" : 40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL3R-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL3R",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L1R-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -64.0,
+        "y" : 40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL3R-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL3R",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L1R-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -64.0,
+        "y" : 40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL3R-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL3R",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L1R-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -64.0,
+        "y" : 40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L2R-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L2R",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L2R-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L2R-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L2R",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L2R-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L2R-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L2R",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L2R-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL2R-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL2R",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L2R-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL2R-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL2R",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L2R-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL2R-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL2R",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L2R-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 70.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 18.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 82.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L3R-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L3R",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L3R-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L3R-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L3R",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L3R-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3L3R-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureLayoutName" : "2x3L3R",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L3R-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL1R-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL1R",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L3R-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 64.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL1R-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL1R",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L3R-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 64.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x3BL1R-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WOODCUTTERS_BENCH", "BAKERS_WORKTOP" ],
+  "furnitureLayoutName" : "2x3BL1R",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x3L3R-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 64.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x4-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_TABLE" ],
+  "furnitureLayoutName" : "2x4",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x4-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 108.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -80.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -80.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_5",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_6",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_7",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 100.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_8",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 100.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-2x4-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_TABLE" ],
+  "furnitureLayoutName" : "2x4",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-2x4-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 108.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -80.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -80.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_5",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_6",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 46.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_7",
+        "offsetPixels" : {
+          "x" : -32.0,
+          "y" : 100.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_8",
+        "offsetPixels" : {
+          "x" : 32.0,
+          "y" : 100.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mill-3x1-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FLOUR_MILL" ],
+  "furnitureLayoutName" : "3x1 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Mill 3x1 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -2.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mill-3x1-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FLOUR_MILL" ],
+  "furnitureLayoutName" : "3x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Mill 3x1 wood table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 32.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 28.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "mill-3x1-wood-rope",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "FLOUR_MILL" ],
+  "furnitureLayoutName" : "3x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Mill 3x1 wood table rope top.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 7.5,
+        "y" : -14.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-3x2-metal",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "STONEMASON_WORKBENCH" ],
+  "furnitureLayoutName" : "3x2",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-3x2-metal.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-3x2-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "STONEMASON_WORKBENCH" ],
+  "furnitureLayoutName" : "3x2",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-3x2-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-3x2-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "STONEMASON_WORKBENCH" ],
+  "furnitureLayoutName" : "3x2",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-3x2-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_DECO_1",
+        "offsetPixels" : {
+          "x" : -64.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_DECO_2",
+        "offsetPixels" : {
+          "x" : 64.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 50.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-4x1-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SERVING_TABLE" ],
+  "furnitureLayoutName" : "4x1 with workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "4x1 stone table.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -30.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 30.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : 92.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : -92.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-4x1-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "SERVING_TABLE" ],
+  "furnitureLayoutName" : "4x1 with workspaces",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "4x1 wooden table.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -30.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : 30.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : 92.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : -92.0,
+          "y" : 14.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-4x2-stone",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_TABLE" ],
+  "furnitureLayoutName" : "4x2",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-4x2-stone.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -92.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -92.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : -30.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : -30.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_5",
+        "offsetPixels" : {
+          "x" : 30.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_6",
+        "offsetPixels" : {
+          "x" : 30.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_7",
+        "offsetPixels" : {
+          "x" : 94.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_8",
+        "offsetPixels" : {
+          "x" : 94.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "table-4x2-wood",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "FEASTING_TABLE" ],
+  "furnitureLayoutName" : "4x2",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "table-4x2-wood.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ {
+        "type" : "ATTACHMENT_WORKSPACE_1",
+        "offsetPixels" : {
+          "x" : -92.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_2",
+        "offsetPixels" : {
+          "x" : -92.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_3",
+        "offsetPixels" : {
+          "x" : -30.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_4",
+        "offsetPixels" : {
+          "x" : -30.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_5",
+        "offsetPixels" : {
+          "x" : 30.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_6",
+        "offsetPixels" : {
+          "x" : 30.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_7",
+        "offsetPixels" : {
+          "x" : 94.0,
+          "y" : -8.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "ATTACHMENT_WORKSPACE_8",
+        "offsetPixels" : {
+          "x" : 94.0,
+          "y" : 40.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+} ]

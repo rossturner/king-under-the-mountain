@@ -1,0 +1,11 @@
+[{
+  "uniqueName": "Bush-B1-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Loquat bush"],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "fruit_01_f.png",
+      "coloringLayer": "FRUIT_COLOR"
+    }
+  }
+}]

@@ -1,0 +1,68 @@
+[
+  {
+    "name": "WATER_BARREL",
+    "i18nKey": "FURNITURE.WATER_BARREL",
+    "categoryName": "LIQUID_CONTAINER",
+    "defaultLayoutName": "1x1 with workspaces",
+    "colorCode": "#26e1ed",
+    "iconName": "barrel",
+    "placeAnywhere": false,
+    "autoConstructed": true,
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Product-Barrel",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "LIQUID_CONTAINER": ["6", "Water"],
+      "FURNITURE_BEHAVIOUR": ["FILL_LIQUID_CONTAINER", "ItemType_Product-Bucket"]
+    }
+  },
+  {
+    "name": "CHEFS_CAULDRON",
+    "i18nKey": "FURNITURE.CAULDRON",
+    "categoryName": "LIQUID_CONTAINER",
+    "defaultLayoutName": "1x1 with workspaces",
+    "colorCode": "#ba4b1a",
+    "iconName": "cauldron",
+    "placeAnywhere": false,
+    "autoConstructed": true,
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Product-Cauldron",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "LIQUID_CONTAINER": ["12", "Water", "ALWAYS_INACTIVE"]
+    }
+  },
+  {
+    "name": "FEASTING_CAULDRON",
+    "i18nKey": "FURNITURE.CAULDRON",
+    "categoryName": "LIQUID_CONTAINER",
+    "defaultLayoutName": "1x1 with workspaces",
+    "colorCode": "#ba4b1a",
+    "iconName": "cauldron",
+    "placeAnywhere": false,
+    "autoConstructed": true,
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Product-Cauldron",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "LIQUID_CONTAINER": ["12", "Water", "ALWAYS_INACTIVE"],
+      "CONSTRUCTION_OVERRIDE": ["DO_NOT_ALLOCATE", "REQUIRES_EDIBLE_LIQUID"],
+      "FURNITURE_BEHAVIOUR": ["EDIBLE_LIQUID_SOURCE", "ItemType_Ingredient-Soup-Bowl"]
+    }
+  }
+]

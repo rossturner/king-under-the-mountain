@@ -1,0 +1,44 @@
+[{
+  "speciesName": "Miltonia",
+  "plantType": "MUSHROOM",
+  "materialName": "Miltonia Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 0.3,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#185BBF"
+    },
+    "LEAF_COLOR": {
+      "colorCode": "#185BBF"
+    },
+    "FRUIT_COLOR": {
+      "colorCode": "#dedede"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Miltonia Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Miltonia Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Miltonia Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Tree-Pine-Size4-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Pine", "Star pine"],
+  "growthStages": [3],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "pine_04_t.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 115
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": 1,
+            "y": 27
+          }
+        }
+      ]
+    }
+  }
+}]

@@ -1,0 +1,33 @@
+{
+  "materialType": "WOOD",
+  "i18nKey": "ROOMS.BRIDGE",
+  "craftingTypeName": "CARPENTRY",
+  "buildingRequirement": {
+    "itemTypeName": "Resource-Planks",
+    "quantity": 2
+  },
+  "assets": {
+    "EAST_WEST": {
+      "CENTRE": "Horizontal Wooden Bridge Middle Middle.png",
+      "NORTH": "Horizontal Wooden Bridge Top Middle.png",
+      "NORTH_EAST": "Horizontal Wooden Bridge Top Right.png",
+      "EAST": "Horizontal Wooden Bridge Middle Right.png",
+      "SOUTH_EAST": "Horizontal Wooden Bridge Bottom Right.png",
+      "SOUTH": "Horizontal Wooden Bridge Bottom Middle.png",
+      "SOUTH_WEST": "Horizontal Wooden Bridge Bottom Left.png",
+      "WEST": "Horizontal Wooden Bridge Middle Left.png",
+      "NORTH_WEST": "Horizontal Wooden Bridge Top Left.png"
+    },
+    "NORTH_SOUTH": {
+      "CENTRE": "Vertical Wooden Bridge Middle Middle.png",
+      "NORTH": "Vertical Wooden Bridge Top Middle.png",
+      "NORTH_EAST": "Vertical Wooden Bridge Top Right.png",
+      "EAST": "Vertical Wooden Bridge Middle Right.png",
+      "SOUTH_EAST": "Vertical Wooden Bridge Bottom Right.png",
+      "SOUTH": "Vertical Wooden Bridge Bottom Middle.png",
+      "SOUTH_WEST": "Vertical Wooden Bridge Bottom Left.png",
+      "WEST": "Vertical Wooden Bridge Middle Left.png",
+      "NORTH_WEST": "Vertical Wooden Bridge Top Left.png"
+    }
+  }
+}

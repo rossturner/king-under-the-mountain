@@ -1,0 +1,52 @@
+[{
+  "uniqueName": "Dwarf-HairF-Outline",
+  "type": "HAIR_OUTLINE",
+  "race": "DWARF",
+  "gender": "FEMALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-HairF-Outline-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -0.2
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-HairF-Outline-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -0.2
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-HairF-Outline-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": -0.2
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-HairF-Outline-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -0.2
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-HairF-Outline-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": -0.2
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-HairF-Outline-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -0.2
+      }
+    }
+  }
+}]

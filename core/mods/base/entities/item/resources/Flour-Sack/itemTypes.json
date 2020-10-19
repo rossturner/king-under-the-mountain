@@ -1,0 +1,11 @@
+[{
+  "itemTypeName": "Resource-Flour-Sack",
+  "itemGroup": "RESOURCE",
+  "materialTypes": ["VEGETABLE", "CLOTH", "ROPE"],
+  "primaryMaterialType": "VEGETABLE",
+  "stockpileGroupName": "Granary",
+  "hoursInInventoryUntilUnused": 1,
+  "maxStackSize": 30,
+  "maxHauledAtOnce": 30,
+  "equippedWhileWorkingOnJob": true
+}]

@@ -1,0 +1,41 @@
+[
+  {
+    "uniqueName": "coke-oven-stone-outer",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["COKE_OVEN"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Coke Oven Stone Top.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 32
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_BELOW_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "coke-oven-wood-door",
+    "type": "FURNITURE_BELOW_LAYER_1",
+    "furnitureTypeNames": ["COKE_OVEN"],
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Coke Oven Wood Door Bottom.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -15,
+          "y": -35
+        }
+      }
+    }
+  }
+]

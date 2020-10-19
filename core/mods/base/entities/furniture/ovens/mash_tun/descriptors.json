@@ -1,0 +1,61 @@
+[
+  {
+    "uniqueName": "Mash-Tun-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["MASH_TUN"],
+    "furnitureLayoutName": "mashtun layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Mash tun wooden bottom.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 28,
+          "y": 22
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Mash-Tun-Top",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["MASH_TUN"],
+    "furnitureLayoutName": "mashtun layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Mash tun metal top.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Mash-Tun-Tank",
+    "type": "FURNITURE_ABOVE_LAYER_2",
+    "furnitureTypeNames": ["MASH_TUN"],
+    "furnitureLayoutName": "mashtun layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Heated water tank.png",
+        "coloringLayer": "MISC_COLOR_1",
+        "offsetPixels": {
+          "x": -70,
+          "y": 0
+        }
+      }
+    }
+  }
+]

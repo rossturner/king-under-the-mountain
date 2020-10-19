@@ -1,0 +1,41 @@
+[
+  {
+    "itemTypeName": "Resource-Logs",
+    "itemGroup": "RESOURCE",
+    "materialTypes": ["WOOD"],
+    "primaryMaterialType": "WOOD",
+    "maxStackSize": 16,
+    "maxHauledAtOnce": 1,
+    "stockpileGroupName": "Resources",
+    "holdPosition": "ON_SHOULDER",
+    "impedesMovement": true,
+    "blocksMovement": false,
+    "placementSoundAssetName": "HeavyWoodItem"
+  },
+  {
+    "itemTypeName": "Resource-Mushroom-Log",
+    "itemGroup": "RESOURCE",
+    "materialTypes": ["WOOD", "SEED"],
+    "primaryMaterialType": "SEED",
+    "maxStackSize": 1,
+    "maxHauledAtOnce": 1,
+    "stockpileGroupName": "Resources",
+    "holdPosition": "ON_SHOULDER",
+    "impedesMovement": true,
+    "blocksMovement": false,
+    "placementSoundAssetName": "HeavyWoodItem"
+  },
+  {
+    "itemTypeName": "Resource-Shocked-Mushroom-Log",
+    "itemGroup": "RESOURCE",
+    "materialTypes": ["WOOD", "SEED"],
+    "primaryMaterialType": "SEED",
+    "maxStackSize": 1,
+    "maxHauledAtOnce": 1,
+    "stockpileGroupName": "Resources",
+    "holdPosition": "ON_SHOULDER",
+    "impedesMovement": true,
+    "blocksMovement": false,
+    "placementSoundAssetName": "HeavyWoodItem"
+  }
+]

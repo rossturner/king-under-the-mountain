@@ -1,0 +1,81 @@
+[
+  {
+    "name": "WOODCUTTING",
+    "i18nKey": "CRAFTING_TYPE.WOODCUTTING",
+    "professionRequiredName": "LUMBERJACK",
+    "defaultItemTypeName": "Tool-Saw",
+    "usesWorkstationTool": true
+  },
+  {
+    "name": "CARPENTRY",
+    "i18nKey": "CRAFTING_TYPE.CARPENTRY",
+    "professionRequiredName": "CARPENTER",
+    "defaultItemTypeName": "Tool-Plane",
+    "constructsFurniture": "WOOD",
+    "usesWorkstationTool": true
+  },
+  {
+    "name": "STONEMASONRY",
+    "i18nKey": "CRAFTING_TYPE.STONEMASONRY",
+    "professionRequiredName": "STONEMASON",
+    "defaultItemTypeName": "Tool-Chisel",
+    "constructsFurniture": "STONE",
+    "usesWorkstationTool": true
+  },
+  {
+    "name": "BLACKSMITHING",
+    "i18nKey": "CRAFTING_TYPE.BLACKSMITHING",
+    "professionRequiredName": "BLACKSMITH",
+    "defaultItemTypeName": "Tool-Large-Hammer",
+    "constructsFurniture": "METAL",
+    "usesWorkstationTool": true
+  },
+  {
+    "name": "SMELTING",
+    "i18nKey": "CRAFTING_TYPE.SMELTING",
+    "professionRequiredName": "BLACKSMITH",
+    "defaultItemTypeName": "Tool-Tongs"
+  },
+  {
+    "name": "ORE_CRUSHING",
+    "i18nKey": "CRAFTING_TYPE.ORE_CRUSHING",
+    "professionRequiredName": "BLACKSMITH"
+  },
+  {
+    "name": "COKE_OVEN_BAKING",
+    "i18nKey": "CRAFTING_TYPE.COKE_OVEN_BAKING",
+    "professionRequiredName": "BLACKSMITH"
+  },
+  {
+    "name": "MILLING",
+    "i18nKey": "CRAFTING_TYPE.MILLING",
+    "professionRequiredName": "CHEF"
+  },
+  {
+    "name": "MALTING",
+    "i18nKey": "CRAFTING_TYPE.MALTING",
+    "professionRequiredName": "BREWER"
+  },
+  {
+    "name": "MALT_MASHING",
+    "i18nKey": "CRAFTING_TYPE.MALT_MASHING",
+    "professionRequiredName": "BREWER"
+  },
+  {
+    "name": "WORT_BREWING",
+    "i18nKey": "CRAFTING_TYPE.WORT_BREWING",
+    "professionRequiredName": "BREWER"
+  },
+  {
+    "name": "FERMENTING",
+    "i18nKey": "CRAFTING_TYPE.FERMENTING",
+    "professionRequiredName": "BREWER"
+  },
+  {
+    "name": "FOOD_PREPARATION",
+    "i18nKey": "CRAFTING_TYPE.BAKING",
+    "professionRequiredName": "CHEF",
+    "defaultItemTypeName": "Tool-Rolling-Pin",
+    "usesWorkstationTool": true
+  }
+]

@@ -1,0 +1,239 @@
+[
+  {
+    "name": "MUSHROOM_SHOCK_TANK",
+    "i18nKey": "FURNITURE.MUSHROOM_SHOCK_TANK",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x1 with workspaces",
+    "colorCode": "#25a2d0",
+    "iconName": "drop",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ]
+    },
+    "tags": {
+      "LIQUID_CONTAINER": ["4", "Water", "ALWAYS_INACTIVE"],
+      "FURNITURE_BEHAVIOUR": ["MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Mushroom-Log", "ItemType_Resource-Shocked-Mushroom-Log"]
+    }
+  },
+
+  {
+    "name": "ORE_CRUSHING_STATION",
+    "i18nKey": "FURNITURE.ORE_CRUSHING_STATION",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x2 with lower workspaces",
+    "colorCode": "#b5411d",
+    "iconName": "ore",
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Plate",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Product-Barrel-Hoops",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["ORE_CRUSHING", "PRODUCE_ITEM", "HAULING"],
+      "REQUIREMENT_TO_COLOR_MAPPINGS": ["Resource-Metal-Plate", "MISC_COLOR_1", "Product-Barrel-Hoops", "MISC_COLOR_2"],
+      "EXTRA_MATERIAL_TYPES": ["CLOTH"]
+    }
+  },
+  {
+    "name": "COKE_OVEN",
+    "i18nKey": "FURNITURE.COKE_OVEN",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x2 with lower workspaces",
+    "colorCode": "#b3a5a1",
+    "iconName": "fireplace",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 6
+        },
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 2
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["COKE_OVEN_BAKING", "PRODUCE_ITEM", "HAULING"]
+    }
+  },
+  {
+    "name": "FORGE",
+    "i18nKey": "FURNITURE.FORGE",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "inverted-U",
+    "colorCode": "#666666",
+    "iconName": "anvil",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 15
+        },
+        {
+          "itemTypeName": "Fuel-Sack",
+          "quantity": 2
+        },
+        {
+          "itemTypeName": "Product-Anvil",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Large-Hammer",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Tongs",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["BLACKSMITHING", "FORGE_ITEM", "HAULING"],
+      "DECORATION_FROM_INPUT": ["Product-Anvil", "Tool-Large-Hammer", "Tool-Tongs"]
+    }
+  },
+
+  {
+    "name": "SARCOPHAGUS",
+    "i18nKey": "FURNITURE.SARCOPHAGUS",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "1x2N",
+    "colorCode": "#665a5a",
+    "iconName": "sarcophagus",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 8
+        }
+      ]
+    },
+    "tags": {
+      "DECEASED_CONTAINER": []
+    }
+  },
+  {
+    "name": "DUG_GRAVE",
+    "i18nKey": "FURNITURE.GRAVE",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "1x2 with workspaces",
+    "colorCode": "#9a7555",
+    "iconName": "tombstone",
+    "autoConstructed": true,
+    "requirements": {
+      "EARTH": []
+    },
+    "requiredFloorMaterialType": "EARTH",
+    "tags": {
+      "CONSTRUCTION_OVERRIDE": ["DO_NOT_ALLOCATE"],
+      "SPECIFIC_EXTRA_MATERIALS": ["Dirt"],
+      "DECEASED_CONTAINER": ["FILLED_GRAVE"]
+    }
+  },
+  {
+    "name": "FILLED_GRAVE",
+    "i18nKey": "FURNITURE.GRAVE",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "1x2 with workspaces",
+    "colorCode": "#9a7555",
+    "iconName": "tombstone",
+    "autoConstructed": true,
+    "hiddenFromPlacementMenu": true,
+    "requiredFloorMaterialType": "EARTH",
+    "requirements": {
+      "EARTH": []
+    },
+    "tags": {
+      "CONSTRUCTION_OVERRIDE": ["DO_NOT_ALLOCATE"],
+      "SPECIFIC_EXTRA_MATERIALS": ["Dirt"],
+      "DECEASED_CONTAINER": []
+    }
+  },
+
+  {
+    "name": "MALTING_STATION",
+    "i18nKey": "FURNITURE.MALTING_STATION",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "4x1 WE",
+    "colorCode": "#e29a39",
+    "iconName": "powder",
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Product-Liquid-Tank",
+          "quantity": 1
+        }
+      ],
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 8
+        },
+        {
+          "itemTypeName": "Product-Liquid-Tank",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["MALTING", "PRODUCE_ITEM", "HAULING"],
+      "DECORATION_FROM_INPUT": ["Product-Liquid-Tank"]
+    }
+  },
+
+  {
+    "name": "BEER_TAPPER",
+    "i18nKey": "FURNITURE.BEER_TAPPER",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x1 with workspaces",
+    "colorCode": "#e3e369",
+    "iconName": "beer-stein",
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Product-Barrel-Hoops",
+          "quantity": 2
+        }
+      ]
+    },
+    "tags": {
+      "LIQUID_CONTAINER": ["6", "Beer"],
+      "FURNITURE_BEHAVIOUR": ["BEER_TAPPER", "Material_Beer", "ItemType_Product-Barrel", "JobType_HAULING"]
+    }
+
+  }
+]

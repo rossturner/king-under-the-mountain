@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Default Settler Schedule",
+    "hourlyCategories": {
+      "0": ["SLEEP"],
+      "1": ["SLEEP"],
+      "2": ["SLEEP"],
+      "3": ["SLEEP"],
+      "4": ["SLEEP"],
+      "5": ["SLEEP", "NOURISHMENT"],
+      "6": ["NOURISHMENT"],
+      "7": ["NOURISHMENT"],
+      "8": ["WORK", "NOURISHMENT"],
+      "9": ["WORK"],
+      "10": ["WORK"],
+      "11": ["WORK"],
+      "12": ["WORK", "NOURISHMENT"],
+      "13": ["WORK"],
+      "14": ["WORK"],
+      "15": ["WORK"],
+      "16": ["WORK"],
+      "17": ["WORK", "NOURISHMENT"],
+      "18": ["WORK", "NOURISHMENT", "FREE_TIME"],
+      "19": ["NOURISHMENT", "FREE_TIME"],
+      "20": ["NOURISHMENT", "FREE_TIME"],
+      "21": ["SLEEP", "FREE_TIME"],
+      "22": ["SLEEP", "FREE_TIME"],
+      "23": ["SLEEP"]
+    }
+  },
+  {
+    "name": "Noble Schedule",
+    "hourlyCategories": {
+      "0": ["SLEEP"],
+      "1": ["SLEEP"],
+      "2": ["SLEEP"],
+      "3": ["SLEEP"],
+      "4": ["SLEEP"],
+      "5": ["SLEEP", "NOURISHMENT"],
+      "6": ["NOURISHMENT"],
+      "7": ["NOURISHMENT"],
+      "8": ["NOURISHMENT"],
+      "9": ["NOURISHMENT", "FREE_TIME"],
+      "10": ["NOURISHMENT", "FREE_TIME"],
+      "11": ["NOURISHMENT", "FREE_TIME"],
+      "12": ["NOURISHMENT", "FREE_TIME"],
+      "13": ["NOURISHMENT", "FREE_TIME"],
+      "14": ["NOURISHMENT", "FREE_TIME"],
+      "15": ["NOURISHMENT", "FREE_TIME"],
+      "16": ["NOURISHMENT", "FREE_TIME"],
+      "17": ["NOURISHMENT", "FREE_TIME"],
+      "18": ["NOURISHMENT", "FREE_TIME"],
+      "19": ["NOURISHMENT", "FREE_TIME"],
+      "20": ["NOURISHMENT", "FREE_TIME"],
+      "21": ["SLEEP", "FREE_TIME"],
+      "22": ["SLEEP", "FREE_TIME"],
+      "23": ["SLEEP"]
+    }
+  }
+]

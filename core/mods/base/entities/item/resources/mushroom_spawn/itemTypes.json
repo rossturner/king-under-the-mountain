@@ -1,0 +1,12 @@
+[{
+  "itemTypeName": "Ingredient-Mushroom-Spawn",
+  "itemGroup": "RESOURCE",
+  "materialTypes": ["SEED", "ROPE"],
+  "primaryMaterialType": "SEED",
+  "holdPosition": "RIGHT_HAND",
+  "stockpileGroupName": "Granary",
+  "hoursInInventoryUntilUnused": 3,
+  "maxStackSize": 50,
+  "maxHauledAtOnce": 15,
+  "equippedWhileWorkingOnJob": false
+}]

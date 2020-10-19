@@ -1,0 +1,99 @@
+[
+  {
+    "uniqueName": "mushroom-log-1x1EW-base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["INNOCULATION_LOG", "INNOCULATED_LOG"],
+    "furnitureLayoutName": "1x1EW with workspaces",
+    "validMaterialTypes": ["WOOD", "SEED"],
+    "tags": {},
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furniture-Log-EW02-Exterior.png",
+        "scale": 0.8,
+        "coloringLayer": "BRANCHES_COLOR",
+        "childAssets": [
+          {
+            "type": "FURNITURE_BELOW_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "mushroom-log-1x1EW-base-shocked",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["SHOCKED_LOG"],
+    "furnitureLayoutName": "1x1EW with workspaces",
+    "validMaterialTypes": ["WOOD", "SEED"],
+    "tags": {},
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furniture-Log-EW02-Exterior.png",
+        "scale": 0.8,
+        "coloringLayer": "BRANCHES_COLOR",
+        "childAssets": [
+          {
+            "type": "FURNITURE_BELOW_LAYER_1"
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": -16,
+              "y": 12
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_2",
+            "offsetPixels": {
+              "x": 16,
+              "y": 12
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "mushroom-log-1x1EW-underlayer",
+    "type": "FURNITURE_BELOW_LAYER_1",
+    "furnitureTypeNames": ["INNOCULATION_LOG", "INNOCULATED_LOG", "SHOCKED_LOG"],
+    "furnitureLayoutName": "1x1EW with workspaces",
+    "validMaterialTypes": ["WOOD", "SEED"],
+    "tags": {},
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Furniture-Log-EW-Interior.png",
+        "scale": 0.8,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 3.2
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "mushroom-log-1x1EW-shocked-detail",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["SHOCKED_LOG"],
+    "furnitureLayoutName": "1x1EW with workspaces",
+    "validMaterialTypes": ["WOOD", "SEED"],
+    "tags": {},
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-DetailEW.png",
+        "scale": 0.8,
+        "coloringLayer": "SEED_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 6
+        }
+      }
+    }
+  }
+]

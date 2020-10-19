@@ -1,0 +1,84 @@
+[
+  {
+    "uniqueName": "Mushroom-Cap01-Spots",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Purple Helmet", "Berserker", "Rociomycota"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Spots.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Mushroom-Cap02-Spots",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Purple Helmet", "Berserker", "Rociomycota"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Spots.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "Mushroom-Cap01-Stripes",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Death Cap", "Fist"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Stripes.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Mushroom-Cap02-Stripes",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Death Cap", "Fist"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Stripes.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "Mushroom-Cap01-Markings",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Miltonia", "Elfsbane"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Markings.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Mushroom-Cap02-Markings",
+    "type": "PLANT_FRUIT",
+    "speciesNames": ["Miltonia", "Elfsbane"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Markings.png",
+        "scale": 0.75,
+        "coloringLayer": "FRUIT_COLOR"
+      }
+    }
+  }
+]

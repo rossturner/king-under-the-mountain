@@ -1,0 +1,102 @@
+{
+  "Ingredient-Malt-Sack": {
+    "perSettler": 1
+  },
+  "Ingredient-Milled-Malt-Sack": {
+    "perSettler": 1
+  },
+
+  "Resource-Metal-Ingot": {
+    "fixedAmount": 400
+  },
+  "Resource-Planks": {
+    "fixedAmount": 160
+  },
+  "Resource-Stone-Block": {
+    "fixedAmount": 300
+  },
+  "Resource-Gem": {
+    "fixedAmount": 200
+  },
+  "Resource-Ore-Crushed": {
+    "fixedAmount": 400
+  },
+  "Resource-Crushed-Vitriol": {
+    "fixedAmount": 200
+  },
+  "Resource-Metal-Bloom": {
+    "fixedAmount": 20
+  },
+  "Resource-Metal-Plate": {
+    "fixedAmount": 12
+  },
+
+  "Fuel-Sack": {
+    "fixedAmount": 100
+  },
+  "Product-Millstone": {
+    "fixedAmount": 1
+  },
+  "Product-Barrel-Hoops": {
+    "fixedAmount": 12
+  },
+  "Product-Barrel-Staves": {
+    "fixedAmount": 15
+  },
+  "Product-Barrel": {
+    "perSettler": 0.5
+  },
+  "Product-Bucket": {
+    "perSettler": 0.2
+  },
+  "Product-Cauldron": {
+    "perSettler": 0.1
+  },
+  "Resource-Flour-Sack": {
+    "fixedAmount": 200
+  },
+  "Product-Bread-Dough": {
+    "fixedAmount": 30
+  },
+  "Product-Anvil": {
+    "fixedAmount": 1
+  },
+  "Product-Liquid-Tank": {
+    "fixedAmount": 1
+  },
+
+
+  "Tool-Axe": {
+    "perSettler": 0.15
+  },
+  "Tool-Fishing-Rod": {
+    "perSettler": 0.15
+  },
+  "Tool-Kitchen-Knife": {
+    "perSettler": 0.15
+  },
+  "Tool-Large-Hammer": {
+    "perSettler": 0.15
+  },
+  "Tool-Pickaxe": {
+    "perSettler": 0.15
+  },
+  "Tool-Plane": {
+    "perSettler": 0.15
+  },
+  "Tool-Rolling-Pin": {
+    "perSettler": 0.15
+  },
+  "Tool-Saw": {
+    "perSettler": 0.15
+  },
+  "Tool-Small-Hammer": {
+    "perSettler": 0.15
+  },
+  "Tool-Tongs": {
+    "perSettler": 0.15
+  },
+  "Tool-Chisel": {
+    "perSettler": 0.15
+  }
+}

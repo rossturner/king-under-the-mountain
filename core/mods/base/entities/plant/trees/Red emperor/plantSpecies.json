@@ -1,0 +1,90 @@
+[{
+  "speciesName": "Red emperor",
+  "materialName": "Red emperor",
+  "plantType": "TREE",
+  "maxGrowthSpeedVariance": 0.2,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "swatch": "red-emperor-branch-base-swatch.png"
+    },
+    "LEAF_COLOR": {
+      "swatch": "red-emperor-leaf-base-swatch.png"
+    }
+  },
+  "seasons": {
+    "SPRING": {
+      "colors": {
+        "LEAF_COLOR": {
+          "transitionSwatch": "red-emperor-spring-transition-swatch.png"
+        }
+      }
+    },
+    "AUTUMN": {
+      "colors": {
+        "LEAF_COLOR": {
+          "transitionSwatch": "red-emperor-autumn-transition-swatch.png"
+        }
+      }
+    },
+    "WINTER": {
+      "growth": false,
+      "colors": {
+        "LEAF_COLOR": {
+          "hidden": true
+        }
+      }
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Size 1",
+      "seasonsUntilComplete": 1,
+      "nextGrowthStage": 1,
+      "tileHeight": 1
+    },
+    {
+      "name": "Size 2",
+      "seasonsUntilComplete": 1,
+      "nextGrowthStage": 2,
+      "tileHeight": 2
+    },
+    {
+      "name": "Size 3",
+      "seasonsUntilComplete": 2,
+      "nextGrowthStage": 3,
+      "tileHeight": 3,
+      "onCompletion": [
+        "DISPERSE_SEEDS"
+      ],
+      "harvestType": "LOGGING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "materialName": "Red emperor",
+          "quantity": 2,
+          "itemSize": "SMALL",
+          "itemStyle": "STYLE_1"
+        }
+      ]
+    },
+    {
+      "name": "Size 4",
+      "seasonsUntilComplete": 3,
+      "nextGrowthStage": 3,
+      "tileHeight": 4,
+      "onCompletion": [
+        "DISPERSE_SEEDS"
+      ],
+      "harvestType": "LOGGING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "materialName": "Red emperor",
+          "quantity": 3,
+          "itemSize": "SMALL",
+          "itemStyle": "STYLE_1"
+        }
+      ]
+    }
+  ]
+}]

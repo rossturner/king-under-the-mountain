@@ -1,0 +1,309 @@
+[
+  {
+    "hintId": "welcome",
+    "i18nKeys": [
+      "HINT.WELCOME.INTRO",
+      "HINT.WELCOME.NEXT_STEPS"
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_camera",
+        "buttonTextI18nKey": "HINT.BUTTON.TUTORIAL"
+      },
+      {
+        "type": "DISABLE_TUTORIAL",
+        "buttonTextI18nKey": "HINT.BUTTON.HINTS_ONLY"
+      },
+      {
+        "type": "DISABLE_ALL_HINTS",
+        "buttonTextI18nKey": "HINT.BUTTON.DISABLE_ALL"
+      }
+    ],
+    "triggers": [
+      {
+        "triggerType": "ON_GAME_START"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_camera",
+    "i18nKeys": [
+      "TUTORIAL.CAMERA.A",
+      "TUTORIAL.CAMERA.B",
+      "TUTORIAL.CAMERA.C",
+      "TUTORIAL.CAMERA.D"
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_time",
+        "buttonTextI18nKey": "HINT.BUTTON.NEXT"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_time",
+    "i18nKeys": [
+      "TUTORIAL.TIME.A",
+      "TUTORIAL.TIME.B",
+      "TUTORIAL.TIME.C",
+      "TUTORIAL.TIME.D"
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_saving",
+        "buttonTextI18nKey": "HINT.BUTTON.NEXT"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_saving",
+    "i18nKeys": [
+      "TUTORIAL.SAVING.A",
+      "TUTORIAL.SAVING.B"
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_1",
+        "buttonTextI18nKey": "HINT.BUTTON.NEXT"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_1",
+    "i18nKeys": [
+      "TUTORIAL.1.A",
+      "TUTORIAL.1.B",
+      "TUTORIAL.1.C"
+    ],
+    "progressDescriptors": [
+      {
+        "type": "ROOM_TILES",
+        "targetTypeName": "FARM_PLOT",
+        "quantityRequired": 70
+      },
+      {
+        "type": "ROOMS",
+        "targetTypeName": "FARM_PLOT",
+        "quantityRequired": 4
+      }
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_2"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_2",
+    "i18nKeys": [
+      "TUTORIAL.2.A",
+      "TUTORIAL.2.B",
+      "TUTORIAL.2.C",
+      "TUTORIAL.2.D"
+    ],
+    "progressDescriptors": [
+      {
+        "type": "ROOM_TILES",
+        "targetTypeName": "STOCKPILE_GRANARY",
+        "quantityRequired": 10
+      },
+      {
+        "type": "ROOM_TILES",
+        "targetTypeName": "STOCKPILE_TOOLS",
+        "quantityRequired": 32
+      }
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_3"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_3",
+    "i18nKeys": [
+      "TUTORIAL.3.A",
+      "TUTORIAL.3.B"
+    ],
+    "progressDescriptors": [
+      {
+        "type": "FARM_PLOT_SELECTIONS",
+        "quantityRequired": 4
+      }
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_4"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_4",
+    "i18nKeys": [
+      "TUTORIAL.4.A",
+      "TUTORIAL.4.B",
+      "TUTORIAL.4.C"
+    ],
+    "progressDescriptors": [
+      {
+        "type": "PROFESSIONS_ASSIGNED",
+        "targetTypeName": "FARMER",
+        "quantityRequired": 3
+      }
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_5"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_5",
+    "i18nKeys": [
+      "TUTORIAL.5.A",
+      "TUTORIAL.5.B",
+      "TUTORIAL.5.C"
+    ],
+    "progressDescriptors": [
+      {
+        "type": "FURNITURE_CONSTRUCTED",
+        "targetTypeName": "WATER_BARREL",
+        "quantityRequired": 1
+      },
+      {
+        "type": "FURNITURE_CONSTRUCTED",
+        "targetTypeName": "KITCHEN_WORKTOP",
+        "quantityRequired": 1
+      },
+      {
+        "type": "FURNITURE_CONSTRUCTED",
+        "targetTypeName": "CHEFS_CAULDRON",
+        "quantityRequired": 1
+      },
+      {
+        "type": "ROOM_TILES",
+        "targetTypeName": "STOCKPILE_PANTRY",
+        "quantityRequired": 10
+      }
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_6"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_6",
+    "i18nKeys": [
+      "TUTORIAL.6.A",
+      "TUTORIAL.6.B"
+    ],
+    "progressDescriptors": [
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_7",
+        "buttonTextI18nKey": "HINT.BUTTON.NEXT"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_7",
+    "i18nKeys": [
+      "TUTORIAL.7.A",
+      "TUTORIAL.7.B"
+    ],
+    "progressDescriptors": [
+      {
+        "type": "ROOM_TILES",
+        "targetTypeName": "SAWMILL",
+        "quantityRequired": 6
+      },
+      {
+        "type": "ROOM_TILES",
+        "targetTypeName": "MASONRY_WORKSHOP",
+        "quantityRequired": 6
+      },
+      {
+        "type": "FURNITURE_CONSTRUCTED",
+        "targetTypeName": "WOODCUTTERS_BENCH",
+        "quantityRequired": 1
+      },
+      {
+        "type": "FURNITURE_CONSTRUCTED",
+        "targetTypeName": "STONEMASON_WORKBENCH",
+        "quantityRequired": 1
+      }
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_8"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_8",
+    "i18nKeys": [
+      "TUTORIAL.8.A",
+      "TUTORIAL.8.B",
+      "TUTORIAL.8.C"
+    ],
+    "progressDescriptors": [
+      {
+        "type": "ITEM_EXISTS",
+        "targetTypeName": "Resource-Logs",
+        "quantityRequired": 2
+      },
+      {
+        "type": "ITEM_EXISTS",
+        "targetTypeName": "Resource-Stone-Unrefined",
+        "quantityRequired": 2
+      },
+      {
+        "type": "ITEM_EXISTS",
+        "targetTypeName": "Resource-Planks",
+        "quantityRequired": 40
+      },
+      {
+        "type": "ITEM_EXISTS",
+        "targetTypeName": "Resource-Stone-Block",
+        "quantityRequired": 40
+      }
+    ],
+    "actions": [
+      {
+        "type": "SHOW_OTHER_HINT",
+        "relatedHintId": "tutorial_final"
+      }
+    ],
+    "dismissable": false
+  },
+  {
+    "hintId": "tutorial_final",
+    "i18nKeys": [
+      "TUTORIAL.FINAL.A"
+    ]
+  }
+]

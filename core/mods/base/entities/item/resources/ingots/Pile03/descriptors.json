@@ -1,0 +1,14 @@
+[{
+  "uniqueName": "Resource-Metal-Ingot-Pile03",
+  "type": "ITEM_BASE_LAYER",
+  "itemTypeName": "Resource-Metal-Ingot",
+  "itemPlacements": ["ON_GROUND"],
+  "minQuantity": 8,
+  "maxQuantity": 18,
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Resource-Metal-Ingot-Pile03.png",
+      "coloringLayer": "METAL_COLOR"
+    }
+  }
+}]

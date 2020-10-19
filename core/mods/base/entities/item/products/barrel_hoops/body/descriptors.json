@@ -1,0 +1,138 @@
+[
+  {
+    "uniqueName": "Product-Barrel-Hoops-Body-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": [
+      "Product-Barrel-Hoops"
+    ],
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 12,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Barrel hoops.png",
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Barrel-Hoops-Body-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": [
+      "Product-Barrel-Hoops"
+    ],
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 12,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Barrel hoops.png",
+        "scale": 0.8,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Barrel hoops.png",
+        "scale": 0.8,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Barrel hoops.png",
+        "scale": 0.8,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": -22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Barrel hoops.png",
+        "scale": 0.8,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Barrel hoops.png",
+        "scale": 0.8,
+        "coloringLayer": "METAL_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Barrel hoops.png",
+        "scale": 0.8,
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "uniqueName": "Tool-Large-Hammer-Handle-Being-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Large-Hammer",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Large-Hammer-Handle-Being-Carried-F.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -8,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 8,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Large-Hammer-Handle-Being-Carried-F34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 4,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -4,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Large-Hammer-Handle-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -4,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 4,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Tool-Large-Hammer-Handle-Being-Carried-B.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 5,
+          "y": 15
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Large-Hammer-Handle-Being-Carried-B.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Large-Hammer-Handle-Being-Carried-B.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Large-Hammer-Head-Being-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Large-Hammer",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Large-Hammer-Head-Being-Carried-F.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Large-Hammer-Head-Being-Carried-F34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Large-Hammer-Head-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP": {
+        "filename": "Tool-Large-Hammer-Head-Being-Carried-B.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Large-Hammer-Head-Being-Carried-B34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Large-Hammer-Head-Being-Carried-B34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Large-Hammer-Extras-Being-Carried",
+    "type": "BELOW_LAYER_1",
+    "itemTypeName": "Tool-Large-Hammer",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Large-Hammer-Extras-Being-Carried-F.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Large-Hammer-Extras-Being-Carried-F34.png"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Large-Hammer-Extras-Being-Carried-F34.png",
+        "flipX": true
+      },
+      "UP": {
+        "filename": "Tool-Large-Hammer-Extras-Being-Carried-B.png"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Large-Hammer-Extras-Being-Carried-B34.png"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Large-Hammer-Extras-Being-Carried-B34.png",
+        "flipX": true
+      }
+    }
+  }
+]

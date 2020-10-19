@@ -1,0 +1,212 @@
+[
+  {
+    "uniqueName": "Tool-Pickaxe-Handle-Being-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Pickaxe",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Pickaxe-Handle-Being-Carried-F.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -4,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 4,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Pickaxe-Handle-Being-Carried-F34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 10,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -10,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Pickaxe-Handle-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -10,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 10,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Tool-Pickaxe-Handle-Being-Carried-B.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 5,
+          "y": 20
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Pickaxe-Handle-Being-Carried-B34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 15,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Pickaxe-Handle-Being-Carried-B34.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -15,
+          "y": 10
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Pickaxe-Head-Being-Carried",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Pickaxe",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Pickaxe-Head-Being-Carried-F.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Pickaxe-Head-Being-Carried-F34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Pickaxe-Head-Being-Carried-F34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP": {
+        "filename": "Tool-Pickaxe-Head-Being-Carried-B.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Pickaxe-Head-Being-Carried-B34.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Pickaxe-Head-Being-Carried-B34.png",
+        "flipX": true,
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Pickaxe-Extras-Being-Carried",
+    "type": "BELOW_LAYER_1",
+    "itemTypeName": "Tool-Pickaxe",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Pickaxe-Extras-Being-Carried-F.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Pickaxe-Extras-Being-Carried-F34.png"
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Pickaxe-Extras-Being-Carried-F34.png",
+        "flipX": true
+      },
+      "UP": {
+        "filename": "Tool-Pickaxe-Extras-Being-Carried-B.png"
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Pickaxe-Extras-Being-Carried-B34.png"
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Pickaxe-Extras-Being-Carried-B34.png",
+        "flipX": true
+      }
+    }
+  }
+]

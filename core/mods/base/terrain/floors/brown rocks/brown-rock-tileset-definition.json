@@ -1,0 +1,12 @@
+{
+  "floorTypeName": "brown_rock",
+  "i18nKey": "FLOOR.BROWN_ROCK",
+  "materialType": "STONE",
+  "type": "floor",
+  "numSprites": 5,
+  "layer": 5,
+  "overlapType": {
+    "overlapName": "organic"
+  },
+  "useMaterialColor": false
+}

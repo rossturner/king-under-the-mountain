@@ -1,0 +1,42 @@
+[
+  {
+    "uniqueName": "Tool-Fishing-Rod-Handle-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Fishing-Rod",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Fishing-Rod-Handle-On-Ground.png",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Fishing-Rod-Line-On-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Fishing-Rod",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Fishing-Rod-Line-On-Ground.png",
+        "coloringLayer": "WOOD_COLOR"
+      }
+    }
+  }
+]

@@ -1,0 +1,12 @@
+[{
+  "uniqueName": "Tree-Maple-Size3-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Maple", "Nuytsia", "Red cedar", "Red emperor"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "maple_03_l.png",
+      "coloringLayer": "LEAF_COLOR"
+    }
+  }
+}]

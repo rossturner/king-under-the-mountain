@@ -1,0 +1,11 @@
+[{
+  "uniqueName": "Bush-B4-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Dragonfruit tree"],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "fruit_04_f.png",
+      "coloringLayer": "FRUIT_COLOR"
+    }
+  }
+}]

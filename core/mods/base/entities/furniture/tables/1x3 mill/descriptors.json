@@ -1,0 +1,82 @@
+[
+  {
+    "uniqueName": "mill-1x3-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FLOUR_MILL"],
+    "furnitureLayoutName": "1x3 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Mill 1x3 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 68
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": -60
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "mill-1x3-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FLOUR_MILL"],
+    "furnitureLayoutName": "1x3 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Mill 1x3 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -1,
+          "y": 2
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 6
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 68
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": -60
+            }
+          }
+        ]
+      }
+    }
+  }
+]

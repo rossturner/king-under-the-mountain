@@ -1,0 +1,28 @@
+[
+  {
+    "materialName": "Water",
+    "materialType": "LIQUID",
+    "quenchesThirst": true,
+    "colorCode": "#26e1ed"
+  },
+
+  {
+    "materialName": "Wort",
+    "materialType": "LIQUID",
+    "quenchesThirst": false,
+    "colorCode": "#8c4b25"
+  },
+  {
+    "materialName": "Hopped Wort",
+    "materialType": "LIQUID",
+    "quenchesThirst": false,
+    "colorCode": "#8f5e2e"
+  },
+  {
+    "materialName": "Beer",
+    "materialType": "LIQUID",
+    "alcoholic": true,
+    "quenchesThirst": true,
+    "colorCode": "#d9b04a"
+  }
+]

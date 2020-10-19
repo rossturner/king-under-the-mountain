@@ -1,0 +1,44 @@
+[{
+  "speciesName": "Elfsbane",
+  "plantType": "MUSHROOM",
+  "materialName": "Elfsbane Mushroom",
+  "maxGrowthSpeedVariance": 0.03,
+  "occurenceWeight": 0.4,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#f4f2bb"
+    },
+    "LEAF_COLOR": {
+      "swatch": "elfsbane-base-swatch.png"
+    },
+    "FRUIT_COLOR": {
+      "swatch": "elfsbane-markings-swatch.png"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Mushroom-Spawn",
+    "materialName": "Elfsbane Spawn",
+    "plantingSeasons": []
+  },
+  "seasons": {},
+  "growthStages": [
+    {
+      "name": "Eternal",
+      "tileHeight": 1,
+      "harvestType": "FORAGING",
+      "showFruit": true,
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Crate",
+          "materialName": "Elfsbane Mushroom",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Mushroom-Spawn",
+          "materialName": "Elfsbane Spawn",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

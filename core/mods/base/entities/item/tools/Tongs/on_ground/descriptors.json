@@ -1,0 +1,42 @@
+[
+  {
+    "uniqueName": "Tool-Tongs-Extra-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Tongs",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Tongs-Extra-On-Ground.png",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Tongs-Body-On-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Tongs",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Tongs-Body-On-Ground.png",
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  }
+]

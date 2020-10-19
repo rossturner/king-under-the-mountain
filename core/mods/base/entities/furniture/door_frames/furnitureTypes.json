@@ -1,0 +1,30 @@
+[
+  {
+    "name": "SINGLE_DOOR_FRAME",
+    "i18nKey": "FURNITURE.SINGLE_DOOR_FRAME",
+    "categoryName": "DOOR_FRAME",
+    "defaultLayoutName": "1x1EW",
+    "colorCode": "#be926e",
+    "iconName": "wooden-door",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 1
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 1
+        }
+      ],
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 2
+        }
+      ]
+    }
+  }
+]

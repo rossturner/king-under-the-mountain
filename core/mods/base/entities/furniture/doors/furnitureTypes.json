@@ -1,0 +1,58 @@
+[
+  {
+    "name": "SINGLE_DOOR",
+    "i18nKey": "FURNITURE.SINGLE_DOOR",
+    "categoryName": "DOOR",
+    "defaultLayoutName": "1x1EW",
+    "colorCode": "#be926e",
+    "iconName": "wooden-door",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ],
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 8
+        }
+      ]
+    }
+  },
+  {
+    "name": "SINGLE_DOOR_PLACEMENT",
+    "i18nKey": "FURNITURE.SINGLE_DOOR",
+    "categoryName": "DOOR_PLACEMENT",
+    "defaultLayoutName": "1x1EW",
+    "colorCode": "#be926e",
+    "iconName": "wooden-door",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ],
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 8
+        }
+      ]
+    }
+  }
+]

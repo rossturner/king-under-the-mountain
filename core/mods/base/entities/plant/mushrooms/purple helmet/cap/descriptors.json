@@ -1,0 +1,147 @@
+[
+  {
+    "uniqueName": "Spots-Cap01",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Purple Helmet", "Berserker", "Rociomycota"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR",
+        "childAssets": [
+          {
+            "type": "PLANT_FRUIT",
+            "specificAssetName": "Mushroom-Cap01-Spots"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Spots-Cap02",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Purple Helmet", "Berserker", "Rociomycota"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR",
+        "childAssets": [
+          {
+            "type": "PLANT_FRUIT",
+            "specificAssetName": "Mushroom-Cap02-Spots"
+          }
+        ]
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "Stripes-Cap01",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Death Cap", "Fist", "Sunglow", "Glow"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR",
+        "childAssets": [
+          {
+            "type": "PLANT_FRUIT",
+            "specificAssetName": "Mushroom-Cap01-Stripes"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Stripes-Cap02",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Death Cap", "Fist", "Sunglow", "Glow"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR",
+        "childAssets": [
+          {
+            "type": "PLANT_FRUIT",
+            "specificAssetName": "Mushroom-Cap02-Stripes"
+          }
+        ]
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "Markings-Cap01",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Miltonia", "Elfsbane"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR",
+        "childAssets": [
+          {
+            "type": "PLANT_FRUIT",
+            "specificAssetName": "Mushroom-Cap01-Markings"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Markings-Cap02",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Miltonia", "Elfsbane"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR",
+        "childAssets": [
+          {
+            "type": "PLANT_FRUIT",
+            "specificAssetName": "Mushroom-Cap02-Markings"
+          }
+        ]
+      }
+    }
+  },
+
+  {
+    "uniqueName": "No-Markings-Cap01",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Syrup Powder"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap01-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "No-Markings-Cap02",
+    "type": "PLANT_LEAVES",
+    "speciesNames": ["Syrup Powder"],
+    "growthStages": [0],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Farmable-Mushroom-Cap02-Base.png",
+        "scale": 0.75,
+        "coloringLayer": "LEAF_COLOR"
+      }
+    }
+  }
+]

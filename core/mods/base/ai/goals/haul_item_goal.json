@@ -1,0 +1,26 @@
+{
+  "name": "Haul item goal",
+  "i18nDescription": "GOAL.HAULING.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["GoToLocation", "PickUpEntity"],
+  "actionRelationships": {
+    "GoToLocation": {
+      "pass": ["PlaceEntity"],
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "PickUpEntity": {
+      "pass": ["GoToLocation"],
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "PlaceEntity": {
+      "pass": ["JobCompleted"],
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "CancelHaulingAllocation": {
+      "pass": ["UnassignJob"],
+      "fail": ["UnassignJob"]
+    },
+    "JobCompleted": {},
+    "UnassignJob": {}
+  }
+}

@@ -1,0 +1,90 @@
+[{
+  "speciesName": "Hops",
+  "plantType": "CROP",
+  "materialName": "Plant",
+  "maxGrowthSpeedVariance": 0.01,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#9f803c"
+    },
+    "LEAF_COLOR": {
+      "swatch": "hops-leaf-swatch.png"
+    },
+    "FRUIT_COLOR": {
+      "colorCode": "#9dd248"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Seeds",
+    "materialName": "Hops Seed",
+    "plantingSeasons": [
+      "SPRING"
+    ]
+  },
+  "seasons": {
+    "WINTER": {
+      "growth": false,
+      "switchToGrowthStage": 0
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Bare",
+      "nextGrowthStage": 1,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Stage 1",
+      "nextGrowthStage": 2,
+      "seasonsUntilComplete": 0.3,
+      "tileHeight": 1
+    },
+    {
+      "name": "Stage 2",
+      "nextGrowthStage": 3,
+      "seasonsUntilComplete": 0.5,
+      "tileHeight": 1
+    },
+    {
+      "name": "Stage 3",
+      "nextGrowthStage": 4,
+      "seasonsUntilComplete": 0.5,
+      "tileHeight": 1
+    },
+    {
+      "name": "Stage 4",
+      "nextGrowthStage": 5,
+      "seasonsUntilComplete": 0.3,
+      "showFruit": true,
+      "tileHeight": 1
+    },
+    {
+      "name": "Stage 5",
+      "nextGrowthStage": 6,
+      "seasonsUntilComplete": 0.4,
+      "showFruit": true,
+      "tileHeight": 1
+    },
+    {
+      "name": "Ready",
+      "nextGrowthStage": 0,
+      "seasonsUntilComplete": 2,
+      "showFruit": true,
+      "tileHeight": 1,
+      "harvestType": "FARMING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Ingredient-Vegetable-Sack",
+          "materialName": "Hops",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Ingredient-Seeds",
+          "materialName": "Hops Seed",
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}]

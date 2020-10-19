@@ -1,0 +1,102 @@
+[{
+  "speciesName": "Wheat",
+  "plantType": "CROP",
+  "materialName": "Plant",
+  "maxGrowthSpeedVariance": 0.02,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#FFFFFF"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Seeds",
+    "materialName": "Wheat Seed",
+    "plantingSeasons": [
+      "SPRING",
+      "AUTUMN"
+    ]
+  },
+  "seasons": {
+    "WINTER": {
+      "growth": false
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Seeds",
+      "nextGrowthStage": 1,
+      "seasonsUntilComplete": 0.2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Shoots",
+      "nextGrowthStage": 2,
+      "seasonsUntilComplete": 0.5,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "colorCode": "#a7c337"
+        }
+      }
+    },
+    {
+      "name": "Mid-growth",
+      "nextGrowthStage": 3,
+      "seasonsUntilComplete": 0.7,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "transitionSwatch": "wheat-mid-transition-swatch.png"
+        }
+      }
+    },
+    {
+      "name": "Nearly-grown",
+      "nextGrowthStage": 4,
+      "seasonsUntilComplete": 0.5,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "transitionSwatch": "wheat-late-transition-swatch.png"
+        }
+      }
+    },
+    {
+      "name": "Fully-grown",
+      "nextGrowthStage": 5,
+      "seasonsUntilComplete": 0.7,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "colorCode": "#ffe010"
+        }
+      },
+      "harvestType": "FARMING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Wheat-Sack",
+          "materialName": "Wheat",
+          "quantity": 3
+        },
+        {
+          "itemTypeName": "Ingredient-Seeds",
+          "materialName": "Wheat Seed",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "name": "Decaying",
+      "seasonsUntilComplete": 0.15,
+      "tileHeight": 1,
+      "onCompletion": [
+        "DESTROY_PLANT"
+      ],
+      "colors": {
+        "BRANCHES_COLOR": {
+          "transitionSwatch": "wheat-decay-transition-swatch.png"
+        }
+      }
+    }
+  ]
+}]

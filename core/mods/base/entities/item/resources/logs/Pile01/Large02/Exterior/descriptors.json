@@ -1,0 +1,54 @@
+[
+  {
+    "uniqueName": "Resource-Logs-Large02-Pile01-Exterior",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Resource-Logs"],
+    "itemSize": "LARGE",
+    "itemStyle": "STYLE_2",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Resource-Logs-Large02-Pile01-Exterior.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1",
+            "specificAssetName": "Resource-Logs-Large-Pile01-Interior",
+            "offsetPixels": {
+              "x": 0,
+              "y": -17
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Resource-Mushroom-Logs-Pile01-Exterior",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Resource-Mushroom-Log","Resource-Shocked-Mushroom-Log"],
+    "itemSize": "AVERAGE",
+    "itemStyle": "DEFAULT",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Resource-Logs-Large02-Pile01-Exterior.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1",
+            "specificAssetName": "Resource-Mushroom-Logs-Pile01-Interior",
+            "offsetPixels": {
+              "x": 0,
+              "y": -17
+            }
+          }
+        ]
+      }
+    }
+  }
+]

@@ -1,0 +1,61 @@
+[
+  {
+    "uniqueName": "Tool-Large-Hammer-Head-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Large-Hammer",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Large-Hammer-Head-On-Ground.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          },
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Large-Hammer-Handle-On-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Large-Hammer",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Large-Hammer-Handle-On-Ground.png",
+        "coloringLayer": "WOOD_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Large-Hammer-Extras-On-Ground",
+    "type": "BELOW_LAYER_1",
+    "itemTypeName": "Tool-Large-Hammer",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Large-Hammer-Extras-On-Ground.png"
+      }
+    }
+  }
+]

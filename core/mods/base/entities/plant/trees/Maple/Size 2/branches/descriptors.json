@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Tree-Maple-Size2-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Maple", "Nuytsia", "Red cedar", "Red emperor"],
+  "growthStages": [1],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "maple_02_t.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": -2,
+        "y": 37
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": -2,
+            "y": 13
+          }
+        }
+      ]
+    }
+  }
+}]

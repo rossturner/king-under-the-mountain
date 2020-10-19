@@ -1,0 +1,12 @@
+{
+  "floorTypeName": "clay_soil",
+  "i18nKey": "FLOOR.CLAY_SOIL",
+  "materialType": "OTHER",
+  "type": "floor",
+  "numSprites": 5,
+  "layer": 4,
+  "overlapType": {
+    "overlapName": "organic"
+  },
+  "useMaterialColor": false
+}

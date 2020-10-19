@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Hops-Medium-Leaves",
+  "type": "PLANT_LEAVES",
+  "speciesNames": ["Hops"],
+  "growthStages": [2],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_hops_med_leaves.png",
+      "coloringLayer": "LEAF_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

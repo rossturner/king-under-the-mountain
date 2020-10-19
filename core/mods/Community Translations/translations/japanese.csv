@@ -1,0 +1,934 @@
+KEY,NOTES,ENGLISH,JAPANESE
+
+ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},{{targetPlant}} をクリアしています
+ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},{{targetDescription}} を生成しています
+ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},{{targetDescription}} を削除しています
+ACTION.JOB.DIGGING,,Digging {{targetDescription}},{{targetDescription}} を掘っています
+ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},{{targetDescription}}を埋めています
+ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},{{targetPlant}}を収穫しています
+ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,キノコの胞子を注入
+ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},{{profession.verb}} {{targetPlant}}
+ACTION.JOB.PLANTING,,Planting {{requiredItem}},{{必須アイテム}} を植える
+ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},{{targetPlant}} から害虫を取り除く
+ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},シャベルで掘る {{targetDescription}}
+ACTION.JOB.TILLING,,Tilling the earth,地球のティリング
+ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},充填 {{targetDescription}}
+ACTION.PREPARATION.VERB,,Preparing,準備中
+ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,やるべき仕事を探しています
+ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},{{containerDescription}} でスリープ中
+ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},{{tileDescription}} でスリープ中
+
+CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{furnitureType.noun}} の構築
+CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,{{quantity}} 件中 {{itemDescription}} 件が割り当てられました
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,他のアイテムを削除
+CONSTRUCTION.STATUS.CLEARING_WORK_SITE.TOOLTIP,,There are items that need to be removed from this furniture’s construction area before it can progress.,進行する前に、この家具の建設エリアから取り外す必要があるアイテムがあります。
+CONSTRUCTION.STATUS.SELECTING_MATERIALS,E.g. “Waiting for more wooden planks to be available”,Waiting for more {{materialType}} {{itemDescription.plural}} to be available,より多くの {{MaterialType}} {{itemDescription.plural}} が利用可能になるのを待っています
+CONSTRUCTION.STATUS.WAITING_FOR_COMPLETION,This is displayed once all resources are in place and the construction is being worked on,Under construction,建設中
+CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction is waiting for resource items to be placed in the build area,Waiting for resources to arrive,リソースが到着するのを待っています
+
+COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{{materialDescription}}のパン
+COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} と {{materialTwo}}
+COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,{{materialDescription}}のスープ
+
+CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,害虫に苦められている
+CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,この作物は、それが再び繁栄する前に {{PROFESSION.FARMER}} によって除去する必要があるアブラムシや他の昆虫の過剰な数によって苦しんでいます。 時間内に害虫を除去しないことは、この作物が死ぬことを意味する可能性があります!
+CROP.DESCRIPTION,,{{materialType.noun}} plant,{{materialType.noun}} 名詞
+CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,収穫に向けた進捗状況:{{progress}}%
+
+DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,落下残骸
+DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,脱水
+DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,疲労します
+DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,食中毒
+DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,飢餓
+DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,神秘的な状況
+
+EARTH.DIRT,,Dirt,土
+EARTH.GRASS,,Grass,草
+
+FLOOR.COBBLESTONE,,Cobblestone,石畳
+FLOOR.DESCRIPTION,,{{floorType.noun}},{{floorType.noun}}
+FLOOR.DIRT,,Dirt,土
+FLOOR.GRASS,,Grass,草
+FLOOR.GRAVEL,,Gravel,砂利
+FLOOR.RIVER,,River,川
+FLOOR.ROUGH_STONE,,Rough stone floor,粗い石造りの床
+FLOOR.STONE_SLAB,,Stone slab,石造りスラブ
+FLOOR.TILLED_EARTH,,Tilled earth,耕地
+FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,未踏だ
+
+FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,ロックブレッド
+FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,これはとても硬く、実質的に食べられない悪名高いタフなパンで、カビに変わるのに非常に長い時間がかかります。 人間の探検家J.A.モファットは、かつてそれを食べて「沼から浚渫された砂利を噛むのに似ている」と説明しました。 幸いなことに、ほとんどのドワーフは気にしないようです。
+FOODSTUFF.WHEAT-BREAD,"Actually just to describe “wheat” as a foodstuff, not specifically bread",Wheat,小麦
+
+FUEL.SACK,,Fuel,燃料
+FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}.",燃料は、{{FURNITURE.BLOOMERY_FURNACE}} と {{FURNITURE.FORGE}} の両方によって金属の製造に必要とされる。
+
+FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,パン屋の作業台
+FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,{{PROFESSION.CHEF}} は {{RESOURCE.FLOUR.SACK.PLURAL}} を {{INGREDIENT.DOUGH}} に変えるためにここで働いています。
+FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,パン屋のオーブン
+FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,{{PROFESSION.CHEF}} は、準備された {{INGREDIENT.DOUGH}} を使ってここのパンを焼きます。
+FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,ブルマリー
+FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,{{プロフェッショナル.ブラックスミス}} はこの手作業で操作する炉を使用して {{リソース.鉱石.くじ.多型}} と {{燃料.サック} を {材質.金属.調整可能} {リソース.金属.金属.多型} に変わります。
+FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,大工ワークベンチ
+FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.",{{PRODUCT.BUCKET.PLURAL}} や {{PRODUCT.BARREL.PLURAL} など、ほとんどの木製アイテムや道具がここで生産されています。
+FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,大釜だ
+FURNITURE.CAULDRON.TOOLTIP,,A cauldron is used to serve a large quantity of soup to hungry settlers. The soup is produced in a {{ROOMS.KITCHEN}} before being moved to a {{ROOMS.FEASTING_HALL}} for serving.,大釜は、空腹の入植者に大量のスープを提供するために使用されます。 スープは、{{ルームズ.キッチン}} で生産され、{{ルームズ.フィアスティングホール}} に移されます。
+FURNITURE.CHAIR,,Chair,椅子
+FURNITURE.CHARCOAL_CLAMP,,Charcoal clamp,チャコールクランプ
+FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} covered with {{MATERIAL_TYPE.EARTH}} and slowly burned to produce {{ORE.CHARCOAL.NOUN}}, which can then be used as {{FUEL.SACK}}.",これは {{材質タイプ.地面}} で覆われた {{リソース.LOGS.PLURAL}} の山で、{{天然石炭.NOUN} を生産するためにゆっくりと燃やされ、{{燃料.SACK} として使用することができます。
+FURNITURE.COKE_OVEN,,Coke oven,コーラオーブン
+FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,コークスオーブンは、{{{炭酸塩コークス}} を {{核酸コークス}} に変換し、{{FUEL.SACK} として使用できるようにします。
+FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{furnitureType.noun}}} {{materialType.adjective}}
+FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,進捗状況から完了まで:{{progress}}%
+FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,innoculation を完了するための進行状況:{{progress}}%
+FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,ショックキノコログへの進行状況:{{progress}}%
+FURNITURE.DESCRIPTION.WAITING_FOR_ITEM,,Waiting for {{itemType.noun}},{{商品種別.名詞}} を待機しています
+FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,充填されるのを待っています
+FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,キノコの産卵を注入するのを待っています
+FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,ごちそう
+FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.",{{FURNITURE.CHAIR}} を配置すると、入植者はこのテーブルで食事を楽しむことができます。
+FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,グリストミル
+FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,このグリスミルは {{野菜.小麦}} を {{リソース.フローアー.サック.ノウン}} に粉砕し、{{PROFESSION.CHEF}} が使用できるようにします。
+FURNITURE.FORGE,,Forge,鍛冶だ
+FURNITURE.FORGE.TOOLTIP,,This is where a {{PROFESSION.BLACKSMITH}} works with {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} and {{FUEL.SACK}} to craft items and weapons.,これは、{{プロフェッショナル.ブラックスミス}} が {{材質タイプ.金属.調整式}} {{リソース.金属.インゴット.多型} および {燃料.サック} と連動し、アイテムや武器をクラフトします。
+FURNITURE.GRAVE,,Grave,墓だ
+FURNITURE.GRAVE.TOOLTIP,,A hastily-dug grave for deceased settlers that can only be placed in {{MATERIAL_TYPE.EARTH}}.,死亡した入植者のための急いで掘られた墓で、{{MATERIAL_TYPE.EARTH}} にのみ置くことができます。
+FURNITURE.KITCHEN_WORKTOP,Simple piece of furniture in a kitchen used to hold ingredients on top of it,Kitchen worktop,キッチンワークトップ
+FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSION.CHEF}} to cook soup.,スープを作るために {{PROFESSION.CHEF}} の食材を貯蔵するエリア。
+FURNITURE.LANTERN,,Lantern,ランタン
+FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,ランタンは光を提供します。これは現在、ゲーム内の効果はありません。
+FURNITURE.LARGE_TABLE,,Large table,大きなテーブル
+FURNITURE.MUSHROOM_LOG,,Mushroom log,マッシュルームログ
+FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.",おいしいジューシーなキノコのいくつかの収穫を生産するために {{成分.キノコ.スポーン.PLURAL}} を注入されたログ。
+FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,ショックタンク
+FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to “shock” the mushroom colony and encourage it to grow mushrooms.",接種後、このタンクに {{FURNITURE.MUSHROOM_LOG}} を置き、キノコのコロニーを「衝撃」させ、キノコ栽培を促します。
+FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,鉱石破砕駅
+FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,生の {{リソース.ORE.REFINED.PLURAL}} は、{{FURNITURE.BLOOMERY_FURNACE} で使用できるように、より実行可能なサイズに粉砕されます。
+FURNITURE.PILLAR,A pillar used to support a roof,Pillar,柱
+FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas from collapsing. An area of 7x7 tiles that have been mined without any pillars or other supports in place will eventually collapse.,大きな掘り出し出しエリアが崩壊するのを止めるには、柱が必要です。 柱やその他の支柱なしで採掘された7x7タイルの面積は、最終的に崩壊するでしょう。
+FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,石棺だ
+FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,この精巧な石容器は、故人の入植者の最後の休息地です。
+FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,サービングテーブル
+FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.,{{{製品.パン.ローフ.多数}} は、{{食品.パン.ローフ.多数}} で焼いた後に提供するためにここに置かれます。
+FURNITURE.SINGLE_BED,,Bed,ベッドです
+FURNITURE.SINGLE_BED.TOOLTIP,,"A bed is the best place for a comfortable night’s rest. ",ベッドは快適な夜の休息に最適な場所です。
+FURNITURE.SINGLE_DOOR,,Door,ドア
+FURNITURE.SINGLE_DOOR_FRAME,,Door frame,ドアフレーム
+FURNITURE.SMALL_TABLE,,Small table,小さなテーブル
+FURNITURE.STONEMASON_WORKBENCH,,Stonemason workbench,ストーンメイソンワークベンチ
+FURNITURE.STONEMASON_WORKBENCH.TOOLTIP,,A {{PROFESSION.STONEMASON}} works here with {{MATERIAL_TYPE.STONE.ADJECTIVE}} resources.,{{プロフェッショナル.ストーンメイソン}} は、{{マテリアル_タイプ.ストーン.調整可能}} のリソースで動作します。
+FURNITURE.STOOL,,Stool,スツール
+FURNITURE.WATER_BARREL,,Water barrel,水バレル
+FURNITURE.WATER_BARREL.TOOLTIP,,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.",水筒は、川のような天然の水源を見つけるのではなく、あなたの入植者が喉の渇きを飲むための場所です。
+FURNITURE.WOODCUTTERS_BENCH,,Woodcutting bench,木材カッティングベンチ
+FURNITURE.WOODCUTTERS_BENCH.TOOLTIP,,A {{PROFESSION.WOODCUTTER}} works here to turn {{RESOURCE.LOGS.PLURAL}} into {{RESOURCE.PLANKS.PLURAL}}.,{{プロフェッショナル.ウッドカッター}} は {{リソース.LOGS.PLURAL}} を {リソース.PLANKS.PLURAL} に変えるためにここで働きます。
+
+GEM.AMETHYST.ADJECTIVE,,Amethyst,アメジスト
+GEM.AMETHYST.NOUN,,Amethyst,アメジスト
+GEM.AMETHYST.TOOLTIP,,A violet-hued variety of quartz. Ancient humans believed it could magically protect them from becoming too drunk. For this reason it is not very popular in dwarven culture.,紫色の色の様々な石英。 古代の人間は、それが魔法のように酔ってからそれらを守ることができると信じていました。 このため、ドワーフ文化ではあまり人気がありません。
+GEM.AMMOLITE.ADJECTIVE,,Ammolite,アンモライト
+GEM.AMMOLITE.NOUN,,Ammolite,アンモライト
+GEM.AMMOLITE.TOOLTIP,,An opal-like gemstone which has a red to green iridescence. It is known as the “hunting stone” and amulets made from it are meant to bring good luck to a hunt.,赤から緑の虹色のオパールのような宝石。 それは「狩猟石」として知られており、そこから作られたお守りは、狩りに幸運をもたらすためのものです。
+GEM.AQUAMARINE.ADJECTIVE,,Aquamarine,アクアマリン
+GEM.AQUAMARINE.NOUN,,Aquamarine,アクアマリン
+GEM.AQUAMARINE.TOOLTIP,,A cyan-coloured variety of beryl. Some humans believe it offers magical protection against the dangers of the seas. This is because an ancient mage used a combination of sky and ice magic to protect trading ships during the age of darkness.,シアン色のベリル。 一部の人間は、それが海の危険に対する魔法の保護を提供すると信じています。 これは、古代の魔道師が闇の時代に貿易船を保護するために空と氷の魔法を組み合わせて使用したためです。
+GEM.BIXBITE.ADJECTIVE,,Bixbite,ビックスバイト
+GEM.BIXBITE.NOUN,,Bixbite,ビックスバイト
+GEM.BIXBITE.TOOLTIP,,"Also known as red beryl, it is a very rare gemstone. It is often confused for a red-coloured emerald.",赤ベリルとも呼ばれ、非常に希少な宝石です。 赤色のエメラルドと混同されることが多い。
+GEM.CINNABAR.ADJECTIVE,,Cinnabar,シナバー
+GEM.CINNABAR.NOUN,,Cinnabar,シナバー
+GEM.CINNABAR.TOOLTIP,,An ore of mercury which is often used in jewellery due to its deep-red hue. It is also used to produce the dye known as vermillion.,水銀の鉱石で、ディープレッドの色合いの宝飾品によく使われます。 また、朱色と呼ばれる染料を製造するために使用されます。
+GEM.CITRINE.ADJECTIVE,,Citrine,シトリン
+GEM.CITRINE.NOUN,,Citrine,シトリン
+GEM.CITRINE.TOOLTIP,,"A yellowish variety of quartz. It is the gemstone most similar in colour to gold, so most dwarves think citrine is lucky.",黄色がかった様々な石英。 宝石は金と最も似ているので、ほとんどのドワーフはシトリンが幸運だと思っています。
+GEM.DIAMOND.ADJECTIVE,,Diamond,ダイアモンド
+GEM.DIAMOND.NOUN,,Diamond,ダイアモンド
+GEM.DIAMOND.TOOLTIP,,The hardest known material and one of the most important of the seven heavenly stones. Diamonds are the most condensed form of the neutral element known as “spirit” or “aether”.,最も難しい既知の材料と7つの天の石の中で最も重要なものの一つ。 ダイヤモンドは、「精神」または「エーテル」と呼ばれる中性元素の最も凝縮された形態です。
+GEM.EMERALD.ADJECTIVE,,Emerald,エメラルド
+GEM.EMERALD.NOUN,,Emerald,エメラルド
+GEM.EMERALD.TOOLTIP,,A vibrant green variety of beryl. It is thought that engraving on an emerald brings great misfortune. Emeralds are closely related to elemental life and associated magic.,鮮やかな緑のベリル。 エメラルドの彫刻は大きな不幸をもたらすと考えられています。 エメラルドは、元素の生命と関連する魔法と密接に関連しています。
+GEM.GARNET.ADJECTIVE,,Garnet,ガーネット
+GEM.GARNET.NOUN,,Garnet,ガーネット
+GEM.GARNET.TOOLTIP,,"Garnets cover a variety of minerals used as gemstones, all with a deep red colour. Some garnet gems are actually a condensed form of elemental fire.",ガーネットは、宝石として使用される様々なミネラルをカバーし、すべて深い赤色です。 いくつかのガーネットの宝石は、実際には元素の火の凝縮形です。
+GEM.JADE.ADJECTIVE,,Jade,ジェイド
+GEM.JADE.NOUN,,Jade,ジェイド
+GEM.JADE.TOOLTIP,,"A mineral with a light-green colour often used for decoration. Also, elves have been known to use jade to produce medicine which can cure ailments of the gut.",多くの場合、装飾のために使用される明るい緑色の鉱物。 また、エルフはヒスイを使って腸の病気を治すことができる薬を作ることも知られています。
+GEM.JASPER.ADJECTIVE,,Jasper,ジャスパー
+GEM.JASPER.NOUN,,Jasper,ジャスパー
+GEM.JASPER.TOOLTIP,,"An impure variety of silica which can occur in several colours, but most commonly red. Jasper is favoured as a decoration material by orcs due to its variety.",シリカの不純な品種で、いくつかの色がありますが、最も一般的に赤色です。 ジャスパーは、その多様性のためにオークによって装飾材料として好まれている。
+GEM.LABRADORITE.ADJECTIVE,,Labradorite,ラブラドライト
+GEM.LABRADORITE.NOUN,,Labradorite,ラブラドライト
+GEM.LABRADORITE.TOOLTIP,,A rock which shines with a typically light-blue iridescence. Rarer specimens can reflect a wide range of colours.,典型的には淡い青色の虹色に輝く岩。 まれな標本は、幅広い色を反映することができます。
+GEM.LAPIS.ADJECTIVE,,Lapis lazuli,ラピスラズリ
+GEM.LAPIS.NOUN,,Lapis lazuli,ラピスラズリ
+GEM.LAPIS.TOOLTIP,,A rock with a brilliant deep blue hue which is used as a precious stone.,貴石として使用される華麗な深みのある青色の岩石。
+GEM.MAGNESITE.ADJECTIVE,,Magnesite,マグネサイト
+GEM.MAGNESITE.NOUN,,Magnesite,マグネサイト
+GEM.MAGNESITE.TOOLTIP,,A mineral which can be polished into beads for use in jewellery. These beads can by dyed into many different colours.,ジュエリーに使用するためにビーズに磨くことができる鉱物。 これらのビーズは、多くの異なる色に染色することができます。
+GEM.MOONSTONE.ADJECTIVE,,Moonstone,ムーンストーン
+GEM.MOONSTONE.NOUN,,Moonstone,ムーンストーン
+GEM.MOONSTONE.TOOLTIP,,"Thought to be formed by moonlight captured in rock, which makes this gemstone a favourite of the elves.",岩に捕らえられた月光によって形成されると思われます。この宝石はエルフのお気に入りです。
+GEM.MORGANITE.ADJECTIVE,,Morganite,モルガナイト
+GEM.MORGANITE.NOUN,,Morganite,モルガナイト
+GEM.MORGANITE.TOOLTIP,,A rose-coloured variety of beryl. It was named after being popularised by a particularly wealthy merchant in the age of myth.,バラ色のベリル。 それは神話の時代に特に裕福な商人によって普及されたことにちなんで命名されました。
+GEM.OPAL.ADJECTIVE,,Opal,オパール
+GEM.OPAL.NOUN,,Opal,オパール
+GEM.OPAL.TOOLTIP,,"A form of silica infused with the magic of the oceans, which makes this a favourite of sailors and fishermen.",この船員や漁師のお気に入りになり、海洋の魔法を注入シリカの形態。
+GEM.PAINITE.ADJECTIVE,,Painite,ペニテ
+GEM.PAINITE.NOUN,,Painite,ペニテ
+GEM.PAINITE.TOOLTIP,,A very rare gemstone which is often identified as an off-colour sapphire. The crystals are naturally hexagonal in shape and a favourite of tacticians.,非常に希少な宝石で、しばしばオフカラーのサファイアとして識別されます。 結晶は自然に六角形で、戦術家の好評です。
+GEM.RHODOCHROSITE.ADJECTIVE,,Rhodochrosite,ロードクロサイト
+GEM.RHODOCHROSITE.NOUN,,Rhodochrosite,ロードクロサイト
+GEM.RHODOCHROSITE.TOOLTIP,,Found in varying shades of red to pink. It is not as hard as most gemstones making it a poor choice for rings and other high-impact jewellery.,赤からピンクのさまざまな色合いで見つかりました。 ほとんどの宝石ほど難しいことではなく、リングやその他のインパクトのあるジュエリーには貧弱な選択肢です。
+GEM.ROCK_CRYSTAL.ADJECTIVE,,Rock crystal,水晶体
+GEM.ROCK_CRYSTAL.NOUN,,Rock crystal,水晶体
+GEM.ROCK_CRYSTAL.TOOLTIP,,The purest form of quartz. Rock crystals often feature in magical artifacts as they are a condensed form of the element of ice.,最も純粋な形の石英。 岩の結晶は、氷の要素の凝縮した形であるため、しばしば魔法のアーティファクトで特徴付けられます。
+GEM.RUBY.ADJECTIVE,,Ruby,ルビー
+GEM.RUBY.NOUN,,Ruby,ルビー
+GEM.RUBY.TOOLTIP,,"One of the seven heavenly stones, rubies are the element of fire condensed into a solid form.",7つの天石の1つ、ルビーは固体の形に凝縮された火災の要素です。
+GEM.SAPPHIRE.ADJECTIVE,,Sapphire,サファイア
+GEM.SAPPHIRE.NOUN,,Sapphire,サファイア
+GEM.SAPPHIRE.TOOLTIP,,"Often believed to protect the wearer from the attention of daemons, sapphires are much sought-after by mages for use in sky and air-based magic.",多くの場合、サファイアは、魔術師が空や空気ベースの魔法で使用するために多くの求められているデーモンからの注意から着用者を守ると考えられています。
+GEM.SPINEL.ADJECTIVE,,Spinel,スピネル
+GEM.SPINEL.NOUN,,Spinel,スピネル
+GEM.SPINEL.TOOLTIP,,"Often confused with heavenly stones like true rubies and sapphires, spinels are a lesser form of magic-infused gem which can be associated with any of the elements, depending on colour.",多くの場合、真のルビーやサファイアのような天の石と混同され、スピネルは色によって要素のいずれかに関連付けることができる魔法注入された宝石の小さな形です。
+GEM.TANZANITE.ADJECTIVE,,Tanzanite,タンザナイト
+GEM.TANZANITE.NOUN,,Tanzanite,タンザナイト
+GEM.TANZANITE.TOOLTIP,,A rare gemstone that can alternate between blue and violet. It is thought to be formed from the material body of a dead god.,青と紫が交互に変化する希少な宝石。 死神の物体から形成されると考えられている。
+GEM.TOPAZ.ADJECTIVE,,Topaz,トパーズ
+GEM.TOPAZ.NOUN,,Topaz,トパーズ
+GEM.TOPAZ.TOOLTIP,,"Sometimes confused with the more common {{GEM.CITRINE.NOUN}} gem, topaz can be found in several colours but most commonly a yellowish brown. It was first discovered on an island which no longer exists.",時々より一般的な {{GEM.CITRINE.NOUN}} の宝石と混同され、トパーズはいくつかの色がありますが、最も一般的に黄色がかった茶色です。 これは、もはや存在しない島で最初に発見されました。
+GEM.TOURMALINE.ADJECTIVE,,Tourmaline,トルマリン
+GEM.TOURMALINE.NOUN,,Tourmaline,トルマリン
+GEM.TOURMALINE.TOOLTIP,,Often found alongside {{ORE.CASSITERITE.ADJECTIVE}} ore. It is sometimes associated with earth magic.,多くの場合、{{オレ.カシテリト. 調整可能}} 鉱石と一緒に発見されます。 それは時々地球の魔法に関連付けられています。
+GEM.TURQUOISE.ADJECTIVE,,Turquoise,ターコイズ
+GEM.TURQUOISE.NOUN,,Turquoise,ターコイズ
+GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,装飾によく使用される青緑色の鉱物。 運び手には幸運をもたらすと考えられています。 それはしばしば地球の要素を注入されます。
+
+GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},{{targetDescription}} を収集しています
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetZoneMaterial}},{{targetZoneMaterial}} を飲む
+GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},{{targetDescription}} を食べる
+GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},運搬 {{targetDescription}}
+GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,アイドル
+GOAL.SLEEP.DESCRIPTION,,Going to sleep,眠りにつく
+GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},{{targetZoneMaterial}} を転送しています
+
+GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,タイルの追加/削除
+GUI.ADD_TILES,This should be as short as possible,Add tiles,タイルを追加する
+GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,アンビエント大気効果ボリューム:
+GUI.BACK_LABEL,This should be as short as possible,Back,戻れ
+GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,ブリッジ
+GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,ドア
+GUI.BUILD.WALLS,,Walls,壁
+GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,L字型
+GUI.BUILD.WALLS.QUAD,For building 4 walls at once,Quad,クワッド
+GUI.BUILD.WALLS.SINGLE,For building a single wall,Single,シングル
+GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,家具
+GUI.BUILD_LABEL,This should be as short as possible,Build,ビルド
+GUI.CANCEL_LABEL,This should be as short as possible,Cancel,キャンセルします
+GUI.CHANGE_PROFESSION_LABEL,,Change profession,職業を変える
+GUI.CROP_SELECTION,,Crop:,切り抜き:
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}",{{時刻}}、日 {{日}}、{{季節}}
+GUI.DIALOG.DISMISS,,Dismiss,却下します
+GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,その名前のルームは既に存在します。
+GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,このバージョンのゲームと互換性がないため、保存ファイルをロードできませんでした。
+GUI.DIALOG.ERROR_TITLE,Shown as the title of an error dialog,An error has occurred,エラーが発生しました
+GUI.DIALOG.ERROR_WHILE_LOADING,Unexpected error while loading a previous save,There was an unexpected error while loading the game.,ゲームの読み込み中に予期しないエラーが発生しました。
+GUI.DIALOG.ERROR_WHILE_SAVING,Unexpected error while saving the game,There was an unexpected error while saving the game.,ゲームの保存中に予期しないエラーが発生しました。
+GUI.DIALOG.INFO_TITLE,,Information,
+GUI.DIALOG.JUMP_TO,,Go to location,場所へ移動
+GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,選択された言語の翻訳は現在不完全なため、一部のテキストが欠落しています。 代替言語が使用されます。
+GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,ゲームに設定するmodの組み合わせが変更されました。変更はゲームの再起動後に有効化されます。
+GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,このバージョンと互換性の無いため、無効になっているmodがあります。 更新はmodメニューで確認することができます。
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,OK
+GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,部屋の名前を変更する
+GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,変更を有効にするには、ゲームを再起動する必要があります。
+GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},{{name}} に割り当てられました
+GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,現在削除されています
+GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,この家具は {{materialType}} に配置する必要があります。
+GUI.GRAPHICS.FULLSCREEN,,Fullscreen,全画面表示
+GUI.GRAPHICS.RESOLUTION,,Resolution,解像度
+GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),なし (休ませる)
+GUI.MINIMAP.LABEL,,Minimap,ミニマップ
+GUI.MUSIC_VOLUME,,Music volume:,音楽ボリューム:
+GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,新しいバージョンがItch.ioで利用可能になりました
+GUI.NEXT_LABEL,This should be as short as possible,Next,次はね
+GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,この家具は、ゲームのこのバージョンで回転することはできません
+GUI.OK_LABEL,This should be as short as possible,Ok,OK
+GUI.OPTIONS.AUDIO.TITLE,,Sound Options,サウンドオプション
+GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes trees partially transparent when a settler moves behind them,Make trees transparent when obscuring settlers,入植者を隠すときに木を透明にする
+GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,通知の一時停止
+GUI.OPTIONS.GAMEPLAY.TITLE,,"Gameplay Options ",ゲームプレイオプション
+GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,カーソルが画面の端にあるときにスクロールする
+GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ",[グラフィックスオプション]
+GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,自動クラッシュレポートを許可する
+GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.TITLE,,Miscellaneous,[その他]
+GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,チョップ
+GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,クリア
+GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,収穫
+GUI.ORDERS.MINE,This should be as short as possible,Mine,採掘
+GUI.ORDERS_LABEL,This should be as short as possible,Orders,注文
+GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,橋は川の両側を覆い、少なくとも3x3タイルのサイズでなければなりません
+GUI.REMOVE_LABEL,This should be as short as possible,Remove,[除去]
+GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,タイルを削除
+GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,リソース
+GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},利用可能:{{count}}
+GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,(R) を押して家具を回転させる
+GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,保存中...
+GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},デッド:{{count}}
+GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},人口：{{count}}
+GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,入植者だ
+GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},合計：{{count}}
+GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,効果音量
+GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,UI スケール:
+GUI.ZONES_LABEL,This should be as short as possible,Zones,ゾーン
+
+HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,きれいに準備された食事を食べた
+HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,死体を運んだ
+HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,飲料水
+HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,飢えだ
+HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,脱水症状
+HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,,Optimistic about new settlement,新しい和解について楽観的
+HAPPINESS_MODIFIER.POISONED,,Poisoned,毒殺されてる
+HAPPINESS_MODIFIER.SAW_DEAD_BODY,,Saw a dead body,死体を見たの
+HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,,"Slept in a spacious, private bedroom",広々としたプライベートベッドルームで寝る
+HAPPINESS_MODIFIER.SLEPT_IN_PRIVATE_BEDROOM,,Slept in a private bedroom,プライベートベッドルームで寝た
+HAPPINESS_MODIFIER.SLEPT_IN_SHARED_BEDROOM,,Shared a bedroom with others,ベッドルームを他の人とシェアする
+HAPPINESS_MODIFIER.SLEPT_IN_SMALL_BEDROOM,,Slept in a cramped bedroom,窮屈な寝室で寝た
+HAPPINESS_MODIFIER.SLEPT_ON_GROUND,,Slept on rough ground,荒れた地面に寝る
+HAPPINESS_MODIFIER.SLEPT_OUTSIDE,,Slept under the stars,星の下で眠った
+HAPPINESS_MODIFIER.TITLE,,Happiness:,幸せ:
+HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,お腹がすいた
+HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,のどが渇いた
+HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,非常に疲れている
+
+HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},{{{itemDescription}} が {{targetDescription}} に割り当てられました
+
+HINT.BUTTON.DISABLE_ALL,,Disable all hints,
+HINT.BUTTON.DISMISS,,Dismiss,
+HINT.BUTTON.HINTS_ONLY,,Hints only,
+HINT.BUTTON.NEXT,,Next,
+HINT.BUTTON.TUTORIAL,,Tutorial,
+HINT.PROGRESS.HEADER,,Progress:,
+HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!",
+HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",
+
+HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}","{{name}}, {{madness.adjective}} {{race.noun}}"
+HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
+
+INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,生地
+INGREDIENT.FLOUR,,Flour,小麦粉
+INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,ローフ
+INGREDIENT.LOAF.PLURAL,,Loaves,パンだ
+INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,キノコの産卵
+INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,キノコの産卵
+INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.",菌糸体とも呼ばれ、これは {{ROOMS.MUSHROOM_FARM}} でキノコを栽培する「種子」と考えることができます。
+INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,シード
+INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,種子
+INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,{{ROOMS.FARM}} に植えるには、適切なタイプの種が必要です。 また、{{STOCKPILE.GRANARY}} の備
+INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,袋だ
+
+INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,在庫:
+
+ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}}
+ITEM.INGREDIENT.DESCRIPTION,E.g. “2 potatoes”,{{quantity_if_multiple}}{{materialType.noun_or_plural}},{{quantity_if_multiple}}{{materialType.noun_or_plural}}hui
+
+ITEM_GROUP.FUEL.PLURAL,,Fuel,燃料
+ITEM_GROUP.PRODUCT.PLURAL,,Products,製品
+ITEM_GROUP.RESOURCE.PLURAL,,Resources,リソース
+ITEM_GROUP.TOOL.PLURAL,,Tools,[ツール]
+
+LANGUAGE.LABEL,,Language,言語
+
+LIQUID.WATER.NOUN,,Water,水
+
+MADNESS.BROKEN.ADJECTIVE,,Broken,壊れた
+MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",この入植者は、彼らが突破点を過ぎてプッシュされ、もはや動作したり、食べたりしないように不幸でした！
+
+MATERIAL,Used for specifying which material something is made out of,Material,[マテリアル]
+
+MATERIAL_TYPE,,Type,タイプ
+MATERIAL_TYPE.ANY,For allowing any kind of material to be used,Any,任意です
+MATERIAL_TYPE.EARTH.ADJECTIVE,,Earthen,土だ
+MATERIAL_TYPE.EARTH.NOUN,,Earth,地球
+MATERIAL_TYPE.FOODSTUFF.NOUN,,Food,フード
+MATERIAL_TYPE.GEM.NOUN,This is only used as a noun,Gem,ジェム
+MATERIAL_TYPE.METAL.ADJECTIVE,,Metallic,メタリック
+MATERIAL_TYPE.METAL.NOUN,,Metal,金属
+MATERIAL_TYPE.ORE.NOUN,This is only used as a noun,Ore,鉱石
+MATERIAL_TYPE.OTHER.NOUN,This isn't actually used in-game yet so won't be combined with other words,Other,その他の
+MATERIAL_TYPE.SEED.NOUN,For saying something is “made up of seed”,Seed,シード
+MATERIAL_TYPE.STONE.ADJECTIVE,,,
+MATERIAL_TYPE.STONE.NOUN,,Stone,ストーン
+MATERIAL_TYPE.VEGETABLE.NOUN,Used to make up “Vegetable soup”,Vegetable,野菜
+MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,硫酸ドデシルナトリウム
+MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,ヴィトリオール
+MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,木製
+MATERIAL_TYPE.WOOD.NOUN,,Wood,木材
+
+MENU.CONTINUE_GAME,,Continue game,ゲームを続ける
+MENU.MODS,,Mods,改造者
+MENU.NEW_GAME,,Start new game,新しいゲームを始める
+MENU.OPTIONS,,Options,オプション
+MENU.QUIT,,Quit,やめろ
+MENU.TOGGLE_FULLSCREEN,,Toggle fullscreen,フルスクリーンの切り替え
+
+METAL.BRONZE.ADJECTIVE,,Bronze,ブロンズ
+METAL.BRONZE.NOUN,,Bronze,ブロンズ
+METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and much more durable than copper alone. (Alloys have not yet been implemented in King under the Mountain),ブロンズは銅とスズの合金です。 それは銅だけよりも硬く、はるかに耐久性があります。 (合金はまだ山の下の王に実装されていません)
+METAL.COPPER.ADJECTIVE,,Copper,銅
+METAL.COPPER.NOUN,,Copper,銅
+METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.",{{ORE.NATIVE_COPPER.NOUN}} として自然に発生するだけでなく、{{ORE.MALACHITE.NOUN}} の鉱石からワサギをするのは簡単です。 銅には多くの用途がありますが、特に硬質では効果的な武器を作り出すのは難しいことではありません。
+METAL.GOLD.ADJECTIVE,,Golden,ゴールデン
+METAL.GOLD.NOUN,,Gold,ゴールド
+METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.",金属の王だ それは最も希少でも最も価値のあるものではありませんが、金はほとんどの人種（特にドワーフ）で最も切望された金属です。
+METAL.IRON.ADJECTIVE,,Iron,アイロンがけます
+METAL.IRON.NOUN,,Iron,アイロンがけます
+METAL.IRON.TOOLTIP,,It is a poor military which does not have access to iron. Dwarven metalsmiths know the secrets of working this into {{METAL.STEEL.NOUN}}.,それは鉄へのアクセスを持っていない貧しい軍です。 ドワーフの金属細工師は、これを {{METAL.STEEL.NOUN}} に組み込む秘訣を知っています。
+METAL.PLATINUM.ADJECTIVE,,Platinum,プラチナ
+METAL.PLATINUM.NOUN,,Platinum,プラチナ
+METAL.PLATINUM.TOOLTIP,,A silver-white metal that is highly resistant to corrosion. Platinum is rarer and therefore more valuable than {{METAL.GOLD.NOUN}}.,耐腐食性に優れた銀白色の金属です。 プラチナは {{メタル.GOLD.NOUN}} よりも稀で、貴重です。
+METAL.SILVER.ADJECTIVE,,Silver,シルバー
+METAL.SILVER.NOUN,,Silver,シルバー
+METAL.SILVER.TOOLTIP,,"Like {{METAL.GOLD.NOUN}}, silver is often used for coinage and as solid bars for the trading of wealth. ",{{METAL.GOLD.NOUN}} と同様に、銀は金貨や富の取引のための堅い棒としてよく使われます。
+METAL.STEEL.ADJECTIVE,,Steel,スチール
+METAL.STEEL.NOUN,,Steel,スチール
+METAL.STEEL.TOOLTIP,,"Far stronger than {{METAL.IRON.NOUN}} which makes for superior weapons and tools, only the dwarves know the secret of creating steel.",優れた武器や道具を実現する {{METAL.IRON.NOUN}} よりはるかに強く、ドワーフだけが鋼を作る秘訣を知っています。
+METAL.TIN.ADJECTIVE,,Tin,スズ
+METAL.TIN.NOUN,,Tin,スズ
+METAL.TIN.TOOLTIP,,Tin can be smelted from {{ORE.CASSITERITE.NOUN}} and alloyed with {{METAL.COPPER.NOUN}} to produce {{METAL.BRONZE.NOUN}}. (Alloys have not yet been implemented in King under the Mountain),スズは、{{金属.銅.NOUN}} から精錬し、{{金属.銅.NOUN} と合金化して {{金属.ブロンズ.NOUN} を生成することができます。 (合金はまだ山の下の王に実装されていません)
+
+MODS.APPLY,,Apply,適用
+MODS.COMPATIBILITY.COMPATIBLE,,Yes,はい
+MODS.COMPATIBILITY.INCOMPATIBLE,,No,いいえ
+MODS.COMPATIBILITY.UNKNOWN,,Unknown,不明
+MODS.MISSING_MODS_DIALOG_TEXT,,This save file was last used while the following mods were active. These mods are now missing or disabled so the save may not load correctly.,このセーブファイルが使用していたmodが 破損しているか無効になっているので、 正しくロードできないかもしれません。
+MODS.MISSING_MODS_SAVE_EXCEPTION_DIALOG_TEXT,,"The save file could not be loaded because either it is incompatible with this version of the game, or because some mods have been disabled or removed since this save was last loaded. The following mods were expected but are no longer active:",このバージョンと互換性が無いか、 modが破損又は削除されたため、 セーブファイルがロードできませんでした。 使用されていた次のmodが有効ではなくなりました:
+MODS.TABLE.COMPATIBILITY,,Compatible?,互換性？
+MODS.TABLE.ENABLED,,Enabled?,有効？
+MODS.TABLE.NAME,,Mod Name,mod名
+MODS.TABLE.ORDERING,,Re-order,再実行
+MODS.TABLE.VERSION,,Mod Version,modバージョン
+
+MUSHROOM.DESCRIPTION,E.g. “Toadstool mushroom”,{{materialType.noun}},{{マテリアルタイプ.名詞}}
+
+NEEDS.DRINK,,Drink,飲み物
+NEEDS.FOOD,,Food,食料
+NEEDS.SLEEP,,Sleep,睡眠
+
+NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,あなたの鉱夫は新しいエリアを発見しました！
+NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,探検
+NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.",{{{character}} は {{reason}} により死亡しました。
+NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},{{reason}} により死亡しました
+NOTIFICATION.DEATH.TITLE,,Settler death,セトラー・デス
+NOTIFICATION.GAME_OVER.DESCRIPTION,,All things must come to an end. Your settlement lies abandoned.,すべてのものは終わらなければならない。 あなたの和解は捨てられています。
+NOTIFICATION.GAME_OVER.TITLE,,Game Over,ゲームオーバー
+NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,あなたの和解の繁栄は、あなたの人口を高めるために新しい移民の数を集めています。
+NOTIFICATION.IMMIGRANTS_ARRIVED.TITLE,,Immigration,移民だ
+NOTIFICATION.MINING_COLLAPSE.DESCRIPTION,,An area has caved in due to a lack of pillars and supports.,柱と支柱の欠如のためにエリアが陥っています。
+NOTIFICATION.MINING_COLLAPSE.TITLE,,Mining collapse,鉱山崩壊
+NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,過激な苦難は、{{character}} を処理するには多すぎることが証明されています。
+NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,精神崩壊
+
+ORE.BAUXITE.ADJECTIVE,,Bauxite,ボーキサイト
+ORE.BAUXITE.NOUN,,Bauxite,ボーキサイト
+ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a means of aluminium production is yet to be discovered.",ボーキサイトはアルミニウムの原石です。 残念ながら、アルミニウム生産の手段はまだ発見されていません。
+ORE.BITUMINOUS_COAL.ADJECTIVE,,Bituminous coal,ビチューメン石炭
+ORE.BITUMINOUS_COAL.NOUN,,Bituminous coal,ビチューメン石炭
+ORE.BITUMINOUS_COAL.TOOLTIP,,This can be converted into {{ORE.COKE.NOUN}} using a {{FURNITURE.COKE_OVEN}}.,これは、{{FURNITURE.COKE_NOUN}} を使用して {{ORE.COKE.NOUN} に変換することができます。
+ORE.CASSITERITE.ADJECTIVE,,Cassiterite,カシテライト
+ORE.CASSITERITE.NOUN,,Cassiterite,カシテライト
+ORE.CASSITERITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.TIN.NOUN}}.,{{METAL.TIN.NOUN}} を製造するために製錬することができる鉱石。
+ORE.CHARCOAL.ADJECTIVE,,Charcoal,木炭
+ORE.CHARCOAL.NOUN,,Charcoal,木炭
+ORE.CHARCOAL.TOOLTIP,,{{FUEL.SACK}} produced from wooden {{RESOURCE.LOGS.PLURAL}}.,{{FUEL.SACK}} 木製 {リソース.LOG S.PLURAL} から製造されています。
+ORE.CHRYSOCOLLA.ADJECTIVE,,Chrysocolla,クリソコラ
+ORE.CHRYSOCOLLA.NOUN,,Chrysocolla,クリソコラ
+ORE.CHRYSOCOLLA.TOOLTIP,,"Often confused with turquoise, it is actually an ore of {{METAL.COPPER}}.",ターコイズと混同されることが多く、実際は {{METAL.COPPER}} の鉱石です。
+ORE.COKE.ADJECTIVE,,Coke,コーク
+ORE.COKE.NOUN,,Coke,コーラ
+ORE.COKE.TOOLTIP,,A refined form of {{ORE.BITUMINOUS_COAL}} which can be used as {{FUEL.SACK}}.,{{FUEL.SACK}} として使用できる {{ORE.BITUMINOUS_COAL}} の洗練された形態。
+ORE.GALENA.ADJECTIVE,,Galena,ガリーナ
+ORE.GALENA.NOUN,,Galena,ガリーナ
+ORE.GALENA.TOOLTIP,,An ore that can be smelted to produce {{METAL.SILVER}}.,{{METAL.SILVER} を製造するために製錬することができる鉱石。
+ORE.HEMATITE.ADJECTIVE,,Hematite,ヘマタイト
+ORE.HEMATITE.NOUN,,Hematite,ヘマタイト
+ORE.HEMATITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.IRON}}.,{{METAL.IRON}} を製造するために製錬することができる鉱石。
+ORE.ILMENITE.ADJECTIVE,,Ilmenite,イルメナイト
+ORE.ILMENITE.NOUN,,Ilmenite,イルメナイト
+ORE.ILMENITE.TOOLTIP,,"Ilmenite is the primary ore of titanium. Unfortunately, a means of titanium production is yet to be discovered.",イルメナイトはチタンの原石です。 残念ながら、チタン生産の手段はまだ発見されていません。
+ORE.MALACHITE.ADJECTIVE,,Malachite,マラカイト
+ORE.MALACHITE.NOUN,,Malachite,マラカイト
+ORE.MALACHITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.COPPER}}.,{{METAL.COPPER}} を製造するために製錬することができる鉱石。
+ORE.NATIVE_COPPER.ADJECTIVE,,Native copper,ネイティブの銅
+ORE.NATIVE_COPPER.NOUN,,Native copper,ネイティブの銅
+ORE.NATIVE_COPPER.TOOLTIP,,Naturally-occuring {{METAL.COPPER}} which must be smelted before use.,天然に発生する {{METAL.COPPER}} は、使用前に精錬する必要があります。
+ORE.NATIVE_GOLD.ADJECTIVE,,Native gold,プラチナム
+ORE.NATIVE_GOLD.NOUN,,Native gold,プラチナム
+ORE.NATIVE_GOLD.TOOLTIP,,Naturally-occuring {{METAL.GOLD}} which must be smelted before use.,天然に発生する {{METAL.GOLD}} は、使用前に精錬する必要があります。
+ORE.NATIVE_PLATINUM.ADJECTIVE,,Native platinum,白金
+ORE.NATIVE_PLATINUM.NOUN,,Native platinum,白金
+ORE.NATIVE_PLATINUM.TOOLTIP,,Naturally-occuring {{METAL.PLATINUM}} which must be smelted before use.,天然に発生する {{METAL.PLATINUM}} は、使用前に精錬する必要があります。
+ORE.NATIVE_SILVER.ADJECTIVE,,Native silver,純銀 (金属)
+ORE.NATIVE_SILVER.NOUN,,Native silver,純銀 (金属)
+ORE.NATIVE_SILVER.TOOLTIP,,Naturally-occuring {{METAL.SILVER}} which must be smelted before use.,天然に発生する {{METAL.SILVER}} は、使用前に精錬する必要があります。
+ORE.POLLUCITE.ADJECTIVE,,Pollucite,ポルサイト
+ORE.POLLUCITE.NOUN,,Pollucite,ポルサイト
+ORE.POLLUCITE.TOOLTIP,,"Pollucite is an ore of Caesium, which is currently too dangerous to produce. Particularly crazy dwarven metalsmiths are currently trying to find a reliable method of production.",Polluciteはセシウムの鉱石であり、現在生産するには危険です。 特にクレイジーなドワーフの金属職人は、現在、信頼できる生産方法を見つけようとしています。
+ORE.PYRITE.ADJECTIVE,,Fool's gold,愚か者の金
+ORE.PYRITE.NOUN,,Fool's gold,愚か者の金
+ORE.PYRITE.TOOLTIP,,"Also known as Pyrite, its pale-yellow appearance causes some to mistake it for gold. It has several uses when crushed, but care must be taken as it sparks when struck.",黄鉄鉱とも呼ばれ、その淡黄色の外観は、金のためにそれを間違える原因となります。 粉砕するといくつかの用途がありますが、打たれたときに火花するように注意する必要があります。
+ORE.THORIUM.ADJECTIVE,,Thorium,トリウム
+ORE.THORIUM.NOUN,,Thorium,トリウム
+ORE.THORIUM.TOOLTIP,,A silvery metallic ore which turns black when exposed to air. It is strangely warm to the touch.,空気にさらされると黒くなる銀色の金属鉱石。 触っても不思議に暖かいです。
+ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,ウルフラマイト
+ORE.WOLFRAMITE.NOUN,,Wolframite,ウルフラマイト
+ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,錫の製錬を複雑にする金属鉱石。 通常のプロセスで精錬するには融点が高すぎます。
+
+OTHER.BRICK.NOUN,,Brick,レンガ
+OTHER.CLAY_SOIL.NOUN,,Clay soil,土壌
+OTHER.GRASS.NOUN,,,
+
+PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,同意する
+PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,レポートを無効にする
+PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,山の下の王は活発に発展しています。 お手伝いをする
+PRIVACY.OPT_IN.LINE_10,,- The stack trace of the exception which caused the crash,-クラッシュの原因となった例外のスタックトレース
+PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to",バグを診断して修正するには、下の「同意する」をクリックしてください。
+PRIVACY.OPT_IN.LINE_3,,send anonymous crash reports automatically.,匿名のクラッシュレポートを自動的に送信します。
+PRIVACY.OPT_IN.LINE_4,," ",
+PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,これは、次のデータのみで構成されています。
+PRIVACY.OPT_IN.LINE_6,,- The version of the game client,-ゲームクライアントのバージョン
+PRIVACY.OPT_IN.LINE_7,,- Your operating system,-お使いのオペレーティングシステム
+PRIVACY.OPT_IN.LINE_8,,- Your graphics card and display settings,-グラフィックスカードとディスプレイの設定
+PRIVACY.OPT_IN.LINE_9,,- Your options settings,-オプション設定
+
+PRODUCT.ANVIL,,Anvil,金床
+PRODUCT.ANVIL.TOOLTIP,,A large block of metal used to hammer heated metal into shape. Required to construct a {{FURNITURE.FORGE}.,加熱された金属を形にハンマーするために使用される金属の大きなブロック。 {{FURNITURE.FORGE} を構築するために必要です。
+PRODUCT.BARREL.HOOPS,,Barrel hoops,バレルフープ
+PRODUCT.BARREL.HOOPS.TOOLTIP,,Metal hoops used to construct a {{PRODUCT.BARREL.NOUN}}. Also used in some machinery.,{{PRODUCT.BARREL.NOUN}} を構築するために使用される金属フープ。 また、いくつかの機械で使用されます。
+PRODUCT.BARREL.NOUN,,Barrel,樽
+PRODUCT.BARREL.PLURAL,,Barrels,樽
+PRODUCT.BARREL.STAVES,,Barrel staves,バレル譜表
+PRODUCT.BARREL.STAVES.TOOLTIP,,Curved wooden planks used to construct a {{PRODUCT.BARREL.NOUN}}.,{{PRODUCT.BARREL.NOUN}} を構築するために使用された湾曲した木製の厚板。
+PRODUCT.BARREL.TOOLTIP,,A cylindrical container for liquids. The curved shape makes it easier to roll around.,液体用の円筒形の容器。 湾曲した形状により、回転しやすくなります。
+PRODUCT.BOWL,A bowl for eating from,Bowl,ボウル
+PRODUCT.BOWL.DESCRIPTION,E.g. “Bowl of vegetable soup”,Bowl of {{cooking.soup.description}},{{調理.スープ説明}} のボウル
+PRODUCT.BREAD.DOUGH.NOUN,,Dough,生地
+PRODUCT.BREAD.DOUGH.PLURAL,,Dough,生地
+PRODUCT.BREAD.DOUGH.TOOLTIP,,A mix of ingredients that can be baked into {{PRODUCT.BREAD.LOAF.PLURAL}} using an {{FURNITURE.BAKING_OVEN}}.,{{食品.パン.ローフ.多数}} に焼くことができる成分を混ぜたもの。
+PRODUCT.BREAD.LOAF.NOUN,Translations incorrect and need fixing,Bread loaf,パンパン
+PRODUCT.BREAD.LOAF.PLURAL,Translations incorrect and need fixing,Bread loaves,パンパン
+PRODUCT.BREAD.LOAF.TOOLTIP,,"Prepared bread, ready to eat!",準備されたパン、食べる準備ができて！
+PRODUCT.BUCKET.NOUN,,Bucket,バケット
+PRODUCT.BUCKET.PLURAL,,Buckets,バケツ
+PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,手で液体を動かすために使用される小さな容器。
+PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,大釜だ
+PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.",{{PROFESSION.CHEF}} が {{部屋.キッチン}} のスープを準備するために使用し、その後 {{部屋.FEASTING_HALL}} に移動します。
+PRODUCT.MILLSTONE,,Millstone,ミルストーン
+PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mill harvested crops. Used to construct a {{FURNITURE.FLOUR_MILL}}.,収穫した作物を粉砕するために一緒に粉砕された2つの大きな石盤。 {{FURNITURE.FLOUR_MILL}} を構築するために使用されます。
+PRODUCT.RATION.NOUN,,Ration,[レイション
+PRODUCT.RATION.PLURAL,,Rations,「連合
+PRODUCT.RATION.TOOLTIP,,"These will last a long time to feed your settlers, but you will need other sources of food as a priority.",これらはあなたの入植者を養うために長い時間がかかりますが、優先事項として他の食糧源が必要になります。
+
+PROFESSION.BAKER.VERB,,Baking,ベーキング
+PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,鍛冶屋
+PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,鍛冶屋
+PROFESSION.BLACKSMITH.TOOLTIP,,Crafts items using metal and also produces metal from ore.,金属を使用して工芸品も鉱石から金属を生産します。
+PROFESSION.BLACKSMITH.VERB,,Forging,鍛造
+PROFESSION.CARPENTER.FEMALE_NOUN,,Carpenter,大工
+PROFESSION.CARPENTER.MALE_NOUN,,Carpenter,大工
+PROFESSION.CARPENTER.TOOLTIP,,Creates wooden furniture and items.,木製の家具やアイテムを作成します。
+PROFESSION.CARPENTER.VERB,,Crafting,クラフト
+PROFESSION.CHEF.FEMALE_NOUN,,Chef,料理人
+PROFESSION.CHEF.MALE_NOUN,,Chef,料理人
+PROFESSION.CHEF.TOOLTIP,,Prepares all of the food to be consumed by your settlers.,あなたの入植者によって消費される食品のすべてを準備します。
+PROFESSION.CHEF.VERB,,Cooking,調理
+PROFESSION.FARMER.FEMALE_NOUN,,Farmer,農民
+PROFESSION.FARMER.MALE_NOUN,,Farmer,農民
+PROFESSION.FARMER.PLURAL,,Farmers,
+PROFESSION.FARMER.TOOLTIP,,"Plants, tends and harvests crops.",植物は、作物を傾向があり、収穫する。
+PROFESSION.FARMER.VERB,,Farming,農業
+PROFESSION.FISHER.FEMALE_NOUN,This could be “fisherman” and “fisherwoman”,Fisher,漁師
+PROFESSION.FISHER.MALE_NOUN,,Fisher,漁師
+PROFESSION.FISHER.TOOLTIP,,Catches fish from bodies of water for use as food and resources.,水域から魚を捕まえ、食物や資源として使用します。
+PROFESSION.FISHER.VERB,,Fishing,釣り
+PROFESSION.HUNTER.FEMALE_NOUN,This could be “huntsman” and “huntress”,Hunter,狩人
+PROFESSION.HUNTER.MALE_NOUN,,Hunter,狩人
+PROFESSION.HUNTER.TOOLTIP,,Tracks and kills wild animals for their meat and pelts.,彼らの肉や毛皮のために野生動物を追跡し、殺す。
+PROFESSION.HUNTER.VERB,,Hunting,狩猟
+PROFESSION.MAYOR.FEMALE_NOUN,"In English at least, “mayoress” is incorrect",Mayor,市長
+PROFESSION.MAYOR.MALE_NOUN,,Mayor,市長
+PROFESSION.MAYOR.VERB,,Governing,統権を支配する
+PROFESSION.MERCHANT.FEMALE_NOUN,,Merchant,商人
+PROFESSION.MERCHANT.MALE_NOUN,,Merchant,商人
+PROFESSION.MERCHANT.VERB,,Trading,取引
+PROFESSION.MILLER.VERB,"Not a fully implemented profession, just used to describe “Milling flour”",Milling,フライス加工
+PROFESSION.MINER.FEMALE_NOUN,,Miner,炭鉱夫
+PROFESSION.MINER.MALE_NOUN,,Miner,炭鉱夫
+PROFESSION.MINER.TOOLTIP,,Excavates new areas using a {{TOOL.PICKAXE}}.,{{TOOL.PICKAXE}} を使って新しいエリアを掘削します。
+PROFESSION.MINER.VERB,,Mining,採掘
+PROFESSION.NOBLE.FEMALE_NOUN,,Noble,貴族
+PROFESSION.NOBLE.MALE_NOUN,,Noble,貴族
+PROFESSION.NOBLE.TOOLTIP,,"Nobles do not fulfil jobs in the same way as common settlers, but bring fame and prestige to your settlement.",貴族は、一般的な入植者と同じように仕事を遂行するのではなく、あなたの和解に名声と威信をもたらします。
+PROFESSION.NOBLE.VERB,,Reigning,君臨だ
+PROFESSION.RUNESMITH.FEMALE_NOUN,from “runes” and “blacksmith”,Runesmith,ルーンスミス
+PROFESSION.RUNESMITH.MALE_NOUN,"This is an invented term for the game, but should be derived",Runesmith,ルーンスミス
+PROFESSION.RUNESMITH.TOOLTIP,,"Enchants weapons, armour and items with magical runes to boost their abilities.",自分の能力を高めるために魔法のルーン文字で武器、鎧やアイテムをエンチャント。
+PROFESSION.RUNESMITH.VERB,,Enchanting,魅惑的だ
+PROFESSION.STONEMASON.FEMALE_NOUN,,Stonemason,ストーンメイソン
+PROFESSION.STONEMASON.MALE_NOUN,,Stonemason,ストーンメイソン
+PROFESSION.STONEMASON.TOOLTIP,,Crafts furniture and items from stone.,工芸家具や石からのアイテム。
+PROFESSION.STONEMASON.VERB,,Sculpting,スカルプト
+PROFESSION.TINKERER.FEMALE_NOUN,,Tinker,ティンカー
+PROFESSION.TINKERER.MALE_NOUN,,Tinker,ティンカー
+PROFESSION.TINKERER.VERB,,Tinkering,いじり
+PROFESSION.VILLAGER.FEMALE_NOUN,,Villager,村人
+PROFESSION.VILLAGER.MALE_NOUN,,Villager,村人
+PROFESSION.VILLAGER.TOOLTIP,,This settler does not have any specific professions and will fulfil any mundane tasks like hauling items.,この入植者には特定の職業はなく、アイテムを運搬するような日常的な仕事を果たします。
+PROFESSION.VILLAGER.VERB,,Working,働いてる
+PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberjane”,Woodcutter,木こり
+PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,木こり
+PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,{{ROOMS.SAWMILL}} で使用できる木材として木を切り落とす。
+PROFESSION.WOODCUTTER.VERB,,Chopping,チョッピング
+
+RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,ドワーフ
+RACE.DWARF.FEMALE_NOUN,,Dwarf,ドワーフ
+RACE.DWARF.FEMALE_PLURAL,,Dwarves,ドワーフ
+RACE.DWARF.MALE_ADJECTIVE,,Dwarven,ドワーフ
+RACE.DWARF.MALE_NOUN,The male and female forms are only for languages that need them,Dwarf,ドワーフ
+RACE.DWARF.MALE_PLURAL,Note that I'm going with Tolkein's spelling of “dwarves” rather than “dwarfs”,Dwarves,ドワーフ
+RACE.DWARF.TOOLTIP,,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,ドワーフは短く、ひっそりとしたヒューマノイドです。 彼らは石と金属を扱う巨匠です。 ほとんどのドワーフは空を不信にし、地下に滞在することを好む。
+
+RESOURCE.CRUSHED.VITRIOL.NOUN,,Vitriol,ヴィトリオール
+RESOURCE.CRUSHED.VITRIOL.PLURAL,,Vitriol,ヴィトリオール
+RESOURCE.CRUSHED.VITRIOL.TOOLTIP,,A salt of sulphuric acid with many uses in industry. (Usages of vitriol are not yet implemented in King under the Mountain),業界で多くの用途を持つ硫酸の塩。 （硝酸塩の使用は、まだ山の下の王に実装されていません）
+RESOURCE.FLOUR.SACK.NOUN,,Flour,小麦粉
+RESOURCE.FLOUR.SACK.PLURAL,,Flour,小麦粉
+RESOURCE.FLOUR.SACK.TOOLTIP,,Grain that has been milled into a fine powder ready to be used as an ingredient in the production of food.,食品の原料として使用する準備ができて微粉に粉砕された穀物。
+RESOURCE.GEM.NOUN,,Gem,ジェム
+RESOURCE.GEM.PLURAL,,Gems,宝石
+RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beauty. Most commonly used as ornamentation.,その美しさを高めるためにカットされ、研磨された宝石。 装飾として最も一般的に使用されます。
+RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,カットされていない宝石
+RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,カットされていない宝石
+RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,カットして研磨する準備ができている宝石を含む岩の塊です。
+RESOURCE.LOGS.NOUN,,Log,[ログ]
+RESOURCE.LOGS.PLURAL,,Logs,ログ
+RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.",{{RESOURCE.PLANKS.PLURAL}} に最もよく準備されているが、他の用途もある、ツリーのセクション。
+RESOURCE.METAL.BLOOM.NOUN,,Bloom,ブルームだ
+RESOURCE.METAL.BLOOM.PLURAL,,Blooms,花を咲かせる
+RESOURCE.METAL.BLOOM.TOOLTIP,,A lump of metal mixed with slag which must be hammered into a usable form.,スラグと混合された金属の塊。使用可能な形に叩かなければならない。
+RESOURCE.METAL.INGOT.NOUN,,Ingot,インゴイ
+RESOURCE.METAL.INGOT.PLURAL,,Ingots,インゴット
+RESOURCE.METAL.INGOT.TOOLTIP,,"Refined metal blocks, ready to be used as a crafting ingredient.",洗練された金属ブロックは、クラフト原料として使用できます。
+RESOURCE.METAL.PLATE.NOUN,,Plate,プレート
+RESOURCE.METAL.PLATE.PLURAL,,Plates,プレート
+RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the larger machinery.",大型機械の一部で使用されている大型フラットプレート。
+RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,マッシュルームログ
+RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,きのこログ
+RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,{{成分.キノコ.スポーン.NOUN}} が注入されたログ。 ログ自体の本体は、キノコが栄養素を引き出す場所です。 完全に無関心になった後、{{FURNITURE.MUSHROOM_SHOCK_TANK}} で吐き出さなければなりません。
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,[ログ]
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,ログ
+RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,木製 {{リソース.LOGS.PLURAL} と同じ方法で使用することができる巨大なキノコのセクション。
+RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,砕石鉱石
+RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,砕石鉱石
+RESOURCE.ORE.CRUSHED.TOOLTIP,,"A metallic sand created by breaking down raw metal ore, ready for use in a {{FURNITURE.BLOOMERY_FURNACE}}.",原金属鉱石を分解して作られた金属砂。{{FURNITURE.BLOOMERY_FURNACE}} で使用可能です。
+RESOURCE.ORE.UNREFINED.NOUN,,Ore,鉱石
+RESOURCE.ORE.UNREFINED.PLURAL,,Ore,鉱石
+RESOURCE.ORE.UNREFINED.TOOLTIP,,Stone that contains metallic ores which can be processed into usable metal.,金属鉱石を含む石で、使用可能な金属に加工することができます。
+RESOURCE.PLANKS.NOUN,,Plank,厚板
+RESOURCE.PLANKS.PLURAL,,Planks,厚板
+RESOURCE.PLANKS.TOOLTIP,,Sections of wood of a fixed size so they can be easily used in constructions and crafting.,固定サイズの木材のセクションは、構造や工作に容易に使用することができます。
+RESOURCE.SHOCKED.MUSHROOM.LOG.NOUN,,Mushroom log,マッシュルームログ
+RESOURCE.SHOCKED.MUSHROOM.LOG.PLURAL,,Mushroom logs,きのこログ
+RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,This mushroom-infused log has been “shocked” in water to encourage the mushrooms to develop and should produce a harvest soon.,このキノコ注入されたログは、キノコが発達するように促すために、水の中で「ショック」されており、すぐに収穫を産むはずです。
+RESOURCE.STONE.BLOCK.NOUN,,Block,ブロック
+RESOURCE.STONE.BLOCK.PLURAL,,Blocks,ブロック
+RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,そのように立方体に成形された石は、工事や工作に容易に使用することができます。
+RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,ラフ・ストーン・ボルダー
+RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,粗い石の岩
+RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,{{{PROFESSION.STONEMASON}} によってより有用な形に刻まなければならない巨大な石。
+
+ROOMS.BEDROOM,,Bedroom,寝室
+ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",あなたの入植者が眠る場所。 彼らは、少なくとも9タイルのサイズで、好ましくは少なくとも13タイルのサイズの個々の寝室を有することを好む。
+ROOMS.BRIDGE,,Bridge,ブリッジ
+ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.,反対側へのアクセスを可能に川を渡って配置。
+ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,木工ワークショップ
+ROOMS.CARPENTRY_WORKSHOP.TOOLTIP,,This workshop produces most wooden tools and items.,このワークショップでは、ほとんどの木製の道具やアイテムを生産しています。
+ROOMS.COMPONENT.STOCKPILE.DESCRIPTION,,{{allocated}} of {{total}} spaces currently in use,現在使用中の {{total}} 個のスペースの {{割り当て済み}}
+ROOMS.EARTHWORKS,,Earthworks,土工事だ
+ROOMS.EARTHWORKS.TOOLTIP,,An outdoor area for large constructions.,大型建築物の屋外エリア。
+ROOMS.FARM,,Farm plot,農場のプロット
+ROOMS.FARM.PLURAL,,Farm plots,
+ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.,{{成分.種.多元的} を使って作物を育てます。 {{材質タイプ.地上.NOUN}} に配置する必要があります。
+ROOMS.FEASTING_HALL,,Feasting hall,宴会場内
+ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!",入植者が食べて、飲んで、陽気になるために集まる場所！
+ROOMS.GRAVEYARD,,Graveyard,墓地
+ROOMS.GRAVEYARD.TOOLTIP,,Deceased settlers are laid to rest here.,死亡した入植者はここに休むように敷かれています。
+ROOMS.KITCHEN,,Kitchen,キッチン
+ROOMS.KITCHEN.TOOLTIP,,Most food is prepared here before being served in a {{ROOMS.FEASTING_HALL}}.,ほとんどの料理は、{{ROOMS.FEASTING_HALL}} で提供される前にここで準備されています。
+ROOMS.MASONRY_WORKSHOP,,Masonry workshop,組積造工房
+ROOMS.MASONRY_WORKSHOP.TOOLTIP,,This workshop produces most items made out of stone.,このワークショップでは、石で作られたほとんどのアイテムを生産しています。
+ROOMS.METALWORKS,,Metalworks,金属工事
+ROOMS.METALWORKS.TOOLTIP,,Metal ore is refined and used in crafting here.,金属鉱石は洗練され、ここでクラフトに使用されています。
+ROOMS.MUSHROOM_FARM,,Mushroom farm,キノコ農場
+ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,キノコは、{{原材料、キノコ、産物、名物}} と木製 {リソース.LOGS.PLURAL} を使って栽培することができます。
+ROOMS.SAWMILL,,Sawmill,製材所
+ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,木製 {{リソース.LOGS.PLURAL}} は、ここで {リソース.PLANKS.PLURAL} に洗練されています。
+ROOMS.STOCKPILES,,Stockpiles,備蓄だ
+ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,未使用のアイテムは、簡単にアクセスできるように備蓄に置かれます。
+
+SEASON.AUTUMN,,Autumn,秋
+SEASON.SPRING,,Spring,春
+SEASON.SUMMER,,Summer,夏
+SEASON.WINTER,,Winter,冬
+
+SEED.BARLEY_SEED,,Barley,大麦だ
+SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",ビールの生産にのみ使用される穀物。 {{シーズン春夏}}、{シーズン夏}、{シーズン秋夏}} に植えられる。
+SEED.BERSERKER_MUSHROOM_SPAWN,,Berserker,
+SEED.BERSERKER_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP}},A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,
+SEED.CARROT_SEED,,Carrot,にんじん
+SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",{{シーズン.冬}} の霜を存続する丈夫な根菜です。 ニンジンは急速に成長しますが、小さな作物しか生成しません。 {{シーズン春夏}}、{シーズン夏}、{シーズン秋夏}} に植えられる。
+SEED.CORN_SEED,,Corn,トウモロコシ
+SEED.CORN_SEED.TOOLTIP,{{VEGETABLE.CORN.TOOLTIP}},"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",トウモロコシとしても知られている穀物。 それは豊かな作物を生み出すが、成長するのに約2シーズンかかり、{{SEASON.WINTER}} は生き残ることができないので、早く {{SEASON.SPRING} に植える必要があります。
+SEED.DEATH_CAP_SPAWN,,Death cap,デスキャップ
+SEED.DEATH_CAP_SPAWN.TOOLTIP,{{VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP}},"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",広くて平らなキャップを持つ非常に有毒なキノコ。 わずかな量でさえ食べることは、ほぼ確実に中毒を引き起こし、死につながる可能性があります。
+SEED.ELFSBANE_SPAWN,,Elfsbane,エルフスベイン
+SEED.ELFSBANE_SPAWN.TOOLTIP,{{VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP}},"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.",このキノコは、ほとんどのヒューマノイドにシンプルで風味のない味を持っています。 不思議なことに、それはしばしば消費時に爆発的な嘔吐、または極端な場合には心臓発作に反応するエルフには絶対に嫌です。
+SEED.FIST_SPAWN,,Fist,拳だ
+SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,メタリックな味の黒青のキノコ。 それは、闇の時代からバードのグループにちなんで命名されています。
+SEED.GLOW_SPAWN,,Glow,グロー
+SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,光を放り出し、季節によって色が変わる魔法のマッシュルーム。
+SEED.HOPS_SEED,,Hops,ホップ
+SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,ビールの風味に使われる花。 {{シーズンスプリング}} に植える必要があります。
+SEED.MILTONIA_SPAWN,,Miltonia,ミルトニア
+SEED.MILTONIA_SPAWN.TOOLTIP,{{VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP}},"Once thought to exist only in the Hudds region, it is now found throughout the world.",かつてはハッズ地域にのみ存在すると考えられ、今では世界中で発見されています。
+SEED.POTATO_SEED,,Potato,じゃがいも
+SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",{{SEASON.WINTER}} 生き残ることができるデンプン質の根菜で、ほとんどの集落に適しています。 {{シーズン春夏}}、{シーズン夏}、{シーズン秋夏}} に植えられる。
+SEED.PURPLE_HELMET_SPAWN,,Purple helmet,パープルヘルメット
+SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.",太った帽子、ふっくらターバン、ふわふわヘルメット。この伝説のキノコは、多くの名前で行きます。 伝説は、ずっと前に、ドワーフの多くのコミュニティは、この真菌の飼いならされた株に完全に住んだことを保持しています。
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN,,Rociomycota,ロシオマイコタ
+SEED.ROCIOMYCOTA_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP}},A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,白と黒の斑点きのこ。 それを摂取する人々の外観に影響を与えることが知られている。
+SEED.SUNGLOW_SPAWN,,Sunglow,太陽の光
+SEED.SUNGLOW_SPAWN.TOOLTIP,{{VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP}},A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,太陽の光で輝く明るい黄色のキノコ。 収穫された瞬間にこの輝きを失います。
+SEED.SYRUP_POWDER_SPAWN,,Syrup powder,シロップパウダー
+SEED.SYRUP_POWDER_SPAWN.TOOLTIP,{{VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP}},"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.",白い下面を持つ丸いオレンジ/黄色のキノコ。 昔、魔道者によって使われてきたと言われていますが、どんな目的のためにも、誰も知りません。
+SEED.TOMATO_SEED,,Tomato,トマト
+SEED.TOMATO_SEED.TOOLTIP,{{VEGETABLE.TOMATO.TOOLTIP}},A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,野菜としてよく使われる大きな赤い果実を育てる植物。 {{シーズンスプリング}} にのみ植えることができる。
+SEED.WHEAT_SEED,,Wheat,小麦
+SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",穀物の穀物は、一般的にパンの生産に使用されます。 {{シーズン.冬}} は生き残ることができますが、成長にはしばらく時間がかかるので、{{シーズン.スプリング}} または {{シーズン.AUTUMN} に植えられます。
+
+SHRUB.DESCRIPTION,Shrub or bush should do,Bush,ブッシュ
+
+STOCKPILE.GRANARY,,Granary,穀倉だ
+STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,ストア穀物と種子が期限切れになりません。
+STOCKPILE.PANTRY,,Pantry,貯蔵室
+STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,有効期限が切れることができる果物や野菜を収穫した店。
+STOCKPILE.RESOURCES,,Resources,リソース
+STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,他のタイプの備蓄に属さないほとんどの種類の資源を保管します。
+STOCKPILE.TOOLS,,Tools,[ツール]
+STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,ジョブの作業に必要なツールを保管します。
+
+STONE.BASALT.ADJECTIVE,,Basalt,玄武岩
+STONE.BASALT.NOUN,,Basalt,玄武岩
+STONE.BASALT.TOOLTIP,,An igneous rock formed by the rapid cooling of lava. Almost all of the volcanic rock in the world is basalt.,溶岩の急速な冷却によって形成される火成岩。 世界の火山岩のほとんどすべてが玄武岩です。
+STONE.DOLOSTONE.ADJECTIVE,,Dolostone,ドロストーン
+STONE.DOLOSTONE.NOUN,,Dolostone,ドロストーン
+STONE.DOLOSTONE.TOOLTIP,,"A sedimentary rock mostly made up of the mineral dolomite, so it is also known as dolomite rock.",堆積岩は主に鉱物ドロマイトで構成されているので、ドロマイト岩としても知られています。
+STONE.FRONITE.ADJECTIVE,,Frónite,フロナイト
+STONE.FRONITE.NOUN,,Frónite,フロナイト
+STONE.FRONITE.TOOLTIP,,A blue-hued rock mostly found on an icy island to the north. It has a high iron content.,青い色の岩は、主に北の氷の島で見つかりました。 それは高い鉄含有量を有する。
+STONE.GRANITE.ADJECTIVE,,Granite,花崗岩
+STONE.GRANITE.NOUN,,Granite,花崗岩
+STONE.GRANITE.TOOLTIP,,"A common type of igneous rock. It has a large proportion of quartz, making it good for locating certain gemstones.",一般的なタイプの火成岩。 石英の大部分があり、特定の宝石を見つけるのに適しています。
+STONE.LIMESTONE.ADJECTIVE,,Limestone,石灰岩
+STONE.LIMESTONE.NOUN,,Limestone,石灰岩
+STONE.LIMESTONE.TOOLTIP,,A lightly-coloured sedimentary rock which makes for a good building material. It is also used as a flux in the production of {{METAL.STEEL.NOUN}}.,明るい色の堆積岩で、優れた建築材料になります。 また、{{金属鋼.NOUN}} の製造におけるフラックスとしても使用されています。
+STONE.MARBLE.ADJECTIVE,,Marble,大理石
+STONE.MARBLE.NOUN,,Marble,大理石
+STONE.MARBLE.TOOLTIP,,A metamorphic rock which is used as a high-quality material for sculpture and masonry due to its brilliant appearance.,その華麗な外観により、彫刻や石積みの高品質素材として使用される変成岩。
+STONE.SANDSTONE.ADJECTIVE,,Sandstone,砂岩
+STONE.SANDSTONE.NOUN,,Sandstone,砂岩
+STONE.SANDSTONE.TOOLTIP,,"A sedimentary rock composed of sand-like fragments. ",砂のような断片で構成される堆積岩。
+STONE.SHALE.ADJECTIVE,,Shale,シェール
+STONE.SHALE.NOUN,,Shale,シェール
+STONE.SHALE.TOOLTIP,,A fine-grained sedimentary rock composed of pressurized mud. It can be easily broken into thin layers.,加圧された泥から成る細粒の堆積岩。 それは簡単に薄い層に分割することができます。
+STONE.SLATE.ADJECTIVE,,Slate,スレート
+STONE.SLATE.NOUN,,Slate,スレート
+STONE.SLATE.TOOLTIP,,A metamorphic rock that is usually formed out of {{STONE.SHALE.NOUN}}. It is often made into tiles for roofing or writing.,通常 {{STONE.SHALE.NOUN}} から形成される変成岩。 それはしばしば屋根や書き込みのためにタイルに作られています。
+
+TOOL.AXE.NOUN,,Axe,アックス
+TOOL.AXE.TOOLTIP,,Used to chop down trees. The primary tool of a {{PROFESSION.WOODCUTTER}}.,木を切り落とすために使用されます。{{PROFESSION.WOODCUTTER}} の主要ツールです。
+TOOL.CHISEL.NOUN,,Chisel,チゼル
+TOOL.CHISEL.TOOLTIP,,Used to sculpt rock into shape. One of the tools used by a {{PROFESSION.STONEMASON}}.,岩を形に彫刻するために使用されます。 {{PROFESSION.STONEMASON}} が使用しているツールの一つ。
+TOOL.FISHING.ROD.NOUN,,Fishing rod,釣り竿
+TOOL.FISHING.ROD.TOOLTIP,,Used to catch fish from a body of water. The primary tool of a {{PROFESSION.FISHER}}.,水から魚を捕まえるために使用されます。 {{PROFESSION.FISHER}} の主要なツールです。
+TOOL.KITCHEN.KNIFE.NOUN,,Kitchen knife,包丁包丁
+TOOL.KITCHEN.KNIFE.TOOLTIP,,"Used to prepare food, particularly meat.",食品、特に肉を準備するために使用されます。
+TOOL.LARGE.HAMMER.NOUN,,Large hammer,大型ハンマー
+TOOL.LARGE.HAMMER.TOOLTIP,,Used to bash large items of stone and metal into shape. The primary tool of a {{PROFESSION.BLACKSMITH}}.,石や金属の大きなアイテムを形にするのに使用されます。 {{PROFESSION.BLACKSMITH}} の主要なツールです。
+TOOL.PICKAXE.NOUN,,Pickaxe,つらし
+TOOL.PICKAXE.TOOLTIP,,Used to break stone into smaller pieces. The primary tool of a {{PROFESSION.MiNER}}.,石を細かく砕くために使用されます。 {{PROFESSION.MINER}} の主要なツールです。
+TOOL.PLANE.NOUN,A carpenter's plane,Plane,平面
+TOOL.PLANE.TOOLTIP,,Used to shave wooden furniture and items into shape. The primary tool of a {{PROFESSION.CARPENTER}}.,木製の家具やアイテムを形に剃るために使用されます。 {{PROFESSION.CARPENTER}}の主要なツールです。
+TOOL.ROLLING.PIN.NOUN,,Rolling pin,回転ピン
+TOOL.ROLLING.PIN.TOOLTIP,,Used to prepare dough. One of the tools used by a {{PROFESSION.CHEF}}.,生地を調製するために使用されます。 {{PROFESSION.CHEF}}によって使用されるツールの一つ。
+TOOL.SAW.NOUN,A carpenter's saw,Saw,見た
+TOOL.SAW.TOOLTIP,,Used to cut wood into shape. Required for cutting lumber in the {{ROOMS.SAWMILL}}.,木材を形に切断するために使用されます。 {{ROOMS.SAWMILL}}の材木を切断するために必要です。
+TOOL.SMALL.HAMMER.NOUN,,Hammer,ハンマー
+TOOL.SMALL.HAMMER.TOOLTIP,,Used to bash small items of stone and metal into shape. One of the tools used by a {{PROFESSION.BLACKSMITH}}.,石や金属の小物を形にするのに使用されます。 {{PROFESSION.BLACKSMITH}}によって使用されるツールの 1 つです。
+TOOL.TONGS.NOUN,A blacksmith's tongs,Tongs,トング
+TOOL.TONGS.TOOLTIP,,Used to hold extremely hot metal items. Used in the process of smelting metal ore.,非常に高温の金属アイテムを保持するために使用されます。 金属鉱石の製錬プロセスで使用されます。
+
+TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{{materialType.noun}} ツリー
+
+TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.",
+TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.",
+TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",
+TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.",
+TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ",
+TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.",
+TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.",
+TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,
+TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.",
+TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.",
+TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.",
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.",
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CHEFS_CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!",
+TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",
+TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,
+TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.",
+TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.",
+TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each.,
+TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",
+TUTORIAL.CAMERA.A,,"You can use the W, A, S and D keys or the arrow keys to pan the camera around. Moving the cursor to the edge of the screen also pans the camera, but this can be disabled in the options menu.",
+TUTORIAL.CAMERA.B,,Scrolling the mouse wheel or pressing the Q and E keys zooms the camera in or out.,
+TUTORIAL.CAMERA.C,,"In the lower-right section of the screen is the minimap, and you can click on this to jump the camera to that point. Click on the “Minimap” label to show or hide the minimap.",
+TUTORIAL.CAMERA.D,,Try out these camera controls and then click “Next” to proceed.,
+TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. For your next challenge, aim to set up a functioning {{ROOMS.METALWORKS}} with a {{FURNITURE.FORGE}} provided with fuel and refined metal ore. Refined metal ores are produced at the {{FURNITURE.ORE_CRUSHING_STATION}}, and fuel can be crushed from coal or produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} with a {{FURNITURE.CHARCOAL_CLAMP}} in an {{ROOMS.EARTHWORKS}}. Good luck!",
+TUTORIAL.PROGRESS_DESCRIPTION.FARM_PLOT_SELECTIONS,Used to show a progress indicator for how many farm plots have a crop selected e.g. 2 of 10 farm plots with a crop assigned,{{ROOMS.FARM.PLURAL}} with a crop assigned,
+TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indicator for how many of a certain profession have been assigned e.g. 2 of 10 farmers assigned,{{professionPlural}} assigned,
+TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},
+TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,
+TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
+TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
+TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
+TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
+TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",
+TUTORIAL.TIME.D,,You can also click the speed icons to change the speed or pause the game.,
+
+VEGETABLE.BARLEY,,Barley,大麦だ
+VEGETABLE.BARLEY.PLURAL,,Barley,大麦だ
+VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",ビールの生産にのみ使用される穀物。 {{シーズン春夏}}、{シーズン夏}、{シーズン秋夏}} に植えられる。
+VEGETABLE.BERSERKER_MUSHROOM,,Berserker mushroom,マッシュルーム
+VEGETABLE.BERSERKER_MUSHROOM.PLURAL,,Berserker mushrooms,マッシュルーム
+VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP,,A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,白い斑点を持つピンク赤色のキャップを持つキノコ。 戦闘に備えて戦士が用いる幻覚性性がある。
+VEGETABLE.CARROT,,Carrot,にんじん
+VEGETABLE.CARROT.PLURAL,,Carrots,ニンジン
+VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",{{シーズン.冬}} の霜を存続する丈夫な根菜です。 ニンジンは急速に成長しますが、小さな作物しか生成しません。 {{シーズン春夏}}、{シーズン夏}、{シーズン秋夏}} に植えられる。
+VEGETABLE.CORN,,Sweetcorn,スイートコーン
+VEGETABLE.CORN.PLURAL,,Sweetcorn,スイートコーン
+VEGETABLE.CORN.TOOLTIP,,"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",トウモロコシとしても知られている穀物。 それは豊かな作物を生み出すが、成長するのに約2シーズンかかり、{{SEASON.WINTER}} は生き残ることができないので、早く {{SEASON.SPRING} に植える必要があります。
+VEGETABLE.DEATH_CAP_MUSHROOM,,Death cap mushroom,マッシュルーム
+VEGETABLE.DEATH_CAP_MUSHROOM.PLURAL,,Death cap mushrooms,マッシュルーム
+VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP,,"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",広くて平らなキャップを持つ非常に有毒なキノコ。 わずかな量でさえ食べることは、ほぼ確実に中毒を引き起こし、死につながる可能性があります。
+VEGETABLE.DRAGONFRUIT,,Dragonfruit,ドラゴンフルーツ
+VEGETABLE.DRAGONFRUIT.PLURAL,,Dragonfruits,ドラゴンフルーツ
+VEGETABLE.ELFSBANE_MUSHROOM,,Elfsbane mushroom,エルフスベン
+VEGETABLE.ELFSBANE_MUSHROOM.PLURAL,,Elfsbane mushrooms,エルフスベーンキノコ
+VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP,,"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.",このキノコは、ほとんどのヒューマノイドにシンプルで風味のない味を持っています。 不思議なことに、それはしばしば消費時に爆発的な嘔吐、または極端な場合には心臓発作に反応するエルフには絶対に嫌です。
+VEGETABLE.FIST_MUSHROOM,,Fist mushroom,マッシュルーム
+VEGETABLE.FIST_MUSHROOM.PLURAL,,Fist mushrooms,フィストマッシュルーム
+VEGETABLE.FIST_MUSHROOM.TOOLTIP,,A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,メタリックな味の黒青のキノコ。 それは、闇の時代からバードのグループにちなんで命名されています。
+VEGETABLE.GLOW_MUSHROOM,,Glow mushroom,グローマッシュルーム
+VEGETABLE.GLOW_MUSHROOM.PLURAL,,Glow mushrooms,グローマッシュルーム
+VEGETABLE.GLOW_MUSHROOM.TOOLTIP,,A magic-infused mushroom that gives off light and changes colour with the seasons.,光を放り出し、季節によって色が変わる魔法のマッシュルーム。
+VEGETABLE.HOPS,,Hops,ホップ
+VEGETABLE.HOPS.PLURAL,,Hops,ホップ
+VEGETABLE.HOPS.TOOLTIP,,A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,ビールの風味に使われる花。 {{シーズンスプリング}} に植える必要があります。
+VEGETABLE.LOQUAT,,Loquat,ロクワット
+VEGETABLE.LOQUAT.PLURAL,,Loquats,ロクワット
+VEGETABLE.MILTONIA_MUSHROOM,,Miltonia mushroom,ミルトニアキノコ
+VEGETABLE.MILTONIA_MUSHROOM.PLURAL,,Miltonia mushrooms,ミルトニアキノコ
+VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP,,"Once thought to exist only in the Hudds region, it is now found throughout the world.",かつてはハッズ地域にのみ存在すると考えられ、今では世界中で発見されています。
+VEGETABLE.POTATO,,Potato,じゃがいも
+VEGETABLE.POTATO.PLURAL,,Potatoes,じゃがいも
+VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.",{{SEASON.WINTER}} 生き残ることができるデンプン質の根菜で、ほとんどの集落に適しています。 {{シーズン春夏}}、{シーズン夏}、{シーズン秋夏}} に植えられる。
+VEGETABLE.PURPLE_HELMET_MUSHROOM,,Purple helmet mushroom,マッシュルーム
+VEGETABLE.PURPLE_HELMET_MUSHROOM.PLURAL,,Purple helmet mushrooms,マッシュルーム
+VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.",太った帽子、ふっくらターバン、ふわふわヘルメット。この伝説のキノコは、多くの名前で行きます。 伝説は、ずっと前に、ドワーフの多くのコミュニティは、この真菌の飼いならされた株に完全に住んだことを保持しています。
+VEGETABLE.ROCIOMYCOTA_MUSHROOM,,Rociomycota mushroom,マッシュルーム
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.PLURAL,,Rociomycota mushrooms,マッシュルーム
+VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP,,A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,白と黒の斑点きのこ。 それを摂取する人々の外観に影響を与えることが知られている。
+VEGETABLE.SUNGLOW_MUSHROOM,,Sunglow mushroom,サングローマッシュルーム
+VEGETABLE.SUNGLOW_MUSHROOM.PLURAL,,Sunglow mushrooms,サングローマッシュルーム
+VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP,,A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,太陽の光で輝く明るい黄色のキノコ。 収穫された瞬間にこの輝きを失います。
+VEGETABLE.SYRUP_POWDER_MUSHROOM,,Syrup powder mushroom,シロップパウダーマッシュルーム
+VEGETABLE.SYRUP_POWDER_MUSHROOM.PLURAL,,Syrup powder mushrooms,シロップパウダーキノコ
+VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP,,"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.",白い下面を持つ丸いオレンジ/黄色のキノコ。 昔、魔道者によって使われてきたと言われていますが、どんな目的のためにも、誰も知りません。
+VEGETABLE.TAMARILLO,,Tamarillo,タマリロ
+VEGETABLE.TAMARILLO.PLURAL,,Tamarillos,タマリロス
+VEGETABLE.THIMBLEBERRY,,Thimbleberry,シンブルベリー
+VEGETABLE.THIMBLEBERRY.PLURAL,,Thimbleberries,シンブルベリー
+VEGETABLE.TOMATO,,Tomato,トマト
+VEGETABLE.TOMATO.PLURAL,,Tomatoes,トマトだ
+VEGETABLE.TOMATO.TOOLTIP,,A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,野菜としてよく使われる大きな赤い果実を育てる植物。 {{シーズンスプリング}} にのみ植えることができる。
+VEGETABLE.WHEAT,,Wheat,小麦
+VEGETABLE.WHEAT.PLURAL,,Wheat,小麦
+VEGETABLE.WHEAT.TOOLTIP,,"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",穀物の穀物は、一般的にパンの生産に使用されます。 {{シーズン.冬}} は生き残ることができますが、成長にはしばらく時間がかかるので、{{シーズン.スプリング}} または {{シーズン.AUTUMN} に植えられます。
+
+VITRIOL.GREEN_VITRIOL.ADJECTIVE,,Green,緑
+VITRIOL.GREEN_VITRIOL.NOUN,,Green,緑
+VITRIOL.GREEN_VITRIOL.TOOLTIP,,"Also known as iron sulfate, this salt has several uses, including as a soil additive to improve crop farming. (Usages of vitriol are not yet implemented in King under the Mountain)",硫酸鉄としても知られるこの塩は、作物農業を改善するための土壌添加剤として含め、いくつかの用途を有する。 （硝酸塩の使用は、まだ山の下の王に実装されていません）
+
+WALL.DESCRIPTION,"E.g. “Granite rock wall”, “Granite smooth stone wall”",{{materialType.adjective}} {{wallType.noun}},{{furnitureType.noun}}} {{ウォールタイプ.名詞}}
+WALL.GEMS.NOUN,,Gems,宝石
+WALL.ORE.NOUN,,Ore,鉱石
+WALL.ROUGH_STONE.NOUN,,Rock wall,ロックウォール
+WALL.STONE_BLOCK.NOUN,,Smooth stone wall,滑らかな石の壁。
+WALL.WOODEN.NOUN,,Wood wall,木造壁
+
+WOOD.ASPEN.ADJECTIVE,,Aspen,ポプラ
+WOOD.ASPEN.NOUN,,Aspen,ポプラ
+WOOD.BAOBAB.ADJECTIVE,,Baobab,バオバブ
+WOOD.BAOBAB.NOUN,,Baobab,バオバブ
+WOOD.BARKSHROOM.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,バークシュルーム
+WOOD.BARKSHROOM.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Barkshroom,バークシュルーム
+WOOD.BEECH.ADJECTIVE,,Beech,ブナ
+WOOD.BEECH.NOUN,,Beech,ブナ
+WOOD.BIRCH.ADJECTIVE,,Birch,カバ
+WOOD.BIRCH.NOUN,,Birch,カバ
+WOOD.EBONY.ADJECTIVE,,Ebony,黒檀
+WOOD.EBONY.NOUN,,Ebony,黒檀
+WOOD.FIR.ADJECTIVE,,Fir,モミ
+WOOD.FIR.NOUN,,Fir,モミ
+WOOD.FUNGIWOOD.ADJECTIVE,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,ファンザイウッド
+WOOD.FUNGIWOOD.NOUN,This is a made-up fantasy wood that comes from giant mushrooms,Fungiwood,ファンザイウッド
+WOOD.IRONWOOD.ADJECTIVE,,Ironwood,アイアンウッド
+WOOD.IRONWOOD.NOUN,,Ironwood,アイアンウッド
+WOOD.MAPLE.ADJECTIVE,,Maple,メープル
+WOOD.MAPLE.NOUN,,Maple,メープル
+WOOD.NUYTSIA.ADJECTIVE,,Nuytsia,ヌイシア
+WOOD.NUYTSIA.NOUN,,Nuytsia,ヌイシア
+WOOD.OAK.ADJECTIVE,,Oaken,オーク
+WOOD.OAK.NOUN,,Oak,オーク
+WOOD.PECAN.ADJECTIVE,,Pecan,ピーカン
+WOOD.PECAN.NOUN,,Pecan,ピーカン
+WOOD.PINE.ADJECTIVE,,Pine,松
+WOOD.PINE.NOUN,,Pine,松
+WOOD.RED_CEDAR.ADJECTIVE,,Red cedar,赤杉
+WOOD.RED_CEDAR.NOUN,,Red cedar,赤杉
+WOOD.RED_EMPEROR.ADJECTIVE,,Red emperor,赤柏
+WOOD.RED_EMPEROR.NOUN,,Red emperor,赤柏
+WOOD.ROSEWOOD.ADJECTIVE,,Rosewood,紫檀
+WOOD.ROSEWOOD.NOUN,,Rosewood,紫檀
+WOOD.SPRUCE.ADJECTIVE,,Spruce,トウヒ
+WOOD.SPRUCE.NOUN,,Spruce,トウヒ
+WOOD.STAR_PINE.ADJECTIVE,,Star pine,スターパイン
+WOOD.STAR_PINE.NOUN,,Star pine,スターパイン
+WOOD.SYCAMORE.ADJECTIVE,,Sycamore,プラタナス
+WOOD.SYCAMORE.NOUN,,Sycamore,プラタナス

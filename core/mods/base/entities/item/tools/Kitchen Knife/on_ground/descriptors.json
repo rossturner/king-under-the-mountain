@@ -1,0 +1,42 @@
+[
+  {
+    "uniqueName": "Tool-Kitchen-Knife-Handle-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Kitchen-Knife",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Kitchen-Knife-Handle-On-Ground.png",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Tool-Kitchen-Knife-Blade-On-Ground",
+    "type": "ABOVE_LAYER_1",
+    "itemTypeName": "Tool-Kitchen-Knife",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Kitchen-Knife-Blade-On-Ground.png",
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  }
+]

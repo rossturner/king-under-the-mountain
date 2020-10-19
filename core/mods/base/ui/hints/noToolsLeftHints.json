@@ -1,0 +1,58 @@
+[
+  {
+    "hintId": "no_axes_left",
+    "i18nKeys": [
+      "HINT.TOOL_DEPLETED.AXE1",
+      "HINT.TOOL_DEPLETED.AXE2"
+    ],
+    "triggers": [
+      {
+        "triggerType": "ITEM_AMOUNT",
+        "relatedTypeName": "Tool-Axe",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "hintId": "no_saw_left",
+    "i18nKeys": [
+      "HINT.TOOL_DEPLETED.SAW1",
+      "HINT.TOOL_DEPLETED.SAW2"
+    ],
+    "triggers": [
+      {
+        "triggerType": "ITEM_AMOUNT",
+        "relatedTypeName": "Tool-Saw",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "hintId": "no_plane_left",
+    "i18nKeys": [
+      "HINT.TOOL_DEPLETED.PLANE1",
+      "HINT.TOOL_DEPLETED.PLANE2"
+    ],
+    "triggers": [
+      {
+        "triggerType": "ITEM_AMOUNT",
+        "relatedTypeName": "Tool-Plane",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "hintId": "no_chisel_left",
+    "i18nKeys": [
+      "HINT.TOOL_DEPLETED.CHISEL1",
+      "HINT.TOOL_DEPLETED.CHISEL2"
+    ],
+    "triggers": [
+      {
+        "triggerType": "ITEM_AMOUNT",
+        "relatedTypeName": "Tool-Chisel",
+        "quantity": 0
+      }
+    ]
+  }
+]

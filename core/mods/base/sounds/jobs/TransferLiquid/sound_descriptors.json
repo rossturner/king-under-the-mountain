@@ -1,0 +1,29 @@
+[
+  {
+    "name": "WaterCollect",
+    "filenames": [
+      "WaterCollect.wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  },
+  {
+    "name": "WaterDump",
+    "filenames": [
+      "WaterDump.wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  },
+  {
+    "name": "DropItemInWater",
+    "filenames": [
+      "DropItemInWater.wav"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 0.4
+  }
+]

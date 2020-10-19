@@ -1,0 +1,36 @@
+[
+  {
+    "designationName": "MINING",
+    "iconName": "block-50pct",
+    "createsJobTypeName": "MINING",
+    "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
+    "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
+  },
+  {
+    "designationName": "CHOP_WOOD",
+    "iconName": "logging",
+    "createsJobTypeName": "LOGGING",
+    "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
+    "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
+  },
+  {
+    "designationName": "HARVEST",
+    "iconName": "sickle",
+    "createsJobTypeName": "HARVESTING",
+    "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
+    "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
+  },
+  {
+    "designationName": "CLEAR_GROUND",
+    "iconName": "spade",
+    "createsJobTypeName": "CLEAR_GROUND",
+    "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
+    "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
+  },
+  {
+    "designationName": "REMOVE_ROOMS",
+    "iconName": "block",
+    "selectionColor": { "r": 1, "g": 0.2, "b": 0.2, "a": 0.3 },
+    "designationColor": { "r": 1, "g": 0.2, "b": 0.2, "a": 0.3 }
+  }
+]

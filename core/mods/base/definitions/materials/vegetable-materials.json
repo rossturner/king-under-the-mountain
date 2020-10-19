@@ -1,0 +1,130 @@
+[
+  {
+    "materialName": "Wheat",
+    "materialType": "VEGETABLE",
+    "colorCode": "#d7ce86"
+  },
+  {
+    "materialName": "Barley",
+    "materialType": "VEGETABLE",
+    "colorCode": "#e29a39"
+  },
+  {
+    "materialName": "Tomato",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#bf1f20"
+  },
+  {
+    "materialName": "Potato",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#ab8f59"
+  },
+  {
+    "materialName": "Carrot",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#ff7d1f"
+  },
+  {
+    "materialName": "Hops",
+    "materialType": "VEGETABLE",
+    "colorCode": "#9dd248"
+  },
+  {
+    "materialName": "Corn",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#d4ea58"
+  },
+
+
+  {
+    "materialName": "Loquat",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#fcc04a"
+  },
+  {
+    "materialName": "Thimbleberry",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#c7323f"
+  },
+  {
+    "materialName": "Tamarillo",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#de4720"
+  },
+  {
+    "materialName": "Dragonfruit",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#c52660"
+  },
+
+
+  {
+    "materialName": "Purple Helmet Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#963482"
+  },
+  {
+    "materialName": "Death Cap Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "poisonous": true,
+    "colorCode": "#423d3d"
+  },
+  {
+    "materialName": "Fist Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#4e4c4c"
+  },
+  {
+    "materialName": "Berserker Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#ffb6c1"
+  },
+  {
+    "materialName": "Rociomycota Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#f6f6f6"
+  },
+  {
+    "materialName": "Miltonia Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#185BBF"
+  },
+  {
+    "materialName": "Elfsbane Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#f4f2bb"
+  },
+  {
+    "materialName": "Sunglow Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#f6f76f"
+  },
+  {
+    "materialName": "Glow Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#ffd5d5"
+  },
+  {
+    "materialName": "Syrup Powder Mushroom",
+    "materialType": "VEGETABLE",
+    "edible": true,
+    "colorCode": "#ffe700"
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "uniqueName": "Unlabelled-Vitriol-Sack-Body-Floor",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Resource-Crushed-Vitriol"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack body.png",
+        "scale": 0.8,
+        "coloringLayer": "VITRIOL_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Unlabelled-Vitriol-Sack-Body-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Resource-Crushed-Vitriol"],
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 30,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VITRIOL_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 18,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -18,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VITRIOL_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VITRIOL_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": -22,
+              "y": -10
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VITRIOL_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VITRIOL_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -16,
+              "y": -16
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Sack body.png",
+        "scale": 0.7,
+        "coloringLayer": "VITRIOL_COLOR",
+        "childAssets": [
+          {
+            "type": "ABOVE_LAYER_2"
+          }
+        ]
+      }
+    }
+  }
+]

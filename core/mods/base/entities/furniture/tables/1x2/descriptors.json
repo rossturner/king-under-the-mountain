@@ -1,0 +1,68 @@
+[
+  {
+    "uniqueName": "table-1x2-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["KITCHEN_WORKTOP"],
+    "furnitureLayoutName": "1x2 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 46
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "table-1x2-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["KITCHEN_WORKTOP"],
+    "furnitureLayoutName": "1x2 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 46
+            }
+          }
+        ]
+      }
+    }
+  }
+]

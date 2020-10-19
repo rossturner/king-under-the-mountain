@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "Potato-Large-Branches",
+  "type": "PLANT_BRANCHES",
+  "speciesNames": ["Potato", "Carrot"],
+  "growthStages": [5, 6, 7],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_potato_large_branches.png",
+      "coloringLayer": "BRANCHES_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      },
+      "childAssets": [
+        {
+          "type": "PLANT_LEAVES",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  }
+}]

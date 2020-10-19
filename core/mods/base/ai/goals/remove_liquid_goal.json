@@ -1,0 +1,29 @@
+{
+  "name": "Remove liquid goal",
+  "i18nDescription": "GOAL.TRANSFER_LIQUID.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["GoToLocation", "PickUpEntity"],
+  "actionRelationships": {
+    "GoToLocation": {
+      "fail": ["UnassignJob"]
+    },
+    "PickUpEntity": {
+      "pass": ["GoToJobLocation", "FillContainer"],
+      "fail": ["UnassignJob"]
+    },
+    "GoToJobLocation": {
+      "fail": ["UnassignJob"]
+    },
+    "FillContainer": {
+      "pass": ["JobCompleted"],
+      "fail": ["UnassignJob"]
+    },
+    "JobCompleted": {},
+    "UnassignJob": {
+      "pass": ["CancelLiquidAllocation", "CancelHaulingAllocation"],
+      "fail": ["CancelLiquidAllocation", "CancelHaulingAllocation"]
+    },
+    "CancelLiquidAllocation": {},
+    "CancelHaulingAllocation": {}
+  }
+}

@@ -1,0 +1,298 @@
+Alpha 4
+
+- Brewing beer is here! Includes new "brewer" profession and brewery room type with plenty of new furniture and items
+- Liquid containers such as buckets are now used correctly if they already contain a liquid i.e. will be used to fill barrels, or ignored otherwise
+- Constructions no longer lock material types until all are available
+- Fixed the Linux distribution - apologies this has been broken a while - with many thanks to community member gammelget / @falkowich
+- Fix for mining jobs getting stuck as inaccessible when in newly-discovered caverns
+- Fixed an issue where status effects were not persisted between saves
+
+Alpha 3.6.5 - 5th July 2020
+
+- Fixed issues with failing to drink - drinking from water barrels now respects the available amount of water within
+- Changed bucket production quota from a fixed amount of 6 to 1 for every 5 settlers
+- Fixed an issue where items would become stuck as assigned when a crafting station was inaccessible
+- Disabled sounds when placing items down
+- Item types now define the sound asset used when they are eaten/consumed, so now rations no longer have an associated sound
+
+Alpha 3.6.4 - 3rd July 2020
+
+- Improved checking of inaccessible jobs, fixes an issue where once-inaccessible jobs would sometimes get stuck as inaccessible forever
+- Removed tool requirement from deconstruction jobs to avoid scenario of being unable to deconstruct furniture to retrieve a required tool
+- Changed stone walls to be constructed with chisel rather than small hammer
+
+Alpha 3.6.3 - 30th June 2020
+
+- Fixed a crash that occurred when eating rations from a table
+- Exposed stockpile groups to modding
+
+Alpha 3.6.2 - 29th June 2020
+
+- Fixed a crash introduced in 3.6.1 when drinking soup (many thanks to those of you with crash reporting switched on to jump on top of it quickly!)
+- Fixed some issues with tracking food placed on tables, which was causing invalid food assignments to be created
+
+Alpha 3.6.1 - 29th June 2020
+
+- Fix for a crash that would happen when drinking soup
+- Fixed display of charcoal clamps selecting an incorrect earth material
+- Corrected handling of items returned by deconstruction when items do not have default sizes and styles (e.g. logs that are small or large)
+
+Alpha 3.6 - 27th June 2020
+
+- Crafting stations (e.g. sawmill, masonry, carpentry and blacksmith) now require tools during construction, but settlers will use those tools instead of requiring one in their inventory
+- Increased amount of tools provided at game start to smooth the early game with the above (will be revisited when embark is player-driven)
+- Immigrants no longer bring any items with them (be sure to have plenty of food!)
+- Added the first in-game hints to let the player know when an important tool has been used up by constructions (e.g. using all the available axes in sawmills)
+- Settlers now slow down a bit when another settler in front of them is moving in the same direction, to avoid queues bunching up together
+- Upgraded Java version from 8 to 11
+- Fixed an issue that was preventing other languages from being displayed
+- Selecting "Hints only" at game start no longer prompts for tutorial on subsequent new game start (tutorial can be enabled again by re-enabling hints in options menu)
+
+Alpha 3.5 - 8th March 2020
+
+- Added hint system for tutorial on new game start
+- Corrected display of berserker mushroom spawn label
+
+Alpha 3.4 - 22nd February 2020
+
+- Fixed an issue where dwarves would aim to drink from a water barrel with not enough water in it for a drink, often causing them to die of dehydration
+- Fixed a crash that would very infrequently happen when immigrants arrived
+
+Alpha 3.3 - 22nd February 2020
+
+- Improved handling of cancelling jobs and interrupting jobs in progress
+- Correctly cancelling construction jobs when a construction is cancelled by the player
+- Fix for a crash when deconstructing a charcoal clamp
+
+Alpha 3.2 - 5th February 2020
+
+- Fixed an issue that sometimes stopped saved games from loading
+
+Alpha 3.1 - 26th January 2020
+
+- Fixed an issue that sometimes cause the game to launch two instances
+- Downgraded from the LWJGL3 back end while issues are investigated
+    - This removes the splash screen and "Apply" button in the mods menu
+
+Alpha 3 - 25th January 2020
+
+- Mods are here! You can now create your own mods, see the #modding channel in the Discord server for more info (https://discord.gg/M57GrFp)
+    - Look out for a central modding repository for you to browse and download mods from as part of a later update to Alpha 3
+- Added a splash screen to show while mods are being processed
+- Opened up translation support via the Community Translations mod
+- Font can now be specified per language
+- Hopefully eliminated any existing memory leaks when starting a new game
+
+Alpha 2.16 - 17th January 2020
+
+- Fixed a crash when trying to haul a mushroom log to a shock tank with no navigable workspace positions
+
+Alpha 2.15 - 15th January 2020
+
+- Fixed an issue that was blocking the "new version available" feature from working for some (most?) users
+
+Alpha 2.14 - 14th January 2020
+
+- Rebuild to hopefully avoid a problem with Java 8 and Java 9+ compilation compatability
+
+Alpha 2.13 - 6th January 2020
+
+- Fixed a crash that could occur when hauling an item that was not yet in hand
+
+Alpha 2.12 - 5th January 2020
+
+- Fixed a crash that occured when eating food from another container
+- Fixed a crash where an item placed for construction is null (needs further investigation)
+
+Alpha 2.11 - 4th January 2020
+
+- Fixed a crash introduced by one of the crash fixes in Alpha 2.10
+
+Alpha 2.10 - 3rd January 2020
+
+- Fixed the following issues:
+    - Multiple mining jobs could be created in unexplored areas
+    - Building a wall over the main access point for a crafting station while a crafting job is in progress would block usage
+    - Prevented a crash when building furniture in a location containing items from a previously cancelled furniture construction
+    - Out of season crop planting jobs were not properly cancelled
+    - Constructions now use the (roughly) nearest available resources
+    - Description of hauling jobs now show the correct quantity of the item about to be picked up
+    - Farm plots and constructions now show designations such as removing plants that they apply automatically, this stops the player from double-removing plants and similar
+    - Added a horrible kludge to fix hauling jobs assigned to a settler no longer working on them, still need to investigate underlying cause
+    - Corrected label for rociomycota mushroom spawn
+- Many thanks to SirRockstar for investigating and detailing each of the above bugs
+- Fixed the following crashes:
+    - When attempting to view an item which no longer exists in the world - indicative of a bigger problem still to be fixed
+    - When an item is dumped into a construction but is not being hauled to it
+    - Mushroom farming caused a crash related to the item allocation overhaul, now fixed
+- Liquid containers now display contents to one decimal point
+- Grouped identical item assignments into a single line when inspecting an item with assignments to a construction
+
+Alpha 2.9 - 19th December 2019
+
+- Major rework to how items and stockpiles are allocated to hopefully fix any outstanding assignment bugs, or at least be able to investigate them in the future
+- Also reworked liquid allocations to fix bugs with drinking from water barrels
+- Fixed an issue where bridges would sometimes not be constructed
+- Incoming hauling jobs are now cancelled when a construction is removed
+- Made bauxite much more rare (this was a mistake in map generation, bauxite is meant to be very rare until there's a use for it)
+
+Alpha 2.8 - 19th November 2019
+
+- Corrected name of rock crusher (was using tooltip text)
+- Added many new resources as part of Kickstarter rewards fulfilment
+
+Alpha 2.7 - 25th September 2019
+
+- Fix for map generation always generating the same map, back to random generation again!
+
+Alpha 2.6 - 11th September 2019
+
+- Added tooltips for most things in the game - hover over any blue text to get more information about it
+- Replaced ugly bitmap-based font with font generated from True Type Font files
+- Fix for a bug where buckets and other items would get stuck as assigned when jobs were interrupted (thanks to SneakyOne and forgejdr)
+
+Alpha 2.5 - 10th July 2019
+
+- Various small fixes for crashes that have been reported
+
+Alpha 2.4 - 5th July 2019
+
+- Switched off dev mode, oops. This just lets you see some extra debug info.
+
+Alpha 2.3 - 4th July 2019
+
+- Fixed a crash that occurred upon cooking soup
+
+Alpha 2.2 - 28th June 2019
+
+- Added giant mushrooms which can be chopped down as an alternative to wood
+- Added metal plates, which are required to build an ore crusher (and future metal constructions)
+- Settlements now start with one cauldron to help balance the early game
+- Maximum immigration is now limited in proportion to current population
+- The furniture rotation hint message now tells you if furniture can not be rotated (yet)
+- Reduced global audio volume
+- Blacksmiths will now produce a backup anvil
+- Merged graveyard and hall of the fallen into a single room (graveyard)
+- Added a mechanism to block certain materials from being used in random generation so they can remain a secret
+- Now showing how much of a liquid is assigned i.e. water barrels show if they are in use for drinking
+- Inventory items are now dumped on the floor rather than destroyed when furniture is removed
+- Dwarves that die while in bed will now fall out of bed upon their death
+- Fixed an issue where furniture could be placed with mismatching material type and material selections, causing it to disappear
+- Fixed an issue with crafting tongs requiring a small hammer which might not be available
+
+Alpha 2.1 - April 14th 2019
+
+- Fix for a crash when constructing cauldrons with soup inside
+- Set focus on textfield automatically when renaming a room
+- Smelting tin no longer produces 2 blooms, just 1, sorry!
+
+Alpha 2 - April 6th 2019
+
+- Added settler and resource overview screens, no more hunting for lost dwarves!
+- Replaced the placeholder smelter and metalworks with a more fully-featured production chain:
+    - Ore requires crushing at an ore crushing station, similar to converting logs into planks at a sawmill
+    - The ore crushing station and new smelter require metal hoops and plates to construct, so be even more careful with your starting resources
+    - Smelting ore into metal now requires fuel, either:
+        - Coke produced from crushed coal in a coke oven
+        - or charcoal, produced from burning wooden logs in a charcoal clamp
+    - Forging of items by a blacksmith also requires fuel
+- Added option to make trees partially transparent when a settler is behind them
+- Improved selection of graves/sarcophagi so only ones with navigable access points are selected
+- Stopped trees from growing very close together
+- Settlers now only awake after 30% sleep need fulfilled when starving or dehydrated, compared to waking up instantly
+- Stockpiles now show how many tiles/spaces are currently in use
+- Rooms now have a name and can be renamed by the player
+- Items allocated to be hauled somewhere will now give a short description of their assignments
+- Added an icon to the windows executable!
+- Fix for river zone allocations so dwarves don't go a very long way to drink from the river (thanks Johnstein)
+
+Alpha 1.15
+
+- Fixed water barrel allocations so that water barrels will no longer become unusable
+- Improved immigration with paused notification so immigrants don't all arrive at the same time
+
+Alpha 1.14 - Feb 2nd 2019
+
+- Doors can now be placed in valid tiles that contain items that need removing first
+- Made crafting jobs lower priority, so stonemasons and carpenters will build new furniture in preference to crafting things
+- New gameplay option to pause and open when receiving a notification - enabled by default
+- Hunger and thirst now makes dwarves progressively unhappy in two stages (e.g. very hungry and then starving) rather than an initial -50 happiness malus
+
+Alpha 1.13 - Feb 1st 2019
+
+- Added a cap to immigration per year of 50 dwarves
+- Added a cap to construction time so large bridges don't take too long
+- Made pillars navigable so they have a benefit over leaving walls un-mined
+- Increased the thresholds at which dwarves will urgently eat or drink
+- Further fix for a crash when removing stockpiles
+
+Alpha 1.12 - Jan 31st 2019
+
+- Fix for a crash caused when attempting to deconstruct furniture that appears to have never been constructed (???)
+- Dwarves struck by falling boulders no longer removed from the map
+- Sometimes the dwarves would pick a spot really far away to get water from the river. This has now been fixed and they'll pick somewhere close, although ignoring any walls inbetween.
+- Fix for a crash when removing stockpiles
+- Dwarves now dislike sleeping in a bedroom of less than 9 tiles, but are very happy sleeping in a private bedroom larger than 12 tiles
+- Added a system for allocating liquids so that large populations don't all try to drink from the same water barrel
+- Reduced amount of bonus immigration when food stocks are high
+
+Alpha 1.11
+
+- Dwarves now place unused items in their inventory (like harvested crops) into a stockpile in preference to other goals, compared to having a lower priority.
+- Fixed a crash introduced by removing door close sounds
+- Removed "placeholder" from metalwork room and furniture names
+
+Alpha 1.10 - Jan 29th 2019
+
+- Disabled door closing sound
+- Removing stockpile tiles now cancels the hauling jobs
+- Darkened seeds sown onto farm plot tiles
+- Updated some sound effect .wav files
+- Broken dwarves now drop any equipped or hauled items
+- Removed fishing and hunting professions as they are not implemented yet to avoid confusion
+
+Alpha 1.9
+
+- Fixed an issue with soup in cauldrons not being de-allocated correctly
+- Fixed a crash when trying to find a food allocation not in the right place
+
+Alpha 1.8 - Jan 28th 2019
+
+- Fixed an issue where bread could not be picked up from a serving table correctly. Hopefully this solves the great famine problem of 2019.
+- Reduced the volume of nearly all sound effects
+- Increased time from dehydration to death
+- Made moving corpses high priority jobs
+
+Alpha 1.7
+
+- Removing a bed with a dwarf sleeping in it no longer murders the dwarf under "mysterious circumstances"
+- Fixed a crash when sleeping in a bed which is not in a bedroom
+- Fixed a crash when unassigning furniture which doesn't exist (???)
+
+Alpha 1.6
+
+- Having a graveyard no longer corrupts a savefile. Oops!
+
+Alpha 1.5
+
+- Fixed a crash caused by hovering a wall placement over a mushroom farm
+
+Alpha 1.4
+
+- When the roof caves in, it now correctly destroys any constructions hit by falling debris
+
+Alpha 1.3
+
+- Fix for AI going horribly wrong when a dwarf is checking what it needs to do next, when it has just been killed
+
+Alpha 1.2
+
+- Fix for a crash when a corpse is not located on the map
+
+Alpha 1.1
+
+- Fix for crash when checking if a dead dwarf is still hungry or thirsty
+
+Alpha 1 - Jan 27th 2019
+
+- Alpha 1 release! This changelog will keep track of any future changes or bugfixes.

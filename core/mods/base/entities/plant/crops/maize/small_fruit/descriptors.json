@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Maize-Small-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Maize"],
+  "growthStages": [4],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_maize_small_fruit.png",
+      "coloringLayer": "FRUIT_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      }
+    }
+  }
+}]

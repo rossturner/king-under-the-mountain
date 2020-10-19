@@ -1,0 +1,199 @@
+[
+  {
+    "name": "BAKING_OVEN",
+    "i18nKey": "FURNITURE.BAKING_OVEN",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "2x2 with lower workspaces",
+    "colorCode": "#ab8a49",
+    "iconName": "sliced-bread",
+    "placeAnywhere": false,
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 6
+        }
+      ]
+    },
+    "tags": {}
+  },
+
+  {
+    "name": "MASH_TUN",
+    "i18nKey": "FURNITURE.MASH_TUN",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "mashtun layout",
+    "colorCode": "#ac7e28",
+    "iconName": "mashtun",
+    "placeAnywhere": false,
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Plate",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 6
+        },
+        {
+          "itemTypeName": "Product-Liquid-Tank",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["MALT_MASHING", "PRODUCE_LIQUID", "HAULING", "Product-Barrel"],
+      "CRAFTING_OVERRIDE": ["DO_NOT_HAUL_OUTPUT"],
+      "LIQUID_CONTAINER": ["12", "Water"],
+      "REQUIREMENT_TO_COLOR_MAPPINGS": ["Resource-Metal-Plate", "METAL_COLOR", "Product-Liquid-Tank", "MISC_COLOR_1"]
+    }
+  },
+  {
+    "name": "BREW_KETTLE",
+    "i18nKey": "FURNITURE.BREW_KETTLE",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "mashtun layout",
+    "colorCode": "#c67852",
+    "iconName": "round-bottom-flask-uncorked",
+    "placeAnywhere": false,
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Plate",
+          "quantity": 6
+        },
+        {
+          "itemTypeName": "Product-Liquid-Tank",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["WORT_BREWING", "PRODUCE_LIQUID", "HAULING", "Product-Barrel"],
+      "CRAFTING_OVERRIDE": ["DO_NOT_HAUL_OUTPUT"],
+      "LIQUID_CONTAINER": ["12", "Wort"],
+      "REQUIREMENT_TO_COLOR_MAPPINGS": ["Resource-Metal-Plate", "METAL_COLOR", "Product-Liquid-Tank", "MISC_COLOR_1"]
+    }
+  },
+  {
+    "name": "FERMENTATION_TANK",
+    "i18nKey": "FURNITURE.FERMENTATION_TANK",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "1x1 with workspaces",
+    "colorCode": "#e6c974",
+    "iconName": "chemical-tank",
+    "placeAnywhere": false,
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Product-Liquid-Tank",
+          "quantity": 1
+        }
+      ],
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 6
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["FERMENTING", "PRODUCE_LIQUID", "HAULING", "Product-Barrel"],
+      "LIQUID_CONTAINER": ["12", "Hopped Wort"]
+    }
+  },
+
+  {
+    "name": "BLOOMERY_FURNACE",
+    "i18nKey": "FURNITURE.BLOOMERY_FURNACE",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "2x2+SW with lower workspaces",
+    "colorCode": "#d44545",
+    "iconName": "metal-bar",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Unrefined",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 6
+        },
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 2
+        },
+        {
+          "itemTypeName": "Resource-Metal-Ingot",
+          "quantity": 2
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["SMELTING", "PRODUCE_ITEM", "HAULING"],
+      "CRAFTING_OVERRIDE": ["DO_NOT_HAUL_OUTPUT"],
+      "REQUIREMENT_TO_COLOR_MAPPINGS": ["Resource-Stone-Unrefined", "MISC_COLOR_1", "Resource-Stone-Block", "MISC_COLOR_2"],
+      "EXTRA_MATERIAL_TYPES": ["CLOTH"]
+    }
+  },
+
+
+  {
+    "name": "CHARCOAL_CLAMP",
+    "i18nKey": "FURNITURE.CHARCOAL_CLAMP",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "2x2 with lower workspaces",
+    "colorCode": "#746044",
+    "iconName": "pyre",
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "quantity": 32
+        }
+      ]
+    },
+    "tags": {
+      "FURNITURE_BEHAVIOUR": ["TRANSFORM_UPON_JOB_COMPLETION", "JobType_SHOVELLING", "FurnitureType_CHARCOAL_CLAMP_COVERED"],
+      "EXTRA_MATERIAL_TYPES": ["EARTH"]
+    }
+  },
+  {
+    "name": "CHARCOAL_CLAMP_COVERED",
+    "i18nKey": "FURNITURE.CHARCOAL_CLAMP",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "2x2 with lower workspaces",
+    "colorCode": "#746044",
+    "iconName": "pyre",
+    "hiddenFromPlacementMenu": true,
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Logs",
+          "quantity": 32
+        }
+      ]
+    },
+    "tags": {
+      "FURNITURE_BEHAVIOUR": ["TRANSFORM_AFTER_SET_TIME", "FurnitureType_CHARCOAL_CLAMP_COMPLETED"]
+    }
+  },
+  {
+    "name": "CHARCOAL_CLAMP_COMPLETED",
+    "i18nKey": "FURNITURE.CHARCOAL_CLAMP",
+    "categoryName": "OVEN",
+    "defaultLayoutName": "2x2 with lower workspaces",
+    "colorCode": "#746044",
+    "iconName": "pyre",
+    "hiddenFromPlacementMenu": true,
+    "requirements": {
+      "ORE": [
+      ]
+    },
+    "tags": {
+      "CHARCOAL_CLAMP_BEHAVIOUR": []
+    }
+  }
+]

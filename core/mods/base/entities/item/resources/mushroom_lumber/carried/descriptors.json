@@ -1,0 +1,128 @@
+[
+  {
+    "uniqueName": "Giant-Mushroom-Lumber-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": [
+      "Resource-Mushroom-Lumber"
+    ],
+    "itemSize": "SMALL",
+    "itemStyle": "STYLE_1",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Giant Mushroom Carried Vertical.png",
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Giant Mushroom Carried Diagonal.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 1.5
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Giant Mushroom Carried Diagonal.png",
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 1.5
+        }
+      },
+      "UP": {
+        "filename": "Giant Mushroom Carried Vertical.png",
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 6,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Giant Mushroom Carried Diagonal.png",
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 6,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 1.5
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Giant Mushroom Carried Diagonal.png",
+        "flipX": true,
+        "coloringLayer": "WOOD_COLOR",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 4,
+              "y": 2
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 1.5
+        }
+      }
+    }
+  }
+]

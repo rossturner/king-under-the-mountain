@@ -1,0 +1,48 @@
+[{
+  "speciesName": "Barkshroom",
+  "plantType": "MUSHROOM_TREE",
+  "materialName": "Barkshroom",
+  "maxGrowthSpeedVariance": 0.5,
+  "occurenceWeight": 0.01,
+  "replacesOtherPlantsInRegion": 26,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "swatch": "barkshroom-branch-base-swatch.png"
+    },
+    "LEAF_COLOR": {
+      "swatch": "barkshroom-leaf-base-swatch.png"
+    }
+  },
+  "seasons": {
+  },
+  "growthStages": [
+    {
+      "name": "Sapling",
+      "seasonsUntilComplete": 1,
+      "nextGrowthStage": 1,
+      "tileHeight": 1
+    },
+    {
+      "name": "Size 1",
+      "seasonsUntilComplete": 3,
+      "nextGrowthStage": 2,
+      "tileHeight": 1
+    },
+    {
+      "name": "Size 2",
+      "seasonsUntilComplete": 2,
+      "nextGrowthStage": 2,
+      "tileHeight": 2,
+      "harvestType": "LOGGING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Mushroom-Lumber",
+          "materialName": "Barkshroom",
+          "quantity": 2,
+          "itemSize": "SMALL",
+          "itemStyle": "STYLE_1"
+        }
+      ]
+    }
+  ]
+}]

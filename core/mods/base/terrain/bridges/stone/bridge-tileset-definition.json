@@ -1,0 +1,33 @@
+{
+  "materialType": "STONE",
+  "i18nKey": "ROOMS.BRIDGE",
+  "craftingTypeName": "STONEMASONRY",
+  "buildingRequirement": {
+    "itemTypeName": "Resource-Stone-Block",
+    "quantity": 2
+  },
+  "assets": {
+    "EAST_WEST": {
+      "CENTRE": "Horizontal Stone Bridge Middle Middle.png",
+      "NORTH": "Horizontal Stone Bridge Top Middle.png",
+      "NORTH_EAST": "Horizontal Stone Bridge Top Right.png",
+      "EAST": "Horizontal Stone Bridge Middle Right.png",
+      "SOUTH_EAST": "Horizontal Stone Bridge Bottom Right.png",
+      "SOUTH": "Horizontal Stone Bridge Bottom Middle.png",
+      "SOUTH_WEST": "Horizontal Stone Bridge Bottom Left.png",
+      "WEST": "Horizontal Stone Bridge Middle Left.png",
+      "NORTH_WEST": "Horizontal Stone Bridge Top Left.png"
+    },
+    "NORTH_SOUTH": {
+      "CENTRE": "Vertical Stone Bridge Middle Middle.png",
+      "NORTH": "Vertical Stone Bridge Top Middle.png",
+      "NORTH_EAST": "Vertical Stone Bridge Top Right.png",
+      "EAST": "Vertical Stone Bridge Middle Right.png",
+      "SOUTH_EAST": "Vertical Stone Bridge Bottom Right.png",
+      "SOUTH": "Vertical Stone Bridge Bottom Middle.png",
+      "SOUTH_WEST": "Vertical Stone Bridge Bottom Left.png",
+      "WEST": "Vertical Stone Bridge Middle Left.png",
+      "NORTH_WEST": "Vertical Stone Bridge Top Left.png"
+    }
+  }
+}

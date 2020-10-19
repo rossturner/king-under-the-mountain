@@ -1,0 +1,81 @@
+[
+  {
+    "uniqueName": "Furniture-Barrel-Body-Floor",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "WATER_BARREL",
+    "furnitureLayoutName": "1x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Barrel-Body-Floor.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 1.5
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          },
+          {
+            "type": "FURNITURE_LIQUID_LAYER"
+          },
+          {
+            "type": "FURNITURE_COVER_LAYER"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Furniture-Barrel-Hoops-Floor",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeName": "WATER_BARREL",
+    "furnitureLayoutName": "1x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Barrel-Hoops-Floor.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -4.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Furniture-Barrel-Lid-Floor",
+    "type": "FURNITURE_COVER_LAYER",
+    "furnitureTypeName": "WATER_BARREL",
+    "furnitureLayoutName": "1x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Barrel-Lid-Floor.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 11
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Furniture-Barrel-Contents-Floor",
+    "type": "FURNITURE_LIQUID_LAYER",
+    "furnitureTypeName": "WATER_BARREL",
+    "furnitureLayoutName": "1x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Barrel-Contents-Floor.png",
+        "coloringLayer": "LIQUID_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 13
+        }
+      }
+    }
+  }
+]

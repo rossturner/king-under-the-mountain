@@ -1,0 +1,16 @@
+[{
+  "uniqueName": "Tomato-Medium-Fruit",
+  "type": "PLANT_FRUIT",
+  "speciesNames": ["Tomato"],
+  "growthStages": [4],
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "crop_tomato_medium_fruit.png",
+      "coloringLayer": "FRUIT_COLOR",
+      "offsetPixels": {
+        "x": 1,
+        "y": 1
+      }
+    }
+  }
+}]

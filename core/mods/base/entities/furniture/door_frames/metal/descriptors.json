@@ -1,0 +1,36 @@
+[
+  {
+    "uniqueName": "doorframe-metal-single-ew",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_FRAME",
+    "furnitureLayoutName": "1x1EW",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "MetalFrame_Single_EW.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 55.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "doorframe-metal-single-ns",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SINGLE_DOOR_FRAME",
+    "furnitureLayoutName": "1x1NS",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "MetalFrame_Single_NS.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 70
+        }
+      }
+    }
+  }
+]

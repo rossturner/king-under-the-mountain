@@ -1,0 +1,172 @@
+[
+  {
+    "name": "MINING",
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "MINER",
+    "requiredItemTypeName": "Tool-Pickaxe",
+    "activeSoundAssetName": "Mining"
+  },
+  {
+    "name": "DIGGING",
+    "overrideI18nKey": "ACTION.JOB.DIGGING",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "MINER",
+    "requiredItemTypeName": "Tool-Pickaxe",
+    "activeSoundAssetName": "Tilling"
+  },
+  {
+    "name": "LOGGING",
+    "overrideI18nKey": "ACTION.JOB.LOGGING",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "LUMBERJACK",
+    "requiredItemTypeName": "Tool-Axe",
+    "activeSoundAssetName": "ChoppingTree",
+    "onCompletionSoundAssetName": "TreeFall"
+  },
+
+
+  {
+    "name": "SHOVELLING",
+    "overrideI18nKey": "ACTION.JOB.SHOVELLING",
+    "activeSoundAssetName": "Tilling"
+  },
+  {
+    "name": "TILLING",
+    "overrideI18nKey": "ACTION.JOB.TILLING",
+    "requiredProfessionName": "FARMER",
+    "activeSoundAssetName": "Tilling"
+  },
+  {
+    "name": "FILL_GRAVE",
+    "overrideI18nKey": "ACTION.JOB.FILL_GRAVE",
+    "accessedFromAdjacentTile": true,
+    "activeSoundAssetName": "Tilling"
+  },
+  {
+    "name": "PLANTING",
+    "overrideI18nKey": "ACTION.JOB.PLANTING",
+    "requiredProfessionName": "FARMER"
+  },
+  {
+    "name": "REMOVE_PESTS_FROM_CROP",
+    "overrideI18nKey": "ACTION.JOB.REMOVE_PESTS_FROM_CROP",
+    "requiredProfessionName": "FARMER"
+  },
+  {
+    "name": "MUSHROOM_INNOCULATION",
+    "overrideI18nKey": "ACTION.JOB.INNOCULATE_MUSHROOM_LOG",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "FARMER"
+  },
+  {
+    "name": "HARVESTING",
+    "overrideI18nKey": "ACTION.JOB.HARVESTING",
+    "activeSoundAssetName": "HarvestingCrops"
+  },
+  {
+    "name": "CLEAR_GROUND",
+    "overrideI18nKey": "ACTION.JOB.CLEAR_GROUND",
+    "accessedFromAdjacentTile": false
+  },
+  {
+    "name": "COOKING",
+    "workDuration": 7.5,
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CHEF"
+  },
+
+
+  {
+    "name": "HAULING",
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "haulItemWhileWorking": true,
+    "switchToSpecialGoal": "HAUL_ITEM",
+    "removeJobWhenAssignmentCancelled": true
+  },
+  {
+    "name": "COLLECT_ITEM",
+    "overrideI18nKey": "GOAL.HAULING.DESCRIPTION",
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
+    "switchToSpecialGoal": "HAUL_ITEM"
+  },
+  {
+    "name": "TRANSFER_LIQUID",
+    "workDuration": 0.7,
+    "overrideI18nKey": "ACTION.JOB.TRANSFER_LIQUID",
+    "accessedFromAdjacentTile": true,
+    "haulItemWhileWorking": true,
+    "switchToSpecialGoal": "TRANSFER_LIQUID",
+    "removeJobWhenAssignmentCancelled": true,
+    "onCompletionSoundAssetName": "WaterDump"
+  },
+  {
+    "name": "MOVE_LIQUID_IN_ITEM",
+    "workDuration": 0.7,
+    "overrideI18nKey": "ACTION.JOB.TRANSFER_LIQUID",
+    "accessedFromAdjacentTile": true,
+    "haulItemWhileWorking": true,
+    "switchToSpecialGoal": "MOVE_LIQUID_IN_ITEM",
+    "removeJobWhenAssignmentCancelled": true,
+    "onCompletionSoundAssetName": "WaterDump"
+  },
+  {
+    "name": "REMOVE_LIQUID",
+    "workDuration": 0.7,
+    "overrideI18nKey": "ACTION.JOB.TRANSFER_LIQUID",
+    "accessedFromAdjacentTile": false,
+    "haulItemWhileWorking": true,
+    "switchToSpecialGoal": "REMOVE_LIQUID",
+    "removeJobWhenAssignmentCancelled": true
+  },
+
+
+  {
+    "name": "FORGE_ITEM",
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
+    "activeSoundAssetName": "Metallic Hammering"
+  },
+  {
+    "name": "CRAFT_ITEM",
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"
+  },
+  {
+    "name": "PRODUCE_ITEM",
+    "overrideI18nKey": "ACTION.JOB.CREATE_GENERIC",
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"
+  },
+  {
+    "name": "PRODUCE_LIQUID",
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"
+  },
+  {
+    "name": "CONSTRUCT_WOODEN_FURNITURE",
+    "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FURNITURE",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CARPENTER",
+    "requiredItemTypeName": "Tool-Plane"
+  },
+  {
+    "name": "CONSTRUCT_STONE_FURNITURE",
+    "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FURNITURE",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "STONEMASON",
+    "requiredItemTypeName": "Tool-Chisel"
+  },
+  {
+    "name": "CONSTRUCT",
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"
+  },
+  {
+    "name": "DECONSTRUCT",
+    "overrideI18nKey": "ACTION.JOB.DECONSTRUCT",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"
+  }
+]

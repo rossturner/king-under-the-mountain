@@ -1,0 +1,108 @@
+[
+  {
+    "uniqueName": "mill-3x1-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FLOUR_MILL"],
+    "furnitureLayoutName": "3x1 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Mill 3x1 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -2,
+          "y": 0
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 28
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -64,
+              "y": 28
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": 28
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "mill-3x1-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["FLOUR_MILL"],
+    "furnitureLayoutName": "3x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Mill 3x1 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 32
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -64,
+              "y": 28
+            }
+          },
+          {
+            "type": "ATTACHMENT_WORKSPACE_2",
+            "offsetPixels": {
+              "x": 64,
+              "y": 28
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "mill-3x1-wood-rope",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["FLOUR_MILL"],
+    "furnitureLayoutName": "3x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Mill 3x1 wood table rope top.png",
+        "coloringLayer": "ROPE_COLOR",
+        "offsetPixels": {
+          "x": 7.5,
+          "y": -14.5
+        }
+      }
+    }
+  }
+]

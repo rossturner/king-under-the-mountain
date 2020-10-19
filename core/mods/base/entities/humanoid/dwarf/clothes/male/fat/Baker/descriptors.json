@@ -1,0 +1,54 @@
+[{
+  "uniqueName": "Dwarf-Male-Fat-Baker-Clothing",
+  "type": "BODY_CLOTHING",
+  "race": "DWARF",
+  "bodyType": "FAT",
+  "gender": "MALE",
+  "profession": "CHEF",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Fat-Baker-Clothing-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Fat-Baker-Clothing-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Fat-Baker-Clothing-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Fat-Baker-Clothing-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Fat-Baker-Clothing-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Fat-Baker-Clothing-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

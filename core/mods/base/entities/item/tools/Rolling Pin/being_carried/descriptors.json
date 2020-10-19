@@ -1,0 +1,94 @@
+[
+  {
+    "uniqueName": "Tool-Rolling-Pin-Being-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Tool-Rolling-Pin",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Tool-Rolling-Pin-Being-Carried-F.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 10
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 0,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Tool-Rolling-Pin-Being-Carried-F34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 7,
+          "y": 10
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": -7,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Tool-Rolling-Pin-Being-Carried-F34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -7,
+          "y": 10
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "offsetPixels": {
+              "x": 7,
+              "y": -12
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Tool-Rolling-Pin-Being-Carried-B.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 5,
+          "y": 14
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Tool-Rolling-Pin-Being-Carried-B34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 5,
+          "y": 10
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Tool-Rolling-Pin-Being-Carried-B34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -5,
+          "y": 10
+        }
+      }
+    }
+  }
+]
