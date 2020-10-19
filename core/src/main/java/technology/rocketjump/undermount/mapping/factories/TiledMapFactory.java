@@ -20,7 +20,6 @@ import technology.rocketjump.undermount.entities.model.physical.humanoid.Hauling
 import technology.rocketjump.undermount.entities.model.physical.item.*;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
-import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesSeed;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -304,14 +303,14 @@ public class TiledMapFactory {
 		items.addAll(item("Tool-Small-Hammer", 3));
 		items.addAll(item("Tool-Tongs", 3));
 
-		// TDO replace the below with fixed amounts of seeds
-		for (int cursor = 1; cursor <= numSettlers; cursor++) {
-			PlantSpeciesSeed cropSeed = null;
-			while (cropSeed == null) {
-				cropSeed = crops.get(random.nextInt(crops.size())).getSeed();
-			}
-			items.addAll(item(cropSeed.getSeedItemType().getItemTypeName(), 12, cropSeed.getSeedMaterial()));
-		}
+		items.addAll(item("Ingredient-Seeds", 20, "Carrot Seed"));
+		items.addAll(item("Ingredient-Seeds", 18, "Corn Seed"));
+		items.addAll(item("Ingredient-Seeds", 16, "Potato Seed"));
+		items.addAll(item("Ingredient-Seeds", 18, "Tomato Seed"));
+		items.addAll(item("Ingredient-Seeds", 12, "Wheat Seed"));
+
+		items.addAll(item("Ingredient-Seeds", numSettlers + 1, "Barley Seed"));
+		items.addAll(item("Ingredient-Seeds", numSettlers + 1, "Hops Seed"));
 
 		return items;
 	}
@@ -338,7 +337,7 @@ public class TiledMapFactory {
 		return item(itemTypeName, quantity, null);
 	}
 
-	private List<QuantifiedItemTypeWithMaterial> item(String itemTypeName, int quantity, GameMaterial material) {
+	private List<QuantifiedItemTypeWithMaterial> item(String itemTypeName, int quantity, String materialName) {
 		ItemType itemType = itemTypeDictionary.getByName(itemTypeName);
 		if (itemType == null) {
 			Logger.error("Could not find item type with name " + itemTypeName + " to init settlement with");
@@ -352,7 +351,12 @@ public class TiledMapFactory {
 			QuantifiedItemTypeWithMaterial quantifiedItemType = new QuantifiedItemTypeWithMaterial();
 			quantifiedItemType.setItemType(itemType);
 			quantifiedItemType.setQuantity(amountInThisStack);
-			quantifiedItemType.setMaterial(material);
+			if (materialName != null) {
+				quantifiedItemType.setMaterial(materialDictionary.getByName(materialName));
+			}
+			if (materialName != null && quantifiedItemType.getMaterial() == null) {
+				Logger.error("Could not find material with name " + materialName);
+			}
 
 			quantity -= amountInThisStack;
 			result.add(quantifiedItemType);

@@ -1,7 +1,8 @@
-Alpha 4
+Alpha 4 - 19th October 2020
 
 - Brewing beer is here! Includes new "brewer" profession and brewery room type with plenty of new furniture and items
 - Liquid containers such as buckets are now used correctly if they already contain a liquid i.e. will be used to fill barrels, or ignored otherwise
+- The types and quantity of seeds on game start are now fixed rather than random
 - Constructions no longer lock material types until all are available
 - Fixed the Linux distribution - apologies this has been broken a while - with many thanks to community member gammelget / @falkowich
 - Fix for mining jobs getting stuck as inaccessible when in newly-discovered caverns
