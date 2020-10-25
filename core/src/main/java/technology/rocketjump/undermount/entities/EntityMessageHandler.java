@@ -10,10 +10,7 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
-import technology.rocketjump.undermount.entities.behaviour.furniture.CollectItemFurnitureBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.furniture.DoorBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.furniture.FurnitureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.furniture.*;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.BrokenDwarfBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
@@ -381,7 +378,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						Entity targetFurnitureEntity = entityStore.getById(allocation.getTargetId());
 						if (targetFurnitureEntity != null && targetFurnitureEntity.getBehaviourComponent() instanceof CraftingStationBehaviour) {
 							((CraftingStationBehaviour) targetFurnitureEntity.getBehaviourComponent()).allocationCancelled(allocation);
-						} else if (targetFurnitureEntity != null && targetFurnitureEntity.getBehaviourComponent() instanceof CollectItemFurnitureBehaviour) {
+						} else if (targetFurnitureEntity != null && targetFurnitureEntity.getBehaviourComponent() instanceof CollectItemFurnitureBehaviour ||
+								targetFurnitureEntity != null & targetFurnitureEntity.getBehaviourComponent() instanceof InnoculationLogBehaviour) {
 							// Do nothing, CollectItemFurnitureBehaviour will deal with cancelled allocations, eventually, might want to improve this
 						} else {
 							// FIXME perhaps this is fine and we can do nothing

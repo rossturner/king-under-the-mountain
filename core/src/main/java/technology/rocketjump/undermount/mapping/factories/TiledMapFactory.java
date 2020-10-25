@@ -309,8 +309,8 @@ public class TiledMapFactory {
 		items.addAll(item("Ingredient-Seeds", 18, "Tomato Seed"));
 		items.addAll(item("Ingredient-Seeds", 12, "Wheat Seed"));
 
-		items.addAll(item("Ingredient-Seeds", numSettlers + 1, "Barley Seed"));
-		items.addAll(item("Ingredient-Seeds", numSettlers + 1, "Hops Seed"));
+		items.addAll(item("Ingredient-Seeds", 16, "Barley Seed"));
+		items.addAll(item("Ingredient-Seeds", 12, "Hops Seed"));
 
 		return items;
 	}

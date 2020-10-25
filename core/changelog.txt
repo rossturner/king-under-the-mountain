@@ -1,3 +1,10 @@
+Alpha 4.0.1 - 25th October 2020
+
+- Adjusted starting seed amounts (barley and hops) so beer will last longer into the next wave of immigrants
+- Corrected crash caused by translated special string in French translation
+- Fixed a pathfinding bug where workspaces could be open but not path-found to, so job workspaces are now tried in a random order
+- Added missing beer tapper state descriptions
+
 Alpha 4 - 19th October 2020
 
 - Brewing beer is here! Includes new "brewer" profession and brewery room type with plenty of new furniture and items

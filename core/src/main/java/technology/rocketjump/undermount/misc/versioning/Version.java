@@ -70,7 +70,7 @@ public class Version {
 			result.append(qualifier.name()).append(" ");
 		}
 		result.append(major);
-		if (minor > 0) {
+		if (minor > 0 || revision > 0) {
 			result.append(".").append(minor);
 		}
 		if (revision > 0) {

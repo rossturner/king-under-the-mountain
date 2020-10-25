@@ -15,6 +15,7 @@ ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},Sta disin
 ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},Spalatura {{targetDescription}}
 ACTION.JOB.TILLING,,Tilling the earth,Sta arando il terreno
 ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},Sta riempiendo: {{targetDescription}}
+ACTION.MALTING.VERB,,Malting,
 ACTION.PREPARATION.VERB,,Preparing,Mi sto preparando
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Sta cercando qualcosa da fare
 ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},Sta dormendo in: {{containerDescription}}
@@ -69,8 +70,12 @@ FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,Piano di lavoro Baker
 FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,Un {{PROFESSION.CHEF}} lavora qui per trasformare {{RESOURCE.FLOUR.SACK.PLURAL}} in {{INDIENT.DAST}}.
 FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,Forno da panettiere
 FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,Un {{PROFESSION.CHEF}} cuoce i pani usando {{INGREDIENT.DAST}} preparato.
+FURNITURE.BEER_TAPPER,,Beer tapper,
+FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,Forno a fioritura
 FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,Un {{PROFESSION.BLACKSMITH} utilizza questo forno manuale per trasformare {{RESOURCE.ORE.CRUSHED.PLURAL}} e {{FUEL.SACK}} in {{MATERIAL_TYPE.METAL.ADJETTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}}}}}.
+FURNITURE.BREW_KETTLE,,Brew kettle,
+FURNITURE.BREW_KETTLE.TOOLTIP,,This is used to produce the final wort (unfermented beer) using {{VEGETABLE.HOPS}} and wort from the {{FURNITURE.MASH_TUN}}.,
 FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,Banco dell'artigiano
 FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.","La maggior parte degli oggetti e degli utensili in legno sono prodotti qui, come {PRODUCT.BUCKET.PLURAL}} e {PRODUCT.BARREL.PLURAL}}."
 FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,Calderone
@@ -89,6 +94,8 @@ FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,In attesa di esse
 FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,In attesa di essere iniettato con le uova di funghi
 FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,Tavolo da banchetto
 FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.","Con un {{FURNITURE.CHAIR}} in atto, i tuoi coloni potranno gustare i loro pasti a questo tavolo."
+FURNITURE.FERMENTATION_TANK,,Fermentation tank,
+FURNITURE.FERMENTATION_TANK.TOOLTIP,,This is where {{LIQUID.HOPPED_WORT}} is fermented into {{LIQUID.BEER}}.,
 FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,Gristmill
 FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,Il mulino macina {{VEGETALE.WHEAT}} in {{RESOURCE.FLOUR.SACK.NOUN}} in modo che possa essere utilizzato da un {{PROFESSION.CHEF}}.
 FURNITURE.FORGE,,Forge,Forgia
@@ -100,6 +107,10 @@ FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSI
 FURNITURE.LANTERN,,Lantern,Lanterna
 FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,Una lanterna fornisce luce — al momento non ha un effetto di gioco.
 FURNITURE.LARGE_TABLE,,Large table,Tavolo grande
+FURNITURE.MALTING_STATION,,Malting station,
+FURNITURE.MALTING_STATION.TOOLTIP,,"Here brewers steep barley and then dry it out using a kiln to produce malt. ",
+FURNITURE.MASH_TUN,,Mash tun,
+FURNITURE.MASH_TUN.TOOLTIP,,This is used to produce wort (unfermented beer) from milled malt and water.,
 FURNITURE.MUSHROOM_LOG,,Mushroom log,Log di funghi
 FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.",Un tronco che è stato iniettato con {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} per produrre diversi raccolti di deliziosi e succosi funghi.
 FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,Serbatoio ammortizzatore
@@ -208,7 +219,7 @@ GEM.TURQUOISE.NOUN,,Turquoise,Turchese
 GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,Un minerale blu-verde spesso usato nelle decorazioni. Si pensa che porti fortuna al portatore. È spesso infuso con l'elemento della terra.
 
 GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},Sta raccogliendo: {{targetDescription}}
-GOAL.DRINK.DESCRIPTION,,Drinking {{targetZoneMaterial}},Bere {{targetZoneMaterial}}
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},Bere {{targetZoneMaterial}}
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},Mangiare {{targetDescription}}
 GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},Sta trasportando: {{itemDescription}}
 GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,Non sta facendo niente
@@ -286,8 +297,10 @@ GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,Volume degli effetti sonori
 GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,Dimensione dell'interfaccia:
 GUI.ZONES_LABEL,This should be as short as possible,Zones,Zone
 
+HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,,Going sober,
 HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,Mangiato un pasto ben preparato
 HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,Portava un cadavere.
+HAPPINESS_MODIFIER.DRANK_ALCOHOL,,Under the effects of alcohol,
 HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,Bevuto acqua di fiume
 HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,Morendo di fame
 HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,Disidratati criticamente
@@ -313,6 +326,14 @@ HINT.BUTTON.HINTS_ONLY,,Hints only,Solo suggerimenti
 HINT.BUTTON.NEXT,,Next,Avanti
 HINT.BUTTON.TUTORIAL,,Tutorial,Tutorial
 HINT.PROGRESS.HEADER,,Progress:,
+HINT.TOOL_DEPLETED.AXE1,,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,
+HINT.TOOL_DEPLETED.AXE2,,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",
+HINT.TOOL_DEPLETED.CHISEL1,,Your settlement no longer has a {{TOOL.CHISEL}} available. This is required to construct stone furniture.,
+HINT.TOOL_DEPLETED.CHISEL2,,"More chisels can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.STONEMASON_WORKBENCH}}.",
+HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} available. This is required to construct wooden furniture.,
+HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,
+HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,
+HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",
 HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","Benvenuti nel mondo di Re sotto la Montagna! Questa è una prima versione alfa del gioco con molte altre caratteristiche ed elementi di gioco ancora da implementare. La tua intrepida banda di coloni nani ha scelto questo luogo per fondare una nuova colonia del loro regno. Fornire cibo, riparo e prosperità e chissà, forse un giorno questa sarà la capitale di un regno a sé stante!"
 HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",TESTO
 
@@ -323,6 +344,10 @@ INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,Impast
 INGREDIENT.FLOUR,,Flour,Farina
 INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,Filone
 INGREDIENT.LOAF.PLURAL,,Loaves,Filoni
+INGREDIENT.MALT.SACK.NOUN,,Malt,
+INGREDIENT.MALT.SACK.TOOLTIP,,This needs to be milled before it can be used further for brewing.,
+INGREDIENT.MILLED.MALT.SACK.NOUN,,Milled malt,
+INGREDIENT.MILLED.MALT.SACK.TOOLTIP,,This is combined with water in a {{FURNITURE.MASH_TUN}} to produce {{LIQUID.WORT}}.,
 INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,Progenie di funghi
 INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,Progenie di funghi
 INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.","Conosciuto anche come micelio, questo può essere pensato come «semi» da cui coltivare funghi in un {{ROOMS.MUSHROOM_FARM}."
@@ -343,7 +368,13 @@ ITEM_GROUP.TOOL.PLURAL,,Tools,Attrezzi
 
 LANGUAGE.LABEL,,Language,Lingua
 
+LIQUID.BEER.NOUN,,Beer,
+LIQUID.BEER.TOOLTIP,,"Beloved by dwarves, this will provide a substantial happiness bonus for a while. The only problem is that they will eventually require it to get through the working day.",
+LIQUID.HOPPED_WORT.NOUN,,Hopped wort,
+LIQUID.HOPPED_WORT.TOOLTIP,,This is the final stage of unfermented beer before it is placed in a {{FERMENTATION_TANK}} to produce drinkable beer.,
 LIQUID.WATER.NOUN,,Water,Acqua
+LIQUID.WORT.NOUN,,Wort,
+LIQUID.WORT.TOOLTIP,,"This is unfermented beer, it requires {{VEGETABLE.HOPS}} to be added in a {{FURNITURE.BREW_KETTLE}} for flavour before it can be fermented.",
 
 MADNESS.BROKEN.ADJECTIVE,,Broken,Rottuto
 MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",Questo colono era così infelice che sono stati spinti oltre il punto di rottura e non funzionerà più o nemmeno mangiare!
@@ -527,6 +558,8 @@ PRODUCT.BUCKET.PLURAL,,Buckets,Secchi
 PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,Un piccolo contenitore utilizzato per spostare i liquidi a mano.
 PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,Calderone
 PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.","Utilizzato da un {{PROFESSION.CHEF}} per preparare la zuppa in un {{ROOMS.KITHIN}}, dove viene poi spostato in un {{ROOMS.FEASTING_HALL}}."
+PRODUCT.LIQUID.TANK,,Tank,
+PRODUCT.LIQUID.TANK.TOOLTIP,,"This is a metal container used to store liquids, which must be crafted at the {{FURNITURE.FORGE}}.",
 PRODUCT.MILLSTONE,,Millstone,Macina
 PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mill harvested crops. Used to construct a {{FURNITURE.FLOUR_MILL}}.,Due grandi dischi di pietra che vengono macinati insieme per macinare le colture raccolte. Utilizzato per costruire un {{FURNITURE.FLOUR_MILL}}.
 PRODUCT.RATION.NOUN,,Ration,Razione
@@ -538,6 +571,10 @@ PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,Fabbro
 PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,Fabbro
 PROFESSION.BLACKSMITH.TOOLTIP,,Crafts items using metal and also produces metal from ore.,Artigianato oggetti utilizzando metallo e produce anche metallo da minerale.
 PROFESSION.BLACKSMITH.VERB,,Forging,Sta forgiando
+PROFESSION.BREWER.FEMALE_NOUN,,Brewer,
+PROFESSION.BREWER.MALE_NOUN,,Brewer,
+PROFESSION.BREWER.TOOLTIP,,Produces beer in a {{ROOMS.BREWERY}}.,
+PROFESSION.BREWER.VERB,,Brewing,
 PROFESSION.CARPENTER.FEMALE_NOUN,,Carpenter,Artigiana
 PROFESSION.CARPENTER.MALE_NOUN,,Carpenter,Artigiano
 PROFESSION.CARPENTER.TOOLTIP,,Creates wooden furniture and items.,Crea mobili e oggetti in legno.
@@ -653,6 +690,8 @@ RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled i
 
 ROOMS.BEDROOM,,Bedroom,Camera da letto
 ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.","Un posto dove dormire i tuoi Settler. Preferiscono avere camere singole di almeno 9 piastrelle di dimensioni, e preferibilmente di almeno 13 piastrelle di dimensioni."
+ROOMS.BREWERY,,Brewery,
+ROOMS.BREWERY.TOOLTIP,,Brews beer for your settlers to enjoy! Other alcoholic beverages will be implemented in the future.,
 ROOMS.BRIDGE,,Bridge,Ponte
 ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.,Posizionato attraverso il fiume per consentire l'accesso all'altro lato.
 ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,Falegnameria
@@ -790,16 +829,17 @@ TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of 
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","Con nient'altro da fare, i tuoi coloni inizieranno a preparare questi {{ROOMS.FARM.PLURAL}} seminando la terra per essere pronti per la semina dei semi. Questo non richiede strumenti o conoscenze speciali, quindi tutti dovrebbero essere coinvolti."
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.","Questo prepara la trama da seminare, ma è necessario selezionare quale coltura coltivare su ogni appezzamento agricolo prima che un agricoltore arrivi a piantare i semi pertinenti. I tuoi coloni hanno portato con sé una selezione di semi diversi. Puoi fare clic su «Risorse» in alto a destra per ottenere una ripartizione di tutti gli elementi nel tuo saldo."
 TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ","Perché i semi siano effettivamente disponibili per i vostri agricoltori, devono trovarsi in una riserva rispetto ad essere tenuti nell'inventario di un nano come sono attualmente. Fare clic su {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (è possibile fare clic con il pulsante destro del mouse per tornare a un menu precedente) e designare un'area da utilizzare come {{STOCKPILE.GRANARY}}, dove sono conservati semi e cereali."
+TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.TOOLS}} and designate another area to be used to store tools.,
 TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.","Dopo un po' di tempo i tuoi coloni dovrebbero mettere oggetti che non usano in scorte, come i semi che devono essere seminati."
 TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.","Fare clic con il tasto sinistro del mouse su ogni {{ROOMS.FARM.PLURAL}} e selezionare un raccolto da piantare lì. Non selezionare {{VEGETABLE.BARLEY}} o {{VEGETABLE.HOPS}} perché queste colture sono utilizzate nella produzione di birra, non alimentare."
 TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,"Il tuo {{PROFESSION.FARMER.PLURAL}} potrà ora lavorare seminando i semi che hai selezionato per questi {{ROOMS.FARM.PLURAL}}. La semina dei semi non richiede attrezzi speciali, ma potresti voler assegnare più coloni come {{PROFESSION.FARMER.PLURAL}}. Fare clic con il tasto sinistro del mouse su un colono che sta vagando in giro senza meta."
 TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.","Cliccando su un colono puoi vedere il nome, le professioni, l'inventario, i bisogni e la felicità. Clicca sul pulsante quadrato vuoto accanto alle altre professioni per impostare una terza e ultima professione come {{PROFESSION.FARMER.NOUN}}."
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","Si noti che alcuni processi richiedono che il colono disponga di uno strumento specifico nel proprio inventario e, se nessuno è disponibile nella liquidazione, non funzionerà sui processi che lo richiedono. Ad esempio, puoi assegnare più coloni come {{PROFESSION.WOODCUTTER}}, ma non possono abbattere gli alberi senza un {{TOOL.AXE.NOUN}} disponibile."
 TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.","I tuoi raccolti ora cresceranno e alla fine saranno raccolti dal tuo {{PROFESSION.FARMER.PLURAL}} nel {{SEASON.AUTUMN}}. Alcune colture possono essere piantate di nuovo nel corso dell'anno e sopravvivere attraverso il {{SEASON.WINTER}}, ma altre no. Per ottenere il massimo dalle tue colture, è meglio produrre zuppa dalle verdure raccolte o pane dal grano."
-TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","Otteniamo un set {{ROOMS.KITCHEN}} per produrre la zuppa una volta che le colture sono pronte. Vai al menu di livello superiore, quindi {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} e trascina un'area {{ROOMS.KITCHEN}}. A questo punto nello sviluppo del Re sotto la Montagna non importa se è all'esterno o all'interno, ma in futuro vorrai che tutte le tue stanze abbiano un soffitto per proteggerle dagli agenti atmosferici."
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","Otteniamo un set {{ROOMS.KITCHEN}} per produrre la zuppa una volta che le colture sono pronte. Vai al menu di livello superiore, quindi {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} e trascina un'area {{ROOMS.KITCHEN}}. A questo punto nello sviluppo del Re sotto la Montagna non importa se è all'esterno o all'interno, ma in futuro vorrai che tutte le tue stanze abbiano un soffitto per proteggerle dagli agenti atmosferici."
 TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","A differenza dei terreni agricoli, le cucine (e la maggior parte delle altre stanze) hanno bisogno di mobili per funzionare. Clicca su «Mobili» quando hai posizionato una zona cucina e ti verrà presentato con i mobili che possono essere aggiunti. Per produrre zuppe, è necessario costruire {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} e {{FURNITURE.CAULDRON}} nella stessa zona cucina. Inoltre, designare un'area {{STOCKPILE.PANTRY}} per memorizzare le colture raccolte."
-TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CHEFS_CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","Una volta raccolte le colture, i cuochi porteranno le verdure al {{FURNITURE.KITCHEN_WORKTOP}} prima di aggiungerle al {{FURNITURE.CHEFS_CAULDRON}} con acqua e zuppa di produzione! Preparare la zuppa e cuocere il pane significa che le scorte di cibo andranno molto oltre - un singolo ortaggio alimenterà un nano per un singolo pasto, ma 3 verdure cotte nella zuppa forniranno 12 pasti!"
-TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.","Alla fine questa cucina produrrà un calderone pieno di zuppa calda fumante, ma ai cuochi non piace che gli altri nani si intromettano nella loro cucina, quindi è necessario avere la zuppa portata in una sala di festa per l'intero insediamento di godere. Designate una sala banchetto cliccando su {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, quindi aggiungete un {{FURNITURE.CAULDRON}}. Si noti che un calderone della sala da pranzo non sarà collocato fino a quando non sarà disponibile un calderone contenente una zuppa densa e deliziosa."
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","Una volta raccolte le colture, i cuochi porteranno le verdure al {{FURNITURE.KITCHEN_WORKTOP}} prima di aggiungerle al {{FURNITURE.CHEFS_CAULDRON}} con acqua e zuppa di produzione! Preparare la zuppa e cuocere il pane significa che le scorte di cibo andranno molto oltre - un singolo ortaggio alimenterà un nano per un singolo pasto, ma 3 verdure cotte nella zuppa forniranno 12 pasti!"
+TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.","Alla fine questa cucina produrrà un calderone pieno di zuppa calda fumante, ma ai cuochi non piace che gli altri nani si intromettano nella loro cucina, quindi è necessario avere la zuppa portata in una sala di festa per l'intero insediamento di godere. Designate una sala banchetto cliccando su {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, quindi aggiungete un {{FURNITURE.CAULDRON}}. Si noti che un calderone della sala da pranzo non sarà collocato fino a quando non sarà disponibile un calderone contenente una zuppa densa e deliziosa."
 TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,"Nel corso del tempo vorrai espandere la tua produzione alimentare, ma questo manterrà il nostro piccolo insediamento nutrito per il prossimo inverno: i tuoi coloni hanno portato razioni per sostenerli mentre crescono le prime colture."
 TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.",La maggior parte degli articoli e dei mobili sono prodotti da {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} o {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. È importante mantenere una grande quantità di questi. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} sono prodotti in un {{ROOMS.SAWMILL}} e {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} sono realizzati da un {{{{{PROFESSIONEP. Posiziona una di queste zone e costruisci un {{PROFESSION.STONEMASON}} e {{ROOMS.MASONRY_WORKSHOP}} in esse.
 TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.",Ora sei pronto a produrre {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} e {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} e {{MATERIAL_TYPE.WOOD.ADJECTIVE}} RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunatamente questi di solito possono essere raccolti dal mondo di gioco abbastanza facilmente.

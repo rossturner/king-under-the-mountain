@@ -15,6 +15,7 @@ ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},{{대상 
 ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},삽질 {{targetDescription}}
 ACTION.JOB.TILLING,,Tilling the earth,지구를 경작
 ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},{{대상 설명}} 을 (를) 채우는 중입니다.
+ACTION.MALTING.VERB,,Malting,
 ACTION.PREPARATION.VERB,,Preparing,준비 중
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,할 일을 찾고 있습니다.
 ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},{{containerDescription}} 에서 휴면 중
@@ -69,8 +70,12 @@ FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,베이커의 작업대
 FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,{{PROFESSION.CHEF}} 이 (가) {{RESOURCE.FLOUR.SACK.PLURAL}} 을 (를) {{INGREDIENT.DOUGH}} 으로 바꾸려고 노력하고 있습니다.
 FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,베이커의 오븐
 FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,{{PROFESSION.CHEF}} 는 준비된 {{INGREDIENT.DOUGH}} 을 사용하여 여기에 케이크를 굽습니다.
+FURNITURE.BEER_TAPPER,,Beer tapper,
+FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,부루마 용광로
 FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,{{PROFESSION.BLACKSMITH}} 는 이 수동식 용광로를 사용하여 {{RESOURCE.ORE.CRUSHED.PLURAL}} 과 {{FUEL.SACK}} 을 {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} 으로 전환합니다.
+FURNITURE.BREW_KETTLE,,Brew kettle,
+FURNITURE.BREW_KETTLE.TOOLTIP,,This is used to produce the final wort (unfermented beer) using {{VEGETABLE.HOPS}} and wort from the {{FURNITURE.MASH_TUN}}.,
 FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,목공 작업대
 FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.",대부분의 목재 항목과 도구는 여기서 생산됩니다. 예를 들어 {{PRODUCT.BUCKET.PLURAL}} 및 {{PRODUCT.BARREL.PLURAL}}.
 FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,가마솥
@@ -89,6 +94,8 @@ FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,채워질 때까�
 FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,버섯 산란을 주입하기를 기다리고 있습니다.
 FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,잔치 테이블
 FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.","{{FURNITURE.CHAIR}} 이 자리에 있으면, 이주민들은 이 테이블에서 식사를 즐길 수 있습니다."
+FURNITURE.FERMENTATION_TANK,,Fermentation tank,
+FURNITURE.FERMENTATION_TANK.TOOLTIP,,This is where {{LIQUID.HOPPED_WORT}} is fermented into {{LIQUID.BEER}}.,
 FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,그리스트밀
 FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,분쇄기는 {{VEGETABLE.WHEAT}} 을 (를) {{RESOURCE.FLOUR.SACK.NOUN}} 로 갈아서 {{PROFESSION.CHEF}} 가 사용할 수 있도록 합니다.
 FURNITURE.FORGE,,Forge,대장간
@@ -100,6 +107,10 @@ FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSI
 FURNITURE.LANTERN,,Lantern,랜턴
 FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,랜턴은 빛을 제공합니다. 현재 게임 내 효과는 없습니다.
 FURNITURE.LARGE_TABLE,,Large table,대형 테이블
+FURNITURE.MALTING_STATION,,Malting station,
+FURNITURE.MALTING_STATION.TOOLTIP,,"Here brewers steep barley and then dry it out using a kiln to produce malt. ",
+FURNITURE.MASH_TUN,,Mash tun,
+FURNITURE.MASH_TUN.TOOLTIP,,This is used to produce wort (unfermented beer) from milled malt and water.,
 FURNITURE.MUSHROOM_LOG,,Mushroom log,머쉬룸 로그
 FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.",{{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} 을 주입하여 맛있고 육즙이 많은 버섯을 여러 번 생산합니다.
 FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,충격 탱크
@@ -208,7 +219,7 @@ GEM.TURQUOISE.NOUN,,Turquoise,청록색
 GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,장식에 자주 사용되는 푸른 녹색 미네랄. 그것은 무기명에게 행운을 가져다 줄 것으로 생각된다. 그것은 종종 지구의 요소로 주입됩니다.
 
 GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},{{대상 설명}} 수집하는 중
-GOAL.DRINK.DESCRIPTION,,Drinking {{targetZoneMaterial}},마시는 {{대상 지역 재료}}
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},마시는 {{대상 지역 재료}}
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},{{대상 설명}} 먹는 것
 GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},운반 {{대상 설명}}
 GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,유휴 상태
@@ -286,8 +297,10 @@ GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,사운드 효과 볼륨
 GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,UI 배율:
 GUI.ZONES_LABEL,This should be as short as possible,Zones,영역
 
+HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,,Going sober,
 HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,멋지게 준비된 식사를 먹었다.
 HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,시체를 운반한
+HAPPINESS_MODIFIER.DRANK_ALCOHOL,,Under the effects of alcohol,
 HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,마신 강 물
 HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,굶주린
 HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,비판적으로 탈수
@@ -313,6 +326,14 @@ HINT.BUTTON.HINTS_ONLY,,Hints only,힌트만
 HINT.BUTTON.NEXT,,Next,다음
 HINT.BUTTON.TUTORIAL,,Tutorial,자습서
 HINT.PROGRESS.HEADER,,Progress:,
+HINT.TOOL_DEPLETED.AXE1,,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,
+HINT.TOOL_DEPLETED.AXE2,,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",
+HINT.TOOL_DEPLETED.CHISEL1,,Your settlement no longer has a {{TOOL.CHISEL}} available. This is required to construct stone furniture.,
+HINT.TOOL_DEPLETED.CHISEL2,,"More chisels can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.STONEMASON_WORKBENCH}}.",
+HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} available. This is required to construct wooden furniture.,
+HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,
+HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,
+HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",
 HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","산 아래 왕의 세계에 오신 것을 환영합니다! 이것은 더 많은 기능과 게임 플레이 요소가 여전히 구현 될 게임의 초기 알파 버전입니다. 당신의 용맹 한 드워프 정착민들이 그들의 왕국의 새로운 식민지를 발견하기 위해이 위치를 선택했습니다. 음식, 피난처와 번영을 제공하고 누가 알고, 어쩌면 언젠가는 자신의 왕국의 수도가 될 것입니다!"
 HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",텍스트를 입력합니다
 
@@ -323,6 +344,10 @@ INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,반죽
 INGREDIENT.FLOUR,,Flour,밀가루
 INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,덩어리
 INGREDIENT.LOAF.PLURAL,,Loaves,덩어리
+INGREDIENT.MALT.SACK.NOUN,,Malt,
+INGREDIENT.MALT.SACK.TOOLTIP,,This needs to be milled before it can be used further for brewing.,
+INGREDIENT.MILLED.MALT.SACK.NOUN,,Milled malt,
+INGREDIENT.MILLED.MALT.SACK.TOOLTIP,,This is combined with water in a {{FURNITURE.MASH_TUN}} to produce {{LIQUID.WORT}}.,
 INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,버섯 산란
 INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,버섯 산란
 INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.","균사체라고도 불리며, 이것은 {{ROOMS.MUSHROOM_FARM}} 에서 버섯을 재배하는 “씨앗”으로 생각할 수 있습니다."
@@ -343,7 +368,13 @@ ITEM_GROUP.TOOL.PLURAL,,Tools,도구
 
 LANGUAGE.LABEL,,Language,언어
 
+LIQUID.BEER.NOUN,,Beer,
+LIQUID.BEER.TOOLTIP,,"Beloved by dwarves, this will provide a substantial happiness bonus for a while. The only problem is that they will eventually require it to get through the working day.",
+LIQUID.HOPPED_WORT.NOUN,,Hopped wort,
+LIQUID.HOPPED_WORT.TOOLTIP,,This is the final stage of unfermented beer before it is placed in a {{FERMENTATION_TANK}} to produce drinkable beer.,
 LIQUID.WATER.NOUN,,Water,물
+LIQUID.WORT.NOUN,,Wort,
+LIQUID.WORT.TOOLTIP,,"This is unfermented beer, it requires {{VEGETABLE.HOPS}} to be added in a {{FURNITURE.BREW_KETTLE}} for flavour before it can be fermented.",
 
 MADNESS.BROKEN.ADJECTIVE,,Broken,깨진
 MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",이 정착민은 너무 불행해서 그들이 한계점을 지나서 밀려 났고 더 이상 일하지 않거나 심지어 먹지 않을 것입니다!
@@ -527,6 +558,8 @@ PRODUCT.BUCKET.PLURAL,,Buckets,버킷
 PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,액체를 손으로 옮기는 데 사용되는 작은 용기입니다.
 PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,가마솥
 PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.","{{PROFESSION.CHEF}} 이 {{ROOMS.KITCHEN}} 에서 수프를 준비하는데 사용하며, 그 후 {{ROOMS.FEASTING_HALL}} 으로 옮깁니다."
+PRODUCT.LIQUID.TANK,,Tank,
+PRODUCT.LIQUID.TANK.TOOLTIP,,"This is a metal container used to store liquids, which must be crafted at the {{FURNITURE.FORGE}}.",
 PRODUCT.MILLSTONE,,Millstone,밀스톤
 PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mill harvested crops. Used to construct a {{FURNITURE.FLOUR_MILL}}.,수확 된 작물을 분쇄하기 위해 함께 분쇄 된 두 개의 큰 돌 디스크. {{FURNITURE.FLOUR_MILL}} 을 구성하는 데 사용됩니다.
 PRODUCT.RATION.NOUN,,Ration,배급
@@ -538,6 +571,10 @@ PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,대장장이
 PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,대장장이
 PROFESSION.BLACKSMITH.TOOLTIP,,Crafts items using metal and also produces metal from ore.,금속을 사용하여 항목을 공예하고 또한 광석에서 금속을 생산합니다.
 PROFESSION.BLACKSMITH.VERB,,Forging,단조
+PROFESSION.BREWER.FEMALE_NOUN,,Brewer,
+PROFESSION.BREWER.MALE_NOUN,,Brewer,
+PROFESSION.BREWER.TOOLTIP,,Produces beer in a {{ROOMS.BREWERY}}.,
+PROFESSION.BREWER.VERB,,Brewing,
 PROFESSION.CARPENTER.FEMALE_NOUN,,Carpenter,목수
 PROFESSION.CARPENTER.MALE_NOUN,,Carpenter,목수
 PROFESSION.CARPENTER.TOOLTIP,,Creates wooden furniture and items.,목재 가구 및 항목을 만듭니다.
@@ -653,6 +690,8 @@ RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled i
 
 ROOMS.BEDROOM,,Bedroom,침실
 ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.","당신의 정착민을위한 장소. 그들은 크기가 최소 9 개의 타일, 바람직하게는 적어도 13 개의 타일 크기의 개별 침실을 선호합니다."
+ROOMS.BREWERY,,Brewery,
+ROOMS.BREWERY.TOOLTIP,,Brews beer for your settlers to enjoy! Other alcoholic beverages will be implemented in the future.,
 ROOMS.BRIDGE,,Bridge,다리
 ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.,다른 측면에 액세스 할 수 있도록 강을 가로 질러 배치.
 ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,목공 작업장
@@ -790,16 +829,17 @@ TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of 
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","할 일이 없으면, 당신의 정착민들은 씨를 뿌릴 준비를 위해 지구를 경작하여 {{ROOMS.FARM.PLURAL}} 을 준비하기 시작할 것입니다. 이것은 특별한 도구나 지식을 필요로하지 않으므로 모든 사람이 참여해야합니다."
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",이렇게하면 뿌릴 음모가 준비되지만 농부가 와서 관련 씨앗을 심기 전에 각 농장 음모에서 자랄 작물을 선택해야합니다. 당신의 정착민들은 그들과 함께 다른 씨앗을 선택했습니다. 오른쪽 위에 있는 “리소스”를 클릭하여 정산 내 모든 아이템에 대한 분석을 확인할 수 있습니다.
 TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ","씨앗을 농부들이 실제로 사용할 수 있게 하려면, 현재 드워프의 인벤토리에 보관하는 것과 비교해서 비축해야 합니다. {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} (마우스 오른쪽 버튼을 클릭하여 이전 메뉴로 돌아갈 수 있음) 을 클릭하고 {{STOCKPILE.GRANARY}} 으로 사용할 영역을 지정합니다. 여기서 씨앗과 곡물이 저장됩니다."
+TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.TOOLS}} and designate another area to be used to store tools.,
 TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.",얼마 후 정착민들은 뿌려야 할 씨앗처럼 비축으로 사용하지 않는 물건을 넣어야 합니다.
 TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.",각 {{ROOMS.FARM.PLURAL}} 을 마우스 왼쪽 버튼으로 클릭하고 그곳에 심을 작물을 선택합니다. 지금은 {{VEGETABLE.BARLEY}} 또는 {{VEGETABLE.HOPS}} 을 선택하지 마십시오. 이 작물은 음식이 아닌 맥주 생산에 사용됩니다.
 TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,귀하의 {{PROFESSION.FARMER.PLURAL}} 이 (가) {{ROOMS.FARM.PLURAL}} 에 선택한 씨앗을 뿌릴 수 있게 됩니다. 씨앗 파종에는 특별한 도구가 필요하지 않지만 {{PROFESSION.FARMER.PLURAL}} 으로 더 많은 정착민을 할당하고 싶을 수도 있습니다. 목적없이 돌아 다니는 정착민을 마우스 왼쪽 버튼으로 클릭하십시오.
 TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.","정착민을 클릭하면 자신의 이름, 직업, 재고, 필요와 행복을 볼 수 있습니다. 다른 직업 옆에 있는 빈 사각형 버튼을 클릭하여 세 번째 직업과 마지막 직업을 {{PROFESSION.FARMER.NOUN}} 으로 설정합니다."
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","일부 작업은 정산자에게 인벤토리에 특정 도구가 있어야 하며, 정산에서 사용할 수 있는 도구가 없는 경우 필요한 작업에서는 작동하지 않습니다. 예를 들어, 더 많은 정착민을 {{PROFESSION.WOODCUTTER}} 로 지정할 수 있지만 사용 가능한 {{TOOL.AXE.NOUN}} 이 없으면 나무를 잘라낼 수 없습니다."
 TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",당신의 작물은 이제 {{PROFESSION.FARMER.PLURAL}} 에 당신의 {{SEASON.AUTUMN}} 에 의해 수확됩니다. 일부 작물은 올해 후반에 다시 심어 {{SEASON.WINTER}} 을 통해 생존할 수 있지만 일부는 그렇지 않습니다. 작물을 최대한 활용하려면 수확 한 채소에서 수프를 생산하거나 곡물에서 빵을 만드는 것이 가장 좋습니다.
-TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","작물이 준비되면 {{ROOMS.KITCHEN}} 을 (를) 만들어 봅시다. 상위 레벨 메뉴로 이동한 다음 {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} 을 (를) 클릭하고 {{ROOMS.KITCHEN}} 영역을 드래그합니다. 그것은 외부 또는 실내에있는 경우 산 아래 왕의 개발이 시점에서 그것은 중요하지 않습니다, 하지만 미래에 당신은 모든 객실 요소로부터 그들을 보호하기 위해 천장을 가지고 할 것입니다."
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","작물이 준비되면 {{ROOMS.KITCHEN}} 을 (를) 만들어 봅시다. 상위 레벨 메뉴로 이동한 다음 {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} 을 (를) 클릭하고 {{ROOMS.KITCHEN}} 영역을 드래그합니다. 그것은 외부 또는 실내에있는 경우 산 아래 왕의 개발이 시점에서 그것은 중요하지 않습니다, 하지만 미래에 당신은 모든 객실 요소로부터 그들을 보호하기 위해 천장을 가지고 할 것입니다."
 TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","농장 플롯과 달리 부엌 (및 대부분의 다른 방) 은 기능하기 위해 가구가 필요합니다. 주방 구역을 배치하면 “가구”를 클릭하면 추가할 수 있는 가구가 표시됩니다. 수프를 생산하려면 같은 주방 구역에 {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} 및 {{FURNITURE.CAULDRON}} 를 만들어야 합니다. 또한 수확한 작물을 저장할 {{STOCKPILE.PANTRY}} 영역을 지정합니다."
-TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CHEFS_CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","작물이 수확되면 요리사는 {{FURNITURE.KITCHEN_WORKTOP}} 에 야채를 가져와 물과 생산 수프로 {{FURNITURE.CHEFS_CAULDRON}} 에 야채를 넣습니다! 수프를 만들고 빵을 굽는 것은 식량이 훨씬 더 나아갈 것이라는 것을 의미합니다. 단 하나의 야채는 한 끼에 난쟁이를 먹일 것이지만, 수프에 조리 된 3 가지 야채는 12 가지 식사를 제공합니다!"
-TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",결국 이 주방은 김이 나는 뜨거운 국물이 가득 찬 가마솥을 만들지만 요리사들은 다른 드워프들이 부엌에 들어가는 것을 좋아하지 않으므로 대신 수프를 잔치 홀로 가져와 전체 정착을 즐기십시오. {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}} 을 (를) 클릭하여 잔치 홀을 지정한 다음 {{FURNITURE.CAULDRON}} 을 (를) 추가합니다. 잔치 홀의 가마솥은 두껍고 맛있는 수프가 들어 있는 가마솥이 나올 때까지 놓지 않습니다.
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","작물이 수확되면 요리사는 {{FURNITURE.KITCHEN_WORKTOP}} 에 야채를 가져와 물과 생산 수프로 {{FURNITURE.CHEFS_CAULDRON}} 에 야채를 넣습니다! 수프를 만들고 빵을 굽는 것은 식량이 훨씬 더 나아갈 것이라는 것을 의미합니다. 단 하나의 야채는 한 끼에 난쟁이를 먹일 것이지만, 수프에 조리 된 3 가지 야채는 12 가지 식사를 제공합니다!"
+TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",결국 이 주방은 김이 나는 뜨거운 국물이 가득 찬 가마솥을 만들지만 요리사들은 다른 드워프들이 부엌에 들어가는 것을 좋아하지 않으므로 대신 수프를 잔치 홀로 가져와 전체 정착을 즐기십시오. {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}} 을 (를) 클릭하여 잔치 홀을 지정한 다음 {{FURNITURE.CAULDRON}} 을 (를) 추가합니다. 잔치 홀의 가마솥은 두껍고 맛있는 수프가 들어 있는 가마솥이 나올 때까지 놓지 않습니다.
 TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,시간이 지남에 따라 식량 생산을 확대하고 싶을 것입니다. 그러나 이것은 다가오는 겨울 동안 우리의 작은 정착지를 계속 유지할 것입니다. 귀하의 정착민들은 첫 작물이 자라는 동안 식량을 유지할 수 있도록 식량을 가져왔습니다.
 TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.","대부분의 아이템과 가구는 {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} 또는 {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} 에서 생산됩니다. 이것들의 큰 공급을 유지하는 것이 중요합니다. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} 은 {{ROOMS.SAWMILL}} 에서 생산되며, {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} {{PROFESSION.STONEMASON}} 에 의해 {{ROOMS.MASONRY_WORKSHOP}} 에 있습니다. 각 구역 중 하나를 배치하고 {{FURNITURE.WOODCUTTERS_BENCH}} 과 {{FURNITURE.STONEMASON_WORKBENCH}} 를 만듭니다."
 TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.","이제 당신은 {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} 및 {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, 하지만 그것들을 제작하려면 다른 자원이 필요합니다 - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} 및 {{자원.돌.정제되지 않은.복수형}}. 다행히 이들은 일반적으로 아주 쉽게 게임 세계에서 수확 할 수 있습니다."

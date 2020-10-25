@@ -43,10 +43,7 @@ import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nWord;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.FillLiquidContainerBehaviour.relatedContainerCapacity;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.AllocationState.CANCELLED;
@@ -625,7 +622,9 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) furnitureEntity.getPhysicalEntityComponent().getAttributes();
 
 		GridPoint2 furniturePosition = toGridPoint(furnitureEntity.getLocationComponent().getWorldPosition());
-		for (FurnitureLayout.Workspace workspace : attributes.getCurrentLayout().getWorkspaces()) {
+		List<FurnitureLayout.Workspace> workspaces = attributes.getCurrentLayout().getWorkspaces();
+		Collections.shuffle(workspaces);
+		for (FurnitureLayout.Workspace workspace : workspaces) {
 			GridPoint2 accessedFromLocation = furniturePosition.cpy().add(workspace.getAccessedFrom());
 			MapTile accessedFromTile = areaMap.getTile(accessedFromLocation);
 			if (accessedFromTile != null && accessedFromTile.isNavigable()) {

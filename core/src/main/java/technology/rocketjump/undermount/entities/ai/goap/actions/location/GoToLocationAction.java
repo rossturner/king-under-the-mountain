@@ -32,6 +32,7 @@ import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
+import static technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour.getAnyNavigableWorkspace;
 import static technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour.getNearestNavigableWorkspace;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
@@ -205,8 +206,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			Entity targetFurniture = gameContext.getAreaMap().getTile(allocationPosition)
 					.getEntity(targetEntityId);
 			if (targetFurniture != null) {
-				FurnitureLayout.Workspace navigableWorkspace = getNearestNavigableWorkspace(targetFurniture, gameContext.getAreaMap(),
-						toGridPoint(parent.parentEntity.getLocationComponent().getWorldOrParentPosition()));
+				FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(targetFurniture, gameContext.getAreaMap());
 				if (navigableWorkspace != null) {
 					return toVector(navigableWorkspace.getAccessedFrom());
 				} else {

@@ -17,6 +17,7 @@ public class VersionTest {
 		assertThat(new Version("ALPHA 2").toString()).isEqualTo("Alpha 2");
 
 		assertThat(new Version("Alpha 2.1").toString()).isEqualTo("Alpha 2.1");
+		assertThat(new Version("Alpha 2.0.1").toString()).isEqualTo("Alpha 2.0.1");
 
 		assertThat(new Version("1.2.3").toString()).isEqualTo("1.2.3");
 	}
