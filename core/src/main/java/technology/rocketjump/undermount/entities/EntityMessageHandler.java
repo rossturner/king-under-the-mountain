@@ -379,7 +379,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						if (targetFurnitureEntity != null && targetFurnitureEntity.getBehaviourComponent() instanceof CraftingStationBehaviour) {
 							((CraftingStationBehaviour) targetFurnitureEntity.getBehaviourComponent()).allocationCancelled(allocation);
 						} else if (targetFurnitureEntity != null && targetFurnitureEntity.getBehaviourComponent() instanceof CollectItemFurnitureBehaviour ||
-								targetFurnitureEntity != null & targetFurnitureEntity.getBehaviourComponent() instanceof InnoculationLogBehaviour) {
+								targetFurnitureEntity != null && targetFurnitureEntity.getBehaviourComponent() instanceof InnoculationLogBehaviour) {
 							// Do nothing, CollectItemFurnitureBehaviour will deal with cancelled allocations, eventually, might want to improve this
 						} else {
 							// FIXME perhaps this is fine and we can do nothing
