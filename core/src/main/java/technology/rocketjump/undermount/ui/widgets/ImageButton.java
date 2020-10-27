@@ -122,6 +122,10 @@ public class ImageButton extends Table {
 		this.toggledOn = toggledOn;
 	}
 
+	public Sprite getIconSprite() {
+		return iconSprite;
+	}
+
 	protected static class IconButtonClickListener extends ClickListener {
 
 		protected final ImageButton parent;

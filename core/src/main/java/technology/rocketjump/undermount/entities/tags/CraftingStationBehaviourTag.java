@@ -14,9 +14,11 @@ import java.util.List;
 
 public class CraftingStationBehaviourTag extends Tag {
 
+	public static final String CRAFTING_STATION_BEHAVIOUR_TAGNAME = "CRAFTING_STATION_BEHAVIOUR";
+
 	@Override
 	public String getTagName() {
-		return "CRAFTING_STATION_BEHAVIOUR";
+		return CRAFTING_STATION_BEHAVIOUR_TAGNAME;
 	}
 
 	@Override

@@ -5,7 +5,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.misc.Name;
 
-public class CraftingType {
+public class CraftingType implements Comparable<CraftingType> {
 
 	@Name
 	private String name;
@@ -99,5 +99,10 @@ public class CraftingType {
 
 	public void setUsesWorkstationTool(boolean usesWorkstationTool) {
 		this.usesWorkstationTool = usesWorkstationTool;
+	}
+
+	@Override
+	public int compareTo(CraftingType o) {
+		return this.name.compareTo(o.name);
 	}
 }
