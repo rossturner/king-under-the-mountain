@@ -29,6 +29,9 @@ import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rooms.RoomType;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
+import technology.rocketjump.undermount.settlement.SettlerTracker;
+import technology.rocketjump.undermount.settlement.production.ProductionManager;
+import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 import technology.rocketjump.undermount.ui.Scene2DUtils;
 import technology.rocketjump.undermount.ui.Selectable;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
@@ -74,6 +77,8 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private boolean initialised = false;
 	private final FurnitureTypeDictionary furnitureTypeDictionary;
 	private final CraftingTypeDictionary craftingTypeDictionary;
+	private final ProductionManager productionManager;
+	private final SettlerTracker settlerTracker;
 
 	@Inject
 	public CraftingManagementScreen(UserPreferences userPreferences, MessageDispatcher messageDispatcher,
@@ -82,7 +87,8 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									CraftingTypeDictionary craftingTypeDictionary, FurnitureTypeDictionary furnitureTypeDictionary,
 									RoomTypeDictionary roomTypeDictionary, CraftingRecipeDictionary craftingRecipeDictionary,
 									ClickableTableFactory clickableTableFactory,
-									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory) {
+									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory, ProductionManager productionManager,
+									SettlerTracker settlerTracker) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
@@ -91,6 +97,8 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		this.itemEntityFactory = itemEntityFactory;
 		this.roomTypeDictionary = roomTypeDictionary;
 		this.craftingTypeDictionary = craftingTypeDictionary;
+		this.productionManager = productionManager;
+		this.settlerTracker = settlerTracker;
 
 		scrollableTable = new Table(uiSkin);
 		scrollableTablePane = Scene2DUtils.wrapWithScrollPane(scrollableTable, uiSkin);
@@ -225,6 +233,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private void addProducedItemRow(ItemType producedItemType) {
 		Table rowContainerTable = new Table(uiSkin);
 		rowContainerTable.add(new Container<>()).width(1 * INDENT_WIDTH);
+		ProductionQuota currentProductionQuota = productionManager.getProductionQuota(producedItemType);
 
 		ClickableTable clickableRow = clickableTableFactory.create();
 		clickableRow.setBackground("default-rect");
@@ -234,17 +243,19 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			Logger.info("TODO: Click on this row");
 		});
 
-		// add item image
 		EntityDrawable materialDrawable = new EntityDrawable(exampleEntities.get(producedItemType), entityRenderer);
 		clickableRow.add(new Image(materialDrawable)).left().width(80).pad(5);
 
-		// add item label
-		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(producedItemType.getI18nKey()), uiSkin, messageDispatcher)).left().pad(5);
+		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(producedItemType.getI18nKey()), uiSkin, messageDispatcher)).left().width(90).pad(5);
 
-		// add production quota description
-		clickableRow.add(new Label("MAINTAINING", uiSkin)).pad(5);
+		clickableRow.add(new Label("Currently maintaining", uiSkin)).pad(5);
 
-		TextField quantityInput = new TextField("1", uiSkin);
+		TextField quantityInput = new TextField("0", uiSkin);
+		if (currentProductionQuota.isFixedAmount()) {
+			quantityInput.setText(String.valueOf(currentProductionQuota.getFixedAmount()));
+		} else {
+			quantityInput.setText(String.valueOf(currentProductionQuota.getPerSettler()));
+		}
 		quantityInput.setTextFieldFilter(new DigitFilter());
 		quantityInput.setAlignment(Align.center);
 		clickableRow.add(quantityInput).width(70);
@@ -254,20 +265,75 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		settingList.add(QuotaSetting.FIXED_AMOUNT);
 		settingList.add(QuotaSetting.PER_SETTLER);
 		quotaSettingSelect.setItems(settingList);
-		quotaSettingSelect.setSelected(new RandomXS128().nextBoolean() ? QuotaSetting.FIXED_AMOUNT : QuotaSetting.PER_SETTLER);
+		if (currentProductionQuota.isFixedAmount()) {
+			quotaSettingSelect.setSelected(QuotaSetting.FIXED_AMOUNT);
+		} else {
+			quotaSettingSelect.setSelected(QuotaSetting.PER_SETTLER);
+		}
+		clickableRow.add(quotaSettingSelect);
+
+		I18nTextWidget perSettlerTotalAmountHint = new I18nTextWidget(null, uiSkin, messageDispatcher);
+
+		quantityInput.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				updateQuota(producedItemType, getInputQuantityValue(quantityInput), quotaSettingSelect.getSelected(), perSettlerTotalAmountHint);
+			}
+		});
 		quotaSettingSelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				QuotaSetting selected = quotaSettingSelect.getSelected();
-				Logger.info("TODO: Something with " + selected);
+				updateQuota(producedItemType, getInputQuantityValue(quantityInput), quotaSettingSelect.getSelected(), perSettlerTotalAmountHint);
 			}
 		});
-		clickableRow.add(quotaSettingSelect);
+
+		clickableRow.add(new Container<>()).pad(5);
+
+
+		updateHint(perSettlerTotalAmountHint, currentProductionQuota);
+		clickableRow.add(perSettlerTotalAmountHint);
 
 		clickableRow.add(new Container<>()).right().expandX();
 
 		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - INDENT_WIDTH);
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
+	}
+
+	private void updateQuota(ItemType itemType, float quantity, QuotaSetting quotaSetting, I18nTextWidget perSettlerTotalAmountHint) {
+		ProductionQuota quota = new ProductionQuota();
+		if (quotaSetting.equals(QuotaSetting.FIXED_AMOUNT)) {
+			quota.setFixedAmount((int)quantity);
+		} else {
+			quota.setPerSettler(quantity);
+		}
+		productionManager.productionQuoteModified(itemType, quota);
+
+		updateHint(perSettlerTotalAmountHint, quota);
+	}
+
+	private void updateHint(I18nTextWidget perSettlerTotalAmountHint, ProductionQuota productionQuota) {
+		int requiredAmount = productionQuota.getRequiredAmount(settlerTracker.getLiving().size());
+		if (productionQuota.isFixedAmount() && requiredAmount > 0) {
+			perSettlerTotalAmountHint.setVisible(false);
+		} else {
+			perSettlerTotalAmountHint.setError(requiredAmount == 0);
+			I18nText actualAmountText = i18nTranslator.getTranslatedWordWithReplacements("GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT",
+					Map.of("quantity", new I18nWord(String.valueOf(requiredAmount))));
+			perSettlerTotalAmountHint.setI18nText(actualAmountText);
+			perSettlerTotalAmountHint.setVisible(true);
+
+		}
+	}
+
+	public float getInputQuantityValue(TextField quantityInput) {
+		String text = quantityInput.getText();
+		float asFloat = 0f;
+		try {
+			asFloat = Float.valueOf(text);
+		} catch (NumberFormatException e) {
+			quantityInput.setText("0");
+		}
+		return asFloat;
 	}
 
 	private void addRowToTable(Table groupTable, Entity itemEntity, String rowName, I18nText displayName, int unallocated, int total, int indents, boolean clickToEntity) {

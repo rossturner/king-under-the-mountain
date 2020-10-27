@@ -183,6 +183,17 @@ public class ProductionManager implements Updatable, Telegraph {
 
 	}
 
+	public ProductionQuota getProductionQuota(ItemType itemType) {
+		return gameContext.getSettlementState().itemTypeProductionQuotas.getOrDefault(itemType, new ProductionQuota());
+	}
+
+	public void productionQuoteModified(ItemType itemType, ProductionQuota newQuota) {
+		if (gameContext != null) {
+			Logger.info("Setting " + itemType.getItemTypeName() + " to " + newQuota.toString());
+			gameContext.getSettlementState().itemTypeProductionQuotas.put(itemType, newQuota);
+		}
+	}
+
 	private void doUpdate() {
 		int numSettlers = settlerTracker.count();
 		for (Map.Entry<ItemType, ProductionQuota> quotaEntry : gameContext.getSettlementState().itemTypeProductionQuotas.entrySet()) {
