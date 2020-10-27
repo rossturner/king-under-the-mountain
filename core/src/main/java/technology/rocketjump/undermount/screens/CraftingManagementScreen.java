@@ -1,17 +1,29 @@
 package technology.rocketjump.undermount.screens;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.google.common.collect.ImmutableMap;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.crafting.CraftingRecipeDictionary;
+import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
+import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemGroup;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
+import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
@@ -45,6 +57,9 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private final List<CraftingType> displayedCraftingTypes = new ArrayList<>();
 	private final Map<CraftingType, List<FurnitureType>> craftingStationsByType = new TreeMap<>();
 	private final Map<FurnitureType, List<RoomType>> roomsForCraftingStations = new HashMap<>();
+	private final Map<CraftingType, Map<ItemType, List<CraftingRecipe>>> producedItemTypesByCraftingRecipe = new HashMap<>();
+	private final Map<CraftingType, Map<GameMaterial, List<CraftingRecipe>>> producedLiquidsByCraftingRecipe = new HashMap<>();
+	private final Map<ItemType, Entity> exampleEntities = new HashMap<>();
 
 	private final Map<ItemGroup, I18nLabel> groupLabels = new EnumMap<>(ItemGroup.class);
 	private final EntityRenderer entityRenderer;
@@ -54,6 +69,11 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 	private final Set<String> selectedRows = new HashSet<>();
 	private final CraftingRecipeDictionary craftingRecipeDictionary;
+	private final ItemEntityFactory itemEntityFactory;
+	private final RoomTypeDictionary roomTypeDictionary;
+	private boolean initialised = false;
+	private final FurnitureTypeDictionary furnitureTypeDictionary;
+	private final CraftingTypeDictionary craftingTypeDictionary;
 
 	@Inject
 	public CraftingManagementScreen(UserPreferences userPreferences, MessageDispatcher messageDispatcher,
@@ -62,11 +82,15 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									CraftingTypeDictionary craftingTypeDictionary, FurnitureTypeDictionary furnitureTypeDictionary,
 									RoomTypeDictionary roomTypeDictionary, CraftingRecipeDictionary craftingRecipeDictionary,
 									ClickableTableFactory clickableTableFactory,
-									EntityRenderer entityRenderer) {
+									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
 		this.craftingRecipeDictionary = craftingRecipeDictionary;
+		this.furnitureTypeDictionary = furnitureTypeDictionary;
+		this.itemEntityFactory = itemEntityFactory;
+		this.roomTypeDictionary = roomTypeDictionary;
+		this.craftingTypeDictionary = craftingTypeDictionary;
 
 		scrollableTable = new Table(uiSkin);
 		scrollableTablePane = Scene2DUtils.wrapWithScrollPane(scrollableTable, uiSkin);
@@ -75,9 +99,9 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			displayedCraftingTypes.add(craftingType);
 			craftingStationsByType.put(craftingType, new ArrayList<>());
 		}
+	}
 
-		onLanguageUpdated();
-
+	private void initalise() {
 		for (FurnitureType furnitureType : furnitureTypeDictionary.getAll()) {
 			if (furnitureType.getTags().containsKey(CRAFTING_STATION_BEHAVIOUR_TAGNAME)) {
 				String craftingTypeName = furnitureType.getTags().get(CRAFTING_STATION_BEHAVIOUR_TAGNAME).get(0);
@@ -91,16 +115,59 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 						}
 					}
 
+
+					Map<ItemType, List<CraftingRecipe>> recipesForProducedItems = new HashMap<>();
+					Map<GameMaterial, List<CraftingRecipe>> recipesForProducedLiquids = new HashMap<>();
+					for (CraftingRecipe craftingRecipe : craftingRecipeDictionary.getByCraftingType(craftingType)) {
+						for (QuantifiedItemTypeWithMaterial recipeOutput : craftingRecipe.getOutput()) {
+							if (recipeOutput.isLiquid()) {
+								recipesForProducedLiquids.computeIfAbsent(recipeOutput.getMaterial(), a -> new ArrayList<>()).add(craftingRecipe);
+							} else {
+								recipesForProducedItems.computeIfAbsent(recipeOutput.getItemType(), a -> new ArrayList<>()).add(craftingRecipe);
+							}
+						}
+					}
+
+					producedItemTypesByCraftingRecipe.put(craftingType, recipesForProducedItems);
+					producedLiquidsByCraftingRecipe.put(craftingType, recipesForProducedLiquids);
 				} else {
 					Logger.error("Could not find crafting type with name " + craftingTypeName + " from tag for " + furnitureType.getName() + " in " + this.getClass().getSimpleName());
 				}
 			}
 		}
 
+		GameContext nullContext = new GameContext();
+		nullContext.setRandom(new RandomXS128());
+		Set<ItemType> craftedItemTypes = producedItemTypesByCraftingRecipe.values().stream().flatMap(value -> value.keySet().stream()).collect(Collectors.toSet());
+		for (ItemType craftedItemType : craftedItemTypes) {
+			Entity entity = itemEntityFactory.createByItemType(craftedItemType, nullContext, false);
+
+			// Use any hard-specified materials in recipe outputs
+			for (Map<ItemType, List<CraftingRecipe>> itemTypeMap : producedItemTypesByCraftingRecipe.values()) {
+				if (itemTypeMap.containsKey(craftedItemType)) {
+					for (CraftingRecipe recipe : itemTypeMap.get(craftedItemType)) {
+						for (QuantifiedItemTypeWithMaterial output : recipe.getOutput()) {
+							if (craftedItemType.equals(output.getItemType()) && output.getMaterial() != null) {
+								ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+								attributes.setMaterial(output.getMaterial());
+							}
+						}
+					}
+				}
+			}
+
+			exampleEntities.put(craftedItemType, entity);
+		}
+
+		onLanguageUpdated();
 	}
 
 	@Override
 	public void reset() {
+		if (!initialised) {
+			initalise();
+			initialised = true;
+		}
 		containerTable.clearChildren();
 		containerTable.add(titleLabel).center().pad(5).row();
 		scrollableTable.clearChildren();
@@ -108,6 +175,17 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		for (CraftingType craftingType : displayedCraftingTypes) {
 			List<FurnitureType> craftingStations = craftingStationsByType.get(craftingType);
 			addCraftingTypeRow(craftingType, craftingStations);
+
+			boolean craftingTypeExpanded = true;
+
+			if (craftingTypeExpanded) {
+				for (Map.Entry<ItemType, List<CraftingRecipe>> producedItemEntry : producedItemTypesByCraftingRecipe.get(craftingType).entrySet()) {
+					addProducedItemRow(producedItemEntry.getKey());
+				}
+				for (Map.Entry<GameMaterial, List<CraftingRecipe>> producedLiquidEntry : producedLiquidsByCraftingRecipe.get(craftingType).entrySet()) {
+
+				}
+			}
 		}
 
 
@@ -142,6 +220,54 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		clickableRow.add(new Label(collectedCraftingStationText, uiSkin)).right().expandX().pad(5);
 
 		scrollableTable.add(clickableRow).center().width(DEFAULT_ROW_WIDTH).height(64).row();
+	}
+
+	private void addProducedItemRow(ItemType producedItemType) {
+		Table rowContainerTable = new Table(uiSkin);
+		rowContainerTable.add(new Container<>()).width(1 * INDENT_WIDTH);
+
+		ClickableTable clickableRow = clickableTableFactory.create();
+		clickableRow.setBackground("default-rect");
+		clickableRow.pad(2);
+		clickableRow.setFillParent(true);
+		clickableRow.setAction(() -> {
+			Logger.info("TODO: Click on this row");
+		});
+
+		// add item image
+		EntityDrawable materialDrawable = new EntityDrawable(exampleEntities.get(producedItemType), entityRenderer);
+		clickableRow.add(new Image(materialDrawable)).left().width(80).pad(5);
+
+		// add item label
+		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(producedItemType.getI18nKey()), uiSkin, messageDispatcher)).left().pad(5);
+
+		// add production quota description
+		clickableRow.add(new Label("MAINTAINING", uiSkin)).pad(5);
+
+		TextField quantityInput = new TextField("1", uiSkin);
+		quantityInput.setTextFieldFilter(new DigitFilter());
+		quantityInput.setAlignment(Align.center);
+		clickableRow.add(quantityInput).width(70);
+
+		SelectBox<QuotaSetting> quotaSettingSelect = new SelectBox<>(uiSkin);
+		Array<QuotaSetting> settingList = new Array<>();
+		settingList.add(QuotaSetting.FIXED_AMOUNT);
+		settingList.add(QuotaSetting.PER_SETTLER);
+		quotaSettingSelect.setItems(settingList);
+		quotaSettingSelect.setSelected(new RandomXS128().nextBoolean() ? QuotaSetting.FIXED_AMOUNT : QuotaSetting.PER_SETTLER);
+		quotaSettingSelect.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				QuotaSetting selected = quotaSettingSelect.getSelected();
+				Logger.info("TODO: Something with " + selected);
+			}
+		});
+		clickableRow.add(quotaSettingSelect);
+
+		clickableRow.add(new Container<>()).right().expandX();
+
+		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - INDENT_WIDTH);
+		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
 	}
 
 	private void addRowToTable(Table groupTable, Entity itemEntity, String rowName, I18nText displayName, int unallocated, int total, int indents, boolean clickToEntity) {
@@ -229,5 +355,38 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	@Override
 	public void onLanguageUpdated() {
 		displayedCraftingTypes.sort(Comparator.comparing(a -> i18nTranslator.getTranslatedString(a.getI18nKey()).toString()));
+
+		QuotaSetting.FIXED_AMOUNT.i18nValue = i18nTranslator.getTranslatedString("QUOTA.FIXED_AMOUNT").toString();
+		QuotaSetting.PER_SETTLER.i18nValue = i18nTranslator.getTranslatedString("QUOTA.PER_SETTLER").toString();
+	}
+
+	public enum QuotaSetting {
+
+		FIXED_AMOUNT,
+		PER_SETTLER;
+
+		public String i18nValue;
+
+
+		@Override
+		public String toString() {
+			return i18nValue == null ? this.name() : i18nValue;
+		}
+	}
+
+	public static class DigitFilter implements TextField.TextFieldFilter {
+
+		private char[] accepted;
+
+		public DigitFilter() {
+			accepted = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
+		}
+
+		@Override
+		public boolean acceptChar(TextField textField, char c) {
+			for (char a : accepted)
+				if (a == c) return true;
+			return false;
+		}
 	}
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.behaviour.items.ItemBehaviour;
@@ -44,7 +45,7 @@ public class ItemEntityFactory {
 		this.entityAssetUpdater = entityAssetUpdater;
 	}
 	
-	public Entity createByItemType(ItemType itemType, GameContext gameContext) {
+	public Entity createByItemType(ItemType itemType, GameContext gameContext, boolean addToGameContext) {
 		ItemEntityAttributes attributes = new ItemEntityAttributes(gameContext.getRandom().nextLong());
 		attributes.setItemType(itemType);
 		itemEntityAttributesFactory.setItemSizeAndStyle(attributes);
@@ -52,12 +53,16 @@ public class ItemEntityFactory {
 		for (GameMaterialType requiredMaterialType : itemType.getMaterialTypes()) {
 			List<GameMaterial> materialsToPickFrom = gameMaterialDictionary.getByType(requiredMaterialType).stream()
 					.filter(GameMaterial::isUseInRandomGeneration).collect(Collectors.toList());
+			if (materialsToPickFrom.isEmpty()) {
+				// No use-in-random-generation materials
+				Logger.error("Needed a material of type " + requiredMaterialType + " to use in random generation");
+			}
 			GameMaterial material = materialsToPickFrom.get(gameContext.getRandom().nextInt(materialsToPickFrom.size()));
 			attributes.setMaterial(material);
 		}
 		attributes.setQuantity(1);
 
-		return this.create(attributes, null, true, gameContext);
+		return this.create(attributes, null, addToGameContext, gameContext);
 	}
 
 
@@ -74,8 +79,10 @@ public class ItemEntityFactory {
 		entity.init(messageDispatcher, gameContext);
 
 		entityAssetUpdater.updateEntityAssets(entity);
-		gameContext.getEntities().put(entity.getId(), entity);
-		messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, entity);
+		if (addToGameContext) {
+			gameContext.getEntities().put(entity.getId(), entity);
+			messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, entity);
+		}
 		return entity;
 	}
 

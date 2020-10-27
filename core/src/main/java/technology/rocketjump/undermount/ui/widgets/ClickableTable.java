@@ -4,8 +4,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.ui.actions.ButtonAction;
@@ -74,6 +76,12 @@ public class ClickableTable extends Table {
 //					parent.onClickSoundAction.onClick();
 //				}
 //			}
+			Actor target = parent.hit(x, y, true);
+			if (target != null) {
+				if (target instanceof SelectBox || target instanceof TextField) {
+					return false;
+				}
+			}
 			return super.touchDown(event, x, y, pointer, button);
 		}
 

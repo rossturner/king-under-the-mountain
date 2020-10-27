@@ -63,7 +63,7 @@ public class HaulingAllocationTest {
 		messageDispatcher = injector.getInstance(MessageDispatcher.class);
 		itemEntityMessageHandler = injector.getInstance(ItemEntityMessageHandler.class);
 
-		itemEntity = itemEntityFactory.createByItemType(itemTypeDictionary.getByName("Ingredient-Vegetable-Crate"), gameContext);
+		itemEntity = itemEntityFactory.createByItemType(itemTypeDictionary.getByName("Ingredient-Vegetable-Crate"), gameContext, true);
 		attributes = (ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes();
 
 	}

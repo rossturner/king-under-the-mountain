@@ -93,7 +93,7 @@ public class SettlerFactory {
 		InventoryComponent inventoryComponent = settler.getOrCreateComponent(InventoryComponent.class);
 
 		ItemType rationItemType = itemTypeDictionary.getByName("Product-Ration");
-		Entity rationItem = itemEntityFactory.createByItemType(rationItemType, gameContext);
+		Entity rationItem = itemEntityFactory.createByItemType(rationItemType, gameContext, true);
 		ItemEntityAttributes attributes = (ItemEntityAttributes) rationItem.getPhysicalEntityComponent().getAttributes();
 		attributes.setQuantity(50);
 		GameMaterial oldPrimaryMaterial = attributes.getPrimaryMaterial();

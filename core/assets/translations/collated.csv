@@ -650,6 +650,9 @@ PROFESSION.WOODCUTTER.MALE_NOUN,Woodcutter,,Holzfäller,Scieur,Taglialegna,Leña
 PROFESSION.WOODCUTTER.TOOLTIP,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,,"Fällt Bäume für Nutzholz, das in einer {{ROOMS.SAWMILL}} verwendet werden kann.",Découpe les arbres en tant que buche qui peut être utilisé dans un {{ROOMS.SAWMILL}}.,Taglia gli alberi come legname che può essere utilizzato in un {{ROOMS.SEWMILL}}.,Corta árboles como madera que se puede utilizar en un {{ROOMS.SAWMILL}}.,Corta árvores como madeira serrada que pode ser usada em um {{ROOMS.SAWMILL}}.,,,"Вырубает деревья в виде пиломатериалов, которые могут быть использованы в {{ROOMS.SAWMILL}}.","Nedskærer træer som tømmer, der kan bruges i en {{ROOMS.SAWMILL}}.",,Klipper ner träd som virke som kan användas i en {{ROOMS.SAWMILL}}.,,,,{{ROOMS.SAWMILL}} で使用できる木材として木を切り落とす。,砍伐树木作为木材，可以在 {{ROOMS.SAWMILL}} 中使用。,나무를 {{ROOMS.SAWMILL}} 에서 사용할 수 있는 목재로 자릅니다.
 PROFESSION.WOODCUTTER.VERB,Chopping,,Fällt,Coupe,Sta tagliando,Talando,Cortar lenha,Cortando,,Вырезание,Hakning,,Hugga,,,,チョッピング,切断,도마
 
+QUOTA.FIXED_AMOUNT,in total,,,,,,,,,,,,,,,,,,
+QUOTA.PER_SETTLER,per settler,,,,,,,,,,,,,,,,,,
+
 RACE.DWARF.FEMALE_ADJECTIVE,Dwarven,,zwergische,Naine,nana,Enana,De anã,Enânica,,Гномий,Dværgen,,Dvärg-,,,,ドワーフ,矮人,드워프
 RACE.DWARF.FEMALE_NOUN,Dwarf,,Zwergin,Naine,Nana,Enana,Anã,Anã,,Гномка,Dværg,,Dvärg,,,,ドワーフ,矮人,드워프
 RACE.DWARF.FEMALE_PLURAL,Dwarves,,Zwerge,Naines,Nane,Enanas,Anãs,Anãs,,Гномы,Dværge,,Dvärgar,,,,ドワーフ,矮人,드워프

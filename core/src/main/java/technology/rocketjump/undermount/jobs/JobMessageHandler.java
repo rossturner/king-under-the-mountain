@@ -701,7 +701,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			return;
 		}
 
-		Entity createdItem = itemEntityFactory.createByItemType(harvestedItem.getItemType(), gameContext);
+		Entity createdItem = itemEntityFactory.createByItemType(harvestedItem.getItemType(), gameContext, true);
 		ItemEntityAttributes createdAttributes = (ItemEntityAttributes) createdItem.getPhysicalEntityComponent().getAttributes();
 		GameMaterial oldPrimaryMaterial = createdAttributes.getPrimaryMaterial();
 		createdAttributes.setQuantity(harvestedItem.getQuantity());

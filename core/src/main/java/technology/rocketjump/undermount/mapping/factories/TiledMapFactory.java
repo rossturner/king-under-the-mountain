@@ -320,7 +320,7 @@ public class TiledMapFactory {
 			QuantifiedItemTypeWithMaterial quantifiedItemType = initiallyHauledItems.peek();
 
 			if (quantifiedItemType.getItemType() != null) {
-				Entity startingItem = itemEntityFactory.createByItemType(quantifiedItemType.getItemType(), gameContext);
+				Entity startingItem = itemEntityFactory.createByItemType(quantifiedItemType.getItemType(), gameContext, true);
 
 				HaulingComponent haulingComponent = settler.getOrCreateComponent(HaulingComponent.class);
 				haulingComponent.setHauledEntity(startingItem, messageDispatcher, settler);
