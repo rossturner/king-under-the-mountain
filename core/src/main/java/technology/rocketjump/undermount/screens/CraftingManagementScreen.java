@@ -2,13 +2,11 @@ package technology.rocketjump.undermount.screens;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.RandomXS128;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
-import com.google.common.collect.ImmutableMap;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.crafting.CraftingRecipeDictionary;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
@@ -17,23 +15,21 @@ import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.item.ItemGroup;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
-import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rooms.RoomType;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
+import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 import technology.rocketjump.undermount.settlement.production.ProductionManager;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 import technology.rocketjump.undermount.ui.Scene2DUtils;
-import technology.rocketjump.undermount.ui.Selectable;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nUpdatable;
@@ -55,8 +51,18 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 	private static final float INDENT_WIDTH = 50f;
 	public static final int DEFAULT_ROW_WIDTH = 900;
-	private final ClickableTableFactory clickableTableFactory;
 
+	private final ClickableTableFactory clickableTableFactory;
+	private final EntityRenderer entityRenderer;
+	private final CraftingRecipeDictionary craftingRecipeDictionary;
+	private final ItemEntityFactory itemEntityFactory;
+	private final RoomTypeDictionary roomTypeDictionary;
+	private final FurnitureTypeDictionary furnitureTypeDictionary;
+	private final CraftingTypeDictionary craftingTypeDictionary;
+	private final ProductionManager productionManager;
+	private final SettlerTracker settlerTracker;
+
+	private boolean initialised = false;
 	private final List<CraftingType> displayedCraftingTypes = new ArrayList<>();
 	private final Map<CraftingType, List<FurnitureType>> craftingStationsByType = new TreeMap<>();
 	private final Map<FurnitureType, List<RoomType>> roomsForCraftingStations = new HashMap<>();
@@ -64,21 +70,13 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private final Map<CraftingType, Map<GameMaterial, List<CraftingRecipe>>> producedLiquidsByCraftingRecipe = new HashMap<>();
 	private final Map<ItemType, Entity> exampleEntities = new HashMap<>();
 
-	private final Map<ItemGroup, I18nLabel> groupLabels = new EnumMap<>(ItemGroup.class);
-	private final EntityRenderer entityRenderer;
 
 	private final Table scrollableTable;
 	private final ScrollPane scrollableTablePane;
 
-	private final Set<String> selectedRows = new HashSet<>();
-	private final CraftingRecipeDictionary craftingRecipeDictionary;
-	private final ItemEntityFactory itemEntityFactory;
-	private final RoomTypeDictionary roomTypeDictionary;
-	private boolean initialised = false;
-	private final FurnitureTypeDictionary furnitureTypeDictionary;
-	private final CraftingTypeDictionary craftingTypeDictionary;
-	private final ProductionManager productionManager;
-	private final SettlerTracker settlerTracker;
+	private final Set<CraftingType> expandedCraftingTypes = new HashSet<>();
+	private final Set<ItemType> expandedItemTypes = new HashSet<>();
+	private final ItemTracker itemTracker;
 
 	@Inject
 	public CraftingManagementScreen(UserPreferences userPreferences, MessageDispatcher messageDispatcher,
@@ -88,7 +86,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									RoomTypeDictionary roomTypeDictionary, CraftingRecipeDictionary craftingRecipeDictionary,
 									ClickableTableFactory clickableTableFactory,
 									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory, ProductionManager productionManager,
-									SettlerTracker settlerTracker) {
+									SettlerTracker settlerTracker, ItemTracker itemTracker) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
@@ -99,6 +97,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		this.craftingTypeDictionary = craftingTypeDictionary;
 		this.productionManager = productionManager;
 		this.settlerTracker = settlerTracker;
+		this.itemTracker = itemTracker;
 
 		scrollableTable = new Table(uiSkin);
 		scrollableTablePane = Scene2DUtils.wrapWithScrollPane(scrollableTable, uiSkin);
@@ -184,7 +183,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			List<FurnitureType> craftingStations = craftingStationsByType.get(craftingType);
 			addCraftingTypeRow(craftingType, craftingStations);
 
-			boolean craftingTypeExpanded = true;
+			boolean craftingTypeExpanded = expandedCraftingTypes.contains(craftingType);
 
 			if (craftingTypeExpanded) {
 				for (Map.Entry<ItemType, List<CraftingRecipe>> producedItemEntry : producedItemTypesByCraftingRecipe.get(craftingType).entrySet()) {
@@ -206,7 +205,12 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		clickableRow.setBackground("default-rect");
 		clickableRow.pad(2);
 		clickableRow.setAction(() -> {
-			Logger.info("TODO: Click on this row");
+			if (expandedCraftingTypes.contains(craftingType)) {
+				expandedCraftingTypes.remove(craftingType);
+			} else {
+				expandedCraftingTypes.add(craftingType);
+			}
+			reset();
 		});
 
 
@@ -240,15 +244,21 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		clickableRow.pad(2);
 		clickableRow.setFillParent(true);
 		clickableRow.setAction(() -> {
-			Logger.info("TODO: Click on this row");
+			if (expandedItemTypes.contains(producedItemType)) {
+				expandedItemTypes.remove(producedItemType);
+			} else {
+				expandedItemTypes.add(producedItemType);
+			}
+			reset();
 		});
 
 		EntityDrawable materialDrawable = new EntityDrawable(exampleEntities.get(producedItemType), entityRenderer);
 		clickableRow.add(new Image(materialDrawable)).left().width(80).pad(5);
 
-		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(producedItemType.getI18nKey()), uiSkin, messageDispatcher)).left().width(90).pad(5);
+		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(producedItemType.getI18nKey()), uiSkin, messageDispatcher))
+				.left().pad(10);
 
-		clickableRow.add(new Label("Currently maintaining", uiSkin)).pad(5);
+		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString("GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT"), uiSkin, messageDispatcher)).pad(5);
 
 		TextField quantityInput = new TextField("0", uiSkin);
 		if (currentProductionQuota.isFixedAmount()) {
@@ -293,7 +303,9 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		updateHint(perSettlerTotalAmountHint, currentProductionQuota);
 		clickableRow.add(perSettlerTotalAmountHint);
 
-		clickableRow.add(new Container<>()).right().expandX();
+		I18nText actualAmountText = i18nTranslator.getTranslatedWordWithReplacements("GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL",
+				Map.of("quantity", new I18nWord(String.valueOf(count(producedItemType)))));
+		clickableRow.add(new I18nTextWidget(actualAmountText, uiSkin, messageDispatcher)).right().expandX().padRight(100);
 
 		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - INDENT_WIDTH);
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
@@ -336,56 +348,10 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		return asFloat;
 	}
 
-	private void addRowToTable(Table groupTable, Entity itemEntity, String rowName, I18nText displayName, int unallocated, int total, int indents, boolean clickToEntity) {
-		Table rowContainerTable = new Table(uiSkin);
-		if (indents > 0) {
-			rowContainerTable.add(new Container<>()).width(indents * INDENT_WIDTH);
-		}
-
-		ClickableTable clickableRow = clickableTableFactory.create();
-		clickableRow.setBackground("default-rect");
-		clickableRow.pad(2);
-		if (clickToEntity) {
-			clickableRow.setAction(() -> {
-				Entity target = itemEntity;
-				while (target.getLocationComponent().getContainerEntity() != null) {
-					target = target.getLocationComponent().getContainerEntity();
-				}
-				Vector2 position = target.getLocationComponent().getWorldOrParentPosition();
-
-				if (position != null) {
-					messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_GAME");
-					messageDispatcher.dispatchMessage(MessageType.MOVE_CAMERA_TO, position);
-					messageDispatcher.dispatchMessage(MessageType.CHOOSE_SELECTABLE, new Selectable(target, 0));
-				} else {
-					Logger.error("Attempting to move to entity with no position or container");
-				}
-			});
-		} else {
-			clickableRow.setAction(() -> {
-				if (selectedRows.contains(rowName)) {
-					selectedRows.remove(rowName);
-				} else {
-					selectedRows.add(rowName);
-				}
-				reset();
-			});
-		}
-
-		EntityDrawable materialDrawable = new EntityDrawable(itemEntity, entityRenderer);
-		clickableRow.add(new Image(materialDrawable)).center().width(80).pad(5);
-
-		clickableRow.add(new I18nTextWidget(displayName, uiSkin, messageDispatcher)).left().width(400f - (indents * INDENT_WIDTH)).pad(2);
-
-		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedWordWithReplacements(
-				"GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL", ImmutableMap.of("count", new I18nWord(String.valueOf(unallocated)))), uiSkin, messageDispatcher)
-		).center().width(100);
-		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedWordWithReplacements(
-				"GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL", ImmutableMap.of("count", new I18nWord(String.valueOf(total)))), uiSkin, messageDispatcher)
-		).center().width(100);
-
-		rowContainerTable.add(clickableRow);
-		groupTable.add(rowContainerTable).right().row();
+	private int count(ItemType itemType) {
+		return itemTracker.getItemsByType(itemType, false).stream()
+				.map(entity -> ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getQuantity())
+				.reduce(0, Integer::sum);
 	}
 
 	@Override
@@ -415,7 +381,6 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 	@Override
 	public void clearContextRelatedState() {
-		selectedRows.clear();
 	}
 
 	@Override

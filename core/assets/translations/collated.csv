@@ -258,8 +258,10 @@ GUI.BUILD_FURNITURE,Furniture,,Möbel,Meubles,Suppellettili,Muebles,Mobília,Mob
 GUI.BUILD_LABEL,Build,,Bauen,"Construire ",Costruisci,"Construir ","Construir ",Construir,,Построить,Byg,,Bygg,,,,ビルド,建立,빌드
 GUI.CANCEL_LABEL,Cancel,,Abbrechen,"Annuler ",Annulla,"Cancelar ","Cancelar ",Cancelar,,Отмена,Aflys,,"Avbryt ",,,,キャンセルします,取消,취소
 GUI.CHANGE_PROFESSION_LABEL,Change profession,,Beruf wechseln,Changer de profession,Cambia professione,Cambiar profesión,Mudar de profissão,,,Сменить профессию,Skift erhverv,,Byt yrke,,,,職業を変える,变革行业,직업 변경
+GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,Maintaining,,,,,,,,,,,,,,,,,,
 GUI.CRAFTING_MANAGEMENT.TITLE,Crafting,,,,,,,,,,,,,,,,,,
-GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,{{quantity}} in total,,,,,,,,,,,,,,,,,,
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,Current total: {{quantity}},,,,,,,,,,,,,,,,,,
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,({{quantity}} in total),,,,,,,,,,,,,,,,,,
 GUI.CROP_SELECTION,Crop:,,Pflanze:,Culture :,Coltura:,Cosecha:,Plantação:,Cultivo:,,Культура:,Afgrøde:,,Beskära:,,,,切り抜き:,裁剪：,자르기:
 GUI.DATE_TIME_LABEL,"{{timeOfDay}}, day {{dayNumber}}, {{season}}",,"{{timeOfDay}}, Tag {{dayNumber}}, {{season}}","{{timeOfDay}}, jour {{dayNumber}}, {{season}}","{{timeOfDay}}, {{dayNumber}}° giorno, {{season}}","{{timeOfDay}}, día {{dayNumber}}, {{season}}","{{timeOfDay}}, dia {{dayNumber}}, {{season}}","{{timeOfDay}}, dia {{dayNumber}}, {{season}}",,"{{timeOfDay}}, день {{dayNumber}}, {{season}}","{{timeOfDay}}, dag {{dayNumber}}, {{season}}",,"{{TimeofDay}}, dag {{dayNumber}}, {{säsong}}",,,,{{時刻}}、日 {{日}}、{{季節}},{{timeOfDay}}，天 {{dayNumber}},"{{timeOfDay}}, 일 {{일 번호}}, {{dayNumber}}"
 GUI.DIALOG.DISMISS,Dismiss,,Verwerfen,Rejeter,- Mancate,Despedir,Dispensar,,,Уволить,Afskedige,,Avfärda,,,,却下します,解雇,해고
