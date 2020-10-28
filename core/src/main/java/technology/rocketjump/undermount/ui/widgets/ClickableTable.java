@@ -78,7 +78,7 @@ public class ClickableTable extends Table {
 //			}
 			Actor target = parent.hit(x, y, true);
 			if (target != null) {
-				if (target instanceof SelectBox || target instanceof TextField) {
+				if (target instanceof SelectBox || target instanceof TextField || (target.hasParent() && target.getParent() instanceof IconOnlyButton)) {
 					return false;
 				}
 			}

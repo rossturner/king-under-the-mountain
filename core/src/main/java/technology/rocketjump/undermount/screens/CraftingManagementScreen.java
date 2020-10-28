@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.RoomType;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
 import technology.rocketjump.undermount.settlement.ItemTracker;
@@ -50,7 +51,7 @@ import static technology.rocketjump.undermount.entities.tags.CraftingStationBeha
 public class CraftingManagementScreen extends ManagementScreen implements I18nUpdatable {
 
 	private static final float INDENT_WIDTH = 50f;
-	public static final int DEFAULT_ROW_WIDTH = 900;
+	public static final int DEFAULT_ROW_WIDTH = 1050;
 
 	private final ClickableTableFactory clickableTableFactory;
 	private final EntityRenderer entityRenderer;
@@ -61,6 +62,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private final CraftingTypeDictionary craftingTypeDictionary;
 	private final ProductionManager productionManager;
 	private final SettlerTracker settlerTracker;
+	private final IconButtonFactory iconButtonFactory;
 
 	private boolean initialised = false;
 	private final List<CraftingType> displayedCraftingTypes = new ArrayList<>();
@@ -68,8 +70,6 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private final Map<FurnitureType, List<RoomType>> roomsForCraftingStations = new HashMap<>();
 	private final Map<CraftingType, Map<ItemType, List<CraftingRecipe>>> producedItemTypesByCraftingRecipe = new HashMap<>();
 	private final Map<CraftingType, Map<GameMaterial, List<CraftingRecipe>>> producedLiquidsByCraftingRecipe = new HashMap<>();
-	private final Map<ItemType, Entity> exampleEntities = new HashMap<>();
-
 
 	private final Table scrollableTable;
 	private final ScrollPane scrollableTablePane;
@@ -86,7 +86,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									RoomTypeDictionary roomTypeDictionary, CraftingRecipeDictionary craftingRecipeDictionary,
 									ClickableTableFactory clickableTableFactory,
 									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory, ProductionManager productionManager,
-									SettlerTracker settlerTracker, ItemTracker itemTracker) {
+									SettlerTracker settlerTracker, IconButtonFactory iconButtonFactory1, ItemTracker itemTracker) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
@@ -97,6 +97,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		this.craftingTypeDictionary = craftingTypeDictionary;
 		this.productionManager = productionManager;
 		this.settlerTracker = settlerTracker;
+		this.iconButtonFactory = iconButtonFactory1;
 		this.itemTracker = itemTracker;
 
 		scrollableTable = new Table(uiSkin);
@@ -108,7 +109,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		}
 	}
 
-	private void initalise() {
+	private void initialise() {
 		for (FurnitureType furnitureType : furnitureTypeDictionary.getAll()) {
 			if (furnitureType.getTags().containsKey(CRAFTING_STATION_BEHAVIOUR_TAGNAME)) {
 				String craftingTypeName = furnitureType.getTags().get(CRAFTING_STATION_BEHAVIOUR_TAGNAME).get(0);
@@ -143,36 +144,13 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			}
 		}
 
-		GameContext nullContext = new GameContext();
-		nullContext.setRandom(new RandomXS128());
-		Set<ItemType> craftedItemTypes = producedItemTypesByCraftingRecipe.values().stream().flatMap(value -> value.keySet().stream()).collect(Collectors.toSet());
-		for (ItemType craftedItemType : craftedItemTypes) {
-			Entity entity = itemEntityFactory.createByItemType(craftedItemType, nullContext, false);
-
-			// Use any hard-specified materials in recipe outputs
-			for (Map<ItemType, List<CraftingRecipe>> itemTypeMap : producedItemTypesByCraftingRecipe.values()) {
-				if (itemTypeMap.containsKey(craftedItemType)) {
-					for (CraftingRecipe recipe : itemTypeMap.get(craftedItemType)) {
-						for (QuantifiedItemTypeWithMaterial output : recipe.getOutput()) {
-							if (craftedItemType.equals(output.getItemType()) && output.getMaterial() != null) {
-								ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-								attributes.setMaterial(output.getMaterial());
-							}
-						}
-					}
-				}
-			}
-
-			exampleEntities.put(craftedItemType, entity);
-		}
-
 		onLanguageUpdated();
 	}
 
 	@Override
 	public void reset() {
 		if (!initialised) {
-			initalise();
+			initialise();
 			initialised = true;
 		}
 		containerTable.clearChildren();
@@ -188,6 +166,12 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			if (craftingTypeExpanded) {
 				for (Map.Entry<ItemType, List<CraftingRecipe>> producedItemEntry : producedItemTypesByCraftingRecipe.get(craftingType).entrySet()) {
 					addProducedItemRow(producedItemEntry.getKey());
+
+					if (expandedItemTypes.contains(producedItemEntry.getKey())) {
+						for (CraftingRecipe craftingRecipe : producedItemEntry.getValue()) {
+							addCraftingRecipeRow(producedItemEntry.getKey(), craftingRecipe);
+						}
+					}
 				}
 				for (Map.Entry<GameMaterial, List<CraftingRecipe>> producedLiquidEntry : producedLiquidsByCraftingRecipe.get(craftingType).entrySet()) {
 
@@ -209,6 +193,10 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 				expandedCraftingTypes.remove(craftingType);
 			} else {
 				expandedCraftingTypes.add(craftingType);
+				// Also remove all expanded children
+				for (ItemType childItemType : producedItemTypesByCraftingRecipe.get(craftingType).keySet()) {
+					expandedItemTypes.remove(childItemType);
+				}
 			}
 			reset();
 		});
@@ -252,7 +240,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			reset();
 		});
 
-		EntityDrawable materialDrawable = new EntityDrawable(exampleEntities.get(producedItemType), entityRenderer);
+		EntityDrawable materialDrawable = new EntityDrawable(getExampleEntity(producedItemType, null), entityRenderer);
 		clickableRow.add(new Image(materialDrawable)).left().width(80).pad(5);
 
 		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(producedItemType.getI18nKey()), uiSkin, messageDispatcher))
@@ -311,6 +299,81 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
 	}
 
+	private void addCraftingRecipeRow(ItemType producedItemType, CraftingRecipe craftingRecipe) {
+		Table rowContainerTable = new Table(uiSkin);
+		rowContainerTable.add(new Container<>()).width(2 * INDENT_WIDTH);
+
+		ClickableTable clickableRow = clickableTableFactory.create();
+		clickableRow.setBackground("default-rect");
+		clickableRow.pad(2);
+		clickableRow.setFillParent(true);
+		clickableRow.setAction(() -> {
+			Logger.info("TODO: Clicked on " + craftingRecipe.toString());
+		});
+
+
+		for (int inputCursor = 0; inputCursor < craftingRecipe.getInput().size(); inputCursor++) {
+			QuantifiedItemTypeWithMaterial inputRequirement = craftingRecipe.getInput().get(inputCursor);
+			if (inputRequirement.isLiquid()) {
+				Logger.warn("TODO: Liquid inputs");
+			} else {
+				EntityDrawable itemDrawable = new EntityDrawable(getExampleEntity(inputRequirement.getItemType(), inputRequirement.getMaterial()), entityRenderer);
+				clickableRow.add(new Image(itemDrawable)).left().pad(5);
+				I18nText description = i18nTranslator.getItemDescription(inputRequirement.getQuantity(), inputRequirement.getMaterial(), inputRequirement.getItemType());
+				clickableRow.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).pad(5);
+			}
+
+			if (inputCursor < craftingRecipe.getInput().size() - 1) {
+				// add + for next input
+				clickableRow.add(new Label("+", uiSkin)).pad(5);
+			}
+		}
+
+		clickableRow.add(new Label("=>", uiSkin)).pad(5);
+
+
+		for (int outputCursor = 0; outputCursor < craftingRecipe.getOutput().size(); outputCursor++) {
+			QuantifiedItemTypeWithMaterial outputRequirement = craftingRecipe.getOutput().get(outputCursor);
+			if (outputRequirement.isLiquid()) {
+				Logger.warn("TODO: Liquid outputs");
+			} else {
+				EntityDrawable itemDrawable = new EntityDrawable(getExampleEntity(outputRequirement.getItemType(), outputRequirement.getMaterial()), entityRenderer);
+				clickableRow.add(new Image(itemDrawable)).left().pad(5);
+				I18nText description = i18nTranslator.getItemDescription(outputRequirement.getQuantity(), outputRequirement.getMaterial(), outputRequirement.getItemType());
+				clickableRow.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).pad(5);
+			}
+
+			if (outputCursor < craftingRecipe.getOutput().size() - 1) {
+				// add + for next input
+				clickableRow.add(new Label("+", uiSkin)).pad(5);
+			}
+		}
+
+		IconOnlyButton enableDisableButton;
+		boolean recipeEnabled = productionManager.isRecipeEnabled(craftingRecipe);
+		if (recipeEnabled) {
+			enableDisableButton = iconButtonFactory.create("check-mark");
+			enableDisableButton.setForegroundColor(HexColors.POSITIVE_COLOR);
+			enableDisableButton.setAction(() -> {
+				productionManager.setRecipeEnabled(craftingRecipe, false);
+				reset();
+			});
+		} else {
+			enableDisableButton = iconButtonFactory.create("pause-button");
+			enableDisableButton.setForegroundColor(HexColors.NEGATIVE_COLOR);
+			enableDisableButton.setAction(() -> {
+				productionManager.setRecipeEnabled(craftingRecipe, true);
+				reset();
+			});
+		}
+
+
+		clickableRow.add(enableDisableButton).right().pad(10).padRight(INDENT_WIDTH * 3).expandX();
+
+		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - (INDENT_WIDTH * 2));
+		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
+	}
+
 	private void updateQuota(ItemType itemType, float quantity, QuotaSetting quotaSetting, I18nTextWidget perSettlerTotalAmountHint) {
 		ProductionQuota quota = new ProductionQuota();
 		if (quotaSetting.equals(QuotaSetting.FIXED_AMOUNT)) {
@@ -352,6 +415,21 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		return itemTracker.getItemsByType(itemType, false).stream()
 				.map(entity -> ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getQuantity())
 				.reduce(0, Integer::sum);
+	}
+
+	static	GameContext nullContext = new GameContext();
+	static {
+		nullContext.setRandom(new RandomXS128());
+	}
+	private final Map<ItemType, Entity> exampleEntities = new HashMap<>();
+
+	private Entity getExampleEntity(ItemType itemType, GameMaterial material) {
+		Entity entity = exampleEntities.computeIfAbsent(itemType, a -> itemEntityFactory.createByItemType(itemType, nullContext, false));
+		// Keep trying to override material if one specified
+		if (material != null) {
+			((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).setMaterial(material);
+		}
+		return entity;
 	}
 
 	@Override

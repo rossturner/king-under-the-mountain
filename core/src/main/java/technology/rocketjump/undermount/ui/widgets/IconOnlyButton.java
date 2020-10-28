@@ -55,6 +55,11 @@ public class IconOnlyButton extends Table {
 		}
 	}
 
+	public void setForegroundColor(Color color) {
+		this.defaultForegroundColor = color.cpy();
+		this.currentForegroundColor = color.cpy();
+	}
+
 	@Override
 	public void act(float delta) {
 		if (currentIcon != null) {

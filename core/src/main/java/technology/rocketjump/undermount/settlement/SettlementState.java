@@ -3,6 +3,8 @@ package technology.rocketjump.undermount.settlement;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.math.Vector2;
+import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
@@ -33,6 +35,7 @@ public class SettlementState implements Persistable {
 	public final List<ImpendingMiningCollapse> impendingMiningCollapses = new ArrayList<>();
 	public final Map<String, Boolean> previousHints = new HashMap<>();
 	public final List<String> currentHints = new ArrayList<>();
+	public final List<CraftingRecipe> disabledCraftingRecipes = new ArrayList<>();
 
 	private int immigrantsDue;
 	private int immigrantCounter;
@@ -122,6 +125,14 @@ public class SettlementState implements Persistable {
 
 		if (gameOver) {
 			asJson.put("gameOver", true);
+		}
+
+		if (!disabledCraftingRecipes.isEmpty()) {
+			JSONArray disabledCraftingRecipeNames = new JSONArray();
+			for (CraftingRecipe disabledCraftingRecipe : disabledCraftingRecipes) {
+				disabledCraftingRecipeNames.add(disabledCraftingRecipe.getRecipeName());
+			}
+			asJson.put("disabledCraftingRecipes", disabledCraftingRecipeNames);
 		}
 
 		savedGameStateHolder.setSettlementState(this);
@@ -220,6 +231,19 @@ public class SettlementState implements Persistable {
 		}
 
 		gameOver = asJson.getBooleanValue("gameOver");
+
+
+		JSONArray disabledCraftingRecipeNames = asJson.getJSONArray("disabledCraftingRecipes");
+		if (disabledCraftingRecipeNames != null) {
+			for (Object disabledRecipeName : disabledCraftingRecipeNames) {
+				CraftingRecipe craftingRecipe = relatedStores.craftingRecipeDictionary.getByName(disabledRecipeName.toString());
+				if (craftingRecipe == null) {
+					Logger.warn("Unrecognised disabled crafting recipe name " + disabledRecipeName.toString());
+				} else {
+					this.disabledCraftingRecipes.add(craftingRecipe);
+				}
+			}
+		}
 	}
 
 	public int getImmigrantsDue() {

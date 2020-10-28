@@ -109,7 +109,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
 
-		deconstructButton = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.get("#D4534C"), ButtonStyle.SMALL);
+		deconstructButton = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.SMALL);
 		final EntitySelectedGuiView This = this;
 		deconstructButton.setAction(() -> {
 			Selectable selectable = gameInteractionStateContainer.getSelectable();

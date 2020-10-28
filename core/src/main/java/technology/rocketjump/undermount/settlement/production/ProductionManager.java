@@ -104,6 +104,10 @@ public class ProductionManager implements Updatable, Telegraph {
 
 		List<CraftingRecipe> requiredCraftingRecipes = new LinkedList<>();
 		for (CraftingRecipe craftingRecipe : recipesForCraftingType) {
+			if (gameContext.getSettlementState().disabledCraftingRecipes.contains(craftingRecipe)) {
+				continue;
+			}
+
 			for (QuantifiedItemTypeWithMaterial output : craftingRecipe.getOutput()) {
 				if (output.getItemType() == null && output.isLiquid()) {
 					// This recipe does not produce items, only liquid, so always produce it
@@ -194,6 +198,24 @@ public class ProductionManager implements Updatable, Telegraph {
 		}
 	}
 
+	public boolean isRecipeEnabled(CraftingRecipe craftingRecipe) {
+		if (gameContext != null) {
+			return !gameContext.getSettlementState().disabledCraftingRecipes.contains(craftingRecipe);
+		} else {
+			return false;
+		}
+	}
+
+	public void setRecipeEnabled(CraftingRecipe craftingRecipe, boolean enabled) {
+		if (gameContext != null) {
+			if (enabled) {
+				gameContext.getSettlementState().disabledCraftingRecipes.remove(craftingRecipe);
+			} else {
+				gameContext.getSettlementState().disabledCraftingRecipes.add(craftingRecipe);
+			}
+		}
+	}
+
 	private void doUpdate() {
 		int numSettlers = settlerTracker.count();
 		for (Map.Entry<ItemType, ProductionQuota> quotaEntry : gameContext.getSettlementState().itemTypeProductionQuotas.entrySet()) {
@@ -201,7 +223,7 @@ public class ProductionManager implements Updatable, Telegraph {
 			int requiredAmount = quotaEntry.getValue().getRequiredAmount(numSettlers);
 			int currentAmount = 0;
 			for (Entity item : itemTracker.getItemsByType(itemType, false)) {
-				currentAmount += ((ItemEntityAttributes)item.getPhysicalEntityComponent().getAttributes()).getQuantity();
+				currentAmount += ((ItemEntityAttributes) item.getPhysicalEntityComponent().getAttributes()).getQuantity();
 			}
 			int inProduction = 0;
 			for (ProductionAssignment productionAssignment : gameContext.getSettlementState().productionAssignments.computeIfAbsent(itemType, (o) -> new HashMap<>()).values()) {

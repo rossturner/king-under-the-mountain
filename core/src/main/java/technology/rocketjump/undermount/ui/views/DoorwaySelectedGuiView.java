@@ -47,7 +47,7 @@ public class DoorwaySelectedGuiView implements GuiView {
 		entityDescriptionTable = new Table(uiSkin);
 		entityDescriptionTable.pad(10);
 
-		deconstructButton = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.get("#D4534C"), ButtonStyle.SMALL);
+		deconstructButton = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.SMALL);
 		final DoorwaySelectedGuiView This = this;
 		deconstructButton.setAction(() -> {
 			Selectable selectable = gameInteractionStateContainer.getSelectable();
