@@ -92,8 +92,10 @@ public class ModArtifactListing {
 						"definitions/crafting/recipes", "*.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/crafting", "craftingTypes", SINGLE_FILE, JSON_ARRAY, CraftingType.class,
 						"definitions/crafting", "craftingTypes", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
-				def("definitions/crafting", "productionDefaults", SINGLE_FILE, JSON_MAP, ProductionQuota.class,
-						"definitions/crafting", "productionDefaults.json", JSON_MAP, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/crafting", "itemProductionDefaults", SINGLE_FILE, JSON_MAP, ProductionQuota.class,
+						"definitions/crafting", "itemProductionDefaults.json", JSON_MAP, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/crafting", "liquidProductionDefaults", SINGLE_FILE, JSON_MAP, ProductionQuota.class,
+						"definitions/crafting", "liquidProductionDefaults.json", JSON_MAP, ADDITIVE, GenericClassTypeProcessor.class),
 
 				def("definitions/types", "wallTypes", SINGLE_FILE, JSON_ARRAY, WallType.class,
 						"terrain/walls", "**/definition.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),

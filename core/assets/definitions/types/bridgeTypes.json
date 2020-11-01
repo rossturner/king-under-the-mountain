@@ -2,7 +2,8 @@
   "materialType" : "STONE",
   "buildingRequirement" : {
     "itemTypeName" : "Resource-Stone-Block",
-    "quantity" : 2
+    "quantity" : 2,
+    "liquid" : false
   },
   "assets" : {
     "EAST_WEST" : {
@@ -34,7 +35,8 @@
   "materialType" : "WOOD",
   "buildingRequirement" : {
     "itemTypeName" : "Resource-Planks",
-    "quantity" : 2
+    "quantity" : 2,
+    "liquid" : false
   },
   "assets" : {
     "EAST_WEST" : {

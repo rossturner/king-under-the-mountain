@@ -30,10 +30,7 @@ import technology.rocketjump.undermount.zones.ZoneClassification;
 import technology.rocketjump.undermount.zones.ZoneTile;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.nourishment.LocateDrinkAction.LIQUID_AMOUNT_FOR_DRINK_CONSUMPTION;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.AllocationState.ACTIVE;
@@ -104,6 +101,9 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 			gameContext.getAreaMap().removeZone(liquidContainerAccessZone);
 		}
 		liquidContainerAccessZone = null;
+		if (liquidQuantity > 0 && targetLiquidMaterial != null && messageDispatcher != null) {
+			messageDispatcher.dispatchMessage(MessageType.LIQUID_AMOUNT_CHANGED, new LiquidAmountChangedMessage(parentEntity, targetLiquidMaterial, this.liquidQuantity, 0));
+		}
 		targetLiquidMaterial = null;
 		liquidQuantity = 0;
 
@@ -116,9 +116,14 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 	@Override
 	public EntityComponent clone(MessageDispatcher messageDispatcher, GameContext gameContext) {
 		LiquidContainerComponent cloned = new LiquidContainerComponent();
+		cloned.messageDispatcher = messageDispatcher;
+		cloned.parentEntity = this.parentEntity;
 		cloned.targetLiquidMaterial = this.targetLiquidMaterial;
 		cloned.liquidQuantity = this.liquidQuantity;
 		cloned.maxLiquidCapacity = this.maxLiquidCapacity;
+		if (messageDispatcher != null) {
+			messageDispatcher.dispatchMessage(MessageType.LIQUID_AMOUNT_CHANGED, new LiquidAmountChangedMessage(parentEntity, targetLiquidMaterial, 0, this.liquidQuantity));
+		}
 		return cloned;
 	}
 
@@ -127,6 +132,7 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 	}
 
 	public void setTargetLiquidMaterial(GameMaterial targetLiquidMaterial) {
+		GameMaterial oldMaterial = this.targetLiquidMaterial;
 		if (targetLiquidMaterial == null) {
 			if (parentEntity.getPhysicalEntityComponent().getAttributes() instanceof ItemEntityAttributes) {
 				((ItemEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).removeMaterial(GameMaterialType.LIQUID);
@@ -139,6 +145,11 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 			}
 		}
 		this.targetLiquidMaterial = targetLiquidMaterial;
+
+		if (messageDispatcher != null && !Objects.equals(oldMaterial, this.targetLiquidMaterial)) {
+			messageDispatcher.dispatchMessage(MessageType.LIQUID_AMOUNT_CHANGED, new LiquidAmountChangedMessage(parentEntity, oldMaterial, this.liquidQuantity, 0));
+			messageDispatcher.dispatchMessage(MessageType.LIQUID_AMOUNT_CHANGED, new LiquidAmountChangedMessage(parentEntity, this.targetLiquidMaterial, 0, this.liquidQuantity));
+		}
 	}
 
 	public float getLiquidQuantity() {
@@ -146,6 +157,7 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 	}
 
 	public void setLiquidQuantity(float liquidQuantity) {
+		float oldLiquidQuantity = this.liquidQuantity;
 		this.liquidQuantity = liquidQuantity;
 		if (liquidQuantity <= 0) {
 			this.liquidQuantity = 0;
@@ -164,6 +176,7 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 		}
 		if (parentEntity != null && messageDispatcher != null) {
 			messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parentEntity);
+			messageDispatcher.dispatchMessage(MessageType.LIQUID_AMOUNT_CHANGED, new LiquidAmountChangedMessage(parentEntity, this.targetLiquidMaterial, oldLiquidQuantity, this.liquidQuantity));
 		}
 	}
 

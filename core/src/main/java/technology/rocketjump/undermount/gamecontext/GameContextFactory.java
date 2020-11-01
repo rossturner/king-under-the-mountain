@@ -11,6 +11,8 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.settlement.SettlementState;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
@@ -21,13 +23,18 @@ import java.util.HashMap;
 public class GameContextFactory {
 
 	private final ItemTypeDictionary itemTypeDictionary;
-	private final JSONObject productionDefaultsJson;
+	private final GameMaterialDictionary gameMaterialDictionary;
+	private final JSONObject itemProductionDefaultsJson;
+	private final JSONObject liquidProductionDefaultsJson;
 
 	@Inject
-	public GameContextFactory(ItemTypeDictionary itemTypeDictionary) {
+	public GameContextFactory(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary) {
 		this.itemTypeDictionary = itemTypeDictionary;
-		FileHandle productionDefaultsFile = new FileHandle("assets/definitions/crafting/productionDefaults.json");
-		productionDefaultsJson = JSON.parseObject(productionDefaultsFile.readString());
+		this.gameMaterialDictionary = gameMaterialDictionary;
+		FileHandle itemProductionDefaultsFile = new FileHandle("assets/definitions/crafting/itemProductionDefaults.json");
+		itemProductionDefaultsJson = JSON.parseObject(itemProductionDefaultsFile.readString());
+		FileHandle liquidProductionDefaultsFile = new FileHandle("assets/definitions/crafting/liquidProductionDefaults.json");
+		liquidProductionDefaultsJson = JSON.parseObject(liquidProductionDefaultsFile.readString());
 	}
 
 	public GameContext create(TiledMap areaMap, long worldSeed, GameClock clock) {
@@ -62,10 +69,10 @@ public class GameContextFactory {
 	}
 
 	private void initialise(SettlementState settlementState) {
-		for (String itemTypeString : productionDefaultsJson.keySet()) {
+		for (String itemTypeString : itemProductionDefaultsJson.keySet()) {
 			ItemType itemType = itemTypeDictionary.getByName(itemTypeString);
 			if (itemType != null) {
-				JSONObject quotaJson = productionDefaultsJson.getJSONObject(itemTypeString);
+				JSONObject quotaJson = itemProductionDefaultsJson.getJSONObject(itemTypeString);
 				ProductionQuota quota = new ProductionQuota();
 				quota.setFixedAmount(quotaJson.getInteger("fixedAmount"));
 				quota.setPerSettler(quotaJson.getFloat("perSettler"));
@@ -74,11 +81,31 @@ public class GameContextFactory {
 					Logger.error("Can not parse " + quotaJson.toString() + " from productionDefaults for " + itemTypeString);
 				} else {
 					settlementState.itemTypeProductionQuotas.put(itemType, quota);
-					settlementState.productionAssignments.put(itemType, new HashMap<>());
+					settlementState.itemTypeProductionAssignments.put(itemType, new HashMap<>());
 					settlementState.requiredItemCounts.put(itemType, 0);
 				}
 			} else {
-				Logger.error("Unrecognised item type name from productionDefaults.json: " + itemTypeString);
+				Logger.error("Unrecognised item type name from itemProductionDefaults.json: " + itemTypeString);
+			}
+		}
+
+		for (String liquidMaterialName : liquidProductionDefaultsJson.keySet()) {
+			GameMaterial liquidMaterial = gameMaterialDictionary.getByName(liquidMaterialName);
+			if (liquidMaterial != null) {
+				JSONObject quotaJson = liquidProductionDefaultsJson.getJSONObject(liquidMaterialName);
+				ProductionQuota quota = new ProductionQuota();
+				quota.setFixedAmount(quotaJson.getInteger("fixedAmount"));
+				quota.setPerSettler(quotaJson.getFloat("perSettler"));
+
+				if (quota.getFixedAmount() == null && quota.getPerSettler() == null) {
+					Logger.error("Can not parse " + quotaJson.toString() + " from productionDefaults for " + liquidMaterialName);
+				} else {
+					settlementState.liquidProductionQuotas.put(liquidMaterial, quota);
+					settlementState.liquidProductionAssignments.put(liquidMaterial, new HashMap<>());
+					settlementState.requiredLiquidCounts.put(liquidMaterial, 0f);
+				}
+			} else {
+				Logger.error("Unrecognised material name from liquidProductionDefaults.json: " + liquidMaterialName);
 			}
 		}
 	}
