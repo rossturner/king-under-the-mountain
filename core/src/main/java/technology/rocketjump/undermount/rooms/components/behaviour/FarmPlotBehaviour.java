@@ -273,7 +273,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 			if (jobAtLocation != null && jobAtLocation.getType().equals(plantingJobType)) {
 				GameMaterial requiredSeedMaterial = jobAtLocation.getRequiredItemMaterial();
 				if (selectedCrop == null || !requiredSeedMaterial.equals(selectedCrop.getSeed().getSeedMaterial())) {
-					messageDispatcher.dispatchMessage(MessageType.JOB_CANCELLED, jobAtLocation);
+					messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, jobAtLocation);
 				}
 			}
 		}
