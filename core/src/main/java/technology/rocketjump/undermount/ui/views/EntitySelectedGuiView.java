@@ -113,7 +113,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
 
 
-		viewCraftingButton = iconButtonFactory.create("GUI.CRAFTING_MANAGEMENT.TITLE", "gears", HexColors.get("#3344DD"), ButtonStyle.SMALL);
+		viewCraftingButton = iconButtonFactory.create("GUI.CRAFTING_MANAGEMENT.TITLE", "gears", HexColors.get("#6677FF"), ButtonStyle.SMALL);
 		viewCraftingButton.setAction(() -> {
 			Selectable selectable = gameInteractionStateContainer.getSelectable();
 			if (selectable != null && selectable.type.equals(ENTITY)) {

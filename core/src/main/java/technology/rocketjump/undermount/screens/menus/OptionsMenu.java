@@ -115,7 +115,7 @@ public class OptionsMenu implements Menu, Telegraph {
 		});
 
 		musicLabel = i18NWidgetFactory.createLabel("GUI.MUSIC_VOLUME");
-		musicSlider = new Slider(0, 1, 0.1f, false, uiSkin);
+		musicSlider = new Slider(0, 0.8f, 0.08f, false, uiSkin);
 		String savedVolume = userPreferences.getPreference(MUSIC_VOLUME, DEFAULT_VOLUME_AS_STRING);
 		musicSlider.setValue(Float.valueOf(savedVolume));
 		musicSlider.addListener((event) -> {
