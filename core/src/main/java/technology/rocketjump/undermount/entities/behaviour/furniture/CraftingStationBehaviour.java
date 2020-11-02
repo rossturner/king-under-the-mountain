@@ -695,6 +695,10 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		return descriptions;
 	}
 
+	public CraftingType getCraftingType() {
+		return this.craftingType;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);

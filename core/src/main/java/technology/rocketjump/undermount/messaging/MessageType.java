@@ -50,6 +50,7 @@ public class MessageType {
 	public static final int TOOLTIP_AREA_EXITED = 272;
 	public static final int CLEAR_ALL_TOOLTIPS = 273;
 	public static final int HINT_ACTION_TRIGGERED = 274;
+	public static final int SHOW_SPECIFIC_CRAFTING = 278;
 
 	// i18n Messages
 	public static final int LANGUAGE_CHANGED = 290;

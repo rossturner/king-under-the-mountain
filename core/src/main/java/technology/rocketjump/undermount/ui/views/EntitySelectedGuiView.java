@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.EntityStore;
 import technology.rocketjump.undermount.entities.ai.goap.EntityNeed;
+import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
@@ -36,6 +37,7 @@ import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rendering.utils.ColorMixer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.Room;
+import technology.rocketjump.undermount.screens.CraftingManagementScreen;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 import technology.rocketjump.undermount.ui.Selectable;
 import technology.rocketjump.undermount.ui.i18n.I18nString;
@@ -63,6 +65,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 	private final Skin uiSkin;
 	private final I18nTranslator i18nTranslator;
 	private final GameInteractionStateContainer gameInteractionStateContainer;
+	private final IconButton viewCraftingButton;
 	private final IconButton deconstructButton;
 	private final EntityStore entityStore;
 	private final JobStore jobStore;
@@ -108,6 +111,19 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		entityDescriptionTable.pad(10);
 
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
+
+
+		viewCraftingButton = iconButtonFactory.create("GUI.CRAFTING_MANAGEMENT.TITLE", "gears", HexColors.get("#3344DD"), ButtonStyle.SMALL);
+		viewCraftingButton.setAction(() -> {
+			Selectable selectable = gameInteractionStateContainer.getSelectable();
+			if (selectable != null && selectable.type.equals(ENTITY)) {
+				BehaviourComponent behaviourComponent = selectable.getEntity().getBehaviourComponent();
+				if (behaviourComponent instanceof CraftingStationBehaviour) {
+					messageDispatcher.dispatchMessage(MessageType.SHOW_SPECIFIC_CRAFTING, ((CraftingStationBehaviour)behaviourComponent).getCraftingType());
+					messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, CraftingManagementScreen.NAME);
+				}
+			}
+		});
 
 		deconstructButton = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.SMALL);
 		final EntitySelectedGuiView This = this;
@@ -265,6 +281,10 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			entityDescriptionTable.row();
 
 			outerTable.add(entityDescriptionTable);
+
+			if (entity.getBehaviourComponent() != null && entity.getBehaviourComponent() instanceof CraftingStationBehaviour) {
+				outerTable.add(viewCraftingButton);
+			}
 
 			ConstructedEntityComponent constructedEntityComponent = entity.getComponent(ConstructedEntityComponent.class);
 			if (constructedEntityComponent != null) {

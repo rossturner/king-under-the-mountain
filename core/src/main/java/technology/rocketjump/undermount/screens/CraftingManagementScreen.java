@@ -1,6 +1,8 @@
 package technology.rocketjump.undermount.screens;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -22,6 +24,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -50,10 +53,11 @@ import java.util.stream.Collectors;
 import static technology.rocketjump.undermount.entities.tags.CraftingStationBehaviourTag.CRAFTING_STATION_BEHAVIOUR_TAGNAME;
 
 @Singleton
-public class CraftingManagementScreen extends ManagementScreen implements I18nUpdatable {
+public class CraftingManagementScreen extends ManagementScreen implements I18nUpdatable, Telegraph {
 
 	private static final float INDENT_WIDTH = 50f;
 	public static final int DEFAULT_ROW_WIDTH = 1050;
+	public static final String NAME = "CRAFTING";
 	private final ItemType SHOW_LIQUID_ITEM_TYPE;
 
 	private final ClickableTableFactory clickableTableFactory;
@@ -77,6 +81,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private final Table scrollableTable;
 	private final ScrollPane scrollableTablePane;
 
+	private final Set<CraftingType> hiddenCrafringTypes = new HashSet<>();
 	private final Set<CraftingType> expandedCraftingTypes = new HashSet<>();
 	private final Set<ItemType> expandedItemTypes = new HashSet<>();
 	private final Set<GameMaterial> expandedLiquidMaterials = new HashSet<>();
@@ -114,6 +119,8 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			displayedCraftingTypes.add(craftingType);
 			craftingStationsByType.put(craftingType, new ArrayList<>());
 		}
+
+		messageDispatcher.addListener(this, MessageType.SHOW_SPECIFIC_CRAFTING);
 	}
 
 	private void initialise() {
@@ -152,19 +159,67 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		}
 
 		onLanguageUpdated();
+
+		initialised = true;
+	}
+
+
+	@Override
+	public boolean handleMessage(Telegram msg) {
+		if (msg.message == MessageType.GUI_SCALE_CHANGED) {
+			return super.handleMessage(msg);
+		} else {
+			switch (msg.message) {
+				case MessageType.SHOW_SPECIFIC_CRAFTING: {
+					if (!initialised) {
+						initialise();
+					}
+					hiddenCrafringTypes.clear();
+					expandedCraftingTypes.clear();
+					expandedItemTypes.clear();
+					expandedLiquidMaterials.clear();
+					CraftingType craftingTypeToShow = (CraftingType) msg.extraInfo;
+					for (CraftingType type : craftingTypeDictionary.getAll()) {
+						if (type.equals(craftingTypeToShow)) {
+							expandedCraftingTypes.add(type);
+							expandedItemTypes.addAll(producedItemTypesByCraftingRecipe.get(type).keySet());
+							expandedLiquidMaterials.addAll(producedLiquidsByCraftingRecipe.get(type).keySet());
+						} else {
+							hiddenCrafringTypes.add(type);
+						}
+					}
+					reset();
+					return true;
+				}
+				default:
+					throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
+			}
+		}
+	}
+
+	@Override
+	public void hide() {
+		if (!hiddenCrafringTypes.isEmpty()) {
+			hiddenCrafringTypes.clear();
+			expandedCraftingTypes.clear();
+			expandedItemTypes.clear();
+			expandedLiquidMaterials.clear();
+		}
 	}
 
 	@Override
 	public void reset() {
 		if (!initialised) {
 			initialise();
-			initialised = true;
 		}
 		containerTable.clearChildren();
 		containerTable.add(titleLabel).center().pad(5).row();
 		scrollableTable.clearChildren();
 
 		for (CraftingType craftingType : displayedCraftingTypes) {
+			if (hiddenCrafringTypes.contains(craftingType)) {
+				continue;
+			}
 			List<FurnitureType> craftingStations = craftingStationsByType.get(craftingType);
 			addCraftingTypeRow(craftingType, craftingStations);
 
@@ -357,7 +412,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		clickableRow.pad(2);
 		clickableRow.setFillParent(true);
 		clickableRow.setAction(() -> {
-			Logger.info("TODO: Clicked on " + craftingRecipe.toString());
+			// Do nothing currently
 		});
 
 
@@ -504,7 +559,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 	@Override
 	public String getName() {
-		return "CRAFTING";
+		return NAME;
 	}
 
 	@Override
