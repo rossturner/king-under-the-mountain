@@ -51,7 +51,7 @@ public class RoomSizingGuiView implements GuiView {
 //		buttonTable.setWidth(400);
 //		buttonTable.setHeight(300);
 
-		addTilesButton = iconButtonFactory.create("GUI.ADD_TILES", "expand", HexColors.get("#36ba3f"), ButtonStyle.DEFAULT);
+		addTilesButton = iconButtonFactory.create("GUI.ADD_TILES", "expand", HexColors.POSITIVE_COLOR, ButtonStyle.DEFAULT);
 		addTilesButton.setAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_INTERACTION_MODE, GameInteractionMode.PLACE_ROOM);
 		});

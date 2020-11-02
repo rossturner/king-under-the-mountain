@@ -19,7 +19,7 @@ import static technology.rocketjump.undermount.persistence.UserPreferences.Prefe
 @Singleton
 public class MusicJukebox implements Telegraph, AssetDisposable {
 
-	public static final String DEFAULT_VOLUME_AS_STRING = "0.3";
+	public static final String DEFAULT_VOLUME_AS_STRING = "0.24";
 	private final UserPreferences userPreferences;
 	private float volume;
 	private Deque<FileHandle> playlist = new ArrayDeque<>();

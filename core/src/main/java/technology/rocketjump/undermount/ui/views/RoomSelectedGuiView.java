@@ -25,8 +25,8 @@ import technology.rocketjump.undermount.ui.Selectable;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
-import technology.rocketjump.undermount.ui.widgets.*;
 import technology.rocketjump.undermount.ui.widgets.ImageButton;
+import technology.rocketjump.undermount.ui.widgets.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,7 +93,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 		descriptionTable = new Table(uiSkin);
 		descriptionTable.pad(10);
 
-		removeButton = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.get("#D4534C"), ButtonStyle.SMALL);
+		removeButton = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.SMALL);
 		removeButton.setAction(() -> {
 			Selectable selectable = gameInteractionStateContainer.getSelectable();
 			if (selectable != null && selectable.type.equals(ROOM)) {

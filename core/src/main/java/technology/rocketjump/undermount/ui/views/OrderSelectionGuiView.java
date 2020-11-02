@@ -43,7 +43,7 @@ public class OrderSelectionGuiView implements GuiView {
 		clearGround.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_CLEAR_GROUND, messageDispatcher));
 		iconButtons.add(clearGround);
 
-		IconButton removeDesignations = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.get("#D4534C"), ButtonStyle.DEFAULT);
+		IconButton removeDesignations = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
 		removeDesignations.setAction(new SetInteractionMode(GameInteractionMode.REMOVE_DESIGNATIONS, messageDispatcher));
 		iconButtons.add(removeDesignations);
 

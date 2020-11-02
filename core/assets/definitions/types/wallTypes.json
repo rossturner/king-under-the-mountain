@@ -37,7 +37,8 @@
   "requirements" : {
     "STONE" : [ {
       "itemTypeName" : "Resource-Stone-Block",
-      "quantity" : 3
+      "quantity" : 3,
+      "liquid" : false
     } ]
   },
   "i18nKey" : "WALL.STONE_BLOCK",
@@ -65,7 +66,8 @@
   "requirements" : {
     "WOOD" : [ {
       "itemTypeName" : "Resource-Planks",
-      "quantity" : 3
+      "quantity" : 3,
+      "liquid" : false
     } ]
   },
   "i18nKey" : "WALL.WOODEN",

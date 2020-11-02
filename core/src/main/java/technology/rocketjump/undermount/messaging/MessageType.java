@@ -50,6 +50,7 @@ public class MessageType {
 	public static final int TOOLTIP_AREA_EXITED = 272;
 	public static final int CLEAR_ALL_TOOLTIPS = 273;
 	public static final int HINT_ACTION_TRIGGERED = 274;
+	public static final int SHOW_SPECIFIC_CRAFTING = 278;
 
 	// i18n Messages
 	public static final int LANGUAGE_CHANGED = 290;
@@ -82,6 +83,7 @@ public class MessageType {
 	public static final int PLANT_CREATION_REQUEST = 339;
 	public static final int HUMANOID_DEATH = 340;
 	public static final int HUMANOID_INSANITY = 341;
+	public static final int LIQUID_AMOUNT_CHANGED = 342;
 
 	// Assets and modding related messages
 	public static final int SHUTDOWN_IN_PROGRESS = 400;

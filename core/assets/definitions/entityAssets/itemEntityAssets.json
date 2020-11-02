@@ -7082,6 +7082,32 @@
     }
   }
 }, {
+  "uniqueName" : "Resource-Liquid-Example-Drop",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeNames" : [ "Resource-Liquid-Example" ],
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "drop.png",
+      "coloringLayer" : "LIQUID_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "Resource-Logs-Large01-Pile01-Exterior",
   "type" : "ITEM_BASE_LAYER",
   "itemTypeNames" : [ "Resource-Logs", "Resource-Mushroom-Log", "Resource-Shocked-Mushroom-Log" ],

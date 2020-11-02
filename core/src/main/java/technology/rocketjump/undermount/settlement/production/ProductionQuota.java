@@ -9,7 +9,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 public class ProductionQuota implements ChildPersistable {
 
 	private Integer fixedAmount;
-	private Float perSettler;
+	private Float perSettler = 0f;
 
 	public boolean isFixedAmount() {
 		return fixedAmount != null;

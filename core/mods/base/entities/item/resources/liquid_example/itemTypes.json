@@ -1,0 +1,9 @@
+[{
+  "itemTypeName": "Resource-Liquid-Example",
+  "itemGroup": "RESOURCE",
+  "materialTypes": ["LIQUID"],
+  "primaryMaterialType": "LIQUID",
+  "maxStackSize": 1,
+  "maxHauledAtOnce": 1,
+  "stockpileGroupName": "Resources"
+}]

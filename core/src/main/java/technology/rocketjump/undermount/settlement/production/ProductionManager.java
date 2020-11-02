@@ -15,16 +15,18 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ProductionAssignmentRequestMessage;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
 import technology.rocketjump.undermount.settlement.ItemTracker;
+import technology.rocketjump.undermount.settlement.LiquidTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 
 import java.util.*;
 
 /**
- * This class is responsible for queueing up crafting and other production jobs across the settlement, to meet a set quota of required items
+ * This class is responsible for queueing up crafting and other production jobs across the settlement, to meet a set quota of required items and liquids
  */
 @Singleton
 public class ProductionManager implements Updatable, Telegraph {
@@ -32,6 +34,7 @@ public class ProductionManager implements Updatable, Telegraph {
 	private static float UPDATE_PERIOD_IN_SECONDS = 1.313f;
 
 	private final ItemTracker itemTracker;
+	private final LiquidTracker liquidTracker;
 	private final SettlerTracker settlerTracker;
 	private final CraftingRecipeDictionary craftingRecipeDictionary;
 	private final ScreenWriter screenWriter;
@@ -41,9 +44,11 @@ public class ProductionManager implements Updatable, Telegraph {
 
 	@Inject
 	public ProductionManager(ItemTracker itemTracker, SettlerTracker settlerTracker,
-							 MessageDispatcher messageDispatcher, CraftingRecipeDictionary craftingRecipeDictionary, ScreenWriter screenWriter) {
+							 MessageDispatcher messageDispatcher, LiquidTracker liquidTracker,
+							 CraftingRecipeDictionary craftingRecipeDictionary, ScreenWriter screenWriter) {
 		this.itemTracker = itemTracker;
 		this.settlerTracker = settlerTracker;
+		this.liquidTracker = liquidTracker;
 		this.craftingRecipeDictionary = craftingRecipeDictionary;
 		this.screenWriter = screenWriter;
 
@@ -66,15 +71,19 @@ public class ProductionManager implements Updatable, Telegraph {
 				ProductionAssignment assignment = (ProductionAssignment) msg.extraInfo;
 				for (QuantifiedItemTypeWithMaterial output : assignment.targetRecipe.getOutput()) {
 					if (output.isLiquid()) {
-						// Skipping liquid outputs from being tracked
-						break;
+						Map<Long, ProductionAssignment> productionAssignmentMap = gameContext.getSettlementState().liquidProductionAssignments.computeIfAbsent(output.getMaterial(), o -> new HashMap<>());
+						productionAssignmentMap.put(assignment.productionAssignmentId, assignment);
+						float quantityRequired = gameContext.getSettlementState().requiredLiquidCounts.getOrDefault(output.getMaterial(), 0f);
+						quantityRequired -= output.getQuantity();
+						gameContext.getSettlementState().requiredLiquidCounts.put(output.getMaterial(), quantityRequired);
+					} else {
+						Map<Long, ProductionAssignment> productionAssignmentMap = gameContext.getSettlementState().itemTypeProductionAssignments.computeIfAbsent(output.getItemType(), (o) -> new HashMap<>());
+						productionAssignmentMap.put(assignment.productionAssignmentId, assignment);
+						int quantityRequired = gameContext.getSettlementState().requiredItemCounts.getOrDefault(output.getItemType(), 0);
+						quantityRequired -= output.getQuantity();
+						gameContext.getSettlementState().requiredItemCounts.put(output.getItemType(), quantityRequired);
 					}
-					Map<Long, ProductionAssignment> productionAssignmentMap =
-							gameContext.getSettlementState().productionAssignments.computeIfAbsent(output.getItemType(), (o) -> new HashMap<>());
-					productionAssignmentMap.put(assignment.productionAssignmentId, assignment);
-					int quantityRequired = gameContext.getSettlementState().requiredItemCounts.getOrDefault(output.getItemType(), 0);
-					quantityRequired -= output.getQuantity();
-					gameContext.getSettlementState().requiredItemCounts.put(output.getItemType(), quantityRequired);
+
 				}
 				return true;
 			}
@@ -88,7 +97,7 @@ public class ProductionManager implements Updatable, Telegraph {
 				} else {
 					for (QuantifiedItemTypeWithMaterial output : assignment.targetRecipe.getOutput()) {
 						Map<Long, ProductionAssignment> productionAssignmentMap =
-								gameContext.getSettlementState().productionAssignments.computeIfAbsent(output.getItemType(), (o) -> new HashMap<>());
+								gameContext.getSettlementState().itemTypeProductionAssignments.computeIfAbsent(output.getItemType(), (o) -> new HashMap<>());
 						productionAssignmentMap.remove(assignment.productionAssignmentId);
 					}
 				}
@@ -104,18 +113,25 @@ public class ProductionManager implements Updatable, Telegraph {
 
 		List<CraftingRecipe> requiredCraftingRecipes = new LinkedList<>();
 		for (CraftingRecipe craftingRecipe : recipesForCraftingType) {
+			if (gameContext.getSettlementState().disabledCraftingRecipes.contains(craftingRecipe)) {
+				continue;
+			}
+
 			for (QuantifiedItemTypeWithMaterial output : craftingRecipe.getOutput()) {
-				if (output.getItemType() == null && output.isLiquid()) {
-					// This recipe does not produce items, only liquid, so always produce it
-					requiredCraftingRecipes.add(craftingRecipe);
-					break;
+				if (output.isLiquid()) {
+					float numRequired = gameContext.getSettlementState().requiredLiquidCounts.getOrDefault(output.getMaterial(), 0f);
+					if (numRequired > 0.1f) {
+						requiredCraftingRecipes.add(craftingRecipe);
+						break;
+					}
+				} else {
+					int numRequired = gameContext.getSettlementState().requiredItemCounts.getOrDefault(output.getItemType(), 0);
+					if (numRequired > 0) {
+						requiredCraftingRecipes.add(craftingRecipe);
+						break;
+					}
 				}
 
-				int numRequired = gameContext.getSettlementState().requiredItemCounts.getOrDefault(output.getItemType(), 0);
-				if (numRequired > 0) {
-					requiredCraftingRecipes.add(craftingRecipe);
-					break;
-				}
 			}
 		}
 
@@ -173,14 +189,52 @@ public class ProductionManager implements Updatable, Telegraph {
 
 //		if (GlobalSettings.DEV_MODE) {
 //
-//			for (Map.Entry<ItemType, ProductionQuota> productionQuotaEntry : gameContext.getSettlementState().itemTypeProductionQuotas.entrySet()) {
-//				String message = productionQuotaEntry.getKey().getItemTypeName() + " quota: " + productionQuotaEntry.getValue().toString() +
-//						" required: " + gameContext.getSettlementState().requiredItemCounts.get(productionQuotaEntry.getKey()) + " assignments: " +
-//						gameContext.getSettlementState().productionAssignments.get(productionQuotaEntry.getKey()).size();
+//			for (Map.Entry<GameMaterial, ProductionQuota> productionQuotaEntry : gameContext.getSettlementState().liquidProductionQuotas.entrySet()) {
+//				String message = productionQuotaEntry.getKey().getMaterialName() + " quota: " + productionQuotaEntry.getValue().toString() +
+//						" required: " + gameContext.getSettlementState().requiredLiquidCounts.getOrDefault(productionQuotaEntry.getKey(), 0f) + " assignments: " +
+//						gameContext.getSettlementState().liquidProductionAssignments.getOrDefault(productionQuotaEntry.getKey(), new HashMap<>()).size();
 //				screenWriter.printLine(message);
 //			}
 //		}
 
+	}
+
+	public ProductionQuota getProductionQuota(ItemType itemType) {
+		return gameContext.getSettlementState().itemTypeProductionQuotas.getOrDefault(itemType, new ProductionQuota());
+	}
+
+	public void productionQuoteModified(ItemType itemType, ProductionQuota newQuota) {
+		if (gameContext != null) {
+			gameContext.getSettlementState().itemTypeProductionQuotas.put(itemType, newQuota);
+		}
+	}
+
+	public ProductionQuota getProductionQuota(GameMaterial liquidMaterial) {
+		return gameContext.getSettlementState().liquidProductionQuotas.getOrDefault(liquidMaterial, new ProductionQuota());
+	}
+
+	public void productionQuoteModified(GameMaterial liquidMaterial, ProductionQuota newQuota) {
+		if (gameContext != null) {
+			gameContext.getSettlementState().liquidProductionQuotas.put(liquidMaterial, newQuota);
+		}
+	}
+
+	public boolean isRecipeEnabled(CraftingRecipe craftingRecipe) {
+		if (gameContext != null) {
+			return !gameContext.getSettlementState().disabledCraftingRecipes.contains(craftingRecipe);
+		} else {
+			return false;
+		}
+	}
+
+	public void setRecipeEnabled(CraftingRecipe craftingRecipe, boolean enabled) {
+		if (gameContext != null) {
+			if (enabled) {
+				gameContext.getSettlementState().disabledCraftingRecipes.remove(craftingRecipe);
+			} else {
+				gameContext.getSettlementState().disabledCraftingRecipes.add(craftingRecipe);
+			}
+		}
 	}
 
 	private void doUpdate() {
@@ -190,10 +244,10 @@ public class ProductionManager implements Updatable, Telegraph {
 			int requiredAmount = quotaEntry.getValue().getRequiredAmount(numSettlers);
 			int currentAmount = 0;
 			for (Entity item : itemTracker.getItemsByType(itemType, false)) {
-				currentAmount += ((ItemEntityAttributes)item.getPhysicalEntityComponent().getAttributes()).getQuantity();
+				currentAmount += ((ItemEntityAttributes) item.getPhysicalEntityComponent().getAttributes()).getQuantity();
 			}
 			int inProduction = 0;
-			for (ProductionAssignment productionAssignment : gameContext.getSettlementState().productionAssignments.computeIfAbsent(itemType, (o) -> new HashMap<>()).values()) {
+			for (ProductionAssignment productionAssignment : gameContext.getSettlementState().itemTypeProductionAssignments.computeIfAbsent(itemType, (o) -> new HashMap<>()).values()) {
 				Optional<QuantifiedItemTypeWithMaterial> matchingOutput = productionAssignment.targetRecipe.getOutput().stream()
 						.filter((output) -> output.getItemType().equals(itemType))
 						.findFirst();
@@ -205,6 +259,25 @@ public class ProductionManager implements Updatable, Telegraph {
 
 			int missingCount = Math.max(requiredAmount - (currentAmount + inProduction), 0);
 			gameContext.getSettlementState().requiredItemCounts.put(itemType, missingCount);
+		}
+
+
+		for (Map.Entry<GameMaterial, ProductionQuota> quotaEntry : gameContext.getSettlementState().liquidProductionQuotas.entrySet()) {
+			GameMaterial liquidMaterial = quotaEntry.getKey();
+			int requiredAmount = quotaEntry.getValue().getRequiredAmount(numSettlers);
+			float currentAmount = liquidTracker.getCurrentLiquidAmount(liquidMaterial);
+			int inProduction = 0;
+			for (ProductionAssignment productionAssignment : gameContext.getSettlementState().liquidProductionAssignments.computeIfAbsent(liquidMaterial, (o) -> new HashMap<>()).values()) {
+				Optional<QuantifiedItemTypeWithMaterial> matchingOutput = productionAssignment.targetRecipe.getOutput().stream()
+						.filter((output) -> output.getMaterial().equals(liquidMaterial) && output.isLiquid())
+						.findFirst();
+				if (matchingOutput.isPresent()) {
+					inProduction += matchingOutput.get().getQuantity();
+				}
+			}
+
+			float missingCount = Math.max(requiredAmount - (currentAmount + inProduction), 0);
+			gameContext.getSettlementState().requiredLiquidCounts.put(liquidMaterial, missingCount);
 		}
 
 	}

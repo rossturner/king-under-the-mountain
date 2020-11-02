@@ -13,14 +13,16 @@ import technology.rocketjump.undermount.ui.widgets.tooltips.I18nTextElement;
 
 public class I18nTextWidget extends VerticalGroup {
 
-	private static final Color TOOLTIP_COLOR = HexColors.get("#bbf3ec");
-	private static final Color DEFAULT_COLOR = Color.WHITE;
+	public static final Color TOOLTIP_COLOR = HexColors.get("#bbf3ec");
+	public static final Color DEFAULT_COLOR = Color.WHITE;
+	public static final Color ERROR_COLOR = Color.RED;
 	private final Skin skin;
 	private final MessageDispatcher messageDispatcher;
 
 	private I18nText i18nText;
 
 	private int alignment = Align.left;
+	private boolean isError = false;
 
 	public I18nTextWidget(I18nText text, Skin skin, MessageDispatcher messageDispatcher) {
 		super();
@@ -36,6 +38,9 @@ public class I18nTextWidget extends VerticalGroup {
 
 	private void reset() {
 		clearChildren();
+		if (i18nText == null) {
+			return;
+		}
 		HorizontalGroup horizontalGroup = null;
 		for (I18nTextElement i18nTextElement : i18nText.getElements()) {
 			if (i18nTextElement.isLineBreak() && horizontalGroup != null) {
@@ -50,6 +55,9 @@ public class I18nTextWidget extends VerticalGroup {
 				// add each element as new label, potentially with tooltip listener
 				Label.LabelStyle style = new Label.LabelStyle(skin.get(Label.LabelStyle.class));
 				style.fontColor = i18nTextElement.getTooltipI18nKey() != null ? TOOLTIP_COLOR : DEFAULT_COLOR;
+				if (isError) {
+					style.fontColor = ERROR_COLOR;
+				}
 				Label label = new Label(i18nTextElement.getText(), style);
 				if (i18nTextElement.getTooltipI18nKey() != null) {
 					label.addListener(new TooltipListener(label, i18nTextElement.getTooltipI18nKey(), messageDispatcher));
@@ -71,4 +79,7 @@ public class I18nTextWidget extends VerticalGroup {
 		return i18nText;
 	}
 
+	public void setError(boolean error) {
+		isError = error;
+	}
 }

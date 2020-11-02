@@ -421,6 +421,23 @@
   "i18nKey" : "RESOURCE.STONE.UNREFINED"
 }, {
   "itemTypeId" : 25,
+  "itemTypeName" : "Resource-Liquid-Example",
+  "itemGroup" : "RESOURCE",
+  "maxStackSize" : 1,
+  "maxHauledAtOnce" : 1,
+  "materialTypes" : [ "LIQUID" ],
+  "primaryMaterialType" : "LIQUID",
+  "holdPosition" : "IN_FRONT",
+  "impedesMovement" : false,
+  "blocksMovement" : false,
+  "equippedWhileWorkingOnJob" : true,
+  "hoursInInventoryUntilUnused" : 12.0,
+  "relatedCraftingTypeNames" : [ ],
+  "stockpileGroupName" : "Resources",
+  "tags" : { },
+  "i18nKey" : "RESOURCE.LIQUID.EXAMPLE"
+}, {
+  "itemTypeId" : 26,
   "itemTypeName" : "Resource-Logs",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
@@ -438,7 +455,7 @@
   "placementSoundAssetName" : "HeavyWoodItem",
   "i18nKey" : "RESOURCE.LOGS"
 }, {
-  "itemTypeId" : 26,
+  "itemTypeId" : 27,
   "itemTypeName" : "Resource-Mushroom-Log",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
@@ -456,7 +473,7 @@
   "placementSoundAssetName" : "HeavyWoodItem",
   "i18nKey" : "RESOURCE.MUSHROOM.LOG"
 }, {
-  "itemTypeId" : 27,
+  "itemTypeId" : 28,
   "itemTypeName" : "Resource-Shocked-Mushroom-Log",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
@@ -474,7 +491,7 @@
   "placementSoundAssetName" : "HeavyWoodItem",
   "i18nKey" : "RESOURCE.SHOCKED.MUSHROOM.LOG"
 }, {
-  "itemTypeId" : 28,
+  "itemTypeId" : 29,
   "itemTypeName" : "Resource-Metal-Bloom",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
@@ -491,7 +508,7 @@
   "tags" : { },
   "i18nKey" : "RESOURCE.METAL.BLOOM"
 }, {
-  "itemTypeId" : 29,
+  "itemTypeId" : 30,
   "itemTypeName" : "Resource-Metal-Plate",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 12,
@@ -508,7 +525,7 @@
   "tags" : { },
   "i18nKey" : "RESOURCE.METAL.PLATE"
 }, {
-  "itemTypeId" : 30,
+  "itemTypeId" : 31,
   "itemTypeName" : "Resource-Mushroom-Lumber",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
@@ -526,7 +543,7 @@
   "placementSoundAssetName" : "HeavyWoodItem",
   "i18nKey" : "RESOURCE.MUSHROOM.LUMBER"
 }, {
-  "itemTypeId" : 31,
+  "itemTypeId" : 32,
   "itemTypeName" : "Ingredient-Mushroom-Spawn",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 50,
@@ -543,7 +560,7 @@
   "tags" : { },
   "i18nKey" : "INGREDIENT.MUSHROOM.SPAWN"
 }, {
-  "itemTypeId" : 32,
+  "itemTypeId" : 33,
   "itemTypeName" : "Resource-Ore-Unrefined",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
@@ -560,7 +577,7 @@
   "tags" : { },
   "i18nKey" : "RESOURCE.ORE.UNREFINED"
 }, {
-  "itemTypeId" : 33,
+  "itemTypeId" : 34,
   "itemTypeName" : "Resource-Planks",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
@@ -578,7 +595,7 @@
   "placementSoundAssetName" : "HeavyWoodItem",
   "i18nKey" : "RESOURCE.PLANKS"
 }, {
-  "itemTypeId" : 34,
+  "itemTypeId" : 35,
   "itemTypeName" : "Resource-Gems-Unrefined",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
@@ -595,7 +612,7 @@
   "tags" : { },
   "i18nKey" : "RESOURCE.GEMS.UNREFINED"
 }, {
-  "itemTypeId" : 35,
+  "itemTypeId" : 36,
   "itemTypeName" : "Ingredient-Seeds",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 50,
@@ -612,7 +629,7 @@
   "tags" : { },
   "i18nKey" : "INGREDIENT.SEEDS"
 }, {
-  "itemTypeId" : 36,
+  "itemTypeId" : 37,
   "itemTypeName" : "Resource-Stone-Block",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
@@ -629,7 +646,7 @@
   "tags" : { },
   "i18nKey" : "RESOURCE.STONE.BLOCK"
 }, {
-  "itemTypeId" : 37,
+  "itemTypeId" : 38,
   "itemTypeName" : "Resource-Crushed-Vitriol",
   "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
@@ -646,7 +663,7 @@
   "tags" : { },
   "i18nKey" : "RESOURCE.CRUSHED.VITRIOL"
 }, {
-  "itemTypeId" : 38,
+  "itemTypeId" : 39,
   "itemTypeName" : "Resource-Wheat-Sack",
   "itemGroup" : "INGREDIENT",
   "maxStackSize" : 30,
@@ -663,7 +680,7 @@
   "tags" : { },
   "i18nKey" : "RESOURCE.WHEAT.SACK"
 }, {
-  "itemTypeId" : 39,
+  "itemTypeId" : 40,
   "itemTypeName" : "Tool-Axe",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -680,7 +697,7 @@
   "tags" : { },
   "i18nKey" : "TOOL.AXE"
 }, {
-  "itemTypeId" : 40,
+  "itemTypeId" : 41,
   "itemTypeName" : "Tool-Chisel",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -699,7 +716,7 @@
   },
   "i18nKey" : "TOOL.CHISEL"
 }, {
-  "itemTypeId" : 41,
+  "itemTypeId" : 42,
   "itemTypeName" : "Tool-Fishing-Rod",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -716,7 +733,7 @@
   "tags" : { },
   "i18nKey" : "TOOL.FISHING.ROD"
 }, {
-  "itemTypeId" : 42,
+  "itemTypeId" : 43,
   "itemTypeName" : "Tool-Kitchen-Knife",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -733,7 +750,7 @@
   "tags" : { },
   "i18nKey" : "TOOL.KITCHEN.KNIFE"
 }, {
-  "itemTypeId" : 43,
+  "itemTypeId" : 44,
   "itemTypeName" : "Tool-Large-Hammer",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -750,7 +767,7 @@
   "tags" : { },
   "i18nKey" : "TOOL.LARGE.HAMMER"
 }, {
-  "itemTypeId" : 44,
+  "itemTypeId" : 45,
   "itemTypeName" : "Tool-Pickaxe",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -767,7 +784,7 @@
   "tags" : { },
   "i18nKey" : "TOOL.PICKAXE"
 }, {
-  "itemTypeId" : 45,
+  "itemTypeId" : 46,
   "itemTypeName" : "Tool-Plane",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -786,7 +803,7 @@
   },
   "i18nKey" : "TOOL.PLANE"
 }, {
-  "itemTypeId" : 46,
+  "itemTypeId" : 47,
   "itemTypeName" : "Tool-Rolling-Pin",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -803,7 +820,7 @@
   "tags" : { },
   "i18nKey" : "TOOL.ROLLING.PIN"
 }, {
-  "itemTypeId" : 47,
+  "itemTypeId" : 48,
   "itemTypeName" : "Tool-Saw",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -822,7 +839,7 @@
   },
   "i18nKey" : "TOOL.SAW"
 }, {
-  "itemTypeId" : 48,
+  "itemTypeId" : 49,
   "itemTypeName" : "Tool-Small-Hammer",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
@@ -839,7 +856,7 @@
   "tags" : { },
   "i18nKey" : "TOOL.SMALL.HAMMER"
 }, {
-  "itemTypeId" : 49,
+  "itemTypeId" : 50,
   "itemTypeName" : "Tool-Tongs",
   "itemGroup" : "TOOL",
   "maxStackSize" : 1,
