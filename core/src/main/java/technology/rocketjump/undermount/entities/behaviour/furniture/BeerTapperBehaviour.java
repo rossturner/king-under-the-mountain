@@ -93,14 +93,19 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 			case BEER_AVAILABLE: {
 				LiquidContainerComponent parentLiquidContainer = parentEntity.getComponent(LiquidContainerComponent.class);
 				// Keeping inventory item liquid amount roughly in sync
-				Entity itemInInventory = parentInventory.getInventoryEntries().iterator().next().entity;
-				itemInInventory.getComponent(LiquidContainerComponent.class).setLiquidQuantity(parentLiquidContainer.getLiquidQuantity());
-				if (parentLiquidContainer.getLiquidQuantity() < LIQUID_AMOUNT_FOR_DRINK_CONSUMPTION) {
-					parentLiquidContainer.setLiquidQuantity(0);
-					itemInInventory.getComponent(LiquidContainerComponent.class).setLiquidQuantity(0);
+				for (InventoryComponent.InventoryEntry inventoryEntry : parentInventory.getInventoryEntries()) {
+					Entity itemInInventory = inventoryEntry.entity;
+					LiquidContainerComponent liquidContainerComponent = itemInInventory.getComponent(LiquidContainerComponent.class);
+					if (liquidContainerComponent != null) {
+						liquidContainerComponent.setLiquidQuantity(parentLiquidContainer.getLiquidQuantity());
+						if (parentLiquidContainer.getLiquidQuantity() < LIQUID_AMOUNT_FOR_DRINK_CONSUMPTION) {
+							parentLiquidContainer.setLiquidQuantity(0);
+							itemInInventory.getComponent(LiquidContainerComponent.class).setLiquidQuantity(0);
 
-					state = BEER_EXHAUSTED;
-					infrequentUpdate(gameContext);
+							state = BEER_EXHAUSTED;
+							infrequentUpdate(gameContext);
+						}
+					}
 				}
 				break;
 			}
