@@ -1,0 +1,17 @@
+[
+  {
+    "uniqueName": "Resource-Liquid-Example-Drop",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Resource-Liquid-Example"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "drop.png",
+        "scale": 0.8,
+        "coloringLayer": "LIQUID_COLOR"
+      }
+    }
+  }
+]

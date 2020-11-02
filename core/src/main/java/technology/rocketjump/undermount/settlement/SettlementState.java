@@ -266,7 +266,11 @@ public class SettlementState implements Persistable {
 				if (liquidMaterial == null) {
 					throw new InvalidSaveException("Could not find liquid material by name " + entry.getKey());
 				}
-				requiredLiquidCounts.put(liquidMaterial, (Float)entry.getValue());
+				try {
+					requiredLiquidCounts.put(liquidMaterial, (Float)entry.getValue());
+				} catch (ClassCastException e) {
+					requiredLiquidCounts.put(liquidMaterial, (float)(Integer)entry.getValue());
+				}
 			}
 		}
 

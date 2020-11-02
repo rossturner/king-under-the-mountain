@@ -19,7 +19,6 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ProductionAssignmentRequestMessage;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.settlement.LiquidTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
@@ -188,15 +187,15 @@ public class ProductionManager implements Updatable, Telegraph {
 			timeSinceLastUpdate = 0f;
 		}
 
-		if (GlobalSettings.DEV_MODE) {
-
-			for (Map.Entry<GameMaterial, ProductionQuota> productionQuotaEntry : gameContext.getSettlementState().liquidProductionQuotas.entrySet()) {
-				String message = productionQuotaEntry.getKey().getMaterialName() + " quota: " + productionQuotaEntry.getValue().toString() +
-						" required: " + gameContext.getSettlementState().requiredLiquidCounts.get(productionQuotaEntry.getKey()) + " assignments: " +
-						gameContext.getSettlementState().liquidProductionAssignments.get(productionQuotaEntry.getKey()).size();
-				screenWriter.printLine(message);
-			}
-		}
+//		if (GlobalSettings.DEV_MODE) {
+//
+//			for (Map.Entry<GameMaterial, ProductionQuota> productionQuotaEntry : gameContext.getSettlementState().liquidProductionQuotas.entrySet()) {
+//				String message = productionQuotaEntry.getKey().getMaterialName() + " quota: " + productionQuotaEntry.getValue().toString() +
+//						" required: " + gameContext.getSettlementState().requiredLiquidCounts.getOrDefault(productionQuotaEntry.getKey(), 0f) + " assignments: " +
+//						gameContext.getSettlementState().liquidProductionAssignments.getOrDefault(productionQuotaEntry.getKey(), new HashMap<>()).size();
+//				screenWriter.printLine(message);
+//			}
+//		}
 
 	}
 

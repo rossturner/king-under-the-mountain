@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
@@ -27,6 +28,7 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.RoomType;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
 import technology.rocketjump.undermount.settlement.ItemTracker;
+import technology.rocketjump.undermount.settlement.LiquidTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 import technology.rocketjump.undermount.settlement.production.ProductionManager;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
@@ -52,6 +54,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 	private static final float INDENT_WIDTH = 50f;
 	public static final int DEFAULT_ROW_WIDTH = 1050;
+	private final ItemType SHOW_LIQUID_ITEM_TYPE;
 
 	private final ClickableTableFactory clickableTableFactory;
 	private final EntityRenderer entityRenderer;
@@ -76,7 +79,9 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 	private final Set<CraftingType> expandedCraftingTypes = new HashSet<>();
 	private final Set<ItemType> expandedItemTypes = new HashSet<>();
+	private final Set<GameMaterial> expandedLiquidMaterials = new HashSet<>();
 	private final ItemTracker itemTracker;
+	private final LiquidTracker liquidTracker;
 
 	@Inject
 	public CraftingManagementScreen(UserPreferences userPreferences, MessageDispatcher messageDispatcher,
@@ -86,7 +91,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									RoomTypeDictionary roomTypeDictionary, CraftingRecipeDictionary craftingRecipeDictionary,
 									ClickableTableFactory clickableTableFactory,
 									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory, ProductionManager productionManager,
-									SettlerTracker settlerTracker, IconButtonFactory iconButtonFactory1, ItemTracker itemTracker) {
+									SettlerTracker settlerTracker, ItemTracker itemTracker, LiquidTracker liquidTracker, ItemTypeDictionary itemTypeDictionary) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
@@ -97,8 +102,10 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		this.craftingTypeDictionary = craftingTypeDictionary;
 		this.productionManager = productionManager;
 		this.settlerTracker = settlerTracker;
-		this.iconButtonFactory = iconButtonFactory1;
+		this.iconButtonFactory = iconButtonFactory;
 		this.itemTracker = itemTracker;
+		this.liquidTracker = liquidTracker;
+		this.SHOW_LIQUID_ITEM_TYPE = itemTypeDictionary.getByName("Resource-Liquid-Example");
 
 		scrollableTable = new Table(uiSkin);
 		scrollableTablePane = Scene2DUtils.wrapWithScrollPane(scrollableTable, uiSkin);
@@ -165,16 +172,22 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 			if (craftingTypeExpanded) {
 				for (Map.Entry<ItemType, List<CraftingRecipe>> producedItemEntry : producedItemTypesByCraftingRecipe.get(craftingType).entrySet()) {
-					addProducedItemRow(producedItemEntry.getKey());
+					addProducedItemRow(new CraftingOutput(producedItemEntry.getKey()));
 
 					if (expandedItemTypes.contains(producedItemEntry.getKey())) {
 						for (CraftingRecipe craftingRecipe : producedItemEntry.getValue()) {
-							addCraftingRecipeRow(producedItemEntry.getKey(), craftingRecipe);
+							addCraftingRecipeRow(craftingRecipe);
 						}
 					}
 				}
 				for (Map.Entry<GameMaterial, List<CraftingRecipe>> producedLiquidEntry : producedLiquidsByCraftingRecipe.get(craftingType).entrySet()) {
+					addProducedItemRow(new CraftingOutput(producedLiquidEntry.getKey()));
 
+					if (expandedLiquidMaterials.contains(producedLiquidEntry.getKey())) {
+						for (CraftingRecipe craftingRecipe : producedLiquidEntry.getValue()) {
+							addCraftingRecipeRow(craftingRecipe);
+						}
+					}
 				}
 			}
 		}
@@ -196,6 +209,9 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 				// Also remove all expanded children
 				for (ItemType childItemType : producedItemTypesByCraftingRecipe.get(craftingType).keySet()) {
 					expandedItemTypes.remove(childItemType);
+				}
+				for (GameMaterial childLiquidMaterial : producedLiquidsByCraftingRecipe.get(craftingType).keySet()) {
+					expandedLiquidMaterials.remove(childLiquidMaterial);
 				}
 			}
 			reset();
@@ -222,29 +238,62 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		scrollableTable.add(clickableRow).center().width(DEFAULT_ROW_WIDTH).height(64).row();
 	}
 
-	private void addProducedItemRow(ItemType producedItemType) {
+	public static class CraftingOutput {
+
+		public final boolean isLiquid;
+		public final GameMaterial liquidMaterial;
+		public final ItemType itemType;
+
+		public CraftingOutput(GameMaterial liquidMaterial) {
+			this.isLiquid = true;
+			this.liquidMaterial = liquidMaterial;
+			this.itemType = null;
+		}
+
+		public CraftingOutput(ItemType itemType) {
+			this.isLiquid = false;
+			this.liquidMaterial = null;
+			this.itemType = itemType;
+		}
+
+	}
+
+	private void addProducedItemRow(CraftingOutput craftingOutput) {
 		Table rowContainerTable = new Table(uiSkin);
 		rowContainerTable.add(new Container<>()).width(1 * INDENT_WIDTH);
-		ProductionQuota currentProductionQuota = productionManager.getProductionQuota(producedItemType);
+		ProductionQuota currentProductionQuota;
+		if (craftingOutput.isLiquid) {
+			currentProductionQuota = productionManager.getProductionQuota(craftingOutput.liquidMaterial);
+		} else {
+			currentProductionQuota = productionManager.getProductionQuota(craftingOutput.itemType);
+		}
 
 		ClickableTable clickableRow = clickableTableFactory.create();
 		clickableRow.setBackground("default-rect");
 		clickableRow.pad(2);
 		clickableRow.setFillParent(true);
 		clickableRow.setAction(() -> {
-			if (expandedItemTypes.contains(producedItemType)) {
-				expandedItemTypes.remove(producedItemType);
+			if (craftingOutput.isLiquid) {
+				if (expandedLiquidMaterials.contains(craftingOutput.liquidMaterial)) {
+					expandedLiquidMaterials.remove(craftingOutput.liquidMaterial);
+				} else {
+					expandedLiquidMaterials.add(craftingOutput.liquidMaterial);
+				}
 			} else {
-				expandedItemTypes.add(producedItemType);
+				if (expandedItemTypes.contains(craftingOutput.itemType)) {
+					expandedItemTypes.remove(craftingOutput.itemType);
+				} else {
+					expandedItemTypes.add(craftingOutput.itemType);
+				}
 			}
 			reset();
 		});
 
-		EntityDrawable materialDrawable = new EntityDrawable(getExampleEntity(producedItemType, null), entityRenderer);
+		EntityDrawable materialDrawable = new EntityDrawable(getExampleEntity(craftingOutput.itemType, craftingOutput.liquidMaterial), entityRenderer);
 		clickableRow.add(new Image(materialDrawable)).left().width(80).pad(5);
 
-		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(producedItemType.getI18nKey()), uiSkin, messageDispatcher))
-				.left().pad(10);
+		String i18nKey = craftingOutput.isLiquid ? craftingOutput.liquidMaterial.getI18nKey() : craftingOutput.itemType.getI18nKey();
+		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(i18nKey), uiSkin, messageDispatcher)).left().pad(10);
 
 		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString("GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT"), uiSkin, messageDispatcher)).pad(5);
 
@@ -275,13 +324,13 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		quantityInput.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				updateQuota(producedItemType, getInputQuantityValue(quantityInput), quotaSettingSelect.getSelected(), perSettlerTotalAmountHint);
+				updateQuota(craftingOutput, getInputQuantityValue(quantityInput), quotaSettingSelect.getSelected(), perSettlerTotalAmountHint);
 			}
 		});
 		quotaSettingSelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				updateQuota(producedItemType, getInputQuantityValue(quantityInput), quotaSettingSelect.getSelected(), perSettlerTotalAmountHint);
+				updateQuota(craftingOutput, getInputQuantityValue(quantityInput), quotaSettingSelect.getSelected(), perSettlerTotalAmountHint);
 			}
 		});
 
@@ -292,14 +341,14 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		clickableRow.add(perSettlerTotalAmountHint);
 
 		I18nText actualAmountText = i18nTranslator.getTranslatedWordWithReplacements("GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL",
-				Map.of("quantity", new I18nWord(String.valueOf(count(producedItemType)))));
+				Map.of("quantity", new I18nWord(String.valueOf(count(craftingOutput)))));
 		clickableRow.add(new I18nTextWidget(actualAmountText, uiSkin, messageDispatcher)).right().expandX().padRight(100);
 
 		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - INDENT_WIDTH);
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
 	}
 
-	private void addCraftingRecipeRow(ItemType producedItemType, CraftingRecipe craftingRecipe) {
+	private void addCraftingRecipeRow(CraftingRecipe craftingRecipe) {
 		Table rowContainerTable = new Table(uiSkin);
 		rowContainerTable.add(new Container<>()).width(2 * INDENT_WIDTH);
 
@@ -314,14 +363,10 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 		for (int inputCursor = 0; inputCursor < craftingRecipe.getInput().size(); inputCursor++) {
 			QuantifiedItemTypeWithMaterial inputRequirement = craftingRecipe.getInput().get(inputCursor);
-			if (inputRequirement.isLiquid()) {
-				Logger.warn("TODO: Liquid inputs");
-			} else {
-				EntityDrawable itemDrawable = new EntityDrawable(getExampleEntity(inputRequirement.getItemType(), inputRequirement.getMaterial()), entityRenderer);
-				clickableRow.add(new Image(itemDrawable)).left().pad(5);
-				I18nText description = i18nTranslator.getItemDescription(inputRequirement.getQuantity(), inputRequirement.getMaterial(), inputRequirement.getItemType());
-				clickableRow.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).pad(5);
-			}
+			EntityDrawable itemDrawable = new EntityDrawable(getExampleEntity(inputRequirement.getItemType(), inputRequirement.getMaterial()), entityRenderer);
+			clickableRow.add(new Image(itemDrawable)).left().pad(5);
+			I18nText description = i18nTranslator.getItemDescription(inputRequirement.getQuantity(), inputRequirement.getMaterial(), inputRequirement.getItemType());
+			clickableRow.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).pad(5);
 
 			if (inputCursor < craftingRecipe.getInput().size() - 1) {
 				// add + for next input
@@ -331,17 +376,12 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 		clickableRow.add(new Label("=>", uiSkin)).pad(5);
 
-
 		for (int outputCursor = 0; outputCursor < craftingRecipe.getOutput().size(); outputCursor++) {
 			QuantifiedItemTypeWithMaterial outputRequirement = craftingRecipe.getOutput().get(outputCursor);
-			if (outputRequirement.isLiquid()) {
-				Logger.warn("TODO: Liquid outputs");
-			} else {
-				EntityDrawable itemDrawable = new EntityDrawable(getExampleEntity(outputRequirement.getItemType(), outputRequirement.getMaterial()), entityRenderer);
-				clickableRow.add(new Image(itemDrawable)).left().pad(5);
-				I18nText description = i18nTranslator.getItemDescription(outputRequirement.getQuantity(), outputRequirement.getMaterial(), outputRequirement.getItemType());
-				clickableRow.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).pad(5);
-			}
+			EntityDrawable entityDrawable = new EntityDrawable(getExampleEntity(outputRequirement.getItemType(), outputRequirement.getMaterial()), entityRenderer);
+			clickableRow.add(new Image(entityDrawable)).left().pad(5);
+			I18nText description = i18nTranslator.getItemDescription(outputRequirement.getQuantity(), outputRequirement.getMaterial(), outputRequirement.getItemType());
+			clickableRow.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).pad(5);
 
 			if (outputCursor < craftingRecipe.getOutput().size() - 1) {
 				// add + for next input
@@ -374,14 +414,19 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
 	}
 
-	private void updateQuota(ItemType itemType, float quantity, QuotaSetting quotaSetting, I18nTextWidget perSettlerTotalAmountHint) {
+	private void updateQuota(CraftingOutput craftingOutput, float quantity, QuotaSetting quotaSetting, I18nTextWidget perSettlerTotalAmountHint) {
 		ProductionQuota quota = new ProductionQuota();
 		if (quotaSetting.equals(QuotaSetting.FIXED_AMOUNT)) {
 			quota.setFixedAmount((int)quantity);
 		} else {
 			quota.setPerSettler(quantity);
 		}
-		productionManager.productionQuoteModified(itemType, quota);
+
+		if (craftingOutput.isLiquid) {
+			productionManager.productionQuoteModified(craftingOutput.liquidMaterial, quota);
+		} else {
+			productionManager.productionQuoteModified(craftingOutput.itemType, quota);
+		}
 
 		updateHint(perSettlerTotalAmountHint, quota);
 	}
@@ -411,25 +456,45 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		return asFloat;
 	}
 
-	private int count(ItemType itemType) {
-		return itemTracker.getItemsByType(itemType, false).stream()
-				.map(entity -> ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getQuantity())
-				.reduce(0, Integer::sum);
+	private int count(CraftingOutput craftingOutput) {
+		if (craftingOutput.isLiquid) {
+			return (int) liquidTracker.getCurrentLiquidAmount(craftingOutput.liquidMaterial);
+		} else {
+			return itemTracker.getItemsByType(craftingOutput.itemType, false).stream()
+					.map(entity -> ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getQuantity())
+					.reduce(0, Integer::sum);
+		}
 	}
 
 	static	GameContext nullContext = new GameContext();
 	static {
 		nullContext.setRandom(new RandomXS128());
 	}
-	private final Map<ItemType, Entity> exampleEntities = new HashMap<>();
+	private final Map<ItemType, Map<GameMaterial, Entity>> exampleEntities = new HashMap<>();
 
 	private Entity getExampleEntity(ItemType itemType, GameMaterial material) {
-		Entity entity = exampleEntities.computeIfAbsent(itemType, a -> itemEntityFactory.createByItemType(itemType, nullContext, false));
-		// Keep trying to override material if one specified
-		if (material != null) {
-			((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).setMaterial(material);
+		final ItemType itemTypeOrLiquidIte = itemType == null ? SHOW_LIQUID_ITEM_TYPE : itemType;
+
+		Map<GameMaterial, Entity> materialsToEntitiesMap = exampleEntities.computeIfAbsent(itemTypeOrLiquidIte, a -> new HashMap<>());
+		if (material == null) {
+			// Get any entity in map or create one
+			if (materialsToEntitiesMap.isEmpty()) {
+				Entity entity = itemEntityFactory.createByItemType(itemTypeOrLiquidIte, nullContext, false);
+				ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				materialsToEntitiesMap.put(attributes.getPrimaryMaterial(), entity);
+				return entity;
+			} else {
+				return materialsToEntitiesMap.values().iterator().next();
+			}
+		} else {
+			// Material is specified
+			return materialsToEntitiesMap.computeIfAbsent(material, a -> {
+				Entity entity = itemEntityFactory.createByItemType(itemTypeOrLiquidIte, nullContext, false);
+				ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				attributes.setMaterial(material);
+				return entity;
+			});
 		}
-		return entity;
 	}
 
 	@Override
