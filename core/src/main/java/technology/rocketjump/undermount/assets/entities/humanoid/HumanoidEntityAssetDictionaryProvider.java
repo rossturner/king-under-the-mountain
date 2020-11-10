@@ -74,7 +74,7 @@ public class HumanoidEntityAssetDictionaryProvider implements Provider<HumanoidE
 		if (sprite == null) {
 			// No sprite found
 			Logger.error("Warning: No sprite found for name " + filename + " in render mode " + renderMode.name());
-			return;
+			sprite = textureAtlas.createSprite("placeholder");
 		}
 		sprite.setFlip(spriteDescriptor.isFlipX(), spriteDescriptor.isFlipY());
 

@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
 public class TexturePackerProcessor extends ModArtifactProcessor {
 
 	private Path packJsonPath = null;
@@ -69,6 +71,7 @@ public class TexturePackerProcessor extends ModArtifactProcessor {
 	public void write(Path assetsDir) throws IOException {
 		Files.copy(packJsonPath, diffuseDir.resolve("pack.json"));
 		Files.copy(packJsonPath, normalsDir.resolve("pack.json"));
+		copyPlaceholderImages(assetsDir);
 
 		switch (definition.outputFileType) {
 			case PACKR_ATLAS_PLUS_NORMALS:
@@ -90,5 +93,12 @@ public class TexturePackerProcessor extends ModArtifactProcessor {
 		}
 		Files.createDirectories(subdir);
 		return subdir;
+	}
+
+	private void copyPlaceholderImages(Path assetsDir) throws IOException {
+		// Also copy placeholder images to package
+		Path placeholdersDir = assetsDir.resolve("unmoddable");
+		Files.copy(placeholdersDir.resolve("placeholder.png"), diffuseDir.resolve("placeholder.png"), REPLACE_EXISTING);
+		Files.copy(placeholdersDir.resolve("placeholder_NORMALS.png"), normalsDir.resolve("placeholder.png"), REPLACE_EXISTING);
 	}
 }

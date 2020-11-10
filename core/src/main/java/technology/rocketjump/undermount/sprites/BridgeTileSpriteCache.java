@@ -16,6 +16,7 @@ import java.util.Map;
 @Singleton
 public class BridgeTileSpriteCache {
 
+	private final Sprite placeholderSprite;
 	private Map<GameMaterialType, Map<BridgeOrientation, Map<BridgeTileLayout, Sprite>>> materialMap = new EnumMap<>(GameMaterialType.class);
 
 	@Inject
@@ -34,6 +35,8 @@ public class BridgeTileSpriteCache {
 				}
 			}
 		}
+
+		this.placeholderSprite = textureAtlas.createSprite("placeholder");
 	}
 
 
@@ -54,7 +57,8 @@ public class BridgeTileSpriteCache {
 				}
 			}
 		}
-		return null;
+		Logger.warn("Could not find required bridge sprite: " + materialType.name() + " " + bridgeOrientation.name() + " " + layout.name());
+		return placeholderSprite;
 	}
 
 }
