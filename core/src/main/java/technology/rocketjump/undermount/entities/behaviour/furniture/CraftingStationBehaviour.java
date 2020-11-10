@@ -407,7 +407,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		if (allRequirementsMet) {
 			// Create crafting job to produce output
 			Job craftingJob = new Job(craftItemJobType);
-			craftingJob.setJobPriority(JobPriority.LOWER);
 			craftingJob.setJobState(ASSIGNABLE);
 			updateJobLocation(craftingJob, areaMap);
 			craftingJob.setTargetId(parentEntity.getId());

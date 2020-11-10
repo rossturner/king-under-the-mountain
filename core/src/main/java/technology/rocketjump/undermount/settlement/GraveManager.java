@@ -130,7 +130,7 @@ public class GraveManager implements Updatable {
 		haulingJob.setTargetId(allocation.getHauledEntityId());
 		haulingJob.setHaulingAllocation(allocation);
 		haulingJob.setJobLocation(allocation.getSourcePosition());
-		haulingJob.setJobPriority(JobPriority.HIGH);
+		haulingJob.setJobPriority(JobPriority.HIGHER);
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, haulingJob);
 	}
 
