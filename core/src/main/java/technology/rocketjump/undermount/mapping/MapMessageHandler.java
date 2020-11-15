@@ -191,6 +191,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 							job.setJobPriority(priorityToApply);
 						}
 
+						if (tile.hasConstruction()) {
+							tile.getConstruction().setPriority(priorityToApply);
+						}
+
 						// TODO set other priorities e.g. crafting station
 
 					} else {

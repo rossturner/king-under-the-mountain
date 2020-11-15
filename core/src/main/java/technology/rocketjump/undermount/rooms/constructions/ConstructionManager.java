@@ -306,7 +306,9 @@ public class ConstructionManager implements Updatable {
 			construction.getIncomingHaulingAllocations().add(allocation);
 
 			Entity targetItem = gameContext.getEntities().get(allocation.getItemAllocation().getTargetItemEntityId());
-			return createHaulingJob(allocation, targetItem, haulingJobType);
+			Job haulingJob = createHaulingJob(allocation, targetItem, haulingJobType);
+			haulingJob.setJobPriority(construction.getPriority());
+			return haulingJob;
 		} else {
 			return null;
 		}
@@ -363,7 +365,7 @@ public class ConstructionManager implements Updatable {
 	private void createWallConstructionJob(WallConstruction wallConstruction) {
 		CraftingType craftingType = wallConstruction.getWallTypeToConstruct().getCraftingType();
 		Job constructionJob = jobFactory.constructionJob(craftingType);
-
+		constructionJob.setJobPriority(wallConstruction.getPriority());
 		constructionJob.setJobLocation(wallConstruction.getPrimaryLocation());
 		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(wallConstruction));
 		constructionJob.setWorkDoneSoFar(0);
@@ -377,7 +379,7 @@ public class ConstructionManager implements Updatable {
 	private void createBridgeConstructionJob(BridgeConstruction bridgeConstruction) {
 		CraftingType craftingType = bridgeConstruction.getBridge().getBridgeType().getCraftingType();
 		Job constructionJob = jobFactory.constructionJob(craftingType);
-
+		constructionJob.setJobPriority(bridgeConstruction.getPriority());
 		// TODO below was empty and caused a crash, but can't see how that would happen at the moment
 		constructionJob.setJobLocation(bridgeConstruction.placedItemAllocations.keySet().iterator().next());
 		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(bridgeConstruction));
@@ -400,6 +402,7 @@ public class ConstructionManager implements Updatable {
 		Job constructionJob = new Job(jobType);
 		constructionJob.setJobLocation(furnitureConstruction.getPrimaryLocation());
 		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(furnitureConstruction));
+		constructionJob.setJobPriority(furnitureConstruction.getPriority());
 
 		furnitureConstruction.setConstructionJob(constructionJob);
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, constructionJob);

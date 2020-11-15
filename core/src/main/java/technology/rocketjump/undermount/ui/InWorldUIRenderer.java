@@ -288,17 +288,26 @@ public class InWorldUIRenderer {
 	}
 
 	private void renderJobPriority(int x, int y, MapTile mapTile, GridPoint2 minDraggingTile, GridPoint2 maxDraggingTile) {
+		JobPriority priority = null;
+
+		if (mapTile.hasConstruction()) {
+			priority = mapTile.getConstruction().getPriority();
+		}
+
 		List<Job> jobsAtLocation = jobStore.getJobsAtLocation(mapTile.getTilePosition());
 		if (jobsAtLocation.size() > 0) {
-			JobPriority jobPriority = jobsAtLocation.get(0).getJobPriority();
+			priority = jobsAtLocation.get(0).getJobPriority();
 
+		}
+
+
+		if (priority != null) {
 			if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y)) {
-				jobPriority = interactionStateContainer.getJobPriorityToApply();
+				priority = interactionStateContainer.getJobPriorityToApply();
 			}
 
-			spriteBatch.setColor(jobPriority.semiTransparentColor);
-			Sprite iconSprite = iconSpriteCache.getByName(jobPriority.iconName);
-
+			spriteBatch.setColor(priority.semiTransparentColor);
+			Sprite iconSprite = iconSpriteCache.getByName(priority.iconName);
 			spriteBatch.draw(iconSprite, x, y, 1f, 1f);
 		}
 	}
