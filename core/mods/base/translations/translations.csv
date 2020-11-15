@@ -275,6 +275,7 @@ GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Retirer des ca
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Appuyez sur (R) pour pivoter les meubles,Pulsa (R) para rotar los muebles,Zum Rotieren der Möbel (R) drücken,Premi (R) per ruotare le suppellettili,Aperte (R) para girar a mobília,Premir (R) para rodar mobília,"Нажмите (R), чтобы повернуть мебель","Wciśnij (R), aby obrócić mebel",Druk op (R) om meubels te draaien,Tryck på (R) för att rotera möbler,Trykk på (R) for å rotere møbler,Bútor fordítása (R),Kierrä huonekaluja painamalla (R)
 GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,,,,,,,,,,,,,
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,,,,,,,,,,,,,
+GUI.PRIORITY_LABEL,This should be as short as possible,Priority,,,,,,,,,,,,,
 GUI.ZONES_LABEL,This should be as short as possible,Zones,Zones,Zonas,Zonen,Zone,Zonas,Áreas,Зоны,Strefy,Zones,Zoner,Soner,Zónák,Vyöhykkeet
 GUI.MUSIC_VOLUME,,Music volume:,Volume de la musique:,Volumen de la música:,Musiklautstärke:,Volume della musica:,Volume da música:,Volume da música:,Громкость музыки:,Głośność muzyki:,,,,,
 GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,Volume des effets sonores,Volumen de los efectos de sonido,Soundeffektlautstärke,Volume degli effetti sonori,Volume dos efeitos sonoros,Volume de efeitos sonoros,Громкость эффектов,Głośność efektów ,,,,,
@@ -542,6 +543,12 @@ ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a 
 OTHER.BRICK.NOUN,,Brick,Brique,Ladrillo,Backstein,Mattone,Tijolo,Tijolo,Кирпич,Cegła,Baksteen,Tegelsten,Murstein,Tégla,Tiili
 OTHER.CLAY_SOIL.NOUN,,Clay soil,Argile,Arcilla,Lehmboden,Terreno argilloso,Solo de argila,Solo argiloso,Глинозем,Glina,Klei,Lerjord,Leire,Agyagos talaj,Savimaa
 OTHER.GRASS.NOUN,,,Herbe,Hierba,Gras,Erba,,Erva,Трава,Trawa,Gras,Gräs,Gress,,Ruoho
+,,,,,,,,,,,,,,,
+PRIORITY.HIGHEST,,Highest,,,,,,,,,,,,,
+PRIORITY.HIGHER,,Higher,,,,,,,,,,,,,
+PRIORITY.NORMAL,,Normal,,,,,,,,,,,,,
+PRIORITY.LOWER,,Lower,,,,,,,,,,,,,
+PRIORITY.LOWEST,,Lowest,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,,,,,,,,,,,,,
 PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to",,,,,,,,,,,,,

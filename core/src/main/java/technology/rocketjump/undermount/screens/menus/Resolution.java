@@ -8,8 +8,6 @@ public class Resolution {
 
 	static {
 		defaultResolutions.addAll(
-				new Resolution(640, 480),
-				new Resolution(800, 600),
 				new Resolution(1024, 768),
 				new Resolution(1200, 900),
 				new Resolution(1280, 720),

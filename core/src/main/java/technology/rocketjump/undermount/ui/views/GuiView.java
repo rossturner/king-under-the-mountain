@@ -12,4 +12,8 @@ public interface GuiView {
 
 	GuiViewName getParentViewName();
 
+	default void onClose() {
+
+	}
+
 }

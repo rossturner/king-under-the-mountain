@@ -12,7 +12,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
-import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
@@ -23,6 +22,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
@@ -35,6 +35,7 @@ import technology.rocketjump.undermount.rendering.TerrainRenderer;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.constructions.BridgeConstruction;
+import technology.rocketjump.undermount.sprites.IconSpriteCache;
 import technology.rocketjump.undermount.sprites.TerrainSpriteCache;
 import technology.rocketjump.undermount.zones.Zone;
 
@@ -46,6 +47,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rendering.WorldRenderer.*;
 import static technology.rocketjump.undermount.rooms.RoomTypeDictionary.VIRTUAL_PLACING_ROOM;
 import static technology.rocketjump.undermount.ui.GameInteractionMode.*;
+import static technology.rocketjump.undermount.ui.GameViewMode.JOB_PRIORITY;
 
 public class InWorldUIRenderer {
 
@@ -64,13 +66,14 @@ public class InWorldUIRenderer {
 	private final RoomRenderer roomRenderer;
 	private final RenderingOptions renderingOptions;
 	private final JobStore jobStore;
+	private final IconSpriteCache iconSpriteCache;
 	private final Sprite doorIconSprite;
 	private boolean blinkState = true;
 
 	@Inject
 	public InWorldUIRenderer(GameInteractionStateContainer interactionStateContainer, EntityRenderer entityRenderer,
 							 TerrainRenderer terrainRenderer, RoomRenderer roomRenderer, RenderingOptions renderingOptions, JobStore jobStore,
-							 FurnitureTypeDictionary furnitureTypeDictionary, TextureAtlasRepository textureAtlasRepository,
+							 FurnitureTypeDictionary furnitureTypeDictionary, IconSpriteCache iconSpriteCache,
 							 SelectableOutlineRenderer selectableOutlineRenderer) {
 		this.interactionStateContainer = interactionStateContainer;
 		this.entityRenderer = entityRenderer;
@@ -79,9 +82,10 @@ public class InWorldUIRenderer {
 		this.renderingOptions = renderingOptions;
 		this.jobStore = jobStore;
 		this.selectableOutlineRenderer = selectableOutlineRenderer;
+		this.iconSpriteCache = iconSpriteCache;
 
 		FurnitureType singleDoorType = furnitureTypeDictionary.getByName("SINGLE_DOOR");
-		this.doorIconSprite = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS).createSprite(singleDoorType.getIconName());
+		this.doorIconSprite = iconSpriteCache.getByName(singleDoorType.getIconName());
 	}
 
 	public void render(TiledMap map, OrthographicCamera camera, TerrainSpriteCache diffuseSpriteCache) {
@@ -104,7 +108,7 @@ public class InWorldUIRenderer {
 		GridPoint2 minDraggingTile = new GridPoint2(MathUtils.floor(minDraggingPoint.x), MathUtils.floor(minDraggingPoint.y));
 		GridPoint2 maxDraggingTile = new GridPoint2(MathUtils.floor(maxDraggingPoint.x), MathUtils.floor(maxDraggingPoint.y));
 
-		if (interactionStateContainer.isDragging() && interactionStateContainer.getInteractionMode().isDesignation()) {
+		if (interactionStateContainer.isDragging() && interactionStateContainer.getInteractionMode().isDraggable) {
 			drawDragAreaOutline(minDraggingPoint, maxDraggingPoint);
 		}
 
@@ -188,6 +192,9 @@ public class InWorldUIRenderer {
 							}
 						} else if (interactionStateContainer.getInteractionMode().equals(PLACE_ROOM)) {
 							// Do something for placing room
+						} else {
+							// Not a designation-type drag
+							renderExistingDesignation(x, y, mapTile);
 						}
 					} else {
 						// Outside selection area
@@ -196,6 +203,10 @@ public class InWorldUIRenderer {
 
 					if (mapTile.hasRoom() && mapTile.getRoomTile().getRoom().getRoomType().getRoomName().equals(VIRTUAL_PLACING_ROOM.getRoomName())) {
 						roomRenderer.render(mapTile, spriteBatch, diffuseSpriteCache);
+					}
+
+					if (interactionStateContainer.getGameViewMode().equals(JOB_PRIORITY)) {
+						renderJobPriority(x, y, mapTile, minDraggingTile, maxDraggingTile);
 					}
 
 					if (renderingOptions.debug().showJobStatus()) {
@@ -274,6 +285,22 @@ public class InWorldUIRenderer {
 		}
 		spriteBatch.end();
 		shapeRenderer.end();
+	}
+
+	private void renderJobPriority(int x, int y, MapTile mapTile, GridPoint2 minDraggingTile, GridPoint2 maxDraggingTile) {
+		List<Job> jobsAtLocation = jobStore.getJobsAtLocation(mapTile.getTilePosition());
+		if (jobsAtLocation.size() > 0) {
+			JobPriority jobPriority = jobsAtLocation.get(0).getJobPriority();
+
+			if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y)) {
+				jobPriority = interactionStateContainer.getJobPriorityToApply();
+			}
+
+			spriteBatch.setColor(jobPriority.semiTransparentColor);
+			Sprite iconSprite = iconSpriteCache.getByName(jobPriority.iconName);
+
+			spriteBatch.draw(iconSprite, x, y, 1f, 1f);
+		}
 	}
 
 	private void renderExistingDesignation(int x, int y, MapTile mapTile) {

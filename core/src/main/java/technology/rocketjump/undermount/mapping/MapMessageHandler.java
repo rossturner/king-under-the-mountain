@@ -14,6 +14,9 @@ import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.JobStore;
+import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.tile.*;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
@@ -42,17 +45,19 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private final GameInteractionStateContainer interactionStateContainer;
 	private final RoomFactory roomFactory;
 	private final RoomStore roomStore;
+	private final JobStore jobStore;
 
 	private GameContext gameContext;
 
 	@Inject
 	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
-							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory, RoomStore roomStore) {
+							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory, RoomStore roomStore, JobStore jobStore) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
 		this.roomFactory = roomFactory;
 		this.roomStore = roomStore;
+		this.jobStore = jobStore;
 
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
@@ -179,6 +184,17 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 								messageDispatcher.dispatchMessage(MessageType.DESIGNATION_APPLIED, new ApplyDesignationMessage(tile, designationToApply));
 							}
 						}
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.SET_JOB_PRIORITY)) {
+						JobPriority priorityToApply = interactionStateContainer.getJobPriorityToApply();
+
+						for (Job job : jobStore.getJobsAtLocation(tile.getTilePosition())) {
+							job.setJobPriority(priorityToApply);
+						}
+
+						// TODO set other priorities e.g. crafting station
+
+					} else {
+						Logger.warn("Unhandled area selection message in " + getClass().getSimpleName());
 					}
 				}
 			}

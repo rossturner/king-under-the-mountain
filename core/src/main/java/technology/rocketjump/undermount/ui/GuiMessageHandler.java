@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.WallPlacementMode;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
@@ -81,6 +82,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.REMOVE_ROOM);
 		messageDispatcher.addListener(this, MessageType.DECONSTRUCT_BRIDGE);
 		messageDispatcher.addListener(this, MessageType.CHOOSE_SELECTABLE);
+		messageDispatcher.addListener(this, MessageType.REPLACE_JOB_PRIORITY);
 		// FIXME Should this really live here?
 		for (WallType wallType : wallTypeDictionary.getAllDefinitions()) {
 			if (wallType.isConstructed()) {
@@ -209,6 +211,11 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 			case MessageType.CHOOSE_SELECTABLE: {
 				Selectable selectable = (Selectable) msg.extraInfo;
 				chooseSelectable(selectable);
+				return true;
+			}
+			case MessageType.REPLACE_JOB_PRIORITY: {
+				JobPriority jobPriority = (JobPriority)msg.extraInfo;
+				interactionStateContainer.setJobPriorityToApply(jobPriority);
 				return true;
 			}
 			default:

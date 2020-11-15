@@ -45,7 +45,8 @@ public enum GameInteractionMode {
 	PLACE_WALLS("walls", null, null, true),
 	PLACE_BRIDGE("bridge", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && !mapTile.hasWall() &&
 			!mapTile.hasDoorway() && !mapTile.hasRoom() && !mapTile.hasConstruction(), true),
-	REMOVE_ROOMS("cancel", "REMOVE_ROOMS", mapTile -> mapTile.hasRoom(), true);
+	REMOVE_ROOMS("cancel", "REMOVE_ROOMS", mapTile -> mapTile.hasRoom(), true),
+	SET_JOB_PRIORITY("priority", null, null, true);
 
 	public final String cursorName;
 	public final String designationName;
