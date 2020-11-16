@@ -62,6 +62,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		SelectableDescription,
 		Destructible,
 		OnJobCompletion,
+		Prioritisable,
 		ParentDependentEntityComponent {
 
 	private static final float WORK_TO_COMPLETE_CRAFTING = 5f; // Note this is multiplied by skill level doubled - usually 0.2 to 0.5
@@ -281,7 +282,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				if (navigableWorkspace != null) {
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_LIQUID_TRANSFER, new RequestLiquidTransferMessage(
 							requirement.getMaterial(), true, parentEntity,
-							toVector(navigableWorkspace.getLocation()), relatedItemTypes.get(0), professionRequired, (job) -> {
+							toVector(navigableWorkspace.getLocation()), relatedItemTypes.get(0), professionRequired, priority, (job) -> {
 						if (job != null) {
 							this.liquidTransferJobs.add(job);
 						}
@@ -314,7 +315,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			haulingInputAllocations.add(haulingAllocation);
 
 			Job haulingJob = ItemEntityMessageHandler.createHaulingJob(haulingAllocation,
-					gameContext.getEntities().get(haulingAllocation.getHauledEntityId()), haulingJobType);
+					gameContext.getEntities().get(haulingAllocation.getHauledEntityId()), haulingJobType, priority);
 			haulingJob.setRequiredProfession(craftingType.getProfessionRequired());
 			messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, haulingJob);
 			haulingAllocation = null;
@@ -415,6 +416,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			craftingJob.setRequiredItemType(itemTypeRequired);
 			craftingJob.setCraftingRecipe(currentProductionAssignment.targetRecipe);
 			craftingJob.setTotalWorkToDo(WORK_TO_COMPLETE_CRAFTING); // FIXME #86 Total work to be data-driven
+			craftingJob.setJobPriority(priority);
 			messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, craftingJob);
 			this.craftingJob = craftingJob;
 		}
@@ -479,7 +481,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 
 			if (outputHaulingAllowed()) {
 				// Request hauling to remove items in output
-				RequestHaulingMessage requestHaulingMessage = new RequestHaulingMessage(outputEntity, parentEntity, true, null);
+				RequestHaulingMessage requestHaulingMessage = new RequestHaulingMessage(outputEntity, parentEntity, true, priority, null);
 				if (craftingJob != null) {
 					requestHaulingMessage.setSpecificProfessionRequired(craftingJob.getRequiredProfession());
 				}
@@ -496,6 +498,17 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 
 		// rerun update to trigger export item/liquid jobs
 		infrequentUpdate(gameContext);
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		if (craftingJob != null) {
+			craftingJob.setJobPriority(priority);
+		}
+		for (Job job : liquidTransferJobs) {
+			job.setJobPriority(jobPriority);
+		}
 	}
 
 	private void addOutputItemToList(QuantifiedItemTypeWithMaterial outputRequirement, GameContext gameContext, List<Entity> output) {
@@ -557,8 +570,8 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			ItemAllocationComponent itemAllocationComponent = entry.entity.getOrCreateComponent(ItemAllocationComponent.class);
 			itemAllocationComponent.cancelAll(HELD_IN_INVENTORY);
 			if (itemAllocationComponent.getNumUnallocated() > 0) {
-				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entry.entity, parentEntity, true, job -> {
-					// Do nothing with created job
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entry.entity, parentEntity, true, priority, job -> {
+					// Do nothing with job
 				}));
 			}
 		}
@@ -576,7 +589,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
 			if (navigableWorkspace != null) {
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_LIQUID_REMOVAL, new RequestLiquidRemovalMessage(parentEntity,
-						navigableWorkspace.getAccessedFrom(), amount, relatedItemTypes.get(0), job -> {
+						navigableWorkspace.getAccessedFrom(), amount, relatedItemTypes.get(0), priority, job -> {
 					if (job != null) {
 						liquidTransferJobs.add(job);
 					}
@@ -805,4 +818,5 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			}
 		}
 	}
+
 }

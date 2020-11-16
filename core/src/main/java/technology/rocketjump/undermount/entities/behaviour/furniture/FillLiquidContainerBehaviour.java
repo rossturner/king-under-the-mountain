@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.JobCreatedCallback;
@@ -27,7 +28,7 @@ import static technology.rocketjump.undermount.jobs.model.JobState.REMOVED;
 /**
  * This furniture behaviour is used to create jobs which will fill the parent furniture's LiquidContainerComponent with the specified liquid
  */
-public class FillLiquidContainerBehaviour extends FurnitureBehaviour implements Destructible, JobCreatedCallback {
+public class FillLiquidContainerBehaviour extends FurnitureBehaviour implements Destructible, JobCreatedCallback, Prioritisable {
 
 	protected List<Job> outstandingJobs = new ArrayList<>();
 
@@ -52,6 +53,14 @@ public class FillLiquidContainerBehaviour extends FurnitureBehaviour implements 
 	}
 
 	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		for (Job job : outstandingJobs) {
+			job.setJobPriority(jobPriority);
+		}
+	}
+
+	@Override
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
 		LiquidContainerComponent liquidContainerComponent = parentEntity.getComponent(LiquidContainerComponent.class);
@@ -62,7 +71,7 @@ public class FillLiquidContainerBehaviour extends FurnitureBehaviour implements 
 				// Create new job
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_LIQUID_TRANSFER, new RequestLiquidTransferMessage(
 						liquidContainerComponent.getTargetLiquidMaterial(), false, parentEntity,
-						parentEntity.getLocationComponent().getWorldPosition(), relatedItemTypes.get(0), NULL_PROFESSION, this));
+						parentEntity.getLocationComponent().getWorldPosition(), relatedItemTypes.get(0), NULL_PROFESSION, priority, this));
 			}
 		}
 	}

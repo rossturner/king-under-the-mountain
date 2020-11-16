@@ -15,6 +15,7 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntit
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -40,7 +41,7 @@ import static technology.rocketjump.undermount.entities.behaviour.furniture.Mush
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.ui.i18n.I18nTranslator.oneDecimalFormat;
 
-public class MushroomLogBehaviour extends FurnitureBehaviour implements Destructible, SelectableDescription, EntityCreatedCallback {
+public class MushroomLogBehaviour extends FurnitureBehaviour implements Destructible, SelectableDescription, EntityCreatedCallback, Prioritisable {
 
 	private static final int MUSHROOMS_SPAWNED_AT_A_TIME = 2;
 	private static final int MAX_MUSHROOMS_TO_SPAWN = 10;
@@ -64,6 +65,14 @@ public class MushroomLogBehaviour extends FurnitureBehaviour implements Destruct
 	public void destroy(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		if (harvestJob != null && !harvestJob.getJobState().equals(JobState.REMOVED)) {
 			messageDispatcher.dispatchMessage(MessageType.JOB_CANCELLED, harvestJob);
+		}
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		if (harvestJob != null) {
+			harvestJob.setJobPriority(jobPriority);
 		}
 	}
 
@@ -128,6 +137,7 @@ public class MushroomLogBehaviour extends FurnitureBehaviour implements Destruct
 
 	private void createHarvestJob(GameContext gameContext) {
 		harvestJob = new Job(harvestJobType);
+		harvestJob.setJobPriority(priority);
 		FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
 		if (navigableWorkspace != null) {
 			harvestJob.setJobLocation(navigableWorkspace.getAccessedFrom());

@@ -11,6 +11,7 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
@@ -195,7 +196,12 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 							tile.getConstruction().setPriority(priorityToApply);
 						}
 
-						// TODO set other priorities e.g. crafting station
+						for (Entity entity : tile.getEntities()) {
+							if (entity.getBehaviourComponent() instanceof Prioritisable) {
+								Prioritisable prioritisableBehaviour = (Prioritisable) entity.getBehaviourComponent();
+								prioritisableBehaviour.setPriority(priorityToApply);
+							}
+						}
 
 					} else {
 						Logger.warn("Unhandled area selection message in " + getClass().getSimpleName());

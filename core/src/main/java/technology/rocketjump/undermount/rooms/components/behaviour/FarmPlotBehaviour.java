@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeci
 import technology.rocketjump.undermount.environment.model.Season;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -187,7 +188,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 				ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
 				if (itemAllocationComponent.getNumUnallocated() > 0) {
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING,
-							new RequestHaulingMessage(entity, entity, true, this));
+							new RequestHaulingMessage(entity, entity, true, JobPriority.NORMAL, this));
 				}
 				return true;
 			} else if (entity.getType().equals(EntityType.PLANT)) {

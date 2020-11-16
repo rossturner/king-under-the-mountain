@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingAllocationMessage;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
@@ -35,15 +36,10 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 import static technology.rocketjump.undermount.jobs.model.JobState.REMOVED;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
-public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructible, SelectableDescription {
+public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructible, SelectableDescription, Prioritisable {
 
 	private BeerTapperState state = BeerTapperState.IDLE;
 	private List<Job> haulingJobs = new ArrayList<>(1);
-
-//	@Override
-//	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
-//		super.init(parentEntity, messageDispatcher, gameContext);
-//	}
 
 	@Override
 	public void destroy(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
@@ -51,6 +47,14 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 			if (outstandingJob != null && !outstandingJob.getJobState().equals(REMOVED)) {
 				messageDispatcher.dispatchMessage(MessageType.JOB_CANCELLED, outstandingJob);
 			}
+		}
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		for (Job job : haulingJobs) {
+			job.setJobPriority(priority);
 		}
 	}
 
@@ -117,7 +121,7 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 					Entity itemInInventory = parentInventory.getInventoryEntries().iterator().next().entity;
 					itemInInventory.getComponent(ItemAllocationComponent.class).cancelAll(HELD_IN_INVENTORY);
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(
-							itemInInventory, parentEntity, true, job -> {
+							itemInInventory, parentEntity, true, priority, job -> {
 						if (job != null) {
 							haulingJobs.add(job);
 						}
@@ -158,6 +162,7 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 		allocation.setTargetPosition(toGridPoint(parentEntity.getLocationComponent().getWorldPosition()));
 
 		Job haulingJob = new Job(relatedJobTypes.get(0));
+		haulingJob.setJobPriority(priority);
 		haulingJob.setTargetId(allocation.getHauledEntityId());
 		haulingJob.setHaulingAllocation(allocation);
 		haulingJob.setJobLocation(allocation.getSourcePosition());

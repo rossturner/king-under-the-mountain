@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
@@ -297,9 +298,14 @@ public class InWorldUIRenderer {
 		List<Job> jobsAtLocation = jobStore.getJobsAtLocation(mapTile.getTilePosition());
 		if (jobsAtLocation.size() > 0) {
 			priority = jobsAtLocation.get(0).getJobPriority();
-
 		}
 
+		for (Entity entity : mapTile.getEntities()) {
+			if (entity.getBehaviourComponent() instanceof Prioritisable) {
+				Prioritisable prioritisableBehaviour = (Prioritisable) entity.getBehaviourComponent();
+				priority = prioritisableBehaviour.getPriority();
+			}
+		}
 
 		if (priority != null) {
 			if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y)) {

@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -193,7 +194,7 @@ public class KitchenBehaviour extends RoomBehaviourComponent implements Telegrap
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_LIQUID_TRANSFER, new RequestLiquidTransferMessage(
 							inputLiquidOption.getMaterial(), true, cookingSession.getAssignedFurnitureEntity(),
 							cookingSession.getAssignedFurnitureEntity().getLocationComponent().getWorldPosition(), inputLiquidOption.getItemType(),
-							requiredProfession, job ->
+							requiredProfession, JobPriority.NORMAL, job ->
 					{
 						if (job != null) {
 							cookingSession.getInputIngredientJobs().add(job);

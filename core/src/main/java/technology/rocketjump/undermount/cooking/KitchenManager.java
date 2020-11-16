@@ -167,6 +167,7 @@ public class KitchenManager implements Telegraph, Updatable {
 
 	private Job createHaulingJob(Entity matchingEntity, Construction construction) {
 		Job haulingJob = new Job(haulingJobType);
+		haulingJob.setJobPriority(construction.getPriority());
 		haulingJob.setTargetId(matchingEntity.getId());
 		haulingJob.setRequiredProfession(cookingProfession);
 

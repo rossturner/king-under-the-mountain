@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -72,7 +73,7 @@ public class HaulingAllocationTest {
 	public void testSimpleAllocation() {
 		attributes.setQuantity(2);
 
-		messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(itemEntity, itemEntity, true, job -> {
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(itemEntity, itemEntity, true, JobPriority.NORMAL, job -> {
 			assertThat(job.getHaulingAllocation().getItemAllocation().getAllocationAmount()).isEqualTo(1);
 
 			ItemAllocationComponent itemAllocationComponent = itemEntity.getOrCreateComponent(ItemAllocationComponent.class);
@@ -93,7 +94,7 @@ public class HaulingAllocationTest {
 		final ItemAllocationComponent itemAllocationComponent = itemEntity.getOrCreateComponent(ItemAllocationComponent.class);
 		itemAllocationComponent.createAllocation(10, itemEntity, ItemAllocation.Purpose.PLACED_FOR_CONSTRUCTION);
 
-		messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(itemEntity, itemEntity, true, job -> {
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(itemEntity, itemEntity, true, JobPriority.NORMAL, job -> {
 			assertThat(job.getHaulingAllocation().getItemAllocation().getAllocationAmount()).isEqualTo(1);
 			assertThat(itemAllocationComponent.getNumAllocated()).isEqualTo(30);
 			assertThat(itemAllocationComponent.getNumUnallocated()).isEqualTo(0);
