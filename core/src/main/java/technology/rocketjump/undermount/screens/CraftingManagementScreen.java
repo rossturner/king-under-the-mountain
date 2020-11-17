@@ -459,28 +459,11 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			}
 		}
 
-//		IconOnlyButton enableDisableButton;
-//		boolean recipeEnabled = productionManager.isRecipeEnabled(craftingRecipe);
-//		if (recipeEnabled) {
-//			enableDisableButton = iconButtonFactory.create("check-mark");
-//			enableDisableButton.setForegroundColor(HexColors.POSITIVE_COLOR);
-//			enableDisableButton.setAction(() -> {
-//				productionManager.setRecipeEnabled(craftingRecipe, false);
-//				reset();
-//			});
-//		} else {
-//			enableDisableButton = iconButtonFactory.create("pause-button");
-//			enableDisableButton.setForegroundColor(HexColors.NEGATIVE_COLOR);
-//			enableDisableButton.setAction(() -> {
-//				productionManager.setRecipeEnabled(craftingRecipe, true);
-//				reset();
-//			});
-//		}
-
 		ToggleButtonSet priorityToggle = new ToggleButtonSet(uiSkin, buttonDefinitions, (value) -> {
-			Logger.info("Clicked: " + value);
+			JobPriority selectedPriority = JobPriority.valueOf(value);
+			productionManager.setRecipePriority(craftingRecipe, selectedPriority);
 		});
-		priorityToggle.setChecked(JobPriority.NORMAL.name());
+		priorityToggle.setChecked(productionManager.getRecipePriority(craftingRecipe).name());
 
 		VerticalGroup priorityStack = new VerticalGroup();
 		priorityStack.addActor(new Label(i18nTranslator.getTranslatedString("GUI.PRIORITY_LABEL").toString(), uiSkin));

@@ -3,10 +3,10 @@ package technology.rocketjump.undermount.settlement;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.math.Vector2;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.JSONUtils;
@@ -38,7 +38,7 @@ public class SettlementState implements Persistable {
 	public final Map<GameMaterial, Map<Long, ProductionAssignment>> liquidProductionAssignments = new HashMap<>();
 	public final Map<GameMaterial, Float> requiredLiquidCounts = new HashMap<>();
 
-	public final List<CraftingRecipe> disabledCraftingRecipes = new ArrayList<>();
+	public final Map<CraftingRecipe, JobPriority> craftingRecipePriority = new HashMap<>();
 
 	public final List<Notification> queuedNotifications = new ArrayList<>();
 	public final List<ImpendingMiningCollapse> impendingMiningCollapses = new ArrayList<>();
@@ -160,12 +160,15 @@ public class SettlementState implements Persistable {
 			asJson.put("gameOver", true);
 		}
 
-		if (!disabledCraftingRecipes.isEmpty()) {
-			JSONArray disabledCraftingRecipeNames = new JSONArray();
-			for (CraftingRecipe disabledCraftingRecipe : disabledCraftingRecipes) {
-				disabledCraftingRecipeNames.add(disabledCraftingRecipe.getRecipeName());
+		if (!craftingRecipePriority.isEmpty()) {
+			JSONObject craftingRecipePriorityJson = new JSONObject();
+			for (Map.Entry<CraftingRecipe, JobPriority> entry : craftingRecipePriority.entrySet()) {
+				if (entry.getValue().equals(JobPriority.NORMAL)) {
+					continue;
+				}
+				craftingRecipePriorityJson.put(entry.getKey().getRecipeName(), entry.getValue().name());
 			}
-			asJson.put("disabledCraftingRecipes", disabledCraftingRecipeNames);
+			asJson.put("craftingRecipePriority", craftingRecipePriorityJson);
 		}
 
 		savedGameStateHolder.setSettlementState(this);
@@ -316,14 +319,14 @@ public class SettlementState implements Persistable {
 		gameOver = asJson.getBooleanValue("gameOver");
 
 
-		JSONArray disabledCraftingRecipeNames = asJson.getJSONArray("disabledCraftingRecipes");
-		if (disabledCraftingRecipeNames != null) {
-			for (Object disabledRecipeName : disabledCraftingRecipeNames) {
-				CraftingRecipe craftingRecipe = relatedStores.craftingRecipeDictionary.getByName(disabledRecipeName.toString());
-				if (craftingRecipe == null) {
-					Logger.warn("Unrecognised disabled crafting recipe name " + disabledRecipeName.toString());
+		JSONObject craftingRecipePriorityJson = asJson.getJSONObject("craftingRecipePriority");
+		if (craftingRecipePriorityJson != null) {
+			for (Map.Entry<String, Object> entry : craftingRecipePriorityJson.entrySet()) {
+				CraftingRecipe recipe = relatedStores.craftingRecipeDictionary.getByName(entry.getKey());
+				if (recipe == null) {
+					throw new InvalidSaveException("Could not find crafting recipe by name " + entry.getKey());
 				} else {
-					this.disabledCraftingRecipes.add(craftingRecipe);
+					craftingRecipePriority.put(recipe, JobPriority.valueOf(entry.getValue().toString()));
 				}
 			}
 		}
