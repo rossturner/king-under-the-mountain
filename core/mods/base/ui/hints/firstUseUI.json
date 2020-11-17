@@ -1,0 +1,15 @@
+[
+  {
+    "hintId": "open_priority_menu",
+    "i18nKeys": [
+      "HINT.OPEN_PRIORITY_MENU.1",
+      "HINT.OPEN_PRIORITY_MENU.2"
+    ],
+    "triggers": [
+      {
+        "triggerType": "GUI_SWITCH_VIEW",
+        "relatedTypeName": "PRIORITY_MENU"
+      }
+    ]
+  }
+]

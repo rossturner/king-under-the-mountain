@@ -17,10 +17,12 @@ import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.ui.hints.model.Hint;
 import technology.rocketjump.undermount.ui.hints.model.HintAction;
 import technology.rocketjump.undermount.ui.hints.model.HintTrigger;
+import technology.rocketjump.undermount.ui.views.GuiViewName;
 import technology.rocketjump.undermount.ui.views.HintGuiView;
 
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ALLOW_HINTS;
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.DISABLE_TUTORIAL;
+import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.GUI_SWITCH_VIEW;
 import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.ON_GAME_START;
 
 @Singleton
@@ -46,6 +48,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 		this.itemTracker = itemTracker;
 
 		messageDispatcher.addListener(this, MessageType.START_NEW_GAME);
+		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_VIEW);
 		messageDispatcher.addListener(this, MessageType.HINT_ACTION_TRIGGERED);
 	}
 
@@ -101,6 +104,20 @@ public class HintMessageHandler implements Telegraph, Updatable {
 					}
 				}
 				return true;
+			}
+			case MessageType.GUI_SWITCH_VIEW: {
+				GuiViewName viewName = (GuiViewName) msg.extraInfo;
+
+				for (Hint hint : hintDictionary.getByTriggerType(GUI_SWITCH_VIEW)) {
+					for (HintTrigger trigger : hint.getTriggers()) {
+						if (trigger.getTriggerType().equals(GUI_SWITCH_VIEW) && trigger.getRelatedTypeName().equals(viewName.name()) && canBeShown(hint)) {
+							show(hint);
+							return false;
+						}
+					}
+				}
+
+				return false; // not primary handler
 			}
 			case MessageType.HINT_ACTION_TRIGGERED: {
 				HintAction action = (HintAction) msg.extraInfo;

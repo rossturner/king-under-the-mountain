@@ -39,7 +39,8 @@ public class HintTrigger {
 	public enum HintTriggerType {
 
 		ON_GAME_START,
-		ITEM_AMOUNT
+		ITEM_AMOUNT,
+		GUI_SWITCH_VIEW
 
 	}
 

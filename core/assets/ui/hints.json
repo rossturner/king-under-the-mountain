@@ -1,4 +1,15 @@
 [ {
+  "hintId" : "open_priority_menu",
+  "i18nKeys" : [ "HINT.OPEN_PRIORITY_MENU.1", "HINT.OPEN_PRIORITY_MENU.2" ],
+  "progressDescriptors" : [ ],
+  "actions" : [ ],
+  "triggers" : [ {
+    "triggerType" : "GUI_SWITCH_VIEW",
+    "relatedTypeName" : "PRIORITY_MENU",
+    "quantity" : 0
+  } ],
+  "dismissable" : true
+}, {
   "hintId" : "no_axes_left",
   "i18nKeys" : [ "HINT.TOOL_DEPLETED.AXE1", "HINT.TOOL_DEPLETED.AXE2" ],
   "progressDescriptors" : [ ],
