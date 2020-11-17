@@ -6,11 +6,12 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
 public enum JobPriority {
 
 	// These are expected to be in order of highest to lowest priority
-	HIGHEST("#e4492b", "fast-forward-button-up", "PRIORITY.HIGHEST"),
-	HIGHER("#d2942f", "play-button-up", "PRIORITY.HIGHER"),
-	NORMAL("#44aa26", "play-button", "PRIORITY.NORMAL"),
-	LOWER("#20b1bd", "play-button-down", "PRIORITY.LOWER"),
-	LOWEST("#243aba", "fast-forward-button-down", "PRIORITY.LOWEST");
+	HIGHEST("#265aaa", "fast-forward-button-up", "PRIORITY.HIGHEST"),
+	HIGHER("#269caa", "play-button-up", "PRIORITY.HIGHER"),
+	NORMAL("#27aa5e", "play-button", "PRIORITY.NORMAL"),
+	LOWER("#bab524", "play-button-down", "PRIORITY.LOWER"),
+	LOWEST("#aa8026", "fast-forward-button-down", "PRIORITY.LOWEST"),
+	DISABLED("#D4534C", "cancel", "PRIORITY.DISABLED");
 
 	public final Color color;
 	public final Color semiTransparentColor;

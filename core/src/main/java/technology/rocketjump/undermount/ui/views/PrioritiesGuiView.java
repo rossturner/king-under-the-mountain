@@ -16,7 +16,6 @@ import technology.rocketjump.undermount.ui.widgets.IconButton;
 import technology.rocketjump.undermount.ui.widgets.IconButtonFactory;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,9 +36,7 @@ public class PrioritiesGuiView implements GuiView {
 		back.setAction(new SwitchGuiViewAction(DEFAULT_MENU, messageDispatcher));
 		buttons.add(back);
 
-		List<JobPriority> prioritiesLowToHigh = Arrays.asList(JobPriority.values());
-		Collections.reverse(prioritiesLowToHigh);
-
+		List<JobPriority> prioritiesLowToHigh = Arrays.asList(JobPriority.LOWEST, JobPriority.LOWER, JobPriority.NORMAL, JobPriority.HIGHER, JobPriority.HIGHEST);
 		for (JobPriority jobPriority : prioritiesLowToHigh) {
 			IconButton button = iconButtonFactory.create(jobPriority.i18nKey, jobPriority.iconName, jobPriority.color, ButtonStyle.DEFAULT);
 			button.setAction(() -> {

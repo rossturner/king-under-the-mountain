@@ -100,6 +100,9 @@ public class JobRequestHandler implements Updatable, Telegraph, Disposable {
 
 		List<Job> potentialJobs = new ArrayList<>();
 		for (JobPriority jobPriority : JobPriority.values()) {
+			if (jobPriority.equals(JobPriority.DISABLED)) {
+				continue;
+			}
 			if (jobsByPriority.containsKey(jobPriority)) {
 				potentialJobs.addAll(jobsByPriority.get(jobPriority));
 			}
