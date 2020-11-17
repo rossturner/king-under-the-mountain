@@ -216,7 +216,7 @@ public class ConstructionManager implements Updatable {
 						}
 						somethingNeedsRemoving = true;
 					} else if (entity.getType().equals(EntityType.PLANT)) {
-						messageDispatcher.dispatchMessage(MessageType.REQUEST_PLANT_REMOVAL, new RequestPlantRemovalMessage(entity, tileLocation, null));
+						messageDispatcher.dispatchMessage(MessageType.REQUEST_PLANT_REMOVAL, new RequestPlantRemovalMessage(entity, tileLocation, furnitureConstruction.getPriority(), null));
 						somethingNeedsRemoving = true;
 					}
 				}

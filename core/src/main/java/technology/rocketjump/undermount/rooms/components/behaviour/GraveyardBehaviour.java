@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.rooms.components.behaviour;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -13,6 +14,7 @@ import technology.rocketjump.undermount.entities.tags.DeceasedContainerTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -29,7 +31,7 @@ import java.util.Map;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rooms.constructions.ConstructionState.WAITING_FOR_COMPLETION;
 
-public class GraveyardBehaviour extends RoomBehaviourComponent {
+public class GraveyardBehaviour extends RoomBehaviourComponent implements Prioritisable {
 
 	private Map<Long, Entity> deceasedContainerEntities = new HashMap<>();
 	private Map<Long, Construction> graveConstructions = new HashMap<>();
@@ -64,6 +66,14 @@ public class GraveyardBehaviour extends RoomBehaviourComponent {
 	@Override
 	public void mergeFrom(RoomComponent otherComponent) {
 		// No state to merge, either static or refreshed on update
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		for (Construction construction : graveConstructions.values()) {
+			construction.setPriority(jobPriority, messageDispatcher);
+		}
 	}
 
 	@Override
@@ -115,6 +125,7 @@ public class GraveyardBehaviour extends RoomBehaviourComponent {
 		}
 
 		Job diggingJob = new Job(diggingJobType);
+		diggingJob.setJobPriority(priority);
 		diggingJob.setTargetId(graveConstruction.getId());
 		diggingJob.setJobLocation(graveConstruction.getPrimaryLocation());
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, diggingJob);
@@ -129,6 +140,7 @@ public class GraveyardBehaviour extends RoomBehaviourComponent {
 		}
 
 		Job fillingJob = new Job(fillGraveJobType);
+		fillingJob.setJobPriority(priority);
 		fillingJob.setTargetId(deceasedContainer.getId());
 		fillingJob.setJobLocation(location);
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, fillingJob);
@@ -170,12 +182,14 @@ public class GraveyardBehaviour extends RoomBehaviourComponent {
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
+		super.writeTo(asJson, savedGameStateHolder);
 		asJson.put("diggingJobType", diggingJobType.getName());
 		asJson.put("fillGraveJobType", fillGraveJobType.getName());
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		super.readFrom(asJson, savedGameStateHolder, relatedStores);
 		jobStore = relatedStores.jobStore;
 		furnitureTypeDictionary = relatedStores.furnitureTypeDictionary;
 

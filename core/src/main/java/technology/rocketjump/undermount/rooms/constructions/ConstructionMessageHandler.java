@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.EntityStore;
 import technology.rocketjump.undermount.entities.behaviour.furniture.FurnitureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
@@ -46,6 +47,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
+import technology.rocketjump.undermount.rooms.Room;
 
 import java.util.*;
 
@@ -98,6 +100,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.WALL_PLACEMENT);
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_CONSTRUCTION);
 		messageDispatcher.addListener(this, MessageType.DECONSTRUCT_BRIDGE);
+		messageDispatcher.addListener(this, MessageType.CONSTRUCTION_PRIORITY_CHANGED);
 
 		completionSoundMapping.put(GameMaterialType.WOOD, soundAssetDictionary.getByName("HeavyWoodItem")); // MODDING Expose this
 		completionSoundMapping.put(GameMaterialType.STONE, soundAssetDictionary.getByName("HeavyStoneItem")); // MODDING Expose this
@@ -175,6 +178,10 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 				deconstructBridge(bridgeToRemove);
 				return true;
 			}
+			case MessageType.CONSTRUCTION_PRIORITY_CHANGED: {
+				constructionStore.priorityChanged();
+				return true;
+			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
@@ -223,6 +230,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 	private void handleFurnitureConstructionCompleted(FurnitureConstruction construction) {
 		// Remove items in all covered tiles
 		Map<Long, Entity> itemsRemovedFromConstruction = new HashMap<>();
+		Room placedOnRoom = null;
 		for (GridPoint2 tileLocation : construction.getTileLocations()) {
 			MapTile tileAtLocation = gameContext.getAreaMap().getTile(tileLocation);
 			if (tileAtLocation != null) {
@@ -233,6 +241,10 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 					}
 				}
 				tileAtLocation.setConstruction(null);
+
+				if (tileAtLocation.hasRoom()) {
+					placedOnRoom = tileAtLocation.getRoomTile().getRoom();
+				}
 			}
 		}
 
@@ -313,6 +325,11 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		RequirementToColorMappingsTag requirementToColorMappingsTag = createdFurnitureEntity.getTag(RequirementToColorMappingsTag.class);
 		if (requirementToColorMappingsTag != null) {
 			requirementToColorMappingsTag.apply(createdFurnitureEntity, itemsRemovedFromConstruction, itemTypeDictionary);
+		}
+
+		if (placedOnRoom != null && createdFurnitureEntity.getBehaviourComponent() instanceof Prioritisable &&
+				placedOnRoom.getBehaviourComponent() instanceof Prioritisable) {
+			((Prioritisable)createdFurnitureEntity.getBehaviourComponent()).setPriority(((Prioritisable)placedOnRoom.getBehaviourComponent()).getPriority());
 		}
 	}
 

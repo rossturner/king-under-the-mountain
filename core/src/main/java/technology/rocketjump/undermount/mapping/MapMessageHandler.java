@@ -193,7 +193,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 						}
 
 						if (tile.hasConstruction()) {
-							tile.getConstruction().setPriority(priorityToApply);
+							tile.getConstruction().setPriority(priorityToApply, messageDispatcher);
 						}
 
 						for (Entity entity : tile.getEntities()) {

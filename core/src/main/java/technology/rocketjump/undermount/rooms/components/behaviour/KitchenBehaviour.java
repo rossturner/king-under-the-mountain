@@ -10,6 +10,7 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.cooking.model.CookingSession;
 import technology.rocketjump.undermount.entities.behaviour.furniture.CollectItemFurnitureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -42,7 +43,7 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 import static technology.rocketjump.undermount.jobs.model.JobState.REMOVED;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
-public class KitchenBehaviour extends RoomBehaviourComponent implements Telegraph {
+public class KitchenBehaviour extends RoomBehaviourComponent implements Telegraph, Prioritisable {
 
 	private Collection<CookingRecipe> cookingRecipes;
 
@@ -82,6 +83,20 @@ public class KitchenBehaviour extends RoomBehaviourComponent implements Telegrap
 		KitchenBehaviour other = (KitchenBehaviour) otherComponent;
 		// TODO merge any state info together
 		this.cookingSessions.putAll(other.cookingSessions);
+	}
+
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		for (CookingSession cookingSession : cookingSessions.values()) {
+			for (Job job : cookingSession.getInputIngredientJobs()) {
+				job.setJobPriority(jobPriority);
+			}
+			if (cookingSession.getCookingJob() != null) {
+				cookingSession.getCookingJob().setJobPriority(jobPriority);
+			}
+		}
 	}
 
 	@Override
@@ -194,7 +209,7 @@ public class KitchenBehaviour extends RoomBehaviourComponent implements Telegrap
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_LIQUID_TRANSFER, new RequestLiquidTransferMessage(
 							inputLiquidOption.getMaterial(), true, cookingSession.getAssignedFurnitureEntity(),
 							cookingSession.getAssignedFurnitureEntity().getLocationComponent().getWorldPosition(), inputLiquidOption.getItemType(),
-							requiredProfession, JobPriority.NORMAL, job ->
+							requiredProfession, priority, job ->
 					{
 						if (job != null) {
 							cookingSession.getInputIngredientJobs().add(job);
@@ -287,6 +302,7 @@ public class KitchenBehaviour extends RoomBehaviourComponent implements Telegrap
 		haulingAllocation.setTargetId(cookingSession.getAssignedFurnitureEntity().getId());
 
 		Job haulingJob = new Job(haulingJobType);
+		haulingJob.setJobPriority(priority);
 		haulingJob.setRequiredProfession(requiredProfession);
 		haulingJob.setTargetId(foundIngredient.getId());
 		haulingJob.setHaulingAllocation(haulingAllocation);
@@ -383,6 +399,7 @@ public class KitchenBehaviour extends RoomBehaviourComponent implements Telegrap
 
 	private void addCookingJob(CookingSession cookingSession) {
 		Job cookingJob = new Job(cookingJobType);
+		cookingJob.setJobPriority(priority);
 		cookingJob.setCookingRecipe(cookingSession.getRecipe());
 		cookingJob.setJobLocation(toGridPoint(cookingSession.getAssignedFurnitureEntity().getLocationComponent().getWorldPosition()));
 		cookingJob.setTargetId(cookingSession.getAssignedFurnitureEntity().getId());
@@ -454,6 +471,8 @@ public class KitchenBehaviour extends RoomBehaviourComponent implements Telegrap
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
+		super.writeTo(asJson, savedGameStateHolder);
+
 		asJson.put("cookingJobType", cookingJobType.getName());
 		asJson.put("transferLiquidJobType", transferLiquidJobType.getName());
 		asJson.put("haulingJobType", haulingJobType.getName());
@@ -492,6 +511,8 @@ public class KitchenBehaviour extends RoomBehaviourComponent implements Telegrap
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		super.readFrom(asJson, savedGameStateHolder, relatedStores);
+
 		this.cookingJobType = relatedStores.jobTypeDictionary.getByName(asJson.getString("cookingJobType"));
 		if (cookingJobType == null) {
 			throw new InvalidSaveException("Could not find job type with name " + asJson.getString("cookingJobType"));

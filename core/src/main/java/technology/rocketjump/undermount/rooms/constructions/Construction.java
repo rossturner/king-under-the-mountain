@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.rooms.constructions;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import org.apache.commons.lang3.EnumUtils;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
@@ -15,6 +16,7 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -69,11 +71,12 @@ public abstract class Construction implements Persistable {
 		return priority;
 	}
 
-	public void setPriority(JobPriority priority) {
+	public void setPriority(JobPriority priority, MessageDispatcher messageDispatcher) {
 		this.priority = priority;
 		if (constructionJob != null) {
 			constructionJob.setJobPriority(priority);
 		}
+		messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_PRIORITY_CHANGED);
 	}
 
 	public void allocationCancelled(HaulingAllocation allocation) {
