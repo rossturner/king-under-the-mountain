@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
@@ -154,6 +155,10 @@ public class PlantBehaviour implements BehaviourComponent {
 
 		if (gameTimeToApplyPests != null && gameTimeToApplyPests < gameContext.getGameClock().getCurrentGameTime()) {
 			Job removePestsJob = new Job(removePestsJobType);
+			// try to set priority based on room (farm plot) we are in
+			if (parentEntityTile.hasRoom() && parentEntityTile.getRoomTile().getRoom().getBehaviourComponent() instanceof Prioritisable) {
+				removePestsJob.setJobPriority(((Prioritisable)parentEntityTile.getRoomTile().getRoom().getBehaviourComponent()).getPriority());
+			}
 			removePestsJob.setTargetId(parentEntity.getId());
 			removePestsJob.setJobLocation(toGridPoint(parentEntity.getLocationComponent().getWorldPosition()));
 			messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, removePestsJob);

@@ -139,6 +139,7 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 								allocation.setTargetPositionType(HaulingAllocation.AllocationPositionType.ZONE);
 								allocation.setTargetPosition(accessTile.getTilePosition());
 
+								transferLiquidJob.setJobPriority(message.jobPriority);
 								transferLiquidJob.setJobLocation(requesterTile.getTilePosition());
 								transferLiquidJob.setTargetId(message.requesterEntity.getId());
 								transferLiquidJob.setTotalWorkToDo(WORK_TO_POUR_LIQUID);
@@ -182,9 +183,9 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 
 
 				Job moveLiquidInItemJob = new Job(moveLiquidInItemJobType);
+				moveLiquidInItemJob.setJobPriority(message.jobPriority);
 				moveLiquidInItemJob.setTargetId(message.requesterEntity.getId());
 				moveLiquidInItemJob.setJobLocation(toGridPoint(message.requesterPosition));
-				moveLiquidInItemJob.setJobPriority(message.jobPriority);
 
 				HaulingAllocation haulingAllocation = new HaulingAllocation();
 				haulingAllocation.setSourcePositionType(FLOOR); // May be overridden below

@@ -398,9 +398,9 @@ public class ConstructionManager implements Updatable {
 		}
 
 		Job constructionJob = new Job(jobType);
+		constructionJob.setJobPriority(furnitureConstruction.getPriority());
 		constructionJob.setJobLocation(furnitureConstruction.getPrimaryLocation());
 		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(furnitureConstruction));
-		constructionJob.setJobPriority(furnitureConstruction.getPriority());
 
 		furnitureConstruction.setConstructionJob(constructionJob);
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, constructionJob);

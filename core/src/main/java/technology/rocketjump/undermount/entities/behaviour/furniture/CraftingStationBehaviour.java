@@ -408,6 +408,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		if (allRequirementsMet) {
 			// Create crafting job to produce output
 			Job craftingJob = new Job(craftItemJobType);
+			craftingJob.setJobPriority(priority);
 			craftingJob.setJobState(ASSIGNABLE);
 			updateJobLocation(craftingJob, areaMap);
 			craftingJob.setTargetId(parentEntity.getId());
@@ -416,7 +417,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			craftingJob.setRequiredItemType(itemTypeRequired);
 			craftingJob.setCraftingRecipe(currentProductionAssignment.targetRecipe);
 			craftingJob.setTotalWorkToDo(WORK_TO_COMPLETE_CRAFTING); // FIXME #86 Total work to be data-driven
-			craftingJob.setJobPriority(priority);
 			messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, craftingJob);
 			this.craftingJob = craftingJob;
 		}
