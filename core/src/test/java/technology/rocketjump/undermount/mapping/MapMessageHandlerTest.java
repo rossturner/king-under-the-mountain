@@ -10,6 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
@@ -39,6 +40,8 @@ public class MapMessageHandlerTest {
 	private RoomFactory mockRoomfactory;
 	@Mock
 	private RoomStore mockRoomStore;
+	@Mock
+	private JobStore mockJobStore;
 
 	@Test
 	public void removeWall_joinsRegions_keepsZones() {
@@ -120,7 +123,7 @@ public class MapMessageHandlerTest {
 		map.addZone(rightEdgeZone);
 
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
-				mockInteractionStateContainer, mockRoomfactory, mockRoomStore);
+				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);

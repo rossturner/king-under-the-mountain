@@ -195,6 +195,7 @@ public class Job implements Persistable {
 				"jobId=" + jobId +
 				", type=" + type +
 				", jobState=" + jobState +
+				", priority=" + jobPriority.name() +
 				'}';
 	}
 

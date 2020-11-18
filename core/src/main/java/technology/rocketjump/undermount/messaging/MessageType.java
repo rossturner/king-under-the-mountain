@@ -24,10 +24,11 @@ public class MessageType {
 	public static final int TRIGGER_SCREEN_SHAKE = 206;
 
 	// GUI Messages
-	public static final int ROOM_PLACEMENT = 249;
-	public static final int AREA_SELECTION = 250;
-	public static final int GUI_SWITCH_VIEW = 251;
-	public static final int GUI_SWITCH_INTERACTION_MODE = 252;
+	public static final int ROOM_PLACEMENT = 248;
+	public static final int AREA_SELECTION = 249;
+	public static final int GUI_SWITCH_VIEW = 250;
+	public static final int GUI_SWITCH_INTERACTION_MODE = 251;
+	public static final int GUI_SWITCH_VIEW_MODE = 252;
 	public static final int GUI_CANCEL_CURRENT_VIEW = 253;
 	public static final int DESIGNATION_APPLIED = 254;
 	public static final int REMOVE_DESIGNATION = 255;
@@ -50,6 +51,7 @@ public class MessageType {
 	public static final int TOOLTIP_AREA_EXITED = 272;
 	public static final int CLEAR_ALL_TOOLTIPS = 273;
 	public static final int HINT_ACTION_TRIGGERED = 274;
+	public static final int REPLACE_JOB_PRIORITY = 275;
 	public static final int SHOW_SPECIFIC_CRAFTING = 278;
 
 	// i18n Messages
@@ -143,6 +145,7 @@ public class MessageType {
 	public static final int BRIDGE_PLACEMENT = 904;
 	public static final int REQUEST_BRIDGE_REMOVAL = 905;
 	public static final int DECONSTRUCT_BRIDGE = 906;
+	public static final int CONSTRUCTION_PRIORITY_CHANGED = 907;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;

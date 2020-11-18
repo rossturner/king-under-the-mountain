@@ -683,6 +683,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			}
 
 			Job removalJob = new Job(removalJobType);
+			removalJob.setJobPriority(message.jobPriority);
 			removalJob.setTotalWorkToDo(removalJobType.getWorkDuration());
 			removalJob.setJobLocation(message.getTileLocation());
 			jobStore.add(removalJob);

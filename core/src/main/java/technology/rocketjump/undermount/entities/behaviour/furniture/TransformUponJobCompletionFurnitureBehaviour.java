@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.TransformFurnitureMessage;
@@ -16,7 +17,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour.getAnyNavigableWorkspace;
 
-public class TransformUponJobCompletionFurnitureBehaviour extends FurnitureBehaviour implements OnJobCompletion {
+public class TransformUponJobCompletionFurnitureBehaviour extends FurnitureBehaviour implements OnJobCompletion, Prioritisable {
 
 	private Job jobToComplete;
 
@@ -32,6 +33,14 @@ public class TransformUponJobCompletionFurnitureBehaviour extends FurnitureBehav
 	}
 
 	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		if (jobToComplete != null) {
+			jobToComplete.setJobPriority(priority);
+		}
+	}
+
+	@Override
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
 
@@ -43,6 +52,7 @@ public class TransformUponJobCompletionFurnitureBehaviour extends FurnitureBehav
 			FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
 			if (navigableWorkspace != null) {
 				jobToComplete = new Job(relatedJobTypes.get(0));
+				jobToComplete.setJobPriority(priority);
 				jobToComplete.setTargetId(parentEntity.getId());
 				jobToComplete.setJobLocation(navigableWorkspace.getAccessedFrom());
 				messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, jobToComplete);

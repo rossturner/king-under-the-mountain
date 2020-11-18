@@ -24,6 +24,7 @@ import technology.rocketjump.undermount.messaging.ErrorType;
 import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
+import technology.rocketjump.undermount.ui.GameViewMode;
 import technology.rocketjump.undermount.ui.views.GuiViewName;
 import technology.rocketjump.undermount.ui.widgets.GameDialog;
 import technology.rocketjump.undermount.ui.widgets.GameDialogDictionary;
@@ -182,6 +183,7 @@ public class ScreenManager implements Telegraph {
 			case MessageType.SWITCH_SCREEN: {
 				// Reset interaction state so cursor is not left in an odd setting
 				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_INTERACTION_MODE, GameInteractionMode.DEFAULT);
+				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.DEFAULT);
 				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.DEFAULT_MENU);
 
 				String targetScreenName = (String) msg.extraInfo;

@@ -5,7 +5,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
+import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.ui.GameViewMode;
+import technology.rocketjump.undermount.ui.actions.ButtonAction;
 import technology.rocketjump.undermount.ui.actions.SwitchGuiViewAction;
 import technology.rocketjump.undermount.ui.widgets.ButtonStyle;
 import technology.rocketjump.undermount.ui.widgets.IconButton;
@@ -32,6 +36,16 @@ public class DefaultGuiView implements GuiView {
 		IconButton zones = iconButtonFactory.create("GUI.ZONES_LABEL", "bed", HexColors.get("#C48C7A"), ButtonStyle.DEFAULT);
 		zones.setAction(new SwitchGuiViewAction(GuiViewName.ROOM_SELECTION, messageDispatcher));
 		buttons.add(zones);
+
+		IconButton priority = iconButtonFactory.create("GUI.PRIORITY_LABEL", JobPriority.HIGHER.iconName, JobPriority.HIGHER.color, ButtonStyle.DEFAULT);
+		priority.setAction(new ButtonAction() {
+			@Override
+			public void onClick() {
+				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.PRIORITY_MENU);
+				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.JOB_PRIORITY);
+			}
+		});
+		buttons.add(priority);
 	}
 
 	@Override

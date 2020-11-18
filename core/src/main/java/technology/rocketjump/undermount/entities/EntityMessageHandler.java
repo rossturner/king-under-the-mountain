@@ -541,8 +541,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		newBehaviour.init(transformFurnitureMessage.furnitureEntity, messageDispatcher, gameContext);
 		transformFurnitureMessage.furnitureEntity.replaceBehaviourComponent(newBehaviour);
 
-		// Also re-applies any tags
+		// Also re-applies any tags e.g. behaviour type
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, transformFurnitureMessage.furnitureEntity);
+
+		if (oldBehaviour instanceof Prioritisable && transformFurnitureMessage.furnitureEntity.getBehaviourComponent() instanceof Prioritisable) {
+			((Prioritisable)transformFurnitureMessage.furnitureEntity.getBehaviourComponent()).setPriority(((Prioritisable)oldBehaviour).getPriority());
+		}
 
 		entityStore.add(transformFurnitureMessage.furnitureEntity);
 		furnitureTracker.furnitureAdded(transformFurnitureMessage.furnitureEntity);

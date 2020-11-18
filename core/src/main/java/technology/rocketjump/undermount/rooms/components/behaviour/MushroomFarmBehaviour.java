@@ -6,16 +6,14 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.behaviour.furniture.MushroomShockTankBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
-import technology.rocketjump.undermount.jobs.model.Job;
-import technology.rocketjump.undermount.jobs.model.JobState;
-import technology.rocketjump.undermount.jobs.model.JobType;
-import technology.rocketjump.undermount.jobs.model.Profession;
+import technology.rocketjump.undermount.jobs.model.*;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.TransformConstructionMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -43,7 +41,7 @@ import static technology.rocketjump.undermount.rooms.HaulingAllocation.Allocatio
  * and back again to shocked mushroom log constructions,
  * as well as swapping innoculated mushroom log constructions to shocked mushroom log constructions
  */
-public class MushroomFarmBehaviour extends RoomBehaviourComponent {
+public class MushroomFarmBehaviour extends RoomBehaviourComponent implements Prioritisable {
 
 	private final Set<Entity> innoculatedLogFurnitureEntities = new HashSet<>();
 	private final Set<Entity> shockTankFurnitureEntities = new HashSet<>();
@@ -55,6 +53,14 @@ public class MushroomFarmBehaviour extends RoomBehaviourComponent {
 
 	public MushroomFarmBehaviour(Room parent, MessageDispatcher messageDispatcher) {
 		super(parent, messageDispatcher);
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		for (Job haulingJob : haulingJobs) {
+			haulingJob.setJobPriority(jobPriority);
+		}
 	}
 
 	@Override
@@ -88,10 +94,11 @@ public class MushroomFarmBehaviour extends RoomBehaviourComponent {
 		haulingAllocation.setTargetId(shockTank.getId());
 		haulingAllocation.setTargetPositionType(FURNITURE);
 
-		Job haulingJob = new Job(haulingJobType);
 
 		FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(innoculatedLog, gameContext.getAreaMap());
 		if (navigableWorkspace != null) {
+			Job haulingJob = new Job(haulingJobType);
+			haulingJob.setJobPriority(priority);
 			haulingJob.setTargetId(innoculatedLog.getId());
 			haulingJob.setJobLocation(navigableWorkspace.getAccessedFrom());
 			haulingJob.setHaulingAllocation(haulingAllocation);
@@ -187,6 +194,8 @@ public class MushroomFarmBehaviour extends RoomBehaviourComponent {
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
+		super.writeTo(asJson, savedGameStateHolder);
+
 		if (!haulingJobs.isEmpty()) {
 			JSONArray jobsJson = new JSONArray();
 			for (Job job : haulingJobs) {
@@ -207,6 +216,7 @@ public class MushroomFarmBehaviour extends RoomBehaviourComponent {
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		super.readFrom(asJson, savedGameStateHolder, relatedStores);
 		JSONArray jobsJson = asJson.getJSONArray("jobs");
 		if (jobsJson != null) {
 			for (int cursor = 0; cursor < jobsJson.size(); cursor++) {

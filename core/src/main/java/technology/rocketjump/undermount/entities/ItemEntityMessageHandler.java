@@ -22,6 +22,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
@@ -223,11 +224,12 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		return null;
 	}
 
-	public static Job createHaulingJob(HaulingAllocation haulingAllocation, Entity itemEntity, JobType haulingJobType) {
+	public static Job createHaulingJob(HaulingAllocation haulingAllocation, Entity itemEntity, JobType haulingJobType, JobPriority jobPriority) {
 		Job haulingJob = new Job(haulingJobType);
 		haulingJob.setTargetId(itemEntity.getId());
 		haulingJob.setJobLocation(toGridPoint(itemEntity.getLocationComponent().getWorldOrParentPosition()));
 		haulingJob.setHaulingAllocation(haulingAllocation);
+		haulingJob.setJobPriority(jobPriority);
 		return haulingJob;
 	}
 
@@ -257,7 +259,7 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		}
 
 		if (haulingAllocation != null) {
-			Job haulingJob = createHaulingJob(haulingAllocation, message.getItemToBeMoved(), haulingJobType);
+			Job haulingJob = createHaulingJob(haulingAllocation, message.getItemToBeMoved(), haulingJobType, message.jobPriority);
 
 			Entity itemToBeMoved = message.getItemToBeMoved();
 			Entity containerEntity = itemToBeMoved.getLocationComponent().getContainerEntity();

@@ -9,10 +9,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
-import technology.rocketjump.undermount.jobs.model.Job;
-import technology.rocketjump.undermount.jobs.model.JobState;
-import technology.rocketjump.undermount.jobs.model.JobType;
-import technology.rocketjump.undermount.jobs.model.Profession;
+import technology.rocketjump.undermount.jobs.model.*;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingAllocationMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -25,7 +22,7 @@ import java.util.List;
 
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
-public class CollectItemFurnitureBehaviour extends FurnitureBehaviour {
+public class CollectItemFurnitureBehaviour extends FurnitureBehaviour implements Prioritisable {
 
 	private List<ItemTypeWithMaterial> itemsToCollect = new ArrayList<>();
 	private List<ItemTypeWithMaterial> inventoryAssignments = new ArrayList<>();
@@ -39,6 +36,14 @@ public class CollectItemFurnitureBehaviour extends FurnitureBehaviour {
 	public FurnitureBehaviour clone(MessageDispatcher messageDispatcher, GameContext gameContext) {
 		Logger.error(this.getClass().getSimpleName() + ".clone() not yet implemented");
 		return new CollectItemFurnitureBehaviour();
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		for (Job incomingHaulingJob : incomingHaulingJobs) {
+			incomingHaulingJob.setJobPriority(jobPriority);
+		}
 	}
 
 	@Override
@@ -92,6 +97,7 @@ public class CollectItemFurnitureBehaviour extends FurnitureBehaviour {
 		allocation.setTargetPosition(toGridPoint(parentEntity.getLocationComponent().getWorldPosition()));
 
 		Job haulingJob = new Job(haulingJobType);
+		haulingJob.setJobPriority(priority);
 		haulingJob.setTargetId(allocation.getHauledEntityId());
 		haulingJob.setHaulingAllocation(allocation);
 		haulingJob.setJobLocation(allocation.getSourcePosition());
@@ -243,4 +249,5 @@ public class CollectItemFurnitureBehaviour extends FurnitureBehaviour {
 			throw new InvalidSaveException("Could not find job type with name " + asJson.getString("haulingJobType"));
 		}
 	}
+
 }

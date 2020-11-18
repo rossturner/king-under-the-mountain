@@ -14,10 +14,12 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -41,6 +43,7 @@ public class FurnitureBehaviour implements BehaviourComponent {
 	protected List<JobType> relatedJobTypes = new ArrayList<>(0);
 	protected List<FurnitureType> relatedFurnitureTypes = new ArrayList<>(0);
 	protected List<GameMaterial> relatedMaterials = new ArrayList<>(0);
+	protected JobPriority priority = JobPriority.NORMAL;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
@@ -144,6 +147,14 @@ public class FurnitureBehaviour implements BehaviourComponent {
 		this.relatedMaterials = relatedMaterials;
 	}
 
+	public JobPriority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(JobPriority jobPriority) {
+		this.priority = jobPriority;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		if (!relatedItemTypes.isEmpty()) {
@@ -173,6 +184,9 @@ public class FurnitureBehaviour implements BehaviourComponent {
 				relatedMaterialsJson.add(material.getMaterialName());
 			}
 			asJson.put("relatedMaterials", relatedMaterialsJson);
+		}
+		if (!priority.equals(JobPriority.NORMAL)) {
+			asJson.put("priority", priority.name());
 		}
 	}
 
@@ -222,6 +236,7 @@ public class FurnitureBehaviour implements BehaviourComponent {
 				}
 			}
 		}
+		this.priority = EnumParser.getEnumValue(asJson, "priority", JobPriority.class, JobPriority.NORMAL);
 	}
 
 }

@@ -1,23 +1,35 @@
 package technology.rocketjump.undermount.rooms.constructions;
 
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Singleton
 public class ConstructionStore implements GameContextAware {
 
 	private static final List<Construction> emptyArray = new ArrayList<>();
+	private final MessageDispatcher messageDispatcher;
 
 	private List<Construction> iterableArray = new ArrayList<>();
 	private GameContext gameContext;
 	private int iterationCursor = 0;
+
+	@Inject
+	public ConstructionStore(MessageDispatcher messageDispatcher) {
+		this.messageDispatcher = messageDispatcher;
+	}
 
 	public void create(Construction construction) {
 
@@ -31,6 +43,15 @@ public class ConstructionStore implements GameContextAware {
 				return;
 			} else {
 				tile.setConstruction(construction);
+			}
+
+			if (tile.hasRoom()) {
+				if (tile.getRoomTile().getRoom().getBehaviourComponent() instanceof Prioritisable) {
+					Prioritisable prioritisable = (Prioritisable) tile.getRoomTile().getRoom().getBehaviourComponent();
+					if (!prioritisable.getPriority().equals(JobPriority.NORMAL)) {
+						construction.setPriority(prioritisable.getPriority(), messageDispatcher);
+					}
+				}
 			}
 		}
 
@@ -59,10 +80,15 @@ public class ConstructionStore implements GameContextAware {
 		construction.setState(ConstructionState.REMOVED);
 	}
 
+	public void priorityChanged() {
+		// Set to end of list to force refresh next update
+		iterationCursor = iterableArray.size();
+	}
+
 	public Construction next() {
 		if (iterationCursor >= iterableArray.size()) {
 			if (gameContext.getConstructions().size() > 0) {
-				iterableArray = new ArrayList<>(gameContext.getConstructions().values());
+				iterableArray = constructionsInPriorityOrder();
 			} else {
 				iterableArray = emptyArray;
 			}
@@ -75,6 +101,24 @@ public class ConstructionStore implements GameContextAware {
 			iterationCursor++;
 			return construction;
 		}
+	}
+
+	private List<Construction> constructionsInPriorityOrder() {
+		List<Construction> ordered = new ArrayList<>(gameContext.getConstructions().values().size());
+
+		Map<JobPriority, List<Construction>> byPriority = new HashMap<>();
+		for (Construction construction : gameContext.getConstructions().values()) {
+			byPriority.computeIfAbsent(construction.priority, a -> new ArrayList<>()).add(construction);
+		}
+
+		for (JobPriority priority : JobPriority.values()) {
+			if (priority.equals(JobPriority.DISABLED)) {
+				continue;
+			}
+			ordered.addAll(byPriority.getOrDefault(priority, emptyArray));
+		}
+
+		return ordered;
 	}
 
 	public Construction getById(Long targetConstructionId) {

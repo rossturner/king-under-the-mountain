@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.IntArray;
 import com.google.inject.Inject;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.FloorTypeDictionary;
 import technology.rocketjump.undermount.assets.RoomEdgeTypeDictionary;
 import technology.rocketjump.undermount.assets.WallQuadrantDictionary;
@@ -31,6 +32,7 @@ public class TerrainSpriteCache {
 	private final WallQuadrantDictionary wallQuadrantDictionary;
 	private final TileLayoutAtlas tileLayoutAtlas;
 	private final BridgeTileSpriteCache bridgeTileSpriteCache;
+	private final Sprite placeholderSprite;
 
 	@Inject
 	public TerrainSpriteCache(TextureAtlas textureAtlas, WallTypeDictionary wallTypeDictionary, FloorTypeDictionary floorTypeDictionary,
@@ -39,6 +41,7 @@ public class TerrainSpriteCache {
 		this.wallQuadrantDictionary = wallQuadrantDictionary;
 		this.tileLayoutAtlas = tileLayoutAtlas;
 		this.bridgeTileSpriteCache = bridgeTileSpriteCache;
+		this.placeholderSprite = textureAtlas.createSprite("placeholder");
 
 		// Populate wall sprites for each material
 		for (WallType wallType : wallTypeDictionary.getAllDefinitions()) {
@@ -101,8 +104,12 @@ public class TerrainSpriteCache {
 	}
 
 	public Sprite getWallSpriteForLayoutAndType(int wallQuadrantLayoutId, WallType wallType, long seed) {
+		if (!wallTypeIdToWallLayoutToSpriteMap.containsKey(wallType.getWallTypeId())) {
+			Logger.warn("No wall sprite for type " + wallType.getWallTypeName());
+			return placeholderSprite;
+		}
+
 		Map<Integer, Array<Sprite>> layoutToSpriteMap = wallTypeIdToWallLayoutToSpriteMap.get(wallType.getWallTypeId());
-		// FIXME #87 check entry exists for material, return default sprite otherwise
 		Array<Sprite> spritesForLayout = layoutToSpriteMap.get(wallQuadrantLayoutId);
 		if (spritesForLayout.size == 1) {
 			return spritesForLayout.get(0);
@@ -116,14 +123,21 @@ public class TerrainSpriteCache {
 		if (wallQuadrantLayoutId == 255) {
 			return null;
 		}
+		if (!roomEdgeTypeIdToLayoutToSpriteMap.containsKey(roomEdgeType.getRoomEdgeTypeId())) {
+			Logger.warn("No sprite for room edge type " + roomEdgeType.getRoomEdgeTypeName());
+			return placeholderSprite;
+		}
+
 		Map<Integer, Sprite> layoutToSpriteMap = roomEdgeTypeIdToLayoutToSpriteMap.get(roomEdgeType.getRoomEdgeTypeId());
-		// FIXME #87 check entry exists for material, return default sprite otherwise
 		return layoutToSpriteMap.get(wallQuadrantLayoutId);
 	}
 
 	public Sprite getFloorSpriteForType(FloorType floorType, long seed) {
 		Array<Sprite> sprites = floorTypeIdToFloorSprites.get(floorType.getFloorTypeId());
-		// FIXME #87 check entry exists for given material
+		if (sprites == null || sprites.isEmpty()) {
+			Logger.warn("No sprites for floor type " + floorType.getFloorTypeName());
+			return placeholderSprite;
+		}
 		int spriteNum = Math.abs((int)seed) % sprites.size;
 		return sprites.get(spriteNum);
 	}

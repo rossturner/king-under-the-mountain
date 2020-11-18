@@ -15,6 +15,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ProductionAssignmentRequestMessage;
@@ -24,6 +25,8 @@ import technology.rocketjump.undermount.settlement.LiquidTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 
 import java.util.*;
+
+import static technology.rocketjump.undermount.jobs.model.JobPriority.DISABLED;
 
 /**
  * This class is responsible for queueing up crafting and other production jobs across the settlement, to meet a set quota of required items and liquids
@@ -111,9 +114,10 @@ public class ProductionManager implements Updatable, Telegraph {
 	private boolean handle(ProductionAssignmentRequestMessage requestMessage) {
 		List<CraftingRecipe> recipesForCraftingType = craftingRecipeDictionary.getByCraftingType(requestMessage.craftingType);
 
-		List<CraftingRecipe> requiredCraftingRecipes = new LinkedList<>();
+		Map<JobPriority, List<CraftingRecipe>> requiredCraftingRecipes = new HashMap<>();
 		for (CraftingRecipe craftingRecipe : recipesForCraftingType) {
-			if (gameContext.getSettlementState().disabledCraftingRecipes.contains(craftingRecipe)) {
+			JobPriority recipePriority = getRecipePriority(craftingRecipe);
+			if (recipePriority.equals(DISABLED)) {
 				continue;
 			}
 
@@ -121,13 +125,13 @@ public class ProductionManager implements Updatable, Telegraph {
 				if (output.isLiquid()) {
 					float numRequired = gameContext.getSettlementState().requiredLiquidCounts.getOrDefault(output.getMaterial(), 0f);
 					if (numRequired > 0.1f) {
-						requiredCraftingRecipes.add(craftingRecipe);
+						requiredCraftingRecipes.computeIfAbsent(recipePriority, a -> new ArrayList<>()).add(craftingRecipe);
 						break;
 					}
 				} else {
 					int numRequired = gameContext.getSettlementState().requiredItemCounts.getOrDefault(output.getItemType(), 0);
 					if (numRequired > 0) {
-						requiredCraftingRecipes.add(craftingRecipe);
+						requiredCraftingRecipes.computeIfAbsent(recipePriority, a -> new ArrayList<>()).add(craftingRecipe);
 						break;
 					}
 				}
@@ -136,46 +140,58 @@ public class ProductionManager implements Updatable, Telegraph {
 		}
 
 
-		List<CraftingRecipe> availableCraftingRecipes = new ArrayList<>();
-		for (CraftingRecipe craftingRecipe : requiredCraftingRecipes) {
-			boolean allInputsAvailable = true;
-			for (QuantifiedItemTypeWithMaterial input : craftingRecipe.getInput()) {
-				if (input.isLiquid()) {
-					// Just assume all liquid available for now
-					break;
-				}
+		Map<JobPriority, List<CraftingRecipe>> availableCraftingRecipes = new HashMap<>();
+		for (Map.Entry<JobPriority, List<CraftingRecipe>> entry : requiredCraftingRecipes.entrySet()) {
+			JobPriority recipePriority = entry.getKey();
+			List<CraftingRecipe> craftingRecipes = entry.getValue();
+			for (CraftingRecipe craftingRecipe : craftingRecipes) {
+				boolean allInputsAvailable = true;
+				for (QuantifiedItemTypeWithMaterial input : craftingRecipe.getInput()) {
+					if (input.isLiquid()) {
+						// Just assume all liquid available for now
+						break;
+					}
 
-				List<Entity> unallocatedItems;
-				if (input.getMaterial() == null) {
-					unallocatedItems = itemTracker.getItemsByType(input.getItemType(), true);
-				} else {
-					unallocatedItems = itemTracker.getItemsByTypeAndMaterial(input.getItemType(), input.getMaterial(), true);
-				}
+					List<Entity> unallocatedItems;
+					if (input.getMaterial() == null) {
+						unallocatedItems = itemTracker.getItemsByType(input.getItemType(), true);
+					} else {
+						unallocatedItems = itemTracker.getItemsByTypeAndMaterial(input.getItemType(), input.getMaterial(), true);
+					}
 
-				int quantityFound = 0;
-				for (Entity unallocatedItem : unallocatedItems) {
-					quantityFound += unallocatedItem.getOrCreateComponent(ItemAllocationComponent.class).getNumUnallocated();
-					if (quantityFound >= input.getQuantity()) {
+					int quantityFound = 0;
+					for (Entity unallocatedItem : unallocatedItems) {
+						quantityFound += unallocatedItem.getOrCreateComponent(ItemAllocationComponent.class).getNumUnallocated();
+						if (quantityFound >= input.getQuantity()) {
+							break;
+						}
+					}
+					if (quantityFound < input.getQuantity()) {
+						// Not enough of this item
+						allInputsAvailable = false;
 						break;
 					}
 				}
-				if (quantityFound < input.getQuantity()) {
-					// Not enough of this item
-					allInputsAvailable = false;
-					break;
-				}
-			}
 
-			if (allInputsAvailable) {
-				availableCraftingRecipes.add(craftingRecipe);
+				if (allInputsAvailable) {
+					availableCraftingRecipes.computeIfAbsent(recipePriority, a -> new ArrayList<>()).add(craftingRecipe);
+				}
 			}
 		}
 
+		List<CraftingRecipe> callbackResult = new ArrayList<>();
 		if (!availableCraftingRecipes.isEmpty()) {
-			Collections.shuffle(availableCraftingRecipes, gameContext.getRandom());
+			// Add in priority order
+			for (JobPriority priority : JobPriority.values()) {
+				if (availableCraftingRecipes.containsKey(priority)) {
+					List<CraftingRecipe> recipeList = availableCraftingRecipes.get(priority);
+					Collections.shuffle(recipeList, gameContext.getRandom());
+					callbackResult.addAll(recipeList);
+				}
+			}
 		}
 
-		requestMessage.callback.productionAssignmentCallback(availableCraftingRecipes);
+		requestMessage.callback.productionAssignmentCallback(callbackResult);
 		return true;
 	}
 
@@ -219,20 +235,20 @@ public class ProductionManager implements Updatable, Telegraph {
 		}
 	}
 
-	public boolean isRecipeEnabled(CraftingRecipe craftingRecipe) {
+	public JobPriority getRecipePriority(CraftingRecipe craftingRecipe) {
 		if (gameContext != null) {
-			return !gameContext.getSettlementState().disabledCraftingRecipes.contains(craftingRecipe);
+			return gameContext.getSettlementState().craftingRecipePriority.getOrDefault(craftingRecipe, JobPriority.NORMAL);
 		} else {
-			return false;
+			return JobPriority.NORMAL;
 		}
 	}
 
-	public void setRecipeEnabled(CraftingRecipe craftingRecipe, boolean enabled) {
-		if (gameContext != null) {
-			if (enabled) {
-				gameContext.getSettlementState().disabledCraftingRecipes.remove(craftingRecipe);
+	public void setRecipePriority(CraftingRecipe craftingRecipe, JobPriority priority) {
+		if (gameContext != null && priority != null) {
+			if (JobPriority.NORMAL.equals(priority)) {
+				gameContext.getSettlementState().craftingRecipePriority.remove(craftingRecipe);
 			} else {
-				gameContext.getSettlementState().disabledCraftingRecipes.add(craftingRecipe);
+				gameContext.getSettlementState().craftingRecipePriority.put(craftingRecipe, priority);
 			}
 		}
 	}

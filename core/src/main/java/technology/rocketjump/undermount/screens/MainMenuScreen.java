@@ -59,6 +59,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 	private final PrivacyOptInMenu privacyOptInMenu;
 	private final Skin uiSkin;
 	private final I18nTextButton newVersionButton;
+	private final I18nTextButton viewRoadmapButton;
 	private SpriteBatch basicSpriteBatch = new SpriteBatch();
 
 	private OrthographicCamera camera = new OrthographicCamera();
@@ -117,6 +118,14 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 			@Override
 			public void clicked (InputEvent event, float x, float y) {
 				Gdx.net.openURI("https://rocketjumptechnology.itch.io/king-under-the-mountain");
+			}
+		});
+
+		viewRoadmapButton = i18nWidgetFactory.createTextButton("GUI.VIEW_ROADMAP");
+		viewRoadmapButton.addListener(new ClickListener() {
+			@Override
+			public void clicked (InputEvent event, float x, float y) {
+				Gdx.net.openURI("http://kingunderthemounta.in/roadmap/");
 			}
 		});
 
@@ -321,9 +330,10 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 
 		versionTable.clearChildren();
 		versionTable.left().bottom();
+
+		versionTable.add(viewRoadmapButton).colspan(3).left().pad(5).row();
+
 		String versionText = VERSION.toString();
-
-
 		if (GlobalSettings.DEV_MODE) {
 			versionText += " (DEV MODE ENABLED)";
 		}

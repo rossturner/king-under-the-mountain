@@ -1,6 +1,7 @@
 {
   "Fuel-Sack" : {
-    "fixedAmount" : 100
+    "fixedAmount" : 100,
+    "perSettler" : 0.0
   },
   "Ingredient-Malt-Sack" : {
     "perSettler" : 1.0
@@ -9,19 +10,24 @@
     "perSettler" : 1.0
   },
   "Product-Anvil" : {
-    "fixedAmount" : 1
+    "fixedAmount" : 1,
+    "perSettler" : 0.0
   },
   "Product-Barrel" : {
-    "fixedAmount" : 6
+    "fixedAmount" : 6,
+    "perSettler" : 0.0
   },
   "Product-Barrel-Hoops" : {
-    "fixedAmount" : 12
+    "fixedAmount" : 12,
+    "perSettler" : 0.0
   },
   "Product-Barrel-Staves" : {
-    "fixedAmount" : 15
+    "fixedAmount" : 15,
+    "perSettler" : 0.0
   },
   "Product-Bread-Dough" : {
-    "fixedAmount" : 30
+    "fixedAmount" : 30,
+    "perSettler" : 0.0
   },
   "Product-Bucket" : {
     "perSettler" : 0.2
@@ -30,37 +36,48 @@
     "perSettler" : 0.1
   },
   "Product-Liquid-Tank" : {
-    "fixedAmount" : 1
+    "fixedAmount" : 1,
+    "perSettler" : 0.0
   },
   "Product-Millstone" : {
-    "fixedAmount" : 1
+    "fixedAmount" : 1,
+    "perSettler" : 0.0
   },
   "Resource-Crushed-Vitriol" : {
-    "fixedAmount" : 200
+    "fixedAmount" : 200,
+    "perSettler" : 0.0
   },
   "Resource-Flour-Sack" : {
-    "fixedAmount" : 200
+    "fixedAmount" : 200,
+    "perSettler" : 0.0
   },
   "Resource-Gem" : {
-    "fixedAmount" : 200
+    "fixedAmount" : 200,
+    "perSettler" : 0.0
   },
   "Resource-Metal-Bloom" : {
-    "fixedAmount" : 20
+    "fixedAmount" : 20,
+    "perSettler" : 0.0
   },
   "Resource-Metal-Ingot" : {
-    "fixedAmount" : 400
+    "fixedAmount" : 400,
+    "perSettler" : 0.0
   },
   "Resource-Metal-Plate" : {
-    "fixedAmount" : 12
+    "fixedAmount" : 12,
+    "perSettler" : 0.0
   },
   "Resource-Ore-Crushed" : {
-    "fixedAmount" : 400
+    "fixedAmount" : 400,
+    "perSettler" : 0.0
   },
   "Resource-Planks" : {
-    "fixedAmount" : 160
+    "fixedAmount" : 160,
+    "perSettler" : 0.0
   },
   "Resource-Stone-Block" : {
-    "fixedAmount" : 300
+    "fixedAmount" : 300,
+    "perSettler" : 0.0
   },
   "Tool-Axe" : {
     "perSettler" : 0.15

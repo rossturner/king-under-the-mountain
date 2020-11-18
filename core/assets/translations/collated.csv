@@ -305,6 +305,7 @@ GUI.ORDERS.HARVEST_PLANTS,Harvest,,Ernten,"Récolter ",Raccogli,Cosechar,Colher,
 GUI.ORDERS.MINE,Mine,,Graben,Miner,Scava,Excavar,Escavar,Minerar,,Добывать,Mine,,Gräva,,,,採掘,我的,내
 GUI.ORDERS_LABEL,Orders,,Aufträge,"Ordres ",Ordini,"Pedidos ","Encomendas ",Ordens,,Приказы,Ordrer,,Order,,,,注文,命令,주문
 GUI.PLACE_BRIDGE.HINT,A bridge must cover both sides of the river and be at least 3x3 tiles in size,,Eine Brücke muss beide Seiten des Flusses bedecken und mindestens 3x3 Felder gross sein,Un pont doit couvrir les deux côtés de la rivière et avoir au moins 3x3 tuiles de taille,Un ponte deve coprire entrambi i lati del fiume e avere dimensioni di almeno 3x3 piastrelle,Un puente debe cubrir ambos lados del río y tener al menos 3x3 azulejos de tamaño,Uma ponte deve cobrir ambos os lados do rio e ter pelo menos 3x3 telhas de tamanho,,,Мост должен покрывать обе стороны реки и иметь размер не менее 3x3 плитки,En bro skal dække begge sider af floden og være mindst 3x3 fliser i størrelse,,En bro måste täcka båda sidor av floden och vara minst 3x3 plattor i storlek,,,,橋は川の両側を覆い、少なくとも3x3タイルのサイズでなければなりません,桥梁必须覆盖河流两侧，大小至少为 3x3 的瓷砖,다리는 강 양쪽을 덮어야 하며 크기는 3x3 이상이어야 합니다.
+GUI.PRIORITY_LABEL,Priority,,,,,,,,,,,,,,,,,,
 GUI.REMOVE_LABEL,Remove,,Entfernen,Retirer,Rimuovi,Eliminar,Remover,Remover,,Удалить,Fjern,,Ta bort,,,,[除去],删除,제거
 GUI.REMOVE_TILES,Remove tiles,,Felder entfernen,Retirer des cases,Rimuovi caselle,Eliminar baldosas,Remover mosaicos,Remover áreas,,Удалить квадраты,Fjern fliser,,Ta bort paneler,,,,タイルを削除,移除磁贴,타일 제거
 GUI.RESOURCE_MANAGEMENT.TITLE,Resources,,Ressourcen,Ressources,Risorse,Recursos,Recursos,,,людских,Ressourcer,,Resurser,,,,リソース,资源,리소스
@@ -317,6 +318,7 @@ GUI.SETTLER_MANAGEMENT.TITLE,Settlers,,Siedler,Les colons,Coloni,Colonos,Colonos
 GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,Total: {{count}},,Gesamt: {{count}},Total : {{count}},Totale: {{count}},Total: {{count}},Total: {{count}},,,Всего: {{count}},I alt: {{count}},,Totalt: {{count}},,,,合計：{{count}},共计：{{count}},합계: {{count}}
 GUI.SOUND_EFFECT_VOLUME,Sound effect volume,,Soundeffektlautstärke,Volume des effets sonores,Volume degli effetti sonori,Volumen de los efectos de sonido,Volume de efeitos sonoros,Volume dos efeitos sonoros,,Громкость эффектов,Lydeffektvolumen,,Ljudeffektvolym,,,,効果音量,音效音量,사운드 효과 볼륨
 GUI.UI_SCALE,UI scale:,,Interfacegröße,Dimension de l'interface:,Dimensione dell'interfaccia:,Tamaño de interfaz:,Tamanho da interface:,Tamanho da interface:,,Размер интерфейса:,UI-skala:,,Gränssnittskala:,,,,UI スケール:,UI 缩放：,UI 배율:
+GUI.VIEW_ROADMAP,View development roadmap,,,,,,,,,,,,,,,,,,
 GUI.ZONES_LABEL,Zones,,Zonen,Zones,Zone,Zonas,Áreas,Zonas,,Зоны,Zoner,,Zoner,,,,ゾーン,区域,영역
 
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,Going sober,,,,,,,,,,,,,,,,,,
@@ -347,6 +349,8 @@ HINT.BUTTON.DISMISS,Dismiss,,,,,,,,,,,,,,,,,,
 HINT.BUTTON.HINTS_ONLY,Hints only,,Nur Hinweise,Indications uniquement,Solo suggerimenti,Sólo sugerencias,Somente dicas,,,Только подсказки,Kun tip,,Endast tips,,,,,仅提示,힌트만
 HINT.BUTTON.NEXT,Next,,Neben,Prochain,Avanti,Próximo,Próximo,,,Следующий,Næste,,Nästa,,,,,下一个,다음
 HINT.BUTTON.TUTORIAL,Tutorial,,Tutorial,Tutoriel,Tutorial,Tutorial,Tutorial,,,Учебное пособие,Tutorial,,Handledning,,,,,教程,자습서
+HINT.OPEN_PRIORITY_MENU.1,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",,,,,,,,,,,,,,,,,,
+HINT.OPEN_PRIORITY_MENU.2,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",,,,,,,,,,,,,,,,,,
 HINT.PROGRESS.HEADER,Progress:,,,,,,,,,,,,,,,,,,
 HINT.TOOL_DEPLETED.AXE1,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,,,,,,,,,,,,,,,,,,
 HINT.TOOL_DEPLETED.AXE2,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",,,,,,,,,,,,,,,,,,
@@ -544,6 +548,13 @@ ORE.WOLFRAMITE.TOOLTIP,A metallic ore which complicates the smelting of tin. It 
 OTHER.BRICK.NOUN,Brick,,Ziegel,Brique,Mattone,Ladrillo,Tijolo,Tijolo,,Кирпич,Mursten,,Tegelsten,,,,レンガ,砖块,벽돌
 OTHER.CLAY_SOIL.NOUN,Clay soil,,Lehmboden,Argile,Terreno argilloso,Arcilla,Solo argiloso,Solo de argila,,Глинозем,Lerjord,,Lerjord,,,,土壌,黏土,클레이 토양
 OTHER.GRASS.NOUN,,,Gras,Herbe,Erba,Hierba,Erva,,,Трава,,,Gräs,,,,,,
+
+PRIORITY.DISABLED,Disabled,,,,,,,,,,,,,,,,,,
+PRIORITY.HIGHER,Higher,,,,,,,,,,,,,,,,,,
+PRIORITY.HIGHEST,Highest,,,,,,,,,,,,,,,,,,
+PRIORITY.LOWER,Lower,,,,,,,,,,,,,,,,,,
+PRIORITY.LOWEST,Lowest,,,,,,,,,,,,,,,,,,
+PRIORITY.NORMAL,Normal,,,,,,,,,,,,,,,,,,
 
 PRIVACY.OPT_IN.ACCEPT_BUTTON,I accept,,Ich stimme zu,J'accepte,Accetto,Acepto,Eu aceito.,,,Я принимаю,Jeg accepterer,,Jag accepterar,,,,同意する,我接受,나는 받아들인다.
 PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,Disable reporting,,Berichte deaktivieren,Désactiver les rapports,Disabilita la segnalazione,Deshabilitar informes,Desativar relatórios,,,Отключить отчетность,Deaktiver rapportering,,Inaktivera rapportering,,,,レポートを無効にする,禁用报告,보고 사용 안 함

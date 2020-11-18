@@ -76,7 +76,7 @@ public class JobRequestHandler implements Updatable, Telegraph, Disposable {
 		Vector2 entityWorldPosition = jobRequestMessage.getRequestingEntity().getLocationComponent().getWorldPosition();
 		GridPoint2 requesterLocation = new GridPoint2((int)Math.floor(entityWorldPosition.x), (int)Math.floor(entityWorldPosition.y));
 
-		List<Job> potentialJobs = new ArrayList<>();
+		Map<JobPriority, List<Job>> jobsByPriority = new EnumMap<>(JobPriority.class);
 
 		for (ProfessionsComponent.QuantifiedProfession professionToFindJobFor : professionsComponent.getActiveProfessions()) {
 			Collection<Job> byProfession = jobStore.getCollectionByState(JobState.ASSIGNABLE).getByProfession(professionToFindJobFor.getProfession()).values();
@@ -84,27 +84,28 @@ public class JobRequestHandler implements Updatable, Telegraph, Disposable {
 				continue;
 			}
 
-			List<Job> potentialJobsForThisProfession = new ArrayList<>();
-			Map<JobPriority, TreeMap<Float, Job>> jobsByDistanceByPriority = new LinkedHashMap<>();
-			for (JobPriority jobPriority : JobPriority.values()) {
-				jobsByDistanceByPriority.put(jobPriority, new TreeMap<>());
-			}
+			Map<Float, Job> jobsByDistance = new TreeMap<>();
 
 			for (Job currentJob : byProfession) {
 				if (currentJob.getAssignedToEntityId() == null) {
 					float distanceToJob = currentJob.getJobLocation().dst2(requesterLocation);
-					jobsByDistanceByPriority.get(currentJob.getJobPriority()).put(distanceToJob, currentJob);
+					jobsByDistance.put(distanceToJob, currentJob);
 				}
 			}
 
-			for (JobPriority priority : JobPriority.values()) {
-				TreeMap<Float, Job> jobsByDistance = jobsByDistanceByPriority.get(priority);
-				for (Job job : jobsByDistance.values()) {
-					potentialJobsForThisProfession.add(job);
-				}
+			for (Job job : jobsByDistance.values()) {
+				jobsByPriority.computeIfAbsent(job.getJobPriority(), a -> new ArrayList<>()).add(job);
 			}
+		}
 
-			potentialJobs.addAll(potentialJobsForThisProfession);
+		List<Job> potentialJobs = new ArrayList<>();
+		for (JobPriority jobPriority : JobPriority.values()) {
+			if (jobPriority.equals(JobPriority.DISABLED)) {
+				continue;
+			}
+			if (jobsByPriority.containsKey(jobPriority)) {
+				potentialJobs.addAll(jobsByPriority.get(jobPriority));
+			}
 		}
 
 		// FIXME Should maybe prioritise jobs that need equipment so they are worked on when a settler has the item,

@@ -187,7 +187,7 @@ public class ConstructionManager implements Updatable {
 							if (placedForConstructionAllocation != null) {
 								itemAllocationComponent.cancelAll(PLACED_FOR_CONSTRUCTION);
 							}
-							messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entity, entity, true, null));
+							messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entity, entity, true, furnitureConstruction.getPriority(), null));
 						} else {
 							furnitureConstruction.getPlacedItemAllocations().put(tileLocation, placedForConstructionAllocation);
 						}
@@ -212,11 +212,11 @@ public class ConstructionManager implements Updatable {
 							itemAllocationComponent.cancelAll(PLACED_FOR_CONSTRUCTION);
 						}
 						if (itemAllocationComponent.getNumUnallocated() > 0) {
-							messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entity, entity, true, null));
+							messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entity, entity, true, furnitureConstruction.getPriority(), null));
 						}
 						somethingNeedsRemoving = true;
 					} else if (entity.getType().equals(EntityType.PLANT)) {
-						messageDispatcher.dispatchMessage(MessageType.REQUEST_PLANT_REMOVAL, new RequestPlantRemovalMessage(entity, tileLocation, null));
+						messageDispatcher.dispatchMessage(MessageType.REQUEST_PLANT_REMOVAL, new RequestPlantRemovalMessage(entity, tileLocation, furnitureConstruction.getPriority(), null));
 						somethingNeedsRemoving = true;
 					}
 				}
@@ -306,7 +306,7 @@ public class ConstructionManager implements Updatable {
 			construction.getIncomingHaulingAllocations().add(allocation);
 
 			Entity targetItem = gameContext.getEntities().get(allocation.getItemAllocation().getTargetItemEntityId());
-			return createHaulingJob(allocation, targetItem, haulingJobType);
+			return createHaulingJob(allocation, targetItem, haulingJobType, construction.getPriority());
 		} else {
 			return null;
 		}
@@ -363,7 +363,7 @@ public class ConstructionManager implements Updatable {
 	private void createWallConstructionJob(WallConstruction wallConstruction) {
 		CraftingType craftingType = wallConstruction.getWallTypeToConstruct().getCraftingType();
 		Job constructionJob = jobFactory.constructionJob(craftingType);
-
+		constructionJob.setJobPriority(wallConstruction.getPriority());
 		constructionJob.setJobLocation(wallConstruction.getPrimaryLocation());
 		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(wallConstruction));
 		constructionJob.setWorkDoneSoFar(0);
@@ -377,7 +377,7 @@ public class ConstructionManager implements Updatable {
 	private void createBridgeConstructionJob(BridgeConstruction bridgeConstruction) {
 		CraftingType craftingType = bridgeConstruction.getBridge().getBridgeType().getCraftingType();
 		Job constructionJob = jobFactory.constructionJob(craftingType);
-
+		constructionJob.setJobPriority(bridgeConstruction.getPriority());
 		// TODO below was empty and caused a crash, but can't see how that would happen at the moment
 		constructionJob.setJobLocation(bridgeConstruction.placedItemAllocations.keySet().iterator().next());
 		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(bridgeConstruction));
@@ -398,6 +398,7 @@ public class ConstructionManager implements Updatable {
 		}
 
 		Job constructionJob = new Job(jobType);
+		constructionJob.setJobPriority(furnitureConstruction.getPriority());
 		constructionJob.setJobLocation(furnitureConstruction.getPrimaryLocation());
 		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(furnitureConstruction));
 

@@ -275,6 +275,7 @@ GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Retirer des ca
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Appuyez sur (R) pour pivoter les meubles,Pulsa (R) para rotar los muebles,Zum Rotieren der Möbel (R) drücken,Premi (R) per ruotare le suppellettili,Aperte (R) para girar a mobília,Premir (R) para rodar mobília,"Нажмите (R), чтобы повернуть мебель","Wciśnij (R), aby obrócić mebel",Druk op (R) om meubels te draaien,Tryck på (R) för att rotera möbler,Trykk på (R) for å rotere møbler,Bútor fordítása (R),Kierrä huonekaluja painamalla (R)
 GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,,,,,,,,,,,,,
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,,,,,,,,,,,,,
+GUI.PRIORITY_LABEL,This should be as short as possible,Priority,,,,,,,,,,,,,
 GUI.ZONES_LABEL,This should be as short as possible,Zones,Zones,Zonas,Zonen,Zone,Zonas,Áreas,Зоны,Strefy,Zones,Zoner,Soner,Zónák,Vyöhykkeet
 GUI.MUSIC_VOLUME,,Music volume:,Volume de la musique:,Volumen de la música:,Musiklautstärke:,Volume della musica:,Volume da música:,Volume da música:,Громкость музыки:,Głośność muzyki:,,,,,
 GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,Volume des effets sonores,Volumen de los efectos de sonido,Soundeffektlautstärke,Volume degli effetti sonori,Volume dos efeitos sonoros,Volume de efeitos sonoros,Громкость эффектов,Głośność efektów ,,,,,
@@ -293,6 +294,7 @@ GUI.GRAPHICS.RESOLUTION,,Resolution,Résolution,Resolución,Auflösung,Risoluzio
 GUI.GRAPHICS.FULLSCREEN,,Fullscreen,Plein écran,Pantalla completa,Vollbild,Schermo intero,Tela cheia,Ecrã inteiro,Во весь экран,Pełny ekran ,,,,,
 GUI.MINIMAP.LABEL,,Minimap,,,,,,,,,,,,,
 GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,,,,,,,,,,,,,
+GUI.VIEW_ROADMAP,,View development roadmap,,,,,,,,,,,,,
 GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,,,,,,,,,,,,,
 GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,,,,,,,,,,,,,
 GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},,,,,,,,,,,,,
@@ -353,6 +355,9 @@ HINT.PROGRESS.HEADER,,Progress:,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!",,,,,,,,,,,,,
 HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+HINT.OPEN_PRIORITY_MENU.1,,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",,,,,,,,,,,,,
+HINT.OPEN_PRIORITY_MENU.2,,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 HINT.TOOL_DEPLETED.AXE1,,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,,,,,,,,,,,,,
 HINT.TOOL_DEPLETED.AXE2,,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",,,,,,,,,,,,,
@@ -542,6 +547,13 @@ ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a 
 OTHER.BRICK.NOUN,,Brick,Brique,Ladrillo,Backstein,Mattone,Tijolo,Tijolo,Кирпич,Cegła,Baksteen,Tegelsten,Murstein,Tégla,Tiili
 OTHER.CLAY_SOIL.NOUN,,Clay soil,Argile,Arcilla,Lehmboden,Terreno argilloso,Solo de argila,Solo argiloso,Глинозем,Glina,Klei,Lerjord,Leire,Agyagos talaj,Savimaa
 OTHER.GRASS.NOUN,,,Herbe,Hierba,Gras,Erba,,Erva,Трава,Trawa,Gras,Gräs,Gress,,Ruoho
+,,,,,,,,,,,,,,,
+PRIORITY.HIGHEST,,Highest,,,,,,,,,,,,,
+PRIORITY.HIGHER,,Higher,,,,,,,,,,,,,
+PRIORITY.NORMAL,,Normal,,,,,,,,,,,,,
+PRIORITY.LOWER,,Lower,,,,,,,,,,,,,
+PRIORITY.LOWEST,,Lowest,,,,,,,,,,,,,
+PRIORITY.DISABLED,,Disabled,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,,,,,,,,,,,,,
 PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to",,,,,,,,,,,,,

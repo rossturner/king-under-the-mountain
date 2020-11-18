@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.mapping.MapMessageHandler;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
@@ -73,8 +74,11 @@ public class GameInteractionStateContainer implements GameContextAware {
 	private Vector2 startPoint;
 	private Vector2 currentPoint;
 	private GameInteractionMode interactionMode;
+	private GameViewMode gameViewMode = GameViewMode.DEFAULT;
 
 	public Room virtualRoom;
+
+	private JobPriority jobPriorityToApply = JobPriority.NORMAL;
 
 	// Furniture placement info
 	private RoomType currentRoomType;
@@ -573,6 +577,22 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 	public void setInteractionMode(GameInteractionMode interactionMode) {
 		this.interactionMode = interactionMode;
+	}
+
+	public GameViewMode getGameViewMode() {
+		return gameViewMode;
+	}
+
+	public void setGameViewMode(GameViewMode gameViewMode) {
+		this.gameViewMode = gameViewMode;
+	}
+
+	public JobPriority getJobPriorityToApply() {
+		return jobPriorityToApply;
+	}
+
+	public void setJobPriorityToApply(JobPriority jobPriorityToApply) {
+		this.jobPriorityToApply = jobPriorityToApply;
 	}
 
 	public Entity getFurnitureEntityToPlace() {

@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -37,7 +38,7 @@ import static technology.rocketjump.undermount.jobs.model.JobState.REMOVED;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.ui.i18n.I18nTranslator.oneDecimalFormat;
 
-public class InnoculationLogBehaviour extends FurnitureBehaviour implements Destructible, SelectableDescription {
+public class InnoculationLogBehaviour extends FurnitureBehaviour implements Destructible, SelectableDescription, Prioritisable {
 
 	private JobType haulingJobType;
 	private JobType innoculationJobType;
@@ -63,6 +64,17 @@ public class InnoculationLogBehaviour extends FurnitureBehaviour implements Dest
 			if (outstandingJob != null && !outstandingJob.getJobState().equals(REMOVED)) {
 				messageDispatcher.dispatchMessage(MessageType.JOB_CANCELLED, outstandingJob);
 			}
+		}
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		if (incomingHaulingJob != null) {
+			incomingHaulingJob.setJobPriority(jobPriority);
+		}
+		if (innoculationJob != null) {
+			innoculationJob.setJobPriority(jobPriority);
 		}
 	}
 
@@ -157,6 +169,7 @@ public class InnoculationLogBehaviour extends FurnitureBehaviour implements Dest
 		allocation.setTargetPosition(toGridPoint(parentEntity.getLocationComponent().getWorldPosition()));
 
 		Job haulingJob = new Job(haulingJobType);
+		haulingJob.setJobPriority(priority);
 		haulingJob.setTargetId(allocation.getHauledEntityId());
 		haulingJob.setHaulingAllocation(allocation);
 		haulingJob.setJobLocation(allocation.getSourcePosition());
@@ -170,6 +183,7 @@ public class InnoculationLogBehaviour extends FurnitureBehaviour implements Dest
 
 	private void createInnoculationJob() {
 		innoculationJob = new Job(innoculationJobType);
+		innoculationJob.setJobPriority(priority);
 		innoculationJob.setTargetId(parentEntity.getId());
 		innoculationJob.setJobLocation(toGridPoint(parentEntity.getLocationComponent().getWorldPosition()));
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, innoculationJob);

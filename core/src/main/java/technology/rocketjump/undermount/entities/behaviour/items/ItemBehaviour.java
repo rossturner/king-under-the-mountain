@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
@@ -62,7 +63,7 @@ public class ItemBehaviour implements BehaviourComponent {
 
 			if (!inStockpile) {
 				// Not in a stockpile and some unallocated, so see if we can be hauled to a stockpile
-				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, null));
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, JobPriority.NORMAL, null));
 			}
 
 		}

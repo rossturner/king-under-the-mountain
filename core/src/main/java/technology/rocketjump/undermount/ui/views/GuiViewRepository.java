@@ -24,11 +24,12 @@ public class GuiViewRepository implements Telegraph {
 							 BuildDoorsGuiView buildDoorsGuiView, DoorwaySelectedGuiView doorwaySelectedGuiView, TileSelectedGuiView tileSelectedGuiView,
 							 RoomSelectedGuiView roomSelectedGuiView, StockpileSelectionGuiView stockpileSelectionGuiView,
 							 ChangeProfessionGuiView changeProfessionGuiView, BuildBridgeGuiView buildBridgeGuiView,
-							 BridgeSelectedGuiView bridgeSelectedGuiView,
+							 BridgeSelectedGuiView bridgeSelectedGuiView, PrioritiesGuiView prioritiesGuiView,
 							 MessageDispatcher messageDispatcher) {
 		this(messageDispatcher, defaultGuiView, orderSelectionGuiView, roomSelectionGuiView, roomSizingGuiView, constructionSelectedGuiView,
 				furnitureSelectionGuiView, entitySelectedGuiView, buildMenuGuiView, buildWallsGuiView, buildDoorsGuiView, doorwaySelectedGuiView,
-				tileSelectedGuiView, roomSelectedGuiView, stockpileSelectionGuiView, changeProfessionGuiView, buildBridgeGuiView, bridgeSelectedGuiView);
+				tileSelectedGuiView, roomSelectedGuiView, stockpileSelectionGuiView, changeProfessionGuiView, buildBridgeGuiView,
+				bridgeSelectedGuiView, prioritiesGuiView);
 	}
 
 	public GuiViewRepository(MessageDispatcher messageDispatcher, GuiView... views) {

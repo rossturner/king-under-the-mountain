@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.rooms.constructions;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import org.apache.commons.lang3.EnumUtils;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
@@ -12,8 +13,10 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.tags.ConstructionOverrideTag;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -41,6 +44,7 @@ public abstract class Construction implements Persistable {
 	public abstract ConstructionType getConstructionType();
 
 	protected ConstructionState state = ConstructionState.CLEARING_WORK_SITE;
+	protected JobPriority priority = JobPriority.NORMAL;
 	protected Job constructionJob;
 	protected List<HaulingAllocation> incomingHaulingAllocations = new ArrayList<>();
 	protected Map<GridPoint2, ItemAllocation> placedItemAllocations = new HashMap<>();
@@ -62,6 +66,18 @@ public abstract class Construction implements Persistable {
 	}
 
 	public abstract Entity getEntity();
+
+	public JobPriority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(JobPriority priority, MessageDispatcher messageDispatcher) {
+		this.priority = priority;
+		if (constructionJob != null) {
+			constructionJob.setJobPriority(priority);
+		}
+		messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_PRIORITY_CHANGED);
+	}
 
 	public void allocationCancelled(HaulingAllocation allocation) {
 		incomingHaulingAllocations.remove(allocation);
@@ -174,6 +190,7 @@ public abstract class Construction implements Persistable {
 		JSONObject asJson = new JSONObject(true);
 		asJson.put("_type", getConstructionType().name());
 		asJson.put("id", constructionId);
+		asJson.put("priority", priority.name());
 
 		if (!state.equals(ConstructionState.SELECTING_MATERIALS)) {
 			asJson.put("state", state.name());
@@ -233,6 +250,7 @@ public abstract class Construction implements Persistable {
 			throw new InvalidSaveException("Could not find construction ID");
 		}
 		this.state = EnumParser.getEnumValue(asJson, "state", ConstructionState.class, ConstructionState.SELECTING_MATERIALS);
+		this.priority = EnumParser.getEnumValue(asJson, "priority", JobPriority.class, JobPriority.NORMAL);
 		Long constructionJobId = asJson.getLong("constructionJob");
 		if (constructionJobId != null) {
 			this.constructionJob = savedGameStateHolder.jobs.get(constructionJobId);

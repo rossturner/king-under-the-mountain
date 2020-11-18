@@ -3,6 +3,8 @@ package technology.rocketjump.undermount.screens;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -10,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.crafting.CraftingRecipeDictionary;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
@@ -23,11 +26,11 @@ import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedI
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
-import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.RoomType;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
 import technology.rocketjump.undermount.settlement.ItemTracker;
@@ -87,6 +90,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private final Set<GameMaterial> expandedLiquidMaterials = new HashSet<>();
 	private final ItemTracker itemTracker;
 	private final LiquidTracker liquidTracker;
+	private final List<ToggleButtonSet.ToggleButtonDefinition> buttonDefinitions;
 
 	@Inject
 	public CraftingManagementScreen(UserPreferences userPreferences, MessageDispatcher messageDispatcher,
@@ -96,7 +100,8 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									RoomTypeDictionary roomTypeDictionary, CraftingRecipeDictionary craftingRecipeDictionary,
 									ClickableTableFactory clickableTableFactory,
 									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory, ProductionManager productionManager,
-									SettlerTracker settlerTracker, ItemTracker itemTracker, LiquidTracker liquidTracker, ItemTypeDictionary itemTypeDictionary) {
+									SettlerTracker settlerTracker, ItemTracker itemTracker, LiquidTracker liquidTracker,
+									ItemTypeDictionary itemTypeDictionary, TextureAtlasRepository textureAtlasRepository) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
@@ -118,6 +123,16 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		for (CraftingType craftingType : craftingTypeDictionary.getAll()) {
 			displayedCraftingTypes.add(craftingType);
 			craftingStationsByType.put(craftingType, new ArrayList<>());
+		}
+
+		buttonDefinitions = new ArrayList<>();
+		TextureAtlas guiTextureAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
+		for (JobPriority jobPriority : Arrays.asList(JobPriority.DISABLED, JobPriority.LOWER, JobPriority.NORMAL, JobPriority.HIGHER)) {
+			Sprite sprite = guiTextureAtlas.createSprite(jobPriority.iconName);
+			sprite.scale(0.5f);
+			sprite.setSize(sprite.getWidth() / 2f, sprite.getHeight() / 2f);
+			sprite.setColor(jobPriority.color);
+			buttonDefinitions.add(new ToggleButtonSet.ToggleButtonDefinition(jobPriority.name(), sprite));
 		}
 
 		messageDispatcher.addListener(this, MessageType.SHOW_SPECIFIC_CRAFTING);
@@ -444,26 +459,19 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			}
 		}
 
-		IconOnlyButton enableDisableButton;
-		boolean recipeEnabled = productionManager.isRecipeEnabled(craftingRecipe);
-		if (recipeEnabled) {
-			enableDisableButton = iconButtonFactory.create("check-mark");
-			enableDisableButton.setForegroundColor(HexColors.POSITIVE_COLOR);
-			enableDisableButton.setAction(() -> {
-				productionManager.setRecipeEnabled(craftingRecipe, false);
-				reset();
-			});
-		} else {
-			enableDisableButton = iconButtonFactory.create("pause-button");
-			enableDisableButton.setForegroundColor(HexColors.NEGATIVE_COLOR);
-			enableDisableButton.setAction(() -> {
-				productionManager.setRecipeEnabled(craftingRecipe, true);
-				reset();
-			});
-		}
+		ToggleButtonSet priorityToggle = new ToggleButtonSet(uiSkin, buttonDefinitions, (value) -> {
+			JobPriority selectedPriority = JobPriority.valueOf(value);
+			productionManager.setRecipePriority(craftingRecipe, selectedPriority);
+		});
+		priorityToggle.setChecked(productionManager.getRecipePriority(craftingRecipe).name());
 
+		VerticalGroup priorityStack = new VerticalGroup();
+		priorityStack.addActor(new Label(i18nTranslator.getTranslatedString("GUI.PRIORITY_LABEL").toString(), uiSkin));
+		priorityStack.addActor(priorityToggle);
+		priorityStack.align(Align.left);
+		priorityStack.pad(2);
 
-		clickableRow.add(enableDisableButton).right().pad(10).padRight(INDENT_WIDTH * 3).expandX();
+		clickableRow.add(priorityStack).right().pad(10).padRight(INDENT_WIDTH * 3).expandX();
 
 		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - (INDENT_WIDTH * 2));
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();

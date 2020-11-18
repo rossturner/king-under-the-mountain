@@ -1,18 +1,24 @@
 package technology.rocketjump.undermount.ui.views;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.assets.TextureAtlasRepository;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.environment.model.GameSpeed;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.messaging.ErrorType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -28,8 +34,8 @@ import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.ImageButton;
 import technology.rocketjump.undermount.ui.widgets.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType.CROP;
 import static technology.rocketjump.undermount.ui.Selectable.SelectableType.ROOM;
@@ -55,11 +61,12 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 	private Map<String, PlantSpecies> cropMapping = new HashMap<>();
 	private GameContext gameContext;
 	private ImageButton changeRoomNameButton;
+	private List<ToggleButtonSet.ToggleButtonDefinition> priorityButtonDefinitions;
 
 	@Inject
 	public RoomSelectedGuiView(GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher, I18nTranslator i18nTranslator,
 							   GameInteractionStateContainer gameInteractionStateContainer, GameDialogDictionary gameDialogDictionary, ImageButtonFactory imageButtonFactory, IconButtonFactory iconButtonFactory,
-							   RoomStore roomStore, PlantSpeciesDictionary plantSpeciesDictionary) {
+							   RoomStore roomStore, PlantSpeciesDictionary plantSpeciesDictionary, TextureAtlasRepository textureAtlasRepository) {
 		uiSkin = guiSkinRepository.getDefault();
 		this.messageDispatcher = messageDispatcher;
 		this.i18nTranslator = i18nTranslator;
@@ -144,6 +151,17 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 				messageDispatcher.dispatchMessage(MessageType.SHOW_DIALOG, textInputDialog);
 			}
 		});
+
+		priorityButtonDefinitions = new ArrayList<>();
+		// TODO might want to pull the below code out somewhere else
+		TextureAtlas guiTextureAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
+		for (JobPriority jobPriority : Arrays.asList(JobPriority.LOWEST, JobPriority.LOWER, JobPriority.NORMAL, JobPriority.HIGHER, JobPriority.HIGHEST)) {
+			Sprite sprite = guiTextureAtlas.createSprite(jobPriority.iconName);
+			sprite.scale(0.5f);
+			sprite.setSize(sprite.getWidth() / 2f, sprite.getHeight() / 2f);
+			sprite.setColor(jobPriority.color);
+			priorityButtonDefinitions.add(new ToggleButtonSet.ToggleButtonDefinition(jobPriority.name(), sprite));
+		}
 	}
 
 	@Override
@@ -195,15 +213,6 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 			descriptionTable.add(changeRoomNameButton).left().padLeft(6);
 			descriptionTable.add(new Container<>()).expandX().row();
 
-			for (RoomComponent roomComponent : room.getAllComponents()) {
-				if (roomComponent instanceof SelectableDescription) {
-					for (I18nText description : ((SelectableDescription) roomComponent).getDescription(i18nTranslator, gameContext)) {
-						descriptionTable.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).colspan(3).left().row();
-					}
-				}
-			}
-
-
 			FarmPlotComponent farmPlotComponent = room.getComponent(FarmPlotComponent.class);
 			if (farmPlotComponent != null) {
 				// Add planting season and crop controls
@@ -212,11 +221,32 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 				descriptionTable.add(cropSelect).colspan(3).left().row();
 			}
 
-//			FarmPlotBehaviour farmPlotBehaviour = room.getComponent(FarmPlotBehaviour.class);
-//			if (GlobalSettings.DEV_MODE && farmPlotBehaviour != null) {
-//				String farmDebug = "Outstanding jobs: " + farmPlotBehaviour.numOutstandingJobs();
-//				descriptionTable.add(new Label(farmDebug, uiSkin)).colspan(2).left().row();
-//			}
+			for (RoomComponent roomComponent : room.getAllComponents()) {
+				if (roomComponent instanceof SelectableDescription) {
+					for (I18nText description : ((SelectableDescription) roomComponent).getDescription(i18nTranslator, gameContext)) {
+						descriptionTable.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).colspan(3).left().row();
+					}
+				} else if (roomComponent instanceof Prioritisable) {
+					Prioritisable prioritisableComponent = (Prioritisable)roomComponent;
+
+
+					ToggleButtonSet priorityToggle = new ToggleButtonSet(uiSkin, priorityButtonDefinitions, (value) -> {
+						JobPriority selectedPriority = JobPriority.valueOf(value);
+						prioritisableComponent.setPriority(selectedPriority);
+					});
+					priorityToggle.setChecked(prioritisableComponent.getPriority().name());
+
+					Table priorityStack = new Table();
+					priorityStack.add(new Label(i18nTranslator.getTranslatedString("GUI.PRIORITY_LABEL").toString(), uiSkin)).left().row();
+					priorityStack.add(priorityToggle).left().row();
+					priorityStack.align(Align.left);
+					priorityStack.pad(2);
+
+					descriptionTable.add(priorityStack).colspan(3).left().row();
+				}
+			}
+
+
 		}
 	}
 

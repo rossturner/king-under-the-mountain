@@ -88,6 +88,7 @@ public class GuiContainer implements Telegraph {
 		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_VIEW);
 		messageDispatcher.addListener(this, MessageType.GUI_SCALE_CHANGED);
 		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_INTERACTION_MODE);
+		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_VIEW_MODE);
 		messageDispatcher.addListener(this, MessageType.GUI_CANCEL_CURRENT_VIEW);
 
 		this.guiViewRepository = guiViewRepository;
@@ -157,6 +158,11 @@ public class GuiContainer implements Telegraph {
 				interactionStateContainer.setInteractionMode(targetMode);
 				return true;
 			}
+			case MessageType.GUI_SWITCH_VIEW_MODE: {
+				GameViewMode targetMode = (GameViewMode)msg.extraInfo;
+				interactionStateContainer.setGameViewMode(targetMode);
+				return true;
+			}
 			case MessageType.GUI_CANCEL_CURRENT_VIEW: {
 				GuiViewName parentViewName = currentView.getParentViewName();
 				if (parentViewName != null) {
@@ -209,6 +215,9 @@ public class GuiContainer implements Telegraph {
 			Logger.error("No GuiView defined for " + viewName.name());
 		} else {
 			this.currentViewName = viewName;
+			if (currentView != null) {
+				currentView.onClose();
+			}
 			containerTable.clear();
 			newView.populate(containerTable);
 		}

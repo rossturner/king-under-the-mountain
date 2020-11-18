@@ -6,6 +6,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -16,6 +17,7 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeci
 import technology.rocketjump.undermount.environment.model.Season;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -39,7 +41,7 @@ import java.util.Set;
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage.PlantSpeciesHarvestType.FARMING;
 import static technology.rocketjump.undermount.jobs.model.JobState.REMOVED;
 
-public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCreatedCallback {
+public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCreatedCallback, Prioritisable {
 
 	private Map<GridPoint2, Job> jobsByTiles = new HashMap<>();
 	private JobType tillingJobType;
@@ -103,6 +105,14 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 		Job jobAtLocation = jobsByTiles.remove(location);
 		if (jobAtLocation != null && messageDispatcher != null) {
 			messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, jobAtLocation);
+		}
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		super.setPriority(jobPriority);
+		for (Job job : jobsByTiles.values()) {
+			job.setJobPriority(jobPriority);
 		}
 	}
 
@@ -187,14 +197,14 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 				ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
 				if (itemAllocationComponent.getNumUnallocated() > 0) {
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING,
-							new RequestHaulingMessage(entity, entity, true, this));
+							new RequestHaulingMessage(entity, entity, true, priority, this));
 				}
 				return true;
 			} else if (entity.getType().equals(EntityType.PLANT)) {
 				PlantEntityAttributes plantAttributes = (PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				if (farmPlotComponent.getSelectedCrop() == null || !plantAttributes.getSpecies().equals(farmPlotComponent.getSelectedCrop())) {
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_PLANT_REMOVAL,
-							new RequestPlantRemovalMessage(entity, tile.getTilePosition(), this));
+							new RequestPlantRemovalMessage(entity, tile.getTilePosition(), priority, this));
 					return true;
 				}
 			}
@@ -211,6 +221,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 
 		if (desiredFloorType != null && desiredMaterial != null && !currentFloorType.equals(desiredFloorType)) {
 			Job tillingJob = new Job(tillingJobType);
+			tillingJob.setJobPriority(priority);
 			tillingJob.setJobLocation(tile.getTilePosition());
 			tillingJob.setReplacementFloorType(desiredFloorType);
 			tillingJob.setReplacementFloorMaterial(desiredMaterial);
@@ -225,6 +236,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 
 	private void plantSeedJob(MapTile tile, FarmPlotComponent farmPlotComponent, MessageDispatcher messageDispatcher) {
 		Job plantSeedJob = new Job(plantingJobType);
+		plantSeedJob.setJobPriority(priority);
 		plantSeedJob.setJobLocation(tile.getTilePosition());
 
 		PlantSpeciesSeed seed = farmPlotComponent.getSelectedCrop().getSeed();
@@ -292,6 +304,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 			PlantSpeciesGrowthStage currentGrowthStage = attributes.getSpecies().getGrowthStages().get(attributes.getGrowthStageCursor());
 			if (FARMING.equals(currentGrowthStage.getHarvestType())) {
 				Job harvestJob = new Job(harvestingJobType);
+				harvestJob.setJobPriority(priority);
 				harvestJob.setJobLocation(tile.getTilePosition());
 				harvestJob.setTargetId(plantInTile.getId());
 
@@ -319,6 +332,8 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
+		super.writeTo(asJson, savedGameStateHolder);
+
 		if (!jobsByTiles.isEmpty()) {
 			JSONArray jobsJson = new JSONArray();
 			for (Job job : jobsByTiles.values()) {
@@ -335,6 +350,8 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		super.readFrom(asJson,savedGameStateHolder, relatedStores);
+
 		JSONArray jobsJson = asJson.getJSONArray("jobs");
 		if (jobsJson != null) {
 			for (int cursor = 0; cursor < jobsJson.size(); cursor++) {
