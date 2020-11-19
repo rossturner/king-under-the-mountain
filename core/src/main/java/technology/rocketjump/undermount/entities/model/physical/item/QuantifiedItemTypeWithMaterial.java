@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 
@@ -96,6 +97,22 @@ public class QuantifiedItemTypeWithMaterial implements ChildPersistable {
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		QuantifiedItemTypeWithMaterial that = (QuantifiedItemTypeWithMaterial) o;
+		return quantity == that.quantity &&
+				liquid == that.liquid &&
+				Objects.equals(itemType, that.itemType) &&
+				Objects.equals(material, that.material);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(itemType, quantity, material, liquid);
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		if (itemType != null) {
@@ -108,6 +125,17 @@ public class QuantifiedItemTypeWithMaterial implements ChildPersistable {
 		}
 		sb.append(" x").append(quantity);
 		return sb.toString();
+	}
+
+	public boolean matches(Entity entity) {
+		if (entity.getType().equals(ITEM)) {
+			ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+			return (this.itemType == null || attributes.getItemType().equals(this.itemType)) &&
+					(!this.liquid) &&
+					(this.material == null || attributes.getMaterial(this.material.getMaterialType()).equals(this.material));
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -154,16 +182,5 @@ public class QuantifiedItemTypeWithMaterial implements ChildPersistable {
 		}
 
 		this.liquid = asJson.getBooleanValue("liquid");
-	}
-
-	public boolean matches(Entity entity) {
-		if (entity.getType().equals(ITEM)) {
-			ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-			return (this.itemType == null || attributes.getItemType().equals(this.itemType)) &&
-					(!this.liquid) &&
-					(this.material == null || attributes.getMaterial(this.material.getMaterialType()).equals(this.material));
-		} else {
-			return false;
-		}
 	}
 }
