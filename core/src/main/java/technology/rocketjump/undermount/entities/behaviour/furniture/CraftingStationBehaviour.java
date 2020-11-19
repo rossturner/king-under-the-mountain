@@ -9,6 +9,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
+import technology.rocketjump.undermount.crafting.model.CraftingRecipeMaterialSelection;
 import technology.rocketjump.undermount.entities.ItemEntityMessageHandler;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
@@ -303,8 +304,18 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 
 		// Clear temporary itemAllocation to avoid issues with lambdas
 		haulingAllocation = null;
+		GameMaterial requiredMaterial = requirement.getMaterial();
+		if (requiredMaterial == null) {
+			Optional<GameMaterial> selection = gameContext.getSettlementState().craftingRecipeMaterialSelections.computeIfAbsent(this.currentProductionAssignment.targetRecipe,
+					a -> new CraftingRecipeMaterialSelection(this.currentProductionAssignment.targetRecipe))
+					.getSelection(requirement);
+			if (selection.isPresent()) {
+				requiredMaterial = selection.get();
+			}
+		}
+
 		messageDispatcher.dispatchMessage(MessageType.REQUEST_HAULING_ALLOCATION,
-				new RequestHaulingAllocationMessage(parentEntity, parentEntity.getLocationComponent().getWorldOrParentPosition(), requirement.getItemType(), requirement.getMaterial(),
+				new RequestHaulingAllocationMessage(parentEntity, parentEntity.getLocationComponent().getWorldOrParentPosition(), requirement.getItemType(), requiredMaterial,
 				true, amountRequired, null, this));
 
 		if (haulingAllocation != null) {
@@ -388,7 +399,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				if (inventoryEntry.entity.getType().equals(EntityType.ITEM)) {
 					ItemEntityAttributes itemAttributes = (ItemEntityAttributes) inventoryEntry.entity.getPhysicalEntityComponent().getAttributes();
 					if (itemAttributes.getItemType().equals(requirement.getItemType())) {
-						if (requirement.getMaterial() == null || itemAttributes.getMaterial(itemAttributes.getItemType().getPrimaryMaterialType()).equals(requirement.getMaterial())) {
+						if (requirement.getMaterial() == null || itemAttributes.getPrimaryMaterial().equals(requirement.getMaterial())) {
 							quantityInInventory += itemAttributes.getQuantity();
 							if (quantityInInventory >= requirement.getQuantity()) {
 								thisRequirementMet = true;

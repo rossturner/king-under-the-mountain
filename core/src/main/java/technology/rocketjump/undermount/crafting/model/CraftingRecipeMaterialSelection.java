@@ -54,7 +54,11 @@ public class CraftingRecipeMaterialSelection implements ChildPersistable {
 		for (int index = 0; index <= parent.getInput().size(); index++) {
 			if (inputRequirement.equals(parent.getInput().get(index))) {
 				materialOverrides.remove(index);
-				materialOverrides.add(index, Optional.of(value));
+				if (value.equals(NULL_MATERIAL)) {
+					materialOverrides.add(index, Optional.empty());
+				} else {
+					materialOverrides.add(index, Optional.of(value));
+				}
 				return;
 			}
 		}
