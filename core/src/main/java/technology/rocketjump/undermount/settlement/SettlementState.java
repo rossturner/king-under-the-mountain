@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
+import technology.rocketjump.undermount.crafting.model.CraftingRecipeMaterialSelection;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -39,6 +40,7 @@ public class SettlementState implements Persistable {
 	public final Map<GameMaterial, Float> requiredLiquidCounts = new HashMap<>();
 
 	public final Map<CraftingRecipe, JobPriority> craftingRecipePriority = new HashMap<>();
+	public final Map<CraftingRecipe, CraftingRecipeMaterialSelection> craftingRecipeMaterialSelections = new HashMap<>();
 
 	public final List<Notification> queuedNotifications = new ArrayList<>();
 	public final List<ImpendingMiningCollapse> impendingMiningCollapses = new ArrayList<>();
@@ -50,6 +52,54 @@ public class SettlementState implements Persistable {
 	private Vector2 immigrationPoint;
 	private Double nextImmigrationGameTime;
 	private boolean gameOver;
+
+	public int getImmigrantsDue() {
+		return immigrantsDue;
+	}
+
+	public void setImmigrantsDue(int immigrantsDue) {
+		this.immigrantsDue = immigrantsDue;
+	}
+
+	public Double getNextImmigrationGameTime() {
+		return nextImmigrationGameTime;
+	}
+
+	public void setNextImmigrationGameTime(Double nextImmigrationGameTime) {
+		this.nextImmigrationGameTime = nextImmigrationGameTime;
+	}
+
+	public void setImmigrantCounter(int numImmigrants) {
+		this.immigrantCounter = numImmigrants;
+	}
+
+	public int getImmigrantCounter() {
+		return immigrantCounter;
+	}
+
+	public Vector2 getImmigrationPoint() {
+		return immigrationPoint;
+	}
+
+	public void setImmigrationPoint(Vector2 immigrationPoint) {
+		this.immigrationPoint = immigrationPoint;
+	}
+
+	public void setGameOver(boolean gameOver) {
+		this.gameOver = gameOver;
+	}
+
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
+	public Map<String, Boolean> getPreviousHints() {
+		return previousHints;
+	}
+
+	public List<String> getCurrentHints() {
+		return currentHints;
+	}
 
 	@Override
 	public void writeTo(SavedGameStateHolder savedGameStateHolder) {
@@ -169,6 +219,16 @@ public class SettlementState implements Persistable {
 				craftingRecipePriorityJson.put(entry.getKey().getRecipeName(), entry.getValue().name());
 			}
 			asJson.put("craftingRecipePriority", craftingRecipePriorityJson);
+		}
+
+		if (!craftingRecipeMaterialSelections.isEmpty()) {
+			JSONObject craftingRecipeSelectionJson = new JSONObject();
+			for (Map.Entry<CraftingRecipe, CraftingRecipeMaterialSelection> entry : craftingRecipeMaterialSelections.entrySet()) {
+				JSONObject materialSelectionJson = new JSONObject(true);
+				entry.getValue().writeTo(materialSelectionJson, savedGameStateHolder);
+				craftingRecipeSelectionJson.put(entry.getKey().getRecipeName(), materialSelectionJson);
+			}
+			asJson.put("craftingRecipeSelections", craftingRecipeSelectionJson);
 		}
 
 		savedGameStateHolder.setSettlementState(this);
@@ -330,53 +390,21 @@ public class SettlementState implements Persistable {
 				}
 			}
 		}
+
+		JSONObject craftingRecipeSelectionsJson = asJson.getJSONObject("craftingRecipeSelections");
+		if (craftingRecipeSelectionsJson != null) {
+			for (Map.Entry<String, Object> entry : craftingRecipeSelectionsJson.entrySet()) {
+				CraftingRecipe recipe = relatedStores.craftingRecipeDictionary.getByName(entry.getKey());
+				if (recipe == null) {
+					throw new InvalidSaveException("Could not find crafting recipe by name " + entry.getKey());
+				} else {
+					JSONObject selectionJson = (JSONObject) entry.getValue();
+					CraftingRecipeMaterialSelection selection = new CraftingRecipeMaterialSelection();
+					selection.readFrom(selectionJson, savedGameStateHolder, relatedStores);
+					craftingRecipeMaterialSelections.put(recipe, selection);
+				}
+			}
+		}
 	}
 
-	public int getImmigrantsDue() {
-		return immigrantsDue;
-	}
-
-	public void setImmigrantsDue(int immigrantsDue) {
-		this.immigrantsDue = immigrantsDue;
-	}
-
-	public Double getNextImmigrationGameTime() {
-		return nextImmigrationGameTime;
-	}
-
-	public void setNextImmigrationGameTime(Double nextImmigrationGameTime) {
-		this.nextImmigrationGameTime = nextImmigrationGameTime;
-	}
-
-	public void setImmigrantCounter(int numImmigrants) {
-		this.immigrantCounter = numImmigrants;
-	}
-
-	public int getImmigrantCounter() {
-		return immigrantCounter;
-	}
-
-	public Vector2 getImmigrationPoint() {
-		return immigrationPoint;
-	}
-
-	public void setImmigrationPoint(Vector2 immigrationPoint) {
-		this.immigrationPoint = immigrationPoint;
-	}
-
-	public void setGameOver(boolean gameOver) {
-		this.gameOver = gameOver;
-	}
-
-	public boolean isGameOver() {
-		return gameOver;
-	}
-
-	public Map<String, Boolean> getPreviousHints() {
-		return previousHints;
-	}
-
-	public List<String> getCurrentHints() {
-		return currentHints;
-	}
 }

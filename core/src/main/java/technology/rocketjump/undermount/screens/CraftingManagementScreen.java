@@ -15,6 +15,8 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.crafting.CraftingRecipeDictionary;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
+import technology.rocketjump.undermount.crafting.model.CraftingRecipeMaterialSelection;
+import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -27,6 +29,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
@@ -54,6 +57,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.entities.tags.CraftingStationBehaviourTag.CRAFTING_STATION_BEHAVIOUR_TAGNAME;
+import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 
 @Singleton
 public class CraftingManagementScreen extends ManagementScreen implements I18nUpdatable, Telegraph {
@@ -72,7 +76,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private final CraftingTypeDictionary craftingTypeDictionary;
 	private final ProductionManager productionManager;
 	private final SettlerTracker settlerTracker;
-	private final IconButtonFactory iconButtonFactory;
+	private final GameMaterialDictionary gameMaterialDictionary;
 
 	private boolean initialised = false;
 	private final List<CraftingType> displayedCraftingTypes = new ArrayList<>();
@@ -101,7 +105,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									ClickableTableFactory clickableTableFactory,
 									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory, ProductionManager productionManager,
 									SettlerTracker settlerTracker, ItemTracker itemTracker, LiquidTracker liquidTracker,
-									ItemTypeDictionary itemTypeDictionary, TextureAtlasRepository textureAtlasRepository) {
+									ItemTypeDictionary itemTypeDictionary, TextureAtlasRepository textureAtlasRepository, GameMaterialDictionary gameMaterialDictionary) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
@@ -112,7 +116,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		this.craftingTypeDictionary = craftingTypeDictionary;
 		this.productionManager = productionManager;
 		this.settlerTracker = settlerTracker;
-		this.iconButtonFactory = iconButtonFactory;
+		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.itemTracker = itemTracker;
 		this.liquidTracker = liquidTracker;
 		this.SHOW_LIQUID_ITEM_TYPE = itemTypeDictionary.getByName("Resource-Liquid-Example");
@@ -436,7 +440,17 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 			EntityDrawable itemDrawable = new EntityDrawable(getExampleEntity(inputRequirement.getItemType(), inputRequirement.getMaterial()), entityRenderer);
 			clickableRow.add(new Image(itemDrawable)).left().pad(5);
 			I18nText description = i18nTranslator.getItemDescription(inputRequirement.getQuantity(), inputRequirement.getMaterial(), inputRequirement.getItemType());
-			clickableRow.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).pad(5);
+			I18nTextWidget descriptionWidget = new I18nTextWidget(description, uiSkin, messageDispatcher);
+
+			VerticalGroup descriptionGroup = new VerticalGroup();
+			descriptionGroup.padBottom(5);
+			descriptionGroup.addActor(descriptionWidget);
+
+			if (inputRequirement.getMaterial() == null && !inputRequirement.isLiquid()) {
+				descriptionGroup.addActor(buildMaterialSelect(inputRequirement, craftingRecipe));
+			}
+
+			clickableRow.add(descriptionGroup).pad(5);
 
 			if (inputCursor < craftingRecipe.getInput().size() - 1) {
 				// add + for next input
@@ -475,6 +489,96 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - (INDENT_WIDTH * 2));
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
+	}
+
+	private SelectBox<MaterialSelectOption> buildMaterialSelect(QuantifiedItemTypeWithMaterial inputRequirement, CraftingRecipe craftingRecipe) {
+		final CraftingRecipeMaterialSelection craftingRecipeMaterialSelection = gameContext.getSettlementState()
+				.craftingRecipeMaterialSelections.computeIfAbsent(craftingRecipe, a -> new CraftingRecipeMaterialSelection(craftingRecipe));
+		Optional<GameMaterial> selectedMaterial = craftingRecipeMaterialSelection.getSelection(inputRequirement);
+
+		SelectBox<MaterialSelectOption> materialSelect = new SelectBox<>(uiSkin);
+
+		List<MaterialSelectOption> options = new ArrayList<>();
+
+		List<GameMaterial> materialsToTry = new ArrayList<>();
+		materialsToTry.add(NULL_MATERIAL);
+		materialsToTry.addAll(gameMaterialDictionary.getByType(inputRequirement.getItemType().getPrimaryMaterialType()));
+
+		for (GameMaterial material : materialsToTry) {
+			StringBuilder labelBuilder = new StringBuilder();
+
+			Collection<Entity> unallocatedItems;
+			if (NULL_MATERIAL.equals(material)) {
+				labelBuilder.append(i18nTranslator.getTranslatedString("MATERIAL_TYPE.ANY").toString()).append(" (");
+				unallocatedItems = itemTracker.getItemsByType(inputRequirement.getItemType(), true);
+			} else {
+				labelBuilder.append(material.getI18nValue()).append(" (");
+				unallocatedItems = itemTracker.getItemsByTypeAndMaterial(inputRequirement.getItemType(), material, true);
+				if (unallocatedItems.isEmpty() && !(selectedMaterial.orElse(NULL_MATERIAL).equals(material))) {
+					continue;
+				}
+			}
+
+			int unallocatedQuantity = 0;
+			for (Entity itemEntity : unallocatedItems) {
+				ItemAllocationComponent itemAllocationComponent = itemEntity.getComponent(ItemAllocationComponent.class);
+				if (itemAllocationComponent != null) {
+					unallocatedQuantity += itemAllocationComponent.getNumUnallocated();
+				}
+			}
+
+			labelBuilder.append(unallocatedQuantity).append(")");
+
+			options.add(new MaterialSelectOption(labelBuilder.toString(), unallocatedQuantity, material));
+		}
+
+		Collections.sort(options);
+
+		Array<MaterialSelectOption> optionsArray = new Array<>();
+		for (MaterialSelectOption option : options) {
+			optionsArray.add(option);
+		}
+		materialSelect.setItems(optionsArray);
+
+		if (selectedMaterial.isEmpty()) {
+			materialSelect.setSelected(optionsArray.first());
+		} else {
+			materialSelect.setSelected(options.stream().filter(a -> a.value.equals(selectedMaterial.get())).findFirst().orElse(optionsArray.first()));
+		}
+
+		materialSelect.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				MaterialSelectOption selected = materialSelect.getSelected();
+				CraftingRecipeMaterialSelection materialSelection = gameContext.getSettlementState().craftingRecipeMaterialSelections.computeIfAbsent(craftingRecipe, a -> new CraftingRecipeMaterialSelection(craftingRecipe));
+				materialSelection.setSelection(inputRequirement, selected.value);
+			}
+		});
+
+		return materialSelect;
+	}
+
+	private static class MaterialSelectOption implements Comparable<MaterialSelectOption> {
+
+		public final String label;
+		public final int quantity;
+		public final GameMaterial value;
+
+		public MaterialSelectOption(String label, int quantity, GameMaterial value) {
+			this.label = label;
+			this.quantity = quantity;
+			this.value = value;
+		}
+
+		@Override
+		public String toString() {
+			return label;
+		}
+
+		@Override
+		public int compareTo(MaterialSelectOption o) {
+			return o.quantity - this.quantity;
+		}
 	}
 
 	private void updateQuota(CraftingOutput craftingOutput, float quantity, QuotaSetting quotaSetting, I18nTextWidget perSettlerTotalAmountHint) {
