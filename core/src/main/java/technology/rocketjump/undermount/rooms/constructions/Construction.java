@@ -50,6 +50,7 @@ public abstract class Construction implements Persistable {
 	protected Map<GridPoint2, ItemAllocation> placedItemAllocations = new HashMap<>();
 	protected GameMaterialType primaryMaterialType;
 	protected List<QuantifiedItemTypeWithMaterial> requirements = new ArrayList<>(); // Note that material will be null initially
+	protected Optional<GameMaterial> playerSpecifiedPrimaryMaterial = Optional.empty();
 	protected Set<ConstructionOverrideTag.ConstructionOverrideSetting> constructionOverrideSettings = new HashSet<>();
 
 	@Override
@@ -182,6 +183,14 @@ public abstract class Construction implements Persistable {
 		return constructionOverrideSettings;
 	}
 
+	public Optional<GameMaterial> getPlayerSpecifiedPrimaryMaterial() {
+		return playerSpecifiedPrimaryMaterial;
+	}
+
+	public void setPlayerSpecifiedPrimaryMaterial(Optional<GameMaterial> playerSpecifiedPrimaryMaterial) {
+		this.playerSpecifiedPrimaryMaterial = playerSpecifiedPrimaryMaterial;
+	}
+
 	@Override
 	public void writeTo(SavedGameStateHolder savedGameStateHolder) {
 		if (savedGameStateHolder.constructions.containsKey(getId())) {
@@ -238,6 +247,9 @@ public abstract class Construction implements Persistable {
 			asJson.put("overrides", overrideSettingsJson);
 		}
 
+		playerSpecifiedPrimaryMaterial.ifPresent(gameMaterial ->
+				asJson.put("playerSpecifiedPrimaryMaterial", gameMaterial.getMaterialName())
+		);
 
 		savedGameStateHolder.constructions.put(getId(), this);
 		savedGameStateHolder.constructionsJson.add(asJson);
@@ -310,6 +322,14 @@ public abstract class Construction implements Persistable {
 		}
 
 		this.primaryMaterialType = EnumParser.getEnumValue(asJson, "primaryMaterialType", GameMaterialType.class, null);
+
+		String playerSpecifiedPrimaryMaterialName = asJson.getString("playerSpecifiedPrimaryMaterial");
+		if (playerSpecifiedPrimaryMaterialName != null) {
+			playerSpecifiedPrimaryMaterial = Optional.ofNullable(relatedStores.gameMaterialDictionary.getByName(playerSpecifiedPrimaryMaterialName));
+			if (playerSpecifiedPrimaryMaterial.isEmpty()) {
+				throw new InvalidSaveException("Could not find material with name " + playerSpecifiedPrimaryMaterialName);
+			}
+		}
 
 		savedGameStateHolder.constructions.put(getId(), this);
 	}

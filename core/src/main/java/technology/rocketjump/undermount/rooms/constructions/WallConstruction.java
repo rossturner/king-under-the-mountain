@@ -6,7 +6,6 @@ import com.google.common.collect.Sets;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.mapping.tile.layout.WallConstructionLayout;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.JSONUtils;
@@ -14,6 +13,7 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.Optional;
 import java.util.Set;
 
 import static technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial.convert;
@@ -39,11 +39,8 @@ public class WallConstruction extends Construction {
 		this.primaryMaterialType = wallTypeToConstruct.getMaterialType();
 		this.requirements = convert(wallTypeToConstruct.getRequirements().get(primaryMaterialType));
 		if (material != null && !material.equals(NULL_MATERIAL)) {
-			for (QuantifiedItemTypeWithMaterial requirement : requirements) {
-				requirement.setMaterial(material);
-			}
+			this.setPlayerSpecifiedPrimaryMaterial(Optional.of(material));
 		}
-
 	}
 
 	@Override
