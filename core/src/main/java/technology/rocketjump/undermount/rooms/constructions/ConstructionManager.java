@@ -137,6 +137,12 @@ public class ConstructionManager implements Updatable {
 		for (QuantifiedItemTypeWithMaterial requirement : construction.getRequirements()) {
 			requirement.setMaterial(null);
 
+			if (construction.getPlayerSpecifiedPrimaryMaterial().isPresent() &&
+				construction.getPlayerSpecifiedPrimaryMaterial().get().getMaterialType().equals(requirement.getItemType().getPrimaryMaterialType())) {
+				requirement.setMaterial(construction.getPlayerSpecifiedPrimaryMaterial().get());
+				continue;
+			}
+
 			List<Entity> itemsByType = itemTracker.getItemsByType(requirement.getItemType(), true);
 			if (itemsByType.isEmpty()) {
 				allMaterialsSelected = false;

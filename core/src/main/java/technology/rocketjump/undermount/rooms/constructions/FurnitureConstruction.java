@@ -72,8 +72,8 @@ public class FurnitureConstruction extends Construction {
 				EnumMap<GameMaterialType, GameMaterial> existingMaterials = attributes.getMaterials();
 				for (QuantifiedItemTypeWithMaterial requirement : this.requirements) {
 					GameMaterial matchingMaterial = existingMaterials.get(requirement.getItemType().getPrimaryMaterialType());
-					if (matchingMaterial != null && !matchingMaterial.equals(NULL_MATERIAL)) {
-						requirement.setMaterial(matchingMaterial);
+					if (matchingMaterial != null && !matchingMaterial.equals(NULL_MATERIAL) && matchingMaterial.getMaterialType().equals(primaryMaterialType)) {
+						this.playerSpecifiedPrimaryMaterial = Optional.of(matchingMaterial);
 					}
 				}
 			}
