@@ -13,10 +13,7 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rooms.Bridge;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static technology.rocketjump.undermount.rooms.constructions.ConstructionType.BRIDGE_CONSTRUCTION;
 
@@ -37,7 +34,7 @@ public class BridgeConstruction extends Construction {
 		constructionRequirements.setItemType(tileRequirement.getItemType());
 		constructionRequirements.setQuantity(tileRequirement.getQuantity() * bridge.getLocations().size());
 		if (!bridge.getMaterial().equals(GameMaterial.NULL_MATERIAL)) {
-			constructionRequirements.setMaterial(bridge.getMaterial());
+			this.setPlayerSpecifiedPrimaryMaterial(Optional.of(bridge.getMaterial()));
 		}
 
 		this.requirements.add(constructionRequirements);
