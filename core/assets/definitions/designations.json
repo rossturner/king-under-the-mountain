@@ -77,4 +77,34 @@
     "b" : 0.2,
     "a" : 0.3
   }
+}, {
+  "designationName" : "REMOVE_CONSTRUCTIONS",
+  "iconName" : "block",
+  "selectionColor" : {
+    "r" : 1.0,
+    "g" : 0.2,
+    "b" : 0.2,
+    "a" : 0.3
+  },
+  "designationColor" : {
+    "r" : 1.0,
+    "g" : 0.2,
+    "b" : 0.2,
+    "a" : 0.3
+  }
+}, {
+  "designationName" : "DECONSTRUCT",
+  "iconName" : "demolish",
+  "selectionColor" : {
+    "r" : 1.0,
+    "g" : 0.2,
+    "b" : 0.2,
+    "a" : 0.3
+  },
+  "designationColor" : {
+    "r" : 0.82,
+    "g" : 0.45,
+    "b" : 0.18,
+    "a" : 0.3
+  }
 } ]

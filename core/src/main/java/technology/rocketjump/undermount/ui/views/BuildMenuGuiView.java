@@ -6,6 +6,8 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
+import technology.rocketjump.undermount.ui.actions.SetInteractionMode;
 import technology.rocketjump.undermount.ui.actions.SwitchGuiViewAction;
 import technology.rocketjump.undermount.ui.widgets.ButtonStyle;
 import technology.rocketjump.undermount.ui.widgets.IconButton;
@@ -46,6 +48,14 @@ public class BuildMenuGuiView implements GuiView {
 			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, ROOM_FURNITURE_SELECTION);
 		});
 		iconButtons.add(furniture);
+
+		IconButton removeConstructions = iconButtonFactory.create("GUI.CANCEL_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
+		removeConstructions.setAction(new SetInteractionMode(GameInteractionMode.REMOVE_CONSTRUCTIONS, messageDispatcher));
+		iconButtons.add(removeConstructions);
+
+		IconButton removeDesignations = iconButtonFactory.create("GUI.DECONSTRUCT_LABEL", "demolish", HexColors.get("#d1752e"), ButtonStyle.DEFAULT);
+		removeDesignations.setAction(new SetInteractionMode(GameInteractionMode.DECONSTRUCT, messageDispatcher));
+		iconButtons.add(removeDesignations);
 	}
 
 	@Override

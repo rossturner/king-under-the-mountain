@@ -58,10 +58,7 @@ import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.InnoculationLogBehaviour.InnoculationLogState.INNOCULATING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
@@ -768,6 +765,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		}
 		Collections.shuffle(targetPositions);
 
+		for (GridPoint2 targetPosition : targetPositions) {
+			gameContext.getAreaMap().getTile(targetPosition).setDesignation(null);
+		}
 
 		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
 		for (ItemEntityAttributes itemAttributes : itemAttributeList) {
@@ -809,6 +809,36 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 			jobStore.add(newJob);
 		}
+
+		switch (applyDesignationMessage.getInteractionMode()) {
+			case REMOVE_CONSTRUCTIONS:
+				if (applyDesignationMessage.getTargetTile().hasConstruction()) {
+					messageDispatcher.dispatchMessage(MessageType.CANCEL_CONSTRUCTION, applyDesignationMessage.getTargetTile().getConstruction());
+				}
+				applyDesignationMessage.getTargetTile().setDesignation(null);
+				break;
+			case DECONSTRUCT:
+				// deconstruction also applies designation
+				Optional<Entity> optionalFurniture = applyDesignationMessage.getTargetTile().getEntities().stream().filter(e -> e.getType().equals(FURNITURE)).findAny();
+
+				if (optionalFurniture.isEmpty() && applyDesignationMessage.getTargetTile().hasDoorway()) {
+					optionalFurniture = Optional.of(applyDesignationMessage.getTargetTile().getDoorway().getDoorEntity());
+				}
+
+				if (optionalFurniture.isPresent()) {
+					ConstructedEntityComponent constructedEntityComponent = optionalFurniture.get().getComponent(ConstructedEntityComponent.class);
+					if (constructedEntityComponent != null && !constructedEntityComponent.isBeingDeconstructed()) {
+						messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_REMOVAL, optionalFurniture.get());
+					}
+				}
+
+				if (applyDesignationMessage.getTargetTile().getFloor().hasBridge()) {
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_BRIDGE_REMOVAL, applyDesignationMessage.getTargetTile().getFloor().getBridge());
+				}
+
+				break;
+		}
+
 		return true;
 	}
 
