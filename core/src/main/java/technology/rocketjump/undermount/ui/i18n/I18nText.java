@@ -22,6 +22,20 @@ public class I18nText implements I18nString {
 		textElements.add(new I18nTextElement(text, tooltipI18nKey));
 	}
 
+	public I18nText append(I18nString other) {
+		if (other instanceof I18nText) {
+			I18nText otherText = (I18nText) other;
+			this.textElements.addAll(otherText.textElements);
+		} else if (other instanceof  I18nWord) {
+			I18nWord otherString = (I18nWord) other;
+			this.append(new I18nText(otherString.toString(),
+					otherString.hasTooltip() ? otherString.get(I18nWordClass.TOOLTIP) : null));
+		} else {
+			this.textElements.add(new I18nTextElement(other.toString(), null));
+		}
+		return this.tidy();
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

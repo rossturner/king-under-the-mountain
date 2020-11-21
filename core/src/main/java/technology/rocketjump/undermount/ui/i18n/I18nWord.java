@@ -78,7 +78,7 @@ public class I18nWord implements I18nString {
 	}
 
 	public boolean hasTooltip() {
-		return !wordMap.get(I18nWordClass.TOOLTIP).isEmpty();
+		return !wordMap.get(I18nWordClass.TOOLTIP).isEmpty() && !wordMap.get(I18nWordClass.TOOLTIP).get(Gender.ANY).equals(wordMap.get(I18nWordClass.UNSPECIFIED).get(Gender.ANY));
 	}
 
 	@Override

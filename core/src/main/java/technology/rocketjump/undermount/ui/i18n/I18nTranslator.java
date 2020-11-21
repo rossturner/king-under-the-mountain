@@ -432,7 +432,8 @@ public class I18nTranslator implements I18nUpdatable {
 	}
 
 	public I18nText getLiquidDescription(GameMaterial material, float quantity) {
-		return new I18nText(material.getI18nValue().toString() + " (" + oneDecimalFormat.format(quantity) + ")");
+		return applyReplacements(new I18nWord("{{material}} ({{quantity}})"),
+				Map.of("material", material.getI18nValue(), "quantity", new I18nWord(oneDecimalFormat.format(quantity))), Gender.ANY);
 	}
 
 	public I18nText getItemAllocationDescription(int numberAllocated, QuantifiedItemTypeWithMaterial requirement) {
