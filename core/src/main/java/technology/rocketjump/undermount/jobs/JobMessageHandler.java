@@ -49,6 +49,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -57,6 +58,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
 
 import java.util.*;
 
@@ -173,15 +175,26 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.REQUEST_BRIDGE_REMOVAL: {
 				Bridge bridgeToRemove = (Bridge) msg.extraInfo;
-				MapTile bridgeTile = pickLandTile(bridgeToRemove);
-				if (bridgeTile != null) {
-					Job deconstructionJob = jobFactory.deconstructionJob(bridgeTile);
-					if (deconstructionJob != null) {
-						bridgeToRemove.setDeconstructionJob(deconstructionJob);
-						messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
+				if (bridgeToRemove.getDeconstructionJob() == null) {
+					MapTile bridgeTile = pickLandTile(bridgeToRemove);
+					if (bridgeTile != null) {
+						Job deconstructionJob = jobFactory.deconstructionJob(bridgeTile);
+						if (deconstructionJob != null) {
+							bridgeToRemove.setDeconstructionJob(deconstructionJob);
+							messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
+
+							// apply deconstruction designation to all tiles
+							for (Map.Entry<GridPoint2, BridgeTile> entry : bridgeToRemove.entrySet()) {
+								MapTile tile = gameContext.getAreaMap().getTile(entry.getKey());
+								if (tile.getDesignation() == null) {
+									tile.setDesignation(GameInteractionMode.DECONSTRUCT.getDesignationToApply());
+								}
+							}
+
+						}
+					} else {
+						Logger.error("Could not pick tile to deconstruct bridge from");
 					}
-				} else {
-					Logger.error("Could not pick tile to deconstruct bridge from");
 				}
 				return true;
 			}

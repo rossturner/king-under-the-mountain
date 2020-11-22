@@ -315,7 +315,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						// FIXME This and its shared usage would be better dealt with by a ACTUALLY_DO_THE_DECONSTRUCT type message
 						deconstructFurniture(entity, entityTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory
 						);
-					} else {
+					} else if (!constructedEntityComponent.isBeingDeconstructed()){
 						Job deconstructionJob = jobFactory.deconstructionJob(entityTile);
 						if (deconstructionJob != null) {
 							constructedEntityComponent.setDeconstructionJob(deconstructionJob);
