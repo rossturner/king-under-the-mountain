@@ -112,7 +112,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		if (GlobalSettings.DEV_MODE) {
 			versionText += " (DEV MODE ENABLED)";
 		}
-		versionTable.add(new Label(versionText, uiSkin)).pad(5);
+		versionTable.add(new Label(versionText, uiSkin)).left().pad(5);
 		newVersionButton = i18nWidgetFactory.createTextButton("GUI.NEW_VERSION_AVAILABLE");
 		newVersionButton.addListener(new ClickListener() {
 			@Override
@@ -337,7 +337,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		if (GlobalSettings.DEV_MODE) {
 			versionText += " (DEV MODE ENABLED)";
 		}
-		versionTable.add(new Label(versionText, uiSkin)).pad(5);
+		versionTable.add(new Label(versionText, uiSkin)).left().pad(5);
 		if (remoteVersion != null) {
 			if (remoteVersion.toInteger() > VERSION.toInteger()) {
 				versionTable.add(newVersionButton).pad(5);
