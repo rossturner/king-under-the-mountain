@@ -86,6 +86,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final DynamicMaterialFactory dynamicMaterialFactory;
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final JobType haulingJobType;
+	private final JobType miningJobType;
 	private final TileDesignationDictionary tileDesignationDictionary;
 	private GameContext gameContext;
 
@@ -110,6 +111,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.itemTypeDictionary = itemTypeDictionary;
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
+		miningJobType = jobTypeDictionary.getByName("MINING");
 		this.tileDesignationDictionary = tileDesignationDictionary;
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
@@ -545,6 +547,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			case "DIGGING":
 			case "CONSTRUCT_STONE_FURNITURE":
 			case "CONSTRUCT_WOODEN_FURNITURE":
+			case "CONSTRUCT":
 				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
 				Construction construction = targetTile.getConstruction();
 				messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_COMPLETED, construction);
@@ -556,11 +559,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			case "FORGE_ITEM":
 				// Hoping targetEntity is a furniture such as crafting station
 				notifyTargetEntityJobCompleted(completedJob);
-				break;
-			case "CONSTRUCT":
-				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
-				Construction targetConstruction = targetTile.getConstruction();
-				messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_COMPLETED, targetConstruction);
 				break;
 			case "DECONSTRUCT":
 				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
@@ -801,7 +799,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		JobType jobType = applyDesignationMessage.getDesignationToApply().getCreatesJobType();
 		if (jobType != null) {
 			Job newJob = null;
-			if (jobType.getName().equals("MINING")) {
+			if (jobType.equals(miningJobType)) {
 				// Special case for mining a constructed wall
 				MapTile targetTile = applyDesignationMessage.getTargetTile();
 				Wall wall = targetTile.getWall();
@@ -843,6 +841,11 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					if (constructedEntityComponent != null && !constructedEntityComponent.isBeingDeconstructed()) {
 						messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_REMOVAL, optionalFurniture.get());
 					}
+				}
+
+				if (applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) {
+					Job deconstructionJob = jobFactory.deconstructionJob(applyDesignationMessage.getTargetTile());
+					messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
 				}
 
 				if (applyDesignationMessage.getTargetTile().getFloor().hasBridge()) {

@@ -50,7 +50,8 @@ public enum GameInteractionMode {
 	SET_JOB_PRIORITY("priority", null, null, true),
 	REMOVE_CONSTRUCTIONS("cancel", "REMOVE_CONSTRUCTIONS", MapTile::hasConstruction, true),
 	DECONSTRUCT("deconstruct", "DECONSTRUCT", mapTile -> {
-		return mapTile.getFloor().hasBridge() || mapTile.hasDoorway() || mapTile.getEntities().stream().anyMatch(e -> e.getType().equals(FURNITURE));
+		return mapTile.getFloor().hasBridge() || mapTile.hasDoorway() || mapTile.getEntities().stream().anyMatch(e -> e.getType().equals(FURNITURE)) ||
+				(mapTile.hasWall() && mapTile.getWall().getWallType().isConstructed());
 	}, true);
 
 	public final String cursorName;
