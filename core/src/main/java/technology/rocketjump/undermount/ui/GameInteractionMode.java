@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
 import technology.rocketjump.undermount.rooms.RoomType;
 
+import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage.PlantSpeciesHarvestType.FORAGING;
 import static technology.rocketjump.undermount.mapping.tile.TileExploration.EXPLORED;
 
@@ -45,8 +46,13 @@ public enum GameInteractionMode {
 	PLACE_WALLS("walls", null, null, true),
 	PLACE_BRIDGE("bridge", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && !mapTile.hasWall() &&
 			!mapTile.hasDoorway() && !mapTile.hasRoom() && !mapTile.hasConstruction(), true),
-	REMOVE_ROOMS("cancel", "REMOVE_ROOMS", mapTile -> mapTile.hasRoom(), true),
-	SET_JOB_PRIORITY("priority", null, null, true);
+	REMOVE_ROOMS("cancel", "REMOVE_ROOMS", MapTile::hasRoom, true),
+	SET_JOB_PRIORITY("priority", null, null, true),
+	REMOVE_CONSTRUCTIONS("cancel", "REMOVE_CONSTRUCTIONS", MapTile::hasConstruction, true),
+	DECONSTRUCT("deconstruct", "DECONSTRUCT", mapTile -> {
+		return mapTile.getFloor().hasBridge() || mapTile.hasDoorway() || mapTile.getEntities().stream().anyMatch(e -> e.getType().equals(FURNITURE)) ||
+				(mapTile.hasWall() && mapTile.getWall().getWallType().isConstructed());
+	}, true);
 
 	public final String cursorName;
 	public final String designationName;

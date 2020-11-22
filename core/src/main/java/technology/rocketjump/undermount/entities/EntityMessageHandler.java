@@ -46,6 +46,7 @@ import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
@@ -60,10 +61,13 @@ import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.settlement.notifications.NotificationType;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static technology.rocketjump.undermount.assets.entities.model.ColoringLayer.SKIN_COLOR;
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
@@ -311,11 +315,28 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						// FIXME This and its shared usage would be better dealt with by a ACTUALLY_DO_THE_DECONSTRUCT type message
 						deconstructFurniture(entity, entityTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory
 						);
-					} else {
+					} else if (!constructedEntityComponent.isBeingDeconstructed()){
 						Job deconstructionJob = jobFactory.deconstructionJob(entityTile);
 						if (deconstructionJob != null) {
 							constructedEntityComponent.setDeconstructionJob(deconstructionJob);
 							messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
+
+							// also apply designation to other tiles
+							TileDesignation deconstructDesignation = GameInteractionMode.DECONSTRUCT.getDesignationToApply();
+							if (deconstructDesignation != null) {
+								Set<MapTile> locations = new HashSet<>();
+								locations.add(entityTile);
+								for (GridPoint2 extraOffset : ((FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getCurrentLayout().getExtraTiles()) {
+									locations.add(gameContext.getAreaMap().getTile(entityTile.getTilePosition().cpy().add(extraOffset)));
+								}
+
+
+								for (MapTile location : locations) {
+									if (location.getDesignation() == null) {
+										location.setDesignation(deconstructDesignation);
+									}
+								}
+							}
 						}
 					}
 				}

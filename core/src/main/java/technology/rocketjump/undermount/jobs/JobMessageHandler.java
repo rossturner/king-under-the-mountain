@@ -49,6 +49,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -57,11 +58,9 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.InnoculationLogBehaviour.InnoculationLogState.INNOCULATING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
@@ -87,6 +86,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final DynamicMaterialFactory dynamicMaterialFactory;
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final JobType haulingJobType;
+	private final JobType miningJobType;
 	private final TileDesignationDictionary tileDesignationDictionary;
 	private GameContext gameContext;
 
@@ -111,6 +111,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.itemTypeDictionary = itemTypeDictionary;
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
+		miningJobType = jobTypeDictionary.getByName("MINING");
 		this.tileDesignationDictionary = tileDesignationDictionary;
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
@@ -176,15 +177,26 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.REQUEST_BRIDGE_REMOVAL: {
 				Bridge bridgeToRemove = (Bridge) msg.extraInfo;
-				MapTile bridgeTile = pickLandTile(bridgeToRemove);
-				if (bridgeTile != null) {
-					Job deconstructionJob = jobFactory.deconstructionJob(bridgeTile);
-					if (deconstructionJob != null) {
-						bridgeToRemove.setDeconstructionJob(deconstructionJob);
-						messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
+				if (bridgeToRemove.getDeconstructionJob() == null) {
+					MapTile bridgeTile = pickLandTile(bridgeToRemove);
+					if (bridgeTile != null) {
+						Job deconstructionJob = jobFactory.deconstructionJob(bridgeTile);
+						if (deconstructionJob != null) {
+							bridgeToRemove.setDeconstructionJob(deconstructionJob);
+							messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
+
+							// apply deconstruction designation to all tiles
+							for (Map.Entry<GridPoint2, BridgeTile> entry : bridgeToRemove.entrySet()) {
+								MapTile tile = gameContext.getAreaMap().getTile(entry.getKey());
+								if (tile.getDesignation() == null) {
+									tile.setDesignation(GameInteractionMode.DECONSTRUCT.getDesignationToApply());
+								}
+							}
+
+						}
+					} else {
+						Logger.error("Could not pick tile to deconstruct bridge from");
 					}
-				} else {
-					Logger.error("Could not pick tile to deconstruct bridge from");
 				}
 				return true;
 			}
@@ -535,6 +547,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			case "DIGGING":
 			case "CONSTRUCT_STONE_FURNITURE":
 			case "CONSTRUCT_WOODEN_FURNITURE":
+			case "CONSTRUCT":
 				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
 				Construction construction = targetTile.getConstruction();
 				messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_COMPLETED, construction);
@@ -546,11 +559,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			case "FORGE_ITEM":
 				// Hoping targetEntity is a furniture such as crafting station
 				notifyTargetEntityJobCompleted(completedJob);
-				break;
-			case "CONSTRUCT":
-				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
-				Construction targetConstruction = targetTile.getConstruction();
-				messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_COMPLETED, targetConstruction);
 				break;
 			case "DECONSTRUCT":
 				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
@@ -768,6 +776,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		}
 		Collections.shuffle(targetPositions);
 
+		for (GridPoint2 targetPosition : targetPositions) {
+			gameContext.getAreaMap().getTile(targetPosition).setDesignation(null);
+		}
 
 		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
 		for (ItemEntityAttributes itemAttributes : itemAttributeList) {
@@ -788,7 +799,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		JobType jobType = applyDesignationMessage.getDesignationToApply().getCreatesJobType();
 		if (jobType != null) {
 			Job newJob = null;
-			if (jobType.getName().equals("MINING")) {
+			if (jobType.equals(miningJobType)) {
 				// Special case for mining a constructed wall
 				MapTile targetTile = applyDesignationMessage.getTargetTile();
 				Wall wall = targetTile.getWall();
@@ -809,6 +820,41 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 			jobStore.add(newJob);
 		}
+
+		switch (applyDesignationMessage.getInteractionMode()) {
+			case REMOVE_CONSTRUCTIONS:
+				if (applyDesignationMessage.getTargetTile().hasConstruction()) {
+					messageDispatcher.dispatchMessage(MessageType.CANCEL_CONSTRUCTION, applyDesignationMessage.getTargetTile().getConstruction());
+				}
+				applyDesignationMessage.getTargetTile().setDesignation(null);
+				break;
+			case DECONSTRUCT:
+				// deconstruction also applies designation
+				Optional<Entity> optionalFurniture = applyDesignationMessage.getTargetTile().getEntities().stream().filter(e -> e.getType().equals(FURNITURE)).findAny();
+
+				if (optionalFurniture.isEmpty() && applyDesignationMessage.getTargetTile().hasDoorway()) {
+					optionalFurniture = Optional.of(applyDesignationMessage.getTargetTile().getDoorway().getDoorEntity());
+				}
+
+				if (optionalFurniture.isPresent()) {
+					ConstructedEntityComponent constructedEntityComponent = optionalFurniture.get().getComponent(ConstructedEntityComponent.class);
+					if (constructedEntityComponent != null && !constructedEntityComponent.isBeingDeconstructed()) {
+						messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_REMOVAL, optionalFurniture.get());
+					}
+				}
+
+				if (applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) {
+					Job deconstructionJob = jobFactory.deconstructionJob(applyDesignationMessage.getTargetTile());
+					messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
+				}
+
+				if (applyDesignationMessage.getTargetTile().getFloor().hasBridge()) {
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_BRIDGE_REMOVAL, applyDesignationMessage.getTargetTile().getFloor().getBridge());
+				}
+
+				break;
+		}
+
 		return true;
 	}
 

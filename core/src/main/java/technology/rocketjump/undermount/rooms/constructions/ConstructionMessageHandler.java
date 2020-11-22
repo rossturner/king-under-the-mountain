@@ -567,6 +567,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		Set<GridPoint2> bridgeLocations = bridgeToRemove.getLocations();
 		for (GridPoint2 bridgeLocation : bridgeLocations) {
 			MapTile bridgeTile = gameContext.getAreaMap().getTile(bridgeLocation);
+			bridgeTile.setDesignation(null);
 			bridgeTile.getFloor().setBridgeTile(null, null);
 
 			if (!assignedToGroup.contains(bridgeLocation)) {
