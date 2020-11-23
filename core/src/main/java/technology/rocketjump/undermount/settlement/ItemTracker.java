@@ -20,6 +20,8 @@ import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL
 @Singleton
 public class ItemTracker implements GameContextAware {
 
+	private static final Map<GameMaterial, Map<Long, Entity>> EMPTY_1 = new HashMap<>();
+	private static final Map<Long, Entity> EMPTY_2 = new HashMap<>();
 	private final Map<ItemType, Map<GameMaterial, Map<Long, Entity>>> itemTypesToMaterialsToEntitiesMap = new HashMap<>();
 	private final Map<Long, Entity> edibleItems = new HashMap<>();
 
@@ -49,8 +51,8 @@ public class ItemTracker implements GameContextAware {
 
 	public void itemRemoved(Entity entity) {
 		ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-		itemTypesToMaterialsToEntitiesMap.get(attributes.getItemType())
-				.get(attributes.getPrimaryMaterial())
+		itemTypesToMaterialsToEntitiesMap.getOrDefault(attributes.getItemType(), EMPTY_1)
+				.getOrDefault(attributes.getPrimaryMaterial(), EMPTY_2)
 				.remove(entity.getId());
 		cullEmptyMapEntries(attributes.getItemType(), attributes.getPrimaryMaterial());
 		// Easiest to just always remove from edibleItems
