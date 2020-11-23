@@ -84,16 +84,16 @@ public class ScreenManager implements Telegraph {
 	private void startNewGame() {
 		clearState();
 
-		long worldSeed = newGameSeed();
+		GameSeed worldSeed = newGameSeed();
 
 		GameClock gameClock = new GameClock();
-		GameContext gameContext = gameContextFactory.create(null, worldSeed, gameClock);
+		GameContext gameContext = gameContextFactory.create(null, worldSeed.seed, gameClock);
 		gameContextRegister.setNewContext(gameContext); // FIXME Should be able to remove this
 
 		TiledMap map = null;
 		while (map == null) {
 			try {
-				map = mapFactory.create(worldSeed, 400, 300, gameContext);
+				map = mapFactory.create(worldSeed.seed, worldSeed.mapWidth, worldSeed.mapHeight, gameContext);
 			} catch (InvalidMapGenerationException e) {
 				Logger.warn("Invalid map generated: " + e.getMessage());
 				worldSeed = newGameSeed();
@@ -239,23 +239,45 @@ public class ScreenManager implements Telegraph {
 		messageDispatcher.clearQueue(); // FIXME #31 on loading a game need to re-instantiate things on the queue or else reset job state and other timed tasks
 	}
 
-	private long newGameSeed() {
+	private GameSeed newGameSeed() {
 		try {
 			File file = Gdx.files.internal("seed.txt").file();
 			Reader reader = new FileReader(file);
 			List<String> lines = IOUtils.readLines(reader);
 			long seed = Long.valueOf(lines.get(0));
+			int mapWidth = 400;
+			int mapHeight = 300;
+			if (lines.size() > 1) {
+				String mapSize = lines.get(1);
+				if (mapSize.contains("x")) {
+					String[] split = mapSize.split("x");
+					mapWidth = Integer.valueOf(split[0]);
+					mapHeight = Integer.valueOf(split[1]);
+				}
+			}
 			reader.close();
 			if (seed == 0L) {
-				return new RandomXS128().nextLong();
-			} else {
-				return seed;
+				seed = new RandomXS128().nextLong();
 			}
+
+			return new GameSeed(seed, mapWidth, mapHeight);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
+	private static class GameSeed {
+
+		public final long seed;
+		public final int mapWidth;
+		public final int  mapHeight;
+
+		public GameSeed(long seed, int mapWidth, int mapHeight) {
+			this.seed = seed;
+			this.mapWidth = mapWidth;
+			this.mapHeight = mapHeight;
+		}
+	}
 
 	public void onResize(int width, int height) {
 		if (currentScreen != null) {

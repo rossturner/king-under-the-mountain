@@ -1,3 +1,8 @@
+Alpha 4.2.2 - 23rd November 2020
+
+- Extended seed.txt to allow for specifying of the map dimensions.
+Note that the resolution of the minimap is set to the actual map dimensions, so maps nearly as large as the game resolution may be unplayable.
+
 Alpha 4.2.1 - 23rd November 2020
 
 - Fix for a crash that could happen when creating furniture decorations

@@ -35,7 +35,7 @@ public class MapGenWrapper {
 	}
 
 	public GameMap createUsingLibrary(long worldSeed, int worldWidth, int worldHeight) {
-		Logger.info("Generating map with seed: " + worldSeed);
+		Logger.info("Generating map with seed: " + worldSeed + ", width: " + worldWidth + ", height: " + worldHeight);
 		long startTime = System.currentTimeMillis();
 		GameMapGenerationParams generationParams = createMapGenerationParams(worldWidth, worldHeight);
 		Random random = new RandomXS128(worldSeed);
