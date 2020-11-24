@@ -51,6 +51,32 @@ public class TerrainRenderer implements Disposable {
 		vertexColorSpriteBatch.end();
 	}
 
+	public void renderFloors(List<MapTile> mapTiles, Camera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
+		vertexColorSpriteBatch.setProjectionMatrix(camera.combined);
+		vertexColorSpriteBatch.enableBlending();
+		vertexColorSpriteBatch.begin();
+		vertexColorSpriteBatch.setColor(Color.WHITE);
+		for (MapTile terrainTile : mapTiles) {
+			if (terrainTile.hasFloor()) {
+				render(terrainTile, vertexColorSpriteBatch, spriteCache, renderMode);
+			}
+		}
+		vertexColorSpriteBatch.end();
+	}
+
+	public void renderWalls(List<MapTile> mapTiles, Camera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
+		vertexColorSpriteBatch.setProjectionMatrix(camera.combined);
+		vertexColorSpriteBatch.enableBlending();
+		vertexColorSpriteBatch.begin();
+		vertexColorSpriteBatch.setColor(Color.WHITE);
+		for (MapTile terrainTile : mapTiles) {
+			if (terrainTile.hasWall()) {
+				render(terrainTile, vertexColorSpriteBatch, spriteCache, renderMode);
+			}
+		}
+		vertexColorSpriteBatch.end();
+	}
+
 	public void render(Collection<Construction> terrainConstructionsToRender, OrthographicCamera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
 		if (!renderMode.equals(RenderMode.DIFFUSE)) {
 			return;

@@ -160,7 +160,13 @@ public class WorldRenderer implements Disposable {
 			waterRenderer.render(tiledMap, riverTiles, camera, renderMode);
 		}
 
-		terrainRenderer.render(terrainTiles, camera, spriteCache, renderMode);
+		terrainRenderer.renderFloors(terrainTiles, camera, spriteCache, renderMode);
+		if (renderingOptions.isFloorOverlapRenderingEnabled()) {
+			floorOverlapRenderer.render(riverTiles, camera, renderMode, spriteCache);
+			floorOverlapRenderer.render(terrainTiles, camera, renderMode, spriteCache);
+		}
+		terrainRenderer.renderWalls(terrainTiles, camera, spriteCache, renderMode);
+
 
 		// Also need to pick up entities up to X tiles below minX due to tree heights
 		for (int worldY = minY; worldY >= minY - 4; worldY--) {
@@ -180,12 +186,6 @@ public class WorldRenderer implements Disposable {
 				}
 			}
 		}
-
-		if (renderingOptions.isFloorOverlapRenderingEnabled()) {
-			floorOverlapRenderer.render(riverTiles, camera, renderMode, spriteCache);
-			floorOverlapRenderer.render(terrainTiles, camera, renderMode, spriteCache);
-		}
-
 
 		// Render constructions under entities
 		if (!terrainConstructionsToRender.isEmpty()) {

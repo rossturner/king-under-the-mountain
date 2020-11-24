@@ -34,7 +34,7 @@ public class FloorType {
 	@JsonIgnore
 	private Color highColor;
 
-	public static FloorType NULL_FLOOR = new FloorType("NULL_FLOOR", "NULL_FLOOR", -1L, GameMaterialType.OTHER, 0, 0,
+	public static FloorType NULL_FLOOR = new FloorType("NULL_FLOOR", "NULL_FLOOR", -1L, GameMaterialType.OTHER, -1, 0,
 			null, false, "000000", "ffffff");
 
 	@JsonCreator

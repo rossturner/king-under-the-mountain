@@ -80,34 +80,38 @@ public class MapTile implements Persistable {
 		if (hasWall()) {
 			WallLayout newLayout = new WallLayout(neighbours);
 			wall.setTrueLayout(newLayout);
-		} else if (hasFloor()) {
-			Set<FloorOverlap> overlaps = new TreeSet<>(new FloorType.FloorDefinitionComparator());
-			for (MapTile neighbour : neighbours.values()) {
-				if (neighbour.hasFloor() && neighbour.getFloor().getFloorType().getLayer()  > this.floor.getFloorType().getLayer()) {
-					OverlapLayout layout = OverlapLayout.fromNeighbours(neighbours, neighbour.getFloor().getFloorType());
-					overlaps.add(new FloorOverlap(layout, neighbour.getFloor().getFloorType(), neighbour.getFloor().getMaterial(), vertexNeighboursOfCell));
-				}
-			}
+		}
 
-			floor.getOverlaps().clear();
-			// For sort
-			for (FloorOverlap overlap : overlaps) {
-				floor.getOverlaps().add(overlap);
+		// Always update FloorOverlaps for all tiles
+		Set<FloorOverlap> overlaps = new TreeSet<>(new FloorType.FloorDefinitionComparator());
+		int thisLayer = this.floor.getFloorType().getLayer();
+		if (this.hasWall()) {
+			thisLayer = Integer.MIN_VALUE;
+		}
+		for (MapTile neighbour : neighbours.values()) {
+			if (neighbour.hasFloor() && neighbour.getFloor().getFloorType().getLayer() > thisLayer) {
+				OverlapLayout layout = OverlapLayout.fromNeighbours(neighbours, neighbour.getFloor().getFloorType());
+				overlaps.add(new FloorOverlap(layout, neighbour.getFloor().getFloorType(), neighbour.getFloor().getMaterial(), vertexNeighboursOfCell));
 			}
+		}
 
-			if (floor.getFloorType().isUseMaterialColor()) {
-				Color floorMaterialColor = floor.getMaterial().getColor();
-				floor.vertexColors[0] = floorMaterialColor;
-				floor.vertexColors[1] = floorMaterialColor;
-				floor.vertexColors[2] = floorMaterialColor;
-				floor.vertexColors[3] = floorMaterialColor;
-			} else {
-				floor.vertexColors[0] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[0].getHeightmapValue());
-				floor.vertexColors[1] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[1].getHeightmapValue());
-				floor.vertexColors[2] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[2].getHeightmapValue());
-				floor.vertexColors[3] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[3].getHeightmapValue());
-			}
+		floor.getOverlaps().clear();
+		// For sort
+		for (FloorOverlap overlap : overlaps) {
+			floor.getOverlaps().add(overlap);
+		}
 
+		if (floor.getFloorType().isUseMaterialColor()) {
+			Color floorMaterialColor = floor.getMaterial().getColor();
+			floor.vertexColors[0] = floorMaterialColor;
+			floor.vertexColors[1] = floorMaterialColor;
+			floor.vertexColors[2] = floorMaterialColor;
+			floor.vertexColors[3] = floorMaterialColor;
+		} else {
+			floor.vertexColors[0] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[0].getHeightmapValue());
+			floor.vertexColors[1] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[1].getHeightmapValue());
+			floor.vertexColors[2] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[2].getHeightmapValue());
+			floor.vertexColors[3] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[3].getHeightmapValue());
 		}
 
 		if (hasConstruction()) {

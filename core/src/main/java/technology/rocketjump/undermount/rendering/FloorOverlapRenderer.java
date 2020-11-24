@@ -33,7 +33,7 @@ public class FloorOverlapRenderer implements Disposable {
 		alphaMaskSpriteBatch.setColor(Color.WHITE);
 
 		for (MapTile mapTile : tilesToRender) {
-			if (mapTile.hasFloor() && !mapTile.getFloor().getOverlaps().isEmpty()) {
+			if (!mapTile.getFloor().getOverlaps().isEmpty()) {
 
 				for (FloorOverlap floorOverlap : mapTile.getFloor().getOverlaps()) {
 					Sprite overlapAlphaMask = masksSpriteCache.getMaskForOverlap(floorOverlap.getLayout(), mapTile.getSeed());
