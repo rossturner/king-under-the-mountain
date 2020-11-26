@@ -1,3 +1,9 @@
+Alpha 5
+
+- Floors now overlap underneath walls, so the transparency at the edge of wall tiles makes sense rather than showing a grey border
+- Overhauled how floors overlap onto other tiles, requiring far less sprites to be created (similar to walls)
+- Replaced grass floorsa and floor overlap sprites
+
 Alpha 4.2.3 - 24th November 2020
 
 - Fixed a crash when deconstructing a wall that was not constructed

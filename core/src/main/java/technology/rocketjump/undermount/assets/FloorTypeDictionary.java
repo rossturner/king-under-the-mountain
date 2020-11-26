@@ -4,6 +4,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.ProvidedBy;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.guice.FloorDictionaryProvider;
 
@@ -22,7 +23,7 @@ public class FloorTypeDictionary {
 	private Map<String, FloorType> floorTypeNameMap = new ConcurrentHashMap<>();
 	private ObjectMapper objectMapper = new ObjectMapper();
 
-	public FloorTypeDictionary(FileHandle floorDefinitionsJsonFile) throws IOException {
+	public FloorTypeDictionary(FileHandle floorDefinitionsJsonFile, OverlapTypeDictionary overlapTypeDictionary) throws IOException {
 		List<FloorType> floorTypes = objectMapper.readValue(floorDefinitionsJsonFile.readString(),
 				objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, FloorType.class));
 
@@ -32,6 +33,10 @@ public class FloorTypeDictionary {
 			}
 			floorTypeIdMap.put(floorType.getFloorTypeId(), floorType);
 			floorTypeNameMap.put(floorType.getFloorTypeName().toLowerCase(), floorType);
+
+			if (overlapTypeDictionary.getByName(floorType.getOverlapType().getOverlapName()) == null) {
+				Logger.error("Unrecognised overlap name in floor type " + floorType.getFloorTypeName());
+			}
 		}
 	}
 

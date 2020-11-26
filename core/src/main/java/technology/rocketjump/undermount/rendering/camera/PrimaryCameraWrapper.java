@@ -246,9 +246,10 @@ public class PrimaryCameraWrapper implements GameContextAware, Persistable, Tele
 		if (GlobalSettings.DEV_MODE) {
 			this.minZoom = 0.3f;
 			this.maxZoom = 20f;
+		} else {
+			this.minZoom = minTilesForZoom / camera.viewportWidth;
+			this.maxZoom = maxTilesForZoom / camera.viewportWidth;
 		}
-		this.minZoom = minTilesForZoom / camera.viewportWidth;
-		this.maxZoom = maxTilesForZoom / camera.viewportWidth;
 	}
 
 	public void moveTo(GridPoint2 tilePosition) {
