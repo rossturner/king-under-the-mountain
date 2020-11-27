@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.entities.factories;
 import com.badlogic.gdx.graphics.Color;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.ItemEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.item.ItemEntityAssetsByPlacement;
 import technology.rocketjump.undermount.assets.entities.item.ItemEntityAssetsBySize;
@@ -102,6 +103,7 @@ public class ItemEntityAttributesFactory {
 
 			return newItemAttributes;
 		} else {
+			Logger.error("Attempting to create requirement item from wall type " + wallType.toString());
 			return null; // This shouldn't be called?
 		}
 	}

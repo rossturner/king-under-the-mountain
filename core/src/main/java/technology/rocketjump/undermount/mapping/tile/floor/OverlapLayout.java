@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 
 import java.util.Map;
+import java.util.Objects;
 
 import static technology.rocketjump.undermount.mapping.tile.CompassDirection.*;
 
@@ -137,6 +138,19 @@ public class OverlapLayout {
 		return topRow() + "\n" + middleRow() + "\n" + bottomRow();
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		OverlapLayout layout = (OverlapLayout) o;
+		return id == layout.id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
 	private StringBuilder addNeighbourCharacterIf(boolean isNeighbour, StringBuilder builder) {
 		if (isNeighbour) {
 			builder.append(NEIGHBOUR_CHARACTER);
@@ -146,7 +160,7 @@ public class OverlapLayout {
 		return builder;
 	}
 
-	private boolean neighbourInDirection(CompassDirection direction) {
+	public boolean neighbourInDirection(CompassDirection direction) {
 		return (id & direction.getBinaryMask()) > 0;
 	}
 

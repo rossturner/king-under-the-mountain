@@ -20,6 +20,10 @@ public class ManagementScreenInputHandler implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
+		if (keycode == Input.Keys.ESCAPE) {
+			messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_GAME");
+			return true;
+		}
 		return false;
 	}
 

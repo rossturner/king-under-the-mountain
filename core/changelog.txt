@@ -1,5 +1,16 @@
-Alpha 4.2.3
+Alpha 5
 
+- You can now rename settlers!
+- Floors now overlap underneath walls, so the transparency at the edge of wall tiles makes sense rather than showing a grey border
+- Overhauled how floors overlap onto other tiles, requiring far less sprites to be created (similar to walls)
+- Replaced grass floors and floor overlap sprites
+- Pressing escape in a management screen will now go back to the main game (you can also right-click in the grey areas)
+- Changed settler management to show non-selected professions as greyed-out, not removed
+- Settler management can now be sorted by name (new default), or unhappiness (old default)
+
+Alpha 4.2.3 - 24th November 2020
+
+- Fixed a crash when deconstructing a wall that was not constructed
 - Fixed an issue with map generation for very small maps
 
 Alpha 4.2.2 - 23rd November 2020

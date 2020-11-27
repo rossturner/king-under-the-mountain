@@ -3,20 +3,30 @@ package technology.rocketjump.undermount.assets;
 import com.badlogic.gdx.files.FileHandle;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import technology.rocketjump.undermount.assets.model.FloorType;
+import technology.rocketjump.undermount.assets.model.OverlapType;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 
 import java.io.File;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class FloorTypeDictionaryTest {
 
 	private FloorTypeDictionary FloorTypeDictionary;
+	@Mock
+	private OverlapTypeDictionary mockOverlapDictionary;
 
 	@Before
 	public void setUp() throws Exception {
-		FloorTypeDictionary = new FloorTypeDictionary(new FileHandle(new File("assets/definitions/types/floorTypes.json")));
+		when(mockOverlapDictionary.getByName(anyString())).thenReturn(new OverlapType("fake"));
+		FloorTypeDictionary = new FloorTypeDictionary(new FileHandle(new File("assets/definitions/types/floorTypes.json")), mockOverlapDictionary);
 	}
 
 	@Test

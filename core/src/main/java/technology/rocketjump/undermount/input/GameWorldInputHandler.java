@@ -71,8 +71,8 @@ public class GameWorldInputHandler implements InputProcessor, GameContextAware {
 		if (GlobalSettings.DEV_MODE) {
 			if (keycode == Input.Keys.J) {
 				renderingOptions.debug().setShowJobStatus(!renderingOptions.debug().showJobStatus());
-//			} else if (keycode == Input.Keys.O) {
-//				renderingOptions.toggleFloorOverlapRenderingEnabled();
+			} else if (keycode == Input.Keys.O) {
+				renderingOptions.toggleFloorOverlapRenderingEnabled();
 			} else if (keycode == Input.Keys.L) {
 				renderingOptions.debug().setShowIndividualLightingBuffers(!renderingOptions.debug().showIndividualLightingBuffers());
 			} else if (keycode == Input.Keys.Z) {

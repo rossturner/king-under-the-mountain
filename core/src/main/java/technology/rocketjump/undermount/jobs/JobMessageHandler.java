@@ -568,7 +568,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					messageDispatcher.dispatchMessage(MessageType.REMOVE_WALL, completedJob.getJobLocation());
 					if (wall.getWallType().isConstructed()) {
 						ItemEntityAttributes itemAttributes = itemEntityAttributesFactory.resourceFromWall(wall);
-						itemEntityFactory.create(itemAttributes, targetTile.getTilePosition(), true, gameContext);
+						if (itemAttributes != null) {
+							itemEntityFactory.create(itemAttributes, targetTile.getTilePosition(), true, gameContext);
+						}
 					}
 				} else if (targetTile.hasDoorway()) {
 					Doorway doorway = targetTile.getDoorway();

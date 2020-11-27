@@ -38,6 +38,7 @@ import technology.rocketjump.undermount.ui.widgets.I18nWidgetFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.MAIN_MENU_BACKGROUND_SCROLLING;
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.UI_SCALE;
 import static technology.rocketjump.undermount.rendering.camera.DisplaySettings.DEFAULT_UI_SCALE;
 import static technology.rocketjump.undermount.rendering.camera.GlobalSettings.VERSION;
@@ -64,6 +65,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 
 	private OrthographicCamera camera = new OrthographicCamera();
 	private Texture backgroundImage;
+	private boolean scrollBackgroundImage;
 
 	private float xCursor = 0f;
 	private float backgroundScale = 1f;
@@ -91,17 +93,18 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		this.optionsMenu = optionsMenu;
 		this.modsMenu = modsMenu;
 		this.privacyOptInMenu = privacyOptInMenu;
-		this.uiScale = Float.valueOf(userPreferences.getPreference(UserPreferences.PreferenceKey.UI_SCALE, "1"));
+		this.uiScale = Float.parseFloat(userPreferences.getPreference(UserPreferences.PreferenceKey.UI_SCALE, "1"));
 
 		containerTable= new Table(uiSkin);
 		containerTable.setFillParent(true);
 		containerTable.center();
 //		containerTable.setDebug(true);
 
+		scrollBackgroundImage = Boolean.parseBoolean(userPreferences.getPreference(MAIN_MENU_BACKGROUND_SCROLLING, "true"));
 
 		String savedScale = userPreferences.getPreference(UI_SCALE, DEFAULT_UI_SCALE);
 		ScreenViewport viewport = new ScreenViewport();
-		viewport.setUnitsPerPixel(1 / Float.valueOf(savedScale));
+		viewport.setUnitsPerPixel(1 / Float.parseFloat(savedScale));
 		stage = new Stage(viewport);
 		stage.addActor(containerTable);
 
@@ -142,6 +145,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		messageDispatcher.addListener(this, MessageType.GUI_SET_SCALE);
 		messageDispatcher.addListener(this, MessageType.GUI_SCALE_CHANGED);
 		messageDispatcher.addListener(this, MessageType.REMOTE_VERSION_FOUND);
+		messageDispatcher.addListener(this, MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING);
 	}
 
 	@Override
@@ -188,6 +192,10 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 				this.remoteVersion = (Version) msg.extraInfo;
 				resetVersionTable();
 				reset();
+				return true;
+			}
+			case MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING: {
+				this.scrollBackgroundImage = (Boolean) msg.extraInfo;
 				return true;
 			}
 			default:
@@ -258,9 +266,11 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 
 		float minXPosition = -((backgroundImage.getWidth() * backgroundScale) - Gdx.graphics.getWidth())/2f;
 
-		xCursor -= (delta * PIXEL_SCROLL_PER_SECOND);
-		if (xCursor < minXPosition) {
-			xCursor = minXPosition;
+		if (scrollBackgroundImage) {
+			xCursor -= (delta * PIXEL_SCROLL_PER_SECOND);
+			if (xCursor < minXPosition) {
+				xCursor = minXPosition;
+			}
 		}
 
 

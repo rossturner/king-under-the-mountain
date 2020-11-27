@@ -53,6 +53,7 @@ public class MessageType {
 	public static final int HINT_ACTION_TRIGGERED = 274;
 	public static final int REPLACE_JOB_PRIORITY = 275;
 	public static final int SHOW_SPECIFIC_CRAFTING = 278;
+	public static final int SET_MAIN_MENU_BACKGROUND_SCROLLING = 279;
 
 	// i18n Messages
 	public static final int LANGUAGE_CHANGED = 290;
