@@ -53,6 +53,7 @@ public class OptionsMenu implements Menu, Telegraph {
 	private final I18nCheckbox pauseOnNotificationCheckbox;
 	private final I18nCheckbox crashReportingCheckbox;
 	private final I18nCheckbox enableHintsCheckbox;
+	private final I18nCheckbox mainMenuScrollingCheckbox;
 	private final UserPreferences userPreferences;
 	private Table menuTable;
 	private boolean restartRequiredNotified;
@@ -230,15 +231,28 @@ public class OptionsMenu implements Menu, Telegraph {
 		enableHintsCheckbox.setChecked(Boolean.parseBoolean(userPreferences.getPreference(ALLOW_HINTS, "true")));
 		enableHintsCheckbox.addListener((event) -> {
 			if (event instanceof ChangeListener.ChangeEvent) {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
 				userPreferences.setPreference(DISABLE_TUTORIAL, String.valueOf(!enableHintsCheckbox.isChecked()));
 				userPreferences.setPreference(ALLOW_HINTS, String.valueOf(enableHintsCheckbox.isChecked()));
 			}
 			return true;
 		});
 
+
+		mainMenuScrollingCheckbox = i18NWidgetFactory.createCheckbox("GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING");
+		mainMenuScrollingCheckbox.setProgrammaticChangeEvents(false); // Used so that message triggered below does not loop endlessly
+		mainMenuScrollingCheckbox.setChecked(Boolean.parseBoolean(userPreferences.getPreference(MAIN_MENU_BACKGROUND_SCROLLING, "true")));
+		mainMenuScrollingCheckbox.addListener((event) -> {
+			if (event instanceof ChangeListener.ChangeEvent) {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
+				userPreferences.setPreference(MAIN_MENU_BACKGROUND_SCROLLING, String.valueOf(mainMenuScrollingCheckbox.isChecked()));
+				messageDispatcher.dispatchMessage(MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING, mainMenuScrollingCheckbox.isChecked());
+			}
+			return true;
+		});
+
 		backButton = iconButtonFactory.create("GUI.BACK_LABEL", null, Color.LIGHT_GRAY, ButtonStyle.SMALL);
 		backButton.setAction(() -> {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
 			messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.TOP_LEVEL_MENU);
 		});
 
@@ -323,6 +337,8 @@ public class OptionsMenu implements Menu, Telegraph {
 
 		menuTable.add(new Container<>()); // pad out 1 cell
 		menuTable.add(crashReportingCheckbox).colspan(2).left().pad(10).row();
+		menuTable.add(new Container<>()); // pad out 1 cell
+		menuTable.add(mainMenuScrollingCheckbox).colspan(2).left().pad(10).row();
 
 		if (GlobalSettings.DEV_MODE) {
 			menuTable.add(new Container<>()); // pad out 1 cell
