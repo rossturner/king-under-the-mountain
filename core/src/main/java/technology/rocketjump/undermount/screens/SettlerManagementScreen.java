@@ -280,7 +280,7 @@ public class SettlerManagementScreen extends ManagementScreen {
 			Table nameHappinessBlockTable = new Table(uiSkin);
 
 			Table nameTable = new Table(uiSkin);
-			populateSettlerNameTable(settler, nameTable, i18nTranslator, uiSkin, gameContext, messageDispatcher);
+			populateSettlerNameTable(settler, nameTable, i18nTranslator, uiSkin, gameContext, messageDispatcher, null);
 			nameHappinessBlockTable.add(nameTable).left().row();
 
 			Table happinessTable = new Table(uiSkin);

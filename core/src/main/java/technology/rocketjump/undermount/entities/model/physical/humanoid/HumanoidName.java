@@ -27,9 +27,20 @@ public class HumanoidName implements ChildPersistable {
 		this.lastName = lastName;
 	}
 
+	public void rename(String newName) {
+		int spaceIndex = newName.indexOf(" ");
+		if (spaceIndex != -1) {
+			firstName = newName.substring(0, spaceIndex);
+			lastName = newName.substring(spaceIndex + 1);
+		} else {
+			firstName = newName;
+			lastName = "";
+		}
+	}
+
 	@Override
 	public String toString() {
-		if (lastName == null) {
+		if (lastName == null || lastName.isEmpty()) {
 			return firstName;
 		} else {
 			return firstName + " " + lastName;
