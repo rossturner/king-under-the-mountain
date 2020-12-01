@@ -37,7 +37,7 @@ public class TwitchTaskRunner {
 	private Future<List<TwitchViewer>> getSubscribers;
 
 	private float timeSinceFrequentUpdate = 0f;
-	private float timeSinceInfrequentUpdate = INFREQUENT_UPDATE_INTERVAL_SECONDS - 2f;
+	private float timeSinceInfrequentUpdate = 0f;
 
 	@Inject
 	public TwitchTaskRunner(BackgroundTaskManager backgroundTaskManager, UserPreferences userPreferences,
@@ -100,6 +100,7 @@ public class TwitchTaskRunner {
 				try {
 					TwitchAccountInfo twitchAccountInfo = getAccountInfo.get();
 					twitchDataStore.setAccountInfo(twitchAccountInfo);
+					doInfrequentUpdate();
 				} catch (Exception e) {
 					Logger.error(e.getMessage());
 					// Failed to update account info so refresh token must have expired

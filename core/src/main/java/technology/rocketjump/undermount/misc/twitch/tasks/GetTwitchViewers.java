@@ -35,8 +35,7 @@ public class GetTwitchViewers implements Callable<List<TwitchViewer>> {
 		OkHttpClient client = new OkHttpClient();
 
 		Request request = new Request.Builder()
-//				.url("https://tmi.twitch.tv/group/user/"+accountInfo.getLogin()+"/chatters")
-				.url("https://tmi.twitch.tv/group/user/"+"bruceoakman"+"/chatters")
+				.url("https://tmi.twitch.tv/group/user/"+accountInfo.getLogin()+"/chatters")
 				.get()
 				.build();
 
