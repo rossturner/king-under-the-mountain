@@ -24,11 +24,15 @@ import com.google.inject.Singleton;
 import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.logging.CrashHandler;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
 import technology.rocketjump.undermount.misc.versioning.Version;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.screens.menus.*;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nUpdatable;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.GameDialog;
@@ -38,8 +42,7 @@ import technology.rocketjump.undermount.ui.widgets.I18nWidgetFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.MAIN_MENU_BACKGROUND_SCROLLING;
-import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.UI_SCALE;
+import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.*;
 import static technology.rocketjump.undermount.rendering.camera.DisplaySettings.DEFAULT_UI_SCALE;
 import static technology.rocketjump.undermount.rendering.camera.GlobalSettings.VERSION;
 
@@ -80,12 +83,15 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 	private float uiScaleChangeTimer;
 	private float uiScale;
 	private Version remoteVersion;
+	private final UserPreferences userPreferences;
+	private final TwitchDataStore twitchDataStore;
+	private final I18nTranslator i18nTranslator;
 
 	@Inject
 	public MainMenuScreen(MessageDispatcher messageDispatcher, ScreenWriter screenWriter, GuiSkinRepository guiSkinRepository,
 						  UserPreferences userPreferences, TopLevelMenu topLevelMenu, OptionsMenu optionsMenu,
 						  PrivacyOptInMenu privacyOptInMenu, CrashHandler crashHandler, I18nWidgetFactory i18nWidgetFactory,
-						  ModsMenu modsMenu){
+						  ModsMenu modsMenu, TwitchDataStore twitchDataStore, I18nTranslator i18nTranslator){
 		this.messageDispatcher = messageDispatcher;
 		this.screenWriter = screenWriter;
 		this.uiSkin = guiSkinRepository.getDefault();
@@ -93,7 +99,10 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		this.optionsMenu = optionsMenu;
 		this.modsMenu = modsMenu;
 		this.privacyOptInMenu = privacyOptInMenu;
+		this.userPreferences = userPreferences;
 		this.uiScale = Float.parseFloat(userPreferences.getPreference(UserPreferences.PreferenceKey.UI_SCALE, "1"));
+		this.twitchDataStore = twitchDataStore;
+		this.i18nTranslator = i18nTranslator;
 
 		containerTable= new Table(uiSkin);
 		containerTable.setFillParent(true);
@@ -146,6 +155,8 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		messageDispatcher.addListener(this, MessageType.GUI_SCALE_CHANGED);
 		messageDispatcher.addListener(this, MessageType.REMOTE_VERSION_FOUND);
 		messageDispatcher.addListener(this, MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING);
+		messageDispatcher.addListener(this, MessageType.TWITCH_ACCOUNT_INFO_UPDATED);
+		messageDispatcher.addListener(this, MessageType.PREFERENCE_CHANGED);
 	}
 
 	@Override
@@ -197,6 +208,19 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 			case MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING: {
 				this.scrollBackgroundImage = (Boolean) msg.extraInfo;
 				return true;
+			}
+			case MessageType.TWITCH_ACCOUNT_INFO_UPDATED: {
+				resetVersionTable();
+				return false;
+			}
+			case MessageType.PREFERENCE_CHANGED: {
+				UserPreferences.PreferenceKey changedPreference = (UserPreferences.PreferenceKey) msg.extraInfo;
+				if (changedPreference.equals(TWITCH_INTEGRATION_ENABLED)) {
+					resetVersionTable();
+					return true;
+				} else {
+					return false;
+				}
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
@@ -341,6 +365,20 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		versionTable.clearChildren();
 		versionTable.left().bottom();
 
+		if (twitchEnabled()) {
+			TwitchAccountInfo accountInfo = twitchDataStore.getAccountInfo();
+			Label twitchLabel;
+			if (accountInfo == null) {
+				String twitchLabelText = i18nTranslator.getTranslatedString("GUI.OPTIONS.TWITCH.DISCONNECTED_LABEL").toString();
+				twitchLabel = new Label(twitchLabelText, uiSkin);
+				twitchLabel.setColor(HexColors.NEGATIVE_COLOR);
+			} else {
+				String twitchLabelText = i18nTranslator.getTranslatedString("GUI.OPTIONS.TWITCH.CONNECTED_LABEL").toString() + " (" + accountInfo.getLogin() + ")";
+				twitchLabel = new Label(twitchLabelText, uiSkin);
+			}
+			versionTable.add(twitchLabel).colspan(3).left().pad(5).row();
+		}
+
 		versionTable.add(viewRoadmapButton).colspan(3).left().pad(5).row();
 
 		String versionText = VERSION.toString();
@@ -355,6 +393,10 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 				versionTable.add(new Label("(Unreleased)", uiSkin));
 			}
 		}
+	}
+
+	private boolean twitchEnabled() {
+		return Boolean.parseBoolean(userPreferences.getPreference(UserPreferences.PreferenceKey.TWITCH_INTEGRATION_ENABLED, "false"));
 	}
 
 	@Override

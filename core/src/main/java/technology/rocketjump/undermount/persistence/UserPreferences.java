@@ -42,6 +42,8 @@ public class UserPreferences {
 		}
 	}
 
+
+
 	/**
 	 * Best not to rename these as any existing saved preferences will be lost
 	 */
@@ -62,10 +64,14 @@ public class UserPreferences {
 		ACTIVE_MODS,
 		ALLOW_HINTS,
 		DISABLE_TUTORIAL,
-		MAIN_MENU_BACKGROUND_SCROLLING
+		MAIN_MENU_BACKGROUND_SCROLLING,
+
+		TWITCH_TOKEN,
+		TWITCH_INTEGRATION_ENABLED,
+		TWITCH_VIEWERS_AS_SETTLER_NAMES,
+		TWITCH_PRIORITISE_SUBSCRIBERS;
 
 	}
-
 	private static final List<PreferenceKey> ALWAYS_PERSIST_KEYS = Arrays.asList(PreferenceKey.SAVE_LOCATION,
 			PreferenceKey.DISPLAY_FULLSCREEN);
 
@@ -84,6 +90,11 @@ public class UserPreferences {
 
 	public void setPreference(PreferenceKey preferenceKey, String value) {
 		properties.setProperty(preferenceKey.name(), value);
+		persist();
+	}
+
+	public void removePreference(PreferenceKey preferenceKey) {
+		properties.remove(preferenceKey.name());
 		persist();
 	}
 

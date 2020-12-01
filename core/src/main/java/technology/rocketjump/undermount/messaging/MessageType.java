@@ -54,6 +54,7 @@ public class MessageType {
 	public static final int REPLACE_JOB_PRIORITY = 275;
 	public static final int SHOW_SPECIFIC_CRAFTING = 278;
 	public static final int SET_MAIN_MENU_BACKGROUND_SCROLLING = 279;
+	public static final int PREFERENCE_CHANGED = 280;
 
 	// i18n Messages
 	public static final int LANGUAGE_CHANGED = 290;
@@ -183,6 +184,11 @@ public class MessageType {
 	public static final int REQUEST_SOUND_ASSET = 1401;
 	public static final int REQUEST_STOP_SOUND_LOOP = 1402;
 
+	// Twitch integration messages
+	public static final int TWITCH_AUTH_CODE_SUPPLIED = 1500;
+	public static final int TWITCH_AUTH_CODE_FAILURE = 1501;
+	public static final int TWITCH_TOKEN_UPDATED = 1502;
+	public static final int TWITCH_ACCOUNT_INFO_UPDATED = 1503;
 
 
 }

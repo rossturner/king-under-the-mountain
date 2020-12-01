@@ -302,6 +302,23 @@ GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,Allow automatic crash reports,,Automati
 GUI.OPTIONS.MISC.HINTS_ENABLED,Show hints and tutorials in-game,,,,,,,,,,,,,,,,,,
 GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING,Scroll the background on the main menu,,,,,,,,,,,,,,,,,,
 GUI.OPTIONS.MISC.TITLE,Miscellaneous,,Verschiedenes,Divers,Varie,Misceláneo,Diversos,,,Разное,Diverse,,Diverse,,,,[その他],杂项,기타
+GUI.OPTIONS.TAB.AUDIO,Audio,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TAB.GAMEPLAY,Gameplay,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TAB.GRAPHICS,Graphics,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TAB.MISC,Other,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TAB.TWITCH,Twitch,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.ACCOUNT_LABEL,Twitch Account:,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.CODE_LABEL,Code,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.CONNECTED_LABEL,Twitch account connected,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.DISCONNECT,Disconnect,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.DISCONNECTED_LABEL,Twitch account disconnected,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.ENABLED,Twitch integration enabled,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.GENERAL_ERROR,An error occured while communicating with Twitch,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.LINK_ACCOUNT_BUTTON,Click here to connect your Twitch account,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.PRIORITISE_SUBSCRIBERS,Give priority to subscribers,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.SUBMIT_BUTTON,Submit,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.TITLE,Twitch Integration,,,,,,,,,,,,,,,,,,
+GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,Use viewers as settler names,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.CHOP_WOOD,Chop,,Hacken,Couper,Taglia,Talar,Cortar,Cortar,,Рубить,Hak,,Hugga,,,,チョップ,印章,들어온다
 GUI.ORDERS.CLEAR_GROUND,Clear,,Aufräumen,Arracher,Rimuovi,Despejar,Limpar,Limpar,,Расчистить,Klar,,Rensa,,,,クリア,清除,클리어
 GUI.ORDERS.HARVEST_PLANTS,Harvest,,Ernten,"Récolter ",Raccogli,Cosechar,Colher,Colher,,Собирать,Høst,,Skörda,,,,収穫,收获,수확

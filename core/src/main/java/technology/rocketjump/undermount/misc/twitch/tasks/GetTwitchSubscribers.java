@@ -1,0 +1,52 @@
+package technology.rocketjump.undermount.misc.twitch.tasks;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import okhttp3.Response;
+import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
+import technology.rocketjump.undermount.misc.twitch.TwitchRequestHandler;
+import technology.rocketjump.undermount.misc.twitch.TwitchViewer;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+
+public class GetTwitchSubscribers implements Callable<List<TwitchViewer>> {
+
+	private final TwitchRequestHandler twitchRequestHandler;
+	private final TwitchDataStore twitchDataStore;
+
+	public GetTwitchSubscribers(TwitchRequestHandler twitchRequestHandler, TwitchDataStore twitchDataStore) {
+		this.twitchRequestHandler = twitchRequestHandler;
+		this.twitchDataStore = twitchDataStore;
+	}
+
+	@Override
+	public List<TwitchViewer> call() throws Exception {
+		TwitchAccountInfo accountInfo = twitchDataStore.getAccountInfo();
+		if (accountInfo == null) {
+			throw new Exception("Account info is null");
+		}
+
+		Response response = twitchRequestHandler.get("https://api.twitch.tv/helix/subscriptions?broadcaster_id="+accountInfo.getUser_id(), twitchDataStore);
+
+		if (response.isSuccessful()) {
+			List<TwitchViewer> subscribers = new ArrayList<>();
+			JSONObject responseJson = JSON.parseObject(response.body().string());
+
+			JSONArray data = responseJson.getJSONArray("data");
+			for (int cursor = 0; cursor < data.size(); cursor++) {
+				JSONObject subscription = data.getJSONObject(cursor);
+				String username = subscription.getString("user_name");
+				if (!username.endsWith("bot")) {
+					subscribers.add(new TwitchViewer(username));
+				}
+			}
+			return subscribers;
+		} else {
+			throw new Exception("Received " + response.code() + " while calling " + this.getClass().getSimpleName());
+		}
+	}
+}
