@@ -82,6 +82,7 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 
 			injector.getInstance(I18nRepo.class).init(injector.getInstance(TextureAtlasRepository.class));
 
+			injector.getInstance(TwitchMessageHandler.class);
 			screenWriter = injector.getInstance(ScreenWriter.class);
 			gameRenderer = injector.getInstance(GameRenderer.class);
 			screenWriter = injector.getInstance(ScreenWriter.class);
@@ -134,7 +135,6 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 			injector.getInstance(TagProcessor.class).init();
 			injector.getInstance(TimeDateGuiView.class).init(injector.getInstance(GameScreenDictionary.class));
 			injector.getInstance(HintMessageHandler.class);
-			injector.getInstance(TwitchMessageHandler.class);
 
 			messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_MENU");
 
