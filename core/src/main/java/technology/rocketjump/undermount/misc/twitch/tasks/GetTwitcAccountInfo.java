@@ -10,11 +10,10 @@ import java.util.concurrent.Callable;
 
 public class GetTwitcAccountInfo implements Callable<TwitchAccountInfo> {
 
-	private final TwitchRequestHandler twitchRequestHandler;
+	private final TwitchRequestHandler twitchRequestHandler = new TwitchRequestHandler();
 	private final TwitchDataStore twitchDataStore;
 
-	public GetTwitcAccountInfo(TwitchRequestHandler twitchRequestHandler, TwitchDataStore twitchDataStore) {
-		this.twitchRequestHandler = twitchRequestHandler;
+	public GetTwitcAccountInfo(TwitchDataStore twitchDataStore) {
 		this.twitchDataStore = twitchDataStore;
 	}
 

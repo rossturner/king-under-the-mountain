@@ -10,7 +10,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
-import technology.rocketjump.undermount.misc.twitch.TwitchViewer;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;

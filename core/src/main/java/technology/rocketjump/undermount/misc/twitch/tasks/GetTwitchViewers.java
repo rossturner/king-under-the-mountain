@@ -8,8 +8,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
-import technology.rocketjump.undermount.misc.twitch.TwitchViewer;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import java.util.ArrayList;

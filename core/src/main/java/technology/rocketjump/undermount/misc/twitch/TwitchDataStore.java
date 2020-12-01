@@ -7,6 +7,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchToken;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 
 import java.io.IOException;
@@ -21,8 +22,8 @@ import java.util.concurrent.atomic.AtomicReference;
 @Singleton
 public class TwitchDataStore {
 
-	private AtomicReference<TwitchToken> currentToken = new AtomicReference<>();
-	private TwitchAccountInfo accountInfo;
+	private final AtomicReference<TwitchToken> currentToken = new AtomicReference<>();
+	private final AtomicReference<TwitchAccountInfo> accountInfo = new AtomicReference<>();
 
 	private List<TwitchViewer> currentSubscribers = new ArrayList<>();
 	private List<TwitchViewer> currentViewers = new ArrayList<>();
@@ -88,11 +89,11 @@ public class TwitchDataStore {
 	}
 
 	public TwitchAccountInfo getAccountInfo() {
-		return accountInfo;
+		return accountInfo.get();
 	}
 
 	public void setAccountInfo(TwitchAccountInfo accountInfo) {
-		this.accountInfo = accountInfo;
+		this.accountInfo.set(accountInfo);
 		messageDispatcher.dispatchMessage(MessageType.TWITCH_ACCOUNT_INFO_UPDATED, accountInfo);
 	}
 

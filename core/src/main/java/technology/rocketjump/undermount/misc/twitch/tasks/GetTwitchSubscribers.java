@@ -6,8 +6,8 @@ import com.alibaba.fastjson.JSONObject;
 import okhttp3.Response;
 import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
 import technology.rocketjump.undermount.misc.twitch.TwitchRequestHandler;
-import technology.rocketjump.undermount.misc.twitch.TwitchViewer;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +15,10 @@ import java.util.concurrent.Callable;
 
 public class GetTwitchSubscribers implements Callable<List<TwitchViewer>> {
 
-	private final TwitchRequestHandler twitchRequestHandler;
+	private final TwitchRequestHandler twitchRequestHandler = new TwitchRequestHandler();
 	private final TwitchDataStore twitchDataStore;
 
-	public GetTwitchSubscribers(TwitchRequestHandler twitchRequestHandler, TwitchDataStore twitchDataStore) {
-		this.twitchRequestHandler = twitchRequestHandler;
+	public GetTwitchSubscribers(TwitchDataStore twitchDataStore) {
 		this.twitchDataStore = twitchDataStore;
 	}
 

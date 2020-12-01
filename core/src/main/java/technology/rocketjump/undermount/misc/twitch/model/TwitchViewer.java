@@ -1,4 +1,4 @@
-package technology.rocketjump.undermount.misc.twitch;
+package technology.rocketjump.undermount.misc.twitch.model;
 
 import org.apache.commons.lang3.text.WordUtils;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidName;

@@ -8,6 +8,7 @@ import technology.rocketjump.undermount.entities.planning.BackgroundTaskManager;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchToken;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitcAccountInfo;
 import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitchAuthToken;
 import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitchSubscribers;
@@ -62,7 +63,7 @@ public class TwitchTaskRunner {
 
 	public void updateUserInfo() {
 		if (getAccountInfo == null) {
-			getAccountInfo = backgroundTaskManager.postUntrackedCallable(new GetTwitcAccountInfo(new TwitchRequestHandler(), twitchDataStore));
+			getAccountInfo = backgroundTaskManager.postUntrackedCallable(new GetTwitcAccountInfo(twitchDataStore));
 		}
 	}
 
@@ -142,7 +143,7 @@ public class TwitchTaskRunner {
 				getViewers = backgroundTaskManager.postUntrackedCallable(new GetTwitchViewers(twitchDataStore));
 			}
 			if (getSubscribers == null) {
-				getSubscribers = backgroundTaskManager.postUntrackedCallable(new GetTwitchSubscribers(new TwitchRequestHandler(), twitchDataStore));
+				getSubscribers = backgroundTaskManager.postUntrackedCallable(new GetTwitchSubscribers(twitchDataStore));
 			}
 		}
 

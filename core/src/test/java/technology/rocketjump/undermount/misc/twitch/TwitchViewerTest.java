@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.misc.twitch;
 
 import org.junit.Test;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 
 import static org.fest.assertions.Assertions.assertThat;
 

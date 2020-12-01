@@ -8,7 +8,7 @@ import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
-import technology.rocketjump.undermount.misc.twitch.TwitchViewer;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 
 import java.util.Random;
