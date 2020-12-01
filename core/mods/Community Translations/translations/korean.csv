@@ -33,6 +33,20 @@ COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{
 COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} 과 {{materialTwo}}
 COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,{{재료 설명}} 수프
 
+CRAFTING_TYPE.BAKING,,Baking,
+CRAFTING_TYPE.BLACKSMITHING,,Blacksmithing,
+CRAFTING_TYPE.CARPENTRY,,Carpentry,
+CRAFTING_TYPE.COKE_OVEN_BAKING,,Coke baking,
+CRAFTING_TYPE.FERMENTING,,Fermenting,
+CRAFTING_TYPE.MALTING,,Malting,
+CRAFTING_TYPE.MALT_MASHING,,Malt mashing,
+CRAFTING_TYPE.MILLING,,Milling,
+CRAFTING_TYPE.ORE_CRUSHING,,Ore crushing,
+CRAFTING_TYPE.SMELTING,,Smelting,
+CRAFTING_TYPE.STONEMASONRY,,Stonemasonry,
+CRAFTING_TYPE.WOODCUTTING,,Woodcutting,
+CRAFTING_TYPE.WORT_BREWING,,Brewing,
+
 CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,해충에 의해 고통
 CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,"이 작물은 지나치게 많은 진딧물과 다른 곤충에 시달렸으며, 다시 번성하기 전에 {{PROFESSION.FARMER}} 에 의해 제거되어야 합니다. 시간에 해충을 제거하지 않는이 작물이 죽는 것을 의미 할 수있다!"
 CROP.DESCRIPTION,,{{materialType.noun}} plant,{{materialType.noun}} 식물
@@ -71,6 +85,10 @@ FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RES
 FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,베이커의 오븐
 FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,{{PROFESSION.CHEF}} 는 준비된 {{INGREDIENT.DOUGH}} 을 사용하여 여기에 케이크를 굽습니다.
 FURNITURE.BEER_TAPPER,,Beer tapper,
+FURNITURE.BEER_TAPPER.STATE.BEER_AVAILABLE,,Beer is available,
+FURNITURE.BEER_TAPPER.STATE.BEER_BARREL_INCOMING,,A beer barrel is on the way,
+FURNITURE.BEER_TAPPER.STATE.BEER_EXHAUSTED,,The beer has all gone!,
+FURNITURE.BEER_TAPPER.STATE.IDLE,,Idle (no beer available),
 FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,부루마 용광로
 FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,{{PROFESSION.BLACKSMITH}} 는 이 수동식 용광로를 사용하여 {{RESOURCE.ORE.CRUSHED.PLURAL}} 과 {{FUEL.SACK}} 을 {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} 으로 전환합니다.
@@ -240,8 +258,13 @@ GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,가구
 GUI.BUILD_LABEL,This should be as short as possible,Build,빌드
 GUI.CANCEL_LABEL,This should be as short as possible,Cancel,취소
 GUI.CHANGE_PROFESSION_LABEL,,Change profession,직업 변경
+GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,As in keeping a fixed number of items in stock,Maintaining,
+GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),
 GUI.CROP_SELECTION,,Crop:,자르기:
 GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}","{{timeOfDay}}, 일 {{일 번호}}, {{dayNumber}}"
+GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,
 GUI.DIALOG.DISMISS,,Dismiss,해고
 GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,해당 이름의 룸이 이미 있습니다.
 GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,저장 파일은이 버전의 게임과 호환되지 않기 때문에로드 할 수 없습니다.
@@ -255,6 +278,7 @@ GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to
 GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,하나 이상의 개조 게임이 버전과 호환되지 않는 및 비활성화되었습니다. 모드 메뉴에서 업데이트를 확인할 수 있습니다.
 GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,확인
 GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,룸 이름 바꾸기
+GUI.DIALOG.RENAME_SETTLER_TITLE,,Rename settler,
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,이 변경 사항을 적용하려면 게임을 다시 시작해야 합니다.
 GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},{{name}} 에 할당됨
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,현재 제거 중입니다.
@@ -276,13 +300,32 @@ GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the pla
 GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ",그래픽 옵션
 GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,자동 충돌 보고서 허용
 GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING,,Scroll the background on the main menu,
 GUI.OPTIONS.MISC.TITLE,,Miscellaneous,기타
+GUI.OPTIONS.TAB.AUDIO,,Audio,
+GUI.OPTIONS.TAB.GAMEPLAY,,Gameplay,
+GUI.OPTIONS.TAB.GRAPHICS,,Graphics,
+GUI.OPTIONS.TAB.MISC,,Other,
+GUI.OPTIONS.TAB.TWITCH,,Twitch,
+GUI.OPTIONS.TWITCH.ACCOUNT_LABEL,,Twitch Account:,
+GUI.OPTIONS.TWITCH.CODE_LABEL,,Code,
+GUI.OPTIONS.TWITCH.CONNECTED_LABEL,,Twitch account connected,
+GUI.OPTIONS.TWITCH.DISCONNECT,,Disconnect,
+GUI.OPTIONS.TWITCH.DISCONNECTED_LABEL,,Twitch account disconnected,
+GUI.OPTIONS.TWITCH.ENABLED,,Twitch integration enabled,
+GUI.OPTIONS.TWITCH.GENERAL_ERROR,,An error occured while communicating with Twitch,
+GUI.OPTIONS.TWITCH.LINK_ACCOUNT_BUTTON,,Click here to connect your Twitch account,
+GUI.OPTIONS.TWITCH.PRIORITISE_SUBSCRIBERS,,Give priority to subscribers,
+GUI.OPTIONS.TWITCH.SUBMIT_BUTTON,,Submit,
+GUI.OPTIONS.TWITCH.TITLE,,Twitch Integration,
+GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,,Use viewers as settler names,
 GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,들어온다
 GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,클리어
 GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,수확
 GUI.ORDERS.MINE,This should be as short as possible,Mine,내
 GUI.ORDERS_LABEL,This should be as short as possible,Orders,주문
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,다리는 강 양쪽을 덮어야 하며 크기는 3x3 이상이어야 합니다.
+GUI.PRIORITY_LABEL,This should be as short as possible,Priority,
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,제거
 GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,타일 제거
 GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,리소스
@@ -291,10 +334,13 @@ GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,저장하는 중...
 GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},죽은: {{count}}
 GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},인구: {{count}}
+GUI.SETTLER_MANAGEMENT.SORT.BY_NAME,,Sort by name,
+GUI.SETTLER_MANAGEMENT.SORT.BY_UNHAPPINESS,,Sort by unhappiness,
 GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,정착민
 GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},합계: {{count}}
 GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,사운드 효과 볼륨
 GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,UI 배율:
+GUI.VIEW_ROADMAP,,View development roadmap,
 GUI.ZONES_LABEL,This should be as short as possible,Zones,영역
 
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,,Going sober,
@@ -325,6 +371,8 @@ HINT.BUTTON.DISMISS,,Dismiss,
 HINT.BUTTON.HINTS_ONLY,,Hints only,힌트만
 HINT.BUTTON.NEXT,,Next,다음
 HINT.BUTTON.TUTORIAL,,Tutorial,자습서
+HINT.OPEN_PRIORITY_MENU.1,,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",
+HINT.OPEN_PRIORITY_MENU.2,,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",
 HINT.PROGRESS.HEADER,,Progress:,
 HINT.TOOL_DEPLETED.AXE1,,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,
 HINT.TOOL_DEPLETED.AXE2,,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",
@@ -523,6 +571,13 @@ OTHER.BRICK.NOUN,,Brick,벽돌
 OTHER.CLAY_SOIL.NOUN,,Clay soil,클레이 토양
 OTHER.GRASS.NOUN,,,
 
+PRIORITY.DISABLED,,Disabled,
+PRIORITY.HIGHER,,Higher,
+PRIORITY.HIGHEST,,Highest,
+PRIORITY.LOWER,,Lower,
+PRIORITY.LOWEST,,Lowest,
+PRIORITY.NORMAL,,Normal,
+
 PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,나는 받아들인다.
 PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,보고 사용 안 함
 PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,산 아래 왕은 활발한 개발 중입니다. 도움이 필요하기
@@ -630,6 +685,9 @@ PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberja
 PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,나무꾼
 PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,나무를 {{ROOMS.SAWMILL}} 에서 사용할 수 있는 목재로 자릅니다.
 PROFESSION.WOODCUTTER.VERB,,Chopping,도마
+
+QUOTA.FIXED_AMOUNT,,in total,
+QUOTA.PER_SETTLER,,per settler,
 
 RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,드워프
 RACE.DWARF.FEMALE_NOUN,,Dwarf,드워프

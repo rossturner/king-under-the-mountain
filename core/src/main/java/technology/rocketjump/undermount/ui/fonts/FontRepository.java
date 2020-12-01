@@ -74,7 +74,6 @@ public class FontRepository {
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
 		FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		parameter.characters = i18nRepo.getAllCharacters(FreeTypeFontGenerator.DEFAULT_CHARS);
-		Logger.debug("Generating font from " + fontFile.name() + " with characters: " + parameter.characters);
 
 		parameter.size = 12;
 		GameFont font12pt = new GameFont(generator.generateFont(parameter), 12);

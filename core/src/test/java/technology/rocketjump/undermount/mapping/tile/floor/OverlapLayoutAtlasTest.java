@@ -1,6 +1,5 @@
 package technology.rocketjump.undermount.mapping.tile.floor;
 
-import com.badlogic.gdx.utils.IntSet;
 import org.junit.Test;
 
 import java.io.File;
@@ -8,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeSet;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -94,24 +92,6 @@ public class OverlapLayoutAtlasTest {
 
 			writer.flush();
 		}
-	}
-
-	@Test
-	public void getUniqueLayouts_listsUniqueLayouts() {
-		OverlapLayoutAtlas atlas = new OverlapLayoutAtlas();
-
-		IntSet uniqueLayouts = atlas.getUniqueLayoutIds();
-
-		TreeSet<Integer> orderedUniqueLayouts = new TreeSet<>();
-		IntSet.IntSetIterator iterator = uniqueLayouts.iterator();
-		while (iterator.hasNext) {
-			int layoutId = iterator.next();
-			orderedUniqueLayouts.add(layoutId);
-		}
-		iterator.reset();
-
-		assertThat(uniqueLayouts.size).isEqualTo(20);
-		assertThat(orderedUniqueLayouts).contains(0, 1, 2, 5, 8, 10, 12, 24, 26, 33, 34, 36, 37, 49, 50, 66, 69, 74, 90, 165);
 	}
 
 }

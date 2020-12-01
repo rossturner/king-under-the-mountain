@@ -141,6 +141,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 						break;
 					case DISABLE_ALL_HINTS:
 						userPreferences.setPreference(ALLOW_HINTS, "false");
+						messageDispatcher.dispatchMessage(MessageType.PREFERENCE_CHANGED, ALLOW_HINTS);
 						break;
 					case DISMISS:
 						// Do nothing, but don't hit default handler
