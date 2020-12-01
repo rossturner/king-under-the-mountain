@@ -9,7 +9,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchToken;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
-import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitcAccountInfo;
+import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitchAccountInfo;
 import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitchAuthToken;
 import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitchSubscribers;
 import technology.rocketjump.undermount.misc.twitch.tasks.GetTwitchViewers;
@@ -63,7 +63,7 @@ public class TwitchTaskRunner {
 
 	public void updateUserInfo() {
 		if (getAccountInfo == null) {
-			getAccountInfo = backgroundTaskManager.postUntrackedCallable(new GetTwitcAccountInfo(twitchDataStore));
+			getAccountInfo = backgroundTaskManager.postUntrackedCallable(new GetTwitchAccountInfo(twitchDataStore));
 		}
 	}
 

@@ -8,12 +8,12 @@ import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
 
 import java.util.concurrent.Callable;
 
-public class GetTwitcAccountInfo implements Callable<TwitchAccountInfo> {
+public class GetTwitchAccountInfo implements Callable<TwitchAccountInfo> {
 
 	private final TwitchRequestHandler twitchRequestHandler = new TwitchRequestHandler();
 	private final TwitchDataStore twitchDataStore;
 
-	public GetTwitcAccountInfo(TwitchDataStore twitchDataStore) {
+	public GetTwitchAccountInfo(TwitchDataStore twitchDataStore) {
 		this.twitchDataStore = twitchDataStore;
 	}
 

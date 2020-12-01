@@ -23,7 +23,7 @@ public class ClickableTable extends Table {
 	private boolean isHighlighted;
 	private IconButton.IconButtonOnEnter onEnter;
 
-	public ClickableTable(Skin skin) {
+	ClickableTable(Skin skin) {
 		super(skin);
 
 		this.setTouchable(Touchable.enabled);
