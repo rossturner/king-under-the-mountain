@@ -292,6 +292,14 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 		return enabledGroups.contains(group);
 	}
 
+	public boolean isEnabled(ItemType itemType) {
+		return enabledItemTypes.contains(itemType);
+	}
+
+	public boolean isEnabled(GameMaterial material, ItemType itemType) {
+		return enabledMaterialsByItemType.getOrDefault(itemType, Collections.emptySet()).contains(material);
+	}
+
 	public boolean canHold(ItemEntityAttributes itemAttributes) {
 		return enabledItemTypes.contains(itemAttributes.getItemType()) &&
 				enabledMaterialsByItemType.getOrDefault(itemAttributes.getItemType(), Collections.emptySet()).contains(itemAttributes.getPrimaryMaterial());

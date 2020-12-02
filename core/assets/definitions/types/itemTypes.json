@@ -62,7 +62,6 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 4.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "FOOD",
   "tags" : { },
   "consumeSoundAssetName" : "DrinkSoup",
   "describeAsMaterialOnly" : true,
@@ -80,7 +79,6 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 4.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "FOOD",
   "tags" : { },
   "consumeSoundAssetName" : "DrinkSoup",
   "describeAsMaterialOnly" : true,
@@ -432,7 +430,6 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
   "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.LIQUID.EXAMPLE"

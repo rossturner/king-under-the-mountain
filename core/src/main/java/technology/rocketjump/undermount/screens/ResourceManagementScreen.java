@@ -77,8 +77,10 @@ public class ResourceManagementScreen extends ManagementScreen {
 		Map<StockpileGroup, Map<ItemType, Map<GameMaterial, Map<Long, Entity>>>> itemsByGroupByType = new LinkedHashMap<>();
 		Map<ItemType, Map<GameMaterial, Map<Long, Entity>>> allByItemType = itemTracker.getAllByItemType();
 		for (Map.Entry<ItemType, Map<GameMaterial, Map<Long, Entity>>> itemTypeMapEntry : allByItemType.entrySet()) {
-			itemsByGroupByType.computeIfAbsent(itemTypeMapEntry.getKey().getStockpileGroup(), a -> new LinkedHashMap<>())
-					.put(itemTypeMapEntry.getKey(), itemTypeMapEntry.getValue());
+			if (itemTypeMapEntry.getKey().getStockpileGroup() != null) {
+				itemsByGroupByType.computeIfAbsent(itemTypeMapEntry.getKey().getStockpileGroup(), a -> new LinkedHashMap<>())
+						.put(itemTypeMapEntry.getKey(), itemTypeMapEntry.getValue());
+			}
 		}
 
 

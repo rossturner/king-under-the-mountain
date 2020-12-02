@@ -20,23 +20,68 @@ public class StockpileComponentUpdater {
 		this.gameMaterialDictionary = gameMaterialDictionary;
 	}
 
-	public void toggleGroup(StockpileComponent stockpileComponent, StockpileGroup group, boolean enabled) {
+	public void toggleGroup(StockpileComponent stockpileComponent, StockpileGroup group, boolean enabled, boolean recurseToChildren) {
 		stockpileComponent.toggleGroup(group, enabled);
-		for (ItemType itemType : itemTypeDictionary.getByStockpileGroup(group)) {
-			toggleItem(stockpileComponent, itemType, enabled);
+
+		if (recurseToChildren) {
+			for (ItemType itemType : itemTypeDictionary.getByStockpileGroup(group)) {
+				toggleItem(stockpileComponent, itemType, enabled, false, true);
+			}
 		}
 	}
 
-	public void toggleItem(StockpileComponent stockpileComponent, ItemType itemType, boolean enabled) {
+	public void toggleItem(StockpileComponent stockpileComponent, ItemType itemType, boolean enabled, boolean recurseToParent, boolean reurseToChildren) {
 		stockpileComponent.toggleItem(itemType, enabled);
 
-		for (GameMaterial gameMaterial : gameMaterialDictionary.getByType(itemType.getPrimaryMaterialType())) {
-			toggleMaterial(stockpileComponent, itemType, gameMaterial, enabled);
+		if (reurseToChildren) {
+			for (GameMaterial gameMaterial : gameMaterialDictionary.getByType(itemType.getPrimaryMaterialType())) {
+				stockpileComponent.toggleMaterial(itemType, gameMaterial, enabled);
+				toggleMaterial(stockpileComponent, itemType, gameMaterial, enabled, false);
+			}
+		}
+
+		if (recurseToParent) {
+			boolean allSiblingsDisabled = true;
+
+			for (ItemType siblingItem : itemTypeDictionary.getByStockpileGroup(itemType.getStockpileGroup())) {
+				if (stockpileComponent.isEnabled(siblingItem)) {
+					allSiblingsDisabled = false;
+					break;
+				}
+			}
+
+			if (enabled) {
+				// when enabled, always enable parent(s)
+				toggleGroup(stockpileComponent, itemType.getStockpileGroup(), true, false);
+			}
+			if (allSiblingsDisabled) {
+				toggleGroup(stockpileComponent, itemType.getStockpileGroup(), false, false);
+			}
 		}
 	}
 
-	private void toggleMaterial(StockpileComponent stockpileComponent, ItemType itemType, GameMaterial gameMaterial, boolean enabled) {
+	public void toggleMaterial(StockpileComponent stockpileComponent, ItemType itemType, GameMaterial gameMaterial, boolean enabled, boolean recurseToParent) {
 		stockpileComponent.toggleMaterial(itemType, gameMaterial, enabled);
+
+		if (recurseToParent) {
+			boolean allSiblingsDisabled = true;
+
+			for (GameMaterial material : gameMaterialDictionary.getByType(itemType.getPrimaryMaterialType())) {
+				if (stockpileComponent.isEnabled(material, itemType)) {
+					allSiblingsDisabled = false;
+					break;
+				}
+			}
+
+			if (enabled) {
+				// when enabled, always enable parents
+				toggleItem(stockpileComponent, itemType, true, true, false);
+				toggleGroup(stockpileComponent, itemType.getStockpileGroup(), true, false);
+			}
+			if (allSiblingsDisabled) {
+				toggleItem(stockpileComponent, itemType, false, true, false); // recurseToParent to toggle group is necessary
+			}
+		}
 	}
 
 }

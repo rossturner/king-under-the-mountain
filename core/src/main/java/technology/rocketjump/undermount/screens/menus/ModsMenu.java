@@ -161,6 +161,7 @@ public class ModsMenu implements Menu {
 			ModCompatibilityChecker.Compatibility compatibility = modCompatibilityChecker.checkCompatibility(mod);
 
 			CheckBox activeCheckbox = new CheckBox("", uiSkin);
+			activeCheckbox.getLabelCell().padLeft(5f);
 			activeCheckbox.setChecked(modRepository.getActiveMods().contains(mod));
 			if (isBaseMod) {
 				activeCheckbox.setDisabled(true);

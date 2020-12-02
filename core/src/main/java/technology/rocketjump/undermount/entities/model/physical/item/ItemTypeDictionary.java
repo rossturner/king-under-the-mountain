@@ -59,9 +59,7 @@ public class ItemTypeDictionary {
 				}
 			}
 
-			if (itemType.getStockpileGroupName() == null) {
-				Logger.warn("stockpileGroupName is null for itemType " + itemType.getItemTypeName());
-			} else {
+			if (itemType.getStockpileGroupName() != null) {
 				itemType.setStockpileGroup(stockpileGroupDictionary.getByName(itemType.getStockpileGroupName()));
 				if (itemType.getStockpileGroup() == null) {
 					Logger.error("Could not find stockpile group '"+itemType.getStockpileGroupName()+"' for itemType " + itemType.getItemTypeName());
