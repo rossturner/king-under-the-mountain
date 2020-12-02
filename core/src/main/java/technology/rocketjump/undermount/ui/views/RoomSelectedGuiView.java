@@ -26,6 +26,7 @@ import technology.rocketjump.undermount.rooms.Room;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.rooms.components.FarmPlotComponent;
 import technology.rocketjump.undermount.rooms.components.RoomComponent;
+import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 import technology.rocketjump.undermount.ui.Selectable;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
@@ -52,6 +53,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 	private final RoomStore roomStore;
 	private final GameDialogDictionary gameDialogDictionary;
 	private final MessageDispatcher messageDispatcher;
+	private final IconButton manageStockpileButton;
 	private Table outerTable;
 	private Table descriptionTable;
 
@@ -62,6 +64,9 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 	private GameContext gameContext;
 	private ImageButton changeRoomNameButton;
 	private List<ToggleButtonSet.ToggleButtonDefinition> priorityButtonDefinitions;
+
+	private StockpileComponent currentStockpileComponent;
+	boolean showStockpileManagement = false;
 
 	@Inject
 	public RoomSelectedGuiView(GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher, I18nTranslator i18nTranslator,
@@ -152,6 +157,13 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 			}
 		});
 
+		manageStockpileButton = iconButtonFactory.create("GUI.SETTINGS.LABEL", "gears", HexColors.get("#edc154"), ButtonStyle.SMALL);
+		RoomSelectedGuiView This = this;
+		manageStockpileButton.setAction(() -> {
+			This.showStockpileManagement = !This.showStockpileManagement;
+			doUpdate();
+		});
+
 		priorityButtonDefinitions = new ArrayList<>();
 		// TODO might want to pull the below code out somewhere else
 		TextureAtlas guiTextureAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
@@ -166,6 +178,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 
 	@Override
 	public void populate(Table containerTable) {
+		this.showStockpileManagement = false;
 		update();
 
 		containerTable.clear();
@@ -186,7 +199,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 				// Still update if it's not a farm plot (due to SelectBox reset on farm plot)
 				// FIXME Better to use a dialog for making changes, also gives more space to show info
 				FarmPlotComponent farmPlotComponent = currentSelectable.getRoom().getComponent(FarmPlotComponent.class);
-				if (farmPlotComponent == null) {
+				if (farmPlotComponent == null && currentStockpileComponent == null) {
 					doUpdate();
 				}
 			}
@@ -201,12 +214,29 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 			Room room = currentSelectable.getRoom();
 
 			boolean requiresFurnitureButton = !room.getRoomType().getFurnitureNames().isEmpty();
+			StockpileComponent stockpileComponent = room.getComponent(StockpileComponent.class);
+			int columns = 1;
+			if (requiresFurnitureButton) {
+				columns++;
+			}
+			if (stockpileComponent != null) {
+				columns++;
+			}
 
-			outerTable.add(descriptionTable).left().colspan(requiresFurnitureButton ? 2 : 1).row();
+
+			outerTable.add(descriptionTable).left().colspan(columns).row();
+			if (stockpileComponent != null) {
+				currentStockpileComponent = stockpileComponent;
+				outerTable.add(manageStockpileButton).left().pad(4);
+			}
 			if (requiresFurnitureButton) {
 				outerTable.add(furnitureButton).left().pad(4);
 			}
-			outerTable.add(removeButton).left().pad(4);
+			outerTable.add(removeButton).left().pad(4).row();
+			if (showStockpileManagement && currentStockpileComponent != null) {
+				outerTable.add(new StockpileManagementTree(uiSkin, messageDispatcher, currentStockpileComponent))
+						.colspan(columns).left().pad(4).row();
+			}
 
 
 			descriptionTable.add(new Label(room.getRoomName(), uiSkin)).left();
@@ -226,7 +256,8 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 					for (I18nText description : ((SelectableDescription) roomComponent).getDescription(i18nTranslator, gameContext)) {
 						descriptionTable.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).colspan(3).left().row();
 					}
-				} else if (roomComponent instanceof Prioritisable) {
+				}
+				if (roomComponent instanceof Prioritisable) {
 					Prioritisable prioritisableComponent = (Prioritisable)roomComponent;
 
 
