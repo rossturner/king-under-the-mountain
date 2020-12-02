@@ -1,9 +1,11 @@
 package technology.rocketjump.undermount.rooms;
 
+import com.badlogic.gdx.graphics.Color;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import technology.rocketjump.undermount.misc.Name;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.Objects;
 
@@ -13,8 +15,10 @@ public class StockpileGroup {
 
 	@Name
 	private String name;
-	@JsonIgnore
 	private String i18nKey;
+	private String colorCode;
+	@JsonIgnore
+	private Color color = HexColors.POSITIVE_COLOR;
 
 	public StockpileGroup() {
 
@@ -26,12 +30,33 @@ public class StockpileGroup {
 
 	public void setName(String name) {
 		this.name = name;
-		this.i18nKey = "STOCKPILE." + name.toUpperCase().replaceAll(" ", "_");
 	}
 
-	@JsonIgnore
 	public String getI18nKey() {
 		return i18nKey;
+	}
+
+	public void setI18nKey(String i18nKey) {
+		this.i18nKey = i18nKey;
+	}
+
+	public String getColorCode() {
+		return colorCode;
+	}
+
+	public void setColorCode(String colorCode) {
+		this.colorCode = colorCode;
+		if (colorCode != null) {
+			this.color = HexColors.get(colorCode);
+		}
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 	@Override
