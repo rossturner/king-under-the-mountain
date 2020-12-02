@@ -1,9 +1,9 @@
 [{
   "itemTypeName": "Ingredient-Tankard",
-  "itemGroup": "INGREDIENT",
+  "describeAsMaterialOnly": true,
   "materialTypes": ["LIQUID", "WOOD", "METAL", "STONE"],
   "primaryMaterialType": "LIQUID",
-  "stockpileGroupName": "Pantry",
+  "stockpileGroupName": "FOOD",
   "hoursInInventoryUntilUnused": 4,
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,

@@ -1,11 +1,10 @@
 [{
   "itemTypeName": "Resource-Metal-Ingot",
-  "itemGroup": "RESOURCE",
   "materialTypes": ["METAL"],
   "primaryMaterialType": "METAL",
   "maxStackSize": 32,
   "maxHauledAtOnce": 2,
-  "stockpileGroupName": "Resources",
+  "stockpileGroupName": "PRODUCTS",
   "impedesMovement": true,
   "blocksMovement": false
 }]

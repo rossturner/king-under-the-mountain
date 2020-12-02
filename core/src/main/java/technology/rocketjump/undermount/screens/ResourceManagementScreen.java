@@ -11,12 +11,13 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.item.ItemGroup;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rooms.StockpileGroup;
+import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.ui.Scene2DUtils;
 import technology.rocketjump.undermount.ui.Selectable;
@@ -36,10 +37,10 @@ public class ResourceManagementScreen extends ManagementScreen {
 
 	private static final float INDENT_WIDTH = 50f;
 	private final ItemTracker itemTracker;
+	private final StockpileGroupDictionary stockpileGroupDictionary;
 	private final ClickableTableFactory clickableTableFactory;
 
-	private final List<ItemGroup> groupsToShow = Arrays.asList(ItemGroup.RESOURCE, ItemGroup.FUEL, ItemGroup.PRODUCT, ItemGroup.TOOL);
-	private final Map<ItemGroup, I18nLabel> groupLabels = new EnumMap<>(ItemGroup.class);
+	private final Map<StockpileGroup, I18nLabel> groupLabels = new HashMap<>();
 	private final EntityRenderer entityRenderer;
 
 	private final Table scrollableTable;
@@ -52,14 +53,15 @@ public class ResourceManagementScreen extends ManagementScreen {
 									GuiSkinRepository guiSkinRepository, I18nWidgetFactory i18nWidgetFactory,
 									I18nTranslator i18nTranslator, IconButtonFactory iconButtonFactory,
 									ItemTracker itemTracker, ClickableTableFactory clickableTableFactory,
-									EntityRenderer entityRenderer) {
+									EntityRenderer entityRenderer, StockpileGroupDictionary stockpileGroupDictionary) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.itemTracker = itemTracker;
 		this.clickableTableFactory = clickableTableFactory;
 		this.entityRenderer = entityRenderer;
+		this.stockpileGroupDictionary = stockpileGroupDictionary;
 
-		for (ItemGroup itemGroup : groupsToShow) {
-			groupLabels.put(itemGroup, i18nWidgetFactory.createLabel(itemGroup.getI18nKey(), I18nWordClass.PLURAL));
+		for (StockpileGroup group : stockpileGroupDictionary.getAll()) {
+			groupLabels.put(group, i18nWidgetFactory.createLabel(group.getI18nKey(), I18nWordClass.PLURAL));
 		}
 
 		scrollableTable = new Table(uiSkin);
@@ -72,22 +74,21 @@ public class ResourceManagementScreen extends ManagementScreen {
 		containerTable.add(titleLabel).center().pad(5).row();
 		scrollableTable.clearChildren();
 
-		Map<ItemGroup, Map<ItemType, Map<GameMaterial, Map<Long, Entity>>>> itemsByGroupByType = new LinkedHashMap<>();
+		Map<StockpileGroup, Map<ItemType, Map<GameMaterial, Map<Long, Entity>>>> itemsByGroupByType = new LinkedHashMap<>();
 		Map<ItemType, Map<GameMaterial, Map<Long, Entity>>> allByItemType = itemTracker.getAllByItemType();
 		for (Map.Entry<ItemType, Map<GameMaterial, Map<Long, Entity>>> itemTypeMapEntry : allByItemType.entrySet()) {
-			itemsByGroupByType.computeIfAbsent(itemTypeMapEntry.getKey().getItemGroup(), a -> new LinkedHashMap<>())
+			itemsByGroupByType.computeIfAbsent(itemTypeMapEntry.getKey().getStockpileGroup(), a -> new LinkedHashMap<>())
 					.put(itemTypeMapEntry.getKey(), itemTypeMapEntry.getValue());
 		}
 
 
-
-		for (ItemGroup itemGroup : groupsToShow) {
-			if (itemsByGroupByType.containsKey(itemGroup)) {
+		for (StockpileGroup stockpileGroup : stockpileGroupDictionary.getAll()) {
+			if (itemsByGroupByType.containsKey(stockpileGroup)) {
 				Table groupTable = new Table(uiSkin);
 
-				groupTable.add(groupLabels.get(itemGroup)).center().row();
+				groupTable.add(groupLabels.get(stockpileGroup)).center().row();
 
-				Map<ItemType, Map<GameMaterial, Map<Long, Entity>>> itemsByType = itemsByGroupByType.get(itemGroup);
+				Map<ItemType, Map<GameMaterial, Map<Long, Entity>>> itemsByType = itemsByGroupByType.get(stockpileGroup);
 				for (Map.Entry<ItemType, Map<GameMaterial, Map<Long, Entity>>> itemTypeMapEntry : itemsByType.entrySet()) {
 					ItemType itemType = itemTypeMapEntry.getKey();
 					String itemTypeRowName = "itemType:"+itemType.getItemTypeName();

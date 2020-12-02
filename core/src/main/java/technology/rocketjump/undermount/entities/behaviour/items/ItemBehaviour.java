@@ -56,7 +56,7 @@ public class ItemBehaviour implements BehaviourComponent {
 			if (tile.getRoomTile() != null) {
 				Room room = tile.getRoomTile().getRoom();
 				StockpileComponent stockpileComponent = room.getComponent(StockpileComponent.class);
-				if (stockpileComponent != null && stockpileComponent.getGroup().equals(attributes.getItemType().getStockpileGroup())) {
+				if (stockpileComponent != null && stockpileComponent.canHold(attributes)) {
 					inStockpile = true;
 				}
 			}

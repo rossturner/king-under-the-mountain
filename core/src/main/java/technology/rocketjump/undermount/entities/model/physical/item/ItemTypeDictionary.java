@@ -9,14 +9,14 @@ import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
+import technology.rocketjump.undermount.rooms.StockpileGroup;
 import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.util.Collections.emptyList;
 
 @Singleton
 public class ItemTypeDictionary {
@@ -25,6 +25,7 @@ public class ItemTypeDictionary {
 	private Map<String, ItemType> byName = new HashMap<>();
 	private List<ItemType> allTypesList = new ArrayList<>();
 	private Map<CraftingType, List<ItemType>> byCraftingType = new HashMap<>();
+	private final Map<StockpileGroup, List<ItemType>> byStockpileGroup = new HashMap<>();
 
 	@Inject
 	public ItemTypeDictionary(CraftingTypeDictionary craftingTypeDictionary,
@@ -37,6 +38,7 @@ public class ItemTypeDictionary {
 		List<ItemType> itemTypeList = objectMapper.readValue(FileUtils.readFileToString(itemTypeJsonFile, "UTF-8"),
 				objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, ItemType.class));
 
+		itemTypeList.sort(Comparator.comparing(ItemType::getItemTypeName));
 
 		for (ItemType itemType : itemTypeList) {
 			if (itemType.getRelatedCraftingTypeNames() == null) {
@@ -63,6 +65,8 @@ public class ItemTypeDictionary {
 				itemType.setStockpileGroup(stockpileGroupDictionary.getByName(itemType.getStockpileGroupName()));
 				if (itemType.getStockpileGroup() == null) {
 					Logger.error("Could not find stockpile group '"+itemType.getStockpileGroupName()+"' for itemType " + itemType.getItemTypeName());
+				} else {
+					byStockpileGroup.computeIfAbsent(itemType.getStockpileGroup(), a -> new ArrayList<>()).add(itemType);
 				}
 			}
 
@@ -74,8 +78,8 @@ public class ItemTypeDictionary {
 			}
 
 			if (itemType.getConsumeSoundAssetName() != null) {
-				itemType.setConsueSoundAsset(soundAssetDictionary.getByName(itemType.getConsumeSoundAssetName()));
-				if (itemType.getConsueSoundAsset() == null) {
+				itemType.setConsumeSoundAsset(soundAssetDictionary.getByName(itemType.getConsumeSoundAssetName()));
+				if (itemType.getConsumeSoundAsset() == null) {
 					Logger.error("Could not find sound asset with name " + itemType.getConsumeSoundAssetName() + " for item type " + itemType.getItemTypeName());
 				}
 			}
@@ -102,7 +106,11 @@ public class ItemTypeDictionary {
 	}
 
 	public List<ItemType> getByCraftingType(CraftingType craftingType) {
-		return byCraftingType.get(craftingType);
+		return byCraftingType.getOrDefault(craftingType, emptyList());
+	}
+
+	public List<ItemType> getByStockpileGroup(StockpileGroup stockpileGroup) {
+		return byStockpileGroup.getOrDefault(stockpileGroup, emptyList());
 	}
 
 	public ConstantsRepo getConstantsRepo() {

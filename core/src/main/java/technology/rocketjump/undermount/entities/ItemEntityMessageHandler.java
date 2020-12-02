@@ -192,13 +192,14 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 	public static HaulingAllocation findStockpileAllocation(TiledMap areaMap, Entity itemEntity, RoomStore roomStore, Entity requestingEntity) {
 		// FIXME #89 - Stockpile priorityRank and filtering - select stockpile based on priorityRank and legality rather than only distance
 		Vector2 itemPosition = itemEntity.getLocationComponent().getWorldOrParentPosition();
-		ItemType itemType = ((ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes()).getItemType();
+		ItemEntityAttributes attributes = (ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes();
+		ItemType itemType = attributes.getItemType();
 		int sourceRegionId = areaMap.getTile(itemPosition).getRegionId();
 		Map<Float, Room> stockpilesByDistance = new TreeMap<>(Comparator.comparingInt(o -> (int) (o * 10)));
 
 
 		for (Room stockpile : roomStore.getByComponent(StockpileComponent.class)) {
-			if (stockpile.getComponent(StockpileComponent.class).getGroup().equals(itemType.getStockpileGroup())) {
+			if (stockpile.getComponent(StockpileComponent.class).canHold(attributes)) {
 				int roomRegionId = stockpile.getRoomTiles().values().iterator().next().getTile().getRegionId();
 				if (sourceRegionId == roomRegionId) {
 					stockpilesByDistance.put(itemPosition.dst2(stockpile.getAvgWorldPosition()), stockpile);

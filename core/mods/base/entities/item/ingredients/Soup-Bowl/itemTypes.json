@@ -1,9 +1,9 @@
 [{
   "itemTypeName": "Ingredient-Soup-Bowl",
-  "itemGroup": "INGREDIENT",
+  "describeAsMaterialOnly": true,
   "materialTypes": ["LIQUID", "WOOD"],
   "primaryMaterialType": "LIQUID",
-  "stockpileGroupName": "Pantry",
+  "stockpileGroupName": "FOOD",
   "hoursInInventoryUntilUnused": 4,
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,

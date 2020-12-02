@@ -25,10 +25,8 @@ import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
-import technology.rocketjump.undermount.rooms.Room;
-import technology.rocketjump.undermount.rooms.RoomFactory;
-import technology.rocketjump.undermount.rooms.RoomStore;
-import technology.rocketjump.undermount.rooms.RoomTile;
+import technology.rocketjump.undermount.rooms.*;
+import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
@@ -47,18 +45,20 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private final RoomFactory roomFactory;
 	private final RoomStore roomStore;
 	private final JobStore jobStore;
+	private final StockpileComponentUpdater stockpileComponentUpdater;
 
 	private GameContext gameContext;
 
 	@Inject
 	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
-							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory, RoomStore roomStore, JobStore jobStore) {
+							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory, RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
 		this.roomFactory = roomFactory;
 		this.roomStore = roomStore;
 		this.jobStore = jobStore;
+		this.stockpileComponentUpdater = stockpileComponentUpdater;
 
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
@@ -124,6 +124,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 		while (!roomTilesToPlace.isEmpty()) {
 			Room newRoom = roomFactory.create(roomPlacementMessage.getRoomType(), roomTilesToPlace);
+			StockpileComponent stockpileComponent = newRoom.getComponent(StockpileComponent.class);
+			if (stockpileComponent != null) {
+				stockpileComponentUpdater.toggleGroup(stockpileComponent, roomPlacementMessage.stockpileGroup, true);
+			}
 			newRooms.add(newRoom);
 		}
 

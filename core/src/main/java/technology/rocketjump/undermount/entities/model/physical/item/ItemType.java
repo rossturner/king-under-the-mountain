@@ -21,7 +21,6 @@ public class ItemType {
 	private long itemTypeId;
 	@Name
 	private String itemTypeName;
-	private ItemGroup itemGroup;
 
 	private int maxStackSize = 1;
 	private int maxHauledAtOnce; // or requiresHauling
@@ -52,7 +51,9 @@ public class ItemType {
 
 	private String consumeSoundAssetName;
 	@JsonIgnore
-	private SoundAsset consueSoundAsset;
+	private SoundAsset consumeSoundAsset;
+
+	private boolean describeAsMaterialOnly;
 
 	public long getItemTypeId() {
 		return itemTypeId;
@@ -118,12 +119,12 @@ public class ItemType {
 		this.consumeSoundAssetName = consumeSoundAssetName;
 	}
 
-	public SoundAsset getConsueSoundAsset() {
-		return consueSoundAsset;
+	public SoundAsset getConsumeSoundAsset() {
+		return consumeSoundAsset;
 	}
 
-	public void setConsueSoundAsset(SoundAsset consueSoundAsset) {
-		this.consueSoundAsset = consueSoundAsset;
+	public void setConsumeSoundAsset(SoundAsset consumeSoundAsset) {
+		this.consumeSoundAsset = consumeSoundAsset;
 	}
 
 	@Override
@@ -158,14 +159,6 @@ public class ItemType {
 
 	public void setPrimaryMaterialType(GameMaterialType primaryMaterialType) {
 		this.primaryMaterialType = primaryMaterialType;
-	}
-
-	public ItemGroup getItemGroup() {
-		return itemGroup;
-	}
-
-	public void setItemGroup(ItemGroup itemGroup) {
-		this.itemGroup = itemGroup;
 	}
 
 	public boolean isImpedesMovement() {
@@ -258,5 +251,13 @@ public class ItemType {
 
 	public List<Tag> getProcessedTags() {
 		return processedTags;
+	}
+
+	public boolean isDescribeAsMaterialOnly() {
+		return describeAsMaterialOnly;
+	}
+
+	public void setDescribeAsMaterialOnly(boolean describeAsMaterialOnly) {
+		this.describeAsMaterialOnly = describeAsMaterialOnly;
 	}
 }

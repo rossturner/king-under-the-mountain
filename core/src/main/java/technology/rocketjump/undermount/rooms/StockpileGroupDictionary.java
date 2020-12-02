@@ -7,15 +7,13 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Singleton
 public class StockpileGroupDictionary {
 
-	private Map<String, StockpileGroup> byName = new HashMap<>();
+	private final Map<String, StockpileGroup> byName = new HashMap<>();
+	private final List<StockpileGroup> all = new ArrayList<>();
 
 	@Inject
 	public StockpileGroupDictionary() throws IOException {
@@ -29,11 +27,17 @@ public class StockpileGroupDictionary {
 
 		for (StockpileGroup stockpileGroup : stockpileGroups) {
 			byName.put(stockpileGroup.getName(), stockpileGroup);
+			all.add(stockpileGroup);
 		}
+
+		Collections.sort(all, Comparator.comparing(StockpileGroup::getSortOrder));
 	}
 
 	public StockpileGroup getByName(String stockpileGroupName) {
 		return byName.get(stockpileGroupName);
 	}
 
+	public List<StockpileGroup> getAll() {
+		return all;
+	}
 }

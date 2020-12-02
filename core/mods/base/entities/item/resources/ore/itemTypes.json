@@ -1,11 +1,10 @@
 [{
   "itemTypeName": "Resource-Ore-Unrefined",
-  "itemGroup": "RESOURCE",
   "materialTypes": ["STONE", "ORE"],
   "primaryMaterialType": "ORE",
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,
-  "stockpileGroupName": "Resources",
+  "stockpileGroupName": "RAW_MATERIALS",
   "impedesMovement": true,
   "blocksMovement": false
 }]

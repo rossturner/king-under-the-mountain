@@ -24,14 +24,15 @@ public class MessageType {
 	public static final int TRIGGER_SCREEN_SHAKE = 206;
 
 	// GUI Messages
-	public static final int ROOM_PLACEMENT = 248;
-	public static final int AREA_SELECTION = 249;
-	public static final int GUI_SWITCH_VIEW = 250;
-	public static final int GUI_SWITCH_INTERACTION_MODE = 251;
-	public static final int GUI_SWITCH_VIEW_MODE = 252;
-	public static final int GUI_CANCEL_CURRENT_VIEW = 253;
-	public static final int DESIGNATION_APPLIED = 254;
-	public static final int REMOVE_DESIGNATION = 255;
+	public static final int ROOM_PLACEMENT = 247;
+	public static final int AREA_SELECTION = 248;
+	public static final int GUI_SWITCH_VIEW = 249;
+	public static final int GUI_SWITCH_INTERACTION_MODE = 250;
+	public static final int GUI_SWITCH_VIEW_MODE = 251;
+	public static final int GUI_CANCEL_CURRENT_VIEW = 252;
+	public static final int DESIGNATION_APPLIED = 253;
+	public static final int REMOVE_DESIGNATION = 254;
+	public static final int GUI_STOCKPILE_GROUP_SELECTED = 255;
 	public static final int GUI_ROOM_TYPE_SELECTED = 256;
 	public static final int GUI_FURNITURE_TYPE_SELECTED = 257;
 	public static final int SET_GAME_SPEED = 258;

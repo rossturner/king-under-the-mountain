@@ -1,9 +1,8 @@
 [{
   "itemTypeName": "Resource-Ore-Crushed",
-  "itemGroup": "RESOURCE",
   "materialTypes": ["CLOTH", "ORE"],
   "primaryMaterialType": "ORE",
   "maxStackSize": 16,
   "maxHauledAtOnce": 16,
-  "stockpileGroupName": "Resources"
+  "stockpileGroupName": "RAW_MATERIALS"
 }]

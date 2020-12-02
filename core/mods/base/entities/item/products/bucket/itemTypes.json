@@ -1,9 +1,8 @@
 [{
   "itemTypeName": "Product-Bucket",
-  "itemGroup": "PRODUCT",
   "materialTypes": ["WOOD", "METAL", "ROPE"],
   "primaryMaterialType": "WOOD",
-  "stockpileGroupName": "Resources",
+  "stockpileGroupName": "PRODUCTS",
   "hoursInInventoryUntilUnused": 2,
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,

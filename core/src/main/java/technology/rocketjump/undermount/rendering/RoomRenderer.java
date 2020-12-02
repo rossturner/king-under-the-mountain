@@ -26,7 +26,7 @@ public class RoomRenderer {
 	public void render(MapTile mapTile, SpriteBatch spriteBatch, TerrainSpriteCache spriteCache) {
 		Room room = mapTile.getRoomTile().getRoom();
 		roomEdgeTypeDictionary.getByName(room.getRoomType().getEdgeName());
-		spriteBatch.setColor(room.getRoomType().getColor());
+		spriteBatch.setColor(room.getBorderColor());
 
 		RoomTileLayout layout = mapTile.getRoomTile().getLayout();
 		RoomEdgeType roomEdgeType = roomEdgeTypeDictionary.getByName(room.getRoomType().getEdgeName()); // FIXME get by ID when Enum is removed

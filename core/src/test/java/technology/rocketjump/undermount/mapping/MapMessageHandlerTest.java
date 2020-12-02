@@ -123,7 +123,7 @@ public class MapMessageHandlerTest {
 		map.addZone(rightEdgeZone);
 
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
-				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore);
+				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, stockpileComponentUpdater);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);
