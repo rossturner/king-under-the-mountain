@@ -40,32 +40,56 @@ public class StockpileManagementTree extends Table {
 		for (StockpileGroup stockpileGroup : stockpileGroupDictionary.getAll()) {
 			StockpileTreeNode groupNode = new StockpileTreeNode();
 			groupNode.setValue(new StockpileTreeValue(stockpileGroup));
-
 			createCheckbox(groupNode, stockpileGroup.getI18nKey());
-
 			treeRoot.add(groupNode);
+
+			boolean allItemsDisabled = true;
+			boolean allItemsEnabled = true;
 
 			for (ItemType itemType : itemTypeDictionary.getByStockpileGroup(stockpileGroup)) {
 				StockpileTreeNode itemTypeNode = new StockpileTreeNode();
 				itemTypeNode.setValue(new StockpileTreeValue(itemType));
-
 				createCheckbox(itemTypeNode, itemType.getI18nKey());
-
 				groupNode.add(itemTypeNode);
+
+				if (stockpileComponent.isEnabled(itemType)) {
+					allItemsDisabled = false;
+				} else {
+					allItemsEnabled = false;
+				}
+
+				boolean allMaterialsEnabled = true;
+				boolean allMaterialsDisabled = true;
 
 				for (GameMaterial material : gameMaterialDictionary.getByType(itemType.getPrimaryMaterialType())) {
 					StockpileTreeNode materialNode = new StockpileTreeNode();
 					materialNode.setValue(new StockpileTreeValue(material, itemType));
-
 					createCheckbox(materialNode, material.getI18nKey());
-
 					itemTypeNode.add(materialNode);
+
+
+					if (stockpileComponent.isEnabled(material, itemType)) {
+						allMaterialsDisabled = false;
+					} else {
+						allMaterialsEnabled = false;
+					}
 				}
+
+				if (!allMaterialsEnabled && !allMaterialsDisabled) {
+					itemTypeNode.setExpanded(true);
+					// setting these to cascade expansion up to parent
+					allItemsEnabled = false;
+					allItemsDisabled = false;
+				}
+			}
+
+			if (!allItemsEnabled && !allItemsDisabled) {
+				groupNode.setExpanded(true);
 			}
 		}
 
 		scrollPane = Scene2DUtils.wrapWithScrollPane(treeRoot, uiSkin);
-		this.add(scrollPane).width(550).height(400).left();
+		this.add(scrollPane).width(350).height(400).left();
 	}
 
 	private void createCheckbox(StockpileTreeNode node, String i18nKey) {
