@@ -6,7 +6,7 @@
   "layer" : 5,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "ground"
   },
   "useMaterialColor" : false
 }, {
@@ -17,7 +17,7 @@
   "layer" : 4,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "ground"
   },
   "useMaterialColor" : false
 }, {
@@ -28,7 +28,7 @@
   "layer" : 5,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "ground"
   },
   "useMaterialColor" : false,
   "lowColorCode" : "#583923",
@@ -54,7 +54,7 @@
   "layer" : 4,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "ground"
   },
   "useMaterialColor" : false,
   "lowColorCode" : "#494643",
@@ -67,7 +67,7 @@
   "layer" : 1,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "ground"
   },
   "useMaterialColor" : true
 }, {
@@ -78,7 +78,7 @@
   "layer" : 1,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "ground"
   },
   "useMaterialColor" : true
 }, {
@@ -89,7 +89,7 @@
   "layer" : 0,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "none"
   },
   "useMaterialColor" : true
 }, {
@@ -100,7 +100,7 @@
   "layer" : 3,
   "numSprites" : 5,
   "overlapType" : {
-    "overlapName" : "organic"
+    "overlapName" : "ground"
   },
   "useMaterialColor" : false,
   "lowColorCode" : "#583923",
