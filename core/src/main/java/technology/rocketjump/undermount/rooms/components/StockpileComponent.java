@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.RandomXS128;
 import com.google.common.collect.Lists;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
@@ -16,10 +17,12 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -34,13 +37,14 @@ import technology.rocketjump.undermount.ui.i18n.I18nWord;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class StockpileComponent extends RoomComponent implements SelectableDescription {
+public class StockpileComponent extends RoomComponent implements SelectableDescription, Prioritisable {
 
 	private Set<StockpileGroup> enabledGroups = new HashSet<>();
 	private Set<ItemType> enabledItemTypes = new HashSet<>();
 	private Map<ItemType, Set<GameMaterial>> enabledMaterialsByItemType = new HashMap<>();
 	// This keeps track of allocations - null for empty spaces
 	private final Map<GridPoint2, StockpileAllocation> allocations = new HashMap<>();
+	private JobPriority priority = JobPriority.NORMAL;
 
 	public StockpileComponent(Room parent, MessageDispatcher messageDispatcher) {
 		super(parent, messageDispatcher);
@@ -311,6 +315,16 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 	}
 
 	@Override
+	public JobPriority getPriority() {
+		return this.priority;
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		this.priority = jobPriority;
+	}
+
+	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		JSONArray enabledGroupsJson = new JSONArray();
 		for (StockpileGroup enabledGroup : this.enabledGroups) {
@@ -348,6 +362,10 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 				allocationsJson.add(entryJson);
 			}
 			asJson.put("allocations", allocationsJson);
+		}
+
+		if (!priority.equals(JobPriority.NORMAL)) {
+			asJson.put("priority", priority.name());
 		}
 	}
 
@@ -412,5 +430,8 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 				allocations.put(position, allocation);
 			}
 		}
+
+		this.priority = EnumParser.getEnumValue(asJson, "priority", JobPriority.class, JobPriority.NORMAL);
 	}
+
 }

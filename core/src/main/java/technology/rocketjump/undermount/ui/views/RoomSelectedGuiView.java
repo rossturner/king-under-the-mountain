@@ -273,7 +273,6 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 				if (roomComponent instanceof Prioritisable) {
 					Prioritisable prioritisableComponent = (Prioritisable)roomComponent;
 
-
 					ToggleButtonSet priorityToggle = new ToggleButtonSet(uiSkin, priorityButtonDefinitions, (value) -> {
 						JobPriority selectedPriority = JobPriority.valueOf(value);
 						prioritisableComponent.setPriority(selectedPriority);
