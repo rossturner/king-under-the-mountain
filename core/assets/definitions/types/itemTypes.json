@@ -1,7 +1,6 @@
 [ {
   "itemTypeId" : 1,
   "itemTypeName" : "Fuel-Sack",
-  "itemGroup" : "FUEL",
   "maxStackSize" : 16,
   "maxHauledAtOnce" : 16,
   "materialTypes" : [ "CLOTH", "ORE" ],
@@ -12,13 +11,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "FUEL",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "FUEL.SACK"
 }, {
   "itemTypeId" : 2,
   "itemTypeName" : "Ingredient-Malt-Sack",
-  "itemGroup" : "INGREDIENT_WITH_ITEM_NAME",
   "maxStackSize" : 30,
   "maxHauledAtOnce" : 30,
   "materialTypes" : [ "VEGETABLE", "CLOTH", "ROPE" ],
@@ -29,13 +28,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Granary",
+  "stockpileGroupName" : "GRANARY",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "INGREDIENT.MALT.SACK"
 }, {
   "itemTypeId" : 3,
   "itemTypeName" : "Ingredient-Milled-Malt-Sack",
-  "itemGroup" : "INGREDIENT_WITH_ITEM_NAME",
   "maxStackSize" : 30,
   "maxHauledAtOnce" : 30,
   "materialTypes" : [ "VEGETABLE", "CLOTH", "ROPE" ],
@@ -46,13 +45,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Granary",
+  "stockpileGroupName" : "GRANARY",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "INGREDIENT.MILLED.MALT.SACK"
 }, {
   "itemTypeId" : 4,
   "itemTypeName" : "Ingredient-Soup-Bowl",
-  "itemGroup" : "INGREDIENT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "LIQUID", "WOOD" ],
@@ -63,14 +62,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 4.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Pantry",
   "tags" : { },
   "consumeSoundAssetName" : "DrinkSoup",
+  "describeAsMaterialOnly" : true,
   "i18nKey" : "INGREDIENT.SOUP.BOWL"
 }, {
   "itemTypeId" : 5,
   "itemTypeName" : "Ingredient-Tankard",
-  "itemGroup" : "INGREDIENT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "LIQUID", "WOOD", "METAL", "STONE" ],
@@ -81,14 +79,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 4.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Pantry",
   "tags" : { },
   "consumeSoundAssetName" : "DrinkSoup",
+  "describeAsMaterialOnly" : true,
   "i18nKey" : "INGREDIENT.TANKARD"
 }, {
   "itemTypeId" : 6,
   "itemTypeName" : "Ingredient-Vegetable-Crate",
-  "itemGroup" : "INGREDIENT",
   "maxStackSize" : 30,
   "maxHauledAtOnce" : 30,
   "materialTypes" : [ "VEGETABLE", "WOOD" ],
@@ -99,14 +96,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Pantry",
+  "stockpileGroupName" : "FOOD",
   "tags" : { },
   "consumeSoundAssetName" : "EatFood",
+  "describeAsMaterialOnly" : true,
   "i18nKey" : "INGREDIENT.VEGETABLE.CRATE"
 }, {
   "itemTypeId" : 7,
   "itemTypeName" : "Ingredient-Vegetable-Sack",
-  "itemGroup" : "INGREDIENT",
   "maxStackSize" : 30,
   "maxHauledAtOnce" : 30,
   "materialTypes" : [ "VEGETABLE", "CLOTH", "ROPE" ],
@@ -117,14 +114,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Pantry",
+  "stockpileGroupName" : "FOOD",
   "tags" : { },
   "consumeSoundAssetName" : "EatFood",
+  "describeAsMaterialOnly" : true,
   "i18nKey" : "INGREDIENT.VEGETABLE.SACK"
 }, {
   "itemTypeId" : 8,
   "itemTypeName" : "Product-Anvil",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL" ],
@@ -135,13 +132,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 0.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.ANVIL"
 }, {
   "itemTypeId" : 9,
   "itemTypeName" : "Product-Barrel",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD", "METAL" ],
@@ -152,15 +149,15 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : {
     "LIQUID_CONTAINER" : [ "6" ]
   },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.BARREL"
 }, {
   "itemTypeId" : 10,
   "itemTypeName" : "Product-Barrel-Hoops",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 12,
   "maxHauledAtOnce" : 3,
   "materialTypes" : [ "METAL" ],
@@ -171,13 +168,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.BARREL.HOOPS"
 }, {
   "itemTypeId" : 11,
   "itemTypeName" : "Product-Barrel-Staves",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 15,
   "maxHauledAtOnce" : 5,
   "materialTypes" : [ "WOOD" ],
@@ -188,13 +185,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.BARREL.STAVES"
 }, {
   "itemTypeId" : 12,
   "itemTypeName" : "Product-Bread-Dough",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 28,
   "maxHauledAtOnce" : 7,
   "materialTypes" : [ "VEGETABLE" ],
@@ -205,13 +202,13 @@
   "equippedWhileWorkingOnJob" : false,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Pantry",
+  "stockpileGroupName" : "FOOD",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.BREAD.DOUGH"
 }, {
   "itemTypeId" : 13,
   "itemTypeName" : "Product-Bread-Loaf",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 13,
   "maxHauledAtOnce" : 13,
   "materialTypes" : [ "FOODSTUFF" ],
@@ -222,14 +219,14 @@
   "equippedWhileWorkingOnJob" : false,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Pantry",
+  "stockpileGroupName" : "FOOD",
   "tags" : { },
   "consumeSoundAssetName" : "EatFood",
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.BREAD.LOAF"
 }, {
   "itemTypeId" : 14,
   "itemTypeName" : "Product-Bucket",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD", "METAL", "ROPE" ],
@@ -240,16 +237,16 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : {
     "LIQUID_CONTAINER" : [ "2" ],
     "USAGE_SOUND" : [ "WaterCollect" ]
   },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.BUCKET"
 }, {
   "itemTypeId" : 15,
   "itemTypeName" : "Product-Cauldron",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL", "WOOD", "ROPE" ],
@@ -260,15 +257,15 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : {
     "LIQUID_CONTAINER" : [ "6" ]
   },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.CAULDRON"
 }, {
   "itemTypeId" : 16,
   "itemTypeName" : "Product-Liquid-Tank",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL" ],
@@ -279,13 +276,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.LIQUID.TANK"
 }, {
   "itemTypeId" : 17,
   "itemTypeName" : "Product-Millstone",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "STONE" ],
@@ -296,13 +293,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.MILLSTONE"
 }, {
   "itemTypeId" : 18,
   "itemTypeName" : "Product-Ration",
-  "itemGroup" : "PRODUCT",
   "maxStackSize" : 50,
   "maxHauledAtOnce" : 50,
   "materialTypes" : [ "FOODSTUFF" ],
@@ -313,13 +310,13 @@
   "equippedWhileWorkingOnJob" : false,
   "hoursInInventoryUntilUnused" : 9.99999999E8,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Pantry",
+  "stockpileGroupName" : "FOOD",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "PRODUCT.RATION"
 }, {
   "itemTypeId" : 19,
   "itemTypeName" : "Resource-Ore-Crushed",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
   "maxHauledAtOnce" : 16,
   "materialTypes" : [ "CLOTH", "ORE" ],
@@ -330,13 +327,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.ORE.CRUSHED"
 }, {
   "itemTypeId" : 20,
   "itemTypeName" : "Resource-Gem",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 32,
   "maxHauledAtOnce" : 4,
   "materialTypes" : [ "GEM" ],
@@ -347,13 +344,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.GEM"
 }, {
   "itemTypeId" : 21,
   "itemTypeName" : "Resource-Flour-Sack",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 30,
   "maxHauledAtOnce" : 30,
   "materialTypes" : [ "VEGETABLE", "CLOTH", "ROPE" ],
@@ -364,13 +361,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 1.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Granary",
+  "stockpileGroupName" : "GRANARY",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.FLOUR.SACK"
 }, {
   "itemTypeId" : 22,
   "itemTypeName" : "Resource-Grain-Sack",
-  "itemGroup" : "INGREDIENT",
   "maxStackSize" : 30,
   "maxHauledAtOnce" : 30,
   "materialTypes" : [ "VEGETABLE", "CLOTH", "ROPE" ],
@@ -381,13 +378,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Granary",
+  "stockpileGroupName" : "GRANARY",
   "tags" : { },
+  "describeAsMaterialOnly" : true,
   "i18nKey" : "RESOURCE.GRAIN.SACK"
 }, {
   "itemTypeId" : 23,
   "itemTypeName" : "Resource-Metal-Ingot",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 32,
   "maxHauledAtOnce" : 2,
   "materialTypes" : [ "METAL" ],
@@ -398,13 +395,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.METAL.INGOT"
 }, {
   "itemTypeId" : 24,
   "itemTypeName" : "Resource-Stone-Unrefined",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "STONE" ],
@@ -415,14 +412,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
   "placementSoundAssetName" : "HeavyStoneItem",
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.STONE.UNREFINED"
 }, {
   "itemTypeId" : 25,
   "itemTypeName" : "Resource-Liquid-Example",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "LIQUID" ],
@@ -433,13 +430,12 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.LIQUID.EXAMPLE"
 }, {
   "itemTypeId" : 26,
   "itemTypeName" : "Resource-Logs",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD" ],
@@ -450,14 +446,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
   "placementSoundAssetName" : "HeavyWoodItem",
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.LOGS"
 }, {
   "itemTypeId" : 27,
   "itemTypeName" : "Resource-Mushroom-Log",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD", "SEED" ],
@@ -468,14 +464,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
   "placementSoundAssetName" : "HeavyWoodItem",
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.MUSHROOM.LOG"
 }, {
   "itemTypeId" : 28,
   "itemTypeName" : "Resource-Shocked-Mushroom-Log",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD", "SEED" ],
@@ -486,14 +482,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
   "placementSoundAssetName" : "HeavyWoodItem",
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.SHOCKED.MUSHROOM.LOG"
 }, {
   "itemTypeId" : 29,
   "itemTypeName" : "Resource-Metal-Bloom",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL" ],
@@ -504,13 +500,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.METAL.BLOOM"
 }, {
   "itemTypeId" : 30,
   "itemTypeName" : "Resource-Metal-Plate",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 12,
   "maxHauledAtOnce" : 2,
   "materialTypes" : [ "METAL" ],
@@ -521,13 +517,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.METAL.PLATE"
 }, {
   "itemTypeId" : 31,
   "itemTypeName" : "Resource-Mushroom-Lumber",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD" ],
@@ -538,14 +534,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
   "placementSoundAssetName" : "HeavyWoodItem",
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.MUSHROOM.LUMBER"
 }, {
   "itemTypeId" : 32,
   "itemTypeName" : "Ingredient-Mushroom-Spawn",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 50,
   "maxHauledAtOnce" : 15,
   "materialTypes" : [ "SEED", "ROPE" ],
@@ -556,13 +552,13 @@
   "equippedWhileWorkingOnJob" : false,
   "hoursInInventoryUntilUnused" : 3.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Granary",
+  "stockpileGroupName" : "SEEDS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "INGREDIENT.MUSHROOM.SPAWN"
 }, {
   "itemTypeId" : 33,
   "itemTypeName" : "Resource-Ore-Unrefined",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "STONE", "ORE" ],
@@ -573,13 +569,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.ORE.UNREFINED"
 }, {
   "itemTypeId" : 34,
   "itemTypeName" : "Resource-Planks",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
   "maxHauledAtOnce" : 2,
   "materialTypes" : [ "WOOD" ],
@@ -590,14 +586,14 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
   "placementSoundAssetName" : "HeavyWoodItem",
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.PLANKS"
 }, {
   "itemTypeId" : 35,
   "itemTypeName" : "Resource-Gems-Unrefined",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "STONE", "GEM" ],
@@ -608,13 +604,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "RAW_MATERIALS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.GEMS.UNREFINED"
 }, {
   "itemTypeId" : 36,
   "itemTypeName" : "Ingredient-Seeds",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 50,
   "maxHauledAtOnce" : 15,
   "materialTypes" : [ "SEED", "ROPE" ],
@@ -625,13 +621,13 @@
   "equippedWhileWorkingOnJob" : false,
   "hoursInInventoryUntilUnused" : 3.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Granary",
+  "stockpileGroupName" : "SEEDS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "INGREDIENT.SEEDS"
 }, {
   "itemTypeId" : 37,
   "itemTypeName" : "Resource-Stone-Block",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
   "maxHauledAtOnce" : 2,
   "materialTypes" : [ "STONE" ],
@@ -642,13 +638,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.STONE.BLOCK"
 }, {
   "itemTypeId" : 38,
   "itemTypeName" : "Resource-Crushed-Vitriol",
-  "itemGroup" : "RESOURCE",
   "maxStackSize" : 16,
   "maxHauledAtOnce" : 16,
   "materialTypes" : [ "VITRIOL", "CLOTH", "ROPE" ],
@@ -659,13 +655,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Resources",
+  "stockpileGroupName" : "PRODUCTS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "RESOURCE.CRUSHED.VITRIOL"
 }, {
   "itemTypeId" : 39,
   "itemTypeName" : "Resource-Wheat-Sack",
-  "itemGroup" : "INGREDIENT",
   "maxStackSize" : 30,
   "maxHauledAtOnce" : 30,
   "materialTypes" : [ "VEGETABLE", "CLOTH", "ROPE" ],
@@ -676,13 +672,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 2.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Granary",
+  "stockpileGroupName" : "GRANARY",
   "tags" : { },
+  "describeAsMaterialOnly" : true,
   "i18nKey" : "RESOURCE.WHEAT.SACK"
 }, {
   "itemTypeId" : 40,
   "itemTypeName" : "Tool-Axe",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL", "WOOD" ],
@@ -693,13 +689,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "WOODCUTTING" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.AXE"
 }, {
   "itemTypeId" : 41,
   "itemTypeName" : "Tool-Chisel",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL" ],
@@ -710,15 +706,15 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "STONEMASONRY", "SMELTING" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : {
     "USAGE_SOUND" : [ "StonemasonChipping" ]
   },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.CHISEL"
 }, {
   "itemTypeId" : 42,
   "itemTypeName" : "Tool-Fishing-Rod",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD" ],
@@ -729,13 +725,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.FISHING.ROD"
 }, {
   "itemTypeId" : 43,
   "itemTypeName" : "Tool-Kitchen-Knife",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL" ],
@@ -746,13 +742,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "FOOD_PREPARATION" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.KITCHEN.KNIFE"
 }, {
   "itemTypeId" : 44,
   "itemTypeName" : "Tool-Large-Hammer",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL", "WOOD" ],
@@ -763,13 +759,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "STONEMASONRY", "BLACKSMITHING" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.LARGE.HAMMER"
 }, {
   "itemTypeId" : 45,
   "itemTypeName" : "Tool-Pickaxe",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL", "WOOD" ],
@@ -780,13 +776,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "SMELTING" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.PICKAXE"
 }, {
   "itemTypeId" : 46,
   "itemTypeName" : "Tool-Plane",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD" ],
@@ -797,15 +793,15 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "CARPENTRY" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : {
     "USAGE_SOUND" : [ "Sawing" ]
   },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.PLANE"
 }, {
   "itemTypeId" : 47,
   "itemTypeName" : "Tool-Rolling-Pin",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "WOOD" ],
@@ -816,13 +812,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "FOOD_PREPARATION" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.ROLLING.PIN"
 }, {
   "itemTypeId" : 48,
   "itemTypeName" : "Tool-Saw",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL", "WOOD" ],
@@ -833,15 +829,15 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "WOODCUTTING", "CARPENTRY" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : {
     "USAGE_SOUND" : [ "Sawing" ]
   },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.SAW"
 }, {
   "itemTypeId" : 49,
   "itemTypeName" : "Tool-Small-Hammer",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL" ],
@@ -852,13 +848,13 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "CARPENTRY", "STONEMASONRY", "BLACKSMITHING" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.SMALL.HAMMER"
 }, {
   "itemTypeId" : 50,
   "itemTypeName" : "Tool-Tongs",
-  "itemGroup" : "TOOL",
   "maxStackSize" : 1,
   "maxHauledAtOnce" : 1,
   "materialTypes" : [ "METAL" ],
@@ -869,7 +865,8 @@
   "equippedWhileWorkingOnJob" : true,
   "hoursInInventoryUntilUnused" : 12.0,
   "relatedCraftingTypeNames" : [ "BLACKSMITHING", "SMELTING" ],
-  "stockpileGroupName" : "Tools",
+  "stockpileGroupName" : "TOOLS",
   "tags" : { },
+  "describeAsMaterialOnly" : false,
   "i18nKey" : "TOOL.TONGS"
 } ]

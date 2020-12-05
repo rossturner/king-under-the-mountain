@@ -9,6 +9,8 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rooms.RoomType;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
+import technology.rocketjump.undermount.rooms.StockpileGroup;
+import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
 import technology.rocketjump.undermount.ui.actions.RoomSelectedAction;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.I18nWidgetFactory;
@@ -31,7 +33,7 @@ public class StockpileSelectionGuiView implements GuiView {
 	@Inject
 	public StockpileSelectionGuiView(GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher,
 									 IconButtonFactory iconButtonFactory, RoomTypeDictionary roomTypeDictionary,
-									 I18nWidgetFactory i18nWidgetFactory) {
+									 I18nWidgetFactory i18nWidgetFactory, StockpileGroupDictionary stockpileGroupDictionary) {
 		Skin uiSkin = guiSkinRepository.getDefault();
 
 		viewTable = new Table(uiSkin);
@@ -48,16 +50,13 @@ public class StockpileSelectionGuiView implements GuiView {
 
 
 		int numRoomsAdded = 0;
-		for (RoomType roomType : roomTypeDictionary.getAll()) {
-			if (roomType.getRoomName().equals(RoomTypeDictionary.VIRTUAL_PLACING_ROOM.getRoomName())) {
-				continue;
-			}
-			if (!roomType.getTags().containsKey("STOCKPILE")) {
-				continue;
-			}
+		RoomType stockpileRoomType = roomTypeDictionary.getByName("STOCKPILE");
 
-			IconButton iconButton = iconButtonFactory.create(roomType.getI18nKey(), roomType.getIconName(), roomType.getColor(), LARGE);
-			iconButton.setAction(new RoomSelectedAction(roomType, messageDispatcher));
+		for (StockpileGroup stockpileGroup : stockpileGroupDictionary.getAll()) {
+			IconButton iconButton = iconButtonFactory.create(stockpileGroup.getI18nKey(), stockpileGroup.getIconName(), stockpileGroup.getColor(), LARGE);
+			RoomSelectedAction roomSelectedAction = new RoomSelectedAction(stockpileRoomType, messageDispatcher);
+			roomSelectedAction.setStockpileGroup(stockpileGroup);
+			iconButton.setAction(roomSelectedAction);
 			roomTable.add(iconButton).pad(10);
 			numRoomsAdded++;
 

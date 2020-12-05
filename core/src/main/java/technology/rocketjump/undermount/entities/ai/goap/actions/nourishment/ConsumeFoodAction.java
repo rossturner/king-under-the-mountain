@@ -50,7 +50,7 @@ public class ConsumeFoodAction extends Action {
 			Entity targetEntity = parent.getFoodAllocation().getTargetEntity();
 			ItemEntityAttributes itemEntityAttributes = (ItemEntityAttributes) targetEntity.getPhysicalEntityComponent().getAttributes();
 
-			SoundAsset consumptionSoundAsset = itemEntityAttributes.getItemType().getConsueSoundAsset();
+			SoundAsset consumptionSoundAsset = itemEntityAttributes.getItemType().getConsumeSoundAsset();
 			if (consumptionSoundAsset != null) {
 				parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(consumptionSoundAsset, parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition()));
 			}

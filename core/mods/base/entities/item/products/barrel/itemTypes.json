@@ -1,9 +1,8 @@
 [{
   "itemTypeName": "Product-Barrel",
-  "itemGroup": "PRODUCT",
   "materialTypes": ["WOOD", "METAL"],
   "primaryMaterialType": "WOOD",
-  "stockpileGroupName": "Resources",
+  "stockpileGroupName": "PRODUCTS",
   "hoursInInventoryUntilUnused": 2,
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,

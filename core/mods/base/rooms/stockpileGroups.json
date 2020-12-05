@@ -1,14 +1,51 @@
 [
   {
-    "name": "Resources"
+    "name": "RAW_MATERIALS",
+    "i18nKey": "STOCKPILE.GROUP.RAW_MATERIALS",
+    "colorCode": "#F2ED5A",
+    "iconName": "stone-pile",
+    "sortOrder": 1
   },
   {
-    "name": "Tools"
+    "name": "PRODUCTS",
+    "i18nKey": "STOCKPILE.GROUP.PRODUCTS",
+    "colorCode": "#edc154",
+    "iconName": "gold-stack",
+    "sortOrder": 2
   },
   {
-    "name": "Granary"
+    "name": "TOOLS",
+    "i18nKey": "STOCKPILE.GROUP.TOOLS",
+    "colorCode": "#c6c6c6",
+    "iconName": "stone-crafting",
+    "sortOrder": 3
   },
   {
-    "name": "Pantry"
+    "name": "FUEL",
+    "i18nKey": "STOCKPILE.GROUP.FUEL",
+    "colorCode": "#565757",
+    "iconName": "pyre",
+    "sortOrder": 4
+  },
+  {
+    "name": "SEEDS",
+    "i18nKey": "STOCKPILE.GROUP.SEEDS",
+    "colorCode": "#975a2c",
+    "iconName": "swap-bag",
+    "sortOrder": 5
+  },
+  {
+    "name": "GRANARY",
+    "i18nKey": "STOCKPILE.GROUP.GRANARY",
+    "colorCode": "#eda948",
+    "iconName": "grain",
+    "sortOrder": 6
+  },
+  {
+    "name": "FOOD",
+    "i18nKey": "STOCKPILE.GROUP.FOOD",
+    "colorCode": "#7cb167",
+    "iconName": "fruit-bowl",
+    "sortOrder": 7
   }
 ]

@@ -43,6 +43,7 @@ public class MiscOptionsTab implements OptionsTab, Telegraph {
 		miscTitle = i18NWidgetFactory.createLabel("GUI.OPTIONS.MISC.TITLE");
 
 		stressTestCheckbox = new CheckBox("Stress test (1000 settlers)", uiSkin);
+		stressTestCheckbox.getLabelCell().padLeft(5f);
 		stressTestCheckbox.addListener((event) -> {
 			if (event instanceof ChangeListener.ChangeEvent) {
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));

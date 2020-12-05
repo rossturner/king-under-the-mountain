@@ -17,6 +17,7 @@ public class I18nCheckbox extends CheckBox {
 		super(i18nValue, skin);
 		this.i18nKey = i18nKey;
 		this.i18nWordClass = i18nWordClass;
+		this.getLabelCell().padLeft(5f);
 	}
 
 	public String getI18nKey() {

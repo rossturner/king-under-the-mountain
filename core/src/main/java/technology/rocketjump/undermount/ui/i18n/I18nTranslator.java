@@ -422,13 +422,11 @@ public class I18nTranslator implements I18nUpdatable {
 			replacements.put("itemType", dictionary.getWord(itemType.getI18nKey()));
 		}
 
-		switch (itemType.getItemGroup()) {
-			case INGREDIENT:
-				return applyReplacements(dictionary.getWord("ITEM.INGREDIENT.DESCRIPTION"), replacements, Gender.ANY);
-			default:
-				return applyReplacements(dictionary.getWord("ITEM.DESCRIPTION"), replacements, Gender.ANY);
+		if (itemType.isDescribeAsMaterialOnly()) {
+			return applyReplacements(dictionary.getWord("ITEM.INGREDIENT.DESCRIPTION"), replacements, Gender.ANY);
+		} else {
+			return applyReplacements(dictionary.getWord("ITEM.DESCRIPTION"), replacements, Gender.ANY);
 		}
-
 	}
 
 	public I18nText getLiquidDescription(GameMaterial material, float quantity) {

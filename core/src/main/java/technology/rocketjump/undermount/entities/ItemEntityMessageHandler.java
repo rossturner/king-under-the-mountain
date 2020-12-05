@@ -190,37 +190,47 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	public static HaulingAllocation findStockpileAllocation(TiledMap areaMap, Entity itemEntity, RoomStore roomStore, Entity requestingEntity) {
-		// FIXME #89 - Stockpile priorityRank and filtering - select stockpile based on priorityRank and legality rather than only distance
 		Vector2 itemPosition = itemEntity.getLocationComponent().getWorldOrParentPosition();
-		ItemType itemType = ((ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes()).getItemType();
+		ItemEntityAttributes attributes = (ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes();
 		int sourceRegionId = areaMap.getTile(itemPosition).getRegionId();
-		Map<Float, Room> stockpilesByDistance = new TreeMap<>(Comparator.comparingInt(o -> (int) (o * 10)));
+		Map<JobPriority, Map<Float, Room>> stockpilesByDistanceByPriority = new EnumMap<>(JobPriority.class);
 
 
 		for (Room stockpile : roomStore.getByComponent(StockpileComponent.class)) {
-			if (stockpile.getComponent(StockpileComponent.class).getGroup().equals(itemType.getStockpileGroup())) {
+			StockpileComponent stockpileComponent = stockpile.getComponent(StockpileComponent.class);
+			if (stockpileComponent.canHold(attributes)) {
 				int roomRegionId = stockpile.getRoomTiles().values().iterator().next().getTile().getRegionId();
 				if (sourceRegionId == roomRegionId) {
-					stockpilesByDistance.put(itemPosition.dst2(stockpile.getAvgWorldPosition()), stockpile);
+					Map<Float, Room> byDistance = stockpilesByDistanceByPriority.computeIfAbsent(stockpileComponent.getPriority(), a -> new TreeMap<>(Comparator.comparingInt(o -> (int) (o * 10))));
+					byDistance.put(itemPosition.dst2(stockpile.getAvgWorldPosition()), stockpile);
 				}
 			}
 		}
 
-		for (Room room : stockpilesByDistance.values()) {
-			StockpileAllocationResponse stockpileAllocationResponse = room.getComponent(StockpileComponent.class).requestAllocation(itemEntity, areaMap);
-			if (stockpileAllocationResponse != null) {
-				HaulingAllocation allocation = new HaulingAllocation();
-				allocation.setTargetPosition(stockpileAllocationResponse.position);
-				allocation.setTargetPositionType(ROOM);
-				allocation.setTargetId(room.getRoomId());
+		for (JobPriority priority : JobPriority.values()) {
+			if (priority.equals(JobPriority.DISABLED)) {
+				continue;
+			}
 
-				ItemAllocation itemAllocation = itemEntity.getOrCreateComponent(ItemAllocationComponent.class).createAllocation(stockpileAllocationResponse.quantity,
-						requestingEntity, ItemAllocation.Purpose.DUE_TO_BE_HAULED);
-				allocation.setItemAllocation(itemAllocation);
+			Map<Float, Room> byDistance = stockpilesByDistanceByPriority.getOrDefault(priority, Collections.emptyMap());
+			for (Room room : byDistance.values()) {
+				StockpileAllocationResponse stockpileAllocationResponse = room.getComponent(StockpileComponent.class).requestAllocation(itemEntity, areaMap);
+				if (stockpileAllocationResponse != null) {
+					HaulingAllocation allocation = new HaulingAllocation();
+					allocation.setTargetPosition(stockpileAllocationResponse.position);
+					allocation.setTargetPositionType(ROOM);
+					allocation.setTargetId(room.getRoomId());
 
-				return allocation;
+					ItemAllocation itemAllocation = itemEntity.getOrCreateComponent(ItemAllocationComponent.class).createAllocation(stockpileAllocationResponse.quantity,
+							requestingEntity, ItemAllocation.Purpose.DUE_TO_BE_HAULED);
+					allocation.setItemAllocation(itemAllocation);
+
+					return allocation;
+				}
 			}
 		}
+
+
 		return null;
 	}
 

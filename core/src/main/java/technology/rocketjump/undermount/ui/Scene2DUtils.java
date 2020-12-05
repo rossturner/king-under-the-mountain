@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 
 public class Scene2DUtils {
 
@@ -27,7 +27,7 @@ public class Scene2DUtils {
 		};
 	}
 
-	public static ScrollPane wrapWithScrollPane(Table tableToMakeScrollable, Skin uiSkin) {
+	public static ScrollPane wrapWithScrollPane(WidgetGroup tableToMakeScrollable, Skin uiSkin) {
 		ScrollPane scrollPane = new ScrollPane(tableToMakeScrollable, uiSkin);
 		scrollPane.addListener(Scene2DUtils.setGainScrollOnHover(scrollPane));
 		scrollPane.addListener(Scene2DUtils.setLoseScrollOnHoverExit());
