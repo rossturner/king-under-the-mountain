@@ -23,6 +23,7 @@ Bread,1,Dwarven,Food
 Bucket,1,Tool,Water
 Buckle,1,Garment
 Burn,1,Fire
+Canyon,1,Placename
 Cave,1,Earth
 Cavern,1,Earth
 Chasm,1,Earth
@@ -34,7 +35,9 @@ Cook,1,Food,Professions
 Crown,1,Garment,Noble
 Crypt,1,Death
 Dagger,1,Elven,Human,Weapon
+Dale,1,Placename
 Demon,1,Grim
+Den,1,Placename
 Devil,1,Grim
 Dragon,1,Grim,Heroic,Villainous
 Eye,1,Humanoid
@@ -47,6 +50,7 @@ Fist,3,Humanoid,Strong
 Flame,1,Air,Fire
 Flesh,1,Humanoid
 Foot,1,Humanoid,Weak
+Ford,1,Human,Placename
 Friend,1,Emotions,Heroic
 Fungus,1,Dwarven,Earth
 Fur,1,Animals
@@ -54,6 +58,7 @@ Furnace,1,Dwarven,Tool
 Gale,1,Air
 Gall,1,Air
 Galley,1,Water
+Garden,1,Nature,Placename
 Gauntlet,1,Garment,Weapon
 Gaze,1,Humanoid
 Gear,1,Dwarven,Tool
@@ -75,9 +80,11 @@ Guard,1,Professions,Strong
 Guild,1,Dwarven,Professions,Rich
 Hair,1,Humanoid
 Hall,1,Buildings,Dwarven,Human
+Ham,1,Food,Placename
 Hammer,5,Dwarven,Strong,Tool,Weapon
 Hand,3,Humanoid
 Hatchet,1,Weapon
+Haven,1,Good,Placename
 Head,3,Humanoid,Strong
 Heart,2,Heroic,Humanoid
 Hearth,1,Buildings
@@ -93,6 +100,7 @@ House,1,Buildings,Human
 Howl,1,Animals
 Island,1,Water
 Jewel,1,Gemstone
+Keep,1,Placename,Strong
 Keeper,2,Dwarven,Professions
 King,1,Heroic,Noble
 Knight,1,Heroic,Noble
@@ -105,6 +113,7 @@ Lover,1,Emotions
 Luck,1,Emotions,Heroic
 Man,1,Human
 Mead,1,Dwarven,Food
+Meet,1,Placename
 Metal,1,Metal
 Monger,1,Orcish,Professions
 Moon,1,Elven,Spirit
@@ -123,7 +132,7 @@ Pocket,1,Garment
 Poet,1,Elven,Professions
 Poison,1,Death,Grim
 Pond,1,Nature,Water
-Pool,1,Earth,Water
+Pool,1,Earth,Placename,Water
 Prophet,1,Professions,Spirit
 Pumpkin,1,Food
 Purge,1,Grim,Villainous
@@ -131,6 +140,7 @@ Pus,1,Death,Grim
 Rabbit,1,Animals
 Ravager,1,Grim,Villainous
 Raven,1,Animals,Grim
+Ridge,1,Placename
 River,1,Water
 Robe,1,Garment
 Room,1,Buildings
@@ -162,10 +172,12 @@ Soul,1,Air,Spirit
 Spawn,1,Orcish
 Spear,1,Weapon
 Spike,1,Orcish,Weapon
+Spring,1,Happy,Placename,Water
 Sprout,1,Elven,Nature
 Squall,1,Air
 Staff,1,Spirit
 Stalker,1,Villainous
+Stream,1,Placename,Water
 Sword,1,Weapon
 Thrall,1,Grim,Orcish
 Throat,1,Humanoid

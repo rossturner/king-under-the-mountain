@@ -23,7 +23,6 @@ import technology.rocketjump.undermount.entities.dictionaries.furniture.Furnitur
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.factories.*;
-import technology.rocketjump.undermount.entities.factories.names.DwarvenNameGenerator;
 import technology.rocketjump.undermount.entities.factories.names.NorseNameGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
