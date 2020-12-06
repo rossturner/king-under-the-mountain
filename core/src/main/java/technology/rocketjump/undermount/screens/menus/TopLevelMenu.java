@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
@@ -53,7 +54,8 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 	private final IconButton newGameButton;
 	private final IconButton resumeGameButton;
-	private final IconButton loadGameButton;
+	private final IconButton loadLatestGameButton;
+	private final IconButton loadAnyGameButton;
 	private final IconButton optionsButton;
 	private final IconButton modsButton;
 	private final IconButton quitButton;
@@ -90,12 +92,7 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		newGameButton = iconButtonFactory.create("MENU.NEW_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
 		newGameButton.setAction(() -> {
-			gameStarted = true;
-			messageDispatcher.dispatchMessage(MessageType.START_NEW_GAME);
-			reset();
-		});
-		newGameButton.setOnClickSoundAction(() -> {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(startGameSound));
+			messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.EMBARK_MENU);
 		});
 
 		resumeGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
@@ -106,8 +103,8 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 		});
 
 		saveExists = userFileManager.getSaveFile("quicksave") != null;
-		loadGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
-		loadGameButton.setAction(() -> {
+		loadLatestGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
+		loadLatestGameButton.setAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.TRIGGER_QUICKLOAD, (PersistenceCallback) wasSuccessful -> {
 				if (wasSuccessful) {
 					gameStarted = true;
@@ -115,8 +112,13 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 			});
 			reset();
 		});
-		loadGameButton.setOnClickSoundAction(() -> {
+		loadLatestGameButton.setOnClickSoundAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(startGameSound));
+		});
+
+		loadAnyGameButton = iconButtonFactory.create("MENU.LOAD_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
+		loadAnyGameButton.setAction(() -> {
+			Logger.info("TODO: Load game");
 		});
 
 		optionsButton = iconButtonFactory.create("MENU.OPTIONS", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
@@ -244,18 +246,21 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 		if (gameStarted) {
 			leftColumn.add(resumeGameButton).pad(10).row();
 		} else if (saveExists) {
-			leftColumn.add(loadGameButton).pad(10).row();
+			leftColumn.add(loadLatestGameButton).pad(10).row();
+		}
+
+		if (saveExists) {
+			leftColumn.add(loadAnyGameButton).pad(10).row();
 		}
 
 		leftColumn.add(newGameButton).pad(10).row();
 
 		rightColumn.add(optionsButton).pad(10).row();
 		rightColumn.add(modsButton).pad(10).row();
+		rightColumn.add(quitButton).pad(10).row();
 
 		menuTable.add(leftColumn).top();
 		menuTable.add(rightColumn).top().row();
-
-		menuTable.add(quitButton).colspan(2).pad(10).row();
 
 //
 //		menuTable.add(i18nTextWidget).pad(10).row();

@@ -281,6 +281,12 @@ GUI.DIALOG.RENAME_ROOM_TITLE,Rename room,,Raum umbenennen,Renommer la salle,Rino
 GUI.DIALOG.RENAME_SETTLER_TITLE,Rename settler,,,,,,,,,,,,,,,,,,
 GUI.DIALOG.RESTART_REQUIRED,You must restart the game for this change to take effect,,"Damit diese Änderung wirksam wird, muss das Spiel neugestart werden.",Vous devez redémarrer le jeu pour que cette modification prenne effet,È necessario riavviare il gioco affinché questa modifica abbia effetto,Debe reiniciar el juego para que este cambio surta efecto,Você deve reiniciar o jogo para que essa alteração entre em vigor,,,"Вы должны перезапустить игру, чтобы это изменение вступило в силу",Du skal genstarte spillet for at denne ændring kan træde i kraft,,Du måste starta om spelet för att ändringen ska träda i kraft,,,,変更を有効にするには、ゲームを再起動する必要があります。,您必须重新启动游戏才能使此更改生效,이 변경 사항을 적용하려면 게임을 다시 시작해야 합니다.
 GUI.DIALOG.STOCKPILE_MANAGEMENT.TITLE,Stockpile settings,,,,,,,,,,,,,,,,,,
+GUI.EMBARK.DISCLAIMER,"This is an early alpha version of King under the Mountain. There are many, many features still to be added, and bugs are to be expected. In a future update you will be able to use this screen to customise your starting settlers, resources and even map and gameplay settings. Please join our Discord community to report any bugs you find or offer feedback, so we can work together to guide King under the Mountain to become the best possible version of itself. Thank you for playing!",,,,,,,,,,,,,,,,,,
+GUI.EMBARK.DISCORD_LINK,Click here to join our Discord community,,,,,,,,,,,,,,,,,,
+GUI.EMBARK.MAP_SEED,Map seed:,,,,,,,,,,,,,,,,,,
+GUI.EMBARK.SETTLEMENT_NAME,Settlement name:,,,,,,,,,,,,,,,,,,
+GUI.EMBARK.START,Begin!,,,,,,,,,,,,,,,,,,
+GUI.EMBARK.TITLE,Embark Options,,,,,,,,,,,,,,,,,,
 GUI.FURNITURE_ASSIGNED_TO,Assigned to {{name}},,Zugewiesen zu {{name}},Appartient à {{name}},Oggetto assegnato a: {{name}},Asignado a {{name}},Atribuído a {{name}},Atribuição: {{name}},,Принадлежит: {{name}},Tildelt til {{name},,Tilldelas till {{name}},,,,{{name}} に割り当てられました,分配给 {{name}},{{name}} 에 할당됨
 GUI.FURNITURE_BEING_REMOVED,Currently being removed,,Wird gerade entfernt,Retrait en cours,Rimozione in corso,Se está eliminando,Atualmente em remoção,Em remoção,,В процессе удаления,I øjeblikket er ved at blive fjernet,,För närvarande tas bort,,,,現在削除されています,当前正在删除,현재 제거 중입니다.
 GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,This furniture must be placed on {{materialType}}.,,Dieses Möbelstück muss auf {{materialType}} platziert werden.,Ce meuble doit être placé sur {{materialType}}.,Questi mobili devono essere collocati su {{materialType}}.,Este mobiliario debe colocarse en {{materialType}}.,Este mobiliário deve ser colocado em {{materialType}}.,,,Эта мебель должна быть размещена на {{materialType}}.,Møblerne skal placeres på {{materialType}}.,,Möblerna måste placeras på {{MaterialType}}.,,,,この家具は {{materialType}} に配置する必要があります。,此家具必须放置在 {{materialType}} 上。,이 가구는 {{재료 유형}} 에 배치해야 합니다.
@@ -454,6 +460,7 @@ MATERIAL_TYPE.WOOD.ADJECTIVE,Wooden,,Holz,en bois,di legno,De madera,De madeira,
 MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерево,Træ,,Trä,,,,木材,木,나무
 
 MENU.CONTINUE_GAME,Continue game,,Spiel fortsetzen,Continuer,Continua partita,Continuar partida,Continuar jogo,Continuar jogo,,Продолжить игру,Fortsæt spil,,Fortsätt spela,,,,ゲームを続ける,继续游戏,게임 계속
+MENU.LOAD_GAME,Load game,,,,,,,,,,,,,,,,,,
 MENU.MODS,Mods,,Mods,Mods,Mods,Mods,Mods,,,Моды,Mods,,Mods,,,,改造者,MODS,개조물
 MENU.NEW_GAME,Start new game,,Neues Spiel beginnen,Nouvelle partie,Nuova partita,Comenzar partida nueva,Iniciar novo jogo,Começar outro jogo,,Начать новую игру,Start nyt spil,,Starta ett nytt spel,,,,新しいゲームを始める,开始新游戏,새 게임 시작
 MENU.OPTIONS,Options,,Optionen,Options,Opzioni,Opciones,Opções,Opções,,Настройки,Valgmuligheder,,Inställningar,,,,オプション,选项,옵션

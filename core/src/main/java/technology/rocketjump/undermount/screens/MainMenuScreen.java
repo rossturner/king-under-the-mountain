@@ -60,6 +60,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 	private final TopLevelMenu topLevelMenu;
 	private final OptionsMenu optionsMenu;
 	private final ModsMenu modsMenu;
+	private final EmbarkMenu embarkMenu;
 	private final PrivacyOptInMenu privacyOptInMenu;
 	private final Skin uiSkin;
 	private final I18nTextButton newVersionButton;
@@ -88,12 +89,13 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 	private final I18nTranslator i18nTranslator;
 
 	@Inject
-	public MainMenuScreen(MessageDispatcher messageDispatcher, ScreenWriter screenWriter, GuiSkinRepository guiSkinRepository,
+	public MainMenuScreen(MessageDispatcher messageDispatcher, ScreenWriter screenWriter, EmbarkMenu embarkMenu, GuiSkinRepository guiSkinRepository,
 						  UserPreferences userPreferences, TopLevelMenu topLevelMenu, OptionsMenu optionsMenu,
 						  PrivacyOptInMenu privacyOptInMenu, CrashHandler crashHandler, I18nWidgetFactory i18nWidgetFactory,
 						  ModsMenu modsMenu, TwitchDataStore twitchDataStore, I18nTranslator i18nTranslator){
 		this.messageDispatcher = messageDispatcher;
 		this.screenWriter = screenWriter;
+		this.embarkMenu = embarkMenu;
 		this.uiSkin = guiSkinRepository.getDefault();
 		this.topLevelMenu = topLevelMenu;
 		this.optionsMenu = optionsMenu;
@@ -175,6 +177,9 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 							break;
 						case OPTIONS_MENU:
 							currentMenu = optionsMenu;
+							break;
+						case EMBARK_MENU:
+							currentMenu = embarkMenu;
 							break;
 						case MODS_MENU:
 							currentMenu = modsMenu;
