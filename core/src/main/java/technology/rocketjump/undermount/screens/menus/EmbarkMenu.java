@@ -14,6 +14,7 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.factories.SettlementNameGenerator;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.persistence.SavedGameStore;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
@@ -26,12 +27,15 @@ import java.util.Random;
 @Singleton
 public class EmbarkMenu implements Menu, I18nUpdatable {
 
-	private final Skin uiSkin;
-	private final Table outerTable;
-	private final IconButton backButton;
 	private final MessageDispatcher messageDispatcher;
-	private final SettlementNameGenerator settlementNameGenerator;
+	private final Table outerTable;
 	private final I18nTranslator i18nTranslator;
+	private final SavedGameStore savedGameStore;
+
+
+	private final Skin uiSkin;
+	private final SettlementNameGenerator settlementNameGenerator;
+	private final IconButton backButton;
 	private final IconButton startButton;
 	private final I18nLabel title;
 	private final Table nameTable;
@@ -40,16 +44,18 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 	private final Table seedTable;
 	private final TextField seedInput;
 	private final ImageButton randomiseSeedButton;
-	private final Random random = new RandomXS128();
 	private final I18nTextButton discordLink;
 	private I18nTextWidget disclaimerText;
+	private final Random random = new RandomXS128();
 
 	@Inject
 	public EmbarkMenu(GuiSkinRepository guiSkinRepository, IconButtonFactory iconButtonFactory, MessageDispatcher messageDispatcher,
-					  I18nTranslator i18nTranslator, I18nWidgetFactory i18nWidgetFactory, SettlementNameGenerator settlementNameGenerator, ImageButtonFactory imageButtonFactory) {
+					  I18nTranslator i18nTranslator, SavedGameStore savedGameStore, I18nWidgetFactory i18nWidgetFactory,
+					  SettlementNameGenerator settlementNameGenerator, ImageButtonFactory imageButtonFactory) {
 		this.uiSkin = guiSkinRepository.getDefault();
 		this.messageDispatcher = messageDispatcher;
 		this.i18nTranslator = i18nTranslator;
+		this.savedGameStore = savedGameStore;
 		this.settlementNameGenerator = settlementNameGenerator;
 
 		this.outerTable = new Table(uiSkin);

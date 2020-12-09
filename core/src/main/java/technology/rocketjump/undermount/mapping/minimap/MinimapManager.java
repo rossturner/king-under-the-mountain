@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
-import technology.rocketjump.undermount.entities.planning.BackgroundTaskManager;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

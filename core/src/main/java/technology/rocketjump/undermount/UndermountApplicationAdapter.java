@@ -16,7 +16,6 @@ import technology.rocketjump.undermount.assets.AssetDisposableRegister;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.audio.AudioUpdater;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
-import technology.rocketjump.undermount.entities.planning.BackgroundTaskManager;
 import technology.rocketjump.undermount.entities.tags.TagProcessor;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.gamecontext.GameContextRegister;
@@ -26,6 +25,7 @@ import technology.rocketjump.undermount.guice.UndermountGuiceModule;
 import technology.rocketjump.undermount.logging.CrashHandler;
 import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
 import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
 import technology.rocketjump.undermount.misc.AnalyticsManager;
 import technology.rocketjump.undermount.misc.twitch.TwitchMessageHandler;
@@ -183,6 +183,7 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 			screenManager.getCurrentScreen().render(deltaTime);
 			audioUpdater.update();
 			twitchTaskRunner.update(deltaTime);
+			backgroundTaskManager.update(deltaTime);
 		} catch (Exception e) {
 			CrashHandler.logCrash(e);
 			throw e;

@@ -1,7 +1,9 @@
 package technology.rocketjump.undermount.gamecontext;
 
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
 
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
@@ -15,8 +17,14 @@ import java.util.Set;
 public class GameContextRegister {
 
 	private Map<String, GameContextAware> registered = new HashMap<>();
+	private final BackgroundTaskManager backgroundTaskManager;
 
 	private GameContext currentContext;
+
+	@Inject
+	public GameContextRegister(BackgroundTaskManager backgroundTaskManager) {
+		this.backgroundTaskManager = backgroundTaskManager;
+	}
 
 	public void registerClasses(Set<Class<? extends GameContextAware>> implementations, Injector injector) {
 		for (Class<? extends GameContextAware> implementationType : implementations) {
@@ -29,6 +37,7 @@ public class GameContextRegister {
 	public void setNewContext(GameContext newContext) {
 		this.currentContext = newContext;
 
+		backgroundTaskManager.clearContextRelatedState(); // outside of normal GameContextAware
 		for (GameContextAware contextAware : registered.values()) {
 			contextAware.clearContextRelatedState();
 		}

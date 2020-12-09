@@ -3,12 +3,16 @@ package technology.rocketjump.undermount.persistence;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.pmw.tinylog.Logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Singleton
 public class UserFileManager {
@@ -64,6 +68,12 @@ public class UserFileManager {
 	public File getSaveFile(String filename) {
 		File file = new File(saveGameDirectory.getAbsolutePath(), filename + ".save");
 		return getOrCreateFile(file, false);
+	}
+	
+	public List<File> getAllSaveFiles() {
+		return Arrays.stream(saveGameDirectory.listFiles())
+				.filter(file -> FilenameUtils.getExtension(file.getName()).equals("save"))
+				.collect(Collectors.toList());
 	}
 
 	public File getOrCreateSaveFile(String filename) {

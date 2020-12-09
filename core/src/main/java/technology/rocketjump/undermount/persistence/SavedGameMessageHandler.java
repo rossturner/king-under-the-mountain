@@ -15,7 +15,6 @@ import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.planning.BackgroundTaskManager;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.gamecontext.GameContextFactory;
@@ -25,9 +24,11 @@ import technology.rocketjump.undermount.logging.CrashHandler;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
-import technology.rocketjump.undermount.messaging.ErrorType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.ThreadSafeMessageDispatcher;
+import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
+import technology.rocketjump.undermount.messaging.async.BackgroundTaskResult;
+import technology.rocketjump.undermount.messaging.async.ErrorType;
 import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
 import technology.rocketjump.undermount.modding.LocalModRepository;
 import technology.rocketjump.undermount.modding.model.ParsedMod;
@@ -214,7 +215,7 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 
 		JSONObject fileContents = stateHolder.toCombinedJson();
 
-		Callable<ErrorType> writeToDisk = () -> {
+		Callable<BackgroundTaskResult> writeToDisk = () -> {
 			try {
 				File saveFile = userFileManager.getOrCreateSaveFile(saveFileName);
 				File tempFile = userFileManager.getOrCreateSaveFile("temp");
@@ -226,10 +227,10 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 				IOUtils.closeQuietly(writer);
 				FileUtils.copyFile(tempFile, saveFile);
 				tempFile.delete();
-				return null;
+				return BackgroundTaskResult.success();
 			} catch (Exception e) {
 				CrashHandler.logCrash(e);
-				return ErrorType.WHILE_SAVING;
+				return BackgroundTaskResult.error(ErrorType.WHILE_SAVING);
 			} finally {
 				messageDispatcher.dispatchMessage(MessageType.SAVE_COMPLETED);
 			}
@@ -253,9 +254,7 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 		}
 
 		String jsonString = FileUtils.readFileToString(saveFile);
-
 		JSONObject storedJson = JSON.parseObject(jsonString);
-
 		SavedGameStateHolder stateHolder = new SavedGameStateHolder(storedJson);
 		try {
 			stateHolder.jsonToObjects(relatedStores);
