@@ -10,7 +10,11 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
+import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.modding.ModCompatibilityChecker;
 import technology.rocketjump.undermount.persistence.SavedGameInfo;
 import technology.rocketjump.undermount.persistence.SavedGameStore;
@@ -24,12 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
-public class LoadGameMenu implements Menu {
+public class LoadGameMenu implements Menu, GameContextAware {
 
 	private final Table outerTable;
 
 	private final Table savedGamesTable;
 	private final ClickableTableFactory clickableTableFactory;
+	private final SoundAsset startGameSound;
 	private ScrollPane scrollPane;
 
 	private final IconButton backButton;
@@ -41,8 +46,8 @@ public class LoadGameMenu implements Menu {
 	private final IconButtonFactory iconButtonFactory;
 	private final I18nTranslator i18nTranslator;
 
-
 	private boolean displayed;
+	private GameContext gameContext;
 
 	@Inject
 	public LoadGameMenu(UserPreferences userPreferences, GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher,
@@ -58,7 +63,7 @@ public class LoadGameMenu implements Menu {
 		this.clickableTableFactory = clickableTableFactory;
 		this.i18nTranslator = i18nTranslator;
 
-		final SoundAsset clickSoundAsset = soundAssetDictionary.getByName("MenuClick");
+		startGameSound = soundAssetDictionary.getByName("GameStart");
 
 		outerTable = new Table(uiSkin);
 		outerTable.setFillParent(false);
@@ -124,7 +129,22 @@ public class LoadGameMenu implements Menu {
 			saveRow.add(new Label(savedGameInfo.formattedGameTime, uiSkin)).pad(5).expandX();
 			saveRow.add(new Label(savedGameInfo.formattedFileModifiedTime, uiSkin)).pad(5).expandX();
 			saveRow.setAction(() -> {
-				Logger.info("TODO: Load " + savedGameInfo.settlementName);
+				if (gameContext != null) {
+					if (gameContext.getSettlementState().getSettlementName().equals(savedGameInfo.settlementName)) {
+						// Same game, just go back to it
+						messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.TOP_LEVEL_MENU);
+						messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_GAME");
+					} else {
+						// different game, save this first
+						messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
+						messageDispatcher.dispatchMessage(MessageType.PERFORM_LOAD, savedGameInfo);
+					}
+				} else {
+					messageDispatcher.dispatchMessage(MessageType.PERFORM_LOAD, savedGameInfo);
+				}
+			});
+			saveRow.setOnClickSoundAction(() -> {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(startGameSound));
 			});
 
 			savedGamesTable.add(saveRow).colspan(4).width(600);
@@ -149,5 +169,15 @@ public class LoadGameMenu implements Menu {
 		if (displayed) {
 			reset();
 		}
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
 	}
 }

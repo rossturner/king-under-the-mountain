@@ -137,7 +137,7 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		quitButton = iconButtonFactory.create("MENU.QUIT", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
 		quitButton.setAction(() -> {
-			messageDispatcher.dispatchMessage(MessageType.PERFORM_QUICKSAVE, new GameSaveMessage(false));
+			messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
 			Gdx.app.exit();
 		});
 
@@ -244,11 +244,11 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		if (gameStarted) {
 			leftColumn.add(resumeGameButton).pad(10).row();
-		} else if (savedGameStore.getLatest().isPresent()) {
+		} else if (savedGameStore.hasSaveOrIsRefreshing()) {
 			leftColumn.add(loadLatestGameButton).pad(10).row();
 		}
 
-		if (savedGameStore.getLatest().isPresent()) {
+		if (savedGameStore.hasSaveOrIsRefreshing()) {
 			leftColumn.add(loadAnyGameButton).pad(10).row();
 		}
 

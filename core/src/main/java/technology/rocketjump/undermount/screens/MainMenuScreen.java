@@ -164,6 +164,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		messageDispatcher.addListener(this, MessageType.PREFERENCE_CHANGED);
 		messageDispatcher.addListener(this, MessageType.SAVED_GAMES_LIST_UPDATED);
 		messageDispatcher.addListener(this, MessageType.START_NEW_GAME);
+		messageDispatcher.addListener(this, MessageType.PERFORM_LOAD);
 	}
 
 	@Override
@@ -240,6 +241,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 				loadGameMenu.savedGamesUpdated();
 				return true;
 			}
+			case MessageType.PERFORM_LOAD:
 			case MessageType.START_NEW_GAME: {
 				topLevelMenu.gameStarted();
 				return false;

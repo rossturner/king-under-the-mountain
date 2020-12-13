@@ -57,7 +57,7 @@ public class GameWorldInputHandler implements InputProcessor, GameContextAware {
 		} else if (keycode == Input.Keys.E || keycode == Input.Keys.PAGE_UP) {
 			primaryCameraWrapper.setMovementZ(-0.075f);
 		} else if (keycode == Input.Keys.F5) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_QUICKSAVE);
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SAVE);
 		} else if (keycode == Input.Keys.F8) {
 			messageDispatcher.dispatchMessage(MessageType.TRIGGER_QUICKLOAD);
 		} else {

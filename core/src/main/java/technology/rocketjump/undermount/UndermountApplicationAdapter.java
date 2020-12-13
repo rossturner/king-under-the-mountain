@@ -159,7 +159,7 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 
 	public void onExit() {
 		AnalyticsManager.stopAnalytics();
-		messageDispatcher.dispatchMessage(MessageType.PERFORM_QUICKSAVE, new GameSaveMessage(false));
+		messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
 		messageDispatcher.dispatchMessage(MessageType.SHUTDOWN_IN_PROGRESS);
 	}
 
