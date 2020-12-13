@@ -187,7 +187,7 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 	}
 
 	private long parseSeed() {
-		String seedText = seedInput.getText();
+		String seedText = seedInput.getText().trim();
 		if (StringUtils.isNumeric(seedText)) {
 			return Long.parseLong(seedText);
 		} else {

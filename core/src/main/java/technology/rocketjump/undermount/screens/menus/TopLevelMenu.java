@@ -52,7 +52,6 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	private Table menuTable;
 	private Table leftColumn;
 	private Table rightColumn;
-	private final boolean saveExists;
 
 	private final IconButton newGameButton;
 	private final IconButton resumeGameButton;
@@ -64,6 +63,7 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	private SelectBox<LanguageType> languageSelect;
 	private boolean gameStarted = false;
 	private Texture logo;
+	private boolean displayed = false;
 
 	@Inject
 	public TopLevelMenu(GuiSkinRepository guiSkinRepository, IconButtonFactory iconButtonFactory, MessageDispatcher messageDispatcher,
@@ -107,7 +107,6 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 		});
 
 
-		saveExists = savedGameStore.count() > 0;
 		loadLatestGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
 		loadLatestGameButton.setAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.TRIGGER_QUICKLOAD, (PersistenceCallback) wasSuccessful -> {
@@ -145,12 +144,6 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		this.languageSelect = buildLanguageSelect(messageDispatcher, i18nRepo, userPreferences, uiSkin, this, textureAtlasRepository, fontRepository, guiSkinRepository);
 
-
-//		i18nTextWidget = new I18nTextWidget(Arrays.asList(
-//				new I18nTextElement("Red ", Color.RED, null),
-//				new I18nTextElement("(Green)", Color.GREEN, null),
-//				new I18nTextElement(" Blue", Color.BLUE, null)
-//		), uiSkin);
 		i18nTextWidget = null;
 	}
 
@@ -214,12 +207,14 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	@Override
 	public void show() {
 		logo = new Texture("assets/main_menu/Logo.png");
+		displayed = true;
 	}
 
 	@Override
 	public void hide() {
 		logo.dispose();
 		logo = null;
+		displayed = false;
 	}
 
 	@Override
@@ -250,11 +245,11 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		if (gameStarted) {
 			leftColumn.add(resumeGameButton).pad(10).row();
-		} else if (saveExists) {
+		} else if (savedGameStore.getLatest().isPresent()) {
 			leftColumn.add(loadLatestGameButton).pad(10).row();
 		}
 
-		if (saveExists) {
+		if (savedGameStore.getLatest().isPresent()) {
 			leftColumn.add(loadAnyGameButton).pad(10).row();
 		}
 
@@ -274,5 +269,11 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	@Override
 	public void onLanguageUpdated() {
 		languageSelect.setSelected(i18nRepo.getCurrentLanguageType());
+	}
+
+	public void savedGamesUpdated() {
+		if (displayed) {
+			this.reset();
+		}
 	}
 }

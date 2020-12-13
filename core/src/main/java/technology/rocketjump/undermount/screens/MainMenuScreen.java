@@ -159,6 +159,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		messageDispatcher.addListener(this, MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING);
 		messageDispatcher.addListener(this, MessageType.TWITCH_ACCOUNT_INFO_UPDATED);
 		messageDispatcher.addListener(this, MessageType.PREFERENCE_CHANGED);
+		messageDispatcher.addListener(this, MessageType.SAVED_GAMES_LIST_UPDATED);
 	}
 
 	@Override
@@ -226,6 +227,10 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 				} else {
 					return false;
 				}
+			}
+			case MessageType.SAVED_GAMES_LIST_UPDATED: {
+				topLevelMenu.savedGamesUpdated();
+				return true;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());

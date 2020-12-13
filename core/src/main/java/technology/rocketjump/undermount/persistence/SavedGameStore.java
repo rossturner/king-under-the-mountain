@@ -28,6 +28,7 @@ public class SavedGameStore implements Telegraph {
 	private final UserFileManager userFileManager;
 	private final BackgroundTaskManager backgroundTaskManager;
 	private final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault());
+	private final MessageDispatcher messageDispatcher;
 	private boolean refreshInProgress = false;
 
 	private final Map<String, SavedGameInfo> bySettlementName = new HashMap<>();
@@ -36,6 +37,7 @@ public class SavedGameStore implements Telegraph {
 	public SavedGameStore(UserFileManager userFileManager, BackgroundTaskManager backgroundTaskManager, MessageDispatcher messageDispatcher) {
 		this.userFileManager = userFileManager;
 		this.backgroundTaskManager = backgroundTaskManager;
+		this.messageDispatcher = messageDispatcher;
 
 		messageDispatcher.addListener(this, MessageType.SAVED_GAMES_PARSED);
 
@@ -79,7 +81,7 @@ public class SavedGameStore implements Telegraph {
 				for (SavedGameInfo savedGame : savedGames) {
 					bySettlementName.put(savedGame.settlementName, savedGame);
 				}
-				Logger.info("Saved games parsed");
+				messageDispatcher.dispatchMessage(MessageType.SAVED_GAMES_LIST_UPDATED);
 				return true;
 			}
 			default:

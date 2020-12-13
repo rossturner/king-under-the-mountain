@@ -173,6 +173,7 @@ public class MessageType {
 	public static final int HIDE_AUTOSAVE_PROMPT = 1204;
 	public static final int SAVE_COMPLETED = 1205;
 	public static final int SAVED_GAMES_PARSED = 1206;
+	public static final int SAVED_GAMES_LIST_UPDATED = 1207;
 
 	// Map messages
 	public static final int FLOOD_FILL_EXPLORATION = 1300;
