@@ -37,19 +37,15 @@ public class TwitchRequestHandler {
 				.build();
 
 		Response response = client.newCall(request).execute();
-		try {
-			if (GlobalSettings.DEV_MODE) {
-				Logger.debug("Request to " + request.url().toString() + " returned " + response.code());
-			}
+		if (GlobalSettings.DEV_MODE) {
+			Logger.debug("Request to " + request.url().toString() + " returned " + response.code());
+		}
 
-			if (response.code() == 401 && !refreshAttempted) {
-				attemptRefreshToken(twitchDataStore);
-				return get(url, twitchDataStore, true);
-			} else {
-				return response;
-			}
-		} finally {
-			IOUtils.closeQuietly(response);
+		if (response.code() == 401 && !refreshAttempted) {
+			attemptRefreshToken(twitchDataStore);
+			return get(url, twitchDataStore, true);
+		} else {
+			return response;
 		}
 	}
 
