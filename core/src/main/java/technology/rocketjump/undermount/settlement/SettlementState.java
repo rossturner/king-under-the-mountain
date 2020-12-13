@@ -27,6 +27,8 @@ import java.util.*;
  */
 public class SettlementState implements Persistable {
 
+	private String settlementName;
+
 	public final Map<Long, Entity> furnitureHoldingCompletedCooking = new HashMap<>();
 
 	// Crafting-related state
@@ -51,6 +53,14 @@ public class SettlementState implements Persistable {
 	private Vector2 immigrationPoint;
 	private Double nextImmigrationGameTime;
 	private boolean gameOver;
+
+	public String getSettlementName() {
+		return settlementName;
+	}
+
+	public void setSettlementName(String settlementName) {
+		this.settlementName = settlementName;
+	}
 
 	public int getImmigrantsDue() {
 		return immigrantsDue;
@@ -103,6 +113,8 @@ public class SettlementState implements Persistable {
 	@Override
 	public void writeTo(SavedGameStateHolder savedGameStateHolder) {
 		JSONObject asJson = savedGameStateHolder.settlementStateJson;
+
+		asJson.put("settlementName", settlementName);
 
 		JSONObject furnitureEntityJson = new JSONObject(true);
 		for (Map.Entry<Long, Entity> entry : furnitureHoldingCompletedCooking.entrySet()) {
@@ -243,6 +255,11 @@ public class SettlementState implements Persistable {
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		this.settlementName = asJson.getString("settlementName");
+		if (this.settlementName == null) {
+			throw new InvalidSaveException("Settlement name not specified");
+		}
+
 		JSONObject furnitureEntityJson = asJson.getJSONObject("furnitureHoldingCompletedCooking");
 		for (String keyString : furnitureEntityJson.keySet()) {
 			long key = Long.valueOf(keyString);

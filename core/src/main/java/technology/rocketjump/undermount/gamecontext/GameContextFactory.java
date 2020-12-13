@@ -37,8 +37,9 @@ public class GameContextFactory {
 		liquidProductionDefaultsJson = JSON.parseObject(liquidProductionDefaultsFile.readString());
 	}
 
-	public GameContext create(TiledMap areaMap, long worldSeed, GameClock clock) {
+	public GameContext create(String settlementName, TiledMap areaMap, long worldSeed, GameClock clock) {
 		GameContext context = new GameContext();
+		context.getSettlementState().setSettlementName(settlementName);
 		context.setAreaMap(areaMap);
 		context.setRandom(new RandomXS128(worldSeed));
 		context.setGameClock(clock);

@@ -1,4 +1,4 @@
-package technology.rocketjump.undermount.messaging;
+package technology.rocketjump.undermount.messaging.async;
 
 /**
  * This enum is returned from asynchronous tasks when they need to display an error back to the user

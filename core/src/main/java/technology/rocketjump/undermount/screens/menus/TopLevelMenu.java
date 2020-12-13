@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.persistence.PersistenceCallback;
+import technology.rocketjump.undermount.persistence.SavedGameStore;
 import technology.rocketjump.undermount.persistence.UserFileManager;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.ui.fonts.FontRepository;
@@ -44,33 +45,37 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	private final I18nTextWidget i18nTextWidget;
 	private final FontRepository fontRepository;
 	private final GuiSkinRepository guiSkinRepository;
+	private final SavedGameStore savedGameStore;
 
 	private Skin uiSkin;
 	private Table menuTable;
 	private Table leftColumn;
 	private Table rightColumn;
-	private final boolean saveExists;
 
 	private final IconButton newGameButton;
 	private final IconButton resumeGameButton;
-	private final IconButton loadGameButton;
+	private final IconButton loadLatestGameButton;
+	private final IconButton loadAnyGameButton;
 	private final IconButton optionsButton;
 	private final IconButton modsButton;
 	private final IconButton quitButton;
 	private SelectBox<LanguageType> languageSelect;
 	private boolean gameStarted = false;
 	private Texture logo;
+	private boolean displayed = false;
 
 	@Inject
 	public TopLevelMenu(GuiSkinRepository guiSkinRepository, IconButtonFactory iconButtonFactory, MessageDispatcher messageDispatcher,
 						I18nTranslator i18nTranslator, I18nRepo i18nRepo, UserFileManager userFileManager, UserPreferences userPreferences,
-						TextureAtlasRepository textureAtlasRepository, SoundAssetDictionary soundAssetDictionary, FontRepository fontRepository) {
+						TextureAtlasRepository textureAtlasRepository, SoundAssetDictionary soundAssetDictionary,
+						FontRepository fontRepository, SavedGameStore savedGameStore) {
 		this.guiSkinRepository = guiSkinRepository;
 		this.uiSkin = guiSkinRepository.getDefault();
 		this.i18nTranslator = i18nTranslator;
 		this.i18nRepo = i18nRepo;
 		this.userPreferences = userPreferences;
 		this.fontRepository = fontRepository;
+		this.savedGameStore = savedGameStore;
 
 
 		menuTable = new Table(uiSkin);
@@ -90,12 +95,7 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		newGameButton = iconButtonFactory.create("MENU.NEW_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
 		newGameButton.setAction(() -> {
-			gameStarted = true;
-			messageDispatcher.dispatchMessage(MessageType.START_NEW_GAME);
-			reset();
-		});
-		newGameButton.setOnClickSoundAction(() -> {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(startGameSound));
+			messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.EMBARK_MENU);
 		});
 
 		resumeGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
@@ -105,9 +105,9 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 			reset();
 		});
 
-		saveExists = userFileManager.getSaveFile("quicksave") != null;
-		loadGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
-		loadGameButton.setAction(() -> {
+
+		loadLatestGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
+		loadLatestGameButton.setAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.TRIGGER_QUICKLOAD, (PersistenceCallback) wasSuccessful -> {
 				if (wasSuccessful) {
 					gameStarted = true;
@@ -115,8 +115,13 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 			});
 			reset();
 		});
-		loadGameButton.setOnClickSoundAction(() -> {
+		loadLatestGameButton.setOnClickSoundAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(startGameSound));
+		});
+
+		loadAnyGameButton = iconButtonFactory.create("MENU.LOAD_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
+		loadAnyGameButton.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.LOAD_GAME_MENU);
 		});
 
 		optionsButton = iconButtonFactory.create("MENU.OPTIONS", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
@@ -132,18 +137,12 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		quitButton = iconButtonFactory.create("MENU.QUIT", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
 		quitButton.setAction(() -> {
-			messageDispatcher.dispatchMessage(MessageType.PERFORM_QUICKSAVE, new GameSaveMessage(false));
+			messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
 			Gdx.app.exit();
 		});
 
 		this.languageSelect = buildLanguageSelect(messageDispatcher, i18nRepo, userPreferences, uiSkin, this, textureAtlasRepository, fontRepository, guiSkinRepository);
 
-
-//		i18nTextWidget = new I18nTextWidget(Arrays.asList(
-//				new I18nTextElement("Red ", Color.RED, null),
-//				new I18nTextElement("(Green)", Color.GREEN, null),
-//				new I18nTextElement(" Blue", Color.BLUE, null)
-//		), uiSkin);
 		i18nTextWidget = null;
 	}
 
@@ -207,12 +206,14 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	@Override
 	public void show() {
 		logo = new Texture("assets/main_menu/Logo.png");
+		displayed = true;
 	}
 
 	@Override
 	public void hide() {
 		logo.dispose();
 		logo = null;
+		displayed = false;
 	}
 
 	@Override
@@ -243,19 +244,22 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		if (gameStarted) {
 			leftColumn.add(resumeGameButton).pad(10).row();
-		} else if (saveExists) {
-			leftColumn.add(loadGameButton).pad(10).row();
+		} else if (savedGameStore.hasSaveOrIsRefreshing()) {
+			leftColumn.add(loadLatestGameButton).pad(10).row();
+		}
+
+		if (savedGameStore.hasSaveOrIsRefreshing()) {
+			leftColumn.add(loadAnyGameButton).pad(10).row();
 		}
 
 		leftColumn.add(newGameButton).pad(10).row();
 
 		rightColumn.add(optionsButton).pad(10).row();
 		rightColumn.add(modsButton).pad(10).row();
+		rightColumn.add(quitButton).pad(10).row();
 
 		menuTable.add(leftColumn).top();
 		menuTable.add(rightColumn).top().row();
-
-		menuTable.add(quitButton).colspan(2).pad(10).row();
 
 //
 //		menuTable.add(i18nTextWidget).pad(10).row();
@@ -264,5 +268,15 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	@Override
 	public void onLanguageUpdated() {
 		languageSelect.setSelected(i18nRepo.getCurrentLanguageType());
+	}
+
+	public void savedGamesUpdated() {
+		if (displayed) {
+			this.reset();
+		}
+	}
+
+	public void gameStarted() {
+		this.gameStarted = true;
 	}
 }

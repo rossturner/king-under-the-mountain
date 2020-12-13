@@ -166,12 +166,15 @@ public class MessageType {
 	public static final int REQUEST_LIQUID_REMOVAL = 1106;
 
 	// Saved game messages
-	public static final int REQUEST_QUICKSAVE = 1200;
-	public static final int PERFORM_QUICKSAVE = 1201;
-	public static final int TRIGGER_QUICKLOAD = 1202;
-	public static final int SHOW_AUTOSAVE_PROMPT = 1203;
-	public static final int HIDE_AUTOSAVE_PROMPT = 1204;
-	public static final int SAVE_COMPLETED = 1205;
+	public static final int REQUEST_SAVE = 1200;
+	public static final int PERFORM_LOAD = 1201;
+	public static final int PERFORM_SAVE = 1202;
+	public static final int TRIGGER_QUICKLOAD = 1203;
+	public static final int SHOW_AUTOSAVE_PROMPT = 1204;
+	public static final int HIDE_AUTOSAVE_PROMPT = 1205;
+	public static final int SAVE_COMPLETED = 1206;
+	public static final int SAVED_GAMES_PARSED = 1207;
+	public static final int SAVED_GAMES_LIST_UPDATED = 1208;
 
 	// Map messages
 	public static final int FLOOD_FILL_EXPLORATION = 1300;

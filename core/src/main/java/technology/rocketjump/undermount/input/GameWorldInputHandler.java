@@ -57,7 +57,7 @@ public class GameWorldInputHandler implements InputProcessor, GameContextAware {
 		} else if (keycode == Input.Keys.E || keycode == Input.Keys.PAGE_UP) {
 			primaryCameraWrapper.setMovementZ(-0.075f);
 		} else if (keycode == Input.Keys.F5) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_QUICKSAVE);
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SAVE);
 		} else if (keycode == Input.Keys.F8) {
 			messageDispatcher.dispatchMessage(MessageType.TRIGGER_QUICKLOAD);
 		} else {
@@ -85,8 +85,6 @@ public class GameWorldInputHandler implements InputProcessor, GameContextAware {
 				messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.SPEED5);
 			} else if (keycode == Input.Keys.NUM_6 && gameContext != null) {
 				messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.VERY_SLOW);
-			} else if (keycode == Input.Keys.F1) {
-				messageDispatcher.dispatchMessage(MessageType.START_NEW_GAME);
 			}
 		}
 

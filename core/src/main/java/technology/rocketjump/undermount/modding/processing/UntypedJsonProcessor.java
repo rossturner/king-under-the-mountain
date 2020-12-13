@@ -118,6 +118,10 @@ public class UntypedJsonProcessor extends ModArtifactProcessor {
 							throw new RuntimeException("Expecting only one JSON object for outputType " + definition.outputType.name());
 						}
 						String outputJson = objectMapper.writeValueAsString(combined.values().iterator().next());
+						Files.createDirectories(outputFilePath.getParent());
+						if (!Files.exists(outputFilePath)) {
+							Files.createFile(outputFilePath);
+						}
 						Files.write(outputFilePath, outputJson.getBytes());
 						break;
 					}

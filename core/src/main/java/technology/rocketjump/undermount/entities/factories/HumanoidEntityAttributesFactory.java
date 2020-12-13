@@ -3,7 +3,6 @@ package technology.rocketjump.undermount.entities.factories;
 import com.badlogic.gdx.math.RandomXS128;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import technology.rocketjump.undermount.entities.factories.names.DwarvenNameGenerator;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -19,19 +18,19 @@ public class HumanoidEntityAttributesFactory {
 	private final HairColorFactory hairColorFactory;
 	private final SkinColorFactory skinColorFactory;
 	private final AccessoryColorFactory accessoryColorFactory;
-	private final DwarvenNameGenerator dwarvenNameGenerator;
+	private final DwarvenNameGenerator nameGenerator;
 	private final UserPreferences userPreferences;
 	private final TwitchDataStore twitchDataStore;
 	private final Random random = new RandomXS128();
 
 	@Inject
 	public HumanoidEntityAttributesFactory(HairColorFactory hairColorFactory, SkinColorFactory skinColorFactory,
-										   AccessoryColorFactory accessoryColorFactory, DwarvenNameGenerator dwarvenNameGenerator,
+										   AccessoryColorFactory accessoryColorFactory, DwarvenNameGenerator nameGenerator,
 										   UserPreferences userPreferences, TwitchDataStore twitchDataStore) {
 		this.hairColorFactory = hairColorFactory;
 		this.skinColorFactory = skinColorFactory;
 		this.accessoryColorFactory = accessoryColorFactory;
-		this.dwarvenNameGenerator = dwarvenNameGenerator;
+		this.nameGenerator = nameGenerator;
 		this.userPreferences = userPreferences;
 		this.twitchDataStore = twitchDataStore;
 	}
@@ -53,7 +52,7 @@ public class HumanoidEntityAttributesFactory {
 		}
 
 		if (attributes.getName() == null) {
-			attributes.setName(dwarvenNameGenerator.create(attributes.getSeed(), attributes.getGender()));
+			attributes.setName(nameGenerator.create(attributes.getSeed(), attributes.getGender()));
 		}
 
 

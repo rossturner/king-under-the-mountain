@@ -1,4 +1,4 @@
-package technology.rocketjump.undermount.entities.planning;
+package technology.rocketjump.undermount.messaging.async;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
@@ -6,9 +6,7 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
-import technology.rocketjump.undermount.gamecontext.GameContext;
-import technology.rocketjump.undermount.gamecontext.Updatable;
-import technology.rocketjump.undermount.messaging.ErrorType;
+import technology.rocketjump.undermount.entities.planning.PathfindingTask;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.PathfindingRequestMessage;
 
@@ -17,12 +15,12 @@ import java.util.Queue;
 import java.util.concurrent.*;
 
 @Singleton
-public class BackgroundTaskManager implements Telegraph, Updatable {
+public class BackgroundTaskManager implements Telegraph {
 
 	private ExecutorService executorService;
 	private final MessageDispatcher messageDispatcher;
 	private final int numberOtherCores;
-	private Queue<Future<ErrorType>> outstandingTasks = new ConcurrentLinkedQueue<>();
+	private Queue<Future<BackgroundTaskResult>> outstandingTasks = new ConcurrentLinkedQueue<>();
 
 	private float timeSinceLastUpdate = 0f;
 	private static final float UPDATE_CYCLE_TIME_SECONDS = 1.0472f;
@@ -43,7 +41,7 @@ public class BackgroundTaskManager implements Telegraph, Updatable {
 		switch (msg.message) {
 			case MessageType.PATHFINDING_REQUEST: {
 				PathfindingRequestMessage message = (PathfindingRequestMessage) msg.extraInfo;
-				Future<ErrorType> task = executorService.submit(new PathfindingTask(message));
+				Future<BackgroundTaskResult> task = executorService.submit(new PathfindingTask(message));
 				outstandingTasks.add(task);
 				return true;
 			}
@@ -59,13 +57,12 @@ public class BackgroundTaskManager implements Telegraph, Updatable {
 		return executorService.submit(callable);
 	}
 
-	public Future<ErrorType> runTask(Callable<ErrorType> runnable) {
-		Future<ErrorType> task = executorService.submit(runnable);
+	public Future<BackgroundTaskResult> runTask(Callable<BackgroundTaskResult> runnable) {
+		Future<BackgroundTaskResult> task = executorService.submit(runnable);
 		outstandingTasks.add(task);
 		return task;
 	}
 
-	@Override
 	public void update(float deltaTime) {
 		timeSinceLastUpdate += deltaTime;
 
@@ -87,17 +84,6 @@ public class BackgroundTaskManager implements Telegraph, Updatable {
 
 	}
 
-	@Override
-	public boolean runWhilePaused() {
-		return true;
-	}
-
-	@Override
-	public void onContextChange(GameContext gameContext) {
-
-	}
-
-	@Override
 	public void clearContextRelatedState() {
 		timeSinceLastUpdate = 0f;
 		outstandingTasks = new LinkedList<>();
@@ -111,15 +97,19 @@ public class BackgroundTaskManager implements Telegraph, Updatable {
 	}
 
 	private void clearCompletedTasks() {
-		Queue<Future<ErrorType>> newOutstandingTasks = new ConcurrentLinkedQueue<>();
-		for (Future<ErrorType> task : this.outstandingTasks) {
+		Queue<Future<BackgroundTaskResult>> newOutstandingTasks = new ConcurrentLinkedQueue<>();
+		for (Future<BackgroundTaskResult> task : this.outstandingTasks) {
 			if (!task.isDone()) {
 				newOutstandingTasks.add(task);
 			} else {
 				try {
-					ErrorType errorType = task.get();
-					if (errorType != null) {
-						messageDispatcher.dispatchMessage(MessageType.GUI_SHOW_ERROR, errorType);
+					BackgroundTaskResult result = task.get();
+					if (result.isSuccessful()) {
+						if (result.dispatchMessageOnSuccess) {
+							messageDispatcher.dispatchMessage(result.successMessageType, result.successMessagePayload);
+						}
+					} else {
+						messageDispatcher.dispatchMessage(MessageType.GUI_SHOW_ERROR, result.error);
 					}
 				} catch (InterruptedException| ExecutionException e) {
 					Logger.error(e);

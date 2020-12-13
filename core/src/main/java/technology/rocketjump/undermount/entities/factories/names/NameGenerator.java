@@ -17,29 +17,30 @@ import java.io.IOException;
 import java.util.*;
 
 @Singleton
-public class DwarvenNameGenerator {
+public abstract class NameGenerator {
 
-	private final NameWordDictionary adjectiveDictionary;
-	private final NameWordDictionary nounDictionary;
-	private final NorseNameGenerator norseNameGenerator;
+	protected final NameWordDictionary adjectiveDictionary;
+	protected final NameWordDictionary nounDictionary;
+	protected final NorseNameGenerator norseNameGenerator;
 
-	private final List<String> goodSpheres = new LinkedList<>();
-	private final List<String> badSpheres = new LinkedList<>();
+	protected final List<String> goodSpheres = new LinkedList<>();
+	protected final List<String> badSpheres = new LinkedList<>();
+	private final JSONObject descriptor;
 
 	@Inject
-	public DwarvenNameGenerator(NorseNameGenerator norseNameGenerator) throws IOException {
+	public NameGenerator(File descriptorFile, NorseNameGenerator norseNameGenerator) throws IOException {
 		this.norseNameGenerator = norseNameGenerator;
 		adjectiveDictionary = new NameWordDictionary(new File("assets/text/adjective_noun/adjectives.csv"));
 		nounDictionary = new NameWordDictionary(new File("assets/text/adjective_noun/nouns.csv"));
 
-		JSONObject dwarvenNameDescriptor = JSON.parseObject(FileUtils.readFileToString(new File("assets/text/dwarven/descriptor.json")));
+		descriptor = JSON.parseObject(FileUtils.readFileToString(descriptorFile));
 
-		JSONArray goodSpheres = dwarvenNameDescriptor.getJSONArray("goodSpheres");
+		JSONArray goodSpheres = descriptor.getJSONArray("goodSpheres");
 		for (Object goodSphere : goodSpheres) {
 			this.goodSpheres.add((String)goodSphere);
 		}
 
-		JSONArray badSpheres = dwarvenNameDescriptor.getJSONArray("badSpheres");
+		JSONArray badSpheres = descriptor.getJSONArray("badSpheres");
 		for (Object badSphere : badSpheres) {
 			this.badSpheres.add((String)badSphere);
 		}
@@ -47,28 +48,42 @@ public class DwarvenNameGenerator {
 
 	public HumanoidName create(long seed, Gender gender) {
 		HumanoidName name = new HumanoidName();
-		name.setFirstName(norseNameGenerator.createGivenName(seed, gender));
-		name.setLastName(createDwarvenLastName(seed, name.getFirstName().substring(0, 1)));
+		name.setFirstName(generateUsingScheme(descriptor.getString("firstName"), seed, gender, null));
+		name.setLastName(generateUsingScheme(descriptor.getString("familyName"), seed, gender, name.getFirstName().length() > 0 ? name.getFirstName().substring(0, 1) : null));
 		return name;
 	}
 
-	private String createDwarvenLastName(long seed, String alliterationMatcher) {
+	public String generateUsingScheme(String scheme, long seed, Gender gender, String alliterationMatcher) {
+		switch (scheme) {
+			case "none":
+				return "";
+			case "adjective_noun":
+				return createAdjectiveNounName(seed, alliterationMatcher);
+			case "given_names":
+				return norseNameGenerator.createGivenName(seed, gender);
+			default:
+				Logger.error("Unrecognised name generation scheme: " + scheme);
+				return "ERROR";
+		}
+	}
+
+	protected String createAdjectiveNounName(long seed, String alliterationMatcher) {
 		Random random = new RandomXS128(seed);
 
 		String adjective = pickFrom(adjectiveDictionary, random, alliterationMatcher);
 		String noun = pickFrom(nounDictionary, random, null);
 
-		String lastOfAdjective = adjective.substring(adjective.length() - 1, adjective.length()).toLowerCase();
+		String lastOfAdjective = adjective.substring(adjective.length() - 1).toLowerCase();
 		String firstOfNoun = noun.substring(0, 1).toLowerCase();
 		if (lastOfAdjective.equals(firstOfNoun)) {
-			return createDwarvenLastName(seed + 1, alliterationMatcher);
+			return createAdjectiveNounName(seed + 1, alliterationMatcher);
 		}
 
 		String combined = adjective + noun;
 		return WordUtils.capitalize(combined.toLowerCase());
 	}
 
-	private String pickFrom(NameWordDictionary adjectiveDictionary, Random random, String alliterationMatcher) {
+	protected String pickFrom(NameWordDictionary adjectiveDictionary, Random random, String alliterationMatcher) {
 		List<NameWord> toPickFrom = new ArrayList<>();
 
 		for (String goodSphere : goodSpheres) {

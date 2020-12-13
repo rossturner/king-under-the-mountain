@@ -9,14 +9,14 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
-import technology.rocketjump.undermount.messaging.ErrorType;
+import technology.rocketjump.undermount.messaging.async.BackgroundTaskResult;
 import technology.rocketjump.undermount.messaging.types.PathfindingRequestMessage;
 import technology.rocketjump.undermount.misc.VectorGraphPath;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-public class PathfindingTask implements Callable<ErrorType> {
+public class PathfindingTask implements Callable<BackgroundTaskResult> {
 
 	private final PathfindingCallback callback;
 	private final MapTile originCell;
@@ -43,7 +43,7 @@ public class PathfindingTask implements Callable<ErrorType> {
 	}
 
 	@Override
-	public ErrorType call() throws Exception {
+	public BackgroundTaskResult call() throws Exception {
 		GraphPath<Vector2> path = new VectorGraphPath<>();
 
 		if (originCell.getRegionId() != destinationCell.getRegionId() &&
@@ -54,19 +54,19 @@ public class PathfindingTask implements Callable<ErrorType> {
 			// If the current region is a WALL or RIVER we'll still try to pathfind our way out
 			// But if we're here, we're in two different regions and no path is possible
 			callback.pathfindingComplete(path, relatedId);
-			return null;
+			return BackgroundTaskResult.success();
 		}
 
 		if (!destinationCell.getRegionType().equals(MapTile.RegionType.GENERIC)) {
 			// Can't pathfind to a wall or river type tile currently, just short circuit rather than flood fill the map
 			callback.pathfindingComplete(path, relatedId);
-			return null;
+			return BackgroundTaskResult.success();
 		}
 
 		if (originCell.equals(destinationCell)) {
 			path.add(destination);
 			callback.pathfindingComplete(path, relatedId);
-			return null;
+			return BackgroundTaskResult.success();
 		}
 
 		TileNeighbours navigableNeighbours = filterToNavigable(map.getNeighbours(originCell.getTileX(), originCell.getTileY()));
@@ -95,7 +95,7 @@ public class PathfindingTask implements Callable<ErrorType> {
 		}
 		path.reverse();
 		callback.pathfindingComplete(path, relatedId);
-		return null;
+		return BackgroundTaskResult.success();
 	}
 
 	private void processNode(MapPathfindingNode node) {

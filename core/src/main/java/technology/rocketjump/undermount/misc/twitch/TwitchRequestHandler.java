@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.apache.commons.io.IOUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchToken;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
@@ -36,7 +37,6 @@ public class TwitchRequestHandler {
 				.build();
 
 		Response response = client.newCall(request).execute();
-
 		if (GlobalSettings.DEV_MODE) {
 			Logger.debug("Request to " + request.url().toString() + " returned " + response.code());
 		}
@@ -51,15 +51,19 @@ public class TwitchRequestHandler {
 
 	private void attemptRefreshToken(TwitchDataStore twitchDataStore) throws IOException {
 		Request request = new Request.Builder()
-				.url("https://undermount-api.herokuapp.com/api/twitch/oauth/refresh?token="+twitchDataStore.getCurrentToken().getRefresh_token())
+				.url("https://undermount-api.herokuapp.com/api/twitch/oauth/refresh?token=" + twitchDataStore.getCurrentToken().getRefresh_token())
 				.post(emptyRequestBody)
 				.build();
 
 		Response response = client.newCall(request).execute();
 
-		if (response.isSuccessful()) {
-			TwitchToken newToken = new ObjectMapper().readValue(response.body().string(), TwitchToken.class);
-			twitchDataStore.setCurrentToken(newToken);
+		try {
+			if (response.isSuccessful()) {
+				TwitchToken newToken = new ObjectMapper().readValue(response.body().string(), TwitchToken.class);
+				twitchDataStore.setCurrentToken(newToken);
+			}
+		} finally {
+			IOUtils.closeQuietly(response);
 		}
 	}
 }
