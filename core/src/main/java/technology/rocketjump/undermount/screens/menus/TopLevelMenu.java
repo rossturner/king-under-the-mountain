@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
@@ -122,7 +121,7 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		loadAnyGameButton = iconButtonFactory.create("MENU.LOAD_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
 		loadAnyGameButton.setAction(() -> {
-			Logger.info("TODO: Load game");
+			messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.LOAD_GAME_MENU);
 		});
 
 		optionsButton = iconButtonFactory.create("MENU.OPTIONS", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
@@ -275,5 +274,9 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 		if (displayed) {
 			this.reset();
 		}
+	}
+
+	public void gameStarted() {
+		this.gameStarted = true;
 	}
 }

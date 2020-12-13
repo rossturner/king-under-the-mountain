@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
 import technology.rocketjump.undermount.messaging.async.BackgroundTaskResult;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -27,25 +28,30 @@ public class SavedGameStore implements Telegraph {
 
 	private final UserFileManager userFileManager;
 	private final BackgroundTaskManager backgroundTaskManager;
-	private final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault());
+	private final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault());
 	private final MessageDispatcher messageDispatcher;
+	private final I18nTranslator i18nTranslator;
 	private boolean refreshInProgress = false;
 
 	private final Map<String, SavedGameInfo> bySettlementName = new HashMap<>();
 
 	@Inject
-	public SavedGameStore(UserFileManager userFileManager, BackgroundTaskManager backgroundTaskManager, MessageDispatcher messageDispatcher) {
+	public SavedGameStore(UserFileManager userFileManager, BackgroundTaskManager backgroundTaskManager,
+						  MessageDispatcher messageDispatcher, I18nTranslator i18nTranslator) {
 		this.userFileManager = userFileManager;
 		this.backgroundTaskManager = backgroundTaskManager;
 		this.messageDispatcher = messageDispatcher;
+		this.i18nTranslator = i18nTranslator;
 
 		messageDispatcher.addListener(this, MessageType.SAVED_GAMES_PARSED);
+		messageDispatcher.addListener(this, MessageType.SAVE_COMPLETED);
 
 		refresh();
 	}
 
 	public void refresh() {
 		if (!refreshInProgress) {
+			Logger.debug("Refreshing save file list");
 			refreshInProgress = true;
 			backgroundTaskManager.runTask(() -> {
 				List<SavedGameInfo> results = new ArrayList<>();
@@ -62,7 +68,7 @@ public class SavedGameStore implements Telegraph {
 						clock.readFrom(storedJson.getJSONObject("clock"), null, null);
 
 						results.add(new SavedGameInfo(saveFile, stateHolder.settlementStateJson.getString("settlementName"),
-								storedJson.getString("version"), lastModifiedTime, formattedLastModified, clock.getFormattedGameTime()));
+								storedJson.getString("version"), lastModifiedTime, formattedLastModified, i18nTranslator.getDateTimeString(clock).toString()));
 					} catch (Exception e) {
 						Logger.error("Error while reading " + saveFile.getAbsolutePath());
 					}
@@ -77,11 +83,20 @@ public class SavedGameStore implements Telegraph {
 		switch (msg.message) {
 			case MessageType.SAVED_GAMES_PARSED: {
 				List<SavedGameInfo> savedGames = (List<SavedGameInfo>) msg.extraInfo;
+				Logger.debug("Save file list refreshed");
+				this.refreshInProgress = false;
 				bySettlementName.clear();
 				for (SavedGameInfo savedGame : savedGames) {
-					bySettlementName.put(savedGame.settlementName, savedGame);
+					if (!bySettlementName.containsKey(savedGame.settlementName) ||
+							bySettlementName.get(savedGame.settlementName).lastModifiedTime.isBefore(savedGame.lastModifiedTime)) {
+						bySettlementName.put(savedGame.settlementName, savedGame);
+					}
 				}
 				messageDispatcher.dispatchMessage(MessageType.SAVED_GAMES_LIST_UPDATED);
+				return true;
+			}
+			case MessageType.SAVE_COMPLETED: {
+				refresh();
 				return true;
 			}
 			default:
@@ -101,5 +116,9 @@ public class SavedGameStore implements Telegraph {
 
 	public int count() {
 		return bySettlementName.keySet().size();
+	}
+
+	public Collection<SavedGameInfo> getAll() {
+		return bySettlementName.values();
 	}
 }

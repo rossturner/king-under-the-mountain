@@ -61,6 +61,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 	private final OptionsMenu optionsMenu;
 	private final ModsMenu modsMenu;
 	private final EmbarkMenu embarkMenu;
+	private final LoadGameMenu loadGameMenu;
 	private final PrivacyOptInMenu privacyOptInMenu;
 	private final Skin uiSkin;
 	private final I18nTextButton newVersionButton;
@@ -89,13 +90,15 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 	private final I18nTranslator i18nTranslator;
 
 	@Inject
-	public MainMenuScreen(MessageDispatcher messageDispatcher, ScreenWriter screenWriter, EmbarkMenu embarkMenu, GuiSkinRepository guiSkinRepository,
+	public MainMenuScreen(MessageDispatcher messageDispatcher, ScreenWriter screenWriter, EmbarkMenu embarkMenu,
+						  LoadGameMenu loadGameMenu, GuiSkinRepository guiSkinRepository,
 						  UserPreferences userPreferences, TopLevelMenu topLevelMenu, OptionsMenu optionsMenu,
 						  PrivacyOptInMenu privacyOptInMenu, CrashHandler crashHandler, I18nWidgetFactory i18nWidgetFactory,
 						  ModsMenu modsMenu, TwitchDataStore twitchDataStore, I18nTranslator i18nTranslator){
 		this.messageDispatcher = messageDispatcher;
 		this.screenWriter = screenWriter;
 		this.embarkMenu = embarkMenu;
+		this.loadGameMenu = loadGameMenu;
 		this.uiSkin = guiSkinRepository.getDefault();
 		this.topLevelMenu = topLevelMenu;
 		this.optionsMenu = optionsMenu;
@@ -160,6 +163,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		messageDispatcher.addListener(this, MessageType.TWITCH_ACCOUNT_INFO_UPDATED);
 		messageDispatcher.addListener(this, MessageType.PREFERENCE_CHANGED);
 		messageDispatcher.addListener(this, MessageType.SAVED_GAMES_LIST_UPDATED);
+		messageDispatcher.addListener(this, MessageType.START_NEW_GAME);
 	}
 
 	@Override
@@ -181,6 +185,9 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 							break;
 						case EMBARK_MENU:
 							currentMenu = embarkMenu;
+							break;
+						case LOAD_GAME_MENU:
+							currentMenu = loadGameMenu;
 							break;
 						case MODS_MENU:
 							currentMenu = modsMenu;
@@ -230,7 +237,12 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 			}
 			case MessageType.SAVED_GAMES_LIST_UPDATED: {
 				topLevelMenu.savedGamesUpdated();
+				loadGameMenu.savedGamesUpdated();
 				return true;
+			}
+			case MessageType.START_NEW_GAME: {
+				topLevelMenu.gameStarted();
+				return false;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
