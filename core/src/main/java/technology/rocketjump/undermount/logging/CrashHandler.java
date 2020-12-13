@@ -8,6 +8,7 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import okhttp3.*;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -74,7 +75,7 @@ public class CrashHandler implements Telegraph {
 					.build();
 			Response response = client.newCall(request).execute();
 			System.out.println("Response: " + response.code());
-			// Do something with response?
+			IOUtils.closeQuietly(response);
 		} catch (Exception e) {
 			Logger.error("Failed to post expanded crash data: " + e.getMessage());
 		}
