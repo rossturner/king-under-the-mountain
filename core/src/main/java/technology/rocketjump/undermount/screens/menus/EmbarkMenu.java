@@ -11,17 +11,25 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.pmw.tinylog.Logger;
+import org.apache.commons.lang3.StringUtils;
+import technology.rocketjump.undermount.audio.model.SoundAsset;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.factories.SettlementNameGenerator;
+import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
+import technology.rocketjump.undermount.messaging.types.StartNewGameMessage;
+import technology.rocketjump.undermount.persistence.SavedGameInfo;
 import technology.rocketjump.undermount.persistence.SavedGameStore;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nUpdatable;
+import technology.rocketjump.undermount.ui.i18n.I18nWord;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.*;
 
+import java.util.Map;
 import java.util.Random;
 
 @Singleton
@@ -31,7 +39,7 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 	private final Table outerTable;
 	private final I18nTranslator i18nTranslator;
 	private final SavedGameStore savedGameStore;
-
+	private final GameDialogDictionary gameDialogDictionary;
 
 	private final Skin uiSkin;
 	private final SettlementNameGenerator settlementNameGenerator;
@@ -51,12 +59,14 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 	@Inject
 	public EmbarkMenu(GuiSkinRepository guiSkinRepository, IconButtonFactory iconButtonFactory, MessageDispatcher messageDispatcher,
 					  I18nTranslator i18nTranslator, SavedGameStore savedGameStore, I18nWidgetFactory i18nWidgetFactory,
-					  SettlementNameGenerator settlementNameGenerator, ImageButtonFactory imageButtonFactory) {
+					  SettlementNameGenerator settlementNameGenerator, ImageButtonFactory imageButtonFactory,
+					  SoundAssetDictionary soundAssetDictionary, GameDialogDictionary gameDialogDictionary) {
 		this.uiSkin = guiSkinRepository.getDefault();
 		this.messageDispatcher = messageDispatcher;
 		this.i18nTranslator = i18nTranslator;
 		this.savedGameStore = savedGameStore;
 		this.settlementNameGenerator = settlementNameGenerator;
+		this.gameDialogDictionary = gameDialogDictionary;
 
 		this.outerTable = new Table(uiSkin);
 		outerTable.background("default-rect");
@@ -69,18 +79,10 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 		});
 
 		startButton = iconButtonFactory.create("GUI.EMBARK.START", "flying-flag", HexColors.POSITIVE_COLOR, ButtonStyle.DEFAULT);
-		startButton.setAction(() -> {
-			Logger.info("Start!");
-
-			// TODO handle empty name with warning dialog
-
-			// TODO handle name already exists for save with confirm dialog
-		});
-		/*
+		final SoundAsset startGameSound = soundAssetDictionary.getByName("GameStart");
 		startButton.setOnClickSoundAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(startGameSound));
 		});
-		 */
 
 		discordLink = i18nWidgetFactory.createTextButton("GUI.EMBARK.DISCORD_LINK");
 		discordLink.addListener(new ClickListener() {
@@ -112,6 +114,35 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 		seedTable.add(seedLabel).right().pad(5);
 		seedTable.add(seedInput).width(300).pad(5);
 		seedTable.add(randomiseSeedButton).left().pad(5);
+
+
+		startButton.setAction(() -> {
+			String settlementName = getSettlementName();
+			SavedGameInfo existingSave = savedGameStore.getByName(settlementName);
+			if (settlementName.isBlank()) {
+				ModalDialog dialog = gameDialogDictionary.getInfoDialog(InfoType.SETTLEMENT_NAME_NOT_SPECIFIED);
+				messageDispatcher.dispatchMessage(MessageType.SHOW_DIALOG, dialog);
+			} else if (existingSave != null) {
+				NotificationDialog dialog = new NotificationDialog(
+						i18nTranslator.getTranslatedString("GUI.DIALOG.INFO_TITLE"),
+						uiSkin,
+						messageDispatcher
+				);
+				dialog.withText(i18nTranslator.getTranslatedWordWithReplacements("GUI.DIALOG.SETTLEMENT_NAME_ALREADY_IN_USE",
+						Map.of("name", new I18nWord(settlementName)))
+					.breakAfterLength(i18nTranslator.getCurrentLanguageType().getBreakAfterLineLength()));
+
+				dialog.withButton(i18nTranslator.getTranslatedString("GUI.DIALOG.OK_BUTTON"), (Runnable) () -> {
+					messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.TOP_LEVEL_MENU);
+					messageDispatcher.dispatchMessage(MessageType.START_NEW_GAME, new StartNewGameMessage(getSettlementName(), parseSeed()));
+				});
+				dialog.withButton(i18nTranslator.getTranslatedString("GUI.DIALOG.CANCEL_BUTTON"));
+				messageDispatcher.dispatchMessage(MessageType.SHOW_DIALOG, dialog);
+			} else {
+				messageDispatcher.dispatchMessage(MessageType.SWITCH_MENU, MenuType.TOP_LEVEL_MENU);
+				messageDispatcher.dispatchMessage(MessageType.START_NEW_GAME, new StartNewGameMessage(getSettlementName(), parseSeed()));
+			}
+		});
 	}
 
 	@Override
@@ -157,11 +188,19 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 
 	private long parseSeed() {
 		String seedText = seedInput.getText();
-		long hash = 0;
-		for (char c : seedText.toCharArray()) {
-			hash = 31L*hash + c;
+		if (StringUtils.isNumeric(seedText)) {
+			return Long.parseLong(seedText);
+		} else {
+			long hash = 0;
+			for (char c : seedText.toCharArray()) {
+				hash = 31L*hash + c;
+			}
+			return hash;
 		}
-		return hash;
+	}
+
+	private String getSettlementName() {
+		return nameInput.getText().trim();
 	}
 
 }

@@ -20,10 +20,7 @@ import java.nio.file.Files;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Singleton
 public class SavedGameStore implements Telegraph {
@@ -63,7 +60,7 @@ public class SavedGameStore implements Telegraph {
 						clock.readFrom(storedJson.getJSONObject("clock"), null, null);
 
 						results.add(new SavedGameInfo(saveFile, stateHolder.settlementStateJson.getString("settlementName"),
-								storedJson.getString("version"), formattedLastModified, clock.getFormattedGameTime()));
+								storedJson.getString("version"), lastModifiedTime, formattedLastModified, clock.getFormattedGameTime()));
 					} catch (Exception e) {
 						Logger.error("Error while reading " + saveFile.getAbsolutePath());
 					}
@@ -88,5 +85,19 @@ public class SavedGameStore implements Telegraph {
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
+	}
+
+	public SavedGameInfo getByName(String settlementName) {
+		return bySettlementName.get(settlementName);
+	}
+
+	public Optional<SavedGameInfo> getLatest() {
+		return bySettlementName.values().stream()
+				.sorted((o1, o2) -> o2.lastModifiedTime.compareTo(o1.lastModifiedTime))
+				.findFirst();
+	}
+
+	public int count() {
+		return bySettlementName.keySet().size();
 	}
 }

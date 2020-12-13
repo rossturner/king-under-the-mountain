@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.async.ErrorType;
+import technology.rocketjump.undermount.messaging.types.StartNewGameMessage;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameViewMode;
 import technology.rocketjump.undermount.ui.views.GuiViewName;
@@ -81,13 +82,13 @@ public class ScreenManager implements Telegraph {
 		messageDispatcher.addListener(this, MessageType.SHOW_DIALOG);
 	}
 
-	private void startNewGame() {
+	private void startNewGame(StartNewGameMessage newGameMessage) {
 		clearState();
 
-		GameSeed worldSeed = newGameSeed();
+		GameSeed worldSeed = newGameSeed(newGameMessage.seed);
 
 		GameClock gameClock = new GameClock();
-		GameContext gameContext = gameContextFactory.create(null, worldSeed.seed, gameClock);
+		GameContext gameContext = gameContextFactory.create(newGameMessage.settlementName, null, worldSeed.seed, gameClock);
 		gameContextRegister.setNewContext(gameContext); // FIXME Should be able to remove this
 
 		TiledMap map = null;
@@ -96,7 +97,7 @@ public class ScreenManager implements Telegraph {
 				map = mapFactory.create(worldSeed.seed, worldSeed.mapWidth, worldSeed.mapHeight, gameContext);
 			} catch (InvalidMapGenerationException e) {
 				Logger.warn("Invalid map generated: " + e.getMessage());
-				worldSeed = newGameSeed();
+				worldSeed = newGameSeed(newGameMessage.seed);
 				Logger.info("Retrying generation with new seed: " + worldSeed);
 			}
 		}
@@ -169,6 +170,7 @@ public class ScreenManager implements Telegraph {
 
 		switch (msg.message) {
 			case MessageType.START_NEW_GAME: {
+				StartNewGameMessage newGameMessage = (StartNewGameMessage) msg.extraInfo;
 				// Reset interaction state so cursor is not left in an odd setting
 				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_INTERACTION_MODE, GameInteractionMode.DEFAULT);
 				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.DEFAULT_MENU);
@@ -176,7 +178,7 @@ public class ScreenManager implements Telegraph {
 				if (currentScreen != null) {
 					currentScreen.hide();
 				}
-				startNewGame();
+				startNewGame(newGameMessage);
 				currentScreen = mainGameScreen;
 				return true;
 			}
@@ -239,12 +241,11 @@ public class ScreenManager implements Telegraph {
 		messageDispatcher.clearQueue(); // FIXME #31 on loading a game need to re-instantiate things on the queue or else reset job state and other timed tasks
 	}
 
-	private GameSeed newGameSeed() {
+	private GameSeed newGameSeed(long seed) {
 		try {
 			File file = Gdx.files.internal("seed.txt").file();
 			Reader reader = new FileReader(file);
 			List<String> lines = IOUtils.readLines(reader);
-			long seed = Long.valueOf(lines.get(0));
 			int mapWidth = 400;
 			int mapHeight = 300;
 			if (lines.size() > 1) {

@@ -21,6 +21,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.persistence.PersistenceCallback;
+import technology.rocketjump.undermount.persistence.SavedGameStore;
 import technology.rocketjump.undermount.persistence.UserFileManager;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.ui.fonts.FontRepository;
@@ -45,6 +46,7 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	private final I18nTextWidget i18nTextWidget;
 	private final FontRepository fontRepository;
 	private final GuiSkinRepository guiSkinRepository;
+	private final SavedGameStore savedGameStore;
 
 	private Skin uiSkin;
 	private Table menuTable;
@@ -66,13 +68,15 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 	@Inject
 	public TopLevelMenu(GuiSkinRepository guiSkinRepository, IconButtonFactory iconButtonFactory, MessageDispatcher messageDispatcher,
 						I18nTranslator i18nTranslator, I18nRepo i18nRepo, UserFileManager userFileManager, UserPreferences userPreferences,
-						TextureAtlasRepository textureAtlasRepository, SoundAssetDictionary soundAssetDictionary, FontRepository fontRepository) {
+						TextureAtlasRepository textureAtlasRepository, SoundAssetDictionary soundAssetDictionary,
+						FontRepository fontRepository, SavedGameStore savedGameStore) {
 		this.guiSkinRepository = guiSkinRepository;
 		this.uiSkin = guiSkinRepository.getDefault();
 		this.i18nTranslator = i18nTranslator;
 		this.i18nRepo = i18nRepo;
 		this.userPreferences = userPreferences;
 		this.fontRepository = fontRepository;
+		this.savedGameStore = savedGameStore;
 
 
 		menuTable = new Table(uiSkin);
@@ -102,7 +106,8 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 			reset();
 		});
 
-		saveExists = userFileManager.getSaveFile("quicksave") != null;
+
+		saveExists = savedGameStore.count() > 0;
 		loadLatestGameButton = iconButtonFactory.create("MENU.CONTINUE_GAME", null, Color.LIGHT_GRAY, ButtonStyle.EXTRA_WIDE);
 		loadLatestGameButton.setAction(() -> {
 			messageDispatcher.dispatchMessage(MessageType.TRIGGER_QUICKLOAD, (PersistenceCallback) wasSuccessful -> {

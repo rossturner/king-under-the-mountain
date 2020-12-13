@@ -62,12 +62,8 @@ public class UserFileManager {
 		saveGameDirectory = initDirectory(saveDirPath);
 	}
 
-	/**
-	 * Note that this returns null if the file does not exist
-	 */
-	public File getSaveFile(String filename) {
-		File file = new File(saveGameDirectory.getAbsolutePath(), filename + ".save");
-		return getOrCreateFile(file, false);
+	public File getSaveFile(SavedGameInfo info) {
+		return getOrCreateFile(info.file, false);
 	}
 	
 	public List<File> getAllSaveFiles() {

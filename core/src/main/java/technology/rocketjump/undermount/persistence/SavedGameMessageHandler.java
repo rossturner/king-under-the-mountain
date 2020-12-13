@@ -43,6 +43,7 @@ import technology.rocketjump.undermount.ui.widgets.ModalDialog;
 
 import java.io.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
@@ -60,6 +61,7 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 	private final LocalModRepository localModRepository;
 	private final GameDialogDictionary gameDialogDictionary;
 	private final ConstantsRepo constantsRepo;
+	private final SavedGameStore savedGameStore;
 	private GameContext gameContext;
 
 	private boolean savingInProgress;
@@ -71,7 +73,7 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 								   BackgroundTaskManager backgroundTaskManager, PrimaryCameraWrapper primaryCameraWrapper,
 								   GameContextRegister gameContextRegister, GameContextFactory gameContextFactory,
 								   LocalModRepository localModRepository, GameDialogDictionary gameDialogDictionary,
-								   ConstantsRepo constantsRepo) {
+								   ConstantsRepo constantsRepo, SavedGameStore savedGameStore) {
 		this.relatedStores = savedGameDependentDictionaries;
 		this.messageDispatcher = messageDispatcher;
 		this.userFileManager = userFileManager;
@@ -82,6 +84,7 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 		this.localModRepository = localModRepository;
 		this.gameDialogDictionary = gameDialogDictionary;
 		this.constantsRepo = constantsRepo;
+		this.savedGameStore = savedGameStore;
 	}
 
 	@Inject
@@ -109,22 +112,26 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 				GameSaveMessage message = (GameSaveMessage) msg.extraInfo;
 				if (gameContext != null) {
 					try {
-						save("quicksave", message.asynchronous);
+						save(gameContext.getSettlementState().getSettlementName(), message.asynchronous);
 					} catch (Exception e) {
 						savingInProgress = false;
 						messageDispatcher.dispatchMessage(MessageType.GUI_SHOW_ERROR, ErrorType.WHILE_SAVING);
 						CrashHandler.logCrash(e);
 					}
 				}
+				savedGameStore.refresh();
 				return true;
 			}
 			case MessageType.TRIGGER_QUICKLOAD: {
 				PersistenceCallback callback = (PersistenceCallback) msg.extraInfo;
+				Optional<SavedGameInfo> latest = savedGameStore.getLatest();
 				boolean loadSuccess = false;
 				try {
-					load("quicksave");
-					messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_GAME");
-					loadSuccess = true;
+					if (latest.isPresent()) {
+						load(latest.get());
+						messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_GAME");
+						loadSuccess = true;
+					}
 				} catch (FileNotFoundException e) {
 					// Mostly ignoring file not found errors
 					Logger.warn(e.getMessage());
@@ -244,13 +251,13 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 	}
 
 
-	public void load(String filename) throws IOException, InvalidSaveException {
+	public void load(SavedGameInfo savedGameInfo) throws IOException, InvalidSaveException {
 		if (savingInProgress) {
 			return;
 		}
-		File saveFile = userFileManager.getSaveFile(filename);
+		File saveFile = userFileManager.getSaveFile(savedGameInfo);
 		if (saveFile == null) {
-			throw new FileNotFoundException("Save file does not exist: " + filename + ".save");
+			throw new FileNotFoundException("Save file does not exist: " + savedGameInfo.file.getName() + ".save");
 		}
 
 		String jsonString = FileUtils.readFileToString(saveFile);

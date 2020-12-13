@@ -103,7 +103,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 						}
 					}
 				}
-				return true;
+				return false; // Not main handler
 			}
 			case MessageType.GUI_SWITCH_VIEW: {
 				GuiViewName viewName = (GuiViewName) msg.extraInfo;
