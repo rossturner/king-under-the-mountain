@@ -2,6 +2,7 @@ Alpha 5
 
 - Added a very basic embark screen for entry of settlement name and map seed
 - You can now manage multiple saved games via the UI, also overhauled save file format to use compression
+- Improved detection of user home directory, this will cause a loss of preferences on Windows machines where My Documents has been moved from C:\Users\...
 - Hard-coded "Item groups" have been entirely replaced by moddable "Stockpile groups" which determine how stockpiles and the resources management screens work
 - Stockpiles now support filtering by stockpile group, item type and item material, and can also have a priority set
 - Twitch integration - twitch streamers can connect their account to have their viewers automatically show up in game!

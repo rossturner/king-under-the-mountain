@@ -36,15 +36,6 @@ public class SavedGameInfo {
 		this.formattedGameTime = i18nTranslator.getDateTimeString(clock).toString();
 	}
 
-	public SavedGameInfo(File file, String settlementName, String version, String formattedGameTime) throws IOException {
-		this.file = file;
-		this.settlementName = settlementName;
-		this.version = version;
-		this.lastModifiedTime = Files.getLastModifiedTime(file.toPath()).toInstant();
-		this.formattedFileModifiedTime = DATE_TIME_FORMATTER.format(lastModifiedTime);
-		this.formattedGameTime = formattedGameTime;
-	}
-
 	public boolean isCompressed() {
 		return isCompressed;
 	}

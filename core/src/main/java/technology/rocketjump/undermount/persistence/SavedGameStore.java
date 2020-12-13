@@ -13,10 +13,10 @@ import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.pmw.tinylog.Logger;
-import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
 import technology.rocketjump.undermount.messaging.async.BackgroundTaskResult;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nUpdatable;
 
@@ -51,7 +51,9 @@ public class SavedGameStore implements Telegraph, I18nUpdatable {
 
 	public void refresh() {
 		if (!refreshInProgress) {
-			Logger.debug("Refreshing save file list");
+			if (GlobalSettings.DEV_MODE) {
+				Logger.debug("Refreshing save file list");
+			}
 			refreshInProgress = true;
 			backgroundTaskManager.runTask(() -> {
 				List<SavedGameInfo> results = new ArrayList<>();
@@ -77,11 +79,7 @@ public class SavedGameStore implements Telegraph, I18nUpdatable {
 
 						JSONObject headerJson = JSON.parseObject(headerWriter.toString());
 
-						GameClock clock = new GameClock();
-						clock.readFrom(headerJson.getJSONObject("clock"), null, null);
-
-						results.add(new SavedGameInfo(saveFile, headerJson.getString("name"),
-								headerJson.getString("version"), i18nTranslator.getDateTimeString(clock).toString()));
+						results.add(new SavedGameInfo(saveFile, headerJson, i18nTranslator));
 					} catch (Exception e) {
 						Logger.error("Error while reading " + saveFile.getAbsolutePath());
 					}
@@ -113,7 +111,9 @@ public class SavedGameStore implements Telegraph, I18nUpdatable {
 		switch (msg.message) {
 			case MessageType.SAVED_GAMES_PARSED: {
 				List<SavedGameInfo> savedGames = (List<SavedGameInfo>) msg.extraInfo;
-				Logger.debug("Save file list refreshed");
+				if (GlobalSettings.DEV_MODE) {
+					Logger.debug("Save file list refreshed");
+				}
 				this.refreshInProgress = false;
 				bySettlementName.clear();
 				for (SavedGameInfo savedGame : savedGames) {

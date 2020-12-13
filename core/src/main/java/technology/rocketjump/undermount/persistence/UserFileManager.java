@@ -4,9 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.SystemUtils;
 import org.pmw.tinylog.Logger;
 
+import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -23,38 +23,13 @@ public class UserFileManager {
 	@Inject
 	public UserFileManager() {
 		try {
-			if (SystemUtils.IS_OS_WINDOWS) {
-				userFileDirectoryForGame = initDirectory(SystemUtils.getUserHome() + File.separator + "Documents" + File.separator + "King under the Mountain");
-			} else if (SystemUtils.IS_OS_MAC) {
-				userFileDirectoryForGame = initDirectory("~/Documents/King under the Mountain");
-			} else if (SystemUtils.IS_OS_LINUX) {
-				userFileDirectoryForGame = initDirectory("~/King under the Mountain");
-			} else {
-				Logger.warn("Unable to determine OS");
-				userFileDirectoryForGame = initDirectory(".");
-			}
-
-			tidyUpOldLocations();
-
+			File defaultDocsDir = FileSystemView.getFileSystemView().getDefaultDirectory();
+			userFileDirectoryForGame = initDirectory(defaultDocsDir.toPath().resolve("King under the Mountain").toFile());
 		} catch (IOException | SecurityException e) {
 			// Couldn't write to user dir
 			Logger.error(e);
 			// Just write files local to game for now
 			userFileDirectoryForGame = new File(".");
-		}
-	}
-
-	private void tidyUpOldLocations() throws IOException {
-		if (SystemUtils.IS_OS_WINDOWS) {
-			File previousDir = new File(SystemUtils.getUserHome() + File.separator + "King under the Mountain");
-			if (previousDir.exists()) {
-				FileUtils.deleteDirectory(previousDir);
-			}
-
-			File originalLocation = new File(SystemUtils.getUserHome() + File.separator + ".KingUnderTheMountain");
-			if (originalLocation.exists()) {
-				FileUtils.deleteDirectory(originalLocation);
-			}
 		}
 	}
 
@@ -121,8 +96,10 @@ public class UserFileManager {
 	}
 
 	private File initDirectory(String pathToDir) throws IOException {
-		File gameDirectory = new File(pathToDir);
+		return initDirectory(new File(pathToDir));
+	}
 
+	private File initDirectory(File gameDirectory) throws IOException {
 		if (!gameDirectory.exists()) {
 			FileUtils.forceMkdir(gameDirectory);
 		}

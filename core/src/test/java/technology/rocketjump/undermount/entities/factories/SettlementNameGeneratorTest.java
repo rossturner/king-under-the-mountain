@@ -20,6 +20,12 @@ public class SettlementNameGeneratorTest {
 	@Test
 	public void simpleTest() {
 		Assertions.assertThat(settlementNameGenerator.create(1L)).isEqualTo("Wildstream");
+
+//		Random random = new RandomXS128();
+//		for (int i = 0; i < 100; i++) {
+//			System.out.println(settlementNameGenerator.create(random.nextLong()));
+//		}
+
 	}
 
 }
