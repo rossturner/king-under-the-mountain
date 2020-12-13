@@ -22,6 +22,7 @@ public class SavedGameInfo {
 	public final Instant lastModifiedTime;
 	public final String formattedFileModifiedTime;
 	public final String formattedGameTime;
+	private boolean isCompressed = true;
 
 	public SavedGameInfo(File saveFile, JSONObject headerJson, I18nTranslator i18nTranslator) throws InvalidSaveException, IOException {
 		GameClock clock = new GameClock();
@@ -44,4 +45,11 @@ public class SavedGameInfo {
 		this.formattedGameTime = formattedGameTime;
 	}
 
+	public boolean isCompressed() {
+		return isCompressed;
+	}
+
+	public void setCompressed(boolean compressed) {
+		isCompressed = compressed;
+	}
 }

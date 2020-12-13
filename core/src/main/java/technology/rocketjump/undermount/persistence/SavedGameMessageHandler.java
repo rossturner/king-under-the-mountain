@@ -10,6 +10,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.compress.archivers.*;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.AssetDisposable;
@@ -326,24 +327,30 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 			throw new FileNotFoundException("Save file does not exist: " + savedGameInfo.file.getName() + ".save");
 		}
 
-		InputStream archiveStream = new FileInputStream(saveFile);
-		ArchiveInputStream archive = new ArchiveStreamFactory().createArchiveInputStream(ArchiveStreamFactory.ZIP, archiveStream);
-		ArchiveEntry archiveEntry = archive.getNextEntry();
-		while (archiveEntry != null && archiveEntry.getName().equals(ARCHIVE_HEADER_ENTRY_NAME)) {
-			archiveEntry = archive.getNextEntry();
+		String jsonString;
+		if (savedGameInfo.isCompressed()) {
+			InputStream archiveStream = new FileInputStream(saveFile);
+			ArchiveInputStream archive = new ArchiveStreamFactory().createArchiveInputStream(ArchiveStreamFactory.ZIP, archiveStream);
+			ArchiveEntry archiveEntry = archive.getNextEntry();
+			StringWriter stringWriter = new StringWriter();
+			while (archiveEntry != null && archiveEntry.getName().equals(ARCHIVE_HEADER_ENTRY_NAME)) {
+				archiveEntry = archive.getNextEntry();
+			}
+
+			if (archiveEntry == null) {
+				throw new IOException("Could not find main entry in " + saveFile.getName());
+			}
+
+			IOUtils.copy(archive, stringWriter);
+			jsonString = stringWriter.toString();
+			IOUtils.closeQuietly(stringWriter);
+			IOUtils.closeQuietly(archive);
+			IOUtils.closeQuietly(archiveStream);
+		} else {
+			jsonString = FileUtils.readFileToString(savedGameInfo.file);
 		}
 
-		if (archiveEntry == null) {
-			throw new IOException("Could not find main entry in " + saveFile.getName());
-		}
-
-		StringWriter stringWriter = new StringWriter();
-		IOUtils.copy(archive, stringWriter);
-		IOUtils.closeQuietly(stringWriter);
-		IOUtils.closeQuietly(archive);
-		IOUtils.closeQuietly(archiveStream);
-
-		JSONObject storedJson = JSON.parseObject(stringWriter.toString());
+		JSONObject storedJson = JSON.parseObject(jsonString);
 		SavedGameStateHolder stateHolder = new SavedGameStateHolder(storedJson);
 		try {
 			stateHolder.jsonToObjects(relatedStores);

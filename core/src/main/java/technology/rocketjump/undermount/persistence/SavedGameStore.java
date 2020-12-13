@@ -10,6 +10,7 @@ import com.google.inject.Singleton;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.ArchiveInputStream;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.environment.GameClock;
@@ -19,10 +20,7 @@ import technology.rocketjump.undermount.messaging.async.BackgroundTaskResult;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nUpdatable;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.*;
 
 @Singleton
@@ -88,6 +86,23 @@ public class SavedGameStore implements Telegraph, I18nUpdatable {
 						Logger.error("Error while reading " + saveFile.getAbsolutePath());
 					}
 				}
+				for (File saveDirectory : userFileManager.getAllSaveDirectories()) {
+					try {
+						File headerJsonFile = saveDirectory.toPath().resolve("header.json").toFile();
+						if (headerJsonFile.exists()) {
+							JSONObject headerJson = JSON.parseObject(FileUtils.readFileToString(headerJsonFile));
+							String settlementName = headerJson.getString("name");
+							File bodyFile = saveDirectory.toPath().resolve(settlementName + ".json").toFile();
+							if (bodyFile.exists()) {
+								SavedGameInfo savedGameInfo = new SavedGameInfo(bodyFile, headerJson, i18nTranslator);
+								savedGameInfo.setCompressed(false);
+								results.add(savedGameInfo);
+							}
+						}
+					} catch (Exception e) {
+						Logger.error("Error while parsing save directory " + saveDirectory.getName());
+					}
+				}
 				return BackgroundTaskResult.success(MessageType.SAVED_GAMES_PARSED, results);
 			});
 		}
@@ -122,6 +137,19 @@ public class SavedGameStore implements Telegraph, I18nUpdatable {
 		}
 	}
 
+	public void delete(SavedGameInfo savedGameInfo) {
+		try {
+			if (savedGameInfo.isCompressed()) {
+				FileUtils.deleteQuietly(savedGameInfo.file);
+			} else {
+				FileUtils.deleteDirectory(savedGameInfo.file.getParentFile());
+			}
+		} catch (IOException e) {
+			Logger.error("Error while deleting "  + savedGameInfo.settlementName, e);
+		}
+		bySettlementName.remove(savedGameInfo.settlementName);
+	}
+
 	public SavedGameInfo getByName(String settlementName) {
 		return bySettlementName.get(settlementName);
 	}
@@ -130,10 +158,6 @@ public class SavedGameStore implements Telegraph, I18nUpdatable {
 		return bySettlementName.values().stream()
 				.sorted((o1, o2) -> o2.lastModifiedTime.compareTo(o1.lastModifiedTime))
 				.findFirst();
-	}
-
-	public int count() {
-		return bySettlementName.keySet().size();
 	}
 
 	public Collection<SavedGameInfo> getAll() {

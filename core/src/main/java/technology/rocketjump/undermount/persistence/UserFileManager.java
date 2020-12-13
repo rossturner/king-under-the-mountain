@@ -72,6 +72,12 @@ public class UserFileManager {
 				.collect(Collectors.toList());
 	}
 
+	public List<File> getAllSaveDirectories() {
+		return Arrays.stream(saveGameDirectory.listFiles())
+				.filter(File::isDirectory)
+				.collect(Collectors.toList());
+	}
+
 	public File getOrCreateSaveFile(String filename) {
 		File file = new File(saveGameDirectory.getAbsolutePath(), filename + ".save");
 		return getOrCreateFile(file, true);

@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -21,11 +20,13 @@ import technology.rocketjump.undermount.persistence.SavedGameStore;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.ui.Scene2DUtils;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
+import technology.rocketjump.undermount.ui.i18n.I18nWord;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Singleton
 public class LoadGameMenu implements Menu, GameContextAware {
@@ -153,7 +154,22 @@ public class LoadGameMenu implements Menu, GameContextAware {
 			deleteButton.addListener(new ClickListener() {
 				@Override
 				public void clicked (InputEvent event, float x, float y) {
-					Logger.info("TODO: Show delete dialog");
+					NotificationDialog dialog = new NotificationDialog(
+							i18nTranslator.getTranslatedString("GUI.DIALOG.INFO_TITLE"),
+							uiSkin,
+							messageDispatcher
+					);
+					dialog.withText(i18nTranslator.getTranslatedWordWithReplacements("GUI.DIALOG.CONFIRM_DELETE_SAVE",
+							Map.of("name", new I18nWord(savedGameInfo.settlementName)))
+							.breakAfterLength(i18nTranslator.getCurrentLanguageType().getBreakAfterLineLength()));
+
+					dialog.withButton(i18nTranslator.getTranslatedString("GUI.DIALOG.OK_BUTTON"), (Runnable) () -> {
+						savedGameStore.delete(savedGameInfo);
+						reset();
+					});
+					dialog.withButton(i18nTranslator.getTranslatedString("GUI.DIALOG.CANCEL_BUTTON"));
+					messageDispatcher.dispatchMessage(MessageType.SHOW_DIALOG, dialog);
+
 				}
 			});
 			savedGamesTable.add(deleteButton).pad(5).center().row();

@@ -353,6 +353,7 @@ GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version
 GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,,,,,,,,,,,,,
 GUI.DIALOG.SETTLEMENT_NAME_NOT_SPECIFIED,,"A name for the settlement must be specified.",,,,,,,,,,,,,
 GUI.DIALOG.SETTLEMENT_NAME_ALREADY_IN_USE,,"You already have a saved game for the settlement {{name}}. Starting a new game will overwrite the existing save file. Are you sure you want to continue?",,,,,,,,,,,,,
+GUI.DIALOG.CONFIRM_DELETE_SAVE,,"Are you sure you wish to delete {{name}}?",,,,,,,,,,,,,
 GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,Ok,OK,Ok,OK,Ok,Ok,Ok,OK,Ok,,,,,
 GUI.DIALOG.CANCEL_BUTTON,,Cancel,,,,,,,,,,,,,
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,,,,,,,,,,,,,
