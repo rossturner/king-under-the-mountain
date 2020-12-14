@@ -76,6 +76,7 @@ public class GameMapConverter {
 		WallType gemWallType = wallTypeDictionary.getByWallTypeName("basic_gems");
 		FloorType grassFloorType = floorTypeDictionary.getByFloorTypeName("grass");
 		FloorType dirtFloorType = floorTypeDictionary.getByFloorTypeName("dirt");
+		FloorType riverEdgeDirt = floorTypeDictionary.getByFloorTypeName("river-edge-dirt");
 		FloorType gravelFloorType = floorTypeDictionary.getByFloorTypeName("gravel");
 		FloorType stoneSlabFloorType = floorTypeDictionary.getByFloorTypeName("stone_slab"); // FIXME should be a river bed type
 
@@ -148,7 +149,7 @@ public class GameMapConverter {
 						targetTile.getFloor().setFloorType(stoneSlabFloorType);
 						targetTile.getFloor().setMaterial(waterMaterial);
 					} else if (neighbourHasRiver(generatedSourceMap, x, y)) {
-						targetTile.getFloor().setFloorType(dirtFloorType);
+						targetTile.getFloor().setFloorType(riverEdgeDirt);
 						targetTile.getFloor().setMaterial(grassMaterial);
 					}
 

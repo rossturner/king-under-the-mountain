@@ -18,6 +18,13 @@ ground_0
   orig: 64, 64
   offset: 0, 0
   index: 0
+water_0
+  rotate: false
+  xy: 2, 410
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
 grass_165
   rotate: false
   xy: 2, 342
@@ -249,3 +256,73 @@ placeholder
   orig: 64, 64
   offset: 0, 0
   index: -1
+water_165
+  rotate: false
+  xy: 138, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+water_165
+  rotate: false
+  xy: 206, 70
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+water_24
+  rotate: false
+  xy: 274, 138
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+water_24
+  rotate: false
+  xy: 342, 206
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+water_24
+  rotate: false
+  xy: 410, 274
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+water_66
+  rotate: false
+  xy: 206, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+water_66
+  rotate: false
+  xy: 274, 70
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+water_66
+  rotate: false
+  xy: 342, 138
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+water_90
+  rotate: false
+  xy: 410, 206
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+water_90
+  rotate: false
+  xy: 274, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1

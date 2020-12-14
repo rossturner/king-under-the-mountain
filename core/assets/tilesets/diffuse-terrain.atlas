@@ -543,7 +543,21 @@ dirt
   orig: 64, 64
   offset: 0, 0
   index: 0
+river-edge-dirt
+  rotate: false
+  xy: 1702, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
 dirt
+  rotate: false
+  xy: 1770, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+river-edge-dirt
   rotate: false
   xy: 1770, 174
   size: 64, 64
@@ -557,6 +571,13 @@ dirt
   orig: 64, 64
   offset: 0, 0
   index: 2
+river-edge-dirt
+  rotate: false
+  xy: 1702, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
 dirt
   rotate: false
   xy: 1770, 106
@@ -564,7 +585,21 @@ dirt
   orig: 64, 64
   offset: 0, 0
   index: 3
+river-edge-dirt
+  rotate: false
+  xy: 1770, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
 dirt
+  rotate: false
+  xy: 1838, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+river-edge-dirt
   rotate: false
   xy: 1838, 174
   size: 64, 64
