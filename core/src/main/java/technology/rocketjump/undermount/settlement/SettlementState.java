@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.settlement.production.ProductionAssignment;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -329,10 +330,14 @@ public class SettlementState implements Persistable {
 				if (liquidMaterial == null) {
 					throw new InvalidSaveException("Could not find liquid material by name " + entry.getKey());
 				}
-				try {
+				if (entry.getValue() instanceof BigDecimal) {
+					requiredLiquidCounts.put(liquidMaterial, ((BigDecimal)entry.getValue()).floatValue());
+				} else if (entry.getValue() instanceof Float) {
 					requiredLiquidCounts.put(liquidMaterial, (Float)entry.getValue());
-				} catch (ClassCastException e) {
-					requiredLiquidCounts.put(liquidMaterial, (float)(Integer)entry.getValue());
+				} else if (entry.getValue() instanceof Integer) {
+					requiredLiquidCounts.put(liquidMaterial, ((Integer)entry.getValue()).floatValue());
+				} else {
+					throw new InvalidSaveException("Unrecognised type " + entry.getValue().getClass() + " for parsing requiredLiquidCounts");
 				}
 			}
 		}
