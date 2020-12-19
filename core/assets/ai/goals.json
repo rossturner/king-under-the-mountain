@@ -227,7 +227,11 @@
   "i18nDescription" : "GOAL.HAULING.DESCRIPTION",
   "name" : "Place item goal",
   "actionRelationships" : {
-    "CancelHaulingAllocation" : { },
+    "CancelHaulingAllocation" : {
+      "fail" : [ "RememberFailedGoal" ],
+      "pass" : [ "RememberFailedGoal" ]
+    },
+    "RememberFailedGoal" : { },
     "PlaceEntity" : {
       "fail" : [ "CancelHaulingAllocation" ]
     },

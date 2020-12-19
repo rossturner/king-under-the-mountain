@@ -11,6 +11,10 @@
     "PlaceEntity": {
       "fail": ["CancelHaulingAllocation"]
     },
-    "CancelHaulingAllocation": {}
+    "CancelHaulingAllocation": {
+      "pass": ["RememberFailedGoal"],
+      "fail": ["RememberFailedGoal"]
+    },
+    "RememberFailedGoal": {}
   }
 }

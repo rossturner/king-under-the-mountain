@@ -23,6 +23,7 @@ public class Memory implements ChildPersistable {
 
 	private ItemType relatedItemType;
 	private GameMaterial relatedMaterial;
+	private String relatedGoalName;
 
 	public Memory() {
 
@@ -77,6 +78,14 @@ public class Memory implements ChildPersistable {
 		this.relatedMaterial = relatedMaterial;
 	}
 
+	public String getRelatedGoalName() {
+		return relatedGoalName;
+	}
+
+	public void setRelatedGoalName(String relatedGoalName) {
+		this.relatedGoalName = relatedGoalName;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("type", type.name());
@@ -88,6 +97,9 @@ public class Memory implements ChildPersistable {
 		}
 		if (relatedMaterial != null) {
 			asJson.put("relatedMaterial", relatedMaterial.getMaterialName());
+		}
+		if (relatedGoalName != null) {
+			asJson.put("relatedGoalName", relatedGoalName);
 		}
 	}
 
@@ -112,5 +124,8 @@ public class Memory implements ChildPersistable {
 				throw new InvalidSaveException("Could not find material by name " + relatedMaterialName);
 			}
 		}
+
+		this.relatedGoalName = asJson.getString("relatedGoalName");
 	}
+
 }

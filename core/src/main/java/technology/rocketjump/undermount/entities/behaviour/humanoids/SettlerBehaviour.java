@@ -5,6 +5,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.entities.ai.goap.*;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBehaviour;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.humanoid.*;
@@ -103,7 +104,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 		}
 
 		// Not going to update steering when asleep so can't be pushed around
-		Consciousness consciousness = ((HumanoidEntityAttributes)parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
+		Consciousness consciousness = ((HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
 		if (AWAKE.equals(consciousness)) {
 			steeringComponent.update(deltaTime);
 		}
@@ -122,21 +123,29 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 
 				HaulingAllocation stockpileAllocation = null;
 				if (hauledEntity.getType().equals(ITEM)) {
-					// Temp un-requestAllocation
-					ItemAllocationComponent itemAllocationComponent = hauledEntity.getOrCreateComponent(ItemAllocationComponent.class);
-					itemAllocationComponent.cancelAll(ItemAllocation.Purpose.HAULING);
+					// Special case - if recently attempted to place item and failed, just dump it instead
+					boolean recentlyFailedPlaceItemGoal = parentEntity.getOrCreateComponent(MemoryComponent.class)
+							.getShortTermMemories(gameContext.getGameClock())
+							.stream()
+							.anyMatch(m -> m.getType().equals(MemoryType.FAILED_GOAL) && PLACE_ITEM.goalName.equals(m.getRelatedGoalName()));
 
-					stockpileAllocation = findStockpileAllocation(gameContext.getAreaMap(), hauledEntity, roomStore, parentEntity);
+					if (!recentlyFailedPlaceItemGoal) {
+						// Temp un-requestAllocation
+						ItemAllocationComponent itemAllocationComponent = hauledEntity.getOrCreateComponent(ItemAllocationComponent.class);
+						itemAllocationComponent.cancelAll(ItemAllocation.Purpose.HAULING);
 
-					if (stockpileAllocation != null && stockpileAllocation.getItemAllocation() != null) {
-						// Stockpile allocation found, swap from DUE_TO_BE_HAULED
-						ItemAllocation newAllocation = itemAllocationComponent.swapAllocationPurpose(DUE_TO_BE_HAULED, ItemAllocation.Purpose.HAULING, stockpileAllocation.getItemAllocation().getAllocationAmount());
-						stockpileAllocation.setItemAllocation(newAllocation);
-					}
+						stockpileAllocation = findStockpileAllocation(gameContext.getAreaMap(), hauledEntity, roomStore, parentEntity);
 
-					// Always re-allocate remaining amount to hauling
-					if (itemAllocationComponent.getNumUnallocated() > 0) {
-						itemAllocationComponent.createAllocation(itemAllocationComponent.getNumUnallocated(), parentEntity, ItemAllocation.Purpose.HAULING);
+						if (stockpileAllocation != null && stockpileAllocation.getItemAllocation() != null) {
+							// Stockpile allocation found, swap from DUE_TO_BE_HAULED
+							ItemAllocation newAllocation = itemAllocationComponent.swapAllocationPurpose(DUE_TO_BE_HAULED, ItemAllocation.Purpose.HAULING, stockpileAllocation.getItemAllocation().getAllocationAmount());
+							stockpileAllocation.setItemAllocation(newAllocation);
+						}
+
+						// Always re-allocate remaining amount to hauling
+						if (itemAllocationComponent.getNumUnallocated() > 0) {
+							itemAllocationComponent.createAllocation(itemAllocationComponent.getNumUnallocated(), parentEntity, ItemAllocation.Purpose.HAULING);
+						}
 					}
 				}
 
