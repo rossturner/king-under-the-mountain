@@ -31,7 +31,6 @@ import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.RoomPlacementMessage;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rooms.RoomTile;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
@@ -146,9 +145,6 @@ public class TiledMapFactory {
 		createResources(embarkPoint.x + 1, embarkPoint.y - 1, hoopsItemType, pickMaterialType(METAL), gameContext, messageDispatcher, roomTiles);
 		createResources(embarkPoint.x + 1, embarkPoint.y, metalItemType, metalMaterial, gameContext, messageDispatcher, roomTiles);
 		createResources(embarkPoint.x + 1, embarkPoint.y + 1, plateItemType, pickMaterialType(METAL), gameContext, messageDispatcher, roomTiles);
-
-		RoomPlacementMessage message = new RoomPlacementMessage(roomTiles, roomTypeDictionary.getByName("STOCKPILE_RESOURCES"));
-		messageDispatcher.dispatchMessage(MessageType.ROOM_PLACEMENT, message);
 	}
 
 	private void addStartingInventory(Deque<QuantifiedItemTypeWithMaterial> inventoryStartingItems, List<Entity> allSettlers, GameContext gameContext, MessageDispatcher messageDispatcher) {

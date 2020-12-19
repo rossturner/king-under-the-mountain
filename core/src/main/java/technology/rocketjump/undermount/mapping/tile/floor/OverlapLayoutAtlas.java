@@ -21,21 +21,21 @@ public class OverlapLayoutAtlas {
 			}
 
 			// else check if this layout flipped is already in the atlas
-			OverlapLayout flippedX = new OverlapLayout(simplified.getId()).flipX();
-			if (uniqueLayoutIds.contains(flippedX.getId())) {
-				library.put(layoutId, new OverlapAtlasEntry(flippedX, true, false, simplified));
-				continue;
-			}
-			OverlapLayout flippedY = new OverlapLayout(simplified.getId()).flipY();
-			if (uniqueLayoutIds.contains(flippedY.getId())) {
-				library.put(layoutId, new OverlapAtlasEntry(flippedY, false, true, simplified));
-				continue;
-			}
-			OverlapLayout flippedXY = new OverlapLayout(simplified.getId()).flipX().flipY();
-			if (uniqueLayoutIds.contains(flippedXY.getId())) {
-				library.put(layoutId, new OverlapAtlasEntry(flippedXY, true, true, simplified));
-				continue;
-			}
+//			OverlapLayout flippedX = new OverlapLayout(simplified.getId()).flipX();
+//			if (uniqueLayoutIds.contains(flippedX.getId())) {
+//				library.put(layoutId, new OverlapAtlasEntry(flippedX, true, false, simplified));
+//				continue;
+//			}
+//			OverlapLayout flippedY = new OverlapLayout(simplified.getId()).flipY();
+//			if (uniqueLayoutIds.contains(flippedY.getId())) {
+//				library.put(layoutId, new OverlapAtlasEntry(flippedY, false, true, simplified));
+//				continue;
+//			}
+//			OverlapLayout flippedXY = new OverlapLayout(simplified.getId()).flipX().flipY();
+//			if (uniqueLayoutIds.contains(flippedXY.getId())) {
+//				library.put(layoutId, new OverlapAtlasEntry(flippedXY, true, true, simplified));
+//				continue;
+//			}
 
 			// Else this is unique so put it in library
 			library.put(layoutId, new OverlapAtlasEntry(simplified));

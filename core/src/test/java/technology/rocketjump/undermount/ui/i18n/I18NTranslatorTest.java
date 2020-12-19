@@ -23,7 +23,6 @@ import technology.rocketjump.undermount.entities.dictionaries.furniture.Furnitur
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.factories.*;
-import technology.rocketjump.undermount.entities.factories.names.DwarvenNameGenerator;
 import technology.rocketjump.undermount.entities.factories.names.NorseNameGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -48,6 +47,7 @@ import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialI18nUpdater;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
@@ -119,6 +119,8 @@ public class I18NTranslatorTest {
 	private UserPreferences mockUserPreferences;
 	@Mock
 	private ItemEntityAttributesFactory mockItemEntityAttributesFactory;
+	@Mock
+	private TwitchDataStore mockTwitchDataStore;
 
 	@Before
 	public void setup() throws IOException {
@@ -147,8 +149,8 @@ public class I18NTranslatorTest {
 	public void describeHumanoid() throws IOException {
 		NorseNameGenerator nameGenerator = new NorseNameGenerator();
 		HumanoidEntityAttributes attributes = new HumanoidEntityAttributesFactory(
-				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(), new DwarvenNameGenerator(new NorseNameGenerator())
-		).create();
+				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(), new DwarvenNameGenerator(new NorseNameGenerator()),
+				mockUserPreferences, mockTwitchDataStore).create(new GameContext());
 		attributes.setName(nameGenerator.create(88L, Gender.MALE));
 
 		Profession profession = new Profession();

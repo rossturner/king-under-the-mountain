@@ -16,7 +16,6 @@ import technology.rocketjump.undermount.assets.AssetDisposableRegister;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.audio.AudioUpdater;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
-import technology.rocketjump.undermount.entities.planning.BackgroundTaskManager;
 import technology.rocketjump.undermount.entities.tags.TagProcessor;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.gamecontext.GameContextRegister;
@@ -26,8 +25,11 @@ import technology.rocketjump.undermount.guice.UndermountGuiceModule;
 import technology.rocketjump.undermount.logging.CrashHandler;
 import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
 import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
 import technology.rocketjump.undermount.misc.AnalyticsManager;
+import technology.rocketjump.undermount.misc.twitch.TwitchMessageHandler;
+import technology.rocketjump.undermount.misc.twitch.TwitchTaskRunner;
 import technology.rocketjump.undermount.misc.versioning.VersionRequester;
 import technology.rocketjump.undermount.modding.LocalModRepository;
 import technology.rocketjump.undermount.modding.model.ParsedMod;
@@ -37,6 +39,8 @@ import technology.rocketjump.undermount.rendering.ScreenWriter;
 import technology.rocketjump.undermount.rendering.camera.PrimaryCameraWrapper;
 import technology.rocketjump.undermount.screens.GameScreenDictionary;
 import technology.rocketjump.undermount.screens.ScreenManager;
+import technology.rocketjump.undermount.screens.menus.OptionsMenu;
+import technology.rocketjump.undermount.screens.menus.options.OptionsTab;
 import technology.rocketjump.undermount.ui.GuiContainer;
 import technology.rocketjump.undermount.ui.I18nUpdatableRegister;
 import technology.rocketjump.undermount.ui.cursor.CursorManager;
@@ -47,6 +51,7 @@ import technology.rocketjump.undermount.ui.views.TimeDateGuiView;
 import technology.rocketjump.undermount.ui.widgets.ImageButtonFactory;
 
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -68,6 +73,7 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 	private AudioUpdater audioUpdater;
 	private ScreenManager screenManager;
 	private ConstantsRepo constantsRepo;
+	private TwitchTaskRunner twitchTaskRunner;
 
 	@Override
 	public void create() {
@@ -76,12 +82,14 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 
 			injector.getInstance(I18nRepo.class).init(injector.getInstance(TextureAtlasRepository.class));
 
+			injector.getInstance(TwitchMessageHandler.class);
 			screenWriter = injector.getInstance(ScreenWriter.class);
 			gameRenderer = injector.getInstance(GameRenderer.class);
 			screenWriter = injector.getInstance(ScreenWriter.class);
 			primaryCameraWrapper = injector.getInstance(PrimaryCameraWrapper.class);
 			messageDispatcher = injector.getInstance(MessageDispatcher.class);
 			backgroundTaskManager = injector.getInstance(BackgroundTaskManager.class);
+			twitchTaskRunner = injector.getInstance(TwitchTaskRunner.class);
 
 			guiContainer = injector.getInstance(GuiContainer.class);
 			cursorManager = injector.getInstance(CursorManager.class);
@@ -115,6 +123,15 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 			assetUpdatableClasses.forEach(this::checkForSingleton);
 			assetDisposableRegister.registerClasses(assetUpdatableClasses, injector);
 
+			Set<Class<? extends OptionsTab>> optionsTabClasses = reflections.getSubTypesOf(OptionsTab.class);
+			List<OptionsTab> optionsTabInstances = new ArrayList<>();
+			for (Class<? extends OptionsTab> optionsTabClass : optionsTabClasses) {
+				if (!optionsTabClass.isInterface()) {
+					optionsTabInstances.add(injector.getInstance(optionsTabClass));
+				}
+			}
+			injector.getInstance(OptionsMenu.class).setTabImplementations(optionsTabInstances);
+
 			injector.getInstance(TagProcessor.class).init();
 			injector.getInstance(TimeDateGuiView.class).init(injector.getInstance(GameScreenDictionary.class));
 			injector.getInstance(HintMessageHandler.class);
@@ -142,7 +159,7 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 
 	public void onExit() {
 		AnalyticsManager.stopAnalytics();
-		messageDispatcher.dispatchMessage(MessageType.PERFORM_QUICKSAVE, new GameSaveMessage(false));
+		messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
 		messageDispatcher.dispatchMessage(MessageType.SHUTDOWN_IN_PROGRESS);
 	}
 
@@ -165,6 +182,8 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 			messageDispatcher.update();
 			screenManager.getCurrentScreen().render(deltaTime);
 			audioUpdater.update();
+			twitchTaskRunner.update(deltaTime);
+			backgroundTaskManager.update(deltaTime);
 		} catch (Exception e) {
 			CrashHandler.logCrash(e);
 			throw e;

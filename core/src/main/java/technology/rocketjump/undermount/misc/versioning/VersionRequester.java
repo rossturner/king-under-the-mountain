@@ -6,6 +6,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.apache.commons.io.IOUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.messaging.MessageType;
 
@@ -39,10 +40,14 @@ public class VersionRequester implements Runnable {
 				.build();
 		try {
 			Response response = client.newCall(request).execute();
-			if (response.isSuccessful()) {
-				JSONObject responseJson = JSON.parseObject(response.body().string());
-				Version latestVersion = new Version(responseJson.getString("latest"));
-				messageDispatcher.dispatchMessage(MessageType.REMOTE_VERSION_FOUND, latestVersion);
+			try {
+				if (response.isSuccessful()) {
+					JSONObject responseJson = JSON.parseObject(response.body().string());
+					Version latestVersion = new Version(responseJson.getString("latest"));
+					messageDispatcher.dispatchMessage(MessageType.REMOTE_VERSION_FOUND, latestVersion);
+				}
+			} finally {
+				IOUtils.closeQuietly(response);
 			}
 		} catch (Exception e) {
 			Logger.error(e);

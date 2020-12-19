@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import technology.rocketjump.undermount.misc.Name;
 
+import java.util.Objects;
+
 public class OverlapType {
 
 	@Name
@@ -23,4 +25,16 @@ public class OverlapType {
 		return overlapName;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		OverlapType that = (OverlapType) o;
+		return overlapName.equals(that.overlapName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(overlapName);
+	}
 }

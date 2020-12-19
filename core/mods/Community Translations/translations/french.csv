@@ -1,28 +1,28 @@
 KEY,NOTES,ENGLISH,FRENCH
 
-ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},Arrache : {{plantDescription}}
+ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},Arrache: {{plantDescription}}
 ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},Production de {{targetDescription}}
-ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},Retire : {{targetDescription}}
+ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},Retire: {{targetDescription}}
 ACTION.JOB.DIGGING,,Digging {{targetDescription}},Creuse {{targetDescription}}
 ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},Rempli {{targetDescription}}
 ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
-ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},Récolte : {{targetPlant}}
+ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},Récolte: {{targetPlant}}
 ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,Plantation de la champignonnière
-ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},{{profession.verb}} : {{targetPlant}}
-ACTION.JOB.PLANTING,,Planting {{requiredItem}},Plante : {{requiredItem}}
-ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},Désinsectise : {{targetPlant}}
+ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},{{profession.verb}}: {{targetPlant}}
+ACTION.JOB.PLANTING,,Planting {{requiredItem}},Plante: {{requiredItem}}
+ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},Désinsectise: {{targetPlant}}
 ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},Pelle {{targetDescription}}
 ACTION.JOB.TILLING,,Tilling the earth,Laboure la terre
-ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},Rempli : {{targetDescription}}
+ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},Rempli: {{targetDescription}}
 ACTION.MALTING.VERB,,Malting,
 ACTION.PREPARATION.VERB,,Preparing,Préparation
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Cherche quoi faire
-ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},Dors : {{containerDescription}}
-ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},Dors : {{tileDescription}}
+ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},Dors: {{containerDescription}}
+ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},Dors: {{tileDescription}}
 
-CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},Construction : {{furnitureType.noun}} {{materialType.adjective}}
-CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,Assignation : {{quantity}} {{itemDescription}}
+CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},Construction: {{furnitureType.noun}} {{materialType.adjective}}
+CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,Assignation: {{quantity}}{{itemDescription}}
 CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,Retire d'autres objets
 CONSTRUCTION.STATUS.CLEARING_WORK_SITE.TOOLTIP,,There are items that need to be removed from this furniture’s construction area before it can progress.,Il y a des éléments qui doivent être retirés de la zone de construction de ce meuble avant qu'il ne puisse être construit.
 CONSTRUCTION.STATUS.SELECTING_MATERIALS,E.g. “Waiting for more wooden planks to be available”,Waiting for more {{materialType}} {{itemDescription.plural}} to be available,Attend plus de {{itemDescription.plural}} en {{materialType}} disponibles
@@ -31,12 +31,26 @@ CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction
 
 COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{{materialDescription}} pain
 COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} et {{materialTwo}}
-COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,Soupe : {{materialDescription}}
+COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,Soupe: {{materialDescription}}
+
+CRAFTING_TYPE.BAKING,,Baking,
+CRAFTING_TYPE.BLACKSMITHING,,Blacksmithing,
+CRAFTING_TYPE.CARPENTRY,,Carpentry,
+CRAFTING_TYPE.COKE_OVEN_BAKING,,Coke baking,
+CRAFTING_TYPE.FERMENTING,,Fermenting,
+CRAFTING_TYPE.MALTING,,Malting,
+CRAFTING_TYPE.MALT_MASHING,,Malt mashing,
+CRAFTING_TYPE.MILLING,,Milling,
+CRAFTING_TYPE.ORE_CRUSHING,,Ore crushing,
+CRAFTING_TYPE.SMELTING,,Smelting,
+CRAFTING_TYPE.STONEMASONRY,,Stonemasonry,
+CRAFTING_TYPE.WOODCUTTING,,Woodcutting,
+CRAFTING_TYPE.WORT_BREWING,,Brewing,
 
 CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,Infesté de nuisibles
-CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,Cette culture a été contaminée par un nombre excessif de pucerons et d'autres insectes qui doivent être enlevés par un {{PROFESSIONN.FARMER}} avant de pouvoir prospérer à nouveau. Ne pas enlever les nuisibles à temps pourrait signifier que cette récolte va mourir !
-CROP.DESCRIPTION,,{{materialType.noun}} plant,Plante :{{materialType.noun}}
-CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,Progression avant récolte : {{progress}} %
+CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,Cette culture a été contaminée par un nombre excessif de pucerons et d'autres insectes qui doivent être enlevés par un {{PROFESSIONN.FARMER}} avant de pouvoir prospérer à nouveau. Ne pas enlever les nuisibles à temps pourrait signifier que cette récolte va mourir!
+CROP.DESCRIPTION,,{{materialType.noun}} plant,Plante:{{materialType.noun}}
+CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,Progression avant récolte: {{progress}}%
 
 DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,Débris tombant
 DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,Déshydratation
@@ -60,7 +74,7 @@ FLOOR.TILLED_EARTH,,Tilled earth,Terre labourée
 FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,Inexploré
 
 FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,Pain de roche
-FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,"C'est un pain infamamment dur qui est si dur et pratiquement non comestible qu'il faut beaucoup de temps pour devenir moisi. L'explorateur humain J. A. Moffatt a décrit un jour la consommation comme « semblable à du gravier à mâcher qui a été dragué dans un marais ». Heureusement, la plupart des nains ne semblent pas dérangés."
+FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,"C'est un pain infamamment dur qui est si dur et pratiquement non comestible qu'il faut beaucoup de temps pour devenir moisi. L'explorateur humain J. A. Moffatt a décrit un jour la consommation comme «semblable à du gravier à mâcher qui a été dragué dans un marais». Heureusement, la plupart des nains ne semblent pas dérangés."
 FOODSTUFF.WHEAT-BREAD,"Actually just to describe “wheat” as a foodstuff, not specifically bread",Wheat,Blé
 
 FUEL.SACK,,Fuel,Carburant
@@ -71,6 +85,10 @@ FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RES
 FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,Four de boulanger
 FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,Un {{PROFESSION.CHEF}} cuit des pains ici en utilisant {{INGREDIENT.Dough}} préparé.
 FURNITURE.BEER_TAPPER,,Beer tapper,
+FURNITURE.BEER_TAPPER.STATE.BEER_AVAILABLE,,Beer is available,
+FURNITURE.BEER_TAPPER.STATE.BEER_BARREL_INCOMING,,A beer barrel is on the way,
+FURNITURE.BEER_TAPPER.STATE.BEER_EXHAUSTED,,The beer has all gone!,
+FURNITURE.BEER_TAPPER.STATE.IDLE,,Idle (no beer available),
 FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,Four à fleurs
 FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,Un {{PROFESSION.BLACKSMITH}} utilise ce four à commande manuelle pour transformer {{RESOURCE.ORE.CRUSHED.PLURAL}} et {{FUEL.SACK}} en {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}}}}.
@@ -86,9 +104,9 @@ FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} co
 FURNITURE.COKE_OVEN,,Coke oven,Four à coke
 FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,Un four à coke convertit {{ORE.BITUMINOUS_COAL.NOUN}} en {{ORE.COKE.NOUN}} afin qu'il puisse être utilisé comme {{FUEL.SACK}}.
 FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{furnitureType.noun}} {{materialType.adjective}}
-FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,Progrès vers l'achèvement : {{progress}} %
-FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,Progrès vers la fin de l'inoculation : {{progress}} %
-FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,Progrès vers la récolte des champignons : {{progress}} %
+FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,Progrès vers l'achèvement: {{progress}}%
+FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,Progrès vers la fin de l'inoculation: {{progress}}%
+FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,Progrès vers la récolte des champignons: {{progress}}%
 FURNITURE.DESCRIPTION.WAITING_FOR_ITEM,,Waiting for {{itemType.noun}},En attente de {{itemType.noun}}
 FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,En attente d'être rempli
 FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,En attente d'être injecté dans la buche de culture à champignons
@@ -114,7 +132,7 @@ FURNITURE.MASH_TUN.TOOLTIP,,This is used to produce wort (unfermented beer) from
 FURNITURE.MUSHROOM_LOG,,Mushroom log,Buche de culture pour champignons
 FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.",Une bûche qui a été injectée avec {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} pour produire plusieurs récoltes de délicieux champignons juteux.
 FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,Réservoir d’eau pour champignons
-FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to “shock” the mushroom colony and encourage it to grow mushrooms.","Après l'inoculation, un {{FURNITURE.MUSHROOM_LOG}} est placé dans ce réservoir pour « fructifier » la colonie de champignons et l'encourager à cultiver des champignons."
+FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to “shock” the mushroom colony and encourage it to grow mushrooms.","Après l'inoculation, un {{FURNITURE.MUSHROOM_LOG}} est placé dans ce réservoir pour «fructifier» la colonie de champignons et l'encourager à cultiver des champignons."
 FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,Station de concassage du minerai
 FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,Le {{RESOURCE.ORE.UNREFINED.PLURAL}} brut est broyé à une taille plus pratique afin qu'il puisse être utilisé dans un {{FURNITURE.BLOOMERY_FURNACE}}.
 FURNITURE.PILLAR,A pillar used to support a roof,Pillar,Pilier
@@ -141,7 +159,7 @@ GEM.AMETHYST.NOUN,,Amethyst,Améthyste
 GEM.AMETHYST.TOOLTIP,,A violet-hued variety of quartz. Ancient humans believed it could magically protect them from becoming too drunk. For this reason it is not very popular in dwarven culture.,"Une variété de quartz violette. Les humains anciens croyaient que cela pouvait les protéger par magie de devenir trop ivres. Pour cette raison, il n'est pas très populaire dans la culture naine."
 GEM.AMMOLITE.ADJECTIVE,,Ammolite,Ammolite
 GEM.AMMOLITE.NOUN,,Ammolite,Ammolite
-GEM.AMMOLITE.TOOLTIP,,An opal-like gemstone which has a red to green iridescence. It is known as the “hunting stone” and amulets made from it are meant to bring good luck to a hunt.,Une pierre gemme de type opale qui a une irridescence rouge à vert. Elle est connue sous le nom de « pierre de chasse » et les amulettes fabriquées à partir de celle-ci sont destinées à porter chance à une chasse.
+GEM.AMMOLITE.TOOLTIP,,An opal-like gemstone which has a red to green iridescence. It is known as the “hunting stone” and amulets made from it are meant to bring good luck to a hunt.,Une pierre gemme de type opale qui a une irridescence rouge à vert. Elle est connue sous le nom de «pierre de chasse» et les amulettes fabriquées à partir de celle-ci sont destinées à porter chance à une chasse.
 GEM.AQUAMARINE.ADJECTIVE,,Aquamarine,en aigue-marine
 GEM.AQUAMARINE.NOUN,,Aquamarine,Aigue-marine
 GEM.AQUAMARINE.TOOLTIP,,A cyan-coloured variety of beryl. Some humans believe it offers magical protection against the dangers of the seas. This is because an ancient mage used a combination of sky and ice magic to protect trading ships during the age of darkness.,Une variété de béryl de couleur cyanique. Certains humains croient qu'il offre une protection magique contre les dangers des mers. C'est parce qu'un ancien mage utilisait une combinaison de magie du ciel et de glace pour protéger les navires de commerce à l'ère des ténèbres.
@@ -156,7 +174,7 @@ GEM.CITRINE.NOUN,,Citrine,Citrine
 GEM.CITRINE.TOOLTIP,,"A yellowish variety of quartz. It is the gemstone most similar in colour to gold, so most dwarves think citrine is lucky.","Une variété de quartz jaunâtre. C'est la pierre gemme la plus semblable en couleur à l'or, donc la plupart des nains pensent que la citrine est chanceuse."
 GEM.DIAMOND.ADJECTIVE,,Diamond,en diamant
 GEM.DIAMOND.NOUN,,Diamond,Diamant
-GEM.DIAMOND.TOOLTIP,,The hardest known material and one of the most important of the seven heavenly stones. Diamonds are the most condensed form of the neutral element known as “spirit” or “aether”.,Le matériau le plus dur connu et l'une des plus importantes des sept pierres célestes. Les diamants sont la forme la plus condensée de l'élément neutre connu sous le nom d' « esprit » ou « éther ».
+GEM.DIAMOND.TOOLTIP,,The hardest known material and one of the most important of the seven heavenly stones. Diamonds are the most condensed form of the neutral element known as “spirit” or “aether”.,Le matériau le plus dur connu et l'une des plus importantes des sept pierres célestes. Les diamants sont la forme la plus condensée de l'élément neutre connu sous le nom d' «esprit» ou «éther».
 GEM.EMERALD.ADJECTIVE,,Emerald,en émeraude
 GEM.EMERALD.NOUN,,Emerald,Émeraude
 GEM.EMERALD.TOOLTIP,,A vibrant green variety of beryl. It is thought that engraving on an emerald brings great misfortune. Emeralds are closely related to elemental life and associated magic.,Une variété de béryl vert vif. On pense que la gravure sur une émeraude apporte un grand malheur. Les émeraudes sont étroitement liées à la vie élémentaire et à la magie associée.
@@ -218,17 +236,17 @@ GEM.TURQUOISE.ADJECTIVE,,Turquoise,en turquoise
 GEM.TURQUOISE.NOUN,,Turquoise,Turquoise
 GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,Un minéral bleu-vert souvent utilisé dans les décorations. On pense qu'il porte bonne chance au porteur. Il est souvent infusé avec l'élément de la terre.
 
-GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},Collecte : {{targetDescription}}
+GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},Collecte: {{targetDescription}}
 GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},Boire {{targetZoneMaterial}}
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},Mange {{targetDescription}}
-GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},Transporte : {{itemDescription}}
+GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},Transporte: {{itemDescription}}
 GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,Libre
 GOAL.SLEEP.DESCRIPTION,,Going to sleep,Va dormir
-GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},Transfère : {{targetZoneMaterial}}
+GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},Transfère: {{targetZoneMaterial}}
 
 GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,Ajouter/retirer des cases
 GUI.ADD_TILES,This should be as short as possible,Add tiles,Ajouter des cases
-GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,Volume de l’ambiance sonore :
+GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,Volume de l’ambiance sonore:
 GUI.BACK_LABEL,This should be as short as possible,Back,"Retour "
 GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,Pont
 GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,Portes
@@ -240,8 +258,13 @@ GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,Meubles
 GUI.BUILD_LABEL,This should be as short as possible,Build,"Construire "
 GUI.CANCEL_LABEL,This should be as short as possible,Cancel,"Annuler "
 GUI.CHANGE_PROFESSION_LABEL,,Change profession,Changer de profession
-GUI.CROP_SELECTION,,Crop:,Culture :
-GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}","{{timeOfDay}}, jour {{dayNumber}}, {{season}}"
+GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,As in keeping a fixed number of items in stock,Maintaining,
+GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),
+GUI.CROP_SELECTION,,Crop:,Culture:
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}","{{timeOfDay}}, jour{{dayNumber}}, {{season}}"
+GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,
 GUI.DIALOG.DISMISS,,Dismiss,Rejeter
 GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,Une chambre avec ce nom existe déjà.
 GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,Le fichier de sauvegarde n'a pas pu être chargé car il est incompatible avec cette version du jeu.
@@ -255,6 +278,7 @@ GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to
 GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,Un ou plusieurs mods sont incompatibles avec cette version du jeu et ont été désactivés. Vous pouvez vérifier les mises à jour dans le menu mods.
 GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,OK
 GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,Renommer la salle
+GUI.DIALOG.RENAME_SETTLER_TITLE,,Rename settler,
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,Vous devez redémarrer le jeu pour que cette modification prenne effet
 GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},Appartient à {{name}}
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,Retrait en cours
@@ -276,25 +300,47 @@ GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the pla
 GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ","Options graphiques "
 GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,Autoriser les rapports d'incident automatiques
 GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING,,Scroll the background on the main menu,
 GUI.OPTIONS.MISC.TITLE,,Miscellaneous,Divers
+GUI.OPTIONS.TAB.AUDIO,,Audio,
+GUI.OPTIONS.TAB.GAMEPLAY,,Gameplay,
+GUI.OPTIONS.TAB.GRAPHICS,,Graphics,
+GUI.OPTIONS.TAB.MISC,,Other,
+GUI.OPTIONS.TAB.TWITCH,,Twitch,
+GUI.OPTIONS.TWITCH.ACCOUNT_LABEL,,Twitch Account:,
+GUI.OPTIONS.TWITCH.CODE_LABEL,,Code,
+GUI.OPTIONS.TWITCH.CONNECTED_LABEL,,Twitch account connected,
+GUI.OPTIONS.TWITCH.DISCONNECT,,Disconnect,
+GUI.OPTIONS.TWITCH.DISCONNECTED_LABEL,,Twitch account disconnected,
+GUI.OPTIONS.TWITCH.ENABLED,,Twitch integration enabled,
+GUI.OPTIONS.TWITCH.GENERAL_ERROR,,An error occured while communicating with Twitch,
+GUI.OPTIONS.TWITCH.LINK_ACCOUNT_BUTTON,,Click here to connect your Twitch account,
+GUI.OPTIONS.TWITCH.PRIORITISE_SUBSCRIBERS,,Give priority to subscribers,
+GUI.OPTIONS.TWITCH.SUBMIT_BUTTON,,Submit,
+GUI.OPTIONS.TWITCH.TITLE,,Twitch Integration,
+GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,,Use viewers as settler names,
 GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,Couper
 GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,Arracher
 GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,"Récolter "
 GUI.ORDERS.MINE,This should be as short as possible,Mine,Miner
 GUI.ORDERS_LABEL,This should be as short as possible,Orders,"Ordres "
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,Un pont doit couvrir les deux côtés de la rivière et avoir au moins 3x3 tuiles de taille
+GUI.PRIORITY_LABEL,This should be as short as possible,Priority,
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,Retirer
 GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Retirer des cases
 GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,Ressources
-GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},Disponible : {{count}}
+GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},Disponible: {{count}}
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Appuyez sur (R) pour pivoter les meubles
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,Sauvegarde en cours...
-GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},Mort : {{count}}
-GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},Population : {{count}}
+GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},Mort: {{count}}
+GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},Population: {{count}}
+GUI.SETTLER_MANAGEMENT.SORT.BY_NAME,,Sort by name,
+GUI.SETTLER_MANAGEMENT.SORT.BY_UNHAPPINESS,,Sort by unhappiness,
 GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,Les colons
-GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},Total : {{count}}
+GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},Total: {{count}}
 GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,Volume des effets sonores
 GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,Dimension de l'interface:
+GUI.VIEW_ROADMAP,,View development roadmap,
 GUI.ZONES_LABEL,This should be as short as possible,Zones,Zones
 
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,,Going sober,
@@ -313,7 +359,7 @@ HAPPINESS_MODIFIER.SLEPT_IN_SHARED_BEDROOM,,Shared a bedroom with others,A parta
 HAPPINESS_MODIFIER.SLEPT_IN_SMALL_BEDROOM,,Slept in a cramped bedroom,A dormi dans une chambre étroite
 HAPPINESS_MODIFIER.SLEPT_ON_GROUND,,Slept on rough ground,A dormi sur sol rugueux
 HAPPINESS_MODIFIER.SLEPT_OUTSIDE,,Slept under the stars,A dormi sous les étoiles
-HAPPINESS_MODIFIER.TITLE,,Happiness:,Bonheur :
+HAPPINESS_MODIFIER.TITLE,,Happiness:,Bonheur:
 HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,Très faim
 HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,Très soif
 HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,Extrêmement fatigué
@@ -325,6 +371,8 @@ HINT.BUTTON.DISMISS,,Dismiss,
 HINT.BUTTON.HINTS_ONLY,,Hints only,Indications uniquement
 HINT.BUTTON.NEXT,,Next,Prochain
 HINT.BUTTON.TUTORIAL,,Tutorial,Tutoriel
+HINT.OPEN_PRIORITY_MENU.1,,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",
+HINT.OPEN_PRIORITY_MENU.2,,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",
 HINT.PROGRESS.HEADER,,Progress:,
 HINT.TOOL_DEPLETED.AXE1,,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,
 HINT.TOOL_DEPLETED.AXE2,,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",
@@ -334,7 +382,7 @@ HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} availa
 HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,
 HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,
 HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",
-HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","Bienvenue dans le monde du Roi sous la Montagne ! Il s'agit d'une version alpha précoce du jeu avec beaucoup plus de fonctionnalités et d'éléments de gameplay encore à mettre en œuvre. Votre bande intrépide de colons nains a choisi cet endroit pour fonder une nouvelle colonie de leur royaume. Fournir de la nourriture, du logement et de la prospérité et qui sait, peut-être un jour ce sera la capitale d'un royaume à lui seul !"
+HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","Bienvenue dans le monde du Roi sous la Montagne! Il s'agit d'une version alpha précoce du jeu avec beaucoup plus de fonctionnalités et d'éléments de gameplay encore à mettre en œuvre. Votre bande intrépide de colons nains a choisi cet endroit pour fonder une nouvelle colonie de leur royaume. Fournir de la nourriture, du logement et de la prospérité et qui sait, peut-être un jour ce sera la capitale d'un royaume à lui seul!"
 HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",TEXTE
 
 HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}","{{name}}, {{madness.adjective}} {{race.noun}}"
@@ -350,13 +398,13 @@ INGREDIENT.MILLED.MALT.SACK.NOUN,,Milled malt,
 INGREDIENT.MILLED.MALT.SACK.TOOLTIP,,This is combined with water in a {{FURNITURE.MASH_TUN}} to produce {{LIQUID.WORT}}.,
 INGREDIENT.MUSHROOM.SPAWN.NOUN,,Mushroom spawn,Champignonnière
 INGREDIENT.MUSHROOM.SPAWN.PLURAL,,Mushroom spawn,Champignonnière
-INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.","Également connu sous le nom de mycélium, cela peut être considéré comme des « graines » à partir desquelles on peut cultiver des champignons dans une {{ROOMS.MUSHROOM_FARM}}."
-INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,Graine :
-INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,Graines :
+INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought of as “seeds” from which to grow mushrooms in a {{ROOMS.MUSHROOM_FARM}}.","Également connu sous le nom de mycélium, cela peut être considéré comme des «graines» à partir desquelles on peut cultiver des champignons dans une {{ROOMS.MUSHROOM_FARM}}."
+INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,Graine:
+INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,Graines:
 INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,Les graines du bon type sont nécessaires pour la plantation dans un {{ROOMS.FARM}}. Ils doivent également être disponibles dans le grenier {{STOCKPILE.GRANARY}}.
-INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,Sac :
+INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,Sac:
 
-INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,Inventaire :
+INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,Inventaire:
 
 ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},{{quantity_if_multiple}}{{itemType.noun_or_plural}} {{materialType.adjective}}
 ITEM.INGREDIENT.DESCRIPTION,E.g. “2 potatoes”,{{quantity_if_multiple}}{{materialType.noun_or_plural}},{{quantity_if_multiple}}{{materialType.noun_or_plural}}
@@ -377,7 +425,7 @@ LIQUID.WORT.NOUN,,Wort,
 LIQUID.WORT.TOOLTIP,,"This is unfermented beer, it requires {{VEGETABLE.HOPS}} to be added in a {{FURNITURE.BREW_KETTLE}} for flavour before it can be fermented.",
 
 MADNESS.BROKEN.ADJECTIVE,,Broken,Cassé
-MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",Ce colon était si malheureux qu'ils ont été poussés au-delà du point de rupture et ne vont plus travailler ou même manger !
+MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ",Ce colon était si malheureux qu'ils ont été poussés au-delà du point de rupture et ne vont plus travailler ou même manger!
 
 MATERIAL,Used for specifying which material something is made out of,Material,Matériau
 
@@ -437,9 +485,9 @@ MODS.COMPATIBILITY.COMPATIBLE,,Yes,Oui
 MODS.COMPATIBILITY.INCOMPATIBLE,,No,Non
 MODS.COMPATIBILITY.UNKNOWN,,Unknown,Inconnu
 MODS.MISSING_MODS_DIALOG_TEXT,,This save file was last used while the following mods were active. These mods are now missing or disabled so the save may not load correctly.,"Ce fichier de sauvegarde a été utilisé pour la dernière fois alors que les mods suivants étaient actifs. Ces mods sont maintenant manquants ou désactivés, de sorte que l'enregistrement risque de ne pas se charger correctement."
-MODS.MISSING_MODS_SAVE_EXCEPTION_DIALOG_TEXT,,"The save file could not be loaded because either it is incompatible with this version of the game, or because some mods have been disabled or removed since this save was last loaded. The following mods were expected but are no longer active:","Le fichier de sauvegarde n'a pas pu être chargé car il est incompatible avec cette version du jeu, ou parce que certains mods ont été désactivés ou supprimés depuis le dernier chargement de cette sauvegarde. Les mods suivants étaient attendus mais ne sont plus actifs :"
-MODS.TABLE.COMPATIBILITY,,Compatible?,Compatible ?
-MODS.TABLE.ENABLED,,Enabled?,Activé ?
+MODS.MISSING_MODS_SAVE_EXCEPTION_DIALOG_TEXT,,"The save file could not be loaded because either it is incompatible with this version of the game, or because some mods have been disabled or removed since this save was last loaded. The following mods were expected but are no longer active:","Le fichier de sauvegarde n'a pas pu être chargé car il est incompatible avec cette version du jeu, ou parce que certains mods ont été désactivés ou supprimés depuis le dernier chargement de cette sauvegarde. Les mods suivants étaient attendus mais ne sont plus actifs:"
+MODS.TABLE.COMPATIBILITY,,Compatible?,Compatible?
+MODS.TABLE.ENABLED,,Enabled?,Activé?
 MODS.TABLE.NAME,,Mod Name,Nom du mod
 MODS.TABLE.ORDERING,,Re-order,Réorganiser
 MODS.TABLE.VERSION,,Mod Version,Version Mod
@@ -450,7 +498,7 @@ NEEDS.DRINK,,Drink,Soif
 NEEDS.FOOD,,Food,Faim
 NEEDS.SLEEP,,Sleep,Fatigue
 
-NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,Vos mineurs ont découvert une nouvelle zone !
+NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,Vos mineurs ont découvert une nouvelle zone!
 NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,Exploration
 NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.","{{character}}, est décédé en raison de {{reason}}."
 NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},Décédé par {{reason}}
@@ -523,14 +571,21 @@ OTHER.BRICK.NOUN,,Brick,Brique
 OTHER.CLAY_SOIL.NOUN,,Clay soil,Argile
 OTHER.GRASS.NOUN,,,Herbe
 
+PRIORITY.DISABLED,,Disabled,
+PRIORITY.HIGHER,,Higher,
+PRIORITY.HIGHEST,,Highest,
+PRIORITY.LOWER,,Lower,
+PRIORITY.LOWEST,,Lowest,
+PRIORITY.NORMAL,,Normal,
+
 PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,J'accepte
 PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,Désactiver les rapports
 PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,King Under The Mountain est en cours développement. Pour aider
 PRIVACY.OPT_IN.LINE_10,,- The stack trace of the exception which caused the crash,- La trace de la pile de l'exception qui a causé le crash
-PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to","Diagnostiquer et corriger les bugs, veuillez cliquer sur « J'accepte » ci-dessous pour"
+PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to","Diagnostiquer et corriger les bugs, veuillez cliquer sur «J'accepte» ci-dessous pour"
 PRIVACY.OPT_IN.LINE_3,,send anonymous crash reports automatically.,Envoyer automatiquement des rapports d'incident de façon anonyme.
 PRIVACY.OPT_IN.LINE_4,," "," "
-PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,Il ne s'agit que des données suivantes :
+PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,Il ne s'agit que des données suivantes:
 PRIVACY.OPT_IN.LINE_6,,- The version of the game client,- La version du client de jeu
 PRIVACY.OPT_IN.LINE_7,,- Your operating system,- Votre système d'exploitation
 PRIVACY.OPT_IN.LINE_8,,- Your graphics card and display settings,- Vos paramètres de carte graphique et d'affichage
@@ -552,7 +607,7 @@ PRODUCT.BREAD.DOUGH.PLURAL,,Dough,Pâte
 PRODUCT.BREAD.DOUGH.TOOLTIP,,A mix of ingredients that can be baked into {{PRODUCT.BREAD.LOAF.PLURAL}} using an {{FURNITURE.BAKING_OVEN}}.,Un mélange d'ingrédients qui peut être cuit dans {{PRODUCT.BREAD.LOAF.PLURAL}} à l'aide d'un {{FURNITURE.BAKING_OVEN}}.
 PRODUCT.BREAD.LOAF.NOUN,Translations incorrect and need fixing,Bread loaf,Pain :
 PRODUCT.BREAD.LOAF.PLURAL,Translations incorrect and need fixing,Bread loaves,Pain :
-PRODUCT.BREAD.LOAF.TOOLTIP,,"Prepared bread, ready to eat!","Pain préparé, prêt à manger !"
+PRODUCT.BREAD.LOAF.TOOLTIP,,"Prepared bread, ready to eat!","Pain préparé, prêt à manger!"
 PRODUCT.BUCKET.NOUN,,Bucket,Seau
 PRODUCT.BUCKET.PLURAL,,Buckets,Des seaux
 PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,Petit récipient utilisé pour déplacer les liquides à la main.
@@ -631,6 +686,9 @@ PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,Scieur
 PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,Découpe les arbres en tant que buche qui peut être utilisé dans un {{ROOMS.SAWMILL}}.
 PROFESSION.WOODCUTTER.VERB,,Chopping,Coupe
 
+QUOTA.FIXED_AMOUNT,,in total,
+QUOTA.PER_SETTLER,,per settler,
+
 RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,Naine
 RACE.DWARF.FEMALE_NOUN,,Dwarf,Naine
 RACE.DWARF.FEMALE_PLURAL,,Dwarves,Naines
@@ -680,7 +738,7 @@ RESOURCE.PLANKS.PLURAL,,Planks,Planches
 RESOURCE.PLANKS.TOOLTIP,,Sections of wood of a fixed size so they can be easily used in constructions and crafting.,Des parties du bois de taille fixe pour qu'elles puissent être facilement utilisées dans la construction et l'artisanat.
 RESOURCE.SHOCKED.MUSHROOM.LOG.NOUN,,Mushroom log,Bouche de champignons
 RESOURCE.SHOCKED.MUSHROOM.LOG.PLURAL,,Mushroom logs,Bûches de champignons
-RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,This mushroom-infused log has been “shocked” in water to encourage the mushrooms to develop and should produce a harvest soon.,Cette bûche prédécoupée de champignons a été « choquée » dans l'eau pour encourager les champignons à se développer et devrait produire une récolte bientôt.
+RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,This mushroom-infused log has been “shocked” in water to encourage the mushrooms to develop and should produce a harvest soon.,Cette bûche prédécoupée de champignons a été «choquée» dans l'eau pour encourager les champignons à se développer et devrait produire une récolte bientôt.
 RESOURCE.STONE.BLOCK.NOUN,,Block,Bloc
 RESOURCE.STONE.BLOCK.PLURAL,,Blocks,Blocs
 RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,Pierre qui a été façonnée en cube de sorte qu'il peut être facilement utilisé dans la construction ou l'artisanat.
@@ -703,7 +761,7 @@ ROOMS.FARM,,Farm plot,Champs
 ROOMS.FARM.PLURAL,,Farm plots,Parcelles agricoles
 ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.,Cultive des cultures en utilisant {{INGREDIENT.SEEDS.PLURAL}}. Doit être placé sur {{MATERIAL_TYPE.EARTH.NOUN}}.
 ROOMS.FEASTING_HALL,,Feasting hall,Salle de festin
-ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!","Un endroit où les colons se rassemblent pour manger, boire et être joyeux !"
+ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!","Un endroit où les colons se rassemblent pour manger, boire et être joyeux!"
 ROOMS.GRAVEYARD,,Graveyard,Cimetière
 ROOMS.GRAVEYARD.TOOLTIP,,Deceased settlers are laid to rest here.,Les colons décédés sont mis au repos ici.
 ROOMS.KITCHEN,,Kitchen,Cuisine
@@ -747,7 +805,7 @@ SEED.MILTONIA_SPAWN.TOOLTIP,{{VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP}},"Once though
 SEED.POTATO_SEED,,Potato,Pomme de terre
 SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un légume racine féculent qui peut survivre {{SEASON.WINTER}} ce qui en fait un bon choix pour la plupart des colonies. Peut être planté dans {{SEASON.SPRING}}, {{SEASON.SUMMER}} ou {{SEASON.AUTOMN}}."
 SEED.PURPLE_HELMET_SPAWN,,Purple helmet,Mycène à pied rouge
-SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Dump Turban, Casque gonflé ; Ce champignon légendaire porte de nombreux noms. Selon la légende, il y a longtemps, de nombreuses communautés de nains vivaient entièrement sur une souche domestiquée de ce champignon."
+SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Dump Turban, Casque gonflé; Ce champignon légendaire porte de nombreux noms. Selon la légende, il y a longtemps, de nombreuses communautés de nains vivaient entièrement sur une souche domestiquée de ce champignon."
 SEED.ROCIOMYCOTA_MUSHROOM_SPAWN,,Rociomycota,Rociomycota
 SEED.ROCIOMYCOTA_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP}},A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,Un champignon tacheté blanc et noir. Il a été connu pour affecter l'apparence de ceux qui l'ingèrent.
 SEED.SUNGLOW_SPAWN,,Sunglow,Sunglow
@@ -823,11 +881,11 @@ TOOL.TONGS.TOOLTIP,,Used to hold extremely hot metal items. Used in the process 
 
 TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{{materialType.noun}}
 
-TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.","Vos colons ont trois besoins fondamentaux à satisfaire : la nourriture, la boisson et un endroit où dormir. Bien qu'ils se plaindront à ce sujet pour l'instant, ils peuvent boire de la rivière voisine et dormir sur le sol. Ce qu'ils ne peuvent pas faire, c'est maginer de la nourriture de nulle part (du moins, pas sans un mage autour !) nous allons donc nous concentrer sur la nourriture pour commencer."
+TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.","Vos colons ont trois besoins fondamentaux à satisfaire: la nourriture, la boisson et un endroit où dormir. Bien qu'ils se plaindront à ce sujet pour l'instant, ils peuvent boire de la rivière voisine et dormir sur le sol. Ce qu'ils ne peuvent pas faire, c'est maginer de la nourriture de nulle part (du moins, pas sans un mage autour!) nous allons donc nous concentrer sur la nourriture pour commencer."
 TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.","La première chose que vous devriez faire chaque printemps est de vous assurer que suffisamment de cultures ont été plantées pour la récolte en automne. L'agriculture est une source alimentaire fiable et durable, mais vous devez vous assurer d'avoir suffisamment de cultures pour nourrir votre population entre chaque récolte annuelle."
-TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.","Une bonne règle générale à suivre est de vous assurer que vous avez 10 tuiles de cultures à semer pour chaque colon de votre population. Actuellement, il y a 7 colons qui fraisent, alors allez-y et cliquez sur « {{GUI.ZONES_LABEL}} » > « {{ROOMS.FARM}} », et désignez-en plusieurs parcelles de ferme sur une zone herbeuse."
+TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.","Une bonne règle générale à suivre est de vous assurer que vous avez 10 tuiles de cultures à semer pour chaque colon de votre population. Actuellement, il y a 7 colons qui fraisent, alors allez-y et cliquez sur «{{GUI.ZONES_LABEL}}» > «{{ROOMS.FARM}}», et désignez-en plusieurs parcelles de ferme sur une zone herbeuse."
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","Sans rien d'autre à faire, vos colons commenceront à préparer ces {{ROOMS.FARM.PLURAL}} en labourant la terre pour être prête à semer les graines. Cela ne nécessite pas d'outils ou de connaissances spéciaux, donc tout le monde devrait s'impliquer."
-TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.","Cela prépare la parcelle à semer, mais vous devez sélectionner la culture à cultiver sur chaque parcelle avant qu'un agriculteur vienne planter les graines pertinentes. Vos colons ont apporté avec eux une sélection de graines différentes. Vous pouvez cliquer sur « Ressources » en haut à droite pour obtenir une ventilation de tous les articles de votre règlement."
+TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.","Cela prépare la parcelle à semer, mais vous devez sélectionner la culture à cultiver sur chaque parcelle avant qu'un agriculteur vienne planter les graines pertinentes. Vos colons ont apporté avec eux une sélection de graines différentes. Vous pouvez cliquer sur «Ressources» en haut à droite pour obtenir une ventilation de tous les articles de votre règlement."
 TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ","Pour que les semences soient réellement disponibles pour vos agriculteurs, elles doivent être dans un stock par rapport à être conservées dans l'inventaire d'un nain comme elles le sont actuellement. Cliquez sur {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (vous pouvez cliquer avec le bouton droit pour revenir à un menu précédent) et désigner une zone à utiliser comme {{STOCKPILE.GRANARY}}, où les graines et les grains sont stockés."
 TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.TOOLS}} and designate another area to be used to store tools.,
 TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.","Après un certain temps, vos colons devraient mettre des articles qu'ils n'utilisent pas dans des stocks, comme les graines à semer."
@@ -837,19 +895,19 @@ TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inven
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","Notez que certains travaux exigent que le Settler dispose d'un outil spécifique dans son inventaire, et si aucun n'est disponible dans le règlement, ils ne travailleront pas sur les travaux qui le nécessitent. Par exemple, vous pouvez assigner plus de settlers en tant que {{PROFESSION.WOODCUTTER}}, mais ils ne peuvent pas couper les arbres sans {{TOOL.AXE.NOUN}} disponible."
 TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.","Vos cultures vont maintenant croître et éventuellement être récoltées par votre {{PROFESSION.FARMER.PLURAL}} dans le {{SEASON.AUTUMN}}. Certaines cultures peuvent être plantées à nouveau plus tard dans l'année et survivre à la {{SEASON.WINTER}}, mais d'autres ne le font pas. Pour tirer le meilleur parti de vos cultures, il est préférable de produire de la soupe à partir des légumes récoltés, ou du pain à partir de céréales."
 TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","Obtenons un {{ROOMS.KITCHEN}} configuré pour produire de la soupe une fois que vos cultures seront prêtes. Allez dans le menu de niveau supérieur puis {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} et faites glisser une zone {{ROOMS.KITCHEN}}. À ce stade dans le développement de King sous la montagne, il n'a pas d'importance si elle est à l'extérieur ou à l'intérieur, mais à l'avenir, vous voudrez que toutes vos pièces aient un plafond pour les protéger des éléments."
-TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","Contrairement aux parcelles agricoles, les cuisines (et la plupart des autres pièces) ont besoin de meubles pour fonctionner. Cliquez sur « Meubles » lorsque vous avez placé une zone de cuisine et vous serez présenté avec les meubles qui peuvent être ajoutés. Pour produire de la soupe, vous devez construire un {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} et {{FURNITURE.CAULDRON}} dans la même zone de cuisine. Désignez également une zone {{STOCKPILE.PANTRY}} pour stocker toutes les cultures récoltées."
-TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","Une fois vos cultures récoltées, les cuisiniers apporteront des légumes au {{FURNITURE.KITCHEN_WORKTOP}} avant de les ajouter au {{FURNITURE.CHEFS_CAULDRON}} avec de l'eau et de la soupe ! Faire de la soupe et cuire du pain signifie que vos provisions alimentaires iront beaucoup plus loin - un seul légume nourrira un nain pour un seul repas, mais 3 légumes cuits dans la soupe fourniront 12 repas !"
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","Contrairement aux parcelles agricoles, les cuisines (et la plupart des autres pièces) ont besoin de meubles pour fonctionner. Cliquez sur «Meubles» lorsque vous avez placé une zone de cuisine et vous serez présenté avec les meubles qui peuvent être ajoutés. Pour produire de la soupe, vous devez construire un {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} et {{FURNITURE.CAULDRON}} dans la même zone de cuisine. Désignez également une zone {{STOCKPILE.PANTRY}} pour stocker toutes les cultures récoltées."
+TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","Une fois vos cultures récoltées, les cuisiniers apporteront des légumes au {{FURNITURE.KITCHEN_WORKTOP}} avant de les ajouter au {{FURNITURE.CHEFS_CAULDRON}} avec de l'eau et de la soupe! Faire de la soupe et cuire du pain signifie que vos provisions alimentaires iront beaucoup plus loin - un seul légume nourrira un nain pour un seul repas, mais 3 légumes cuits dans la soupe fourniront 12 repas!"
 TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.","Finalement, cette cuisine produira un chaudron plein de soupe chaude à la vapeur, mais les cuisiniers n'aiment pas que les autres nains se gênent dans leur cuisine, alors vous devez plutôt faire apporter la soupe dans une salle de fête pour que tout le village puisse profiter. Désignez une salle de fête en cliquant sur {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}}, puis ajoutez un {{FURNITURE.CAULDRON}}. Notez qu'un chaudron de la salle de fête ne sera pas placé tant qu'un chaudron contenant une soupe épaisse et délicieuse n'est pas disponible."
 TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,"Au fil du temps, vous voudrez augmenter votre production alimentaire, mais cela gardera notre petite colonie nourrie pour l'hiver à venir - vos colons ont apporté des rations pour les soutenir pendant que les premières cultures poussent."
 TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.","La plupart des articles et des meubles sont produits à partir de {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} ou {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. Il est important de maintenir une grande quantité de ceux-ci. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} sont produits dans un {{ROOMS.SAWMILL}}, et {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} {{PROFESSION.STONEMASON}} {{RESOURE.RESOURE.RESOURCE.RESOUREINER. Placez l'une de ces zones et construisez les {{ROOMS.MASONRY_WORKSHOP}} et {{FURNITURE.WOODCUTTERS_BENCH}} dans ces zones."
 TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.","Maintenant, vous êtes prêt à produire {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} et {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} et {{MATERIAL_TYPE.WOOD.ADJECTIVE}} ONE.UNRFINE.PLURAL}}. Heureusement, ceux-ci peuvent généralement être récoltés dans le monde du jeu assez facilement."
 TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each.,"Sélectionnez {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} et cliquez sur les arbres pour laisser vos bûcherons savoir de les couper. De même, vous pouvez sélectionner {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} et cliquer et faire glisser une zone de la montagne pour désigner à miner. Sélectionnez suffisamment des deux pour reconstituer vos stocks jusqu'à 40 de chacun."
-TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",Soyez prudent avec l'exploitation minière ! Une zone minée de 7 par 7 tuiles sans {{FURNITURE.PILLAR}} construite dans cette zone va s'effondrer !
+TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",Soyez prudent avec l'exploitation minière! Une zone minée de 7 par 7 tuiles sans {{FURNITURE.PILLAR}} construite dans cette zone va s'effondrer!
 TUTORIAL.CAMERA.A,,"You can use the W, A, S and D keys or the arrow keys to pan the camera around. Moving the cursor to the edge of the screen also pans the camera, but this can be disabled in the options menu.",
 TUTORIAL.CAMERA.B,,Scrolling the mouse wheel or pressing the Q and E keys zooms the camera in or out.,
 TUTORIAL.CAMERA.C,,"In the lower-right section of the screen is the minimap, and you can click on this to jump the camera to that point. Click on the “Minimap” label to show or hide the minimap.",
 TUTORIAL.CAMERA.D,,Try out these camera controls and then click “Next” to proceed.,
-TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. For your next challenge, aim to set up a functioning {{ROOMS.METALWORKS}} with a {{FURNITURE.FORGE}} provided with fuel and refined metal ore. Refined metal ores are produced at the {{FURNITURE.ORE_CRUSHING_STATION}}, and fuel can be crushed from coal or produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} with a {{FURNITURE.CHARCOAL_CLAMP}} in an {{ROOMS.EARTHWORKS}}. Good luck!","Cela couvre les bases du jeu King under the Mountain. Pour votre prochain défi, visez à mettre en place un {{ROOMS.METALWORKS}} fonctionnel avec un {{FURNITURE.FORGE}} fourni avec du carburant et du minerai de métal raffiné. Des minerais métalliques raffinés sont produits à la {{FURNITURE.ORE_CRUSHING_STATION}}, et le combustible peut être broyé à partir de charbon ou produit à partir de {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} avec un {{FURNITURE.CHARCOAL_CLAMP}} dans un {{ROOMS.EARTHWORKS}}. Bonne chance !"
+TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. For your next challenge, aim to set up a functioning {{ROOMS.METALWORKS}} with a {{FURNITURE.FORGE}} provided with fuel and refined metal ore. Refined metal ores are produced at the {{FURNITURE.ORE_CRUSHING_STATION}}, and fuel can be crushed from coal or produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} with a {{FURNITURE.CHARCOAL_CLAMP}} in an {{ROOMS.EARTHWORKS}}. Good luck!","Cela couvre les bases du jeu King under the Mountain. Pour votre prochain défi, visez à mettre en place un {{ROOMS.METALWORKS}} fonctionnel avec un {{FURNITURE.FORGE}} fourni avec du carburant et du minerai de métal raffiné. Des minerais métalliques raffinés sont produits à la {{FURNITURE.ORE_CRUSHING_STATION}}, et le combustible peut être broyé à partir de charbon ou produit à partir de {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} avec un {{FURNITURE.CHARCOAL_CLAMP}} dans un {{ROOMS.EARTHWORKS}}. Bonne chance!"
 TUTORIAL.PROGRESS_DESCRIPTION.FARM_PLOT_SELECTIONS,Used to show a progress indicator for how many farm plots have a crop selected e.g. 2 of 10 farm plots with a crop assigned,{{ROOMS.FARM.PLURAL}} with a crop assigned,{{ROOMS.FARM.PLURAL}} avec une récolte attribuée
 TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indicator for how many of a certain profession have been assigned e.g. 2 of 10 farmers assigned,{{professionPlural}} assigned,{{professionPlural}} affecté
 TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},{{currentQuantity}} sur {{requiredQuantity}} {{targetDescription}}
@@ -900,7 +958,7 @@ VEGETABLE.POTATO.PLURAL,,Potatoes,Pommes de terre
 VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un légume racine féculent qui peut survivre {{SEASON.WINTER}} ce qui en fait un bon choix pour la plupart des colonies. Peut être planté dans {{SEASON.SPRING}}, {{SEASON.SUMMER}} ou {{SEASON.AUTOMN}}."
 VEGETABLE.PURPLE_HELMET_MUSHROOM,,Purple helmet mushroom,Mycène à pied rouge
 VEGETABLE.PURPLE_HELMET_MUSHROOM.PLURAL,,Purple helmet mushrooms,Mycènes à pied rouge
-VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Dump Turban, Casque gonflé ; Ce champignon légendaire porte de nombreux noms. Selon la légende, il y a longtemps, de nombreuses communautés de nains vivaient entièrement sur une souche domestiquée de ce champignon."
+VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Fat Hat, Dump Turban, Casque gonflé; Ce champignon légendaire porte de nombreux noms. Selon la légende, il y a longtemps, de nombreuses communautés de nains vivaient entièrement sur une souche domestiquée de ce champignon."
 VEGETABLE.ROCIOMYCOTA_MUSHROOM,,Rociomycota mushroom,Champignon Rociomycota
 VEGETABLE.ROCIOMYCOTA_MUSHROOM.PLURAL,,Rociomycota mushrooms,Champignons rociomycota
 VEGETABLE.ROCIOMYCOTA_MUSHROOM.TOOLTIP,,A white and black spotted mushroom. It has been known to affect the appearance of those who ingest it.,Un champignon tacheté blanc et noir. Il a été connu pour affecter l'apparence de ceux qui l'ingèrent.

@@ -1,12 +1,11 @@
 [
   {
     "itemTypeName": "Resource-Mushroom-Lumber",
-    "itemGroup": "RESOURCE",
     "materialTypes": ["WOOD"],
     "primaryMaterialType": "WOOD",
     "maxStackSize": 16,
     "maxHauledAtOnce": 1,
-    "stockpileGroupName": "Resources",
+    "stockpileGroupName": "RAW_MATERIALS",
     "holdPosition": "ON_SHOULDER",
     "impedesMovement": true,
     "blocksMovement": false,

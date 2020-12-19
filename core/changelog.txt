@@ -1,3 +1,19 @@
+Alpha 5 - 19th December 2020
+
+- Added a very basic embark screen for entry of settlement name and map seed
+- You can now manage multiple saved games via the UI, also overhauled save file format to use compression
+- Improved detection of user home directory, this will cause a loss of preferences on Windows machines where My Documents has been moved from C:\Users\...
+- Hard-coded "Item groups" have been entirely replaced by moddable "Stockpile groups" which determine how stockpiles and the resources management screens work
+- Stockpiles now support filtering by stockpile group, item type and item material, and can also have a priority set
+- Twitch integration - twitch streamers can connect their account to have their viewers automatically show up in game!
+- You can now rename settlers!
+- Floors now overlap underneath walls, so the transparency at the edge of wall tiles makes sense rather than showing a grey border
+- Overhauled how floors overlap onto other tiles, requiring far less sprites to be created (similar to walls)
+- Replaced grass floors and all floor overlap sprites
+- Pressing escape in a management screen will now go back to the main game (you can also right-click in the grey areas)
+- Changed settler management to show non-selected professions as greyed-out, not removed
+- Settler management can now be sorted by name (new default), or unhappiness (old default)
+
 Alpha 4.2.4 - 19th Devember 2020
 
 - Fix for an incorrectly invalid save when parsing required liquid counts for production management

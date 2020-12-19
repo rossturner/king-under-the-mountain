@@ -1,9 +1,9 @@
 [{
   "itemTypeName": "Resource-Grain-Sack",
-  "itemGroup": "INGREDIENT",
+  "describeAsMaterialOnly": true,
   "materialTypes": ["VEGETABLE", "CLOTH", "ROPE"],
   "primaryMaterialType": "VEGETABLE",
-  "stockpileGroupName": "Granary",
+  "stockpileGroupName": "GRANARY",
   "hoursInInventoryUntilUnused": 2,
   "maxStackSize": 30,
   "maxHauledAtOnce": 30,

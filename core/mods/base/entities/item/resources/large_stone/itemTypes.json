@@ -1,11 +1,10 @@
 [{
   "itemTypeName": "Resource-Stone-Unrefined",
-  "itemGroup": "RESOURCE",
   "materialTypes": ["STONE"],
   "primaryMaterialType": "STONE",
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,
-  "stockpileGroupName": "Resources",
+  "stockpileGroupName": "RAW_MATERIALS",
   "impedesMovement": true,
   "blocksMovement": false,
   "placementSoundAssetName": "HeavyStoneItem"

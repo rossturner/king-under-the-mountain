@@ -103,7 +103,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 						}
 					}
 				}
-				return true;
+				return false; // Not main handler
 			}
 			case MessageType.GUI_SWITCH_VIEW: {
 				GuiViewName viewName = (GuiViewName) msg.extraInfo;
@@ -141,6 +141,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 						break;
 					case DISABLE_ALL_HINTS:
 						userPreferences.setPreference(ALLOW_HINTS, "false");
+						messageDispatcher.dispatchMessage(MessageType.PREFERENCE_CHANGED, ALLOW_HINTS);
 						break;
 					case DISMISS:
 						// Do nothing, but don't hit default handler

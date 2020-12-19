@@ -3,10 +3,12 @@ package technology.rocketjump.undermount.rooms.components;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.RandomXS128;
 import com.google.common.collect.Lists;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
@@ -15,14 +17,17 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.rendering.utils.ColorMixer;
 import technology.rocketjump.undermount.rooms.*;
 import technology.rocketjump.undermount.ui.i18n.I18nString;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
@@ -30,12 +35,16 @@ import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nWord;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class StockpileComponent extends RoomComponent implements SelectableDescription {
+public class StockpileComponent extends RoomComponent implements SelectableDescription, Prioritisable {
 
-	private StockpileGroup group;
+	private Set<StockpileGroup> enabledGroups = new HashSet<>();
+	private Set<ItemType> enabledItemTypes = new HashSet<>();
+	private Map<ItemType, Set<GameMaterial>> enabledMaterialsByItemType = new HashMap<>();
 	// This keeps track of allocations - null for empty spaces
 	private final Map<GridPoint2, StockpileAllocation> allocations = new HashMap<>();
+	private JobPriority priority = JobPriority.NORMAL;
 
 	public StockpileComponent(Room parent, MessageDispatcher messageDispatcher) {
 		super(parent, messageDispatcher);
@@ -49,7 +58,12 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 	@Override
 	public RoomComponent clone(Room newParent) {
 		StockpileComponent cloned = new StockpileComponent(newParent, messageDispatcher);
-		cloned.group = this.group;
+		cloned.enabledGroups.addAll(this.enabledGroups);
+		cloned.enabledItemTypes.addAll(this.enabledItemTypes);
+		for (Map.Entry<ItemType, Set<GameMaterial>> entry : this.enabledMaterialsByItemType.entrySet()) {
+			cloned.enabledMaterialsByItemType.put(entry.getKey(), entry.getValue());
+		}
+
 		// Copy over allocations, duplicates will be removed after
 		for (Map.Entry<GridPoint2, StockpileAllocation> entry : this.allocations.entrySet()) {
 			cloned.allocations.put(entry.getKey(), entry.getValue());
@@ -63,9 +77,15 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 		for (Map.Entry<GridPoint2, StockpileAllocation> entry : other.allocations.entrySet()) {
 			this.allocations.put(entry.getKey(), entry.getValue());
 		}
-		if (this.group == null) {
-			this.group = other.group;
+
+		this.enabledGroups.addAll(other.enabledGroups);
+		this.enabledItemTypes.addAll(other.enabledItemTypes);
+
+		for (Map.Entry<ItemType, Set<GameMaterial>> entry : other.enabledMaterialsByItemType.entrySet()) {
+			this.enabledMaterialsByItemType.put(entry.getKey(), entry.getValue());
 		}
+
+		updateColor();
 	}
 
 	@Override
@@ -241,19 +261,93 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 		return allocations.get(position);
 	}
 
-	public StockpileGroup getGroup() {
-		return group;
+	public void toggleGroup(StockpileGroup group, boolean enabled) {
+		if (enabled) {
+			enabledGroups.add(group);
+		} else {
+			enabledGroups.remove(group);
+		}
+		updateColor();
 	}
 
-	public void setGroup(StockpileGroup group) {
-		this.group = group;
+	public void toggleItem(ItemType itemType, boolean enabled) {
+		if (enabled) {
+			enabledItemTypes.add(itemType);
+		} else {
+			enabledItemTypes.remove(itemType);
+		}
+	}
+
+	public void toggleMaterial(ItemType itemType, GameMaterial gameMaterial, boolean enabled) {
+		Set<GameMaterial> materials = enabledMaterialsByItemType.computeIfAbsent(itemType, a -> new LinkedHashSet<>());
+
+		if (enabled) {
+			materials.add(gameMaterial);
+		} else {
+			materials.remove(gameMaterial);
+
+			if (materials.isEmpty()) {
+				enabledMaterialsByItemType.remove(itemType);
+			}
+		}
+	}
+
+	public boolean isEnabled(StockpileGroup group) {
+		return enabledGroups.contains(group);
+	}
+
+	public boolean isEnabled(ItemType itemType) {
+		return enabledItemTypes.contains(itemType);
+	}
+
+	public boolean isEnabled(GameMaterial material, ItemType itemType) {
+		return enabledMaterialsByItemType.getOrDefault(itemType, Collections.emptySet()).contains(material);
+	}
+
+	public boolean canHold(ItemEntityAttributes itemAttributes) {
+		return enabledItemTypes.contains(itemAttributes.getItemType()) &&
+				enabledMaterialsByItemType.getOrDefault(itemAttributes.getItemType(), Collections.emptySet()).contains(itemAttributes.getPrimaryMaterial());
+	}
+
+	private void updateColor() {
+		List<Color> colors = enabledGroups.stream().map(StockpileGroup::getColor).collect(Collectors.toList());
+		parent.setBorderColor(ColorMixer.averageBlend(colors));
+	}
+
+	@Override
+	public JobPriority getPriority() {
+		return this.priority;
+	}
+
+	@Override
+	public void setPriority(JobPriority jobPriority) {
+		this.priority = jobPriority;
 	}
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
-		if (group != null) {
-			asJson.put("group", group.getName());
+		JSONArray enabledGroupsJson = new JSONArray();
+		for (StockpileGroup enabledGroup : this.enabledGroups) {
+			enabledGroupsJson.add(enabledGroup.getName());
 		}
+		asJson.put("enabledGroups", enabledGroupsJson);
+
+		JSONArray enabledItemTypesJson = new JSONArray();
+		for (ItemType enabledItemType : this.enabledItemTypes) {
+			enabledItemTypesJson.add(enabledItemType.getItemTypeName());
+		}
+		asJson.put("enabledItemTypes", enabledItemTypesJson);
+
+		JSONObject materialMappingJson = new JSONObject(true);
+		for (Map.Entry<ItemType, Set<GameMaterial>> entry : this.enabledMaterialsByItemType.entrySet()) {
+			JSONArray materialNames = new JSONArray();
+			for (GameMaterial material : entry.getValue()) {
+				materialNames.add(material.getMaterialName());
+			}
+			materialMappingJson.put(entry.getKey().getItemTypeName(), materialNames);
+		}
+		asJson.put("enabledMaterials", materialMappingJson);
+
 
 		if (!allocations.isEmpty()) {
 			JSONArray allocationsJson = new JSONArray();
@@ -269,15 +363,55 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 			}
 			asJson.put("allocations", allocationsJson);
 		}
+
+		if (!priority.equals(JobPriority.NORMAL)) {
+			asJson.put("priority", priority.name());
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
-		String groupName = asJson.getString("group");
-		if (groupName != null) {
-			this.group = relatedStores.stockpileGroupDictionary.getByName(groupName);
-			if (this.group == null) {
-				throw new InvalidSaveException("Could not find stockpile group by name " + groupName);
+		JSONArray enabledGroupsJson = asJson.getJSONArray("enabledGroups");
+		if (enabledGroupsJson != null) {
+			for (Object item : enabledGroupsJson) {
+				StockpileGroup group = relatedStores.stockpileGroupDictionary.getByName(item.toString());
+				if (group == null) {
+					throw new InvalidSaveException("Could not find stockpile group with name " + item.toString());
+				} else {
+					this.enabledGroups.add(group);
+				}
+			}
+		}
+
+		JSONArray enabledItemTypesJson = asJson.getJSONArray("enabledItemTypes");
+		if (enabledItemTypesJson != null) {
+			for (Object item : enabledItemTypesJson) {
+				ItemType itemType = relatedStores.itemTypeDictionary.getByName(item.toString());
+				if (itemType == null) {
+					throw new InvalidSaveException("Could not find itemType with name " + item.toString());
+				} else {
+					this.enabledItemTypes.add(itemType);
+				}
+			}
+		}
+
+		JSONObject materialMappingJson = asJson.getJSONObject("enabledMaterials");
+		if (materialMappingJson != null) {
+			for (String itemNameKey : materialMappingJson.keySet()) {
+				JSONArray materialNames = materialMappingJson.getJSONArray(itemNameKey);
+				ItemType itemType = relatedStores.itemTypeDictionary.getByName(itemNameKey);
+				if (itemType == null) {
+					throw new InvalidSaveException("Could not find itemType with name " + itemNameKey);
+				}
+				Set<GameMaterial> materials = new HashSet<>();
+				for (Object materialName : materialNames) {
+					GameMaterial material = relatedStores.gameMaterialDictionary.getByName(materialName.toString());
+					if (material == null) {
+						throw new InvalidSaveException("Could not find material with name " + materialName.toString());
+					}
+					materials.add(material);
+				}
+				this.enabledMaterialsByItemType.put(itemType, materials);
 			}
 		}
 
@@ -296,5 +430,8 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 				allocations.put(position, allocation);
 			}
 		}
+
+		this.priority = EnumParser.getEnumValue(asJson, "priority", JobPriority.class, JobPriority.NORMAL);
 	}
+
 }

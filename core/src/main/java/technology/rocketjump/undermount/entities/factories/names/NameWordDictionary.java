@@ -32,4 +32,8 @@ public class NameWordDictionary {
 		return bySphere.getOrDefault(sphere, Collections.emptyList());
 	}
 
+	public Set<String> getAllSpheres() {
+		return bySphere.keySet();
+	}
+
 }

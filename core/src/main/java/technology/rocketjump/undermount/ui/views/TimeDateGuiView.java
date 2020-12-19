@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.ui.views;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -28,6 +29,7 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 	private final I18nTextWidget dateTimeLabel;
 	private final MessageDispatcher messageDispatcher;
 	private final I18nWidgetFactory i18nWidgetFactory;
+	private final Label settlementNameLabel;
 	private Table layoutTable;
 	private Table timeDateTable;
 	private Table managementScreenButtonTable;
@@ -46,7 +48,7 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 
 		timeDateTable = new Table(uiSkin);
 		timeDateTable.background("default-rect");
-		timeDateTable.pad(10);
+		timeDateTable.pad(5);
 
 		managementScreenButtonTable = new Table(uiSkin);
 
@@ -56,13 +58,16 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 			speedButtons.add(button);
 		}
 
+		settlementNameLabel = new Label("", uiSkin);
+		timeDateTable.add(settlementNameLabel).colspan(speedButtons.size()).center().padBottom(4).row();
+
 		for (IconOnlyButton speedButton : speedButtons) {
 			timeDateTable.add(speedButton);
 		}
 		timeDateTable.row();
 
 		this.dateTimeLabel = new I18nTextWidget(new I18nText(""), uiSkin, messageDispatcher);
-		timeDateTable.add(dateTimeLabel).colspan(speedButtons.size()).right().padTop(3);
+		timeDateTable.add(dateTimeLabel).colspan(speedButtons.size()).center().padTop(4);
 
 		layoutTable = new Table(uiSkin);
 		layoutTable.add(managementScreenButtonTable).right().top();
@@ -113,6 +118,9 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 	@Override
 	public void onContextChange(GameContext gameContext) {
 		this.gameContext = gameContext;
+		if (gameContext != null) {
+			settlementNameLabel.setText(gameContext.getSettlementState().getSettlementName());
+		}
 		if (gameContext.getGameClock().isPaused()) {
 			for (IconOnlyButton speedButton : speedButtons) {
 				boolean highlight = speedButton.gameSpeed.equals(GameSpeed.PAUSED);

@@ -1,0 +1,14 @@
+{
+  "floorTypeName": "river-edge-dirt",
+  "i18nKey": "FLOOR.DIRT",
+  "materialType": "EARTH",
+  "type": "floor",
+  "numSprites": 5,
+  "layer": 5,
+  "overlapType": {
+    "overlapName": "water"
+  },
+  "useMaterialColor": false,
+  "lowColorCode": "#583923",
+  "highColorCode": "#b1896c"
+}

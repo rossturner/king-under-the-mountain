@@ -1,9 +1,8 @@
 [{
   "itemTypeName": "Product-Bread-Dough",
-  "itemGroup": "PRODUCT",
   "materialTypes": ["VEGETABLE"],
   "primaryMaterialType": "VEGETABLE",
-  "stockpileGroupName": "Pantry",
+  "stockpileGroupName": "FOOD",
   "hoursInInventoryUntilUnused": 1,
   "maxStackSize": 28,
   "maxHauledAtOnce": 7,

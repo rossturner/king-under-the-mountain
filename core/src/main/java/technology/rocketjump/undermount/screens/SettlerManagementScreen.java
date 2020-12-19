@@ -3,14 +3,24 @@ package technology.rocketjump.undermount.screens;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.google.common.collect.ImmutableMap;
+import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.audio.model.SoundAsset;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.persistence.UserPreferences;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 import technology.rocketjump.undermount.ui.Scene2DUtils;
 import technology.rocketjump.undermount.ui.Selectable;
@@ -18,12 +28,10 @@ import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.*;
-import technology.rocketjump.undermount.ui.widgets.ImageButton;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.*;
-import java.util.List;
 
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
 import static technology.rocketjump.undermount.ui.views.EntitySelectedGuiView.*;
@@ -36,8 +44,10 @@ public class SettlerManagementScreen extends ManagementScreen {
 	private int numSettlerTablesPerRow = 3;
 	private final MessageDispatcher messageDispatcher;
 	private final SettlerTracker settlerTracker;
-	private final ImageButtonFactory imageButtonFactory;
 	private final EntityDrawableFactory entityDrawableFactory;
+	private final Table sortingOptionsTable;
+	private SettlerSorting selectedSortOption = SettlerSorting.BY_NAME;
+	Map<SettlerSorting, I18nCheckbox> sortingCheckboxes = new LinkedHashMap<>();
 
 	private final Table professionsTable;
 	private final Table settlerTable;
@@ -48,19 +58,50 @@ public class SettlerManagementScreen extends ManagementScreen {
 	@Inject
 	public SettlerManagementScreen(UserPreferences userPreferences, MessageDispatcher messageDispatcher,
 								   GuiSkinRepository guiSkinRepository, SettlerTracker settlerTracker,
-								   ImageButtonFactory imageButtonFactory, I18nWidgetFactory i18nWidgetFactory,
+								   I18nWidgetFactory i18nWidgetFactory,
 								   EntityDrawableFactory entityDrawableFactory, I18nTranslator i18nTranslator,
-								   ClickableTableFactory clickableTableFactory, IconButtonFactory iconButtonFactory) {
+								   ClickableTableFactory clickableTableFactory, IconButtonFactory iconButtonFactory, SoundAssetDictionary soundAssetDictionary) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.settlerTracker = settlerTracker;
 		this.messageDispatcher = messageDispatcher;
-		this.imageButtonFactory = imageButtonFactory;
 		this.entityDrawableFactory = entityDrawableFactory;
 		this.clickableTableFactory = clickableTableFactory;
 
 		professionsTable = new Table(uiSkin);
 		settlerTable = new Table(uiSkin);
 		settlerScrollPane = Scene2DUtils.wrapWithScrollPane(settlerTable, uiSkin);
+
+		final SoundAsset clickSoundAsset = soundAssetDictionary.getByName("MenuClick");
+
+		sortingOptionsTable = new Table(uiSkin);
+		for (SettlerSorting settlerSorting : SettlerSorting.values()) {
+			I18nCheckbox checkbox = i18nWidgetFactory.createCheckbox("GUI.SETTLER_MANAGEMENT.SORT." + settlerSorting.name());
+			sortingCheckboxes.put(settlerSorting, checkbox);
+			checkbox.setChecked(this.selectedSortOption.equals(settlerSorting));
+			checkbox.setProgrammaticChangeEvents(false);
+			checkbox.addListener((event) -> {
+				if (event instanceof ChangeListener.ChangeEvent) {
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
+					if (checkbox.isChecked()) {
+						this.selectedSortOption = settlerSorting;
+						for (Map.Entry<SettlerSorting, I18nCheckbox> entry : sortingCheckboxes.entrySet()) {
+							if (!entry.getKey().equals(settlerSorting)) {
+								entry.getValue().setChecked(false);
+							}
+						}
+						reset();
+					} else {
+						// unchecked, put it back to checked
+						checkbox.setChecked(true);
+					}
+				}
+				return true;
+			});
+
+			sortingOptionsTable.add(checkbox).pad(5).center();
+		}
+
+
 	}
 
 	@Override
@@ -98,6 +139,8 @@ public class SettlerManagementScreen extends ManagementScreen {
 		resetSettlerTable();
 
 		containerTable.add(professionsTable).height(120).row();
+
+		containerTable.add(sortingOptionsTable).center().row();
 
 		containerTable.add(settlerScrollPane).row();
 	}
@@ -175,40 +218,69 @@ public class SettlerManagementScreen extends ManagementScreen {
 		int counter = 0;
 
 		List<Entity> livingSettlers = new ArrayList<>(settlerTracker.getLiving());
-		// Sort by unhappiest first
-		livingSettlers.sort(Comparator.comparingInt(o -> o.getComponent(HappinessComponent.class).getNetModifier()));
+
+		switch (this.selectedSortOption) {
+			case BY_NAME:
+				livingSettlers.sort(Comparator.comparing(a -> ((HumanoidEntityAttributes)a.getPhysicalEntityComponent().getAttributes()).getName().toString()));
+				break;
+			case BY_UNHAPPINESS:
+				livingSettlers.sort(Comparator.comparingInt(o -> o.getComponent(HappinessComponent.class).getNetModifier()));
+				break;
+			default:
+				Logger.error("Unknown sorting option: " + this.selectedSortOption.name());
+		}
+
+
+		List<Entity> displayedSettlers = new ArrayList<>();
+		List<Entity> inactiveSettlers = new ArrayList<>();
 
 		for (Entity settler : livingSettlers) {
+			boolean showAsActive = true;
 			if (!selectedProfessions.isEmpty()) {
 				ProfessionsComponent professionsComponent = settler.getComponent(ProfessionsComponent.class);
 				if (professionsComponent == null) {
 					continue;
 				}
 
-				boolean hasAllSelectedProfessions = true;
-				for (Profession selectedProfession : selectedProfessions) {
-					if (!professionsComponent.hasActiveProfession(selectedProfession)) {
-						hasAllSelectedProfessions = false;
-						break;
-					}
-				}
+				showAsActive = professionsComponent.hasAnyActiveProfession(selectedProfessions);
 
-				if (!hasAllSelectedProfessions) {
-					continue;
-				}
+//				boolean hasAllSelectedProfessions = true;
+//				for (Profession selectedProfession : selectedProfessions) {
+//					if (!professionsComponent.hasActiveProfession(selectedProfession)) {
+//						hasAllSelectedProfessions = false;
+//						break;
+//					}
+//				}
+//
+//				if (!hasAllSelectedProfessions) {
+//					continue;
+//				}
 			}
+
+			if (showAsActive) {
+				displayedSettlers.add(settler);
+			} else {
+				inactiveSettlers.add(settler);
+			}
+		}
+
+		displayedSettlers.addAll(inactiveSettlers);
+
+		for (Entity settler : displayedSettlers) {
 			ClickableTable singleSettlerTable = clickableTableFactory.create();
 			singleSettlerTable.setBackground("default-rect");
 			singleSettlerTable.pad(2);
 
 			EntityDrawable settlerDrawable = entityDrawableFactory.create(settler);
+			if (inactiveSettlers.contains(settler)) {
+				settlerDrawable.setOverrideColor(HexColors.get("#2f2f2f"));
+			}
 			singleSettlerTable.add(new Image(settlerDrawable));
-
 
 			Table nameHappinessBlockTable = new Table(uiSkin);
 
 			Table nameTable = new Table(uiSkin);
-			populateSettlerNameTable(settler, nameTable, i18nTranslator, uiSkin, gameContext, messageDispatcher);
+			populateSettlerNameTable(settler, nameTable, i18nTranslator, uiSkin, gameContext, messageDispatcher, null);
 			nameHappinessBlockTable.add(nameTable).left().row();
 
 			Table happinessTable = new Table(uiSkin);
@@ -240,6 +312,12 @@ public class SettlerManagementScreen extends ManagementScreen {
 			});
 		}
 
+
+	}
+
+	public enum SettlerSorting {
+
+		BY_NAME, BY_UNHAPPINESS
 
 	}
 

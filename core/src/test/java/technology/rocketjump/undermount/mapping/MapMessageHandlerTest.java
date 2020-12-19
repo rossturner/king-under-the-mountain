@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rooms.RoomFactory;
 import technology.rocketjump.undermount.rooms.RoomStore;
+import technology.rocketjump.undermount.rooms.StockpileComponentUpdater;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 import technology.rocketjump.undermount.zones.Zone;
 
@@ -42,6 +43,8 @@ public class MapMessageHandlerTest {
 	private RoomStore mockRoomStore;
 	@Mock
 	private JobStore mockJobStore;
+	@Mock
+	private StockpileComponentUpdater mockStockpileComponentUpdater;
 
 	@Test
 	public void removeWall_joinsRegions_keepsZones() {
@@ -123,7 +126,7 @@ public class MapMessageHandlerTest {
 		map.addZone(rightEdgeZone);
 
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
-				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore);
+				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, mockStockpileComponentUpdater);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);

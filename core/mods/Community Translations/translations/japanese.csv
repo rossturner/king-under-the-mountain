@@ -33,6 +33,20 @@ COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{
 COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} と {{materialTwo}}
 COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,{{materialDescription}}のスープ
 
+CRAFTING_TYPE.BAKING,,Baking,
+CRAFTING_TYPE.BLACKSMITHING,,Blacksmithing,
+CRAFTING_TYPE.CARPENTRY,,Carpentry,
+CRAFTING_TYPE.COKE_OVEN_BAKING,,Coke baking,
+CRAFTING_TYPE.FERMENTING,,Fermenting,
+CRAFTING_TYPE.MALTING,,Malting,
+CRAFTING_TYPE.MALT_MASHING,,Malt mashing,
+CRAFTING_TYPE.MILLING,,Milling,
+CRAFTING_TYPE.ORE_CRUSHING,,Ore crushing,
+CRAFTING_TYPE.SMELTING,,Smelting,
+CRAFTING_TYPE.STONEMASONRY,,Stonemasonry,
+CRAFTING_TYPE.WOODCUTTING,,Woodcutting,
+CRAFTING_TYPE.WORT_BREWING,,Brewing,
+
 CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,害虫に苦められている
 CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,この作物は、それが再び繁栄する前に {{PROFESSION.FARMER}} によって除去する必要があるアブラムシや他の昆虫の過剰な数によって苦しんでいます。 時間内に害虫を除去しないことは、この作物が死ぬことを意味する可能性があります!
 CROP.DESCRIPTION,,{{materialType.noun}} plant,{{materialType.noun}} 名詞
@@ -71,6 +85,10 @@ FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RES
 FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,パン屋のオーブン
 FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,{{PROFESSION.CHEF}} は、準備された {{INGREDIENT.DOUGH}} を使ってここのパンを焼きます。
 FURNITURE.BEER_TAPPER,,Beer tapper,
+FURNITURE.BEER_TAPPER.STATE.BEER_AVAILABLE,,Beer is available,
+FURNITURE.BEER_TAPPER.STATE.BEER_BARREL_INCOMING,,A beer barrel is on the way,
+FURNITURE.BEER_TAPPER.STATE.BEER_EXHAUSTED,,The beer has all gone!,
+FURNITURE.BEER_TAPPER.STATE.IDLE,,Idle (no beer available),
 FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,ブルマリー
 FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,{{プロフェッショナル.ブラックスミス}} はこの手作業で操作する炉を使用して {{リソース.鉱石.くじ.多型}} と {{燃料.サック} を {材質.金属.調整可能} {リソース.金属.金属.多型} に変わります。
@@ -240,8 +258,13 @@ GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,家具
 GUI.BUILD_LABEL,This should be as short as possible,Build,ビルド
 GUI.CANCEL_LABEL,This should be as short as possible,Cancel,キャンセルします
 GUI.CHANGE_PROFESSION_LABEL,,Change profession,職業を変える
+GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,As in keeping a fixed number of items in stock,Maintaining,
+GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),
 GUI.CROP_SELECTION,,Crop:,切り抜き:
 GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}",{{時刻}}、日 {{日}}、{{季節}}
+GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,
 GUI.DIALOG.DISMISS,,Dismiss,却下します
 GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,その名前のルームは既に存在します。
 GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,このバージョンのゲームと互換性がないため、保存ファイルをロードできませんでした。
@@ -255,6 +278,7 @@ GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to
 GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,このバージョンと互換性の無いため、無効になっているmodがあります。 更新はmodメニューで確認することができます。
 GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,OK
 GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,部屋の名前を変更する
+GUI.DIALOG.RENAME_SETTLER_TITLE,,Rename settler,
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,変更を有効にするには、ゲームを再起動する必要があります。
 GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},{{name}} に割り当てられました
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,現在削除されています
@@ -276,13 +300,32 @@ GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the pla
 GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ",[グラフィックスオプション]
 GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,自動クラッシュレポートを許可する
 GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING,,Scroll the background on the main menu,
 GUI.OPTIONS.MISC.TITLE,,Miscellaneous,[その他]
+GUI.OPTIONS.TAB.AUDIO,,Audio,
+GUI.OPTIONS.TAB.GAMEPLAY,,Gameplay,
+GUI.OPTIONS.TAB.GRAPHICS,,Graphics,
+GUI.OPTIONS.TAB.MISC,,Other,
+GUI.OPTIONS.TAB.TWITCH,,Twitch,
+GUI.OPTIONS.TWITCH.ACCOUNT_LABEL,,Twitch Account:,
+GUI.OPTIONS.TWITCH.CODE_LABEL,,Code,
+GUI.OPTIONS.TWITCH.CONNECTED_LABEL,,Twitch account connected,
+GUI.OPTIONS.TWITCH.DISCONNECT,,Disconnect,
+GUI.OPTIONS.TWITCH.DISCONNECTED_LABEL,,Twitch account disconnected,
+GUI.OPTIONS.TWITCH.ENABLED,,Twitch integration enabled,
+GUI.OPTIONS.TWITCH.GENERAL_ERROR,,An error occured while communicating with Twitch,
+GUI.OPTIONS.TWITCH.LINK_ACCOUNT_BUTTON,,Click here to connect your Twitch account,
+GUI.OPTIONS.TWITCH.PRIORITISE_SUBSCRIBERS,,Give priority to subscribers,
+GUI.OPTIONS.TWITCH.SUBMIT_BUTTON,,Submit,
+GUI.OPTIONS.TWITCH.TITLE,,Twitch Integration,
+GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,,Use viewers as settler names,
 GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,チョップ
 GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,クリア
 GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,収穫
 GUI.ORDERS.MINE,This should be as short as possible,Mine,採掘
 GUI.ORDERS_LABEL,This should be as short as possible,Orders,注文
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,橋は川の両側を覆い、少なくとも3x3タイルのサイズでなければなりません
+GUI.PRIORITY_LABEL,This should be as short as possible,Priority,
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,[除去]
 GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,タイルを削除
 GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,リソース
@@ -291,10 +334,13 @@ GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,保存中...
 GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},デッド:{{count}}
 GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},人口：{{count}}
+GUI.SETTLER_MANAGEMENT.SORT.BY_NAME,,Sort by name,
+GUI.SETTLER_MANAGEMENT.SORT.BY_UNHAPPINESS,,Sort by unhappiness,
 GUI.SETTLER_MANAGEMENT.TITLE,,Settlers,入植者だ
 GUI.SETTLER_MANAGEMENT.TOTAL_QUANTITY_LABEL,,Total: {{count}},合計：{{count}}
 GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,効果音量
 GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,UI スケール:
+GUI.VIEW_ROADMAP,,View development roadmap,
 GUI.ZONES_LABEL,This should be as short as possible,Zones,ゾーン
 
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,,Going sober,
@@ -325,6 +371,8 @@ HINT.BUTTON.DISMISS,,Dismiss,
 HINT.BUTTON.HINTS_ONLY,,Hints only,
 HINT.BUTTON.NEXT,,Next,
 HINT.BUTTON.TUTORIAL,,Tutorial,
+HINT.OPEN_PRIORITY_MENU.1,,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",
+HINT.OPEN_PRIORITY_MENU.2,,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",
 HINT.PROGRESS.HEADER,,Progress:,
 HINT.TOOL_DEPLETED.AXE1,,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,
 HINT.TOOL_DEPLETED.AXE2,,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",
@@ -523,6 +571,13 @@ OTHER.BRICK.NOUN,,Brick,レンガ
 OTHER.CLAY_SOIL.NOUN,,Clay soil,土壌
 OTHER.GRASS.NOUN,,,
 
+PRIORITY.DISABLED,,Disabled,
+PRIORITY.HIGHER,,Higher,
+PRIORITY.HIGHEST,,Highest,
+PRIORITY.LOWER,,Lower,
+PRIORITY.LOWEST,,Lowest,
+PRIORITY.NORMAL,,Normal,
+
 PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,同意する
 PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,レポートを無効にする
 PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,山の下の王は活発に発展しています。 お手伝いをする
@@ -630,6 +685,9 @@ PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberja
 PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,木こり
 PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,{{ROOMS.SAWMILL}} で使用できる木材として木を切り落とす。
 PROFESSION.WOODCUTTER.VERB,,Chopping,チョッピング
+
+QUOTA.FIXED_AMOUNT,,in total,
+QUOTA.PER_SETTLER,,per settler,
 
 RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,ドワーフ
 RACE.DWARF.FEMALE_NOUN,,Dwarf,ドワーフ

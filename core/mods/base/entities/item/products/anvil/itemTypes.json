@@ -1,9 +1,8 @@
 [{
   "itemTypeName": "Product-Anvil",
-  "itemGroup": "PRODUCT",
   "materialTypes": ["METAL"],
   "primaryMaterialType": "METAL",
-  "stockpileGroupName": "Tools",
+  "stockpileGroupName": "TOOLS",
   "hoursInInventoryUntilUnused": 0,
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,

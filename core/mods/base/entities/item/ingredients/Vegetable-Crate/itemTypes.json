@@ -1,9 +1,9 @@
 [{
   "itemTypeName": "Ingredient-Vegetable-Crate",
-  "itemGroup": "INGREDIENT",
+  "describeAsMaterialOnly": true,
   "materialTypes": ["VEGETABLE", "WOOD"],
   "primaryMaterialType": "VEGETABLE",
-  "stockpileGroupName": "Pantry",
+  "stockpileGroupName": "FOOD",
   "hoursInInventoryUntilUnused": 2,
   "maxStackSize": 30,
   "maxHauledAtOnce": 30,

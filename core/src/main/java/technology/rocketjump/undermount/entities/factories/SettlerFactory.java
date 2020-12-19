@@ -74,7 +74,7 @@ public class SettlerFactory {
 	}
 
 	public Entity create(Vector2 worldPosition, Vector2 facing, Profession primaryProfession, Profession secondaryProfession, GameContext gameContext) {
-		HumanoidEntityAttributes attributes = attributesFactory.create();
+		HumanoidEntityAttributes attributes = attributesFactory.create(gameContext);
 
 		Entity entity = entityFactory.create(attributes, worldPosition, facing, primaryProfession, secondaryProfession, gameContext);
 

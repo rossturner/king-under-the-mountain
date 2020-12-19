@@ -32,6 +32,7 @@ public class GameClock implements Persistable {
 	private int currentDayNumber;
 	private Season currentSeason;
 	private GameSpeed currentGameSpeed = GameSpeed.NORMAL;
+	private int currentYear;
 
 	public GameClock() {
 		FileHandle settingsJsonFile = new FileHandle("assets/settings/timeAndDaySettings.json");
@@ -48,6 +49,7 @@ public class GameClock implements Persistable {
 		timeOfDay = timeDaySettings.getDouble("initialTimeOfDay");
 		currentGameTime = timeOfDay;
 		currentDayNumber = 1;
+		currentYear = 1;
 	}
 
 	public double realTimeToGameHours(double deltaRealtimeSeconds) {
@@ -62,8 +64,6 @@ public class GameClock implements Persistable {
 		double days = elapsedGameHours / HOURS_IN_DAY;
 		return days / DAYS_IN_SEASON;
 	}
-
-	int yearCounter = 1;
 
 	public void update(float deltaRealtimeSeconds, MessageDispatcher messageDispatcher) {
 		double elapsedHours = realTimeToGameHours(deltaRealtimeSeconds);
@@ -81,7 +81,7 @@ public class GameClock implements Persistable {
 //				messageDispatcher.dispatchMessage(MessageType.SEASON_ELAPSED);
 				if (currentSeason.equals(Season.SPRING)) {
 					messageDispatcher.dispatchMessage(MessageType.YEAR_ELAPSED);
-					yearCounter++;
+					currentYear++;
 				}
 			}
 		}
@@ -138,6 +138,10 @@ public class GameClock implements Persistable {
 		return currentSeason;
 	}
 
+	public int getCurrentYear() {
+		return currentYear;
+	}
+
 	public GameSpeed getCurrentGameSpeed() {
 		return currentGameSpeed;
 	}
@@ -162,6 +166,7 @@ public class GameClock implements Persistable {
 		asJson.put("dayOfSeason", dayOfSeason);
 		asJson.put("currentDayNumber", currentDayNumber);
 		asJson.put("currentSeason", currentSeason.name());
+		asJson.put("currentYear", currentYear);
 		asJson.put("gameSpeed", currentGameSpeed.name());
 
 		savedGameStateHolder.setGameClock(this);
@@ -175,6 +180,7 @@ public class GameClock implements Persistable {
 		this.dayOfSeason = asJson.getIntValue("dayOfSeason");
 		this.currentDayNumber = asJson.getIntValue("currentDayNumber");
 		this.currentSeason = EnumParser.getEnumValue(asJson, "currentSeason", Season.class, null);
+		this.currentYear = asJson.getIntValue("currentYear");
 		this.currentGameSpeed = EnumParser.getEnumValue(asJson, "gameSpeed", GameSpeed.class, GameSpeed.NORMAL);
 	}
 }

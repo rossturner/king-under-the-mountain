@@ -27,6 +27,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.Room;
+import technology.rocketjump.undermount.rooms.StockpileGroup;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 import technology.rocketjump.undermount.sprites.BridgeTypeDictionary;
 import technology.rocketjump.undermount.ui.views.FurnitureSelectionGuiView;
@@ -83,6 +84,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.DECONSTRUCT_BRIDGE);
 		messageDispatcher.addListener(this, MessageType.CHOOSE_SELECTABLE);
 		messageDispatcher.addListener(this, MessageType.REPLACE_JOB_PRIORITY);
+		messageDispatcher.addListener(this, MessageType.GUI_STOCKPILE_GROUP_SELECTED);
 		// FIXME Should this really live here?
 		for (WallType wallType : wallTypeDictionary.getAllDefinitions()) {
 			if (wallType.isConstructed()) {
@@ -169,6 +171,11 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				}
 				return false;
 			}
+			case MessageType.GUI_STOCKPILE_GROUP_SELECTED: {
+				StockpileGroup stockpileGroup = (StockpileGroup) msg.extraInfo;
+				interactionStateContainer.setSelectedStockpileGroup(stockpileGroup);
+				return true;
+			}
 			case MessageType.DOOR_MATERIAL_SELECTED: {
 				MaterialSelectionMessage materialSelectionMessage = (MaterialSelectionMessage) msg.extraInfo;
 				interactionStateContainer.setDoorMaterialSelection(materialSelectionMessage);
@@ -247,7 +254,8 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 			interactionStateContainer.setDragging(false);
 
 			if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.PLACE_ROOM)) {
-				RoomPlacementMessage roomPlacementMessage = new RoomPlacementMessage(interactionStateContainer.virtualRoom.getRoomTiles(), interactionStateContainer.getInteractionMode().getRoomType());
+				RoomPlacementMessage roomPlacementMessage = new RoomPlacementMessage(interactionStateContainer.virtualRoom.getRoomTiles(),
+						interactionStateContainer.getInteractionMode().getRoomType(), interactionStateContainer.getSelectedStockpileGroup());
 				messageDispatcher.dispatchMessage(MessageType.ROOM_PLACEMENT, roomPlacementMessage);
 			} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.PLACE_WALLS)) {
 				WallsPlacementMessage message = new WallsPlacementMessage(new LinkedList<>(interactionStateContainer.getVirtualWallConstructions()));

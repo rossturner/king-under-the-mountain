@@ -1,9 +1,8 @@
 [{
   "itemTypeName": "Product-Bread-Loaf",
-  "itemGroup": "PRODUCT",
   "materialTypes": ["FOODSTUFF"],
   "primaryMaterialType": "FOODSTUFF",
-  "stockpileGroupName": "Pantry",
+  "stockpileGroupName": "FOOD",
   "hoursInInventoryUntilUnused": 1,
   "maxStackSize": 13,
   "maxHauledAtOnce": 13,

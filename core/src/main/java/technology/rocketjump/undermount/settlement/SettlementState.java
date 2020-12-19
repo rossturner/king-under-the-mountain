@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -19,15 +20,14 @@ import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.settlement.production.ProductionAssignment;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Simple bean to hold "global" settlement data
  */
 public class SettlementState implements Persistable {
+
+	private String settlementName;
 
 	public final Map<Long, Entity> furnitureHoldingCompletedCooking = new HashMap<>();
 
@@ -46,12 +46,21 @@ public class SettlementState implements Persistable {
 	public final List<ImpendingMiningCollapse> impendingMiningCollapses = new ArrayList<>();
 	public final Map<String, Boolean> previousHints = new HashMap<>();
 	public final List<String> currentHints = new ArrayList<>();
+	public final Set<TwitchViewer> usedTwitchViewers = new HashSet<>();
 
 	private int immigrantsDue;
 	private int immigrantCounter;
 	private Vector2 immigrationPoint;
 	private Double nextImmigrationGameTime;
 	private boolean gameOver;
+
+	public String getSettlementName() {
+		return settlementName;
+	}
+
+	public void setSettlementName(String settlementName) {
+		this.settlementName = settlementName;
+	}
 
 	public int getImmigrantsDue() {
 		return immigrantsDue;
@@ -104,6 +113,8 @@ public class SettlementState implements Persistable {
 	@Override
 	public void writeTo(SavedGameStateHolder savedGameStateHolder) {
 		JSONObject asJson = savedGameStateHolder.settlementStateJson;
+
+		asJson.put("settlementName", settlementName);
 
 		JSONObject furnitureEntityJson = new JSONObject(true);
 		for (Map.Entry<Long, Entity> entry : furnitureHoldingCompletedCooking.entrySet()) {
@@ -231,11 +242,24 @@ public class SettlementState implements Persistable {
 			asJson.put("craftingRecipeSelections", craftingRecipeSelectionJson);
 		}
 
+		if (!usedTwitchViewers.isEmpty()) {
+			JSONArray viewerNames = new JSONArray();
+			for (TwitchViewer twitchViewer : usedTwitchViewers) {
+				viewerNames.add(twitchViewer.getUsername());
+			}
+			asJson.put("usedTwitchViewers", viewerNames);
+		}
+
 		savedGameStateHolder.setSettlementState(this);
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		this.settlementName = asJson.getString("settlementName");
+		if (this.settlementName == null) {
+			throw new InvalidSaveException("Settlement name not specified");
+		}
+
 		JSONObject furnitureEntityJson = asJson.getJSONObject("furnitureHoldingCompletedCooking");
 		for (String keyString : furnitureEntityJson.keySet()) {
 			long key = Long.valueOf(keyString);
@@ -403,6 +427,13 @@ public class SettlementState implements Persistable {
 					selection.readFrom(selectionJson, savedGameStateHolder, relatedStores);
 					craftingRecipeMaterialSelections.put(recipe, selection);
 				}
+			}
+		}
+
+		JSONArray usedTwitchViewersJson = asJson.getJSONArray("usedTwitchViewers");
+		if (usedTwitchViewersJson != null) {
+			for (Object o : usedTwitchViewersJson) {
+				usedTwitchViewers.add(new TwitchViewer(o.toString()));
 			}
 		}
 	}

@@ -1,42 +1,12 @@
 [ {
-  "roomName" : "STOCKPILE_RESOURCES",
-  "i18nKey" : "STOCKPILE.RESOURCES",
+  "roomName" : "STOCKPILE",
+  "i18nKey" : "ROOMS.STOCKPILE",
   "colorCode" : "#F2ED5A",
   "iconName" : "brick-pile",
   "furnitureNames" : [ ],
   "edgeName" : "soft",
   "tags" : {
-    "STOCKPILE" : [ "Resources" ]
-  }
-}, {
-  "roomName" : "STOCKPILE_TOOLS",
-  "i18nKey" : "STOCKPILE.TOOLS",
-  "colorCode" : "#c6c6c6",
-  "iconName" : "stone-crafting",
-  "furnitureNames" : [ ],
-  "edgeName" : "soft",
-  "tags" : {
-    "STOCKPILE" : [ "Tools" ]
-  }
-}, {
-  "roomName" : "STOCKPILE_GRANARY",
-  "i18nKey" : "STOCKPILE.GRANARY",
-  "colorCode" : "#eda948",
-  "iconName" : "grain",
-  "furnitureNames" : [ ],
-  "edgeName" : "soft",
-  "tags" : {
-    "STOCKPILE" : [ "Granary" ]
-  }
-}, {
-  "roomName" : "STOCKPILE_PANTRY",
-  "i18nKey" : "STOCKPILE.PANTRY",
-  "colorCode" : "#7cb167",
-  "iconName" : "fruit-bowl",
-  "furnitureNames" : [ ],
-  "edgeName" : "soft",
-  "tags" : {
-    "STOCKPILE" : [ "Pantry" ]
+    "STOCKPILE" : [ ]
   }
 }, {
   "roomName" : "FARM_PLOT",

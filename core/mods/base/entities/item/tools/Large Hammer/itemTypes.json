@@ -1,11 +1,10 @@
 [{
   "itemTypeName": "Tool-Large-Hammer",
-  "itemGroup": "TOOL",
   "materialTypes": ["METAL", "WOOD"],
   "primaryMaterialType": "METAL",
   "maxStackSize": 1,
   "maxHauledAtOnce": 1,
-  "stockpileGroupName": "Tools",
+  "stockpileGroupName": "TOOLS",
   "holdPosition": "RIGHT_HAND",
   "impedesMovement": false,
   "blocksMovement": false,

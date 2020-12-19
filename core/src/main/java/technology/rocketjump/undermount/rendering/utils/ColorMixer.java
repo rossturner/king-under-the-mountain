@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.rendering.utils;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 
+import java.util.Collection;
 import java.util.Random;
 
 public class ColorMixer {
@@ -55,6 +56,16 @@ public class ColorMixer {
 		}
 		pickedColor.a = 1;
 		return pickedColor;
+	}
+
+	public static Color averageBlend(Collection<Color> colors) {
+		float numColors = colors.size();
+		Color averageColor = new Color();
+		for (Color color : colors) {
+			averageColor.add(color.cpy().mul(1f / numColors));
+		}
+		averageColor.a = 1;
+		return averageColor;
 	}
 
 	public static Color average(Color oldColor, Color newColor) {

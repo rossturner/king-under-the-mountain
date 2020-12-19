@@ -25,6 +25,7 @@ import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathRe
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
+import technology.rocketjump.undermount.environment.model.GameSpeed;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.JobStore;
@@ -90,11 +91,12 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 	private final I18nLabel inventoryLabel;
 
 	private final Map<EntityNeed, I18nLabel> needLabels;
+	private final ImageButtonFactory imageButtonFactory;
 
 	@Inject
 	public EntitySelectedGuiView(GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher, I18nTranslator i18nTranslator,
 								 GameInteractionStateContainer gameInteractionStateContainer, IconButtonFactory iconButtonFactory,
-								 EntityStore entityStore, JobStore jobStore, I18nWidgetFactory i18nWidgetFactory, JobTypeDictionary jobTypeDictionary) {
+								 EntityStore entityStore, JobStore jobStore, I18nWidgetFactory i18nWidgetFactory, JobTypeDictionary jobTypeDictionary, ImageButtonFactory imageButtonFactory) {
 		uiSkin = guiSkinRepository.getDefault();
 		this.i18nTranslator = i18nTranslator;
 		this.gameInteractionStateContainer = gameInteractionStateContainer;
@@ -102,6 +104,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		this.jobStore = jobStore;
 		this.i18nWidgetFactory = i18nWidgetFactory;
 		this.messageDispatcher = messageDispatcher;
+		this.imageButtonFactory = imageButtonFactory;
 
 		outerTable = new Table(uiSkin);
 		outerTable.background("default-rect");
@@ -308,7 +311,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		upperRow.clear();
 		lowerRow.clear();
 
-		populateSettlerNameTable(entity, nameTable, i18nTranslator, uiSkin, gameContext, messageDispatcher);
+		populateSettlerNameTable(entity, nameTable, i18nTranslator, uiSkin, gameContext, messageDispatcher, imageButtonFactory);
 
 		InventoryComponent inventoryComponent = entity.getComponent(InventoryComponent.class);
 		if (containsSomething(inventoryComponent, null)) {
@@ -341,8 +344,42 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		entityDescriptionTable.add(lowerRow).left();
 	}
 
-	public static void populateSettlerNameTable(Entity entity, Table nameTable, I18nTranslator i18nTranslator, Skin uiSkin, GameContext gameContext, MessageDispatcher messageDispatcher) {
-		nameTable.add(new I18nTextWidget(i18nTranslator.getDescription(entity), uiSkin, messageDispatcher)).left().row();
+	public static void populateSettlerNameTable(Entity entity, Table nameTable, I18nTranslator i18nTranslator, Skin uiSkin, GameContext gameContext, MessageDispatcher messageDispatcher, ImageButtonFactory imageButtonFactory) {
+		Cell<I18nTextWidget> nameCell = nameTable.add(new I18nTextWidget(i18nTranslator.getDescription(entity), uiSkin, messageDispatcher)).left();
+
+		if (imageButtonFactory != null) {
+			ImageButton changeSettlerNameButton = imageButtonFactory.create("fountain-pen", true);
+			changeSettlerNameButton.setAction(() -> {
+				// Grabbing translations here so they're always for the correct language
+				I18nText renameRoomDialogTitle = i18nTranslator.getTranslatedString("GUI.DIALOG.RENAME_SETTLER_TITLE");
+				I18nText descriptionText = i18nTranslator.getTranslatedString("RENAME_DESC");
+				I18nText buttonText = i18nTranslator.getTranslatedString("GUI.DIALOG.OK_BUTTON");
+
+				final GameSpeed currentSpeed = gameContext.getGameClock().getCurrentGameSpeed();
+				final boolean performPause = !gameContext.getGameClock().isPaused();
+				if (performPause) {
+					messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.PAUSED);
+				}
+
+				HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				String originalName = attributes.getName().toString();
+
+				TextInputDialog textInputDialog = new TextInputDialog(renameRoomDialogTitle, descriptionText, originalName, buttonText, uiSkin, (newName) -> {
+					if (performPause) {
+						// unpause from forced pause
+						messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.PAUSED);
+					}
+					if (!originalName.equals(newName) && !newName.isEmpty()) {
+						attributes.getName().rename(newName);
+					}
+				}, messageDispatcher);
+				messageDispatcher.dispatchMessage(MessageType.SHOW_DIALOG, textInputDialog);
+			});
+			nameTable.add(changeSettlerNameButton).left().padLeft(5).row();
+		} else {
+			nameCell.row();
+		}
+
 		if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
 			I18nText goalDescription = i18nTranslator.getCurrentGoalDescription(entity, gameContext);
 			nameTable.add(new I18nTextWidget(goalDescription, uiSkin, messageDispatcher)).left().row();

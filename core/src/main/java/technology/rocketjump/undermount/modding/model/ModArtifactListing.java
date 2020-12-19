@@ -172,6 +172,8 @@ public class ModArtifactListing {
 						"text/names/old_norse", "descriptor.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 				def("text/old_norse", "given_names", COPY_ORIGINAL_FILES, CSV, null,
 						"text/names/old_norse", "given_names.csv", CSV, REPLACES_EXISTING, CopyFilesProcessor.class),
+				def("text/settlement", "descriptor", SINGLE_FILE, JSON_OBJECT, null,
+						"text/names/settlement", "descriptor.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 
 				////////// tilesets //////////
 				def("tilesets", "entities", SPECIAL, PACKR_ATLAS_PLUS_NORMALS, null,

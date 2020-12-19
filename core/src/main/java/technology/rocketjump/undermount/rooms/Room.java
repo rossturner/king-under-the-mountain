@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.rooms;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
@@ -14,6 +15,7 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.Persistable;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.components.RoomComponent;
 import technology.rocketjump.undermount.rooms.components.RoomComponentMap;
 import technology.rocketjump.undermount.rooms.components.behaviour.RoomBehaviourComponent;
@@ -26,6 +28,7 @@ public class Room implements Persistable {
 	private String roomName;
 	private boolean nameChangedByPlayer;
 	private RoomType roomType;
+	private Color borderColor = null;
 	private final Map<GridPoint2, RoomTile> roomTiles = new HashMap<>();
 	private final Vector2 avgWorldPosition = new Vector2();
 	private final RoomComponentMap componentMap = new RoomComponentMap();
@@ -201,6 +204,18 @@ public class Room implements Persistable {
 		this.nameChangedByPlayer = nameChangedByPlayer;
 	}
 
+	public Color getBorderColor() {
+		if (borderColor == null) {
+			return roomType.getColor();
+		} else {
+			return borderColor;
+		}
+	}
+
+	public void setBorderColor(Color borderColor) {
+		this.borderColor = borderColor;
+	}
+
 	@Override
 	public void writeTo(SavedGameStateHolder savedGameStateHolder) {
 		if (savedGameStateHolder.rooms.containsKey(this.roomId)) {
@@ -232,6 +247,10 @@ public class Room implements Persistable {
 				componentsJson.add(componentJson);
 			}
 			asJson.put("components", componentsJson);
+		}
+
+		if (borderColor != null) {
+			asJson.put("borderColor", HexColors.toHexString(borderColor));
 		}
 
 		savedGameStateHolder.rooms.put(roomId, this);
@@ -271,6 +290,8 @@ public class Room implements Persistable {
 				component.readFrom(componentJson, savedGameStateHolder, relatedStores);
 			}
 		}
+
+		this.borderColor = HexColors.get(asJson.getString("borderColor"));
 
 		recalculatePosition();
 

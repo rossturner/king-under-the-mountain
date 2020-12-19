@@ -24,14 +24,15 @@ public class MessageType {
 	public static final int TRIGGER_SCREEN_SHAKE = 206;
 
 	// GUI Messages
-	public static final int ROOM_PLACEMENT = 248;
-	public static final int AREA_SELECTION = 249;
-	public static final int GUI_SWITCH_VIEW = 250;
-	public static final int GUI_SWITCH_INTERACTION_MODE = 251;
-	public static final int GUI_SWITCH_VIEW_MODE = 252;
-	public static final int GUI_CANCEL_CURRENT_VIEW = 253;
-	public static final int DESIGNATION_APPLIED = 254;
-	public static final int REMOVE_DESIGNATION = 255;
+	public static final int ROOM_PLACEMENT = 247;
+	public static final int AREA_SELECTION = 248;
+	public static final int GUI_SWITCH_VIEW = 249;
+	public static final int GUI_SWITCH_INTERACTION_MODE = 250;
+	public static final int GUI_SWITCH_VIEW_MODE = 251;
+	public static final int GUI_CANCEL_CURRENT_VIEW = 252;
+	public static final int DESIGNATION_APPLIED = 253;
+	public static final int REMOVE_DESIGNATION = 254;
+	public static final int GUI_STOCKPILE_GROUP_SELECTED = 255;
 	public static final int GUI_ROOM_TYPE_SELECTED = 256;
 	public static final int GUI_FURNITURE_TYPE_SELECTED = 257;
 	public static final int SET_GAME_SPEED = 258;
@@ -53,6 +54,8 @@ public class MessageType {
 	public static final int HINT_ACTION_TRIGGERED = 274;
 	public static final int REPLACE_JOB_PRIORITY = 275;
 	public static final int SHOW_SPECIFIC_CRAFTING = 278;
+	public static final int SET_MAIN_MENU_BACKGROUND_SCROLLING = 279;
+	public static final int PREFERENCE_CHANGED = 280;
 
 	// i18n Messages
 	public static final int LANGUAGE_CHANGED = 290;
@@ -163,12 +166,15 @@ public class MessageType {
 	public static final int REQUEST_LIQUID_REMOVAL = 1106;
 
 	// Saved game messages
-	public static final int REQUEST_QUICKSAVE = 1200;
-	public static final int PERFORM_QUICKSAVE = 1201;
-	public static final int TRIGGER_QUICKLOAD = 1202;
-	public static final int SHOW_AUTOSAVE_PROMPT = 1203;
-	public static final int HIDE_AUTOSAVE_PROMPT = 1204;
-	public static final int SAVE_COMPLETED = 1205;
+	public static final int REQUEST_SAVE = 1200;
+	public static final int PERFORM_LOAD = 1201;
+	public static final int PERFORM_SAVE = 1202;
+	public static final int TRIGGER_QUICKLOAD = 1203;
+	public static final int SHOW_AUTOSAVE_PROMPT = 1204;
+	public static final int HIDE_AUTOSAVE_PROMPT = 1205;
+	public static final int SAVE_COMPLETED = 1206;
+	public static final int SAVED_GAMES_PARSED = 1207;
+	public static final int SAVED_GAMES_LIST_UPDATED = 1208;
 
 	// Map messages
 	public static final int FLOOD_FILL_EXPLORATION = 1300;
@@ -182,6 +188,11 @@ public class MessageType {
 	public static final int REQUEST_SOUND_ASSET = 1401;
 	public static final int REQUEST_STOP_SOUND_LOOP = 1402;
 
+	// Twitch integration messages
+	public static final int TWITCH_AUTH_CODE_SUPPLIED = 1500;
+	public static final int TWITCH_AUTH_CODE_FAILURE = 1501;
+	public static final int TWITCH_TOKEN_UPDATED = 1502;
+	public static final int TWITCH_ACCOUNT_INFO_UPDATED = 1503;
 
 
 }

@@ -41,7 +41,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 	int idx = 0;
 	Texture colorTexture = null;
 	Texture alphaTexture = null;
-	float invColorTexWidth = 0, invAlphaTextureWidth = 0,
+	float invColorTexWidth = 0, invAlphaTexWidth = 0,
 			invColorTexHeight = 0, invAlphaTexHeight = 0;
 
 	boolean drawing = false;
@@ -58,6 +58,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 
 	float color = Color.WHITE.toFloatBits();
 	private Color tempColor = new Color(1, 1, 1, 1);
+	private Color[] vertexColors = new Color[4];
 
 	/**
 	 * Number of render calls since the last {@link #begin()}.
@@ -80,7 +81,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 	 * respect to the current screen resolution.
 	 * <p>
 	 * The defaultShader specifies the shader to use. Note that the names for uniforms for this default shader are different than
-	 * the ones expect for shaders set with {@link #setShader(ShaderProgram)}. See {@link #createDefaultShader()}.
+	 * the ones expect for shaders set with {@link #setShader(ShaderProgram)}
 	 *
 	 */
 	public AlphaMaskSpriteBatch() {
@@ -124,7 +125,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 		this.alphaTexture = alphaTexture;
 		invColorTexWidth = 1.0f / colorTexture.getWidth();
 		invColorTexHeight = 1.0f / colorTexture.getHeight();
-		invAlphaTextureWidth = 1.0f / alphaTexture.getWidth();
+		invAlphaTexWidth = 1.0f / alphaTexture.getWidth();
 		invAlphaTexHeight = 1.0f / alphaTexture.getHeight();
 	}
 
@@ -177,7 +178,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 		return color;
 	}
 
-	public void draw(Sprite colorSprite, Sprite alphaSprite, float x, float y, float width, float height) {
+	public void draw(Sprite colorSprite, Sprite alphaSprite, float x, float y, float width, float height, Color color) {
 		if (!drawing) throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
 
 		float[] vertices = this.vertices;
@@ -202,7 +203,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 
 		vertices[idx++] = x;
 		vertices[idx++] = y;
-		vertices[idx++] = color;
+		vertices[idx++] = color.toFloatBits();
 		vertices[idx++] = color_u;
 		vertices[idx++] = color_v;
 		vertices[idx++] = alpha_u;
@@ -210,7 +211,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 
 		vertices[idx++] = x;
 		vertices[idx++] = fy2;
-		vertices[idx++] = color;
+		vertices[idx++] = color.toFloatBits();
 		vertices[idx++] = color_u;
 		vertices[idx++] = color_v2;
 		vertices[idx++] = alpha_u;
@@ -218,7 +219,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 
 		vertices[idx++] = fx2;
 		vertices[idx++] = fy2;
-		vertices[idx++] = color;
+		vertices[idx++] = color.toFloatBits();
 		vertices[idx++] = color_u2;
 		vertices[idx++] = color_v2;
 		vertices[idx++] = alpha_u2;
@@ -226,15 +227,94 @@ public class AlphaMaskSpriteBatch implements Disposable {
 
 		vertices[idx++] = fx2;
 		vertices[idx++] = y;
-		vertices[idx++] = color;
+		vertices[idx++] = color.toFloatBits();
 		vertices[idx++] = color_u2;
 		vertices[idx++] = color_v;
 		vertices[idx++] = alpha_u2;
 		vertices[idx++] = alpha_v;
 	}
 
+	public void draw(Sprite colorSprite, Sprite alphaSprite, float tileX, float tileY, float offsetX, float offsetY, float width, float height) {
+		if (!drawing) throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
 
-	public void draw(Sprite colorSprite, Sprite alphaSprite, float x, float y, float width, float height, Color[] vertexColors) {
+		float[] vertices = this.vertices;
+
+		if (colorSprite.getTexture() != colorTexture || alphaSprite.getTexture() != alphaTexture) {
+			setTextures(colorSprite.getTexture(), alphaSprite.getTexture());
+		}
+
+		if (idx == vertices.length) //
+			flush();
+
+		final float fx = tileX + offsetX;
+		final float fy = tileY + offsetY;
+		final float fx2 = fx + width;
+		final float fy2 = fy + height;
+
+		final float color_u = (colorSprite.getRegionX() + (offsetX * colorSprite.getRegionWidth())) * invColorTexWidth;
+		final float color_v = (colorSprite.getRegionY() + ((0.5f - offsetY) * colorSprite.getRegionHeight())) * invColorTexHeight;
+		final float color_u2 = color_u + (colorSprite.getRegionWidth() * width * invColorTexWidth);
+		final float color_v2 = color_v + (colorSprite.getRegionHeight() * height * invColorTexHeight);
+
+		final float alpha_u = (alphaSprite.getRegionX() + (offsetX * alphaSprite.getRegionWidth())) * invAlphaTexWidth;
+		final float alpha_v = (alphaSprite.getRegionY() + ((0.5f - offsetY) * alphaSprite.getRegionHeight())) * invAlphaTexHeight;
+		final float alpha_u2 = alpha_u + (alphaSprite.getRegionWidth() * width * invAlphaTexWidth);
+		final float alpha_v2 = alpha_v + (alphaSprite.getRegionHeight() * height * invAlphaTexHeight);
+
+		float vCol0 = vertexColors[0].toFloatBits(); // SW
+		float vCol1 = vertexColors[1].toFloatBits(); // NW
+		float vCol2 = vertexColors[2].toFloatBits(); // NE
+		float vCol3 = vertexColors[3].toFloatBits(); // SE
+
+		if (!vertexColors[0].equals(vertexColors[1]) || !vertexColors[2].equals(vertexColors[3])) {
+			// skip this when colors the same
+			if (offsetX > 0 && offsetY > 0) {
+				vCol0 = vertexColors[0].cpy().lerp(vertexColors[1], 0.5f).lerp(vertexColors[2].cpy().lerp(vertexColors[3], 0.5f), 0.5f).toFloatBits();
+				vCol1 = vertexColors[1].cpy().lerp(vertexColors[2], 0.5f).toFloatBits();
+				vCol3 = vertexColors[2].cpy().lerp(vertexColors[3], 0.5f).toFloatBits();
+			} else if (offsetX > 0) {
+				vCol0 = vertexColors[0].cpy().lerp(vertexColors[3], 0.5f).toFloatBits();
+				vCol2 = vertexColors[1].cpy().lerp(vertexColors[2], 0.5f).toFloatBits();
+			} else if (offsetY > 0) {
+				vCol0 = vertexColors[0].cpy().lerp(vertexColors[1], 0.5f).toFloatBits();
+				vCol3 = vertexColors[2].cpy().lerp(vertexColors[3], 0.5f).toFloatBits();
+			}
+		}
+
+		vertices[idx++] = fx;
+		vertices[idx++] = fy;
+		vertices[idx++] = vCol0;
+		vertices[idx++] = color_u;
+		vertices[idx++] = color_v2;
+		vertices[idx++] = alpha_u;
+		vertices[idx++] = alpha_v2;
+
+		vertices[idx++] = fx;
+		vertices[idx++] = fy2;
+		vertices[idx++] = vCol1;
+		vertices[idx++] = color_u;
+		vertices[idx++] = color_v;
+		vertices[idx++] = alpha_u;
+		vertices[idx++] = alpha_v;
+
+		vertices[idx++] = fx2;
+		vertices[idx++] = fy2;
+		vertices[idx++] = vCol2;
+		vertices[idx++] = color_u2;
+		vertices[idx++] = color_v;
+		vertices[idx++] = alpha_u2;
+		vertices[idx++] = alpha_v;
+
+		vertices[idx++] = fx2;
+		vertices[idx++] = fy;
+		vertices[idx++] = vCol3;
+		vertices[idx++] = color_u2;
+		vertices[idx++] = color_v2;
+		vertices[idx++] = alpha_u2;
+		vertices[idx++] = alpha_v2;
+	}
+
+	public void draw(Sprite colorSprite, Sprite alphaSprite, float x, float y, float width, float height) {
 		if (!drawing) throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
 
 		float[] vertices = this.vertices;
@@ -378,6 +458,10 @@ public class AlphaMaskSpriteBatch implements Disposable {
 			this.shader.begin();
 			setupMatrices();
 		}
+	}
+
+	public void setColors(Color[] vertexColors) {
+		this.vertexColors = vertexColors;
 	}
 
 	public boolean isDrawing() {
