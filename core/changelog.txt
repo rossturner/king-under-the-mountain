@@ -13,6 +13,7 @@ Alpha 5 - 19th December 2020
 - Pressing escape in a management screen will now go back to the main game (you can also right-click in the grey areas)
 - Changed settler management to show non-selected professions as greyed-out, not removed
 - Settler management can now be sorted by name (new default), or unhappiness (old default)
+- Added a short term memory for settlers to remember if they recently tried to place an item from inventory to a stockpile but failed, so they won't try again, to avoid getting stuck trying to use an inaccessible stockpile
 
 Alpha 4.2.4 - 19th Devember 2020
 

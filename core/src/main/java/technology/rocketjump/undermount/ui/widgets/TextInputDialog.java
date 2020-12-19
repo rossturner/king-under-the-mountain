@@ -15,7 +15,7 @@ public class TextInputDialog extends GameDialog {
 		super(titleText, uiSkin, messageDispatcher);
 //		withText(descriptionText);
 		inputBox = new TextField(inputPlaceholder, uiSkin);
-		dialog.getContentTable().add(inputBox).row();
+		dialog.getContentTable().add(inputBox).width(200).row();
 		withButton(buttonText, () -> {
 			onButtonClick.onOkButtonClick(inputBox.getText());
 		});

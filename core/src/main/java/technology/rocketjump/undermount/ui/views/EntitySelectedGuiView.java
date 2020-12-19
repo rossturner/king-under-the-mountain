@@ -351,7 +351,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			ImageButton changeSettlerNameButton = imageButtonFactory.create("fountain-pen", true);
 			changeSettlerNameButton.setAction(() -> {
 				// Grabbing translations here so they're always for the correct language
-				I18nText renameRoomDialogTitle = i18nTranslator.getTranslatedString("GUI.DIALOG.RENAME_SETTLER_TITLE");
+				I18nText renameDialogTitle = i18nTranslator.getTranslatedString("GUI.DIALOG.RENAME_SETTLER_TITLE");
 				I18nText descriptionText = i18nTranslator.getTranslatedString("RENAME_DESC");
 				I18nText buttonText = i18nTranslator.getTranslatedString("GUI.DIALOG.OK_BUTTON");
 
@@ -364,7 +364,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				String originalName = attributes.getName().toString();
 
-				TextInputDialog textInputDialog = new TextInputDialog(renameRoomDialogTitle, descriptionText, originalName, buttonText, uiSkin, (newName) -> {
+				TextInputDialog textInputDialog = new TextInputDialog(renameDialogTitle, descriptionText, originalName, buttonText, uiSkin, (newName) -> {
 					if (performPause) {
 						// unpause from forced pause
 						messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.PAUSED);
