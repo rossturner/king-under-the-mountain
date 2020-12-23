@@ -97,7 +97,7 @@
   "dismissable" : false
 }, {
   "hintId" : "tutorial_saving",
-  "i18nKeys" : [ "TUTORIAL.SAVING.A", "TUTORIAL.SAVING.B" ],
+  "i18nKeys" : [ "TUTORIAL.SAVING.A" ],
   "progressDescriptors" : [ ],
   "actions" : [ {
     "type" : "SHOW_OTHER_HINT",
@@ -128,12 +128,12 @@
   "hintId" : "tutorial_2",
   "i18nKeys" : [ "TUTORIAL.2.A", "TUTORIAL.2.B", "TUTORIAL.2.C", "TUTORIAL.2.D" ],
   "progressDescriptors" : [ {
-    "type" : "ROOM_TILES",
-    "targetTypeName" : "STOCKPILE_GRANARY",
+    "type" : "STOCKPILE_TILES",
+    "targetTypeName" : "SEEDS",
     "quantityRequired" : 10
   }, {
-    "type" : "ROOM_TILES",
-    "targetTypeName" : "STOCKPILE_TOOLS",
+    "type" : "STOCKPILE_TILES",
+    "targetTypeName" : "TOOLS",
     "quantityRequired" : 32
   } ],
   "actions" : [ {
@@ -185,8 +185,8 @@
     "targetTypeName" : "CHEFS_CAULDRON",
     "quantityRequired" : 1
   }, {
-    "type" : "ROOM_TILES",
-    "targetTypeName" : "STOCKPILE_PANTRY",
+    "type" : "STOCKPILE_TILES",
+    "targetTypeName" : "FOOD",
     "quantityRequired" : 10
   } ],
   "actions" : [ {

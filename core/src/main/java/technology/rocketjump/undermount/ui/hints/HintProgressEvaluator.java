@@ -14,11 +14,9 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
-import technology.rocketjump.undermount.rooms.Room;
-import technology.rocketjump.undermount.rooms.RoomStore;
-import technology.rocketjump.undermount.rooms.RoomType;
-import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
+import technology.rocketjump.undermount.rooms.*;
 import technology.rocketjump.undermount.rooms.components.FarmPlotComponent;
+import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
@@ -45,6 +43,7 @@ public class HintProgressEvaluator implements GameContextAware {
 	private final FurnitureTracker furnitureTracker;
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final ItemTracker itemTracker;
+	private final StockpileGroupDictionary stockpileGroupDictionary;
 
 	private GameContext gameContext;
 
@@ -52,7 +51,8 @@ public class HintProgressEvaluator implements GameContextAware {
 	public HintProgressEvaluator(I18nTranslator i18nTranslator, RoomTypeDictionary roomTypeDictionary, RoomStore roomStore,
 								 ProfessionDictionary professionDictionary, SettlerTracker settlerTracker,
 								 FurnitureTypeDictionary furnitureTypeDictionary, FurnitureTracker furnitureTracker,
-								 ItemTypeDictionary itemTypeDictionary, ItemTracker itemTracker) {
+								 ItemTypeDictionary itemTypeDictionary, ItemTracker itemTracker,
+								 StockpileGroupDictionary stockpileGroupDictionary) {
 		this.i18nTranslator = i18nTranslator;
 		this.roomTypeDictionary = roomTypeDictionary;
 		this.roomStore = roomStore;
@@ -62,6 +62,7 @@ public class HintProgressEvaluator implements GameContextAware {
 		this.furnitureTracker = furnitureTracker;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.itemTracker = itemTracker;
+		this.stockpileGroupDictionary = stockpileGroupDictionary;
 	}
 
 	public HintProgress evaluate(HintProgressDescriptor descriptor) {
@@ -87,6 +88,24 @@ public class HintProgressEvaluator implements GameContextAware {
 				} else {
 					for (Room room : roomStore.getByType(targetType)) {
 						quantity += room.getRoomTiles().size();
+					}
+
+					Map<String, I18nString> replacements = new HashMap<>();
+					replacements.put("roomName", i18nTranslator.getTranslatedString(targetType.getI18nKey(), I18nWordClass.NOUN));
+					targetDescription = i18nTranslator.getTranslatedWordWithReplacements("TUTORIAL.PROGRESS_DESCRIPTION.TILES", replacements);
+				}
+				break;
+			}
+			case STOCKPILE_TILES: {
+				StockpileGroup targetType = stockpileGroupDictionary.getByName(descriptor.getTargetTypeName());
+				if (targetType == null) {
+					Logger.error("Could not find stockpile group by type " + descriptor.getTargetTypeName() + " when evaluating " + descriptor.toString());
+				} else {
+					for (Room stockpile : roomStore.getByComponent(StockpileComponent.class)) {
+						StockpileComponent stockpileComponent = stockpile.getComponent(StockpileComponent.class);
+						if (stockpileComponent.isEnabled(targetType)) {
+							quantity += stockpile.getRoomTiles().size();
+						}
 					}
 
 					Map<String, I18nString> replacements = new HashMap<>();
