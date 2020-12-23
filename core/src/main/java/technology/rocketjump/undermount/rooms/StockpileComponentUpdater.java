@@ -30,10 +30,10 @@ public class StockpileComponentUpdater {
 		}
 	}
 
-	public void toggleItem(StockpileComponent stockpileComponent, ItemType itemType, boolean enabled, boolean recurseToParent, boolean reurseToChildren) {
+	public void toggleItem(StockpileComponent stockpileComponent, ItemType itemType, boolean enabled, boolean recurseToParent, boolean recurseToChildren) {
 		stockpileComponent.toggleItem(itemType, enabled);
 
-		if (reurseToChildren) {
+		if (recurseToChildren) {
 			for (GameMaterial gameMaterial : gameMaterialDictionary.getByType(itemType.getPrimaryMaterialType())) {
 				stockpileComponent.toggleMaterial(itemType, gameMaterial, enabled);
 				toggleMaterial(stockpileComponent, itemType, gameMaterial, enabled, false);

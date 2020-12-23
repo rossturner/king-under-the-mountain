@@ -62,6 +62,10 @@ public class StockpileManagementTree extends Table {
 				boolean allMaterialsDisabled = true;
 
 				for (GameMaterial material : gameMaterialDictionary.getByType(itemType.getPrimaryMaterialType())) {
+					if (material.isUseMaterialTypeAsAdjective()) {
+						// This is for wood types from bushes that should not show up anywhere, so skip them here
+						continue;
+					}
 					StockpileTreeNode materialNode = new StockpileTreeNode();
 					materialNode.setValue(new StockpileTreeValue(material, itemType));
 					createCheckbox(materialNode, material.getI18nKey());
