@@ -7,7 +7,11 @@ import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
+import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.JSONUtils;
@@ -20,6 +24,7 @@ import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import java.util.Objects;
 
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
+import static technology.rocketjump.undermount.jobs.model.JobTarget.JobTargetType.*;
 
 public class Job implements Persistable {
 
@@ -393,4 +398,37 @@ public class Job implements Persistable {
 		savedGameStateHolder.jobs.put(this.jobId, this);
 	}
 
+	public JobTarget getTargetOfJob(GameContext gameContext) {
+		if (cookingRecipe != null) {
+			return new JobTarget(COOKING_RECIPE, cookingRecipe);
+		}
+
+		if (targetId != null) {
+			Entity targetEntity = gameContext.getEntities().get(targetId);
+			if (targetEntity != null) {
+				return new JobTarget(ENTITY, targetEntity);
+			}
+		}
+
+		if (jobLocation != null) {
+			MapTile targetTile = gameContext.getAreaMap().getTile(jobLocation);
+			if (targetTile.hasConstruction()) {
+				return new JobTarget(CONSTRUCTION, targetTile.getConstruction());
+			} else if (targetTile.hasDoorway()) {
+				return new JobTarget(ENTITY, targetTile.getDoorway().getDoorEntity());
+			} else if (targetTile.getFloor().hasBridge()) {
+				return new JobTarget(BRIDGE, targetTile.getFloor().getBridge());
+			} else {
+				for (Entity targetTileEntity : targetTile.getEntities()) {
+					if (targetTileEntity.getType().equals(EntityType.PLANT)) {
+						return new JobTarget(ENTITY, targetTileEntity);
+					}
+				}
+				return new JobTarget(TILE, targetTile);
+			}
+
+		}
+
+		return null;
+	}
 }

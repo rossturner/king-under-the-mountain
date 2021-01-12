@@ -524,7 +524,7 @@ Dwarf-Beard01-Accessory-F
   index: -1
 Dwarf-Beard01-Accessory-F34
   rotate: false
-  xy: 707, 592
+  xy: 531, 2
   size: 14, 11
   orig: 14, 11
   offset: 0, 0
@@ -2344,7 +2344,7 @@ Dwarf-HairC-Color-F34+B34flip
   index: -1
 Dwarf-HairC-Outline-F+B
   rotate: false
-  xy: 531, 2
+  xy: 1609, 1669
   size: 14, 11
   orig: 14, 11
   offset: 0, 0
@@ -4234,7 +4234,7 @@ Forge C
   index: -1
 Furnace A
   rotate: false
-  xy: 1609, 1665
+  xy: 1707, 1280
   size: 14, 15
   orig: 14, 15
   offset: 0, 0
@@ -4367,7 +4367,7 @@ Giant Mushroom Sapling Head
   index: -1
 Giant Mushroom Sapling Stem
   rotate: false
-  xy: 734, 1171
+  xy: 562, 287
   size: 11, 26
   orig: 11, 26
   offset: 0, 0
@@ -4815,7 +4815,7 @@ Resource-Gems-Unrefined03
   index: -1
 Resource-Logs-Large-Pile01-Interior
   rotate: false
-  xy: 1609, 1653
+  xy: 1038, 783
   size: 14, 10
   orig: 14, 10
   offset: 0, 0
@@ -4941,7 +4941,7 @@ Resource-Logs-Large02-Single-Exterior-34
   index: -1
 Resource-Logs-Small-Pile01-Interior
   rotate: false
-  xy: 848, 1171
+  xy: 831, 1074
   size: 9, 8
   orig: 9, 8
   offset: 0, 0
@@ -5067,7 +5067,7 @@ Resource-Logs-Small02-Single-Exterior-34
   index: -1
 Resource-Metal-Ingot-Pile01
   rotate: false
-  xy: 562, 294
+  xy: 1401, 1039
   size: 11, 19
   orig: 11, 19
   offset: 0, 0
@@ -5879,7 +5879,7 @@ Tool-Plane-Body-Being-Carried-B
   index: -1
 Tool-Plane-Body-Being-Carried-B34
   rotate: false
-  xy: 1707, 1276
+  xy: 1385, 1039
   size: 14, 19
   orig: 14, 19
   offset: 0, 0
@@ -5914,7 +5914,7 @@ Tool-Plane-Extra-Being-Carried-B
   index: -1
 Tool-Plane-Extra-Being-Carried-B34
   rotate: false
-  xy: 1385, 1039
+  xy: 597, 122
   size: 14, 19
   orig: 14, 19
   offset: 0, 0
@@ -5977,7 +5977,7 @@ Tool-Rolling-Pin-On-Ground
   index: -1
 Tool-Saw-Blade-Being-Carried-B
   rotate: false
-  xy: 597, 122
+  xy: 3147, 1790
   size: 14, 19
   orig: 14, 19
   offset: 0, 0
@@ -6026,7 +6026,7 @@ Tool-Saw-Extras-Being-Carried-B34
   index: -1
 Tool-Saw-Extras-Being-Carried-F
   rotate: false
-  xy: 3147, 1790
+  xy: 489, 353
   size: 14, 19
   orig: 14, 19
   offset: 0, 0
@@ -6047,7 +6047,7 @@ Tool-Saw-Extras-On-Ground
   index: -1
 Tool-Saw-Handle-Being-Carried-B
   rotate: false
-  xy: 489, 353
+  xy: 734, 1178
   size: 14, 19
   orig: 14, 19
   offset: 0, 0
@@ -6712,7 +6712,7 @@ crop_potato_medium_leaves
   index: -1
 crop_potato_shoots
   rotate: false
-  xy: 1647, 1073
+  xy: 1609, 1653
   size: 14, 14
   orig: 14, 14
   offset: 0, 0
@@ -7114,6 +7114,20 @@ oak-3-t
   xy: 1050, 1696
   size: 212, 350
   orig: 212, 350
+  offset: 0, 0
+  index: -1
+pebble
+  rotate: false
+  xy: 707, 592
+  size: 18, 11
+  orig: 18, 11
+  offset: 0, 0
+  index: -1
+pebble2
+  rotate: false
+  xy: 848, 1171
+  size: 12, 8
+  orig: 12, 8
   offset: 0, 0
   index: -1
 pine_01_l

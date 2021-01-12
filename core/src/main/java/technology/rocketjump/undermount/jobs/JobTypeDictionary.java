@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
 import technology.rocketjump.undermount.jobs.model.JobType;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,14 +24,17 @@ public class JobTypeDictionary {
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final ProfessionDictionary professionDictionary;
 	private final SoundAssetDictionary soundAssetDictionary;
+	private final ParticleEffectTypeDictionary particleEffectTypeDictionary;
 
 	private final Map<String, JobType> byName = new HashMap<>();
 
 	@Inject
-	public JobTypeDictionary(ItemTypeDictionary itemTypeDictionary, ProfessionDictionary professionDictionary, SoundAssetDictionary soundAssetDictionary) {
+	public JobTypeDictionary(ItemTypeDictionary itemTypeDictionary, ProfessionDictionary professionDictionary,
+							 SoundAssetDictionary soundAssetDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.professionDictionary = professionDictionary;
 		this.soundAssetDictionary = soundAssetDictionary;
+		this.particleEffectTypeDictionary = particleEffectTypeDictionary;
 
 		File assetDefinitionsFile = new File("assets/definitions/types/jobTypes.json");
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -95,6 +99,12 @@ public class JobTypeDictionary {
 			jobType.setOnCompletionSoundAsset(soundAssetDictionary.getByName(jobType.getOnCompletionSoundAssetName()));
 			if (jobType.getOnCompletionSoundAsset() == null) {
 				Logger.error("Could not find sound asset with name " + jobType.getOnCompletionSoundAssetName() + " for job type " + jobType.getName());
+			}
+		}
+		if (jobType.getWorkOnJobParticleEffectName() != null) {
+			jobType.setWorkOnJobParticleEffectType(particleEffectTypeDictionary.getByName(jobType.getWorkOnJobParticleEffectName()));
+			if (jobType.getWorkOnJobParticleEffectType() == null) {
+				Logger.error("Could not find particle effect with name " + jobType.getWorkOnJobParticleEffectName() + " for job type " + jobType.getName());
 			}
 		}
 	}

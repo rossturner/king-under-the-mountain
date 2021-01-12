@@ -5,6 +5,7 @@ import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.entities.ai.goap.SpecialGoal;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.misc.Name;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
 public class JobType {
 
@@ -33,6 +34,9 @@ public class JobType {
 	@JsonIgnore
 	private SoundAsset onCompletionSoundAsset;
 
+	private String workOnJobParticleEffectName;
+	@JsonIgnore
+	private ParticleEffectType workOnJobParticleEffectType;
 
 	public String getName() {
 		return name;
@@ -152,6 +156,22 @@ public class JobType {
 
 	public void setWorkDuration(float workDuration) {
 		this.workDuration = workDuration;
+	}
+
+	public String getWorkOnJobParticleEffectName() {
+		return workOnJobParticleEffectName;
+	}
+
+	public void setWorkOnJobParticleEffectName(String workOnJobParticleEffectName) {
+		this.workOnJobParticleEffectName = workOnJobParticleEffectName;
+	}
+
+	public ParticleEffectType getWorkOnJobParticleEffectType() {
+		return workOnJobParticleEffectType;
+	}
+
+	public void setWorkOnJobParticleEffectType(ParticleEffectType workOnJobParticleEffectType) {
+		this.workOnJobParticleEffectType = workOnJobParticleEffectType;
 	}
 
 	@Override

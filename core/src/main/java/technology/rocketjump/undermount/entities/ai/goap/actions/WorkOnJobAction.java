@@ -9,12 +9,13 @@ import technology.rocketjump.undermount.entities.tags.ItemUsageSoundTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.JobCompletedMessage;
-import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
-import technology.rocketjump.undermount.messaging.types.RequestSoundStopMessage;
+import technology.rocketjump.undermount.messaging.types.*;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+
+import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
@@ -52,10 +53,36 @@ public class WorkOnJobAction extends Action {
 				}
 				activeSoundTriggered = true;
 			}
+
+			if (assignedJob.getType().getWorkOnJobParticleEffectType() != null) {
+				if (spawnedParticles.stream()
+						.filter(p -> p.getType().equals(assignedJob.getType().getWorkOnJobParticleEffectType()))
+						.findAny().isEmpty()) {
+					Action This = this;
+					parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
+							assignedJob.getType().getWorkOnJobParticleEffectType(),
+							Optional.of(parent.parentEntity),
+							Optional.ofNullable(assignedJob.getTargetOfJob(gameContext)
+							), instance -> {
+						if (instance != null) {
+							This.spawnedParticles.add(instance);
+						}
+					}));
+				}
+			}
+
+			float workCompletionFraction = Math.min(assignedJob.getWorkDoneSoFar() / assignedJob.getTotalWorkToDo(), 1f);
+
+			for (ParticleEffectInstance spawnedParticle : spawnedParticles) {
+				parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_UPDATE, new ParticleUpdateMessage(spawnedParticle, workCompletionFraction));
+			}
+
+
 			if (assignedJob.getTotalWorkToDo() <= assignedJob.getWorkDoneSoFar()) {
 				parent.messageDispatcher.dispatchMessage(MessageType.JOB_COMPLETED, new JobCompletedMessage(assignedJob, professionsComponent, parent.parentEntity));
 				completionType = SUCCESS;
 			}
+
 		} else {
 			completionType = FAILURE;
 		}

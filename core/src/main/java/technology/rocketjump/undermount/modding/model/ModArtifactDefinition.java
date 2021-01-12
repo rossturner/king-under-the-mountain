@@ -91,6 +91,7 @@ public class ModArtifactDefinition implements Comparable<ModArtifactDefinition> 
 		CSV(".csv"),
 		WAV(".wav"),
 		OGG(".ogg"),
+		P_FILE(".p"),
 		GLSL(".glsl"),
 		TTF(".ttf"),
 		PNG(".png"),

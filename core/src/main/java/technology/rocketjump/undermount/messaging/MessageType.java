@@ -194,5 +194,10 @@ public class MessageType {
 	public static final int TWITCH_TOKEN_UPDATED = 1502;
 	public static final int TWITCH_ACCOUNT_INFO_UPDATED = 1503;
 
+	// Particle effect messages
+	public static final int PARTICLE_REQUEST = 1600;
+	public static final int PARTICLE_UPDATE = 1601; // Used to create or update particles
+	public static final int PARTICLE_RELEASE = 1602; // Used to set particles to expire
+
 
 }

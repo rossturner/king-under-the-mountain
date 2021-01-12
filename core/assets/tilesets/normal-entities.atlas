@@ -524,7 +524,7 @@ Dwarf-Beard01-Accessory-F
   index: -1
 Dwarf-Beard01-Accessory-F34
   rotate: false
-  xy: 707, 592
+  xy: 3775, 1819
   size: 14, 11
   orig: 14, 11
   offset: 0, 0
@@ -2491,7 +2491,7 @@ Dwarf-HairC-Color-F34+B34flip
   index: -1
 Dwarf-HairC-Outline-F+B
   rotate: false
-  xy: 3775, 1819
+  xy: 1609, 1669
   size: 14, 11
   orig: 14, 11
   offset: 0, 0
@@ -4339,7 +4339,7 @@ Forge C
   index: -1
 Furnace A
   rotate: false
-  xy: 1609, 1665
+  xy: 1609, 1652
   size: 14, 15
   orig: 14, 15
   offset: 0, 0
@@ -4822,7 +4822,7 @@ Resource-Gems-Unrefined03
   index: -1
 Resource-Logs-Large-Pile01-Interior
   rotate: false
-  xy: 1609, 1653
+  xy: 811, 1763
   size: 14, 10
   orig: 14, 10
   offset: 0, 0
@@ -4948,7 +4948,7 @@ Resource-Logs-Large02-Single-Exterior-34
   index: -1
 Resource-Logs-Small-Pile01-Interior
   rotate: false
-  xy: 848, 1171
+  xy: 831, 1074
   size: 9, 8
   orig: 9, 8
   offset: 0, 0
@@ -7086,6 +7086,20 @@ oak-3-t
   xy: 1050, 1696
   size: 212, 350
   orig: 212, 350
+  offset: 0, 0
+  index: -1
+pebble
+  rotate: false
+  xy: 707, 592
+  size: 18, 11
+  orig: 18, 11
+  offset: 0, 0
+  index: -1
+pebble2
+  rotate: false
+  xy: 848, 1171
+  size: 12, 8
+  orig: 12, 8
   offset: 0, 0
   index: -1
 pine_01_l

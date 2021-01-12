@@ -4,12 +4,17 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.SwitchGoalException;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
+
+import java.util.List;
 
 public abstract class Action implements ChildPersistable {
 
 	protected final AssignedGoal parent;
 	protected CompletionType completionType;
+	protected List<ParticleEffectInstance> spawnedParticles;
 
 	public Action(AssignedGoal parent) {
 		this.parent = parent;
@@ -46,6 +51,15 @@ public abstract class Action implements ChildPersistable {
 	}
 
 	public CompletionType isCompleted() throws SwitchGoalException {
+		if (completionType != null) {
+			// This action is completed in some way so perform cleanup
+			if (spawnedParticles != null) {
+				for (ParticleEffectInstance spawnedParticle : spawnedParticles) {
+					parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, spawnedParticle);
+				}
+				this.spawnedParticles = null;
+			}
+		}
 		return completionType;
 	}
 
