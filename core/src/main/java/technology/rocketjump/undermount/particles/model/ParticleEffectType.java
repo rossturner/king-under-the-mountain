@@ -21,7 +21,7 @@ public class ParticleEffectType {
 		this.name = name;
 	}
 
-	public String getpFile() {
+	public String getPFile() {
 		return pFile;
 	}
 
@@ -29,7 +29,7 @@ public class ParticleEffectType {
 		this.pFile = pFile;
 	}
 
-	public boolean isLooping() {
+	public boolean getIsLooping() {
 		return isLooping;
 	}
 
@@ -45,7 +45,7 @@ public class ParticleEffectType {
 		this.usesTargetMaterialAsTintColor = usesTargetMaterialAsTintColor;
 	}
 
-	public boolean isAffectedByLighting() {
+	public boolean getIsAffectedByLighting() {
 		return isAffectedByLighting;
 	}
 
