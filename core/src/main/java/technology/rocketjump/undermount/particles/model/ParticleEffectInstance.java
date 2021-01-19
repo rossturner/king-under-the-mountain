@@ -1,8 +1,8 @@
 package technology.rocketjump.undermount.particles.model;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -81,5 +81,12 @@ public class ParticleEffectInstance {
 	@Override
 	public int hashCode() {
 		return Objects.hash(instanceId);
+	}
+
+	public void setPositionToParentEntity() {
+		if (attachedToEntity.isPresent()) {
+			this.setWorldPosition(attachedToEntity.get().getLocationComponent().getWorldOrParentPosition());
+			this.getWorldPosition().add(0, attachedToEntity.get().getLocationComponent().getRadius());
+		}
 	}
 }

@@ -159,6 +159,6 @@ behind: true
 premultipliedAlpha: false
 spriteMode: random
 - Image Paths -
-/C:/workspace/king-under-the-mountain/core/mods/base/paticles/sprites/pebble.png
-/C:/workspace/king-under-the-mountain/core/mods/base/paticles/sprites/pebble2.png
+/C:/workspace/king-under-the-mountain/core/mods/base/entities/particleSprites/pebble.png
+/C:/workspace/king-under-the-mountain/core/mods/base/entities/particleSprites/pebble2.png
 

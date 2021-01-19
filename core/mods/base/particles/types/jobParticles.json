@@ -1,11 +1,12 @@
 [
   {
     "name": "Chipping rock",
-    "pFile": "rockparticle.p",
+    "particleFile": "rockparticle.p",
+    "scale": 0.5,
     "isLooping": true,
     "isAffectedByLighting": true,
     "usesTargetMaterialAsTintColor": true,
     "distanceFromParentEntityOrientation": 0.5,
-    "attachedToParent": true
+    "attachedToParent": false
   }
 ]

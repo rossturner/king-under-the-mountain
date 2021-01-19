@@ -6,7 +6,8 @@ public class ParticleEffectType {
 
 	@Name
 	private String name;
-	private String pFile;
+	private String particleFile;
+	private float scale = 1f;
 	private boolean isLooping; // if true this effect will loop endlessly until stopped
 	private boolean usesTargetMaterialAsTintColor;
 	private boolean isAffectedByLighting;
@@ -21,12 +22,12 @@ public class ParticleEffectType {
 		this.name = name;
 	}
 
-	public String getPFile() {
-		return pFile;
+	public String getParticleFile() {
+		return particleFile;
 	}
 
-	public void setpFile(String pFile) {
-		this.pFile = pFile;
+	public void setParticleFile(String particleFile) {
+		this.particleFile = particleFile;
 	}
 
 	public boolean getIsLooping() {
@@ -67,5 +68,13 @@ public class ParticleEffectType {
 
 	public void setAttachedToParent(boolean attachedToParent) {
 		this.attachedToParent = attachedToParent;
+	}
+
+	public float getScale() {
+		return scale;
+	}
+
+	public void setScale(float scale) {
+		this.scale = scale;
 	}
 }

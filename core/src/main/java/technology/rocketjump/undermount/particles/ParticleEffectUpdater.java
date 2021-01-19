@@ -46,7 +46,7 @@ public class ParticleEffectUpdater implements Telegraph {
 
 			if (instance.getAttachedToEntity().isPresent()) {
 				if (instance.getType().isAttachedToParent()) {
-					instance.setWorldPosition(instance.getAttachedToEntity().get().getLocationComponent().getWorldOrParentPosition());
+					instance.setPositionToParentEntity();
 				}
 			} else {
 				// Not yet implemented - updating effects not attached to an entity

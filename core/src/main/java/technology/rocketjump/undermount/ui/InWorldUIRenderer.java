@@ -289,7 +289,7 @@ public class InWorldUIRenderer {
 			}
 		}
 
-		particlesToRenderAsUI.forEach(p -> p.getGdxParticleEffect().draw(spriteBatch, RenderMode.DIFFUSE));
+		particlesToRenderAsUI.forEach(p -> p.getGdxParticleEffect().draw(spriteBatch/*, RenderMode.DIFFUSE*/));
 
 		spriteBatch.end();
 		shapeRenderer.end();

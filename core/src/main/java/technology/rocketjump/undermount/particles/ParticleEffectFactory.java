@@ -1,6 +1,9 @@
 package technology.rocketjump.undermount.particles;
 
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
@@ -10,8 +13,6 @@ import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
-import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
-import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEmitter;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
@@ -39,16 +40,15 @@ public class ParticleEffectFactory {
 		for (ParticleEffectType particleEffectType : typeDictionary.getAll()) {
 
 			// load from pfile
-			FileHandle pfile = new FileHandle("assets/definitions/particles/" + particleEffectType.getPFile());
+			FileHandle pfile = new FileHandle("assets/definitions/particles/" + particleEffectType.getParticleFile());
 			if (!pfile.exists()) {
-				Logger.error("Could not find pfile with name " + particleEffectType.getPFile() + " in assets/definitions/particles");
+				Logger.error("Could not find pfile with name " + particleEffectType.getParticleFile() + " in assets/definitions/particles");
 				continue;
 			}
 
-			ParticleEffect baseInstance = new ParticleEffect(particleEffectType.getIsAffectedByLighting());
-			baseInstance.scaleEffect(1f/(64f * 64f));
-			baseInstance.load(pfile, diffuseTextureAtlas, normalTextureAtlas, null);
-
+			ParticleEffect baseInstance = new ParticleEffect(/*particleEffectType.getIsAffectedByLighting()*/);
+			baseInstance.load(pfile, diffuseTextureAtlas/*, normalTextureAtlas*/, null);
+			baseInstance.scaleEffect((1f / 64f) * particleEffectType.getScale());
 
 			baseInstancesByDefinition.put(particleEffectType, baseInstance);
 		}
@@ -59,16 +59,18 @@ public class ParticleEffectFactory {
 		ParticleEffect gdxBaseInstance = baseInstancesByDefinition.get(type);
 		ParticleEffect gdxClone = new ParticleEffect(gdxBaseInstance);
 		if (optionalMaterial.isPresent()) {
-			float[] colors = new float[] {optionalMaterial.get().getColor().toFloatBits(), optionalMaterial.get().getColor().toFloatBits(), optionalMaterial.get().getColor().toFloatBits()};
+			Color materialColor = optionalMaterial.get().getColor();
+			float[] colors = new float[] {materialColor.r, materialColor.g, materialColor.b};
 			for (ParticleEmitter emitter : gdxClone.getEmitters()) {
 				emitter.getTint().setColors(colors);
 			}
 		}
 
 		ParticleEffectInstance instance = new ParticleEffectInstance(SequentialIdGenerator.nextId(), type, gdxClone, Optional.of(parentEntity));
-		instance.setWorldPosition(parentEntity.getLocationComponent().getWorldOrParentPosition());
+		instance.setPositionToParentEntity();
 
-		Vector2 offset = parentEntity.getLocationComponent().getOrientation().toVector2().cpy().scl(type.getDistanceFromParentEntityOrientation());
+		Vector2 offset = parentEntity.getLocationComponent().getOrientation().toVector2().cpy()
+				.scl(type.getDistanceFromParentEntityOrientation());
 		instance.setOffsetFromWorldPosition(offset);
 
 		gdxClone.start();
