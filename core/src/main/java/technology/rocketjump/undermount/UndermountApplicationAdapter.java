@@ -44,7 +44,6 @@ import technology.rocketjump.undermount.screens.menus.options.OptionsTab;
 import technology.rocketjump.undermount.ui.GuiContainer;
 import technology.rocketjump.undermount.ui.I18nUpdatableRegister;
 import technology.rocketjump.undermount.ui.cursor.CursorManager;
-import technology.rocketjump.undermount.ui.hints.HintMessageHandler;
 import technology.rocketjump.undermount.ui.i18n.I18nRepo;
 import technology.rocketjump.undermount.ui.i18n.I18nUpdatable;
 import technology.rocketjump.undermount.ui.views.TimeDateGuiView;
@@ -134,7 +133,6 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 
 			injector.getInstance(TagProcessor.class).init();
 			injector.getInstance(TimeDateGuiView.class).init(injector.getInstance(GameScreenDictionary.class));
-			injector.getInstance(HintMessageHandler.class);
 
 			messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_MENU");
 

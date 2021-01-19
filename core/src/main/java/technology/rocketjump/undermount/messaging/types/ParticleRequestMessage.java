@@ -9,8 +9,16 @@ import java.util.Optional;
 
 public class ParticleRequestMessage {
 
-	public ParticleRequestMessage(ParticleEffectType type, Optional<Entity> parentEntity, Optional<JobTarget> jobTarget, ParticleCreationCallback callback) {
+	public final ParticleEffectType type;
+	public final Optional<Entity> parentEntity;
+	public final Optional<JobTarget> jobTarget;
+	public final ParticleCreationCallback callback;
 
+	public ParticleRequestMessage(ParticleEffectType type, Optional<Entity> parentEntity, Optional<JobTarget> jobTarget, ParticleCreationCallback callback) {
+		this.type = type;
+		this.parentEntity = parentEntity;
+		this.jobTarget = jobTarget;
+		this.callback = callback;
 	}
 
 	public interface ParticleCreationCallback {

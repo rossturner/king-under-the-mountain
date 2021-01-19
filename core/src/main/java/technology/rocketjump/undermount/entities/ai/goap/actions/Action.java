@@ -8,13 +8,14 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Action implements ChildPersistable {
 
 	protected final AssignedGoal parent;
 	protected CompletionType completionType;
-	protected List<ParticleEffectInstance> spawnedParticles;
+	protected List<ParticleEffectInstance> spawnedParticles = new ArrayList<>();
 
 	public Action(AssignedGoal parent) {
 		this.parent = parent;

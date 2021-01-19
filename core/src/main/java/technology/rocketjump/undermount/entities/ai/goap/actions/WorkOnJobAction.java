@@ -15,6 +15,7 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
@@ -73,7 +74,11 @@ public class WorkOnJobAction extends Action {
 
 			float workCompletionFraction = Math.min(assignedJob.getWorkDoneSoFar() / assignedJob.getTotalWorkToDo(), 1f);
 
-			for (ParticleEffectInstance spawnedParticle : spawnedParticles) {
+			spawnedParticles.removeIf(p -> !p.isActive());
+
+			Iterator<ParticleEffectInstance> particleIterator = spawnedParticles.iterator();
+			while (particleIterator.hasNext()) {
+				ParticleEffectInstance spawnedParticle = particleIterator.next();
 				parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_UPDATE, new ParticleUpdateMessage(spawnedParticle, workCompletionFraction));
 			}
 

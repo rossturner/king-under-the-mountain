@@ -1,8 +1,10 @@
 package technology.rocketjump.undermount.jobs.model;
 
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 
@@ -60,6 +62,25 @@ public class JobTarget {
 		return tile;
 	}
 
+	public GameMaterial getTargetMaterial() {
+		switch (type) {
+			case TILE: {
+				if (tile.hasWall()) {
+					if (tile.getWall().hasOre()) {
+						return tile.getWall().getOreMaterial();
+					} else {
+						return tile.getWall().getMaterial();
+					}
+				} else {
+					return tile.getFloor().getMaterial();
+				}
+			}
+			default:
+				Logger.warn("Not yet implemented: JobTarget.getTargetMaterial() for " + type);
+				return null;
+		}
+	}
+
 	public enum JobTargetType {
 
 		COOKING_RECIPE,
@@ -68,5 +89,19 @@ public class JobTarget {
 		BRIDGE,
 		TILE
 
+	}
+
+	public static JobTarget NULL_TARGET = new NullJobTarget();
+
+	private static class NullJobTarget extends JobTarget {
+
+		public NullJobTarget() {
+			super(JobTargetType.ENTITY, Entity.NULL_ENTITY);
+		}
+
+		@Override
+		public GameMaterial getTargetMaterial() {
+			return null;
+		}
 	}
 }

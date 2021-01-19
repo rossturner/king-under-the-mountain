@@ -128,7 +128,7 @@ public class ParticleEmitter {
 		}
 
 		name = emitter.name;
-		imagePaths = new Array<String>(emitter.imagePaths);
+		imagePaths = new Array<>(emitter.imagePaths);
 		setMaxParticleCount(emitter.maxParticleCount);
 		minParticleCount = emitter.minParticleCount;
 		delayValue.load(emitter.delayValue);
@@ -385,6 +385,9 @@ public class ParticleEmitter {
 		Particle particle = particles[index];
 		if (particle == null) {
 			particles[index] = particle = newParticle(sprite);
+			if (NORMALS.equals(renderMode)) {
+				particle.tint = new float[] {1, 1, 1};
+			}
 			particle.flip(flipX, flipY);
 		} else {
 			particle.set(sprite);
@@ -455,7 +458,9 @@ public class ParticleEmitter {
 		}
 
 		float[] color = particle.tint;
-		if (color == null) particle.tint = color = new float[3];
+		if (color == null) {
+			particle.tint = color = new float[3];
+		}
 		float[] temp = tintValue.getColor(0);
 		color[0] = temp[0];
 		color[1] = temp[1];
@@ -656,6 +661,8 @@ public class ParticleEmitter {
 	}
 
 	public void setSprites(Array<Sprite> diffuseSprites, Array<Sprite> normalSprites) {
+		this.diffuseSprites = diffuseSprites;
+		this.normalSprites = normalSprites;
 		if (diffuseSprites.size == 0) return;
 		for (int i = 0, n = diffuseParticles.length; i < n; i++) {
 			Particle diffuseParticle = diffuseParticles[i];

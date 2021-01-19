@@ -23,7 +23,8 @@ import technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader;
 import java.util.List;
 
 import static technology.rocketjump.undermount.mapping.tile.TileExploration.UNEXPLORED;
-import static technology.rocketjump.undermount.rendering.WorldRenderer.*;
+import static technology.rocketjump.undermount.rendering.WorldRenderer.ONE_UNIT;
+import static technology.rocketjump.undermount.rendering.camera.TileBoundingBox.*;
 
 @Singleton
 public class WorldLightingRenderer implements GameContextAware, AssetDisposable {

@@ -20,7 +20,10 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileRoof;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.AmbienceMessage;
+import technology.rocketjump.undermount.particles.ParticleEffectStore;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
+import technology.rocketjump.undermount.rendering.camera.TileBoundingBox;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.lighting.LightProcessor;
 import technology.rocketjump.undermount.rendering.lighting.PointLight;
@@ -50,6 +53,7 @@ public class WorldRenderer implements Disposable {
 	private final RoomRenderer roomRenderer;
 	private final ExplorationRenderer explorationRenderer;
 	private final MessageDispatcher messageDispatcher;
+	private final ParticleEffectStore particleEffectStore;
 
 	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
 
@@ -72,7 +76,8 @@ public class WorldRenderer implements Disposable {
 	@Inject
 	public WorldRenderer(RenderingOptions renderingOptions, TerrainRenderer terrainRenderer, EntityRenderer entityRenderer,
 						 WaterRenderer waterRenderer, FloorOverlapRenderer floorOverlapRenderer, RoomRenderer roomRenderer,
-						 ExplorationRenderer explorationRenderer, MessageDispatcher messageDispatcher, LightProcessor lightProcessor) {
+						 ExplorationRenderer explorationRenderer, MessageDispatcher messageDispatcher,
+						 ParticleEffectStore particleEffectStore, LightProcessor lightProcessor) {
 		this.renderingOptions = renderingOptions;
 		this.terrainRenderer = terrainRenderer;
 		this.entityRenderer = entityRenderer;
@@ -81,10 +86,12 @@ public class WorldRenderer implements Disposable {
 		this.roomRenderer = roomRenderer;
 		this.explorationRenderer = explorationRenderer;
 		this.messageDispatcher = messageDispatcher;
+		this.particleEffectStore = particleEffectStore;
 		this.lightProcessor = lightProcessor;
 	}
 
-	public void renderWorld(TiledMap tiledMap, OrthographicCamera camera, TerrainSpriteCache spriteCache, RenderMode renderMode, List<PointLight> lightsToRenderThisFrame) {
+	public void renderWorld(TiledMap tiledMap, OrthographicCamera camera, TerrainSpriteCache spriteCache, RenderMode renderMode,
+							List<PointLight> lightsToRenderThisFrame, List<ParticleEffectInstance> particlesToRenderAsUI) {
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1); // MODDING expose default background color
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		entitiesToRender.clear();
@@ -100,13 +107,10 @@ public class WorldRenderer implements Disposable {
 		int totalTiles = 0;
 		int outdoorTiles = 0;
 
-		int minX = getMinX(camera);
-		int maxX = getMaxX(camera, tiledMap);
-		int minY = getMinY(camera);
-		int maxY = getMaxY(camera, tiledMap);
+		TileBoundingBox bounds = new TileBoundingBox(camera, tiledMap);
 
-		for (int worldY = maxY; worldY >= minY; worldY--) {
-			for (int worldX = minX; worldX <= maxX; worldX++) {
+		for (int worldY = bounds.maxY; worldY >= bounds.minY; worldY--) {
+			for (int worldX = bounds.minX; worldX <= bounds.maxX; worldX++) {
 				MapTile mapTile = tiledMap.getTile(worldX, worldY);
 				if (mapTile == null) {
 					continue;
@@ -169,8 +173,8 @@ public class WorldRenderer implements Disposable {
 
 
 		// Also need to pick up entities up to X tiles below minX due to tree heights
-		for (int worldY = minY; worldY >= minY - 4; worldY--) {
-			for (int worldX = minX; worldX <= maxX; worldX++) {
+		for (int worldY = bounds.minY; worldY >= bounds.minY - 4; worldY--) {
+			for (int worldX = bounds.minX; worldX <= bounds.maxX; worldX++) {
 				MapTile mapTile = tiledMap.getTile(worldX, worldY);
 				if (mapTile == null || mapTile.getExploration().equals(UNEXPLORED)) {
 					continue;
@@ -235,6 +239,16 @@ public class WorldRenderer implements Disposable {
 				if (lightsToRenderThisFrame != null && attachedLightSourceComponent != null && attachedLightSourceComponent.isEnabled()) {
 					lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
 				}
+
+				particleEffectStore.getParticlesAttachedToEntity(entity).forEach(particleEffectInstance -> {
+					if (particleEffectInstance.getType().getIsAffectedByLighting()) {
+						particleEffectInstance.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+					} else if (particlesToRenderAsUI != null) {
+						particlesToRenderAsUI.add(particleEffectInstance);
+					}
+				});
+
+
 			}
 		}
 
@@ -261,42 +275,6 @@ public class WorldRenderer implements Disposable {
 			}
 		}
 		return false;
-	}
-
-	public static int getMaxY(OrthographicCamera camera, TiledMap tiledMap) {
-		int maxY = (int) Math.ceil(camera.frustum.planePoints[2].y);
-		maxY += 2;
-		if (maxY >= tiledMap.getHeight()) {
-			maxY = tiledMap.getHeight() - 1;
-		}
-		return maxY;
-	}
-
-	public static int getMinY(OrthographicCamera camera) {
-		int minY = (int) Math.floor(camera.frustum.planePoints[0].y);
-		minY += -1;
-		if (minY < 0) {
-			minY = 0;
-		}
-		return minY;
-	}
-
-	public static int getMaxX(OrthographicCamera camera, TiledMap tiledMap) {
-		int maxX = (int) Math.ceil(camera.frustum.planePoints[2].x);
-		maxX += 2;
-		if (maxX >= tiledMap.getWidth()) {
-			maxX = tiledMap.getWidth() - 1;
-		}
-		return maxX;
-	}
-
-	public static int getMinX(OrthographicCamera camera) {
-		int minX = (int) Math.floor(camera.frustum.planePoints[0].x);
-		minX += -1;
-		if (minX < 0) {
-			minX = 0;
-		}
-		return minX;
 	}
 
 	@Override

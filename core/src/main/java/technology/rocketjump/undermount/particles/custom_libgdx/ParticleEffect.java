@@ -181,8 +181,8 @@ public class ParticleEffect implements Disposable {
 		for (int i = 0, n = emitters.size; i < n; i++) {
 			ParticleEmitter emitter = emitters.get(i);
 			if (emitter.getImagePaths().size == 0) continue;
-			Array<Sprite> diffuseSprites = new Array<Sprite>();
-			Array<Sprite> normalsSprites = new Array<Sprite>();
+			Array<Sprite> diffuseSprites = new Array<>();
+			Array<Sprite> normalsSprites = new Array<>();
 			for (String imagePath : emitter.getImagePaths()) {
 				String imageName = new File(imagePath.replace('\\', '/')).getName();
 				int lastDotIndex = imageName.lastIndexOf('.');

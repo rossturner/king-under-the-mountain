@@ -7,6 +7,7 @@
   "requiredProfessionName" : "MINER",
   "requiredItemTypeName" : "Tool-Pickaxe",
   "activeSoundAssetName" : "Mining",
+  "workOnJobParticleEffectName" : "Chipping rock",
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "DIGGING",
@@ -17,7 +18,6 @@
   "requiredProfessionName" : "MINER",
   "requiredItemTypeName" : "Tool-Pickaxe",
   "activeSoundAssetName" : "Tilling",
-  "workOnJobParticleEffectName" : "Chipping rock",
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "LOGGING",

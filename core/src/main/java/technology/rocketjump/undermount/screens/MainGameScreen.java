@@ -14,10 +14,12 @@ import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.gamecontext.GameUpdateRegister;
 import technology.rocketjump.undermount.input.GameWorldInputHandler;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.particles.ParticleEffectUpdater;
 import technology.rocketjump.undermount.rendering.GameRenderer;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
 import technology.rocketjump.undermount.rendering.camera.DisplaySettings;
 import technology.rocketjump.undermount.rendering.camera.PrimaryCameraWrapper;
+import technology.rocketjump.undermount.rendering.camera.TileBoundingBox;
 import technology.rocketjump.undermount.ui.GuiContainer;
 import technology.rocketjump.undermount.ui.widgets.GameDialog;
 import technology.rocketjump.undermount.ui.widgets.ModalDialog;
@@ -31,6 +33,7 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 	private final ScreenWriter screenWriter;
 	private final GameWorldInputHandler gameWorldInputHandler;
 	private final MessageDispatcher messageDispatcher;
+	private final ParticleEffectUpdater particleEffectUpdater;
 
 	private GameContext gameContext;
 	private GameUpdateRegister gameUpdateRegister;
@@ -38,13 +41,14 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 	@Inject
 	public MainGameScreen(GameRenderer gameRenderer, PrimaryCameraWrapper primaryCameraWrapper, GuiContainer guiContainer,
 						  ScreenWriter screenWriter, GameWorldInputHandler gameWorldInputHandler,
-						  MessageDispatcher messageDispatcher, GameUpdateRegister gameUpdateRegister) {
+						  MessageDispatcher messageDispatcher, ParticleEffectUpdater particleEffectUpdater, GameUpdateRegister gameUpdateRegister) {
 		this.gameRenderer = gameRenderer;
 		this.primaryCameraWrapper = primaryCameraWrapper;
 		this.guiContainer = guiContainer;
 		this.screenWriter = screenWriter;
 		this.gameWorldInputHandler = gameWorldInputHandler;
 		this.messageDispatcher = messageDispatcher;
+		this.particleEffectUpdater = particleEffectUpdater;
 		this.gameUpdateRegister = gameUpdateRegister;
 	}
 
@@ -64,6 +68,7 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 		GdxAI.getTimepiece().update(multipliedDeltaTime); // This is used for message delays, not actual AI, so runs when paused
 		if (!gameContext.getGameClock().isPaused()) {
 			gameContext.getGameClock().update(multipliedDeltaTime, messageDispatcher);
+			particleEffectUpdater.update(multipliedDeltaTime, new TileBoundingBox(primaryCameraWrapper.getCamera(), gameContext.getAreaMap()));
 		}
 		primaryCameraWrapper.update(deltaTime);
 		gameUpdateRegister.update(multipliedDeltaTime, gameContext.getGameClock().isPaused());
