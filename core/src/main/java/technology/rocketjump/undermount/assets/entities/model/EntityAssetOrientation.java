@@ -67,4 +67,17 @@ public enum EntityAssetOrientation {
 	public Vector2 toVector2() {
 		return asVector;
 	}
+
+	public EntityAssetOrientation toOrthogonal() {
+		switch (this) {
+			case UP_RIGHT:
+			case DOWN_RIGHT:
+				return RIGHT;
+			case UP_LEFT:
+			case DOWN_LEFT:
+				return LEFT;
+			default:
+				return this;
+		}
+	}
 }

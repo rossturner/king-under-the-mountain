@@ -1,5 +1,6 @@
 package technology.rocketjump.undermount.particles.model;
 
+import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.misc.Name;
 
 public class ParticleEffectType {
@@ -8,6 +9,7 @@ public class ParticleEffectType {
 	private String name;
 	private String particleFile;
 	private float scale = 1f;
+	private EntityAssetOrientation usingParentOrientation;
 	private boolean isLooping; // if true this effect will loop endlessly until stopped
 	private boolean usesTargetMaterialAsTintColor;
 	private boolean isAffectedByLighting;
@@ -76,5 +78,13 @@ public class ParticleEffectType {
 
 	public void setScale(float scale) {
 		this.scale = scale;
+	}
+
+	public EntityAssetOrientation getUsingParentOrientation() {
+		return usingParentOrientation;
+	}
+
+	public void setUsingParentOrientation(EntityAssetOrientation usingParentOrientation) {
+		this.usingParentOrientation = usingParentOrientation;
 	}
 }

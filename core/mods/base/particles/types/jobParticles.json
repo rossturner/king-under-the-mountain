@@ -3,6 +3,7 @@
     "name": "Chipping rock",
     "particleFile": "rockparticle.p",
     "scale": 0.5,
+    "usingParentOrientation": "LEFT",
     "isLooping": true,
     "isAffectedByLighting": true,
     "usesTargetMaterialAsTintColor": true,

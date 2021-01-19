@@ -2,9 +2,10 @@
   "name" : "Chipping rock",
   "particleFile" : "rockparticle.p",
   "scale" : 0.5,
+  "usingParentOrientation" : "LEFT",
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : true,
   "isAffectedByLighting" : true,
-  "distanceFromParentEntityOrientation" : 0.7,
+  "distanceFromParentEntityOrientation" : 0.5,
   "attachedToParent" : false
 } ]

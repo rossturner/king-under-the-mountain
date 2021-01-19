@@ -8,6 +8,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
+import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -22,6 +23,7 @@ import java.util.Optional;
 
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.DIFFUSE_ENTITIES;
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.NORMAL_ENTITIES;
+import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
 
 @Singleton
 public class ParticleEffectFactory {
@@ -60,7 +62,7 @@ public class ParticleEffectFactory {
 		ParticleEffect gdxClone = new ParticleEffect(gdxBaseInstance);
 		if (optionalMaterial.isPresent()) {
 			Color materialColor = optionalMaterial.get().getColor();
-			float[] colors = new float[] {materialColor.r, materialColor.g, materialColor.b};
+			float[] colors = new float[]{materialColor.r, materialColor.g, materialColor.b};
 			for (ParticleEmitter emitter : gdxClone.getEmitters()) {
 				emitter.getTint().setColors(colors);
 			}
@@ -69,13 +71,54 @@ public class ParticleEffectFactory {
 		ParticleEffectInstance instance = new ParticleEffectInstance(SequentialIdGenerator.nextId(), type, gdxClone, Optional.of(parentEntity));
 		instance.setPositionToParentEntity();
 
-		Vector2 offset = parentEntity.getLocationComponent().getOrientation().toVector2().cpy()
-				.scl(type.getDistanceFromParentEntityOrientation());
+		EntityAssetOrientation parentOrientation = parentEntity.getLocationComponent().getOrientation().toOrthogonal();
+		adjustForParentOrientation(instance, parentOrientation);
+
+		Vector2 offset = parentOrientation.toVector2().cpy().scl(type.getDistanceFromParentEntityOrientation());
 		instance.setOffsetFromWorldPosition(offset);
 
 		gdxClone.start();
 
 		return instance;
+	}
+
+	private void adjustForParentOrientation(ParticleEffectInstance instance, EntityAssetOrientation parentOrientation) {
+		EntityAssetOrientation effectDefaultOrientation = instance.getType().getUsingParentOrientation();
+
+		if (!parentOrientation.equals(effectDefaultOrientation)) {
+
+			instance.getGdxParticleEffect().getEmitters().forEach(e -> {
+				float angleHighMin = e.getAngle().getHighMin();
+				float angleHighMax = e.getAngle().getHighMax();
+
+				if (effectDefaultOrientation.equals(LEFT)) {
+					if (parentOrientation.equals(RIGHT)) {
+						// flip angle along Y axis
+						e.getAngle().setHigh(
+								180 - angleHighMax,
+								180 - angleHighMin
+						);
+					} else if (parentOrientation.equals(UP)) {
+						float angleDiff = angleHighMax - angleHighMin;
+						e.getAngle().setHigh(
+								270 - (angleDiff / 2f),
+								270 + (angleDiff / 2f)
+						);
+					} else if (parentOrientation.equals(DOWN)) {
+						float angleDiff = angleHighMax - angleHighMin;
+						e.getAngle().setHigh(
+								90 - (angleDiff / 2f),
+								90 + (angleDiff / 2f)
+						);
+					}
+				} else {
+					Logger.error("Not yet implemented - adjusting particle effect orientation from default of " + effectDefaultOrientation);
+				}
+
+			});
+
+
+		}
 	}
 
 }
