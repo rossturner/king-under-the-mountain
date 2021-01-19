@@ -242,7 +242,7 @@ public class WorldRenderer implements Disposable {
 
 				particleEffectStore.getParticlesAttachedToEntity(entity).forEach(particleEffectInstance -> {
 					if (particleEffectInstance.getType().getIsAffectedByLighting()) {
-						particleEffectInstance.getGdxParticleEffect().draw(basicSpriteBatch/*, renderMode*/);
+						particleEffectInstance.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
 					} else if (particlesToRenderAsUI != null) {
 						particlesToRenderAsUI.add(particleEffectInstance);
 					}

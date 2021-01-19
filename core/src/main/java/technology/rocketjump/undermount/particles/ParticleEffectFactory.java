@@ -2,8 +2,6 @@ package technology.rocketjump.undermount.particles;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
@@ -13,6 +11,8 @@ import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
+import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEmitter;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
@@ -46,8 +46,8 @@ public class ParticleEffectFactory {
 				continue;
 			}
 
-			ParticleEffect baseInstance = new ParticleEffect(/*particleEffectType.getIsAffectedByLighting()*/);
-			baseInstance.load(pfile, diffuseTextureAtlas/*, normalTextureAtlas*/, null);
+			ParticleEffect baseInstance = new ParticleEffect(particleEffectType.getIsAffectedByLighting());
+			baseInstance.load(pfile, diffuseTextureAtlas, normalTextureAtlas, null);
 			baseInstance.scaleEffect((1f / 64f) * particleEffectType.getScale());
 
 			baseInstancesByDefinition.put(particleEffectType, baseInstance);
