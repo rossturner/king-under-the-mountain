@@ -36,7 +36,8 @@
     "name": "TILLING",
     "overrideI18nKey": "ACTION.JOB.TILLING",
     "requiredProfessionName": "FARMER",
-    "activeSoundAssetName": "Tilling"
+    "activeSoundAssetName": "Tilling",
+    "workOnJobParticleEffectName": "Digging ground"
   },
   {
     "name": "FILL_GRAVE",

@@ -46,6 +46,7 @@
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "FARMER",
   "activeSoundAssetName" : "Tilling",
+  "workOnJobParticleEffectName" : "Digging ground",
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "FILL_GRAVE",

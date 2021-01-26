@@ -60,7 +60,7 @@ public class ParticleEffectFactory {
 
 		ParticleEffect gdxBaseInstance = baseInstancesByDefinition.get(type);
 		ParticleEffect gdxClone = new ParticleEffect(gdxBaseInstance);
-		if (optionalMaterial.isPresent()) {
+		if (optionalMaterial.isPresent() && type.isUsesTargetMaterialAsTintColor()) {
 			Color materialColor = optionalMaterial.get().getColor();
 			float[] colors = new float[]{materialColor.r, materialColor.g, materialColor.b};
 			for (ParticleEmitter emitter : gdxClone.getEmitters()) {
@@ -72,7 +72,9 @@ public class ParticleEffectFactory {
 		instance.setPositionToParentEntity();
 
 		EntityAssetOrientation parentOrientation = parentEntity.getLocationComponent().getOrientation().toOrthogonal();
-		adjustForParentOrientation(instance, parentOrientation);
+		if (type.getUsingParentOrientation() != null) {
+			adjustForParentOrientation(instance, parentOrientation);
+		}
 
 		Vector2 offset = parentOrientation.toVector2().cpy().scl(type.getDistanceFromParentEntityOrientation());
 		instance.setOffsetFromWorldPosition(offset);

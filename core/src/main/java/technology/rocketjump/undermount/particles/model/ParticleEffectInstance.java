@@ -86,7 +86,9 @@ public class ParticleEffectInstance {
 	public void setPositionToParentEntity() {
 		if (attachedToEntity.isPresent()) {
 			this.setWorldPosition(attachedToEntity.get().getLocationComponent().getWorldOrParentPosition());
-			this.getWorldPosition().add(0, attachedToEntity.get().getLocationComponent().getRadius());
+			if (type.getOffsetFromParentEntity() != null) {
+				this.getWorldPosition().add(type.getOffsetFromParentEntity());
+			}
 		}
 	}
 }

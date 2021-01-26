@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.misc.Name;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
 public class CraftingType implements Comparable<CraftingType> {
 
@@ -18,6 +19,9 @@ public class CraftingType implements Comparable<CraftingType> {
 	@JsonIgnore
 	private ItemType defaultItemType;
 	private boolean usesWorkstationTool = false;
+	private String particleEffectName;
+	@JsonIgnore
+	private ParticleEffectType particleEffectType;
 
 	public String getName() {
 		return name;
@@ -65,6 +69,22 @@ public class CraftingType implements Comparable<CraftingType> {
 
 	public void setDefaultItemType(ItemType defaultItemType) {
 		this.defaultItemType = defaultItemType;
+	}
+
+	public String getParticleEffectName() {
+		return particleEffectName;
+	}
+
+	public void setParticleEffectName(String particleEffectName) {
+		this.particleEffectName = particleEffectName;
+	}
+
+	public ParticleEffectType getParticleEffectType() {
+		return particleEffectType;
+	}
+
+	public void setParticleEffectType(ParticleEffectType particleEffectType) {
+		this.particleEffectType = particleEffectType;
 	}
 
 	@Override

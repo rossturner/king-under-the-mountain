@@ -1,11 +1,34 @@
 [ {
   "name" : "Chipping rock",
   "particleFile" : "rockparticle.p",
-  "scale" : 0.5,
+  "scale" : 0.4,
   "usingParentOrientation" : "LEFT",
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : true,
   "isAffectedByLighting" : true,
-  "distanceFromParentEntityOrientation" : 0.5,
+  "distanceFromParentEntityOrientation" : 0.8,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Digging ground",
+  "particleFile" : "groundsplat.p",
+  "scale" : 0.8,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.1,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : -0.2,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : true,
   "attachedToParent" : false
 } ]

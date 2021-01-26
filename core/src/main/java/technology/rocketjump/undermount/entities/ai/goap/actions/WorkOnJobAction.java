@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -55,13 +56,14 @@ public class WorkOnJobAction extends Action {
 				activeSoundTriggered = true;
 			}
 
-			if (assignedJob.getType().getWorkOnJobParticleEffectType() != null) {
+			ParticleEffectType relatedParticleEffectType = getRelatedParticleEffectType();
+			if (relatedParticleEffectType != null) {
 				if (spawnedParticles.stream()
-						.filter(p -> p.getType().equals(assignedJob.getType().getWorkOnJobParticleEffectType()))
+						.filter(p -> p.getType().equals(relatedParticleEffectType))
 						.findAny().isEmpty()) {
 					Action This = this;
 					parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-							assignedJob.getType().getWorkOnJobParticleEffectType(),
+							relatedParticleEffectType,
 							Optional.of(parent.parentEntity),
 							Optional.ofNullable(assignedJob.getTargetOfJob(gameContext)
 							), instance -> {
@@ -100,6 +102,14 @@ public class WorkOnJobAction extends Action {
 					parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_STOP_SOUND_LOOP, new RequestSoundStopMessage(jobSoundAsset, parent.parentEntity.getId()));
 				}
 			}
+		}
+	}
+
+	private ParticleEffectType getRelatedParticleEffectType() {
+		if (parent.getAssignedJob().getCraftingRecipe() != null) {
+			return parent.getAssignedJob().getCraftingRecipe().getCraftingType().getParticleEffectType();
+		} else {
+			return parent.getAssignedJob().getType().getWorkOnJobParticleEffectType();
 		}
 	}
 

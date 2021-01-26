@@ -67,6 +67,7 @@ public class WorldRenderer implements Disposable {
 	private final Set<GridPoint2> settlerLocations = new HashSet<>();
 	private final Map<Long, Construction> terrainConstructionsToRender = new TreeMap<>();
 	private final Map<Long, Construction> otherConstructionsToRender = new TreeMap<>(); // This needs to behave like a set and have consistent yet unimportant ordering
+	private final List<ParticleEffectInstance> particlesInFrontOfEntity = new ArrayList<>();
 
 	private final LightProcessor lightProcessor;
 	public static final Color CONSTRUCTION_COLOR = HexColors.get("#EEEEEE99");
@@ -227,6 +228,19 @@ public class WorldRenderer implements Disposable {
 			if (!entitiesRenderedThisFrame.contains(entity.getId())) {
 				entitiesRenderedThisFrame.add(entity.getId());
 
+				particlesInFrontOfEntity.clear();
+				particleEffectStore.getParticlesAttachedToEntity(entity).forEach(p -> {
+					if (p.getType().getIsAffectedByLighting()) {
+						if (p.getType().isRenderBehindParent()) {
+							p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+						} else {
+							particlesInFrontOfEntity.add(p);
+						}
+					} else {
+						particlesToRenderAsUI.add(p);
+					}
+				});
+
 				Color multiplyColor = null;
 				if (GlobalSettings.TREE_TRANSPARENCY_ENABLED) {
 					if (entity.getType().equals(EntityType.PLANT) && isPlantOccludingHumanoid(entity)) {
@@ -240,14 +254,7 @@ public class WorldRenderer implements Disposable {
 					lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
 				}
 
-				particleEffectStore.getParticlesAttachedToEntity(entity).forEach(particleEffectInstance -> {
-					if (particleEffectInstance.getType().getIsAffectedByLighting()) {
-						particleEffectInstance.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
-					} else if (particlesToRenderAsUI != null) {
-						particlesToRenderAsUI.add(particleEffectInstance);
-					}
-				});
-
+				particlesInFrontOfEntity.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
 
 			}
 		}

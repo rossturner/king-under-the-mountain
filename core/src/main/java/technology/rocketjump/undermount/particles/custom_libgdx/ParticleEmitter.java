@@ -45,6 +45,7 @@ public class ParticleEmitter {
 	static private final int UPDATE_GRAVITY = 1 << 5;
 	static private final int UPDATE_TINT = 1 << 6;
 	static private final int UPDATE_SPRITE = 1 << 7;
+	private static final float[] WHITE = new float[]{1, 1, 1};
 
 	private RangedNumericValue delayValue = new RangedNumericValue();
 	private IndependentScaledNumericValue lifeOffsetValue = new IndependentScaledNumericValue();
@@ -461,7 +462,7 @@ public class ParticleEmitter {
 		if (color == null) {
 			particle.tint = color = new float[3];
 		}
-		float[] temp = tintValue.getColor(0);
+		float[] temp = renderMode.equals(DIFFUSE) ? tintValue.getColor(0) : WHITE;
 		color[0] = temp[0];
 		color[1] = temp[1];
 		color[2] = temp[2];

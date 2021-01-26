@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.particles.model;
 
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
+import technology.rocketjump.undermount.assets.entities.model.StorableVector2;
 import technology.rocketjump.undermount.misc.Name;
 
 public class ParticleEffectType {
@@ -14,6 +15,8 @@ public class ParticleEffectType {
 	private boolean usesTargetMaterialAsTintColor;
 	private boolean isAffectedByLighting;
 	private float distanceFromParentEntityOrientation; // effect is initialised according to parent entity position and orientation by this amount (distance)
+	private StorableVector2 offsetFromParentEntity;
+	private boolean renderBehindParent;
 	private boolean attachedToParent; // if true, adjusts world position according to parent entity
 
 	public String getName() {
@@ -86,5 +89,21 @@ public class ParticleEffectType {
 
 	public void setUsingParentOrientation(EntityAssetOrientation usingParentOrientation) {
 		this.usingParentOrientation = usingParentOrientation;
+	}
+
+	public StorableVector2 getOffsetFromParentEntity() {
+		return offsetFromParentEntity;
+	}
+
+	public void setOffsetFromParentEntity(StorableVector2 offsetFromParentEntity) {
+		this.offsetFromParentEntity = offsetFromParentEntity;
+	}
+
+	public boolean isRenderBehindParent() {
+		return renderBehindParent;
+	}
+
+	public void setRenderBehindParent(boolean renderBehindParent) {
+		this.renderBehindParent = renderBehindParent;
 	}
 }
