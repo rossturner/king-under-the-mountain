@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.*;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
@@ -25,6 +26,8 @@ import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.*;
 import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
@@ -48,10 +51,13 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private final StockpileComponentUpdater stockpileComponentUpdater;
 
 	private GameContext gameContext;
+	private ParticleEffectType wallRemovedParticleEffectType;
 
 	@Inject
 	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
-							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory, RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater) {
+							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory,
+							 RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater,
+							 ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
@@ -59,6 +65,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		this.roomStore = roomStore;
 		this.jobStore = jobStore;
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
+
+		this.wallRemovedParticleEffectType = particleEffectTypeDictionary.getByName("Dust cloud"); // MODDING expose this
 
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
@@ -478,6 +486,13 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 
 			updateTile(tile, gameContext);
+
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
+					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {
+				if (p != null) {
+					tile.getParticleEffects().put(p.getInstanceId(), p);
+				}
+			}));
 
 			Integer neighbourRegionId = null;
 			MapTile unexploredTile = null;

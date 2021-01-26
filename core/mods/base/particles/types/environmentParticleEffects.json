@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Dust cloud",
+    "particleFile": "smoke.p",
+    "scale": 1.2,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true
+  }
+]

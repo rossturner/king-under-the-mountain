@@ -24,6 +24,7 @@ import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -53,6 +54,7 @@ public class MapTile implements Persistable {
 	private int regionId = -1; // -1 for unset
 
 	private Map<Long, Entity> entities = new ConcurrentHashMap<>(); // Concurrent for access by PathfindingTask
+	private Map<Long, ParticleEffectInstance> particleEffects = new HashMap<>();
 
 	private TileRoof roof = TileRoof.MOUNTAIN_ROOF;
 	private GameMaterial roofMaterial = null;
@@ -601,6 +603,10 @@ public class MapTile implements Persistable {
 
 	public void setExploration(TileExploration exploration) {
 		this.exploration = exploration;
+	}
+
+	public Map<Long, ParticleEffectInstance> getParticleEffects() {
+		return particleEffects;
 	}
 
 	public enum RegionType {

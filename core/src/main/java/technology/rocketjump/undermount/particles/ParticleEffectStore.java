@@ -5,6 +5,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
@@ -26,10 +27,24 @@ public class ParticleEffectStore implements GameContextAware {
 	}
 
 	public ParticleEffectInstance create(ParticleEffectType particleEffectType, Entity parentEntity, Optional<GameMaterial> relatedMaterial) {
-		ParticleEffectInstance instance = factory.create(particleEffectType, parentEntity, relatedMaterial);
+		ParticleEffectInstance instance = factory.create(particleEffectType, Optional.of(parentEntity), Optional.empty(), relatedMaterial);
+		if (instance == null) {
+			return null;
+		}
 
 		byInstanceId.put(instance.getInstanceId(), instance);
 		byRelatedEntityId.computeIfAbsent(parentEntity.getId(), (a) -> new ArrayList<>()).add(instance);
+
+		return instance;
+	}
+
+	public ParticleEffectInstance create(ParticleEffectType particleEffectType, MapTile parentTile, Optional<GameMaterial> relatedMaterial) {
+		ParticleEffectInstance instance = factory.create(particleEffectType, Optional.empty(), Optional.of(parentTile), relatedMaterial);
+		if (instance == null) {
+			return null;
+		}
+
+		byInstanceId.put(instance.getInstanceId(), instance);
 
 		return instance;
 	}
@@ -63,6 +78,10 @@ public class ParticleEffectStore implements GameContextAware {
 			if (attachedToEntity.isEmpty()) {
 				byRelatedEntityId.remove(entityId);
 			}
+		}
+		if (instance.getAttachedToTile().isPresent()) {
+			MapTile mapTile = instance.getAttachedToTile().get();
+			mapTile.getParticleEffects().remove(instance.getInstanceId());
 		}
 	}
 }

@@ -123,7 +123,11 @@ public class SoundEffectManager implements AssetDisposable {
 			}
 			if (activeSoundEffect != null) {
 				activeSoundsByAssetId.put(asset.getSoundAssetId(), activeSoundEffect);
-				activeSoundEffect.play();
+				if (asset.isLooping()) {
+					activeSoundEffect.loop(baseVolumeLevel);
+				} else {
+					activeSoundEffect.play();
+				}
 				attentuate(activeSoundEffect);
 
 				if (activeSoundEffect.getWorldPosition() != null && gamePaused) {

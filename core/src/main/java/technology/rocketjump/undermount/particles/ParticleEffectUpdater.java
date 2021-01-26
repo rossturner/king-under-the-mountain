@@ -8,6 +8,8 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
@@ -46,7 +48,7 @@ public class ParticleEffectUpdater implements Telegraph {
 
 			if (instance.getAttachedToEntity().isPresent()) {
 				if (instance.getType().isAttachedToParent()) {
-					instance.setPositionToParentEntity();
+					instance.setPositionToParent();
 				}
 			} else {
 				// Not yet implemented - updating effects not attached to an entity
@@ -91,8 +93,18 @@ public class ParticleEffectUpdater implements Telegraph {
 			Entity parentEntity = particleRequestMessage.parentEntity.get();
 			Vector2 parentPosition = parentEntity.getLocationComponent().getWorldOrParentPosition();
 			if (insideBounds(parentPosition)) {
-				Optional<GameMaterial> relatedMaterial = Optional.ofNullable(particleRequestMessage.jobTarget.orElse(NULL_TARGET).getTargetMaterial());
+				Optional<GameMaterial> relatedMaterial = Optional.ofNullable(particleRequestMessage.effectTarget.orElse(NULL_TARGET).getTargetMaterial());
 				ParticleEffectInstance instance = store.create(particleRequestMessage.type, parentEntity, relatedMaterial);
+				particleRequestMessage.callback.particleCreated(instance);
+			} else {
+				particleRequestMessage.callback.particleCreated(null);
+			}
+		} else if (particleRequestMessage.effectTarget.isPresent() && particleRequestMessage.effectTarget.get().type.equals(JobTarget.JobTargetType.TILE)) {
+			// Attaching particle effect to tile
+			MapTile targetTile = particleRequestMessage.effectTarget.get().getTile();
+			Vector2 position = targetTile.getWorldPositionOfCenter();
+			if (insideBounds(position)) {
+				ParticleEffectInstance instance = store.create(particleRequestMessage.type, targetTile, Optional.of(targetTile.getFloor().getMaterial()));
 				particleRequestMessage.callback.particleCreated(instance);
 			} else {
 				particleRequestMessage.callback.particleCreated(null);

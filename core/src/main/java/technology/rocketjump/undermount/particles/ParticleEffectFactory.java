@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
 import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEmitter;
@@ -56,7 +57,8 @@ public class ParticleEffectFactory {
 		}
 	}
 
-	public ParticleEffectInstance create(ParticleEffectType type, Entity parentEntity, Optional<GameMaterial> optionalMaterial) {
+	public ParticleEffectInstance create(ParticleEffectType type, Optional<Entity> parentEntity,
+										 Optional<MapTile> parentTile, Optional<GameMaterial> optionalMaterial) {
 
 		ParticleEffect gdxBaseInstance = baseInstancesByDefinition.get(type);
 		ParticleEffect gdxClone = new ParticleEffect(gdxBaseInstance);
@@ -68,16 +70,25 @@ public class ParticleEffectFactory {
 			}
 		}
 
-		ParticleEffectInstance instance = new ParticleEffectInstance(SequentialIdGenerator.nextId(), type, gdxClone, Optional.of(parentEntity));
-		instance.setPositionToParentEntity();
+		ParticleEffectInstance instance;
+		if (parentEntity.isPresent()) {
+			instance = new ParticleEffectInstance(SequentialIdGenerator.nextId(), type, gdxClone, parentEntity.get());
 
-		EntityAssetOrientation parentOrientation = parentEntity.getLocationComponent().getOrientation().toOrthogonal();
-		if (type.getUsingParentOrientation() != null) {
-			adjustForParentOrientation(instance, parentOrientation);
+			instance.setPositionToParent();
+
+			EntityAssetOrientation parentOrientation = parentEntity.get().getLocationComponent().getOrientation().toOrthogonal();
+			if (type.getUsingParentOrientation() != null) {
+				adjustForParentOrientation(instance, parentOrientation);
+			}
+
+			Vector2 offset = parentOrientation.toVector2().cpy().scl(type.getDistanceFromParentEntityOrientation());
+			instance.setOffsetFromWorldPosition(offset);
+		} else if (parentTile.isPresent()) {
+			instance = new ParticleEffectInstance(SequentialIdGenerator.nextId(), type, gdxClone, parentTile.get());
+			instance.setPositionToParent();
+		} else {
+			return null;
 		}
-
-		Vector2 offset = parentOrientation.toVector2().cpy().scl(type.getDistanceFromParentEntityOrientation());
-		instance.setOffsetFromWorldPosition(offset);
 
 		gdxClone.start();
 

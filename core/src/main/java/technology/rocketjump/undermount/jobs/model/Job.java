@@ -24,7 +24,6 @@ import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import java.util.Objects;
 
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
-import static technology.rocketjump.undermount.jobs.model.JobTarget.JobTargetType.*;
 
 public class Job implements Persistable {
 
@@ -400,31 +399,31 @@ public class Job implements Persistable {
 
 	public JobTarget getTargetOfJob(GameContext gameContext) {
 		if (cookingRecipe != null) {
-			return new JobTarget(COOKING_RECIPE, cookingRecipe);
+			return new JobTarget(cookingRecipe);
 		}
 
 		if (targetId != null) {
 			Entity targetEntity = gameContext.getEntities().get(targetId);
 			if (targetEntity != null) {
-				return new JobTarget(ENTITY, targetEntity);
+				return new JobTarget(targetEntity);
 			}
 		}
 
 		if (jobLocation != null) {
 			MapTile targetTile = gameContext.getAreaMap().getTile(jobLocation);
 			if (targetTile.hasConstruction()) {
-				return new JobTarget(CONSTRUCTION, targetTile.getConstruction());
+				return new JobTarget(targetTile.getConstruction());
 			} else if (targetTile.hasDoorway()) {
-				return new JobTarget(ENTITY, targetTile.getDoorway().getDoorEntity());
+				return new JobTarget(targetTile.getDoorway().getDoorEntity());
 			} else if (targetTile.getFloor().hasBridge()) {
-				return new JobTarget(BRIDGE, targetTile.getFloor().getBridge());
+				return new JobTarget(targetTile.getFloor().getBridge());
 			} else {
 				for (Entity targetTileEntity : targetTile.getEntities()) {
 					if (targetTileEntity.getType().equals(EntityType.PLANT)) {
-						return new JobTarget(ENTITY, targetTileEntity);
+						return new JobTarget(targetTileEntity);
 					}
 				}
-				return new JobTarget(TILE, targetTile);
+				return new JobTarget(targetTile);
 			}
 
 		}

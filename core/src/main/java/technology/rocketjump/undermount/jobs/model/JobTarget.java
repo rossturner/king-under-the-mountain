@@ -17,28 +17,28 @@ public class JobTarget {
 	private Bridge bridge;
 	private MapTile tile;
 
-	public JobTarget(JobTargetType type, CookingRecipe cookingRecipe) {
-		this.type = type;
+	public JobTarget(CookingRecipe cookingRecipe) {
+		this.type = JobTargetType.COOKING_RECIPE;
 		this.cookingRecipe = cookingRecipe;
 	}
 
-	public JobTarget(JobTargetType type, Entity entity) {
-		this.type = type;
+	public JobTarget(Entity entity) {
+		this.type = JobTargetType.ENTITY;
 		this.entity = entity;
 	}
 
-	public JobTarget(JobTargetType type, Construction construction) {
-		this.type = type;
+	public JobTarget(Construction construction) {
+		this.type = JobTargetType.CONSTRUCTION;
 		this.construction = construction;
 	}
 
-	public JobTarget(JobTargetType type, Bridge bridge) {
-		this.type = type;
+	public JobTarget(Bridge bridge) {
+		this.type = JobTargetType.BRIDGE;
 		this.bridge = bridge;
 	}
 
-	public JobTarget(JobTargetType type, MapTile tile) {
-		this.type = type;
+	public JobTarget(MapTile tile) {
+		this.type = JobTargetType.TILE;
 		this.tile = tile;
 	}
 
@@ -96,7 +96,7 @@ public class JobTarget {
 	private static class NullJobTarget extends JobTarget {
 
 		public NullJobTarget() {
-			super(JobTargetType.ENTITY, Entity.NULL_ENTITY);
+			super(Entity.NULL_ENTITY);
 		}
 
 		@Override

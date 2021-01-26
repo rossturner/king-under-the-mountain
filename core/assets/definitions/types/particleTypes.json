@@ -1,4 +1,14 @@
 [ {
+  "name" : "Dust cloud",
+  "particleFile" : "smoke.p",
+  "scale" : 1.2,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "attachedToParent" : false
+}, {
   "name" : "Chipping rock",
   "particleFile" : "rockparticle.p",
   "scale" : 0.4,

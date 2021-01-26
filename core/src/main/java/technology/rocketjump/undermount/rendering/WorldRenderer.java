@@ -58,6 +58,7 @@ public class WorldRenderer implements Disposable {
 	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
 
 	private final PriorityQueue<Entity> entitiesToRender = new PriorityQueue<>(new Entity.YDepthEntityComparator());
+	private final PriorityQueue<ParticleEffectInstance> unattachedParticleEffectsToRender = new PriorityQueue<>(new ParticleEffectInstance.YDepthEntityComparator());
 	private final List<MapTile> terrainTiles = new LinkedList<>();
 	private final List<MapTile> riverTiles = new LinkedList<>();
 	private final Map<Bridge, List<MapTile>> bridgeTiles = new HashMap<>();
@@ -96,6 +97,7 @@ public class WorldRenderer implements Disposable {
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1); // MODDING expose default background color
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		entitiesToRender.clear();
+		unattachedParticleEffectsToRender.clear();
 		entitiesRenderedThisFrame.clear();
 		terrainConstructionsToRender.clear();
 		otherConstructionsToRender.clear();
@@ -132,6 +134,7 @@ public class WorldRenderer implements Disposable {
 					bridgeTiles.computeIfAbsent(mapTile.getFloor().getBridge(), (a) -> new LinkedList<>()).add(mapTile);
 				}
 				entitiesToRender.addAll(mapTile.getEntities());
+				unattachedParticleEffectsToRender.addAll(mapTile.getParticleEffects().values());
 				for (Entity entity : mapTile.getEntities()) {
 					if (entity.getType().equals(EntityType.HUMANOID)) {
 						settlerLocations.add(toGridPoint(entity.getLocationComponent().getWorldOrParentPosition()));
@@ -258,6 +261,14 @@ public class WorldRenderer implements Disposable {
 
 			}
 		}
+
+		unattachedParticleEffectsToRender.forEach(p -> {
+			if (p.getType().getIsAffectedByLighting()) {
+				p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+			} else {
+				particlesToRenderAsUI.add(p);
+			}
+		});
 
 		basicSpriteBatch.end();
 		explorationRenderer.render(unexploredTiles, camera, tiledMap, renderMode);
