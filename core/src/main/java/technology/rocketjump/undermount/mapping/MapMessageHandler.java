@@ -11,6 +11,8 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
+import technology.rocketjump.undermount.audio.model.SoundAsset;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -51,13 +53,15 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private final StockpileComponentUpdater stockpileComponentUpdater;
 
 	private GameContext gameContext;
+
 	private ParticleEffectType wallRemovedParticleEffectType;
+	private SoundAsset wallRemovedSoundAsset;
 
 	@Inject
 	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
 							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory,
 							 RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater,
-							 ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+							 ParticleEffectTypeDictionary particleEffectTypeDictionary, SoundAssetDictionary soundAssetDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
@@ -67,6 +71,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
 
 		this.wallRemovedParticleEffectType = particleEffectTypeDictionary.getByName("Dust cloud"); // MODDING expose this
+		this.wallRemovedSoundAsset = soundAssetDictionary.getByName("Mining Drop");
 
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
@@ -488,11 +493,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			updateTile(tile, gameContext);
 
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
-					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {
-				if (p != null) {
-					tile.getParticleEffects().put(p.getInstanceId(), p);
-				}
-			}));
+					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(wallRemovedSoundAsset, -1L, tile.getWorldPositionOfCenter()));
 
 			Integer neighbourRegionId = null;
 			MapTile unexploredTile = null;

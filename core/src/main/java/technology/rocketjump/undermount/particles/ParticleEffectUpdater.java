@@ -105,6 +105,9 @@ public class ParticleEffectUpdater implements Telegraph {
 			Vector2 position = targetTile.getWorldPositionOfCenter();
 			if (insideBounds(position)) {
 				ParticleEffectInstance instance = store.create(particleRequestMessage.type, targetTile, Optional.of(targetTile.getFloor().getMaterial()));
+				if (instance != null) {
+					targetTile.getParticleEffects().put(instance.getInstanceId(), instance);
+				}
 				particleRequestMessage.callback.particleCreated(instance);
 			} else {
 				particleRequestMessage.callback.particleCreated(null);
