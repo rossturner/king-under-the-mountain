@@ -15,13 +15,43 @@
     "attachedToParent": false
   },
   {
-    "name": "Digging ground",
+    "name": "Chipping wood",
+    "particleFile": "woodchip.p",
+    "scale": 1,
+    "usingParentOrientation": "LEFT",
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "distanceFromParentEntityOrientation": 0.8,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.3
+    },
+    "attachedToParent": false
+  },
+  {
+    "name": "Digging ground same tile",
     "particleFile": "groundsplat.p",
     "scale": 0.8,
     "isLooping": true,
     "isAffectedByLighting": true,
     "usesTargetMaterialAsTintColor": false,
     "distanceFromParentEntityOrientation": 0.1,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": -0.2
+    },
+    "renderBehindParent": true,
+    "attachedToParent": false
+  },
+  {
+    "name": "Digging ground offset tile",
+    "particleFile": "groundsplat.p",
+    "scale": 0.8,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "distanceFromParentEntityOrientation": 0.85,
     "offsetFromParentEntity": {
       "x": 0,
       "y": -0.2

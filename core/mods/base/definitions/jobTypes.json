@@ -14,7 +14,8 @@
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "MINER",
     "requiredItemTypeName": "Tool-Pickaxe",
-    "activeSoundAssetName": "Tilling"
+    "activeSoundAssetName": "Tilling",
+    "workOnJobParticleEffectName": "Digging ground offset tile"
   },
   {
     "name": "LOGGING",
@@ -23,7 +24,8 @@
     "requiredProfessionName": "LUMBERJACK",
     "requiredItemTypeName": "Tool-Axe",
     "activeSoundAssetName": "ChoppingTree",
-    "onCompletionSoundAssetName": "TreeFall"
+    "onCompletionSoundAssetName": "TreeFall",
+    "workOnJobParticleEffectName": "Chipping wood"
   },
 
 
@@ -37,18 +39,20 @@
     "overrideI18nKey": "ACTION.JOB.TILLING",
     "requiredProfessionName": "FARMER",
     "activeSoundAssetName": "Tilling",
-    "workOnJobParticleEffectName": "Digging ground"
+    "workOnJobParticleEffectName": "Digging ground same tile"
   },
   {
     "name": "FILL_GRAVE",
     "overrideI18nKey": "ACTION.JOB.FILL_GRAVE",
     "accessedFromAdjacentTile": true,
-    "activeSoundAssetName": "Tilling"
+    "activeSoundAssetName": "Tilling",
+    "workOnJobParticleEffectName": "Digging ground offset tile"
   },
   {
     "name": "PLANTING",
     "overrideI18nKey": "ACTION.JOB.PLANTING",
-    "requiredProfessionName": "FARMER"
+    "requiredProfessionName": "FARMER",
+    "workOnJobParticleEffectName": "Digging ground same tile"
   },
   {
     "name": "REMOVE_PESTS_FROM_CROP",

@@ -3,10 +3,13 @@ package technology.rocketjump.undermount.jobs.model;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
+
+import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 
 public class JobTarget {
 
@@ -73,6 +76,21 @@ public class JobTarget {
 					}
 				} else {
 					return tile.getFloor().getMaterial();
+				}
+			}
+			case CONSTRUCTION: {
+				GameMaterial constructionMaterial = construction.getPrimaryMaterial();
+				if (constructionMaterial.equals(NULL_MATERIAL)) {
+					return null;
+				} else {
+					return constructionMaterial;
+				}
+			}
+			case ENTITY: {
+				switch (entity.getType()) {
+					case PLANT: {
+						return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
+					}
 				}
 			}
 			default:
