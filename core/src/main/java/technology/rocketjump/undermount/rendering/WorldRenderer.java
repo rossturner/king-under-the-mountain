@@ -25,6 +25,7 @@ import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rendering.camera.TileBoundingBox;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.entities.InWorldRenderable;
 import technology.rocketjump.undermount.rendering.lighting.LightProcessor;
 import technology.rocketjump.undermount.rendering.lighting.PointLight;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -57,8 +58,7 @@ public class WorldRenderer implements Disposable {
 
 	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
 
-	private final PriorityQueue<Entity> entitiesToRender = new PriorityQueue<>(new Entity.YDepthEntityComparator());
-	private final PriorityQueue<ParticleEffectInstance> unattachedParticleEffectsToRender = new PriorityQueue<>(new ParticleEffectInstance.YDepthEntityComparator());
+	private final PriorityQueue<InWorldRenderable> entitiesToRender = new PriorityQueue<>(new InWorldRenderable.YDepthEntityComparator());
 	private final List<MapTile> terrainTiles = new LinkedList<>();
 	private final List<MapTile> riverTiles = new LinkedList<>();
 	private final Map<Bridge, List<MapTile>> bridgeTiles = new HashMap<>();
@@ -97,7 +97,6 @@ public class WorldRenderer implements Disposable {
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1); // MODDING expose default background color
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		entitiesToRender.clear();
-		unattachedParticleEffectsToRender.clear();
 		entitiesRenderedThisFrame.clear();
 		terrainConstructionsToRender.clear();
 		otherConstructionsToRender.clear();
@@ -133,17 +132,18 @@ public class WorldRenderer implements Disposable {
 				if (mapTile.getFloor().hasBridge()) {
 					bridgeTiles.computeIfAbsent(mapTile.getFloor().getBridge(), (a) -> new LinkedList<>()).add(mapTile);
 				}
-				entitiesToRender.addAll(mapTile.getEntities());
-				unattachedParticleEffectsToRender.addAll(mapTile.getParticleEffects().values());
+
+				mapTile.getEntities().forEach(e -> entitiesToRender.add(new InWorldRenderable(e)));
+				mapTile.getParticleEffects().values().forEach(p -> entitiesToRender.add(new InWorldRenderable(p)));
 				for (Entity entity : mapTile.getEntities()) {
 					if (entity.getType().equals(EntityType.HUMANOID)) {
 						settlerLocations.add(toGridPoint(entity.getLocationComponent().getWorldOrParentPosition()));
 					}
 				}
 				if (mapTile.hasDoorway()) {
-					entitiesToRender.add(mapTile.getDoorway().getFrameEntity());
-					entitiesToRender.add(mapTile.getDoorway().getDoorEntity());
-					entitiesToRender.addAll(mapTile.getDoorway().getWallCapEntities());
+					entitiesToRender.add(new InWorldRenderable(mapTile.getDoorway().getFrameEntity()));
+					entitiesToRender.add(new InWorldRenderable(mapTile.getDoorway().getDoorEntity()));
+					mapTile.getDoorway().getWallCapEntities().forEach(e -> entitiesToRender.add(new InWorldRenderable(e)));
 				}
 				if (mapTile.hasRoom()) {
 					roomTiles.add(mapTile);
@@ -183,7 +183,7 @@ public class WorldRenderer implements Disposable {
 				if (mapTile == null || mapTile.getExploration().equals(UNEXPLORED)) {
 					continue;
 				}
-				entitiesToRender.addAll(mapTile.getEntities());
+				mapTile.getEntities().forEach(e -> entitiesToRender.add(new InWorldRenderable(e)));
 				Construction construction = mapTile.getConstruction();
 				if (construction != null) {
 					if (terrainConstructionTypes.contains(construction.getConstructionType())) {
@@ -227,48 +227,49 @@ public class WorldRenderer implements Disposable {
 
 
 		while (!entitiesToRender.isEmpty()) {
-			Entity entity = entitiesToRender.poll();
-			if (!entitiesRenderedThisFrame.contains(entity.getId())) {
-				entitiesRenderedThisFrame.add(entity.getId());
+			InWorldRenderable renderable = entitiesToRender.poll();
+			Entity entity = renderable.entity;
+			if (entity != null) {
+				if (!entitiesRenderedThisFrame.contains(entity.getId())) {
+					entitiesRenderedThisFrame.add(entity.getId());
 
-				particlesInFrontOfEntity.clear();
-				particleEffectStore.getParticlesAttachedToEntity(entity).forEach(p -> {
-					if (p.getType().getIsAffectedByLighting()) {
-						if (p.getType().isRenderBehindParent()) {
-							p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+					particlesInFrontOfEntity.clear();
+					particleEffectStore.getParticlesAttachedToEntity(entity).forEach(p -> {
+						if (p.getType().getIsAffectedByLighting()) {
+							if (p.getType().isRenderBehindParent()) {
+								p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+							} else {
+								particlesInFrontOfEntity.add(p);
+							}
 						} else {
-							particlesInFrontOfEntity.add(p);
+							particlesToRenderAsUI.add(p);
 						}
-					} else {
-						particlesToRenderAsUI.add(p);
+					});
+
+					Color multiplyColor = null;
+					if (GlobalSettings.TREE_TRANSPARENCY_ENABLED) {
+						if (entity.getType().equals(EntityType.PLANT) && isPlantOccludingHumanoid(entity)) {
+							multiplyColor = TREE_TRANSPARENCY;
+						}
 					}
-				});
 
-				Color multiplyColor = null;
-				if (GlobalSettings.TREE_TRANSPARENCY_ENABLED) {
-					if (entity.getType().equals(EntityType.PLANT) && isPlantOccludingHumanoid(entity)) {
-						multiplyColor = TREE_TRANSPARENCY;
+					entityRenderer.render(entity, basicSpriteBatch, renderMode, null, null, multiplyColor);
+					AttachedLightSourceComponent attachedLightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
+					if (lightsToRenderThisFrame != null && attachedLightSourceComponent != null && attachedLightSourceComponent.isEnabled()) {
+						lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
 					}
+
+					particlesInFrontOfEntity.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
+
 				}
-
-				entityRenderer.render(entity, basicSpriteBatch, renderMode, null, null, multiplyColor);
-				AttachedLightSourceComponent attachedLightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
-				if (lightsToRenderThisFrame != null && attachedLightSourceComponent != null && attachedLightSourceComponent.isEnabled()) {
-					lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
+			} else if (renderable.particleEffect != null) {
+				if (renderable.particleEffect.getType().getIsAffectedByLighting()) {
+					renderable.particleEffect.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+				} else {
+					particlesToRenderAsUI.add(renderable.particleEffect);
 				}
-
-				particlesInFrontOfEntity.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
-
 			}
 		}
-
-		unattachedParticleEffectsToRender.forEach(p -> {
-			if (p.getType().getIsAffectedByLighting()) {
-				p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
-			} else {
-				particlesToRenderAsUI.add(p);
-			}
-		});
 
 		basicSpriteBatch.end();
 		explorationRenderer.render(unexploredTiles, camera, tiledMap, renderMode);

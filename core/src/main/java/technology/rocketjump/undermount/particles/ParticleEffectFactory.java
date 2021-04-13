@@ -14,7 +14,6 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
-import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEmitter;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
@@ -64,10 +63,7 @@ public class ParticleEffectFactory {
 		ParticleEffect gdxClone = new ParticleEffect(gdxBaseInstance);
 		if (optionalMaterial.isPresent() && type.isUsesTargetMaterialAsTintColor()) {
 			Color materialColor = optionalMaterial.get().getColor();
-			float[] colors = new float[]{materialColor.r, materialColor.g, materialColor.b};
-			for (ParticleEmitter emitter : gdxClone.getEmitters()) {
-				emitter.getTint().setColors(colors);
-			}
+			gdxClone.setTint(materialColor);
 		}
 
 		ParticleEffectInstance instance;

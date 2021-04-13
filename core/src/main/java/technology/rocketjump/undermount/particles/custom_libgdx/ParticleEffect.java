@@ -17,6 +17,7 @@
 package technology.rocketjump.undermount.particles.custom_libgdx;
 
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -269,6 +270,13 @@ public class ParticleEffect implements Disposable {
 	public void setEmittersCleanUpBlendFunction (boolean cleanUpBlendFunction) {
 		for (int i = 0, n = emitters.size; i < n; i++) {
 			emitters.get(i).setCleansUpBlendFunction(cleanUpBlendFunction);
+		}
+	}
+
+	public void setTint(Color color) {
+		float[] colors = new float[]{color.r, color.g, color.b};
+		for (ParticleEmitter emitter : this.getEmitters()) {
+			emitter.getTint().setColors(colors);
 		}
 	}
 }

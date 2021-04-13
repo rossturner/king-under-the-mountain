@@ -9,6 +9,16 @@
   "renderBehindParent" : false,
   "attachedToParent" : false
 }, {
+  "name" : "Leaf explosion",
+  "particleFile" : "leafexplosion.p",
+  "scale" : 0.8,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "attachedToParent" : false
+}, {
   "name" : "Chipping rock",
   "particleFile" : "rockparticle.p",
   "scale" : 0.4,

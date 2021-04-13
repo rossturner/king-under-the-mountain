@@ -10,6 +10,8 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
+import technology.rocketjump.undermount.audio.model.SoundAsset;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.behaviour.furniture.*;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.BrokenDwarfBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
@@ -45,12 +47,15 @@ import technology.rocketjump.undermount.jobs.JobFactory;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobState;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.misc.Destructible;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.Room;
 import technology.rocketjump.undermount.rooms.RoomStore;
@@ -64,10 +69,7 @@ import technology.rocketjump.undermount.settlement.notifications.NotificationTyp
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static technology.rocketjump.undermount.assets.entities.model.ColoringLayer.SKIN_COLOR;
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
@@ -80,6 +82,7 @@ import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
 import static technology.rocketjump.undermount.jobs.JobMessageHandler.deconstructFurniture;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
+import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FURNITURE;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.*;
 
@@ -99,14 +102,18 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final I18nTranslator i18nTranslator;
 	private final JobStore jobStore;
+	private final SoundAssetDictionary soundAssetDictionary;
+	private final SoundAsset treeFallSoundEffect;
 	private GameContext gameContext;
+	private ParticleEffectType leafExplosionParticleType;
 
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
 								JobFactory jobFactory, EntityStore entityStore, ItemTracker itemTracker,
 								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, RoomStore roomStore,
 								ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory,
-								ItemTypeDictionary itemTypeDictionary, I18nTranslator i18nTranslator, JobStore jobStore) {
+								ItemTypeDictionary itemTypeDictionary, I18nTranslator i18nTranslator, JobStore jobStore,
+								SoundAssetDictionary soundAssetDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.entityAssetUpdater = entityAssetUpdater;
 		this.jobFactory = jobFactory;
@@ -120,6 +127,11 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.i18nTranslator = i18nTranslator;
 		this.jobStore = jobStore;
+		this.soundAssetDictionary = soundAssetDictionary;
+
+		this.leafExplosionParticleType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
+		this.treeFallSoundEffect = this.soundAssetDictionary.getByName("Mining Drop");
+
 		messageDispatcher.addListener(this, MessageType.DESTROY_ENTITY);
 		messageDispatcher.addListener(this, MessageType.JOB_REMOVED);
 		messageDispatcher.addListener(this, MessageType.JOB_CANCELLED);
@@ -487,6 +499,9 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				(int)Math.floor(treeFallenMessage.getTreeWorldPosition().y)
 		);
 
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(treeFallSoundEffect, -1L,
+				toVector(treeTilePosition)));
+
 		for (PlantSpeciesItem itemToCreate : treeFallenMessage.getItemsToCreate()) {
 			int logsToCreateAtNextTile = 1;
 			int logsLeftToCreate = itemToCreate.getQuantity();
@@ -501,6 +516,13 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 				MapTile targetTile = gameContext.getAreaMap().getTile(targetTilePosition);
 				if (targetTile != null && targetTile.isNavigable()) {
+
+					if (treeFallenMessage.getLeafColor().isPresent()) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleType,
+								Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {
+							p.getGdxParticleEffect().setTint(treeFallenMessage.getLeafColor().get());
+						}));
+					}
 
 					ItemEntityAttributes itemEntityAttributes = new ItemEntityAttributes(gameContext.getRandom().nextLong());
 					itemEntityAttributes.setItemSize(itemToCreate.getItemSize());

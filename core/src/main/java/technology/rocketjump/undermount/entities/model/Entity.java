@@ -32,7 +32,8 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import java.util.*;
 
-import static technology.rocketjump.undermount.entities.model.EntityType.*;
+import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOID;
+import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class Entity implements Persistable, Disposable {
@@ -445,21 +446,6 @@ public class Entity implements Persistable, Disposable {
 	 */
 	public void setLocationComponent(LocationComponent overrideLocationComponent) {
 		this.locationComponent = overrideLocationComponent;
-	}
-
-	public static class YDepthEntityComparator implements Comparator<Entity> {
-		@Override
-		public int compare(Entity o1, Entity o2) {
-			float o1Position = o1.locationComponent.getWorldPosition().y;
-			if (o1.getType().equals(ITEM) || o1.getType().equals(PLANT)) {
-				o1Position += 0.5f;
-			}
-			float o2Position = o2.locationComponent.getWorldPosition().y;
-			if (o2.getType().equals(ITEM) || o2.getType().equals(PLANT)) {
-				o2Position += 0.5f;
-			}
-			return (int)(100000f * (o2Position - o1Position));
-		}
 	}
 
 }
