@@ -14,5 +14,13 @@
     "isLooping": false,
     "isAffectedByLighting": true,
     "usesTargetMaterialAsTintColor": true
+  },
+  {
+    "name": "Chip explosion",
+    "particleFile": "chipexplosion.p",
+    "scale": 0.8,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true
   }
 ]

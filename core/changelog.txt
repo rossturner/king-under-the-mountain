@@ -1,3 +1,12 @@
+Alpha 5.2
+
+- Added a particle effect system for visual effects in the world. Effects added include:
+    - Rock chipping away when mining
+    - Dust cloud when wall is mined away
+    - Wood chipping away when cutting down trees
+    - Wood chips and leaves when falling tree hits the ground
+    - Muddy splats when digging in the ground
+
 Alpha 5.0.1
 
 - Added a display of current number of beds to settler management screen

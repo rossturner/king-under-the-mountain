@@ -106,6 +106,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private final SoundAsset treeFallSoundEffect;
 	private GameContext gameContext;
 	private ParticleEffectType leafExplosionParticleType;
+	private ParticleEffectType chipExplosionParticleType;
 
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
@@ -130,6 +131,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.soundAssetDictionary = soundAssetDictionary;
 
 		this.leafExplosionParticleType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
+		this.chipExplosionParticleType = particleEffectTypeDictionary.getByName("Chip explosion"); // MODDING expose this
 		this.treeFallSoundEffect = this.soundAssetDictionary.getByName("Mining Drop");
 
 		messageDispatcher.addListener(this, MessageType.DESTROY_ENTITY);
@@ -502,6 +504,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(treeFallSoundEffect, -1L,
 				toVector(treeTilePosition)));
 
+
 		for (PlantSpeciesItem itemToCreate : treeFallenMessage.getItemsToCreate()) {
 			int logsToCreateAtNextTile = 1;
 			int logsLeftToCreate = itemToCreate.getQuantity();
@@ -521,6 +524,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleType,
 								Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {
 							p.getGdxParticleEffect().setTint(treeFallenMessage.getLeafColor().get());
+						}));
+					}
+					if (treeFallenMessage.getBranchColor() != null) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(chipExplosionParticleType,
+								Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {
+							p.getGdxParticleEffect().setTint(treeFallenMessage.getBranchColor());
 						}));
 					}
 
