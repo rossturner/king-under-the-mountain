@@ -89,6 +89,7 @@ public class MessageType {
 	public static final int HUMANOID_DEATH = 340;
 	public static final int HUMANOID_INSANITY = 341;
 	public static final int LIQUID_AMOUNT_CHANGED = 342;
+	public static final int TREE_SHED_LEAVES = 343;
 
 	// Assets and modding related messages
 	public static final int SHUTDOWN_IN_PROGRESS = 400;

@@ -8,6 +8,7 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,10 +35,14 @@ public class CraftingTypeDictionary {
 		for (CraftingType craftingType : craftingTypes) {
 			craftingType.setProfessionRequired(professionDictionary.getByName(craftingType.getProfessionRequiredName()));
 
-			if (craftingType.getParticleEffectName() != null) {
-				craftingType.setParticleEffectType(this.particleEffectTypeDictionary.getByName(craftingType.getParticleEffectName()));
-				if (craftingType.getParticleEffectType() == null) {
-					Logger.error("Could not find particle effect with name " + craftingType.getParticleEffectName() + " for crafting type " + craftingType.getName());
+			if (craftingType.getParticleEffectNames() != null) {
+				for (String particleEffectName : craftingType.getParticleEffectNames()) {
+					ParticleEffectType particleEffectType = particleEffectTypeDictionary.getByName(particleEffectName);
+					if (particleEffectType == null) {
+						Logger.error("Could not find particle effect with name " + particleEffectName + " for crafting type " + craftingType.getName());
+					} else {
+						craftingType.getParticleEffectTypes().add(particleEffectType);
+					}
 				}
 			}
 

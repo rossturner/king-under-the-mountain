@@ -6,6 +6,9 @@ import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.misc.Name;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CraftingType implements Comparable<CraftingType> {
 
 	@Name
@@ -19,9 +22,9 @@ public class CraftingType implements Comparable<CraftingType> {
 	@JsonIgnore
 	private ItemType defaultItemType;
 	private boolean usesWorkstationTool = false;
-	private String particleEffectName;
+	private List<String> particleEffectNames;
 	@JsonIgnore
-	private ParticleEffectType particleEffectType;
+	private List<ParticleEffectType> particleEffectTypes = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -71,20 +74,20 @@ public class CraftingType implements Comparable<CraftingType> {
 		this.defaultItemType = defaultItemType;
 	}
 
-	public String getParticleEffectName() {
-		return particleEffectName;
+	public List<String> getParticleEffectNames() {
+		return particleEffectNames;
 	}
 
-	public void setParticleEffectName(String particleEffectName) {
-		this.particleEffectName = particleEffectName;
+	public void setParticleEffectNames(List<String> particleEffectNames) {
+		this.particleEffectNames = particleEffectNames;
 	}
 
-	public ParticleEffectType getParticleEffectType() {
-		return particleEffectType;
+	public List<ParticleEffectType> getParticleEffectTypes() {
+		return particleEffectTypes;
 	}
 
-	public void setParticleEffectType(ParticleEffectType particleEffectType) {
-		this.particleEffectType = particleEffectType;
+	public void setParticleEffectTypes(List<ParticleEffectType> particleEffectTypes) {
+		this.particleEffectTypes = particleEffectTypes;
 	}
 
 	@Override

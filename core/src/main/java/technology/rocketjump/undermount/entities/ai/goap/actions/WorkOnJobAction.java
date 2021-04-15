@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
@@ -56,27 +57,27 @@ public class WorkOnJobAction extends Action {
 				activeSoundTriggered = true;
 			}
 
-			ParticleEffectType relatedParticleEffectType = getRelatedParticleEffectType();
-			if (relatedParticleEffectType != null) {
-				if (spawnedParticles.stream()
-						.filter(p -> p.getType().equals(relatedParticleEffectType))
-						.findAny().isEmpty()) {
-					Action This = this;
-					parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-							relatedParticleEffectType,
-							Optional.of(parent.parentEntity),
-							Optional.ofNullable(assignedJob.getTargetOfJob(gameContext)
-							), instance -> {
-						if (instance != null) {
+			List<ParticleEffectType> relatedParticleEffectTypes = getRelatedParticleEffectTypes();
+			if (relatedParticleEffectTypes != null) {
+				for (ParticleEffectType particleEffectType : relatedParticleEffectTypes) {
+					if (spawnedParticles.stream()
+							.filter(p -> p.getType().equals(particleEffectType))
+							.findAny().isEmpty()) {
+						Action This = this;
+						parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
+								particleEffectType,
+								Optional.of(parent.parentEntity),
+								Optional.ofNullable(assignedJob.getTargetOfJob(gameContext)
+								), instance -> {
 							This.spawnedParticles.add(instance);
-						}
-					}));
+						}));
+					}
 				}
 			}
 
 			float workCompletionFraction = Math.min(assignedJob.getWorkDoneSoFar() / assignedJob.getTotalWorkToDo(), 1f);
 
-			spawnedParticles.removeIf(p -> !p.isActive());
+			spawnedParticles.removeIf(p -> p == null || !p.isActive());
 
 			Iterator<ParticleEffectInstance> particleIterator = spawnedParticles.iterator();
 			while (particleIterator.hasNext()) {
@@ -105,11 +106,11 @@ public class WorkOnJobAction extends Action {
 		}
 	}
 
-	private ParticleEffectType getRelatedParticleEffectType() {
+	private List<ParticleEffectType> getRelatedParticleEffectTypes() {
 		if (parent.getAssignedJob().getCraftingRecipe() != null) {
-			return parent.getAssignedJob().getCraftingRecipe().getCraftingType().getParticleEffectType();
+			return parent.getAssignedJob().getCraftingRecipe().getCraftingType().getParticleEffectTypes();
 		} else {
-			return parent.getAssignedJob().getType().getWorkOnJobParticleEffectType();
+			return parent.getAssignedJob().getType().getWorkOnJobParticleEffectTypes();
 		}
 	}
 

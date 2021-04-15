@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.entities;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
@@ -107,6 +108,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private GameContext gameContext;
 	private ParticleEffectType leafExplosionParticleType;
 	private ParticleEffectType chipExplosionParticleType;
+	private ParticleEffectType treeShedLeafEffect;
 
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
@@ -132,6 +134,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 		this.leafExplosionParticleType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
 		this.chipExplosionParticleType = particleEffectTypeDictionary.getByName("Chip explosion"); // MODDING expose this
+		treeShedLeafEffect = particleEffectTypeDictionary.getByName("Falling leaf");
 		this.treeFallSoundEffect = this.soundAssetDictionary.getByName("Mining Drop");
 
 		messageDispatcher.addListener(this, MessageType.DESTROY_ENTITY);
@@ -152,6 +155,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_ITEM_TYPE);
 		messageDispatcher.addListener(this, MessageType.HUMANOID_DEATH);
 		messageDispatcher.addListener(this, MessageType.HUMANOID_INSANITY);
+		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
 	}
 
 	@Override
@@ -305,6 +309,16 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.TREE_FELLED: {
 				return handle((TreeFallenMessage)msg.extraInfo);
+			}
+			case MessageType.TREE_SHED_LEAVES: {
+				ShedLeavesMessage message = (ShedLeavesMessage) msg.extraInfo;
+				if (message.leafColor != null && !message.leafColor.equals(Color.CLEAR)) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(treeShedLeafEffect,
+							Optional.of(message.parentEntity), Optional.empty(), (p) -> {
+						p.getGdxParticleEffect().setTint(message.leafColor);
+					}));
+				}
+				return true;
 			}
 			case MessageType.ENTITY_ASSET_UPDATE_REQUIRED: {
 				Entity entity = (Entity) msg.extraInfo;

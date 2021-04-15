@@ -12,7 +12,6 @@ import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrienta
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
@@ -57,13 +56,18 @@ public class ParticleEffectFactory {
 	}
 
 	public ParticleEffectInstance create(ParticleEffectType type, Optional<Entity> parentEntity,
-										 Optional<MapTile> parentTile, Optional<GameMaterial> optionalMaterial) {
+										 Optional<MapTile> parentTile, Optional<Color> optionalMaterialColor) {
 
 		ParticleEffect gdxBaseInstance = baseInstancesByDefinition.get(type);
 		ParticleEffect gdxClone = new ParticleEffect(gdxBaseInstance);
-		if (optionalMaterial.isPresent() && type.isUsesTargetMaterialAsTintColor()) {
-			Color materialColor = optionalMaterial.get().getColor();
-			gdxClone.setTint(materialColor);
+
+		if  (type.isUsesTargetMaterialAsTintColor()) {
+			if (optionalMaterialColor.isPresent()) {
+				gdxClone.setTint(optionalMaterialColor.get());
+			} else {
+				// Uses target color but there is no color supplied, so skip this effect
+				return null;
+			}
 		}
 
 		ParticleEffectInstance instance;

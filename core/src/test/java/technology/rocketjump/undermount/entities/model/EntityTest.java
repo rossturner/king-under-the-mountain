@@ -18,11 +18,13 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.rendering.entities.InWorldRenderable;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
+import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -59,12 +61,12 @@ public class EntityTest {
 		Entity front = new Entity(EntityType.HUMANOID, mockPhysicalComponent, mockBehaviourComponent, frontLocation, mockMessageDispatcher, mockGameContext);
 
 		List<Entity> testData = Arrays.asList(middle, back, front);
-		PriorityQueue<Entity> renderingSort = new PriorityQueue<>(new Entity.YDepthEntityComparator());
-		renderingSort.addAll(testData);
+		PriorityQueue<InWorldRenderable> renderingSort = new PriorityQueue<>(new InWorldRenderable.YDepthEntityComparator());
+		renderingSort.addAll(testData.stream().map(InWorldRenderable::new).collect(toList()));
 
-		assertThat(renderingSort.poll().getLocationComponent().getWorldPosition().y).isEqualTo(10f);
-		assertThat(renderingSort.poll().getLocationComponent().getWorldPosition().y).isEqualTo(5f);
-		assertThat(renderingSort.poll().getLocationComponent().getWorldPosition().y).isEqualTo(1f);
+		assertThat(renderingSort.poll().entity.getLocationComponent().getWorldPosition().y).isEqualTo(10f);
+		assertThat(renderingSort.poll().entity.getLocationComponent().getWorldPosition().y).isEqualTo(5f);
+		assertThat(renderingSort.poll().entity.getLocationComponent().getWorldPosition().y).isEqualTo(1f);
 		assertThat(renderingSort).isEmpty();
 	}
 

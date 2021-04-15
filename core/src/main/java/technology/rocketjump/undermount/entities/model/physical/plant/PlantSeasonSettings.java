@@ -10,6 +10,7 @@ public class PlantSeasonSettings {
 	private boolean growth = true;
 	private Map<ColoringLayer, PlantSpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
 	private Integer switchToGrowthStage = null; // Can be used to switch to a decaying-type stage
+	private boolean shedsLeaves = false;
 
 	public boolean isGrowth() {
 		return growth;
@@ -33,5 +34,13 @@ public class PlantSeasonSettings {
 
 	public void setSwitchToGrowthStage(Integer switchToGrowthStage) {
 		this.switchToGrowthStage = switchToGrowthStage;
+	}
+
+	public boolean isShedsLeaves() {
+		return shedsLeaves;
+	}
+
+	public void setShedsLeaves(boolean shedsLeaves) {
+		this.shedsLeaves = shedsLeaves;
 	}
 }

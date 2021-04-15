@@ -44,6 +44,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobState;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
@@ -56,6 +57,8 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
@@ -88,6 +91,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final JobType haulingJobType;
 	private final JobType miningJobType;
 	private final TileDesignationDictionary tileDesignationDictionary;
+	private final ParticleEffectType leafExplosionParticleEffectType;
 	private GameContext gameContext;
 
 	@Inject
@@ -96,7 +100,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							 JobFactory jobFactory, EntityStore entityStore, PlantEntityAttributesFactory plantEntityAttributesFactory,
 							 PlantEntityFactory plantEntityFactory, PlantSpeciesDictionary plantSpeciesDictionary,
 							 FurnitureTypeDictionary furnitureTypeDictionary, DynamicMaterialFactory dynamicMaterialFactory,
-							 ItemTypeDictionary itemTypeDictionary, JobTypeDictionary jobTypeDictionary, TileDesignationDictionary tileDesignationDictionary) {
+							 ItemTypeDictionary itemTypeDictionary, JobTypeDictionary jobTypeDictionary,
+							 TileDesignationDictionary tileDesignationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.jobWorkCalculator = jobWorkCalculator;
 		this.jobStore = jobStore;
@@ -113,6 +118,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
 		miningJobType = jobTypeDictionary.getByName("MINING");
 		this.tileDesignationDictionary = tileDesignationDictionary;
+
+		this.leafExplosionParticleEffectType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
 		messageDispatcher.addListener(this, MessageType.REMOVE_DESIGNATION);
@@ -369,6 +376,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							}
 
 							if (currentGrowthStage.getHarvestSwitchesToGrowthStage() == null) {
+								messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
+										Optional.empty(), Optional.of(new JobTarget(targetEntity)), (p) -> {}));
 								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
 							} else {
 								attributes.setGrowthStageCursor(currentGrowthStage.getHarvestSwitchesToGrowthStage());
@@ -541,6 +550,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				}
 
 				if (targetPlant != null) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
+							Optional.empty(), Optional.of(new JobTarget(targetPlant)), (p) -> {}));
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetPlant.getId()));
 				}
 				break;

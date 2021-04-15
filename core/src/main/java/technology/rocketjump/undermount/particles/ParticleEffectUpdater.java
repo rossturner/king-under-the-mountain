@@ -3,14 +3,16 @@ package technology.rocketjump.undermount.particles;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.messaging.types.ParticleUpdateMessage;
@@ -23,11 +25,12 @@ import java.util.Optional;
 import static technology.rocketjump.undermount.jobs.model.JobTarget.NULL_TARGET;
 
 @Singleton
-public class ParticleEffectUpdater implements Telegraph {
+public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 
 	private final ParticleEffectStore store;
 
 	private TileBoundingBox currentBoundingBox;
+	private GameContext gameContext;
 
 	@Inject
 	public ParticleEffectUpdater(ParticleEffectStore store, MessageDispatcher messageDispatcher) {
@@ -72,15 +75,15 @@ public class ParticleEffectUpdater implements Telegraph {
 	public boolean handleMessage(Telegram msg) {
 		switch (msg.message) {
 			case MessageType.PARTICLE_REQUEST: {
-				handle((ParticleRequestMessage)msg.extraInfo);
+				handle((ParticleRequestMessage) msg.extraInfo);
 				return true;
 			}
 			case MessageType.PARTICLE_UPDATE: {
-				handle((ParticleUpdateMessage)msg.extraInfo);
+				handle((ParticleUpdateMessage) msg.extraInfo);
 				return true;
 			}
 			case MessageType.PARTICLE_RELEASE: {
-				release((ParticleEffectInstance)msg.extraInfo);
+				release((ParticleEffectInstance) msg.extraInfo);
 				return true;
 			}
 			default:
@@ -89,32 +92,39 @@ public class ParticleEffectUpdater implements Telegraph {
 	}
 
 	private void handle(ParticleRequestMessage particleRequestMessage) {
+		Optional<Color> targetColor = Optional.ofNullable(particleRequestMessage.effectTarget.orElse(NULL_TARGET).getTargetColor());
 		if (particleRequestMessage.parentEntity.isPresent()) {
 			Entity parentEntity = particleRequestMessage.parentEntity.get();
 			Vector2 parentPosition = parentEntity.getLocationComponent().getWorldOrParentPosition();
 			if (insideBounds(parentPosition)) {
-				Optional<GameMaterial> relatedMaterial = Optional.ofNullable(particleRequestMessage.effectTarget.orElse(NULL_TARGET).getTargetMaterial());
-				ParticleEffectInstance instance = store.create(particleRequestMessage.type, parentEntity, relatedMaterial);
+				ParticleEffectInstance instance = store.create(particleRequestMessage.type, parentEntity, targetColor);
 				particleRequestMessage.callback.particleCreated(instance);
-			} else {
-				particleRequestMessage.callback.particleCreated(null);
 			}
 		} else if (particleRequestMessage.effectTarget.isPresent() && particleRequestMessage.effectTarget.get().type.equals(JobTarget.JobTargetType.TILE)) {
 			// Attaching particle effect to tile
 			MapTile targetTile = particleRequestMessage.effectTarget.get().getTile();
 			Vector2 position = targetTile.getWorldPositionOfCenter();
 			if (insideBounds(position)) {
-				ParticleEffectInstance instance = store.create(particleRequestMessage.type, targetTile, Optional.of(targetTile.getFloor().getMaterial()));
+				ParticleEffectInstance instance = store.create(particleRequestMessage.type, targetTile, targetColor);
 				if (instance != null) {
 					targetTile.getParticleEffects().put(instance.getInstanceId(), instance);
+					particleRequestMessage.callback.particleCreated(instance);
 				}
-				particleRequestMessage.callback.particleCreated(instance);
-			} else {
-				particleRequestMessage.callback.particleCreated(null);
+			}
+
+		} else if (particleRequestMessage.effectTarget.isPresent() && particleRequestMessage.effectTarget.get().type.equals(JobTarget.JobTargetType.ENTITY)) {
+			// Target is entity but parentEntity is null, probably deleting parent entity, so attach to tile
+			Vector2 position = particleRequestMessage.effectTarget.get().getEntity().getLocationComponent().getWorldOrParentPosition();
+			MapTile targetTile = gameContext.getAreaMap().getTile(position);
+			if (insideBounds(position)) {
+				ParticleEffectInstance instance = store.create(particleRequestMessage.type, targetTile, targetColor);
+				if (instance != null) {
+					targetTile.getParticleEffects().put(instance.getInstanceId(), instance);
+					particleRequestMessage.callback.particleCreated(instance);
+				}
 			}
 		} else {
 			Logger.error("Not yet implemented - particles not attached to an entity");
-			particleRequestMessage.callback.particleCreated(null);
 		}
 	}
 
@@ -135,4 +145,13 @@ public class ParticleEffectUpdater implements Telegraph {
 		}
 	}
 
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
+	}
 }

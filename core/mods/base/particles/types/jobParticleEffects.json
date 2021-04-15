@@ -58,5 +58,19 @@
     },
     "renderBehindParent": true,
     "attachedToParent": false
+  },
+  {
+    "name": "Small leaf explosion",
+    "particleFile": "smallleafexplosion.p",
+    "scale": 0.8,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.2
+    },
+    "renderBehindParent": true,
+    "attachedToParent": false
   }
 ]

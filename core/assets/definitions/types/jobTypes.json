@@ -7,7 +7,7 @@
   "requiredProfessionName" : "MINER",
   "requiredItemTypeName" : "Tool-Pickaxe",
   "activeSoundAssetName" : "Mining",
-  "workOnJobParticleEffectName" : "Chipping rock",
+  "workOnJobParticleEffectNames" : [ "Chipping rock" ],
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "DIGGING",
@@ -18,7 +18,7 @@
   "requiredProfessionName" : "MINER",
   "requiredItemTypeName" : "Tool-Pickaxe",
   "activeSoundAssetName" : "Tilling",
-  "workOnJobParticleEffectName" : "Digging ground offset tile",
+  "workOnJobParticleEffectNames" : [ "Digging ground offset tile" ],
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "LOGGING",
@@ -30,7 +30,7 @@
   "requiredItemTypeName" : "Tool-Axe",
   "activeSoundAssetName" : "ChoppingTree",
   "onCompletionSoundAssetName" : "TreeFall",
-  "workOnJobParticleEffectName" : "Chipping wood",
+  "workOnJobParticleEffectNames" : [ "Chipping wood" ],
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "SHOVELLING",
@@ -48,7 +48,7 @@
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "FARMER",
   "activeSoundAssetName" : "Tilling",
-  "workOnJobParticleEffectName" : "Digging ground same tile",
+  "workOnJobParticleEffectNames" : [ "Digging ground same tile" ],
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "FILL_GRAVE",
@@ -57,7 +57,7 @@
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "activeSoundAssetName" : "Tilling",
-  "workOnJobParticleEffectName" : "Digging ground offset tile",
+  "workOnJobParticleEffectNames" : [ "Digging ground offset tile" ],
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "PLANTING",
@@ -66,7 +66,7 @@
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "FARMER",
-  "workOnJobParticleEffectName" : "Digging ground same tile",
+  "workOnJobParticleEffectNames" : [ "Digging ground same tile" ],
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "REMOVE_PESTS_FROM_CROP",
@@ -75,6 +75,7 @@
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "FARMER",
+  "workOnJobParticleEffectNames" : [ "Small leaf explosion" ],
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "MUSHROOM_INNOCULATION",
@@ -91,6 +92,7 @@
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "activeSoundAssetName" : "HarvestingCrops",
+  "workOnJobParticleEffectNames" : [ "Small leaf explosion" ],
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "CLEAR_GROUND",
@@ -98,6 +100,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "workOnJobParticleEffectNames" : [ "Small leaf explosion" ],
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "COOKING",

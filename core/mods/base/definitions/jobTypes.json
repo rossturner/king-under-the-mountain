@@ -6,7 +6,7 @@
     "requiredProfessionName": "MINER",
     "requiredItemTypeName": "Tool-Pickaxe",
     "activeSoundAssetName": "Mining",
-    "workOnJobParticleEffectName": "Chipping rock"
+    "workOnJobParticleEffectNames": ["Chipping rock"]
   },
   {
     "name": "DIGGING",
@@ -15,7 +15,7 @@
     "requiredProfessionName": "MINER",
     "requiredItemTypeName": "Tool-Pickaxe",
     "activeSoundAssetName": "Tilling",
-    "workOnJobParticleEffectName": "Digging ground offset tile"
+    "workOnJobParticleEffectNames": ["Digging ground offset tile"]
   },
   {
     "name": "LOGGING",
@@ -25,7 +25,7 @@
     "requiredItemTypeName": "Tool-Axe",
     "activeSoundAssetName": "ChoppingTree",
     "onCompletionSoundAssetName": "TreeFall",
-    "workOnJobParticleEffectName": "Chipping wood"
+    "workOnJobParticleEffectNames": ["Chipping wood"]
   },
 
 
@@ -39,25 +39,26 @@
     "overrideI18nKey": "ACTION.JOB.TILLING",
     "requiredProfessionName": "FARMER",
     "activeSoundAssetName": "Tilling",
-    "workOnJobParticleEffectName": "Digging ground same tile"
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
   },
   {
     "name": "FILL_GRAVE",
     "overrideI18nKey": "ACTION.JOB.FILL_GRAVE",
     "accessedFromAdjacentTile": true,
     "activeSoundAssetName": "Tilling",
-    "workOnJobParticleEffectName": "Digging ground offset tile"
+    "workOnJobParticleEffectNames": ["Digging ground offset tile"]
   },
   {
     "name": "PLANTING",
     "overrideI18nKey": "ACTION.JOB.PLANTING",
     "requiredProfessionName": "FARMER",
-    "workOnJobParticleEffectName": "Digging ground same tile"
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
   },
   {
     "name": "REMOVE_PESTS_FROM_CROP",
     "overrideI18nKey": "ACTION.JOB.REMOVE_PESTS_FROM_CROP",
-    "requiredProfessionName": "FARMER"
+    "requiredProfessionName": "FARMER",
+    "workOnJobParticleEffectNames": ["Small leaf explosion"]
   },
   {
     "name": "MUSHROOM_INNOCULATION",
@@ -68,12 +69,14 @@
   {
     "name": "HARVESTING",
     "overrideI18nKey": "ACTION.JOB.HARVESTING",
-    "activeSoundAssetName": "HarvestingCrops"
+    "activeSoundAssetName": "HarvestingCrops",
+    "workOnJobParticleEffectNames": ["Small leaf explosion"]
   },
   {
     "name": "CLEAR_GROUND",
     "overrideI18nKey": "ACTION.JOB.CLEAR_GROUND",
-    "accessedFromAdjacentTile": false
+    "accessedFromAdjacentTile": false,
+    "workOnJobParticleEffectNames": ["Small leaf explosion"]
   },
   {
     "name": "COOKING",

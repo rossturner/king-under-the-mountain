@@ -7,6 +7,9 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.misc.Name;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JobType {
 
 	@Name
@@ -34,9 +37,9 @@ public class JobType {
 	@JsonIgnore
 	private SoundAsset onCompletionSoundAsset;
 
-	private String workOnJobParticleEffectName;
+	private List<String> workOnJobParticleEffectNames;
 	@JsonIgnore
-	private ParticleEffectType workOnJobParticleEffectType;
+	private List<ParticleEffectType> workOnJobParticleEffectTypes = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -158,20 +161,20 @@ public class JobType {
 		this.workDuration = workDuration;
 	}
 
-	public String getWorkOnJobParticleEffectName() {
-		return workOnJobParticleEffectName;
+	public List<String> getWorkOnJobParticleEffectNames() {
+		return workOnJobParticleEffectNames;
 	}
 
-	public void setWorkOnJobParticleEffectName(String workOnJobParticleEffectName) {
-		this.workOnJobParticleEffectName = workOnJobParticleEffectName;
+	public void setWorkOnJobParticleEffectNames(List<String> workOnJobParticleEffectNames) {
+		this.workOnJobParticleEffectNames = workOnJobParticleEffectNames;
 	}
 
-	public ParticleEffectType getWorkOnJobParticleEffectType() {
-		return workOnJobParticleEffectType;
+	public List<ParticleEffectType> getWorkOnJobParticleEffectTypes() {
+		return workOnJobParticleEffectTypes;
 	}
 
-	public void setWorkOnJobParticleEffectType(ParticleEffectType workOnJobParticleEffectType) {
-		this.workOnJobParticleEffectType = workOnJobParticleEffectType;
+	public void setWorkOnJobParticleEffectTypes(List<ParticleEffectType> workOnJobParticleEffectTypes) {
+		this.workOnJobParticleEffectTypes = workOnJobParticleEffectTypes;
 	}
 
 	@Override

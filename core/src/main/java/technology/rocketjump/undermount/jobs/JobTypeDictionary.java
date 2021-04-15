@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDic
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
 import java.io.File;
 import java.io.IOException;
@@ -101,10 +102,14 @@ public class JobTypeDictionary {
 				Logger.error("Could not find sound asset with name " + jobType.getOnCompletionSoundAssetName() + " for job type " + jobType.getName());
 			}
 		}
-		if (jobType.getWorkOnJobParticleEffectName() != null) {
-			jobType.setWorkOnJobParticleEffectType(particleEffectTypeDictionary.getByName(jobType.getWorkOnJobParticleEffectName()));
-			if (jobType.getWorkOnJobParticleEffectType() == null) {
-				Logger.error("Could not find particle effect with name " + jobType.getWorkOnJobParticleEffectName() + " for job type " + jobType.getName());
+		if (jobType.getWorkOnJobParticleEffectNames() != null) {
+			for (String workOnJobParticleEffectName : jobType.getWorkOnJobParticleEffectNames()) {
+				ParticleEffectType particleEffectType = particleEffectTypeDictionary.getByName(workOnJobParticleEffectName);
+				if (particleEffectType == null) {
+					Logger.error("Could not find particle effect with name " + workOnJobParticleEffectName + " for job type " + jobType.getName());
+				} else {
+					jobType.getWorkOnJobParticleEffectTypes().add(particleEffectType);
+				}
 			}
 		}
 	}

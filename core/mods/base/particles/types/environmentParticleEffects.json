@@ -22,5 +22,17 @@
     "isLooping": false,
     "isAffectedByLighting": true,
     "usesTargetMaterialAsTintColor": true
+  },
+  {
+    "name": "Falling leaf",
+    "particleFile": "fallingleaf.p",
+    "scale": 0.8,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 2
+    }
   }
 ]

@@ -1,6 +1,8 @@
 package technology.rocketjump.undermount.jobs.model;
 
+import com.badlogic.gdx.graphics.Color;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -99,6 +101,39 @@ public class JobTarget {
 		}
 	}
 
+	public Color getTargetColor() {
+		switch (type) {
+			case ENTITY: {
+				switch (entity.getType()) {
+					case PLANT: {
+						PlantEntityAttributes attributes = (PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+						switch (attributes.getSpecies().getPlantType()) {
+							case MUSHROOM:
+							case MUSHROOM_TREE:
+								return null;
+							case CROP:
+								if (attributes.getColor(ColoringLayer.LEAF_COLOR) != null) {
+									return attributes.getColor(ColoringLayer.LEAF_COLOR);
+								} else {
+									return attributes.getColor(ColoringLayer.BRANCHES_COLOR);
+								}
+							case TREE:
+							case SHRUB:
+								return attributes.getColor(ColoringLayer.LEAF_COLOR);
+						}
+					}
+				}
+			}
+		}
+
+		GameMaterial targetMaterial = getTargetMaterial();
+		if (targetMaterial != null) {
+			return targetMaterial.getColor();
+		}
+		Logger.warn("Not yet implemented: JobTarget.getTargetColor() for " + type);
+		return null;
+	}
+
 	public enum JobTargetType {
 
 		COOKING_RECIPE,
@@ -119,6 +154,11 @@ public class JobTarget {
 
 		@Override
 		public GameMaterial getTargetMaterial() {
+			return null;
+		}
+
+		@Override
+		public Color getTargetColor() {
 			return null;
 		}
 	}
