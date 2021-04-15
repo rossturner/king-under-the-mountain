@@ -109,6 +109,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private ParticleEffectType leafExplosionParticleType;
 	private ParticleEffectType chipExplosionParticleType;
 	private ParticleEffectType treeShedLeafEffect;
+	private ParticleEffectType liquidSplashEffect;
 
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
@@ -135,6 +136,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.leafExplosionParticleType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
 		this.chipExplosionParticleType = particleEffectTypeDictionary.getByName("Chip explosion"); // MODDING expose this
 		treeShedLeafEffect = particleEffectTypeDictionary.getByName("Falling leaf");
+		liquidSplashEffect = particleEffectTypeDictionary.getByName("Liquid splash");
 		this.treeFallSoundEffect = this.soundAssetDictionary.getByName("Mining Drop");
 
 		messageDispatcher.addListener(this, MessageType.DESTROY_ENTITY);
@@ -155,6 +157,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_ITEM_TYPE);
 		messageDispatcher.addListener(this, MessageType.HUMANOID_DEATH);
 		messageDispatcher.addListener(this, MessageType.HUMANOID_INSANITY);
+		messageDispatcher.addListener(this, MessageType.LIQUID_SPLASH);
 		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
 	}
 
@@ -478,6 +481,9 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.HUMANOID_INSANITY: {
 				return handleInsanity((Entity) msg.extraInfo);
 			}
+			case MessageType.LIQUID_SPLASH: {
+				return handleLiquidSplash((LiquidSplashMessage) msg.extraInfo);
+			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
@@ -699,6 +705,16 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		brokenNotification.addTextReplacement("character", i18nTranslator.getDescription(entity));
 		messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, brokenNotification);
 
+		return true;
+	}
+
+	private boolean handleLiquidSplash(LiquidSplashMessage message) {
+		if (message.targetEntity != null && message.liquidMaterial != null) {
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(liquidSplashEffect,
+					Optional.of(message.targetEntity), Optional.empty(), (p) -> {
+				p.getGdxParticleEffect().setTint(message.liquidMaterial.getColor());
+			}));
+		}
 		return true;
 	}
 

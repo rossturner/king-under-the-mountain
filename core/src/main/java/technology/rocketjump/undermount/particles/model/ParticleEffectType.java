@@ -17,6 +17,7 @@ public class ParticleEffectType {
 	private float distanceFromParentEntityOrientation; // effect is initialised according to parent entity position and orientation by this amount (distance)
 	private StorableVector2 offsetFromParentEntity;
 	private boolean renderBehindParent;
+	private boolean overrideYDepth;
 	private boolean attachedToParent; // if true, adjusts world position according to parent entity
 
 	public String getName() {
@@ -105,5 +106,13 @@ public class ParticleEffectType {
 
 	public void setRenderBehindParent(boolean renderBehindParent) {
 		this.renderBehindParent = renderBehindParent;
+	}
+
+	public boolean isOverrideYDepth() {
+		return overrideYDepth;
+	}
+
+	public void setOverrideYDepth(boolean overrideYDepth) {
+		this.overrideYDepth = overrideYDepth;
 	}
 }

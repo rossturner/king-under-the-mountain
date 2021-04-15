@@ -7,6 +7,7 @@
   "isAffectedByLighting" : true,
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Leaf explosion",
@@ -17,6 +18,7 @@
   "isAffectedByLighting" : true,
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Chip explosion",
@@ -27,6 +29,7 @@
   "isAffectedByLighting" : true,
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Falling leaf",
@@ -43,6 +46,7 @@
     "unit" : false
   },
   "renderBehindParent" : false,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Chipping rock",
@@ -60,6 +64,7 @@
     "unit" : false
   },
   "renderBehindParent" : false,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Chipping wood",
@@ -77,6 +82,7 @@
     "unit" : false
   },
   "renderBehindParent" : false,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Digging ground same tile",
@@ -93,6 +99,7 @@
     "unit" : false
   },
   "renderBehindParent" : true,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Digging ground offset tile",
@@ -109,6 +116,7 @@
     "unit" : false
   },
   "renderBehindParent" : true,
+  "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
   "name" : "Small leaf explosion",
@@ -125,5 +133,40 @@
     "unit" : false
   },
   "renderBehindParent" : true,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Liquid splash",
+  "particleFile" : "splash.p",
+  "scale" : 0.8,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.15,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Wood shavings",
+  "particleFile" : "shavings.p",
+  "scale" : 1.0,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.85,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.15,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
   "attachedToParent" : false
 } ]

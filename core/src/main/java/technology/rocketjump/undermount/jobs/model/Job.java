@@ -72,6 +72,44 @@ public class Job implements Persistable {
 		this.requiredItemType = type.getRequiredItemType();
 	}
 
+	public JobTarget getTargetOfJob(GameContext gameContext) {
+		if (cookingRecipe != null) {
+			return new JobTarget(cookingRecipe);
+		}
+
+		if (craftingRecipe != null) {
+			return new JobTarget(craftingRecipe, gameContext.getEntities().get(targetId));
+		}
+
+		if (targetId != null) {
+			Entity targetEntity = gameContext.getEntities().get(targetId);
+			if (targetEntity != null) {
+				return new JobTarget(targetEntity);
+			}
+		}
+
+		if (jobLocation != null) {
+			MapTile targetTile = gameContext.getAreaMap().getTile(jobLocation);
+			if (targetTile.hasConstruction()) {
+				return new JobTarget(targetTile.getConstruction());
+			} else if (targetTile.hasDoorway()) {
+				return new JobTarget(targetTile.getDoorway().getDoorEntity());
+			} else if (targetTile.getFloor().hasBridge()) {
+				return new JobTarget(targetTile.getFloor().getBridge());
+			} else {
+				for (Entity targetTileEntity : targetTile.getEntities()) {
+					if (targetTileEntity.getType().equals(EntityType.PLANT)) {
+						return new JobTarget(targetTileEntity);
+					}
+				}
+				return new JobTarget(targetTile);
+			}
+
+		}
+
+		return null;
+	}
+
 	public long getJobId() {
 		return jobId;
 	}
@@ -395,39 +433,5 @@ public class Job implements Persistable {
 		}
 
 		savedGameStateHolder.jobs.put(this.jobId, this);
-	}
-
-	public JobTarget getTargetOfJob(GameContext gameContext) {
-		if (cookingRecipe != null) {
-			return new JobTarget(cookingRecipe);
-		}
-
-		if (targetId != null) {
-			Entity targetEntity = gameContext.getEntities().get(targetId);
-			if (targetEntity != null) {
-				return new JobTarget(targetEntity);
-			}
-		}
-
-		if (jobLocation != null) {
-			MapTile targetTile = gameContext.getAreaMap().getTile(jobLocation);
-			if (targetTile.hasConstruction()) {
-				return new JobTarget(targetTile.getConstruction());
-			} else if (targetTile.hasDoorway()) {
-				return new JobTarget(targetTile.getDoorway().getDoorEntity());
-			} else if (targetTile.getFloor().hasBridge()) {
-				return new JobTarget(targetTile.getFloor().getBridge());
-			} else {
-				for (Entity targetTileEntity : targetTile.getEntities()) {
-					if (targetTileEntity.getType().equals(EntityType.PLANT)) {
-						return new JobTarget(targetTileEntity);
-					}
-				}
-				return new JobTarget(targetTile);
-			}
-
-		}
-
-		return null;
 	}
 }

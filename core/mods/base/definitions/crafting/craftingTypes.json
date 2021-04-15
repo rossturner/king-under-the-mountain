@@ -4,7 +4,8 @@
     "i18nKey": "CRAFTING_TYPE.WOODCUTTING",
     "professionRequiredName": "LUMBERJACK",
     "defaultItemTypeName": "Tool-Saw",
-    "usesWorkstationTool": true
+    "usesWorkstationTool": true,
+    "particleEffectNames": ["Wood shavings"]
   },
   {
     "name": "CARPENTRY",
@@ -12,7 +13,8 @@
     "professionRequiredName": "CARPENTER",
     "defaultItemTypeName": "Tool-Plane",
     "constructsFurniture": "WOOD",
-    "usesWorkstationTool": true
+    "usesWorkstationTool": true,
+    "particleEffectNames": ["Wood shavings"]
   },
   {
     "name": "STONEMASONRY",

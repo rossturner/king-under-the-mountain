@@ -58,7 +58,8 @@ public class WorldRenderer implements Disposable {
 
 	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
 
-	private final PriorityQueue<InWorldRenderable> entitiesToRender = new PriorityQueue<>(new InWorldRenderable.YDepthEntityComparator());
+	private final PriorityQueue<InWorldRenderable> renderables = new PriorityQueue<>(new InWorldRenderable.YDepthEntityComparator());
+	private final List<ParticleEffectInstance> ignoreDepthParticleEffects = new ArrayList<>();
 	private final List<MapTile> terrainTiles = new LinkedList<>();
 	private final List<MapTile> riverTiles = new LinkedList<>();
 	private final Map<Bridge, List<MapTile>> bridgeTiles = new HashMap<>();
@@ -96,10 +97,11 @@ public class WorldRenderer implements Disposable {
 							List<PointLight> lightsToRenderThisFrame, List<ParticleEffectInstance> particlesToRenderAsUI) {
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1); // MODDING expose default background color
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		entitiesToRender.clear();
+		renderables.clear();
 		entitiesRenderedThisFrame.clear();
 		terrainConstructionsToRender.clear();
 		otherConstructionsToRender.clear();
+		ignoreDepthParticleEffects.clear();
 		terrainTiles.clear();
 		riverTiles.clear();
 		bridgeTiles.clear();
@@ -133,17 +135,23 @@ public class WorldRenderer implements Disposable {
 					bridgeTiles.computeIfAbsent(mapTile.getFloor().getBridge(), (a) -> new LinkedList<>()).add(mapTile);
 				}
 
-				mapTile.getEntities().forEach(e -> entitiesToRender.add(new InWorldRenderable(e)));
-				mapTile.getParticleEffects().values().forEach(p -> entitiesToRender.add(new InWorldRenderable(p)));
+				mapTile.getEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
+				mapTile.getParticleEffects().values().forEach(p -> {
+					if (p.getType().isOverrideYDepth()) {
+						ignoreDepthParticleEffects.add(p);
+					} else {
+						renderables.add(new InWorldRenderable(p));
+					}
+				});
 				for (Entity entity : mapTile.getEntities()) {
 					if (entity.getType().equals(EntityType.HUMANOID)) {
 						settlerLocations.add(toGridPoint(entity.getLocationComponent().getWorldOrParentPosition()));
 					}
 				}
 				if (mapTile.hasDoorway()) {
-					entitiesToRender.add(new InWorldRenderable(mapTile.getDoorway().getFrameEntity()));
-					entitiesToRender.add(new InWorldRenderable(mapTile.getDoorway().getDoorEntity()));
-					mapTile.getDoorway().getWallCapEntities().forEach(e -> entitiesToRender.add(new InWorldRenderable(e)));
+					renderables.add(new InWorldRenderable(mapTile.getDoorway().getFrameEntity()));
+					renderables.add(new InWorldRenderable(mapTile.getDoorway().getDoorEntity()));
+					mapTile.getDoorway().getWallCapEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
 				}
 				if (mapTile.hasRoom()) {
 					roomTiles.add(mapTile);
@@ -183,7 +191,7 @@ public class WorldRenderer implements Disposable {
 				if (mapTile == null || mapTile.getExploration().equals(UNEXPLORED)) {
 					continue;
 				}
-				mapTile.getEntities().forEach(e -> entitiesToRender.add(new InWorldRenderable(e)));
+				mapTile.getEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
 				Construction construction = mapTile.getConstruction();
 				if (construction != null) {
 					if (terrainConstructionTypes.contains(construction.getConstructionType())) {
@@ -225,9 +233,8 @@ public class WorldRenderer implements Disposable {
 			}
 		}
 
-
-		while (!entitiesToRender.isEmpty()) {
-			InWorldRenderable renderable = entitiesToRender.poll();
+		while (!renderables.isEmpty()) {
+			InWorldRenderable renderable = renderables.poll();
 			Entity entity = renderable.entity;
 			if (entity != null) {
 				if (!entitiesRenderedThisFrame.contains(entity.getId())) {
@@ -238,6 +245,8 @@ public class WorldRenderer implements Disposable {
 						if (p.getType().getIsAffectedByLighting()) {
 							if (p.getType().isRenderBehindParent()) {
 								p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+							} else if (p.getType().isOverrideYDepth()) {
+								ignoreDepthParticleEffects.add(p);
 							} else {
 								particlesInFrontOfEntity.add(p);
 							}
@@ -270,6 +279,8 @@ public class WorldRenderer implements Disposable {
 				}
 			}
 		}
+
+		ignoreDepthParticleEffects.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
 
 		basicSpriteBatch.end();
 		explorationRenderer.render(unexploredTiles, camera, tiledMap, renderMode);

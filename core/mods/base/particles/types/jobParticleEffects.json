@@ -72,5 +72,34 @@
     },
     "renderBehindParent": true,
     "attachedToParent": false
+  },
+  {
+    "name": "Liquid splash",
+    "particleFile": "splash.p",
+    "scale": 0.8,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.15
+    },
+    "renderBehindParent": false,
+    "attachedToParent": false
+  },
+  {
+    "name": "Wood shavings",
+    "particleFile": "shavings.p",
+    "scale": 1,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "distanceFromParentEntityOrientation": 0.85,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.15
+    },
+    "overrideYDepth": true,
+    "attachedToParent": false
   }
 ]

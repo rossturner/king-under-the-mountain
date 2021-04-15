@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.LiquidSplashMessage;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingAllocationMessage;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
 import technology.rocketjump.undermount.misc.Destructible;
@@ -149,6 +150,7 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 
 		parentLiquidContainer.setTargetLiquidMaterial(barrelLiquidContainer.getTargetLiquidMaterial());
 		parentLiquidContainer.setLiquidQuantity(barrelLiquidContainer.getLiquidQuantity());
+		messageDispatcher.dispatchMessage(MessageType.LIQUID_SPLASH, new LiquidSplashMessage(parentEntity, barrelLiquidContainer.getTargetLiquidMaterial()));
 
 		state = BeerTapperState.BEER_AVAILABLE;
 		infrequentUpdate(gameContext);

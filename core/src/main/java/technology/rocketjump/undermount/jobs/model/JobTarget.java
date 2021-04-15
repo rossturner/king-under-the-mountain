@@ -4,19 +4,26 @@ import com.badlogic.gdx.graphics.Color;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
+import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
+import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 
+import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
+import static technology.rocketjump.undermount.entities.model.EntityType.PLANT;
 import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 
 public class JobTarget {
 
 	public final JobTargetType type;
 	private CookingRecipe cookingRecipe;
+	private CraftingRecipe craftingRecipe;
 	private Entity entity;
 	private Construction construction;
 	private Bridge bridge;
@@ -47,6 +54,12 @@ public class JobTarget {
 		this.tile = tile;
 	}
 
+	public JobTarget(CraftingRecipe craftingRecipe, Entity craftingStation) {
+		this.type = JobTargetType.CRAFTING_RECIPE;
+		this.craftingRecipe = craftingRecipe;
+		this.entity = craftingStation;
+	}
+
 	public CookingRecipe getCookingRecipe() {
 		return cookingRecipe;
 	}
@@ -69,6 +82,29 @@ public class JobTarget {
 
 	public GameMaterial getTargetMaterial() {
 		switch (type) {
+			case CRAFTING_RECIPE: {
+				InventoryComponent craftingStationInventory = entity.getComponent(InventoryComponent.class);
+				if (!craftingRecipe.getMaterialTypesToCopyOver().isEmpty()) {
+					for (QuantifiedItemTypeWithMaterial requirement : craftingRecipe.getInput()) {
+						if (requirement.getItemType() != null && requirement.getItemType().getPrimaryMaterialType().equals(craftingRecipe.getMaterialTypesToCopyOver().get(0))) {
+							InventoryComponent.InventoryEntry inventoryEntry = craftingStationInventory.findByItemType(requirement.getItemType(), null);
+							if (inventoryEntry != null && inventoryEntry.entity.getType().equals(ITEM)) {
+								return ((ItemEntityAttributes)inventoryEntry.entity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial();
+							}
+						}
+					}
+				} else {
+					for (QuantifiedItemTypeWithMaterial requirement : craftingRecipe.getInput()) {
+						if (requirement.getItemType() != null) {
+							InventoryComponent.InventoryEntry inventoryEntry = craftingStationInventory.findByItemType(requirement.getItemType(), null);
+							if (inventoryEntry != null && inventoryEntry.entity.getType().equals(ITEM)) {
+								return ((ItemEntityAttributes)inventoryEntry.entity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial();
+							}
+						}
+					}
+				}
+				break;
+			}
 			case TILE: {
 				if (tile.hasWall()) {
 					if (tile.getWall().hasOre()) {
@@ -89,16 +125,15 @@ public class JobTarget {
 				}
 			}
 			case ENTITY: {
-				switch (entity.getType()) {
-					case PLANT: {
-						return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
-					}
+				if (entity.getType().equals(PLANT)) {
+					return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
 				}
+				break;
 			}
 			default:
-				Logger.warn("Not yet implemented: JobTarget.getTargetMaterial() for " + type);
-				return null;
 		}
+		Logger.warn("Not yet implemented: JobTarget.getTargetMaterial() for " + type);
+		return null;
 	}
 
 	public Color getTargetColor() {
@@ -137,6 +172,7 @@ public class JobTarget {
 	public enum JobTargetType {
 
 		COOKING_RECIPE,
+		CRAFTING_RECIPE,
 		ENTITY,
 		CONSTRUCTION,
 		BRIDGE,

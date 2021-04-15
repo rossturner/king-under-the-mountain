@@ -165,6 +165,7 @@ public class MessageType {
 	public static final int LIQUID_ALLOCATION_CANCELLED = 1104;
 	public static final int REQUEST_LIQUID_ALLOCATION = 1105;
 	public static final int REQUEST_LIQUID_REMOVAL = 1106;
+	public static final int LIQUID_SPLASH = 1107;
 
 	// Saved game messages
 	public static final int REQUEST_SAVE = 1200;
