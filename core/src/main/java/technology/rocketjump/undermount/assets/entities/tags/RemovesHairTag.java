@@ -15,7 +15,7 @@ public class RemovesHairTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		// This tag has no args
 		return args == null || args.isEmpty();
 	}

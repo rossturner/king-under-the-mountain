@@ -22,7 +22,7 @@ public class ExtraMaterialTypesTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		for (String arg : args) {
 			if (!EnumUtils.isValidEnum(GameMaterialType.class, arg)) {
 				return false;

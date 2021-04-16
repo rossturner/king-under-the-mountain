@@ -131,7 +131,7 @@ public class PersistenceTestHarness {
 				mockTagDictionary,
 				mockSoundAssetDictionary,
 				mockBridgeTypeDictionary,
-				mockJobStore);
+				mockJobStore, particleEffectTypeDictionary);
 
 	}
 

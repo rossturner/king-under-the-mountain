@@ -23,7 +23,7 @@ public abstract class Tag {
 		return args;
 	}
 
-	public abstract boolean isValid();
+	public abstract boolean isValid(TagProcessingUtils tagProcessingUtils);
 
 	public void apply(Entity entity, TagProcessingUtils tagProcessingUtils, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		throw new NotImplementedException(this.getClass().getSimpleName() + " does not apply to entities");

@@ -22,7 +22,7 @@ public class CraftingStationBehaviourTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		/**
 		 * Tag params are:
 		 * 0: CraftingType

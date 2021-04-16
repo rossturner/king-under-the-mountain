@@ -16,7 +16,7 @@ public class FarmPlotTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		// Should check that first arg is a valid floor type
 		return args.size() == 5;
 	}

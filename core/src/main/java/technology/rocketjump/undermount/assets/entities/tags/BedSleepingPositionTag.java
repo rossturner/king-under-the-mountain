@@ -16,7 +16,7 @@ public class BedSleepingPositionTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return EnumUtils.isValidEnum(EntityAssetOrientation.class, args.get(0));
 	}
 

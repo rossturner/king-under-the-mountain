@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
 
 public class TagProcessingUtils {
@@ -32,6 +33,7 @@ public class TagProcessingUtils {
 	public final FurnitureTypeDictionary furnitureTypeDictionary;
 	public final SoundAssetDictionary soundAssetDictionary;
 	public final JobStore jobStore;
+	public final ParticleEffectTypeDictionary particleEffectTypeDictionary;
 
 	@Inject
 	public TagProcessingUtils(MessageDispatcher messageDispatcher, EntityAssetTypeDictionary entityAssetTypeDictionary, FloorTypeDictionary floorTypeDictionary,
@@ -39,7 +41,7 @@ public class TagProcessingUtils {
 							  StockpileGroupDictionary stockpileGroupDictionary, CookingRecipeDictionary cookingRecipeDictionary,
 							  ProfessionDictionary professionDictionary, JobTypeDictionary jobTypeDictionary,
 							  CraftingTypeDictionary craftingTypeDictionary, FurnitureTypeDictionary furnitureTypeDictionary,
-							  SoundAssetDictionary soundAssetDictionary, JobStore jobStore) {
+							  SoundAssetDictionary soundAssetDictionary, JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.entityAssetTypeDictionary = entityAssetTypeDictionary;
 		this.floorTypeDictionary = floorTypeDictionary;
@@ -54,5 +56,6 @@ public class TagProcessingUtils {
 		this.furnitureTypeDictionary = furnitureTypeDictionary;
 		this.soundAssetDictionary = soundAssetDictionary;
 		this.jobStore = jobStore;
+		this.particleEffectTypeDictionary = particleEffectTypeDictionary;
 	}
 }

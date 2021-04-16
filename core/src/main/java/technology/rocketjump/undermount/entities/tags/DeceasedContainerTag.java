@@ -12,7 +12,7 @@ public class DeceasedContainerTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return args.isEmpty() || args.size() == 1;
 	}
 

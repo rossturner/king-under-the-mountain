@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Smoking",
+    "particleFile": "smoking.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "offsetFromParentEntity": {
+      "x": 0.5,
+      "y": 1.6
+    }
+  }
+]

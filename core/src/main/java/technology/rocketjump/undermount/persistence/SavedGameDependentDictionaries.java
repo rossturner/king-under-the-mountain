@@ -26,6 +26,7 @@ import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
 import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
@@ -67,6 +68,7 @@ public class SavedGameDependentDictionaries {
 	public final SoundAssetDictionary soundAssetDictionary;
 	public final BridgeTypeDictionary bridgeTypeDictionary;
 	public final JobStore jobStore;
+	public final ParticleEffectTypeDictionary particleEffectTypeDictionary;
 
 	@Inject
 	public SavedGameDependentDictionaries(DynamicMaterialFactory dynamicMaterialFactory, GameMaterialDictionary gameMaterialDictionary,
@@ -81,7 +83,8 @@ public class SavedGameDependentDictionaries {
 										  WallTypeDictionary wallTypeDictionary, RoomTypeDictionary roomTypeDictionary,
 										  RoomComponentDictionary roomComponentDictionary, TileDesignationDictionary tileDesignationDictionary,
 										  StockpileGroupDictionary stockpileGroupDictionary, TagDictionary tagDictionary,
-										  SoundAssetDictionary soundAssetDictionary, BridgeTypeDictionary bridgeTypeDictionary, JobStore jobStore) {
+										  SoundAssetDictionary soundAssetDictionary, BridgeTypeDictionary bridgeTypeDictionary,
+										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.messageDispatcher = messageDispatcher;
@@ -111,5 +114,6 @@ public class SavedGameDependentDictionaries {
 		this.soundAssetDictionary = soundAssetDictionary;
 		this.bridgeTypeDictionary = bridgeTypeDictionary;
 		this.jobStore = jobStore;
+		this.particleEffectTypeDictionary = particleEffectTypeDictionary;
 	}
 }

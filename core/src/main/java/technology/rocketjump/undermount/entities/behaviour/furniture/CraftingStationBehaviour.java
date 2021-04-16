@@ -35,6 +35,8 @@ import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.misc.Destructible;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -79,6 +81,9 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 	private double lastUpdateGameTime;
 	private final List<HaulingAllocation> haulingInputAllocations = new ArrayList<>();
 	private final List<Job> liquidTransferJobs = new ArrayList<>();
+
+	private final List<ParticleEffectType> particleEffectsWhenProcessing = new ArrayList<>();
+	private final List<ParticleEffectInstance> currentParticleInstances = new ArrayList<>();
 
 	public CraftingStationBehaviour() {
 
@@ -125,12 +130,26 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		clearCompletedLiquidJobs();
 
 		if (extraTimeToProcess != null) {
+			currentParticleInstances.removeIf(p -> p == null || !p.isActive());
+			if (!particleEffectsWhenProcessing.isEmpty() && currentParticleInstances.isEmpty()) {
+				for (ParticleEffectType effectType : particleEffectsWhenProcessing) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
+							Optional.of(parentEntity),
+							Optional.ofNullable( currentProductionAssignment != null ? new JobTarget(currentProductionAssignment.targetRecipe, parentEntity) : null),
+							currentParticleInstances::add));
+				}
+			}
+
 			double elapsedTime = gameContext.getGameClock().getCurrentGameTime() - lastUpdateGameTime;
 			extraTimeToProcess -= elapsedTime;
 			if (extraTimeToProcess < 0) {
 				requiresExtraTime = false;
 				extraTimeToProcess = null;
 				jobCompleted(gameContext);
+
+				for (ParticleEffectInstance effectInstance : currentParticleInstances) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
+				}
 			}
 		}
 		lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
@@ -722,6 +741,10 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		return this.craftingType;
 	}
 
+	public List<ParticleEffectType> getParticleEffectsWhenProcessing() {
+		return particleEffectsWhenProcessing;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
@@ -762,6 +785,13 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				liquidTransferJobsJson.add(outstandingJob.getJobId());
 			}
 			asJson.put("liquidTransferJobs", liquidTransferJobsJson);
+		}
+		if (!particleEffectsWhenProcessing.isEmpty()) {
+			JSONArray particleEffectsJson = new JSONArray();
+			for (ParticleEffectType particleEffectType : particleEffectsWhenProcessing) {
+				particleEffectsJson.add(particleEffectType.getName());
+			}
+			asJson.put("particleEffectsWhenProcessing", particleEffectsJson);
 		}
 	}
 
@@ -828,6 +858,17 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				}
 			}
 		}
-	}
 
+		JSONArray particleEffectsJson = asJson.getJSONArray("particleEffectsWhenProcessing");
+		if (particleEffectsJson != null) {
+			for (int cursor = 0; cursor < particleEffectsJson.size(); cursor++) {
+				ParticleEffectType particleEffectType = relatedStores.particleEffectTypeDictionary.getByName(particleEffectsJson.getString(cursor));
+				if (particleEffectType == null) {
+					throw new InvalidSaveException("Could not find particleEffectType with name " + particleEffectsJson.getString(cursor));
+				} else {
+					particleEffectsWhenProcessing.add(particleEffectType);
+				}
+			}
+		}
+	}
 }

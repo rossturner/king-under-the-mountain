@@ -84,7 +84,7 @@ public class JobTarget {
 		switch (type) {
 			case CRAFTING_RECIPE: {
 				InventoryComponent craftingStationInventory = entity.getComponent(InventoryComponent.class);
-				if (!craftingRecipe.getMaterialTypesToCopyOver().isEmpty()) {
+				if (craftingRecipe.getMaterialTypesToCopyOver() != null && !craftingRecipe.getMaterialTypesToCopyOver().isEmpty()) {
 					for (QuantifiedItemTypeWithMaterial requirement : craftingRecipe.getInput()) {
 						if (requirement.getItemType() != null && requirement.getItemType().getPrimaryMaterialType().equals(craftingRecipe.getMaterialTypesToCopyOver().get(0))) {
 							InventoryComponent.InventoryEntry inventoryEntry = craftingStationInventory.findByItemType(requirement.getItemType(), null);

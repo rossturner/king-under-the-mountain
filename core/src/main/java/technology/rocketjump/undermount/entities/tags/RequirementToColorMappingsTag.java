@@ -22,7 +22,7 @@ public class RequirementToColorMappingsTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return args.size() % 2 == 0;
 	}
 

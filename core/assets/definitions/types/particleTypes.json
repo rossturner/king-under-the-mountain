@@ -49,6 +49,23 @@
   "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
+  "name" : "Smoking",
+  "particleFile" : "smoking.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.5,
+    "y" : 1.6,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
   "name" : "Chipping rock",
   "particleFile" : "rockparticle.p",
   "scale" : 0.4,

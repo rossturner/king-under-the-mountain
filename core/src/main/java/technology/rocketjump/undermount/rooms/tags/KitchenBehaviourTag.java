@@ -12,7 +12,7 @@ public class KitchenBehaviourTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return true;
 	}
 
