@@ -705,6 +705,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			}
 
 			Job removalJob = new Job(removalJobType);
+			removalJob.setTargetId(message.getPlantEntityToRemove().getId());
 			removalJob.setJobPriority(message.jobPriority);
 			removalJob.setTotalWorkToDo(removalJobType.getWorkDuration());
 			removalJob.setJobLocation(message.getTileLocation());

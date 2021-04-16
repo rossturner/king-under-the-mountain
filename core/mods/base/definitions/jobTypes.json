@@ -157,14 +157,16 @@
     "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FURNITURE",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CARPENTER",
-    "requiredItemTypeName": "Tool-Plane"
+    "requiredItemTypeName": "Tool-Plane",
+    "workOnJobParticleEffectNames" : [ "Wood shavings" ]
   },
   {
     "name": "CONSTRUCT_STONE_FURNITURE",
     "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FURNITURE",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "STONEMASON",
-    "requiredItemTypeName": "Tool-Chisel"
+    "requiredItemTypeName": "Tool-Chisel",
+    "workOnJobParticleEffectNames": ["Chipping stone"]
   },
   {
     "name": "CONSTRUCT",

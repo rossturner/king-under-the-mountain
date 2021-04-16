@@ -7354,6 +7354,13 @@ smoke
   orig: 51, 48
   offset: 0, 0
   index: -1
+star
+  rotate: false
+  xy: 3931, 1584
+  size: 14, 16
+  orig: 14, 16
+  offset: 0, 0
+  index: -1
 stool-1x1-metal
   rotate: false
   xy: 1362, 1136
@@ -7573,7 +7580,7 @@ table-4x2-wood
   index: -1
 woodchip1
   rotate: false
-  xy: 3931, 1584
+  xy: 2063, 1276
   size: 9, 16
   orig: 9, 16
   offset: 0, 0

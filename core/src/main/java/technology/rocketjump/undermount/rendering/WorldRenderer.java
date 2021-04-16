@@ -251,7 +251,9 @@ public class WorldRenderer implements Disposable {
 								particlesInFrontOfEntity.add(p);
 							}
 						} else {
-							particlesToRenderAsUI.add(p);
+							if (particlesToRenderAsUI != null) { // will be null for normals
+								particlesToRenderAsUI.add(p);
+							}
 						}
 					});
 
@@ -274,7 +276,7 @@ public class WorldRenderer implements Disposable {
 			} else if (renderable.particleEffect != null) {
 				if (renderable.particleEffect.getType().getIsAffectedByLighting()) {
 					renderable.particleEffect.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
-				} else {
+				} else if (particlesToRenderAsUI != null) {
 					particlesToRenderAsUI.add(renderable.particleEffect);
 				}
 			}

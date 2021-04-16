@@ -194,6 +194,7 @@
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "CARPENTER",
   "requiredItemTypeName" : "Tool-Plane",
+  "workOnJobParticleEffectNames" : [ "Wood shavings" ],
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "CONSTRUCT_STONE_FURNITURE",
@@ -203,6 +204,7 @@
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "STONEMASON",
   "requiredItemTypeName" : "Tool-Chisel",
+  "workOnJobParticleEffectNames" : [ "Chipping stone" ],
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "CONSTRUCT",

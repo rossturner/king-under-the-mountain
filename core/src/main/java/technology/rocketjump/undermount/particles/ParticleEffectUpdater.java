@@ -98,7 +98,9 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 			Vector2 parentPosition = parentEntity.getLocationComponent().getWorldOrParentPosition();
 			if (insideBounds(parentPosition)) {
 				ParticleEffectInstance instance = store.create(particleRequestMessage.type, parentEntity, targetColor);
-				particleRequestMessage.callback.particleCreated(instance);
+				if (instance != null) {
+					particleRequestMessage.callback.particleCreated(instance);
+				}
 			}
 		} else if (particleRequestMessage.effectTarget.isPresent() && particleRequestMessage.effectTarget.get().type.equals(JobTarget.JobTargetType.TILE)) {
 			// Attaching particle effect to tile

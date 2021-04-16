@@ -169,4 +169,38 @@
   "renderBehindParent" : false,
   "overrideYDepth" : true,
   "attachedToParent" : false
+}, {
+  "name" : "Chipping stone",
+  "particleFile" : "stonechip.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.8,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
+}, {
+  "name" : "Blacksmith sparks",
+  "particleFile" : "sparks.p",
+  "scale" : 0.7,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : false,
+  "distanceFromParentEntityOrientation" : 0.8,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
 } ]
