@@ -285,7 +285,9 @@
       "liquid" : false
     } ]
   },
-  "tags" : { },
+  "tags" : {
+    "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "White smoking" ]
+  },
   "hiddenFromPlacementMenu" : false
 }, {
   "name" : "MASH_TUN",
@@ -445,7 +447,8 @@
     } ]
   },
   "tags" : {
-    "FURNITURE_BEHAVIOUR" : [ "TRANSFORM_AFTER_SET_TIME", "FurnitureType_CHARCOAL_CLAMP_COMPLETED" ]
+    "FURNITURE_BEHAVIOUR" : [ "TRANSFORM_AFTER_SET_TIME", "FurnitureType_CHARCOAL_CLAMP_COMPLETED" ],
+    "PARTICLE_EFFECTS_WHILE_PROCESSING" : [ "Smoking (charcoal)" ]
   },
   "hiddenFromPlacementMenu" : true
 }, {

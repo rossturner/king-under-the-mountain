@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -16,7 +17,6 @@ import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
-import static technology.rocketjump.undermount.entities.model.EntityType.PLANT;
 import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 
 public class JobTarget {
@@ -125,11 +125,13 @@ public class JobTarget {
 				}
 			}
 			case ENTITY: {
-				if (entity.getType().equals(PLANT)) {
-					return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
-				} else if (entity.getType().equals(ITEM)) {
-					ItemEntityAttributes itemEntityAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-					return itemEntityAttributes.getPrimaryMaterial();
+				switch (entity.getType()) {
+					case FURNITURE:
+						return ((FurnitureEntityAttributes)entity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial();
+					case PLANT:
+						return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
+					case ITEM:
+						return ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial();
 				}
 				break;
 			}

@@ -4,10 +4,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.google.common.collect.ImmutableMap;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.messaging.types.TransformFurnitureMessage;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -16,6 +21,7 @@ import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static technology.rocketjump.undermount.ui.i18n.I18nTranslator.oneDecimalFormat;
 
@@ -42,7 +48,26 @@ public class TransformAfterSetTimeBehaviour extends FurnitureBehaviour implement
 		timeRemaining -= elapsed;
 		lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
 
+		FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
+		if (particleEffectsComponent != null) {
+			particleEffectsComponent.getCurrentParticleInstances().removeIf(p -> p == null || !p.isActive());
+			if (!particleEffectsComponent.getParticleEffectsWhenProcessing().isEmpty() && particleEffectsComponent.getCurrentParticleInstances().isEmpty()) {
+				for (ParticleEffectType effectType : particleEffectsComponent.getParticleEffectsWhenProcessing()) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
+							Optional.of(parentEntity),
+							Optional.ofNullable(new JobTarget(parentEntity)),
+							particleEffectsComponent.getCurrentParticleInstances()::add));
+				}
+			}
+		}
+
 		if (timeRemaining <= 0) {
+			if (particleEffectsComponent != null) {
+				for (ParticleEffectInstance effectInstance : particleEffectsComponent.getCurrentParticleInstances()) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
+				}
+			}
+
 			messageDispatcher.dispatchMessage(MessageType.TRANSFORM_FURNITURE_TYPE, new TransformFurnitureMessage(parentEntity, relatedFurnitureTypes.get(0)));
 		}
 	}
