@@ -112,6 +112,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private ParticleEffectType chipExplosionParticleType;
 	private ParticleEffectType treeShedLeafEffect;
 	private ParticleEffectType liquidSplashEffect;
+	private ParticleEffectType deconstructParticleEffect;
 
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
@@ -139,6 +140,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.chipExplosionParticleType = particleEffectTypeDictionary.getByName("Chip explosion"); // MODDING expose this
 		treeShedLeafEffect = particleEffectTypeDictionary.getByName("Falling leaf");
 		liquidSplashEffect = particleEffectTypeDictionary.getByName("Liquid splash");
+		deconstructParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above");
 		this.treeFallSoundEffect = this.soundAssetDictionary.getByName("Mining Drop");
 
 		messageDispatcher.addListener(this, MessageType.DESTROY_ENTITY);
@@ -348,8 +350,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				if (entityTile != null) {
 					if (constructedEntityComponent.isAutoConstructed()) {
 						// FIXME This and its shared usage would be better dealt with by a ACTUALLY_DO_THE_DECONSTRUCT type message
-						deconstructFurniture(entity, entityTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory
-						);
+						deconstructFurniture(entity, entityTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory,
+								deconstructParticleEffect);
 					} else if (!constructedEntityComponent.isBeingDeconstructed()){
 						Job deconstructionJob = jobFactory.deconstructionJob(entityTile);
 						if (deconstructionJob != null) {

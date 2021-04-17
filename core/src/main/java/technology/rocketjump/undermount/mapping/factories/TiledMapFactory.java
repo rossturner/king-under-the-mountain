@@ -283,6 +283,8 @@ public class TiledMapFactory {
 		items.addAll(item("Product-Bucket", 2));
 		items.addAll(item("Product-Anvil", 1));
 		items.addAll(item("Product-Cauldron", 1));
+
+		items.addAll(item("Resource-Wheat-Sack", 60, "Wheat"));
 		return items;
 	}
 

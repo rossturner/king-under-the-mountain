@@ -8,6 +8,15 @@
     "usesTargetMaterialAsTintColor": true
   },
   {
+    "name": "Dust cloud above",
+    "particleFile": "smoke.p",
+    "scale": 1.4,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "overrideYDepth": true
+  },
+  {
     "name": "Leaf explosion",
     "particleFile": "leafexplosion.p",
     "scale": 0.8,

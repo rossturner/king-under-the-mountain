@@ -93,6 +93,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final TileDesignationDictionary tileDesignationDictionary;
 	private final ParticleEffectType leafExplosionParticleEffectType;
 	private GameContext gameContext;
+	private ParticleEffectType deconstructParticleEffect;
 
 	@Inject
 	public JobMessageHandler(MessageDispatcher messageDispatcher, JobWorkCalculator jobWorkCalculator, JobStore jobStore,
@@ -120,6 +121,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		this.tileDesignationDictionary = tileDesignationDictionary;
 
 		this.leafExplosionParticleEffectType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
+		this.deconstructParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above"); // MODDING expose this
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
 		messageDispatcher.addListener(this, MessageType.REMOVE_DESIGNATION);
@@ -603,7 +605,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					if (targetEntity == null) {
 						Logger.error("Could not find furniture entity to deconstruct in " + targetTile);
 					} else {
-						deconstructFurniture(targetEntity, targetTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory);
+						deconstructFurniture(targetEntity, targetTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory, deconstructParticleEffect);
 					}
 
 				}
@@ -759,7 +761,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 	public static void deconstructFurniture(Entity targetEntity, MapTile targetTile, MessageDispatcher messageDispatcher,
 											GameContext gameContext, ItemTypeDictionary itemTypeDictionary,
-											ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory) {
+											ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory, ParticleEffectType deconstructParticleEffect) {
 		// Extra check to see deconstruction is allowed
 		ConstructedEntityComponent constructedEntityComponent = targetEntity.getComponent(ConstructedEntityComponent.class);
 		if (constructedEntityComponent != null && !constructedEntityComponent.canBeDeconstructed()) {
@@ -793,6 +795,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 		for (GridPoint2 targetPosition : targetPositions) {
 			gameContext.getAreaMap().getTile(targetPosition).setDesignation(null);
+
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(deconstructParticleEffect,
+					Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {}));
 		}
 
 		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));

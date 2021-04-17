@@ -22,5 +22,17 @@
       "x": 1.15,
       "y": 0.9
     }
+  },
+  {
+    "name": "Milling",
+    "particleFile": "milling.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.3
+    }
   }
 ]

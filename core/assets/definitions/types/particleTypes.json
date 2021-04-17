@@ -10,6 +10,17 @@
   "overrideYDepth" : false,
   "attachedToParent" : false
 }, {
+  "name" : "Dust cloud above",
+  "particleFile" : "smoke.p",
+  "scale" : 1.4,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
+}, {
   "name" : "Leaf explosion",
   "particleFile" : "leafexplosion.p",
   "scale" : 0.8,
@@ -76,6 +87,23 @@
   "offsetFromParentEntity" : {
     "x" : 1.15,
     "y" : 0.9,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Milling",
+  "particleFile" : "milling.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
     "zero" : false,
     "unit" : false
   },

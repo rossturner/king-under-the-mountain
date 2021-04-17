@@ -999,6 +999,7 @@
   },
   "tags" : {
     "CRAFTING_STATION_BEHAVIOUR" : [ "MILLING", "CRAFT_ITEM", "HAULING" ],
+    "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "Milling" ],
     "DECORATION_FROM_INPUT" : [ "Product-Millstone" ],
     "EXTRA_MATERIAL_TYPES" : [ "ROPE" ]
   },

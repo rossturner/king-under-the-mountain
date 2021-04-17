@@ -27,11 +27,17 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
+import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
+
+import java.util.Optional;
 
 import static technology.rocketjump.undermount.doors.DoorwayOrientation.EAST_WEST;
 import static technology.rocketjump.undermount.doors.DoorwayOrientation.NORTH_SOUTH;
@@ -50,13 +56,15 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 	private final ItemEntityFactory itemEntityFactory;
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
 	private final SoundAssetDictionary soundAssetDictionary;
+	private final ParticleEffectType dustCloudParticleEffect;
 	private GameContext gameContext;
 
 	@Inject
 	public DoorwayMessageHandler(MessageDispatcher messageDispatcher, WallCapAssetDictionary wallCapAssetDictionary,
 								 FurnitureEntityFactory furnitureEntityFactory, FurnitureTypeDictionary furnitureTypeDictionary,
 								 FurnitureLayoutDictionary furnitureLayoutDictionary, ItemEntityFactory itemEntityFactory,
-								 ItemEntityAttributesFactory itemEntityAttributesFactory, SoundAssetDictionary soundAssetDictionary) {
+								 ItemEntityAttributesFactory itemEntityAttributesFactory, SoundAssetDictionary soundAssetDictionary,
+								 ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.wallCapAssetDictionary = wallCapAssetDictionary;
 		this.furnitureEntityFactory = furnitureEntityFactory;
@@ -68,6 +76,8 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 		messageDispatcher.addListener(this, MessageType.CREATE_DOORWAY);
 		messageDispatcher.addListener(this, MessageType.DECONSTRUCT_DOOR);
+
+		dustCloudParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above"); // MODDING expose this
 	}
 
 	@Override
@@ -84,6 +94,9 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 					ItemEntityAttributes itemAttributes = itemEntityAttributesFactory.resourceFromDoorway(doorway);
 					itemEntityFactory.create(itemAttributes, target.getTileLocation(), true, gameContext);
+
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
+							Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {}));
 
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(doorway.getDoorEntity().getId()));
 					targetTile.setDoorway(null);
