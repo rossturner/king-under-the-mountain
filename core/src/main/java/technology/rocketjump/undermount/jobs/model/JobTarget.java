@@ -127,6 +127,9 @@ public class JobTarget {
 			case ENTITY: {
 				if (entity.getType().equals(PLANT)) {
 					return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
+				} else if (entity.getType().equals(ITEM)) {
+					ItemEntityAttributes itemEntityAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+					return itemEntityAttributes.getPrimaryMaterial();
 				}
 				break;
 			}

@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
+import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -82,8 +83,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 	private final List<HaulingAllocation> haulingInputAllocations = new ArrayList<>();
 	private final List<Job> liquidTransferJobs = new ArrayList<>();
 
-	private final List<ParticleEffectType> particleEffectsWhenProcessing = new ArrayList<>();
-	private final List<ParticleEffectInstance> currentParticleInstances = new ArrayList<>();
 
 	public CraftingStationBehaviour() {
 
@@ -130,15 +129,19 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		clearCompletedLiquidJobs();
 
 		if (extraTimeToProcess != null) {
-			currentParticleInstances.removeIf(p -> p == null || !p.isActive());
-			if (!particleEffectsWhenProcessing.isEmpty() && currentParticleInstances.isEmpty()) {
-				for (ParticleEffectType effectType : particleEffectsWhenProcessing) {
-					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
-							Optional.of(parentEntity),
-							Optional.ofNullable( currentProductionAssignment != null ? new JobTarget(currentProductionAssignment.targetRecipe, parentEntity) : null),
-							currentParticleInstances::add));
+			FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
+			if (particleEffectsComponent != null) {
+				particleEffectsComponent.getCurrentParticleInstances().removeIf(p -> p == null || !p.isActive());
+				if (!particleEffectsComponent.getParticleEffectsWhenProcessing().isEmpty() && particleEffectsComponent.getCurrentParticleInstances().isEmpty()) {
+					for (ParticleEffectType effectType : particleEffectsComponent.getParticleEffectsWhenProcessing()) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
+								Optional.of(parentEntity),
+								Optional.ofNullable( currentProductionAssignment != null ? new JobTarget(currentProductionAssignment.targetRecipe, parentEntity) : null),
+								particleEffectsComponent.getCurrentParticleInstances()::add));
+					}
 				}
 			}
+
 
 			double elapsedTime = gameContext.getGameClock().getCurrentGameTime() - lastUpdateGameTime;
 			extraTimeToProcess -= elapsedTime;
@@ -147,8 +150,10 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				extraTimeToProcess = null;
 				jobCompleted(gameContext);
 
-				for (ParticleEffectInstance effectInstance : currentParticleInstances) {
-					messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
+				if (particleEffectsComponent != null) {
+					for (ParticleEffectInstance effectInstance : particleEffectsComponent.getCurrentParticleInstances()) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
+					}
 				}
 			}
 		}
@@ -741,10 +746,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		return this.craftingType;
 	}
 
-	public List<ParticleEffectType> getParticleEffectsWhenProcessing() {
-		return particleEffectsWhenProcessing;
-	}
-
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
@@ -785,13 +786,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				liquidTransferJobsJson.add(outstandingJob.getJobId());
 			}
 			asJson.put("liquidTransferJobs", liquidTransferJobsJson);
-		}
-		if (!particleEffectsWhenProcessing.isEmpty()) {
-			JSONArray particleEffectsJson = new JSONArray();
-			for (ParticleEffectType particleEffectType : particleEffectsWhenProcessing) {
-				particleEffectsJson.add(particleEffectType.getName());
-			}
-			asJson.put("particleEffectsWhenProcessing", particleEffectsJson);
 		}
 	}
 
@@ -859,16 +853,5 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			}
 		}
 
-		JSONArray particleEffectsJson = asJson.getJSONArray("particleEffectsWhenProcessing");
-		if (particleEffectsJson != null) {
-			for (int cursor = 0; cursor < particleEffectsJson.size(); cursor++) {
-				ParticleEffectType particleEffectType = relatedStores.particleEffectTypeDictionary.getByName(particleEffectsJson.getString(cursor));
-				if (particleEffectType == null) {
-					throw new InvalidSaveException("Could not find particleEffectType with name " + particleEffectsJson.getString(cursor));
-				} else {
-					particleEffectsWhenProcessing.add(particleEffectType);
-				}
-			}
-		}
 	}
 }

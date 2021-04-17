@@ -26,6 +26,7 @@ import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rooms.RoomStore;
@@ -97,6 +98,8 @@ public class PersistenceTestHarness {
 	protected BridgeTypeDictionary mockBridgeTypeDictionary;
 	@Mock
 	protected JobStore mockJobStore;
+	@Mock
+	private ParticleEffectTypeDictionary mockParticleEffectTypeDictionary;
 
 	@Before
 	public void setup() {
@@ -131,7 +134,8 @@ public class PersistenceTestHarness {
 				mockTagDictionary,
 				mockSoundAssetDictionary,
 				mockBridgeTypeDictionary,
-				mockJobStore, particleEffectTypeDictionary);
+				mockJobStore,
+				mockParticleEffectTypeDictionary);
 
 	}
 

@@ -8,11 +8,11 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 
 import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
 
-public class ParticleEffectsWhileProcessingTag extends Tag {
+public class ParticleEffectsWhileInUseTag extends Tag {
 
 	@Override
 	public String getTagName() {
-		return "PARTICLE_EFFECTS_WHILE_PROCESSING";
+		return "PARTICLE_EFFECTS_WHILE_IN_USE";
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class ParticleEffectsWhileProcessingTag extends Tag {
 			FurnitureParticleEffectsComponent particleEffectsComponent = entity.getOrCreateComponent(FurnitureParticleEffectsComponent.class);
 			particleEffectsComponent.init(entity, messageDispatcher, gameContext);
 			for (String arg : getArgs()) {
-				particleEffectsComponent.getParticleEffectsWhenProcessing().add(tagProcessingUtils.particleEffectTypeDictionary.getByName(arg));
+				particleEffectsComponent.getParticleEffectsWhenInUse().add(tagProcessingUtils.particleEffectTypeDictionary.getByName(arg));
 			}
 		} else {
 			Logger.error(this.getClass().getSimpleName() + " must apply to a furniture entity");

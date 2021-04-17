@@ -22,6 +22,7 @@ import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
+import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
@@ -56,6 +57,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.Room;
@@ -159,6 +161,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.HUMANOID_INSANITY);
 		messageDispatcher.addListener(this, MessageType.LIQUID_SPLASH);
 		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
+		messageDispatcher.addListener(this, MessageType.FURNITURE_IN_USE);
+		messageDispatcher.addListener(this, MessageType.FURNITURE_NO_LONGER_IN_USE);
 	}
 
 	@Override
@@ -317,7 +321,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				ShedLeavesMessage message = (ShedLeavesMessage) msg.extraInfo;
 				if (message.leafColor != null && !message.leafColor.equals(Color.CLEAR)) {
 					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(treeShedLeafEffect,
-							Optional.of(message.parentEntity), Optional.empty(), (p) -> {
+							Optional.of(message.parentEntity), Optional.of(new JobTarget(message.parentEntity)), (p) -> {
 						p.getGdxParticleEffect().setTint(message.leafColor);
 					}));
 				}
@@ -483,6 +487,36 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.LIQUID_SPLASH: {
 				return handleLiquidSplash((LiquidSplashMessage) msg.extraInfo);
+			}
+			case MessageType.FURNITURE_IN_USE: {
+				Entity furnitureEntity = (Entity)msg.extraInfo;
+				FurnitureParticleEffectsComponent particleEffectsComponent = furnitureEntity.getComponent(FurnitureParticleEffectsComponent.class);
+				if (particleEffectsComponent != null) {
+					Optional<JobTarget> targetItem = Optional.empty();
+					InventoryComponent inventoryComponent = furnitureEntity.getComponent(InventoryComponent.class);
+					if (inventoryComponent != null && !inventoryComponent.isEmpty()) {
+						InventoryComponent.InventoryEntry entry = inventoryComponent.getInventoryEntries().stream().findFirst().get();
+						targetItem = Optional.of(new JobTarget(entry.entity));
+					}
+
+					for (ParticleEffectType particleEffectType : particleEffectsComponent.getParticleEffectsWhenInUse()) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(particleEffectType,
+								Optional.of(furnitureEntity),
+								targetItem,
+								particleEffectsComponent.getCurrentParticleInstances()::add));
+					}
+				}
+				return true;
+			}
+			case MessageType.FURNITURE_NO_LONGER_IN_USE: {
+				Entity furnitureEntity = (Entity)msg.extraInfo;
+				FurnitureParticleEffectsComponent particleEffectsComponent = furnitureEntity.getComponent(FurnitureParticleEffectsComponent.class);
+				if (particleEffectsComponent != null) {
+					for (ParticleEffectInstance particleInstance : particleEffectsComponent.getCurrentParticleInstances()) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, particleInstance);
+					}
+				}
+				return true;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());

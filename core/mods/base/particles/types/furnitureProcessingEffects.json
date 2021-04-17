@@ -7,8 +7,20 @@
     "isAffectedByLighting": true,
     "usesTargetMaterialAsTintColor": false,
     "offsetFromParentEntity": {
-      "x": 0.5,
-      "y": 1.6
+      "x": 0.6,
+      "y": 1.5
+    }
+  },
+  {
+    "name": "Ore chips",
+    "particleFile": "orechips.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "offsetFromParentEntity": {
+      "x": 1.15,
+      "y": 0.9
     }
   }
 ]

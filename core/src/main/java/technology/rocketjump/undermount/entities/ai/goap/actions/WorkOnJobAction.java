@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.tags.ItemUsageSoundTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -22,11 +23,13 @@ import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
+import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class WorkOnJobAction extends Action {
 
 	private boolean activeSoundTriggered;
+	private boolean furnitureInUseNotified;
 
 	public WorkOnJobAction(AssignedGoal parent) {
 		super(parent);
@@ -38,6 +41,8 @@ public class WorkOnJobAction extends Action {
 		if (completionType != null && completionType.equals(FAILURE)) {
 			return;
 		}
+
+		Optional<Entity> targetFurniture = getTargetFurniture(parent.getAssignedJob(), gameContext);
 
 		if (inPositionToWorkOnJob()) {
 			Job assignedJob = parent.getAssignedJob();
@@ -55,6 +60,13 @@ public class WorkOnJobAction extends Action {
 					parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(jobSoundAsset, parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition()));
 				}
 				activeSoundTriggered = true;
+			}
+
+			if (!furnitureInUseNotified) {
+				if (targetFurniture.isPresent()) {
+					furnitureInUseNotified = true;
+					parent.messageDispatcher.dispatchMessage(MessageType.FURNITURE_IN_USE, targetFurniture.get());
+				}
 			}
 
 			List<ParticleEffectType> relatedParticleEffectTypes = getRelatedParticleEffectTypes();
@@ -97,6 +109,10 @@ public class WorkOnJobAction extends Action {
 
 		if (completionType != null) {
 			// finished
+			if (furnitureInUseNotified && targetFurniture.isPresent()) {
+				parent.messageDispatcher.dispatchMessage(MessageType.FURNITURE_NO_LONGER_IN_USE, targetFurniture.get());
+			}
+
 			if (activeSoundTriggered) {
 				SoundAsset jobSoundAsset = getJobSoundAsset();
 				if (jobSoundAsset != null && jobSoundAsset.isLooping()) {
@@ -104,6 +120,24 @@ public class WorkOnJobAction extends Action {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void actionInterrupted(GameContext gameContext) {
+		if (furnitureInUseNotified) {
+
+		}
+		completionType = CompletionType.FAILURE;
+	}
+
+	private Optional<Entity> getTargetFurniture(Job assignedJob, GameContext gameContext) {
+		if (assignedJob.getTargetId() != null) {
+			Entity targetEntity = gameContext.getEntities().get(assignedJob.getTargetId());
+			if (targetEntity != null && targetEntity.getType().equals(FURNITURE)) {
+				return Optional.of(targetEntity);
+			}
+		}
+		return Optional.empty();
 	}
 
 	private List<ParticleEffectType> getRelatedParticleEffectTypes() {
@@ -138,11 +172,15 @@ public class WorkOnJobAction extends Action {
 		if (activeSoundTriggered) {
 			asJson.put("soundTriggered", true);
 		}
+		if (furnitureInUseNotified) {
+			asJson.put("furnitureInUseNotified", true);
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		this.activeSoundTriggered = asJson.getBooleanValue("soundTriggered");
+		this.furnitureInUseNotified = asJson.getBooleanValue("furnitureInUseNotified");
 	}
 
 	private boolean inPositionToWorkOnJob() {

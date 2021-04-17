@@ -541,6 +541,7 @@
   },
   "tags" : {
     "CRAFTING_STATION_BEHAVIOUR" : [ "ORE_CRUSHING", "PRODUCE_ITEM", "HAULING" ],
+    "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "Ore chips" ],
     "REQUIREMENT_TO_COLOR_MAPPINGS" : [ "Resource-Metal-Plate", "MISC_COLOR_1", "Product-Barrel-Hoops", "MISC_COLOR_2" ],
     "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ]
   },

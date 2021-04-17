@@ -57,8 +57,25 @@
   "isAffectedByLighting" : true,
   "distanceFromParentEntityOrientation" : 0.0,
   "offsetFromParentEntity" : {
-    "x" : 0.5,
-    "y" : 1.6,
+    "x" : 0.6,
+    "y" : 1.5,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Ore chips",
+  "particleFile" : "orechips.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 1.15,
+    "y" : 0.9,
     "zero" : false,
     "unit" : false
   },
