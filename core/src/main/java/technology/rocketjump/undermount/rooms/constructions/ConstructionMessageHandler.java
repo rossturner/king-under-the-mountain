@@ -39,12 +39,15 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.Room;
@@ -73,6 +76,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 
 	private final Map<GameMaterialType, SoundAsset> completionSoundMapping = new EnumMap<>(GameMaterialType.class);
 	private GameContext gameContext;
+	private ParticleEffectType dustCloudParticleEffect;
 
 	@Inject
 	public ConstructionMessageHandler(MessageDispatcher messageDispatcher, ConstructionStore constructionStore,
@@ -80,7 +84,8 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 									  FurnitureEntityAttributesFactory furnitureEntityAttributesFactory,
 									  FurnitureEntityFactory furnitureEntityFactory, EntityStore entityStore,
 									  CraftingTypeDictionary craftingTypeDictionary, ItemEntityAttributesFactory itemEntityAttributesFactory,
-									  ItemEntityFactory itemEntityFactory, SoundAssetDictionary soundAssetDictionary, TagProcessor tagProcessor) {
+									  ItemEntityFactory itemEntityFactory, SoundAssetDictionary soundAssetDictionary, TagProcessor tagProcessor,
+									  ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.constructionStore = constructionStore;
 		this.itemTypeDictionary = itemTypeDictionary;
@@ -104,6 +109,8 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 
 		completionSoundMapping.put(GameMaterialType.WOOD, soundAssetDictionary.getByName("HeavyWoodItem")); // MODDING Expose this
 		completionSoundMapping.put(GameMaterialType.STONE, soundAssetDictionary.getByName("HeavyStoneItem")); // MODDING Expose this
+
+		dustCloudParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above"); // MODDING expose this
 	}
 
 
@@ -241,6 +248,9 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 					}
 				}
 				tileAtLocation.setConstruction(null);
+
+				messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
+						Optional.empty(), Optional.of(new JobTarget(tileAtLocation)), (p) -> {}));
 
 				if (tileAtLocation.hasRoom()) {
 					placedOnRoom = tileAtLocation.getRoomTile().getRoom();
@@ -410,6 +420,9 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(soundAsset, null, tileAtLocation.getWorldPositionOfCenter()));
 		}
 
+		messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
+				Optional.empty(), Optional.of(new JobTarget(tileAtLocation)), (p) -> {}));
+
 		messageDispatcher.dispatchMessage(MessageType.ADD_WALL, new AddWallMessage(tileLocation, materialConstructed, wallType));
 	}
 
@@ -430,6 +443,9 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 					messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
 				}
 			}
+
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
+					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
 
 			tile.getFloor().setBridgeTile(construction.getBridge(), bridgeEntry.getValue());
 
@@ -569,6 +585,9 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 			MapTile bridgeTile = gameContext.getAreaMap().getTile(bridgeLocation);
 			bridgeTile.setDesignation(null);
 			bridgeTile.getFloor().setBridgeTile(null, null);
+
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
+					Optional.empty(), Optional.of(new JobTarget(bridgeTile)), (p) -> {}));
 
 			if (!assignedToGroup.contains(bridgeLocation)) {
 				List<MapTile> tilesInGroup = new ArrayList<>();

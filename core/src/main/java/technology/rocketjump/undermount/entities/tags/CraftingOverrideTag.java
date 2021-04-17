@@ -13,7 +13,7 @@ public class CraftingOverrideTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return EnumUtils.isValidEnum(CraftingOverrideSetting.class, args.get(0));
 	}
 

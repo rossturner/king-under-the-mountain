@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ItemCreationRequestMessage;
 import technology.rocketjump.undermount.messaging.types.ItemPrimaryMaterialChangedMessage;
+import technology.rocketjump.undermount.messaging.types.LiquidSplashMessage;
 
 public class EdibleLiquidSourceBehaviour extends FurnitureBehaviour implements EntityCreatedCallback {
 
@@ -56,6 +57,7 @@ public class EdibleLiquidSourceBehaviour extends FurnitureBehaviour implements E
 
 		itemLiquidContainerComponent.setTargetLiquidMaterial(parentLiquidContainerComponent.getTargetLiquidMaterial());
 		itemLiquidContainerComponent.setLiquidQuantity(1f);
+		messageDispatcher.dispatchMessage(MessageType.LIQUID_SPLASH, new LiquidSplashMessage(parentEntity, parentLiquidContainerComponent.getTargetLiquidMaterial()));
 
 		if (!oldPrimaryMaterial.equals(((ItemEntityAttributes)createdItem.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial())) {
 			// Tracker needs updating due to change in material

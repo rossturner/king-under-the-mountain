@@ -145,6 +145,10 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		this.accessoryColor = accessoryColor;
 	}
 
+	public GameMaterial getPrimaryMaterial() {
+		return this.materials.get(primaryMaterialType);
+	}
+
 	@Override
 	public String toString() {
 		return "FurnitureEntityAttributes{" +

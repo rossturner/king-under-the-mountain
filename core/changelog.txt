@@ -1,3 +1,25 @@
+Alpha 5.1
+
+- Added a particle effect system for visual effects in the world. Effects added include:
+    - Rock chipping away when mining
+    - Dust cloud when wall is mined away
+    - Wood chipping away when cutting down trees
+    - Wood chips and leaves when falling tree hits the ground
+    - Muddy splats when digging in the ground
+    - Leaves being thrown when harvesting crops or removing pests
+    - Deciduous trees will have leaves fall away in autumn!
+    - Liquids will splash when dumped into containers
+    - Wood shavings when working with a sawmill or carpentry
+    - Stone chippings from stonemasonry
+    - Sparks from blacksmith's forge (look out for fires later!)
+
+Alpha 5.0.1
+
+- Added a display of current number of beds to settler management screen
+- Fixed the tutorial, which was having issues with tracking stockpile tiles after the change in Alpha 5
+- Hiding unused wood types from bushes in stockpile management
+- Removed 2 of 3 mushroom log types and metal blooms from stockpile management - these items should probably not be stored in a stockpile
+
 Alpha 5 - 19th December 2020
 
 - Added a very basic embark screen for entry of settlement name and map seed

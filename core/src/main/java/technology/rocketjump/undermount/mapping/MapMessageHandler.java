@@ -11,6 +11,8 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
+import technology.rocketjump.undermount.audio.model.SoundAsset;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -18,6 +20,7 @@ import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.*;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
@@ -25,6 +28,8 @@ import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.*;
 import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
@@ -49,9 +54,14 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 	private GameContext gameContext;
 
+	private ParticleEffectType wallRemovedParticleEffectType;
+	private SoundAsset wallRemovedSoundAsset;
+
 	@Inject
 	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
-							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory, RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater) {
+							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory,
+							 RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater,
+							 ParticleEffectTypeDictionary particleEffectTypeDictionary, SoundAssetDictionary soundAssetDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
@@ -59,6 +69,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		this.roomStore = roomStore;
 		this.jobStore = jobStore;
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
+
+		this.wallRemovedParticleEffectType = particleEffectTypeDictionary.getByName("Dust cloud"); // MODDING expose this
+		this.wallRemovedSoundAsset = soundAssetDictionary.getByName("Mining Drop");
 
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
@@ -478,6 +491,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 
 			updateTile(tile, gameContext);
+
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
+					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(wallRemovedSoundAsset, -1L, tile.getWorldPositionOfCenter()));
 
 			Integer neighbourRegionId = null;
 			MapTile unexploredTile = null;

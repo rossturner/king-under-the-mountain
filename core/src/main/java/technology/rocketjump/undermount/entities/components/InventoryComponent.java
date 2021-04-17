@@ -324,7 +324,9 @@ public class InventoryComponent implements EntityComponent, Destructible {
 		}
 
 		public void touch(GameClock gameClock) {
-			this.lastUpdateGameTime = gameClock.getCurrentGameTime();
+			if (gameClock != null) {
+				this.lastUpdateGameTime = gameClock.getCurrentGameTime();
+			}
 		}
 	}
 }

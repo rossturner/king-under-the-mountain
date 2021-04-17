@@ -29,6 +29,7 @@ import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.modding.processing.*;
 import technology.rocketjump.undermount.modding.validation.*;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.RoomType;
 import technology.rocketjump.undermount.rooms.StockpileGroup;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
@@ -136,6 +137,12 @@ public class ModArtifactListing {
 				////////// music //////////
 				def("music", null, COPY_ORIGINAL_FILES, OGG, null,
 						"music", "*.ogg", OGG, ADDITIVE, CopyFilesProcessor.class),
+
+				////////// particles //////////
+				def("definitions/particles", null, COPY_ORIGINAL_FILES, P_FILE, null,
+						"particles/libgdx", "**/*.p", P_FILE, ADDITIVE, CopyFilesProcessor.class),
+				def("definitions/types", "particleTypes", SINGLE_FILE, JSON_ARRAY, ParticleEffectType.class,
+						"particles/types", "*.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				////////// settings //////////
 				def("settings", "sunlight", SINGLE_FILE, JSON_ARRAY, null,

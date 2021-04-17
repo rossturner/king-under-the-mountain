@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileExploration;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rendering.lighting.CombinedLightingResultRenderer;
 import technology.rocketjump.undermount.rendering.lighting.LightProcessor;
@@ -31,6 +32,7 @@ import java.util.List;
 public class GameRenderer implements AssetDisposable {
 
 	private final List<PointLight> lightsToRenderThisFrame;
+	private final List<ParticleEffectInstance> particlesToRenderAsUI = new LinkedList<>();
 	private PointLight testLight;
 	private boolean testLightEnabled = true;
 	private final LightProcessor lightProcessor;
@@ -148,6 +150,7 @@ public class GameRenderer implements AssetDisposable {
 		Vector2 testLightPosition = new Vector2(unprojected.x, unprojected.y);
 		testLight.setWorldPosition(testLightPosition);
 		lightsToRenderThisFrame.clear();
+		particlesToRenderAsUI.clear();
 
 		MapTile testLightTile = worldMap.getTile(testLightPosition);
 		testLightEnabled = testLightTile != null && testLightTile.getExploration().equals(TileExploration.EXPLORED) && !testLightTile.hasWall();
@@ -159,12 +162,13 @@ public class GameRenderer implements AssetDisposable {
 
 		// END TEMP LIGHTING STUFF
 
+
 		diffuseFrameBuffer.begin();
-		worldRenderer.renderWorld(worldMap, camera, diffuseSpriteCache, RenderMode.DIFFUSE, lightsToRenderThisFrame);
+		worldRenderer.renderWorld(worldMap, camera, diffuseSpriteCache, RenderMode.DIFFUSE, lightsToRenderThisFrame, particlesToRenderAsUI);
 		diffuseFrameBuffer.end();
 
 		bumpMapFrameBuffer.begin();
-		worldRenderer.renderWorld(worldMap, camera, normalSpriteCache, RenderMode.NORMALS, null);
+		worldRenderer.renderWorld(worldMap, camera, normalSpriteCache, RenderMode.NORMALS, null, null);
 		bumpMapFrameBuffer.end();
 
 		/////// Draw lighting info ///
@@ -200,7 +204,7 @@ public class GameRenderer implements AssetDisposable {
 			basicSpriteBatch.end();
 		} else {
 			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion);
-			inWorldUIRenderer.render(worldMap, camera, diffuseSpriteCache);
+			inWorldUIRenderer.render(worldMap, camera, particlesToRenderAsUI, diffuseSpriteCache);
 		}
 
 		debugRenderer.render(worldMap, camera);

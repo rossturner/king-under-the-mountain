@@ -7,7 +7,11 @@ import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
+import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.JSONUtils;
@@ -66,6 +70,44 @@ public class Job implements Persistable {
 		this.jobState = JobState.POTENTIALLY_ACCESSIBLE;
 		this.requiredProfession = type.getRequiredProfession();
 		this.requiredItemType = type.getRequiredItemType();
+	}
+
+	public JobTarget getTargetOfJob(GameContext gameContext) {
+		if (cookingRecipe != null) {
+			return new JobTarget(cookingRecipe);
+		}
+
+		if (craftingRecipe != null) {
+			return new JobTarget(craftingRecipe, gameContext.getEntities().get(targetId));
+		}
+
+		if (targetId != null) {
+			Entity targetEntity = gameContext.getEntities().get(targetId);
+			if (targetEntity != null) {
+				return new JobTarget(targetEntity);
+			}
+		}
+
+		if (jobLocation != null) {
+			MapTile targetTile = gameContext.getAreaMap().getTile(jobLocation);
+			if (targetTile.hasConstruction()) {
+				return new JobTarget(targetTile.getConstruction());
+			} else if (targetTile.hasDoorway()) {
+				return new JobTarget(targetTile.getDoorway().getDoorEntity());
+			} else if (targetTile.getFloor().hasBridge()) {
+				return new JobTarget(targetTile.getFloor().getBridge());
+			} else {
+				for (Entity targetTileEntity : targetTile.getEntities()) {
+					if (targetTileEntity.getType().equals(EntityType.PLANT)) {
+						return new JobTarget(targetTileEntity);
+					}
+				}
+				return new JobTarget(targetTile);
+			}
+
+		}
+
+		return null;
 	}
 
 	public long getJobId() {
@@ -392,5 +434,4 @@ public class Job implements Persistable {
 
 		savedGameStateHolder.jobs.put(this.jobId, this);
 	}
-
 }

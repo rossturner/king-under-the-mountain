@@ -1,0 +1,302 @@
+[ {
+  "name" : "Dust cloud",
+  "particleFile" : "smoke.p",
+  "scale" : 1.2,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Dust cloud above",
+  "particleFile" : "smoke.p",
+  "scale" : 1.4,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
+}, {
+  "name" : "Leaf explosion",
+  "particleFile" : "leafexplosion.p",
+  "scale" : 0.8,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Chip explosion",
+  "particleFile" : "chipexplosion.p",
+  "scale" : 0.8,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Falling leaf",
+  "particleFile" : "fallingleaf.p",
+  "scale" : 0.8,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 2.0,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Smoking",
+  "particleFile" : "smoking.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.6,
+    "y" : 1.5,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Smoking (charcoal)",
+  "particleFile" : "smoking.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.5,
+    "y" : 1.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "White smoking",
+  "particleFile" : "white_smoking.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.5,
+    "y" : 1.6,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Ore chips",
+  "particleFile" : "orechips.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 1.15,
+    "y" : 0.9,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Milling",
+  "particleFile" : "milling.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Chipping rock",
+  "particleFile" : "rockparticle.p",
+  "scale" : 0.4,
+  "usingParentOrientation" : "LEFT",
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.8,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Chipping wood",
+  "particleFile" : "woodchip.p",
+  "scale" : 1.0,
+  "usingParentOrientation" : "LEFT",
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.8,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Digging ground same tile",
+  "particleFile" : "groundsplat.p",
+  "scale" : 0.8,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.1,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : -0.2,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : true,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Digging ground offset tile",
+  "particleFile" : "groundsplat.p",
+  "scale" : 0.8,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.85,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : -0.2,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : true,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Small leaf explosion",
+  "particleFile" : "smallleafexplosion.p",
+  "scale" : 0.8,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.2,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : true,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Liquid splash",
+  "particleFile" : "splash.p",
+  "scale" : 0.8,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.15,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
+}, {
+  "name" : "Wood shavings",
+  "particleFile" : "shavings.p",
+  "scale" : 1.0,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.85,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.15,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
+}, {
+  "name" : "Chipping stone",
+  "particleFile" : "stonechip.p",
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.8,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
+}, {
+  "name" : "Blacksmith sparks",
+  "particleFile" : "sparks.p",
+  "scale" : 0.7,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : false,
+  "distanceFromParentEntityOrientation" : 0.8,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.3,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
+} ]

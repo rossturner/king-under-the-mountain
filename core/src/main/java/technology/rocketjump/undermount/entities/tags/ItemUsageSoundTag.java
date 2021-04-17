@@ -16,7 +16,7 @@ public class ItemUsageSoundTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return args.size() == 1;
 	}
 

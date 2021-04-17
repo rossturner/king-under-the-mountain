@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Dust cloud",
+    "particleFile": "smoke.p",
+    "scale": 1.2,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true
+  },
+  {
+    "name": "Dust cloud above",
+    "particleFile": "smoke.p",
+    "scale": 1.4,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "overrideYDepth": true
+  },
+  {
+    "name": "Leaf explosion",
+    "particleFile": "leafexplosion.p",
+    "scale": 0.8,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true
+  },
+  {
+    "name": "Chip explosion",
+    "particleFile": "chipexplosion.p",
+    "scale": 0.8,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true
+  },
+  {
+    "name": "Falling leaf",
+    "particleFile": "fallingleaf.p",
+    "scale": 0.8,
+    "isLooping": false,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 2
+    }
+  }
+]

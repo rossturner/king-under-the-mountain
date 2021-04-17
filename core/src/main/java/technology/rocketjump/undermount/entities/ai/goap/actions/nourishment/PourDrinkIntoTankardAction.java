@@ -17,10 +17,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.ItemCreationRequestMessage;
-import technology.rocketjump.undermount.messaging.types.LookupMessage;
-import technology.rocketjump.undermount.messaging.types.RequestSoundAssetMessage;
-import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
+import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -124,6 +121,7 @@ public class PourDrinkIntoTankardAction extends Action implements EntityCreatedC
 			createdEntity.addComponent(liquidContainerComponent);
 			liquidContainerComponent.setTargetLiquidMaterial(liquidMaterial);
 			liquidContainerComponent.setLiquidQuantity(liquidAmount);
+			parent.messageDispatcher.dispatchMessage(MessageType.LIQUID_SPLASH, new LiquidSplashMessage(parent.parentEntity, liquidMaterial));
 			return createdEntity;
 		}
 	}

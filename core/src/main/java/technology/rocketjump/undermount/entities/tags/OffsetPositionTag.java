@@ -14,7 +14,7 @@ public class OffsetPositionTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return args.size() == 2 && NumberUtils.isNumber(args.get(0)) && NumberUtils.isNumber(args.get(1));
 	}
 

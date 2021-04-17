@@ -79,6 +79,15 @@
   "enabled" : true,
   "breakAfterLineLength" : 120
 }, {
+  "label" : "Türkçe",
+  "labelEn" : "Turkish",
+  "code" : "tu",
+  "icon" : "Turkey",
+  "fallback" : "en-gb",
+  "filename" : "turkish.csv",
+  "enabled" : true,
+  "breakAfterLineLength" : 120
+}, {
   "label" : "Dansk",
   "labelEn" : "Danish",
   "code" : "da",

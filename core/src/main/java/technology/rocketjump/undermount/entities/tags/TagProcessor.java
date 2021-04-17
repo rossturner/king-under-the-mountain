@@ -66,7 +66,7 @@ public class TagProcessor implements GameContextAware {
 					Tag tag = tagDictionary.newInstanceByName(entry.getKey());
 					if (tag != null) {
 						tag.setArgs(entry.getValue());
-						if (tag.isValid()) {
+						if (tag.isValid(tagProcessingUtils)) {
 							processedTags.add(tag);
 						} else {
 							Logger.error("Invalid arguments for tag: " + entry.getKey());

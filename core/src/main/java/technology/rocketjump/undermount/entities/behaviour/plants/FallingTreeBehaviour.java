@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.behaviour.plants;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.graphics.Color;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
@@ -15,6 +16,8 @@ import technology.rocketjump.undermount.messaging.types.TreeFallenMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+
+import java.util.Optional;
 
 public class FallingTreeBehaviour implements BehaviourComponent {
 
@@ -64,11 +67,19 @@ public class FallingTreeBehaviour implements BehaviourComponent {
 
 		if (absoluteRotationAmount > 85f) {
 			// Tree has collapsed
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(parentEntity.getId()));
 
 			PlantSpeciesGrowthStage currentGrowthStage = attributes.getSpecies().getGrowthStages().get(attributes.getGrowthStageCursor());
+
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(parentEntity.getId()));
+
+			Color leafColor = attributes.getColor(ColoringLayer.LEAF_COLOR);
+			if (leafColor != null && leafColor.equals(Color.CLEAR)) {
+				leafColor = null;
+			}
+
 			messageDispatcher.dispatchMessage(MessageType.TREE_FELLED, new TreeFallenMessage(
 					parentEntity.getLocationComponent().getWorldPosition(), attributes.getColor(ColoringLayer.BRANCHES_COLOR),
+					Optional.ofNullable(leafColor),
 					fallToWest, currentGrowthStage.getHarvestedItems()));
 		}
 

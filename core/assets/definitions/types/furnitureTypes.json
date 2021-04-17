@@ -285,7 +285,9 @@
       "liquid" : false
     } ]
   },
-  "tags" : { },
+  "tags" : {
+    "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "White smoking" ]
+  },
   "hiddenFromPlacementMenu" : false
 }, {
   "name" : "MASH_TUN",
@@ -403,7 +405,8 @@
     "CRAFTING_STATION_BEHAVIOUR" : [ "SMELTING", "PRODUCE_ITEM", "HAULING" ],
     "CRAFTING_OVERRIDE" : [ "DO_NOT_HAUL_OUTPUT" ],
     "REQUIREMENT_TO_COLOR_MAPPINGS" : [ "Resource-Stone-Unrefined", "MISC_COLOR_1", "Resource-Stone-Block", "MISC_COLOR_2" ],
-    "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ]
+    "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ],
+    "PARTICLE_EFFECTS_WHILE_PROCESSING" : [ "Smoking" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {
@@ -444,7 +447,8 @@
     } ]
   },
   "tags" : {
-    "FURNITURE_BEHAVIOUR" : [ "TRANSFORM_AFTER_SET_TIME", "FurnitureType_CHARCOAL_CLAMP_COMPLETED" ]
+    "FURNITURE_BEHAVIOUR" : [ "TRANSFORM_AFTER_SET_TIME", "FurnitureType_CHARCOAL_CLAMP_COMPLETED" ],
+    "PARTICLE_EFFECTS_WHILE_PROCESSING" : [ "Smoking (charcoal)" ]
   },
   "hiddenFromPlacementMenu" : true
 }, {
@@ -540,6 +544,7 @@
   },
   "tags" : {
     "CRAFTING_STATION_BEHAVIOUR" : [ "ORE_CRUSHING", "PRODUCE_ITEM", "HAULING" ],
+    "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "Ore chips" ],
     "REQUIREMENT_TO_COLOR_MAPPINGS" : [ "Resource-Metal-Plate", "MISC_COLOR_1", "Product-Barrel-Hoops", "MISC_COLOR_2" ],
     "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ]
   },
@@ -698,6 +703,7 @@
   },
   "tags" : {
     "CRAFTING_STATION_BEHAVIOUR" : [ "MALTING", "PRODUCE_ITEM", "HAULING" ],
+    "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "Milling" ],
     "DECORATION_FROM_INPUT" : [ "Product-Liquid-Tank" ]
   },
   "hiddenFromPlacementMenu" : false
@@ -997,6 +1003,7 @@
   },
   "tags" : {
     "CRAFTING_STATION_BEHAVIOUR" : [ "MILLING", "CRAFT_ITEM", "HAULING" ],
+    "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "Milling" ],
     "DECORATION_FROM_INPUT" : [ "Product-Millstone" ],
     "EXTRA_MATERIAL_TYPES" : [ "ROPE" ]
   },

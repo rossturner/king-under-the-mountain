@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDic
 import technology.rocketjump.undermount.entities.tags.SupportsRoofTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileRoof;
@@ -26,11 +27,15 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.AddWallMessage;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.HumanoidDeathMessage;
+import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.Set;
 
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
@@ -48,17 +53,20 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 	private final WallType roughStoneWallType;
 	private final ItemType droppedStoneItemType;
 	private final ItemEntityFactory itemEntityFactory;
+	private final ParticleEffectType wallRemovedParticleEffectType;
 	private float timeSinceLastUpdate = 0f;
 
 	private GameContext gameContext;
 
 	@Inject
 	public MiningCollapseManager(MessageDispatcher messageDispatcher, WallTypeDictionary wallTypeDictionary,
-								 ItemTypeDictionary itemTypeDictionary, ItemEntityFactory itemEntityFactory) {
+								 ItemTypeDictionary itemTypeDictionary, ItemEntityFactory itemEntityFactory,
+								 ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 
 		roughStoneWallType = wallTypeDictionary.getByWallTypeName("rough_stone_wall");
 		droppedStoneItemType = itemTypeDictionary.getByName("Resource-Stone-Unrefined");
+		this.wallRemovedParticleEffectType = particleEffectTypeDictionary.getByName("Dust cloud"); // MODDING expose this
 		this.itemEntityFactory = itemEntityFactory;
 
 		messageDispatcher.addListener(this, MessageType.WALL_REMOVED);
@@ -215,6 +223,10 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 				if (tile == null) {
 					continue;
 				}
+
+				messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
+						Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
+
 				if (gameContext.getRandom().nextBoolean()) {
 					// add wall
 					if (tile.getRoofMaterial() != null) {

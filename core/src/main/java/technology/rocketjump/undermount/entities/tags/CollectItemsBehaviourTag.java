@@ -23,7 +23,7 @@ public class CollectItemsBehaviourTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return EnumUtils.isValidEnum(CollectItemBehaviourArg.class, args.get(0)) &&
 				Integer.valueOf(args.get(1)) > 0;
 	}

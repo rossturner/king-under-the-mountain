@@ -123,7 +123,11 @@ public class SoundEffectManager implements AssetDisposable {
 			}
 			if (activeSoundEffect != null) {
 				activeSoundsByAssetId.put(asset.getSoundAssetId(), activeSoundEffect);
-				activeSoundEffect.play();
+				if (asset.isLooping()) {
+					activeSoundEffect.loop(baseVolumeLevel);
+				} else {
+					activeSoundEffect.play();
+				}
 				attentuate(activeSoundEffect);
 
 				if (activeSoundEffect.getWorldPosition() != null && gamePaused) {
@@ -150,11 +154,12 @@ public class SoundEffectManager implements AssetDisposable {
 		while (activeSoundIterator.hasNext()) {
 			ActiveSoundEffect activeSoundEffect = activeSoundIterator.next().getValue();
 			activeSoundEffect.update(elapsed);
-			if (activeSoundEffect.completed()) {
+			if (activeSoundEffect.completed() && (!activeSoundEffect.getAsset().isLooping() || shouldCircuitBreak(activeSoundEffect))) {
 				activeSoundEffect.dispose();
 				activeSoundIterator.remove();
 			} else {
 				attentuate(activeSoundEffect);
+				activeSoundEffect.incrementElapsedTime(elapsed);
 			}
 		}
 	}
@@ -194,5 +199,9 @@ public class SoundEffectManager implements AssetDisposable {
 	public void setVolume(Float newVolume) {
 		baseVolumeLevel = newVolume * GLOBAL_VOLUME_MULTIPLIER;
 		userPreferences.setPreference(SOUND_EFFECT_VOLUME, String.valueOf(newVolume));
+	}
+
+	private boolean shouldCircuitBreak(ActiveSoundEffect activeSoundEffect) {
+		return activeSoundEffect.getTotalElapsedTime() >= 15f;
 	}
 }

@@ -64,8 +64,7 @@
   {
     "hintId": "tutorial_saving",
     "i18nKeys": [
-      "TUTORIAL.SAVING.A",
-      "TUTORIAL.SAVING.B"
+      "TUTORIAL.SAVING.A"
     ],
     "actions": [
       {
@@ -113,13 +112,13 @@
     ],
     "progressDescriptors": [
       {
-        "type": "ROOM_TILES",
-        "targetTypeName": "STOCKPILE_GRANARY",
+        "type": "STOCKPILE_TILES",
+        "targetTypeName": "SEEDS",
         "quantityRequired": 10
       },
       {
-        "type": "ROOM_TILES",
-        "targetTypeName": "STOCKPILE_TOOLS",
+        "type": "STOCKPILE_TILES",
+        "targetTypeName": "TOOLS",
         "quantityRequired": 32
       }
     ],
@@ -197,8 +196,8 @@
         "quantityRequired": 1
       },
       {
-        "type": "ROOM_TILES",
-        "targetTypeName": "STOCKPILE_PANTRY",
+        "type": "STOCKPILE_TILES",
+        "targetTypeName": "FOOD",
         "quantityRequired": 10
       }
     ],

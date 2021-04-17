@@ -23,6 +23,7 @@ public class ActiveSoundEffect implements Disposable {
 	private float pitch;
 	private float currentVolume;
 	private boolean isStopped;
+	private float totalElapsedTime;
 
 	public ActiveSoundEffect(SoundAsset asset, long parentEntityId, Vector2 worldPosition) throws GdxAudioException {
 		if (Gdx.audio == null) {
@@ -112,5 +113,17 @@ public class ActiveSoundEffect implements Disposable {
 
 	public float getPitch() {
 		return pitch;
+	}
+
+	public SoundAsset getAsset() {
+		return asset;
+	}
+
+	public void incrementElapsedTime(float elapsed) {
+		this.totalElapsedTime += elapsed;
+	}
+
+	public float getTotalElapsedTime() {
+		return totalElapsedTime;
 	}
 }

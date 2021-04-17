@@ -20,8 +20,12 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileRoof;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.AmbienceMessage;
+import technology.rocketjump.undermount.particles.ParticleEffectStore;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
+import technology.rocketjump.undermount.rendering.camera.TileBoundingBox;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.entities.InWorldRenderable;
 import technology.rocketjump.undermount.rendering.lighting.LightProcessor;
 import technology.rocketjump.undermount.rendering.lighting.PointLight;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -50,10 +54,12 @@ public class WorldRenderer implements Disposable {
 	private final RoomRenderer roomRenderer;
 	private final ExplorationRenderer explorationRenderer;
 	private final MessageDispatcher messageDispatcher;
+	private final ParticleEffectStore particleEffectStore;
 
 	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
 
-	private final PriorityQueue<Entity> entitiesToRender = new PriorityQueue<>(new Entity.YDepthEntityComparator());
+	private final PriorityQueue<InWorldRenderable> renderables = new PriorityQueue<>(new InWorldRenderable.YDepthEntityComparator());
+	private final List<ParticleEffectInstance> ignoreDepthParticleEffects = new ArrayList<>();
 	private final List<MapTile> terrainTiles = new LinkedList<>();
 	private final List<MapTile> riverTiles = new LinkedList<>();
 	private final Map<Bridge, List<MapTile>> bridgeTiles = new HashMap<>();
@@ -63,6 +69,7 @@ public class WorldRenderer implements Disposable {
 	private final Set<GridPoint2> settlerLocations = new HashSet<>();
 	private final Map<Long, Construction> terrainConstructionsToRender = new TreeMap<>();
 	private final Map<Long, Construction> otherConstructionsToRender = new TreeMap<>(); // This needs to behave like a set and have consistent yet unimportant ordering
+	private final List<ParticleEffectInstance> particlesInFrontOfEntity = new ArrayList<>();
 
 	private final LightProcessor lightProcessor;
 	public static final Color CONSTRUCTION_COLOR = HexColors.get("#EEEEEE99");
@@ -72,7 +79,8 @@ public class WorldRenderer implements Disposable {
 	@Inject
 	public WorldRenderer(RenderingOptions renderingOptions, TerrainRenderer terrainRenderer, EntityRenderer entityRenderer,
 						 WaterRenderer waterRenderer, FloorOverlapRenderer floorOverlapRenderer, RoomRenderer roomRenderer,
-						 ExplorationRenderer explorationRenderer, MessageDispatcher messageDispatcher, LightProcessor lightProcessor) {
+						 ExplorationRenderer explorationRenderer, MessageDispatcher messageDispatcher,
+						 ParticleEffectStore particleEffectStore, LightProcessor lightProcessor) {
 		this.renderingOptions = renderingOptions;
 		this.terrainRenderer = terrainRenderer;
 		this.entityRenderer = entityRenderer;
@@ -81,16 +89,19 @@ public class WorldRenderer implements Disposable {
 		this.roomRenderer = roomRenderer;
 		this.explorationRenderer = explorationRenderer;
 		this.messageDispatcher = messageDispatcher;
+		this.particleEffectStore = particleEffectStore;
 		this.lightProcessor = lightProcessor;
 	}
 
-	public void renderWorld(TiledMap tiledMap, OrthographicCamera camera, TerrainSpriteCache spriteCache, RenderMode renderMode, List<PointLight> lightsToRenderThisFrame) {
+	public void renderWorld(TiledMap tiledMap, OrthographicCamera camera, TerrainSpriteCache spriteCache, RenderMode renderMode,
+							List<PointLight> lightsToRenderThisFrame, List<ParticleEffectInstance> particlesToRenderAsUI) {
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1); // MODDING expose default background color
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		entitiesToRender.clear();
+		renderables.clear();
 		entitiesRenderedThisFrame.clear();
 		terrainConstructionsToRender.clear();
 		otherConstructionsToRender.clear();
+		ignoreDepthParticleEffects.clear();
 		terrainTiles.clear();
 		riverTiles.clear();
 		bridgeTiles.clear();
@@ -100,13 +111,10 @@ public class WorldRenderer implements Disposable {
 		int totalTiles = 0;
 		int outdoorTiles = 0;
 
-		int minX = getMinX(camera);
-		int maxX = getMaxX(camera, tiledMap);
-		int minY = getMinY(camera);
-		int maxY = getMaxY(camera, tiledMap);
+		TileBoundingBox bounds = new TileBoundingBox(camera, tiledMap);
 
-		for (int worldY = maxY; worldY >= minY; worldY--) {
-			for (int worldX = minX; worldX <= maxX; worldX++) {
+		for (int worldY = bounds.maxY; worldY >= bounds.minY; worldY--) {
+			for (int worldX = bounds.minX; worldX <= bounds.maxX; worldX++) {
 				MapTile mapTile = tiledMap.getTile(worldX, worldY);
 				if (mapTile == null) {
 					continue;
@@ -126,16 +134,24 @@ public class WorldRenderer implements Disposable {
 				if (mapTile.getFloor().hasBridge()) {
 					bridgeTiles.computeIfAbsent(mapTile.getFloor().getBridge(), (a) -> new LinkedList<>()).add(mapTile);
 				}
-				entitiesToRender.addAll(mapTile.getEntities());
+
+				mapTile.getEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
+				mapTile.getParticleEffects().values().forEach(p -> {
+					if (p.getType().isOverrideYDepth()) {
+						ignoreDepthParticleEffects.add(p);
+					} else {
+						renderables.add(new InWorldRenderable(p));
+					}
+				});
 				for (Entity entity : mapTile.getEntities()) {
 					if (entity.getType().equals(EntityType.HUMANOID)) {
 						settlerLocations.add(toGridPoint(entity.getLocationComponent().getWorldOrParentPosition()));
 					}
 				}
 				if (mapTile.hasDoorway()) {
-					entitiesToRender.add(mapTile.getDoorway().getFrameEntity());
-					entitiesToRender.add(mapTile.getDoorway().getDoorEntity());
-					entitiesToRender.addAll(mapTile.getDoorway().getWallCapEntities());
+					renderables.add(new InWorldRenderable(mapTile.getDoorway().getFrameEntity()));
+					renderables.add(new InWorldRenderable(mapTile.getDoorway().getDoorEntity()));
+					mapTile.getDoorway().getWallCapEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
 				}
 				if (mapTile.hasRoom()) {
 					roomTiles.add(mapTile);
@@ -169,13 +185,13 @@ public class WorldRenderer implements Disposable {
 
 
 		// Also need to pick up entities up to X tiles below minX due to tree heights
-		for (int worldY = minY; worldY >= minY - 4; worldY--) {
-			for (int worldX = minX; worldX <= maxX; worldX++) {
+		for (int worldY = bounds.minY; worldY >= bounds.minY - 4; worldY--) {
+			for (int worldX = bounds.minX; worldX <= bounds.maxX; worldX++) {
 				MapTile mapTile = tiledMap.getTile(worldX, worldY);
 				if (mapTile == null || mapTile.getExploration().equals(UNEXPLORED)) {
 					continue;
 				}
-				entitiesToRender.addAll(mapTile.getEntities());
+				mapTile.getEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
 				Construction construction = mapTile.getConstruction();
 				if (construction != null) {
 					if (terrainConstructionTypes.contains(construction.getConstructionType())) {
@@ -217,26 +233,56 @@ public class WorldRenderer implements Disposable {
 			}
 		}
 
+		while (!renderables.isEmpty()) {
+			InWorldRenderable renderable = renderables.poll();
+			Entity entity = renderable.entity;
+			if (entity != null) {
+				if (!entitiesRenderedThisFrame.contains(entity.getId())) {
+					entitiesRenderedThisFrame.add(entity.getId());
 
-		while (!entitiesToRender.isEmpty()) {
-			Entity entity = entitiesToRender.poll();
-			if (!entitiesRenderedThisFrame.contains(entity.getId())) {
-				entitiesRenderedThisFrame.add(entity.getId());
+					particlesInFrontOfEntity.clear();
+					particleEffectStore.getParticlesAttachedToEntity(entity).forEach(p -> {
+						if (p.getType().getIsAffectedByLighting()) {
+							if (p.getType().isRenderBehindParent()) {
+								p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+							} else if (p.getType().isOverrideYDepth()) {
+								ignoreDepthParticleEffects.add(p);
+							} else {
+								particlesInFrontOfEntity.add(p);
+							}
+						} else {
+							if (particlesToRenderAsUI != null) { // will be null for normals
+								particlesToRenderAsUI.add(p);
+							}
+						}
+					});
 
-				Color multiplyColor = null;
-				if (GlobalSettings.TREE_TRANSPARENCY_ENABLED) {
-					if (entity.getType().equals(EntityType.PLANT) && isPlantOccludingHumanoid(entity)) {
-						multiplyColor = TREE_TRANSPARENCY;
+					Color multiplyColor = null;
+					if (GlobalSettings.TREE_TRANSPARENCY_ENABLED) {
+						if (entity.getType().equals(EntityType.PLANT) && isPlantOccludingHumanoid(entity)) {
+							multiplyColor = TREE_TRANSPARENCY;
+						}
 					}
-				}
 
-				entityRenderer.render(entity, basicSpriteBatch, renderMode, null, null, multiplyColor);
-				AttachedLightSourceComponent attachedLightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
-				if (lightsToRenderThisFrame != null && attachedLightSourceComponent != null && attachedLightSourceComponent.isEnabled()) {
-					lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
+					entityRenderer.render(entity, basicSpriteBatch, renderMode, null, null, multiplyColor);
+					AttachedLightSourceComponent attachedLightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
+					if (lightsToRenderThisFrame != null && attachedLightSourceComponent != null && attachedLightSourceComponent.isEnabled()) {
+						lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
+					}
+
+					particlesInFrontOfEntity.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
+
+				}
+			} else if (renderable.particleEffect != null) {
+				if (renderable.particleEffect.getType().getIsAffectedByLighting()) {
+					renderable.particleEffect.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+				} else if (particlesToRenderAsUI != null) {
+					particlesToRenderAsUI.add(renderable.particleEffect);
 				}
 			}
 		}
+
+		ignoreDepthParticleEffects.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
 
 		basicSpriteBatch.end();
 		explorationRenderer.render(unexploredTiles, camera, tiledMap, renderMode);
@@ -261,42 +307,6 @@ public class WorldRenderer implements Disposable {
 			}
 		}
 		return false;
-	}
-
-	public static int getMaxY(OrthographicCamera camera, TiledMap tiledMap) {
-		int maxY = (int) Math.ceil(camera.frustum.planePoints[2].y);
-		maxY += 2;
-		if (maxY >= tiledMap.getHeight()) {
-			maxY = tiledMap.getHeight() - 1;
-		}
-		return maxY;
-	}
-
-	public static int getMinY(OrthographicCamera camera) {
-		int minY = (int) Math.floor(camera.frustum.planePoints[0].y);
-		minY += -1;
-		if (minY < 0) {
-			minY = 0;
-		}
-		return minY;
-	}
-
-	public static int getMaxX(OrthographicCamera camera, TiledMap tiledMap) {
-		int maxX = (int) Math.ceil(camera.frustum.planePoints[2].x);
-		maxX += 2;
-		if (maxX >= tiledMap.getWidth()) {
-			maxX = tiledMap.getWidth() - 1;
-		}
-		return maxX;
-	}
-
-	public static int getMinX(OrthographicCamera camera) {
-		int minX = (int) Math.floor(camera.frustum.planePoints[0].x);
-		minX += -1;
-		if (minX < 0) {
-			minX = 0;
-		}
-		return minX;
 	}
 
 	@Override

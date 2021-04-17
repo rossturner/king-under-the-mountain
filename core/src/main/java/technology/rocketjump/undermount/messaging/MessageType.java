@@ -89,6 +89,10 @@ public class MessageType {
 	public static final int HUMANOID_DEATH = 340;
 	public static final int HUMANOID_INSANITY = 341;
 	public static final int LIQUID_AMOUNT_CHANGED = 342;
+	public static final int TREE_SHED_LEAVES = 343;
+
+	public static final int FURNITURE_IN_USE = 345;
+	public static final int FURNITURE_NO_LONGER_IN_USE = 346;
 
 	// Assets and modding related messages
 	public static final int SHUTDOWN_IN_PROGRESS = 400;
@@ -164,6 +168,7 @@ public class MessageType {
 	public static final int LIQUID_ALLOCATION_CANCELLED = 1104;
 	public static final int REQUEST_LIQUID_ALLOCATION = 1105;
 	public static final int REQUEST_LIQUID_REMOVAL = 1106;
+	public static final int LIQUID_SPLASH = 1107;
 
 	// Saved game messages
 	public static final int REQUEST_SAVE = 1200;
@@ -193,6 +198,11 @@ public class MessageType {
 	public static final int TWITCH_AUTH_CODE_FAILURE = 1501;
 	public static final int TWITCH_TOKEN_UPDATED = 1502;
 	public static final int TWITCH_ACCOUNT_INFO_UPDATED = 1503;
+
+	// Particle effect messages
+	public static final int PARTICLE_REQUEST = 1600;
+	public static final int PARTICLE_UPDATE = 1601; // Used to create or update particles
+	public static final int PARTICLE_RELEASE = 1602; // Used to set particles to expire
 
 
 }

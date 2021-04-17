@@ -5,6 +5,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
@@ -22,6 +23,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.PlantSeedDispersedMessage;
 import technology.rocketjump.undermount.messaging.types.RemoveDesignationMessage;
+import technology.rocketjump.undermount.messaging.types.ShedLeavesMessage;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -175,6 +177,10 @@ public class PlantBehaviour implements BehaviourComponent {
 		boolean assetUpdateRequired = attributes.updateColors(seasonPlantThinksItIs);
 		if (assetUpdateRequired) {
 			messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parentEntity);
+		}
+
+		if (currentSeasonSettings != null && currentSeasonSettings.isShedsLeaves()) {
+			messageDispatcher.dispatchMessage(MessageType.TREE_SHED_LEAVES, new ShedLeavesMessage(parentEntity, attributes.getColor(ColoringLayer.LEAF_COLOR)));
 		}
 
 		AttachedLightSourceBehaviour.infrequentUpdate(gameContext, parentEntity);

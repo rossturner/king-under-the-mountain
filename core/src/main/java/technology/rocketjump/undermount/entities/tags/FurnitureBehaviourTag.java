@@ -27,7 +27,7 @@ public class FurnitureBehaviourTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return EnumUtils.isValidEnum(FurnitureBehaviourName.class, args.get(0));
 	}
 

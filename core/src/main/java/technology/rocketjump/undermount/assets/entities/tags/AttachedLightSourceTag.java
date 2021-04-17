@@ -21,7 +21,7 @@ public class AttachedLightSourceTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return args.size() == 1; // FIXME #109 better validation that args are valid
 	}
 

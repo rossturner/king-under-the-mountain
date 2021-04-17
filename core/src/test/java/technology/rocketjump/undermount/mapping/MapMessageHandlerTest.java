@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
@@ -16,6 +17,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.rooms.RoomFactory;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.rooms.StockpileComponentUpdater;
@@ -45,6 +47,10 @@ public class MapMessageHandlerTest {
 	private JobStore mockJobStore;
 	@Mock
 	private StockpileComponentUpdater mockStockpileComponentUpdater;
+	@Mock
+	private ParticleEffectTypeDictionary mockParticleEffectTypeDictionary;
+	@Mock
+	private SoundAssetDictionary mockSoundAssetDictionary;
 
 	@Test
 	public void removeWall_joinsRegions_keepsZones() {
@@ -126,7 +132,8 @@ public class MapMessageHandlerTest {
 		map.addZone(rightEdgeZone);
 
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
-				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, mockStockpileComponentUpdater);
+				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, mockStockpileComponentUpdater,
+				mockParticleEffectTypeDictionary, mockSoundAssetDictionary);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);

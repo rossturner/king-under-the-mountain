@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.google.common.collect.ImmutableMap;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.entities.tags.BedSleepingPositionTag;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
@@ -21,6 +22,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.settlement.FurnitureTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 import technology.rocketjump.undermount.ui.Scene2DUtils;
 import technology.rocketjump.undermount.ui.Selectable;
@@ -44,6 +46,7 @@ public class SettlerManagementScreen extends ManagementScreen {
 	private int numSettlerTablesPerRow = 3;
 	private final MessageDispatcher messageDispatcher;
 	private final SettlerTracker settlerTracker;
+	private final FurnitureTracker furnitureTracker;
 	private final EntityDrawableFactory entityDrawableFactory;
 	private final Table sortingOptionsTable;
 	private SettlerSorting selectedSortOption = SettlerSorting.BY_NAME;
@@ -60,12 +63,14 @@ public class SettlerManagementScreen extends ManagementScreen {
 								   GuiSkinRepository guiSkinRepository, SettlerTracker settlerTracker,
 								   I18nWidgetFactory i18nWidgetFactory,
 								   EntityDrawableFactory entityDrawableFactory, I18nTranslator i18nTranslator,
-								   ClickableTableFactory clickableTableFactory, IconButtonFactory iconButtonFactory, SoundAssetDictionary soundAssetDictionary) {
+								   ClickableTableFactory clickableTableFactory, IconButtonFactory iconButtonFactory,
+								   SoundAssetDictionary soundAssetDictionary, FurnitureTracker furnitureTracker) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.settlerTracker = settlerTracker;
 		this.messageDispatcher = messageDispatcher;
 		this.entityDrawableFactory = entityDrawableFactory;
 		this.clickableTableFactory = clickableTableFactory;
+		this.furnitureTracker = furnitureTracker;
 
 		professionsTable = new Table(uiSkin);
 		settlerTable = new Table(uiSkin);
@@ -120,6 +125,7 @@ public class SettlerManagementScreen extends ManagementScreen {
 
 		int living = settlerTracker.getLiving().size();
 		int dead = settlerTracker.getDead().size();
+		int numBeds = furnitureTracker.findByTag(BedSleepingPositionTag.class, false).size();
 
 		containerTable.clearChildren();
 		containerTable.add(titleLabel).center().pad(5).row();
@@ -128,9 +134,14 @@ public class SettlerManagementScreen extends ManagementScreen {
 				ImmutableMap.of("count", new I18nText(String.valueOf(living)))), uiSkin, messageDispatcher);
 		I18nTextWidget deadLabel = new I18nTextWidget(i18nTranslator.getTranslatedWordWithReplacements("GUI.SETTLER_MANAGEMENT.DEAD_COUNTER",
 				ImmutableMap.of("count", new I18nText(String.valueOf(dead)))), uiSkin, messageDispatcher);
+		I18nTextWidget bedsLabel = new I18nTextWidget(i18nTranslator.getTranslatedWordWithReplacements("GUI.SETTLER_MANAGEMENT.BEDS_COUNTER",
+				ImmutableMap.of("count", new I18nText(String.valueOf(numBeds)))), uiSkin, messageDispatcher);
 		deadLabel.setColor(Color.RED);
 
-		containerTable.add(livingLabel).left().row();
+		Table infoRow = new Table(uiSkin);
+		infoRow.add(livingLabel);
+		infoRow.add(bedsLabel).padLeft(35);
+		containerTable.add(infoRow).left().row();
 		if (dead > 0) {
 			containerTable.add(deadLabel).left().row();
 		}

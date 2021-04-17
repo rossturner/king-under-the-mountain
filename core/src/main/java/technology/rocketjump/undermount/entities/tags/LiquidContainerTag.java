@@ -15,7 +15,7 @@ public class LiquidContainerTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return getCapacity() > 0;
 	}
 

@@ -13,6 +13,7 @@
   },
   "seasons": {
     "AUTUMN": {
+      "shedsLeaves": true,
       "colors": {
         "LEAF_COLOR": {
           "transitionSwatch": "sycamore-leaf-transition-swatch.png"

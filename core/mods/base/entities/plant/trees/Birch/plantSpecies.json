@@ -13,6 +13,7 @@
   },
   "seasons": {
     "AUTUMN": {
+      "shedsLeaves": true,
       "colors": {
         "LEAF_COLOR": {
           "transitionSwatch": "birch-leaf-transition-swatch.png"

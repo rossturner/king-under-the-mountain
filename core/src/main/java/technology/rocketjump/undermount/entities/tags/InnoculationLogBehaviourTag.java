@@ -19,7 +19,7 @@ public class InnoculationLogBehaviourTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return true; // TODO implement this
 	}
 

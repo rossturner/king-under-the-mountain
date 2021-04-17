@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -20,6 +21,7 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
+import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
 import technology.rocketjump.undermount.settlement.ItemTracker;
@@ -69,6 +71,10 @@ public class EntityMessageHandlerTest {
 	private I18nTranslator mockI18nTranslator;
 	@Mock
 	private JobStore mockJobStore;
+	@Mock
+	private SoundAssetDictionary mockSoundAssetDictionary;
+	@Mock
+	private ParticleEffectTypeDictionary mockParticleEffectDictionary;
 
 	@Before
 	public void setUp() throws Exception {
@@ -76,7 +82,8 @@ public class EntityMessageHandlerTest {
 
 		entityMessageHandler = new EntityMessageHandler(messageDispatcher, mockAssetUpdater, mockJobFactory,
 				mockEntityStore, mockItemTracker, mockFurnitureTracker, mockSettlerTracker, mockRoomStore,
-				mockItemEntityAttributesFactory, mockItemEntityFactory, mockItemTypeDictionary, mockI18nTranslator, mockJobStore);
+				mockItemEntityAttributesFactory, mockItemEntityFactory, mockItemTypeDictionary, mockI18nTranslator, mockJobStore,
+				mockSoundAssetDictionary, mockParticleEffectDictionary);
 
 		gameContext = new GameContext();
 		gameContext.setAreaMap(mockAreaMap);

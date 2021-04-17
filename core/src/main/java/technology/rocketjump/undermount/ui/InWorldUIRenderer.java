@@ -29,6 +29,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.RenderingOptions;
 import technology.rocketjump.undermount.rendering.RoomRenderer;
@@ -45,7 +46,7 @@ import java.util.Map;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
-import static technology.rocketjump.undermount.rendering.WorldRenderer.*;
+import static technology.rocketjump.undermount.rendering.camera.TileBoundingBox.*;
 import static technology.rocketjump.undermount.rooms.RoomTypeDictionary.VIRTUAL_PLACING_ROOM;
 import static technology.rocketjump.undermount.ui.GameInteractionMode.*;
 import static technology.rocketjump.undermount.ui.GameViewMode.JOB_PRIORITY;
@@ -89,7 +90,7 @@ public class InWorldUIRenderer {
 		this.doorIconSprite = iconSpriteCache.getByName(singleDoorType.getIconName());
 	}
 
-	public void render(TiledMap map, OrthographicCamera camera, TerrainSpriteCache diffuseSpriteCache) {
+	public void render(TiledMap map, OrthographicCamera camera, List<ParticleEffectInstance> particlesToRenderAsUI, TerrainSpriteCache diffuseSpriteCache) {
 		Gdx.gl.glEnable(GL20.GL_BLEND);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		shapeRenderer.setProjectionMatrix(camera.combined);
@@ -287,6 +288,9 @@ public class InWorldUIRenderer {
 
 			}
 		}
+
+		particlesToRenderAsUI.forEach(p -> p.getGdxParticleEffect().draw(spriteBatch, RenderMode.DIFFUSE));
+
 		spriteBatch.end();
 		shapeRenderer.end();
 	}

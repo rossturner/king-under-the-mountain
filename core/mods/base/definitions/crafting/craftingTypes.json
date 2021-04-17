@@ -4,7 +4,8 @@
     "i18nKey": "CRAFTING_TYPE.WOODCUTTING",
     "professionRequiredName": "LUMBERJACK",
     "defaultItemTypeName": "Tool-Saw",
-    "usesWorkstationTool": true
+    "usesWorkstationTool": true,
+    "particleEffectNames": ["Wood shavings"]
   },
   {
     "name": "CARPENTRY",
@@ -12,7 +13,8 @@
     "professionRequiredName": "CARPENTER",
     "defaultItemTypeName": "Tool-Plane",
     "constructsFurniture": "WOOD",
-    "usesWorkstationTool": true
+    "usesWorkstationTool": true,
+    "particleEffectNames": ["Wood shavings"]
   },
   {
     "name": "STONEMASONRY",
@@ -20,7 +22,8 @@
     "professionRequiredName": "STONEMASON",
     "defaultItemTypeName": "Tool-Chisel",
     "constructsFurniture": "STONE",
-    "usesWorkstationTool": true
+    "usesWorkstationTool": true,
+    "particleEffectNames": ["Chipping stone"]
   },
   {
     "name": "BLACKSMITHING",
@@ -28,7 +31,8 @@
     "professionRequiredName": "BLACKSMITH",
     "defaultItemTypeName": "Tool-Large-Hammer",
     "constructsFurniture": "METAL",
-    "usesWorkstationTool": true
+    "usesWorkstationTool": true,
+    "particleEffectNames": ["Blacksmith sparks"]
   },
   {
     "name": "SMELTING",

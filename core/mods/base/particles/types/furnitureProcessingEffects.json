@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Smoking",
+    "particleFile": "smoking.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "offsetFromParentEntity": {
+      "x": 0.6,
+      "y": 1.5
+    }
+  },
+  {
+    "name": "Smoking (charcoal)",
+    "particleFile": "smoking.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "offsetFromParentEntity": {
+      "x": 0.5,
+      "y": 1.3
+    }
+  },
+  {
+    "name": "White smoking",
+    "particleFile": "white_smoking.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "offsetFromParentEntity": {
+      "x": 0.5,
+      "y": 1.6
+    }
+  },
+  {
+    "name": "Ore chips",
+    "particleFile": "orechips.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "offsetFromParentEntity": {
+      "x": 1.15,
+      "y": 0.9
+    }
+  },
+  {
+    "name": "Milling",
+    "particleFile": "milling.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": true,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.3
+    }
+  }
+]

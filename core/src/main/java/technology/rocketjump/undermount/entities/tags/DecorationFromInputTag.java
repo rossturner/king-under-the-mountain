@@ -20,7 +20,7 @@ public class DecorationFromInputTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return args.size() > 0;
 	}
 

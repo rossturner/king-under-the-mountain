@@ -13,7 +13,8 @@
   "seasons" : {
     "WINTER" : {
       "growth" : false,
-      "colors" : { }
+      "colors" : { },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -185,7 +186,8 @@
         "FRUIT_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -363,7 +365,8 @@
     "WINTER" : {
       "growth" : false,
       "colors" : { },
-      "switchToGrowthStage" : 0
+      "switchToGrowthStage" : 0,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -508,7 +511,8 @@
     "WINTER" : {
       "growth" : true,
       "colors" : { },
-      "switchToGrowthStage" : 7
+      "switchToGrowthStage" : 7,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -708,7 +712,8 @@
         "FRUIT_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -882,7 +887,8 @@
     "WINTER" : {
       "growth" : true,
       "colors" : { },
-      "switchToGrowthStage" : 7
+      "switchToGrowthStage" : 7,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -1063,7 +1069,8 @@
   "seasons" : {
     "WINTER" : {
       "growth" : false,
-      "colors" : { }
+      "colors" : { },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2023,7 +2030,8 @@
           "hidden" : true
         }
       },
-      "switchToGrowthStage" : 4
+      "switchToGrowthStage" : 4,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2150,7 +2158,8 @@
           "hidden" : true
         }
       },
-      "switchToGrowthStage" : 4
+      "switchToGrowthStage" : 4,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2277,7 +2286,8 @@
           "hidden" : true
         }
       },
-      "switchToGrowthStage" : 4
+      "switchToGrowthStage" : 4,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2404,7 +2414,8 @@
           "hidden" : true
         }
       },
-      "switchToGrowthStage" : 4
+      "switchToGrowthStage" : 4,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2531,7 +2542,8 @@
           "hidden" : true
         }
       },
-      "switchToGrowthStage" : 4
+      "switchToGrowthStage" : 4,
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2637,7 +2649,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2702,7 +2715,8 @@
           "transitionSwatch" : "aspen-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -2710,7 +2724,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2817,7 +2832,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -2922,7 +2938,8 @@
           "transitionSwatch" : "beech-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -2930,7 +2947,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -3038,7 +3056,8 @@
           "transitionSwatch" : "birch-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -3046,7 +3065,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -3149,7 +3169,8 @@
   "seasons" : {
     "WINTER" : {
       "growth" : false,
-      "colors" : { }
+      "colors" : { },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -3345,7 +3366,8 @@
           "transitionSwatch" : "beech-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -3353,7 +3375,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -3461,7 +3484,8 @@
           "transitionSwatch" : "maple-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -3469,7 +3493,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -3577,7 +3602,8 @@
           "transitionSwatch" : "nuytsia-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -3683,7 +3709,8 @@
           "transitionSwatch" : "oak-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -3691,7 +3718,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -3799,7 +3827,8 @@
           "transitionSwatch" : "pecan-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -3807,7 +3836,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -4003,7 +4033,8 @@
   "seasons" : {
     "WINTER" : {
       "growth" : false,
-      "colors" : { }
+      "colors" : { },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -4106,7 +4137,8 @@
           "transitionSwatch" : "red-emperor-spring-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : false
     },
     "AUTUMN" : {
       "growth" : true,
@@ -4115,7 +4147,8 @@
           "transitionSwatch" : "red-emperor-autumn-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -4123,7 +4156,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -4234,7 +4268,8 @@
           "transitionSwatch" : "rosewood-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -4242,7 +4277,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {
@@ -4536,7 +4572,8 @@
           "transitionSwatch" : "sycamore-leaf-transition-swatch.png",
           "hidden" : false
         }
-      }
+      },
+      "shedsLeaves" : true
     },
     "WINTER" : {
       "growth" : false,
@@ -4544,7 +4581,8 @@
         "LEAF_COLOR" : {
           "hidden" : true
         }
-      }
+      },
+      "shedsLeaves" : false
     }
   },
   "growthStages" : [ {

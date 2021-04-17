@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
+import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -35,6 +36,8 @@ import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.misc.Destructible;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
+import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -79,6 +82,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 	private double lastUpdateGameTime;
 	private final List<HaulingAllocation> haulingInputAllocations = new ArrayList<>();
 	private final List<Job> liquidTransferJobs = new ArrayList<>();
+
 
 	public CraftingStationBehaviour() {
 
@@ -125,12 +129,32 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		clearCompletedLiquidJobs();
 
 		if (extraTimeToProcess != null) {
+			FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
+			if (particleEffectsComponent != null) {
+				particleEffectsComponent.getCurrentParticleInstances().removeIf(p -> p == null || !p.isActive());
+				if (!particleEffectsComponent.getParticleEffectsWhenProcessing().isEmpty() && particleEffectsComponent.getCurrentParticleInstances().isEmpty()) {
+					for (ParticleEffectType effectType : particleEffectsComponent.getParticleEffectsWhenProcessing()) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
+								Optional.of(parentEntity),
+								Optional.ofNullable( currentProductionAssignment != null ? new JobTarget(currentProductionAssignment.targetRecipe, parentEntity) : null),
+								particleEffectsComponent.getCurrentParticleInstances()::add));
+					}
+				}
+			}
+
+
 			double elapsedTime = gameContext.getGameClock().getCurrentGameTime() - lastUpdateGameTime;
 			extraTimeToProcess -= elapsedTime;
 			if (extraTimeToProcess < 0) {
 				requiresExtraTime = false;
 				extraTimeToProcess = null;
 				jobCompleted(gameContext);
+
+				if (particleEffectsComponent != null) {
+					for (ParticleEffectInstance effectInstance : particleEffectsComponent.getCurrentParticleInstances()) {
+						messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
+					}
+				}
 			}
 		}
 		lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
@@ -828,6 +852,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				}
 			}
 		}
-	}
 
+	}
 }

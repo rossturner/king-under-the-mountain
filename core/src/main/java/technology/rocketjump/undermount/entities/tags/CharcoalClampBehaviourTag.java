@@ -21,7 +21,7 @@ public class CharcoalClampBehaviourTag extends Tag {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isValid(TagProcessingUtils tagProcessingUtils) {
 		return true;
 	}
 
