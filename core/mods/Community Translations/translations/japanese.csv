@@ -263,8 +263,10 @@ GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),
 GUI.CROP_SELECTION,,Crop:,切り抜き:
-GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}",{{時刻}}、日 {{日}}、{{季節}}
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}, year {{year}}",{{時刻}}、日 {{日}}、{{季節}}
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,
+GUI.DIALOG.CANCEL_BUTTON,,Cancel,
+GUI.DIALOG.CONFIRM_DELETE_SAVE,,Are you sure you wish to delete {{name}}?,
 GUI.DIALOG.DISMISS,,Dismiss,却下します
 GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,その名前のルームは既に存在します。
 GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,このバージョンのゲームと互換性がないため、保存ファイルをロードできませんでした。
@@ -276,16 +278,31 @@ GUI.DIALOG.JUMP_TO,,Go to location,場所へ移動
 GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,選択された言語の翻訳は現在不完全なため、一部のテキストが欠落しています。 代替言語が使用されます。
 GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,ゲームに設定するmodの組み合わせが変更されました。変更はゲームの再起動後に有効化されます。
 GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,このバージョンと互換性の無いため、無効になっているmodがあります。 更新はmodメニューで確認することができます。
-GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,OK
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,Ok,OK
 GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,部屋の名前を変更する
 GUI.DIALOG.RENAME_SETTLER_TITLE,,Rename settler,
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,変更を有効にするには、ゲームを再起動する必要があります。
+GUI.DIALOG.SETTLEMENT_NAME_ALREADY_IN_USE,,You already have a saved game for the settlement {{name}}. Starting a new game will overwrite the existing save file. Are you sure you want to continue?,
+GUI.DIALOG.SETTLEMENT_NAME_NOT_SPECIFIED,,A name for the settlement must be specified.,
+GUI.DIALOG.STOCKPILE_MANAGEMENT.TITLE,,Stockpile settings,
+GUI.EMBARK.DISCLAIMER,,"This is an early alpha version of King under the Mountain. There are many, many features still to be added, and bugs are to be expected. In a future update you will be able to use this screen to customise your starting settlers, resources and even map and gameplay settings. Please join our Discord community to report any bugs you find or offer feedback, so we can work together to guide King under the Mountain to become the best possible version of itself. Thank you for playing!",
+GUI.EMBARK.DISCORD_LINK,,Click here to join our Discord community,
+GUI.EMBARK.MAP_SEED,,Map seed:,
+GUI.EMBARK.SETTLEMENT_NAME,,Settlement name:,
+GUI.EMBARK.START,,Begin!,
+GUI.EMBARK.TITLE,,Embark Options,
 GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},{{name}} に割り当てられました
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,現在削除されています
 GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,この家具は {{materialType}} に配置する必要があります。
 GUI.GRAPHICS.FULLSCREEN,,Fullscreen,全画面表示
 GUI.GRAPHICS.RESOLUTION,,Resolution,解像度
 GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),なし (休ませる)
+GUI.LOAD_GAME.TABLE.DATE_TIME,,Last modified,
+GUI.LOAD_GAME.TABLE.DELETE,,Delete,
+GUI.LOAD_GAME.TABLE.GAME_TIME,,World time,
+GUI.LOAD_GAME.TABLE.SETTLEMENT_NAME,,Name,
+GUI.LOAD_GAME.TABLE.VERSION,,Version,
+GUI.LOAD_GAME.TITLE,,Load Game,
 GUI.MINIMAP.LABEL,,Minimap,ミニマップ
 GUI.MUSIC_VOLUME,,Music volume:,音楽ボリューム:
 GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,新しいバージョンがItch.ioで利用可能になりました
@@ -332,6 +349,8 @@ GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,リソース
 GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},利用可能:{{count}}
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,(R) を押して家具を回転させる
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,保存中...
+GUI.SETTINGS.LABEL,,Settings,
+GUI.SETTLER_MANAGEMENT.BEDS_COUNTER,,Number of beds: {{count}},
 GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},デッド:{{count}}
 GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},人口：{{count}}
 GUI.SETTLER_MANAGEMENT.SORT.BY_NAME,,Sort by name,
@@ -402,7 +421,10 @@ INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought 
 INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,シード
 INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,種子
 INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,{{ROOMS.FARM}} に植えるには、適切なタイプの種が必要です。 また、{{STOCKPILE.GRANARY}} の備
-INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,袋だ
+INGREDIENT.VEGETABLE.CRATE.NOUN,,Vegetable (crate),
+INGREDIENT.VEGETABLE.CRATE.PLURAL,,Vegetables (crate),
+INGREDIENT.VEGETABLE.SACK.NOUN,,Vegetable (sack),袋だ
+INGREDIENT.VEGETABLE.SACK.PLURAL,,Vegetables (sack),
 
 INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,在庫:
 
@@ -449,6 +471,7 @@ MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,木製
 MATERIAL_TYPE.WOOD.NOUN,,Wood,木材
 
 MENU.CONTINUE_GAME,,Continue game,ゲームを続ける
+MENU.LOAD_GAME,,Load game,
 MENU.MODS,,Mods,改造者
 MENU.NEW_GAME,,Start new game,新しいゲームを始める
 MENU.OPTIONS,,Options,オプション
@@ -709,6 +732,8 @@ RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beau
 RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,カットされていない宝石
 RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,カットされていない宝石
 RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,カットして研磨する準備ができている宝石を含む岩の塊です。
+RESOURCE.GRAIN.SACK.NOUN,,Grain (sack),
+RESOURCE.GRAIN.SACK.PLURAL,,Grain (sack),
 RESOURCE.LOGS.NOUN,,Log,[ログ]
 RESOURCE.LOGS.PLURAL,,Logs,ログ
 RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.",{{RESOURCE.PLANKS.PLURAL}} に最もよく準備されているが、他の用途もある、ツリーのセクション。
@@ -724,8 +749,8 @@ RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the l
 RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,マッシュルームログ
 RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,きのこログ
 RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,{{成分.キノコ.スポーン.NOUN}} が注入されたログ。 ログ自体の本体は、キノコが栄養素を引き出す場所です。 完全に無関心になった後、{{FURNITURE.MUSHROOM_SHOCK_TANK}} で吐き出さなければなりません。
-RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,[ログ]
-RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,ログ
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Mushroom log,[ログ]
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Mushroom logs,ログ
 RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,木製 {{リソース.LOGS.PLURAL} と同じ方法で使用することができる巨大なキノコのセクション。
 RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,砕石鉱石
 RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,砕石鉱石
@@ -745,6 +770,8 @@ RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is 
 RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,ラフ・ストーン・ボルダー
 RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,粗い石の岩
 RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,{{{PROFESSION.STONEMASON}} によってより有用な形に刻まなければならない巨大な石。
+RESOURCE.WHEAT.SACK.NOUN,,Wheat (sack),
+RESOURCE.WHEAT.SACK.PLURAL,,Wheat (sack),
 
 ROOMS.BEDROOM,,Bedroom,寝室
 ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",あなたの入植者が眠る場所。 彼らは、少なくとも9タイルのサイズで、好ましくは少なくとも13タイルのサイズの個々の寝室を有することを好む。
@@ -774,6 +801,8 @@ ROOMS.MUSHROOM_FARM,,Mushroom farm,キノコ農場
 ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,キノコは、{{原材料、キノコ、産物、名物}} と木製 {リソース.LOGS.PLURAL} を使って栽培することができます。
 ROOMS.SAWMILL,,Sawmill,製材所
 ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,木製 {{リソース.LOGS.PLURAL}} は、ここで {リソース.PLANKS.PLURAL} に洗練されています。
+ROOMS.STOCKPILE,,Stockpile,
+ROOMS.STOCKPILE.TOOLTIP,,This area stores different kinds of items depending on settings.,
 ROOMS.STOCKPILES,,Stockpiles,備蓄だ
 ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,未使用のアイテムは、簡単にアクセスできるように備蓄に置かれます。
 
@@ -819,14 +848,16 @@ SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally us
 
 SHRUB.DESCRIPTION,Shrub or bush should do,Bush,ブッシュ
 
-STOCKPILE.GRANARY,,Granary,穀倉だ
-STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,ストア穀物と種子が期限切れになりません。
-STOCKPILE.PANTRY,,Pantry,貯蔵室
-STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,有効期限が切れることができる果物や野菜を収穫した店。
-STOCKPILE.RESOURCES,,Resources,リソース
-STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,他のタイプの備蓄に属さないほとんどの種類の資源を保管します。
-STOCKPILE.TOOLS,,Tools,[ツール]
-STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,ジョブの作業に必要なツールを保管します。
+STOCKPILE.GROUP.FOOD,,Food,
+STOCKPILE.GROUP.FOOD.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,
+STOCKPILE.GROUP.FUEL,,Fuel,
+STOCKPILE.GROUP.GRANARY,,Granary,
+STOCKPILE.GROUP.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,
+STOCKPILE.GROUP.PRODUCTS,,Products,
+STOCKPILE.GROUP.RAW_MATERIALS,,Raw materials,
+STOCKPILE.GROUP.SEEDS,,Seeds,
+STOCKPILE.GROUP.TOOLS,,Tools,
+STOCKPILE.GROUP.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,
 
 STONE.BASALT.ADJECTIVE,,Basalt,玄武岩
 STONE.BASALT.NOUN,,Basalt,玄武岩
@@ -886,8 +917,8 @@ TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough c
 TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.",
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",
-TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ",
-TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.TOOLS}} and designate another area to be used to store tools.,
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GROUP.SEEDS}} (you can right-click to go back up to a previous menu) and designate an area to be used for seeds to be stored.",
+TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.GROUP.TOOLS}} and designate another area to be used to store tools.,
 TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.",
 TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.",
 TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,
@@ -895,7 +926,7 @@ TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inven
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.",
 TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",
 TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.",
-TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.",
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.GROUP.FOOD}} {{ROOMS.STOCKPILE}} to store any harvested crops.",
 TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!",
 TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",
 TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,
@@ -913,7 +944,6 @@ TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indic
 TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},
 TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,
 TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
-TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
 TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
 TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
 TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",

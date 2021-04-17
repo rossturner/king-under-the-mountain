@@ -1,12 +1,12 @@
 KEY,NOTES,ENGLISH,TURKISH
-,,,
+
 ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},{{plantDescription}} temizleniyor
 ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},{{targetDescription}} üretiliyor
 ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},{{targetDescription}} kaldırılıyor
 ACTION.JOB.DIGGING,,Digging {{targetDescription}},{{targetDescription}} kazılıyor
 ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},{{targetDescription}} dolduruluyor
-ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”,“Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},{{targetPlant}} biçiliyor
 ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,Mantar özü aşılanıyor.
 ACTION.JOB.LOGGING,,{{profession.verb}} {{targetPlant}},{{profession.verb}} {{targetPlant}}
@@ -20,7 +20,7 @@ ACTION.PREPARATION.VERB,,Preparing,Hazırlanıyor
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Yapacak iş arıyor
 ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},{{containerDescription}} içinde uyuyor.
 ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},{{tileDescription}} üzerinde uyuyor.
-,,,
+
 CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{furnitureType.noun}}  {{materialType}} inşa ediliyor.
 CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,{{quantity}}  {{itemDescription}} atandı.
 CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,Alan temizleniyor.
@@ -28,11 +28,11 @@ CONSTRUCTION.STATUS.CLEARING_WORK_SITE.TOOLTIP,,There are items that need to be 
 CONSTRUCTION.STATUS.SELECTING_MATERIALS,E.g. “Waiting for more wooden planks to be available”,Waiting for more {{materialType}} {{itemDescription.plural}} to be available,Daha fazla {{itemDescription.plural}} {{materialType}} bekleniyor.
 CONSTRUCTION.STATUS.WAITING_FOR_COMPLETION,This is displayed once all resources are in place and the construction is being worked on,Under construction,İnşa ediliyor
 CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction is waiting for resource items to be placed in the build area,Waiting for resources to arrive,Kaynakların varışı bekleniyor
-,,,
+
 COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{{materialDescription}} ekmek
 COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} ve {{materialTwo}}
 COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,{{materialDescription}} çorbası
-,,,
+
 CRAFTING_TYPE.BAKING,,Baking,Yemek Yapma
 CRAFTING_TYPE.BLACKSMITHING,,Blacksmithing,Demirci
 CRAFTING_TYPE.CARPENTRY,,Carpentry,Marangoz
@@ -46,22 +46,22 @@ CRAFTING_TYPE.SMELTING,,Smelting,Döküm
 CRAFTING_TYPE.STONEMASONRY,,Stonemasonry,Taş Ustası
 CRAFTING_TYPE.WOODCUTTING,,Woodcutting,Doğramacı
 CRAFTING_TYPE.WORT_BREWING,,Brewing,Mayalama
-,,,
+
 CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,Böceklenmiş
 CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,Bu bitki aşırı böceklenmiş veya zararlı otlarla sarılmış. Tekrar mahsül verebilmesi için önce {{PROFESSION.FARMER}} tarafından temizlenmesi gerekiyor. Dikkat! Hastallığın temizlenmemesi bitkinin ölmesi demek olabilir!
 CROP.DESCRIPTION,,{{materialType.noun}} plant,{{materialType.noun}} bitkisi
 CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,Hasada hazırlık: {{progress}}%
-,,,
+
 DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,Heyelan
 DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,Sıvı Kaybı
 DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,Yorgunluk
 DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,Besin zehirlenmesi
 DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,Açlık
 DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,Gizemli koşullar
-,,,
+
 EARTH.DIRT,,Dirt,Toprak
 EARTH.GRASS,,Grass,Çimen
-,,,
+
 FLOOR.COBBLESTONE,,Cobblestone,Kaldırım Taşı
 FLOOR.DESCRIPTION,,{{floorType.noun}},{{floorType.noun}}
 FLOOR.DIRT,,Dirt,Toprak
@@ -72,14 +72,14 @@ FLOOR.ROUGH_STONE,,Rough stone floor,Ser taş zemin
 FLOOR.STONE_SLAB,,Stone slab,Taş levha
 FLOOR.TILLED_EARTH,,Tilled earth,Bellenmiş toprak
 FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,Keşfedilmemiş
-,,,
+
 FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,Kaya Ekmeği
 FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,"Aşırı sağlam, hatta neredeyse yenemeyecek kadar sert ancak çok uzun süre küflenmeyen bir ekmek. insan kaşif J.A. Moffat bir defasında ekmeğin tadını ""Bataklıktan çıkarılmış bir çakıl taşını çiğnemeye çalışmak"" şeklinde betimlemiştir. Neyse ki cüceler bu tada çok aldırmıyorlar."
 FOODSTUFF.WHEAT-BREAD,"Actually just to describe “wheat” as a foodstuff, not specifically bread",Wheat,Buğday
-,,,
+
 FUEL.SACK,,Fuel,Yakıt
-FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}.", {{FURNITURE.BLOOMERY_FURNACE}} yada {{FURNITURE.FORGE}} metal üretirken yakıt kullanılması gerekmektedir.
-,,,
+FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}."," {{FURNITURE.BLOOMERY_FURNACE}} yada {{FURNITURE.FORGE}} metal üretirken yakıt kullanılması gerekmektedir."
+
 FURNITURE.BAKERS_WORKTOP,,Baker’s worktop,Fırıncının tezgahı
 FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,Bir {{PROFESSION.CHEF}} burada {{RESOURCE.FLOUR.SACK.PLURAL}}  {{INGREDIENT.DOUGH}} dönüştürmek için çalışıyor.
 FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,Fırıncının ocağı
@@ -91,7 +91,7 @@ FURNITURE.BEER_TAPPER.STATE.BEER_EXHAUSTED,,The beer has all gone!,Bira bitti!
 FURNITURE.BEER_TAPPER.STATE.IDLE,,Idle (no beer available),Bom boş (Bira mevcut değil)
 FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,{{LIQUID.BEER}} buradan servis ediliyor.
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,Demirci ocağı
-FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,{{PROFESSION.BLACKSMITH}} manuel fırını kullanarak  {{RESOURCE.ORE.CRUSHED.PLURAL}} ve {{FUEL.SACK}} nı  {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} dönüştürür. 
+FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,"{{PROFESSION.BLACKSMITH}} manuel fırını kullanarak  {{RESOURCE.ORE.CRUSHED.PLURAL}} ve {{FUEL.SACK}} nı  {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} dönüştürür. "
 FURNITURE.BREW_KETTLE,,Brew kettle,Demleme tankı
 FURNITURE.BREW_KETTLE.TOOLTIP,,This is used to produce the final wort (unfermented beer) using {{VEGETABLE.HOPS}} and wort from the {{FURNITURE.MASH_TUN}}.,Bu tank {{VEGETABLE.HOPS}} ve {{FURNITURE.MASH_TUN}} kullanarak fermente edilmemiş birayı yapmakta kullanılır.
 FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,Marangoz çalışma tezgahı
@@ -102,8 +102,8 @@ FURNITURE.CHAIR,,Chair,Sandalye
 FURNITURE.CHARCOAL_CLAMP,,Charcoal clamp,Kömür maşası
 FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} covered with {{MATERIAL_TYPE.EARTH}} and slowly burned to produce {{ORE.CHARCOAL.NOUN}}, which can then be used as {{FUEL.SACK}}.",Bu {{MATERIAL_TYPE.EARTH}} ile kaplanmış  {{RESOURCE.LOGS.PLURAL}} yığını ağır ağır yakılarak {{FUEL.SACK}} olarak kullanılabilen {{ORE.CHARCOAL.NOUN}} üretilebilir.
 FURNITURE.COKE_OVEN,,Coke oven,Kok Fırını
-FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,Kok fırını {{ORE.BITUMINOUS_COAL.NOUN}}ı {{FUEL.SACK}}  kullanılabilmesi için {{ORE.COKE.NOUN}} dönüştürür. 
-FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{materialType}} {{furnitureType.noun}} 
+FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,"Kok fırını {{ORE.BITUMINOUS_COAL.NOUN}}ı {{FUEL.SACK}}  kullanılabilmesi için {{ORE.COKE.NOUN}} dönüştürür. "
+FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},"{{materialType}} {{furnitureType.noun}} "
 FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,Yürütülme durumu: {{progress}}%
 FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,Aşılanmanın tamamlanma durumu: {{progress}}%
 FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,Mantar kütüğünün şoklanma durumu: {{progress}}%
@@ -126,7 +126,7 @@ FURNITURE.LANTERN,,Lantern,Fener
 FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,Fener ışık sağlar ancak şuanda oyun içi bir etkisi bulunmamakta.
 FURNITURE.LARGE_TABLE,,Large table,Geniş masa
 FURNITURE.MALTING_STATION,,Malting station,Maltlama istasyonu
-FURNITURE.MALTING_STATION.TOOLTIP,,Here brewers steep barley and then dry it out using a kiln to produce malt. ,Bira yapımcısı burada önce arpayı ıslatır ardından malt üretmek için fırında kurutur.
+FURNITURE.MALTING_STATION.TOOLTIP,,"Here brewers steep barley and then dry it out using a kiln to produce malt. ",Bira yapımcısı burada önce arpayı ıslatır ardından malt üretmek için fırında kurutur.
 FURNITURE.MASH_TUN,,Mash tun,Püre Fıçısı
 FURNITURE.MASH_TUN.TOOLTIP,,This is used to produce wort (unfermented beer) from milled malt and water.,Burası öğütülmüş malt ve su  ile fermente edilmemiş bira üretiminde kullanılır.
 FURNITURE.MUSHROOM_LOG,,Mushroom log,Mantar kütüğü
@@ -140,9 +140,9 @@ FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas fro
 FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,Sarkofaj
 FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,"Bu özenle hazırlanmış taş kutu, vefat etmiş bir vatandaşın son dinlenme mekanı."
 FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,Servis masası
-FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}., {{PRODUCT.BREAD.LOAF.PLURAL}} {{FURNITURE.BAKING_OVEN}} pişirildikten sonra servis edilmek için buraya yerleştirilir.
+FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.," {{PRODUCT.BREAD.LOAF.PLURAL}} {{FURNITURE.BAKING_OVEN}} pişirildikten sonra servis edilmek için buraya yerleştirilir."
 FURNITURE.SINGLE_BED,,Bed,Yatak
-FURNITURE.SINGLE_BED.TOOLTIP,,A bed is the best place for a comfortable night’s rest. ,"Yatak, rahat bir uyku için en iyi yer."
+FURNITURE.SINGLE_BED.TOOLTIP,,"A bed is the best place for a comfortable night’s rest. ","Yatak, rahat bir uyku için en iyi yer."
 FURNITURE.SINGLE_DOOR,,Door,Kapı
 FURNITURE.SINGLE_DOOR_FRAME,,Door frame,Kapı çerçevesi
 FURNITURE.SMALL_TABLE,,Small table,Küçük masa
@@ -153,7 +153,7 @@ FURNITURE.WATER_BARREL,,Water barrel,Su Fıçısı
 FURNITURE.WATER_BARREL.TOOLTIP,,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.","Su fıçısı, vatandaşların nehir gibi doğal su kaynağı bulmalarına gerek kalmadan  susuzluklarını giderdiği yerdir."
 FURNITURE.WOODCUTTERS_BENCH,,Woodcutting bench,Doğrama tezgahı
 FURNITURE.WOODCUTTERS_BENCH.TOOLTIP,,A {{PROFESSION.WOODCUTTER}} works here to turn {{RESOURCE.LOGS.PLURAL}} into {{RESOURCE.PLANKS.PLURAL}}.,{{PROFESSION.WOODCUTTER}} burada {{RESOURCE.LOGS.PLURAL}} {{RESOURCE.PLANKS.PLURAL}} dönüştürür.
-,,,
+
 GEM.AMETHYST.ADJECTIVE,,Amethyst,Ametist
 GEM.AMETHYST.NOUN,,Amethyst,Ametist
 GEM.AMETHYST.TOOLTIP,,A violet-hued variety of quartz. Ancient humans believed it could magically protect them from becoming too drunk. For this reason it is not very popular in dwarven culture.,Menekşe renkli bir kuvars çeşidi. Antik insanlar taşın kendilerini çok sarhoş olmaktan koruyacağına inandıkları için Cüce kültüründe çok popüler değil.
@@ -195,7 +195,7 @@ GEM.LAPIS.NOUN,,Lapis lazuli,Lapislazuli
 GEM.LAPIS.TOOLTIP,,A rock with a brilliant deep blue hue which is used as a precious stone.,Muhteşem bir koyu mavi renge sahip olan değerli taş.
 GEM.MAGNESITE.ADJECTIVE,,Magnesite,Manyezit
 GEM.MAGNESITE.NOUN,,Magnesite,Manyezit
-GEM.MAGNESITE.TOOLTIP,,A mineral which can be polished into beads for use in jewellery. These beads can by dyed into many different colours.,Kuyucumlukta kullanılmak üzere boncuk haline getirebilen ve isteğe göre farklı renklere boyanabilen bir mineral. 
+GEM.MAGNESITE.TOOLTIP,,A mineral which can be polished into beads for use in jewellery. These beads can by dyed into many different colours.,"Kuyucumlukta kullanılmak üzere boncuk haline getirebilen ve isteğe göre farklı renklere boyanabilen bir mineral. "
 GEM.MOONSTONE.ADJECTIVE,,Moonstone,Lüle Taşı
 GEM.MOONSTONE.NOUN,,Moonstone,Lüle Taşı
 GEM.MOONSTONE.TOOLTIP,,"Thought to be formed by moonlight captured in rock, which makes this gemstone a favourite of the elves.",Ay ışığının bir taş içine hapsolması ile oluştuğu düşünülen ve bu nedenle Elflerin favorisi olan değerli taş.
@@ -235,15 +235,15 @@ GEM.TOURMALINE.TOOLTIP,,Often found alongside {{ORE.CASSITERITE.ADJECTIVE}} ore.
 GEM.TURQUOISE.ADJECTIVE,,Turquoise,Turkuaz
 GEM.TURQUOISE.NOUN,,Turquoise,Turkuaz
 GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,Mavi-yeşil renge sahip genellikle dekorasyonda kullanılan bir mineral. Taşıyıcısına iyi şans getirdiğine inanılır. Genellikle toprak elementi ile birleiştirilir.
-,,,
-GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}}, {{targetDescription}} toplanıyor
-GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}}, {{targetZoneMaterial}} içiliyor
+
+GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}}," {{targetDescription}} toplanıyor"
+GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}}," {{targetZoneMaterial}} içiliyor"
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},{{targetDescription}} yeniliyor
 GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},{{itemDescription}} taşınıyor
 GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,Boşta
 GOAL.SLEEP.DESCRIPTION,,Going to sleep,Uyumaya gidiyor
 GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},{{targetZoneMaterial}} aktarılıyor
-,,,
+
 GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,Karo ekle/çıkar
 GUI.ADD_TILES,This should be as short as possible,Add tiles,Karo ekle
 GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as birdsong and river flowing,Ambient atmosphere effect volume:,Ambians atmosfer müzik sesi
@@ -263,8 +263,10 @@ GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,Üretim
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},Anlık toplam: {{quantity}}
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),Toplam) ({{quantity}}
 GUI.CROP_SELECTION,,Crop:,Mahsül:
-GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}","{{timeOfDay}}, Gün {{dayNumber}}, {{season}}"
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}, year {{year}}","{{timeOfDay}}, Gün {{dayNumber}}, {{season}}"
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,Yık
+GUI.DIALOG.CANCEL_BUTTON,,Cancel,
+GUI.DIALOG.CONFIRM_DELETE_SAVE,,Are you sure you wish to delete {{name}}?,
 GUI.DIALOG.DISMISS,,Dismiss,Savmak
 GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,Bu isime sahip bir oda zaten var.
 GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,Kayıt dosyası oyunun bu versiyonu ile uyumlu olmadığı için yüklenemedi.
@@ -276,16 +278,31 @@ GUI.DIALOG.JUMP_TO,,Go to location,Konuma git
 GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,Seçilen dilin çevirisi henüz tamamlanmadı ve bazı metinler eksik. Eksik kısımlar yedek dil ile doldurulacak.
 GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,"Oyuna uygulanacak farklı bir mod seti seçtiniz. Bu modlar, oyun yeniden başlatıldığında aktif hale gelecektir."
 GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,Bir veya birden fazla mod oyunun sürümü ile uyumlu değil bu yüzden devre dışı bırakıldı. Güncellemeler için Mod menüsünü kontrol edebilirsin.
-GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,Tamam
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,Ok,Tamam
 GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,Odayı yeniden isimlendir
 GUI.DIALOG.RENAME_SETTLER_TITLE,,Rename settler,Vatantaşı yeniden isimlendir
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,Bu değişikliğin gerçekleşmesi için oyunu yeniden başlatman gerekiyor.
-GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}}, {{name}} a atandı
+GUI.DIALOG.SETTLEMENT_NAME_ALREADY_IN_USE,,You already have a saved game for the settlement {{name}}. Starting a new game will overwrite the existing save file. Are you sure you want to continue?,
+GUI.DIALOG.SETTLEMENT_NAME_NOT_SPECIFIED,,A name for the settlement must be specified.,
+GUI.DIALOG.STOCKPILE_MANAGEMENT.TITLE,,Stockpile settings,
+GUI.EMBARK.DISCLAIMER,,"This is an early alpha version of King under the Mountain. There are many, many features still to be added, and bugs are to be expected. In a future update you will be able to use this screen to customise your starting settlers, resources and even map and gameplay settings. Please join our Discord community to report any bugs you find or offer feedback, so we can work together to guide King under the Mountain to become the best possible version of itself. Thank you for playing!",
+GUI.EMBARK.DISCORD_LINK,,Click here to join our Discord community,
+GUI.EMBARK.MAP_SEED,,Map seed:,
+GUI.EMBARK.SETTLEMENT_NAME,,Settlement name:,
+GUI.EMBARK.START,,Begin!,
+GUI.EMBARK.TITLE,,Embark Options,
+GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}}," {{name}} a atandı"
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,Şuanda kaldırılıyor
 GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,Bu mobilya  {{materialType}} üzerine yerleştirilmeli
 GUI.GRAPHICS.FULLSCREEN,,Fullscreen,Tam ekran
 GUI.GRAPHICS.RESOLUTION,,Resolution,Çözünürlük
 GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),Hiç
+GUI.LOAD_GAME.TABLE.DATE_TIME,,Last modified,
+GUI.LOAD_GAME.TABLE.DELETE,,Delete,
+GUI.LOAD_GAME.TABLE.GAME_TIME,,World time,
+GUI.LOAD_GAME.TABLE.SETTLEMENT_NAME,,Name,
+GUI.LOAD_GAME.TABLE.VERSION,,Version,
+GUI.LOAD_GAME.TITLE,,Load Game,
 GUI.MINIMAP.LABEL,,Minimap,El Haritası
 GUI.MUSIC_VOLUME,,Music volume:,Müzik seviyesi:
 GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,Yeni versiyon Itch.io da.
@@ -295,9 +312,9 @@ GUI.OK_LABEL,This should be as short as possible,Ok,Tamam
 GUI.OPTIONS.AUDIO.TITLE,,Sound Options,Ses Ayarları
 GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes trees partially transparent when a settler moves behind them,Make trees transparent when obscuring settlers,Vatandaşı görmeyi engelleyen ağaçları transparan yapar.
 GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,Bildirimler için duraklat
-GUI.OPTIONS.GAMEPLAY.TITLE,,Gameplay Options ,Oyun Ayarları
+GUI.OPTIONS.GAMEPLAY.TITLE,,"Gameplay Options ",Oyun Ayarları
 GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,İmleç ekranın köşesinde iken orta tuş ile kaydır.
-GUI.OPTIONS.GRAPHICS.TITLE,,Graphics Options ,Grafik Ayarları
+GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ",Grafik Ayarları
 GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,Otomatik çökme raporlarına izin ver.
 GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,Oyun içinde ipucu ve öğreticilere izin ver.
 GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING,,Scroll the background on the main menu,Ana ekrandaki arka planı kaydır.
@@ -329,9 +346,11 @@ GUI.PRIORITY_LABEL,This should be as short as possible,Priority,Öncelik
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,Kaldır
 GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Karoları Sil
 GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,Kaynaklar
-GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},Mevcut: {{count}}  
+GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},"Mevcut: {{count}}  "
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Mobilyayı döndürmek içni (R) bas.
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,Kaydediliyor
+GUI.SETTINGS.LABEL,,Settings,
+GUI.SETTLER_MANAGEMENT.BEDS_COUNTER,,Number of beds: {{count}},
 GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},Ölü: {{count}}
 GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},Popülasyon: {{count}}
 GUI.SETTLER_MANAGEMENT.SORT.BY_NAME,,Sort by name,İsime göre sırala
@@ -342,7 +361,7 @@ GUI.SOUND_EFFECT_VOLUME,,Sound effect volume,Ses efekti seviyesi
 GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,Arayüz ölçeği:
 GUI.VIEW_ROADMAP,,View development roadmap,Geliştirme yol haritasını görüntüle
 GUI.ZONES_LABEL,This should be as short as possible,Zones,Bölgeler
-,,,
+
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,,Going sober,Ayılıyor
 HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,Güzel hazırlanmış bir yemek yedi
 HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,Bir ceset taşıdı
@@ -363,9 +382,9 @@ HAPPINESS_MODIFIER.TITLE,,Happiness:,Mutluluk:
 HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,Çok aç
 HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,Aşırı susamış
 HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,Aşırı yorgun
-,,,
+
 HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},{{quantity}} atandı {{targetDescription}}
-,,,
+
 HINT.BUTTON.DISABLE_ALL,,Disable all hints,Tüm ipuçlarını kapa
 HINT.BUTTON.DISMISS,,Dismiss,Sav
 HINT.BUTTON.HINTS_ONLY,,Hints only,Sadece İpuçları
@@ -376,18 +395,18 @@ HINT.OPEN_PRIORITY_MENU.2,,"While the Priority menu is open, the priority icons 
 HINT.PROGRESS.HEADER,,Progress:,İlerleme:
 HINT.TOOL_DEPLETED.AXE1,,Your settlement no longer has an {{TOOL.AXE}} available. You will no longer be able to chop down trees.,Yerleşke artık {{TOOL.AXE}} sahip değil. Artık ağaç kesemeyecek.
 HINT.TOOL_DEPLETED.AXE2,,"More axes can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}}.",Yeni baltalar {{FURNITURE.FORGE}} da üretilebilir. Eğer çalışan bir  {{FURNITURE.FORGE}} yok ise bir {{FURNITURE.WOODCUTTERS_BENCH}} den kurtulman gerekebilir.
-HINT.TOOL_DEPLETED.CHISEL1,,Your settlement no longer has a {{TOOL.CHISEL}} available. This is required to construct stone furniture.,Yerleşke taş mobilya yapmak için gerkeli olan {{TOOL.CHISEL}} sahip değil. 
+HINT.TOOL_DEPLETED.CHISEL1,,Your settlement no longer has a {{TOOL.CHISEL}} available. This is required to construct stone furniture.,"Yerleşke taş mobilya yapmak için gerkeli olan {{TOOL.CHISEL}} sahip değil. "
 HINT.TOOL_DEPLETED.CHISEL2,,"More chisels can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.STONEMASON_WORKBENCH}}.",Yeni baltalar {{FURNITURE.FORGE}} da üretilebilir. Eğer çalışan bir  {{FURNITURE.FORGE}} yok ise bir {{FURNITURE.STONEMASON_WORKBENCH}} den kurtulman gerekebilir.
-HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} available. This is required to construct wooden furniture.,Yerleşke ahşap mobilya yapmak için gerkeli olan {{TOOL.PLANE}} sahip değil. 
+HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} available. This is required to construct wooden furniture.,"Yerleşke ahşap mobilya yapmak için gerkeli olan {{TOOL.PLANE}} sahip değil. "
 HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,Yeni baltalar {{FURNITURE.FORGE}} da üretilebilir. {{FURNITURE.CARPENTRY_WORKBENCH}} den {{RESOURCE.PLANKS.NOUN}}
 HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,Yerleşke {{FURNITURE.WOODCUTTERS_BENCH}} ve  {{FURNITURE.CARPENTRY_WORKBENCH}} inşa etmek için gerekli olan {{TOOL.SAW}} a sahip değil.
 HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",Yeni baltalar {{FURNITURE.FORGE}} da üretilebilir. Eğer {{FURNITURE.FORGE}} yok ise {{FURNITURE.WOODCUTTERS_BENCH}} veya {{FURNITURE.CARPENTRY_WORKBENCH}} dan kurtulman gerekebilir.
 HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","King Under The Mountain’a hoşgeldiniz. Bu versiyon daha birçok özellik ve öğeler eklenecek olan erken alfa sürümüdür. Cesur Cücelerden oluşan vatandaşlarınız krallığınız için yeni bir koloni kurmak için burayı seçti. Onlara yemek, kalacak yer ve refah sağla, kim bilir belki bir gün burası bir kendi krallığının başkenti olur!"
 HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.","Temel presip eğitimi için ""Eğitim"" , eğitimi geçmek ve sadece oynarken ipuçlarını görmek için  ""Sadece İpuçlarına"" veya tüm yardımları kapatmak için ""Tüm İpuçlarını Devredışı Bırak"" a tıklayın."
-,,,
+
 HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}","{{name}}, {{madness.adjective}} {{race.noun}}"
 HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
-,,,
+
 INGREDIENT.DOUGH,To be combined with the above as “bread dough”,Dough,Hamur
 INGREDIENT.FLOUR,,Flour,Un
 INGREDIENT.LOAF,To be combined with the above as “bread loaf”,Loaf,Somun
@@ -402,33 +421,36 @@ INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought 
 INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,Tohum
 INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,Tohumlar
 INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,Uygun tohumların {{ROOMS.FARM}} a dikilmesi ve ayrıca {{STOCKPILE.GRANARY}} da mevcut olmaları gereklidir.
-INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,Çuval
-,,,
+INGREDIENT.VEGETABLE.CRATE.NOUN,,Vegetable (crate),
+INGREDIENT.VEGETABLE.CRATE.PLURAL,,Vegetables (crate),
+INGREDIENT.VEGETABLE.SACK.NOUN,,Vegetable (sack),Çuval
+INGREDIENT.VEGETABLE.SACK.PLURAL,,Vegetables (sack),
+
 INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,Envanter:
-,,,
-ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},{{quantity_if_multiple}} {{materialType}} {{itemType.noun_or_plural}} 
+
+ITEM.DESCRIPTION,"E.g. “Iron axe”, “Beech wood fishing rod”, “3 marble blocks”",{{quantity_if_multiple}}{{materialType.adjective}} {{itemType.noun_or_plural}},"{{quantity_if_multiple}} {{materialType}} {{itemType.noun_or_plural}} "
 ITEM.INGREDIENT.DESCRIPTION,E.g. “2 potatoes”,{{quantity_if_multiple}}{{materialType.noun_or_plural}},{{quantity_if_multiple}} {{materialType.noun_or_plural}}
-,,,
+
 ITEM_GROUP.FUEL.PLURAL,,Fuel,Yakıt
 ITEM_GROUP.PRODUCT.PLURAL,,Products,Ürünler
 ITEM_GROUP.RESOURCE.PLURAL,,Resources,Kaynaklar
 ITEM_GROUP.TOOL.PLURAL,,Tools,Araçlar
-,,,
+
 LANGUAGE.LABEL,,Language,Dil
-,,,
+
 LIQUID.BEER.NOUN,,Beer,Bira
 LIQUID.BEER.TOOLTIP,,"Beloved by dwarves, this will provide a substantial happiness bonus for a while. The only problem is that they will eventually require it to get through the working day.","Cüceler tarafından sevilir, tüketildiğinde geçici bir süre mutluluk bonusu sağlar. Tek sorun eninde sonunda işlerini tamamlamaları gerekecek olması."
 LIQUID.HOPPED_WORT.NOUN,,Hopped wort,Şerbetçiotu
 LIQUID.HOPPED_WORT.TOOLTIP,,This is the final stage of unfermented beer before it is placed in a {{FERMENTATION_TANK}} to produce drinkable beer.,Fermente edilmemiş biranın içilebilir bira elde etmek adına {{FERMENTATION_TANK}} konulmasındaki son adım.
 LIQUID.WATER.NOUN,,Water,Su
 LIQUID.WORT.NOUN,,Wort,Mayşe
-LIQUID.WORT.TOOLTIP,,"This is unfermented beer, it requires {{VEGETABLE.HOPS}} to be added in a {{FURNITURE.BREW_KETTLE}} for flavour before it can be fermented.",Fermente edilmemiş bira. Fermente edilmeden önce armolanması için {{VEGETABLE.HOPS}}  {{FURNITURE.BREW_KETTLE}} içine konulması gerekir. 
-,,,
+LIQUID.WORT.TOOLTIP,,"This is unfermented beer, it requires {{VEGETABLE.HOPS}} to be added in a {{FURNITURE.BREW_KETTLE}} for flavour before it can be fermented.","Fermente edilmemiş bira. Fermente edilmeden önce armolanması için {{VEGETABLE.HOPS}}  {{FURNITURE.BREW_KETTLE}} içine konulması gerekir. "
+
 MADNESS.BROKEN.ADJECTIVE,,Broken,Kırık
-MADNESS.BROKEN.TOOLTIP,,This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ,"Bu vatandaş uzun süredir mutsuzdu ve sonunda kırılma noktasına ulaştı, artık ne çalışıyor nede yemek yiyor."
-,,,
+MADNESS.BROKEN.TOOLTIP,,"This settler was so unhappy that they have been pushed past the breaking point and will no longer work or even eat! ","Bu vatandaş uzun süredir mutsuzdu ve sonunda kırılma noktasına ulaştı, artık ne çalışıyor nede yemek yiyor."
+
 MATERIAL,Used for specifying which material something is made out of,Material,Materyal
-,,,
+
 MATERIAL_TYPE,,Type,Tip
 MATERIAL_TYPE.ANY,For allowing any kind of material to be used,Any,Hepsi
 MATERIAL_TYPE.EARTH.ADJECTIVE,,Earthen,Topraktan
@@ -440,21 +462,22 @@ MATERIAL_TYPE.METAL.NOUN,,Metal,Metal
 MATERIAL_TYPE.ORE.NOUN,This is only used as a noun,Ore,Cevher
 MATERIAL_TYPE.OTHER.NOUN,This isn't actually used in-game yet so won't be combined with other words,Other,Diğer
 MATERIAL_TYPE.SEED.NOUN,For saying something is “made up of seed”,Seed,Tohumu
-MATERIAL_TYPE.STONE.ADJECTIVE,,,Taştan 
+MATERIAL_TYPE.STONE.ADJECTIVE,,,"Taştan "
 MATERIAL_TYPE.STONE.NOUN,,Stone,Taş
 MATERIAL_TYPE.VEGETABLE.NOUN,Used to make up “Vegetable soup”,Vegetable,Sebze
 MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,Vitriol
 MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,Vitriol
 MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,Tahtadan
 MATERIAL_TYPE.WOOD.NOUN,,Wood,Tahta
-,,,
+
 MENU.CONTINUE_GAME,,Continue game,Oyuna Devam Et
+MENU.LOAD_GAME,,Load game,
 MENU.MODS,,Mods,Modlar
 MENU.NEW_GAME,,Start new game,Yeni Oyun Başlat
 MENU.OPTIONS,,Options,Ayarlar
 MENU.QUIT,,Quit,Çıkış
 MENU.TOGGLE_FULLSCREEN,,Toggle fullscreen,Tam ekran yap
-,,,
+
 METAL.BRONZE.ADJECTIVE,,Bronze,Bronz
 METAL.BRONZE.NOUN,,Bronze,Bronz
 METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and much more durable than copper alone. (Alloys have not yet been implemented in King under the Mountain),Bronz bir bakır ve kalay alaşımıdır. Bakıra nazaran çok daha sağlam ve dayanıklıdır. (Alaşımlar henüz King Under the Mountain'a eklenmedi)
@@ -479,7 +502,7 @@ METAL.STEEL.TOOLTIP,,"Far stronger than {{METAL.IRON.NOUN}} which makes for supe
 METAL.TIN.ADJECTIVE,,Tin,Kalay
 METAL.TIN.NOUN,,Tin,Kalay
 METAL.TIN.TOOLTIP,,Tin can be smelted from {{ORE.CASSITERITE.NOUN}} and alloyed with {{METAL.COPPER.NOUN}} to produce {{METAL.BRONZE.NOUN}}. (Alloys have not yet been implemented in King under the Mountain),Kalay {{ORE.CASSITERITE.NOUN}} eritilmesi elde edilebilir. {{METAL.COPPER.NOUN}} ile alaşımlanır ise  {{METAL.BRONZE.NOUN}} üretilebilir. (Alaşımlar King Under the Mountain'a eklenmedi)
-,,,
+
 MODS.APPLY,,Apply,Uygula
 MODS.COMPATIBILITY.COMPATIBLE,,Yes,Evet
 MODS.COMPATIBILITY.INCOMPATIBLE,,No,Hayır
@@ -491,13 +514,13 @@ MODS.TABLE.ENABLED,,Enabled?,Devrede?
 MODS.TABLE.NAME,,Mod Name,Mod İsmi
 MODS.TABLE.ORDERING,,Re-order,Yeniden Sırala
 MODS.TABLE.VERSION,,Mod Version,Mod Versiyonu
-,,,
+
 MUSHROOM.DESCRIPTION,E.g. “Toadstool mushroom”,{{materialType.noun}},{{materialType.noun}}
-,,,
+
 NEEDS.DRINK,,Drink,İç
 NEEDS.FOOD,,Food,Ye
 NEEDS.SLEEP,,Sleep,Uyu
-,,,
+
 NOTIFICATION.AREA_REVEALED.DESCRIPTION,,Your miners have discovered a new area!,Madencilerin yeni bir alan keşfetti!
 NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,Keşif
 NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.","{{character}} , {{reason}} dolayı öldü."
@@ -511,14 +534,14 @@ NOTIFICATION.MINING_COLLAPSE.DESCRIPTION,,An area has caved in due to a lack of 
 NOTIFICATION.MINING_COLLAPSE.TITLE,,Mining collapse,Maden Göçüğü
 NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,Meşakkatli ve zor yaşam {{character}} ağır geldi.
 NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,Ruhsal Çöküntü
-,,,
+
 ORE.BAUXITE.ADJECTIVE,,Bauxite,Boksit
 ORE.BAUXITE.NOUN,,Bauxite,Boksit
 ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a means of aluminium production is yet to be discovered.",Boksit alüminyumun temel cevheridir. Ne yazık ki alüminyum üretim yöntemi hala keşfedilmedi.
 ORE.BITUMINOUS_COAL.ADJECTIVE,,Bituminous coal,Bitümlü Kömür
 ORE.BITUMINOUS_COAL.NOUN,,Bituminous coal,Bitümlü Kömür
-ORE.BITUMINOUS_COAL.TOOLTIP,,This can be converted into {{ORE.COKE.NOUN}} using a {{FURNITURE.COKE_OVEN}}.,Bitümlü kömür {{FURNITURE.COKE_OVEN}} kullanılarak   {{ORE.COKE.NOUN}} dönüştürülebilir. 
-ORE.CASSITERITE.ADJECTIVE,,Cassiterite, 
+ORE.BITUMINOUS_COAL.TOOLTIP,,This can be converted into {{ORE.COKE.NOUN}} using a {{FURNITURE.COKE_OVEN}}.,"Bitümlü kömür {{FURNITURE.COKE_OVEN}} kullanılarak   {{ORE.COKE.NOUN}} dönüştürülebilir. "
+ORE.CASSITERITE.ADJECTIVE,,Cassiterite," "
 ORE.CASSITERITE.NOUN,,Cassiterite,Kalay Taşı
 ORE.CASSITERITE.TOOLTIP,,An ore that can be smelted to produce {{METAL.TIN.NOUN}}.,{{METAL.TIN.NOUN}} üretmek için ertilebilecek bir cevher.
 ORE.CHARCOAL.ADJECTIVE,,Charcoal,Kömür
@@ -566,31 +589,31 @@ ORE.THORIUM.TOOLTIP,,A silvery metallic ore which turns black when exposed to ai
 ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,Wolframit
 ORE.WOLFRAMITE.NOUN,,Wolframite,Wolframit
 ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,Kalayın eritilme sürecini zorlaştıran bir metal cevheri. Erime noktası normal işlemler ile ulaşılabilmek için fazla yüksek.
-,,,
+
 OTHER.BRICK.NOUN,,Brick,Tugla
 OTHER.CLAY_SOIL.NOUN,,Clay soil,Kil Toprak
-OTHER.GRASS.NOUN,,Grass,Çimen
-,,,
+OTHER.GRASS.NOUN,,,Çimen
+
 PRIORITY.DISABLED,,Disabled,Devre Dışı
 PRIORITY.HIGHER,,Higher,Yüksek
 PRIORITY.HIGHEST,,Highest,En Yüksek
 PRIORITY.LOWER,,Lower,Düşük
 PRIORITY.LOWEST,,Lowest,En Düşük
 PRIORITY.NORMAL,,Normal,Normal
-,,,
+
 PRIVACY.OPT_IN.ACCEPT_BUTTON,,I accept,Kabul ediyorum
 PRIVACY.OPT_IN.DO_NOT_ACCEPT_BUTTON,,Disable reporting,Raporlamayı kapat
 PRIVACY.OPT_IN.LINE_1,,King under the Mountain is in active development. To help,King under the Mountain halihazırda yapım aşamasında. Yardımcı olmak için
 PRIVACY.OPT_IN.LINE_10,,- The stack trace of the exception which caused the crash,Çökmeye neden olan durumun stack track dosyası.
 PRIVACY.OPT_IN.LINE_2,,"diagnose and fix bugs, please click ""I accept"" below to","Hataları teşhis etmek ve düzeltmek için, lütfen aşağıda bulunan ‘Kabul Ediyorum’a tıklayın."
 PRIVACY.OPT_IN.LINE_3,,send anonymous crash reports automatically.,anonim çökme raporlarını otomatik gönder.
-PRIVACY.OPT_IN.LINE_4,, , 
+PRIVACY.OPT_IN.LINE_4,," "," "
 PRIVACY.OPT_IN.LINE_5,,This is made up of only the following data:,Bu rapor şu bilgileri içermektedir:
 PRIVACY.OPT_IN.LINE_6,,- The version of the game client,- Oyun istemcisinin versiyonu
 PRIVACY.OPT_IN.LINE_7,,- Your operating system,- Sizin işletim sisteminiz
 PRIVACY.OPT_IN.LINE_8,,- Your graphics card and display settings,- Ekran katınız ve görüntüleme ayarlarınız
 PRIVACY.OPT_IN.LINE_9,,- Your options settings,- Ayarlarınız
-,,,
+
 PRODUCT.ANVIL,,Anvil,Örs
 PRODUCT.ANVIL.TOOLTIP,,A large block of metal used to hammer heated metal into shape. Required to construct a {{FURNITURE.FORGE}.,Sıcak metal parçalarının şekil vermek için üzerinde dövüldüğü büyük metal blok. {{FURNITURE.FORGE} inşa etmek için gereklidir.
 PRODUCT.BARREL.HOOPS,,Barrel hoops,Metal Fıçı Çemberleri
@@ -620,7 +643,7 @@ PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mil
 PRODUCT.RATION.NOUN,,Ration,Pay
 PRODUCT.RATION.PLURAL,,Rations,Pay
 PRODUCT.RATION.TOOLTIP,,"These will last a long time to feed your settlers, but you will need other sources of food as a priority.",Bu özelliği vatandaşlarını uzun sürelerde beslemek için kullanabilirsin ancak diğer birincil besin kaynaklarına ihtiyacın olacak.
-,,,
+
 PROFESSION.BAKER.VERB,,Baking,Pişirmek
 PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,Demirci
 PROFESSION.BLACKSMITH.MALE_NOUN,,Blacksmith,Demirci
@@ -660,7 +683,7 @@ PROFESSION.MERCHANT.VERB,,Trading,Ticaret
 PROFESSION.MILLER.VERB,"Not a fully implemented profession, just used to describe “Milling flour”",Milling,Öğütme
 PROFESSION.MINER.FEMALE_NOUN,,Miner,Madenci
 PROFESSION.MINER.MALE_NOUN,,Miner,Madenci
-PROFESSION.MINER.TOOLTIP,,Excavates new areas using a {{TOOL.PICKAXE}}., {{TOOL.PICKAXE}} kullanarak yeni alanlar kazar.
+PROFESSION.MINER.TOOLTIP,,Excavates new areas using a {{TOOL.PICKAXE}}.," {{TOOL.PICKAXE}} kullanarak yeni alanlar kazar."
 PROFESSION.MINER.VERB,,Mining,Madencilik
 PROFESSION.NOBLE.FEMALE_NOUN,,Noble,Soylu
 PROFESSION.NOBLE.MALE_NOUN,,Noble,Soylu
@@ -685,10 +708,10 @@ PROFESSION.WOODCUTTER.FEMALE_NOUN,This could be “lumberjack” and “lumberja
 PROFESSION.WOODCUTTER.MALE_NOUN,,Woodcutter,Oduncu
 PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {{ROOMS.SAWMILL}}.,{{ROOMS.SAWMILL}} da kullanılabilmesi için ağaçları keser.
 PROFESSION.WOODCUTTER.VERB,,Chopping,Kesiliyor
-,,,
+
 QUOTA.FIXED_AMOUNT,,in total,toplamda
 QUOTA.PER_SETTLER,,per settler,vatandaş başına
-,,,
+
 RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,Cüce
 RACE.DWARF.FEMALE_NOUN,,Dwarf,Cüce
 RACE.DWARF.FEMALE_PLURAL,,Dwarves,Cüceler
@@ -696,7 +719,7 @@ RACE.DWARF.MALE_ADJECTIVE,,Dwarven,Cüce
 RACE.DWARF.MALE_NOUN,The male and female forms are only for languages that need them,Dwarf,Cüce
 RACE.DWARF.MALE_PLURAL,Note that I'm going with Tolkein's spelling of “dwarves” rather than “dwarfs”,Dwarves,Cüce
 RACE.DWARF.TOOLTIP,,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,Cüceler kısa ve tıkmaz insansı yaratıklardır. Taş ve metal ustasılardır. Cücelerin büyük bir çoğunluğu gök yüzüne güvenmezler ve yer altında kalmayı tercih ederler.
-,,,
+
 RESOURCE.CRUSHED.VITRIOL.NOUN,,Vitriol,Vitriol
 RESOURCE.CRUSHED.VITRIOL.PLURAL,,Vitriol,Vitriol
 RESOURCE.CRUSHED.VITRIOL.TOOLTIP,,A salt of sulphuric acid with many uses in industry. (Usages of vitriol are not yet implemented in King under the Mountain),Endistüride bir çok kullanım alanı olan bir sülfirik asit tuzu. (Viltriol kullanımı King Under the Mountain’da mevcut değildir.)
@@ -709,6 +732,8 @@ RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beau
 RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,Kesilmemiş değerli taş
 RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,Kesilmemiş değerli taş
 RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,İçinde kesilmeyi ve cilalanmayı bekleyen değerli taşların olduğu bir parça taş.
+RESOURCE.GRAIN.SACK.NOUN,,Grain (sack),
+RESOURCE.GRAIN.SACK.PLURAL,,Grain (sack),
 RESOURCE.LOGS.NOUN,,Log,Kütük
 RESOURCE.LOGS.PLURAL,,Logs,Kütük
 RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.",Genellikle {{RESOURCE.PLANKS.PLURAL}} yapımında kullanılan ancak başka kullanımlarıda olan bir ağaç parçası.
@@ -724,9 +749,9 @@ RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the l
 RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,Mantar kütüğü
 RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,Mantar kütüğü
 RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,{{INGREDIENT.MUSHROOM.SPAWN.NOUN}} ile aşılanmış bir kütük. Kütüğün gövdesi mantarın besinlerini aldığı noktadır. Tamamen aşılanmasının ardından {{FURNITURE.MUSHROOM_SHOCK_TANK}} içine batırılması gerekmektedir.
-RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,Kütük
-RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,Kütük
-RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}., Dev mantarın tahta {{RESOURCE.LOGS.PLURAL}} gibi kullanılabilecek parçaları.
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Mushroom log,Kütük
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Mushroom logs,Kütük
+RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.," Dev mantarın tahta {{RESOURCE.LOGS.PLURAL}} gibi kullanılabilecek parçaları."
 RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,Parçalanmış cevher
 RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,Paçalanmış cevher
 RESOURCE.ORE.CRUSHED.TOOLTIP,,"A metallic sand created by breaking down raw metal ore, ready for use in a {{FURNITURE.BLOOMERY_FURNACE}}.",Ham metal cevherinin parçalanması ile oluşturulmuş {{FURNITURE.BLOOMERY_FURNACE}} da kullanıma hazır metalik kum.
@@ -744,8 +769,10 @@ RESOURCE.STONE.BLOCK.PLURAL,,Blocks,Blok
 RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,İnşaa ve üretimde kolayca kullanılabilmesi için küp şekline getirilmiş taş.
 RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,Yontulmamış taş parçası
 RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,Yontulmamış taş parçası
-RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}., {{PROFESSION.STONEMASON}} tarafından daha yararlı bir şekile yontulması gereken büyük taş parçası.
-,,,
+RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.," {{PROFESSION.STONEMASON}} tarafından daha yararlı bir şekile yontulması gereken büyük taş parçası."
+RESOURCE.WHEAT.SACK.NOUN,,Wheat (sack),
+RESOURCE.WHEAT.SACK.PLURAL,,Wheat (sack),
+
 ROOMS.BEDROOM,,Bedroom,Yatakodası
 ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.","Vatandaşlarının uyuması için bir alan. Vatandaşlar en az 9, tercihen 13 karo dan oluşan tek kişilik odalarda kalmayı tercih ederler."
 ROOMS.BREWERY,,Brewery,Birahane
@@ -759,7 +786,7 @@ ROOMS.EARTHWORKS,,Earthworks,Hafriyat
 ROOMS.EARTHWORKS.TOOLTIP,,An outdoor area for large constructions.,Büyük inşaatlar için açık havada bulunan bir alan.
 ROOMS.FARM,,Farm plot,Tarım arazisi
 ROOMS.FARM.PLURAL,,Farm plots,Tarım arazisi
-ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}., {{INGREDIENT.SEEDS.PLURAL}} kullanarak mahsül yetiştiri.  {{MATERIAL_TYPE.Earth.NOUN}} alana yerleştirilmelidir.
+ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.," {{INGREDIENT.SEEDS.PLURAL}} kullanarak mahsül yetiştiri.  {{MATERIAL_TYPE.Earth.NOUN}} alana yerleştirilmelidir."
 ROOMS.FEASTING_HALL,,Feasting hall,Şölen salonu
 ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!",Vatandaşların toplanıp yiyip içip  eğlenebileceği bir alan.
 ROOMS.GRAVEYARD,,Graveyard,Mezar
@@ -771,17 +798,19 @@ ROOMS.MASONRY_WORKSHOP.TOOLTIP,,This workshop produces most items made out of st
 ROOMS.METALWORKS,,Metalworks,Metal atölyesi
 ROOMS.METALWORKS.TOOLTIP,,Metal ore is refined and used in crafting here.,Metal cevheri burada rafine edilir ve üretimde kullanılır.
 ROOMS.MUSHROOM_FARM,,Mushroom farm,Mantar çiftliği
-ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,Mantarlar  {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} ve {{RESOURCE.LOGS.PLURAL}} kullanarak yetiştirilebilir. 
+ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,"Mantarlar  {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} ve {{RESOURCE.LOGS.PLURAL}} kullanarak yetiştirilebilir. "
 ROOMS.SAWMILL,,Sawmill,Kereste İmalathanesi
 ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,Tahta {{RESOURCE.LOGS.PLURAL}} burada {{RESOURCE.PLANKS.PLURAL}} a dönüştürülür.
+ROOMS.STOCKPILE,,Stockpile,
+ROOMS.STOCKPILE.TOOLTIP,,This area stores different kinds of items depending on settings.,
 ROOMS.STOCKPILES,,Stockpiles,Stok yığını
 ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,Kullanılmağan eşyalar kolay erişim için stok yığınlarına yerleştirilir.
-,,,
+
 SEASON.AUTUMN,,Autumn,Sonbahar
 SEASON.SPRING,,Spring,İlkbahar
 SEASON.SUMMER,,Summer,Yaz
 SEASON.WINTER,,Winter,Kış
-,,,
+
 SEED.BARLEY_SEED,,Barley,Arpa
 SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Sadece bira üretiminde kullanılan bir tahıl.  {{SEASON.SPRING}}, {{SEASON.SUMMER}} veya   {{SEASON.AUTUMN}} mevsimlerinde dikilebilir."
 SEED.BERSERKER_MUSHROOM_SPAWN,,Berserker,Savaşcı Mantarı
@@ -790,13 +819,13 @@ SEED.CARROT_SEED,,Carrot,Havuç
 SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","{{SEASON.WINTER}} ayazında hayatta kalabilen dayanıklı bir kök bitkisi. Havuç hızlı büyümesine rağmen az miktarda mahsül verirler.  {{SEASON.SPRING}}, {{SEASON.SUMMER}} ve  {{SEASON.AUTUMN}} mevsimlerinde ekilebilir."
 SEED.CORN_SEED,,Corn,Mısır
 SEED.CORN_SEED.TOOLTIP,{{VEGETABLE.CORN.TOOLTIP}},"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",Darı olarakda bilinen bir tahıl tanesidir. Bol mahsül verir ancak büyümesi yaklaşık 2 mevsim sürer {{SEASON.WINTER}} mevsiminde hayatta kalamaz.  {{SEASON.SPRING}} mevsiminin başında dikilmesi gerekir.
-SEED.DEATH_CAP_SPAWN,,Death cap,Köygöçüren mantarı 
+SEED.DEATH_CAP_SPAWN,,Death cap,"Köygöçüren mantarı "
 SEED.DEATH_CAP_SPAWN.TOOLTIP,{{VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP}},"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",Geniş bir şapkaya sahip aşırı zehirli mantar türü. Ufak miktarda tüketilmesi bile ölüme neden olabilecek ciddi zehirlenmeye yol açabilir.
 SEED.ELFSBANE_SPAWN,,Elfsbane,Elfboğan
 SEED.ELFSBANE_SPAWN.TOOLTIP,{{VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP}},"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.","İnsansı varlıklar için basit neredeyse tadı olmayan bir bitki olan Elfboğan, adındanda anlaşılacağı gibi elfer için zararldır. Ağızlarında acı ve iğrenç bir tad bırakan Elfboğan, tüketmeleri halinde mide bulantısı ve kusma, ekstrem vakalarda ise kalp krizi geçirtebilir."
-SEED.FIST_SPAWN,,Fist Mushroom,Yumruk mantarı
+SEED.FIST_SPAWN,,Fist,Yumruk mantarı
 SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,Siyah-mavi renge sahip ve ağızda metalik tad bırakan bir mantar türü. İsmini Karanlık Çağındaki bir grup ozandan alır.
-SEED.GLOW_SPAWN,,Glow Mushroom,Parıltı Mantarı
+SEED.GLOW_SPAWN,,Glow,Parıltı Mantarı
 SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,Büyü aşılanmış bir mantar türüdür. Sürekli olarak ışık verir ve mevsimlere göre renk değiştirir.
 SEED.HOPS_SEED,,Hops,Şerbetciotu
 SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,Biranın tadlandırılmasında kullanılan bir çiçek. {{SEASON.SPRING}} mevsiminde dikilmesi gerekir.
@@ -816,18 +845,20 @@ SEED.TOMATO_SEED,,Tomato,Domates
 SEED.TOMATO_SEED.TOOLTIP,{{VEGETABLE.TOMATO.TOOLTIP}},A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,Büyük kırmızı meyvelere sahip bir bitki. Sadece {{SEASON.SPRING}} mevsiminde dikilebilir.
 SEED.WHEAT_SEED,,Wheat,Buğday
 SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",Genellikle ekmek üretiminde kullanılan bir tahıl tanesi. {{SEASON.WINTER}} mevsiminde hayatta kalabilir ancak hasata hazır olması uzun sürer bu yüzden  {{SEASON.SPRING}} veya {{SEASON.AUTUMN}} dikilmesi gerekir.
-,,,
+
 SHRUB.DESCRIPTION,Shrub or bush should do,Bush,Çalı
-,,,
-STOCKPILE.GRANARY,,Granary,Tahıl ambarı
-STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,Tahıl ve tohumların bozulmadan saklandığı yer.
-STOCKPILE.PANTRY,,Pantry,Kiler
-STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,Meyve ve sebte hasadı gibi bozulabilen hasatların tutulduğu yer.
-STOCKPILE.RESOURCES,,Resources,Kaynaklar
-STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,Diğer stok yığınlarına ait olmayan diğer tüm kaynakların saklandığı yer. 
-STOCKPILE.TOOLS,,Tools,Eşyalar
-STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,İşlerde çalışmak için gerekli eşyaların saklandığı yer.
-,,,
+
+STOCKPILE.GROUP.FOOD,,Food,
+STOCKPILE.GROUP.FOOD.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,
+STOCKPILE.GROUP.FUEL,,Fuel,
+STOCKPILE.GROUP.GRANARY,,Granary,
+STOCKPILE.GROUP.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,
+STOCKPILE.GROUP.PRODUCTS,,Products,
+STOCKPILE.GROUP.RAW_MATERIALS,,Raw materials,
+STOCKPILE.GROUP.SEEDS,,Seeds,
+STOCKPILE.GROUP.TOOLS,,Tools,
+STOCKPILE.GROUP.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,
+
 STONE.BASALT.ADJECTIVE,,Basalt,Bazalt
 STONE.BASALT.NOUN,,Basalt,Bazalt
 STONE.BASALT.TOOLTIP,,An igneous rock formed by the rapid cooling of lava. Almost all of the volcanic rock in the world is basalt.,Lavın hızlı soğuması ile meydana gelen bir magma taşı. Dünya üzerindeki nerdeyse tüm volkanik taşlar bazalttıri.
@@ -842,24 +873,24 @@ STONE.GRANITE.NOUN,,Granite,Granit
 STONE.GRANITE.TOOLTIP,,"A common type of igneous rock. It has a large proportion of quartz, making it good for locating certain gemstones.",Yaygın bir magmatik taştır. Büyük miktarlarda quartz içerir buda onu belli başlı değerli taşları bulmak için iyi bir yöntem haline getirir.
 STONE.LIMESTONE.ADJECTIVE,,Limestone,Kireç taşı
 STONE.LIMESTONE.NOUN,,Limestone,Kireç taşı
-STONE.LIMESTONE.TOOLTIP,,A lightly-coloured sedimentary rock which makes for a good building material. It is also used as a flux in the production of {{METAL.STEEL.NOUN}}.,Hafif renkli tortul bir kaya olması onu iyi bir inşa malzemesi haline getirir. Ayrıca {{METAL.STEEL.NOUN}} yapımında hataların giderilmesinde kullanılır. 
+STONE.LIMESTONE.TOOLTIP,,A lightly-coloured sedimentary rock which makes for a good building material. It is also used as a flux in the production of {{METAL.STEEL.NOUN}}.,"Hafif renkli tortul bir kaya olması onu iyi bir inşa malzemesi haline getirir. Ayrıca {{METAL.STEEL.NOUN}} yapımında hataların giderilmesinde kullanılır. "
 STONE.MARBLE.ADJECTIVE,,Marble,Mermer
 STONE.MARBLE.NOUN,,Marble,Mermer
 STONE.MARBLE.TOOLTIP,,A metamorphic rock which is used as a high-quality material for sculpture and masonry due to its brilliant appearance.,"Heykel ve taş ustaları tarafından sıkça kullanılan yüksek kaliteye sahip, metamorfik ve muhteşem bir görüntüye sahip bir kayadır. "
 STONE.SANDSTONE.ADJECTIVE,,Sandstone,Kumtaşı
 STONE.SANDSTONE.NOUN,,Sandstone,Kumtaşı
-STONE.SANDSTONE.TOOLTIP,,A sedimentary rock composed of sand-like fragments. ,Tortul bir kayadır ve kum benzeri parçalardan meydana gelir.
+STONE.SANDSTONE.TOOLTIP,,"A sedimentary rock composed of sand-like fragments. ",Tortul bir kayadır ve kum benzeri parçalardan meydana gelir.
 STONE.SHALE.ADJECTIVE,,Shale,Killi yapraktaşı
 STONE.SHALE.NOUN,,Shale,Killi yapraktaşı
 STONE.SHALE.TOOLTIP,,A fine-grained sedimentary rock composed of pressurized mud. It can be easily broken into thin layers.,Basınç altında kalmış çamurdan meydana gelmiş ince taneli bir tortul kayadır. Kolayca ince tabakalar halinde kırılabilir.
 STONE.SLATE.ADJECTIVE,,Slate,Kayrak
 STONE.SLATE.NOUN,,Slate,Kayrak
 STONE.SLATE.TOOLTIP,,A metamorphic rock that is usually formed out of {{STONE.SHALE.NOUN}}. It is often made into tiles for roofing or writing.,Genellikle {{STONE.SHALE.NOUN}} meydana gelen metamorfik bir kayadır. Çoğu zaman çatı veya yazıda kullanılmak için tabletler haline getirilir.
-,,,
+
 TOOL.AXE.NOUN,,Axe,Balta
 TOOL.AXE.TOOLTIP,,Used to chop down trees. The primary tool of a {{PROFESSION.WOODCUTTER}}.,Ağaç kesmek için kullanılır.  {{PROFESSION.WOODCUTTER}} ana aletidir.
 TOOL.CHISEL.NOUN,,Chisel,Keski
-TOOL.CHISEL.TOOLTIP,,Used to sculpt rock into shape. One of the tools used by a {{PROFESSION.STONEMASON}}., Heykele şekil vermekte kullanılır. {{PROFESSION.STONEMASON}} tarafından kullanılan aletlerden biridir.
+TOOL.CHISEL.TOOLTIP,,Used to sculpt rock into shape. One of the tools used by a {{PROFESSION.STONEMASON}}.," Heykele şekil vermekte kullanılır. {{PROFESSION.STONEMASON}} tarafından kullanılan aletlerden biridir."
 TOOL.FISHING.ROD.NOUN,,Fishing rod,Balık oltası
 TOOL.FISHING.ROD.TOOLTIP,,Used to catch fish from a body of water. The primary tool of a {{PROFESSION.FISHER}}.,Balık yakalamak için kullanılır.  {{PROFESSION.FISHER}} ana aletidir.
 TOOL.KITCHEN.KNIFE.NOUN,,Kitchen knife,Şef bıçağı
@@ -878,31 +909,31 @@ TOOL.SMALL.HAMMER.NOUN,,Hammer,Çekiç
 TOOL.SMALL.HAMMER.TOOLTIP,,Used to bash small items of stone and metal into shape. One of the tools used by a {{PROFESSION.BLACKSMITH}}.,Küçük taş ve metal parçalara ezerek şekil vermek için kullanılır.  {{PROFESSION.BLACKSMITH}} tarafından kullanılan eşyalardan biridir.
 TOOL.TONGS.NOUN,A blacksmith's tongs,Tongs,Maşa
 TOOL.TONGS.TOOLTIP,,Used to hold extremely hot metal items. Used in the process of smelting metal ore.,Aşırı sıcak metal eşyaları tutmak için kullanılır. Metal cevherinin eritilmesi sürecinde kullanılır.
-,,,
+
 TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{{materialType}}
-,,,
+
 TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.","Vatandaşlarının karşılaması gereken üç temel ihtiyaç: yemek yemek, su içmek ve barınma. Her ne kadar şuan şikayet etselerde yakında ki nehirden su içebilir ve yerde yatabilirler. Yapamayacakları şey ise abra kadabra diyip yoktan yiyecek yaratmak (en azından etrafta büyücüleri yokken). O yüzden öncelikle yemek ile başlıyoruz. "
 TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.","Her baharda yapmanız gereken ilk şey, önünüzde ki sonbaharda hasat için yeterli mahsulün ekildiğinden emin olmaktır. Tarım güvenilir ve sürdürülebilir bir yemek kaynağıdır, ancak yıllık hasat zamanları arasında yerleşke nüfusunu beslemeye yetecek kadar mahsül olduğundan emin olmalısın."
 TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.","Herkesi besleyebileceğinden emin olmak için kullanabileceğin pratik bir yöntem ise  her bir vatandaş için on karoluk mahsülün ekilmiş olduğundan emin olmaktır. Hali hazırda 7 vatandaşın var, şimdi buna göre git ve “ {{GUI.ZONES_LABEL}} > {{ROOMS.FARM}} ” tıkla. Ardından yeşillik bir bölgeyi tarım arazisi olarak belirle."
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","Yapacak başka bir şey olmadığından, vatandaşların toprağı karo halinde sürüp  {{ROOMS.FARM.PLURAL}} oluşturacak ve bölgeyi tohum ekimine hazır hale getirecek. Bu aktivite her hangi özel bir yetenek veya eşya gerektirmediği için tüm vatandaşlar dahil olmalı."
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",Bu tarım arazisini ekime hazır hale getirecek ancak bir çiftçi gelip bitkileri dikmeden önce senin hangi alana hangi tohumların ekileceğine karar vermen gerekiyor. Vatandaşların yanlarında bir kaç çeşit tohum getirdiler. Sağ üstteki “Kaynaklar” bölümüne tıklayarak yerleşkendeki tüm eşyaları görebilirsin.
-TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ","Çiftçilerinin bu eşyaları kullanabilmeleri için şuan olduğu gibi çiftçilerin envanterlerinde değil, stok yığınlarının içinde bulunması gerekir.                       {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} tıklayarak (sağ tıklayarak bir önceki menüye dönebilirsin) bir bölgeyi {{STOCKPILE.GRANARY}} tohumların ve tahılların stok alanı olarak belirle."
-TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.TOOLS}} and designate another area to be used to store tools.,Vatandaşların yanlarında doğru düzgün saklanması gereken bir kaç alet de getirdiler. {{ROOMS.STOCKPILES}} menüsünden  {{STOCKPILE.TOOLS} seçerek bu aletlerin saklanması için ayrı bir alan belirle.
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GROUP.SEEDS}} (you can right-click to go back up to a previous menu) and designate an area to be used for seeds to be stored.","Çiftçilerinin bu eşyaları kullanabilmeleri için şuan olduğu gibi çiftçilerin envanterlerinde değil, stok yığınlarının içinde bulunması gerekir.                       {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} tıklayarak (sağ tıklayarak bir önceki menüye dönebilirsin) bir bölgeyi {{STOCKPILE.GRANARY}} tohumların ve tahılların stok alanı olarak belirle."
+TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.GROUP.TOOLS}} and designate another area to be used to store tools.,Vatandaşların yanlarında doğru düzgün saklanması gereken bir kaç alet de getirdiler. {{ROOMS.STOCKPILES}} menüsünden  {{STOCKPILE.TOOLS} seçerek bu aletlerin saklanması için ayrı bir alan belirle.
 TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.","Ekilecek tohumlarda olduğu gibi, vatandaşların bir süre sonra kullanmadıkları eşyaları stok yığınlarının içine koymalılar."
 TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.",Her bir {{ROOMS.FARM.PLURAL}} sağ tıkla ve oraya ekilecek mahsülü seç. {{VEGETABLE.BARLEY}} ve {{VEGETABLE.HOPS}} sadece bira üretiminde kullanıldığı için bunlar dışında bir mahsül seç.
 TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,"{{PROFESSION.FARMER.PLURAL}} seçtiğin mahsülleri, yine senin belirlediğin {{ROOMS.FARM.PLURAL}} ekmeye başlayabilirler. Ekim işlemi özel bir yetenek gerektirmiyor bu yüzden daha fazla vatandaşını  {{PROFESSION.FARMER.PLURAL}} olarak görevlendirmek isteyebilirsin. Bunun için o boşta olan bir vatandaşa sağ tıkla."
 TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}."," Bir vatandaşına sağ tıklamak sana onların isimlerini, mesleklerini, envanterlerini, ihtiyaç ve mutluluk durumlarını gösteririr. 3. ve son mesleğini {{PROFESSION.FARMER.NOUN}} olarak atamak diğer mesleklerinin yanındaki içi boş kare kutuya tıkla."
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","Bazı işleri için vatandaşlarının özel aletlere ihtiyacı olabileceğini unutma, eğer yerleşkede bu eşya mevcut değil ise vatandaşın bu görevleri yerine getiremez. Örneğin, bir sürü vatandaşını {{PROFESSION.WOODCUTTER}} olarak görevlendirebilirsin ancak vatandaşların {{TOOL.AXE.NOUN}} olmadan ağaç kesemezler."
-TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",Şimdi mahsüllerin büyüyecek ve en sonunda {{SEASON.AUTUMN}} da {{PROFESSION.FARMER.PLURAL}} tarafından hasada hazır hale gelecek. Bazı mahsüller yılın ilerleyen aylarında yeniden dikilebilir ve     {{SEASON.WINTER}} mevsiminde hayatta kalabilir. Mahsüllerinden mümkün olan en fazla verimi alabilmek için hasat edilen bitkilerden çorba veya tahıldan ekmek yapmalısıni. 
+TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.","Şimdi mahsüllerin büyüyecek ve en sonunda {{SEASON.AUTUMN}} da {{PROFESSION.FARMER.PLURAL}} tarafından hasada hazır hale gelecek. Bazı mahsüller yılın ilerleyen aylarında yeniden dikilebilir ve     {{SEASON.WINTER}} mevsiminde hayatta kalabilir. Mahsüllerinden mümkün olan en fazla verimi alabilmek için hasat edilen bitkilerden çorba veya tahıldan ekmek yapmalısıni. "
 TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.",Hadi {{ROOMS.KITCHEN}} kuralım ve hasat sonrası çorba yapımına hazır hale getirelim. Üst kısımdaki menüye git ve {{ZONES.LABEL}} >   {{ROOMS.KITCHEN}} bölümünden {{ROOMS.KITCHEN}} için bir alan belirle. King Under the Mountain’in şu aşamasında mutfağın içeride veya dışarıda olması önemli değil ancak gelecekte odalarını doğal olaylardan korumak için bir çatıları olduğundan emin olmalısın.
-TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","Tarım arazilerinin aksine mutfaklar (ve neredeyse  diğer tüm odalar) işlevini yerine getirebilmek için mobilyaya ihtiyaç duyar. Mutfak bölgesini belirledikten sonra “Mobilya” ya tıklarsan mutfak bölgesine koyabileceğin mobilyalar ile karşılaşacaksın. Çorba üretmek için öncelikle  {{Furniture.WATER_BARRASS}}, {{Furniture.KITCHEN_WORKTOP}} ve  {{FURNITURE.CAULDRON}} nı aynı mutfak bölgesine yerleştirmen gerekiyor. Ayrıca, hasadın saklanabilmesi için bir {{STOCKPILE.PANTRY}} bölgesi belirlemende gerekiyor."
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.GROUP.FOOD}} {{ROOMS.STOCKPILE}} to store any harvested crops.","Tarım arazilerinin aksine mutfaklar (ve neredeyse  diğer tüm odalar) işlevini yerine getirebilmek için mobilyaya ihtiyaç duyar. Mutfak bölgesini belirledikten sonra “Mobilya” ya tıklarsan mutfak bölgesine koyabileceğin mobilyalar ile karşılaşacaksın. Çorba üretmek için öncelikle  {{Furniture.WATER_BARRASS}}, {{Furniture.KITCHEN_WORKTOP}} ve  {{FURNITURE.CAULDRON}} nı aynı mutfak bölgesine yerleştirmen gerekiyor. Ayrıca, hasadın saklanabilmesi için bir {{STOCKPILE.PANTRY}} bölgesi belirlemende gerekiyor."
 TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!"," Mahsüllerin hasat edildikten sonra aşcılar sebzeleri önce{{FURNITURE.KITCHEN_WORKTOP}} yerleştirecekler. Ardından su ile beraber {{Furniture.CHEFS_CAULDRON}} içine koyacak ve çorba yapacaklar! Çorba ve ekmek yapabilmek, besin kaynaklarının çok daha uzun süre dayanması anlamına gelir. Tek bir sebze bir cüceyi tek öğün için doyururken, 3 sebze kullanarak hazırladığın çorba 12 öğüne yetecek kadar porsiyon üretir."
 TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.","Aşçılar diğer cücelerin mutfaklarına girmelerinden ve ayak altında dolaşmalarından hoşlanmadığı için, leziz çorbalar hazır olduktan sonra herekesin tadını çıkarması için Şölen Salonuna getirilir. Bir Şölen Salonu belirlemek için  {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}} üzerinden alanı belirle ve odanın içine bir {{FURNITURE.CAULDRON}} ekle. Unutmaki çorba hazır olmadan kazan bu odada görünmeyecek."
 TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,Önündeki kış mevsimine hazırlanmak için yemek üretim sürecini geliştirmeyi amaçlamalısın. Vatandaşların yanlarında ilk mahsül hazır olana kadar kendilerine yetecek kadar yemeğe sahipler.
 TUTORIAL.7.B,,"Most items and furniture are produced out of {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} or {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}. It’s important to maintain a large supply of these. {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} are produced in a {{ROOMS.SAWMILL}}, and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} are crafted by a {{PROFESSION.STONEMASON}} in a {{ROOMS.MASONRY_WORKSHOP}}. Place one of each of these zones, and build a {{FURNITURE.WOODCUTTERS_BENCH}} and {{FURNITURE.STONEMASON_WORKBENCH}} in them.","Eşya ve mobilyaların çoğu {{MATERIAL_TYPE.WOOD.ADJECTIVE}}, {{RESOURCE.PLANKS.PLURAL}} yada {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} ile üretilir. Bu kaynaklardan sürekli olarak yüksek miktarlarda bulundurmak önemlidir.  {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}}  {{ROOMS.SAWMILL}} de, {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL} ise  {{PROFESSION.STONEMASON}} tarafından  {{ROOMS.MASONRY_WORKSHOP}} da üretilir. Bu iki yapı içinde birer alan belirle ve içlerine {{FURNITURE.WOODCUTTERS_BENCH}} ve {{FURNITURE.STONEMASON_WORKBENCH}} yerleştir."
 TUTORIAL.8.A,,"Now you are ready to produce {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.PLANKS.PLURAL}} and {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}}, but they require other resources to craft them - {{MATERIAL_TYPE.WOOD.ADJECTIVE}} {{RESOURCE.LOGS.PLURAL}} and {{RESOURCE.STONE.UNREFINED.PLURAL}}. Fortunately these can usually be harvested from the game world quite easily.","Şimdi {{MATERIAL_TYPE.WOOD.ADJECTIVE}}, {{RESOURCE.PLANKS.PLURAL}} ve {{MATERIAL_TYPE.STONE.ADJECTIVE}} {{RESOURCE.STONE.BLOCK.PLURAL}} üretimine hazırsın ancak bu ürünleri üretebilmek için  {{MATERIAL_TYPE.WOOD.ADJECTIVE}}, {{RESOURCE.LOGS.PLURAL}} ve {{RESOURCE.STONE.UNREFINED.PLURAL}} gibi kaynaklara da ihtiyacın var. Neyse ki bu kaynaklar oyun dünyasından kolayca toplanabilir."
-TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each., {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} seç ve oduncularının kesmesi için ağaç kümelerini işaretle. Benzer şekilde {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} üzerinden dağın bir kısmını seçip o alanın kazılmasını emredebilirsin. Kaynak yığınında iki kaynaktan da 40 ar adet olacak kadar alan işaretle.  
-TUTORIAL.8.C,,Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ,Kazı yaparken dikkatli ol! Büyüklüğü 7x7 karo ve üzeri olan ve {{FURNITURE.PILLAR}} bulunmayan kazı alanları çökmeye meyillidir.
+TUTORIAL.8.B,,Select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} and click-and-drag over trees to let your woodcutters know to cut them down. Similarly you can select select {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} and click-and-drag an area of the mountain to designate to be mined. Select enough of both to build your stockpiles back up to 40 of each.," {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.CHOP_WOOD}} seç ve oduncularının kesmesi için ağaç kümelerini işaretle. Benzer şekilde {{GUI.ORDERS_LABEL}} > {{GUI.ORDERS.MINE}} üzerinden dağın bir kısmını seçip o alanın kazılmasını emredebilirsin. Kaynak yığınında iki kaynaktan da 40 ar adet olacak kadar alan işaretle.  "
+TUTORIAL.8.C,,"Be careful with mining! A mined-out area of 7 by 7 tiles without a {{FURNITURE.PILLAR}} built within that area will collapse! ",Kazı yaparken dikkatli ol! Büyüklüğü 7x7 karo ve üzeri olan ve {{FURNITURE.PILLAR}} bulunmayan kazı alanları çökmeye meyillidir.
 TUTORIAL.CAMERA.A,,"You can use the W, A, S and D keys or the arrow keys to pan the camera around. Moving the cursor to the edge of the screen also pans the camera, but this can be disabled in the options menu.","W,A,S ve D tuşları yada yön tuşları ile kamerayı hareket ettirebilrisiniz. İmleci ekranın kenarlarına hareket ettirerekde kamerayı hareket ettirebilirsiniz. Bu özelliği ayarlardan kapatabilirsiniz."
 TUTORIAL.CAMERA.B,,Scrolling the mouse wheel or pressing the Q and E keys zooms the camera in or out.,Q ve E tuşlarına basarak veya fare tekerleği ile kamerayı yakınlaştırıp uzaklaştırabilirsiniz.
 TUTORIAL.CAMERA.C,,"In the lower-right section of the screen is the minimap, and you can click on this to jump the camera to that point. Click on the “Minimap” label to show or hide the minimap.","Haritanın sağ alt köşesindeel haritası bulunur, bu haritanın üzerine tıklayarak gitmek istediğin yere zıplayabilirsin. Haritayı kapatıp açmak için “El Haritası” na tıklayabilirsin."
@@ -911,14 +942,13 @@ TUTORIAL.FINAL.A,,"This covers the basics of playing King under the Mountain. Fo
 TUTORIAL.PROGRESS_DESCRIPTION.FARM_PLOT_SELECTIONS,Used to show a progress indicator for how many farm plots have a crop selected e.g. 2 of 10 farm plots with a crop assigned,{{ROOMS.FARM.PLURAL}} with a crop assigned,mahsül atanmış {{ROOMS.FARM.PLURAL}}
 TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indicator for how many of a certain profession have been assigned e.g. 2 of 10 farmers assigned,{{professionPlural}} assigned,{{professionPlural}} atandı.
 TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},{{currentQuantity}} / {{requiredQuantity}} {{targetDescription}}
-TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,{{roomName}} karosu 
+TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,"{{roomName}} karosu "
 TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",İlerlemeniz her gece yarısında ve oyundan çıktığınızda otomatik olarak kayıt edilir.
-TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",Şu anda oyun tek bir kayıt dosyası üzerinden çalışmakta ancak alfa versionunda birden fazla kayıt dosyası kullanılabilecek.
 TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",Sağ üst köşede tarih ve saatin yanı sıra oyunun hızını ayarlayabileceğiniz kontroller bulunmaktadır.
 TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,Boşluk tuşu ile oyunu duraklatıp devam ettirebilirsiniz.
 TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.","1 tuşu oyunu normal hızında, 2,3 ve 4 tuşları ise oyunu kademeli olarak daha yüksek hızlarda çalıştırır. Tüm vatandaşlarınız uyurken oyun otomatik olarak 4. hız seviyesine geçer."
 TUTORIAL.TIME.D,,You can also click the speed icons to change the speed or pause the game.,Ayrıca hızlandırma tuşlarına basarakda oyunun hızını ayarlayabilirsiniz.
-,,,
+
 VEGETABLE.BARLEY,,Barley,Arpa
 VEGETABLE.BARLEY.PLURAL,,Barley,Arpa
 VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Sadece bira üretiminde kullanılan bir tahıl. {{SEASON.SPRING}}, {{SEASON.SUMMER}} veya {{SEASON.AUTUMN}} mevsimlerinde dikilebilir."
@@ -931,8 +961,8 @@ VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WIN
 VEGETABLE.CORN,,Sweetcorn,Şeker mısırı
 VEGETABLE.CORN.PLURAL,,Sweetcorn,Şeker mısırı
 VEGETABLE.CORN.TOOLTIP,,"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.",Darı olarakda bilinen bir tahıl tanesidir. Bol mahsül verir ancak büyümesi yaklaşık 2 mevsim sürer {{SEASON.WINTER}} mevsiminde hayatta kalamaz.  {{SEASON.SPRING}} mevsiminin başında dikilmesi gerekir.
-VEGETABLE.DEATH_CAP_MUSHROOM,,Death cap mushroom,Köygöçüren mantarı 
-VEGETABLE.DEATH_CAP_MUSHROOM.PLURAL,,Death cap mushrooms,Köygöçüren mantarı 
+VEGETABLE.DEATH_CAP_MUSHROOM,,Death cap mushroom,"Köygöçüren mantarı "
+VEGETABLE.DEATH_CAP_MUSHROOM.PLURAL,,Death cap mushrooms,"Köygöçüren mantarı "
 VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP,,"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.",Geniş bir şapkaya sahip aşırı zehirli mantar türü. Ufak miktarda tüketilmesi bile ölüme neden olabilecek ciddi zehirlenmeye yol açabilir.
 VEGETABLE.DRAGONFRUIT,,Dragonfruit,Ejder meyvesi
 VEGETABLE.DRAGONFRUIT.PLURAL,,Dragonfruits,Ejder meyvesi
@@ -940,7 +970,7 @@ VEGETABLE.ELFSBANE_MUSHROOM,,Elfsbane mushroom,Elfsbane Pilz
 VEGETABLE.ELFSBANE_MUSHROOM.PLURAL,,Elfsbane mushrooms,Elfboğan
 VEGETABLE.ELFSBANE_MUSHROOM.TOOLTIP,,"This mushroom has a simple, flavourless taste to most humanoids. Strangely, it tastes absolutely disgusting to elves, who often react with explosive vomiting upon consumption, or in extreme cases, a heart attack.","İnsansı varlıklar için basit neredeyse tadı olmayan bir bitki olan Elfboğan, adındanda anlaşılacağı gibi elfer için zararldır. Ağızlarında acı ve iğrenç bir tad bırakan Elfboğan, tüketmeleri halinde mide bulantısı ve kusma, ekstrem vakalarda ise kalp krizi geçirtebilir."
 VEGETABLE.FIST_MUSHROOM,,Fist mushroom,Yumruk mantarı
-VEGETABLE.FIST_MUSHROOM.PLURAL,,Fist mushroom,Yumruk mantarı
+VEGETABLE.FIST_MUSHROOM.PLURAL,,Fist mushrooms,Yumruk mantarı
 VEGETABLE.FIST_MUSHROOM.TOOLTIP,,A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,Siyah-mavi renge sahip ve ağızda metalik tad bırakan bir mantar türü. İsmini Karanlık Çağındaki bir grup ozandan alır.
 VEGETABLE.GLOW_MUSHROOM,,Glow mushroom,Parıltı Mantarı
 VEGETABLE.GLOW_MUSHROOM.PLURAL,,Glow mushrooms,Parıltı Mantarı
@@ -978,18 +1008,18 @@ VEGETABLE.TOMATO.TOOLTIP,,A plant which grows large red berries often used as a 
 VEGETABLE.WHEAT,,Wheat,Buğday
 VEGETABLE.WHEAT.PLURAL,,Wheat,Buğday
 VEGETABLE.WHEAT.TOOLTIP,,"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.",Genellikle ekmek üretiminde kullanılan bir tahıl tanesi. {{SEASON.WINTER}} mevsiminde hayatta kalabilir ancak hasata hazır olması uzun sürer bu yüzden  {{SEASON.SPRING}} veya {{SEASON.AUTUMN}} dikilmesi gerekir.
-,,,
+
 VITRIOL.GREEN_VITRIOL.ADJECTIVE,,Green,Yeşil
 VITRIOL.GREEN_VITRIOL.NOUN,,Green,Yeşil
 VITRIOL.GREEN_VITRIOL.TOOLTIP,,"Also known as iron sulfate, this salt has several uses, including as a soil additive to improve crop farming. (Usages of vitriol are not yet implemented in King under the Mountain)","Demir sülfat olarakda bilinir, bu tuzun tarlalarda verimi arttırmak gibi bir çok kullanım alanı vardır. (Viltrol kullanımı daha oyuna entegre edilmemiştir.)"
-,,,
+
 WALL.DESCRIPTION,"E.g. “Granite rock wall”, “Granite smooth stone wall”",{{materialType.adjective}} {{wallType.noun}},{{wallType.noun}} aus {{materialType}}
 WALL.GEMS.NOUN,,Gems,Kıymetli taş
 WALL.ORE.NOUN,,Ore,Cevher
 WALL.ROUGH_STONE.NOUN,,Rock wall,Taş duvar
 WALL.STONE_BLOCK.NOUN,,Smooth stone wall,Pürüssüz taş duvar
 WALL.WOODEN.NOUN,,Wood wall,Tahta duvar
-,,,
+
 WOOD.ASPEN.ADJECTIVE,,Aspen,Kavak
 WOOD.ASPEN.NOUN,,Aspen,Kavak
 WOOD.BAOBAB.ADJECTIVE,,Baobab,Baobab Ağacı
@@ -1010,7 +1040,7 @@ WOOD.IRONWOOD.ADJECTIVE,,Ironwood,Demir Ağacı
 WOOD.IRONWOOD.NOUN,,Ironwood,Demir ağacı
 WOOD.MAPLE.ADJECTIVE,,Maple,Akçaağaç
 WOOD.MAPLE.NOUN,,Maple,Akçaağaç
-WOOD.NUYTSIA.ADJECTIVE,,Nuytsia,Nuytsia  
+WOOD.NUYTSIA.ADJECTIVE,,Nuytsia,"Nuytsia  "
 WOOD.NUYTSIA.NOUN,,Nuytsia,Nuytsia
 WOOD.OAK.ADJECTIVE,,Oaken,Meşe
 WOOD.OAK.NOUN,,Oak,Meşe
@@ -1020,13 +1050,13 @@ WOOD.PINE.ADJECTIVE,,Pine,Çam
 WOOD.PINE.NOUN,,Pine,Çam
 WOOD.RED_CEDAR.ADJECTIVE,,Red cedar,Boylu Mazı
 WOOD.RED_CEDAR.NOUN,,Red cedar,Boylu Mazı
-WOOD.RED_EMPEROR.ADJECTIVE,,Red emperor,Japon akçaağacı 
-WOOD.RED_EMPEROR.NOUN,,Red emperor,Japon akçaağacı 
+WOOD.RED_EMPEROR.ADJECTIVE,,Red emperor,"Japon akçaağacı "
+WOOD.RED_EMPEROR.NOUN,,Red emperor,"Japon akçaağacı "
 WOOD.ROSEWOOD.ADJECTIVE,,Rosewood,Gülağacı
 WOOD.ROSEWOOD.NOUN,,Rosewood,Gülağacı
-WOOD.SPRUCE.ADJECTIVE,,Spruce,Ladin 
-WOOD.SPRUCE.NOUN,,Spruce,Ladin 
-WOOD.STAR_PINE.ADJECTIVE,,Star pine,Salon Çamı 
-WOOD.STAR_PINE.NOUN,,Star pine,Salon Çamı 
-WOOD.SYCAMORE.ADJECTIVE,,Sycamore,Dağ akçaağacı 
+WOOD.SPRUCE.ADJECTIVE,,Spruce,"Ladin "
+WOOD.SPRUCE.NOUN,,Spruce,"Ladin "
+WOOD.STAR_PINE.ADJECTIVE,,Star pine,"Salon Çamı "
+WOOD.STAR_PINE.NOUN,,Star pine,"Salon Çamı "
+WOOD.SYCAMORE.ADJECTIVE,,Sycamore,"Dağ akçaağacı "
 WOOD.SYCAMORE.NOUN,,Sycamore,Dağ akçaağacı

@@ -263,8 +263,10 @@ GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),
 GUI.CROP_SELECTION,,Crop:,Pflanze:
-GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}","{{timeOfDay}}, Tag {{dayNumber}}, {{season}}"
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}, year {{year}}","{{timeOfDay}}, Tag {{dayNumber}}, {{season}}"
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,
+GUI.DIALOG.CANCEL_BUTTON,,Cancel,
+GUI.DIALOG.CONFIRM_DELETE_SAVE,,Are you sure you wish to delete {{name}}?,
 GUI.DIALOG.DISMISS,,Dismiss,Verwerfen
 GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,Ein Raum mit diesem Namen existiert schon.
 GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,"Die Datei konnte nicht geladen werden, da sie inkompatibel mit dieser Version des Spiels ist."
@@ -276,16 +278,31 @@ GUI.DIALOG.JUMP_TO,,Go to location,Gehe zu
 GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,Die ausgewählte Übersetzung ist derzeit noch unvollständig und Teile des Textes fehlen. Es wird eine Ausweichsprache verwendet.
 GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,Du hast neue Mods ausgewählt. Diese werden erst beim nächsten Neustarts des Spiels aktiv.
 GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,Eine oder mehrere Mods sind mit dieser Version des Spiels nicht kompatibel und wurden deaktiviert. Du kannst im Mods-Menü nach Updates suchen.
-GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,OK
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,Ok,OK
 GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,Raum umbenennen
 GUI.DIALOG.RENAME_SETTLER_TITLE,,Rename settler,
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,"Damit diese Änderung wirksam wird, muss das Spiel neugestart werden."
+GUI.DIALOG.SETTLEMENT_NAME_ALREADY_IN_USE,,You already have a saved game for the settlement {{name}}. Starting a new game will overwrite the existing save file. Are you sure you want to continue?,
+GUI.DIALOG.SETTLEMENT_NAME_NOT_SPECIFIED,,A name for the settlement must be specified.,
+GUI.DIALOG.STOCKPILE_MANAGEMENT.TITLE,,Stockpile settings,
+GUI.EMBARK.DISCLAIMER,,"This is an early alpha version of King under the Mountain. There are many, many features still to be added, and bugs are to be expected. In a future update you will be able to use this screen to customise your starting settlers, resources and even map and gameplay settings. Please join our Discord community to report any bugs you find or offer feedback, so we can work together to guide King under the Mountain to become the best possible version of itself. Thank you for playing!",
+GUI.EMBARK.DISCORD_LINK,,Click here to join our Discord community,
+GUI.EMBARK.MAP_SEED,,Map seed:,
+GUI.EMBARK.SETTLEMENT_NAME,,Settlement name:,
+GUI.EMBARK.START,,Begin!,
+GUI.EMBARK.TITLE,,Embark Options,
 GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},Zugewiesen zu {{name}}
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,Wird gerade entfernt
 GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,Dieses Möbelstück muss auf {{materialType}} platziert werden.
 GUI.GRAPHICS.FULLSCREEN,,Fullscreen,Vollbild
 GUI.GRAPHICS.RESOLUTION,,Resolution,Auflösung
 GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),Keine (Brachfläche)
+GUI.LOAD_GAME.TABLE.DATE_TIME,,Last modified,
+GUI.LOAD_GAME.TABLE.DELETE,,Delete,
+GUI.LOAD_GAME.TABLE.GAME_TIME,,World time,
+GUI.LOAD_GAME.TABLE.SETTLEMENT_NAME,,Name,
+GUI.LOAD_GAME.TABLE.VERSION,,Version,
+GUI.LOAD_GAME.TITLE,,Load Game,
 GUI.MINIMAP.LABEL,,Minimap,Minikarte
 GUI.MUSIC_VOLUME,,Music volume:,Musiklautstärke:
 GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,Neue Version jetzt auf itch.io verfügbar
@@ -332,6 +349,8 @@ GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,Ressourcen
 GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},Verfügbar: {{count}}
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Zum Rotieren der Möbel (R) drücken
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,Spiel wird gespeichert…
+GUI.SETTINGS.LABEL,,Settings,
+GUI.SETTLER_MANAGEMENT.BEDS_COUNTER,,Number of beds: {{count}},
 GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},Tot: {{count}}
 GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},Bevölkerung: {{count}}
 GUI.SETTLER_MANAGEMENT.SORT.BY_NAME,,Sort by name,
@@ -402,7 +421,10 @@ INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought 
 INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,Samen
 INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,Samen
 INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,Für die Auspflanzung in einer {{ROOMS.FARM}} ist Saatgut der richtigen Art erforderlich. Es muss auch in einem {{STOCKPILE.GRANARY}} verfügbar sein.
-INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,Sack
+INGREDIENT.VEGETABLE.CRATE.NOUN,,Vegetable (crate),
+INGREDIENT.VEGETABLE.CRATE.PLURAL,,Vegetables (crate),
+INGREDIENT.VEGETABLE.SACK.NOUN,,Vegetable (sack),Sack
+INGREDIENT.VEGETABLE.SACK.PLURAL,,Vegetables (sack),
 
 INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,Inventar:
 
@@ -449,6 +471,7 @@ MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,Holz
 MATERIAL_TYPE.WOOD.NOUN,,Wood,Holz
 
 MENU.CONTINUE_GAME,,Continue game,Spiel fortsetzen
+MENU.LOAD_GAME,,Load game,
 MENU.MODS,,Mods,Mods
 MENU.NEW_GAME,,Start new game,Neues Spiel beginnen
 MENU.OPTIONS,,Options,Optionen
@@ -709,6 +732,8 @@ RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beau
 RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,Rohedelstein
 RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,Rohedelsteine
 RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,"Ein Gesteinsbrocken mit Edelsteinen, bereit geschliffen und poliert zu werden."
+RESOURCE.GRAIN.SACK.NOUN,,Grain (sack),
+RESOURCE.GRAIN.SACK.PLURAL,,Grain (sack),
 RESOURCE.LOGS.NOUN,,Log,Stamm
 RESOURCE.LOGS.PLURAL,,Logs,Stämme
 RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.","Teil eines Baumes, der am häufigsten zu {{RESOURCE.PLANKS.PLURAL}} verarbeitet wird, aber auch andere Verwendungen hat."
@@ -724,8 +749,8 @@ RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the l
 RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,Pilzstamm
 RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,Pilzstämme
 RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,"Ein Stamm, der mit {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} versehen wurde. Aus dem Baumstamm selbst ziehen die Pilze ihre Nährstoffe. Erfordert nach der vollständigen Einimpfung das Eintauchen in einen {{FURNITURE.MUSHROOM_SHOCK_TANK}}."
-RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,Pilzholz
-RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,Pilzhölzer
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Mushroom log,Pilzholz
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Mushroom logs,Pilzhölzer
 RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,"Teile eines riesigen Pilzes, der auf die gleiche Weise wie hölzerne {{RESOURCE.LOGS.PLURAL}} verwendet werden kann."
 RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,Erzbrocken
 RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,Erzbrocken
@@ -745,6 +770,8 @@ RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is 
 RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,Steinbrocken
 RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,Steinbrocken
 RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,"Ein riesiges Stück Stein, das von einem {{PROFESSION.STONEMASON}} in eine nützlichere Form gemeißelt werden muss."
+RESOURCE.WHEAT.SACK.NOUN,,Wheat (sack),
+RESOURCE.WHEAT.SACK.PLURAL,,Wheat (sack),
 
 ROOMS.BEDROOM,,Bedroom,Schlafzimmer
 ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",Ein Platz für Ihre Siedler zum Schlafen. Sie bevorzugen individuelle Schlafzimmer mit einer Größe von mindestens 9 Fliesen und vorzugsweise mindestens 13 Fliesen.
@@ -774,6 +801,8 @@ ROOMS.MUSHROOM_FARM,,Mushroom farm,Pilzfarm
 ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,Pilze können mit {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} und Holz {{RESOURCE.LOGS.PLURAL}} angebaut werden.
 ROOMS.SAWMILL,,Sawmill,Sägewerk
 ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,Hölzerne {{RESOURCE.LOGS.PLURAL}} werden hier zu {{RESOURCE.PLANKS.PLURAL}} verfeinert.
+ROOMS.STOCKPILE,,Stockpile,
+ROOMS.STOCKPILE.TOOLTIP,,This area stores different kinds of items depending on settings.,
 ROOMS.STOCKPILES,,Stockpiles,Lager
 ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,Unbenutzte Gegenstände werden für einen einfachen Zugang auf Lager gelegt.
 
@@ -819,14 +848,16 @@ SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally us
 
 SHRUB.DESCRIPTION,Shrub or bush should do,Bush,Büsche
 
-STOCKPILE.GRANARY,,Granary,Getreidespeicher
-STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,"Speichert Körner und Samen, die nicht ablaufen."
-STOCKPILE.PANTRY,,Pantry,Vorratskammer
-STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,"Speichert geerntete Obst und Gemüse, die ablaufen können."
-STOCKPILE.RESOURCES,,Resources,Materiallager
-STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,"Speichert die meisten Arten von Ressourcen, die nicht zu anderen Arten von Lagerbeständen gehören."
-STOCKPILE.TOOLS,,Tools,Werkzeuglager
-STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,"Speichert Werkzeuge, die für die Arbeit an Aufträgen erforderlich sind."
+STOCKPILE.GROUP.FOOD,,Food,
+STOCKPILE.GROUP.FOOD.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,
+STOCKPILE.GROUP.FUEL,,Fuel,
+STOCKPILE.GROUP.GRANARY,,Granary,Getreidespeicher
+STOCKPILE.GROUP.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,
+STOCKPILE.GROUP.PRODUCTS,,Products,
+STOCKPILE.GROUP.RAW_MATERIALS,,Raw materials,
+STOCKPILE.GROUP.SEEDS,,Seeds,
+STOCKPILE.GROUP.TOOLS,,Tools,Werkzeuglager
+STOCKPILE.GROUP.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,
 
 STONE.BASALT.ADJECTIVE,,Basalt,Basalt
 STONE.BASALT.NOUN,,Basalt,Basalt
@@ -886,8 +917,8 @@ TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough c
 TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.","Eine gute Faustregel zu folgen ist sicherzustellen, dass Sie 10 Kacheln von Pflanzen haben, die für jeden Siedler in Ihrer Bevölkerung gesät werden. Derzeit gibt es 7 Siedler, die herumlaufen, also gehen Sie voran und klicken Sie auf „{{GUI.ZONES_LABEL}}“ > „{{ROOMS.FARM}}“, und bezeichnen bzw. ziehen Sie mehrere Farmflächen auf einer grasbewachsenen Fläche."
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","Wenn nichts anderes zu tun ist, werden eure Siedler diese {{ROOMS.FARM.PLURAL}} vorbereiten, indem sie die Erde anrichten, damit Samen gesät werden können. Dies erfordert keine speziellen Werkzeuge oder Kenntnisse, so dass jeder sich beteiligen sollte."
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.","Dies bereitet das Grundstück vor, das gesät werden soll, aber Sie müssen auswählen, welche Ernte auf jedem landwirtschaftlichen Grundstück wachsen soll, bevor ein Landwirt kommt und die entsprechenden Samen pflanzt. Ihre Siedler haben eine Auswahl an verschiedenen Samen mitgebracht. Sie können oben rechts auf „Ressourcen“ klicken, um eine Aufschlüsselung aller Artikel in Ihrer Abrechnung zu erhalten."
-TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ","Damit die Samen tatsächlich Ihren Bauern zur Verfügung stehen, müssen sie in einem Vorrat im Vergleich zu einem Zwerg Inventar gehalten werden, wie sie derzeit sind. Klicken Sie auf {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (Sie können mit der rechten Maustaste klicken, um zu einem vorherigen Menü zurückzukehren) und geben Sie einen Bereich an, der als {{STOCKPILE.GRANARY}} verwendet werden soll, in dem Samen und Körner gelagert werden."
-TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.TOOLS}} and designate another area to be used to store tools.,
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GROUP.SEEDS}} (you can right-click to go back up to a previous menu) and designate an area to be used for seeds to be stored.","Damit die Samen tatsächlich Ihren Bauern zur Verfügung stehen, müssen sie in einem Vorrat im Vergleich zu einem Zwerg Inventar gehalten werden, wie sie derzeit sind. Klicken Sie auf {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (Sie können mit der rechten Maustaste klicken, um zu einem vorherigen Menü zurückzukehren) und geben Sie einen Bereich an, der als {{STOCKPILE.GRANARY}} verwendet werden soll, in dem Samen und Körner gelagert werden."
+TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.GROUP.TOOLS}} and designate another area to be used to store tools.,
 TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.","Nach einiger Zeit sollten Ihre Siedler Gegenstände, die sie nicht verwenden, in Vorräte legen, wie die Samen, die gesät werden sollen."
 TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.","Klicken Sie mit der linken Maustaste auf die {{ROOMS.FARM.PLURAL}} und wählen Sie eine Ernte aus, die dort gepflanzt werden soll. Wählen Sie {{VEGETABLE.BARLEY}} oder {{VEGETABLE.HOPS}} vorerst nicht aus, da diese Kulturen bei der Herstellung von Bier und nicht bei Lebensmitteln verwendet werden."
 TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,"Ihr {{PROFESSION.FARMER.PLURAL}} wird nun an die Arbeit gehen und die Samen aussäen, die Sie für diese {{ROOMS.FARM.PLURAL}} ausgewählt haben. Das Aussaat von Samen erfordert keine speziellen Werkzeuge, aber Sie können mehr Siedler als {{PROFESSION.FARMER.PLURAL}} zuweisen. Klicken Sie mit der linken Maustaste auf einen Siedler, der ziellos umherwandert."
@@ -895,7 +926,7 @@ TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inven
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","Beachten Sie, dass einige Aufträge erfordern, dass der Siedler ein bestimmtes Werkzeug in seinem Inventar hat. Wenn keines in der Abrechnung verfügbar ist, arbeiten sie nicht an den Jobs, für die es erforderlich ist. Sie können beispielsweise mehr Siedler als {{PROFESSION.WOODCUTTER}} zuweisen, aber sie können Bäume nicht ohne verfügbare {{TOOL.AXE.NOUN}} zerkleinern."
 TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.","Ihre Pflanzen werden nun wachsen und schließlich von Ihrem {{PROFESSION.FARMER.PLURAL}} im {{SEASON.AUTUMN}} geerntet werden. Einige Pflanzen können später im Jahr wieder gepflanzt werden und durch die {{SEASON.WINTER}} überleben, aber einige nicht. Um das Beste aus Ihren Kulturen herauszuholen, ist es am besten, Suppe aus dem geernteten Gemüse oder Brot aus Getreide zu produzieren."
 TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","Lassen Sie uns eine {{ROOMS.KITCHEN}} einrichten, um Suppe zu produzieren, sobald Ihre Ernte fertig ist. Gehen Sie zum Menü der obersten Ebene, dann {{ZONES.LABEL}} > {{ROOMS.KÜCHE}} und ziehen Sie einen {{ROOMS.KÜCHE}} Bereich heraus. An diesem Punkt in der Entwicklung von König unter dem Berg spielt es keine Rolle, ob es draußen oder drinnen ist, aber in Zukunft werden Sie wollen, dass alle Ihre Räume eine Decke haben, um sie vor den Elementen zu schützen."
-TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.","Im Gegensatz zu landwirtschaftlichen Grundstücken benötigen Küchen (und die meisten anderen Räume) Möbel, um zu funktionieren. Klicken Sie auf „Möbel“, wenn Sie eine Küchenzone platziert haben und Ihnen die Möbel angezeigt werden, die hinzugefügt werden können. Um Suppe herzustellen, müssen Sie eine {{Furniture.WATER_BARRASS}}, {{Furniture.KITCHEN_WORKTOP}} und {{FURNITURE.CAULDRON}} in derselben Küchenzone bauen. Legen Sie außerdem eine {{STOCKPILE.PANTRY}} Fläche für die Lagerung von geernteten Pflanzen fest."
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.GROUP.FOOD}} {{ROOMS.STOCKPILE}} to store any harvested crops.","Im Gegensatz zu landwirtschaftlichen Grundstücken benötigen Küchen (und die meisten anderen Räume) Möbel, um zu funktionieren. Klicken Sie auf „Möbel“, wenn Sie eine Küchenzone platziert haben und Ihnen die Möbel angezeigt werden, die hinzugefügt werden können. Um Suppe herzustellen, müssen Sie eine {{Furniture.WATER_BARRASS}}, {{Furniture.KITCHEN_WORKTOP}} und {{FURNITURE.CAULDRON}} in derselben Küchenzone bauen. Legen Sie außerdem eine {{STOCKPILE.PANTRY}} Fläche für die Lagerung von geernteten Pflanzen fest."
 TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","Wenn Ihre Pflanzen geerntet wurden, bringen die Köche Gemüse zum {{Furniture.KITCHEN_WORKTOP}}, bevor sie mit Wasser und Suppe zum {{Furniture.CHEFS_CAULDRON}} hinzugefügt werden. Die Zubereitung von Suppe und das Backen von Brot bedeutet, dass Ihre Lebensmittel viel weiter gehen - ein einzelnes Gemüse wird einen Zwerg für eine einzelne Mahlzeit füttern, aber 3 Gemüse, das in Suppe gekocht wird, bieten 12 Mahlzeiten!"
 TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.","Schließlich wird diese Küche einen Kessel voller dampfender heißer Suppe produzieren, aber die Köche mögen es nicht, dass andere Zwerge in ihrer Küche in den Weg kommen. Stattdessen müssen Sie die Suppe in einen Festsaal bringen lassen, damit die ganze Siedlung genießen kann. Bestimmen Sie einen Festsaal, indem Sie auf {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}} klicken und dann eine {{FÖLITURE.CAULDRON}} hinzufügen. Beachten Sie, dass ein Festsaalkessel nicht platziert wird, bis ein Kessel mit dicker, köstlicher Suppe verfügbar ist."
 TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,"Im Laufe der Zeit möchten Sie Ihre Nahrungsmittelproduktion erweitern, aber dies wird unsere kleine Siedlung für den kommenden Winter nährt - Ihre Siedler haben Rationen gebracht, um sie zu erhalten, während die ersten Ernten wachsen."
@@ -913,7 +944,6 @@ TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indic
 TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},{{currentQuantity}} von {{requiredQuantity}} {{targetDescription}}
 TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,{{roomName}} Kacheln
 TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
-TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
 TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
 TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
 TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",

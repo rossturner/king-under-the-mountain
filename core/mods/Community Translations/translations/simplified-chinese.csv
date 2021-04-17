@@ -263,8 +263,10 @@ GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),
 GUI.CROP_SELECTION,,Crop:,裁剪：
-GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}",{{timeOfDay}}，天 {{dayNumber}}
+GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}, year {{year}}",{{timeOfDay}}，天 {{dayNumber}}
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,
+GUI.DIALOG.CANCEL_BUTTON,,Cancel,
+GUI.DIALOG.CONFIRM_DELETE_SAVE,,Are you sure you wish to delete {{name}}?,
 GUI.DIALOG.DISMISS,,Dismiss,解雇
 GUI.DIALOG.ERROR_ROOM_NAME_ALREADY_EXISTS,Error message when the player attempts to rename a room to the same name as another room,A room with that name already exists.,这个名字的房间已经存在。
 GUI.DIALOG.ERROR_SAVE_INCOMPATIBLE,"Error loading a save as it is from an older, incompatible version of the game",The save file could not be loaded because it is incompatible with this version of the game.,无法加载保存文件，因为它与此版本的游戏不兼容。
@@ -276,16 +278,31 @@ GUI.DIALOG.JUMP_TO,,Go to location,前往位置
 GUI.DIALOG.LANGUAGE_TRANSLATION_INCOMPLETE,,The selected language translation is currently incomplete and will be missing some text. A fallback language will be used.,选定的语言翻译目前不完整，将缺少一些文本。 将使用后备语言。
 GUI.DIALOG.MOD_CHANGES_OUTSTANDING,,You have selected a different set of mods to be applied to the game. These will be applied when the game is next restarted.,您已经选择了一组不同的 MODS 来应用到游戏中。 这些将在游戏下次重新启动时应用。
 GUI.DIALOG.MOD_INCOMPATIBLE,,One or more mods are incompatible with this version of the game and have been deactivated. You can check for updates in the mods menu.,一个或多个 MODS 与这个版本的游戏不兼容，并已停用. 您可以在 MODS 菜单中检查更新。
-GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,OK,好
+GUI.DIALOG.OK_BUTTON,Single button shown to dismiss an error dialog,Ok,好
 GUI.DIALOG.RENAME_ROOM_TITLE,,Rename room,重命名房间
 GUI.DIALOG.RENAME_SETTLER_TITLE,,Rename settler,
 GUI.DIALOG.RESTART_REQUIRED,,You must restart the game for this change to take effect,您必须重新启动游戏才能使此更改生效
+GUI.DIALOG.SETTLEMENT_NAME_ALREADY_IN_USE,,You already have a saved game for the settlement {{name}}. Starting a new game will overwrite the existing save file. Are you sure you want to continue?,
+GUI.DIALOG.SETTLEMENT_NAME_NOT_SPECIFIED,,A name for the settlement must be specified.,
+GUI.DIALOG.STOCKPILE_MANAGEMENT.TITLE,,Stockpile settings,
+GUI.EMBARK.DISCLAIMER,,"This is an early alpha version of King under the Mountain. There are many, many features still to be added, and bugs are to be expected. In a future update you will be able to use this screen to customise your starting settlers, resources and even map and gameplay settings. Please join our Discord community to report any bugs you find or offer feedback, so we can work together to guide King under the Mountain to become the best possible version of itself. Thank you for playing!",
+GUI.EMBARK.DISCORD_LINK,,Click here to join our Discord community,
+GUI.EMBARK.MAP_SEED,,Map seed:,
+GUI.EMBARK.SETTLEMENT_NAME,,Settlement name:,
+GUI.EMBARK.START,,Begin!,
+GUI.EMBARK.TITLE,,Embark Options,
 GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},分配给 {{name}}
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,当前正在删除
 GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,此家具必须放置在 {{materialType}} 上。
 GUI.GRAPHICS.FULLSCREEN,,Fullscreen,全屏
 GUI.GRAPHICS.RESOLUTION,,Resolution,决议
 GUI.LEAVE_CROP_FALLOW,,None (Leave fallow),无（休假）
+GUI.LOAD_GAME.TABLE.DATE_TIME,,Last modified,
+GUI.LOAD_GAME.TABLE.DELETE,,Delete,
+GUI.LOAD_GAME.TABLE.GAME_TIME,,World time,
+GUI.LOAD_GAME.TABLE.SETTLEMENT_NAME,,Name,
+GUI.LOAD_GAME.TABLE.VERSION,,Version,
+GUI.LOAD_GAME.TITLE,,Load Game,
 GUI.MINIMAP.LABEL,,Minimap,最低限度
 GUI.MUSIC_VOLUME,,Music volume:,音乐音量：
 GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,新版本现已在 iTch.io 上推出
@@ -332,6 +349,8 @@ GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,资源
 GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},可用：{{count}}
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,按 (R) 旋转家具
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,保存...
+GUI.SETTINGS.LABEL,,Settings,
+GUI.SETTLER_MANAGEMENT.BEDS_COUNTER,,Number of beds: {{count}},
 GUI.SETTLER_MANAGEMENT.DEAD_COUNTER,,Dead: {{count}},死亡：{{count}}
 GUI.SETTLER_MANAGEMENT.LIVING_COUNTER,,Population: {{count}},人口：{{count}}
 GUI.SETTLER_MANAGEMENT.SORT.BY_NAME,,Sort by name,
@@ -402,7 +421,10 @@ INGREDIENT.MUSHROOM.SPAWN.TOOLTIP,,"Also known as mycelium, this can be thought 
 INGREDIENT.SEEDS.NOUN,E.g. “Wheat seed”,Seed,种子
 INGREDIENT.SEEDS.PLURAL,E.g. “4 wheat seeds”,Seeds,种子
 INGREDIENT.SEEDS.TOOLTIP,,Seeds of the right type are required for planting in a {{ROOMS.FARM}}. They also need to be available in a {{STOCKPILE.GRANARY}} stockpile.,在 {{ROOMS.FARM}} 中种植需要正确类型的种子。 它们还需要在 {{储存 .粮仓}} 库存中提供。
-INGREDIENT.VEGETABLE.SACK.NOUN,E.g. “Sack containing a potato”,Sack,麻袋
+INGREDIENT.VEGETABLE.CRATE.NOUN,,Vegetable (crate),
+INGREDIENT.VEGETABLE.CRATE.PLURAL,,Vegetables (crate),
+INGREDIENT.VEGETABLE.SACK.NOUN,,Vegetable (sack),麻袋
+INGREDIENT.VEGETABLE.SACK.PLURAL,,Vegetables (sack),
 
 INVENTORY.CONTAINS.LABEL,This is the label of “inventory” to go above a list of items contained within a piece of furniture or held by a character,Inventory:,库存：
 
@@ -449,6 +471,7 @@ MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,木制的
 MATERIAL_TYPE.WOOD.NOUN,,Wood,木
 
 MENU.CONTINUE_GAME,,Continue game,继续游戏
+MENU.LOAD_GAME,,Load game,
 MENU.MODS,,Mods,MODS
 MENU.NEW_GAME,,Start new game,开始新游戏
 MENU.OPTIONS,,Options,选项
@@ -709,6 +732,8 @@ RESOURCE.GEM.TOOLTIP,,Gems that have been cut and polished to enhance their beau
 RESOURCE.GEMS.UNREFINED.NOUN,,Uncut gem,未切割宝石
 RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,未切割的宝石
 RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,一块石头，含有准备进行切割和抛光的宝石。
+RESOURCE.GRAIN.SACK.NOUN,,Grain (sack),
+RESOURCE.GRAIN.SACK.PLURAL,,Grain (sack),
 RESOURCE.LOGS.NOUN,,Log,日志
 RESOURCE.LOGS.PLURAL,,Logs,日志
 RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.",最常用于 {{{资源. 浮游. 复数}}} 中，但也有其他用途的树的部分。
@@ -724,8 +749,8 @@ RESOURCE.METAL.PLATE.TOOLTIP,,"Large, flat plates that are used in some of the l
 RESOURCE.MUSHROOM.LOG.NOUN,,Mushroom log,蘑菇原木
 RESOURCE.MUSHROOM.LOG.PLURAL,,Mushroom logs,蘑菇原木
 RESOURCE.MUSHROOM.LOG.TOOLTIP,,A log that has been infused with {{INGREDIENT.MUSHROOM.SPAWN.NOUN}}. The body of the log itself is where the mushrooms draw nutrients from. It requires dousing in a {{FURNITURE.MUSHROOM_SHOCK_TANK}} after becoming fully innoculated.,已经注入 {{成分. 蘑菇. 草. 名词}}} 的日志。 原木本身就是蘑菇吸收营养的地方。 在完全无害后，它需要在 {{家具。蘑菇 _Shok_Tank}} 中冲洗。
-RESOURCE.MUSHROOM.LUMBER.NOUN,,Log,日志
-RESOURCE.MUSHROOM.LUMBER.PLURAL,,Logs,日志
+RESOURCE.MUSHROOM.LUMBER.NOUN,,Mushroom log,日志
+RESOURCE.MUSHROOM.LUMBER.PLURAL,,Mushroom logs,日志
 RESOURCE.MUSHROOM.LUMBER.TOOLTIP,,Sections of a giant mushroom that can be used in the same way as wooden {{RESOURCE.LOGS.PLURAL}}.,一个巨型蘑菇的部分，可以用相同的方式作为木 {{资源. LOGS.複数}}。
 RESOURCE.ORE.CRUSHED.NOUN,,Crushed ore,碎矿石
 RESOURCE.ORE.CRUSHED.PLURAL,,Crushed ore,碎矿石
@@ -745,6 +770,8 @@ RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is 
 RESOURCE.STONE.UNREFINED.NOUN,,Rough stone boulder,粗石巨石
 RESOURCE.STONE.UNREFINED.PLURAL,,Rough stone boulders,粗石巨石
 RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled into a more useful shape by a {{PROFESSION.STONEMASON}}.,一块巨大的石头，必须由 {{PROFESSION.STONEMASON}} 切成更有用的形状。
+RESOURCE.WHEAT.SACK.NOUN,,Wheat (sack),
+RESOURCE.WHEAT.SACK.PLURAL,,Wheat (sack),
 
 ROOMS.BEDROOM,,Bedroom,卧室
 ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",你的工人睡觉的地方。 他们更喜欢拥有至少 9 个瓷砖大小的单独卧室，最好至少 13 个瓷砖大小。
@@ -774,6 +801,8 @@ ROOMS.MUSHROOM_FARM,,Mushroom farm,蘑菇農場
 ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,蘑菇可以使用 {{成分. 蘑菇. 香菇}} 和木制 {{资源. 日志. 复数}} 种植。
 ROOMS.SAWMILL,,Sawmill,锯木厂
 ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,木制 {{资源. 日志. 复数}} 在这里精炼成 {{资源. 浮游. 复数}}。
+ROOMS.STOCKPILE,,Stockpile,
+ROOMS.STOCKPILE.TOOLTIP,,This area stores different kinds of items depending on settings.,
 ROOMS.STOCKPILES,,Stockpiles,库存
 ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,未使用的物品被放置在库存中，以便轻松获取。
 
@@ -819,14 +848,16 @@ SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally us
 
 SHRUB.DESCRIPTION,Shrub or bush should do,Bush,布什
 
-STOCKPILE.GRANARY,,Granary,粮仓
-STOCKPILE.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,存储不会过期的谷物和种子。
-STOCKPILE.PANTRY,,Pantry,茶水间
-STOCKPILE.PANTRY.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,存储收获的水果和蔬菜，可以过期。
-STOCKPILE.RESOURCES,,Resources,资源
-STOCKPILE.RESOURCES.TOOLTIP,,Stores most kinds of resources which do not belong to other types of stockpiles.,存储大多数不属于其他类型库存的资源。
-STOCKPILE.TOOLS,,Tools,工具
-STOCKPILE.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,存储处理作业所需的工具。
+STOCKPILE.GROUP.FOOD,,Food,
+STOCKPILE.GROUP.FOOD.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,
+STOCKPILE.GROUP.FUEL,,Fuel,
+STOCKPILE.GROUP.GRANARY,,Granary,
+STOCKPILE.GROUP.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,
+STOCKPILE.GROUP.PRODUCTS,,Products,
+STOCKPILE.GROUP.RAW_MATERIALS,,Raw materials,
+STOCKPILE.GROUP.SEEDS,,Seeds,
+STOCKPILE.GROUP.TOOLS,,Tools,
+STOCKPILE.GROUP.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,
 
 STONE.BASALT.ADJECTIVE,,Basalt,玄武岩
 STONE.BASALT.NOUN,,Basalt,玄武岩
@@ -886,8 +917,8 @@ TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough c
 TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",遵循的一个很好的经验法则是确保您的人口中每个定居者都有 10 块庄稼播种。 目前有 7 个定居者在四处铣削，所以继续点击 “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”，并在草地区指定/拖出几个农场地块。
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.",没有别的事情可做，你的定居者将开始准备这些 {{ROOMS.FARM.PLURAL}}，通过耕作地球准备播种的种子。 这不需要任何特殊的工具或知识，所以每个人都应该参与。
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",这将准备播种的地块，但是在农民来种植相关种子之前，您需要选择在每个农场地上种植哪个作物。 你的定居者带来了一系列不同的种子。 您可以单击右上角的 “资源”，获取结算中所有商品的明细。
-TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GRANARY}} (you can right-click to go back up to a previous menu) and designate an area to be used as a {{STOCKPILE.GRANARY}}, where seeds and grains are stored. ",为了让你的农民真正获得这些种子，他们需要储存在一个矮人的库存中，而不是像现在那样储存在一个矮人的库存中。 点击 {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{储存储存 .粮仓}}（您可以右键单击返回到上一个菜单），并指定一个区域用作 {{储存 .粮仓}}，其中种子和谷物存储。
-TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.TOOLS}} and designate another area to be used to store tools.,
+TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GROUP.SEEDS}} (you can right-click to go back up to a previous menu) and designate an area to be used for seeds to be stored.",为了让你的农民真正获得这些种子，他们需要储存在一个矮人的库存中，而不是像现在那样储存在一个矮人的库存中。 点击 {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{储存储存 .粮仓}}（您可以右键单击返回到上一个菜单），并指定一个区域用作 {{储存 .粮仓}}，其中种子和谷物存储。
+TUTORIAL.2.D,,Your settlers have also brought a bunch of tools with them what will need moving around. From {{ROOMS.STOCKPILES}} also choose {{STOCKPILE.GROUP.TOOLS}} and designate another area to be used to store tools.,
 TUTORIAL.3.A,,"After some time your settlers should put items they are not using into stockpiles, like the seeds that are to be sown.",经过一段时间之后，您的定居者应该把他们没有使用的物品放入库中，就像要播种的种子一样。
 TUTORIAL.3.B,,"Left-click on each of the {{ROOMS.FARM.PLURAL}} and select a crop to be planted there. Don’t select {{VEGETABLE.BARLEY}} or {{VEGETABLE.HOPS}} for now, as these crops are used in the production of beer, not food.",左键单击每个 {{{ROMS.FARM. 复数}}，然后选择要在那里种植的作物。 现在不要选择 {{{蔬菜. 大麦}} 或 {{蔬菜. 啤酒花}}，因为这些作物用于生产啤酒，而不是食物。
 TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the seeds you have selected to these {{ROOMS.FARM.PLURAL}}. Sowing seeds does not require any special tools but you might want to assign more settlers as {{PROFESSION.FARMER.PLURAL}}. Left-click on a settler who is wandering around aimlessly.,您的 {{{{专业. 农民. 复数}} 现在将开始工作，播种您选择的种子 {{Rooms.FARM. 复数}}}。 播种种子不需要任何特殊的工具，但您可能希望将更多的定居者分配为 {{{ORTI.GER .複数}}}。 左键点击一个定居者谁是漫无目的地徘徊。
@@ -895,7 +926,7 @@ TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inven
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.",请注意，某些作业要求工作人员在其库存中具有特定的工具，如果结算中没有可用的工具，则不会处理需要该工具的作业。 例如，您可以将更多定居者分配为 {{{{专业. 伐木刀}}}，但如果没有可用的 {{PROFESSION.WOODCUTTER}}，他们就无法砍伐树木。
 TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",您的农作物现在将在 {{季节. 秋季}} 中生长并最终由您的 {{{职业. 农民. 复数}} 收获。 有些农作物可以在今年晚些时候再次种植，并通过 {{PROFESSION.FARMER.PLURAL}} 生存，但有些农作物不能生存。 为了充分利用你的作物，最好是生产汤从收获的蔬菜，或面包从谷物。
 TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.",一旦你的作物准备就绪，让我们得到一个 {{ROOMS.KITCHEN}} 设置来生产汤。 转到顶层菜单，然后 {{ZONES.LABEL}} > {{房间. 厨房}} 并拖出 {{房间. 厨房}}} 区域。 在山下国王的发展这一点上，无论它是在室外还是室内都没关系，但在未来，你会希望你所有的房间都有一个天花板来保护他们免受元素的影响。
-TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.PANTRY}} area to store any harvested crops.",与农场地块不同，厨房（和大多数其他房间）需要家具才能发挥作用。 当您放置了厨房区域时，点击 “家具”，您将看到可以添加的家具。 要生产汤，你需要在同一个厨房区域建立 {{家具. 水桶}}，{{家具. 厨房 _ 工作台式}} 和 {{家具. 锅炉}}}。 此外，指定一个 {{储存 .SCAVER}} 区域来存储任何收获的作物。
+TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.GROUP.FOOD}} {{ROOMS.STOCKPILE}} to store any harvested crops.",与农场地块不同，厨房（和大多数其他房间）需要家具才能发挥作用。 当您放置了厨房区域时，点击 “家具”，您将看到可以添加的家具。 要生产汤，你需要在同一个厨房区域建立 {{家具. 水桶}}，{{家具. 厨房 _ 工作台式}} 和 {{家具. 锅炉}}}。 此外，指定一个 {{储存 .SCAVER}} 区域来存储任何收获的作物。
 TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!",当你的农作物收获后，厨师会把蔬菜带到 {{家具 .Kitchen_WORKTOP}}，然后将它们添加到 {{家具 .厨师 _CULDRON}} 中，用水和生产汤！ 制作汤和烘烤面包意味着你的食物供应将更进一步-一个蔬菜将喂一个矮人一顿饭，但 3 个蔬菜煮成汤将提供 12 餐！
 TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",最终，这个厨房会生产一个充满蒸热汤的大锅，但厨师们不喜欢其他矮人在他们的厨房里得到的方式，所以你需要把汤带到一个宴会厅，以便整个定居点享受。 点击 {{ZONES.LABEL}} > {{房间节奏 _ 大厅}} 指定一个宴会厅，然后添加一个 {{家具. 大厅}}。 请注意，在提供含有浓厚美味汤的大锅之前，不会放置一个宴会厅大锅。
 TUTORIAL.7.A,,Over time you will want to expand your food production but this will keep our small settlement nourished for the upcoming winter - your settlers have brought rations to sustain them while the first crops grow.,随着时间的推移，你会希望扩大你的粮食生产，但这将使我们的小定居点在即将到来的冬天得到营养-你的定居者带来了口粮来维持粮食生产，同时第一批作物生长。
@@ -913,7 +944,6 @@ TUTORIAL.PROGRESS_DESCRIPTION.PROFESSIONS_ASSIGNED,Used to show a progress indic
 TUTORIAL.PROGRESS_DESCRIPTION.TEXT,Used to show a progress indicator in the form: 2 of 10 stone blocks,{{currentQuantity}} of {{requiredQuantity}} {{targetDescription}},{{currentQuantity}} {{requiredQuantity}} {{targetDescription}}
 TUTORIAL.PROGRESS_DESCRIPTION.TILES,Used to show a progress indicator for a certain number of tiles e.g. 2 of 10 farm plot tiles,{{roomName}} tiles,{{roomName}} 张瓷砖
 TUTORIAL.SAVING.A,,"Your progress is saved automatically at midnight, and also whenever you exit the game. You can also quicksave by pressing the F5 key.",
-TUTORIAL.SAVING.B,,"Currently the game only works with a single save file at a time, but during the alpha managing multiple save files will be available.",
 TUTORIAL.TIME.A,,"The upper-right section of the screen shows the current date and time, and has controls for the game speed.",
 TUTORIAL.TIME.B,,You can press the spacebar to pause or unpause the game.,
 TUTORIAL.TIME.C,,"The 1 key sets the game to run at normal speed, while the 2, 3 and 4 keys make the game run at an increasingly faster pace. The game will automatically jump to speed 4 while all your settlers are asleep.",
