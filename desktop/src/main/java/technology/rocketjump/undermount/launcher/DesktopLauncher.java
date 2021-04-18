@@ -19,8 +19,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 
-import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.DISPLAY_FULLSCREEN;
+import static technology.rocketjump.undermount.persistence.UserPreferences.FullscreenMode.BORDERLESS_FULLSCREEN;
+import static technology.rocketjump.undermount.persistence.UserPreferences.FullscreenMode.EXCLUSIVE_FULLSCREEN;
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.DISPLAY_RESOLUTION;
+import static technology.rocketjump.undermount.screens.menus.options.GraphicsOptionsTab.getFullscreenMode;
 
 public class DesktopLauncher {
 
@@ -49,7 +51,13 @@ public class DesktopLauncher {
         LocalModRepository localModRepository = preInjector.getInstance(LocalModRepository.class);
         localModRepository.packageActiveMods();
 
-        config.fullscreen = Boolean.valueOf(userPreferences.getPreference(DISPLAY_FULLSCREEN, "true"));
+        UserPreferences.FullscreenMode fullscreenMode = getFullscreenMode(userPreferences);
+
+        if (fullscreenMode.equals(BORDERLESS_FULLSCREEN)) {
+            System.setProperty("org.lwjgl.opengl.Window.undecorated", "true");
+        }
+        config.fullscreen = fullscreenMode.equals(EXCLUSIVE_FULLSCREEN);
+
 
         Resolution displayResolution = getDisplayResolution(userPreferences);
         config.width = displayResolution.width;

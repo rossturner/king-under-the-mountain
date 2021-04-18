@@ -58,6 +58,7 @@ public class UserPreferences {
 		LANGUAGE,
 		DISPLAY_RESOLUTION,
 		DISPLAY_FULLSCREEN,
+		FULLSCREEN_MODE,
 		EDGE_SCROLLING,
 		TREE_TRANSPARENCY,
 		PAUSE_FOR_NOTIFICATIONS,
@@ -72,8 +73,7 @@ public class UserPreferences {
 		TWITCH_PRIORITISE_SUBSCRIBERS;
 
 	}
-	private static final List<PreferenceKey> ALWAYS_PERSIST_KEYS = Arrays.asList(PreferenceKey.SAVE_LOCATION,
-			PreferenceKey.DISPLAY_FULLSCREEN);
+	private static final List<PreferenceKey> ALWAYS_PERSIST_KEYS = Arrays.asList(PreferenceKey.SAVE_LOCATION, PreferenceKey.FULLSCREEN_MODE);
 
 	public String getPreference(PreferenceKey key, String defaultValue) {
 		String property = properties.getProperty(key.name());
@@ -112,6 +112,19 @@ public class UserPreferences {
 		}
 
 		preferencesJson = JSONObject.toJSONString(properties);
+	}
+
+	public enum FullscreenMode {
+
+		WINDOWED("GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.WINDOWED"),
+		BORDERLESS_FULLSCREEN("GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.BORDERLESS_FULLSCREEN"),
+		EXCLUSIVE_FULLSCREEN("GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.EXCLUSIVE_FULLSCREEN");
+
+		public final String i18nKey;
+
+		FullscreenMode(String i18nKey) {
+			this.i18nKey = i18nKey;
+		}
 	}
 
 }

@@ -290,6 +290,9 @@ GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,Dimensi
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,Sauvegarde en cours...,Guardando…,Spiel wird gespeichert…,Salvataggio...,Salvando…,A guardar…,Сохранение…,Zapisywanie...,,,,,
 GUI.OPTIONS.AUDIO.TITLE,,Sound Options,Options sonores,Opciones de sonido,Audioeinstellungen,Opzioni audio,Opções de Som,Opções de Som,Настройки звука,,,,,,
 GUI.OPTIONS.GRAPHICS.TITLE,,Graphics Options ,Options graphiques ,Ajustes de vídeo ,Grafikeinstellungen ,Opzioni grafiche ,Opções Gráficas ,Opções Gráficas ,Настройки графики ,Ustawienia Grafiki ,Beeldinstellingen ,Grafikinställningar ,Grafikkinnstillinger ,Grafikai beállítások ,Grafiikka-asetukset 
+GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.WINDOWED,,Windowed,,,,,,,,,,,,,
+GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.BORDERLESS_FULLSCREEN,,Borderless,,,,,,,,,,,,,
+GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.EXCLUSIVE_FULLSCREEN,,Exclusive fullscreen,,,,,,,,,,,,,
 GUI.OPTIONS.GAMEPLAY.TITLE,,Gameplay Options ,Options de jeu ,Opciones de juego,Gameplay-Optionen,Opzioni di gioco,Opções de Jogo,Opções de Jogo,Настройки игры,Ustawienia Gry ,,,,,
 GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,,,,,,,,,,,,,
 GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes trees partially transparent when a settler moves behind them,Make trees transparent when obscuring settlers,,,,,,,,,,,,,
