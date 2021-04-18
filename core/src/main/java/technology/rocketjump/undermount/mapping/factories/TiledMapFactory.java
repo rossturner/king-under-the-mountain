@@ -31,9 +31,10 @@ import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RoomPlacementMessage;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
-import technology.rocketjump.undermount.rooms.RoomTile;
-import technology.rocketjump.undermount.rooms.RoomTypeDictionary;
+import technology.rocketjump.undermount.rooms.*;
+import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -61,6 +62,7 @@ public class TiledMapFactory {
 	private final CookingRecipeDictionary cookingRecipeDictionary;
 	private final List<PlantSpecies> crops = new ArrayList<>();
 	private final GameMaterialDictionary gameMaterialDictionary;
+	private final StockpileComponentUpdater stockpileComponentUpdater;
 
 	@Inject
 	public TiledMapFactory(MapGenWrapper mapGenWrapper, ItemTypeDictionary itemTypeDictionary,
@@ -68,7 +70,8 @@ public class TiledMapFactory {
 						   GameMapConverter gameMapConverter, PlantSpeciesDictionary plantSpeciesDictionary,
 						   RoomTypeDictionary roomTypeDictionary, EntityStore entityStore, SettlerFactory setterFactory,
 						   ItemEntityFactory itemEntityFactory, ItemEntityAttributesFactory itemEntityAttributesFactory,
-						   CookingRecipeDictionary cookingRecipeDictionary, GameMaterialDictionary gameMaterialDictionary1) {
+						   CookingRecipeDictionary cookingRecipeDictionary,
+						   StockpileComponentUpdater stockpileComponentUpdater) {
 		this.mapGenWrapper = mapGenWrapper;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.materialDictionary = gameMaterialDictionary;
@@ -82,7 +85,8 @@ public class TiledMapFactory {
 		this.itemEntityFactory = itemEntityFactory;
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
 		this.cookingRecipeDictionary = cookingRecipeDictionary;
-		this.gameMaterialDictionary = gameMaterialDictionary1;
+		this.gameMaterialDictionary = gameMaterialDictionary;
+		this.stockpileComponentUpdater = stockpileComponentUpdater;
 		this.baseFloorMaterial = materialDictionary.getByName("Granite");
 
 		for (PlantSpecies plantSpecies : plantSpeciesDictionary.getAll()) {
@@ -131,20 +135,38 @@ public class TiledMapFactory {
 		ItemType plateItemType = itemTypeDictionary.getByName("Resource-Metal-Plate");
 		ItemType hoopsItemType = itemTypeDictionary.getByName("Product-Barrel-Hoops");
 		GameMaterial metalMaterial = pickMaterialType(metalItemType);
+		List<ItemType> placedItems = Arrays.asList(plankItemType, stoneBlockItemType, metalItemType, plateItemType, hoopsItemType);
 
 		Map<GridPoint2, RoomTile> roomTiles = new HashMap<>();
+		Set<StockpileGroup> stockpileGroups = new HashSet<>();
 
-		createResources(embarkPoint.x - 1, embarkPoint.y - 1, plankItemType, plankMaterialType, gameContext, messageDispatcher, roomTiles);
-		createResources(embarkPoint.x - 1, embarkPoint.y, plankItemType, plankMaterialType, gameContext, messageDispatcher, roomTiles);
-		createResources(embarkPoint.x - 1, embarkPoint.y + 1, plankItemType, plankMaterialType, gameContext, messageDispatcher, roomTiles);
+		createResources(embarkPoint.x - 1, embarkPoint.y - 1, plankItemType, plankMaterialType, gameContext, messageDispatcher, roomTiles, stockpileGroups);
+		createResources(embarkPoint.x - 1, embarkPoint.y, plankItemType, plankMaterialType, gameContext, messageDispatcher, roomTiles, stockpileGroups);
+		createResources(embarkPoint.x - 1, embarkPoint.y + 1, plankItemType, plankMaterialType, gameContext, messageDispatcher, roomTiles, stockpileGroups);
 
-		createResources(embarkPoint.x, embarkPoint.y - 1, stoneBlockItemType, stoneBlockMaterialType, gameContext, messageDispatcher, roomTiles);
-		createResources(embarkPoint.x, embarkPoint.y, stoneBlockItemType, stoneBlockMaterialType, gameContext, messageDispatcher, roomTiles);
-		createResources(embarkPoint.x, embarkPoint.y + 1, stoneBlockItemType, stoneBlockMaterialType, gameContext, messageDispatcher, roomTiles);
+		createResources(embarkPoint.x, embarkPoint.y - 1, stoneBlockItemType, stoneBlockMaterialType, gameContext, messageDispatcher, roomTiles, stockpileGroups);
+		createResources(embarkPoint.x, embarkPoint.y, stoneBlockItemType, stoneBlockMaterialType, gameContext, messageDispatcher, roomTiles, stockpileGroups);
+		createResources(embarkPoint.x, embarkPoint.y + 1, stoneBlockItemType, stoneBlockMaterialType, gameContext, messageDispatcher, roomTiles, stockpileGroups);
 
-		createResources(embarkPoint.x + 1, embarkPoint.y - 1, hoopsItemType, pickMaterialType(METAL), gameContext, messageDispatcher, roomTiles);
-		createResources(embarkPoint.x + 1, embarkPoint.y, metalItemType, metalMaterial, gameContext, messageDispatcher, roomTiles);
-		createResources(embarkPoint.x + 1, embarkPoint.y + 1, plateItemType, pickMaterialType(METAL), gameContext, messageDispatcher, roomTiles);
+		createResources(embarkPoint.x + 1, embarkPoint.y - 1, hoopsItemType, pickMaterialType(METAL), gameContext, messageDispatcher, roomTiles, stockpileGroups);
+		createResources(embarkPoint.x + 1, embarkPoint.y, metalItemType, metalMaterial, gameContext, messageDispatcher, roomTiles, stockpileGroups);
+		createResources(embarkPoint.x + 1, embarkPoint.y + 1, plateItemType, pickMaterialType(METAL), gameContext, messageDispatcher, roomTiles, stockpileGroups);
+
+		List<StockpileGroup> stockpileGroupList = new ArrayList<>(stockpileGroups);
+		RoomType stockpileRoomType = roomTypeDictionary.getByName("STOCKPILE");
+
+		messageDispatcher.dispatchMessage(MessageType.ROOM_PLACEMENT, new RoomPlacementMessage(roomTiles, stockpileRoomType, stockpileGroupList.get(0)));
+
+		Room placedRoom = gameContext.getAreaMap().getTile(embarkPoint).getRoomTile().getRoom();
+		StockpileComponent stockpileComponent = placedRoom.getComponent(StockpileComponent.class);
+		for (StockpileGroup stockpileGroup : stockpileGroupList) {
+			stockpileComponentUpdater.toggleGroup(stockpileComponent, stockpileGroup, false, true);
+		}
+		for (ItemType placedItemType : placedItems) {
+			if (!stockpileComponent.isEnabled(placedItemType)) {
+				stockpileComponentUpdater.toggleItem(stockpileComponent, placedItemType, true, true, true);
+			}
+		}
 	}
 
 	private void addStartingInventory(Deque<QuantifiedItemTypeWithMaterial> inventoryStartingItems, List<Entity> allSettlers, GameContext gameContext, MessageDispatcher messageDispatcher) {
@@ -221,7 +243,7 @@ public class TiledMapFactory {
 	}
 
 	private void createResources(int x, int y, ItemType itemType, GameMaterial materialToUse,
-								 GameContext gameContext, MessageDispatcher messageDispatcher, Map<GridPoint2, RoomTile> roomTiles) {
+								 GameContext gameContext, MessageDispatcher messageDispatcher, Map<GridPoint2, RoomTile> roomTiles, Set<StockpileGroup> stockpileGroups) {
 		TiledMap areaMap = gameContext.getAreaMap();
 
 		MapTile tile = areaMap.getTile(x, y);
@@ -249,6 +271,7 @@ public class TiledMapFactory {
 		itemEntityAttributes.setQuantity(itemType.getMaxStackSize());
 		GridPoint2 location = new GridPoint2(x, y);
 		entityStore.createResourceItem(itemEntityAttributes, location);
+		stockpileGroups.add(itemType.getStockpileGroup());
 
 		RoomTile roomTile = new RoomTile();
 		roomTile.setTile(gameContext.getAreaMap().getTile(location));
