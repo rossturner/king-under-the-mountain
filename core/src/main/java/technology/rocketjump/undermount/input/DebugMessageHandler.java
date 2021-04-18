@@ -70,6 +70,8 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 //							entity.getLocationComponent().setWorldPosition(message.getWorldPosition(), false);
 //						}));
 
+						messageDispatcher.dispatchMessage(MessageType.YEAR_ELAPSED);
+
 
 						if (tile.getExploration().equals(TileExploration.UNEXPLORED)) {
 							messageDispatcher.dispatchMessage(MessageType.FLOOD_FILL_EXPLORATION, tile.getTilePosition());

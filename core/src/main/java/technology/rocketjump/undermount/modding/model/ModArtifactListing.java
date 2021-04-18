@@ -149,6 +149,8 @@ public class ModArtifactListing {
 						"settings", "sunlight.json", JSON_OBJECT, REPLACES_EXISTING, SunlightProcessor.class),
 				def("settings", "timeAndDaySettings", SINGLE_FILE, JSON_OBJECT, null,
 						"settings", "timeAndDaySettings.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
+				def("settings", "immigrationSettings", SINGLE_FILE, JSON_OBJECT, null,
+						"settings", "immigrationSettings.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 
 				////////// sounds //////////
 				def("sounds/data", null, COPY_ORIGINAL_FILES, WAV, null,

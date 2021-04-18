@@ -1,8 +1,11 @@
 package technology.rocketjump.undermount.settlement;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
@@ -35,19 +38,43 @@ import static technology.rocketjump.undermount.settlement.notifications.Notifica
 @Singleton
 public class ImmigrationManager implements Updatable, Telegraph {
 
-	private static final int SETTLER_VARIANCE = 6;
-	private static final float MAX_IMMIGRATION_PER_POPULATION = 0.4f;
 	private final MessageDispatcher messageDispatcher;
 	private final ItemTracker itemTracker;
 	private final SettlerTracker settlerTracker;
 	private final SettlerFactory settlerFactory;
 	private final ProfessionDictionary professionDictionary;
+	private final int baseImmigrationVarianceIterations;
+	private final int baseImmigrationExtraFixedAmount;
+	private final boolean extraFoodImmigrationEnabled;
+	private final float extraFoodImmigrationSettlersPerYearSupplyOfBonusFood;
+	private final boolean immigrationCapsEnabled;
+	private final int immigrationCapsMinAmountForCapsToApply;
+	private final float immigrationCapMaxImmigrationPerPopulation;
 	private GameContext gameContext;
+
+	private final boolean baseImmigrationEnabled;
+	private final int baseImmigrationVariance;
+
 	private float timeSinceLastUpdate;
 
 	@Inject
 	public ImmigrationManager(MessageDispatcher messageDispatcher, ItemTracker itemTracker, SettlerTracker settlerTracker,
 							  SettlerFactory settlerFactory, ProfessionDictionary professionDictionary) {
+		FileHandle settingsJsonFile = new FileHandle("assets/settings/immigrationSettings.json");
+		JSONObject immigrationSettings = JSON.parseObject(settingsJsonFile.readString());
+
+		baseImmigrationEnabled = immigrationSettings.getJSONObject("baseImmigration").getBooleanValue("enabled");
+		baseImmigrationVariance = immigrationSettings.getJSONObject("baseImmigration").getIntValue("varianceNumber");
+		baseImmigrationVarianceIterations = immigrationSettings.getJSONObject("baseImmigration").getIntValue("varianceIterations");
+		baseImmigrationExtraFixedAmount = immigrationSettings.getJSONObject("baseImmigration").getIntValue("extraFixedAmount");
+
+		extraFoodImmigrationEnabled = immigrationSettings.getJSONObject("extraFoodImmigration").getBooleanValue("enabled");
+		extraFoodImmigrationSettlersPerYearSupplyOfBonusFood = immigrationSettings.getJSONObject("extraFoodImmigration").getFloatValue("settlersPerYearSupplyOfBonusFood");
+
+		immigrationCapsEnabled = immigrationSettings.getJSONObject("immigrationCaps").getBooleanValue("enabled");
+		immigrationCapsMinAmountForCapsToApply = immigrationSettings.getJSONObject("immigrationCaps").getIntValue("minAmountForCapsToApply");
+		immigrationCapMaxImmigrationPerPopulation = immigrationSettings.getJSONObject("immigrationCaps").getFloatValue("maxImmigrationPerPopulation");
+
 		this.messageDispatcher = messageDispatcher;
 		this.itemTracker = itemTracker;
 		this.settlerTracker = settlerTracker;
@@ -105,8 +132,11 @@ public class ImmigrationManager implements Updatable, Telegraph {
 	}
 
 	private void calculateNextImmigration() {
-		gameContext.getSettlementState().setImmigrantsDue(calculateNumNewSettlers());
-		gameContext.getSettlementState().setNextImmigrationGameTime(pickNextImmigrationTime());
+		int numImmigrantsDue = calculateNumNewSettlers();
+		if (numImmigrantsDue > 0) {
+			gameContext.getSettlementState().setImmigrantsDue(numImmigrantsDue);
+			gameContext.getSettlementState().setNextImmigrationGameTime(pickNextImmigrationTime());
+		}
 	}
 
 	private Double pickNextImmigrationTime() {
@@ -120,28 +150,39 @@ public class ImmigrationManager implements Updatable, Telegraph {
 	}
 
 	private int calculateNumNewSettlers() {
-		int foodAmount = 0;
-		for (Entity entity : itemTracker.getUnallocatedEdibleItems()) {
-			foodAmount += entity.getOrCreateComponent(ItemAllocationComponent.class).getNumUnallocated();
+		if (!baseImmigrationEnabled) {
+			return 0;
 		}
+
+		int totalNumImmigrants = baseImmigrationExtraFixedAmount;
+		for (int iteration = 0; iteration < baseImmigrationVarianceIterations; iteration++) {
+			totalNumImmigrants += gameContext.getRandom().nextInt(baseImmigrationVariance);
+		}
+
 		int currentNumSettlers = settlerTracker.count();
 
-		GameClock clock = gameContext.getGameClock();
+		if (extraFoodImmigrationEnabled) {
+			int foodAmount = 0;
+			for (Entity entity : itemTracker.getUnallocatedEdibleItems()) {
+				foodAmount += entity.getOrCreateComponent(ItemAllocationComponent.class).getNumUnallocated();
+			}
 
-		// Need enough food to last each settler ~3 seasons -> 2 meals/day * 30 days -> 60 meals
-		// 1 edible item should be able to prepare 4 meals (or one if it is already prepared)
-		int foodNeededPerSettler = (clock.DAYS_IN_SEASON * 3 * 2) / 4;
-		int surplusFood = foodAmount - (currentNumSettlers * foodNeededPerSettler);
-		int bonusSettlerIncrease = (surplusFood / foodNeededPerSettler) / 3;
+			GameClock clock = gameContext.getGameClock();
 
-		int baseSettlerIncrease = gameContext.getRandom().nextInt(SETTLER_VARIANCE) + gameContext.getRandom().nextInt(SETTLER_VARIANCE) + 1;
-
-		int totalImmigration = baseSettlerIncrease + Math.max(bonusSettlerIncrease, 0);
-		if (currentNumSettlers > 20) { // Only cap immigration as fraction of population above this figure
-			int maxImmigration = Math.round((float)currentNumSettlers * MAX_IMMIGRATION_PER_POPULATION);
-			totalImmigration = Math.min(totalImmigration, maxImmigration);
+			// Need enough food to last each settler ~3 seasons -> 2 meals/day * 30 days -> 60 meals
+			// 1 edible item should be able to prepare 4 meals (or one if it is already prepared)
+			int foodNeededPerSettler = (clock.DAYS_IN_SEASON * 3 * 2) / 4;
+			int surplusFood = foodAmount - (currentNumSettlers * foodNeededPerSettler);
+			int numSettlersDueToExtraFood = (int)(((float)surplusFood / (float)foodNeededPerSettler) * extraFoodImmigrationSettlersPerYearSupplyOfBonusFood);
+			totalNumImmigrants += numSettlersDueToExtraFood;
 		}
-		return totalImmigration;
+
+		if (immigrationCapsEnabled && currentNumSettlers >= immigrationCapsMinAmountForCapsToApply) {
+			int maxImmigration = Math.round((float)currentNumSettlers * immigrationCapMaxImmigrationPerPopulation);
+			totalNumImmigrants = Math.min(totalNumImmigrants, maxImmigration);
+		}
+
+		return totalNumImmigrants;
 	}
 
 	private void triggerImmigration() {

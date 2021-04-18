@@ -153,6 +153,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			if (isItemContainingLiquidOnGroundAndNoneAllocated(selectable.getEntity())) {
 				Entity entity = selectable.getEntity();
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_DUMP_LIQUID_CONTENTS, entity);
+				This.update();
 			}
 		});
 

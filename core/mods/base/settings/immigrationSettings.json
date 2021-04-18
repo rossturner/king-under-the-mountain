@@ -1,0 +1,17 @@
+{
+  "baseImmigration": {
+    "enabled": true,
+    "varianceNumber": 6,
+    "varianceIterations": 2,
+    "extraFixedAmount": 1
+  },
+  "extraFoodImmigration": {
+    "enabled": true,
+    "settlersPerYearSupplyOfBonusFood": 0.3
+  },
+  "immigrationCaps": {
+    "enabled": true,
+    "minAmountForCapsToApply": 30,
+    "maxImmigrationPerPopulation": 0.3
+  }
+}
