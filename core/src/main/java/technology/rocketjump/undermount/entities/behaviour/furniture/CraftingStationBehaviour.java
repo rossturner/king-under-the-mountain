@@ -88,7 +88,8 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 
 	}
 
-	public CraftingStationBehaviour(CraftingType craftingType, JobType craftItemJobType, JobType haulingJobType, GameMaterialDictionary gameMaterialDictionary) {
+	public CraftingStationBehaviour(CraftingType craftingType, JobType craftItemJobType, JobType haulingJobType,
+									GameMaterialDictionary gameMaterialDictionary) {
 		this.craftingType = craftingType;
 		this.craftItemJobType = craftItemJobType;
 		this.haulingJobType = haulingJobType;
@@ -197,7 +198,18 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			// Crafting in progress, check if all requirements met on item or liquid addition
 		}
 
-		for (QuantifiedItemTypeWithMaterial inputRequirement : currentProductionAssignment.targetRecipe.getInput()) {
+		if (currentProductionAssignment.getInputSelectionsLastUpdated() < gameContext.getGameClock().getCurrentGameTime() - gameContext.getGameClock().HOURS_IN_DAY &&
+			haulingInputAllocations.isEmpty()) {
+			// More than one day since last updated selections, perhaps we ran out of that material
+			currentProductionAssignment.getInputMaterialSelections().clear();
+			currentProductionAssignment.setInputSelectionsLastUpdated(gameContext.getGameClock().getCurrentGameTime());
+		}
+
+		if (currentProductionAssignment.inputMaterialSelections.size() != currentProductionAssignment.targetRecipe.getInput().size()) {
+			selectMaterials(gameContext);
+		}
+
+		for (QuantifiedItemTypeWithMaterial inputRequirement : currentProductionAssignment.getInputMaterialSelections()) {
 			createMissingAllocationIfNeeded(inputRequirement, gameContext);
 		}
 
@@ -242,8 +254,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			return;
 		}
 
-		// FIXME for requirements that do not specify a material, this code assumes there will only be one hauling required
-		// i.e. it does not account for multiple input allocation that might end up as different material types
 		int amountRequired = requirement.getQuantity();
 		Iterator<HaulingAllocation> iterator = haulingInputAllocations.iterator();
 		while (iterator.hasNext()) {
@@ -358,6 +368,42 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		} else {
 			// No items of this type available
 			return null;
+		}
+	}
+
+	private void selectMaterials(GameContext gameContext) {
+		for (int inputCursor = 0; inputCursor < currentProductionAssignment.targetRecipe.getInput().size(); inputCursor++) {
+			if (currentProductionAssignment.getInputMaterialSelections().size() > inputCursor) {
+				// Already have this one selected
+				continue;
+			}
+
+			QuantifiedItemTypeWithMaterial inputRequirement = currentProductionAssignment.targetRecipe.getInput().get(inputCursor).clone();
+
+			if (inputRequirement.getMaterial() != null) {
+				// already have a material set
+				currentProductionAssignment.getInputMaterialSelections().add(inputRequirement);
+			} else if (inputRequirement.isLiquid()) {
+				Logger.error("Not yet implemented: Material selection for liquid crafting inputs");
+			} else {
+				// Need to pick a material
+				messageDispatcher.dispatchMessage(MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE, new ItemMaterialSelectionMessage(
+						inputRequirement.getItemType(),
+						(gameMaterial) -> {
+							if (gameMaterial != null) {
+								inputRequirement.setMaterial(gameMaterial);
+							}
+						}
+				));
+
+				if (inputRequirement.getMaterial() != null) {
+					currentProductionAssignment.getInputMaterialSelections().add(inputRequirement);
+					currentProductionAssignment.setInputSelectionsLastUpdated(gameContext.getGameClock().getCurrentGameTime());
+				} else {
+					// Couldn't find an appropriate material for this item, break out of loop to match order of entries with targetRecipe.inputs
+					break;
+				}
+			}
 		}
 	}
 

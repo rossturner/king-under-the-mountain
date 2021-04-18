@@ -112,7 +112,7 @@ public class TiledMapFactory {
 		GridPoint2 embarkPoint = areaMap.getEmbarkPoint();
 		messageDispatcher.dispatchMessage(MessageType.FLOOD_FILL_EXPLORATION, embarkPoint);
 
-		Deque<QuantifiedItemTypeWithMaterial> initiallyHauledStartuingItems = initInitiallyHauledStartingItems();
+		Deque<QuantifiedItemTypeWithMaterial> initiallyHauledStartingItems = initInitiallyHauledStartingItems();
 		Deque<QuantifiedItemTypeWithMaterial> inventoryStartingItems = initInventoryStartingItems(professionList.size(), gameContext.getRandom());
 		List<Entity> allSettlers = new ArrayList<>();
 
@@ -121,7 +121,7 @@ public class TiledMapFactory {
 
 			Entity settler = createSettler(embarkPoint.x, embarkPoint.y, primaryProfession, secondaryProfession, gameContext, messageDispatcher);
 
-			addAnyHauledItems(settler, initiallyHauledStartuingItems, gameContext, messageDispatcher);
+			addAnyHauledItems(settler, initiallyHauledStartingItems, gameContext, messageDispatcher);
 			allSettlers.add(settler);
 		}
 

@@ -24,9 +24,9 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.ItemMaterialSelectionMessage;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingAllocationMessage;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
 import technology.rocketjump.undermount.messaging.types.RequestPlantRemovalMessage;
@@ -34,9 +34,7 @@ import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static technology.rocketjump.undermount.entities.ItemEntityMessageHandler.createHaulingJob;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.PLACED_FOR_CONSTRUCTION;
@@ -143,34 +141,17 @@ public class ConstructionManager implements Updatable {
 				continue;
 			}
 
-			List<Entity> itemsByType = itemTracker.getItemsByType(requirement.getItemType(), true);
-			if (itemsByType.isEmpty()) {
-				allMaterialsSelected = false;
-			} else {
-				// Select most popular material available in this resource
-				Map<GameMaterial, Integer> availabilityMap = new HashMap<>();
-				GameMaterial mostCommonMaterial = null;
-				int mostCommonQuantity = 0;
-				for (Entity entity : itemsByType) {
-					ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-					GameMaterial itemMaterial = attributes.getMaterial(attributes.getItemType().getPrimaryMaterialType());
-					ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
-					int availableQuantity = itemAllocationComponent.getNumUnallocated();
-					Integer quantityOfMaterial = availabilityMap.getOrDefault(itemMaterial, 0);
-					quantityOfMaterial += availableQuantity;
-
-					if (quantityOfMaterial > mostCommonQuantity) {
-						mostCommonQuantity = quantityOfMaterial;
-						mostCommonMaterial = itemMaterial;
+			messageDispatcher.dispatchMessage(MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE, new ItemMaterialSelectionMessage(
+					requirement.getItemType(),
+					(gameMaterial) -> {
+						if (gameMaterial != null) {
+							requirement.setMaterial(gameMaterial);
+						}
 					}
-					availabilityMap.put(itemMaterial, quantityOfMaterial);
-				}
+			));
 
-				if (mostCommonMaterial == null) {
-					allMaterialsSelected = false;
-				} else {
-					requirement.setMaterial(mostCommonMaterial);
-				}
+			if (requirement.getMaterial() == null) {
+				allMaterialsSelected = false;
 			}
 		}
 

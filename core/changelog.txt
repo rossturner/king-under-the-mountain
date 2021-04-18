@@ -13,10 +13,13 @@ Alpha 5.1
     - Wood shavings when working with a sawmill or carpentry
     - Stone chippings from stonemasonry
     - Sparks from blacksmith's forge (look out for fires later!)
+    - Dust cloud on furniture construction/destruction
+    - And more that I can't remember!
 - Option to empty items containing liquid onto the ground
 - Immigration settings are now open to modding
 - Added the initial stockpile back underneath the starting items
 - Fixed a bug for when an invalid language code was kept in preferences
+- Fixed a bug where crafting may mix up multiple input items of the same type e.g. crushing ore with different ore types at once
 
 Alpha 5.0.1
 

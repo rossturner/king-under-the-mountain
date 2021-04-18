@@ -33,6 +33,17 @@ public class QuantifiedItemTypeWithMaterial implements ChildPersistable {
 
 	private boolean liquid = false;
 
+	public QuantifiedItemTypeWithMaterial clone() {
+		QuantifiedItemTypeWithMaterial clone = new QuantifiedItemTypeWithMaterial();
+		clone.itemTypeName = this.itemTypeName;
+		clone.itemType = this.itemType;
+		clone.quantity = this.quantity;
+		clone.materialName = this.materialName;
+		clone.material = this.material;
+		clone.liquid = this.liquid;
+		return clone;
+	}
+
 	public static List<QuantifiedItemTypeWithMaterial> convert(List<QuantifiedItemType> withoutMaterial) {
 		List<QuantifiedItemTypeWithMaterial> withMaterialList = new ArrayList<>(withoutMaterial.size());
 		for (QuantifiedItemType quantifiedItemType : withoutMaterial) {
@@ -46,7 +57,6 @@ public class QuantifiedItemTypeWithMaterial implements ChildPersistable {
 		}
 		return withMaterialList;
 	}
-
 
 	public GameMaterial getMaterial() {
 		return material;

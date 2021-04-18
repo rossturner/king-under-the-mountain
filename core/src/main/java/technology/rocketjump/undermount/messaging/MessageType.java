@@ -124,6 +124,7 @@ public class MessageType {
 	public static final int REQUEST_ITEM_HAULING = 702;
 	public static final int REQUEST_HAULING_ALLOCATION = 703;
 	public static final int LOOKUP_ITEM_TYPE = 704;
+	public static final int SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE = 705;
 
 	// Furniture & doorway specific messages
 	public static final int CREATE_DOORWAY = 801;

@@ -31,10 +31,7 @@ import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.ItemCreationRequestMessage;
-import technology.rocketjump.undermount.messaging.types.LookupMessage;
-import technology.rocketjump.undermount.messaging.types.RequestHaulingAllocationMessage;
-import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
+import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.Room;
 import technology.rocketjump.undermount.rooms.RoomStore;
@@ -76,6 +73,7 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.REQUEST_ITEM_HAULING);
 		messageDispatcher.addListener(this, MessageType.REQUEST_HAULING_ALLOCATION);
 		messageDispatcher.addListener(this, MessageType.LOOKUP_ITEM_TYPE);
+		messageDispatcher.addListener(this, MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE);
 	}
 
 	@Override
@@ -92,6 +90,9 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.LOOKUP_ITEM_TYPE: {
 				return handle((LookupMessage)msg.extraInfo);
+			}
+			case MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE: {
+				return handle((ItemMaterialSelectionMessage)msg.extraInfo);
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
@@ -186,6 +187,35 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		}
 
 		message.allocationCallback.allocationFound(null);
+		return true;
+	}
+
+	private boolean handle(ItemMaterialSelectionMessage itemMaterialSelectionMessage) {
+		List<Entity> itemsByType = itemTracker.getItemsByType(itemMaterialSelectionMessage.itemType, true);
+		if (!itemsByType.isEmpty()) {
+			// Select most popular material available in this resource
+			Map<GameMaterial, Integer> availabilityMap = new HashMap<>();
+			GameMaterial mostCommonMaterial = null;
+			int mostCommonQuantity = 0;
+			for (Entity entity : itemsByType) {
+				ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				GameMaterial itemMaterial = attributes.getMaterial(attributes.getItemType().getPrimaryMaterialType());
+				ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
+				int availableQuantity = itemAllocationComponent.getNumUnallocated();
+				Integer quantityOfMaterial = availabilityMap.getOrDefault(itemMaterial, 0);
+				quantityOfMaterial += availableQuantity;
+
+				if (quantityOfMaterial > mostCommonQuantity) {
+					mostCommonQuantity = quantityOfMaterial;
+					mostCommonMaterial = itemMaterial;
+				}
+				availabilityMap.put(itemMaterial, quantityOfMaterial);
+			}
+
+			itemMaterialSelectionMessage.callback.materialFound(mostCommonMaterial);
+		} else {
+			itemMaterialSelectionMessage.callback.materialFound(null);
+		}
 		return true;
 	}
 
