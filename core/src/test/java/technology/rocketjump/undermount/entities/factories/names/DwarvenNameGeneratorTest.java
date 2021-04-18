@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.RandomXS128;
 import com.google.inject.Guice;
 import org.junit.Before;
 import org.junit.Test;
+import technology.rocketjump.undermount.entities.factories.DwarvenNameGenerator;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidName;
 
 import java.util.LinkedList;
@@ -14,13 +15,13 @@ import static org.fest.assertions.Assertions.assertThat;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Gender.FEMALE;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Gender.MALE;
 
-public class NameGeneratorTest {
+public class DwarvenNameGeneratorTest {
 
-	private NameGenerator nameGenerator;
+	private DwarvenNameGenerator nameGenerator;
 
 	@Before
 	public void setup() {
-		nameGenerator = Guice.createInjector().getInstance(NameGenerator.class);
+		nameGenerator = Guice.createInjector().getInstance(DwarvenNameGenerator.class);
 	}
 
 	@Test

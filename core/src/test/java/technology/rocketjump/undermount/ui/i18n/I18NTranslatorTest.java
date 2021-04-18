@@ -412,7 +412,7 @@ public class I18NTranslatorTest {
 
 		I18nText description = translator.getDescription(wallConstruction);
 
-		assertThat(description.toString()).isEqualTo("Construction of dolostone smooth stone wall");
+		assertThat(description.toString()).isEqualTo("Construction of smooth stone wall");
 	}
 
 	@Test
@@ -442,7 +442,7 @@ public class I18NTranslatorTest {
 
 		I18nText result = translator.getDateTimeString(gameClock);
 
-		assertThat(result.toString()).isEqualTo("08:00, day 1, spring");
+		assertThat(result.toString()).isEqualTo("08:00, day 1, spring, year 1");
 	}
 
 	private Entity createTree() throws IOException {

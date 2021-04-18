@@ -22,18 +22,6 @@ public class OverlapLayoutAtlasTest {
 		assertThat(atlas.getByLayoutId(3).getLayout().getId()).isEqualTo(2);
 	}
 
-	@Test
-	public void library_mapsIds_toRotatedEntries() {
-		OverlapLayoutAtlas atlas = new OverlapLayoutAtlas();
-
-		OverlapLayout layoutWithSouthWestOverlap = OverlapLayout.fromString("...\n...\nX..");
-
-		assertThat(atlas.getByLayoutId(layoutWithSouthWestOverlap.getId()).getLayout().toString()).isEqualTo("X..\n...\n...");
-		assertThat(atlas.getByLayoutId(layoutWithSouthWestOverlap.getId()).isFlipX()).isFalse();
-		assertThat(atlas.getByLayoutId(layoutWithSouthWestOverlap.getId()).isFlipY()).isTrue();
-		assertThat(atlas.getByLayoutId(layoutWithSouthWestOverlap.getId()).getUnflippedLayout().toString()).isEqualTo("...\n...\nX..");
-	}
-
 	public static void main(String... args) throws IOException {
 		// Used to produce output of all wall layout mappings
 		OverlapLayoutAtlas atlas = new OverlapLayoutAtlas();
