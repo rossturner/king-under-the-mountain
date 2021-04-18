@@ -103,6 +103,31 @@
   "selectors" : [ ],
   "initialActions" : [ "GoToRandomLocation", "PlaceEntity" ]
 }, {
+  "i18nDescription" : "GOAL.DUMP_LIQUID.DESCRIPTION",
+  "name" : "Dump liquid goal",
+  "actionRelationships" : {
+    "WorkOnJob" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "PlaceEntity" ]
+    },
+    "CancelHaulingAllocation" : { },
+    "PlaceEntity" : { },
+    "GoToLocation" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "WorkOnJob" ]
+    },
+    "JobCompleted" : { },
+    "UnassignJob" : {
+      "fail" : [ "CancelHaulingAllocation" ],
+      "pass" : [ "CancelHaulingAllocation" ]
+    }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+}, {
   "i18nDescription" : "GOAL.EAT.DESCRIPTION",
   "name" : "Eat food goal",
   "actionRelationships" : {

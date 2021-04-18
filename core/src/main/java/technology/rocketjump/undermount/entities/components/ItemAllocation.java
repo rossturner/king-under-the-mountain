@@ -33,7 +33,8 @@ public class ItemAllocation implements Persistable {
 		 */
 		HELD_IN_INVENTORY,
 		PLACED_FOR_CONSTRUCTION, // TODO look closely at this one, is this where the bug is coming from?
-		FOOD_ALLOCATION;
+		FOOD_ALLOCATION,
+		CONTENTS_TO_BE_DUMPED;
 
 	}
 

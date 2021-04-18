@@ -44,7 +44,10 @@ public class FillContainerAction extends Action {
 			if (targetPosition.equals(parentEntityPosition)) {
 				// Find correct zone
 				MapTile currentTile = gameContext.getAreaMap().getTile(parentEntityPosition);
-				Optional<Zone> filteredZone = currentTile.getZones().stream().filter(zone -> zone.getClassification().getZoneType().equals(ZoneClassification.ZoneType.LIQUID_SOURCE)).findFirst();
+				Optional<Zone> filteredZone = currentTile.getZones().stream()
+						.filter(zone -> zone.getClassification().getZoneType().equals(ZoneClassification.ZoneType.LIQUID_SOURCE))
+						.filter(zone -> parent.getAssignedJob().getLiquidAllocation() == null || parent.getAssignedJob().getLiquidAllocation().getLiquidMaterial().equals(zone.getClassification().getTargetMaterial()))
+						.findFirst();
 				if (filteredZone.isPresent()) {
 					GameMaterial targetMaterial = filteredZone.get().getClassification().getTargetMaterial();
 					HaulingComponent haulingComponent = parent.parentEntity.getComponent(HaulingComponent.class);

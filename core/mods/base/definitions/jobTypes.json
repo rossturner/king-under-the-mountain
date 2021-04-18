@@ -129,6 +129,16 @@
     "switchToSpecialGoal": "REMOVE_LIQUID",
     "removeJobWhenAssignmentCancelled": true
   },
+  {
+    "name": "DUMP_LIQUID_FROM_CONTAINER",
+    "workDuration": 0.7,
+    "overrideI18nKey": "ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER",
+    "accessedFromAdjacentTile": false,
+    "haulItemWhileWorking": true,
+    "switchToSpecialGoal": "DUMP_LIQUID",
+    "removeJobWhenAssignmentCancelled": false,
+    "onCompletionSoundAssetName": "WaterDump"
+  },
 
 
   {

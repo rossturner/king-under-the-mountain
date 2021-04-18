@@ -1,0 +1,26 @@
+{
+  "name": "Dump liquid goal",
+  "i18nDescription": "GOAL.DUMP_LIQUID.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["GoToLocation", "PickUpEntity"],
+  "actionRelationships": {
+    "GoToLocation": {
+      "fail": ["UnassignJob"]
+    },
+    "PickUpEntity": {
+      "pass": ["WorkOnJob"],
+      "fail": ["UnassignJob"]
+    },
+    "WorkOnJob": {
+      "pass": ["PlaceEntity"],
+      "fail": ["UnassignJob"]
+    },
+    "JobCompleted": {},
+    "PlaceEntity": {},
+    "UnassignJob": {
+      "pass": ["CancelHaulingAllocation"],
+      "fail": ["CancelHaulingAllocation"]
+    },
+    "CancelHaulingAllocation": {}
+  }
+}

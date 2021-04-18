@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.jobs;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -15,9 +16,11 @@ import technology.rocketjump.undermount.entities.components.LiquidContainerCompo
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -38,6 +41,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour.getAnyNavigableWorkspace;
+import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.CONTENTS_TO_BE_DUMPED;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.DUE_TO_BE_HAULED;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.*;
@@ -47,6 +51,7 @@ import static technology.rocketjump.undermount.zones.ZoneClassification.ZoneType
 public class LiquidMessageHandler implements GameContextAware, Telegraph {
 
 	private static final float WORK_TO_POUR_LIQUID = 1f; // MODDING expose this
+	private static final float WORK_TO_DUMP_LIQUID = 0.3f; // MODDING expose this
 
 	private final MessageDispatcher messageDispatcher;
 	private final GameMaterialDictionary gameMaterialDictionary;
@@ -54,6 +59,7 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 	private final JobType transferLiquidJobType;
 	private final JobType moveLiquidInItemJobType;
 	private final JobType removeLiquidJobType;
+	private final JobType dumpLiquidJobType;
 	private final ItemTracker itemTracker;
 
 	@Inject
@@ -64,10 +70,12 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 		this.transferLiquidJobType = jobTypeDictionary.getByName("TRANSFER_LIQUID");
 		this.moveLiquidInItemJobType = jobTypeDictionary.getByName("MOVE_LIQUID_IN_ITEM");
 		this.removeLiquidJobType = jobTypeDictionary.getByName("REMOVE_LIQUID");
+		this.dumpLiquidJobType = jobTypeDictionary.getByName("DUMP_LIQUID_FROM_CONTAINER");
 		this.itemTracker = itemTracker;
 		messageDispatcher.addListener(this, MessageType.REQUEST_LIQUID_TRANSFER);
 		messageDispatcher.addListener(this, MessageType.REQUEST_LIQUID_ALLOCATION);
 		messageDispatcher.addListener(this, MessageType.REQUEST_LIQUID_REMOVAL);
+		messageDispatcher.addListener(this, MessageType.REQUEST_DUMP_LIQUID_CONTENTS);
 	}
 
 
@@ -82,6 +90,11 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.REQUEST_LIQUID_REMOVAL: {
 				return handle((RequestLiquidRemovalMessage)msg.extraInfo);
+			}
+			case MessageType.REQUEST_DUMP_LIQUID_CONTENTS: {
+				Entity entity = (Entity) msg.extraInfo;
+				requestDumpLiquidContents(entity);
+				return true;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
@@ -272,6 +285,48 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 		return true;
 	}
 
+	private void requestDumpLiquidContents(Entity entity) {
+		if (entity.getType().equals(EntityType.ITEM)) {
+			if (entity.getLocationComponent().getContainerEntity() != null) {
+				Logger.error("Not yet implemented - dumping liquid contents from item within a container");
+				return;
+			}
+
+			ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+
+			ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
+			ItemAllocation allocation = itemAllocationComponent.createAllocation(attributes.getQuantity(), entity, CONTENTS_TO_BE_DUMPED);
+
+			if (allocation != null) {
+				GridPoint2 tileLocation = toGridPoint(entity.getLocationComponent().getWorldPosition());
+
+				HaulingAllocation haulingAllocation = new HaulingAllocation();
+				haulingAllocation.setSourcePosition(tileLocation);
+				haulingAllocation.setSourcePositionType(FLOOR);
+
+				haulingAllocation.setItemAllocation(allocation);
+				haulingAllocation.setHauledEntityType(EntityType.ITEM);
+				haulingAllocation.setTargetId(entity.getId());
+				haulingAllocation.setHauledEntityId(entity.getId());
+
+				haulingAllocation.setTargetPosition(tileLocation);
+				haulingAllocation.setTargetPositionType(FLOOR);
+
+				Job job = new Job(dumpLiquidJobType);
+				job.setJobPriority(JobPriority.NORMAL);
+				job.setJobLocation(tileLocation);
+				job.setTargetId(entity.getId());
+				job.setTotalWorkToDo(WORK_TO_DUMP_LIQUID);
+				job.setHaulingAllocation(haulingAllocation);
+
+				messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, job);
+			} else {
+				Logger.error("Could not create item allocation to dump liquid contents");
+			}
+		} else {
+			Logger.error("Not yet implemented - dumping liquid contents from entity other than item");
+		}
+	}
 
 	private Stream<Zone> findNearestZonesOfCorrectType(GameContext gameContext, Collection<GameMaterial> targetMaterials,
 	                                                   int regionId, Vector2 requesterPosition, boolean allowConstructed, float amountRequired) {

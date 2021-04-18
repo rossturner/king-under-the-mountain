@@ -249,8 +249,10 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 				}
 				tileAtLocation.setConstruction(null);
 
-				messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
-						Optional.empty(), Optional.of(new JobTarget(tileAtLocation)), (p) -> {}));
+				if (!construction.isAutoCompleted()) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
+							Optional.empty(), Optional.of(new JobTarget(tileAtLocation)), (p) -> {}));
+				}
 
 				if (tileAtLocation.hasRoom()) {
 					placedOnRoom = tileAtLocation.getRoomTile().getRoom();

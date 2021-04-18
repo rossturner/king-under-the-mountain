@@ -670,6 +670,23 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			case "REMOVE_LIQUID":
 				// Nothing special to be done
 				break;
+			case "DUMP_LIQUID_FROM_CONTAINER": {
+				Entity targetEntity = entityStore.getById(completedJob.getHaulingAllocation().getHauledEntityId());
+				if (targetEntity != null && targetEntity.getType().equals(ITEM)) {
+
+					LiquidContainerComponent liquidContainerComponent = targetEntity.getComponent(LiquidContainerComponent.class);
+					if (liquidContainerComponent != null) {
+						messageDispatcher.dispatchMessage(MessageType.LIQUID_SPLASH, new LiquidSplashMessage(jobCompletedMessage.getCompletedByEntity(),
+								liquidContainerComponent.getTargetLiquidMaterial()));
+
+						liquidContainerComponent.setLiquidQuantity(0);
+						liquidContainerComponent.setTargetLiquidMaterial(null);
+					}
+				} else {
+					Logger.error("Could not find item entity for " + completedJob.getType().getName() + " job completion");
+				}
+				break;
+			}
 			default: {
 				Logger.error("Not yet implemented job completion: " + completedJob.getType());
 			}

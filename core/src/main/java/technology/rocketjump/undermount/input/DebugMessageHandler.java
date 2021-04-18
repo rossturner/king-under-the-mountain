@@ -6,7 +6,6 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.utils.Disposable;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -17,7 +16,6 @@ import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DebugMessage;
-import technology.rocketjump.undermount.messaging.types.ItemCreationRequestMessage;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import java.util.ArrayList;
@@ -63,14 +61,14 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 							}
 						}
 
-						messageDispatcher.dispatchMessage(MessageType.ITEM_CREATION_REQUEST, new ItemCreationRequestMessage(itemTypeDictionary.getByName("Product-Barrel"), (entity) -> {
-							LiquidContainerComponent liquidContainerComponent = new LiquidContainerComponent();
-							liquidContainerComponent.init(entity, messageDispatcher, gameContext);
-							liquidContainerComponent.setLiquidQuantity(6);
-							liquidContainerComponent.setTargetLiquidMaterial(materialDictionary.getByName("Beer"));
-							entity.addComponent(liquidContainerComponent);
-							entity.getLocationComponent().setWorldPosition(message.getWorldPosition(), false);
-						}));
+//						messageDispatcher.dispatchMessage(MessageType.ITEM_CREATION_REQUEST, new ItemCreationRequestMessage(itemTypeDictionary.getByName("Product-Barrel"), (entity) -> {
+//							LiquidContainerComponent liquidContainerComponent = new LiquidContainerComponent();
+//							liquidContainerComponent.init(entity, messageDispatcher, gameContext);
+//							liquidContainerComponent.setLiquidQuantity(6);
+//							liquidContainerComponent.setTargetLiquidMaterial(materialDictionary.getByName("Beer"));
+//							entity.addComponent(liquidContainerComponent);
+//							entity.getLocationComponent().setWorldPosition(message.getWorldPosition(), false);
+//						}));
 
 
 						if (tile.getExploration().equals(TileExploration.UNEXPLORED)) {

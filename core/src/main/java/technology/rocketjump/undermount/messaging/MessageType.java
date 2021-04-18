@@ -117,6 +117,7 @@ public class MessageType {
 	public static final int CHANGE_FLOOR = 612;
 	public static final int REMOVE_HAULING_JOBS_TO_POSITION = 613;
 	public static final int JOB_STATE_CHANGE = 614;
+	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 615;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;

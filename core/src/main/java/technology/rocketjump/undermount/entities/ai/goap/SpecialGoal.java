@@ -8,6 +8,7 @@ public enum SpecialGoal {
 	TRANSFER_LIQUID("Transfer liquid goal"),
 	MOVE_LIQUID_IN_ITEM("Move liquid in item goal"),
 	REMOVE_LIQUID("Remove liquid goal"),
+	DUMP_LIQUID("Dump liquid goal"),
 	PLACE_ITEM("Place item goal");
 
 	public final String goalName;

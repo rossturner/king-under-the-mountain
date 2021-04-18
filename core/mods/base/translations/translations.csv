@@ -13,6 +13,7 @@ ACTION.JOB.TILLING,,Tilling the earth,Labourant la terre,Labrando la tierra,Beac
 ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},,,,,,,,,,,,,
 ACTION.JOB.DIGGING,,Digging {{targetDescription}},,,,,,,,,,,,,
 ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},Remplissant : {{targetDescription}},Llenando {{targetDescription}},Füllt {{targetDescription}},Sta riempiendo: {{targetDescription}},Enchendo {{targetDescription}},A encher {{targetDescription}},Заполняет: {{targetDescription}},Wypełnia {{targetDescription}},,,,,
+ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER,For emptying the liquid contents out of a container,Emptying out contents of {{targetDescription}},,,,,,,,,,,,,
 ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},,,,,,,,,,,,,
 ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},,,,,,,,,,,,,
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Cherchant quoi faire,Buscando qué hacer,Sucht Arbeit,Sta cercando qualcosa da fare,Procurando o que fazer,À procura de trabalho,Ищет работу,Szuka pracy,Werkzoekend,Söker efter arbete,Leter etter arbeid,,Etsii työtä
@@ -242,6 +243,7 @@ GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescri
 GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,Libre,Descansando,Unbeschäftigt,Non sta facendo niente,À toa,Inativo,Бездельничает,Bezczynny,Nietsdoend,Inaktiv,Ledig,,Joutilas
 GOAL.SLEEP.DESCRIPTION,,Going to sleep,Va dormir,Yendo a dormir,Geht schlafen,Sta andando a dormire,Indo dormir,A ir para a cama,Идет спать,Idzie spać,,,,,
 GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},Transférant : {{targetZoneMaterial}},Transfiriendo {{targetZoneMaterial}},Füllt {{targetZoneMaterial}} um,Sta trasferendo: {{targetZoneMaterial}},Transferindo {{targetZoneMaterial}},A transferir {{targetZoneMaterial}},Переносит: {{targetZoneMaterial}},Przenosi {{targetZoneMaterial}},,,,,
+GOAL.DUMP_LIQUID.DESCRIPTION,,Dumping contents of {{targetDescription}},,,,,,,,,,,,,
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},,,,,,,,,,,,,
 GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -273,6 +275,9 @@ GUI.ORDERS_LABEL,This should be as short as possible,Orders,Ordres ,Pedidos ,Bes
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,,,,,,,,,,,,,
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,Retirer,Eliminar,Entfernen,Rimuovi,Remover,Remover,Удалить,Usuń,Verwijderen,Ta bort,Fjern,Eltávolít,Poista
 GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,Retirer des cases,Eliminar baldosas,Felder entfernen,Rimuovi caselle,Remover áreas,Remover mosaicos,Удалить квадраты,Usuń kafelki,Tegels verwijderen,Ta bort paneler,Fjern felter,Mezők eltávoltása,Poista ruutuja
+GUI.EMPTY_CONTAINER_LABEL,This should be as short as possible,Empty,,,,,,,,,,,,,
+GUI.EMPTY_CONTAINER_LABEL.BEING_ACTIONED,,Contents are being emptied.,,,,,,,,,,,,,
+GUI.EMPTY_CONTAINER_LABEL.HINT,,Dump the contents of this container on the ground.,,,,,,,,,,,,,
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,Appuyez sur (R) pour pivoter les meubles,Pulsa (R) para rotar los muebles,Zum Rotieren der Möbel (R) drücken,Premi (R) per ruotare le suppellettili,Aperte (R) para girar a mobília,Premir (R) para rodar mobília,"Нажмите (R), чтобы повернуть мебель","Wciśnij (R), aby obrócić mebel",Druk op (R) om meubels te draaien,Tryck på (R) för att rotera möbler,Trykk på (R) for å rotere møbler,Bútor fordítása (R),Kierrä huonekaluja painamalla (R)
 GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,,,,,,,,,,,,,
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,,,,,,,,,,,,,

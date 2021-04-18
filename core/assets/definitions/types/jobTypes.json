@@ -154,6 +154,15 @@
   "switchToSpecialGoal" : "REMOVE_LIQUID",
   "accessedFromAdjacentTile" : false
 }, {
+  "name" : "DUMP_LIQUID_FROM_CONTAINER",
+  "overrideI18nKey" : "ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER",
+  "workDuration" : 0.7,
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : true,
+  "switchToSpecialGoal" : "DUMP_LIQUID",
+  "onCompletionSoundAssetName" : "WaterDump",
+  "accessedFromAdjacentTile" : false
+}, {
   "name" : "FORGE_ITEM",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
   "workDuration" : 3.0,

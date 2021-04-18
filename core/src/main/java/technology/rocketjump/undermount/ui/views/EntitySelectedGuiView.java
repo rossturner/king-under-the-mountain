@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import com.kotcrab.vis.ui.widget.VisProgressBar;
 import org.apache.commons.lang3.StringUtils;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.entities.EntityStore;
 import technology.rocketjump.undermount.entities.ai.goap.EntityNeed;
 import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
@@ -23,6 +24,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
 import technology.rocketjump.undermount.environment.model.GameSpeed;
@@ -55,7 +57,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.CONTENTS_TO_BE_DUMPED;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.MAX_HAPPINESS_VALUE;
+import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.ui.Selectable.SelectableType.ENTITY;
@@ -68,6 +72,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 	private final GameInteractionStateContainer gameInteractionStateContainer;
 	private final IconButton viewCraftingButton;
 	private final IconButton deconstructButton;
+	private final IconButton emptyLiquidContainerButton;
 	private final EntityStore entityStore;
 	private final JobStore jobStore;
 	private final I18nWidgetFactory i18nWidgetFactory;
@@ -139,6 +144,15 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 					messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_REMOVAL, selectable.getEntity());
 					This.update();
 				}
+			}
+		});
+
+		emptyLiquidContainerButton = iconButtonFactory.create("GUI.EMPTY_CONTAINER_LABEL", "cardboard-box", HexColors.get("#f4ec78"), ButtonStyle.SMALL);
+		emptyLiquidContainerButton.setAction(() -> {
+			Selectable selectable = gameInteractionStateContainer.getSelectable();
+			if (isItemContainingLiquidOnGroundAndNoneAllocated(selectable.getEntity())) {
+				Entity entity = selectable.getEntity();
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_DUMP_LIQUID_CONTENTS, entity);
 			}
 		});
 
@@ -228,7 +242,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 					}
 				}
 
-				if (entity.getType().equals(EntityType.ITEM)) {
+				if (entity.getType().equals(ITEM)) {
 					Map<I18nText, Integer> haulingCounts = getHaulingTargetDescriptions(entity);
 					for (Map.Entry<I18nText, Integer> targetDescriptionEntry : haulingCounts.entrySet()) {
 						Map<String, I18nString> replacements = new HashMap<>();
@@ -241,7 +255,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				}
 
 				if (GlobalSettings.DEV_MODE) {
-					if (entity.getType().equals(EntityType.ITEM)) {
+					if (entity.getType().equals(ITEM)) {
 						ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
 						List<ItemAllocation> itemAllocations = itemAllocationComponent.getAll();
 						if (itemAllocations.size() > 0) {
@@ -296,6 +310,15 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				} else if (constructedEntityComponent.canBeDeconstructed()) {
 					outerTable.add(deconstructButton);
 				}
+			}
+
+			if (isItemContainingLiquidOnGroundAndNoneAllocated(entity)) {
+				outerTable.add(emptyLiquidContainerButton);
+			}
+
+			ItemAllocationComponent itemAllocationComponent = entity.getComponent(ItemAllocationComponent.class);
+			if (itemAllocationComponent != null && itemAllocationComponent.getAllocationForPurpose(CONTENTS_TO_BE_DUMPED) != null) {
+				outerTable.add(i18nWidgetFactory.createLabel("GUI.EMPTY_CONTAINER_LABEL.BEING_ACTIONED"));
 			}
 		}
 	}
@@ -573,6 +596,18 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		}
 
 		return haulingTargetDescriptions;
+	}
+
+	private boolean isItemContainingLiquidOnGroundAndNoneAllocated(Entity entity) {
+		if (entity == null) {
+			return false;
+		}
+		LiquidContainerComponent liquidContainerComponent = entity.getComponent(LiquidContainerComponent.class);
+		ItemAllocationComponent itemAllocationComponent = entity.getComponent(ItemAllocationComponent.class);
+		return entity.getType().equals(ITEM) &&
+				(itemAllocationComponent == null || itemAllocationComponent.getNumAllocated() == 0) &&
+				liquidContainerComponent != null && liquidContainerComponent.getLiquidQuantity() > 0 && liquidContainerComponent.getNumAllocated() < 0.001f &&
+				((ItemEntityAttributes)entity.getPhysicalEntityComponent().getAttributes()).getItemPlacement().equals(ItemPlacement.ON_GROUND);
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package technology.rocketjump.undermount.audio;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
-import technology.rocketjump.undermount.logging.CrashHandler;
 
 @Singleton
 public class AudioUpdater {
@@ -24,7 +23,6 @@ public class AudioUpdater {
 			musicJukebox.update();
 			soundEffectManager.update();
 		} catch (Exception e) {
-			CrashHandler.logCrash(e);
 			Logger.error(e);
 		}
 	}
