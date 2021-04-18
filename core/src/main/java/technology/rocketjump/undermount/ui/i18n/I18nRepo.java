@@ -90,7 +90,8 @@ public class I18nRepo {
 		this.dictionaries = dictionaries;
 		this.languages = expectedLanguages;
 
-		String langCode = userPreferences.getPreference(UserPreferences.PreferenceKey.LANGUAGE, "en-gb");
+		String preferenceLangCode = userPreferences.getPreference(UserPreferences.PreferenceKey.LANGUAGE, "en-gb");
+		String langCode = dictionaries.containsKey(preferenceLangCode) ? preferenceLangCode : "en-gb";
 
 		currentLanguageDictionary = this.dictionaries.get(langCode);
 		this.dictionaries.get("en-gb").setCompleteTranslation(true);
