@@ -13,7 +13,7 @@ import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.DIFFUSE_ENTITIES;
+import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS;
 
 @Singleton
 public class CustomEffectFactory {
@@ -31,7 +31,7 @@ public class CustomEffectFactory {
 		// TODO more generic loading of custom effects
 		progressBarEffectType = particleEffectTypeDictionary.getByName(PROGRESS_BAR_EFFECT_TYPE_NAME);
 
-		TextureAtlas diffuseTextureAtlas = textureAtlasRepository.get(DIFFUSE_ENTITIES);
+		TextureAtlas diffuseTextureAtlas = textureAtlasRepository.get(GUI_TEXTURE_ATLAS);
 
 		progressBarOuterSprite = diffuseTextureAtlas.createSprite("yellow_button13");
 		progressBarInnerSprite = diffuseTextureAtlas.createSprite("green_button01");
