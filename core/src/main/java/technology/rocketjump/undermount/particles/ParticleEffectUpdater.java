@@ -14,8 +14,8 @@ import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.ParticleEffectTypeCallback;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
-import technology.rocketjump.undermount.messaging.types.ParticleUpdateMessage;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.rendering.camera.TileBoundingBox;
 
@@ -23,22 +23,25 @@ import java.util.Iterator;
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.jobs.model.JobTarget.NULL_TARGET;
+import static technology.rocketjump.undermount.particles.CustomEffectFactory.PROGRESS_BAR_EFFECT_TYPE_NAME;
 
 @Singleton
 public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 
 	private final ParticleEffectStore store;
+	private final ParticleEffectTypeDictionary particleEffectTypeDictionary;
 
 	private TileBoundingBox currentBoundingBox;
 	private GameContext gameContext;
 
 	@Inject
-	public ParticleEffectUpdater(ParticleEffectStore store, MessageDispatcher messageDispatcher) {
+	public ParticleEffectUpdater(ParticleEffectStore store, MessageDispatcher messageDispatcher, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.store = store;
+		this.particleEffectTypeDictionary = particleEffectTypeDictionary;
 
 		messageDispatcher.addListener(this, MessageType.PARTICLE_REQUEST);
-		messageDispatcher.addListener(this, MessageType.PARTICLE_UPDATE);
 		messageDispatcher.addListener(this, MessageType.PARTICLE_RELEASE);
+		messageDispatcher.addListener(this, MessageType.GET_PROGRESS_BAR_EFFECT_TYPE);
 	}
 
 	public void update(float deltaTime, TileBoundingBox boundingBox) {
@@ -62,10 +65,10 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 				continue;
 			}
 
-			if (instance.getGdxParticleEffect().isComplete()) {
+			if (instance.getWrappedInstance().isComplete()) {
 				store.remove(instance, iterator);
 			} else {
-				instance.getGdxParticleEffect().update(deltaTime);
+				instance.getWrappedInstance().update(deltaTime);
 			}
 		}
 
@@ -78,12 +81,13 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 				handle((ParticleRequestMessage) msg.extraInfo);
 				return true;
 			}
-			case MessageType.PARTICLE_UPDATE: {
-				handle((ParticleUpdateMessage) msg.extraInfo);
-				return true;
-			}
 			case MessageType.PARTICLE_RELEASE: {
 				release((ParticleEffectInstance) msg.extraInfo);
+				return true;
+			}
+			case MessageType.GET_PROGRESS_BAR_EFFECT_TYPE: {
+				ParticleEffectTypeCallback callback = (ParticleEffectTypeCallback) msg.extraInfo;
+				callback.typeFound(particleEffectTypeDictionary.getByName(PROGRESS_BAR_EFFECT_TYPE_NAME));
 				return true;
 			}
 			default:
@@ -130,13 +134,9 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 		}
 	}
 
-	private void handle(ParticleUpdateMessage particleUpdateMessage) {
-		// TODO update progress
-	}
-
 	private void release(ParticleEffectInstance effectInstance) {
 		// This is used to stop an effect looping so it will die off at the end of current cycle
-		effectInstance.getGdxParticleEffect().allowCompletion();
+		effectInstance.getWrappedInstance().allowCompletion();
 	}
 
 	private boolean insideBounds(Vector2 position) {

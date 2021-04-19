@@ -289,7 +289,8 @@ public class InWorldUIRenderer {
 			}
 		}
 
-		particlesToRenderAsUI.forEach(p -> p.getGdxParticleEffect().draw(spriteBatch, RenderMode.DIFFUSE));
+		spriteBatch.setColor(Color.WHITE);
+		particlesToRenderAsUI.forEach(p -> p.getWrappedInstance().draw(spriteBatch, RenderMode.DIFFUSE));
 
 		spriteBatch.end();
 		shapeRenderer.end();

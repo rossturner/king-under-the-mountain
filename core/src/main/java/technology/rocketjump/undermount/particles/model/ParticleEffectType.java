@@ -9,6 +9,7 @@ public class ParticleEffectType {
 	@Name
 	private String name;
 	private String particleFile;
+	private String customImplementation;
 	private float scale = 1f;
 	private EntityAssetOrientation usingParentOrientation;
 	private boolean isLooping; // if true this effect will loop endlessly until stopped
@@ -114,5 +115,13 @@ public class ParticleEffectType {
 
 	public void setOverrideYDepth(boolean overrideYDepth) {
 		this.overrideYDepth = overrideYDepth;
+	}
+
+	public String getCustomImplementation() {
+		return customImplementation;
+	}
+
+	public void setCustomImplementation(String customImplementation) {
+		this.customImplementation = customImplementation;
 	}
 }

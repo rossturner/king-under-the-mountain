@@ -12,7 +12,7 @@ import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrienta
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
+import technology.rocketjump.undermount.particles.custom_libgdx.LibgdxParticleEffect;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
@@ -22,18 +22,19 @@ import java.util.Optional;
 
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.DIFFUSE_ENTITIES;
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.NORMAL_ENTITIES;
-import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
 
 @Singleton
 public class ParticleEffectFactory {
 
 	private final ParticleEffectTypeDictionary typeDictionary;
+	private final CustomEffectFactory customEffectFactory;
 
-	private final Map<ParticleEffectType, ParticleEffect> baseInstancesByDefinition = new HashMap<>();
+	private final Map<ParticleEffectType, LibgdxParticleEffect> baseInstancesByDefinition = new HashMap<>();
 
 	@Inject
-	public ParticleEffectFactory(ParticleEffectTypeDictionary typeDictionary, TextureAtlasRepository textureAtlasRepository) {
+	public ParticleEffectFactory(ParticleEffectTypeDictionary typeDictionary, TextureAtlasRepository textureAtlasRepository, CustomEffectFactory customEffectFactory) {
 		this.typeDictionary = typeDictionary;
+		this.customEffectFactory = customEffectFactory;
 
 		TextureAtlas diffuseTextureAtlas = textureAtlasRepository.get(DIFFUSE_ENTITIES);
 		TextureAtlas normalTextureAtlas = textureAtlasRepository.get(NORMAL_ENTITIES);
@@ -41,13 +42,16 @@ public class ParticleEffectFactory {
 		for (ParticleEffectType particleEffectType : typeDictionary.getAll()) {
 
 			// load from pfile
+			if (particleEffectType.getParticleFile() == null && particleEffectType.getCustomImplementation() != null) {
+				continue;
+			}
 			FileHandle pfile = new FileHandle("assets/definitions/particles/" + particleEffectType.getParticleFile());
 			if (!pfile.exists()) {
 				Logger.error("Could not find pfile with name " + particleEffectType.getParticleFile() + " in assets/definitions/particles");
 				continue;
 			}
 
-			ParticleEffect baseInstance = new ParticleEffect(particleEffectType.getIsAffectedByLighting());
+			LibgdxParticleEffect baseInstance = new LibgdxParticleEffect(particleEffectType.getIsAffectedByLighting());
 			baseInstance.load(pfile, diffuseTextureAtlas, normalTextureAtlas, null);
 			baseInstance.scaleEffect((1f / 64f) * particleEffectType.getScale());
 
@@ -57,9 +61,17 @@ public class ParticleEffectFactory {
 
 	public ParticleEffectInstance create(ParticleEffectType type, Optional<Entity> parentEntity,
 										 Optional<MapTile> parentTile, Optional<Color> optionalMaterialColor) {
+		if (type.getCustomImplementation() != null) {
+			if (parentEntity.isPresent()) {
+				return customEffectFactory.createProgressBarEffect(parentEntity.get());
+			} else {
+				Logger.error("Custom implementations are currently for entity attached effects only");
+				return null;
+			}
+		}
 
-		ParticleEffect gdxBaseInstance = baseInstancesByDefinition.get(type);
-		ParticleEffect gdxClone = new ParticleEffect(gdxBaseInstance);
+		LibgdxParticleEffect gdxBaseInstance = baseInstancesByDefinition.get(type);
+		LibgdxParticleEffect gdxClone = new LibgdxParticleEffect(gdxBaseInstance);
 
 		if  (type.isUsesTargetMaterialAsTintColor()) {
 			if (optionalMaterialColor.isPresent()) {
@@ -99,38 +111,7 @@ public class ParticleEffectFactory {
 		EntityAssetOrientation effectDefaultOrientation = instance.getType().getUsingParentOrientation();
 
 		if (!parentOrientation.equals(effectDefaultOrientation)) {
-
-			instance.getGdxParticleEffect().getEmitters().forEach(e -> {
-				float angleHighMin = e.getAngle().getHighMin();
-				float angleHighMax = e.getAngle().getHighMax();
-
-				if (effectDefaultOrientation.equals(LEFT)) {
-					if (parentOrientation.equals(RIGHT)) {
-						// flip angle along Y axis
-						e.getAngle().setHigh(
-								180 - angleHighMax,
-								180 - angleHighMin
-						);
-					} else if (parentOrientation.equals(UP)) {
-						float angleDiff = angleHighMax - angleHighMin;
-						e.getAngle().setHigh(
-								270 - (angleDiff / 2f),
-								270 + (angleDiff / 2f)
-						);
-					} else if (parentOrientation.equals(DOWN)) {
-						float angleDiff = angleHighMax - angleHighMin;
-						e.getAngle().setHigh(
-								90 - (angleDiff / 2f),
-								90 + (angleDiff / 2f)
-						);
-					}
-				} else {
-					Logger.error("Not yet implemented - adjusting particle effect orientation from default of " + effectDefaultOrientation);
-				}
-
-			});
-
-
+			instance.getWrappedInstance().adjustForParentOrientation(effectDefaultOrientation, parentOrientation);
 		}
 	}
 

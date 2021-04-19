@@ -244,7 +244,7 @@ public class WorldRenderer implements Disposable {
 					particleEffectStore.getParticlesAttachedToEntity(entity).forEach(p -> {
 						if (p.getType().getIsAffectedByLighting()) {
 							if (p.getType().isRenderBehindParent()) {
-								p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+								p.getWrappedInstance().draw(basicSpriteBatch, renderMode);
 							} else if (p.getType().isOverrideYDepth()) {
 								ignoreDepthParticleEffects.add(p);
 							} else {
@@ -270,19 +270,19 @@ public class WorldRenderer implements Disposable {
 						lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
 					}
 
-					particlesInFrontOfEntity.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
+					particlesInFrontOfEntity.forEach(p -> p.getWrappedInstance().draw(basicSpriteBatch, renderMode));
 
 				}
 			} else if (renderable.particleEffect != null) {
 				if (renderable.particleEffect.getType().getIsAffectedByLighting()) {
-					renderable.particleEffect.getGdxParticleEffect().draw(basicSpriteBatch, renderMode);
+					renderable.particleEffect.getWrappedInstance().draw(basicSpriteBatch, renderMode);
 				} else if (particlesToRenderAsUI != null) {
 					particlesToRenderAsUI.add(renderable.particleEffect);
 				}
 			}
 		}
 
-		ignoreDepthParticleEffects.forEach(p -> p.getGdxParticleEffect().draw(basicSpriteBatch, renderMode));
+		ignoreDepthParticleEffects.forEach(p -> p.getWrappedInstance().draw(basicSpriteBatch, renderMode));
 
 		basicSpriteBatch.end();
 		explorationRenderer.render(unexploredTiles, camera, tiledMap, renderMode);

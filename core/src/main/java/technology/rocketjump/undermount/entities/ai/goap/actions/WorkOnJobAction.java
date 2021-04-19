@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
+import technology.rocketjump.undermount.particles.custom_libgdx.ProgressBarEffect;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -69,13 +70,25 @@ public class WorkOnJobAction extends Action {
 				}
 			}
 
+			Action This = this;
+
+			parent.messageDispatcher.dispatchMessage(MessageType.GET_PROGRESS_BAR_EFFECT_TYPE, (ParticleEffectTypeCallback) progressBarType -> {
+				if (spawnedParticles.stream().noneMatch(p -> p.getType().equals(progressBarType))) {
+					parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
+							progressBarType,
+							Optional.of(parent.parentEntity),
+							Optional.empty(),
+							instance -> {
+						This.spawnedParticles.add(instance);
+					}));
+				}
+			});
+
 			List<ParticleEffectType> relatedParticleEffectTypes = getRelatedParticleEffectTypes();
 			if (relatedParticleEffectTypes != null) {
 				for (ParticleEffectType particleEffectType : relatedParticleEffectTypes) {
 					if (spawnedParticles.stream()
-							.filter(p -> p.getType().equals(particleEffectType))
-							.findAny().isEmpty()) {
-						Action This = this;
+							.noneMatch(p -> p.getType().equals(particleEffectType))) {
 						parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
 								particleEffectType,
 								Optional.of(parent.parentEntity),
@@ -94,9 +107,10 @@ public class WorkOnJobAction extends Action {
 			Iterator<ParticleEffectInstance> particleIterator = spawnedParticles.iterator();
 			while (particleIterator.hasNext()) {
 				ParticleEffectInstance spawnedParticle = particleIterator.next();
-				parent.messageDispatcher.dispatchMessage(MessageType.PARTICLE_UPDATE, new ParticleUpdateMessage(spawnedParticle, workCompletionFraction));
+				if (spawnedParticle.getWrappedInstance() instanceof ProgressBarEffect) {
+					((ProgressBarEffect)spawnedParticle.getWrappedInstance()).setProgress(workCompletionFraction);
+				}
 			}
-
 
 			if (assignedJob.getTotalWorkToDo() <= assignedJob.getWorkDoneSoFar()) {
 				parent.messageDispatcher.dispatchMessage(MessageType.JOB_COMPLETED, new JobCompletedMessage(assignedJob, professionsComponent, parent.parentEntity));

@@ -324,7 +324,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				if (message.leafColor != null && !message.leafColor.equals(Color.CLEAR)) {
 					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(treeShedLeafEffect,
 							Optional.of(message.parentEntity), Optional.of(new JobTarget(message.parentEntity)), (p) -> {
-						p.getGdxParticleEffect().setTint(message.leafColor);
+						p.getWrappedInstance().setTint(message.leafColor);
 					}));
 				}
 				return true;
@@ -579,13 +579,13 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 					if (treeFallenMessage.getLeafColor().isPresent()) {
 						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleType,
 								Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {
-							p.getGdxParticleEffect().setTint(treeFallenMessage.getLeafColor().get());
+							p.getWrappedInstance().setTint(treeFallenMessage.getLeafColor().get());
 						}));
 					}
 					if (treeFallenMessage.getBranchColor() != null) {
 						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(chipExplosionParticleType,
 								Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {
-							p.getGdxParticleEffect().setTint(treeFallenMessage.getBranchColor());
+							p.getWrappedInstance().setTint(treeFallenMessage.getBranchColor());
 						}));
 					}
 
@@ -748,7 +748,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		if (message.targetEntity != null && message.liquidMaterial != null) {
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(liquidSplashEffect,
 					Optional.of(message.targetEntity), Optional.empty(), (p) -> {
-				p.getGdxParticleEffect().setTint(message.liquidMaterial.getColor());
+				p.getWrappedInstance().setTint(message.liquidMaterial.getColor());
 			}));
 		}
 		return true;

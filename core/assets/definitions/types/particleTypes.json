@@ -1,4 +1,21 @@
 [ {
+  "name" : "Progress bar",
+  "customImplementation" : "ProgressBarEffect",
+  "scale" : 1.0,
+  "isLooping" : false,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : false,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.8,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : true
+}, {
   "name" : "Dust cloud",
   "particleFile" : "smoke.p",
   "scale" : 1.2,

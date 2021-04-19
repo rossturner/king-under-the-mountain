@@ -5,7 +5,6 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.particles.custom_libgdx.ParticleEffect;
 
-import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -13,25 +12,25 @@ public class ParticleEffectInstance {
 
 	private final long instanceId;
 	private final ParticleEffectType type;
-	private final ParticleEffect gdxParticleEffect;
+	private final ParticleEffect wrappedInstance;
 	private final Optional<Entity> attachedToEntity;
 	private final Optional<MapTile> attachedToTile;
 	private Vector2 worldPosition = new Vector2();
 	private Vector2 offsetFromWorldPosition = new Vector2();
 	private boolean isActive = true;
 
-	public ParticleEffectInstance(long instanceId, ParticleEffectType type, ParticleEffect gdxParticleEffect, Entity attachedToEntity) {
+	public ParticleEffectInstance(long instanceId, ParticleEffectType type, ParticleEffect wrappedInstance, Entity attachedToEntity) {
 		this.instanceId = instanceId;
 		this.type = type;
-		this.gdxParticleEffect = gdxParticleEffect;
+		this.wrappedInstance = wrappedInstance;
 		this.attachedToEntity = Optional.of(attachedToEntity);
 		this.attachedToTile = Optional.empty();
 	}
 
-	public ParticleEffectInstance(long instanceId, ParticleEffectType type, ParticleEffect gdxParticleEffect, MapTile attachedToTile) {
+	public ParticleEffectInstance(long instanceId, ParticleEffectType type, ParticleEffect wrappedInstance, MapTile attachedToTile) {
 		this.instanceId = instanceId;
 		this.type = type;
-		this.gdxParticleEffect = gdxParticleEffect;
+		this.wrappedInstance = wrappedInstance;
 		this.attachedToEntity = Optional.empty();
 		this.attachedToTile = Optional.of(attachedToTile);
 	}
@@ -59,15 +58,15 @@ public class ParticleEffectInstance {
 	}
 
 	private void updateGdxPosition() {
-		gdxParticleEffect.setPosition(worldPosition.x + offsetFromWorldPosition.x, worldPosition.y + offsetFromWorldPosition.y);
+		wrappedInstance.setPosition(worldPosition.x + offsetFromWorldPosition.x, worldPosition.y + offsetFromWorldPosition.y);
 	}
 
 	public long getInstanceId() {
 		return instanceId;
 	}
 
-	public ParticleEffect getGdxParticleEffect() {
-		return gdxParticleEffect;
+	public ParticleEffect getWrappedInstance() {
+		return wrappedInstance;
 	}
 
 	public Optional<Entity> getAttachedToEntity() {
@@ -107,15 +106,6 @@ public class ParticleEffectInstance {
 		}
 		if (type.getOffsetFromParentEntity() != null) {
 			this.getWorldPosition().add(type.getOffsetFromParentEntity());
-		}
-	}
-
-	public static class YDepthEntityComparator implements Comparator<ParticleEffectInstance> {
-		@Override
-		public int compare(ParticleEffectInstance o1, ParticleEffectInstance o2) {
-			float o1Position = o1.worldPosition.y;
-			float o2Position = o2.worldPosition.y;
-			return (int)(100000f * (o2Position - o1Position));
 		}
 	}
 
