@@ -18,7 +18,6 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.jobs.JobFactory;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
-import technology.rocketjump.undermount.jobs.JobWorkCalculator;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobState;
@@ -49,7 +48,6 @@ public class ConstructionManager implements Updatable {
 	private final ConstructionStore constructionStore;
 	private final ItemTracker itemTracker;
 	private final MessageDispatcher messageDispatcher;
-	private final JobWorkCalculator jobWorkCalculator;
 	private final JobFactory jobFactory;
 	private final JobType haulingJobType;
 	private final JobType constructWoodenFurnitureJobType;
@@ -58,11 +56,10 @@ public class ConstructionManager implements Updatable {
 
 	@Inject
 	public ConstructionManager(ConstructionStore constructionStore, ItemTracker itemTracker, MessageDispatcher messageDispatcher,
-							   JobWorkCalculator jobWorkCalculator, JobFactory jobFactory, JobTypeDictionary jobTypeDictionary) {
+							   JobFactory jobFactory, JobTypeDictionary jobTypeDictionary) {
 		this.constructionStore = constructionStore;
 		this.itemTracker = itemTracker;
 		this.messageDispatcher = messageDispatcher;
-		this.jobWorkCalculator = jobWorkCalculator;
 		this.jobFactory = jobFactory;
 		this.haulingJobType = jobTypeDictionary.getByName("HAULING");
 		this.constructWoodenFurnitureJobType = jobTypeDictionary.getByName("CONSTRUCT_WOODEN_FURNITURE");
@@ -352,7 +349,6 @@ public class ConstructionManager implements Updatable {
 		Job constructionJob = jobFactory.constructionJob(craftingType);
 		constructionJob.setJobPriority(wallConstruction.getPriority());
 		constructionJob.setJobLocation(wallConstruction.getPrimaryLocation());
-		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(wallConstruction));
 		constructionJob.setWorkDoneSoFar(0);
 		constructionJob.setJobState(JobState.POTENTIALLY_ACCESSIBLE);
 		constructionJob.setTargetId(wallConstruction.getId());
@@ -367,7 +363,6 @@ public class ConstructionManager implements Updatable {
 		constructionJob.setJobPriority(bridgeConstruction.getPriority());
 		// TODO below was empty and caused a crash, but can't see how that would happen at the moment
 		constructionJob.setJobLocation(bridgeConstruction.placedItemAllocations.keySet().iterator().next());
-		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(bridgeConstruction));
 		constructionJob.setWorkDoneSoFar(0);
 		constructionJob.setJobState(JobState.POTENTIALLY_ACCESSIBLE);
 		constructionJob.setTargetId(bridgeConstruction.getId());
@@ -387,7 +382,6 @@ public class ConstructionManager implements Updatable {
 		Job constructionJob = new Job(jobType);
 		constructionJob.setJobPriority(furnitureConstruction.getPriority());
 		constructionJob.setJobLocation(furnitureConstruction.getPrimaryLocation());
-		constructionJob.setTotalWorkToDo(jobWorkCalculator.getTotalWorkToDo(furnitureConstruction));
 
 		furnitureConstruction.setConstructionJob(constructionJob);
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, constructionJob);

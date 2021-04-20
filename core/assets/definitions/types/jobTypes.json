@@ -4,6 +4,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
   "requiredProfessionName" : "MINER",
   "requiredItemTypeName" : "Tool-Pickaxe",
   "activeSoundAssetName" : "Mining",
@@ -15,6 +16,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
   "requiredProfessionName" : "MINER",
   "requiredItemTypeName" : "Tool-Pickaxe",
   "activeSoundAssetName" : "Tilling",
@@ -26,6 +28,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
   "requiredProfessionName" : "LUMBERJACK",
   "requiredItemTypeName" : "Tool-Axe",
   "activeSoundAssetName" : "ChoppingTree",
@@ -38,6 +41,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
   "activeSoundAssetName" : "Tilling",
   "accessedFromAdjacentTile" : false
 }, {
@@ -46,6 +50,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 4.0,
   "requiredProfessionName" : "FARMER",
   "activeSoundAssetName" : "Tilling",
   "workOnJobParticleEffectNames" : [ "Digging ground same tile" ],
@@ -56,6 +61,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
   "activeSoundAssetName" : "Tilling",
   "workOnJobParticleEffectNames" : [ "Digging ground offset tile" ],
   "accessedFromAdjacentTile" : true
@@ -65,6 +71,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 2.0,
   "requiredProfessionName" : "FARMER",
   "workOnJobParticleEffectNames" : [ "Digging ground same tile" ],
   "accessedFromAdjacentTile" : false
@@ -74,6 +81,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
   "requiredProfessionName" : "FARMER",
   "workOnJobParticleEffectNames" : [ "Small leaf explosion" ],
   "accessedFromAdjacentTile" : false
@@ -83,6 +91,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
   "requiredProfessionName" : "FARMER",
   "accessedFromAdjacentTile" : true
 }, {
@@ -91,6 +100,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 4.0,
   "activeSoundAssetName" : "HarvestingCrops",
   "workOnJobParticleEffectNames" : [ "Small leaf explosion" ],
   "accessedFromAdjacentTile" : false
@@ -100,12 +110,13 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 3.0,
   "workOnJobParticleEffectNames" : [ "Small leaf explosion" ],
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "COOKING",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 7.5,
+  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "CHEF",
@@ -130,36 +141,40 @@
 }, {
   "name" : "TRANSFER_LIQUID",
   "overrideI18nKey" : "ACTION.JOB.TRANSFER_LIQUID",
-  "workDuration" : 0.7,
+  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "TRANSFER_LIQUID",
+  "defaultTimeToCompleteJob" : 0.7,
   "onCompletionSoundAssetName" : "WaterDump",
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "MOVE_LIQUID_IN_ITEM",
   "overrideI18nKey" : "ACTION.JOB.TRANSFER_LIQUID",
-  "workDuration" : 0.7,
+  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "MOVE_LIQUID_IN_ITEM",
+  "defaultTimeToCompleteJob" : 0.7,
   "onCompletionSoundAssetName" : "WaterDump",
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "REMOVE_LIQUID",
   "overrideI18nKey" : "ACTION.JOB.TRANSFER_LIQUID",
-  "workDuration" : 0.7,
+  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "REMOVE_LIQUID",
+  "defaultTimeToCompleteJob" : 0.7,
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "DUMP_LIQUID_FROM_CONTAINER",
   "overrideI18nKey" : "ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER",
-  "workDuration" : 0.7,
+  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "DUMP_LIQUID",
+  "defaultTimeToCompleteJob" : 0.3,
   "onCompletionSoundAssetName" : "WaterDump",
   "accessedFromAdjacentTile" : false
 }, {
@@ -201,6 +216,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 6.0,
   "requiredProfessionName" : "CARPENTER",
   "requiredItemTypeName" : "Tool-Plane",
   "workOnJobParticleEffectNames" : [ "Wood shavings" ],
@@ -211,6 +227,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 6.0,
   "requiredProfessionName" : "STONEMASON",
   "requiredItemTypeName" : "Tool-Chisel",
   "workOnJobParticleEffectNames" : [ "Chipping stone" ],
@@ -221,6 +238,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 6.0,
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
   "accessedFromAdjacentTile" : true
 }, {
@@ -229,6 +247,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 6.0,
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
   "accessedFromAdjacentTile" : true
 } ]

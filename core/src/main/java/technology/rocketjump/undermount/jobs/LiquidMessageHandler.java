@@ -50,9 +50,6 @@ import static technology.rocketjump.undermount.zones.ZoneClassification.ZoneType
 @Singleton
 public class LiquidMessageHandler implements GameContextAware, Telegraph {
 
-	private static final float WORK_TO_POUR_LIQUID = 1f; // MODDING expose this
-	private static final float WORK_TO_DUMP_LIQUID = 0.3f; // MODDING expose this
-
 	private final MessageDispatcher messageDispatcher;
 	private final GameMaterialDictionary gameMaterialDictionary;
 	private GameContext gameContext;
@@ -155,7 +152,6 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 								transferLiquidJob.setJobPriority(message.jobPriority);
 								transferLiquidJob.setJobLocation(requesterTile.getTilePosition());
 								transferLiquidJob.setTargetId(message.requesterEntity.getId());
-								transferLiquidJob.setTotalWorkToDo(WORK_TO_POUR_LIQUID);
 								transferLiquidJob.setHaulingAllocation(allocation);
 
 								if (nearestApplicableZone.get().getClassification().isConstructed()) {
@@ -316,7 +312,6 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 				job.setJobPriority(JobPriority.NORMAL);
 				job.setJobLocation(tileLocation);
 				job.setTargetId(entity.getId());
-				job.setTotalWorkToDo(WORK_TO_DUMP_LIQUID);
 				job.setHaulingAllocation(haulingAllocation);
 
 				messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, job);
@@ -425,7 +420,6 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 					job.setJobPriority(message.jobPriority);
 					job.setJobLocation(message.workspaceLocation);
 					job.setTargetId(message.requesterEntity.getId());
-					job.setTotalWorkToDo(WORK_TO_POUR_LIQUID);
 					job.setHaulingAllocation(haulingAllocation);
 					job.setLiquidAllocation(liquidAllocation);
 				}

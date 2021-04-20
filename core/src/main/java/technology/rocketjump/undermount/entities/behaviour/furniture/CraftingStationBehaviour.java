@@ -69,7 +69,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		Prioritisable,
 		ParentDependentEntityComponent {
 
-	private static final float WORK_TO_COMPLETE_CRAFTING = 5f; // Note this is multiplied by skill level doubled - usually 0.2 to 0.5
 	private CraftingType craftingType;
 	private JobType craftItemJobType;
 	private JobType haulingJobType;
@@ -497,7 +496,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			ItemType itemTypeRequired = Optional.ofNullable(currentProductionAssignment.targetRecipe.getItemTypeRequired()).orElse(currentProductionAssignment.targetRecipe.getCraftingType().getDefaultItemType());
 			craftingJob.setRequiredItemType(itemTypeRequired);
 			craftingJob.setCraftingRecipe(currentProductionAssignment.targetRecipe);
-			craftingJob.setTotalWorkToDo(WORK_TO_COMPLETE_CRAFTING); // FIXME #86 Total work to be data-driven
 			messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, craftingJob);
 			this.craftingJob = craftingJob;
 		}

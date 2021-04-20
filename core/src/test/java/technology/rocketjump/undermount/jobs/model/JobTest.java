@@ -24,7 +24,6 @@ public class JobTest extends PersistenceTestHarness {
 
 		Job original = new Job(jobType);
 		original.setWorkDoneSoFar(1);
-		original.setTotalWorkToDo(2);
 		original.setAssignedToEntityId(3L);
 		original.setTargetId(4L);
 		original.setJobState(JobState.ASSIGNED);

@@ -50,7 +50,8 @@
   "outputDescriptionI18nKey" : "COOKING.SOUP.DESCRIPTION",
   "outputMaterialType" : "LIQUID",
   "outputQuantity" : 12,
-  "outputProcess" : "COMBINE_ITEM_MATERIALS"
+  "outputProcess" : "COMBINE_ITEM_MATERIALS",
+  "defaultTimeToCompleteCooking" : 13.0
 }, {
   "recipeName" : "Bake bread",
   "inputItemOptions" : [ {
@@ -67,5 +68,6 @@
   "outputQuantity" : 13,
   "outputProcess" : "SPECIFIED_MATERIAL",
   "outputItemTypeName" : "Product-Bread-Loaf",
-  "outputMaterialName" : "Wheat-Bread"
+  "outputMaterialName" : "Wheat-Bread",
+  "defaultTimeToCompleteCooking" : 15.0
 } ]

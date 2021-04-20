@@ -12,7 +12,8 @@
     "quantity" : 3
   } ],
   "materialTypesToCopyOver" : [ "VEGETABLE" ],
-  "extraGameHoursToComplete" : 4.0
+  "extraGameHoursToComplete" : 4.0,
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Mill malt",
   "verbOverrideI18nKey" : "PROFESSION.MILLER",
@@ -25,7 +26,8 @@
     "itemTypeName" : "Ingredient-Milled-Malt-Sack",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "VEGETABLE" ]
+  "materialTypesToCopyOver" : [ "VEGETABLE" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Mash milled malt to wort",
   "craftingTypeName" : "MALT_MASHING",
@@ -41,7 +43,8 @@
     "quantity" : 12,
     "materialName" : "Wort",
     "liquid" : true
-  } ]
+  } ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Brew wort",
   "craftingTypeName" : "WORT_BREWING",
@@ -59,7 +62,8 @@
     "materialName" : "Hopped Wort",
     "liquid" : true
   } ],
-  "extraGameHoursToComplete" : 1.0
+  "extraGameHoursToComplete" : 1.0,
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Ferment to beer",
   "verbOverrideI18nKey" : "PROFESSION.BREWER",
@@ -74,7 +78,8 @@
     "materialName" : "Beer",
     "liquid" : true
   } ],
-  "extraGameHoursToComplete" : 72.0
+  "extraGameHoursToComplete" : 72.0,
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Cut planks",
   "craftingTypeName" : "WOODCUTTING",
@@ -86,7 +91,8 @@
     "itemTypeName" : "Resource-Planks",
     "quantity" : 2
   } ],
-  "materialTypesToCopyOver" : [ "WOOD" ]
+  "materialTypesToCopyOver" : [ "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 3.0
 }, {
   "recipeName" : "Cut mushroom planks",
   "craftingTypeName" : "WOODCUTTING",
@@ -99,7 +105,8 @@
     "itemTypeName" : "Resource-Planks",
     "quantity" : 2
   } ],
-  "materialTypesToCopyOver" : [ "WOOD" ]
+  "materialTypesToCopyOver" : [ "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Cut stone blocks",
   "craftingTypeName" : "STONEMASONRY",
@@ -112,7 +119,8 @@
     "itemTypeName" : "Resource-Stone-Block",
     "quantity" : 2
   } ],
-  "materialTypesToCopyOver" : [ "STONE" ]
+  "materialTypesToCopyOver" : [ "STONE" ],
+  "defaultTimeToCompleteCrafting" : 4.0
 }, {
   "recipeName" : "Cut gems",
   "craftingTypeName" : "STONEMASONRY",
@@ -124,7 +132,8 @@
     "itemTypeName" : "Resource-Gem",
     "quantity" : 4
   } ],
-  "materialTypesToCopyOver" : [ "GEM" ]
+  "materialTypesToCopyOver" : [ "GEM" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft millstone",
   "craftingTypeName" : "STONEMASONRY",
@@ -136,7 +145,8 @@
     "itemTypeName" : "Product-Millstone",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "STONE" ]
+  "materialTypesToCopyOver" : [ "STONE" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft barrel hoops",
   "craftingTypeName" : "BLACKSMITHING",
@@ -148,7 +158,8 @@
     "itemTypeName" : "Product-Barrel-Hoops",
     "quantity" : 3
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft metal plates",
   "craftingTypeName" : "BLACKSMITHING",
@@ -160,7 +171,8 @@
     "itemTypeName" : "Resource-Metal-Plate",
     "quantity" : 2
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft liquid tank",
   "craftingTypeName" : "BLACKSMITHING",
@@ -175,7 +187,8 @@
     "itemTypeName" : "Product-Liquid-Tank",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft cauldron",
   "craftingTypeName" : "BLACKSMITHING",
@@ -190,7 +203,8 @@
     "itemTypeName" : "Product-Cauldron",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL", "WOOD" ]
+  "materialTypesToCopyOver" : [ "METAL", "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 8.0
 }, {
   "recipeName" : "Craft anvil",
   "craftingTypeName" : "BLACKSMITHING",
@@ -202,7 +216,8 @@
     "itemTypeName" : "Product-Anvil",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 8.0
 }, {
   "recipeName" : "Craft tool axe",
   "craftingTypeName" : "BLACKSMITHING",
@@ -218,7 +233,8 @@
     "itemTypeName" : "Tool-Axe",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL", "WOOD" ]
+  "materialTypesToCopyOver" : [ "METAL", "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool chisel",
   "craftingTypeName" : "BLACKSMITHING",
@@ -234,7 +250,8 @@
     "itemTypeName" : "Tool-Chisel",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL", "WOOD" ]
+  "materialTypesToCopyOver" : [ "METAL", "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool kitchen knife",
   "craftingTypeName" : "BLACKSMITHING",
@@ -247,7 +264,8 @@
     "itemTypeName" : "Tool-Kitchen-Knife",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool large hammer",
   "craftingTypeName" : "BLACKSMITHING",
@@ -263,7 +281,8 @@
     "itemTypeName" : "Tool-Large-Hammer",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL", "WOOD" ]
+  "materialTypesToCopyOver" : [ "METAL", "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool pickaxe",
   "craftingTypeName" : "BLACKSMITHING",
@@ -279,7 +298,8 @@
     "itemTypeName" : "Tool-Pickaxe",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL", "WOOD" ]
+  "materialTypesToCopyOver" : [ "METAL", "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool saw",
   "craftingTypeName" : "BLACKSMITHING",
@@ -295,7 +315,8 @@
     "itemTypeName" : "Tool-Saw",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL", "WOOD" ]
+  "materialTypesToCopyOver" : [ "METAL", "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool small hammer",
   "craftingTypeName" : "BLACKSMITHING",
@@ -308,7 +329,8 @@
     "itemTypeName" : "Tool-Small-Hammer",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool tongs",
   "craftingTypeName" : "BLACKSMITHING",
@@ -321,7 +343,8 @@
     "itemTypeName" : "Tool-Tongs",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft barrel staves",
   "craftingTypeName" : "CARPENTRY",
@@ -333,7 +356,8 @@
     "itemTypeName" : "Product-Barrel-Staves",
     "quantity" : 5
   } ],
-  "materialTypesToCopyOver" : [ "WOOD" ]
+  "materialTypesToCopyOver" : [ "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft barrel",
   "craftingTypeName" : "CARPENTRY",
@@ -348,7 +372,8 @@
     "itemTypeName" : "Product-Barrel",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "WOOD", "METAL" ]
+  "materialTypesToCopyOver" : [ "WOOD", "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft bucket",
   "craftingTypeName" : "CARPENTRY",
@@ -364,7 +389,8 @@
     "itemTypeName" : "Product-Bucket",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "WOOD", "METAL" ]
+  "materialTypesToCopyOver" : [ "WOOD", "METAL" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool fishing rod",
   "craftingTypeName" : "CARPENTRY",
@@ -376,7 +402,8 @@
     "itemTypeName" : "Tool-Fishing-Rod",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "WOOD" ]
+  "materialTypesToCopyOver" : [ "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool plane",
   "craftingTypeName" : "CARPENTRY",
@@ -389,7 +416,8 @@
     "itemTypeName" : "Tool-Plane",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "WOOD" ]
+  "materialTypesToCopyOver" : [ "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Craft tool rolling pin",
   "craftingTypeName" : "CARPENTRY",
@@ -402,7 +430,8 @@
     "itemTypeName" : "Tool-Rolling-Pin",
     "quantity" : 1
   } ],
-  "materialTypesToCopyOver" : [ "WOOD" ]
+  "materialTypesToCopyOver" : [ "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Mill wheat",
   "verbOverrideI18nKey" : "PROFESSION.MILLER",
@@ -415,7 +444,8 @@
     "itemTypeName" : "Resource-Flour-Sack",
     "quantity" : 3
   } ],
-  "materialTypesToCopyOver" : [ "VEGETABLE" ]
+  "materialTypesToCopyOver" : [ "VEGETABLE" ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Create dough",
   "verbOverrideI18nKey" : "ACTION.PREPARATION",
@@ -428,7 +458,8 @@
     "itemTypeName" : "Product-Bread-Dough",
     "quantity" : 7
   } ],
-  "materialTypesToCopyOver" : [ "VEGETABLE" ]
+  "materialTypesToCopyOver" : [ "VEGETABLE" ],
+  "defaultTimeToCompleteCrafting" : 6.0
 }, {
   "recipeName" : "Crush ore",
   "craftingTypeName" : "ORE_CRUSHING",
@@ -440,7 +471,8 @@
     "itemTypeName" : "Resource-Ore-Crushed",
     "quantity" : 5
   } ],
-  "materialTypesToCopyOver" : [ "ORE" ]
+  "materialTypesToCopyOver" : [ "ORE" ],
+  "defaultTimeToCompleteCrafting" : 7.0
 }, {
   "recipeName" : "Crush pyrite to iron sulfate / green vitriol",
   "craftingTypeName" : "ORE_CRUSHING",
@@ -454,7 +486,8 @@
     "itemTypeName" : "Resource-Crushed-Vitriol",
     "quantity" : 2,
     "materialName" : "Green Vitriol"
-  } ]
+  } ],
+  "defaultTimeToCompleteCrafting" : 5.0
 }, {
   "recipeName" : "Smelt iron",
   "craftingTypeName" : "SMELTING",
@@ -472,7 +505,8 @@
     "quantity" : 1,
     "materialName" : "Iron"
   } ],
-  "extraGameHoursToComplete" : 3.0
+  "extraGameHoursToComplete" : 3.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Smelt tin",
   "craftingTypeName" : "SMELTING",
@@ -490,7 +524,8 @@
     "quantity" : 1,
     "materialName" : "Tin"
   } ],
-  "extraGameHoursToComplete" : 3.0
+  "extraGameHoursToComplete" : 3.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Smelt copper from native",
   "craftingTypeName" : "SMELTING",
@@ -508,7 +543,8 @@
     "quantity" : 1,
     "materialName" : "Copper"
   } ],
-  "extraGameHoursToComplete" : 3.0
+  "extraGameHoursToComplete" : 3.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Smelt copper from malachite",
   "craftingTypeName" : "SMELTING",
@@ -526,7 +562,8 @@
     "quantity" : 1,
     "materialName" : "Copper"
   } ],
-  "extraGameHoursToComplete" : 3.0
+  "extraGameHoursToComplete" : 3.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Smelt copper from chrysocolla",
   "craftingTypeName" : "SMELTING",
@@ -544,7 +581,8 @@
     "quantity" : 1,
     "materialName" : "Copper"
   } ],
-  "extraGameHoursToComplete" : 3.0
+  "extraGameHoursToComplete" : 3.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Smelt gold",
   "craftingTypeName" : "SMELTING",
@@ -562,7 +600,8 @@
     "quantity" : 1,
     "materialName" : "Gold"
   } ],
-  "extraGameHoursToComplete" : 3.0
+  "extraGameHoursToComplete" : 3.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Smelt silver from Galena",
   "craftingTypeName" : "SMELTING",
@@ -580,7 +619,8 @@
     "quantity" : 1,
     "materialName" : "Silver"
   } ],
-  "extraGameHoursToComplete" : 3.0
+  "extraGameHoursToComplete" : 3.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Smelt silver from native",
   "craftingTypeName" : "SMELTING",
@@ -598,7 +638,8 @@
     "quantity" : 1,
     "materialName" : "Silver"
   } ],
-  "extraGameHoursToComplete" : 4.0
+  "extraGameHoursToComplete" : 4.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 }, {
   "recipeName" : "Hammer bloom into ingots",
   "craftingTypeName" : "BLACKSMITHING",
@@ -611,7 +652,8 @@
     "itemTypeName" : "Resource-Metal-Ingot",
     "quantity" : 6
   } ],
-  "materialTypesToCopyOver" : [ "METAL" ]
+  "materialTypesToCopyOver" : [ "METAL" ],
+  "defaultTimeToCompleteCrafting" : 7.0
 }, {
   "recipeName" : "Convert coal to coke",
   "craftingTypeName" : "COKE_OVEN_BAKING",
@@ -625,5 +667,6 @@
     "quantity" : 16,
     "materialName" : "Coke"
   } ],
-  "extraGameHoursToComplete" : 28.0
+  "extraGameHoursToComplete" : 28.0,
+  "defaultTimeToCompleteCrafting" : 2.0
 } ]

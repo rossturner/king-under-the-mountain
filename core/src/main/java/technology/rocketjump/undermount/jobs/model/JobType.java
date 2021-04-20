@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.jobs.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.entities.ai.goap.SpecialGoal;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
@@ -10,6 +11,7 @@ import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class JobType {
 
 	@Name
@@ -20,6 +22,7 @@ public class JobType {
 	private boolean removeJobWhenAssignmentCancelled;
 	private boolean haulItemWhileWorking;
 	private SpecialGoal switchToSpecialGoal;
+	private Float defaultTimeToCompleteJob;
 
 	private String requiredProfessionName;
 	@JsonIgnore
@@ -180,5 +183,13 @@ public class JobType {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	public Float getDefaultTimeToCompleteJob() {
+		return defaultTimeToCompleteJob;
+	}
+
+	public void setDefaultTimeToCompleteJob(Float defaultTimeToCompleteJob) {
+		this.defaultTimeToCompleteJob = defaultTimeToCompleteJob;
 	}
 }

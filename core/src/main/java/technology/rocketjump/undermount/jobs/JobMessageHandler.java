@@ -76,7 +76,6 @@ import static technology.rocketjump.undermount.entities.model.EntityType.*;
 public class JobMessageHandler implements GameContextAware, Telegraph {
 
 	private final MessageDispatcher messageDispatcher;
-	private final JobWorkCalculator jobWorkCalculator;
 	private final JobStore jobStore;
 	private final ItemEntityFactory itemEntityFactory;
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
@@ -96,7 +95,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private ParticleEffectType deconstructParticleEffect;
 
 	@Inject
-	public JobMessageHandler(MessageDispatcher messageDispatcher, JobWorkCalculator jobWorkCalculator, JobStore jobStore,
+	public JobMessageHandler(MessageDispatcher messageDispatcher, JobStore jobStore,
 							 ItemEntityFactory itemEntityFactory, ItemEntityAttributesFactory itemEntityAttributesFactory,
 							 JobFactory jobFactory, EntityStore entityStore, PlantEntityAttributesFactory plantEntityAttributesFactory,
 							 PlantEntityFactory plantEntityFactory, PlantSpeciesDictionary plantSpeciesDictionary,
@@ -104,7 +103,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							 ItemTypeDictionary itemTypeDictionary, JobTypeDictionary jobTypeDictionary,
 							 TileDesignationDictionary tileDesignationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
-		this.jobWorkCalculator = jobWorkCalculator;
 		this.jobStore = jobStore;
 		this.itemEntityFactory = itemEntityFactory;
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
@@ -157,9 +155,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				if (newJob == null) {
 					Logger.error("newJob received by " + this.getClass().getSimpleName() + " was null, investigate");
 				} else {
-					if (newJob.getTotalWorkToDo() <= 0) {
-						newJob.setTotalWorkToDo(newJob.getType().getWorkDuration());
-					}
 					jobStore.add(newJob);
 				}
 				return true;
@@ -726,7 +721,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			Job removalJob = new Job(removalJobType);
 			removalJob.setTargetId(message.getPlantEntityToRemove().getId());
 			removalJob.setJobPriority(message.jobPriority);
-			removalJob.setTotalWorkToDo(removalJobType.getWorkDuration());
 			removalJob.setJobLocation(message.getTileLocation());
 			jobStore.add(removalJob);
 			if (message.callback != null) {
@@ -852,7 +846,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				newJob = new Job(jobType);
 			}
 			newJob.setJobLocation(applyDesignationMessage.getTargetTile().getTilePosition());
-			newJob.setTotalWorkToDo(jobType.getWorkDuration());
 			newJob.setJobState(calculateNewJobState(jobType, applyDesignationMessage.getTargetTile()));
 
 			jobStore.add(newJob);

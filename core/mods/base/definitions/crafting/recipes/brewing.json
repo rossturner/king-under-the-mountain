@@ -18,7 +18,8 @@
       }
     ],
     "materialTypesToCopyOver": ["VEGETABLE"],
-    "extraGameHoursToComplete": 4
+    "extraGameHoursToComplete": 4,
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Mill malt",
@@ -36,7 +37,8 @@
         "quantity": 1
       }
     ],
-    "materialTypesToCopyOver": ["VEGETABLE"]
+    "materialTypesToCopyOver": ["VEGETABLE"],
+    "defaultTimeToCompleteCrafting": 5
   },
 
   {
@@ -59,7 +61,8 @@
         "materialName": "Wort",
         "quantity": 12
       }
-    ]
+    ],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Brew wort",
@@ -83,7 +86,8 @@
         "quantity": 12
       }
     ],
-    "extraGameHoursToComplete": 1
+    "extraGameHoursToComplete": 1,
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Ferment to beer",
@@ -103,6 +107,7 @@
         "quantity": 6
       }
     ],
-    "extraGameHoursToComplete": 72
+    "extraGameHoursToComplete": 72,
+    "defaultTimeToCompleteCrafting": 5
   }
 ]

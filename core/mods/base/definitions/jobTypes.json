@@ -1,6 +1,7 @@
 [
   {
     "name": "MINING",
+    "defaultTimeToCompleteJob": 5,
     "overrideI18nKey": "ACTION.JOB.GENERIC",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "MINER",
@@ -10,6 +11,7 @@
   },
   {
     "name": "DIGGING",
+    "defaultTimeToCompleteJob": 5,
     "overrideI18nKey": "ACTION.JOB.DIGGING",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "MINER",
@@ -19,6 +21,7 @@
   },
   {
     "name": "LOGGING",
+    "defaultTimeToCompleteJob": 5,
     "overrideI18nKey": "ACTION.JOB.LOGGING",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "LUMBERJACK",
@@ -31,11 +34,13 @@
 
   {
     "name": "SHOVELLING",
+    "defaultTimeToCompleteJob": 5,
     "overrideI18nKey": "ACTION.JOB.SHOVELLING",
     "activeSoundAssetName": "Tilling"
   },
   {
     "name": "TILLING",
+    "defaultTimeToCompleteJob": 4,
     "overrideI18nKey": "ACTION.JOB.TILLING",
     "requiredProfessionName": "FARMER",
     "activeSoundAssetName": "Tilling",
@@ -43,6 +48,7 @@
   },
   {
     "name": "FILL_GRAVE",
+    "defaultTimeToCompleteJob": 5,
     "overrideI18nKey": "ACTION.JOB.FILL_GRAVE",
     "accessedFromAdjacentTile": true,
     "activeSoundAssetName": "Tilling",
@@ -50,37 +56,41 @@
   },
   {
     "name": "PLANTING",
+    "defaultTimeToCompleteJob": 2,
     "overrideI18nKey": "ACTION.JOB.PLANTING",
     "requiredProfessionName": "FARMER",
     "workOnJobParticleEffectNames": ["Digging ground same tile"]
   },
   {
     "name": "REMOVE_PESTS_FROM_CROP",
+    "defaultTimeToCompleteJob": 5,
     "overrideI18nKey": "ACTION.JOB.REMOVE_PESTS_FROM_CROP",
     "requiredProfessionName": "FARMER",
     "workOnJobParticleEffectNames": ["Small leaf explosion"]
   },
   {
     "name": "MUSHROOM_INNOCULATION",
+    "defaultTimeToCompleteJob": 5,
     "overrideI18nKey": "ACTION.JOB.INNOCULATE_MUSHROOM_LOG",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "FARMER"
   },
   {
     "name": "HARVESTING",
+    "defaultTimeToCompleteJob": 4,
     "overrideI18nKey": "ACTION.JOB.HARVESTING",
     "activeSoundAssetName": "HarvestingCrops",
     "workOnJobParticleEffectNames": ["Small leaf explosion"]
   },
   {
     "name": "CLEAR_GROUND",
+    "defaultTimeToCompleteJob": 3,
     "overrideI18nKey": "ACTION.JOB.CLEAR_GROUND",
     "accessedFromAdjacentTile": false,
     "workOnJobParticleEffectNames": ["Small leaf explosion"]
   },
   {
     "name": "COOKING",
-    "workDuration": 7.5,
     "overrideI18nKey": "ACTION.JOB.GENERIC",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CHEF"
@@ -102,7 +112,7 @@
   },
   {
     "name": "TRANSFER_LIQUID",
-    "workDuration": 0.7,
+    "defaultTimeToCompleteJob": 0.7,
     "overrideI18nKey": "ACTION.JOB.TRANSFER_LIQUID",
     "accessedFromAdjacentTile": true,
     "haulItemWhileWorking": true,
@@ -112,7 +122,7 @@
   },
   {
     "name": "MOVE_LIQUID_IN_ITEM",
-    "workDuration": 0.7,
+    "defaultTimeToCompleteJob": 0.7,
     "overrideI18nKey": "ACTION.JOB.TRANSFER_LIQUID",
     "accessedFromAdjacentTile": true,
     "haulItemWhileWorking": true,
@@ -122,7 +132,7 @@
   },
   {
     "name": "REMOVE_LIQUID",
-    "workDuration": 0.7,
+    "defaultTimeToCompleteJob": 0.7,
     "overrideI18nKey": "ACTION.JOB.TRANSFER_LIQUID",
     "accessedFromAdjacentTile": false,
     "haulItemWhileWorking": true,
@@ -131,7 +141,7 @@
   },
   {
     "name": "DUMP_LIQUID_FROM_CONTAINER",
-    "workDuration": 0.7,
+    "defaultTimeToCompleteJob": 0.3,
     "overrideI18nKey": "ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER",
     "accessedFromAdjacentTile": false,
     "haulItemWhileWorking": true,
@@ -164,6 +174,7 @@
   },
   {
     "name": "CONSTRUCT_WOODEN_FURNITURE",
+    "defaultTimeToCompleteJob": 6,
     "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FURNITURE",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CARPENTER",
@@ -172,6 +183,7 @@
   },
   {
     "name": "CONSTRUCT_STONE_FURNITURE",
+    "defaultTimeToCompleteJob": 6,
     "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FURNITURE",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "STONEMASON",
@@ -180,12 +192,14 @@
   },
   {
     "name": "CONSTRUCT",
+    "defaultTimeToCompleteJob": 6,
     "overrideI18nKey": "ACTION.JOB.GENERIC",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"
   },
   {
     "name": "DECONSTRUCT",
+    "defaultTimeToCompleteJob": 6,
     "overrideI18nKey": "ACTION.JOB.DECONSTRUCT",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"

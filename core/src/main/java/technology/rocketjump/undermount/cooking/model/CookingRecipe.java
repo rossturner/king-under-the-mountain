@@ -44,6 +44,7 @@ public class CookingRecipe {
 	private String onCompletionSoundAssetName;
 	@JsonIgnore
 	private SoundAsset onCompletionSoundAsset;
+	private Float defaultTimeToCompleteCooking;
 
 	public String getOutputDescriptionI18nKey() {
 		return outputDescriptionI18nKey;
@@ -59,6 +60,14 @@ public class CookingRecipe {
 
 	public void setVerbOverrideI18nKey(String verbOverrideI18nKey) {
 		this.verbOverrideI18nKey = verbOverrideI18nKey;
+	}
+
+	public Float getDefaultTimeToCompleteCooking() {
+		return defaultTimeToCompleteCooking;
+	}
+
+	public void setDefaultTimeToCompleteCooking(Float defaultTimeToCompleteCooking) {
+		this.defaultTimeToCompleteCooking = defaultTimeToCompleteCooking;
 	}
 
 	public enum CookingProcess {

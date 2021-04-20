@@ -27,6 +27,7 @@ import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PR
 
 public class Job implements Persistable {
 
+	private static final float TIME_TO_COMPLETE_JOB_WHEN_UNSPECIFIED = 3f;
 	private long jobId;
 	private JobType type;
 
@@ -40,7 +41,6 @@ public class Job implements Persistable {
 
 	private Long assignedToEntityId;
 
-	private float totalWorkToDo;
 	private float workDoneSoFar;
 
 	private GridPoint2 jobLocation;
@@ -143,11 +143,20 @@ public class Job implements Persistable {
 	}
 
 	public float getTotalWorkToDo() {
-		return totalWorkToDo;
-	}
+		Float defaultTime = null;
+		if (craftingRecipe != null) {
+			defaultTime = craftingRecipe.getDefaultTimeToCompleteCrafting();
+		} else if (cookingRecipe != null) {
+			defaultTime = cookingRecipe.getDefaultTimeToCompleteCooking();
+		} else {
+			defaultTime = type.getDefaultTimeToCompleteJob();
+		}
 
-	public void setTotalWorkToDo(float totalWorkToDo) {
-		this.totalWorkToDo = totalWorkToDo;
+		if (defaultTime != null) {
+			return defaultTime;
+		} else {
+			return TIME_TO_COMPLETE_JOB_WHEN_UNSPECIFIED;
+		}
 	}
 
 	public float getWorkDoneSoFar() {
@@ -312,7 +321,6 @@ public class Job implements Persistable {
 		if (assignedToEntityId != null) {
 			jobJson.put("assignedToEntityId", assignedToEntityId);
 		}
-		jobJson.put("totalWork", totalWorkToDo);
 		jobJson.put("workDone", workDoneSoFar);
 
 		jobJson.put("location", JSONUtils.toJSON(jobLocation));
@@ -374,7 +382,6 @@ public class Job implements Persistable {
 		}
 
 		this.assignedToEntityId = asJson.getLong("assignedToEntityId");
-		this.totalWorkToDo = asJson.getFloatValue("totalWork");
 		this.workDoneSoFar = asJson.getFloatValue("workDone");
 
 		this.jobLocation = JSONUtils.gridPoint2(asJson.getJSONObject("location"));

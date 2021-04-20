@@ -14,7 +14,8 @@
         "quantity": 2
       }
     ],
-    "materialTypesToCopyOver": ["WOOD"]
+    "materialTypesToCopyOver": ["WOOD"],
+    "defaultTimeToCompleteCrafting": 3
   },
   {
     "recipeName": "Cut mushroom planks",
@@ -32,7 +33,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Axe",
-    "materialTypesToCopyOver": ["WOOD"]
+    "materialTypesToCopyOver": ["WOOD"],
+    "defaultTimeToCompleteCrafting": 2
   },
 
   {
@@ -51,7 +53,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Chisel",
-    "materialTypesToCopyOver": ["STONE"]
+    "materialTypesToCopyOver": ["STONE"],
+    "defaultTimeToCompleteCrafting": 4
   },
   {
     "recipeName": "Cut gems",
@@ -69,7 +72,8 @@
         "quantity": 4
       }
     ],
-    "materialTypesToCopyOver": ["GEM"]
+    "materialTypesToCopyOver": ["GEM"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft millstone",
@@ -86,7 +90,8 @@
         "quantity": 1
       }
     ],
-    "materialTypesToCopyOver": ["STONE"]
+    "materialTypesToCopyOver": ["STONE"],
+    "defaultTimeToCompleteCrafting": 5
   },
 
   {
@@ -104,7 +109,8 @@
         "quantity": 3
       }
     ],
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft metal plates",
@@ -121,7 +127,8 @@
         "quantity": 2
       }
     ],
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft liquid tank",
@@ -142,7 +149,8 @@
         "quantity": 1
       }
     ],
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft cauldron",
@@ -163,7 +171,8 @@
         "quantity": 1
       }
     ],
-    "materialTypesToCopyOver": ["METAL", "WOOD"]
+    "materialTypesToCopyOver": ["METAL", "WOOD"],
+    "defaultTimeToCompleteCrafting": 8
   },
   {
     "recipeName": "Craft anvil",
@@ -180,7 +189,8 @@
         "quantity": 1
       }
     ],
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 8
   },
   {
     "recipeName": "Craft tool axe",
@@ -202,7 +212,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL", "WOOD"]
+    "materialTypesToCopyOver": ["METAL", "WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool chisel",
@@ -224,7 +235,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL", "WOOD"]
+    "materialTypesToCopyOver": ["METAL", "WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool kitchen knife",
@@ -242,7 +254,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool large hammer",
@@ -264,7 +277,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL", "WOOD"]
+    "materialTypesToCopyOver": ["METAL", "WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool pickaxe",
@@ -286,7 +300,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL", "WOOD"]
+    "materialTypesToCopyOver": ["METAL", "WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool saw",
@@ -308,7 +323,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL", "WOOD"]
+    "materialTypesToCopyOver": ["METAL", "WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool small hammer",
@@ -326,7 +342,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool tongs",
@@ -344,7 +361,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Tongs",
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
 
   {
@@ -362,7 +380,8 @@
         "quantity": 5
       }
     ],
-    "materialTypesToCopyOver": ["WOOD"]
+    "materialTypesToCopyOver": ["WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft barrel",
@@ -383,7 +402,8 @@
         "quantity": 1
       }
     ],
-    "materialTypesToCopyOver": ["WOOD", "METAL"]
+    "materialTypesToCopyOver": ["WOOD", "METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft bucket",
@@ -405,7 +425,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Saw",
-    "materialTypesToCopyOver": ["WOOD", "METAL"]
+    "materialTypesToCopyOver": ["WOOD", "METAL"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool fishing rod",
@@ -422,7 +443,8 @@
         "quantity": 1
       }
     ],
-    "materialTypesToCopyOver": ["WOOD"]
+    "materialTypesToCopyOver": ["WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool plane",
@@ -440,7 +462,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Saw",
-    "materialTypesToCopyOver": ["WOOD"]
+    "materialTypesToCopyOver": ["WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
   {
     "recipeName": "Craft tool rolling pin",
@@ -458,7 +481,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Plane",
-    "materialTypesToCopyOver": ["WOOD"]
+    "materialTypesToCopyOver": ["WOOD"],
+    "defaultTimeToCompleteCrafting": 5
   },
 
   {
@@ -477,7 +501,8 @@
         "quantity": 3
       }
     ],
-    "materialTypesToCopyOver": ["VEGETABLE"]
+    "materialTypesToCopyOver": ["VEGETABLE"],
+    "defaultTimeToCompleteCrafting": 5
   },
 
   {
@@ -496,7 +521,8 @@
         "quantity": 7
       }
     ],
-    "materialTypesToCopyOver": ["VEGETABLE"]
+    "materialTypesToCopyOver": ["VEGETABLE"],
+    "defaultTimeToCompleteCrafting": 6
   },
 
   {
@@ -514,7 +540,8 @@
         "quantity": 5
       }
     ],
-    "materialTypesToCopyOver": ["ORE"]
+    "materialTypesToCopyOver": ["ORE"],
+    "defaultTimeToCompleteCrafting": 7
   },
   {
     "recipeName": "Crush pyrite to iron sulfate / green vitriol",
@@ -533,7 +560,8 @@
         "quantity": 2
       }
     ],
-    "itemTypeRequiredName": "Tool-Large-Hammer"
+    "itemTypeRequiredName": "Tool-Large-Hammer",
+    "defaultTimeToCompleteCrafting": 5
   },
 
   {
@@ -558,7 +586,8 @@
       }
     ],
     "extraGameHoursToComplete": 3.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
   {
     "recipeName": "Smelt tin",
@@ -582,7 +611,8 @@
       }
     ],
     "extraGameHoursToComplete": 3.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
   {
     "recipeName": "Smelt copper from native",
@@ -606,7 +636,8 @@
       }
     ],
     "extraGameHoursToComplete": 3.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
   {
     "recipeName": "Smelt copper from malachite",
@@ -630,7 +661,8 @@
       }
     ],
     "extraGameHoursToComplete": 3.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
   {
     "recipeName": "Smelt copper from chrysocolla",
@@ -654,7 +686,8 @@
       }
     ],
     "extraGameHoursToComplete": 3.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
   {
     "recipeName": "Smelt gold",
@@ -678,7 +711,8 @@
       }
     ],
     "extraGameHoursToComplete": 3.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
   {
     "recipeName": "Smelt silver from Galena",
@@ -702,7 +736,8 @@
       }
     ],
     "extraGameHoursToComplete": 3.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
   {
     "recipeName": "Smelt silver from native",
@@ -726,7 +761,8 @@
       }
     ],
     "extraGameHoursToComplete": 4.0,
-    "itemTypeRequiredName": "Tool-Tongs"
+    "itemTypeRequiredName": "Tool-Tongs",
+    "defaultTimeToCompleteCrafting": 2
   },
 
   {
@@ -745,7 +781,8 @@
       }
     ],
     "itemTypeRequiredName": "Tool-Large-Hammer",
-    "materialTypesToCopyOver": ["METAL"]
+    "materialTypesToCopyOver": ["METAL"],
+    "defaultTimeToCompleteCrafting": 7
   },
 
 
@@ -766,6 +803,7 @@
         "quantity": 16
       }
     ],
-    "extraGameHoursToComplete": 28.0
+    "extraGameHoursToComplete": 28.0,
+    "defaultTimeToCompleteCrafting": 2
   }
 ]
