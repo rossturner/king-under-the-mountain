@@ -1,4 +1,8 @@
-Alpha 5.2
+Alpha 5.2.1
+
+- Fixed cleanup of cancelled and completed liquid production assignments, which was causing liquid production to break down over time
+
+Alpha 5.2 - 20th April 2021
 
 - Progress bars to show completion of jobs being worked on
 - Made job completion time moddable, broken down by job type, or crafting recipe or cooking recipe where applicable
