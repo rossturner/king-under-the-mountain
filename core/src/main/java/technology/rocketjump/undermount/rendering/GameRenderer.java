@@ -17,7 +17,6 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rendering.lighting.CombinedLightingResultRenderer;
 import technology.rocketjump.undermount.rendering.lighting.LightProcessor;
 import technology.rocketjump.undermount.rendering.lighting.PointLight;
@@ -32,11 +31,9 @@ import java.util.List;
 public class GameRenderer implements AssetDisposable {
 
 	private final List<PointLight> lightsToRenderThisFrame;
-	private final List<ParticleEffectInstance> particlesToRenderAsUI = new LinkedList<>();
-	private PointLight testLight;
-	private boolean testLightEnabled = true;
+	private PointLight cursorLight;
+	private boolean cursorLightEnabled = true;
 	private final LightProcessor lightProcessor;
-	/// TODO remove the above when no longer debugging light at cursor - or could do with being a proper "feature"
 
 	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
 
@@ -62,6 +59,7 @@ public class GameRenderer implements AssetDisposable {
 	private final TerrainSpriteCache diffuseSpriteCache;
 	private final TerrainSpriteCache normalSpriteCache;
 
+	private final List<ParticleEffectInstance> particlesToRenderAsUI = new LinkedList<>();
 	private final ScreenWriter screenWriter;
 
 	@Inject
@@ -90,10 +88,10 @@ public class GameRenderer implements AssetDisposable {
 		viewportCamera = new OrthographicCamera();
 		viewportCamera.setToOrtho(false);
 
-		testLight = new PointLight();
-		testLight.setColor(new Color(1.0f, 1.0f, 1.0f, 1.0f));
+		cursorLight = new PointLight();
+		cursorLight.setColor(new Color(1.0f, 1.0f, 1.0f, 1.0f));
 		lightsToRenderThisFrame = new LinkedList<>();
-		lightsToRenderThisFrame.add(testLight);
+		lightsToRenderThisFrame.add(cursorLight);
 	}
 
 	@Override
@@ -101,7 +99,7 @@ public class GameRenderer implements AssetDisposable {
 		disposeFrameBuffers();
 		worldRenderer.dispose();
 		combinedRenderer.dispose();
-		testLight.dispose();
+		cursorLight.dispose();
 	}
 
 	public void renderGame(TiledMap worldMap, OrthographicCamera camera) {
@@ -115,52 +113,23 @@ public class GameRenderer implements AssetDisposable {
 
 		Vector3 unprojected = camera.unproject(new Vector3(screenX, screenY, 0));
 
-		///// BEGIN TEMP LIGHTING STUFF
 		// TODO move the below to an update method not in a renderer
 
 		int tileX = (int) Math.floor(unprojected.x);
 		int tileY = (int) Math.floor(unprojected.y);
-		MapTile tileAtCursor = worldMap.getTile(tileX, tileY);
-		if (tileAtCursor != null && GlobalSettings.DEV_MODE) {
-//			int regionId = tileAtCursor.getRegionId();
-//			screenWriter.printLine("Region ID: " + regionId);
-//			screenWriter.printLine("Location: " + tileX + ", " + tileY);
 
-//			Entity item = tileAtCursor.getFirstItem();
-//			if (item != null) {
-//				ItemEntityAttributes attributes = (ItemEntityAttributes) item.getPhysicalEntityComponent().getAttributes();
-//				screenWriter.printLine(attributes.getNumAllocated() + "/" + attributes.getQuantity() + " " + attributes.getMaterial(attributes.getItemType().getPrimaryMaterialType()).getMaterialName() + " " + attributes.getItemType().getItemTypeName());
-//			}
-
-//			if (tileAtCursor.getRoomTile() != null) {
-//				Room room = tileAtCursor.getRoomTile().getRoom();
-//				if (room.getStockpileComponent() != null) {
-//					StockpileComponent stockpileComponent = room.getStockpileComponent();
-//					HaulingAllocation allocation = stockpileComponent.getAllocationAt(tileX, tileY);
-//					if (allocation == null) {
-//						screenWriter.printLine("No  stockpile allocations here");
-//					} else {
-//						screenWriter.printLine("Stockpile allocated: " + allocation.getQuantity() + " " + allocation.getGameMaterial().getMaterialName() + " " + allocation.getItemType().getItemTypeName());
-//					}
-//					screenWriter.printLine("Room position: " + room.getAvgWorldPosition());
-//				}
-//			}
-		}
-
-		Vector2 testLightPosition = new Vector2(unprojected.x, unprojected.y);
-		testLight.setWorldPosition(testLightPosition);
+		Vector2 cursorLightPosition = new Vector2(unprojected.x, unprojected.y);
+		cursorLight.setWorldPosition(cursorLightPosition);
 		lightsToRenderThisFrame.clear();
 		particlesToRenderAsUI.clear();
 
-		MapTile testLightTile = worldMap.getTile(testLightPosition);
-		testLightEnabled = testLightTile != null && testLightTile.getExploration().equals(TileExploration.EXPLORED) && !testLightTile.hasWall();
+		MapTile cursorLightTile = worldMap.getTile(cursorLightPosition);
+		cursorLightEnabled = cursorLightTile != null && cursorLightTile.getExploration().equals(TileExploration.EXPLORED) && !cursorLightTile.hasWall();
 
-		if (testLightEnabled) {
-			lightProcessor.updateLightGeometry(testLight, worldMap);
-			lightsToRenderThisFrame.add(testLight);
+		if (cursorLightEnabled) {
+			lightProcessor.updateLightGeometry(cursorLight, worldMap);
+			lightsToRenderThisFrame.add(cursorLight);
 		}
-
-		// END TEMP LIGHTING STUFF
 
 
 		diffuseFrameBuffer.begin();
