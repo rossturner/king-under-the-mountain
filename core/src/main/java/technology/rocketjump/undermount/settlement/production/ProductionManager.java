@@ -95,12 +95,14 @@ public class ProductionManager implements Updatable, Telegraph {
 				ProductionAssignment assignment = (ProductionAssignment) msg.extraInfo;
 				if (assignment == null || assignment.targetRecipe == null) {
 					Logger.error("PRODUCTION_ASSIGNMENT_COMPLETED with null targetRecipe");
-				} else if (assignment.targetRecipe.getOutput().get(0).isLiquid()) {
-					// Doing nothing for iquid outputs
 				} else {
 					for (QuantifiedItemTypeWithMaterial output : assignment.targetRecipe.getOutput()) {
-						Map<Long, ProductionAssignment> productionAssignmentMap =
-								gameContext.getSettlementState().itemTypeProductionAssignments.computeIfAbsent(output.getItemType(), (o) -> new HashMap<>());
+						Map<Long, ProductionAssignment> productionAssignmentMap;
+						if (output.isLiquid()) {
+							productionAssignmentMap = gameContext.getSettlementState().liquidProductionAssignments.computeIfAbsent(output.getMaterial(), (o) -> new HashMap<>());
+						} else {
+							productionAssignmentMap = gameContext.getSettlementState().itemTypeProductionAssignments.computeIfAbsent(output.getItemType(), (o) -> new HashMap<>());
+						}
 						productionAssignmentMap.remove(assignment.productionAssignmentId);
 					}
 				}
