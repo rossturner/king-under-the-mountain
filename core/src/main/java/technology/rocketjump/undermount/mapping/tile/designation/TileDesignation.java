@@ -18,6 +18,7 @@ public class TileDesignation {
 	private String createsJobTypeName;
 	private Color selectionColor;
 	private Color designationColor;
+	private boolean displayInRoofingView;
 
 	@JsonIgnore
 	private JobType createsJobType;
@@ -29,12 +30,14 @@ public class TileDesignation {
 						   @JsonProperty("iconName") String iconName,
 						   @JsonProperty("createsJobType") String createsJobTypeName,
 						   @JsonProperty("selectionColor") Color selectionColor,
-						   @JsonProperty("designationColor") Color designationColor) {
+						   @JsonProperty("designationColor") Color designationColor,
+						   @JsonProperty("displayInRoofingView") boolean displayInRoofingView) {
 		this.designationName = designationName;
 		this.iconName = iconName;
 		this.createsJobTypeName = createsJobTypeName;
 		this.selectionColor = selectionColor;
 		this.designationColor = designationColor;
+		this.displayInRoofingView = displayInRoofingView;
 	}
 
 	public String getDesignationName() {
@@ -71,5 +74,9 @@ public class TileDesignation {
 
 	public void setCreatesJobType(JobType createsJobType) {
 		this.createsJobType = createsJobType;
+	}
+
+	public boolean isDisplayInRoofingView() {
+		return displayInRoofingView;
 	}
 }

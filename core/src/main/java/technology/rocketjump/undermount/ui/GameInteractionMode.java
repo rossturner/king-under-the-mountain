@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.rooms.RoomType;
 import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage.PlantSpeciesHarvestType.FORAGING;
 import static technology.rocketjump.undermount.mapping.tile.TileExploration.EXPLORED;
+import static technology.rocketjump.undermount.mapping.tile.TileRoof.OPEN;
 
 // MODDING extract this enum to data-driven set of behaviours (when we know how to)
 public enum GameInteractionMode {
@@ -38,6 +39,7 @@ public enum GameInteractionMode {
 			return false;
 		}
 	}, true),
+	DESIGNATE_ROOFING("roofing", "ADD_ROOF", mapTile -> mapTile.getRoof().equals(OPEN) && mapTile.getDesignation() == null, true),
 	REMOVE_DESIGNATIONS("cancel", null, mapTile -> mapTile.getDesignation() != null, true),
 	PLACE_ROOM("rooms", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && !mapTile.hasWall() &&
 			!mapTile.hasRoom() && !mapTile.hasDoorway() && !mapTile.isWaterSource() && !mapTile.getFloor().hasBridge(), true),

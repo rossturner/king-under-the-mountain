@@ -7,6 +7,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
+import technology.rocketjump.undermount.ui.GameViewMode;
 import technology.rocketjump.undermount.ui.actions.SetInteractionMode;
 import technology.rocketjump.undermount.ui.actions.SwitchGuiViewAction;
 import technology.rocketjump.undermount.ui.widgets.ButtonStyle;
@@ -33,6 +34,13 @@ public class BuildMenuGuiView implements GuiView {
 		IconButton walls = iconButtonFactory.create("GUI.BUILD.WALLS", "stone-wall", HexColors.get("#cdcda7"), ButtonStyle.DEFAULT);
 		walls.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_WALLS, messageDispatcher));
 		iconButtons.add(walls);
+
+		IconButton roofing = iconButtonFactory.create("GUI.BUILD.ROOFING", "triple-gate", HexColors.get("#7777ed"), ButtonStyle.DEFAULT);
+		roofing.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.ROOFING_INFO);
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.BUILD_ROOFING);
+		});
+		iconButtons.add(roofing);
 
 		IconButton doors = iconButtonFactory.create("GUI.BUILD.DOORS", "closed-doors", HexColors.get("#dca27b"), ButtonStyle.DEFAULT);
 		doors.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_DOORS, messageDispatcher));

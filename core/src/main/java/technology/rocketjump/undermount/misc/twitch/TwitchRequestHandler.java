@@ -5,9 +5,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.commons.io.IOUtils;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchToken;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import java.io.IOException;
 
@@ -37,9 +35,9 @@ public class TwitchRequestHandler {
 				.build();
 
 		Response response = client.newCall(request).execute();
-		if (GlobalSettings.DEV_MODE) {
-			Logger.debug("Request to " + request.url().toString() + " returned " + response.code());
-		}
+//		if (GlobalSettings.DEV_MODE) {
+//			Logger.debug("Request to " + request.url().toString() + " returned " + response.code());
+//		}
 
 		if (response.code() == 401 && !refreshAttempted) {
 			attemptRefreshToken(twitchDataStore);
