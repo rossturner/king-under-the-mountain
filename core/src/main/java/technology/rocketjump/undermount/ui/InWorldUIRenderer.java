@@ -337,9 +337,6 @@ public class InWorldUIRenderer {
 	private void renderExistingDesignation(int x, int y, MapTile mapTile) {
 		if (mapTile.getDesignation() != null) {
 			TileDesignation designation = mapTile.getDesignation();
-			if (designation.isDisplayInRoofingView()) {
-				return;
-			}
 			for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
 				if (job.getAssignedToEntityId() != null) {
 					// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off

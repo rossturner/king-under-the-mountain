@@ -24,8 +24,9 @@ import technology.rocketjump.undermount.mapping.model.InvalidMapGenerationExcept
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.MapVertex;
-import technology.rocketjump.undermount.mapping.tile.TileRoof;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -94,9 +95,9 @@ public class GameMapConverter {
 				MapTile targetTile = targetMap.getTile(x, y);
 
 				if (sourceTile.getTileType().equals(TileType.MOUNTAIN)) {
-					targetTile.setRoof(TileRoof.MOUNTAIN_ROOF);
 					GameMaterial currentMaterial = materialDictionary.getByName(sourceTile.getRockType().getName());
-					targetTile.setRoofMaterial(currentMaterial);
+					targetTile.getRoof().setRoofMaterial(currentMaterial);
+					targetTile.getRoof().setState(TileRoofState.MOUNTAIN_ROOF);
 					if (sourceTile.hasRiver()) {
 						targetTile.getFloor().setFloorType(stoneSlabFloorType);
 						targetTile.getFloor().setMaterial(slateMaterial);
@@ -108,9 +109,10 @@ public class GameMapConverter {
 							targetTile.getFloor().setFloorType(roughStoneFloorType);
 							targetTile.getFloor().setMaterial(currentMaterial);
 						}
-						targetTile.setRoof(TileRoof.CAVERN);
+						targetTile.getRoof().setState(TileRoofState.CAVERN);
 					} else {
-						targetTile.setWall(new Wall(new WallLayout(0), roughStoneWallType, currentMaterial), TileRoof.MOUNTAIN_ROOF);
+						targetTile.setWall(new Wall(new WallLayout(0), roughStoneWallType, currentMaterial),
+								new TileRoof(TileRoofState.MOUNTAIN_ROOF, currentMaterial));
 						if (sourceTile.getGem() != null) {
 							GemType gemType = sourceTile.getGem();
 							targetTile.getWall().changeOre(gemWallType, materialDictionary.getByName(gemType.getName()));
@@ -120,7 +122,7 @@ public class GameMapConverter {
 						}
 					}
 				} else {
-					targetTile.setRoof(TileRoof.OPEN);
+					targetTile.getRoof().setState(TileRoofState.OPEN);
 
 					switch (sourceTile.getSubRegion().getSubRegionType()) {
 						case FOREST:
@@ -227,7 +229,7 @@ public class GameMapConverter {
 			for (int y = 0; y < generatedSourceMap.getHeight(); y++) {
 				MapTile targetTile = targetMap.getTile(x, y);
 				targetTile.update(targetMap.getNeighbours(x, y), targetMap.getVertices(x, y));
-				if (targetTile.getRoof().equals(TileRoof.OPEN)) {
+				if (targetTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 					markAsOutside(targetTile, targetMap);
 				}
 				if (targetTile.getRegionId() == -1) {
@@ -364,7 +366,7 @@ public class GameMapConverter {
 	}
 
 	private void markAsOutside(MapTile tile, TiledMap areaMap) {
-		tile.setRoof(TileRoof.OPEN);
+		tile.getRoof().setState(TileRoofState.OPEN);
 		for (MapVertex vertex : areaMap.getVertexNeighboursOfCell(tile).values()) {
 			vertex.setOutsideLightAmount(1.0f);
 			outdoorLightProcessor.propagateLightFromMapVertex(areaMap, vertex, 1f);

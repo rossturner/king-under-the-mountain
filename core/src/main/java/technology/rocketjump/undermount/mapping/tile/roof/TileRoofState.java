@@ -1,9 +1,9 @@
-package technology.rocketjump.undermount.mapping.tile;
+package technology.rocketjump.undermount.mapping.tile.roof;
 
 import com.badlogic.gdx.graphics.Color;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 
-public enum TileRoof {
+public enum TileRoofState {
 
     OPEN(HexColors.get("#54faed99")),
     CONSTRUCTED(HexColors.get("#d9913699")),
@@ -13,7 +13,7 @@ public enum TileRoof {
 
     public final Color viewColor;
 
-    TileRoof(Color viewColor) {
+    TileRoofState(Color viewColor) {
         this.viewColor = viewColor;
     }
 }

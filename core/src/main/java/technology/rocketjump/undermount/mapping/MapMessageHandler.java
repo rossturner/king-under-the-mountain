@@ -24,6 +24,8 @@ import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.*;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -40,7 +42,6 @@ import technology.rocketjump.undermount.zones.Zone;
 import java.util.*;
 
 import static technology.rocketjump.undermount.settlement.notifications.NotificationType.AREA_REVEALED;
-import static technology.rocketjump.undermount.ui.GameViewMode.ROOFING_INFO;
 
 @Singleton
 public class MapMessageHandler implements Telegraph, GameContextAware {
@@ -191,13 +192,11 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				if (tile != null) {
 					if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.REMOVE_DESIGNATIONS)) {
 						if (tile.getDesignation() != null) {
-							if (tile.getDesignation().isDisplayInRoofingView() && interactionStateContainer.getGameViewMode().equals(ROOFING_INFO)) {
-								messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
-							} else if (!tile.getDesignation().isDisplayInRoofingView() && !interactionStateContainer.getGameViewMode().equals(ROOFING_INFO)) {
-								messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
-							}
+							messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
 						}
-					} else if (interactionStateContainer.getInteractionMode().designationCheck != null) {
+					} else if (interactionStateContainer.getInteractionMode().designationCheck != null &&
+							interactionStateContainer.getInteractionMode().getDesignationToApply() != null) {
+
 						if (interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(tile)) {
 							if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.REMOVE_ROOMS)) {
 								roomTilesToRemove.add(tile.getTilePosition());
@@ -225,6 +224,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 							}
 						}
 
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_ROOFING)) {
+						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, true));
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_ROOFING)) {
+						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, false));
 					} else {
 						Logger.warn("Unhandled area selection message in " + getClass().getSimpleName());
 					}
@@ -359,24 +362,25 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
 		WallLayout wallLayout = new WallLayout(tileNeighbours);
-		TileRoof newRoof = TileRoof.CONSTRUCTED;
-		if (tileToAddWallTo.getRoof().equals(TileRoof.MOUNTAIN_ROOF)) {
-			newRoof = TileRoof.MOUNTAIN_ROOF;
-		} else if (tileToAddWallTo.getRoof().equals(TileRoof.MINED)) {
-			newRoof = TileRoof.MINED;
+		TileRoofState newRoofState = TileRoofState.CONSTRUCTED;
+		if (tileToAddWallTo.getRoof().getState().equals(TileRoofState.MOUNTAIN_ROOF)) {
+			newRoofState = TileRoofState.MOUNTAIN_ROOF;
+		} else if (tileToAddWallTo.getRoof().getState().equals(TileRoofState.MINED)) {
+			newRoofState = TileRoofState.MINED;
 		}
-		tileToAddWallTo.setWall(new Wall(wallLayout, wallType, wallMaterial), newRoof);
+
+		tileToAddWallTo.setWall(new Wall(wallLayout, wallType, wallMaterial), new TileRoof(newRoofState, wallMaterial));
 		updateTile(tileToAddWallTo, gameContext);
 		messageDispatcher.dispatchMessage(MessageType.WALL_CREATED, location);
 
 		// if inside, propagate outwards "darkness" from tile vertices that are now totally indoors, then propagate light inwards from each endpoint
-		if (tileToAddWallTo.getRoof().equals(TileRoof.MINED) || tileToAddWallTo.getRoof().equals(TileRoof.MOUNTAIN_ROOF)) {
+		if (tileToAddWallTo.getRoof().getState().equals(TileRoofState.MINED) || tileToAddWallTo.getRoof().getState().equals(TileRoofState.MOUNTAIN_ROOF)) {
 			EnumMap<CompassDirection, MapVertex> cellVertices = gameContext.getAreaMap().getVertexNeighboursOfCell(tileToAddWallTo);
 			for (MapVertex cellVertex : cellVertices.values()) {
 				TileNeighbours neighboursOfCellVertex = gameContext.getAreaMap().getTileNeighboursOfVertex(cellVertex);
 				boolean vertexSurroundedByIndoorCells = true;
 				for (MapTile vertexNeighbour : neighboursOfCellVertex.values()) {
-					if (vertexNeighbour != null && vertexNeighbour.getRoof().equals(TileRoof.OPEN)) {
+					if (vertexNeighbour != null && vertexNeighbour.getRoof().getState().equals(TileRoofState.OPEN)) {
 						vertexSurroundedByIndoorCells = false;
 						break;
 					}
@@ -476,12 +480,12 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		MapTile tile = gameContext.getAreaMap().getTile(location);
 		if (tile != null && tile.hasWall()) {
 			GameMaterial floorMaterial = tile.getWall().getMaterial();
-			if (tile.getRoofMaterial() != null) {
-				floorMaterial = tile.getRoofMaterial();
+			if (tile.getRoof().getRoofMaterial() != null) {
+				floorMaterial = tile.getRoof().getRoofMaterial();
 			}
 
-			if (tile.getRoof().equals(TileRoof.MOUNTAIN_ROOF)) {
-				tile.setRoof(TileRoof.MINED);
+			if (tile.getRoof().getState().equals(TileRoofState.MOUNTAIN_ROOF)) {
+				tile.getRoof().setState(TileRoofState.MINED);
 			}
 
 			tile.setWall(null, tile.getRoof());
@@ -605,10 +609,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	}
 
 	public void markAsOutside(int tileX, int tileY) {
-		MapTile cell = gameContext.getAreaMap().getTile(tileX, tileY);
-		cell.setRoof(TileRoof.OPEN);
+		MapTile tile = gameContext.getAreaMap().getTile(tileX, tileY);
+		tile.getRoof().setState(TileRoofState.OPEN);
 
-		for (MapVertex vertex : gameContext.getAreaMap().getVertexNeighboursOfCell(cell).values()) {
+		for (MapVertex vertex : gameContext.getAreaMap().getVertexNeighboursOfCell(tile).values()) {
 			vertex.setOutsideLightAmount(1.0f);
 			outdoorLightProcessor.propagateLightFromMapVertex(gameContext.getAreaMap(), vertex, 1f);
 		}

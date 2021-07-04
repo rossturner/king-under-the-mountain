@@ -21,6 +21,7 @@ import technology.rocketjump.undermount.mapping.tile.floor.OverlapLayout;
 import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallConstructionLayout;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
@@ -56,8 +57,7 @@ public class MapTile implements Persistable {
 	private Map<Long, Entity> entities = new ConcurrentHashMap<>(); // Concurrent for access by PathfindingTask
 	private Map<Long, ParticleEffectInstance> particleEffects = new HashMap<>();
 
-	private TileRoof roof = TileRoof.MOUNTAIN_ROOF;
-	private GameMaterial roofMaterial = null;
+	private TileRoof roof;
 	private TileFloor floor;
 	private Wall wall = null;
 	private Doorway doorway = null;
@@ -72,6 +72,7 @@ public class MapTile implements Persistable {
 		this.seed = seed;
 		this.tilePosition = new GridPoint2(tileX, tileY);
 		this.floor = new TileFloor(floorType, floorMaterial);
+		this.roof = new TileRoof();
 
 		if (GlobalSettings.MAP_REVEALED) {
 			exploration = EXPLORED;
@@ -208,7 +209,7 @@ public class MapTile implements Persistable {
 
 	public void setWall(Wall wall, TileRoof roof) {
 		this.wall = wall;
-		setRoof(roof);
+		this.roof = roof;
 	}
 
 	public void addWall(TileNeighbours neighbours, GameMaterial material, WallType wallType) {
@@ -440,14 +441,6 @@ public class MapTile implements Persistable {
 		return zones;
 	}
 
-	public GameMaterial getRoofMaterial() {
-		return roofMaterial;
-	}
-
-	public void setRoofMaterial(GameMaterial roofMaterial) {
-		this.roofMaterial = roofMaterial;
-	}
-
 	@Override
 	public void writeTo(SavedGameStateHolder savedGameStateHolder) {
 		// Don't need to check if already in state holder?
@@ -461,12 +454,9 @@ public class MapTile implements Persistable {
 			asJson.put("entities", entities);
 		}
 
-		if (!roof.equals(TileRoof.MOUNTAIN_ROOF)) {
-			asJson.put("roof", roof.name());
-		}
-		if (roofMaterial != null) {
-			asJson.put("roofMaterial", roofMaterial.getMaterialName());
-		}
+		JSONObject roofJson = new JSONObject(true);
+		roof.writeTo(roofJson, savedGameStateHolder);
+		asJson.put("roof", roofJson);
 
 		if (floor != null) {
 			JSONObject floorJson = new JSONObject(true);
@@ -529,13 +519,12 @@ public class MapTile implements Persistable {
 			}
 		}
 
-		this.roof = EnumParser.getEnumValue(asJson, "roof", TileRoof.class, TileRoof.MOUNTAIN_ROOF);
-		String roofMaterialName = asJson.getString("roofMaterial");
-		if (roofMaterialName != null) {
-			this.roofMaterial = relatedStores.gameMaterialDictionary.getByName(roofMaterialName);
-			if (this.roofMaterial == null) {
-				throw new InvalidSaveException("Could not find material with name " + roofMaterialName);
-			}
+		Object roofJson = asJson.get("roof");
+		if (roofJson instanceof JSONObject) {
+			this.roof.readFrom((JSONObject) roofJson, savedGameStateHolder, relatedStores);
+		} else {
+			// Old save version
+			throw new InvalidSaveException("Map tile roof is old version");
 		}
 
 		JSONObject floorJson = asJson.getJSONObject("floor");

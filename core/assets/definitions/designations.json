@@ -13,7 +13,6 @@
     "b" : 1.0,
     "a" : 0.4
   },
-  "displayInRoofingView" : false,
   "createsJobTypeName" : "MINING"
 }, {
   "designationName" : "CHOP_WOOD",
@@ -30,7 +29,6 @@
     "b" : 1.0,
     "a" : 0.4
   },
-  "displayInRoofingView" : false,
   "createsJobTypeName" : "LOGGING"
 }, {
   "designationName" : "HARVEST",
@@ -47,7 +45,6 @@
     "b" : 1.0,
     "a" : 0.4
   },
-  "displayInRoofingView" : false,
   "createsJobTypeName" : "HARVESTING"
 }, {
   "designationName" : "CLEAR_GROUND",
@@ -64,7 +61,6 @@
     "b" : 1.0,
     "a" : 0.4
   },
-  "displayInRoofingView" : false,
   "createsJobTypeName" : "CLEAR_GROUND"
 }, {
   "designationName" : "REMOVE_ROOMS",
@@ -80,8 +76,7 @@
     "g" : 0.2,
     "b" : 0.2,
     "a" : 0.3
-  },
-  "displayInRoofingView" : false
+  }
 }, {
   "designationName" : "REMOVE_CONSTRUCTIONS",
   "iconName" : "block",
@@ -96,8 +91,7 @@
     "g" : 0.2,
     "b" : 0.2,
     "a" : 0.3
-  },
-  "displayInRoofingView" : false
+  }
 }, {
   "designationName" : "DECONSTRUCT",
   "iconName" : "demolish",
@@ -112,23 +106,5 @@
     "g" : 0.45,
     "b" : 0.18,
     "a" : 0.3
-  },
-  "displayInRoofingView" : false
-}, {
-  "designationName" : "ADD_ROOF",
-  "iconName" : "triple-gate",
-  "selectionColor" : {
-    "r" : 1.0,
-    "g" : 1.0,
-    "b" : 0.6,
-    "a" : 0.4
-  },
-  "designationColor" : {
-    "r" : 1.0,
-    "g" : 1.0,
-    "b" : 1.0,
-    "a" : 0.4
-  },
-  "displayInRoofingView" : true,
-  "createsJobTypeName" : "CLEAR_GROUND"
+  }
 } ]

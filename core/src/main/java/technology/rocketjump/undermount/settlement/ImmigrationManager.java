@@ -25,7 +25,7 @@ import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 
@@ -207,22 +207,22 @@ public class ImmigrationManager implements Updatable, Telegraph {
 		List<MapTile> potentialImmigrationPoints = new ArrayList<>();
 		for (int x = 0; x < gameContext.getAreaMap().getWidth(); x++) {
 			MapTile bottomEdgeTile = gameContext.getAreaMap().getTile(x, 0);
-			if (bottomEdgeTile.getRegionId() == regionId && bottomEdgeTile.getRoof().equals(TileRoof.OPEN)) {
+			if (bottomEdgeTile.getRegionId() == regionId && bottomEdgeTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 				potentialImmigrationPoints.add(bottomEdgeTile);
 			}
 
 			MapTile topEdgeTile = gameContext.getAreaMap().getTile(x, gameContext.getAreaMap().getHeight() - 1);
-			if (topEdgeTile.getRegionId() == regionId && topEdgeTile.getRoof().equals(TileRoof.OPEN)) {
+			if (topEdgeTile.getRegionId() == regionId && topEdgeTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 				potentialImmigrationPoints.add(topEdgeTile);
 			}
 		}
 		for (int y = 1; y < gameContext.getAreaMap().getHeight() - 1; y++) {
 			MapTile leftEdgeTile = gameContext.getAreaMap().getTile(0, y);
-			if (leftEdgeTile.getRegionId() == regionId && leftEdgeTile.getRoof().equals(TileRoof.OPEN)) {
+			if (leftEdgeTile.getRegionId() == regionId && leftEdgeTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 				potentialImmigrationPoints.add(leftEdgeTile);
 			}
 			MapTile rightEdgeTile = gameContext.getAreaMap().getTile(gameContext.getAreaMap().getWidth() -1, y);
-			if (rightEdgeTile.getRegionId() ==  regionId && rightEdgeTile.getRoof().equals(TileRoof.OPEN)) {
+			if (rightEdgeTile.getRegionId() ==  regionId && rightEdgeTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 				potentialImmigrationPoints.add(rightEdgeTile);
 			}
 		}
