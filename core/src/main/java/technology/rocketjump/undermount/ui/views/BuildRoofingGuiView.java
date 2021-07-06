@@ -56,7 +56,7 @@ public class BuildRoofingGuiView implements GuiView/*, I18nUpdatable */{
 
 		// cancel roofing
 		IconButton cancelRoofing = iconButtonFactory.create("GUI.CANCEL_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
-		cancelRoofing.setAction(new SetInteractionMode(GameInteractionMode.REMOVE_DESIGNATIONS, messageDispatcher));
+		cancelRoofing.setAction(new SetInteractionMode(GameInteractionMode.CANCEL_ROOFING, messageDispatcher));
 		iconButtons.add(cancelRoofing);
 
 		// deconstruct roofing

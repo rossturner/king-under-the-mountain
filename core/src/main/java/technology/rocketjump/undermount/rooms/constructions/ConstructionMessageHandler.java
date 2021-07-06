@@ -31,15 +31,13 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
-import technology.rocketjump.undermount.entities.tags.CraftingStationBehaviourTag;
-import technology.rocketjump.undermount.entities.tags.DecorationFromInputTag;
-import technology.rocketjump.undermount.entities.tags.RequirementToColorMappingsTag;
-import technology.rocketjump.undermount.entities.tags.TagProcessor;
+import technology.rocketjump.undermount.entities.tags.*;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
+import technology.rocketjump.undermount.mapping.RoofConstructionManager;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -73,6 +71,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
 	private final ItemEntityFactory itemEntityFactory;
 	private final TagProcessor tagProcessor;
+	private final RoofConstructionManager roofConstructionManager;
 
 	private final Map<GameMaterialType, SoundAsset> completionSoundMapping = new EnumMap<>(GameMaterialType.class);
 	private GameContext gameContext;
@@ -85,7 +84,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 									  FurnitureEntityFactory furnitureEntityFactory, EntityStore entityStore,
 									  CraftingTypeDictionary craftingTypeDictionary, ItemEntityAttributesFactory itemEntityAttributesFactory,
 									  ItemEntityFactory itemEntityFactory, SoundAssetDictionary soundAssetDictionary, TagProcessor tagProcessor,
-									  ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+									  RoofConstructionManager roofConstructionManager, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.constructionStore = constructionStore;
 		this.itemTypeDictionary = itemTypeDictionary;
@@ -96,6 +95,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
 		this.itemEntityFactory = itemEntityFactory;
 		this.tagProcessor = tagProcessor;
+		this.roofConstructionManager = roofConstructionManager;
 
 		messageDispatcher.addListener(this, MessageType.FURNITURE_PLACEMENT);
 		messageDispatcher.addListener(this, MessageType.DOOR_PLACEMENT);
@@ -337,6 +337,14 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		RequirementToColorMappingsTag requirementToColorMappingsTag = createdFurnitureEntity.getTag(RequirementToColorMappingsTag.class);
 		if (requirementToColorMappingsTag != null) {
 			requirementToColorMappingsTag.apply(createdFurnitureEntity, itemsRemovedFromConstruction, itemTypeDictionary);
+		}
+		if (createdFurnitureEntity.getTag(SupportsRoofTag.class) != null) {
+			for (GridPoint2 tileLocation : construction.getTileLocations()) {
+				MapTile tileAtLocation = gameContext.getAreaMap().getTile(tileLocation);
+				if (tileAtLocation != null) {
+					roofConstructionManager.supportConstructed(tileAtLocation);
+				}
+			}
 		}
 
 		if (placedOnRoom != null && createdFurnitureEntity.getBehaviourComponent() instanceof Prioritisable &&

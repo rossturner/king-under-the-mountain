@@ -1,6 +1,5 @@
 package technology.rocketjump.undermount.rendering.roofing;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,7 +13,7 @@ import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 
@@ -31,9 +30,7 @@ public class RoofingViewModeRenderer {
 	private final GameInteractionStateContainer interactionStateContainer;
 	private final JobStore jobStore;
 
-	// MODDING expose these
-	private final Color selectionColor = HexColors.get("#FFFF9966");
-	private final Color renderColor = HexColors.get("#FFFFFF66");
+	// MODDING expose this
 	private final Sprite roofingSprite;
 
 	@Inject
@@ -88,7 +85,7 @@ public class RoofingViewModeRenderer {
 						} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_ROOFING)) {
 							// This is within dragging area
 							if (shouldHighlight(mapTile)) {
-								spriteBatch.setColor(selectionColor);
+								spriteBatch.setColor(RoofConstructionState.PENDING.renderColor);
 								spriteBatch.draw(roofingSprite, x, y, 1, 1);
 							} else {
 								renderExistingRoofConstruction(x, y, mapTile, spriteBatch, blinkState);
@@ -108,7 +105,8 @@ public class RoofingViewModeRenderer {
 	}
 
 	private void renderExistingRoofConstruction(int x, int y, MapTile mapTile, SpriteBatch spriteBatch, boolean blinkState) {
-		if (mapTile.getRoof().isRoofConstructionQueued()) {
+		RoofConstructionState roofConstructionState = mapTile.getRoof().getConstructionState();
+		if (!roofConstructionState.equals(RoofConstructionState.NONE)) {
 			for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
 				if (job.getAssignedToEntityId() != null) {
 					// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off
@@ -118,7 +116,7 @@ public class RoofingViewModeRenderer {
 				}
 			}
 
-			spriteBatch.setColor(renderColor); // TODO change to roofing accessibility color - green for accessible, yellow for in range of wall, orange for outside range of support
+			spriteBatch.setColor(roofConstructionState.renderColor);
 			spriteBatch.draw(roofingSprite, x, y, 1, 1);
 		}
 	}

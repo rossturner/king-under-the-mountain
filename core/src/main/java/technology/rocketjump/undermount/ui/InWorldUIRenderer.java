@@ -114,7 +114,7 @@ public class InWorldUIRenderer {
 		GridPoint2 maxDraggingTile = new GridPoint2(MathUtils.floor(maxDraggingPoint.x), MathUtils.floor(maxDraggingPoint.y));
 
 		if (interactionStateContainer.isDragging() && (
-				interactionStateContainer.getInteractionMode().isDesignation() ||
+				interactionStateContainer.getInteractionMode().designationCheck != null ||
 						interactionStateContainer.getInteractionMode().equals(SET_JOB_PRIORITY)
 			)) {
 			drawDragAreaOutline(minDraggingPoint, maxDraggingPoint);

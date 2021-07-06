@@ -14,7 +14,7 @@ public class TileRoof implements ChildPersistable {
 
 	private TileRoofState state = TileRoofState.MOUNTAIN_ROOF;
 	private GameMaterial roofMaterial = NULL_MATERIAL;
-	private boolean roofConstructionQueued = false;
+	private RoofConstructionState constructionState = RoofConstructionState.NONE;
 
 	public TileRoof() {
 
@@ -41,12 +41,12 @@ public class TileRoof implements ChildPersistable {
 		this.roofMaterial = roofMaterial;
 	}
 
-	public boolean isRoofConstructionQueued() {
-		return roofConstructionQueued;
+	public RoofConstructionState getConstructionState() {
+		return constructionState;
 	}
 
-	public void setRoofConstructionQueued(boolean roofConstructionQueued) {
-		this.roofConstructionQueued = roofConstructionQueued;
+	public void setConstructionState(RoofConstructionState constructionState) {
+		this.constructionState = constructionState;
 	}
 
 	@Override
@@ -59,8 +59,8 @@ public class TileRoof implements ChildPersistable {
 		if (!roofMaterial.equals(NULL_MATERIAL)) {
 			asJson.put("roofMaterial", roofMaterial.getMaterialName());
 		}
-		if (roofConstructionQueued) {
-			asJson.put("constructionQueued", true);
+		if (!constructionState.equals(RoofConstructionState.NONE)) {
+			asJson.put("constructionState", constructionState.name());
 		}
 
 	}
@@ -77,6 +77,6 @@ public class TileRoof implements ChildPersistable {
 			}
 		}
 
-		this.roofConstructionQueued = asJson.getBooleanValue("constructionQueued");
+		this.constructionState = EnumParser.getEnumValue(asJson, "constructionState", RoofConstructionState.class, RoofConstructionState.NONE);
 	}
 }

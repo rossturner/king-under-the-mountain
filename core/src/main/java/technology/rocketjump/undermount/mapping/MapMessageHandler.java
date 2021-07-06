@@ -53,6 +53,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private final RoomStore roomStore;
 	private final JobStore jobStore;
 	private final StockpileComponentUpdater stockpileComponentUpdater;
+	private final RoofConstructionManager roofConstructionManager;
 
 	private GameContext gameContext;
 
@@ -63,7 +64,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
 							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory,
 							 RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater,
-							 ParticleEffectTypeDictionary particleEffectTypeDictionary, SoundAssetDictionary soundAssetDictionary) {
+							 RoofConstructionManager roofConstructionManager, ParticleEffectTypeDictionary particleEffectTypeDictionary, SoundAssetDictionary soundAssetDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
@@ -71,6 +72,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		this.roomStore = roomStore;
 		this.jobStore = jobStore;
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
+		this.roofConstructionManager = roofConstructionManager;
 
 		this.wallRemovedParticleEffectType = particleEffectTypeDictionary.getByName("Dust cloud"); // MODDING expose this
 		this.wallRemovedSoundAsset = soundAssetDictionary.getByName("Mining Drop");
@@ -370,6 +372,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		}
 
 		tileToAddWallTo.setWall(new Wall(wallLayout, wallType, wallMaterial), new TileRoof(newRoofState, wallMaterial));
+		roofConstructionManager.roofConstructed(tileToAddWallTo);
 		updateTile(tileToAddWallTo, gameContext);
 		messageDispatcher.dispatchMessage(MessageType.WALL_CREATED, location);
 

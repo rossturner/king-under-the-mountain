@@ -23,6 +23,7 @@ public class WorldConstants {
 	private String stoneHarvestedItemType;
 	private String oreHarvestedItemType;
 	private String gemHarvestedItemType;
+	private int roofSupportMaxDistance;
 
 	public String getBackgroundColor() {
 		return backgroundColor;
@@ -106,4 +107,11 @@ public class WorldConstants {
 		return corpseDecayColorInstance;
 	}
 
+	public int getRoofSupportMaxDistance() {
+		return roofSupportMaxDistance;
+	}
+
+	public void setRoofSupportMaxDistance(int roofSupportMaxDistance) {
+		this.roofSupportMaxDistance = roofSupportMaxDistance;
+	}
 }
