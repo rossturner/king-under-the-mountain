@@ -7,23 +7,32 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RoofConstructionMessage;
 import technology.rocketjump.undermount.messaging.types.RoofConstructionQueueMessage;
+
+import static technology.rocketjump.undermount.mapping.MapMessageHandler.propagateDarknessFromTile;
 
 @Singleton
 public class RoofingMessageHandler implements Telegraph, GameContextAware {
 
 	private final MessageDispatcher messageDispatcher;
 	private final RoofConstructionManager roofConstructionManager;
+	private final OutdoorLightProcessor outdoorLightProcessor;
 	private GameContext gameContext;
 
 	@Inject
-	public RoofingMessageHandler(MessageDispatcher messageDispatcher, RoofConstructionManager roofConstructionManager) {
+	public RoofingMessageHandler(MessageDispatcher messageDispatcher, RoofConstructionManager roofConstructionManager,
+								 OutdoorLightProcessor outdoorLightProcessor) {
 		this.messageDispatcher = messageDispatcher;
 		this.roofConstructionManager = roofConstructionManager;
+		this.outdoorLightProcessor = outdoorLightProcessor;
 
 		messageDispatcher.addListener(this, MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE);
+		messageDispatcher.addListener(this, MessageType.ROOF_CONSTRUCTED);
 	}
 
 	@Override
@@ -31,6 +40,9 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 		switch (msg.message) {
 			case MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE: {
 				return handle((RoofConstructionQueueMessage) msg.extraInfo);
+			}
+			case MessageType.ROOF_CONSTRUCTED: {
+				return handle((RoofConstructionMessage) msg.extraInfo);
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this + ", " + msg);
@@ -44,6 +56,17 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 			} else {
 				roofConstructionManager.roofConstructionRemoved(message.parentTile);
 			}
+		}
+		return true;
+	}
+
+	private boolean handle(RoofConstructionMessage constructionMessage) {
+		MapTile tile = gameContext.getAreaMap().getTile(constructionMessage.roofTileLocation);
+		if (tile != null) {
+			tile.getRoof().setState(TileRoofState.CONSTRUCTED);
+			tile.getRoof().setConstructionState(RoofConstructionState.NONE);
+			propagateDarknessFromTile(tile, gameContext, outdoorLightProcessor);
+			roofConstructionManager.roofConstructed(tile);
 		}
 		return true;
 	}

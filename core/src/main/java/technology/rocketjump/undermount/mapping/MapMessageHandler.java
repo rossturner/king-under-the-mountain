@@ -378,21 +378,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 		// if inside, propagate outwards "darkness" from tile vertices that are now totally indoors, then propagate light inwards from each endpoint
 		if (tileToAddWallTo.getRoof().getState().equals(TileRoofState.MINED) || tileToAddWallTo.getRoof().getState().equals(TileRoofState.MOUNTAIN_ROOF)) {
-			EnumMap<CompassDirection, MapVertex> cellVertices = gameContext.getAreaMap().getVertexNeighboursOfCell(tileToAddWallTo);
-			for (MapVertex cellVertex : cellVertices.values()) {
-				TileNeighbours neighboursOfCellVertex = gameContext.getAreaMap().getTileNeighboursOfVertex(cellVertex);
-				boolean vertexSurroundedByIndoorCells = true;
-				for (MapTile vertexNeighbour : neighboursOfCellVertex.values()) {
-					if (vertexNeighbour != null && vertexNeighbour.getRoof().getState().equals(TileRoofState.OPEN)) {
-						vertexSurroundedByIndoorCells = false;
-						break;
-					}
-				}
-				if (vertexSurroundedByIndoorCells) {
-					outdoorLightProcessor.propagateDarknessFromVertex(gameContext.getAreaMap(), cellVertex);
-				}
-			}
-
+			propagateDarknessFromTile(tileToAddWallTo, gameContext, outdoorLightProcessor);
 		}
 
 		MapTile north = tileNeighbours.get(CompassDirection.NORTH);
@@ -477,6 +463,23 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		}
 
 		return true;
+	}
+
+	public static void propagateDarknessFromTile(MapTile tile, GameContext gameContext, OutdoorLightProcessor outdoorLightProcessor) {
+		EnumMap<CompassDirection, MapVertex> cellVertices = gameContext.getAreaMap().getVertexNeighboursOfCell(tile);
+		for (MapVertex cellVertex : cellVertices.values()) {
+			TileNeighbours neighboursOfCellVertex = gameContext.getAreaMap().getTileNeighboursOfVertex(cellVertex);
+			boolean vertexSurroundedByIndoorCells = true;
+			for (MapTile vertexNeighbour : neighboursOfCellVertex.values()) {
+				if (vertexNeighbour != null && vertexNeighbour.getRoof().getState().equals(TileRoofState.OPEN)) {
+					vertexSurroundedByIndoorCells = false;
+					break;
+				}
+			}
+			if (vertexSurroundedByIndoorCells) {
+				outdoorLightProcessor.propagateDarknessFromVertex(gameContext.getAreaMap(), cellVertex);
+			}
+		}
 	}
 
 	private boolean handleRemoveWall(GridPoint2 location) {

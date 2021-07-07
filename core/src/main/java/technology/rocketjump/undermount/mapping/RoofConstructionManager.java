@@ -1,29 +1,46 @@
 package technology.rocketjump.undermount.mapping;
 
-import org.pmw.tinylog.Logger;
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.entities.tags.SupportsRoofTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.JobStore;
+import technology.rocketjump.undermount.jobs.JobTypeDictionary;
+import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
+import technology.rocketjump.undermount.messaging.MessageType;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState.*;
 
 @Singleton
 public class RoofConstructionManager implements GameContextAware {
 
+	private final MessageDispatcher messageDispatcher;
 	private GameContext gameContext;
 	private final int ROOF_SUPPORT_MAX_DISTANCE;
+	private final JobType constructRoofingJobType;
+	private final JobStore jobStore;
 
 	@Inject
-	public RoofConstructionManager(ConstantsRepo constantsRepo) {
+	public RoofConstructionManager(ConstantsRepo constantsRepo, JobTypeDictionary jobTypeDictionary,
+								   MessageDispatcher messageDispatcher, JobStore jobStore) {
+		this.messageDispatcher = messageDispatcher;
 		ROOF_SUPPORT_MAX_DISTANCE = constantsRepo.getWorldConstants().getRoofSupportMaxDistance();
+		this.jobStore = jobStore;
+
+		constructRoofingJobType = jobTypeDictionary.getByName(constantsRepo.getSettlementConstants().getConstructRoofingJobType());
+		if (constructRoofingJobType == null) {
+			throw new RuntimeException("Could not find job with name " + constantsRepo.getSettlementConstants().getConstructRoofingJobType() + " from " + constantsRepo.getSettlementConstants().getClass().getSimpleName());
+		}
 	}
 
 	public void roofConstructionAdded(MapTile mapTile) {
@@ -42,12 +59,7 @@ public class RoofConstructionManager implements GameContextAware {
 	}
 
 	public void roofConstructionRemoved(MapTile mapTile) {
-		// cancel any outstanding jobs
-		if (mapTile.getRoof().getConstructionState().equals(RoofConstructionState.READY_FOR_CONSTRUCTION)) {
-			Logger.warn("TODO: cancel pending construction");
-		}
-
-		mapTile.getRoof().setConstructionState(RoofConstructionState.NONE);
+		switchState(mapTile, NONE);
 	}
 
 	public void roofConstructed(MapTile mapTile) {
@@ -84,10 +96,28 @@ public class RoofConstructionManager implements GameContextAware {
 	}
 
 	private void switchState(MapTile mapTile, RoofConstructionState newState) {
+		RoofConstructionState oldState = mapTile.getRoof().getConstructionState();
+		if (oldState.equals(newState)) {
+			return;
+		}
+
+		if (oldState.equals(READY_FOR_CONSTRUCTION)) {
+			// cancel outstanding job
+			jobStore.getJobsAtLocation(mapTile.getTilePosition())
+					.stream()
+					.filter(j -> j.getType().equals(constructRoofingJobType))
+					.collect(Collectors.toList())// avoids ConcurrentModificationException
+					.forEach(job -> {
+						messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
+					});
+		}
+
 		mapTile.getRoof().setConstructionState(newState);
 
 		if (newState.equals(RoofConstructionState.READY_FOR_CONSTRUCTION)) {
-			Logger.warn("TODO: create roof construction job");
+			Job constructRoofingJob = new Job(constructRoofingJobType);
+			constructRoofingJob.setJobLocation(mapTile.getTilePosition());
+			messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, constructRoofingJob);
 		}
 	}
 

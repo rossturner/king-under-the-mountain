@@ -203,5 +203,16 @@
     "overrideI18nKey": "ACTION.JOB.DECONSTRUCT",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED"
+  },
+  {
+    "name": "CONSTRUCT_ROOFING",
+    "defaultTimeToCompleteJob": 6,
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CARPENTER",
+    "requiredItemTypeName": "Resource-Planks",
+    "haulItemWhileWorking": true,
+    "activeSoundAssetName": "Sawing",
+    "workOnJobParticleEffectNames" : [ "Wood shavings" ]
   }
 ]

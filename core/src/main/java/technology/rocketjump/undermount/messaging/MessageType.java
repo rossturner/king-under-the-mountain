@@ -156,6 +156,7 @@ public class MessageType {
 	public static final int DECONSTRUCT_BRIDGE = 906;
 	public static final int CONSTRUCTION_PRIORITY_CHANGED = 907;
 	public static final int ROOF_CONSTRUCTION_QUEUE_CHANGE = 908;
+	public static final int ROOF_CONSTRUCTED = 909;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;
