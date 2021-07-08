@@ -5,6 +5,7 @@ import technology.rocketjump.undermount.modding.exception.ModLoadingException;
 import technology.rocketjump.undermount.modding.model.ModArtifact;
 import technology.rocketjump.undermount.modding.model.ModArtifactDefinition;
 import technology.rocketjump.undermount.modding.model.ParsedMod;
+import technology.rocketjump.undermount.modding.validation.DoNotDeleteExistingFiles;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -66,13 +67,15 @@ public class CopyFilesProcessor extends ModArtifactProcessor {
 					throw new RuntimeException("Need to rearrange assets so files of this artifact are in their own directory");
 				}
 
-				Files.list(outputDir).forEach(file -> {
-					try {
-						Files.delete(file);
-					} catch (IOException e) {
-						Logger.error(e, "Could not delete existing file");
-					}
-				});
+				if (!definition.validators.contains(DoNotDeleteExistingFiles.class)) {
+					Files.list(outputDir).forEach(file -> {
+						try {
+							Files.delete(file);
+						} catch (IOException e) {
+							Logger.error(e, "Could not delete existing file");
+						}
+					});
+				}
 
 				for (Path inputFile : combined.values()) {
 					Files.copy(inputFile, outputDir.resolve(inputFile.getFileName()));

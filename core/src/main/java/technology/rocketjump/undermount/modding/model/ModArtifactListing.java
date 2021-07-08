@@ -155,6 +155,8 @@ public class ModArtifactListing {
 				////////// sounds //////////
 				def("sounds/data", null, COPY_ORIGINAL_FILES, WAV, null,
 						"sounds", "**/*.wav", WAV, ADDITIVE, CopyFilesProcessor.class),
+				def("sounds/data", null, COPY_ORIGINAL_FILES, OGG, null,
+						"sounds", "**/*.ogg", OGG, ADDITIVE, CopyFilesProcessor.class, DoNotDeleteExistingFiles.class),
 				def("sounds", "soundAssets", SINGLE_FILE, JSON_ARRAY, SoundAsset.class,
 						"sounds", "**/sound_descriptors.json", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedSoundsExist.class, UniqueNames.class),

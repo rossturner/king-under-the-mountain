@@ -256,11 +256,11 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
-  "defaultTimeToCompleteJob" : 6.0,
+  "defaultTimeToCompleteJob" : 4.0,
   "requiredProfessionName" : "CARPENTER",
   "requiredItemTypeName" : "Resource-Planks",
   "activeSoundAssetName" : "Sawing",
-  "onCompletionSoundAssetName" : "HeavyWoodItem",
+  "onCompletionSoundAssetName" : "ImpactPlank",
   "workOnJobParticleEffectNames" : [ "Wood shavings" ],
   "accessedFromAdjacentTile" : true
 } ]

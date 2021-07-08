@@ -103,8 +103,16 @@
   "volumeModifier" : 0.4,
   "looping" : false
 }, {
-  "name" : "Sawing",
+  "name" : "ImpactPlank",
   "soundAssetId" : 14,
+  "filenames" : [ "impactPlank_medium_003.ogg" ],
+  "minPitch" : 0.8,
+  "maxPitch" : 1.2,
+  "volumeModifier" : 1.0,
+  "looping" : false
+}, {
+  "name" : "Sawing",
+  "soundAssetId" : 15,
   "filenames" : [ "Woodcutter Sawing (Loop).wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -112,7 +120,7 @@
   "looping" : true
 }, {
   "name" : "Metallic Hammering",
-  "soundAssetId" : 15,
+  "soundAssetId" : 16,
   "filenames" : [ "Metallic Hammering (Loop).wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -120,7 +128,7 @@
   "looping" : true
 }, {
   "name" : "HarvestingCrops",
-  "soundAssetId" : 16,
+  "soundAssetId" : 17,
   "filenames" : [ "HarvestingCrops.wav" ],
   "minPitch" : 0.7,
   "maxPitch" : 1.3,
@@ -128,7 +136,7 @@
   "looping" : false
 }, {
   "name" : "ChoppingTree",
-  "soundAssetId" : 17,
+  "soundAssetId" : 18,
   "filenames" : [ "Chopping Tree.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -136,7 +144,7 @@
   "looping" : false
 }, {
   "name" : "TreeFall",
-  "soundAssetId" : 18,
+  "soundAssetId" : 19,
   "filenames" : [ "Tree Fall.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -144,7 +152,7 @@
   "looping" : false
 }, {
   "name" : "Mining",
-  "soundAssetId" : 19,
+  "soundAssetId" : 20,
   "filenames" : [ "Mining (Loop).wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -152,7 +160,7 @@
   "looping" : true
 }, {
   "name" : "StonemasonChipping",
-  "soundAssetId" : 20,
+  "soundAssetId" : 21,
   "filenames" : [ "StonemasonChipping.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -160,7 +168,7 @@
   "looping" : false
 }, {
   "name" : "Tilling",
-  "soundAssetId" : 21,
+  "soundAssetId" : 22,
   "filenames" : [ "Tilling.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -168,7 +176,7 @@
   "looping" : false
 }, {
   "name" : "WaterCollect",
-  "soundAssetId" : 22,
+  "soundAssetId" : 23,
   "filenames" : [ "WaterCollect.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -176,7 +184,7 @@
   "looping" : false
 }, {
   "name" : "WaterDump",
-  "soundAssetId" : 23,
+  "soundAssetId" : 24,
   "filenames" : [ "WaterDump.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -184,7 +192,7 @@
   "looping" : false
 }, {
   "name" : "DropItemInWater",
-  "soundAssetId" : 24,
+  "soundAssetId" : 25,
   "filenames" : [ "DropItemInWater.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -192,7 +200,7 @@
   "looping" : false
 }, {
   "name" : "MiningCollapse",
-  "soundAssetId" : 25,
+  "soundAssetId" : 26,
   "filenames" : [ "MiningCollapse.wav" ],
   "minPitch" : 0.8,
   "maxPitch" : 1.2,
@@ -200,7 +208,7 @@
   "looping" : false
 }, {
   "name" : "DragArea",
-  "soundAssetId" : 26,
+  "soundAssetId" : 27,
   "filenames" : [ "UI_DragArea.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -208,7 +216,7 @@
   "looping" : false
 }, {
   "name" : "GameStart",
-  "soundAssetId" : 27,
+  "soundAssetId" : 28,
   "filenames" : [ "UI_GameStart.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -216,7 +224,7 @@
   "looping" : false
 }, {
   "name" : "MenuClick",
-  "soundAssetId" : 28,
+  "soundAssetId" : 29,
   "filenames" : [ "UI_MenuClick.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -224,7 +232,7 @@
   "looping" : false
 }, {
   "name" : "MenuHover",
-  "soundAssetId" : 29,
+  "soundAssetId" : 30,
   "filenames" : [ "UI_MenuHover.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -232,7 +240,7 @@
   "looping" : false
 }, {
   "name" : "NewNotification",
-  "soundAssetId" : 30,
+  "soundAssetId" : 31,
   "filenames" : [ "UI_NewNotification.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -240,7 +248,7 @@
   "looping" : false
 }, {
   "name" : "NextNotification",
-  "soundAssetId" : 31,
+  "soundAssetId" : 32,
   "filenames" : [ "UI_NextNotification.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -248,7 +256,7 @@
   "looping" : false
 }, {
   "name" : "NotificationClose",
-  "soundAssetId" : 32,
+  "soundAssetId" : 33,
   "filenames" : [ "UI_NotificationClose.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -256,7 +264,7 @@
   "looping" : false
 }, {
   "name" : "NotificationOpen",
-  "soundAssetId" : 33,
+  "soundAssetId" : 34,
   "filenames" : [ "UI_NotificationOpen.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -264,7 +272,7 @@
   "looping" : false
 }, {
   "name" : "Slider",
-  "soundAssetId" : 34,
+  "soundAssetId" : 35,
   "filenames" : [ "UI_Slider.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,

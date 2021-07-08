@@ -16,5 +16,14 @@
     "minPitch": 0.8,
     "maxPitch": 1.2,
     "volumeModifier": 0.4
+  },
+  {
+    "name": "ImpactPlank",
+    "filenames": [
+      "impactPlank_medium_003.ogg"
+    ],
+    "minPitch": 0.8,
+    "maxPitch": 1.2,
+    "volumeModifier": 1
   }
 ]

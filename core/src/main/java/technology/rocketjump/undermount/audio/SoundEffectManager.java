@@ -141,7 +141,7 @@ public class SoundEffectManager implements AssetDisposable {
 
 	public void stopSound(SoundAsset soundAsset, long requesterId) {
 		ActiveSoundEffect activeSoundEffect = activeSoundsByAssetId.get(soundAsset.getSoundAssetId());
-		if (activeSoundEffect != null && activeSoundEffect.getParentEntityId() == requesterId) {
+		if (activeSoundEffect != null) {
 			activeSoundEffect.stop();
 		}
 	}

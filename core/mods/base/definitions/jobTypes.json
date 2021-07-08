@@ -206,13 +206,14 @@
   },
   {
     "name": "CONSTRUCT_ROOFING",
-    "defaultTimeToCompleteJob": 6,
+    "defaultTimeToCompleteJob": 4,
     "overrideI18nKey": "ACTION.JOB.GENERIC",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CARPENTER",
     "requiredItemTypeName": "Resource-Planks",
     "haulItemWhileWorking": true,
     "activeSoundAssetName": "Sawing",
+    "onCompletionSoundAssetName": "ImpactPlank",
     "workOnJobParticleEffectNames" : [ "Wood shavings" ]
   }
 ]
