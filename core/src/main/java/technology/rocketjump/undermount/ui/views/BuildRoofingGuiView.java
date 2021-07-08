@@ -61,7 +61,7 @@ public class BuildRoofingGuiView implements GuiView/*, I18nUpdatable */{
 
 		// deconstruct roofing
 		IconButton deconstructRoofing = iconButtonFactory.create("GUI.DECONSTRUCT_LABEL", "demolish", HexColors.get("#d1752e"), ButtonStyle.DEFAULT);
-		deconstructRoofing.setAction(new SetInteractionMode(GameInteractionMode.DECONSTRUCT, messageDispatcher));
+		deconstructRoofing.setAction(new SetInteractionMode(GameInteractionMode.DECONSTRUCT_ROOFING, messageDispatcher));
 		iconButtons.add(deconstructRoofing);
 
 	}

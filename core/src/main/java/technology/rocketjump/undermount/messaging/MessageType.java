@@ -145,6 +145,7 @@ public class MessageType {
 	public static final int DOOR_MATERIAL_SELECTED = 816;
 	public static final int REQUEST_FURNITURE_ASSIGNMENT = 817;
 	public static final int ROOF_SUPPORT_REMOVED = 818;
+	public static final int ROOF_COLLAPSE = 819;
 
 	// Construction-specific messages
 	public static final int CANCEL_CONSTRUCTION = 900;
@@ -156,7 +157,9 @@ public class MessageType {
 	public static final int DECONSTRUCT_BRIDGE = 906;
 	public static final int CONSTRUCTION_PRIORITY_CHANGED = 907;
 	public static final int ROOF_CONSTRUCTION_QUEUE_CHANGE = 908;
-	public static final int ROOF_CONSTRUCTED = 909;
+	public static final int ROOF_DECONSTRUCTION_QUEUE_CHANGE = 909;
+	public static final int ROOF_CONSTRUCTED = 910;
+	public static final int ROOF_DECONSTRUCTED = 911;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;

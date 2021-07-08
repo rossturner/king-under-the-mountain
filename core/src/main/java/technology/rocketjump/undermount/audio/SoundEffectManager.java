@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.audio.model.ActiveSoundEffect;
 import technology.rocketjump.undermount.audio.model.GdxAudioException;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.persistence.UserPreferences;
+import technology.rocketjump.undermount.rendering.ScreenWriter;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class SoundEffectManager implements AssetDisposable {
 	private float viewportZoom;
 
 	@Inject
-	public SoundEffectManager(UserPreferences userPreferences) throws IOException {
+	public SoundEffectManager(UserPreferences userPreferences, ScreenWriter screenWriter) throws IOException {
 		this.userPreferences = userPreferences;
 
 		JSONObject uiSettings = JSON.parseObject(FileUtils.readFileToString(new File("assets/ui/uiSettings.json")));
@@ -93,7 +94,9 @@ public class SoundEffectManager implements AssetDisposable {
 		if (entityId != null) {
 			Iterator<Map.Entry<Long, ActiveSoundEffect>> iterator = activeSoundsByAssetId.entrySet().iterator();
 			while (iterator.hasNext()) {
-				if (iterator.next().getValue().getParentEntityId() == entityId) {
+				Map.Entry<Long, ActiveSoundEffect> entry = iterator.next();
+				if (entry.getValue().getParentEntityId() == entityId) {
+					entry.getValue().stop();
 					iterator.remove();
 					break;
 				}

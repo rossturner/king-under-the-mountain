@@ -215,5 +215,13 @@
     "activeSoundAssetName": "Sawing",
     "onCompletionSoundAssetName": "ImpactPlank",
     "workOnJobParticleEffectNames" : [ "Wood shavings" ]
+  },
+  {
+    "name": "DECONSTRUCT_ROOFING",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CARPENTER",
+    "onCompletionSoundAssetName": "ImpactPlank"
   }
 ]

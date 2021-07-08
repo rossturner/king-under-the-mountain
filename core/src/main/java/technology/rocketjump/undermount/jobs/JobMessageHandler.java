@@ -69,6 +69,7 @@ import java.util.*;
 import static technology.rocketjump.undermount.entities.behaviour.furniture.InnoculationLogBehaviour.InnoculationLogState.INNOCULATING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
+import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 
 /**
  * This class deals with dishing out jobs to entities requesting them
@@ -705,6 +706,12 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 					}
 				}
+				break;
+			}
+			case "DECONSTRUCT_ROOFING": {
+				messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTED, new RoofConstructionMessage(
+						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
+				));
 				break;
 			}
 			default: {

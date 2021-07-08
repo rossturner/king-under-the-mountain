@@ -9,7 +9,8 @@ public enum RoofConstructionState {
 	PENDING(HexColors.get("#FFFF9966")),
 	TOO_FAR_FROM_SUPPORT(HexColors.get("#ff742166")),
 	NO_ADJACENT_ROOF(HexColors.get("#d2d14466")),
-	READY_FOR_CONSTRUCTION(HexColors.get("#FFFFFF66"));
+	READY_FOR_CONSTRUCTION(HexColors.get("#FFFFFF66")),
+	PENDING_DECONSTRUCTION(HexColors.get("#EE332E66"));
 
 	public final Color renderColor;
 

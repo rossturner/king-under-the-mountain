@@ -230,6 +230,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, true));
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_ROOFING)) {
 						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new RoofDeconstructionQueueMessage(tile, false));
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_ROOFING)) {
+						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new RoofDeconstructionQueueMessage(tile, true));
 					} else {
 						Logger.warn("Unhandled area selection message in " + getClass().getSimpleName());
 					}
@@ -376,10 +379,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		updateTile(tileToAddWallTo, gameContext);
 		messageDispatcher.dispatchMessage(MessageType.WALL_CREATED, location);
 
-		// if inside, propagate outwards "darkness" from tile vertices that are now totally indoors, then propagate light inwards from each endpoint
-		if (tileToAddWallTo.getRoof().getState().equals(TileRoofState.MINED) || tileToAddWallTo.getRoof().getState().equals(TileRoofState.MOUNTAIN_ROOF)) {
-			propagateDarknessFromTile(tileToAddWallTo, gameContext, outdoorLightProcessor);
-		}
+		propagateDarknessFromTile(tileToAddWallTo, gameContext, outdoorLightProcessor);
 
 		MapTile north = tileNeighbours.get(CompassDirection.NORTH);
 		MapTile south = tileNeighbours.get(CompassDirection.SOUTH);
@@ -504,7 +504,6 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				outdoorLightProcessor.propagateLightFromMapVertex(gameContext.getAreaMap(), vertex, vertex.getOutsideLightAmount());
 			}
 
-
 			updateTile(tile, gameContext);
 
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
@@ -614,9 +613,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		}
 	}
 
-	public void markAsOutside(int tileX, int tileY) {
-		MapTile tile = gameContext.getAreaMap().getTile(tileX, tileY);
+	public static void markAsOutside(MapTile tile, GameContext gameContext, OutdoorLightProcessor outdoorLightProcessor) {
 		tile.getRoof().setState(TileRoofState.OPEN);
+		tile.getRoof().setRoofMaterial(GameMaterial.NULL_MATERIAL);
 
 		for (MapVertex vertex : gameContext.getAreaMap().getVertexNeighboursOfCell(tile).values()) {
 			vertex.setOutsideLightAmount(1.0f);
