@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RoofCollapseMessage;
 import technology.rocketjump.undermount.messaging.types.RoofConstructionMessage;
 import technology.rocketjump.undermount.messaging.types.RoofConstructionQueueMessage;
 import technology.rocketjump.undermount.messaging.types.RoofDeconstructionQueueMessage;
@@ -39,6 +40,7 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.ROOF_DECONSTRUCTED);
 		messageDispatcher.addListener(this, MessageType.ROOF_SUPPORT_REMOVED);
 		messageDispatcher.addListener(this, MessageType.WALL_REMOVED);
+		messageDispatcher.addListener(this, MessageType.ROOF_COLLAPSE);
 	}
 
 	@Override
@@ -61,6 +63,9 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 				GridPoint2 location = (GridPoint2) msg.extraInfo;
 				roofConstructionManager.supportDeconstructed(gameContext.getAreaMap().getTile(location));
 				return true;
+			}
+			case MessageType.ROOF_COLLAPSE: {
+				return roofCollapse((RoofCollapseMessage) msg.extraInfo);
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this + ", " + msg);
@@ -110,6 +115,10 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 			roofConstructionManager.roofDeconstructed(tile);
 		}
 		return true;
+	}
+
+	private boolean roofCollapse(RoofCollapseMessage message) {
+		return false;
 	}
 
 	@Override

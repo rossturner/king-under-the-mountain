@@ -32,6 +32,7 @@ public class RoofingViewModeRenderer {
 
 	// MODDING expose this
 	private final Sprite roofingSprite;
+//	private final Sprite deconstructSprite;
 
 	@Inject
 	public RoofingViewModeRenderer(GameInteractionStateContainer interactionStateContainer, JobStore jobStore, TextureAtlasRepository textureAtlasRepository) {
@@ -40,6 +41,7 @@ public class RoofingViewModeRenderer {
 
 		TextureAtlas guiAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
 		roofingSprite = guiAtlas.createSprite("triple-gate");
+//		deconstructSprite = guiAtlas.createSprite("demolish");
 	}
 
 	public void render(TiledMap map, OrthographicCamera camera, SpriteBatch spriteBatch, ShapeRenderer shapeRenderer, boolean blinkState) {
@@ -86,6 +88,13 @@ public class RoofingViewModeRenderer {
 							// This is within dragging area
 							if (shouldHighlight(mapTile)) {
 								spriteBatch.setColor(RoofConstructionState.PENDING.renderColor);
+								spriteBatch.draw(roofingSprite, x, y, 1, 1);
+							} else {
+								renderExistingRoofConstruction(x, y, mapTile, spriteBatch, blinkState);
+							}
+						} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_ROOFING)) {
+							if (shouldHighlight(mapTile)) {
+								spriteBatch.setColor(RoofConstructionState.PENDING_DECONSTRUCTION.renderColor);
 								spriteBatch.draw(roofingSprite, x, y, 1, 1);
 							} else {
 								renderExistingRoofConstruction(x, y, mapTile, spriteBatch, blinkState);

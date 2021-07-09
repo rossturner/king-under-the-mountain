@@ -207,7 +207,7 @@
   {
     "name": "CONSTRUCT_ROOFING",
     "defaultTimeToCompleteJob": 4,
-    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "overrideI18nKey": "ACTION.JOB.CONSTRUCT_ROOFING",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CARPENTER",
     "requiredItemTypeName": "Resource-Planks",
@@ -219,7 +219,7 @@
   {
     "name": "DECONSTRUCT_ROOFING",
     "defaultTimeToCompleteJob": 4,
-    "overrideI18nKey": "ACTION.JOB.GENERIC",
+    "overrideI18nKey": "ACTION.JOB.DECONSTRUCT_ROOFING",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CARPENTER",
     "onCompletionSoundAssetName": "ImpactPlank"
