@@ -140,7 +140,7 @@ public class I18nTextTest {
 		I18nText text = i18nTranslator.getTranslatedString("TUTORIAL.2.C").breakAfterLength(DEFAULT_LINE_LENGTH);
 
 		// Previously this did not insert a line break
-		assertThat(text.getElements().get(0).getText()).isEqualTo("For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s");
+		assertThat(text.getElements().get(0).getText()).isEqualTo("For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in");
 		assertThat(text.getElements().get(1).isLineBreak()).isTrue();
 	}
 

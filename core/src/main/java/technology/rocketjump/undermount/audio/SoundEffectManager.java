@@ -13,7 +13,6 @@ import technology.rocketjump.undermount.audio.model.ActiveSoundEffect;
 import technology.rocketjump.undermount.audio.model.GdxAudioException;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.persistence.UserPreferences;
-import technology.rocketjump.undermount.rendering.ScreenWriter;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +42,7 @@ public class SoundEffectManager implements AssetDisposable {
 	private float viewportZoom;
 
 	@Inject
-	public SoundEffectManager(UserPreferences userPreferences, ScreenWriter screenWriter) throws IOException {
+	public SoundEffectManager(UserPreferences userPreferences) throws IOException {
 		this.userPreferences = userPreferences;
 
 		JSONObject uiSettings = JSON.parseObject(FileUtils.readFileToString(new File("assets/ui/uiSettings.json")));

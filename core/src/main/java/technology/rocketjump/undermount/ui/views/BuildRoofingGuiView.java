@@ -22,7 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Singleton
-public class BuildRoofingGuiView implements GuiView/*, I18nUpdatable */{
+public class BuildRoofingGuiView implements GuiView {
 
 	private final ItemTracker itemTracker;
 	private final I18nTranslator i18nTranslator;
@@ -87,57 +87,6 @@ public class BuildRoofingGuiView implements GuiView/*, I18nUpdatable */{
 	public void update() {
 		// Doesn't yet need to update every second
 	}
-
-//	@Override
-//	public void onLanguageUpdated() {
-//		resetMaterialTypeSelect(); // For different material names
-//	}
-//
-//	private void resetMaterialTypeSelect() {
-//		Array<GameMaterialType> itemsArray = new Array<>();
-//		for (GameMaterialType gameMaterialType : resourceTypeMap.keySet()) {
-//			itemsArray.add(gameMaterialType);
-//		}
-//		materialTypeSelect.setItems(itemsArray);
-//		materialTypeSelect.setSelected(itemsArray.get(0));
-//		resetMaterialSelect();
-//	}
-//
-//	private void resetMaterialSelect() {
-//		currentMaterialNamesMap.clear();
-//		Array<String> materialTypes = new Array<>();
-//
-//		String anyString = i18nTranslator.getTranslatedString("MATERIAL_TYPE.ANY").toString();
-//		currentMaterialNamesMap.put(anyString, NULL_MATERIAL);
-//		materialTypes.add(anyString);
-//
-//		ItemType itemTypeForMaterialType = resourceTypeMap.get(selectedMaterialType);
-//
-//		if (itemTypeForMaterialType != null) {
-//			Set<GameMaterial> materialsByItemType = itemTracker.getMaterialsByItemType(itemTypeForMaterialType);
-//			if (materialsByItemType != null) {
-//				for (GameMaterial gameMaterial : materialsByItemType) {
-//					materialTypes.add(gameMaterial.getMaterialName());
-//					currentMaterialNamesMap.put(gameMaterial.getMaterialName(), gameMaterial);
-//				}
-//			}
-//		}
-//
-//		materialSelect.setItems(materialTypes);
-//		if (materialTypes.size > 0) {
-//			materialSelect.setSelected(materialTypes.get(0));
-//			selectedMaterial = currentMaterialNamesMap.get(materialTypes.get(0));
-//		}
-//		onMaterialSelectionChange();
-//	}
-//
-//	private void onMaterialSelectionChange() {
-//		selectedMaterial = currentMaterialNamesMap.get(materialSelect.getSelected());
-//		if (initialised) {
-//			messageDispatcher.dispatchMessage(MessageType.WALL_MATERIAL_SELECTED, new MaterialSelectionMessage(
-//					selectedMaterialType, selectedMaterial, resourceTypeMap.get(selectedMaterialType)));
-//		}
-//	}
 
 	@Override
 	public void onClose() {

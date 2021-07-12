@@ -32,8 +32,8 @@ public class TiledMapTest {
 
         map.getTile(0, 1).getRoof().setState(TileRoofState.OPEN);
 
-        assertThat(map.getTile(0, 1).getRoof()).isEqualTo(TileRoofState.OPEN);
-        assertThat(map.getTile(9, 4).getRoof()).isEqualTo(TileRoofState.MOUNTAIN_ROOF);
+        assertThat(map.getTile(0, 1).getRoof().getState()).isEqualTo(TileRoofState.OPEN);
+        assertThat(map.getTile(9, 4).getRoof().getState()).isEqualTo(TileRoofState.MOUNTAIN_ROOF);
         assertThat(map.getTile(10, 4)).isNull();
         assertThat(map.getTile(9, 5)).isNull();
 
