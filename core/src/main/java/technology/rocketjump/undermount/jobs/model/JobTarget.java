@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
@@ -28,6 +29,7 @@ public class JobTarget {
 	private Construction construction;
 	private Bridge bridge;
 	private MapTile tile;
+	private TileRoof roof;
 
 	public JobTarget(CookingRecipe cookingRecipe) {
 		this.type = JobTargetType.COOKING_RECIPE;
@@ -51,6 +53,12 @@ public class JobTarget {
 
 	public JobTarget(MapTile tile) {
 		this.type = JobTargetType.TILE;
+		this.tile = tile;
+	}
+
+	public JobTarget(MapTile tile, TileRoof roof) {
+		this.type = JobTargetType.ROOF;
+		this.roof = roof;
 		this.tile = tile;
 	}
 
@@ -78,6 +86,10 @@ public class JobTarget {
 
 	public MapTile getTile() {
 		return tile;
+	}
+
+	public TileRoof getRoof() {
+		return roof;
 	}
 
 	public GameMaterial getTargetMaterial() {
@@ -115,6 +127,9 @@ public class JobTarget {
 				} else {
 					return tile.getFloor().getMaterial();
 				}
+			}
+			case ROOF: {
+				return roof.getRoofMaterial();
 			}
 			case CONSTRUCTION: {
 				GameMaterial constructionMaterial = construction.getPrimaryMaterial();
@@ -181,7 +196,8 @@ public class JobTarget {
 		ENTITY,
 		CONSTRUCTION,
 		BRIDGE,
-		TILE
+		TILE,
+		ROOF
 
 	}
 

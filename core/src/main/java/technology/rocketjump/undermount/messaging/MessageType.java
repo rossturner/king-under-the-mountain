@@ -146,6 +146,7 @@ public class MessageType {
 	public static final int REQUEST_FURNITURE_ASSIGNMENT = 817;
 	public static final int ROOF_SUPPORT_REMOVED = 818;
 	public static final int ROOF_COLLAPSE = 819;
+	public static final int ROOF_TILE_COLLAPSE = 820;
 
 	// Construction-specific messages
 	public static final int CANCEL_CONSTRUCTION = 900;

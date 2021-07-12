@@ -9,6 +9,7 @@ public enum NotificationType {
 	IMMIGRANTS_ARRIVED("flying-flag", "#22dd72", "settlers.png", null),
 	AREA_REVEALED("mining", "#f8f79f", "cavern_uncovered.png", null),
 	MINING_COLLAPSE("rock", "#bfb9b4", "cavern_collapse.png", "MiningCollapse"),
+	ROOFING_COLLAPSE("triple-gate", "#bfb9b4", "cavern_collapse.png", "MiningCollapse"),
 	SETTLER_MENTAL_BREAK("nailed-head", "#d182d2", "clouds.png", null),
 	DEATH("dead-head", "#9f533f", "death.png", "Body Drop"),
 	GAME_OVER("castle-ruins", "#cd0303", "settlement-game-over.png", null);

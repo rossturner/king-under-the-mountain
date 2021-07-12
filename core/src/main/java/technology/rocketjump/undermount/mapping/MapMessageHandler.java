@@ -486,7 +486,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		MapTile tile = gameContext.getAreaMap().getTile(location);
 		if (tile != null && tile.hasWall()) {
 			GameMaterial floorMaterial = tile.getWall().getMaterial();
-			if (tile.getRoof().getRoofMaterial() != null) {
+			if (tile.getRoof().getRoofMaterial() != null && !tile.getRoof().getRoofMaterial().equals(GameMaterial.NULL_MATERIAL)) {
 				floorMaterial = tile.getRoof().getRoofMaterial();
 			}
 

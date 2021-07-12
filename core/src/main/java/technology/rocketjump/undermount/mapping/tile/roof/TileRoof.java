@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.mapping.tile.roof;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.MoreObjects;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -78,5 +79,14 @@ public class TileRoof implements ChildPersistable {
 		}
 
 		this.constructionState = EnumParser.getEnumValue(asJson, "constructionState", RoofConstructionState.class, RoofConstructionState.NONE);
+	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this)
+				.add("state", state)
+				.add("roofMaterial", roofMaterial)
+				.add("constructionState", constructionState)
+				.toString();
 	}
 }

@@ -79,8 +79,9 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 		switch (msg.message) {
 			case MessageType.ROOF_SUPPORT_REMOVED:
 			case MessageType.WALL_REMOVED: {
+				boolean collapseImmediately = msg.message == MessageType.ROOF_SUPPORT_REMOVED;
 				GridPoint2 location = (GridPoint2) msg.extraInfo;
-				checkForMiningCollapse(location);
+				checkForMiningCollapse(location, collapseImmediately);
 				return true;
 			}
 			default:
@@ -130,12 +131,15 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 
 	}
 
-	private void checkForMiningCollapse(GridPoint2 initialLocation) {
+	private void checkForMiningCollapse(GridPoint2 initialLocation, boolean collapseImmediately) {
 		GridPoint2 collapseEpicenter = findCollapseEpicenterAround(initialLocation);
 
 		if (collapseEpicenter != null) {
-			double delayInHours = MIN_HOURS_BEFORE_COLLAPSE + (gameContext.getRandom().nextDouble() * (MAX_HOURS_BEFORE_COLLAPSE - MIN_HOURS_BEFORE_COLLAPSE));
-			double collapseGameTime = gameContext.getGameClock().getCurrentGameTime() + delayInHours;
+			double collapseGameTime = gameContext.getGameClock().getCurrentGameTime();
+			if (!collapseImmediately) {
+				double delayInHours = MIN_HOURS_BEFORE_COLLAPSE + (gameContext.getRandom().nextDouble() * (MAX_HOURS_BEFORE_COLLAPSE - MIN_HOURS_BEFORE_COLLAPSE));
+				collapseGameTime += delayInHours;
+			}
 
 			gameContext.getSettlementState().impendingMiningCollapses.add(
 					new ImpendingMiningCollapse(collapseEpicenter, collapseGameTime)

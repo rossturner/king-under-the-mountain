@@ -106,7 +106,8 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 					particleRequestMessage.callback.particleCreated(instance);
 				}
 			}
-		} else if (particleRequestMessage.effectTarget.isPresent() && particleRequestMessage.effectTarget.get().type.equals(JobTarget.JobTargetType.TILE)) {
+		} else if (particleRequestMessage.effectTarget.isPresent() && (particleRequestMessage.effectTarget.get().type.equals(JobTarget.JobTargetType.TILE) ||
+				particleRequestMessage.effectTarget.get().type.equals(JobTarget.JobTargetType.ROOF))) {
 			// Attaching particle effect to tile
 			MapTile targetTile = particleRequestMessage.effectTarget.get().getTile();
 			Vector2 position = targetTile.getWorldPositionOfCenter();
