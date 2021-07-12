@@ -93,7 +93,9 @@ public class SoundEffectManager implements AssetDisposable {
 		if (entityId != null) {
 			Iterator<Map.Entry<Long, ActiveSoundEffect>> iterator = activeSoundsByAssetId.entrySet().iterator();
 			while (iterator.hasNext()) {
-				if (iterator.next().getValue().getParentEntityId() == entityId) {
+				Map.Entry<Long, ActiveSoundEffect> entry = iterator.next();
+				if (entry.getValue().getParentEntityId() == entityId) {
+					entry.getValue().stop();
 					iterator.remove();
 					break;
 				}
@@ -141,7 +143,7 @@ public class SoundEffectManager implements AssetDisposable {
 
 	public void stopSound(SoundAsset soundAsset, long requesterId) {
 		ActiveSoundEffect activeSoundEffect = activeSoundsByAssetId.get(soundAsset.getSoundAssetId());
-		if (activeSoundEffect != null && activeSoundEffect.getParentEntityId() == requesterId) {
+		if (activeSoundEffect != null) {
 			activeSoundEffect.stop();
 		}
 	}

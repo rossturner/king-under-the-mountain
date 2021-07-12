@@ -1,4 +1,14 @@
-Alpha 5.2
+Alpha 5.3
+
+- Added the roof construction mode, allowing the player where to designate where roofing should be added or removed
+- Roofing can now be constructed outside, though there is no gameplay purpose yet until weather is added in Alpha 7
+- Replaced "quad" wall construction with "room" which also queues up roofing
+
+Alpha 5.2.1 - 30th April 2021
+
+- Fixed cleanup of cancelled and completed liquid production assignments, which was causing liquid production to break down over time
+
+Alpha 5.2 - 20th April 2021
 
 - Progress bars to show completion of jobs being worked on
 - Made job completion time moddable, broken down by job type, or crafting recipe or cooking recipe where applicable

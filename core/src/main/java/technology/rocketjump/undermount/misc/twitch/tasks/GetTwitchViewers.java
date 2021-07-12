@@ -6,11 +6,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.commons.io.IOUtils;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,9 +39,9 @@ public class GetTwitchViewers implements Callable<List<TwitchViewer>> {
 
 		Response response = client.newCall(request).execute();
 		try {
-			if (GlobalSettings.DEV_MODE) {
-				Logger.debug("Request to " + request.url().toString() + " returned " + response.code());
-			}
+//			if (GlobalSettings.DEV_MODE) {
+//				Logger.debug("Request to " + request.url().toString() + " returned " + response.code());
+//			}
 
 			if (response.isSuccessful()) {
 				List<TwitchViewer> viewers = new ArrayList<>();

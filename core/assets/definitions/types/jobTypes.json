@@ -250,4 +250,27 @@
   "defaultTimeToCompleteJob" : 6.0,
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
   "accessedFromAdjacentTile" : true
+}, {
+  "name" : "CONSTRUCT_ROOFING",
+  "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_ROOFING",
+  "workDuration" : 3.0,
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : true,
+  "defaultTimeToCompleteJob" : 4.0,
+  "requiredProfessionName" : "CARPENTER",
+  "requiredItemTypeName" : "Resource-Planks",
+  "activeSoundAssetName" : "Sawing",
+  "onCompletionSoundAssetName" : "ImpactPlank",
+  "workOnJobParticleEffectNames" : [ "Wood shavings" ],
+  "accessedFromAdjacentTile" : true
+}, {
+  "name" : "DECONSTRUCT_ROOFING",
+  "overrideI18nKey" : "ACTION.JOB.DECONSTRUCT_ROOFING",
+  "workDuration" : 3.0,
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 4.0,
+  "requiredProfessionName" : "CARPENTER",
+  "onCompletionSoundAssetName" : "ImpactPlank",
+  "accessedFromAdjacentTile" : true
 } ]

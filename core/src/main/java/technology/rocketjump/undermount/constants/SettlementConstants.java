@@ -8,6 +8,8 @@ public class SettlementConstants {
 	private String kitchenProfession;
 
 	private String haulingJobType;
+	private String constructRoofingJobType;
+	private String deconstructRoofingJobType;
 
 	private double mushroomShockTimeHours;
 
@@ -27,11 +29,27 @@ public class SettlementConstants {
 		this.haulingJobType = haulingJobType;
 	}
 
+	public String getConstructRoofingJobType() {
+		return constructRoofingJobType;
+	}
+
+	public void setConstructRoofingJobType(String constructRoofingJobType) {
+		this.constructRoofingJobType = constructRoofingJobType;
+	}
+
 	public double getMushroomShockTimeHours() {
 		return mushroomShockTimeHours;
 	}
 
 	public void setMushroomShockTimeHours(double mushroomShockTimeHours) {
 		this.mushroomShockTimeHours = mushroomShockTimeHours;
+	}
+
+	public String getDeconstructRoofingJobType() {
+		return deconstructRoofingJobType;
+	}
+
+	public void setDeconstructRoofingJobType(String deconstructRoofingJobType) {
+		this.deconstructRoofingJobType = deconstructRoofingJobType;
 	}
 }

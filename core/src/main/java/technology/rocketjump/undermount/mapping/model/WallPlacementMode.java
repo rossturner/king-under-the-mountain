@@ -4,6 +4,6 @@ public enum WallPlacementMode {
 
 	STRAIGHT_LINE,
 	L_SHAPE,
-	QUAD
+	ROOM
 
 }

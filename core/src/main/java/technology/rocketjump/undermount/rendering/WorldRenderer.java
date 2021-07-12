@@ -17,7 +17,7 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeci
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.AmbienceMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectStore;
@@ -166,7 +166,7 @@ public class WorldRenderer implements Disposable {
 				}
 
 				totalTiles++;
-				if (mapTile.getRoof().equals(TileRoof.OPEN)) {
+				if (mapTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 					outdoorTiles++;
 				}
 			}

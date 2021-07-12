@@ -32,6 +32,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
@@ -68,6 +69,7 @@ import java.util.*;
 import static technology.rocketjump.undermount.entities.behaviour.furniture.InnoculationLogBehaviour.InnoculationLogState.INNOCULATING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
+import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 
 /**
  * This class deals with dishing out jobs to entities requesting them
@@ -680,6 +682,36 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				} else {
 					Logger.error("Could not find item entity for " + completedJob.getType().getName() + " job completion");
 				}
+				break;
+			}
+			case "CONSTRUCT_ROOFING": {
+				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+				EquippedItemComponent equippedItemComponent = completedByEntity.getOrCreateComponent(EquippedItemComponent.class);
+				if (equippedItemComponent != null) {
+					Entity equippedItem = equippedItemComponent.clearEquippedItem();
+					if (equippedItem != null && equippedItem.getType().equals(ITEM)) {
+						ItemEntityAttributes attributes = (ItemEntityAttributes) equippedItem.getPhysicalEntityComponent().getAttributes();
+						GameMaterial material = attributes.getPrimaryMaterial();
+						attributes.setQuantity(attributes.getQuantity() - 1);
+						if (attributes.getQuantity() == 0) {
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(equippedItem.getId()));
+						} else {
+							// put back as equipped for AI to clear
+							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
+						}
+
+						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTED, new RoofConstructionMessage(
+							jobCompletedMessage.getJob().getJobLocation(), material
+						));
+
+					}
+				}
+				break;
+			}
+			case "DECONSTRUCT_ROOFING": {
+				messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTED, new RoofConstructionMessage(
+						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
+				));
 				break;
 			}
 			default: {

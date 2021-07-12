@@ -51,6 +51,8 @@ public class MapMessageHandlerTest {
 	private ParticleEffectTypeDictionary mockParticleEffectTypeDictionary;
 	@Mock
 	private SoundAssetDictionary mockSoundAssetDictionary;
+	@Mock
+	private RoofConstructionManager mockRoofConstructionManager;
 
 	@Test
 	public void removeWall_joinsRegions_keepsZones() {
@@ -133,7 +135,7 @@ public class MapMessageHandlerTest {
 
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
 				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, mockStockpileComponentUpdater,
-				mockParticleEffectTypeDictionary, mockSoundAssetDictionary);
+				mockRoofConstructionManager, mockParticleEffectTypeDictionary, mockSoundAssetDictionary);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);

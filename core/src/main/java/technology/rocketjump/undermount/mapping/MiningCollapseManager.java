@@ -22,7 +22,7 @@ import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.AddWallMessage;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
@@ -79,8 +79,9 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 		switch (msg.message) {
 			case MessageType.ROOF_SUPPORT_REMOVED:
 			case MessageType.WALL_REMOVED: {
+				boolean collapseImmediately = msg.message == MessageType.ROOF_SUPPORT_REMOVED;
 				GridPoint2 location = (GridPoint2) msg.extraInfo;
-				checkForMiningCollapse(location);
+				checkForMiningCollapse(location, collapseImmediately);
 				return true;
 			}
 			default:
@@ -130,12 +131,15 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 
 	}
 
-	private void checkForMiningCollapse(GridPoint2 initialLocation) {
+	private void checkForMiningCollapse(GridPoint2 initialLocation, boolean collapseImmediately) {
 		GridPoint2 collapseEpicenter = findCollapseEpicenterAround(initialLocation);
 
 		if (collapseEpicenter != null) {
-			double delayInHours = MIN_HOURS_BEFORE_COLLAPSE + (gameContext.getRandom().nextDouble() * (MAX_HOURS_BEFORE_COLLAPSE - MIN_HOURS_BEFORE_COLLAPSE));
-			double collapseGameTime = gameContext.getGameClock().getCurrentGameTime() + delayInHours;
+			double collapseGameTime = gameContext.getGameClock().getCurrentGameTime();
+			if (!collapseImmediately) {
+				double delayInHours = MIN_HOURS_BEFORE_COLLAPSE + (gameContext.getRandom().nextDouble() * (MAX_HOURS_BEFORE_COLLAPSE - MIN_HOURS_BEFORE_COLLAPSE));
+				collapseGameTime += delayInHours;
+			}
 
 			gameContext.getSettlementState().impendingMiningCollapses.add(
 					new ImpendingMiningCollapse(collapseEpicenter, collapseGameTime)
@@ -152,7 +156,7 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 			return true;
 		} else if (tiletoCheck.hasWall()) {
 			return true;
-		} else if (tiletoCheck.getRoof().equals(TileRoof.MINED)) {
+		} else if (tiletoCheck.getRoof().getState().equals(TileRoofState.MINED)) {
 			for (Entity entity : tiletoCheck.getEntities()) {
 				SupportsRoofTag supportsRoofTag = entity.getTag(SupportsRoofTag.class);
 				if (supportsRoofTag != null) {
@@ -229,12 +233,12 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 
 				if (gameContext.getRandom().nextBoolean()) {
 					// add wall
-					if (tile.getRoofMaterial() != null) {
+					if (tile.getRoof().getRoofMaterial() != null) {
 						entitiesStruckByCollapse.addAll(tile.getEntities());
 						if (tile.hasConstruction()) {
 							constructionsStruckByCollapse.add(tile.getConstruction());
 						}
-						AddWallMessage addWallMessage = new AddWallMessage(tile.getTilePosition(), tile.getRoofMaterial(), roughStoneWallType);
+						AddWallMessage addWallMessage = new AddWallMessage(tile.getTilePosition(), tile.getRoof().getRoofMaterial(), roughStoneWallType);
 						messageDispatcher.dispatchMessage(MessageType.ADD_WALL, addWallMessage);
 						if (tile.hasRoom()) {
 							roomTilesToRemove.add(tile.getTilePosition());
@@ -242,12 +246,12 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 					}
 				} else if (gameContext.getRandom().nextBoolean()) {
 					// drop boulder
-					if (tile.getRoofMaterial() != null) {
+					if (tile.getRoof().getRoofMaterial() != null) {
 						entitiesStruckByCollapse.addAll(tile.getEntities());
 
 						ItemEntityAttributes attributes = new ItemEntityAttributes(gameContext.getRandom().nextLong());
 						attributes.setItemType(droppedStoneItemType);
-						attributes.setMaterial(tile.getRoofMaterial());
+						attributes.setMaterial(tile.getRoof().getRoofMaterial());
 						attributes.setQuantity(1);
 
 						itemEntityFactory.create(attributes, tile.getTilePosition(), true, gameContext);

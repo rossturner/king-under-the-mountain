@@ -11,7 +11,7 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
-import technology.rocketjump.undermount.mapping.tile.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 
 import java.util.Random;
@@ -30,15 +30,15 @@ public class TiledMapTest {
     public void testXYBounds() throws Exception {
         TiledMap map = new TiledMap(new Random().nextLong(), 10, 5, mockFloorType, mockFloorMaterial);
 
-        map.getTile(0, 1).setRoof(TileRoof.OPEN);
+        map.getTile(0, 1).getRoof().setState(TileRoofState.OPEN);
 
-        assertThat(map.getTile(0, 1).getRoof()).isEqualTo(TileRoof.OPEN);
-        assertThat(map.getTile(9, 4).getRoof()).isEqualTo(TileRoof.MOUNTAIN_ROOF);
+        assertThat(map.getTile(0, 1).getRoof().getState()).isEqualTo(TileRoofState.OPEN);
+        assertThat(map.getTile(9, 4).getRoof().getState()).isEqualTo(TileRoofState.MOUNTAIN_ROOF);
         assertThat(map.getTile(10, 4)).isNull();
         assertThat(map.getTile(9, 5)).isNull();
 
         TileNeighbours neighbours = map.getNeighbours(0, 0);
-        assertThat(neighbours.get(CompassDirection.NORTH).getRoof()).isEqualTo(TileRoof.OPEN);
+        assertThat(neighbours.get(CompassDirection.NORTH).getRoof().getState()).isEqualTo(TileRoofState.OPEN);
     }
 
     @Test

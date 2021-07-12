@@ -21,6 +21,8 @@ import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.WallPlacementMode;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -261,6 +263,15 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				WallsPlacementMessage message = new WallsPlacementMessage(new LinkedList<>(interactionStateContainer.getVirtualWallConstructions()));
 				messageDispatcher.dispatchMessage(MessageType.WALL_PLACEMENT, message);
 				interactionStateContainer.getVirtualWallConstructions().clear();
+
+				for (GridPoint2 location : interactionStateContainer.getVirtualRoofConstructions()) {
+					MapTile tile = gameContext.getAreaMap().getTile(location);
+					if (tile != null && tile.getRoof().getState().equals(TileRoofState.OPEN) && tile.getRoof().getConstructionState().equals(RoofConstructionState.NONE)) {
+						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE,
+								new RoofConstructionQueueMessage(tile, true));
+					}
+				}
+
 			} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.PLACE_BRIDGE)) {
 				if (interactionStateContainer.isValidBridgePlacement()) {
 					messageDispatcher.dispatchMessage(MessageType.BRIDGE_PLACEMENT, interactionStateContainer.getVirtualBridgeConstruction().getBridge());

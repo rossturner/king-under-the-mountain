@@ -29,11 +29,13 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
+import technology.rocketjump.undermount.messaging.types.RoofConstructionMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
@@ -122,7 +124,7 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 		targetTile.setDoorway(doorway);
 
-		GameMaterial attachedWallMaterial = null;
+		GameMaterial attachedWallMaterial;
 
 		if (message.getOrientation().equals(NORTH_SOUTH)) {
 			Entity southCap = buildWallCap(doorwayLocation.cpy().add(0, -1), doorway, EntityAssetOrientation.DOWN, -0.5f + (1f / PIXELS_PER_TILE));
@@ -145,6 +147,12 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 		doorway.setFrameEntity(createFrameEntity(message, attachedWallMaterial));
 		doorway.setDoorEntity(createDoorEntity(message));
+
+		if (targetTile.getRoof().getState().equals(TileRoofState.OPEN)) {
+			messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTED, new RoofConstructionMessage(
+					doorwayLocation, message.getDoorwayMaterial()
+			));
+		}
 
 		return true;
 	}

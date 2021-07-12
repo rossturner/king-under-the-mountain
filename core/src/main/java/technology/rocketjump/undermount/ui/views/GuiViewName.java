@@ -9,6 +9,7 @@ public enum GuiViewName {
 	BUILD_WALLS,
 	BUILD_DOORS,
 	BUILD_BRIDGE,
+	BUILD_ROOFING,
 
 	ORDER_SELECTION,
 

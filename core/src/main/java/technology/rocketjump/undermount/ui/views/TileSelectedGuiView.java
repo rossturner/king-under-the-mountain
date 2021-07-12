@@ -84,7 +84,7 @@ public class TileSelectedGuiView implements GuiView {
 
 
 					descriptionTable.add(new Label("Location: " + tile.getTilePosition(), uiSkin)).left().row();
-					descriptionTable.add(new Label("Roof: " + tile.getRoof(), uiSkin)).left().row();
+					descriptionTable.add(new Label("Roof: " + tile.getRoof().getState(), uiSkin)).left().row();
 					descriptionTable.add(new Label("Region: " + tile.getRegionId(), uiSkin)).left().row();
 					descriptionTable.add(new Label("Zones: " + StringUtils.join(tile.getZones(), ", "), uiSkin)).left().row();
 				}

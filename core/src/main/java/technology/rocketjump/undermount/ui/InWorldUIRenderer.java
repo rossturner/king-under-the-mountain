@@ -35,6 +35,7 @@ import technology.rocketjump.undermount.rendering.RenderingOptions;
 import technology.rocketjump.undermount.rendering.RoomRenderer;
 import technology.rocketjump.undermount.rendering.TerrainRenderer;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.roofing.RoofingViewModeRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.constructions.BridgeConstruction;
 import technology.rocketjump.undermount.sprites.IconSpriteCache;
@@ -62,6 +63,7 @@ public class InWorldUIRenderer {
 	private final EntityRenderer entityRenderer;
 	private final TerrainRenderer terrainRenderer;
 	private final SelectableOutlineRenderer selectableOutlineRenderer;
+	private final RoofingViewModeRenderer roofingViewModeRenderer;
 
 	private final ShapeRenderer shapeRenderer = new ShapeRenderer();
 	private final SpriteBatch spriteBatch = new SpriteBatch();
@@ -76,7 +78,7 @@ public class InWorldUIRenderer {
 	public InWorldUIRenderer(GameInteractionStateContainer interactionStateContainer, EntityRenderer entityRenderer,
 							 TerrainRenderer terrainRenderer, RoomRenderer roomRenderer, RenderingOptions renderingOptions, JobStore jobStore,
 							 FurnitureTypeDictionary furnitureTypeDictionary, IconSpriteCache iconSpriteCache,
-							 SelectableOutlineRenderer selectableOutlineRenderer) {
+							 SelectableOutlineRenderer selectableOutlineRenderer, RoofingViewModeRenderer roofingViewModeRenderer) {
 		this.interactionStateContainer = interactionStateContainer;
 		this.entityRenderer = entityRenderer;
 		this.terrainRenderer = terrainRenderer;
@@ -85,6 +87,7 @@ public class InWorldUIRenderer {
 		this.jobStore = jobStore;
 		this.selectableOutlineRenderer = selectableOutlineRenderer;
 		this.iconSpriteCache = iconSpriteCache;
+		this.roofingViewModeRenderer = roofingViewModeRenderer;
 
 		FurnitureType singleDoorType = furnitureTypeDictionary.getByName("SINGLE_DOOR");
 		this.doorIconSprite = iconSpriteCache.getByName(singleDoorType.getIconName());
@@ -96,6 +99,8 @@ public class InWorldUIRenderer {
 		shapeRenderer.setProjectionMatrix(camera.combined);
 		spriteBatch.setProjectionMatrix(camera.combined);
 
+		interactionStateContainer.update();
+
 		blinkState = (System.currentTimeMillis() % BLINK_DURATION_MILLIS) > BLINK_DURATION_MILLIS / 2;
 
 		int minX = getMinX(camera);
@@ -103,18 +108,21 @@ public class InWorldUIRenderer {
 		int minY = getMinY(camera);
 		int maxY = getMaxY(camera, map);
 
-		interactionStateContainer.update();
-
 		Vector2 minDraggingPoint = interactionStateContainer.getMinPoint();
 		Vector2 maxDraggingPoint = interactionStateContainer.getMaxPoint();
 		GridPoint2 minDraggingTile = new GridPoint2(MathUtils.floor(minDraggingPoint.x), MathUtils.floor(minDraggingPoint.y));
 		GridPoint2 maxDraggingTile = new GridPoint2(MathUtils.floor(maxDraggingPoint.x), MathUtils.floor(maxDraggingPoint.y));
 
 		if (interactionStateContainer.isDragging() && (
-				interactionStateContainer.getInteractionMode().isDesignation() ||
+				interactionStateContainer.getInteractionMode().designationCheck != null ||
 						interactionStateContainer.getInteractionMode().equals(SET_JOB_PRIORITY)
 			)) {
 			drawDragAreaOutline(minDraggingPoint, maxDraggingPoint);
+		}
+
+		if (interactionStateContainer.getGameViewMode().equals(GameViewMode.ROOFING_INFO)) {
+			roofingViewModeRenderer.render(map, camera, spriteBatch, shapeRenderer, blinkState);
+			return;
 		}
 
 		if (interactionStateContainer.getInteractionMode().equals(DEFAULT)) {
@@ -183,7 +191,7 @@ public class InWorldUIRenderer {
 				MapTile mapTile = map.getTile(x, y);
 				if (mapTile != null) {
 
-					if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y)) {
+					if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y, interactionStateContainer)) {
 						if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.REMOVE_DESIGNATIONS)) {
 							// Don't show designations
 						} else if (interactionStateContainer.getInteractionMode().designationName != null) { // Is a designation
@@ -316,7 +324,7 @@ public class InWorldUIRenderer {
 		}
 
 		if (priority != null) {
-			if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y)) {
+			if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y, interactionStateContainer)) {
 				priority = interactionStateContainer.getJobPriorityToApply();
 			}
 
@@ -343,7 +351,7 @@ public class InWorldUIRenderer {
 		}
 	}
 
-	private boolean insideSelectionArea(GridPoint2 minDraggingTile, GridPoint2 maxDraggingTile, int x, int y) {
+	public static boolean insideSelectionArea(GridPoint2 minDraggingTile, GridPoint2 maxDraggingTile, int x, int y, GameInteractionStateContainer interactionStateContainer) {
 		return interactionStateContainer.isDragging() &&
 				minDraggingTile.x <= x && x <= maxDraggingTile.x &&
 				minDraggingTile.y <= y && y <= maxDraggingTile.y;

@@ -28,7 +28,7 @@ import technology.rocketjump.undermount.messaging.types.PlantSeedDispersedMessag
 
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType.TREE;
 import static technology.rocketjump.undermount.mapgen.generators.TreePlanter.MAX_TREE_HEIGHT_TILES;
-import static technology.rocketjump.undermount.mapping.tile.TileRoof.OPEN;
+import static technology.rocketjump.undermount.mapping.tile.roof.TileRoofState.OPEN;
 import static technology.rocketjump.undermount.materials.model.GameMaterialType.EARTH;
 
 @Singleton
@@ -128,8 +128,8 @@ public class PlantMessageHandler implements GameContextAware, Telegraph, Disposa
 	}
 
 	private boolean isShrubAllowedAt(MapTile targetTile) {
-		if (targetTile == null || targetTile.getFloor() == null || targetTile.getRoof() == null || targetTile.getFloor().getMaterial() == null || targetTile.getFloor().hasBridge() ||
-				!targetTile.getRoof().equals(OPEN) || !targetTile.isEmpty() || !EARTH.equals(targetTile.getFloor().getMaterial().getMaterialType())) {
+		if (targetTile == null || targetTile.getFloor() == null || targetTile.getFloor().getMaterial() == null || targetTile.getFloor().hasBridge() ||
+				!targetTile.getRoof().getState().equals(OPEN) || !targetTile.isEmpty() || !EARTH.equals(targetTile.getFloor().getMaterial().getMaterialType())) {
 			return false;
 		}
 
@@ -153,7 +153,7 @@ public class PlantMessageHandler implements GameContextAware, Telegraph, Disposa
 	 * FIXME This is effectively duplicated code from MapGenerator to ensure tree placement is consistent
 	 */
 	private boolean isTreeAllowedAt(MapTile targetTile) {
-		if (targetTile == null || !targetTile.getRoof().equals(OPEN) || !targetTile.isEmpty() || targetTile.getFloor().hasBridge() ||
+		if (targetTile == null || !targetTile.getRoof().getState().equals(OPEN) || !targetTile.isEmpty() || targetTile.getFloor().hasBridge() ||
 				!EARTH.equals(targetTile.getFloor().getMaterial().getMaterialType()) || targetTile.isWaterSource()) {
 			return false;
 		}
@@ -178,7 +178,7 @@ public class PlantMessageHandler implements GameContextAware, Telegraph, Disposa
 		for (int x = position.x - 1; x <= position.x + 1; x++) {
 			for (int y = position.y - 1; y <= position.y + MAX_TREE_HEIGHT_TILES; y++) {
 				MapTile tile = map.getTile(x, y);
-				if (tile == null || !tile.getRoof().equals(OPEN)) {
+				if (tile == null || !tile.getRoof().getState().equals(OPEN)) {
 					return false;
 				}
 			}

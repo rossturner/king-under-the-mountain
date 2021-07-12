@@ -140,9 +140,9 @@ public class BuildWallsGuiView implements GuiView, I18nUpdatable {
 		lShape.setAction(() -> messageDispatcher.dispatchMessage(MessageType.WALL_PLACEMENT_SELECTED, WallPlacementMode.L_SHAPE));
 		iconButtons.add(lShape);
 
-		IconButton quad = iconButtonFactory.create("GUI.BUILD.WALLS.QUAD", "square", HexColors.get("#c8d1ec"), ButtonStyle.DEFAULT);
-		quad.setAction(() -> messageDispatcher.dispatchMessage(MessageType.WALL_PLACEMENT_SELECTED, WallPlacementMode.QUAD));
-		iconButtons.add(quad);
+		IconButton room = iconButtonFactory.create("GUI.BUILD.WALLS.ROOM", "square", HexColors.get("#c8d1ec"), ButtonStyle.DEFAULT);
+		room.setAction(() -> messageDispatcher.dispatchMessage(MessageType.WALL_PLACEMENT_SELECTED, WallPlacementMode.ROOM));
+		iconButtons.add(room);
 
 		for (IconButton iconButton : iconButtons) {
 			iconTable.add(iconButton).pad(5);
