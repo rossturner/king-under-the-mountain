@@ -132,9 +132,30 @@
   "speedModifier" : 0.9,
   "constructed" : false
 }, {
+  "floorTypeName" : "paving",
+  "i18nKey" : "FLOOR.STONE_PAVING",
+  "floorTypeId" : 10,
+  "materialType" : "STONE",
+  "layer" : 0,
+  "numSprites" : 7,
+  "overlapType" : {
+    "overlapName" : "none"
+  },
+  "useMaterialColor" : true,
+  "speedModifier" : 1.3,
+  "craftingTypeName" : "STONEMASONRY",
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 1,
+      "liquid" : false
+    } ]
+  },
+  "constructed" : false
+}, {
   "floorTypeName" : "stone_slab",
   "i18nKey" : "FLOOR.STONE_SLAB",
-  "floorTypeId" : 10,
+  "floorTypeId" : 11,
   "materialType" : "STONE",
   "layer" : 0,
   "numSprites" : 5,
@@ -147,7 +168,7 @@
 }, {
   "floorTypeName" : "tilled_earth",
   "i18nKey" : "FLOOR.TILLED_EARTH",
-  "floorTypeId" : 11,
+  "floorTypeId" : 12,
   "materialType" : "EARTH",
   "layer" : 3,
   "numSprites" : 5,

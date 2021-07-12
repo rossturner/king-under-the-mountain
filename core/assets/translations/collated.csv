@@ -1,6 +1,7 @@
 KEY,ENGLISH,NOTES,GERMAN,FRENCH,ITALIAN,SPANISH,PORTUGUESE,PORTUGUESE BR,POLISH,RUSSIAN,TURKISH,DANISH,DUTCH,SWEDISH,NORWEGIAN,HUNGARIAN,FINNISH,JAPANESE,SIMPLIFIED CHINESE,KOREAN
 
 ACTION.JOB.CLEAR_GROUND,Clearing {{targetPlant}},,Entfernt {{plantDescription}},Arrache: {{plantDescription}},Sta rimuovendo: {{plantDescription}},Eliminando {{plantDescription}},Limpar {{plantDescription}},Retirando {{targetPlant}},,Расчищает: {{plantDescription}},{{plantDescription}} temizleniyor,Rydder {{targetPlant},,Rensa {{plantDescription}},,,,{{targetPlant}} をクリアしています,清除 {{targetPlant}},{{대상 플랜트}} 지우기
+ACTION.JOB.CONSTRUCT_FLOORING,Laying floor,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_FURNITURE,{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},,,,{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.CONSTRUCT_ROOFING,Constructing roof,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CREATE_GENERIC,Producing {{targetDescription}},,Produziert {{targetDescription}},Production de {{targetDescription}},Produzione di {{targetDescription}},Produciendo {{targetDescription}},Produzindo {{targetDescription}},,,Создание {{targetDescription}},{{targetDescription}} üretiliyor,Producerer {{targetDescription}},,Producerar {{targetDescription}},,,,{{targetDescription}} を生成しています,生产 {{targetDescription}},{{대상 설명}} 을 (를) 생성하는 중입니다.
@@ -72,6 +73,7 @@ FLOOR.GRASS,Grass,,Gras,Herbe,Erba,Hierba,Erva,Relva,,Трава,Çimen,Gras,,Gr
 FLOOR.GRAVEL,Gravel,,Kies,Gravier,Ghiaia,Grava,Gravilha,Cascalho,,Гравий,Çakıl,Grus,,Grus,,,,砂利,砾石,자갈
 FLOOR.RIVER,River,,Fluss,Rivière,Fiume,Río,Rio,Rio,,Река,Nehir,Flod,,Floden,,,,川,河流,강
 FLOOR.ROUGH_STONE,Rough stone floor,,Grober Steinboden,Rocher brut,Pietra grezza,Piedra áspera,Chão de pedra,Terreno rochoso,,Грубый каменный пол,Ser taş zemin,Ru stengulv,,Grovt stengolv,,,,粗い石造りの床,粗糙的石地板,거친 돌 바닥
+FLOOR.STONE_PAVING,Stone paving,,,,,,,,,,,,,,,,,,,
 FLOOR.STONE_SLAB,Stone slab,,Steinplatte,Dalle,Lastre di pietra,Losa de piedra,Laje de pedra,Laje de pedra,,Каменная плитка,Taş levha,Sten plade,,Stenplatta,,,,石造りスラブ,石板,석판
 FLOOR.TILLED_EARTH,Tilled earth,,Ackerboden,Terre labourée,Terreno arato,Tierra labrada,Terra lavrada,Solo arado,,Обработанная земля,Bellenmiş toprak,Pløjet jord,,Jordbrukad jord,,,,耕地,耕地,경작 지구
 FLOOR.UNEXPLORED,Unexplored,,Nicht erkundet,Inexploré,Inesplorato,Inexplorada,Inexplorado,,,Неисследованные,Keşfedilmemiş,Ikke udforsket,,Outforskad,,,,未踏だ,未开发,미개척

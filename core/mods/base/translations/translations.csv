@@ -18,6 +18,7 @@ ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}
 ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_ROOFING,,Constructing roof,,,,,,,,,,,,,
 ACTION.JOB.DECONSTRUCT_ROOFING,,Removing roof,,,,,,,,,,,,,
+ACTION.JOB.CONSTRUCT_FLOORING,,Laying floor,,,,,,,,,,,,,
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Cherchant quoi faire,Buscando qué hacer,Sucht Arbeit,Sta cercando qualcosa da fare,Procurando o que fazer,À procura de trabalho,Ищет работу,Szuka pracy,Werkzoekend,Söker efter arbete,Leter etter arbeid,,Etsii työtä
 ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},Dormant : {{containerDescription}},Durmiendo en {{containerDescription}},Schläft in {{containerDescription}},Sta dormendo in: {{containerDescription}},Dormindo em {{containerDescription}},A dormir em {{containerDescription}},Спит в: {{containerDescription}},Śpi w {{containerDescription}},,,,,
 ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},Dormant : {{tileDescription}},Durmiendo sobre {{tileDescription}},Schläft auf {{tileDescription}},Sta dormendo su: {{tileDescription}},Dormindo em {{tileDescription}},A dormir em {{tileDescription}},Спит на: {{tileDescription}},Śpi na {{tileDescription}},,,,,
@@ -76,6 +77,7 @@ FLOOR.STONE_SLAB,,Stone slab,Dalle,Losa de piedra,Steinplatte,Lastre di pietra,L
 FLOOR.TILLED_EARTH,,Tilled earth,Terre labourée,Tierra labrada,Ackerboden,Terreno arato,Solo arado,Terra lavrada,Обработанная земля,Ziemia uprawna,,,,,
 FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,,,,,,,,,,,,,
 FLOOR.WOODEN,,Wooden floorboards,,,,,,,,,,,,,
+FLOOR.STONE_PAVING,,Stone paving,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,,,,,,,,,,,,,
 FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,,,,,,,,,,,,,

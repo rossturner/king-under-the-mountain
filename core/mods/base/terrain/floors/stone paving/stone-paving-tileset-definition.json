@@ -1,0 +1,22 @@
+{
+  "floorTypeName": "paving",
+  "i18nKey": "FLOOR.STONE_PAVING",
+  "materialType": "STONE",
+  "type": "floor",
+  "numSprites": 7,
+  "layer": 0,
+  "overlapType": {
+    "overlapName": "none"
+  },
+  "useMaterialColor": true,
+  "speedModifier": 1.3,
+  "craftingTypeName": "STONEMASONRY",
+  "requirements": {
+    "STONE": [
+      {
+        "itemTypeName": "Resource-Stone-Block",
+        "quantity": 1
+      }
+    ]
+  }
+}
