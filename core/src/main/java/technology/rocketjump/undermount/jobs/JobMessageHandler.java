@@ -930,7 +930,10 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				if (applyDesignationMessage.getTargetTile().hasConstruction()) {
 					messageDispatcher.dispatchMessage(MessageType.CANCEL_CONSTRUCTION, applyDesignationMessage.getTargetTile().getConstruction());
 				}
-				applyDesignationMessage.getTargetTile().setDesignation(null);
+				TileDesignation designation = applyDesignationMessage.getTargetTile().getDesignation();
+				if (designation != null) {
+					messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(applyDesignationMessage.getTargetTile(), designation));
+				}
 				break;
 			case DECONSTRUCT:
 				// deconstruction also applies designation

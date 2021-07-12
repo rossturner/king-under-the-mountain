@@ -5,8 +5,7 @@ public enum ConstructionType {
 	FURNITURE_CONSTRUCTION(FurnitureConstruction.class),
 	DOORWAY_CONSTRUCTION(DoorwayConstruction.class),
 	WALL_CONSTRUCTION(WallConstruction.class),
-	BRIDGE_CONSTRUCTION(BridgeConstruction.class),
-	FLOOR_CONSTRUCTION(null);
+	BRIDGE_CONSTRUCTION(BridgeConstruction.class);
 
 	public final Class<? extends Construction> classType;
 

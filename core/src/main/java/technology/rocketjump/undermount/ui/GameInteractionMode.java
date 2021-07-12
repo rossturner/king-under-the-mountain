@@ -55,7 +55,7 @@ public enum GameInteractionMode {
 	PLACE_FLOORING("flooring", "FLOORING", mapTile -> mapTile.hasFloor() && !mapTile.getFloor().isRiverTile(), true),
 	REMOVE_ROOMS("cancel", "REMOVE_ROOMS", MapTile::hasRoom, true),
 	SET_JOB_PRIORITY("priority", null, null, true),
-	REMOVE_CONSTRUCTIONS("cancel", "REMOVE_CONSTRUCTIONS", MapTile::hasConstruction, true),
+	REMOVE_CONSTRUCTIONS("cancel", "REMOVE_CONSTRUCTIONS", tile -> tile.hasConstruction() || tile.getDesignation() != null, true),
 	DECONSTRUCT("deconstruct", "DECONSTRUCT", mapTile -> {
 		return mapTile.getFloor().hasBridge() || mapTile.hasDoorway() || mapTile.getEntities().stream().anyMatch(e -> e.getType().equals(FURNITURE)) ||
 				(mapTile.hasWall() && mapTile.getWall().getWallType().isConstructed());

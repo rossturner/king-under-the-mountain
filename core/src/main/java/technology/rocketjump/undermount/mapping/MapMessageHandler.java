@@ -226,6 +226,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 								roomTilesToRemove.add(tile.getTilePosition());
 							} else {
 								TileDesignation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
+								if (tile.getDesignation() != null) {
+									messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
+								}
 								tile.setDesignation(designationToApply);
 								messageDispatcher.dispatchMessage(MessageType.DESIGNATION_APPLIED, new ApplyDesignationMessage(tile, designationToApply, interactionStateContainer.getInteractionMode()));
 							}

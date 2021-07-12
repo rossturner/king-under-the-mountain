@@ -26,7 +26,6 @@ public class RoomTypeDictionary {
 		VIRTUAL_PLACING_ROOM.setColor(HexColors.get("#ffff66AA"));
 		VIRTUAL_PLACING_ROOM.setI18nKey("ROOMS.VIRTUAL_ROOM");
 		VIRTUAL_PLACING_ROOM.setIconName("help");
-		VIRTUAL_PLACING_ROOM.setEdgeName("straight");
 	}
 
 	@Inject

@@ -97,8 +97,6 @@ public class TerrainRenderer implements Disposable {
 					renderBridgeTile(bridgeEntry.getKey().x, bridgeEntry.getKey().y, bridgeConstruction.getBridge(),
 							bridgeEntry.getValue().getBridgeTileLayout(), spriteCache, vertexColorSpriteBatch);
 				}
-			} else if (terrainConstruction.getConstructionType().equals(ConstructionType.FLOOR_CONSTRUCTION)) {
-				// TODO renderFloor()
 			}
 		}
 		vertexColorSpriteBatch.end();

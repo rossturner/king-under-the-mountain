@@ -17,19 +17,25 @@ public class RoomRenderer {
 	private final WallQuadrantDictionary quadrantDictionary;
 	private final RoomEdgeTypeDictionary roomEdgeTypeDictionary;
 
+	private final RoomEdgeType roughEdgeType;
+	private final RoomEdgeType straightEdgeType;
+
 	@Inject
 	public RoomRenderer(WallQuadrantDictionary quadrantDictionary, RoomEdgeTypeDictionary roomEdgeTypeDictionary) {
 		this.quadrantDictionary = quadrantDictionary;
 		this.roomEdgeTypeDictionary = roomEdgeTypeDictionary;
+
+		// MODDING expose this
+		roughEdgeType = roomEdgeTypeDictionary.getByName("soft");
+		straightEdgeType = roomEdgeTypeDictionary.getByName("straight");
 	}
 
 	public void render(MapTile mapTile, SpriteBatch spriteBatch, TerrainSpriteCache spriteCache) {
 		Room room = mapTile.getRoomTile().getRoom();
-		roomEdgeTypeDictionary.getByName(room.getRoomType().getEdgeName());
 		spriteBatch.setColor(room.getBorderColor());
 
 		RoomTileLayout layout = mapTile.getRoomTile().getLayout();
-		RoomEdgeType roomEdgeType = roomEdgeTypeDictionary.getByName(room.getRoomType().getEdgeName()); // FIXME get by ID when Enum is removed
+		RoomEdgeType roomEdgeType = mapTile.getFloor().getFloorType().isConstructed() ? straightEdgeType : roughEdgeType;
 		QuadrantSprites quadrantSprites = spriteCache.getSpritesForRoomEdge(roomEdgeType, layout);
 
 		float worldX = mapTile.getTileX();

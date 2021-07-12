@@ -40,7 +40,8 @@ import static technology.rocketjump.undermount.mapping.tile.TileExploration.PART
 import static technology.rocketjump.undermount.mapping.tile.TileExploration.UNEXPLORED;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rooms.RoomTypeDictionary.VIRTUAL_PLACING_ROOM;
-import static technology.rocketjump.undermount.rooms.constructions.ConstructionType.*;
+import static technology.rocketjump.undermount.rooms.constructions.ConstructionType.BRIDGE_CONSTRUCTION;
+import static technology.rocketjump.undermount.rooms.constructions.ConstructionType.WALL_CONSTRUCTION;
 
 public class WorldRenderer implements Disposable {
 
@@ -74,7 +75,7 @@ public class WorldRenderer implements Disposable {
 	private final LightProcessor lightProcessor;
 	public static final Color CONSTRUCTION_COLOR = HexColors.get("#EEEEEE99");
 
-	private static final List<ConstructionType> terrainConstructionTypes = Arrays.asList(WALL_CONSTRUCTION, FLOOR_CONSTRUCTION, BRIDGE_CONSTRUCTION);
+	private static final List<ConstructionType> terrainConstructionTypes = Arrays.asList(WALL_CONSTRUCTION, BRIDGE_CONSTRUCTION);
 
 	@Inject
 	public WorldRenderer(RenderingOptions renderingOptions, TerrainRenderer terrainRenderer, EntityRenderer entityRenderer,

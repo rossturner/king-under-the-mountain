@@ -25,7 +25,6 @@ public class RoomType {
 	private String iconName;
 	private GameMaterialType requiredFloorMaterialType;
 	private List<String> furnitureNames = new ArrayList<>();
-	private String edgeName = "soft";
 	private Map<String, List<String>> tags = new HashMap<>();
 	@JsonIgnore
 	private List<Tag> processedTags = new ArrayList<>();
@@ -85,14 +84,6 @@ public class RoomType {
 
 	public void setFurnitureNames(List<String> furnitureNames) {
 		this.furnitureNames = furnitureNames;
-	}
-
-	public String getEdgeName() {
-		return edgeName;
-	}
-
-	public void setEdgeName(String edgeName) {
-		this.edgeName = edgeName;
 	}
 
 	public GameMaterialType getRequiredFloorMaterialType() {
