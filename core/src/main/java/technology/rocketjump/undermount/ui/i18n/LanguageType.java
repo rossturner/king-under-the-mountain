@@ -8,7 +8,7 @@ import technology.rocketjump.undermount.misc.Name;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LanguageType {
 
-	public static final int DEFAULT_LINE_LENGTH = 120;
+	public static final int DEFAULT_LINE_LENGTH = 110;
 
 	private String label;
 	private String labelEn;

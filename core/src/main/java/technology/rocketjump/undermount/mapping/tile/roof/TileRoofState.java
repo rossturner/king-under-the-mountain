@@ -6,7 +6,7 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
 public enum TileRoofState {
 
     OPEN(HexColors.get("#54faed99")),
-    CONSTRUCTED(HexColors.get("#d9913699")),
+    CONSTRUCTED(HexColors.get("#463e3a99")),
     MINED(HexColors.get("#dfcfba99")),
     CAVERN(HexColors.get("#8aeab399")),
     MOUNTAIN_ROOF(HexColors.get("#aaaaaa99"));

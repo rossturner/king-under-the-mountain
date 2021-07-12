@@ -5,7 +5,7 @@
   "icon" : "United-Kingdom",
   "filename" : "translations.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Deutsch",
   "labelEn" : "German",
@@ -14,7 +14,7 @@
   "fallback" : "en-gb",
   "filename" : "german.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Français",
   "labelEn" : "French",
@@ -23,7 +23,7 @@
   "fallback" : "en-gb",
   "filename" : "french.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Italiano",
   "labelEn" : "Italian",
@@ -32,7 +32,7 @@
   "fallback" : "en-gb",
   "filename" : "italian.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Español",
   "labelEn" : "Spanish",
@@ -41,7 +41,7 @@
   "fallback" : "en-gb",
   "filename" : "spanish.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Português",
   "labelEn" : "Portuguese",
@@ -50,7 +50,7 @@
   "fallback" : "en-gb",
   "filename" : "portuguese.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Português Brasileiro",
   "labelEn" : "Portuguese BR",
@@ -59,7 +59,7 @@
   "fallback" : "pt",
   "filename" : "portuguese br.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Polski",
   "labelEn" : "Polish",
@@ -68,7 +68,7 @@
   "fallback" : "en-gb",
   "filename" : "polish.csv",
   "enabled" : false,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Pусский",
   "labelEn" : "Russian",
@@ -77,7 +77,7 @@
   "fallback" : "en-gb",
   "filename" : "russian.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Türkçe",
   "labelEn" : "Turkish",
@@ -86,7 +86,7 @@
   "fallback" : "en-gb",
   "filename" : "turkish.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Dansk",
   "labelEn" : "Danish",
@@ -95,7 +95,7 @@
   "fallback" : "en-gb",
   "filename" : "danish.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Nederlands",
   "labelEn" : "Dutch",
@@ -104,7 +104,7 @@
   "fallback" : "en-gb",
   "filename" : "dutch.csv",
   "enabled" : false,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Svenska",
   "labelEn" : "Swedish",
@@ -113,7 +113,7 @@
   "fallback" : "en-gb",
   "filename" : "swedish.csv",
   "enabled" : true,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Norsk Bokmål",
   "labelEn" : "Norwegian",
@@ -122,7 +122,7 @@
   "fallback" : "en-gb",
   "filename" : "norwegian.csv",
   "enabled" : false,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Magyar",
   "labelEn" : "Hungarian",
@@ -131,7 +131,7 @@
   "fallback" : "en-gb",
   "filename" : "hungarian.csv",
   "enabled" : false,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "Suomi",
   "labelEn" : "Finnish",
@@ -140,7 +140,7 @@
   "fallback" : "en-gb",
   "filename" : "finnish.csv",
   "enabled" : false,
-  "breakAfterLineLength" : 120
+  "breakAfterLineLength" : 110
 }, {
   "label" : "日本語",
   "labelEn" : "Japanese",

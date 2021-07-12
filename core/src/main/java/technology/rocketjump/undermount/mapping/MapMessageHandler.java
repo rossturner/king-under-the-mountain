@@ -375,6 +375,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		}
 
 		tileToAddWallTo.setWall(new Wall(wallLayout, wallType, wallMaterial), new TileRoof(newRoofState, wallMaterial));
+		roofConstructionManager.supportConstructed(tileToAddWallTo);
 		roofConstructionManager.roofConstructed(tileToAddWallTo);
 		updateTile(tileToAddWallTo, gameContext);
 		messageDispatcher.dispatchMessage(MessageType.WALL_CREATED, location);

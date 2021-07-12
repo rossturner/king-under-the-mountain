@@ -257,7 +257,8 @@ GUI.BUILD.DOORS,Doors,,Türen,Portes,Porte,Puertas,Portas,Portas,,Двери,Kap
 GUI.BUILD.ROOFING,Roofing,,,,,,,,,,,,,,,,,,,
 GUI.BUILD.WALLS,Walls,,Wände,Murs,Pareti,Muros,Paredes,Paredes,,Стены,Duvar,Vægge,,Väggar,,,,壁,墙壁,벽
 GUI.BUILD.WALLS.LSHAPE,L-shape,,L-Form,En L,Angolo,Forma en L,Forma em L,Em L,,Г-образное соединение,L şekilli,L-form,,L-form,,,,L字型,L 型,L자형
-GUI.BUILD.WALLS.QUAD,Quad,,Viereck,En carré,Quadrato,Cuatro paredes,Quadriculado,Quadrática,,Четверное,Dörtlü,Quad,,Quad,,,,クワッド,四,쿼드
+GUI.BUILD.WALLS.QUAD,,,Viereck,En carré,Quadrato,Cuatro paredes,Quadriculado,Quadrática,,Четверное,Dörtlü,Quad,,Quad,,,,クワッド,四,쿼드
+GUI.BUILD.WALLS.ROOM,Room,,,,,,,,,,,,,,,,,,,
 GUI.BUILD.WALLS.SINGLE,Single,,Einzeln,Simple,Singola,Única,Simples,Individual,,Одинарное,Tekli,Enkelt,,Singel,,,,シングル,单身,싱글
 GUI.BUILD_FURNITURE,Furniture,,Möbel,Meubles,Suppellettili,Muebles,Mobília,Mobília,,Мебель,Mobilya,Møbler,,Möbler,,,,家具,家具,가구
 GUI.BUILD_LABEL,Build,,Bauen,"Construire ",Costruisci,"Construir ","Construir ",Construir,,Построить,İnşa Et,Byg,,Bygg,,,,ビルド,建立,빌드
@@ -397,6 +398,9 @@ HAPPINESS_MODIFIER.VERY_TIRED,Extremely tired,,Extrem müde,Extrêmement fatigu�
 
 HAULING.ASSIGNMENT.DESCRIPTION,{{quantity}} assigned to {{targetDescription}},,{{quantity}} zugewiesen an {{targetDescription}},{{quantity}} affecté à {{targetDescription}},{{quantity}} assegnato a {{targetDescription}},{{quantity}} asignado a {{targetDescription}},{{quantity}} atribuído a {{targetDescription}},,,{{quantity}} назначено {{targetDescription}},{{quantity}} atandı {{targetDescription}},{{quantity}} tildelt {{targetDescription},,{{kvantitet}} tilldelad till {{targetDescription}},,,,{{{itemDescription}} が {{targetDescription}} に割り当てられました,{{quantity}} 已分配给 {{targetDescription}},{{대상 설명}} 에 {{quantity}} 이 (가) 할당되었습니다.
 
+HINT.BUILD_ROOFING.1,"This view allows you to see which tiles are outside with no roof above them (light blue), and those which have had a roof built overhead (dark brown).",,,,,,,,,,,,,,,,,,,
+HINT.BUILD_ROOFING.2,"You can use the {{GUI.ROOFING.ADD}} and {{GUI.CANCEL_LABEL}} options to queue up roofing to be constructed, and {{GUI.DECONSTRUCT_LABEL}} to remove any existing roof tiles.",,,,,,,,,,,,,,,,,,,
+HINT.BUILD_ROOFING.3,A roof can only be constructed within 3 tiles of a wall or {{FURNITURE.PILLAR}}.,,,,,,,,,,,,,,,,,,,
 HINT.BUTTON.DISABLE_ALL,Disable all hints,,Alle Hinweise deaktivieren,Désactiver tous les conseils,Disabilita tutti i suggerimenti,Deshabilitar todas las sugerencias,Desativar todas as dicas,,,Отключить все подсказки,Tüm ipuçlarını kapa,Deaktiver alle tip,,Inaktivera alla tips,,,,,禁用所有提示,모든 힌트 비활성화
 HINT.BUTTON.DISMISS,Dismiss,,,,,,,,,,Sav,,,,,,,,,
 HINT.BUTTON.HINTS_ONLY,Hints only,,Nur Hinweise,Indications uniquement,Solo suggerimenti,Sólo sugerencias,Somente dicas,,,Только подсказки,Sadece İpuçları,Kun tip,,Endast tips,,,,,仅提示,힌트만

@@ -99,6 +99,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 	private WallPlacementMode wallPlacementMode;
 	private WallType wallTypeToPlace;
 	private List<WallConstruction> virtualWallConstructions = new LinkedList<>();
+	private Set<GridPoint2> virtualRoofConstructions = new HashSet<>();
 	// Bridge placement info
 	private boolean validBridgePlacement;
 	private MaterialSelectionMessage bridgeMaterialSelection = new MaterialSelectionMessage(GameMaterialType.STONE, NULL_MATERIAL, null);
@@ -147,6 +148,9 @@ public class GameInteractionStateContainer implements GameContextAware {
 				MapMessageHandler.updateTile(tile, gameContext);
 			}
 			virtualWallConstructions.clear();
+		}
+		if (!virtualRoofConstructions.isEmpty()) {
+			virtualRoofConstructions.clear();
 		}
 		validBridgePlacement = true;
 		virtualBridgeConstruction = null;
@@ -221,8 +225,9 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 			if (dragging) {
 				Set<GridPoint2> potentialLocations;
-				if (WallPlacementMode.QUAD.equals(wallPlacementMode)) {
-					potentialLocations = getPotentialWallLocationsForQuadPlacement(startPoint, currentPoint);
+				if (WallPlacementMode.ROOM.equals(wallPlacementMode)) {
+					potentialLocations = getPotentialWallLocationsForRoomPlacement(startPoint, currentPoint);
+					virtualRoofConstructions = getPotentialRoofLocationsForRoomPlacement(startPoint, currentPoint);
 				} else if (WallPlacementMode.L_SHAPE.equals(wallPlacementMode)) {
 					potentialLocations = getPotentialWallLocationsForLShapePlacement(startPoint, currentPoint);
 				} else {
@@ -347,7 +352,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 		return false;
 	}
 
-	private Set<GridPoint2> getPotentialWallLocationsForQuadPlacement(Vector2 startPoint, Vector2 currentPoint) {
+	private Set<GridPoint2> getPotentialWallLocationsForRoomPlacement(Vector2 startPoint, Vector2 currentPoint) {
 		int minX = (int) Math.floor(Math.min(startPoint.x, currentPoint.x));
 		int maxX = (int) Math.floor(Math.max(startPoint.x, currentPoint.x));
 		int minY = (int) Math.floor(Math.min(startPoint.y, currentPoint.y));
@@ -361,6 +366,21 @@ public class GameInteractionStateContainer implements GameContextAware {
 		for (int y = minY; y <= maxY; y++) {
 			locations.add(new GridPoint2(minX, y));
 			locations.add(new GridPoint2(maxX, y));
+		}
+		return locations;
+	}
+
+	private Set<GridPoint2> getPotentialRoofLocationsForRoomPlacement(Vector2 startPoint, Vector2 currentPoint) {
+		int minX = (int) Math.floor(Math.min(startPoint.x, currentPoint.x));
+		int maxX = (int) Math.floor(Math.max(startPoint.x, currentPoint.x));
+		int minY = (int) Math.floor(Math.min(startPoint.y, currentPoint.y));
+		int maxY = (int) Math.floor(Math.max(startPoint.y, currentPoint.y));
+
+		Set<GridPoint2> locations = new HashSet<>();
+		for (int x = minX + 1; x < maxX; x++) {
+			for (int y = minY + 1; y < maxY; y++) {
+				locations.add(new GridPoint2(x, y));
+			}
 		}
 		return locations;
 	}
@@ -701,5 +721,9 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 	public void setProfessionToReplace(Profession professionToReplace) {
 		this.professionToReplace = professionToReplace;
+	}
+
+	public Set<GridPoint2> getVirtualRoofConstructions() {
+		return virtualRoofConstructions;
 	}
 }

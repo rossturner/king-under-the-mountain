@@ -11,5 +11,19 @@
         "relatedTypeName": "PRIORITY_MENU"
       }
     ]
+  },
+  {
+    "hintId": "open_roofing_menu",
+    "i18nKeys": [
+      "HINT.BUILD_ROOFING.1",
+      "HINT.BUILD_ROOFING.2",
+      "HINT.BUILD_ROOFING.3"
+    ],
+    "triggers": [
+      {
+        "triggerType": "GUI_SWITCH_VIEW",
+        "relatedTypeName": "BUILD_ROOFING"
+      }
+    ]
   }
 ]
