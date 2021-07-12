@@ -80,6 +80,8 @@ public class TileSelectedGuiView implements GuiView {
 
 							}
 						}
+
+						descriptionTable.add(new Label("Room: " + tile.getRoomTile().getRoom(), uiSkin)).left().row();
 					}
 
 

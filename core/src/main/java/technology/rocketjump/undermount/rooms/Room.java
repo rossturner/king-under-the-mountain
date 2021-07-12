@@ -8,9 +8,11 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
+import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
 import technology.rocketjump.undermount.mapping.tile.layout.RoomTileLayout;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.Persistable;
@@ -32,6 +34,7 @@ public class Room implements Persistable {
 	private final Map<GridPoint2, RoomTile> roomTiles = new HashMap<>();
 	private final Vector2 avgWorldPosition = new Vector2();
 	private final RoomComponentMap componentMap = new RoomComponentMap();
+	private boolean isFullyEnclosed; // by walls, doors and covered with roof
 
 	public Room() {
 
@@ -141,6 +144,38 @@ public class Room implements Persistable {
 			RoomTileLayout newLayout = new RoomTileLayout(neighbours, this);
 			entry.getValue().setLayout(newLayout);
 		}
+
+		checkIfEnclosed(tiledMap);
+	}
+
+	public void checkIfEnclosed(TiledMap tiledMap) {
+		this.isFullyEnclosed = true;
+
+		for (GridPoint2 tileLocation : roomTiles.keySet()) {
+			MapTile tile = tiledMap.getTile(tileLocation);
+			if (tile.getRoof().getState().equals(TileRoofState.OPEN)) {
+				isFullyEnclosed = false;
+				break;
+			}
+
+			for (CompassDirection direction : CompassDirection.CARDINAL_DIRECTIONS) {
+				GridPoint2 neighbourLocation = tileLocation.cpy().add(direction.getXOffset(), direction.getYOffset());
+				if (!roomTiles.containsKey(neighbourLocation)) {
+					MapTile tileNeighbour = tiledMap.getTile(tileLocation.x + direction.getXOffset(), tileLocation.y + direction.getYOffset());
+					if (tileNeighbour != null && !hasWallOrDoor(tileNeighbour)) {
+						isFullyEnclosed = false;
+						break;
+					}
+				}
+			}
+			if (!isFullyEnclosed) {
+				break;
+			}
+		}
+	}
+
+	private boolean hasWallOrDoor(MapTile tile) {
+		return tile.hasWall() || tile.hasDoorway();
 	}
 
 
@@ -184,6 +219,7 @@ public class Room implements Persistable {
 		sb.append(roomId);
 		sb.append(", type=").append(roomType);
 		sb.append(", tiles=").append(roomTiles.size());
+		sb.append(", enclosed=").append(isFullyEnclosed);
 		sb.append('}');
 		return sb.toString();
 	}
@@ -214,6 +250,14 @@ public class Room implements Persistable {
 
 	public void setBorderColor(Color borderColor) {
 		this.borderColor = borderColor;
+	}
+
+	public boolean isFullyEnclosed() {
+		return isFullyEnclosed;
+	}
+
+	public void setFullyEnclosed(boolean fullyEnclosed) {
+		isFullyEnclosed = fullyEnclosed;
 	}
 
 	@Override
@@ -251,6 +295,10 @@ public class Room implements Persistable {
 
 		if (borderColor != null) {
 			asJson.put("borderColor", HexColors.toHexString(borderColor));
+		}
+
+		if (isFullyEnclosed) {
+			asJson.put("enclosed", true);
 		}
 
 		savedGameStateHolder.rooms.put(roomId, this);
@@ -292,6 +340,7 @@ public class Room implements Persistable {
 		}
 
 		this.borderColor = HexColors.get(asJson.getString("borderColor"));
+		this.isFullyEnclosed = asJson.getBooleanValue("enclosed");
 
 		recalculatePosition();
 

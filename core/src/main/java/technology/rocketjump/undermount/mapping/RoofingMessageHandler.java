@@ -120,6 +120,10 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 			tile.getRoof().setConstructionState(RoofConstructionState.NONE);
 			propagateDarknessFromTile(tile, gameContext, outdoorLightProcessor);
 			roofConstructionManager.roofConstructed(tile);
+
+			if (tile.hasRoom()) {
+				tile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
+			}
 		}
 		return true;
 	}
@@ -131,6 +135,10 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 			tile.getRoof().setConstructionState(RoofConstructionState.NONE);
 			MapMessageHandler.markAsOutside(tile, gameContext, outdoorLightProcessor);
 			roofConstructionManager.roofDeconstructed(tile);
+
+			if (tile.hasRoom()) {
+				tile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
+			}
 		}
 		return true;
 	}

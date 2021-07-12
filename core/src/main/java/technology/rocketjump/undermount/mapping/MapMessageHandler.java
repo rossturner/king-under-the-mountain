@@ -398,6 +398,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 					// Encountered a different neighbour region ID, merge together
 					replaceRegion(neighbourTile, neighbourRegionId);
 				}
+			} else if (neighbourTile != null && neighbourTile.hasRoom()) {
+				neighbourTile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
 			}
 		}
 		if (neighbourRegionId == null) {
@@ -528,6 +530,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				}
 				if (neighbourTile.hasDoorway()) {
 					messageDispatcher.dispatchMessage(MessageType.DECONSTRUCT_DOOR, neighbourTile.getDoorway());
+				}
+				if (neighbourTile.hasRoom()) {
+					neighbourTile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
 				}
 			}
 			if (unexploredTile != null) {

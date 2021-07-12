@@ -28,6 +28,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
+import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -103,6 +104,12 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(doorway.getDoorEntity().getId()));
 					targetTile.setDoorway(null);
 					updateTile(targetTile, gameContext);
+
+					for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(targetTile.getTileX(), targetTile.getTileY()).values()) {
+						if (neighbourTile.hasRoom()) {
+							neighbourTile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
+						}
+					}
 				}
 				return true;
 			}
@@ -153,6 +160,14 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 					doorwayLocation, message.getDoorwayMaterial()
 			));
 		}
+
+		for (CompassDirection direction : CompassDirection.CARDINAL_DIRECTIONS) {
+			MapTile neighbourTile = gameContext.getAreaMap().getTile(doorwayLocation.x + direction.getXOffset(), doorwayLocation.y + direction.getYOffset());
+			if (neighbourTile != null && neighbourTile.hasRoom()) {
+				neighbourTile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
+			}
+		}
+
 
 		return true;
 	}
