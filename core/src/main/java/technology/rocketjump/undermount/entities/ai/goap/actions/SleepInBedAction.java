@@ -34,8 +34,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
  */
 public class SleepInBedAction extends SleepOnFloorAction {
 
-	private static final int MIN_AVERAGE_BEDROOM_SIZE = 9;
-	private static final int MAX_AVERAGE_BEDROOM_SIZE = 12;
+	private static final int MIN_AVERAGE_BEDROOM_SIZE = 6;
 
 	public SleepInBedAction(AssignedGoal parent) {
 		super(parent);
@@ -60,11 +59,11 @@ public class SleepInBedAction extends SleepOnFloorAction {
 					parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_SMALL_BEDROOM);
 				}
 			} else {
-				parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_PRIVATE_BEDROOM);
-				if (bedroom == null || bedroomIsSmall(bedroom)) {
+				if (bedroom.isFullyEnclosed()) {
+					parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_ENCLOSED_BEDROOM);
+				}
+				if (bedroomIsSmall(bedroom)) {
 					parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_SMALL_BEDROOM);
-				} else if (bedroomIsLarge(bedroom)) {
-					parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_LARGE_PRIVATE_BEDROOM);
 				}
 			}
 
@@ -79,10 +78,6 @@ public class SleepInBedAction extends SleepOnFloorAction {
 
 	private boolean bedroomIsSmall(Room bedroom) {
 		return bedroom.getRoomTiles().size() < MIN_AVERAGE_BEDROOM_SIZE;
-	}
-
-	private boolean bedroomIsLarge(Room bedroom) {
-		return bedroom.getRoomTiles().size() > MAX_AVERAGE_BEDROOM_SIZE;
 	}
 
 	private boolean bedroomIsShared(Room room) {

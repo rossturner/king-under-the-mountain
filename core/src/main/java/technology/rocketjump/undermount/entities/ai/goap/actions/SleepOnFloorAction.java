@@ -19,8 +19,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
-import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SLEPT_ON_GROUND;
-import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SLEPT_OUTSIDE;
+import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.*;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.SLEEPING;
 import static technology.rocketjump.undermount.mapping.tile.roof.TileRoofState.OPEN;
 
@@ -37,6 +36,11 @@ public class SleepOnFloorAction extends Action {
 		}
 
 		parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_ON_GROUND);
+
+		MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldPosition());
+		if (currentTile != null && currentTile.hasRoom() && currentTile.getRoomTile().getRoom().isFullyEnclosed()) {
+			parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_ENCLOSED_BEDROOM);
+		}
 
 		checkForWakingUp(gameContext);
 	}

@@ -3,12 +3,14 @@ package technology.rocketjump.undermount.entities.ai.goap.actions;
 import com.alibaba.fastjson.JSONObject;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
+import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.tags.ItemUsageSoundTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.particles.custom_libgdx.ProgressBarEffect;
@@ -24,6 +26,7 @@ import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
+import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.WORKED_IN_ENCLOSED_ROOM;
 import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
@@ -38,14 +41,9 @@ public class WorkOnJobAction extends Action {
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
-		// May have already been interrupted
-		if (completionType != null && completionType.equals(FAILURE)) {
-			return;
-		}
-
 		Optional<Entity> targetFurniture = getTargetFurniture(parent.getAssignedJob(), gameContext);
 
-		if (inPositionToWorkOnJob()) {
+		if (completionType == null && inPositionToWorkOnJob()) {
 			Job assignedJob = parent.getAssignedJob();
 			float skillLevel = 0f;
 			ProfessionsComponent professionsComponent = parent.parentEntity.getComponent(ProfessionsComponent.class);
@@ -55,6 +53,7 @@ public class WorkOnJobAction extends Action {
 			float timeModifier = Math.min(1f, skillLevel * 1.5f);
 			float workDone = deltaTime * timeModifier;
 			assignedJob.applyWorkDone(workDone);
+
 			if (!activeSoundTriggered) {
 				SoundAsset jobSoundAsset = getJobSoundAsset();
 				if (jobSoundAsset != null) {
@@ -67,6 +66,14 @@ public class WorkOnJobAction extends Action {
 				if (targetFurniture.isPresent()) {
 					furnitureInUseNotified = true;
 					parent.messageDispatcher.dispatchMessage(MessageType.FURNITURE_IN_USE, targetFurniture.get());
+				}
+			}
+
+			MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldPosition());
+			if (currentTile != null && currentTile.hasRoom() && currentTile.getRoomTile().getRoom().isFullyEnclosed()) {
+				HappinessComponent happinessComponent = parent.parentEntity.getComponent(HappinessComponent.class);
+				if (happinessComponent != null) {
+					happinessComponent.add(WORKED_IN_ENCLOSED_ROOM);
 				}
 			}
 
@@ -123,6 +130,7 @@ public class WorkOnJobAction extends Action {
 
 		if (completionType != null) {
 			// finished
+
 			if (furnitureInUseNotified && targetFurniture.isPresent()) {
 				parent.messageDispatcher.dispatchMessage(MessageType.FURNITURE_NO_LONGER_IN_USE, targetFurniture.get());
 			}

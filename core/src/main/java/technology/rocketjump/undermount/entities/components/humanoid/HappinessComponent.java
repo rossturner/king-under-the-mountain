@@ -115,6 +115,7 @@ public class HappinessComponent implements EntityComponent {
 	public enum HappinessModifier {
 
 		NEW_SETTLEMENT_OPTIMISM(40, 24.0 * 15),
+		WORKED_IN_ENCLOSED_ROOM(20, 16.0),
 
 		SAW_DEAD_BODY(-50, 24.0 * 3.0),
 		CARRIED_DEAD_BODY(-55, 24.0 * 1.0),
@@ -132,12 +133,11 @@ public class HappinessComponent implements EntityComponent {
 		SLEPT_OUTSIDE(-20, 3.0),
 		SLEPT_ON_GROUND(-20, 5.0),
 		SLEPT_IN_SHARED_BEDROOM(-10, 5.0),
-		SLEPT_IN_PRIVATE_BEDROOM(10, 5.0),
+		SLEPT_IN_ENCLOSED_BEDROOM(30, 5.0),
 		SLEPT_IN_SMALL_BEDROOM(-5, 5.0),
-		SLEPT_IN_LARGE_PRIVATE_BEDROOM(20, 5.0),
 
 		DRANK_ALCOHOL(40, 8),
-		ALCOHOL_WITHDRAWL(-30, 0.5);
+		ALCOHOL_WITHDRAWAL(-30, 0.5);
 
 		public final int modifierAmount;
 		private final double hoursToExpiry;
@@ -145,16 +145,12 @@ public class HappinessComponent implements EntityComponent {
 		private final List<HappinessModifier> replacedBy = new ArrayList<>();
 
 		static {
-			SLEPT_IN_SHARED_BEDROOM.replaces.add(SLEPT_IN_PRIVATE_BEDROOM);
-			SLEPT_IN_SHARED_BEDROOM.replaces.add(SLEPT_IN_LARGE_PRIVATE_BEDROOM);
-			SLEPT_IN_SMALL_BEDROOM.replaces.add(SLEPT_IN_PRIVATE_BEDROOM);
 			CARRIED_DEAD_BODY.replaces.add(SAW_DEAD_BODY);
-			SLEPT_IN_LARGE_PRIVATE_BEDROOM.replaces.add(SLEPT_IN_PRIVATE_BEDROOM);
 
 			DYING_OF_HUNGER.replaces.add(VERY_HUNGRY);
 			DYING_OF_THIRST.replaces.add(VERY_THIRSTY);
 
-			DRANK_ALCOHOL.replaces.add(ALCOHOL_WITHDRAWL);
+			DRANK_ALCOHOL.replaces.add(ALCOHOL_WITHDRAWAL);
 
 			for (HappinessModifier happinessModifier : HappinessModifier.values()) {
 				for (HappinessModifier otherModifier : HappinessModifier.values()) {
