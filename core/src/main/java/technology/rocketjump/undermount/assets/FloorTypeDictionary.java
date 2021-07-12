@@ -6,7 +6,10 @@ import com.google.inject.ProvidedBy;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemType;
 import technology.rocketjump.undermount.guice.FloorDictionaryProvider;
+import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +26,8 @@ public class FloorTypeDictionary {
 	private Map<String, FloorType> floorTypeNameMap = new ConcurrentHashMap<>();
 	private ObjectMapper objectMapper = new ObjectMapper();
 
-	public FloorTypeDictionary(FileHandle floorDefinitionsJsonFile, OverlapTypeDictionary overlapTypeDictionary) throws IOException {
+	public FloorTypeDictionary(FileHandle floorDefinitionsJsonFile, OverlapTypeDictionary overlapTypeDictionary,
+							   CraftingTypeDictionary craftingTypeDictionary, ItemTypeDictionary itemTypeDictionary) throws IOException {
 		List<FloorType> floorTypes = objectMapper.readValue(floorDefinitionsJsonFile.readString(),
 				objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, FloorType.class));
 
@@ -33,6 +37,22 @@ public class FloorTypeDictionary {
 			}
 			floorTypeIdMap.put(floorType.getFloorTypeId(), floorType);
 			floorTypeNameMap.put(floorType.getFloorTypeName().toLowerCase(), floorType);
+			if (floorType.getCraftingTypeName() != null) {
+				floorType.setCraftingType(craftingTypeDictionary.getByName(floorType.getCraftingTypeName()));
+				if (floorType.getCraftingType() == null) {
+					Logger.error("Could not find crafting type with name " + floorType.getCraftingTypeName() + " for " + floorType.getFloorTypeName());
+				}
+			}
+			if (floorType.getRequirements() != null) {
+				for (List<QuantifiedItemType> quantifiedItemTypeList : floorType.getRequirements().values()) {
+					for (QuantifiedItemType quantifiedItemType : quantifiedItemTypeList) {
+						quantifiedItemType.setItemType(itemTypeDictionary.getByName(quantifiedItemType.getItemTypeName()));
+						if (quantifiedItemType.getItemType() == null) {
+							Logger.error("Could not find item type by name "+quantifiedItemType.getItemTypeName()+" for " + floorType.getFloorTypeName());
+						}
+					}
+				}
+			}
 
 			if (overlapTypeDictionary.getByName(floorType.getOverlapType().getOverlapName()) == null) {
 				Logger.error("Unrecognised overlap name in floor type " + floorType.getFloorTypeName());

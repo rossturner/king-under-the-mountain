@@ -6,6 +6,7 @@ public enum GuiViewName {
 
 	BUILD_MENU,
 
+	BUILD_FLOORING,
 	BUILD_WALLS,
 	BUILD_DOORS,
 	BUILD_BRIDGE,

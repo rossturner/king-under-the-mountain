@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
@@ -94,17 +95,20 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 	private MaterialSelectionMessage doorMaterialSelection = new MaterialSelectionMessage(GameMaterialType.STONE, NULL_MATERIAL, null);
 
+	private Set<GridPoint2> virtualRoofConstructions = new HashSet<>();
 	// Wall placement info
 	private MaterialSelectionMessage wallMaterialSelection = new MaterialSelectionMessage(GameMaterialType.STONE, NULL_MATERIAL, null);
 	private WallPlacementMode wallPlacementMode;
 	private WallType wallTypeToPlace;
 	private List<WallConstruction> virtualWallConstructions = new LinkedList<>();
-	private Set<GridPoint2> virtualRoofConstructions = new HashSet<>();
 	// Bridge placement info
 	private boolean validBridgePlacement;
 	private MaterialSelectionMessage bridgeMaterialSelection = new MaterialSelectionMessage(GameMaterialType.STONE, NULL_MATERIAL, null);
 	private BridgeType bridgeTypeToPlace;
 	private BridgeConstruction virtualBridgeConstruction;
+	// Floor placement info
+	private MaterialSelectionMessage floorMaterialSelection = new MaterialSelectionMessage(GameMaterialType.STONE, NULL_MATERIAL, null);
+	private FloorType floorTypeToPlace;
 
 
 	@Inject
@@ -666,6 +670,14 @@ public class GameInteractionStateContainer implements GameContextAware {
 		this.wallTypeToPlace = wallTypeToPlace;
 	}
 
+	public void setFloorTypeToPlace(FloorType floorTypeToPlace) {
+		this.floorTypeToPlace = floorTypeToPlace;
+	}
+
+	public FloorType getFloorTypeToPlace() {
+		return floorTypeToPlace;
+	}
+
 	@Override
 	public void onContextChange(GameContext gameContext) {
 		this.gameContext = gameContext;
@@ -725,5 +737,13 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 	public Set<GridPoint2> getVirtualRoofConstructions() {
 		return virtualRoofConstructions;
+	}
+
+	public void setFloorMaterialSelection(MaterialSelectionMessage wallMaterialSelection) {
+		this.floorMaterialSelection = wallMaterialSelection;
+	}
+
+	public MaterialSelectionMessage getFloorMaterialSelection() {
+		return floorMaterialSelection;
 	}
 }

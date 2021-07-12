@@ -52,6 +52,7 @@ public enum GameInteractionMode {
 	PLACE_WALLS("walls", null, null, true),
 	PLACE_BRIDGE("bridge", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && !mapTile.hasWall() &&
 			!mapTile.hasDoorway() && !mapTile.hasRoom() && !mapTile.hasConstruction(), true),
+	PLACE_FLOORING("flooring", "FLOORING", mapTile -> mapTile.hasFloor() && !mapTile.getFloor().isRiverTile(), true),
 	REMOVE_ROOMS("cancel", "REMOVE_ROOMS", MapTile::hasRoom, true),
 	SET_JOB_PRIORITY("priority", null, null, true),
 	REMOVE_CONSTRUCTIONS("cancel", "REMOVE_CONSTRUCTIONS", MapTile::hasConstruction, true),

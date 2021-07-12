@@ -8,7 +8,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.FloorTypeDictionary;
 import technology.rocketjump.undermount.assets.WallTypeDictionary;
+import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.entities.factories.FurnitureEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.FurnitureEntityFactory;
@@ -55,12 +57,14 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 	private GameContext gameContext;
 
 	private Map<GameMaterialType, WallType> wallTypeMapping = new HashMap<>();
+	private Map<GameMaterialType, FloorType> floorTypeMapping = new HashMap<>();
 
 	@Inject
 	public GuiMessageHandler(MessageDispatcher messageDispatcher, GameInteractionStateContainer interactionStateContainer,
 							 TileDesignationDictionary tileDesignationDictionary, WallTypeDictionary wallTypeDictionary,
 							 FurnitureEntityAttributesFactory furnitureEntityAttributesFactory, FurnitureEntityFactory furnitureEntityFactory,
-							 FurnitureSelectionGuiView furnitureSelectionGuiView, BridgeTypeDictionary bridgeTypeDictionary) {
+							 FurnitureSelectionGuiView furnitureSelectionGuiView, BridgeTypeDictionary bridgeTypeDictionary,
+							 FloorTypeDictionary floorTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.interactionStateContainer = interactionStateContainer;
 		this.furnitureEntityAttributesFactory = furnitureEntityAttributesFactory;
@@ -77,6 +81,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.ROTATE_FURNITURE);
 		messageDispatcher.addListener(this, MessageType.DESTROY_ENTITY);
 		messageDispatcher.addListener(this, MessageType.WALL_MATERIAL_SELECTED);
+		messageDispatcher.addListener(this, MessageType.FLOOR_MATERIAL_SELECTED);
 		messageDispatcher.addListener(this, MessageType.DOOR_MATERIAL_SELECTED);
 		messageDispatcher.addListener(this, MessageType.WALL_PLACEMENT_SELECTED);
 		messageDispatcher.addListener(this, MessageType.BRIDGE_MATERIAL_SELECTED);
@@ -87,12 +92,18 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.CHOOSE_SELECTABLE);
 		messageDispatcher.addListener(this, MessageType.REPLACE_JOB_PRIORITY);
 		messageDispatcher.addListener(this, MessageType.GUI_STOCKPILE_GROUP_SELECTED);
-		// FIXME Should this really live here?
+		// FIXME Should these really live here?
 		for (WallType wallType : wallTypeDictionary.getAllDefinitions()) {
 			if (wallType.isConstructed()) {
 				wallTypeMapping.put(wallType.getMaterialType(), wallType);
 			}
 		}
+		for (FloorType floorType : floorTypeDictionary.getAllDefinitions()) {
+			if (floorType.isConstructed()) {
+				floorTypeMapping.put(floorType.getMaterialType(), floorType);
+			}
+		}
+
 
 		tileDesignationDictionary.init();
 	}
@@ -187,6 +198,12 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				MaterialSelectionMessage materialSelectionMessage = (MaterialSelectionMessage) msg.extraInfo;
 				interactionStateContainer.setWallMaterialSelection(materialSelectionMessage);
 				interactionStateContainer.setWallTypeToPlace(wallTypeMapping.get(materialSelectionMessage.selectedMaterialType));
+				return true;
+			}
+			case MessageType.FLOOR_MATERIAL_SELECTED: {
+				MaterialSelectionMessage materialSelectionMessage = (MaterialSelectionMessage) msg.extraInfo;
+				interactionStateContainer.setFloorMaterialSelection(materialSelectionMessage);
+				interactionStateContainer.setFloorTypeToPlace(floorTypeMapping.get(materialSelectionMessage.selectedMaterialType));
 				return true;
 			}
 			case MessageType.WALL_PLACEMENT_SELECTED: {

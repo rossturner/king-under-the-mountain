@@ -107,4 +107,20 @@
     "b" : 0.18,
     "a" : 0.3
   }
+}, {
+  "designationName" : "FLOORING",
+  "iconName" : "floorboards",
+  "selectionColor" : {
+    "r" : 1.0,
+    "g" : 1.0,
+    "b" : 0.6,
+    "a" : 0.4
+  },
+  "designationColor" : {
+    "r" : 1.0,
+    "g" : 1.0,
+    "b" : 1.0,
+    "a" : 0.4
+  },
+  "createsJobTypeName" : "CONSTRUCT_FLOORING"
 } ]

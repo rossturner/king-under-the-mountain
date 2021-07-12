@@ -9,12 +9,14 @@ import com.badlogic.gdx.utils.IntMap;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.FloorTypeDictionary;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.JobStore;
@@ -59,12 +61,14 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 	private ParticleEffectType wallRemovedParticleEffectType;
 	private SoundAsset wallRemovedSoundAsset;
+	private Map<ItemType, FloorType> floorTypesByInputRequirement = new HashMap<>();
 
 	@Inject
 	public MapMessageHandler(MessageDispatcher messageDispatcher, OutdoorLightProcessor outdoorLightProcessor,
 							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory,
 							 RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater,
-							 RoofConstructionManager roofConstructionManager, ParticleEffectTypeDictionary particleEffectTypeDictionary, SoundAssetDictionary soundAssetDictionary) {
+							 RoofConstructionManager roofConstructionManager, ParticleEffectTypeDictionary particleEffectTypeDictionary,
+							 SoundAssetDictionary soundAssetDictionary, FloorTypeDictionary floorTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
@@ -77,6 +81,13 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		this.wallRemovedParticleEffectType = particleEffectTypeDictionary.getByName("Dust cloud"); // MODDING expose this
 		this.wallRemovedSoundAsset = soundAssetDictionary.getByName("Mining Drop");
 
+		for (FloorType floorType : floorTypeDictionary.getAllDefinitions()) {
+			if (floorType.isConstructed()) {
+				floorTypesByInputRequirement.put(floorType.getRequirements().get(floorType.getMaterialType()).get(0).getItemType(), floorType);
+			}
+		}
+
+
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
 		messageDispatcher.addListener(this, MessageType.ROOM_PLACEMENT);
@@ -86,6 +97,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.REMOVE_ROOM_TILES);
 		messageDispatcher.addListener(this, MessageType.CHANGE_FLOOR);
 		messageDispatcher.addListener(this, MessageType.REPLACE_REGION);
+		messageDispatcher.addListener(this, MessageType.FLOORING_CONSTRUCTED);
 	}
 
 	@Override
@@ -126,6 +138,16 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			case MessageType.REPLACE_REGION: {
 				ReplaceRegionMessage message = (ReplaceRegionMessage) msg.extraInfo;
 				replaceRegion(message.tileToReplace, message.replacementRegionId);
+				return true;
+			}
+			case MessageType.FLOORING_CONSTRUCTED: {
+				FloorConstructionMessage message = (FloorConstructionMessage) msg.extraInfo;
+				FloorType floorType = floorTypesByInputRequirement.get(message.constructionItem);
+				if (floorType != null) {
+					changeFloor(message.location, floorType, message.constructionMaterial);
+				} else {
+					Logger.error("Could not look up floor type constructed by " + message.constructionItem.getItemTypeName());
+				}
 				return true;
 			}
 			default:

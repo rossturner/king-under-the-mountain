@@ -5,6 +5,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemType;
@@ -39,6 +40,9 @@ public class WallTypeDictionary {
 			}
 			if (wallType.getCraftingTypeName() != null) {
 				wallType.setCraftingType(craftingTypeDictionary.getByName(wallType.getCraftingTypeName()));
+				if (wallType.getCraftingType() == null) {
+					Logger.error("Could not find crafting type " + wallType.getCraftingTypeName() + " for " + wallType.getWallTypeName());
+				}
 			}
 			if (wallType.getRequirements() != null) {
 				for (List<QuantifiedItemType> quantifiedItemTypeList : wallType.getRequirements().values()) {

@@ -44,5 +44,12 @@
     "iconName": "demolish",
     "selectionColor": { "r": 1, "g": 0.2, "b": 0.2, "a": 0.3 },
     "designationColor": { "r": 0.82, "g": 0.45, "b": 0.18, "a": 0.3 }
+  },
+  {
+    "designationName": "FLOORING",
+    "iconName": "floorboards",
+    "createsJobTypeName": "CONSTRUCT_FLOORING",
+    "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
+    "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
   }
 ]

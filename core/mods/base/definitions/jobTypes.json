@@ -223,5 +223,14 @@
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CARPENTER",
     "onCompletionSoundAssetName": "ImpactPlank"
+  },
+  {
+    "name": "CONSTRUCT_FLOORING",
+    "defaultTimeToCompleteJob": 3,
+    "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FLOORING",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
+    "haulItemWhileWorking": true,
+    "onCompletionSoundAssetName": "ImpactPlank"
   }
 ]

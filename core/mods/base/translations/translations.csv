@@ -75,6 +75,7 @@ FLOOR.ROUGH_STONE,,Rough stone floor,Rocher brut,Piedra áspera,Steinboden,Pietr
 FLOOR.STONE_SLAB,,Stone slab,Dalle,Losa de piedra,Steinplatte,Lastre di pietra,Laje de pedra,Laje de pedra,Каменная плитка,Kamienna płyta,,,,,
 FLOOR.TILLED_EARTH,,Tilled earth,Terre labourée,Tierra labrada,Ackerboden,Terreno arato,Solo arado,Terra lavrada,Обработанная земля,Ziemia uprawna,,,,,
 FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,,,,,,,,,,,,,
+FLOOR.WOODEN,,Wooden floorboards,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,,,,,,,,,,,,,
 FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,,,,,,,,,,,,,
@@ -254,6 +255,7 @@ GUI.ADD_TILES,This should be as short as possible,Add tiles,Ajouter des cases,A�
 GUI.BACK_LABEL,This should be as short as possible,Back,Retour ,Atrás,Zurück ,Indietro,Voltar,Anterior,Назад,Wstecz ,Vorige,Tillbaka ,Tilbake,Vissza,Taakse
 GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,Portes,Puertas,Türen,Porte,Portas,Portas,Двери,Drzwi,,,,,
 GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,,,,,,,,,,,,,
+GUI.BUILD.FLOOR,For building floorboards/stone slabs across the ground,Flooring,,,,,,,,,,,,,
 GUI.BUILD.WALLS,,Walls,Murs,Muros,Wände,Pareti,Paredes,Paredes,Стены,Ściany,,,,,
 GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,En L,Forma en L,L-Form,Angolo,Em L,Forma em L,Г-образное соединение,Kształt L,,,,,
 GUI.BUILD.WALLS.ROOM,For building 4 walls and a rof at once,Room,,,,,,,,,,,,,

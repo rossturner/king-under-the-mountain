@@ -8,7 +8,9 @@
   "overlapType" : {
     "overlapName" : "ground"
   },
-  "useMaterialColor" : false
+  "useMaterialColor" : false,
+  "speedModifier" : 0.8,
+  "constructed" : false
 }, {
   "floorTypeName" : "clay_soil",
   "i18nKey" : "FLOOR.CLAY_SOIL",
@@ -19,7 +21,9 @@
   "overlapType" : {
     "overlapName" : "ground"
   },
-  "useMaterialColor" : false
+  "useMaterialColor" : false,
+  "speedModifier" : 0.8,
+  "constructed" : false
 }, {
   "floorTypeName" : "dirt",
   "i18nKey" : "FLOOR.DIRT",
@@ -31,12 +35,35 @@
     "overlapName" : "ground"
   },
   "useMaterialColor" : false,
+  "speedModifier" : 1.0,
   "lowColorCode" : "#583923",
-  "highColorCode" : "#b1896c"
+  "highColorCode" : "#b1896c",
+  "constructed" : false
+}, {
+  "floorTypeName" : "floorboards",
+  "i18nKey" : "FLOOR.WOODEN",
+  "floorTypeId" : 4,
+  "materialType" : "WOOD",
+  "layer" : 0,
+  "numSprites" : 10,
+  "overlapType" : {
+    "overlapName" : "none"
+  },
+  "useMaterialColor" : true,
+  "speedModifier" : 1.3,
+  "craftingTypeName" : "CARPENTRY",
+  "requirements" : {
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 1,
+      "liquid" : false
+    } ]
+  },
+  "constructed" : false
 }, {
   "floorTypeName" : "grass",
   "i18nKey" : "FLOOR.GRASS",
-  "floorTypeId" : 4,
+  "floorTypeId" : 5,
   "materialType" : "EARTH",
   "layer" : 10,
   "numSprites" : 5,
@@ -44,12 +71,14 @@
     "overlapName" : "grass"
   },
   "useMaterialColor" : false,
+  "speedModifier" : 1.0,
   "lowColorCode" : "#587446",
-  "highColorCode" : "#d1e59a"
+  "highColorCode" : "#d1e59a",
+  "constructed" : false
 }, {
   "floorTypeName" : "gravel",
   "i18nKey" : "FLOOR.GRAVEL",
-  "floorTypeId" : 5,
+  "floorTypeId" : 6,
   "materialType" : "OTHER",
   "layer" : 4,
   "numSprites" : 5,
@@ -57,23 +86,27 @@
     "overlapName" : "ground"
   },
   "useMaterialColor" : false,
+  "speedModifier" : 0.6,
   "lowColorCode" : "#494643",
-  "highColorCode" : "#a69e90"
+  "highColorCode" : "#a69e90",
+  "constructed" : false
 }, {
   "floorTypeName" : "cobblestone",
   "i18nKey" : "FLOOR.COBBLESTONE",
-  "floorTypeId" : 6,
+  "floorTypeId" : 7,
   "materialType" : "STONE",
   "layer" : 1,
   "numSprites" : 5,
   "overlapType" : {
     "overlapName" : "ground"
   },
-  "useMaterialColor" : true
+  "useMaterialColor" : true,
+  "speedModifier" : 0.8,
+  "constructed" : false
 }, {
   "floorTypeName" : "river-edge-dirt",
   "i18nKey" : "FLOOR.DIRT",
-  "floorTypeId" : 7,
+  "floorTypeId" : 8,
   "materialType" : "EARTH",
   "layer" : 5,
   "numSprites" : 5,
@@ -81,34 +114,40 @@
     "overlapName" : "water"
   },
   "useMaterialColor" : false,
+  "speedModifier" : 0.9,
   "lowColorCode" : "#583923",
-  "highColorCode" : "#b1896c"
+  "highColorCode" : "#b1896c",
+  "constructed" : false
 }, {
   "floorTypeName" : "rough_stone",
   "i18nKey" : "FLOOR.ROUGH_STONE",
-  "floorTypeId" : 8,
+  "floorTypeId" : 9,
   "materialType" : "STONE",
   "layer" : 1,
   "numSprites" : 5,
   "overlapType" : {
     "overlapName" : "ground"
   },
-  "useMaterialColor" : true
+  "useMaterialColor" : true,
+  "speedModifier" : 0.9,
+  "constructed" : false
 }, {
   "floorTypeName" : "stone_slab",
   "i18nKey" : "FLOOR.STONE_SLAB",
-  "floorTypeId" : 9,
+  "floorTypeId" : 10,
   "materialType" : "STONE",
   "layer" : 0,
   "numSprites" : 5,
   "overlapType" : {
     "overlapName" : "none"
   },
-  "useMaterialColor" : true
+  "useMaterialColor" : true,
+  "speedModifier" : 1.0,
+  "constructed" : false
 }, {
   "floorTypeName" : "tilled_earth",
   "i18nKey" : "FLOOR.TILLED_EARTH",
-  "floorTypeId" : 10,
+  "floorTypeId" : 11,
   "materialType" : "EARTH",
   "layer" : 3,
   "numSprites" : 5,
@@ -116,6 +155,8 @@
     "overlapName" : "ground"
   },
   "useMaterialColor" : false,
+  "speedModifier" : 0.8,
   "lowColorCode" : "#583923",
-  "highColorCode" : "#b1896c"
+  "highColorCode" : "#b1896c",
+  "constructed" : false
 } ]

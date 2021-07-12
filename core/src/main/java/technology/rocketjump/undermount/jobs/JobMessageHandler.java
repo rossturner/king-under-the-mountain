@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.doors.Doorway;
 import technology.rocketjump.undermount.entities.EntityStore;
@@ -63,6 +64,7 @@ import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
+import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 
 import java.util.*;
 
@@ -91,8 +93,10 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final JobType haulingJobType;
 	private final JobType miningJobType;
+	private final JobType constructFlooringJobType;
 	private final TileDesignationDictionary tileDesignationDictionary;
 	private final ParticleEffectType leafExplosionParticleEffectType;
+	private final GameInteractionStateContainer gameInteractionStateContainer;
 	private GameContext gameContext;
 	private ParticleEffectType deconstructParticleEffect;
 
@@ -103,7 +107,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							 PlantEntityFactory plantEntityFactory, PlantSpeciesDictionary plantSpeciesDictionary,
 							 FurnitureTypeDictionary furnitureTypeDictionary, DynamicMaterialFactory dynamicMaterialFactory,
 							 ItemTypeDictionary itemTypeDictionary, JobTypeDictionary jobTypeDictionary,
-							 TileDesignationDictionary tileDesignationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+							 TileDesignationDictionary tileDesignationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary,
+							 GameInteractionStateContainer gameInteractionStateContainer) {
 		this.messageDispatcher = messageDispatcher;
 		this.jobStore = jobStore;
 		this.itemEntityFactory = itemEntityFactory;
@@ -118,10 +123,12 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		this.itemTypeDictionary = itemTypeDictionary;
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
 		miningJobType = jobTypeDictionary.getByName("MINING");
+		constructFlooringJobType = jobTypeDictionary.getByName("CONSTRUCT_FLOORING");
 		this.tileDesignationDictionary = tileDesignationDictionary;
 
 		this.leafExplosionParticleEffectType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
 		this.deconstructParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above"); // MODDING expose this
+		this.gameInteractionStateContainer = gameInteractionStateContainer;
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
 		messageDispatcher.addListener(this, MessageType.REMOVE_DESIGNATION);
@@ -684,6 +691,30 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				}
 				break;
 			}
+			case "CONSTRUCT_FLOORING": {
+				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+				EquippedItemComponent equippedItemComponent = completedByEntity.getOrCreateComponent(EquippedItemComponent.class);
+				if (equippedItemComponent != null) {
+					Entity equippedItem = equippedItemComponent.clearEquippedItem();
+					if (equippedItem != null && equippedItem.getType().equals(ITEM)) {
+						ItemEntityAttributes attributes = (ItemEntityAttributes) equippedItem.getPhysicalEntityComponent().getAttributes();
+						GameMaterial material = attributes.getPrimaryMaterial();
+						attributes.setQuantity(attributes.getQuantity() - 1);
+						if (attributes.getQuantity() == 0) {
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(equippedItem.getId()));
+						} else {
+							// put back as equipped for AI to clear
+							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
+						}
+
+						messageDispatcher.dispatchMessage(MessageType.FLOORING_CONSTRUCTED, new FloorConstructionMessage(
+								jobCompletedMessage.getJob().getJobLocation(), attributes.getItemType(), material
+						));
+
+					}
+				}
+				break;
+			}
 			case "CONSTRUCT_ROOFING": {
 				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
 				EquippedItemComponent equippedItemComponent = completedByEntity.getOrCreateComponent(EquippedItemComponent.class);
@@ -877,6 +908,17 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				// Not triggered special case
 				newJob = new Job(jobType);
 			}
+
+			if (jobType.equals(constructFlooringJobType)) {
+				FloorType floorTypeToPlace = gameInteractionStateContainer.getFloorTypeToPlace();
+				MaterialSelectionMessage materialSelection = gameInteractionStateContainer.getFloorMaterialSelection();
+				newJob.setRequiredItemType(floorTypeToPlace.getRequirements().get(floorTypeToPlace.getMaterialType()).get(0).getItemType());
+				if (materialSelection.selectedMaterial != null && !materialSelection.selectedMaterial.equals(NULL_MATERIAL)) {
+					newJob.setRequiredItemMaterial(materialSelection.selectedMaterial);
+				}
+				newJob.setRequiredProfession(floorTypeToPlace.getCraftingType().getProfessionRequired());
+			}
+
 			newJob.setJobLocation(applyDesignationMessage.getTargetTile().getTilePosition());
 			newJob.setJobState(calculateNewJobState(jobType, applyDesignationMessage.getTargetTile()));
 

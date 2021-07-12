@@ -39,9 +39,9 @@ public class OverlapLayout {
 	private final int id;
 
 	private static final FloorType baseType = new FloorType("Overlap Layout base floor type", null,
-			-1L, GameMaterialType.OTHER, 0, 1, new OverlapType("temp none"), false, null, null);
+			-1L, GameMaterialType.OTHER, 0, 1, new OverlapType("temp none"), false, 1f, null, null, null, null);
 	private static final FloorType overlapType = new FloorType("Overlap Layout overlapping floor type", null,
-			-2L, GameMaterialType.OTHER, 1, 1, new OverlapType("temp organic"), false, null, null);
+			-2L, GameMaterialType.OTHER, 1, 1, new OverlapType("temp organic"), false, 1f, null, null, null,  null);
 	private static GameMaterial baseMaterial = new GameMaterial("Unused", -3L, GameMaterialType.OTHER);
 
 	public static OverlapLayout fromNeighbours(TileNeighbours neighbours, FloorType targetType) {

@@ -144,6 +144,8 @@ public class SteeringComponent implements ChildPersistable {
 				steeringOutputForce.add(currentTile.getFloor().getRiverTile().getFlowDirection().cpy().scl(20f));
 			}
 
+			maxSpeed *= currentTile.getFloor().getFloorType().getSpeedModifier();
+
 			if (!currentTile.hasWall()) {
 				steeringOutputForce.add(wallAvoidanceForce.limit(2f));
 			}

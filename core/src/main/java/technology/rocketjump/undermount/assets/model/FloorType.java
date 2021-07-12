@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemType;
+import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.mapping.tile.floor.FloorOverlap;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.misc.Name;
@@ -11,6 +13,8 @@ import technology.rocketjump.undermount.misc.SequentialId;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -26,6 +30,12 @@ public class FloorType {
 	private final int numSprites;
 	private OverlapType overlapType;
 	private final boolean useMaterialColor; // If false, low and high color codes should be set
+	private float speedModifier = 1.0f;
+	private final String craftingTypeName; // Informs us which profession and tool is needed to construct the wall
+	@JsonIgnore
+	private CraftingType craftingType;
+	// This is the list of items (with quantities) needed to build the type for each listed GameMaterialType
+	private Map<GameMaterialType, List<QuantifiedItemType>> requirements;
 
 	private String lowColorCode;
 	@JsonIgnore
@@ -35,7 +45,7 @@ public class FloorType {
 	private Color highColor;
 
 	public static FloorType NULL_FLOOR = new FloorType("NULL_FLOOR", "NULL_FLOOR", -1L, GameMaterialType.OTHER, -1, 0,
-			null, false, "000000", "ffffff");
+			null, false, 1f, null, null, "000000", "ffffff");
 
 	@JsonCreator
 	public FloorType(@JsonProperty("floorTypeName") String floorTypeName,
@@ -44,6 +54,9 @@ public class FloorType {
 					 @JsonProperty("materialType") GameMaterialType materialType, @JsonProperty("layer") int layer,
 					 @JsonProperty("numSprites") int numSprites, @JsonProperty("overlapType") OverlapType overlapType,
 					 @JsonProperty("useMaterialColor") boolean useMaterialColor,
+					 @JsonProperty("speedModifier") float speedModifier,
+					 @JsonProperty("craftingTypeName") String craftingTypeName,
+					 @JsonProperty("requirements") Map<GameMaterialType, List<QuantifiedItemType>> requirements,
 					 @JsonProperty("lowColorCode") String lowColorCode, @JsonProperty("highColorCode") String highColorCode) {
 		this.floorTypeName = floorTypeName;
 		this.i18nKey = i18nKey;
@@ -53,6 +66,9 @@ public class FloorType {
 		this.numSprites = numSprites;
 		this.overlapType = overlapType;
 		this.useMaterialColor = useMaterialColor;
+		this.speedModifier = speedModifier;
+		this.craftingTypeName = craftingTypeName;
+		this.requirements = requirements;
 
 		this.lowColorCode = lowColorCode;
 		if (lowColorCode != null) {
@@ -62,6 +78,10 @@ public class FloorType {
 		if (highColorCode != null) {
 			highColor = HexColors.get(highColorCode);
 		}
+	}
+
+	public boolean isConstructed() {
+		return craftingType != null && requirements != null;
 	}
 
 	public String getFloorTypeName() {
@@ -173,6 +193,30 @@ public class FloorType {
 //		float blue = (lowColor.b * cursor) + (highColor.b * (1 - cursor));
 //
 //		return new Color(red, green, blue, 1f);
+	}
+
+	public float getSpeedModifier() {
+		return speedModifier;
+	}
+
+	public void setSpeedModifier(float speedModifier) {
+		this.speedModifier = speedModifier;
+	}
+
+	public String getCraftingTypeName() {
+		return craftingTypeName;
+	}
+
+	public CraftingType getCraftingType() {
+		return craftingType;
+	}
+
+	public void setCraftingType(CraftingType craftingType) {
+		this.craftingType = craftingType;
+	}
+
+	public Map<GameMaterialType, List<QuantifiedItemType>> getRequirements() {
+		return requirements;
 	}
 
 	public static class FloorDefinitionComparator implements Comparator<FloorOverlap> {

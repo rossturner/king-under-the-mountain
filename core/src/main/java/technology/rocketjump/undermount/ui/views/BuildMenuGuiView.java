@@ -31,6 +31,10 @@ public class BuildMenuGuiView implements GuiView {
 		back.setAction(new SwitchGuiViewAction(DEFAULT_MENU, messageDispatcher));
 		iconButtons.add(back);
 
+		IconButton floor = iconButtonFactory.create("GUI.BUILD.FLOOR", "floorboards", HexColors.get("#c89d0b"), ButtonStyle.DEFAULT);
+		floor.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_FLOORING, messageDispatcher));
+		iconButtons.add(floor);
+
 		IconButton walls = iconButtonFactory.create("GUI.BUILD.WALLS", "stone-wall", HexColors.get("#cdcda7"), ButtonStyle.DEFAULT);
 		walls.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_WALLS, messageDispatcher));
 		iconButtons.add(walls);

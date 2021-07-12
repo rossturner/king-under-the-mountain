@@ -147,6 +147,7 @@ public class MessageType {
 	public static final int ROOF_SUPPORT_REMOVED = 818;
 	public static final int ROOF_COLLAPSE = 819;
 	public static final int ROOF_TILE_COLLAPSE = 820;
+	public static final int FLOOR_MATERIAL_SELECTED = 821;
 
 	// Construction-specific messages
 	public static final int CANCEL_CONSTRUCTION = 900;
@@ -161,6 +162,7 @@ public class MessageType {
 	public static final int ROOF_DECONSTRUCTION_QUEUE_CHANGE = 909;
 	public static final int ROOF_CONSTRUCTED = 910;
 	public static final int ROOF_DECONSTRUCTED = 911;
+	public static final int FLOORING_CONSTRUCTED = 912;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;

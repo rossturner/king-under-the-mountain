@@ -81,7 +81,7 @@ public class WallType {
 	}
 
 	public boolean isConstructed() {
-		return this.craftingTypeName != null;
+		return craftingType != null && requirements != null;
 	}
 
 	public Map<GameMaterialType, List<QuantifiedItemType>> getRequirements() {

@@ -20,14 +20,15 @@ public class GuiViewRepository implements Telegraph {
 	@Inject
 	public GuiViewRepository(DefaultGuiView defaultGuiView, OrderSelectionGuiView orderSelectionGuiView, RoomSelectionGuiView roomSelectionGuiView,
 							 RoomSizingGuiView roomSizingGuiView, FurnitureSelectionGuiView furnitureSelectionGuiView, EntitySelectedGuiView entitySelectedGuiView,
-							 BuildMenuGuiView buildMenuGuiView, BuildWallsGuiView buildWallsGuiView, ConstructionSelectedGuiView constructionSelectedGuiView,
+							 BuildMenuGuiView buildMenuGuiView, BuildFlooringGuiView buildFlooringGuiView,
+							 BuildWallsGuiView buildWallsGuiView, ConstructionSelectedGuiView constructionSelectedGuiView,
 							 BuildDoorsGuiView buildDoorsGuiView, DoorwaySelectedGuiView doorwaySelectedGuiView, TileSelectedGuiView tileSelectedGuiView,
 							 BuildRoofingGuiView buildRoofingGuiView, RoomSelectedGuiView roomSelectedGuiView, StockpileSelectionGuiView stockpileSelectionGuiView,
 							 ChangeProfessionGuiView changeProfessionGuiView, BuildBridgeGuiView buildBridgeGuiView,
 							 BridgeSelectedGuiView bridgeSelectedGuiView, PrioritiesGuiView prioritiesGuiView,
 							 MessageDispatcher messageDispatcher) {
 		this(messageDispatcher, defaultGuiView, orderSelectionGuiView, roomSelectionGuiView, roomSizingGuiView, constructionSelectedGuiView,
-				furnitureSelectionGuiView, entitySelectedGuiView, buildMenuGuiView, buildWallsGuiView, buildDoorsGuiView, doorwaySelectedGuiView,
+				furnitureSelectionGuiView, entitySelectedGuiView, buildMenuGuiView, buildFlooringGuiView, buildWallsGuiView, buildDoorsGuiView, doorwaySelectedGuiView,
 				tileSelectedGuiView, buildRoofingGuiView, roomSelectedGuiView, stockpileSelectionGuiView, changeProfessionGuiView, buildBridgeGuiView,
 				bridgeSelectedGuiView, prioritiesGuiView);
 	}

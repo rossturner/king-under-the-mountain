@@ -26,7 +26,7 @@ public class FloorTypeDictionaryTest {
 	@Before
 	public void setUp() throws Exception {
 		when(mockOverlapDictionary.getByName(anyString())).thenReturn(new OverlapType("fake"));
-		FloorTypeDictionary = new FloorTypeDictionary(new FileHandle(new File("assets/definitions/types/floorTypes.json")), mockOverlapDictionary);
+		FloorTypeDictionary = new FloorTypeDictionary(new FileHandle(new File("assets/definitions/types/floorTypes.json")), mockOverlapDictionary, craftingTypeDictionary, itemTypeDictionary);
 	}
 
 	@Test
