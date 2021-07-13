@@ -92,6 +92,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.CHOOSE_SELECTABLE);
 		messageDispatcher.addListener(this, MessageType.REPLACE_JOB_PRIORITY);
 		messageDispatcher.addListener(this, MessageType.GUI_STOCKPILE_GROUP_SELECTED);
+		messageDispatcher.addListener(this, MessageType.CANCEL_SCREEN_OR_GO_TO_MAIN_MENU);
 		// FIXME Should these really live here?
 		for (WallType wallType : wallTypeDictionary.getAllDefinitions()) {
 			if (wallType.isConstructed()) {
@@ -128,10 +129,14 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				if (mouseChangeMessage.getButtonType().equals(MouseChangeMessage.MouseButtonType.PRIMARY_BUTTON)) {
 					primaryButtonClicked(mouseChangeMessage);
 				} else if (mouseChangeMessage.getButtonType().equals(MouseChangeMessage.MouseButtonType.CANCEL_BUTTON)) {
-					cancelButtonClicked();
+					cancelButtonClicked(false);
 				} else {
 					messageDispatcher.dispatchMessage(MessageType.DEBUG_MESSAGE, new DebugMessage(mouseChangeMessage.getWorldPosition()));
 				}
+				return true;
+			}
+			case MessageType.CANCEL_SCREEN_OR_GO_TO_MAIN_MENU: {
+				cancelButtonClicked(true);
 				return true;
 			}
 			case MessageType.MOUSE_MOVED: {
@@ -416,7 +421,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		}
 	}
 
-	private void cancelButtonClicked() {
+	private void cancelButtonClicked(boolean goToMainMenu) {
 		interactionStateContainer.setSelectable(null);
 		if (interactionStateContainer.isDragging()) {
 			interactionStateContainer.setDragging(false);
@@ -426,7 +431,11 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 			} else {
 				// In default interaction mode
 				// Try going back a menu level
-				messageDispatcher.dispatchMessage(MessageType.GUI_CANCEL_CURRENT_VIEW);
+				if (goToMainMenu) {
+					messageDispatcher.dispatchMessage(MessageType.GUI_CANCEL_CURRENT_VIEW_OR_GO_TO_MAIN_MENU);
+				} else {
+					messageDispatcher.dispatchMessage(MessageType.GUI_CANCEL_CURRENT_VIEW);
+				}
 			}
 		}
 	}

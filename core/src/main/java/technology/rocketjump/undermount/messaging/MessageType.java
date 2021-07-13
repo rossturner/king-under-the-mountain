@@ -13,6 +13,7 @@ public class MessageType {
 	public static final int SWITCH_SCREEN = 2;
 	public static final int SWITCH_MENU = 3;
 	public static final int CRASH_REPORTING_OPT_IN_MODIFIED = 4;
+	public static final int CANCEL_SCREEN_OR_GO_TO_MAIN_MENU = 5;
 
 	// Mouse & Input messages
 	public static final int MOUSE_DOWN = 200;
@@ -56,6 +57,7 @@ public class MessageType {
 	public static final int SHOW_SPECIFIC_CRAFTING = 278;
 	public static final int SET_MAIN_MENU_BACKGROUND_SCROLLING = 279;
 	public static final int PREFERENCE_CHANGED = 280;
+	public static final int GUI_CANCEL_CURRENT_VIEW_OR_GO_TO_MAIN_MENU = 281;
 
 	// i18n Messages
 	public static final int LANGUAGE_CHANGED = 290;

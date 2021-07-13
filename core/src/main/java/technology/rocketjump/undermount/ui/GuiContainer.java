@@ -90,6 +90,7 @@ public class GuiContainer implements Telegraph {
 		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_INTERACTION_MODE);
 		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_VIEW_MODE);
 		messageDispatcher.addListener(this, MessageType.GUI_CANCEL_CURRENT_VIEW);
+		messageDispatcher.addListener(this, MessageType.GUI_CANCEL_CURRENT_VIEW_OR_GO_TO_MAIN_MENU);
 
 		this.guiViewRepository = guiViewRepository;
 		switchView(GuiViewName.DEFAULT_MENU);
@@ -166,6 +167,16 @@ public class GuiContainer implements Telegraph {
 			case MessageType.GUI_CANCEL_CURRENT_VIEW: {
 				GuiViewName parentViewName = currentView.getParentViewName();
 				if (parentViewName != null) {
+					switchView(parentViewName);
+				} else {
+				}
+				return true;
+			}
+			case MessageType.GUI_CANCEL_CURRENT_VIEW_OR_GO_TO_MAIN_MENU: {
+				GuiViewName parentViewName = currentView.getParentViewName();
+				if (currentViewName.equals(GuiViewName.DEFAULT_MENU)) {
+					messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_MENU");
+				} else if (parentViewName != null) {
 					switchView(parentViewName);
 				} else {
 					Logger.error("Don't know how to cancel current view from " + currentViewName.name());

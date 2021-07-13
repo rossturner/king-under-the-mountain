@@ -117,7 +117,7 @@ public class GameWorldInputHandler implements InputProcessor, GameContextAware {
 		} else if (keycode == Input.Keys.R) {
 			messageDispatcher.dispatchMessage(MessageType.ROTATE_FURNITURE);
 		} else if (keycode == Input.Keys.ESCAPE) {
-			messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_MENU");
+			messageDispatcher.dispatchMessage(MessageType.CANCEL_SCREEN_OR_GO_TO_MAIN_MENU);
 		} else {
 			return false;
 		}
