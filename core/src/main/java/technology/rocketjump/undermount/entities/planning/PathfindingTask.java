@@ -106,7 +106,8 @@ public class PathfindingTask implements Callable<BackgroundTaskResult> {
 			TileNeighbours neighbours = map.getNeighbours(nodeCell.getTileX(), nodeCell.getTileY());
 			neighbours = filterToNavigable(neighbours);
 			for (Map.Entry<CompassDirection, MapTile> neighboursEntry : neighbours.entrySet()) {
-				float newCostToGetHere = node.getCostToGetHere() + neighboursEntry.getKey().distance();
+				float costToNeighbourTile = neighboursEntry.getKey().distance() * (1 / neighboursEntry.getValue().getFloor().getFloorType().getSpeedModifier());
+				float newCostToGetHere = node.getCostToGetHere() + costToNeighbourTile;
 				MapTile neighbourCell = neighboursEntry.getValue();
 				MapPathfindingNode previouslyExploredNode = explored.get(neighbourCell.getTileX(), neighbourCell.getTileY());
 				if (previouslyExploredNode == null || previouslyExploredNode.getCostToGetHere() > newCostToGetHere) {
