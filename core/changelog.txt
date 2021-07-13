@@ -4,6 +4,7 @@ Alpha 5.3 - 13th July 2021
 - Roofing can now be constructed outside, though there is no gameplay purpose yet until weather is added in Alpha 7
 - Replaced "quad" wall construction with "room" which also queues up roofing
 - Added happiness bonuses for working or sleeping in an enclosed room (surrounded by walls or doors and covered with roof)
+- Added the ability to construct/replace flooring
 - Flooring now has a speed modifier, constructed flooring is faster, most natural flooring is slower, some moreso (gravel)
 - Added a new "zoom to cursor" option which moves the camera according to where the cursor is when zooming in or out, can be disabled in game options
 - Pressing escape will now cancel the current view unless you are at the top level, at which point it will go to the main menu as before
