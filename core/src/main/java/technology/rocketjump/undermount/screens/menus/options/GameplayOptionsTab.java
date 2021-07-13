@@ -27,6 +27,7 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 	private final I18nLabel gameplayTitle;
 
 	private final I18nCheckbox edgeScrollingCheckbox;
+	private final I18nCheckbox zoomToCursorCheckbox;
 	private final I18nCheckbox treeTransparencyCheckbox;
 	private final I18nCheckbox pauseOnNotificationCheckbox;
 	private final I18nCheckbox enableHintsCheckbox;
@@ -47,6 +48,18 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
 				GlobalSettings.USE_EDGE_SCROLLING = edgeScrollingCheckbox.isChecked();
 				userPreferences.setPreference(UserPreferences.PreferenceKey.EDGE_SCROLLING, String.valueOf(GlobalSettings.USE_EDGE_SCROLLING));
+			}
+			return true;
+		});
+
+		zoomToCursorCheckbox = i18NWidgetFactory.createCheckbox("GUI.OPTIONS.GAMEPLAY.ZOOM_TO_CURSOR");
+		GlobalSettings.ZOOM_TO_CURSOR = Boolean.valueOf(userPreferences.getPreference(UserPreferences.PreferenceKey.ZOOM_TO_CURSOR, "true"));;
+		zoomToCursorCheckbox.setChecked(GlobalSettings.ZOOM_TO_CURSOR);
+		zoomToCursorCheckbox.addListener((event) -> {
+			if (event instanceof ChangeListener.ChangeEvent) {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
+				GlobalSettings.ZOOM_TO_CURSOR = zoomToCursorCheckbox.isChecked();
+				userPreferences.setPreference(UserPreferences.PreferenceKey.ZOOM_TO_CURSOR, String.valueOf(GlobalSettings.ZOOM_TO_CURSOR));
 			}
 			return true;
 		});
@@ -98,6 +111,8 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 
 		menuTable.add(new Container<>()); // pad out 1 cell
 		menuTable.add(edgeScrollingCheckbox).colspan(2).left().pad(10).row();
+		menuTable.add(new Container<>()); // pad out 1 cell
+		menuTable.add(zoomToCursorCheckbox).colspan(2).left().pad(10).row();
 		menuTable.add(new Container<>()); // pad out 1 cell
 		menuTable.add(treeTransparencyCheckbox).colspan(2).left().pad(10).row();
 		menuTable.add(new Container<>()); // pad out 1 cell

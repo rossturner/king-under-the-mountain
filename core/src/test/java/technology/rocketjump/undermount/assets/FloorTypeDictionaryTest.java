@@ -8,6 +8,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.OverlapType;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 
 import java.io.File;
@@ -22,11 +24,16 @@ public class FloorTypeDictionaryTest {
 	private FloorTypeDictionary FloorTypeDictionary;
 	@Mock
 	private OverlapTypeDictionary mockOverlapDictionary;
+	@Mock
+	private CraftingTypeDictionary mockCraftingTypeDictionary;
+	@Mock
+	private ItemTypeDictionary mockItemTypeDictionary;
 
 	@Before
 	public void setUp() throws Exception {
 		when(mockOverlapDictionary.getByName(anyString())).thenReturn(new OverlapType("fake"));
-		FloorTypeDictionary = new FloorTypeDictionary(new FileHandle(new File("assets/definitions/types/floorTypes.json")), mockOverlapDictionary, craftingTypeDictionary, itemTypeDictionary);
+		FloorTypeDictionary = new FloorTypeDictionary(new FileHandle(new File("assets/definitions/types/floorTypes.json")),
+				mockOverlapDictionary, mockCraftingTypeDictionary, mockItemTypeDictionary);
 	}
 
 	@Test

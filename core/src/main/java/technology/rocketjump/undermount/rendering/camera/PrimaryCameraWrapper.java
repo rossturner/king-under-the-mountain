@@ -109,26 +109,30 @@ public class PrimaryCameraWrapper implements GameContextAware, Persistable, Tele
 			targetZoom = maxZoom;
 		}
 
-		// recalculate targetZoomToPosition to maintain ratio of space around cursor
-		Vector2 mousePositionRatio = new Vector2(
-				(float) (Gdx.input.getX()) / (float) (Gdx.graphics.getWidth()),
-				(float) (Gdx.input.getY()) / (float) (Gdx.graphics.getHeight())
-		);
-		Vector2 screenTileSize = new Vector2(
-				camera.zoom * camera.viewportWidth,
-				camera.zoom * camera.viewportHeight
-		);
-		Vector2 screenTileSizeAtTargetZoom = new Vector2(
-				targetZoom * camera.viewportWidth,
-				targetZoom * camera.viewportHeight
-		);
-		Vector2 tilesToLose = screenTileSize.cpy().sub(screenTileSizeAtTargetZoom);
-		float tilesToLoseFromLeft = tilesToLose.x * mousePositionRatio.x;
-		float tilesToLoseFromTop = tilesToLose.y * mousePositionRatio.y;
-		targetZoomToPosition = new Vector2(
-				(camera.position.x - (screenTileSize.x / 2f)) + tilesToLoseFromLeft + (screenTileSizeAtTargetZoom.x / 2f),
-				(camera.position.y + (screenTileSize.y / 2f)) - tilesToLoseFromTop - (screenTileSizeAtTargetZoom.y / 2f)
-		);
+		if (GlobalSettings.ZOOM_TO_CURSOR) {
+			// recalculate targetZoomToPosition to maintain ratio of space around cursor
+//			Vector2 mousePositionRatio = new Vector2(
+//					 ((float)Gdx.input.getX()) /  ((float)Gdx.graphics.getWidth()),
+//					 ((float)Gdx.input.getY()) /  ((float)Gdx.graphics.getHeight())
+//			);
+//			Vector2 screenTileSize = new Vector2(
+//					camera.zoom * camera.viewportWidth,
+//					camera.zoom * camera.viewportHeight
+//			);
+//			Vector2 screenTileSizeAtTargetZoom = new Vector2(
+//					targetZoom * camera.viewportWidth,
+//					targetZoom * camera.viewportHeight
+//			);
+//			Vector2 tilesToLose = screenTileSize.cpy().sub(screenTileSizeAtTargetZoom);
+			float tilesToLoseX = (camera.zoom * camera.viewportWidth) - (targetZoom * camera.viewportWidth);
+			float tilesToLoseY = (camera.zoom * camera.viewportHeight) - (targetZoom * camera.viewportHeight);
+			float tilesToLoseFromLeft = tilesToLoseX * ((float)Gdx.input.getX()) /  ((float)Gdx.graphics.getWidth());
+			float tilesToLoseFromTop = tilesToLoseY * ((float)Gdx.input.getY()) /  ((float)Gdx.graphics.getHeight());
+			targetZoomToPosition = new Vector2(
+					(camera.position.x - (camera.zoom * camera.viewportWidth / 2f)) + tilesToLoseFromLeft + (targetZoom * camera.viewportWidth / 2f),
+					(camera.position.y + (camera.zoom * camera.viewportHeight / 2f)) - tilesToLoseFromTop - (targetZoom * camera.viewportHeight / 2f)
+			);
+		}
 	}
 
 	public void update(float deltaSeconds) {
@@ -197,17 +201,6 @@ public class PrimaryCameraWrapper implements GameContextAware, Persistable, Tele
 					camera.viewportWidth * camera.zoom, camera.viewportHeight * camera.zoom, camera.position, getCursorWorldPosition(),
 					minTilesForZoom, maxTilesForZoom));
 		}
-
-		screenWriter.printLine("Zoom: " + camera.zoom);
-		screenWriter.printLine("Camera position: " + camera.position.x + ", " + camera.position.y);
-		screenWriter.printLine("Camera viewport: " + camera.viewportWidth + ", " + camera.viewportHeight);
-		screenWriter.printLine("Mouse: " + Gdx.input.getX() + ", " + Gdx.input.getY());
-		Vector3 unprojected = camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
-		screenWriter.printLine("Unprojected: " + unprojected.x + ", " + unprojected.y);
-
-
-		// recalculate targetZoomToPosition to maintain ratio of space around cursor
-		screenWriter.printLine("targetZoomPosition: " + (targetZoomToPosition == null ? "null" : (targetZoomToPosition.x + ", " + targetZoomToPosition.y)));
 	}
 
 	private void updateScreenShake(float deltaSeconds) {

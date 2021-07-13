@@ -36,7 +36,7 @@ public class FloorTypeTest {
 
 	private FloorOverlap buildFloorOverlap(int layer) {
 		FloorType floorType = new FloorType("test", null, layer, GameMaterialType.OTHER, layer, 1,
-				new OverlapType("none"), false, null, null);
+				new OverlapType("none"), false, 0, null, null, null, null);
 		return new FloorOverlap(null, floorType, new GameMaterial("unused", -1L, GameMaterialType.OTHER), buildTestVertices());
 	}
 

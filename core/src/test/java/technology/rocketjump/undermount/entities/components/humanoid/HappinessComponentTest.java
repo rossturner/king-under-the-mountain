@@ -9,8 +9,8 @@ import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SLEPT_IN_ENCLOSED_BEDROOM;
-import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SLEPT_IN_SHARED_BEDROOM;
+import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.CARRIED_DEAD_BODY;
+import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SAW_DEAD_BODY;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HappinessComponentTest {
@@ -30,26 +30,26 @@ public class HappinessComponentTest {
 
 	@Test
 	public void add_modifier_replaces_other() {
-		happinessComponent.add(SLEPT_IN_ENCLOSED_BEDROOM);
+		happinessComponent.add(SAW_DEAD_BODY);
 
-		assertThat(happinessComponent.getNetModifier()).isEqualTo(10);
-		assertThat(happinessComponent.currentModifiers()).contains(SLEPT_IN_ENCLOSED_BEDROOM);
+		assertThat(happinessComponent.getNetModifier()).isEqualTo(-50);
+		assertThat(happinessComponent.currentModifiers()).contains(SAW_DEAD_BODY);
 
-		happinessComponent.add(SLEPT_IN_SHARED_BEDROOM);
+		happinessComponent.add(CARRIED_DEAD_BODY);
 
-		assertThat(happinessComponent.getNetModifier()).isEqualTo(-10);
+		assertThat(happinessComponent.getNetModifier()).isEqualTo(-55);
 		assertThat(happinessComponent.currentModifiers()).hasSize(1);
 	}
 
 	@Test
 	public void replaceBy_blocks_addition() {
-		happinessComponent.add(SLEPT_IN_SHARED_BEDROOM);
+		happinessComponent.add(CARRIED_DEAD_BODY);
 
-		assertThat(happinessComponent.getNetModifier()).isEqualTo(-10);
+		assertThat(happinessComponent.getNetModifier()).isEqualTo(-55);
 
-		happinessComponent.add(SLEPT_IN_ENCLOSED_BEDROOM);
+		happinessComponent.add(SAW_DEAD_BODY);
 
-		assertThat(happinessComponent.getNetModifier()).isEqualTo(-10);
+		assertThat(happinessComponent.getNetModifier()).isEqualTo(-55);
 		assertThat(happinessComponent.currentModifiers()).hasSize(1);
 	}
 

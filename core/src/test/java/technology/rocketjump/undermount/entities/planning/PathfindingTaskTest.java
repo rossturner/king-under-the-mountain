@@ -76,7 +76,7 @@ public class PathfindingTaskTest implements PathfindingCallback {
 		assertThat(resultPath.get(1)).isEqualTo(new Vector2(1.5f, 0.5f));
 		assertThat(resultPath.get(2)).isEqualTo(new Vector2(2.5f, 0.5f));
 		assertThat(resultPath.get(3)).isEqualTo(new Vector2(3.5f, 0.5f));
-		assertThat(resultPath.get(4)).isEqualTo(new Vector2(3.5f, 1.5f));
+		assertThat(resultPath.get(4)).isEqualTo(new Vector2(4.5f, 1.5f));
 		assertThat(resultPath.get(5)).isEqualTo(destination);
 	}
 

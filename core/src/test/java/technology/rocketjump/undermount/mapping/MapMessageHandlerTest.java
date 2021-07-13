@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import technology.rocketjump.undermount.assets.FloorTypeDictionary;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
@@ -53,6 +54,8 @@ public class MapMessageHandlerTest {
 	private SoundAssetDictionary mockSoundAssetDictionary;
 	@Mock
 	private RoofConstructionManager mockRoofConstructionManager;
+	@Mock
+	private FloorTypeDictionary mockFloorTypeDictionary;
 
 	@Test
 	public void removeWall_joinsRegions_keepsZones() {
@@ -135,7 +138,7 @@ public class MapMessageHandlerTest {
 
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
 				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, mockStockpileComponentUpdater,
-				mockRoofConstructionManager, mockParticleEffectTypeDictionary, mockSoundAssetDictionary);
+				mockRoofConstructionManager, mockParticleEffectTypeDictionary, mockSoundAssetDictionary, mockFloorTypeDictionary);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);

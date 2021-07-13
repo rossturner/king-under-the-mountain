@@ -30,7 +30,7 @@ public class OverlapLayoutTest {
 	@Before
 	public void setup() {
 		overlappingFloor = new FloorType("Higher Layer", null, -1L, GameMaterialType.OTHER, 100,
-				1, mockOverlapType, false, null, null);
+				1, mockOverlapType, false, 0, null,null, null, null);
 	}
 
 	@Test
