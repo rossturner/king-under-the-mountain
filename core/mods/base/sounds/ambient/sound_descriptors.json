@@ -38,5 +38,15 @@
     "maxPitch": 1.0,
     "volumeModifier": 0.5,
     "looping": true
+  },
+  {
+    "name": "Burning",
+    "filenames": [
+      "FireBarnInt_Short.ogg"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 0.4,
+    "looping": true
   }
 ]

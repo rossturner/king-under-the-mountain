@@ -2,6 +2,8 @@ package technology.rocketjump.undermount.entities.model.physical.effect;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
+import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
@@ -16,10 +18,13 @@ public class OngoingEffectTypeDictionary {
 
 	private final Map<String, OngoingEffectType> byName = new HashMap<>();
 	private final ParticleEffectTypeDictionary particleEffectTypeDictionary;
+	private final SoundAssetDictionary soundAssetDictionary;
 
 	@Inject
-	public OngoingEffectTypeDictionary(ParticleEffectTypeDictionary particleEffectTypeDictionary) throws IOException {
+	public OngoingEffectTypeDictionary(ParticleEffectTypeDictionary particleEffectTypeDictionary,
+									   SoundAssetDictionary soundAssetDictionary) throws IOException {
 		this.particleEffectTypeDictionary = particleEffectTypeDictionary;
+		this.soundAssetDictionary = soundAssetDictionary;
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		File typesJsonFile = new File("assets/definitions/types/ongoingEffectTypes.json");
@@ -38,6 +43,13 @@ public class OngoingEffectTypeDictionary {
 			throw new RuntimeException("Can not find " + ongoingEffectType.getParticleEffectTypeName() + " particle effect for ongoing effect " + ongoingEffectType.getName());
 		}
 		ongoingEffectType.setParticleEffectType(particleEffectType);
+
+		if (ongoingEffectType.getPlaySoundAssetName() != null) {
+			ongoingEffectType.setPlaySoundAsset(soundAssetDictionary.getByName(ongoingEffectType.getPlaySoundAssetName()));
+			if (ongoingEffectType.getPlaySoundAsset() == null) {
+				Logger.error("Could not find sound asset with name "+ongoingEffectType.getPlaySoundAssetName()+" for " + ongoingEffectType.getName());
+			}
+		}
 	}
 
 	public OngoingEffectType getByName(String effectTypeName) {

@@ -129,9 +129,11 @@ public class DoorBehaviour implements BehaviourComponent {
 		this.state = newState;
 
 		if (previousState.equals(CLOSED) && newState.equals(OPENING)) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(openSound, parentEntity.getId(), parentEntity.getLocationComponent().getWorldOrParentPosition()));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(openSound, parentEntity.getId(),
+					parentEntity.getLocationComponent().getWorldOrParentPosition(), null));
 		} else if (previousState.equals(OPEN) && newState.equals(CLOSING)) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(closeSound, parentEntity.getId(), parentEntity.getLocationComponent().getWorldOrParentPosition()));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(closeSound, parentEntity.getId(),
+					parentEntity.getLocationComponent().getWorldOrParentPosition(), null));
 		}
 
 		if (previousState.equals(CLOSED) || newState.equals(CLOSED)) {

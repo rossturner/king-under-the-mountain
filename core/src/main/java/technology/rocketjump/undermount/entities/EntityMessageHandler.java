@@ -558,7 +558,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		);
 
 		messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(treeFallSoundEffect, -1L,
-				toVector(treeTilePosition)));
+				toVector(treeTilePosition), null));
 
 
 		for (PlantSpeciesItem itemToCreate : treeFallenMessage.getItemsToCreate()) {

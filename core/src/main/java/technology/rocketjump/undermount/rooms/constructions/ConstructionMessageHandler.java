@@ -427,7 +427,8 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		}
 		SoundAsset soundAsset = completionSoundMapping.get(materialConstructed.getMaterialType());
 		if (soundAsset != null) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(soundAsset, null, tileAtLocation.getWorldPositionOfCenter()));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(soundAsset, null,
+					tileAtLocation.getWorldPositionOfCenter(), null));
 		}
 
 		messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
@@ -482,7 +483,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 
 		SoundAsset soundAsset = completionSoundMapping.get(construction.getPrimaryMaterialType());
 		if (soundAsset != null) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(soundAsset, null, construction.getBridge().getAvgWorldPosition()));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(soundAsset, null, construction.getBridge().getAvgWorldPosition(), null));
 		}
 
 		constructionStore.remove(construction);
@@ -582,7 +583,8 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 	private void requestConstructionSoundAsset(Construction construction) {
 		SoundAsset soundAsset = completionSoundMapping.get(construction.getPrimaryMaterialType());
 		if (soundAsset != null) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(soundAsset, construction.getId(), toVector(construction.getPrimaryLocation())));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(soundAsset, construction.getId(),
+					toVector(construction.getPrimaryLocation()), null));
 		}
 	}
 

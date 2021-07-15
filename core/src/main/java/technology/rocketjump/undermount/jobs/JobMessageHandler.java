@@ -258,7 +258,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		jobStore.remove(completedJob);
 
 		if (completedJob.getType().getOnCompletionSoundAsset() != null) {
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(completedJob.getType().getOnCompletionSoundAsset(), jobCompletedMessage.getCompletedByEntity().getId(), jobCompletedMessage.getCompletedByEntity().getLocationComponent().getWorldOrParentPosition()));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(completedJob.getType().getOnCompletionSoundAsset(),
+					jobCompletedMessage.getCompletedByEntity().getId(), jobCompletedMessage.getCompletedByEntity().getLocationComponent().getWorldOrParentPosition(), null));
 		}
 
 		// TODO Could the below be scripted rather than hard-coded?

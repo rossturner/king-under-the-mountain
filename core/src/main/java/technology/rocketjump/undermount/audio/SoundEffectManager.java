@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.audio.model.ActiveSoundEffect;
 import technology.rocketjump.undermount.audio.model.GdxAudioException;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
+import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 
 import java.io.File;
@@ -82,7 +83,7 @@ public class SoundEffectManager implements AssetDisposable {
 		}
 	}
 
-	public void requestSound(SoundAsset asset, Long entityId, Vector2 worldPosition) {
+	public void requestSound(SoundAsset asset, Long entityId, Vector2 worldPosition, RequestSoundMessage.SoundRequestCallback callback) {
 		if (asset == null) {
 			return;
 		}
@@ -135,6 +136,10 @@ public class SoundEffectManager implements AssetDisposable {
 				if (activeSoundEffect.getWorldPosition() != null && gamePaused) {
 					activeSoundEffect.pause();
 				}
+
+				if (callback != null) {
+					callback.soundActivated(activeSoundEffect);
+				}
 			}
 		} catch (GdxAudioException e) {
 			// Gdx.audio is not set so just don't play sound
@@ -156,13 +161,31 @@ public class SoundEffectManager implements AssetDisposable {
 		while (activeSoundIterator.hasNext()) {
 			ActiveSoundEffect activeSoundEffect = activeSoundIterator.next().getValue();
 			activeSoundEffect.update(elapsed);
-			if (activeSoundEffect.completed() && (!activeSoundEffect.getAsset().isLooping() || shouldCircuitBreak(activeSoundEffect))) {
+			if (isOutsideViewport(activeSoundEffect)) {
+				activeSoundEffect.stop();
+				activeSoundEffect.dispose();
+				activeSoundIterator.remove();
+			} else if (activeSoundEffect.completed() && (!activeSoundEffect.getAsset().isLooping() || shouldCircuitBreak(activeSoundEffect))) {
 				activeSoundEffect.dispose();
 				activeSoundIterator.remove();
 			} else {
 				attentuate(activeSoundEffect);
 				activeSoundEffect.incrementElapsedTime(elapsed);
 			}
+		}
+	}
+
+	private boolean isOutsideViewport(ActiveSoundEffect activeSoundEffect) {
+		Vector2 worldPosition = activeSoundEffect.getWorldPosition();
+		if (worldPosition == null) {
+			return false;
+		} else if (worldPosition.x + 5 < cameraPosition.x - (viewportWidth / 2) ||
+					worldPosition.x - 5 > cameraPosition.x + (viewportWidth / 2) ||
+					worldPosition.y + 5 < cameraPosition.y - (viewportHeight / 2) ||
+					worldPosition.y - 5 > cameraPosition.y + (viewportHeight / 2)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 

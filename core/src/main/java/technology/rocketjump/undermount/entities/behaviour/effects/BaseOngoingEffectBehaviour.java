@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.behaviour.effects;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import technology.rocketjump.undermount.audio.model.ActiveSoundEffect;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -9,6 +10,7 @@ import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEf
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
+import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
@@ -25,6 +27,7 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 	private MessageDispatcher messageDispatcher;
 
 	private final AtomicReference<ParticleEffectInstance> currentParticleEffect = new AtomicReference<>(null);
+	private ActiveSoundEffect activeSoundEffect;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
@@ -42,6 +45,7 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		ParticleEffectInstance currentEffectInstance = currentParticleEffect.get();
+		OngoingEffectAttributes attributes = (OngoingEffectAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 
 		if (currentEffectInstance != null && !currentEffectInstance.isActive()) {
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, currentEffectInstance);
@@ -50,11 +54,25 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 		}
 
 		if (currentEffectInstance == null) {
-			OngoingEffectAttributes attributes = (OngoingEffectAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 			ParticleEffectType particleEffectType = attributes.getType().getParticleEffectType();
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
 					particleEffectType, Optional.of(parentEntity), Optional.empty(), (particle) -> currentParticleEffect.set(particle)
 			));
+		}
+
+		if (attributes.getType().getPlaySoundAsset() != null) {
+			if (activeSoundEffect != null) {
+				if (activeSoundEffect.completed()) {
+					activeSoundEffect = null;
+				}
+			}
+
+			if (activeSoundEffect == null) {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(
+						attributes.getType().getPlaySoundAsset(), parentEntity, (sound) -> {
+					activeSoundEffect = sound;
+				}));
+			}
 		}
 	}
 

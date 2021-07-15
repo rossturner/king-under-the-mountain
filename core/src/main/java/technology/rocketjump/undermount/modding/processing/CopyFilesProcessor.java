@@ -78,7 +78,10 @@ public class CopyFilesProcessor extends ModArtifactProcessor {
 				}
 
 				for (Path inputFile : combined.values()) {
-					Files.copy(inputFile, outputDir.resolve(inputFile.getFileName()));
+					Path outputFile = outputDir.resolve(inputFile.getFileName());
+					if (!Files.exists(outputFile)) {
+						Files.copy(inputFile, outputFile);
+					}
 				}
 				break;
 			}

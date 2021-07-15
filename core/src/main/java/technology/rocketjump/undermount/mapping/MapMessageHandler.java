@@ -536,7 +536,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
 					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(wallRemovedSoundAsset, -1L, tile.getWorldPositionOfCenter()));
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(wallRemovedSoundAsset, -1L,
+					tile.getWorldPositionOfCenter(), null));
 
 			Integer neighbourRegionId = null;
 			MapTile unexploredTile = null;

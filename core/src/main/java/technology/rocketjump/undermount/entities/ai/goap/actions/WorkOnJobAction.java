@@ -57,7 +57,8 @@ public class WorkOnJobAction extends Action {
 			if (!activeSoundTriggered) {
 				SoundAsset jobSoundAsset = getJobSoundAsset();
 				if (jobSoundAsset != null) {
-					parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(jobSoundAsset, parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition()));
+					parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(jobSoundAsset,
+							parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition(), null));
 				}
 				activeSoundTriggered = true;
 			}

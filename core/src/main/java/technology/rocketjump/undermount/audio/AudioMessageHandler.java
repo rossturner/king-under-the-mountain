@@ -89,9 +89,9 @@ public class AudioMessageHandler implements Telegraph {
 
 	private boolean handle(RequestSoundMessage requestSoundMessage) {
 		if (requestSoundMessage.fixedPosition != null) {
-			soundEffectManager.requestSound(requestSoundMessage.soundAsset, requestSoundMessage.requesterId, requestSoundMessage.fixedPosition);
+			soundEffectManager.requestSound(requestSoundMessage.soundAsset, requestSoundMessage.requesterId, requestSoundMessage.fixedPosition, requestSoundMessage.callback);
 		} else {
-			soundEffectManager.requestSound(requestSoundMessage.soundAsset, null, null);
+			soundEffectManager.requestSound(requestSoundMessage.soundAsset, null, null, requestSoundMessage.callback);
 		}
 		return true;
 	}

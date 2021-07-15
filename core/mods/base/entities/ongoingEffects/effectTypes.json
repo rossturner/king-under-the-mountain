@@ -1,6 +1,7 @@
 [{
   "name": "Fire",
   "particleEffectTypeName": "Fire",
+  "playSoundAssetName": "Burning",
 
   "tags": {
     "ATTACHES_LIGHT_SOURCE": ["#f7ffa9", "#f8cc5d", "#ff8f2c"]

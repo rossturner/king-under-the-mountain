@@ -68,7 +68,7 @@ public class FillContainerAction extends Action {
 							ItemUsageSoundTag itemUsageSoundTag = hauledItem.getTag(ItemUsageSoundTag.class);
 							if (itemUsageSoundTag != null && itemUsageSoundTag.getSoundAsset() != null) {
 								parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(
-										itemUsageSoundTag.getSoundAsset(), parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition()));
+										itemUsageSoundTag.getSoundAsset(), parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition(), null));
 							}
 
 

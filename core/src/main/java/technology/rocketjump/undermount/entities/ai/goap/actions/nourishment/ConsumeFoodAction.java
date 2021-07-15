@@ -52,7 +52,8 @@ public class ConsumeFoodAction extends Action {
 
 			SoundAsset consumptionSoundAsset = itemEntityAttributes.getItemType().getConsumeSoundAsset();
 			if (consumptionSoundAsset != null) {
-				parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(consumptionSoundAsset, parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition()));
+				parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(consumptionSoundAsset,
+						parent.parentEntity.getId(), parent.parentEntity.getLocationComponent().getWorldOrParentPosition(), null));
 			}
 			activeSoundTriggered = true;
 		}

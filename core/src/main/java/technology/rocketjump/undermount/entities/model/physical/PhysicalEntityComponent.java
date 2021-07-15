@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -87,6 +88,8 @@ public class PhysicalEntityComponent implements EntityComponent {
 			asJson.put("entityType", FURNITURE.name());
 		} else if (attributes instanceof PlantEntityAttributes) {
 			asJson.put("entityType", PLANT.name());
+		} else if (attributes instanceof OngoingEffectAttributes) {
+			asJson.put("entityType", ONGOING_EFFECT.name());
 		} else {
 			throw new NotImplementedException("Not yet implemented: " + attributes.getClass().getSimpleName());
 		}
@@ -130,6 +133,9 @@ public class PhysicalEntityComponent implements EntityComponent {
 				break;
 			case PLANT:
 				attributes = new PlantEntityAttributes();
+				break;
+			case ONGOING_EFFECT:
+				attributes = new OngoingEffectAttributes();
 				break;
 		}
 		JSONObject attributesJson = asJson.getJSONObject("attributes");
