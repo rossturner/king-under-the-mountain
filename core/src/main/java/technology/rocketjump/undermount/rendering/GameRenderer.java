@@ -36,7 +36,7 @@ public class GameRenderer implements AssetDisposable {
 	private boolean cursorLightEnabled = true;
 	private final LightProcessor lightProcessor;
 
-	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
+	private final SpriteBatch frameBufferSpriteBatch = new SpriteBatch();
 
 	private FrameBuffer diffuseFrameBuffer;
 	private TextureRegion diffuseTextureRegion;
@@ -155,23 +155,23 @@ public class GameRenderer implements AssetDisposable {
 			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion);
 			combinedFrameBuffer.end();
 
-			basicSpriteBatch.begin();
-			basicSpriteBatch.disableBlending();
-			basicSpriteBatch.setProjectionMatrix(viewportCamera.projection);
+			frameBufferSpriteBatch.begin();
+			frameBufferSpriteBatch.disableBlending();
+			frameBufferSpriteBatch.setProjectionMatrix(viewportCamera.projection);
 
-			basicSpriteBatch.draw(diffuseTextureRegion, -Gdx.graphics.getWidth() / 2.0f, 0f,
+			frameBufferSpriteBatch.draw(diffuseTextureRegion, -Gdx.graphics.getWidth() / 2.0f, 0f,
 					Gdx.graphics.getWidth() / 2.0f,  Gdx.graphics.getHeight() / 2.0f);
 
-			basicSpriteBatch.draw(bumpMapTextureRegion, 0f, 0f,
+			frameBufferSpriteBatch.draw(bumpMapTextureRegion, 0f, 0f,
 					Gdx.graphics.getWidth() / 2.0f,  Gdx.graphics.getHeight() / 2.0f);
 
-			basicSpriteBatch.draw(lightingTextureRegion, -Gdx.graphics.getWidth() / 2.0f, -Gdx.graphics.getHeight() / 2.0f,
+			frameBufferSpriteBatch.draw(lightingTextureRegion, -Gdx.graphics.getWidth() / 2.0f, -Gdx.graphics.getHeight() / 2.0f,
 					Gdx.graphics.getWidth() / 2.0f,  Gdx.graphics.getHeight() / 2.0f);
 
-			basicSpriteBatch.draw(combinedTextureRegion, 0f, -Gdx.graphics.getHeight() / 2.0f,
+			frameBufferSpriteBatch.draw(combinedTextureRegion, 0f, -Gdx.graphics.getHeight() / 2.0f,
 					Gdx.graphics.getWidth() / 2.0f,  Gdx.graphics.getHeight() / 2.0f);
 
-			basicSpriteBatch.end();
+			frameBufferSpriteBatch.end();
 		} else {
 			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion);
 			inWorldUIRenderer.render(gameContext, camera, particlesToRenderAsUI, diffuseSpriteCache);

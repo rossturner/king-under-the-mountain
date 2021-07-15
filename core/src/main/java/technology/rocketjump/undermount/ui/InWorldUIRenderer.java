@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.MathUtils;
@@ -29,6 +30,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
+import technology.rocketjump.undermount.particles.custom_libgdx.ShaderEffect;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.RenderingOptions;
@@ -68,7 +70,8 @@ public class InWorldUIRenderer {
 	private final RoofingViewModeRenderer roofingViewModeRenderer;
 
 	private final ShapeRenderer shapeRenderer = new ShapeRenderer();
-	private final CustomShaderSpriteBatch spriteBatch;
+	private final SpriteBatch spriteBatch = new SpriteBatch();
+	private final CustomShaderSpriteBatch customShaderSpriteBatch;
 	private final RoomRenderer roomRenderer;
 	private final RenderingOptions renderingOptions;
 	private final JobStore jobStore;
@@ -92,7 +95,7 @@ public class InWorldUIRenderer {
 		this.iconSpriteCache = iconSpriteCache;
 		this.roofingViewModeRenderer = roofingViewModeRenderer;
 
-		spriteBatch = new CustomShaderSpriteBatch(1000, defaultShaderInstance);
+		customShaderSpriteBatch = new CustomShaderSpriteBatch(1000, defaultShaderInstance);
 
 		FurnitureType singleDoorType = furnitureTypeDictionary.getByName("SINGLE_DOOR");
 		this.doorIconSprite = iconSpriteCache.getByName(singleDoorType.getIconName());
@@ -103,12 +106,8 @@ public class InWorldUIRenderer {
 		Gdx.gl.glEnable(GL20.GL_BLEND);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-		if (!gameContext.getGameClock().isPaused()) {
-			elapsedSeconds += Gdx.graphics.getDeltaTime() * gameContext.getGameClock().getSpeedMultiplier();
-		}
 
 		shapeRenderer.setProjectionMatrix(camera.combined);
-		spriteBatch.setElapsedTime(elapsedSeconds);
 		spriteBatch.setProjectionMatrix(camera.combined);
 
 		interactionStateContainer.update();
@@ -128,7 +127,7 @@ public class InWorldUIRenderer {
 		if (interactionStateContainer.isDragging() && (
 				interactionStateContainer.getInteractionMode().designationCheck != null ||
 						interactionStateContainer.getInteractionMode().equals(SET_JOB_PRIORITY)
-			)) {
+		)) {
 			drawDragAreaOutline(minDraggingPoint, maxDraggingPoint);
 		}
 
@@ -310,12 +309,30 @@ public class InWorldUIRenderer {
 		}
 
 		spriteBatch.setColor(Color.WHITE);
-		particlesToRenderAsUI.forEach(p -> p.getWrappedInstance().draw(spriteBatch, RenderMode.DIFFUSE));
-		// particle effects can override spritebatch shader without cleaning it up
-		spriteBatch.setShader(defaultShaderInstance);
 
+		particlesToRenderAsUI.forEach(p -> {
+			if (!(p.getWrappedInstance() instanceof ShaderEffect)) {
+				p.getWrappedInstance().draw(spriteBatch, null, RenderMode.DIFFUSE);
+			}
+		});
+		// particle effects can override spritebatch shader without cleaning it up
 		spriteBatch.end();
 		shapeRenderer.end();
+
+
+		if (!gameContext.getGameClock().isPaused()) {
+			elapsedSeconds += Gdx.graphics.getDeltaTime() * gameContext.getGameClock().getSpeedMultiplier();
+		}
+		customShaderSpriteBatch.setProjectionMatrix(camera.combined);
+		customShaderSpriteBatch.setElapsedTime(elapsedSeconds);
+		customShaderSpriteBatch.setColor(Color.WHITE);
+		customShaderSpriteBatch.begin();
+		particlesToRenderAsUI.forEach(p -> {
+			if (p.getWrappedInstance() instanceof ShaderEffect) {
+				p.getWrappedInstance().draw(spriteBatch, customShaderSpriteBatch, RenderMode.DIFFUSE);
+			}
+		});
+		customShaderSpriteBatch.end();
 	}
 
 	private void renderJobPriority(int x, int y, MapTile mapTile, GridPoint2 minDraggingTile, GridPoint2 maxDraggingTile) {

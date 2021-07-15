@@ -18,9 +18,9 @@ package technology.rocketjump.undermount.particles.custom_libgdx;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.collision.BoundingBox;
@@ -31,12 +31,12 @@ import com.badlogic.gdx.utils.StreamUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.rendering.RenderMode;
+import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 
 import java.io.*;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
-import static technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader.defaultShaderInstance;
 
 /** See <a href="http://www.badlogicgames.com/wordpress/?p=1255">http://www.badlogicgames.com/wordpress/?p=1255</a>
  * @author mzechner */
@@ -94,12 +94,9 @@ public class LibgdxParticleEffect implements ParticleEffect, Disposable {
 	}
 
 	@Override
-	public void draw(Batch spriteBatch, RenderMode renderMode) {
-		if (spriteBatch.getShader() != defaultShaderInstance) {
-			spriteBatch.setShader(defaultShaderInstance);
-		}
+	public void draw(SpriteBatch basicSpriteBatch, CustomShaderSpriteBatch customShaderSpriteBatch, RenderMode renderMode) {
 		for (int i = 0, n = emitters.size; i < n; i++)
-			emitters.get(i).draw(spriteBatch, renderMode);
+			emitters.get(i).draw(basicSpriteBatch, renderMode);
 	}
 
 	public void allowCompletion () {

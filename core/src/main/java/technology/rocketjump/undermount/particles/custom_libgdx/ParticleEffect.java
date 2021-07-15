@@ -1,9 +1,10 @@
 package technology.rocketjump.undermount.particles.custom_libgdx;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.rendering.RenderMode;
+import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 
 public interface ParticleEffect {
 
@@ -13,7 +14,7 @@ public interface ParticleEffect {
 
 	void allowCompletion();
 
-	void draw(Batch spriteBatch, RenderMode renderMode);
+	void draw(SpriteBatch basicSpriteBatch, CustomShaderSpriteBatch customShaderSpriteBatch, RenderMode renderMode);
 
 	void setPosition(float worldX, float worldY);
 

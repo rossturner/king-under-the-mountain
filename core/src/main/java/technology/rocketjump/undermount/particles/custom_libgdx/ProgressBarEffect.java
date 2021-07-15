@@ -1,13 +1,12 @@
 package technology.rocketjump.undermount.particles.custom_libgdx;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.rendering.RenderMode;
-
-import static technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader.defaultShaderInstance;
+import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 
 public class ProgressBarEffect implements ParticleEffect {
 
@@ -53,11 +52,7 @@ public class ProgressBarEffect implements ParticleEffect {
 	}
 
 	@Override
-	public void draw(Batch spriteBatch, RenderMode renderMode) {
-		if (spriteBatch.getShader() != defaultShaderInstance) {
-			spriteBatch.setShader(defaultShaderInstance);
-		}
-
+	public void draw(SpriteBatch basicSpriteBatch, CustomShaderSpriteBatch customShaderSpriteBatch, RenderMode renderMode) {
 		float outerSpriteWorldX = worldPosition.x - (WORLD_WIDTH/2f);
 		float outerSpriteWorldY = worldPosition.y - (WORLD_HEIGHT/2f);
 
@@ -67,8 +62,8 @@ public class ProgressBarEffect implements ParticleEffect {
 		float innerSpriteMaxWorldWidth = WORLD_WIDTH - ((2 * innerSpritePixelOffsetX / outerSpritePixelWidth) * WORLD_WIDTH);
 		float innerSpriteMaxWorldHeight = WORLD_HEIGHT - (((innerSpritePixelTopOffsetY + innerSpritePixelBottomOffsetY) / outerSpritePixelHeight) * WORLD_HEIGHT);
 
-		spriteBatch.draw(progressBarOuterSprite, outerSpriteWorldX, outerSpriteWorldY, WORLD_WIDTH, WORLD_HEIGHT);
-		spriteBatch.draw(progressBarInnerSprite, innerSpriteWorldX, innerSpriteWorldY, progress * innerSpriteMaxWorldWidth, innerSpriteMaxWorldHeight);
+		basicSpriteBatch.draw(progressBarOuterSprite, outerSpriteWorldX, outerSpriteWorldY, WORLD_WIDTH, WORLD_HEIGHT);
+		basicSpriteBatch.draw(progressBarInnerSprite, innerSpriteWorldX, innerSpriteWorldY, progress * innerSpriteMaxWorldWidth, innerSpriteMaxWorldHeight);
 	}
 
 	@Override

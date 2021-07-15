@@ -2,10 +2,11 @@ package technology.rocketjump.undermount.particles.custom_libgdx;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rendering.RenderMode;
@@ -45,13 +46,17 @@ public class ShaderEffect implements ParticleEffect {
 	}
 
 	@Override
-	public void draw(Batch spriteBatch, RenderMode renderMode) {
-		if (spriteBatch.getShader() != shader) {
-			spriteBatch.setShader(shader);
+	public void draw(SpriteBatch basicSpriteBatch, CustomShaderSpriteBatch customShaderSpriteBatch, RenderMode renderMode) {
+		if (customShaderSpriteBatch == null) {
+			Logger.warn(this.getClass().getSimpleName() + " currently does not support being affected by lighting");
+			return;
+		}
+		if (customShaderSpriteBatch.getShader() != shader) {
+			customShaderSpriteBatch.setShader(shader);
 		}
 
-		((CustomShaderSpriteBatch)spriteBatch).setSeed(seed);
-		spriteBatch.draw((Texture)null, worldPosition.x - (particleEffectType.getShaderEffectWidth() / 2f),
+		customShaderSpriteBatch.setSeed(seed);
+		customShaderSpriteBatch.draw((Texture)null, worldPosition.x - (particleEffectType.getShaderEffectWidth() / 2f),
 				worldPosition.y - (particleEffectType.getShaderEffectHeight() / 2f),
 				particleEffectType.getShaderEffectWidth(), particleEffectType.getShaderEffectHeight());
 	}
