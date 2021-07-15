@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 
 import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
+import static technology.rocketjump.undermount.entities.model.EntityType.ONGOING_EFFECT;
 
 public class ParticleEffectsWhileProcessingTag extends Tag {
 
@@ -28,7 +29,7 @@ public class ParticleEffectsWhileProcessingTag extends Tag {
 
 	@Override
 	public void apply(Entity entity, TagProcessingUtils tagProcessingUtils, MessageDispatcher messageDispatcher, GameContext gameContext) {
-		if (entity.getType().equals(FURNITURE)) {
+		if (entity.getType().equals(FURNITURE) || entity.getType().equals(ONGOING_EFFECT)) {
 			FurnitureParticleEffectsComponent particleEffectsComponent = entity.getOrCreateComponent(FurnitureParticleEffectsComponent.class);
 			particleEffectsComponent.init(entity, messageDispatcher, gameContext);
 			for (String arg : getArgs()) {

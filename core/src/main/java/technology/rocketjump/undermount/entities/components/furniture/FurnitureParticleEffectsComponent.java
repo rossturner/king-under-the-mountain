@@ -7,6 +7,9 @@ import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
+import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -15,10 +18,12 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class FurnitureParticleEffectsComponent implements ParentDependentEntityComponent {
 
 	private Entity parentEntity;
+	private MessageDispatcher messageDispatcher;
 
 	private final List<ParticleEffectType> particleEffectsWhenInUse = new ArrayList<>();
 	private final List<ParticleEffectType> particleEffectsWhenProcessing = new ArrayList<>();
@@ -36,6 +41,7 @@ public class FurnitureParticleEffectsComponent implements ParentDependentEntityC
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		this.parentEntity = parentEntity;
+		this.messageDispatcher = messageDispatcher;
 	}
 
 	public List<ParticleEffectType> getParticleEffectsWhenInUse() {
@@ -48,6 +54,18 @@ public class FurnitureParticleEffectsComponent implements ParentDependentEntityC
 
 	public List<ParticleEffectInstance> getCurrentParticleInstances() {
 		return currentParticleInstances;
+	}
+	
+	public void triggerProcessingEffects(Optional<JobTarget> effectTarget) {
+		this.getCurrentParticleInstances().removeIf(p -> p == null || !p.isActive());
+		if (!this.getParticleEffectsWhenProcessing().isEmpty() && this.getCurrentParticleInstances().isEmpty()) {
+			for (ParticleEffectType effectType : this.getParticleEffectsWhenProcessing()) {
+				messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
+						Optional.of(parentEntity),
+						effectTarget,
+						this.getCurrentParticleInstances()::add));
+			}
+		}
 	}
 
 	@Override

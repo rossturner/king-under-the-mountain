@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.audio.model.ActiveSoundEffect;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
+import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
@@ -74,6 +76,12 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 				}));
 			}
 		}
+
+		FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
+		if (particleEffectsComponent != null) {
+			particleEffectsComponent.triggerProcessingEffects(Optional.of(new JobTarget(parentEntity)));
+		}
+
 	}
 
 	@Override

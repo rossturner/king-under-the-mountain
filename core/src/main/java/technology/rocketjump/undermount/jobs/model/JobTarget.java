@@ -147,6 +147,8 @@ public class JobTarget {
 						return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
 					case ITEM:
 						return ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial();
+					case ONGOING_EFFECT:
+						return null;
 				}
 				break;
 			}
@@ -176,6 +178,9 @@ public class JobTarget {
 							case SHRUB:
 								return attributes.getColor(ColoringLayer.LEAF_COLOR);
 						}
+					}
+					case ONGOING_EFFECT: {
+						return null;
 					}
 				}
 			}

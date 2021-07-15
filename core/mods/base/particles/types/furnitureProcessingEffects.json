@@ -12,6 +12,18 @@
     }
   },
   {
+    "name": "Smoking (small offset)",
+    "particleFile": "smoking.p",
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "usesTargetMaterialAsTintColor": false,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.3
+    }
+  },
+  {
     "name": "Smoking (charcoal)",
     "particleFile": "smoking.p",
     "scale": 1,

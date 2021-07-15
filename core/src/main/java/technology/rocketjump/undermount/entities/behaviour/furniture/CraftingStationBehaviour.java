@@ -37,7 +37,6 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
-import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -131,17 +130,9 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		if (extraTimeToProcess != null) {
 			FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
 			if (particleEffectsComponent != null) {
-				particleEffectsComponent.getCurrentParticleInstances().removeIf(p -> p == null || !p.isActive());
-				if (!particleEffectsComponent.getParticleEffectsWhenProcessing().isEmpty() && particleEffectsComponent.getCurrentParticleInstances().isEmpty()) {
-					for (ParticleEffectType effectType : particleEffectsComponent.getParticleEffectsWhenProcessing()) {
-						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
-								Optional.of(parentEntity),
-								Optional.ofNullable( currentProductionAssignment != null ? new JobTarget(currentProductionAssignment.targetRecipe, parentEntity) : null),
-								particleEffectsComponent.getCurrentParticleInstances()::add));
-					}
-				}
+				particleEffectsComponent.triggerProcessingEffects(
+						Optional.ofNullable( currentProductionAssignment != null ? new JobTarget(currentProductionAssignment.targetRecipe, parentEntity) : null));
 			}
-
 
 			double elapsedTime = gameContext.getGameClock().getCurrentGameTime() - lastUpdateGameTime;
 			extraTimeToProcess -= elapsedTime;
