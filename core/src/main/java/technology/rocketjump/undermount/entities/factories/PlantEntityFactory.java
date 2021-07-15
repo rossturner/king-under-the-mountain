@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.behaviour.plants.PlantBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -45,7 +46,7 @@ public class PlantEntityFactory {
 		return entity;
 	}
 
-	private PhysicalEntityComponent createPhysicalComponent(PlantEntityAttributes attributes) {
+	public static PhysicalEntityComponent createPhysicalComponent(EntityAttributes attributes) {
 		PhysicalEntityComponent physicalComponent = new PhysicalEntityComponent();
 		physicalComponent.setAttributes(attributes);
 		return physicalComponent;

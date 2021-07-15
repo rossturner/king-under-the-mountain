@@ -26,6 +26,8 @@ import technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader;
 
 import java.util.Map;
 
+import static technology.rocketjump.undermount.assets.entities.model.NullEntityAsset.NULL_ASSET;
+
 public class EntityRenderer implements Disposable {
 
 	public static float PIXELS_PER_TILE = 64f;
@@ -74,7 +76,9 @@ public class EntityRenderer implements Disposable {
 		LocationComponent locationComponent = entity.getLocationComponent();
 
 		EntityAsset baseAsset = entity.getPhysicalEntityComponent().getBaseAsset();
-		addToRenderParts(baseAsset, entity, new Vector2(), assetDictionary, parentEntity);
+		if (baseAsset != NULL_ASSET) {
+			addToRenderParts(baseAsset, entity, new Vector2(), assetDictionary, parentEntity);
+		}
 
 		addAttachedEntitiesAsRenderSteps(entity);
 

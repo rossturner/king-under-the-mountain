@@ -6,6 +6,8 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.utils.Disposable;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.entities.factories.OngoingEffectAttributesFactory;
+import technology.rocketjump.undermount.entities.factories.OngoingEffectEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -27,13 +29,20 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final GameMaterialDictionary materialDictionary;
 
+	private final OngoingEffectAttributesFactory ongoingEffectAttributesFactory;
+	private final OngoingEffectEntityFactory ongoingEffectEntityFactory;
+
 	private GameContext gameContext;
 
 	@Inject
-	public DebugMessageHandler(MessageDispatcher messageDispatcher, ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary materialDictionary) {
+	public DebugMessageHandler(MessageDispatcher messageDispatcher, ItemTypeDictionary itemTypeDictionary,
+							   GameMaterialDictionary materialDictionary, OngoingEffectAttributesFactory ongoingEffectAttributesFactory,
+							   OngoingEffectEntityFactory ongoingEffectEntityFactory) {
 		this.messageDispatcher = messageDispatcher;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.materialDictionary = materialDictionary;
+		this.ongoingEffectAttributesFactory = ongoingEffectAttributesFactory;
+		this.ongoingEffectEntityFactory = ongoingEffectEntityFactory;
 
 		messageDispatcher.addListener(this, MessageType.DEBUG_MESSAGE);
 	}
@@ -60,6 +69,10 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 //								messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(entity, DeathReason.UNKNOWN));
 							}
 						}
+
+						ongoingEffectEntityFactory.create(ongoingEffectAttributesFactory.createByTypeName("Fire"),
+							message.getWorldPosition(), gameContext);
+
 
 //						messageDispatcher.dispatchMessage(MessageType.ITEM_CREATION_REQUEST, new ItemCreationRequestMessage(itemTypeDictionary.getByName("Product-Barrel"), (entity) -> {
 //							LiquidContainerComponent liquidContainerComponent = new LiquidContainerComponent();

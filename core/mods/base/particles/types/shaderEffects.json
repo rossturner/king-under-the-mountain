@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Fire",
+    "vertexShaderFile": "fire_vertex_shader.glsl",
+    "fragmentShaderFile": "fire_fragment_shader.glsl",
+
+    "shaderEffectWidth": 1.5,
+    "shaderEffectHeight": 1.5,
+
+    "scale": 1,
+    "isLooping": true,
+    "isAffectedByLighting": false,
+    "usesTargetMaterialAsTintColor": false,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 0.5
+    },
+    "attachedToParent": true
+  }
+]

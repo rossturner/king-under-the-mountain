@@ -80,7 +80,6 @@ public class ItemEntityFactory {
 
 		entityAssetUpdater.updateEntityAssets(entity);
 		if (addToGameContext) {
-			gameContext.getEntities().put(entity.getId(), entity);
 			messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, entity);
 		}
 		return entity;

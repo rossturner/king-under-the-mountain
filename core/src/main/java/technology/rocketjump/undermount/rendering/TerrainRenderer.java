@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.rendering;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.GridPoint2;
@@ -151,7 +152,7 @@ public class TerrainRenderer implements Disposable {
 		spriteBatch.draw(sprite, worldX, worldY, 1, 1);
 	}
 
-	public void renderBridgeTile(int worldX, int worldY, Bridge bridge, BridgeTileLayout layout, TerrainSpriteCache spriteCache, SpriteBatch spriteBatch) {
+	public void renderBridgeTile(int worldX, int worldY, Bridge bridge, BridgeTileLayout layout, TerrainSpriteCache spriteCache, Batch spriteBatch) {
 		Sprite sprite = spriteCache.getForBridge(bridge, layout);
 		spriteBatch.draw(sprite, worldX, worldY, 1, 1);
 	}

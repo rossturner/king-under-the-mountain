@@ -17,6 +17,8 @@ import technology.rocketjump.undermount.entities.components.humanoid.Professions
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
@@ -113,6 +115,9 @@ public class EntityAssetUpdater {
 			case PLANT:
 				updatePlantAssets(entity);
 				break;
+			case ONGOING_EFFECT:
+				processTags(entity);
+				break;
 			default:
 				throw new RuntimeException("Unhandled entity type " + entity.getType() + " in " + this.getClass().getSimpleName());
 		}
@@ -154,9 +159,7 @@ public class EntityAssetUpdater {
 		}
 
 		// Tag processing
-		Set<Tag> attachedTags = findAttachedTags(entity);
-		entity.setTags(attachedTags);
-		tagProcessor.apply(attachedTags, entity);
+		processTags(entity);
 	}
 
 	private void addOtherHumanoidAssetTypes(EntityAssetType assetType, PhysicalEntityComponent physicalComponent, HumanoidEntityAttributes attributes,
@@ -207,9 +210,7 @@ public class EntityAssetUpdater {
 			physicalComponent.getTypeMap().put(fruitAssetType, fruitAsset);
 		}
 
-		Set<Tag> attachedTags = findAttachedTags(entity);
-		entity.setTags(attachedTags);
-		tagProcessor.apply(attachedTags, entity);
+		processTags(entity);
 	}
 
 	private void updateItemAssets(Entity entity) {
@@ -222,6 +223,10 @@ public class EntityAssetUpdater {
 		}
 
 		// Tag processing
+		processTags(entity);
+	}
+
+	public void processTags(Entity entity) {
 		Set<Tag> attachedTags = findAttachedTags(entity);
 		entity.setTags(attachedTags);
 		tagProcessor.apply(attachedTags, entity);
@@ -316,6 +321,9 @@ public class EntityAssetUpdater {
 		} else if (entity.getPhysicalEntityComponent().getAttributes() instanceof PlantEntityAttributes) {
 			PlantSpecies plantSpecies = ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies();
 			attachedTags.addAll(plantSpecies.getProcessedTags());
+		} else if (entity.getPhysicalEntityComponent().getAttributes() instanceof OngoingEffectAttributes) {
+			OngoingEffectType type = ((OngoingEffectAttributes) entity.getPhysicalEntityComponent().getAttributes()).getType();
+			attachedTags.addAll(type.getProcessedTags());
 		}
 
 		return attachedTags;

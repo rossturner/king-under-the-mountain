@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.ai.goap.Goal;
 import technology.rocketjump.undermount.entities.ai.goap.Schedule;
 import technology.rocketjump.undermount.entities.factories.names.NameWord;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureCategory;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
@@ -126,6 +127,8 @@ public class ModArtifactListing {
 						"entities/item", "**/itemTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "plantSpecies", SINGLE_FILE, JSON_ARRAY, PlantSpecies.class,
 						"entities/plant", "**/plantSpecies.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/types", "ongoingEffectTypes", SINGLE_FILE, JSON_ARRAY, OngoingEffectType.class,
+						"entities/ongoingEffects", "**/effectTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				def("definitions", "materials", SINGLE_FILE, JSON_ARRAY, GameMaterial.class,
 						"definitions/materials", "*-materials.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
@@ -143,6 +146,8 @@ public class ModArtifactListing {
 						"particles/libgdx", "**/*.p", P_FILE, ADDITIVE, CopyFilesProcessor.class),
 				def("definitions/types", "particleTypes", SINGLE_FILE, JSON_ARRAY, ParticleEffectType.class,
 						"particles/types", "*.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/shaders", null, COPY_ORIGINAL_FILES, GLSL, null,
+						"particles/shaders", "**/*.glsl", GLSL, ADDITIVE, CopyFilesProcessor.class),
 
 				////////// settings //////////
 				def("settings", "sunlight", SINGLE_FILE, JSON_ARRAY, null,

@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.entities.components.ComponentDictionary;
 import technology.rocketjump.undermount.entities.components.StatusEffectDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.entities.tags.TagDictionary;
@@ -69,6 +70,7 @@ public class SavedGameDependentDictionaries {
 	public final BridgeTypeDictionary bridgeTypeDictionary;
 	public final JobStore jobStore;
 	public final ParticleEffectTypeDictionary particleEffectTypeDictionary;
+	public final OngoingEffectTypeDictionary ongoingEffectTypeDictionary;
 
 	@Inject
 	public SavedGameDependentDictionaries(DynamicMaterialFactory dynamicMaterialFactory, GameMaterialDictionary gameMaterialDictionary,
@@ -84,7 +86,7 @@ public class SavedGameDependentDictionaries {
 										  RoomComponentDictionary roomComponentDictionary, TileDesignationDictionary tileDesignationDictionary,
 										  StockpileGroupDictionary stockpileGroupDictionary, TagDictionary tagDictionary,
 										  SoundAssetDictionary soundAssetDictionary, BridgeTypeDictionary bridgeTypeDictionary,
-										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary, OngoingEffectTypeDictionary ongoingEffectTypeDictionary) {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.messageDispatcher = messageDispatcher;
@@ -115,5 +117,6 @@ public class SavedGameDependentDictionaries {
 		this.bridgeTypeDictionary = bridgeTypeDictionary;
 		this.jobStore = jobStore;
 		this.particleEffectTypeDictionary = particleEffectTypeDictionary;
+		this.ongoingEffectTypeDictionary = ongoingEffectTypeDictionary;
 	}
 }

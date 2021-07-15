@@ -13,6 +13,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import technology.rocketjump.undermount.assets.AssetDisposable;
+import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileExploration;
@@ -102,8 +103,8 @@ public class GameRenderer implements AssetDisposable {
 		cursorLight.dispose();
 	}
 
-	public void renderGame(TiledMap worldMap, OrthographicCamera camera) {
-
+	public void renderGame(GameContext gameContext, OrthographicCamera camera) {
+		TiledMap worldMap = gameContext.getAreaMap();
 		int screenX = Gdx.input.getX();
 		int screenY = Gdx.input.getY();
 		if (renderingOptions.debug().showIndividualLightingBuffers()) {
@@ -173,7 +174,7 @@ public class GameRenderer implements AssetDisposable {
 			basicSpriteBatch.end();
 		} else {
 			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion);
-			inWorldUIRenderer.render(worldMap, camera, particlesToRenderAsUI, diffuseSpriteCache);
+			inWorldUIRenderer.render(gameContext, camera, particlesToRenderAsUI, diffuseSpriteCache);
 		}
 
 		debugRenderer.render(worldMap, camera);

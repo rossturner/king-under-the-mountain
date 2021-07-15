@@ -1,8 +1,8 @@
 package technology.rocketjump.undermount.rendering.roofing;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
@@ -44,7 +44,7 @@ public class RoofingViewModeRenderer {
 //		deconstructSprite = guiAtlas.createSprite("demolish");
 	}
 
-	public void render(TiledMap map, OrthographicCamera camera, SpriteBatch spriteBatch, ShapeRenderer shapeRenderer, boolean blinkState) {
+	public void render(TiledMap map, OrthographicCamera camera, Batch spriteBatch, ShapeRenderer shapeRenderer, boolean blinkState) {
 		int minX = getMinX(camera);
 		int maxX = getMaxX(camera, map);
 		int minY = getMinY(camera);
@@ -113,7 +113,7 @@ public class RoofingViewModeRenderer {
 		spriteBatch.end();
 	}
 
-	private void renderExistingRoofConstruction(int x, int y, MapTile mapTile, SpriteBatch spriteBatch, boolean blinkState) {
+	private void renderExistingRoofConstruction(int x, int y, MapTile mapTile, Batch spriteBatch, boolean blinkState) {
 		RoofConstructionState roofConstructionState = mapTile.getRoof().getConstructionState();
 		if (!roofConstructionState.equals(RoofConstructionState.NONE)) {
 			for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {

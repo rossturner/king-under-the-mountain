@@ -6,6 +6,8 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
@@ -28,16 +30,19 @@ public class TagProcessor implements GameContextAware {
 	private final MessageDispatcher messageDispatcher;
 	private final FurnitureTypeDictionary furnitureTypeDictionary;
 	private final RoomTypeDictionary roomTypeDictionary;
+	private final OngoingEffectTypeDictionary ongoingEffectTypeDictionary;
 	private GameContext gameContext;
 
 	@Inject
 	public TagProcessor(TagDictionary tagDictionary, TagProcessingUtils tagProcessingUtils,
-						MessageDispatcher messageDispatcher, FurnitureTypeDictionary furnitureTypeDictionary, RoomTypeDictionary roomTypeDictionary) {
+						MessageDispatcher messageDispatcher, FurnitureTypeDictionary furnitureTypeDictionary,
+						RoomTypeDictionary roomTypeDictionary, OngoingEffectTypeDictionary ongoingEffectTypeDictionary) {
 		this.tagDictionary = tagDictionary;
 		this.tagProcessingUtils = tagProcessingUtils;
 		this.messageDispatcher = messageDispatcher;
 		this.furnitureTypeDictionary = furnitureTypeDictionary;
 		this.roomTypeDictionary = roomTypeDictionary;
+		this.ongoingEffectTypeDictionary = ongoingEffectTypeDictionary;
 	}
 
 	/**
@@ -55,6 +60,9 @@ public class TagProcessor implements GameContextAware {
 		}
 		for (RoomType roomType : roomTypeDictionary.getAll()) {
 			roomType.setProcessedTags(processRawTags(roomType.getTags()));
+		}
+		for (OngoingEffectType ongoingEffectType : ongoingEffectTypeDictionary.getAll()) {
+			ongoingEffectType.setProcessedTags(processRawTags(ongoingEffectType.getTags()));
 		}
 	}
 

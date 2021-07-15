@@ -1,6 +1,8 @@
 [ {
   "name" : "Progress bar",
   "customImplementation" : "ProgressBarEffect",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : false,
@@ -18,6 +20,8 @@
 }, {
   "name" : "Dust cloud",
   "particleFile" : "smoke.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.2,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : true,
@@ -29,6 +33,8 @@
 }, {
   "name" : "Dust cloud above",
   "particleFile" : "smoke.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.4,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : false,
@@ -40,6 +46,8 @@
 }, {
   "name" : "Leaf explosion",
   "particleFile" : "leafexplosion.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.8,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : true,
@@ -51,6 +59,8 @@
 }, {
   "name" : "Chip explosion",
   "particleFile" : "chipexplosion.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.8,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : true,
@@ -62,6 +72,8 @@
 }, {
   "name" : "Falling leaf",
   "particleFile" : "fallingleaf.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.8,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : true,
@@ -79,6 +91,8 @@
 }, {
   "name" : "Smoking",
   "particleFile" : "smoking.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : false,
@@ -96,6 +110,8 @@
 }, {
   "name" : "Smoking (charcoal)",
   "particleFile" : "smoking.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : false,
@@ -113,6 +129,8 @@
 }, {
   "name" : "White smoking",
   "particleFile" : "white_smoking.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : false,
@@ -130,6 +148,8 @@
 }, {
   "name" : "Ore chips",
   "particleFile" : "orechips.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : true,
@@ -147,6 +167,8 @@
 }, {
   "name" : "Milling",
   "particleFile" : "milling.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : true,
@@ -164,6 +186,8 @@
 }, {
   "name" : "Chipping rock",
   "particleFile" : "rockparticle.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.4,
   "usingParentOrientation" : "LEFT",
   "isLooping" : true,
@@ -182,6 +206,8 @@
 }, {
   "name" : "Chipping wood",
   "particleFile" : "woodchip.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "usingParentOrientation" : "LEFT",
   "isLooping" : true,
@@ -200,6 +226,8 @@
 }, {
   "name" : "Digging ground same tile",
   "particleFile" : "groundsplat.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.8,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : false,
@@ -217,6 +245,8 @@
 }, {
   "name" : "Digging ground offset tile",
   "particleFile" : "groundsplat.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.8,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : false,
@@ -234,6 +264,8 @@
 }, {
   "name" : "Small leaf explosion",
   "particleFile" : "smallleafexplosion.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.8,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : true,
@@ -251,6 +283,8 @@
 }, {
   "name" : "Liquid splash",
   "particleFile" : "splash.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.8,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : false,
@@ -268,6 +302,8 @@
 }, {
   "name" : "Wood shavings",
   "particleFile" : "shavings.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : false,
   "usesTargetMaterialAsTintColor" : true,
@@ -285,6 +321,8 @@
 }, {
   "name" : "Chipping stone",
   "particleFile" : "stonechip.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 1.0,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : true,
@@ -302,6 +340,8 @@
 }, {
   "name" : "Blacksmith sparks",
   "particleFile" : "sparks.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
   "scale" : 0.7,
   "isLooping" : true,
   "usesTargetMaterialAsTintColor" : false,
@@ -316,4 +356,24 @@
   "renderBehindParent" : false,
   "overrideYDepth" : true,
   "attachedToParent" : false
+}, {
+  "name" : "Fire",
+  "vertexShaderFile" : "fire_vertex_shader.glsl",
+  "fragmentShaderFile" : "fire_fragment_shader.glsl",
+  "shaderEffectWidth" : 1.5,
+  "shaderEffectHeight" : 1.5,
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : false,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.5,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : true
 } ]

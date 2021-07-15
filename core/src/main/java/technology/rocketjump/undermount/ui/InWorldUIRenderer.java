@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.MathUtils;
@@ -21,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
+import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -34,6 +34,7 @@ import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.RenderingOptions;
 import technology.rocketjump.undermount.rendering.RoomRenderer;
 import technology.rocketjump.undermount.rendering.TerrainRenderer;
+import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.roofing.RoofingViewModeRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -48,6 +49,7 @@ import java.util.Random;
 
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rendering.camera.TileBoundingBox.*;
+import static technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader.defaultShaderInstance;
 import static technology.rocketjump.undermount.rooms.RoomTypeDictionary.VIRTUAL_PLACING_ROOM;
 import static technology.rocketjump.undermount.ui.GameInteractionMode.*;
 import static technology.rocketjump.undermount.ui.GameViewMode.JOB_PRIORITY;
@@ -66,13 +68,14 @@ public class InWorldUIRenderer {
 	private final RoofingViewModeRenderer roofingViewModeRenderer;
 
 	private final ShapeRenderer shapeRenderer = new ShapeRenderer();
-	private final SpriteBatch spriteBatch = new SpriteBatch();
+	private final CustomShaderSpriteBatch spriteBatch;
 	private final RoomRenderer roomRenderer;
 	private final RenderingOptions renderingOptions;
 	private final JobStore jobStore;
 	private final IconSpriteCache iconSpriteCache;
 	private final Sprite doorIconSprite;
 	private boolean blinkState = true;
+	private float elapsedSeconds;
 
 	@Inject
 	public InWorldUIRenderer(GameInteractionStateContainer interactionStateContainer, EntityRenderer entityRenderer,
@@ -89,14 +92,23 @@ public class InWorldUIRenderer {
 		this.iconSpriteCache = iconSpriteCache;
 		this.roofingViewModeRenderer = roofingViewModeRenderer;
 
+		spriteBatch = new CustomShaderSpriteBatch(1000, defaultShaderInstance);
+
 		FurnitureType singleDoorType = furnitureTypeDictionary.getByName("SINGLE_DOOR");
 		this.doorIconSprite = iconSpriteCache.getByName(singleDoorType.getIconName());
 	}
 
-	public void render(TiledMap map, OrthographicCamera camera, List<ParticleEffectInstance> particlesToRenderAsUI, TerrainSpriteCache diffuseSpriteCache) {
+	public void render(GameContext gameContext, OrthographicCamera camera, List<ParticleEffectInstance> particlesToRenderAsUI, TerrainSpriteCache diffuseSpriteCache) {
+		TiledMap map = gameContext.getAreaMap();
 		Gdx.gl.glEnable(GL20.GL_BLEND);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+		if (!gameContext.getGameClock().isPaused()) {
+			elapsedSeconds += Gdx.graphics.getDeltaTime() * gameContext.getGameClock().getSpeedMultiplier();
+		}
+
 		shapeRenderer.setProjectionMatrix(camera.combined);
+		spriteBatch.setElapsedTime(elapsedSeconds);
 		spriteBatch.setProjectionMatrix(camera.combined);
 
 		interactionStateContainer.update();
@@ -299,6 +311,8 @@ public class InWorldUIRenderer {
 
 		spriteBatch.setColor(Color.WHITE);
 		particlesToRenderAsUI.forEach(p -> p.getWrappedInstance().draw(spriteBatch, RenderMode.DIFFUSE));
+		// particle effects can override spritebatch shader without cleaning it up
+		spriteBatch.setShader(defaultShaderInstance);
 
 		spriteBatch.end();
 		shapeRenderer.end();

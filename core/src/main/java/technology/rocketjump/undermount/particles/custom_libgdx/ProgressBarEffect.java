@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.rendering.RenderMode;
 
+import static technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader.defaultShaderInstance;
+
 public class ProgressBarEffect implements ParticleEffect {
 
 	private final Vector2 worldPosition = new Vector2();
@@ -52,6 +54,10 @@ public class ProgressBarEffect implements ParticleEffect {
 
 	@Override
 	public void draw(Batch spriteBatch, RenderMode renderMode) {
+		if (spriteBatch.getShader() != defaultShaderInstance) {
+			spriteBatch.setShader(defaultShaderInstance);
+		}
+
 		float outerSpriteWorldX = worldPosition.x - (WORLD_WIDTH/2f);
 		float outerSpriteWorldY = worldPosition.y - (WORLD_HEIGHT/2f);
 

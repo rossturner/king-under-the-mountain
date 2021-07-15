@@ -8,8 +8,16 @@ public class ParticleEffectType {
 
 	@Name
 	private String name;
+
+	// One of the following (particleFile, customImplementation, customShader) must be set
 	private String particleFile;
 	private String customImplementation;
+	private String vertexShaderFile;
+	private String fragmentShaderFile;
+
+	private float shaderEffectWidth;
+	private float shaderEffectHeight;
+
 	private float scale = 1f;
 	private EntityAssetOrientation usingParentOrientation;
 	private boolean isLooping; // if true this effect will loop endlessly until stopped
@@ -123,5 +131,37 @@ public class ParticleEffectType {
 
 	public void setCustomImplementation(String customImplementation) {
 		this.customImplementation = customImplementation;
+	}
+
+	public String getVertexShaderFile() {
+		return vertexShaderFile;
+	}
+
+	public void setVertexShaderFile(String vertexShaderFile) {
+		this.vertexShaderFile = vertexShaderFile;
+	}
+
+	public String getFragmentShaderFile() {
+		return fragmentShaderFile;
+	}
+
+	public void setFragmentShaderFile(String fragmentShaderFile) {
+		this.fragmentShaderFile = fragmentShaderFile;
+	}
+
+	public float getShaderEffectWidth() {
+		return shaderEffectWidth;
+	}
+
+	public void setShaderEffectWidth(float shaderEffectWidth) {
+		this.shaderEffectWidth = shaderEffectWidth;
+	}
+
+	public float getShaderEffectHeight() {
+		return shaderEffectHeight;
+	}
+
+	public void setShaderEffectHeight(float shaderEffectHeight) {
+		this.shaderEffectHeight = shaderEffectHeight;
 	}
 }

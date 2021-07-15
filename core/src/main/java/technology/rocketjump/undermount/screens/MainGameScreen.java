@@ -56,7 +56,7 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 	public void render(float deltaTime) {
 		updateGameLogic(deltaTime);
 
-		gameRenderer.renderGame(gameContext.getAreaMap(), primaryCameraWrapper.getCamera());
+		gameRenderer.renderGame(gameContext, primaryCameraWrapper.getCamera());
 		if (DisplaySettings.showGui) {
 			guiContainer.render();
 		}

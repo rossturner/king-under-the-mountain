@@ -1,6 +1,6 @@
 package technology.rocketjump.undermount.rendering;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.google.inject.Inject;
 import technology.rocketjump.undermount.assets.RoomEdgeTypeDictionary;
 import technology.rocketjump.undermount.assets.WallQuadrantDictionary;
@@ -30,7 +30,7 @@ public class RoomRenderer {
 		straightEdgeType = roomEdgeTypeDictionary.getByName("straight");
 	}
 
-	public void render(MapTile mapTile, SpriteBatch spriteBatch, TerrainSpriteCache spriteCache) {
+	public void render(MapTile mapTile, Batch spriteBatch, TerrainSpriteCache spriteCache) {
 		Room room = mapTile.getRoomTile().getRoom();
 		spriteBatch.setColor(room.getBorderColor());
 

@@ -36,6 +36,7 @@ import java.io.*;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
+import static technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader.defaultShaderInstance;
 
 /** See <a href="http://www.badlogicgames.com/wordpress/?p=1255">http://www.badlogicgames.com/wordpress/?p=1255</a>
  * @author mzechner */
@@ -94,6 +95,9 @@ public class LibgdxParticleEffect implements ParticleEffect, Disposable {
 
 	@Override
 	public void draw(Batch spriteBatch, RenderMode renderMode) {
+		if (spriteBatch.getShader() != defaultShaderInstance) {
+			spriteBatch.setShader(defaultShaderInstance);
+		}
 		for (int i = 0, n = emitters.size; i < n; i++)
 			emitters.get(i).draw(spriteBatch, renderMode);
 	}
