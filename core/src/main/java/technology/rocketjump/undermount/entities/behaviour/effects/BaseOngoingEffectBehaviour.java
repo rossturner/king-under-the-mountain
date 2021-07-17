@@ -22,6 +22,7 @@ import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -72,11 +73,13 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 			currentEffectInstance = null;
 		}
 
-		if (currentEffectInstance == null && state.equals(ACTIVE) ) {
+		if (currentEffectInstance == null && state.equals(ACTIVE)) {
 			ParticleEffectType particleEffectType = attributes.getType().getParticleEffectType();
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-					particleEffectType, Optional.of(parentEntity), Optional.empty(), (particle) -> currentParticleEffect.set(particle)
-			));
+					particleEffectType, Optional.of(parentEntity), Optional.empty(), (particle) -> {
+				particle.getWrappedInstance().setTint(HexColors.get(attributes.getType().getInitialColor()));
+				currentParticleEffect.set(particle);
+			}));
 		}
 
 		if (attributes.getType().getPlaySoundAsset() != null) {

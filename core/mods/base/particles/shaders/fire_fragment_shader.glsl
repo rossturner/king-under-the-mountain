@@ -152,7 +152,8 @@ void main()
     color += glow;
     // all done!
 
+    float alpha = v_color.a;
+    alpha = min(alpha, max(max3(color) - 0.2, 0.0));
 
-
-    gl_FragColor = vec4(color, max(max3(color) - 0.2, 0.0));
+    gl_FragColor = vec4(color, alpha);
 }

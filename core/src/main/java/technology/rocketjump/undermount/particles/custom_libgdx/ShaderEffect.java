@@ -19,6 +19,7 @@ public class ShaderEffect implements ParticleEffect {
 	private final ParticleEffectType particleEffectType;
 	private long seed = new RandomXS128().nextLong();
 	private boolean overrideCompletion;
+	private Color tint = Color.WHITE;
 
 	public ShaderEffect(ShaderProgram shader, ParticleEffectType particleEffectType) {
 		this.shader = shader;
@@ -55,6 +56,7 @@ public class ShaderEffect implements ParticleEffect {
 			customShaderSpriteBatch.setShader(shader);
 		}
 
+		customShaderSpriteBatch.setColor(tint);
 		customShaderSpriteBatch.setSeed(seed);
 		customShaderSpriteBatch.draw((Texture)null, worldPosition.x - (particleEffectType.getShaderEffectWidth() / 2f),
 				worldPosition.y - (particleEffectType.getShaderEffectHeight() / 2f),
@@ -68,11 +70,16 @@ public class ShaderEffect implements ParticleEffect {
 
 	@Override
 	public void setTint(Color color) {
+		this.tint = color;
+	}
 
+	public Color getTint() {
+		return this.tint;
 	}
 
 	@Override
 	public void adjustForParentOrientation(EntityAssetOrientation effectDefaultOrientation, EntityAssetOrientation parentOrientation) {
 		// Do nothing
 	}
+
 }

@@ -15,8 +15,8 @@ public class ParticleEffectInstance {
 	private final ParticleEffect wrappedInstance;
 	private final Optional<Entity> attachedToEntity;
 	private final Optional<MapTile> attachedToTile;
-	private Vector2 worldPosition = new Vector2();
-	private Vector2 offsetFromWorldPosition = new Vector2();
+	private final Vector2 worldPosition = new Vector2();
+	private final Vector2 offsetFromWorldPosition;
 	private boolean isActive = true;
 
 	public ParticleEffectInstance(long instanceId, ParticleEffectType type, ParticleEffect wrappedInstance, Entity attachedToEntity) {
@@ -107,7 +107,7 @@ public class ParticleEffectInstance {
 			this.setWorldPosition(attachedToTile.get().getWorldPositionOfCenter());
 		}
 		if (type.getOffsetFromParentEntity() != null) {
-			this.getWorldPosition().add(type.getOffsetFromParentEntity());
+			this.setWorldPosition(getWorldPosition().cpy().add(type.getOffsetFromParentEntity()));
 		}
 	}
 

@@ -2,6 +2,7 @@
   "name": "Fire",
   "particleEffectTypeName": "Fire",
   "playSoundAssetName": "Burning",
+  "initialColor": "#ffffff00",
   "states": {
     "STARTING": {
       "duration": 5
@@ -10,7 +11,7 @@
       "duration": 13
     },
     "FADING": {
-      "duration": 3
+      "duration": 1.5
     }
   },
 

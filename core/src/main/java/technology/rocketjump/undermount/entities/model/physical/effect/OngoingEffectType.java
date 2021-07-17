@@ -21,6 +21,8 @@ public class OngoingEffectType {
 	@JsonIgnore
 	private ParticleEffectType particleEffectType;
 
+	private String initialColor;
+
 	private Map<BaseOngoingEffectBehaviour.OngoingEffectState, EffectStateConfig> states = new HashMap<>();
 
 	private String playSoundAssetName;
@@ -95,4 +97,11 @@ public class OngoingEffectType {
 		return processedTags;
 	}
 
+	public String getInitialColor() {
+		return initialColor;
+	}
+
+	public void setInitialColor(String initialColor) {
+		this.initialColor = initialColor;
+	}
 }

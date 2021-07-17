@@ -1,6 +1,7 @@
 [ {
   "name" : "Fire",
   "particleEffectTypeName" : "Fire",
+  "initialColor" : "#ffffff00",
   "states" : {
     "STARTING" : {
       "duration" : 5.0
@@ -9,7 +10,7 @@
       "duration" : 13.0
     },
     "FADING" : {
-      "duration" : 3.0
+      "duration" : 1.5
     }
   },
   "playSoundAssetName" : "Burning",

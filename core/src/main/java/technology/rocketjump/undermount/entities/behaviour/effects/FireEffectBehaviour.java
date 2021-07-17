@@ -11,6 +11,8 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.particles.custom_libgdx.ShaderEffect;
+import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 
 import java.util.Random;
 
@@ -31,6 +33,21 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		super.update(deltaTime, gameContext);
+		OngoingEffectAttributes attributes = (OngoingEffectAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		ParticleEffectInstance particleEffectInstance = currentParticleEffect.get();
+
+		if (particleEffectInstance != null && particleEffectInstance.getWrappedInstance() instanceof ShaderEffect) {
+			ShaderEffect wrappedInstance = (ShaderEffect) particleEffectInstance.getWrappedInstance();
+			if (ACTIVE.equals(state)) {
+				float alpha = Math.min(stateDuration, 1f);
+				wrappedInstance.getTint().a = alpha;
+			} else if (FADING.equals(state)) {
+				float fadeDuration = attributes.getType().getStates().get(FADING).getDuration();
+				float alpha =  (fadeDuration - stateDuration) / fadeDuration;
+				wrappedInstance.getTint().a = alpha;
+			}
+		}
+
 	}
 
 	@Override
