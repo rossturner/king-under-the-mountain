@@ -155,5 +155,5 @@ void main()
     float alpha = v_color.a;
     alpha = min(alpha, max(max3(color) - 0.2, 0.0));
 
-    gl_FragColor = vec4(color, alpha);
+    gl_FragColor = vec4(color * v_color.rgb, alpha);
 }

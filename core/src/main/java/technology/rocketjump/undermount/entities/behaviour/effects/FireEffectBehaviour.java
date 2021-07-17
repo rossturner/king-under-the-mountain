@@ -2,14 +2,8 @@ package technology.rocketjump.undermount.entities.behaviour.effects;
 
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
-import org.pmw.tinylog.Logger;
-import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
-import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.gamecontext.GameContext;
-import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.particles.custom_libgdx.ShaderEffect;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
@@ -39,7 +33,10 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 		if (particleEffectInstance != null && particleEffectInstance.getWrappedInstance() instanceof ShaderEffect) {
 			ShaderEffect wrappedInstance = (ShaderEffect) particleEffectInstance.getWrappedInstance();
 			if (ACTIVE.equals(state)) {
-				float alpha = Math.min(stateDuration, 1f);
+				float alpha = wrappedInstance.getTint().a;
+				if (alpha < 1) {
+					alpha = Math.min(stateDuration, 1f);
+				}
 				wrappedInstance.getTint().a = alpha;
 			} else if (FADING.equals(state)) {
 				float fadeDuration = attributes.getType().getStates().get(FADING).getDuration();
@@ -58,8 +55,7 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 				break;
 			case ACTIVE:
 				// Is this on a combustible tile or entity
-				FireContinuationAction continuationAction = FireContinuationAction.DIE_OUT;
-
+				/*
 				MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 				if (parentTile != null) {
 
@@ -74,9 +70,8 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 
 
 					if (parentTile.hasWall()) {
-
 						if (parentTile.getWall().getMaterial().isCombustible()) {
-							continuationAction = rollForContinuation(gameContext.getRandom());
+							continuationAction = );
 						}
 					} else {
 						if (parentTile.getFloor().getMaterial().isCombustible()) {
@@ -85,16 +80,23 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 					}
 
 				}
+				*/
 
-				switch (continuationAction) {
+				switch (rollForContinuation(gameContext.getRandom())) {
 					case SPREAD_TO_OTHER_TILES:
-						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE, parentTile);
-						// fall through
+						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, parentEntity.getLocationComponent().getWorldOrParentPosition());
+						this.state = ACTIVE; // reset to active state again
+						break;
 					case CONTINUE_BURNING:
 						this.state = ACTIVE;
 						break;
 					case CONSUME_PARENT:
-						Logger.warn("TODO: consume parent");
+						if (parentEntity.getLocationComponent().getContainerEntity() != null) {
+							messageDispatcher.dispatchMessage(MessageType.CONSUME_ENTITY_BY_FIRE, parentEntity.getLocationComponent().getContainerEntity());
+						} else {
+							messageDispatcher.dispatchMessage(MessageType.CONSUME_TILE_BY_FIRE, parentEntity.getLocationComponent().getWorldOrParentPosition());
+						}
+						this.state = FADING;
 						break;
 					case DIE_OUT:
 						this.state = FADING;
@@ -107,26 +109,6 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 		}
 
 		this.stateDuration = 0f;
-	}
-
-
-	@Override
-	public void infrequentUpdate(GameContext gameContext) {
-		if (parentEntity.getLocationComponent().getContainerEntity() != null) {
-			// Attached to another entity
-			return;
-		}
-
-		OngoingEffectAttributes attributes = (OngoingEffectAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
-		if (stateDuration > attributes.getType().getStates().get(OngoingEffectState.ACTIVE).getDuration()) {
-
-
-		}
-	}
-
-	@Override
-	public boolean isUpdateInfrequently() {
-		return true;
 	}
 
 	private FireContinuationAction rollForContinuation(Random random) {
@@ -143,9 +125,9 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 
 	public enum FireContinuationAction {
 
-		CONTINUE_BURNING(0.3f),
+		CONTINUE_BURNING(0.4f),
 		SPREAD_TO_OTHER_TILES(0.3f),
-		CONSUME_PARENT(0.4f),
+		CONSUME_PARENT(0.3f),
 		DIE_OUT(1f);
 
 		private final float chance;

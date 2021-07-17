@@ -2,7 +2,7 @@ package technology.rocketjump.undermount.messaging;
 
 /**
  * This class stores all the message types in use by MessageDispatchers (i.e. the event system)
- *
+ * <p>
  * Does this need to be dynamic? Perhaps if scripting is introduced?
  */
 public class MessageType {
@@ -217,7 +217,9 @@ public class MessageType {
 	public static final int GET_PROGRESS_BAR_EFFECT_TYPE = 1603;
 
 	// Weather and fire messages
-	public static final int SPREAD_FIRE = 1700;
+	public static final int SPREAD_FIRE_FROM_LOCATION = 1700;
+	public static final int CONSUME_TILE_BY_FIRE = 1701;
+	public static final int CONSUME_ENTITY_BY_FIRE = 1701;
 
 
 }
