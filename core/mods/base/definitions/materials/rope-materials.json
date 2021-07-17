@@ -2,26 +2,31 @@
   {
     "materialName": "Light rope",
     "materialType": "ROPE",
-    "colorCode": "#d9bc8b"
+    "colorCode": "#d9bc8b",
+    "combustible": true
   },
   {
     "materialName": "Aged rope",
     "materialType": "ROPE",
-    "colorCode": "#ac8f6f"
+    "colorCode": "#ac8f6f",
+    "combustible": true
   },
   {
     "materialName": "Tobacco rope",
     "materialType": "ROPE",
-    "colorCode": "#d2bfaa"
+    "colorCode": "#d2bfaa",
+    "combustible": true
   },
   {
     "materialName": "Gray rope",
     "materialType": "ROPE",
-    "colorCode": "#b4aaa1"
+    "colorCode": "#b4aaa1",
+    "combustible": true
   },
   {
     "materialName": "Bronzed rope",
     "materialType": "ROPE",
-    "colorCode": "#e59e55"
+    "colorCode": "#e59e55",
+    "combustible": true
   }
 ]

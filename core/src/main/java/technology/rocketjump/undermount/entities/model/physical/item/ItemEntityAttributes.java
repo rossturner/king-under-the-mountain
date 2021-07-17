@@ -62,6 +62,11 @@ public class ItemEntityAttributes implements EntityAttributes {
 	}
 
 	@Override
+	public Map<GameMaterialType, GameMaterial> getMaterials() {
+		return materials;
+	}
+
+	@Override
 	public long getSeed() {
 		return seed;
 	}

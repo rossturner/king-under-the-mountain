@@ -24,7 +24,7 @@ public class NullEntityAsset implements EntityAsset {
 
 	@Override
 	public String getUniqueName() {
-		return "null";
+		return "NULL_ASSET";
 	}
 
 	@Override

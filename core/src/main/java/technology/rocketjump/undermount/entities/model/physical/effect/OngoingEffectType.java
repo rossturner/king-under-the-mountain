@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.model.physical.effect;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
+import technology.rocketjump.undermount.entities.behaviour.effects.BaseOngoingEffectBehaviour;
 import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.misc.Name;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
@@ -19,6 +20,8 @@ public class OngoingEffectType {
 	private String particleEffectTypeName;
 	@JsonIgnore
 	private ParticleEffectType particleEffectType;
+
+	private Map<BaseOngoingEffectBehaviour.OngoingEffectState, EffectStateConfig> states = new HashMap<>();
 
 	private String playSoundAssetName;
 	@JsonIgnore
@@ -50,6 +53,14 @@ public class OngoingEffectType {
 
 	public void setParticleEffectType(ParticleEffectType particleEffectType) {
 		this.particleEffectType = particleEffectType;
+	}
+
+	public Map<BaseOngoingEffectBehaviour.OngoingEffectState, EffectStateConfig> getStates() {
+		return states;
+	}
+
+	public void setStates(Map<BaseOngoingEffectBehaviour.OngoingEffectState, EffectStateConfig> states) {
+		this.states = states;
 	}
 
 	public String getPlaySoundAssetName() {

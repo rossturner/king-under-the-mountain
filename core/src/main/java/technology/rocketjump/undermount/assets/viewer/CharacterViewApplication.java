@@ -30,6 +30,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.guice.UndermountGuiceModule;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
 import technology.rocketjump.undermount.rendering.camera.PrimaryCameraWrapper;
@@ -79,7 +80,7 @@ public class CharacterViewApplication extends ApplicationAdapter {
 		hairColor = new HairColorFactory().randomHairColor(random);
 		accessoryColor = new AccessoryColorFactory().randomAccessoryColor(random);
 
-		attributes = new HumanoidEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor);
+		attributes = new HumanoidEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor, GameMaterial.NULL_MATERIAL);
 		attributes.setGender(Gender.NONE);
 		Vector2 facing = new Vector2(0, 0f);
 		Vector2 position = new Vector2(cameraManager.getCamera().viewportWidth * 0.75f, cameraManager.getCamera().viewportHeight * 0.8f);

@@ -22,7 +22,7 @@ public class GameMaterialTest extends PersistenceTestHarness {
 
 		GameMaterial testMaterial = new GameMaterial(
 				"dynamicMaterialId", "materialName", 7L, STONE,
-				Color.BLUE, true, true, true, false, Sets.newHashSet(NULL_MATERIAL));
+				Color.BLUE, true, false, true, true, false, Sets.newHashSet(NULL_MATERIAL));
 		testMaterial.writeTo(stateHolder);
 
 		JSONObject materialJson = stateHolder.dynamicMaterialsJson.getJSONObject(0);

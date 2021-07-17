@@ -216,5 +216,8 @@ public class MessageType {
 	public static final int PARTICLE_RELEASE = 1602; // Used to set particles to expire
 	public static final int GET_PROGRESS_BAR_EFFECT_TYPE = 1603;
 
+	// Weather and fire messages
+	public static final int SPREAD_FIRE = 1700;
+
 
 }

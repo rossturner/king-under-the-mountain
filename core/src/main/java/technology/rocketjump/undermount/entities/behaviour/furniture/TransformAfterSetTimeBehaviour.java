@@ -10,7 +10,6 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.TransformFurnitureMessage;
-import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -54,9 +53,7 @@ public class TransformAfterSetTimeBehaviour extends FurnitureBehaviour implement
 
 		if (timeRemaining <= 0) {
 			if (particleEffectsComponent != null) {
-				for (ParticleEffectInstance effectInstance : particleEffectsComponent.getCurrentParticleInstances()) {
-					messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
-				}
+				particleEffectsComponent.releaseParticles();
 			}
 
 			messageDispatcher.dispatchMessage(MessageType.TRANSFORM_FURNITURE_TYPE, new TransformFurnitureMessage(parentEntity, relatedFurnitureTypes.get(0)));

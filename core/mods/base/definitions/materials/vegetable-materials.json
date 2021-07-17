@@ -2,41 +2,48 @@
   {
     "materialName": "Wheat",
     "materialType": "VEGETABLE",
-    "colorCode": "#d7ce86"
+    "colorCode": "#d7ce86",
+    "combustible": true
   },
   {
     "materialName": "Barley",
     "materialType": "VEGETABLE",
-    "colorCode": "#e29a39"
+    "colorCode": "#e29a39",
+    "combustible": true
   },
   {
     "materialName": "Tomato",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#bf1f20"
+    "colorCode": "#bf1f20",
+    "combustible": true
   },
   {
     "materialName": "Potato",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#ab8f59"
+    "colorCode": "#ab8f59",
+    "combustible": true
   },
   {
     "materialName": "Carrot",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#ff7d1f"
+    "colorCode": "#ff7d1f",
+    "combustible": true
   },
   {
     "materialName": "Hops",
     "materialType": "VEGETABLE",
-    "colorCode": "#9dd248"
+    "colorCode": "#9dd248",
+    "combustible": true
   },
   {
     "materialName": "Corn",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#d4ea58"
+    "colorCode": "#d4ea58",
+    "combustible": true
   },
 
 
@@ -44,25 +51,29 @@
     "materialName": "Loquat",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#fcc04a"
+    "colorCode": "#fcc04a",
+    "combustible": true
   },
   {
     "materialName": "Thimbleberry",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#c7323f"
+    "colorCode": "#c7323f",
+    "combustible": true
   },
   {
     "materialName": "Tamarillo",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#de4720"
+    "colorCode": "#de4720",
+    "combustible": true
   },
   {
     "materialName": "Dragonfruit",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#c52660"
+    "colorCode": "#c52660",
+    "combustible": true
   },
 
 
@@ -70,44 +81,51 @@
     "materialName": "Purple Helmet Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#963482"
+    "colorCode": "#963482",
+    "combustible": true
   },
   {
     "materialName": "Death Cap Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
     "poisonous": true,
-    "colorCode": "#423d3d"
+    "colorCode": "#423d3d",
+    "combustible": true
   },
   {
     "materialName": "Fist Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#4e4c4c"
+    "colorCode": "#4e4c4c",
+    "combustible": true
   },
   {
     "materialName": "Berserker Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#ffb6c1"
+    "colorCode": "#ffb6c1",
+    "combustible": true
   },
   {
     "materialName": "Rociomycota Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#f6f6f6"
+    "colorCode": "#f6f6f6",
+    "combustible": true
   },
   {
     "materialName": "Miltonia Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#185BBF"
+    "colorCode": "#185BBF",
+    "combustible": true
   },
   {
     "materialName": "Elfsbane Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#f4f2bb"
+    "colorCode": "#f4f2bb",
+    "combustible": true
   },
   {
     "materialName": "Sunglow Mushroom",
@@ -125,6 +143,7 @@
     "materialName": "Syrup Powder Mushroom",
     "materialType": "VEGETABLE",
     "edible": true,
-    "colorCode": "#ffe700"
+    "colorCode": "#ffe700",
+    "combustible": true
   }
 ]

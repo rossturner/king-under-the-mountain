@@ -2,6 +2,17 @@
   "name": "Fire",
   "particleEffectTypeName": "Fire",
   "playSoundAssetName": "Burning",
+  "states": {
+    "STARTING": {
+      "duration": 5
+    },
+    "ACTIVE": {
+      "duration": 13
+    },
+    "FADING": {
+      "duration": 3
+    }
+  },
 
   "tags": {
     "ATTACHES_LIGHT_SOURCE": ["#f7ffa9", "#f8cc5d", "#ff8f2c"],

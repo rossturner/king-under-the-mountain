@@ -36,7 +36,6 @@ import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.misc.Destructible;
-import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -142,9 +141,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				jobCompleted(gameContext);
 
 				if (particleEffectsComponent != null) {
-					for (ParticleEffectInstance effectInstance : particleEffectsComponent.getCurrentParticleInstances()) {
-						messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
-					}
+					particleEffectsComponent.releaseParticles();
 				}
 			}
 		}

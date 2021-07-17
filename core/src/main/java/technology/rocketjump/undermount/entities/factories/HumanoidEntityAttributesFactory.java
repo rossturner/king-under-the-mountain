@@ -6,6 +6,8 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.persistence.UserPreferences;
@@ -22,24 +24,28 @@ public class HumanoidEntityAttributesFactory {
 	private final UserPreferences userPreferences;
 	private final TwitchDataStore twitchDataStore;
 	private final Random random = new RandomXS128();
+	private final GameMaterial fleshMaterial;
 
 	@Inject
 	public HumanoidEntityAttributesFactory(HairColorFactory hairColorFactory, SkinColorFactory skinColorFactory,
 										   AccessoryColorFactory accessoryColorFactory, DwarvenNameGenerator nameGenerator,
-										   UserPreferences userPreferences, TwitchDataStore twitchDataStore) {
+										   UserPreferences userPreferences, TwitchDataStore twitchDataStore,
+										   GameMaterialDictionary gameMaterialDictionary) {
 		this.hairColorFactory = hairColorFactory;
 		this.skinColorFactory = skinColorFactory;
 		this.accessoryColorFactory = accessoryColorFactory;
 		this.nameGenerator = nameGenerator;
 		this.userPreferences = userPreferences;
 		this.twitchDataStore = twitchDataStore;
+
+		this.fleshMaterial = gameMaterialDictionary.getByName("Flesh");
 	}
 
 	public HumanoidEntityAttributes create(GameContext gameContext) {
 		HumanoidEntityAttributes attributes = new HumanoidEntityAttributes(random.nextLong(),
 				hairColorFactory.randomHairColor(random),
 				skinColorFactory.randomSkinColor(random),
-				accessoryColorFactory.randomAccessoryColor(random));
+				accessoryColorFactory.randomAccessoryColor(random), fleshMaterial);
 
 		if (twitchSettlerNameReplacementsEnabled()) {
 			for (TwitchViewer twitchViewer : twitchDataStore.getPrioritisedViewers()) {

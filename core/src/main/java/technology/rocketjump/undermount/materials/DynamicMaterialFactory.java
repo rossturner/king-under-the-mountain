@@ -57,7 +57,7 @@ public class DynamicMaterialFactory implements I18nUpdatable, GameContextAware {
 			}
 			GameMaterial created = new GameMaterial(combinedId,
 					"Combined " + StringUtils.join(materialSet, " "), SequentialIdGenerator.nextId(),
-					materialType, combinedColor, isAlcoholic, isPoisonous, isEdible, false, materialSet);
+					materialType, combinedColor, isAlcoholic, false, isPoisonous, isEdible, false, materialSet);
 			created.setI18nKey(i18nDescriptionKey);
 			updateI18nValue(created);
 

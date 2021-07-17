@@ -33,6 +33,7 @@ public class ParticleEffectInstance {
 		this.type = type;
 		this.wrappedInstance = wrappedInstance;
 		this.attachedToEntity = Optional.empty();
+		this.offsetFromWorldPosition = type.getOffsetFromParentEntity().cpy();
 		this.attachedToTile = Optional.of(attachedToTile);
 	}
 

@@ -3,8 +3,7 @@ package technology.rocketjump.undermount.entities.factories;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
-import technology.rocketjump.undermount.entities.behaviour.effects.BaseOngoingEffectBehaviour;
-import technology.rocketjump.undermount.entities.components.BehaviourComponent;
+import technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -32,7 +31,7 @@ public class OngoingEffectEntityFactory {
 	public Entity create(OngoingEffectAttributes attributes, Vector2 worldPosition, GameContext gameContext) {
 		PhysicalEntityComponent physicalComponent = createPhysicalComponent(attributes);
 		physicalComponent.setBaseAsset(NULL_ASSET);
-		BehaviourComponent behaviorComponent = new BaseOngoingEffectBehaviour();
+		FireEffectBehaviour behaviorComponent = new FireEffectBehaviour(); // TODO add this to type definition
 		LocationComponent locationComponent = this.createLocationComponent(worldPosition, attributes);
 
 		Entity entity = new Entity(EntityType.ONGOING_EFFECT, physicalComponent, behaviorComponent, locationComponent, messageDispatcher, gameContext);

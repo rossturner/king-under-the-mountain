@@ -121,6 +121,8 @@ public class I18NTranslatorTest {
 	private ItemEntityAttributesFactory mockItemEntityAttributesFactory;
 	@Mock
 	private TwitchDataStore mockTwitchDataStore;
+	@Mock
+	private GameMaterialDictionary mockMaterialDictionary;
 
 	@Before
 	public void setup() throws IOException {
@@ -150,7 +152,7 @@ public class I18NTranslatorTest {
 		NorseNameGenerator nameGenerator = new NorseNameGenerator();
 		HumanoidEntityAttributes attributes = new HumanoidEntityAttributesFactory(
 				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(), new DwarvenNameGenerator(new NorseNameGenerator()),
-				mockUserPreferences, mockTwitchDataStore).create(new GameContext());
+				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary).create(new GameContext());
 		attributes.setName(nameGenerator.create(88L, Gender.MALE));
 
 		Profession profession = new Profession();

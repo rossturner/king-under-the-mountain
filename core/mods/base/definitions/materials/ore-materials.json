@@ -9,19 +9,22 @@
     "materialName": "Bituminous Coal",
     "materialType": "ORE",
     "prevalence": 2.2,
-    "colorCode": "#3E3E3E"
+    "colorCode": "#3E3E3E",
+    "combustible": true
   },
   {
     "materialName": "Coke",
     "materialType": "ORE",
     "prevalence": 0.0,
-    "colorCode": "#bdbdbd"
+    "colorCode": "#bdbdbd",
+    "combustible": true
   },
   {
     "materialName": "Charcoal",
     "materialType": "ORE",
     "prevalence": 0.0,
-    "colorCode": "#635f5b"
+    "colorCode": "#635f5b",
+    "combustible": true
   },
   {
     "materialName": "Native Gold",

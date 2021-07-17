@@ -6,6 +6,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -59,9 +60,14 @@ public class FurnitureParticleEffectsComponent implements ParentDependentEntityC
 	public void triggerProcessingEffects(Optional<JobTarget> effectTarget) {
 		this.getCurrentParticleInstances().removeIf(p -> p == null || !p.isActive());
 		if (!this.getParticleEffectsWhenProcessing().isEmpty() && this.getCurrentParticleInstances().isEmpty()) {
+			Optional<Entity> optionalParent = Optional.of(parentEntity);
+			if (parentEntity.getType().equals(EntityType.ONGOING_EFFECT)) {
+				optionalParent = Optional.ofNullable(effectTarget.orElse(new JobTarget((Entity)null)).getEntity());
+			}
+
 			for (ParticleEffectType effectType : this.getParticleEffectsWhenProcessing()) {
 				messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(effectType,
-						Optional.of(parentEntity),
+						optionalParent,
 						effectTarget,
 						this.getCurrentParticleInstances()::add));
 			}
@@ -113,6 +119,12 @@ public class FurnitureParticleEffectsComponent implements ParentDependentEntityC
 					particleEffectsWhenInUse.add(particleEffectType);
 				}
 			}
+		}
+	}
+
+	public void releaseParticles() {
+		for (ParticleEffectInstance particleInstance : getCurrentParticleInstances()) {
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, particleInstance);
 		}
 	}
 }

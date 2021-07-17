@@ -11,11 +11,14 @@ import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEf
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
+import technology.rocketjump.undermount.messaging.types.RequestSoundStopMessage;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
+import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -23,13 +26,18 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static technology.rocketjump.undermount.entities.behaviour.effects.BaseOngoingEffectBehaviour.OngoingEffectState.*;
+
 public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructible {
 
-	private Entity parentEntity;
-	private MessageDispatcher messageDispatcher;
+	protected Entity parentEntity;
+	protected MessageDispatcher messageDispatcher;
 
-	private final AtomicReference<ParticleEffectInstance> currentParticleEffect = new AtomicReference<>(null);
-	private ActiveSoundEffect activeSoundEffect;
+	protected final AtomicReference<ParticleEffectInstance> currentParticleEffect = new AtomicReference<>(null);
+	protected ActiveSoundEffect activeSoundEffect;
+
+	protected OngoingEffectState state = OngoingEffectState.STARTING;
+	protected float stateDuration;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
@@ -46,8 +54,17 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
-		ParticleEffectInstance currentEffectInstance = currentParticleEffect.get();
 		OngoingEffectAttributes attributes = (OngoingEffectAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		stateDuration += deltaTime;
+		if (stateDuration > attributes.getType().getStates().get(state).getDuration()) {
+			nextState(gameContext);
+		}
+		if (this.state == null) {
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(parentEntity.getId()));
+			return;
+		}
+
+		ParticleEffectInstance currentEffectInstance = currentParticleEffect.get();
 
 		if (currentEffectInstance != null && !currentEffectInstance.isActive()) {
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, currentEffectInstance);
@@ -55,7 +72,7 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 			currentEffectInstance = null;
 		}
 
-		if (currentEffectInstance == null) {
+		if (currentEffectInstance == null && state.equals(ACTIVE) ) {
 			ParticleEffectType particleEffectType = attributes.getType().getParticleEffectType();
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
 					particleEffectType, Optional.of(parentEntity), Optional.empty(), (particle) -> currentParticleEffect.set(particle)
@@ -79,9 +96,31 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 
 		FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
 		if (particleEffectsComponent != null) {
-			particleEffectsComponent.triggerProcessingEffects(Optional.of(new JobTarget(parentEntity)));
+			Entity containerEntity = parentEntity.getLocationComponent().getContainerEntity();
+			Optional<JobTarget> particleTarget;
+			if (containerEntity == null) {
+				particleTarget = Optional.of(new JobTarget(gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition())));
+			} else {
+				particleTarget = Optional.of(new JobTarget(containerEntity));
+			}
+			particleEffectsComponent.triggerProcessingEffects(particleTarget);
 		}
 
+	}
+
+	protected void nextState(GameContext gameContext) {
+		switch (state) {
+			case STARTING:
+				this.state = ACTIVE;
+				break;
+			case ACTIVE:
+				this.state = FADING;
+				break;
+			case FADING:
+				this.state = null;
+				break;
+		}
+		this.stateDuration = 0f;
 	}
 
 	@Override
@@ -90,6 +129,17 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 		if (effectInstance != null) {
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, effectInstance);
 			currentParticleEffect.set(null);
+		}
+
+		if (activeSoundEffect != null) {
+			messageDispatcher.dispatchMessage(MessageType.REQUEST_STOP_SOUND_LOOP,
+					new RequestSoundStopMessage(activeSoundEffect.getAsset(), parentEntity.getId()));
+			activeSoundEffect = null;
+		}
+
+		FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
+		if (particleEffectsComponent != null) {
+			particleEffectsComponent.releaseParticles();
 		}
 	}
 
@@ -119,13 +169,25 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 		return false;
 	}
 
+	public enum OngoingEffectState {
+
+		STARTING,
+		ACTIVE,
+		FADING
+
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
-		// Nothing to write
+		if (!state.equals(STARTING)) {
+			asJson.put("state", state);
+		}
+		asJson.put("stateDuration", stateDuration);
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
-		// Nothing to read
+		this.state = EnumParser.getEnumValue(asJson, "state", OngoingEffectState.class, STARTING);
+		this.stateDuration = asJson.getFloatValue("stateDuration");
 	}
 }

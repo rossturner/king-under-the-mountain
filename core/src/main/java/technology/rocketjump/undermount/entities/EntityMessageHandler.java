@@ -57,7 +57,6 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
-import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.Room;
@@ -514,9 +513,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				Entity furnitureEntity = (Entity)msg.extraInfo;
 				FurnitureParticleEffectsComponent particleEffectsComponent = furnitureEntity.getComponent(FurnitureParticleEffectsComponent.class);
 				if (particleEffectsComponent != null) {
-					for (ParticleEffectInstance particleInstance : particleEffectsComponent.getCurrentParticleInstances()) {
-						messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, particleInstance);
-					}
+					particleEffectsComponent.releaseParticles();
 				}
 				return true;
 			}

@@ -2,21 +2,25 @@
   {
     "materialName": "Tobacco cloth",
     "materialType": "CLOTH",
-    "colorCode": "#bab496"
+    "colorCode": "#bab496",
+    "combustible": true
   },
   {
     "materialName": "Hemp",
     "materialType": "CLOTH",
-    "colorCode": "#b28a6d"
+    "colorCode": "#b28a6d",
+    "combustible": true
   },
   {
     "materialName": "Light hemp",
     "materialType": "CLOTH",
-    "colorCode": "#c6baa2"
+    "colorCode": "#c6baa2",
+    "combustible": true
   },
   {
     "materialName": "Bronzed hemp",
     "materialType": "CLOTH",
-    "colorCode": "#d29849"
+    "colorCode": "#d29849",
+    "combustible": true
   }
 ]

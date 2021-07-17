@@ -12,6 +12,8 @@ import technology.rocketjump.undermount.assets.entities.wallcap.WallCapAssetDict
 import java.util.HashMap;
 import java.util.Map;
 
+import static technology.rocketjump.undermount.assets.entities.model.NullEntityAsset.NULL_ASSET;
+
 @Singleton
 public class CompleteAssetDictionary {
 
@@ -26,6 +28,7 @@ public class CompleteAssetDictionary {
 		allAssetsByName.putAll(itemEntityAssetDictionary.getAll());
 		allAssetsByName.putAll(furnitureEntityAssetDictionary.getAll());
 		allAssetsByName.putAll(wallCapAssetDictionary.getAll());
+		allAssetsByName.put(NULL_ASSET.getUniqueName(), NULL_ASSET);
 	}
 
 	public EntityAsset getByUniqueName(String uniqueAssetName) {

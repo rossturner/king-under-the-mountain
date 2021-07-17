@@ -211,6 +211,11 @@ public class Entity implements Persistable, Disposable {
 			}
 		}
 
+//		AttachedEntityComponent attachedEntityComponent = getComponent(AttachedEntityComponent.class);
+//		if (attachedEntityComponent != null) {
+//
+//		}
+
 		return attachedEntities;
 	}
 

@@ -89,15 +89,15 @@ public class ItemViewerApplication extends ApplicationAdapter {
 		attributes.setMaterial(gameMaterialDictionary.getByName("Wheat"));
 
 		GameMaterial testMetal = new GameMaterial("Test metal material", -1L, GameMaterialType.METAL, "#DDDDDE",
-				null, null, null, false, false, false, false);
+				null, null, null, false, false, false, false, false);
 		attributes.setMaterial(testMetal);
 
 		GameMaterial testCloth = new GameMaterial("Test cloth material", -1L, GameMaterialType.CLOTH, "#cda771",
-				null, null, null, false, false, false, false);
+				null, null, null, false, false, false, false, false);
 		attributes.setMaterial(testCloth);
 
 		GameMaterial testLiquid = new GameMaterial("Test liquid material", -1L, GameMaterialType.LIQUID, "#45daff",
-				null, null, null, false, false, false, false);
+				null, null, null, false, false, false, false, false);
 		attributes.setMaterial(testLiquid);
 
 		attributes.setColor(ColoringLayer.METAL_COLOR, new Color(0.7f, 0.7f, 0.8f, 1f));

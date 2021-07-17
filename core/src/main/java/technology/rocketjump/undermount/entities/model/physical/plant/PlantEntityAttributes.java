@@ -7,6 +7,8 @@ import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.environment.model.Season;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -105,6 +107,11 @@ public class PlantEntityAttributes implements EntityAttributes {
 		cloned.growthStageProgress = this.growthStageProgress;
 
 		return cloned;
+	}
+
+	@Override
+	public Map<GameMaterialType, GameMaterial> getMaterials() {
+		return Map.of(species.getMaterial().getMaterialType(), species.getMaterial());
 	}
 
 	public int getGrowthStageCursor() {

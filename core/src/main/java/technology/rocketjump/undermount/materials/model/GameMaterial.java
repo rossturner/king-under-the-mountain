@@ -38,6 +38,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 	private List<String> oreNames;
 
 	private boolean alcoholic;
+	private boolean combustible;
 	private boolean edible;
 	private boolean poisonous;
 	private boolean quenchesThirst;
@@ -52,7 +53,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 	private boolean useInRandomGeneration = true;
 
 	public static final GameMaterial NULL_MATERIAL = new GameMaterial("null-material", -1, GameMaterialType.OTHER, "#FF00FF", RockGroup.None,
-			0f, null, false, false, false, false);
+			0f, null, false, false,false, false, false);
 
 	// Empty constructor for initialising from saved game
 	public GameMaterial() {
@@ -62,7 +63,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 
 	// Simple constructor for testing
 	public GameMaterial(String materialName, long materialId, GameMaterialType type) {
-		this(materialName, materialId, type, null, null, null, null, false, false, false, false);
+		this(materialName, materialId, type, null, null, null, null, false, false, false, false, false);
 	}
 
 	// TODO try to remove usage of this
@@ -72,7 +73,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 
 	// Constructor for dynamically-created combined materials
 	public GameMaterial(String dynamicMaterialId, String materialName, long materialId, GameMaterialType type,
-						Color color, boolean alcoholic, boolean poisonous, boolean edible, boolean quenchesThirst, Set<GameMaterial> constituentMaterials) {
+						Color color, boolean alcoholic, boolean combustible, boolean poisonous, boolean edible, boolean quenchesThirst, Set<GameMaterial> constituentMaterials) {
 		this.materialName = materialName;
 		this.materialId = materialId;
 		this.materialType = type;
@@ -82,6 +83,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 		this.prevalence = null;
 		this.oreNames = null;
 		this.alcoholic = alcoholic;
+		this.combustible = combustible;
 		this.poisonous = poisonous;
 		this.edible = edible;
 		this.quenchesThirst = quenchesThirst;
@@ -94,6 +96,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 						@JsonProperty("materialType") GameMaterialType materialType, @JsonProperty("colorCode") String colorCode,
 						@JsonProperty("rockGroup") RockGroup rockGroup, @JsonProperty("prevalence") Float prevalence,
 						@JsonProperty("oreNames") List<String> oreNames, @JsonProperty("alcoholic") boolean alcoholic,
+						@JsonProperty("combustible") boolean combustible,
 						@JsonProperty("edible") boolean edible, @JsonProperty("poisonous") boolean poisonous,
 						@JsonProperty("quenchesThirst") boolean quenchesThirst) {
 		this.materialName = materialName;
@@ -103,6 +106,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 		this.prevalence = prevalence;
 		this.oreNames = oreNames;
 		this.alcoholic = alcoholic;
+		this.combustible = combustible;
 		this.edible = edible;
 		this.poisonous = poisonous;
 		this.quenchesThirst = quenchesThirst;
@@ -166,6 +170,10 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 
 	public boolean isAlcoholic() {
 		return alcoholic;
+	}
+
+	public boolean isCombustible() {
+		return combustible;
 	}
 
 	public boolean isEdible() {
@@ -286,6 +294,9 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 		if (alcoholic) {
 			asJson.put("alcoholic", true);
 		}
+		if (combustible) {
+			asJson.put("combustible", true);
+		}
 		if (edible) {
 			asJson.put("edible", true);
 		}
@@ -364,6 +375,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 		}
 
 		this.alcoholic = asJson.getBooleanValue("alcoholic");
+		this.combustible = asJson.getBooleanValue("combustible");
 		this.edible = asJson.getBooleanValue("edible");
 		this.poisonous = asJson.getBooleanValue("poisonous");
 

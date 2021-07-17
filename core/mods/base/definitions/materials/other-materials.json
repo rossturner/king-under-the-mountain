@@ -82,6 +82,12 @@
   },
   {
     "materialName": "Plant",
-    "materialType": "OTHER"
+    "materialType": "OTHER",
+    "combustible": true
+  },
+  {
+    "materialName": "Flesh",
+    "materialType": "OTHER",
+    "combustible": true
   }
 ]

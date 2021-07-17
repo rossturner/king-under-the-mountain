@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Color;
 import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidBodyType;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -13,6 +15,7 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
@@ -33,6 +36,7 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 	private HumanoidName name;
 	private Consciousness consciousness = AWAKE;
 	private Sanity sanity = SANE;
+	private GameMaterial bodyMaterial;
 
 	static List<HumanoidBodyType> bodyTypesToPickFrom = Arrays.asList(HumanoidBodyType.AVERAGE, HumanoidBodyType.FAT, HumanoidBodyType.STRONG);
 
@@ -40,7 +44,7 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 
 	}
 
-	public HumanoidEntityAttributes(long seed, Color hairColor, Color skinColor, Color accessoryColor) {
+	public HumanoidEntityAttributes(long seed, Color hairColor, Color skinColor, Color accessoryColor, GameMaterial fleshMaterial) {
 		this.seed = seed;
 		this.race = Race.DWARF;
 		Random random = new Random(seed);
@@ -51,6 +55,7 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		this.eyeColor = Color.BLACK;
 		this.hasHair = true;
 		this.accessoryColor = accessoryColor;
+		this.bodyMaterial = fleshMaterial;
 	}
 
 	@Override
@@ -67,6 +72,11 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		cloned.consciousness= this.consciousness;
 		cloned.sanity = this.sanity;
 		return cloned;
+	}
+
+	@Override
+	public Map<GameMaterialType, GameMaterial> getMaterials() {
+		return Map.of(bodyMaterial.getMaterialType(), bodyMaterial);
 	}
 
 	public Race getRace() {

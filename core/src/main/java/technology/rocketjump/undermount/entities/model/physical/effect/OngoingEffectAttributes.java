@@ -4,9 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.graphics.Color;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+
+import java.util.Map;
 
 public class OngoingEffectAttributes implements EntityAttributes {
 
@@ -40,6 +44,11 @@ public class OngoingEffectAttributes implements EntityAttributes {
 	@Override
 	public EntityAttributes clone() {
 		return null;
+	}
+
+	@Override
+	public Map<GameMaterialType, GameMaterial> getMaterials() {
+		return Map.of();
 	}
 
 	@Override
