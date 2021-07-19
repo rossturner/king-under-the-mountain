@@ -42,9 +42,9 @@ public class AttachedLightSourceComponent implements ParentDependentEntityCompon
 	}
 
 	public void updatePosition() {
-		if (parentEntity.getLocationComponent().getWorldPosition() != null) {
+		if (parentEntity.getLocationComponent().getWorldOrParentPosition() != null) {
 			// TODO adjust by light position offset based on orientation, currently glued to parent entity position + light radius in Y direction
-			light.setWorldPosition(parentEntity.getLocationComponent().getWorldPosition().cpy().add(0, parentEntity.getLocationComponent().getRadius()));
+			light.setWorldPosition(parentEntity.getLocationComponent().getWorldOrParentPosition().cpy().add(0, parentEntity.getLocationComponent().getRadius()));
 			setUpdateRequired();
 		}
 	}

@@ -27,9 +27,6 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ChangeFloorMessage;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.messaging.MessageType.*;
@@ -99,15 +96,17 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 
 	private void spreadFireFrom(Vector2 location) {
 		GridPoint2 centre = toGridPoint(location);
-		List<CompassDirection> compassDirections = Arrays.asList(CompassDirection.values());
-		Collections.shuffle(compassDirections, gameContext.getRandom());
-		for (int cursor = 0; cursor < NUM_DIRECTIONS_TO_SPREAD_FIRE_IN; cursor++) {
-			CompassDirection direction = compassDirections.get(cursor);
+		MapTile centreTile = gameContext.getAreaMap().getTile(centre);
+		if (centreTile == null) {
+			return;
+		}
+		for (CompassDirection direction : CompassDirection.DIAGONAL_DIRECTIONS) {
+			MapTile nextTile = centreTile;
 			for (int distance = 1; distance <= MAX_DISTANCE_TO_SPREAD_FIRE_IN; distance++) {
-				MapTile nextTile = gameContext.getAreaMap().getTile(
-						centre.x + (direction.getXOffset() * distance),
-						centre.y + (direction.getYOffset() * distance)
-				);
+				nextTile = selectNextTile(nextTile, direction);
+				if (nextTile == null) {
+					break;
+				}
 
 				if (nextTile.hasWall()) {
 					if (nextTile.getWall().getMaterial().isCombustible()) {
@@ -136,6 +135,25 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 
 			}
 		}
+	}
+
+	/**
+	 * This method is used to pick either the diagonal direction or one of the 2 adjacent orthogonal directions
+	 */
+	private MapTile selectNextTile(MapTile tile, CompassDirection diagonalDirection) {
+		int xOffset = diagonalDirection.getXOffset();
+		int yOffset = diagonalDirection.getYOffset();
+		float roll = gameContext.getRandom().nextFloat();
+		if (roll < 0.33f) {
+			xOffset = 0;
+		} else if (roll < 0.66f) {
+			yOffset = 0;
+		}
+
+		return gameContext.getAreaMap().getTile(
+				tile.getTileX() + xOffset,
+				tile.getTileY() + yOffset
+		);
 	}
 
 	private void createFireInTile(MapTile targetTile) {

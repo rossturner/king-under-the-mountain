@@ -9,9 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.utils.Disposable;
 import com.google.inject.Inject;
+import technology.rocketjump.undermount.entities.components.AttachedEntitiesComponent;
 import technology.rocketjump.undermount.entities.components.AttachedLightSourceComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
@@ -266,10 +268,7 @@ public class WorldRenderer implements Disposable {
 					}
 
 					entityRenderer.render(entity, basicSpriteBatch, renderMode, null, null, multiplyColor);
-					AttachedLightSourceComponent attachedLightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
-					if (lightsToRenderThisFrame != null && attachedLightSourceComponent != null && attachedLightSourceComponent.isEnabled()) {
-						lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
-					}
+					addLightSourcesFromEntity(entity, tiledMap, lightsToRenderThisFrame);
 
 					particlesInFrontOfEntity.forEach(p -> p.getWrappedInstance().draw(basicSpriteBatch, null, renderMode));
 
@@ -290,6 +289,20 @@ public class WorldRenderer implements Disposable {
 
 		if (renderMode.equals(RenderMode.DIFFUSE)) { // So this only happens once per frame
 			messageDispatcher.dispatchMessage(MessageType.AMBIENCE_UPDATE, new AmbienceMessage(outdoorTiles, riverTiles.size(), totalTiles));
+		}
+	}
+
+	private void addLightSourcesFromEntity(Entity entity, TiledMap tiledMap, List<PointLight> lightsToRenderThisFrame) {
+		AttachedLightSourceComponent attachedLightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
+		if (lightsToRenderThisFrame != null && attachedLightSourceComponent != null && attachedLightSourceComponent.isEnabled()) {
+			lightsToRenderThisFrame.add(attachedLightSourceComponent.getLightForRendering(tiledMap, lightProcessor));
+		}
+
+		AttachedEntitiesComponent attachedEntitiesComponent = entity.getComponent(AttachedEntitiesComponent.class);
+		if (attachedEntitiesComponent != null) {
+			for (AttachedEntity attachedEntity : attachedEntitiesComponent.getAttachedEntities()) {
+				addLightSourcesFromEntity(attachedEntity.entity, tiledMap, lightsToRenderThisFrame);
+			}
 		}
 	}
 

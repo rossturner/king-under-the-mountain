@@ -241,8 +241,8 @@ public class PrimaryCameraWrapper implements GameContextAware, Persistable, Tele
 		targetZoom = 2.0f;
 		this.worldWidth = areaMap.getWidth();
 		this.worldHeight = areaMap.getHeight();
-		camera.position.x = worldWidth / 2;
-		camera.position.y = worldHeight / 2;
+		camera.position.x = worldWidth / 2f;
+		camera.position.y = worldHeight / 2f;
 
 		if (areaMap.getEmbarkPoint() != null) {
 			moveTo(areaMap.getEmbarkPoint());

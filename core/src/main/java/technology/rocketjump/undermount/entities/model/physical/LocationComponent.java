@@ -18,6 +18,8 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
+import static technology.rocketjump.undermount.entities.model.EntityType.ONGOING_EFFECT;
+
 public class LocationComponent implements ParentDependentEntityComponent {
 
 	private Vector2 worldPosition; // can be null to denote off-map or being carried
@@ -118,7 +120,7 @@ public class LocationComponent implements ParentDependentEntityComponent {
 		if (parentEntity != null) {
 			AttachedLightSourceComponent attachedLightSourceComponent = parentEntity.getComponent(AttachedLightSourceComponent.class);
 			if (attachedLightSourceComponent != null) {
-				if (newPosition == null) {
+				if (newPosition == null && !parentEntity.getType().equals(ONGOING_EFFECT)) {
 					attachedLightSourceComponent.setEnabled(false);
 				} else {
 					attachedLightSourceComponent.updatePosition();

@@ -44,17 +44,29 @@ public class OnFireStatus extends StatusEffect {
 
 	@Override
 	public boolean checkForRemoval(GameContext gameContext) {
-		return false;
+		if (litFire) {
+			AttachedEntitiesComponent attachedEntitiesComponent = parentEntity.getComponent(AttachedEntitiesComponent.class);
+			return attachedEntitiesComponent == null || attachedEntitiesComponent.getAttachedEntities().stream()
+					.noneMatch(a -> a.entity.getBehaviourComponent() instanceof FireEffectBehaviour);
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
+
+		if (litFire) {
+			asJson.put("litFire", true);
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		super.readFrom(asJson, savedGameStateHolder, relatedStores);
+
+		this.litFire = asJson.getBooleanValue("litFire");
 	}
 
 }
