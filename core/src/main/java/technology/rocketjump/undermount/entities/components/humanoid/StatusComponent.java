@@ -3,7 +3,6 @@ package technology.rocketjump.undermount.entities.components.humanoid;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
-import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -61,7 +60,12 @@ public class StatusComponent implements ParentDependentEntityComponent {
 
 	@Override
 	public EntityComponent clone(MessageDispatcher messageDispatcher, GameContext gameContext) {
-		throw new NotImplementedException("Not implemented: clone() in " + this.getClass().getSimpleName());
+		StatusComponent clone = new StatusComponent();
+		clone.init(parentEntity, messageDispatcher, gameContext);
+		for (Map.Entry<Class<? extends StatusEffect>, StatusEffect> entry : byClassType.entrySet()) {
+			clone.byClassType.put(entry.getKey(), entry.getValue());
+		}
+		return clone;
 	}
 
 	@Override

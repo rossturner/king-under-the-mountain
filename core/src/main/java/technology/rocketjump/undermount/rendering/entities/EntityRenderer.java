@@ -100,9 +100,9 @@ public class EntityRenderer implements Disposable {
 		for (Map.Entry<EntityAssetType, Entity> attached : entityRenderSteps.getAttachedEntities()) {
 			AttachmentDescriptor attachment = entityRenderSteps.getAttachmentPoint(attached.getKey());
 			if (attachment != null) {
-				Vector2 attachmentWorldPosition = attachment.getOffsetPosition();
+				Vector2 attachmentOffsetPosition = attachment.getOffsetPosition();
 
-				EntityPartRenderStep attachedRenderStep = new EntityPartRenderStep(null, attachmentWorldPosition, entity);
+				EntityPartRenderStep attachedRenderStep = new EntityPartRenderStep(null, attachmentOffsetPosition, entity);
 				attachedRenderStep.setOtherEntity(attached.getValue());
 
 				int renderLayer = renderLayerDictionary.getRenderingLayer(entity.getType(),

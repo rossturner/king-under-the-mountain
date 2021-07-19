@@ -9,6 +9,7 @@ public class EntityAssetType {
 	public final String name;
 
 	public static final EntityAssetType NULL_ENTITY_ASSET_TYPE = new EntityAssetType("Null entity asset type");
+	public static final String UNSPECIFIED = "UNSPECIFIED";
 
 	public EntityAssetType(String name) {
 		this.name = name;

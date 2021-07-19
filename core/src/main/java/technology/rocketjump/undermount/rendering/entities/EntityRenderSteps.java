@@ -66,8 +66,12 @@ public class EntityRenderSteps {
 		return attachedEntities.entrySet();
 	}
 
-	public AttachmentDescriptor getAttachmentPoint(EntityAssetType key) {
-		return attachmentPoints.get(key);
+	public AttachmentDescriptor getAttachmentPoint(EntityAssetType entityAssetType) {
+		if (entityAssetType.name.equals(EntityAssetType.UNSPECIFIED)) {
+			return AttachmentDescriptor.UNSPECIFIED_ATTACHMENT;
+		} else {
+			return attachmentPoints.get(entityAssetType);
+		}
 	}
 
 }

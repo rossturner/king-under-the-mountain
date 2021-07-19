@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.GridPoint2;
 import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -44,12 +45,14 @@ public class FurnitureBehaviour implements BehaviourComponent {
 	protected List<FurnitureType> relatedFurnitureTypes = new ArrayList<>(0);
 	protected List<GameMaterial> relatedMaterials = new ArrayList<>(0);
 	protected JobPriority priority = JobPriority.NORMAL;
+	private double lastUpdateGameTime;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		this.locationComponent = parentEntity.getLocationComponent();
 		this.messageDispatcher = messageDispatcher;
 		this.parentEntity = parentEntity;
+		this.lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
 	}
 
 	@Override
@@ -107,6 +110,14 @@ public class FurnitureBehaviour implements BehaviourComponent {
 					}
 				}
 			}
+		}
+
+		double gameTime = gameContext.getGameClock().getCurrentGameTime();
+		double elapsed = gameTime - lastUpdateGameTime;
+		lastUpdateGameTime = gameTime;
+		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
+		if (statusComponent != null) {
+			statusComponent.infrequentUpdate(elapsed);
 		}
 	}
 

@@ -4,7 +4,6 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.utils.Disposable;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
@@ -32,7 +31,7 @@ import static technology.rocketjump.undermount.mapping.tile.roof.TileRoofState.O
 import static technology.rocketjump.undermount.materials.model.GameMaterialType.EARTH;
 
 @Singleton
-public class PlantMessageHandler implements GameContextAware, Telegraph, Disposable {
+public class PlantMessageHandler implements GameContextAware, Telegraph {
 
 	private final int MAX_NEIGHBOUR_SHRUBS_ALLOWED;
 	private final MessageDispatcher messageDispatcher;
@@ -56,11 +55,6 @@ public class PlantMessageHandler implements GameContextAware, Telegraph, Disposa
 		MAX_NEIGHBOUR_SHRUBS_ALLOWED = constantsRepo.getWorldConstants().getMaxNeighbouringShrubs();
 		messageDispatcher.addListener(this, MessageType.PLANT_SEED_DISPERSED);
 		messageDispatcher.addListener(this, MessageType.PLANT_CREATION_REQUEST);
-	}
-
-	@Override
-	public void dispose() {
-		messageDispatcher.removeListener(this, MessageType.PLANT_SEED_DISPERSED);
 	}
 
 	@Override

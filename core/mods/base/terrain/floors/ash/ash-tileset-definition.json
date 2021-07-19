@@ -1,0 +1,15 @@
+{
+  "floorTypeName": "ash",
+  "i18nKey": "FLOOR.ASH",
+  "materialType": "OTHER",
+  "type": "floor",
+  "numSprites": 5,
+  "layer": 15,
+  "overlapType": {
+    "overlapName": "ground"
+  },
+  "useMaterialColor": false,
+  "lowColorCode": "#2c2927",
+  "highColorCode": "#4a4442",
+  "speedModifier": 0.7
+}

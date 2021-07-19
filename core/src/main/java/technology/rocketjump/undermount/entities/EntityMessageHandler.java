@@ -17,10 +17,7 @@ import technology.rocketjump.undermount.entities.behaviour.furniture.*;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.BrokenDwarfBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
-import technology.rocketjump.undermount.entities.components.AttachedLightSourceComponent;
-import technology.rocketjump.undermount.entities.components.BehaviourComponent;
-import technology.rocketjump.undermount.entities.components.InventoryComponent;
-import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
+import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
@@ -256,6 +253,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						InventoryComponent containerInventory = containerEntity.getComponent(InventoryComponent.class);
 						EquippedItemComponent equippedItemComponent = containerEntity.getComponent(EquippedItemComponent.class);
 						HaulingComponent haulingComponent = containerEntity.getComponent(HaulingComponent.class);
+						AttachedEntitiesComponent attachedEntitiesComponent = containerEntity.getComponent(AttachedEntitiesComponent.class);
 
 						if (haulingComponent != null && haulingComponent.getHauledEntity() != null && haulingComponent.getHauledEntity().getId() == removedEntity.getId()) {
 							haulingComponent.clearHauledEntity();
@@ -267,6 +265,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						}
 						if (containerInventory != null) {
 							containerInventory.remove(removedEntity.getId());
+						}
+						if (attachedEntitiesComponent != null) {
+							attachedEntitiesComponent.remove(removedEntity);
+							if (attachedEntitiesComponent.getAttachedEntities().isEmpty()) {
+								containerEntity.removeComponent(AttachedEntitiesComponent.class);
+							}
 						}
 					}
 				}

@@ -47,6 +47,11 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 
 	}
 
+	public void setToFade() {
+		this.state = FADING;
+		this.stateDuration = 0f;
+	}
+
 	@Override
 	protected void nextState(GameContext gameContext) {
 		switch (state) {

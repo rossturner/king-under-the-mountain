@@ -75,6 +75,9 @@ public class RenderLayerDictionary {
 	}
 
 	public int getRenderingLayer(EntityType entityType, EntityAssetOrientation orientation, EntityAssetType assetType) {
+		if (assetType.name.equals(EntityAssetType.UNSPECIFIED)) {
+			return 100;
+		}
 		Map<EntityAssetOrientation, Map<EntityAssetType, Integer>> orientationToAssetTypeMap = layeringMap.get(entityType);
 		if (orientationToAssetTypeMap == null) {
 			Logger.error("Could not find layering information for entity type: " + entityType.toString() + " in " + this.getClass().getSimpleName());

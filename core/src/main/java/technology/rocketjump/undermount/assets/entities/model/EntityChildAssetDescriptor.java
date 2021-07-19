@@ -7,6 +7,12 @@ public class EntityChildAssetDescriptor {
 	private StorableVector2 offsetPixels;
 	private Integer overrideRenderLayer;
 
+	public static final EntityChildAssetDescriptor UNSPECIFIED_CHILD_ASSET = new EntityChildAssetDescriptor();
+	static {
+		UNSPECIFIED_CHILD_ASSET.setType(new EntityAssetType(EntityAssetType.UNSPECIFIED));
+		UNSPECIFIED_CHILD_ASSET.setOffsetPixels(new StorableVector2());
+	}
+
 	public EntityAssetType getType() {
 		return type;
 	}

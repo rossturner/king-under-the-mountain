@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBe
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.plant.*;
@@ -105,6 +106,7 @@ public class PlantBehaviour implements BehaviourComponent {
 		double currentGameTime = gameContext.getGameClock().getCurrentGameTime();
 		double elapsedGameSeasons = gameContext.getGameClock().gameHoursAsNumSeasons(currentGameTime - lastUpdateGameTime);
 		elapsedGameSeasons = elapsedGameSeasons * (double) attributes.getGrowthRate();
+		double elapsedTime = currentGameTime - lastUpdateGameTime;
 		lastUpdateGameTime = currentGameTime;
 
 		boolean dayElapsed = false;
@@ -184,6 +186,11 @@ public class PlantBehaviour implements BehaviourComponent {
 		}
 
 		AttachedLightSourceBehaviour.infrequentUpdate(gameContext, parentEntity);
+
+		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
+		if (statusComponent != null) {
+			statusComponent.infrequentUpdate(elapsedTime);
+		}
 	}
 
 	private void growthStageComplete(MapTile parentEntityTile) {

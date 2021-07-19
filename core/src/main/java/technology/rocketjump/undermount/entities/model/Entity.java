@@ -8,10 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
-import technology.rocketjump.undermount.entities.components.BehaviourComponent;
-import technology.rocketjump.undermount.entities.components.EntityComponent;
-import technology.rocketjump.undermount.entities.components.InventoryComponent;
-import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
+import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -211,10 +208,10 @@ public class Entity implements Persistable, Disposable {
 			}
 		}
 
-//		AttachedEntityComponent attachedEntityComponent = getComponent(AttachedEntityComponent.class);
-//		if (attachedEntityComponent != null) {
-//
-//		}
+		AttachedEntitiesComponent attachedEntityComponent = getComponent(AttachedEntitiesComponent.class);
+		if (attachedEntityComponent != null) {
+			attachedEntities.addAll(attachedEntityComponent.getAttachedEntities());
+		}
 
 		return attachedEntities;
 	}

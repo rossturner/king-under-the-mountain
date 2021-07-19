@@ -66,12 +66,15 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 
 						for (Entity entity : new ArrayList<>(tile.getEntities())) {
 							if (entity.getType().equals(EntityType.HUMANOID)) {
-//								messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(entity, DeathReason.UNKNOWN));
+//								StatusComponent statusComponent = entity.getOrCreateComponent(StatusComponent.class);
+//								statusComponent.apply(new OnFireStatus());
 							}
 						}
 
-						ongoingEffectEntityFactory.create(ongoingEffectAttributesFactory.createByTypeName("Fire"),
-							message.getWorldPosition(), gameContext);
+						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
+
+//						ongoingEffectEntityFactory.create(ongoingEffectAttributesFactory.createByTypeName("Fire"),
+//							message.getWorldPosition(), gameContext);
 
 
 //						messageDispatcher.dispatchMessage(MessageType.ITEM_CREATION_REQUEST, new ItemCreationRequestMessage(itemTypeDictionary.getByName("Product-Barrel"), (entity) -> {

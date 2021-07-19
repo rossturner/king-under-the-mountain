@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
@@ -56,6 +57,11 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		OngoingEffectAttributes attributes = (OngoingEffectAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		Entity containerEntity = parentEntity.getLocationComponent().getContainerEntity();
+		if (state.equals(STARTING) && containerEntity != null && containerEntity.getType().equals(EntityType.HUMANOID)) {
+			nextState(gameContext);
+		}
+
 		stateDuration += deltaTime;
 		if (stateDuration > attributes.getType().getStates().get(state).getDuration()) {
 			nextState(gameContext);
@@ -75,14 +81,19 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 
 		if (currentEffectInstance == null && state.equals(ACTIVE)) {
 			ParticleEffectType particleEffectType = attributes.getType().getParticleEffectType();
+			Entity entityToAttachParticleTo = parentEntity;
+			if (containerEntity != null) {
+				entityToAttachParticleTo = containerEntity;
+			}
+
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-					particleEffectType, Optional.of(parentEntity), Optional.empty(), (particle) -> {
+					particleEffectType, Optional.of(entityToAttachParticleTo), Optional.empty(), (particle) -> {
 				particle.getWrappedInstance().setTint(HexColors.get(attributes.getType().getInitialColor()));
 				currentParticleEffect.set(particle);
 			}));
 		}
 
-		if (attributes.getType().getPlaySoundAsset() != null) {
+		if (attributes.getType().getPlaySoundAsset() != null && !STARTING.equals(state)) {
 			if (activeSoundEffect != null) {
 				if (activeSoundEffect.completed()) {
 					activeSoundEffect = null;
@@ -99,7 +110,6 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 
 		FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
 		if (particleEffectsComponent != null) {
-			Entity containerEntity = parentEntity.getLocationComponent().getContainerEntity();
 			Optional<JobTarget> particleTarget;
 			if (containerEntity == null) {
 				particleTarget = Optional.of(new JobTarget(gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition())));

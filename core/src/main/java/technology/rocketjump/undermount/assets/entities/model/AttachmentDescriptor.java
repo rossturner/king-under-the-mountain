@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.assets.entities.model;
 
 import com.badlogic.gdx.math.Vector2;
 
+import static technology.rocketjump.undermount.assets.entities.model.EntityChildAssetDescriptor.UNSPECIFIED_CHILD_ASSET;
 import static technology.rocketjump.undermount.rendering.entities.EntityRenderer.PIXELS_PER_TILE;
 
 public class AttachmentDescriptor {
@@ -9,6 +10,10 @@ public class AttachmentDescriptor {
 	private final EntityAssetType attachmentType;
 	private final Vector2 offsetPosition;
 	private final Integer overrideRenderLayer;
+
+	public static final AttachmentDescriptor UNSPECIFIED_ATTACHMENT = new AttachmentDescriptor(
+			UNSPECIFIED_CHILD_ASSET, new Vector2()
+	);
 
 	public AttachmentDescriptor(EntityChildAssetDescriptor attachmentDescriptor, Vector2 parentPosition) {
 		this.attachmentType = attachmentDescriptor.getType();

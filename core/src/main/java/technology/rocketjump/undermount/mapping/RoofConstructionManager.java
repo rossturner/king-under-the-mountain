@@ -18,10 +18,7 @@ import technology.rocketjump.undermount.messaging.types.RoofCollapseMessage;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState.*;
@@ -211,10 +208,39 @@ public class RoofConstructionManager implements GameContextAware {
 			for (int xCursor = mapTile.getTileX()-ROOF_SUPPORT_MAX_DISTANCE; xCursor <= mapTile.getTileX()+ROOF_SUPPORT_MAX_DISTANCE; xCursor++) {
 				MapTile tile = gameContext.getAreaMap().getTile(xCursor, yCursor);
 				if (tile != null && (tile.hasWall() || containsSupport(tile))) {
-					return true;
+					if (continuousRoofBetween(mapTile, tile)) {
+						return true;
+					}
 				}
 			}
 		}
+		return false;
+	}
+
+	private boolean continuousRoofBetween(MapTile tileA, MapTile tileB) {
+		Deque<MapTile> frontier = new ArrayDeque<>();
+		Set<MapTile> explored = new HashSet<>();
+
+		frontier.add(tileA);
+
+		while (!frontier.isEmpty()) {
+			MapTile currentTile = frontier.removeFirst();
+
+			if (currentTile.equals(tileB)) {
+				return true;
+			}
+
+			explored.add(currentTile);
+
+			for (CompassDirection direction : CompassDirection.CARDINAL_DIRECTIONS) {
+				MapTile nextTile = gameContext.getAreaMap().getTile(currentTile.getTilePosition().x + direction.getXOffset(), currentTile.getTilePosition().y + direction.getYOffset());
+				if (!explored.contains(nextTile) && !nextTile.getRoof().getState().equals(TileRoofState.OPEN)) {
+					frontier.add(nextTile);
+				}
+			}
+
+		}
+
 		return false;
 	}
 

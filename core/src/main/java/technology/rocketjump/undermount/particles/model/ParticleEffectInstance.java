@@ -24,7 +24,11 @@ public class ParticleEffectInstance {
 		this.type = type;
 		this.wrappedInstance = wrappedInstance;
 		this.attachedToEntity = Optional.of(attachedToEntity);
-		this.offsetFromWorldPosition = type.getOffsetFromParentEntity().cpy();
+		if (type.getOffsetFromParentEntity() != null) {
+			this.offsetFromWorldPosition = type.getOffsetFromParentEntity().cpy();
+		} else {
+			this.offsetFromWorldPosition = new Vector2();
+		}
 		this.attachedToTile = Optional.empty();
 	}
 
@@ -33,7 +37,11 @@ public class ParticleEffectInstance {
 		this.type = type;
 		this.wrappedInstance = wrappedInstance;
 		this.attachedToEntity = Optional.empty();
-		this.offsetFromWorldPosition = type.getOffsetFromParentEntity().cpy();
+		if (type.getOffsetFromParentEntity() != null) {
+			this.offsetFromWorldPosition = type.getOffsetFromParentEntity().cpy();
+		} else {
+			this.offsetFromWorldPosition = new Vector2();
+		}
 		this.attachedToTile = Optional.of(attachedToTile);
 	}
 

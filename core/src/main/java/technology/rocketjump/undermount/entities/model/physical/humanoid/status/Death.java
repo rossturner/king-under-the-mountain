@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.entities.model.physical.humanoid.status;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -16,7 +17,9 @@ public class Death extends StatusEffect {
 
 	@Override
 	public void applyOngoingEffect(GameContext gameContext, MessageDispatcher messageDispatcher) {
-		messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(parentEntity, deathReason));
+		if (parentEntity.getType().equals(EntityType.HUMANOID)) {
+			messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(parentEntity, deathReason));
+		}
 	}
 
 	@Override

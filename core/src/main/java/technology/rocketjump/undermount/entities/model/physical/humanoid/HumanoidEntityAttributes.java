@@ -205,6 +205,7 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		if (!sanity.equals(SANE)) {
 			asJson.put("sanity", sanity.name());
 		}
+		asJson.put("bodyMaterial", bodyMaterial.getMaterialName());
 	}
 
 	@Override
@@ -225,5 +226,9 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		}
 		consciousness = EnumParser.getEnumValue(asJson, "consciousness", Consciousness.class, AWAKE);
 		sanity = EnumParser.getEnumValue(asJson, "sanity", Sanity.class, SANE);
+		bodyMaterial = relatedStores.gameMaterialDictionary.getByName(asJson.getString("bodyMaterial"));
+		if (bodyMaterial == null) {
+			throw new InvalidSaveException("Cound not find material with name " + asJson.getString("bodyMaterial"));
+		}
 	}
 }

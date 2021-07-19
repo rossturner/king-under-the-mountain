@@ -8,6 +8,8 @@ import java.util.List;
 // MODDING move this to data-driven ID-based type
 public enum ItemHoldPosition {
 
+	UNSPECIFIED(EntityAssetType.UNSPECIFIED),
+
 	RIGHT_HAND("ATTACHMENT_RIGHT_HAND"),
 	LEFT_HAND("ATTACHMENT_LEFT_HAND"),
 	IN_FRONT("ATTACHMENT_FRONT_OF_BODY"),

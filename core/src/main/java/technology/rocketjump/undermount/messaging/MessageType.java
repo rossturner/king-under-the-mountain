@@ -219,7 +219,8 @@ public class MessageType {
 	// Weather and fire messages
 	public static final int SPREAD_FIRE_FROM_LOCATION = 1700;
 	public static final int CONSUME_TILE_BY_FIRE = 1701;
-	public static final int CONSUME_ENTITY_BY_FIRE = 1701;
+	public static final int CONSUME_ENTITY_BY_FIRE = 1702;
+	public static final int ADD_FIRE_TO_ENTITY = 1703;
 
 
 }
