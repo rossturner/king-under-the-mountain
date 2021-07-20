@@ -36,7 +36,7 @@ public class ParticleEffectsWhileProcessingTag extends Tag {
 				particleEffectsComponent.getParticleEffectsWhenProcessing().add(tagProcessingUtils.particleEffectTypeDictionary.getByName(arg));
 			}
 		} else {
-			Logger.error(this.getClass().getSimpleName() + " must apply to a furniture entity");
+//			Logger.warn(this.getClass().getSimpleName() + " must apply to a furniture entity");
 		}
 	}
 

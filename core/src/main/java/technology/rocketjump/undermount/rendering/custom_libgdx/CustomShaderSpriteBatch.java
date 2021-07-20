@@ -81,7 +81,7 @@ public class CustomShaderSpriteBatch implements Batch {
 
 		Mesh.VertexDataType vertexDataType = (Gdx.gl30 != null) ? Mesh.VertexDataType.VertexBufferObjectWithVAO : defaultVertexDataType;
 
-		mesh = new Mesh(vertexDataType, false, size * 4, size * 6,
+		mesh = new Mesh(vertexDataType, false, size * 4, size * VERTEX_SIZE,
 				new VertexAttribute(VertexAttributes.Usage.Position, 2, ShaderProgram.POSITION_ATTRIBUTE),
 				new VertexAttribute(VertexAttributes.Usage.Generic, 1, "a_seed"),
 				new VertexAttribute(VertexAttributes.Usage.ColorPacked, 4, ShaderProgram.COLOR_ATTRIBUTE),
@@ -955,7 +955,7 @@ public class CustomShaderSpriteBatch implements Batch {
 
 		renderCalls++;
 		totalRenderCalls++;
-		int spritesInBatch = idx / 20;
+		int spritesInBatch = idx / SPRITE_SIZE;
 		if (spritesInBatch > maxSpritesInBatch) maxSpritesInBatch = spritesInBatch;
 		int count = spritesInBatch * 6;
 

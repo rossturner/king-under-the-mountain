@@ -147,6 +147,7 @@ public class JobTarget {
 						return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
 					case ITEM:
 						return ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial();
+					case HUMANOID:
 					case ONGOING_EFFECT:
 						return null;
 				}

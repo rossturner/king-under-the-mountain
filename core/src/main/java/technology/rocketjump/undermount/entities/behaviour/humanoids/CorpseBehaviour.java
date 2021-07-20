@@ -58,15 +58,20 @@ public class CorpseBehaviour implements BehaviourComponent {
 
 			if (decayedAmount >= HOURS_TO_FULLY_DECAY) {
 				// Switch to fully decayed
-				attributes.setGender(Gender.NONE);
-				ProfessionsComponent professionsComponent = parentEntity.getComponent(ProfessionsComponent.class);
-				if (professionsComponent != null) {
-					professionsComponent.clear();
-				}
-				messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parentEntity);
+				setToFullyDecayed(attributes);
 			}
 		}
 		lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
+	}
+
+	public void setToFullyDecayed(HumanoidEntityAttributes attributes) {
+		decayedAmount = HOURS_TO_FULLY_DECAY;
+		attributes.setGender(Gender.NONE);
+		ProfessionsComponent professionsComponent = parentEntity.getComponent(ProfessionsComponent.class);
+		if (professionsComponent != null) {
+			professionsComponent.clear();
+		}
+		messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parentEntity);
 	}
 
 	public void setOriginalSkinColor(Color originalSkinColor) {

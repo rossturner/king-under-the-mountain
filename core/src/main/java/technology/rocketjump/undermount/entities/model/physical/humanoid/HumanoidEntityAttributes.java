@@ -23,6 +23,8 @@ import static technology.rocketjump.undermount.entities.model.physical.humanoid.
 
 public class HumanoidEntityAttributes implements EntityAttributes {
 
+	public static Color DEFAULT_BONE_COLOR = HexColors.get("#fbfbf9");
+
 	private long seed;
 	private Race race;
 	private Gender gender;
@@ -31,7 +33,7 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 	private Color hairColor;
 	private Color eyeColor;
 	private Color accessoryColor;
-	private static final Color boneColor = HexColors.get("#fbfbf9"); // MODDING expose this (and persist)
+	private Color boneColor = DEFAULT_BONE_COLOR; // MODDING expose this
 	private boolean hasHair;
 	private HumanoidName name;
 	private Consciousness consciousness = AWAKE;
@@ -101,6 +103,14 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 
 	public void setHairColor(Color hairColor) {
 		this.hairColor = hairColor;
+	}
+
+	public void setBoneColor(Color boneColor) {
+		this.boneColor = boneColor;
+	}
+
+	public void setBodyMaterial(GameMaterial bodyMaterial) {
+		this.bodyMaterial = bodyMaterial;
 	}
 
 	public long getSeed() {
@@ -191,6 +201,9 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		asJson.put("skinColor", HexColors.toHexString(skinColor));
 		asJson.put("hairColor", HexColors.toHexString(hairColor));
 		asJson.put("accessoryColor", HexColors.toHexString(accessoryColor));
+		if (!boneColor.equals(DEFAULT_BONE_COLOR)) {
+			asJson.put("boneColor", HexColors.toHexString(boneColor));
+		}
 		if (hasHair) {
 			asJson.put("hasHair", true);
 		}
@@ -217,6 +230,12 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		skinColor = HexColors.get(asJson.getString("skinColor"));
 		hairColor = HexColors.get(asJson.getString("hairColor"));
 		accessoryColor = HexColors.get(asJson.getString("accessoryColor"));
+
+		String boneColorHex = asJson.getString("boneColor");
+		if (boneColorHex != null) {
+			this.boneColor = HexColors.get(boneColorHex);
+		}
+
 		eyeColor = Color.BLACK;
 		hasHair = asJson.getBooleanValue("hasHair");
 		JSONObject nameJson = asJson.getJSONObject("name");

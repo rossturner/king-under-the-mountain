@@ -25,6 +25,8 @@ ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleep
 ACTION.PREPARATION.VERB,,Preparing,,,,,,,,,,,,,
 ACTION.MALTING.VERB,,Malting,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
+ASHES.NOUN,,Ash,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},Construction : {{furnitureType.noun}} {{materialType.adjective}},Construcción de {{furnitureType.noun}} {{materialType.adjective}},Herstellung von {{furnitureType.noun}} aus {{materialType}},Costruzione di: {{furnitureType.noun}} {{materialType.adjective}},Fabricação de {{furnitureType.noun}} {{materialType.adjective}},Construção de {{materialType.adjective}} {{furnitureType.noun}},Строительство: {{furnitureType.noun}} {{materialType.adjective}},W budowie: {{materialType.adjective}} {{furnitureType.noun}},Constructie van een {{materialType.adjective}} {{furnitureType.noun}},Konstruktion av {{materialType.adjective}} {{furnitureType.noun}},Bygging av {{materialType.adjective}} i {{furnitureType.noun}},Épül: {{materialType.adjective}} {{furnitureType.noun}},Rakentaminen: {{materialType.adjective}} {{furnitureType.noun}}
 CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,Assignation : {{quantity}} {{itemDescription}},Asignado: {{quantity}} de {{itemDescription}},{{quantity}} von {{itemDescription}} zugewiesen,Assegnazione di {{itemDescription}}: {{quantity}},Alocação: {{quantity}} {{itemDescription}},{{quantity}} de {{itemDescription}} atribuídos,Распределено: {{quantity}} из {{itemDescription}},Liczba przydzielonych {{itemDescription}}: {{quantity}},,,,,
 CONSTRUCTION.STATUS.CLEARING_WORK_SITE,This is to be displayed when other items need to be cleared out from an area that has something being built over it,Removing other items,Retirant d'autres objets,Eliminando otros objetos,Baut andere Gegenstände ab,Sta rimuovendo altri oggetti,Removendo outros itens,A remover outros itens,Удаление других предметов,Usuwanie innych przedmiotów,,,,,
@@ -617,6 +619,7 @@ ORE.BAUXITE.TOOLTIP,,"Bauxite is the primary ore of aluminium. Unfortunately, a 
 OTHER.BRICK.NOUN,,Brick,Brique,Ladrillo,Backstein,Mattone,Tijolo,Tijolo,Кирпич,Cegła,Baksteen,Tegelsten,Murstein,Tégla,Tiili
 OTHER.CLAY_SOIL.NOUN,,Clay soil,Argile,Arcilla,Lehmboden,Terreno argilloso,Solo de argila,Solo argiloso,Глинозем,Glina,Klei,Lerjord,Leire,Agyagos talaj,Savimaa
 OTHER.GRASS.NOUN,,,Herbe,Hierba,Gras,Erba,,Erva,Трава,Trawa,Gras,Gräs,Gress,,Ruoho
+OTHER.ASH,,Charred,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 PRIORITY.HIGHEST,,Highest,,,,,,,,,,,,,
 PRIORITY.HIGHER,,Higher,,,,,,,,,,,,,
