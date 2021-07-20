@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.entities.components.humanoid.SteeringCom
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
+import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesItem;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
@@ -17,7 +18,10 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.List;
 import java.util.Optional;
+
+import static java.util.Collections.emptyList;
 
 public class FallingTreeBehaviour implements BehaviourComponent {
 
@@ -77,10 +81,14 @@ public class FallingTreeBehaviour implements BehaviourComponent {
 				leafColor = null;
 			}
 
+			List<PlantSpeciesItem> harvestedItems = currentGrowthStage.getHarvestedItems();
+			if (attributes.isBurned()) {
+				harvestedItems = emptyList();
+			}
 			messageDispatcher.dispatchMessage(MessageType.TREE_FELLED, new TreeFallenMessage(
 					parentEntity.getLocationComponent().getWorldPosition(), attributes.getColor(ColoringLayer.BRANCHES_COLOR),
 					Optional.ofNullable(leafColor),
-					fallToWest, currentGrowthStage.getHarvestedItems()));
+					fallToWest, harvestedItems));
 		}
 
 	}

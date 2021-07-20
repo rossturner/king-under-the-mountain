@@ -23,6 +23,7 @@ public class PlantEntityAttributes implements EntityAttributes {
 
 	private long seed;
 	private PlantSpecies species;
+	private GameMaterial burnedMaterial;
 
 	private Map<ColoringLayer, Color> actualColors = new EnumMap<>(ColoringLayer.class);
 
@@ -205,6 +206,21 @@ public class PlantEntityAttributes implements EntityAttributes {
 		}
 	}
 
+	public boolean isBurned() {
+		return burnedMaterial != null;
+	}
+
+	public void setBurned(GameMaterial burnedMaterial, Color burnedColor) {
+		this.burnedMaterial = burnedMaterial;
+		for (Map.Entry<ColoringLayer, PlantSpeciesColor> colorEntry : species.getDefaultColors().entrySet()) {
+			if (colorEntry.getKey().equals(ColoringLayer.BRANCHES_COLOR)) {
+				actualColors.put(colorEntry.getKey(), burnedColor);
+			} else {
+				actualColors.put(colorEntry.getKey(), Color.CLEAR);
+			}
+		}
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("seed", seed);
@@ -227,6 +243,9 @@ public class PlantEntityAttributes implements EntityAttributes {
 		if (removePestsJob != null) {
 			removePestsJob.writeTo(savedGameStateHolder);
 			asJson.put("removePestsJob", removePestsJob.getJobId());
+		}
+		if (burnedMaterial != null) {
+			asJson.put("burnedMaterial", burnedMaterial.getMaterialName());
 		}
 	}
 
@@ -260,5 +279,14 @@ public class PlantEntityAttributes implements EntityAttributes {
 				throw new InvalidSaveException("Could not find job by ID " + removePestsJobId);
 			}
 		}
+
+		String burnedMaterialName = asJson.getString("burnedMaterial");
+		if (burnedMaterialName != null) {
+			this.burnedMaterial = relatedStores.gameMaterialDictionary.getByName(burnedMaterialName);
+			if (this.burnedMaterial == null) {
+				throw new InvalidSaveException("Could not find material with name " + burnedMaterialName);
+			}
+		}
 	}
+
 }

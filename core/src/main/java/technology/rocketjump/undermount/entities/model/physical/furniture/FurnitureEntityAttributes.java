@@ -70,11 +70,15 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 			if (gameMaterial != null) {
 				return gameMaterial.getColor();
 			} else {
-				return null;
+				return otherColors.get(coloringLayer);
 			}
 		} else {
 			return otherColors.get(coloringLayer);
 		}
+	}
+
+	public EnumMap<ColoringLayer, Color> getOtherColors() {
+		return otherColors;
 	}
 
 	public FurnitureType getFurnitureType() {
@@ -137,16 +141,12 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		this.currentLayout = currentLayout;
 	}
 
-	public Color getAccessoryColor() {
-		return accessoryColor;
-	}
-
-	public void setAccessoryColor(Color accessoryColor) {
-		this.accessoryColor = accessoryColor;
-	}
-
 	public GameMaterial getPrimaryMaterial() {
-		return this.materials.get(primaryMaterialType);
+		if (materials.containsKey(primaryMaterialType)) {
+			return this.materials.get(primaryMaterialType);
+		} else {
+			return this.materials.values().iterator().next();
+		}
 	}
 
 	@Override

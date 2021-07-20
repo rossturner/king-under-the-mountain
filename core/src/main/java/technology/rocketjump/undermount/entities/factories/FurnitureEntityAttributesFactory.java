@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.factories;
 
 import com.badlogic.gdx.math.RandomXS128;
 import com.google.inject.Inject;
+import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
@@ -26,7 +27,7 @@ public class FurnitureEntityAttributesFactory {
 		attributes.setFurnitureType(furnitureTypeDictionary.getByName(furnitureTypeName));
 		attributes.setPrimaryMaterialType(primaryMaterial.getMaterialType());
 		attributes.getMaterials().put(primaryMaterial.getMaterialType(), primaryMaterial);
-		attributes.setAccessoryColor(hairColorFactory.randomHairColor(random));
+		attributes.setColor(ColoringLayer.ACCESSORY_COLOR, hairColorFactory.randomHairColor(random));
 		return attributes;
 	}
 
@@ -35,7 +36,7 @@ public class FurnitureEntityAttributesFactory {
 		attributes.setFurnitureType(furnitureType);
 		attributes.setPrimaryMaterialType(primaryMaterial.getMaterialType());
 		attributes.getMaterials().put(primaryMaterial.getMaterialType(), primaryMaterial);
-		attributes.setAccessoryColor(hairColorFactory.randomHairColor(random));
+		attributes.setColor(ColoringLayer.ACCESSORY_COLOR, hairColorFactory.randomHairColor(random));
 		return attributes;
 	}
 

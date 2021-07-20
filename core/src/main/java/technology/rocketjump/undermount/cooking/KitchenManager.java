@@ -73,8 +73,8 @@ public class KitchenManager implements Telegraph, Updatable {
 
 	@Inject
 	public KitchenManager(MessageDispatcher messageDispatcher, ConstructionStore constructionStore,
-	                      ProfessionDictionary professionDictionary, FurnitureTracker furnitureTracker,
-	                      JobTypeDictionary jobTypeDictionary, ConstantsRepo constantsRepo, ItemTracker itemTracker) {
+						  ProfessionDictionary professionDictionary, FurnitureTracker furnitureTracker,
+						  JobTypeDictionary jobTypeDictionary, ConstantsRepo constantsRepo, ItemTracker itemTracker) {
 		this.messageDispatcher = messageDispatcher;
 		this.constructionStore = constructionStore;
 		this.itemTracker = itemTracker;
@@ -135,33 +135,34 @@ public class KitchenManager implements Telegraph, Updatable {
 
 	private void setupHaulingToCollectionFurniture(List<Entity> furnitureWithItemsToMove) {
 		for (Entity collectItemsFurniture : furnitureTracker.findByTag(CollectItemsBehaviourTag.class, false)) {
-			CollectItemFurnitureBehaviour behaviour = (CollectItemFurnitureBehaviour) collectItemsFurniture.getBehaviourComponent();
+			if (collectItemsFurniture.getBehaviourComponent() instanceof CollectItemFurnitureBehaviour) {
+				CollectItemFurnitureBehaviour behaviour = (CollectItemFurnitureBehaviour) collectItemsFurniture.getBehaviourComponent();
 
-			for (Entity cookingFurniture : new ArrayList<>(furnitureWithItemsToMove)) {
-				InventoryComponent inventoryComponent = cookingFurniture.getComponent(InventoryComponent.class);
-				InventoryComponent.InventoryEntry inventoryEntry = inventoryComponent.getInventoryEntries().iterator().next();
+				for (Entity cookingFurniture : new ArrayList<>(furnitureWithItemsToMove)) {
+					InventoryComponent inventoryComponent = cookingFurniture.getComponent(InventoryComponent.class);
+					InventoryComponent.InventoryEntry inventoryEntry = inventoryComponent.getInventoryEntries().iterator().next();
 
-				if (behaviour.canAccept(inventoryEntry.entity)) {
+					if (behaviour.canAccept(inventoryEntry.entity)) {
 
 
-					ItemEntityAttributes attributes = (ItemEntityAttributes) inventoryEntry.entity.getPhysicalEntityComponent().getAttributes();
-					ItemAllocationComponent itemAllocationComponent = inventoryEntry.entity.getOrCreateComponent(ItemAllocationComponent.class);
+						ItemEntityAttributes attributes = (ItemEntityAttributes) inventoryEntry.entity.getPhysicalEntityComponent().getAttributes();
+						ItemAllocationComponent itemAllocationComponent = inventoryEntry.entity.getOrCreateComponent(ItemAllocationComponent.class);
 
-					HaulingAllocation allocation = new HaulingAllocation();
+						HaulingAllocation allocation = new HaulingAllocation();
 
-					allocation.setSourceContainerId(cookingFurniture.getId());
-					allocation.setSourcePositionType(HaulingAllocation.AllocationPositionType.FURNITURE);
-					allocation.setSourcePosition(toGridPoint(cookingFurniture.getLocationComponent().getWorldPosition()));
+						allocation.setSourceContainerId(cookingFurniture.getId());
+						allocation.setSourcePositionType(HaulingAllocation.AllocationPositionType.FURNITURE);
+						allocation.setSourcePosition(toGridPoint(cookingFurniture.getLocationComponent().getWorldPosition()));
 
-					int numToAllocate = Math.min(itemAllocationComponent.getNumUnallocated(), attributes.getItemType().getMaxHauledAtOnce());
-					ItemAllocation itemAllocation = itemAllocationComponent.createAllocation(numToAllocate, cookingFurniture, ItemAllocation.Purpose.HELD_IN_INVENTORY);
-					allocation.setItemAllocation(itemAllocation);
+						int numToAllocate = Math.min(itemAllocationComponent.getNumUnallocated(), attributes.getItemType().getMaxHauledAtOnce());
+						ItemAllocation itemAllocation = itemAllocationComponent.createAllocation(numToAllocate, cookingFurniture, ItemAllocation.Purpose.HELD_IN_INVENTORY);
+						allocation.setItemAllocation(itemAllocation);
 
-					behaviour.finaliseAllocation(behaviour.getMatch(attributes), allocation);
-					furnitureWithItemsToMove.remove(cookingFurniture);
+						behaviour.finaliseAllocation(behaviour.getMatch(attributes), allocation);
+						furnitureWithItemsToMove.remove(cookingFurniture);
+					}
 				}
 			}
-
 		}
 	}
 

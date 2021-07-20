@@ -180,6 +180,7 @@ public class JobTarget {
 								return attributes.getColor(ColoringLayer.LEAF_COLOR);
 						}
 					}
+					case HUMANOID:
 					case ONGOING_EFFECT: {
 						return null;
 					}

@@ -471,7 +471,7 @@ public class I18nTranslator implements I18nUpdatable {
 	private I18nText getDescription(FurnitureEntityAttributes attributes) {
 		Map<String, I18nString> replacements = new HashMap<>();
 
-		GameMaterial gameMaterial = attributes.getMaterials().get(attributes.getPrimaryMaterialType());
+		GameMaterial gameMaterial = attributes.getPrimaryMaterial();
 		if (gameMaterial != null && !NULL_MATERIAL.equals(gameMaterial)) {
 			replacements.put("materialType", gameMaterial.getI18nValue());
 		} else {

@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.behaviour.effects;
 
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -87,7 +88,9 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 				}
 				*/
 
-				switch (rollForContinuation(gameContext.getRandom())) {
+				FireContinuationAction continuation = rollForContinuation(gameContext.getRandom());
+				Logger.info(continuation.name() + " at " + parentEntity.getLocationComponent().getWorldOrParentPosition());
+				switch (continuation) {
 					case SPREAD_TO_OTHER_TILES:
 						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, parentEntity.getLocationComponent().getWorldOrParentPosition());
 						this.state = ACTIVE; // reset to active state again
