@@ -77,6 +77,9 @@ public class SleepOnFloorAction extends Action {
 				changeToAwake();
 				completionType = SUCCESS;
 			}
+		} else if (parent.parentEntity.isOnFire()) {
+			changeToAwake();
+			completionType = SUCCESS;
 		}
 	}
 

@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RequestLiquidAllocationMessage;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -27,6 +28,7 @@ import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.RoomStore;
 
 import java.util.List;
+import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ItemEntityMessageHandler.findStockpileAllocation;
 import static technology.rocketjump.undermount.entities.ai.goap.SpecialGoal.*;
@@ -39,8 +41,12 @@ import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
+import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 
-public class SettlerBehaviour implements BehaviourComponent, Destructible {
+public class SettlerBehaviour implements BehaviourComponent, Destructible, RequestLiquidAllocationMessage.LiquidAllocationCallback {
+
+	private static final float MAX_DISTANCE_TO_DOUSE_FIRE = 12f;
+	private static final float AMOUNT_REQUIRED_TO_DOUSE_FIRE = 0.5f;
 
 	protected MessageDispatcher messageDispatcher;
 	protected Entity parentEntity;
@@ -177,17 +183,36 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 		return new AssignedGoal(nextGoal.getGoal(), parentEntity, messageDispatcher);
 	}
 
+	private Optional<LiquidAllocation> liquidAllocation = Optional.empty();
+
 	private AssignedGoal onFireGoal(GameContext gameContext) {
-//		if (nearWaterSource()) {
-//			return new AssignedGoal(DOUSE_SELF.getInstance(), parentEntity, messageDispatcher);
+		liquidAllocation = Optional.empty();
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_LIQUID_ALLOCATION, new RequestLiquidAllocationMessage(
+				parentEntity, AMOUNT_REQUIRED_TO_DOUSE_FIRE, false, true, this));
+
+		if (liquidAllocation.isPresent()) {
+			GridPoint2 accessLocation = liquidAllocation.get().getTargetZoneTile().getAccessLocation();
+			float distanceToLiquidAllocation = parentEntity.getLocationComponent().getWorldOrParentPosition().dst(toVector(accessLocation));
+			if (distanceToLiquidAllocation > MAX_DISTANCE_TO_DOUSE_FIRE) {
+				messageDispatcher.dispatchMessage(MessageType.LIQUID_ALLOCATION_CANCELLED, liquidAllocation.get());
+				liquidAllocation = Optional.empty();
+			} else {
+				AssignedGoal douseSelfGoal = new AssignedGoal(DOUSE_SELF.getInstance(), parentEntity, messageDispatcher);
+				// return douse goal with allocation set
+				douseSelfGoal.setLiquidAllocation(liquidAllocation.get());
+				return douseSelfGoal;
+			}
+		}
+
 		if (gameContext.getRandom().nextBoolean()) {
 			return new AssignedGoal(ROLL_ON_FLOOR.getInstance(), parentEntity, messageDispatcher);
 		}
 		return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
 	}
 
-	private boolean nearWaterSource() {
-		return false;
+	@Override
+	public void allocationFound(Optional<LiquidAllocation> liquidAllocation) {
+		this.liquidAllocation = liquidAllocation;
 	}
 
 	private AssignedGoal checkToPlaceInventoryItems(GameContext gameContext) {
@@ -413,4 +438,5 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 			this.steeringComponent.readFrom(steeringComponentJson, savedGameStateHolder, relatedStores);
 		}
 	}
+
 }

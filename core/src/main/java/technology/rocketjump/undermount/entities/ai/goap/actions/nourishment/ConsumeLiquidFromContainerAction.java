@@ -39,6 +39,10 @@ public class ConsumeLiquidFromContainerAction extends Action {
 		super(parent);
 	}
 
+	protected float getTimeToSpendDrinking() {
+		return TIME_TO_SPEND_DRINKING_SECONDS;
+	}
+
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		LiquidAllocation liquidAllocation = parent.getLiquidAllocation();
@@ -47,12 +51,9 @@ public class ConsumeLiquidFromContainerAction extends Action {
 			return;
 		}
 
-		if (FROM_RIVER.equals(liquidAllocation.getType())) {
-			parent.parentEntity.getComponent(HappinessComponent.class).add(DRANK_FROM_RIVER);
-		}
 		GameMaterial consumedLiquid = GameMaterial.NULL_MATERIAL;
 		elapsedTime += deltaTime;
-		if (elapsedTime > TIME_TO_SPEND_DRINKING_SECONDS) {
+		if (elapsedTime > getTimeToSpendDrinking()) {
 			// Just going to assume we're on the correct position, doesn't matter too much if we were pushed away
 			MapTile targetZoneTile = gameContext.getAreaMap().getTile(liquidAllocation.getTargetZoneTile().getTargetTile());
 			Entity targetFurniture = getFirstFurnitureEntity(targetZoneTile);
@@ -82,12 +83,16 @@ public class ConsumeLiquidFromContainerAction extends Action {
 			}
 
 			if (completionType.equals(SUCCESS)) {
-				effectsOfDrinkConsumption(consumedLiquid, gameContext);
+				effectsOfDrinkConsumption(consumedLiquid, liquidAllocation, gameContext);
 			}
 		}
 	}
 
-	protected void effectsOfDrinkConsumption(GameMaterial consumedLiquid, GameContext gameContext) {
+	protected void effectsOfDrinkConsumption(GameMaterial consumedLiquid, LiquidAllocation liquidAllocation, GameContext gameContext) {
+		if (liquidAllocation != null && FROM_RIVER.equals(liquidAllocation.getType())) {
+			parent.parentEntity.getComponent(HappinessComponent.class).add(DRANK_FROM_RIVER);
+		}
+
 		if (consumedLiquid == null) {
 			Logger.error("Null material consumed as liquid");
 			return;

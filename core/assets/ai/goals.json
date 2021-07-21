@@ -33,10 +33,18 @@
   "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
   "name" : "Douse self goal",
   "actionRelationships" : {
-    "RollAround" : { }
+    "CancelLiquidAllocation" : { },
+    "GoToDrinkLocation" : {
+      "fail" : [ "CancelLiquidAllocation" ],
+      "pass" : [ ]
+    },
+    "DouseSelf" : {
+      "fail" : [ "CancelLiquidAllocation" ],
+      "pass" : [ ]
+    }
   },
   "selectors" : [ ],
-  "initialActions" : [ "RollAround" ]
+  "initialActions" : [ "GoToDrinkLocation", "DouseSelf" ]
 }, {
   "i18nDescription" : "GOAL.DRINK.DESCRIPTION",
   "name" : "Drink goal",

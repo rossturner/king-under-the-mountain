@@ -215,8 +215,16 @@
   "volumeModifier" : 0.7,
   "looping" : false
 }, {
-  "name" : "DragArea",
+  "name" : "WaterSizzle",
   "soundAssetId" : 28,
+  "filenames" : [ "zapsplat_nature_water_hit_hot_metal_sizzle_bubble_003_27270.ogg" ],
+  "minPitch" : 0.8,
+  "maxPitch" : 1.2,
+  "volumeModifier" : 0.7,
+  "looping" : false
+}, {
+  "name" : "DragArea",
+  "soundAssetId" : 29,
   "filenames" : [ "UI_DragArea.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -224,7 +232,7 @@
   "looping" : false
 }, {
   "name" : "GameStart",
-  "soundAssetId" : 29,
+  "soundAssetId" : 30,
   "filenames" : [ "UI_GameStart.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -232,7 +240,7 @@
   "looping" : false
 }, {
   "name" : "MenuClick",
-  "soundAssetId" : 30,
+  "soundAssetId" : 31,
   "filenames" : [ "UI_MenuClick.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -240,7 +248,7 @@
   "looping" : false
 }, {
   "name" : "MenuHover",
-  "soundAssetId" : 31,
+  "soundAssetId" : 32,
   "filenames" : [ "UI_MenuHover.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -248,7 +256,7 @@
   "looping" : false
 }, {
   "name" : "NewNotification",
-  "soundAssetId" : 32,
+  "soundAssetId" : 33,
   "filenames" : [ "UI_NewNotification.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -256,7 +264,7 @@
   "looping" : false
 }, {
   "name" : "NextNotification",
-  "soundAssetId" : 33,
+  "soundAssetId" : 34,
   "filenames" : [ "UI_NextNotification.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -264,7 +272,7 @@
   "looping" : false
 }, {
   "name" : "NotificationClose",
-  "soundAssetId" : 34,
+  "soundAssetId" : 35,
   "filenames" : [ "UI_NotificationClose.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -272,7 +280,7 @@
   "looping" : false
 }, {
   "name" : "NotificationOpen",
-  "soundAssetId" : 35,
+  "soundAssetId" : 36,
   "filenames" : [ "UI_NotificationOpen.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
@@ -280,7 +288,7 @@
   "looping" : false
 }, {
   "name" : "Slider",
-  "soundAssetId" : 36,
+  "soundAssetId" : 37,
   "filenames" : [ "UI_Slider.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,

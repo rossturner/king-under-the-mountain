@@ -34,7 +34,7 @@ public class ConsumeLiquidFromTankardAction extends ConsumeLiquidFromContainerAc
             Entity tankardEntity = parent.getFoodAllocation().getTargetEntity();
             LiquidContainerComponent liquidContainerComponent = tankardEntity.getOrCreateComponent(LiquidContainerComponent.class);
             GameMaterial consumedLiquid = liquidContainerComponent.getTargetLiquidMaterial();
-            effectsOfDrinkConsumption(consumedLiquid, gameContext);
+            effectsOfDrinkConsumption(consumedLiquid, null, gameContext);
             parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(tankardEntity.getId()));
             completionType = SUCCESS;
         }
