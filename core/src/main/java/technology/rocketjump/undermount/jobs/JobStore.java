@@ -27,6 +27,7 @@ public class JobStore implements Updatable {
 
 	private Map<JobState, JobCollection> byState = new ConcurrentHashMap<>();
 	private Map<GridPoint2, List<Job>> byLocation = new ConcurrentHashMap<>();
+	private Map<Long, Job> byRelatedHaulingAllocationId = new ConcurrentHashMap<>();
 	private GameContext gameContext;
 
 	private float timeSinceLastUpdate;
@@ -50,6 +51,10 @@ public class JobStore implements Updatable {
 		} else {
 			byLocation.computeIfAbsent(jobLocation, k -> new ArrayList<>()).add(job);
 		}
+
+		if (job.getHaulingAllocation() != null) {
+			byRelatedHaulingAllocationId.put(job.getHaulingAllocation().getHaulingAllocationId(), job);
+		}
 	}
 
 	private static final List<Job> emptyList = new LinkedList<>();
@@ -69,6 +74,13 @@ public class JobStore implements Updatable {
 		getJobsAtLocation(jobToRemove.getJobLocation()).remove(jobToRemove);
 		jobToRemove.setJobState(JobState.REMOVED);
 		jobToRemove.setAssignedToEntityId(-1L);
+		if (jobToRemove.getHaulingAllocation() != null) {
+			byRelatedHaulingAllocationId.remove(jobToRemove.getHaulingAllocation().getHaulingAllocationId());
+		}
+	}
+
+	public Job getByHaulingAllocationId(Long haulingAllocationId) {
+		return byRelatedHaulingAllocationId.get(haulingAllocationId);
 	}
 
 	public void switchState(Job job, JobState targetState) {

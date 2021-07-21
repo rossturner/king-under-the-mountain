@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -54,6 +55,7 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 	private final GameMaterialDictionary gameMaterialDictionary;
 	private final RoomStore roomStore;
 	private final ItemTracker itemTracker;
+	private final JobStore jobStore;
 	private GameContext gameContext;
 	private JobType haulingJobType;
 	private final ItemTypeDictionary itemTypeDictionary;
@@ -61,10 +63,12 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 	@Inject
 	public ItemEntityMessageHandler(MessageDispatcher messageDispatcher,
 									ItemEntityFactory itemEntityFactory, GameMaterialDictionary gameMaterialDictionary,
-									JobTypeDictionary jobTypeDictionary, RoomStore roomStore, ItemTracker itemTracker, ItemTypeDictionary itemTypeDictionary) {
+									JobStore jobStore, JobTypeDictionary jobTypeDictionary, RoomStore roomStore,
+									ItemTracker itemTracker, ItemTypeDictionary itemTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.itemEntityFactory = itemEntityFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
+		this.jobStore = jobStore;
 		this.haulingJobType = jobTypeDictionary.getByName("HAULING");
 		this.roomStore = roomStore;
 		this.itemTracker = itemTracker;
@@ -74,6 +78,7 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.REQUEST_HAULING_ALLOCATION);
 		messageDispatcher.addListener(this, MessageType.LOOKUP_ITEM_TYPE);
 		messageDispatcher.addListener(this, MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE);
+		messageDispatcher.addListener(this, MessageType.CANCEL_ITEM_ALLOCATION);
 	}
 
 	@Override
@@ -94,9 +99,31 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE: {
 				return handle((ItemMaterialSelectionMessage)msg.extraInfo);
 			}
+			case MessageType.CANCEL_ITEM_ALLOCATION: {
+				ItemAllocation itemAllocation = (ItemAllocation) msg.extraInfo;
+				cancelItemAllocation(itemAllocation);
+				return true;
+			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
+	}
+
+	private void cancelItemAllocation(ItemAllocation itemAllocation) {
+		Entity itemEntity = gameContext.getEntities().get(itemAllocation.getTargetItemEntityId());
+		if (itemEntity != null) {
+			ItemAllocationComponent itemAllocationComponent = itemEntity.getComponent(ItemAllocationComponent.class);
+			itemAllocationComponent.cancel(itemAllocation);
+		}
+
+		// interrupt any settlers using this item
+		if (itemAllocation.getRelatedHaulingAllocationId() != null) {
+			Job relatedJob = jobStore.getByHaulingAllocationId(itemAllocation.getRelatedHaulingAllocationId());
+			if (relatedJob != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, relatedJob);
+			}
+		}
+
 	}
 
 	private boolean handle(LookupMessage itemTypeLookupMessage) {

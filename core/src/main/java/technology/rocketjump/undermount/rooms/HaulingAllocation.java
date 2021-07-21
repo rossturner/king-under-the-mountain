@@ -121,6 +121,7 @@ public class HaulingAllocation implements Persistable {
 	public void setItemAllocation(ItemAllocation itemAllocation) {
 		this.itemAllocation = itemAllocation;
 		this.hauledEntityId = itemAllocation.getTargetItemEntityId();
+		itemAllocation.setRelatedHaulingAllocationId(this.haulingAllocationId);
 	}
 
 	public void setLiquidAllocation(LiquidAllocation liquidAllocation) {

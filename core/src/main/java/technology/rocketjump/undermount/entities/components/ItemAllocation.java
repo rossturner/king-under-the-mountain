@@ -21,6 +21,7 @@ public class ItemAllocation implements Persistable {
 	private Long owningEntityId;
 	private Purpose purpose;
 	private AllocationState state = AllocationState.ACTIVE;
+	private Long relatedHaulingAllocationId;
 
 	public enum Purpose {
 
@@ -32,9 +33,10 @@ public class ItemAllocation implements Persistable {
 			This is to avoid confusion with a FOOD_ALLOCATION or other purpose
 		 */
 		HELD_IN_INVENTORY,
-		PLACED_FOR_CONSTRUCTION, // TODO look closely at this one, is this where the bug is coming from?
+		PLACED_FOR_CONSTRUCTION, // TODO look closely at this one, is this where a bug is coming from?
 		FOOD_ALLOCATION,
-		CONTENTS_TO_BE_DUMPED;
+		CONTENTS_TO_BE_DUMPED,
+		ON_FIRE
 
 	}
 
@@ -113,6 +115,14 @@ public class ItemAllocation implements Persistable {
 		this.purpose = newPurpose;
 	}
 
+	public Long getRelatedHaulingAllocationId() {
+		return relatedHaulingAllocationId;
+	}
+
+	public void setRelatedHaulingAllocationId(Long relatedHaulingAllocationId) {
+		this.relatedHaulingAllocationId = relatedHaulingAllocationId;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -156,6 +166,9 @@ public class ItemAllocation implements Persistable {
 		if (!state.equals(AllocationState.ACTIVE)) {
 			asJson.put("state", state.name());
 		}
+		if (relatedHaulingAllocationId != null) {
+			asJson.put("relatedHaulingAllocationId", relatedHaulingAllocationId);
+		}
 
 		savedGameStateHolder.itemAllocations.put(this.itemAllocationId, this);
 		savedGameStateHolder.itemAllocationsJson.add(asJson);
@@ -169,6 +182,7 @@ public class ItemAllocation implements Persistable {
 		this.owningEntityId = asJson.getLongValue("owner");
 		this.purpose = EnumParser.getEnumValue(asJson, "purpose", Purpose.class, Purpose.HELD_IN_INVENTORY);
 		this.state = EnumParser.getEnumValue(asJson, "state", AllocationState.class, AllocationState.ACTIVE);
+		this.relatedHaulingAllocationId = asJson.getLong("relatedHaulingAllocationId");
 
 		savedGameStateHolder.itemAllocations.put(this.itemAllocationId, this);
 	}

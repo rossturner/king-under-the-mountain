@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static technology.rocketjump.undermount.entities.ItemEntityMessageHandler.createHaulingJob;
+import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.ON_FIRE;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.PLACED_FOR_CONSTRUCTION;
 import static technology.rocketjump.undermount.entities.tags.ConstructionOverrideTag.ConstructionOverrideSetting.DO_NOT_ALLOCATE;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
@@ -166,6 +167,10 @@ public class ConstructionManager implements Updatable {
 				for (Entity entity : tileAtLocation.getEntities()) {
 					if (entity.getType().equals(EntityType.ITEM)) {
 						ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
+						if (itemAllocationComponent.getAllocationForPurpose(ON_FIRE) != null) {
+							// Item is on fire so ignore this for now
+							break;
+						}
 						ItemAllocation placedForConstructionAllocation = itemAllocationComponent.getAllocationForPurpose(PLACED_FOR_CONSTRUCTION);
 						if (placedForConstructionAllocation == null || !furnitureConstruction.isItemUsedInConstruction(entity)) {
 							if (placedForConstructionAllocation != null) {
