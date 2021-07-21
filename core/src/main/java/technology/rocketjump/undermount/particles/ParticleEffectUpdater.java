@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
@@ -131,7 +130,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 				}
 			}
 		} else {
-			Logger.error("Not yet implemented - particles not attached to an entity");
+//			Logger.warn("Not yet implemented - particles not attached to an entity");
 		}
 	}
 
@@ -141,7 +140,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 	}
 
 	private boolean insideBounds(Vector2 position) {
-		if (currentBoundingBox == null) {
+		if (currentBoundingBox == null || position == null) {
 			return false;
 		} else {
 			return currentBoundingBox.contains(position);

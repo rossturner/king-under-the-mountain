@@ -110,11 +110,11 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 
 		FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
 		if (particleEffectsComponent != null) {
-			Optional<JobTarget> particleTarget;
-			if (containerEntity == null) {
-				particleTarget = Optional.of(new JobTarget(gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition())));
-			} else {
+			Optional<JobTarget> particleTarget = Optional.empty();
+			if (containerEntity != null) {
 				particleTarget = Optional.of(new JobTarget(containerEntity));
+			} else if (parentEntity.getLocationComponent().getWorldPosition() != null) {
+				particleTarget = Optional.of(new JobTarget(gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition())));
 			}
 			particleEffectsComponent.triggerProcessingEffects(particleTarget);
 		}

@@ -545,29 +545,36 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				break;
 			}
 			case "CLEAR_GROUND":
-
+			{
 				MapTile targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
-				Entity targetPlant = null;
-				if (targetTile != null && targetTile.hasPlant()) {
+				Entity targetEntity = null;
+				if (targetTile != null) {
 					for (Entity entity : targetTile.getEntities()) {
 						if (entity.getType().equals(EntityType.PLANT)) {
-							targetPlant = entity;
+							targetEntity = entity;
 							break;
+						} else if (entity.getType().equals(ITEM)) {
+							ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+							if (attributes.getItemType().getStockpileGroup() == null) {
+								targetEntity = entity;
+								break;
+							}
 						}
 					}
 				}
 
-				if (targetPlant != null) {
+				if (targetEntity != null) {
 					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
-							Optional.empty(), Optional.of(new JobTarget(targetPlant)), (p) -> {}));
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetPlant.getId()));
+							Optional.empty(), Optional.of(new JobTarget(targetEntity)), (p) -> {}));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
 				}
 				break;
+			}
 			case "DIGGING":
 			case "CONSTRUCT_STONE_FURNITURE":
 			case "CONSTRUCT_WOODEN_FURNITURE":
 			case "CONSTRUCT":
-				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
+				MapTile targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
 				Construction construction = targetTile.getConstruction();
 				messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_COMPLETED, construction);
 				break;

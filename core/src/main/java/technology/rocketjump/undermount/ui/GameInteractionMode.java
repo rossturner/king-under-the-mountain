@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.ui;
 
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -9,7 +10,7 @@ import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
 import technology.rocketjump.undermount.rooms.RoomType;
 
-import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
+import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage.PlantSpeciesHarvestType.FORAGING;
 import static technology.rocketjump.undermount.mapping.tile.TileExploration.EXPLORED;
 import static technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState.NONE;
@@ -23,13 +24,23 @@ public enum GameInteractionMode {
 	DESIGNATE_MINING("mining", "MINING", mapTile -> ((!mapTile.getExploration().equals(EXPLORED) && mapTile.getDesignation() == null) || (mapTile.hasWall() && mapTile.getDesignation() == null)), true),
 	DESIGNATE_CHOP_WOOD("logging", "CHOP_WOOD", mapTile -> (mapTile.getExploration().equals(EXPLORED) && mapTile.hasTree() && mapTile.getDesignation() == null), true),
 	DESIGNATE_CLEAR_GROUND("spade", "CLEAR_GROUND", mapTile -> {
-		Entity plant = mapTile.getPlant();
-		if (plant != null && mapTile.getExploration().equals(EXPLORED) && mapTile.getDesignation() == null) {
-			PlantEntityAttributes attributes = (PlantEntityAttributes) plant.getPhysicalEntityComponent().getAttributes();
-			return attributes.getSpecies().getPlantType().removalJobTypeName.equals("CLEAR_GROUND");
-		} else {
+		if (!mapTile.getExploration().equals(EXPLORED) || mapTile.getDesignation() != null) {
 			return false;
 		}
+		for (Entity entity : mapTile.getEntities()) {
+			if (entity.getType().equals(ITEM)) {
+				ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				if (attributes.getItemType().getStockpileGroup() == null) {
+					return true;
+				}
+			} else if (entity.getType().equals(PLANT)) {
+				PlantEntityAttributes attributes = (PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				if (attributes.getSpecies().getPlantType().removalJobTypeName.equals("CLEAR_GROUND")) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}, true),
 	DESIGNATE_HARVEST_PLANTS("sickle", "HARVEST", mapTile -> {
 		Entity plant = mapTile.getPlant();

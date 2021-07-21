@@ -71,8 +71,14 @@ public class RollAroundAction extends Action {
 		timeElapsed += deltaTime;
 		float spinAmount = timeElapsed % 1f;
 
+
 		Vector2 newFacing = new Vector2(0, 1);
-		newFacing.rotate(spinAmount * 360);
+		float rotation = spinAmount * 360;
+		if (parent.parentEntity.getLocationComponent().getLinearVelocity().y > 0) {
+			// This is so the roll happens in a realistic direction
+			rotation = 360 - rotation;
+		}
+		newFacing.rotate(rotation);
 
 		parent.parentEntity.getLocationComponent().setFacing(newFacing);
 
