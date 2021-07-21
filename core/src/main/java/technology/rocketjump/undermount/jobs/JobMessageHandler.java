@@ -378,8 +378,10 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 						PlantSpeciesGrowthStage currentGrowthStage = attributes.getSpecies().getGrowthStages().get(attributes.getGrowthStageCursor());
 						if (currentGrowthStage.getHarvestType() != null) {
-							for (PlantSpeciesItem harvestedItem : currentGrowthStage.getHarvestedItems()) {
-								harvest(harvestedItem, targetEntity, completedByEntity, settlerBehaviour);
+							if (!attributes.isBurned()) {
+								for (PlantSpeciesItem harvestedItem : currentGrowthStage.getHarvestedItems()) {
+									harvest(harvestedItem, targetEntity, completedByEntity, settlerBehaviour);
+								}
 							}
 
 							if (currentGrowthStage.getHarvestSwitchesToGrowthStage() == null) {

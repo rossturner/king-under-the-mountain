@@ -7,10 +7,7 @@ import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.misc.Name;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OngoingEffectType {
 
@@ -103,5 +100,18 @@ public class OngoingEffectType {
 
 	public void setInitialColor(String initialColor) {
 		this.initialColor = initialColor;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		OngoingEffectType that = (OngoingEffectType) o;
+		return name.equals(that.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
 	}
 }

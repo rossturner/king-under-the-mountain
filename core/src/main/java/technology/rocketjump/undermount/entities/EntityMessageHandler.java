@@ -62,6 +62,7 @@ import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
 import technology.rocketjump.undermount.settlement.ItemTracker;
+import technology.rocketjump.undermount.settlement.OngoingEffectTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.settlement.notifications.NotificationType;
@@ -95,6 +96,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private final ItemTracker itemTracker;
 	private final FurnitureTracker furnitureTracker;
 	private final SettlerTracker settlerTracker;
+	private final OngoingEffectTracker ongoingEffectTracker;
 	private final RoomStore roomStore;
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
 	private final ItemEntityFactory itemEntityFactory;
@@ -113,7 +115,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
 								JobFactory jobFactory, EntityStore entityStore, ItemTracker itemTracker,
-								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, RoomStore roomStore,
+								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, OngoingEffectTracker ongoingEffectTracker, RoomStore roomStore,
 								ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory,
 								ItemTypeDictionary itemTypeDictionary, I18nTranslator i18nTranslator, JobStore jobStore,
 								SoundAssetDictionary soundAssetDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
@@ -124,6 +126,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.itemTracker = itemTracker;
 		this.furnitureTracker = furnitureTracker;
 		this.settlerTracker = settlerTracker;
+		this.ongoingEffectTracker = ongoingEffectTracker;
 		this.roomStore = roomStore;
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
 		this.itemEntityFactory = itemEntityFactory;
@@ -181,27 +184,10 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 					itemTracker.itemAdded(createdEntity);
 				} else if (createdEntity.getType().equals(EntityType.FURNITURE)) {
 					furnitureTracker.furnitureAdded(createdEntity);
+				} else if (createdEntity.getType().equals(ONGOING_EFFECT)) {
+					ongoingEffectTracker.entityAdded(createdEntity);
 				}
 
-				return true;
-			}
-			case MessageType.ENTITY_DO_NOT_TRACK: {
-				Entity entity = (Entity) msg.extraInfo;
-				entity.getLocationComponent().setUntracked(true);
-
-				if (entity.getType().equals(ITEM)) {
-					itemTracker.itemRemoved(entity);
-				} else if (entity.getType().equals(EntityType.FURNITURE)) {
-					furnitureTracker.furnitureRemoved(entity);
-				} else if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
-					settlerTracker.settlerRemoved(entity);
-				}
-
-				return true;
-			}
-			case MessageType.ITEM_PRIMARY_MATERIAL_CHANGED: {
-				ItemPrimaryMaterialChangedMessage message = (ItemPrimaryMaterialChangedMessage)msg.extraInfo;
-				itemTracker.primaryMaterialChanged(message.item, message.oldPrimaryMaterial);
 				return true;
 			}
 			case MessageType.DESTROY_ENTITY: {
@@ -216,6 +202,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						itemTracker.itemRemoved(removedEntity);
 					} else if (removedEntity.getType().equals(EntityType.FURNITURE)) {
 						furnitureTracker.furnitureRemoved(removedEntity);
+					} else if (removedEntity.getType().equals(ONGOING_EFFECT)) {
+						ongoingEffectTracker.entityRemoved(removedEntity);
 					} else if (removedEntity.getBehaviourComponent() instanceof SettlerBehaviour) {
 						settlerTracker.settlerRemoved(removedEntity);
 						HumanoidEntityAttributes humanoidAttributes = (HumanoidEntityAttributes) removedEntity.getPhysicalEntityComponent().getAttributes();
@@ -274,6 +262,25 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						}
 					}
 				}
+				return true;
+			}
+			case MessageType.ENTITY_DO_NOT_TRACK: {
+				Entity entity = (Entity) msg.extraInfo;
+				entity.getLocationComponent().setUntracked(true);
+
+				if (entity.getType().equals(ITEM)) {
+					itemTracker.itemRemoved(entity);
+				} else if (entity.getType().equals(EntityType.FURNITURE)) {
+					furnitureTracker.furnitureRemoved(entity);
+				} else if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
+					settlerTracker.settlerRemoved(entity);
+				}
+
+				return true;
+			}
+			case MessageType.ITEM_PRIMARY_MATERIAL_CHANGED: {
+				ItemPrimaryMaterialChangedMessage message = (ItemPrimaryMaterialChangedMessage)msg.extraInfo;
+				itemTracker.primaryMaterialChanged(message.item, message.oldPrimaryMaterial);
 				return true;
 			}
 			case MessageType.JOB_REMOVED: {
