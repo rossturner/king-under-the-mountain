@@ -210,6 +210,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				break;
 			case FURNITURE:
 				FurnitureEntityAttributes furnitureEntityAttributes = (FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				furnitureEntityAttributes.setDestroyed(true);
 				for (ColoringLayer coloringLayer : furnitureEntityAttributes.getOtherColors().keySet()) {
 					furnitureEntityAttributes.setColor(coloringLayer, blackenedColor());
 				}
@@ -238,7 +239,10 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 					for (Entity decorationEntity : new ArrayList<>(decorationInventoryComponent.getDecorationEntities())) {
 						messageDispatcher.dispatchMessage(DESTROY_ENTITY, new EntityMessage(decorationEntity.getId()));
 					}
+					decorationInventoryComponent.clear();
 				}
+
+				entity.getLocationComponent().setRotation(slightRotation());
 
 				break;
 			default:
@@ -246,6 +250,14 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		}
 
 		entity.setTags(emptySet());
+	}
+
+	private float slightRotation() {
+		float rotationAmount = gameContext.getRandom().nextFloat() * 15f;
+		if (gameContext.getRandom().nextBoolean()) {
+			rotationAmount *= -1f;
+		}
+		return rotationAmount;
 	}
 
 	/**

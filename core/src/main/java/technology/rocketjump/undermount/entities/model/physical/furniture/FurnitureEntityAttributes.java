@@ -29,6 +29,7 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 	private FurnitureLayout currentLayout;
 
 	private Long assignedToEntityId;
+	private boolean destroyed;
 
 	public FurnitureEntityAttributes() {
 
@@ -166,6 +167,14 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		this.assignedToEntityId = assignedToEntityId;
 	}
 
+	public boolean isDestroyed() {
+		return destroyed;
+	}
+
+	public void setDestroyed(boolean destroyed) {
+		this.destroyed = destroyed;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("seed", seed);
@@ -193,6 +202,9 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		}
 		if (assignedToEntityId != null) {
 			asJson.put("assignedToEntityId", assignedToEntityId);
+		}
+		if (destroyed) {
+			asJson.put("destroyed", true);
 		}
 	}
 
@@ -243,6 +255,7 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 			}
 		}
 		assignedToEntityId = asJson.getLong("assignedToEntityId");
+		destroyed = asJson.getBooleanValue("destroyed");
 	}
 
 }

@@ -114,7 +114,7 @@ public class ItemEntityAttributesFactory {
 		List<QuantifiedItemType> requirements = furnitureType.getRequirements().get(attributes.getPrimaryMaterialType());
 
 		List<ItemEntityAttributes> resourceItemAttributes = new LinkedList<>();
-		if (requirements != null) {
+		if (requirements != null && !attributes.isDestroyed()) {
 			for (QuantifiedItemType requirement : requirements) {
 				int quantity = Math.max(1, requirement.getQuantity() / 2);
 				ItemEntityAttributes newItemAttributes = createItemAttributes(requirement.getItemType(), quantity, attributes);
@@ -128,9 +128,11 @@ public class ItemEntityAttributesFactory {
 		FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) furnitureEntity.getPhysicalEntityComponent().getAttributes();
 
 		List<ItemEntityAttributes> itemAttributes = new LinkedList<>();
-		for (ItemType itemType : replacementItems) {
-			ItemEntityAttributes newItemAttributes = createItemAttributes(itemType, 1, attributes);
-			itemAttributes.add(newItemAttributes);
+		if (!attributes.isDestroyed()) {
+			for (ItemType itemType : replacementItems) {
+				ItemEntityAttributes newItemAttributes = createItemAttributes(itemType, 1, attributes);
+				itemAttributes.add(newItemAttributes);
+			}
 		}
 		return itemAttributes;
 	}
