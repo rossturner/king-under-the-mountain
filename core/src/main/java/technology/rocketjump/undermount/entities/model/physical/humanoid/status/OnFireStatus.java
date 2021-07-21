@@ -7,7 +7,6 @@ import technology.rocketjump.undermount.entities.components.AttachedEntitiesComp
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
-import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -56,11 +55,9 @@ public class OnFireStatus extends StatusEffect {
 			}
 		}
 
-		if (parentEntity.getType().equals(EntityType.ITEM)) {
-			ItemAllocationComponent itemAllocationComponent = parentEntity.getComponent(ItemAllocationComponent.class);
-			if (itemAllocationComponent != null) {
-				itemAllocationComponent.cancelAll();
-			}
+		ItemAllocationComponent itemAllocationComponent = parentEntity.getComponent(ItemAllocationComponent.class);
+		if (itemAllocationComponent != null) {
+			itemAllocationComponent.cancelAll();
 		}
 	}
 

@@ -48,6 +48,14 @@ public class TransformUponJobCompletionFurnitureBehaviour extends FurnitureBehav
 			jobToComplete = null;
 		}
 
+		if (onFire()) {
+			if (jobToComplete != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, jobToComplete);
+				jobToComplete = null;
+			}
+			return;
+		}
+
 		if (jobToComplete == null) {
 			FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
 			if (navigableWorkspace != null) {

@@ -124,7 +124,16 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
-		clearCompletedLiquidJobs();
+		liquidTransferJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
+
+		if (onFire()) {
+			if (craftingJob != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, craftingJob);
+				craftingJob = null;
+			}
+			liquidTransferJobs.forEach(job -> messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job));
+			return;
+		}
 
 		if (extraTimeToProcess != null) {
 			FurnitureParticleEffectsComponent particleEffectsComponent = parentEntity.getComponent(FurnitureParticleEffectsComponent.class);
@@ -279,10 +288,6 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			// TODO Probably want to keep hold of these jobs and cancel them when destroyed
 			createHaulingJob(requirement, amountRequired, gameContext);
 		}
-	}
-
-	private void clearCompletedLiquidJobs() {
-		liquidTransferJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
 	}
 
 	private void createLiquidTransferJobIfNeeded(QuantifiedItemTypeWithMaterial requirement, GameContext gameContext) {

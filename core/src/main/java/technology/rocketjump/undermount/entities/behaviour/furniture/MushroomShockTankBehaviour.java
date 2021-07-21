@@ -47,6 +47,10 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
+		if (onFire()) {
+			return;
+		}
+
 		LiquidContainerComponent liquidContainerComponent = parentEntity.getComponent(LiquidContainerComponent.class);
 		InventoryComponent inventoryComponent = parentEntity.getOrCreateComponent(InventoryComponent.class);
 

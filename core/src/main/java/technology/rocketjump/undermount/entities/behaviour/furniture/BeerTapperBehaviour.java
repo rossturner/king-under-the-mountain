@@ -71,6 +71,11 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 
 		haulingJobs.removeIf(job -> job.getJobState().equals(REMOVED));
 
+		if (onFire()) {
+			haulingJobs.forEach(job -> messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job));
+			return;
+		}
+
 		InventoryComponent parentInventory = parentEntity.getOrCreateComponent(InventoryComponent.class);
 
 		switch (state) {

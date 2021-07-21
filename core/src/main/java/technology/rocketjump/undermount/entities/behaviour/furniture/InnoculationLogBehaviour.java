@@ -98,6 +98,18 @@ public class InnoculationLogBehaviour extends FurnitureBehaviour implements Dest
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
 
+		if (onFire()) {
+			if (incomingHaulingJob != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, incomingHaulingJob);
+				incomingHaulingJob = null;
+			}
+			if (innoculationJob != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, innoculationJob);
+				innoculationJob = null;
+			}
+			return;
+		}
+
 		switch (state) {
 			case WAITING_TO_ASSIGN_MUSHROOM_SPAWN: {
 				// Try to requestAllocation mushroom spawn to this item

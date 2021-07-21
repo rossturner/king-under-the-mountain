@@ -51,6 +51,11 @@ public class CollectItemFurnitureBehaviour extends FurnitureBehaviour implements
 		super.infrequentUpdate(gameContext);
 		incomingHaulingJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
 
+		if (onFire()) {
+			incomingHaulingJobs.forEach(job -> messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job));
+			return;
+		}
+
 		InventoryComponent inventoryComponent = parentEntity.getOrCreateComponent(InventoryComponent.class);
 
 		// Only when no hauling jobs incoming, clear empty inventory assignments

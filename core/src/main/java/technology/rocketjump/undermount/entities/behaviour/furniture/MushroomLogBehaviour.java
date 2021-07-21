@@ -99,6 +99,14 @@ public class MushroomLogBehaviour extends FurnitureBehaviour implements Destruct
 		double elapsedTime = gameContext.getGameClock().getCurrentGameTime() - lastUpdateGameTime;
 		currentMushroomSpawnTime += elapsedTime;
 
+		if (onFire()) {
+			if (harvestJob != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, harvestJob);
+				harvestJob = null;
+			}
+			return;
+		}
+
 		switch (state) {
 			case SPAWNING: {
 				if (currentMushroomSpawnTime > totalTimeToSpawnMushroom / 2) {

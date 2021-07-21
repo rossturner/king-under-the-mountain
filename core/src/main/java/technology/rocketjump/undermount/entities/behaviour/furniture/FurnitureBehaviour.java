@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -71,6 +72,18 @@ public class FurnitureBehaviour implements BehaviourComponent {
 	public void infrequentUpdate(GameContext gameContext) {
 		AttachedLightSourceBehaviour.infrequentUpdate(gameContext, parentEntity);
 
+		double gameTime = gameContext.getGameClock().getCurrentGameTime();
+		double elapsed = gameTime - lastUpdateGameTime;
+		lastUpdateGameTime = gameTime;
+		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
+		if (statusComponent != null) {
+			statusComponent.infrequentUpdate(elapsed);
+		}
+
+		if (onFire()) {
+			return;
+		}
+
 		ConstructedEntityComponent constructedEntityComponent = parentEntity.getComponent(ConstructedEntityComponent.class);
 		if (constructedEntityComponent != null) {
 			if (!constructedEntityComponent.isBeingDeconstructed() && constructedEntityComponent.canBeDeconstructed()) {
@@ -112,13 +125,11 @@ public class FurnitureBehaviour implements BehaviourComponent {
 			}
 		}
 
-		double gameTime = gameContext.getGameClock().getCurrentGameTime();
-		double elapsed = gameTime - lastUpdateGameTime;
-		lastUpdateGameTime = gameTime;
+	}
+
+	protected boolean onFire() {
 		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
-		if (statusComponent != null) {
-			statusComponent.infrequentUpdate(elapsed);
-		}
+		return statusComponent != null && statusComponent.contains(OnFireStatus.class);
 	}
 
 
