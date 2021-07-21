@@ -47,7 +47,7 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
-		if (onFire()) {
+		if (parentEntity.isOnFire()) {
 			return;
 		}
 

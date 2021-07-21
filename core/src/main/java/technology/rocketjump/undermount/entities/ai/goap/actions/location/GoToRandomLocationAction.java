@@ -13,6 +13,10 @@ import static technology.rocketjump.undermount.entities.ai.goap.actions.IdleActi
 
 public class GoToRandomLocationAction extends GoToLocationAction {
 
+	private static final float MAX_ELAPSED_TIME = 10f;
+
+	private float elapsedTime;
+
 	public GoToRandomLocationAction(AssignedGoal parent) {
 		super(parent);
 	}
@@ -29,16 +33,25 @@ public class GoToRandomLocationAction extends GoToLocationAction {
 			}
 		}
 
+		elapsedTime += deltaTime;
+		if (elapsedTime > MAX_ELAPSED_TIME) {
+			parent.setInterrupted(true);
+		}
+
 		super.update(deltaTime, gameContext);
 	}
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
+
+		asJson.put("elapsed", elapsedTime);
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		super.readFrom(asJson, savedGameStateHolder, relatedStores);
+
+		this.elapsedTime = asJson.getFloatValue("elapsed");
 	}
 }

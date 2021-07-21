@@ -51,7 +51,10 @@ public class StatusComponent implements ParentDependentEntityComponent {
 	}
 
 	public void remove(Class<? extends StatusEffect> statusClass) {
-		byClassType.remove(statusClass);
+		StatusEffect removed = byClassType.remove(statusClass);
+		if (removed != null) {
+			removed.onRemoval(gameContext, messageDispatcher);
+		}
 	}
 
 	public boolean contains(Class<? extends StatusEffect> statusClass) {

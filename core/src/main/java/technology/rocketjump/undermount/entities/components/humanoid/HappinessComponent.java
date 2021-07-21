@@ -120,6 +120,8 @@ public class HappinessComponent implements EntityComponent {
 		SAW_DEAD_BODY(-50, 24.0 * 3.0),
 		CARRIED_DEAD_BODY(-55, 24.0 * 1.0),
 
+		ON_FIRE(-40, 16.0),
+
 		DRANK_FROM_RIVER(-5, 1.5),
 		ATE_NICELY_PREPARED_FOOD(5, 3.0),
 

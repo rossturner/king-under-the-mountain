@@ -51,7 +51,7 @@ public class CollectItemFurnitureBehaviour extends FurnitureBehaviour implements
 		super.infrequentUpdate(gameContext);
 		incomingHaulingJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
 
-		if (onFire()) {
+		if (parentEntity.isOnFire()) {
 			incomingHaulingJobs.forEach(job -> messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job));
 			return;
 		}

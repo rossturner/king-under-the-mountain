@@ -81,7 +81,6 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			// Path found
 			followPath(gameContext);
 
-
 			checkForCompletion();
 		}
 	}

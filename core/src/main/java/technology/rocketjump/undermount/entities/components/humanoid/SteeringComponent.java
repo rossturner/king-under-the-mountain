@@ -157,6 +157,10 @@ public class SteeringComponent implements ChildPersistable {
 			maxSpeed *= 0.5f;
 		}
 
+		if (parentEntity.isOnFire()) {
+			maxSpeed *= 2f;
+		}
+
 
 		if (pauseTime > 0) {
 			pauseTime -= deltaTime;

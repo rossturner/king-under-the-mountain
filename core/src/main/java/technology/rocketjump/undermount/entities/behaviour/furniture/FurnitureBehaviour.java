@@ -13,7 +13,6 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -80,7 +79,7 @@ public class FurnitureBehaviour implements BehaviourComponent {
 			statusComponent.infrequentUpdate(elapsed);
 		}
 
-		if (onFire()) {
+		if (parentEntity.isOnFire()) {
 			return;
 		}
 
@@ -125,11 +124,6 @@ public class FurnitureBehaviour implements BehaviourComponent {
 			}
 		}
 
-	}
-
-	protected boolean onFire() {
-		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
-		return statusComponent != null && statusComponent.contains(OnFireStatus.class);
 	}
 
 

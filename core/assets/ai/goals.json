@@ -30,6 +30,14 @@
   } ],
   "initialActions" : [ "RememberRequiredItem" ]
 }, {
+  "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
+  "name" : "Douse self goal",
+  "actionRelationships" : {
+    "RollAround" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "RollAround" ]
+}, {
   "i18nDescription" : "GOAL.DRINK.DESCRIPTION",
   "name" : "Drink goal",
   "actionRelationships" : {
@@ -295,6 +303,14 @@
   },
   "selectors" : [ ],
   "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+}, {
+  "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
+  "name" : "Roll on floor goal",
+  "actionRelationships" : {
+    "RollAround" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "RollAround" ]
 }, {
   "i18nDescription" : "GOAL.SLEEP.DESCRIPTION",
   "name" : "Sleep in bed goal",

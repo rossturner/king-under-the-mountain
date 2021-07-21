@@ -128,6 +128,9 @@ public class I18nTranslator implements I18nUpdatable {
 				if (currentAction != null && currentAction.getDescriptionOverrideI18nKey() != null) {
 					description = dictionary.getWord(currentAction.getDescriptionOverrideI18nKey());
 				}
+				if (entity.isOnFire()) {
+					description = dictionary.getWord("GOAL.ON_FIRE.DESCRIPTION");
+				}
 
 				Map<String, I18nString> replacements = new HashMap<>();
 

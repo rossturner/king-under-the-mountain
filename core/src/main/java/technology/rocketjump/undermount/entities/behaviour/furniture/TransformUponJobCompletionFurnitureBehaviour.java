@@ -48,7 +48,7 @@ public class TransformUponJobCompletionFurnitureBehaviour extends FurnitureBehav
 			jobToComplete = null;
 		}
 
-		if (onFire()) {
+		if (parentEntity.isOnFire()) {
 			if (jobToComplete != null) {
 				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, jobToComplete);
 				jobToComplete = null;

@@ -98,7 +98,7 @@ public class InnoculationLogBehaviour extends FurnitureBehaviour implements Dest
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
 
-		if (onFire()) {
+		if (parentEntity.isOnFire()) {
 			if (incomingHaulingJob != null) {
 				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, incomingHaulingJob);
 				incomingHaulingJob = null;

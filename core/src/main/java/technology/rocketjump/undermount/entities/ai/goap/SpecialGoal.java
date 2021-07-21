@@ -9,7 +9,9 @@ public enum SpecialGoal {
 	MOVE_LIQUID_IN_ITEM("Move liquid in item goal"),
 	REMOVE_LIQUID("Remove liquid goal"),
 	DUMP_LIQUID("Dump liquid goal"),
-	PLACE_ITEM("Place item goal");
+	PLACE_ITEM("Place item goal"),
+	ROLL_ON_FLOOR("Roll on floor goal"),
+	DOUSE_SELF("Douse self goal");
 
 	public final String goalName;
 	Goal goalInstance;

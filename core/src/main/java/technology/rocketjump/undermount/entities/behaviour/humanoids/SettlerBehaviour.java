@@ -90,6 +90,12 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 			currentGoal = pickNextGoalFromQueue(gameContext);
 		}
 
+		// Not going to update steering when asleep so can't be pushed around
+		Consciousness consciousness = ((HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
+		if (AWAKE.equals(consciousness)) {
+			steeringComponent.update(deltaTime);
+		}
+
 		try {
 			currentGoal.update(deltaTime, gameContext);
 		} catch (SwitchGoalException e) {
@@ -102,12 +108,6 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 			}
 			currentGoal = newGoal;
 		}
-
-		// Not going to update steering when asleep so can't be pushed around
-		Consciousness consciousness = ((HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
-		if (AWAKE.equals(consciousness)) {
-			steeringComponent.update(deltaTime);
-		}
 	}
 
 	public AssignedGoal getCurrentGoal() {
@@ -115,6 +115,10 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 	}
 
 	protected AssignedGoal pickNextGoalFromQueue(GameContext gameContext) {
+		if (parentEntity.isOnFire()) {
+			return onFireGoal(gameContext);
+		}
+
 		// (Override) if we're hauling an item, need to place it
 		if (parentEntity.getComponent(HaulingComponent.class) != null) {
 			Entity hauledEntity = parentEntity.getComponent(HaulingComponent.class).getHauledEntity();
@@ -171,6 +175,19 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible {
 			return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
 		}
 		return new AssignedGoal(nextGoal.getGoal(), parentEntity, messageDispatcher);
+	}
+
+	private AssignedGoal onFireGoal(GameContext gameContext) {
+//		if (nearWaterSource()) {
+//			return new AssignedGoal(DOUSE_SELF.getInstance(), parentEntity, messageDispatcher);
+		if (gameContext.getRandom().nextBoolean()) {
+			return new AssignedGoal(ROLL_ON_FLOOR.getInstance(), parentEntity, messageDispatcher);
+		}
+		return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
+	}
+
+	private boolean nearWaterSource() {
+		return false;
 	}
 
 	private AssignedGoal checkToPlaceInventoryItems(GameContext gameContext) {

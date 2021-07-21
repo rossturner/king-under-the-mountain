@@ -31,7 +31,6 @@ public abstract class StatusEffect implements ChildPersistable {
 		timeApplied += elapsedTime;
 
 		if (checkForRemoval(gameContext)) {
-			this.onRemoval(gameContext, messageDispatcher);
 			messageDispatcher.dispatchMessage(MessageType.REMOVE_STATUS, new StatusMessage(parentEntity, this.getClass(), null));
 		} else if (nextStage != null && timeApplied > hoursUntilNextStage) {
 			messageDispatcher.dispatchMessage(MessageType.REMOVE_STATUS, new StatusMessage(parentEntity, this.getClass(), null));

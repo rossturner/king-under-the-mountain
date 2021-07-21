@@ -10,12 +10,14 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemHoldPosition;
 import technology.rocketjump.undermount.entities.tags.Tag;
@@ -256,6 +258,11 @@ public class Entity implements Persistable, Disposable {
 		if (this.behaviourComponent != null) {
 			componentMap.add(this.behaviourComponent);
 		}
+	}
+
+	public boolean isOnFire() {
+		StatusComponent statusComponent = getComponent(StatusComponent.class);
+		return statusComponent != null && statusComponent.contains(OnFireStatus.class);
 	}
 
 	public EntityType getType() {

@@ -126,7 +126,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		super.infrequentUpdate(gameContext);
 		liquidTransferJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
 
-		if (onFire()) {
+		if (parentEntity.isOnFire()) {
 			if (craftingJob != null) {
 				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, craftingJob);
 				craftingJob = null;

@@ -1,0 +1,9 @@
+{
+  "name": "Douse self goal",
+  "i18nDescription": "GOAL.ON_FIRE.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["RollAround"],
+  "actionRelationships": {
+    "RollAround": {}
+  }
+}

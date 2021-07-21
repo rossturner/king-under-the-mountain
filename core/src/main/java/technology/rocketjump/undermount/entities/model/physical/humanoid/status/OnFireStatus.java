@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.entities.components.AttachedEntitiesComp
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -40,6 +41,12 @@ public class OnFireStatus extends StatusEffect {
 				}
 				itemAllocationComponent.createAllocation(itemAllocationComponent.getNumUnallocated(), parentEntity, ON_FIRE);
 			}
+		}
+
+
+		HappinessComponent happinessComponent = parentEntity.getComponent(HappinessComponent.class);
+		if (happinessComponent != null) {
+			happinessComponent.add(HappinessComponent.HappinessModifier.ON_FIRE);
 		}
 	}
 
