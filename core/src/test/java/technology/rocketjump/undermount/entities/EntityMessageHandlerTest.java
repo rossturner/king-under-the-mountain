@@ -25,6 +25,7 @@ import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
 import technology.rocketjump.undermount.settlement.ItemTracker;
+import technology.rocketjump.undermount.settlement.OngoingEffectTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
@@ -75,13 +76,15 @@ public class EntityMessageHandlerTest {
 	private SoundAssetDictionary mockSoundAssetDictionary;
 	@Mock
 	private ParticleEffectTypeDictionary mockParticleEffectDictionary;
+	@Mock
+	private OngoingEffectTracker mockOngoingEffectTracker;
 
 	@Before
 	public void setUp() throws Exception {
 		messageDispatcher = new MessageDispatcher();
 
 		entityMessageHandler = new EntityMessageHandler(messageDispatcher, mockAssetUpdater, mockJobFactory,
-				mockEntityStore, mockItemTracker, mockFurnitureTracker, mockSettlerTracker, ongoingEffectTracker, mockRoomStore,
+				mockEntityStore, mockItemTracker, mockFurnitureTracker, mockSettlerTracker, mockOngoingEffectTracker, mockRoomStore,
 				mockItemEntityAttributesFactory, mockItemEntityFactory, mockItemTypeDictionary, mockI18nTranslator, mockJobStore,
 				mockSoundAssetDictionary, mockParticleEffectDictionary);
 

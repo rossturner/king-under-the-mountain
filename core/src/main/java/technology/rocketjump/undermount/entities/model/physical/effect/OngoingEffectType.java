@@ -30,6 +30,8 @@ public class OngoingEffectType {
 	@JsonIgnore
 	private List<Tag> processedTags = new ArrayList<>();
 
+	private String triggersNotification;
+
 	public String getName() {
 		return name;
 	}
@@ -100,6 +102,14 @@ public class OngoingEffectType {
 
 	public void setInitialColor(String initialColor) {
 		this.initialColor = initialColor;
+	}
+
+	public String getTriggersNotification() {
+		return triggersNotification;
+	}
+
+	public void setTriggersNotification(String triggersNotification) {
+		this.triggersNotification = triggersNotification;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public enum NotificationType {
 	ROOFING_COLLAPSE("triple-gate", "#bfb9b4", "cavern_collapse.png", "MiningCollapse"),
 	SETTLER_MENTAL_BREAK("nailed-head", "#d182d2", "clouds.png", null),
 	DEATH("dead-head", "#9f533f", "death.png", "Body Drop"),
+	FIRE_STARTED("flame", "#FF4400", "fire-landscape.png", null),
 	GAME_OVER("castle-ruins", "#cd0303", "settlement-game-over.png", null);
 
 
