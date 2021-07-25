@@ -19,6 +19,7 @@ ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_ROOFING,,Constructing roof,,,,,,,,,,,,,
 ACTION.JOB.DECONSTRUCT_ROOFING,,Removing roof,,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_FLOORING,,Laying floor,,,,,,,,,,,,,
+ACTION.JOB.EXTINGUISH_FLAMES,,Putting out a fire,,,,,,,,,,,,,
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,Cherchant quoi faire,Buscando qué hacer,Sucht Arbeit,Sta cercando qualcosa da fare,Procurando o que fazer,À procura de trabalho,Ищет работу,Szuka pracy,Werkzoekend,Söker efter arbete,Leter etter arbeid,,Etsii työtä
 ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},Dormant : {{containerDescription}},Durmiendo en {{containerDescription}},Schläft in {{containerDescription}},Sta dormendo in: {{containerDescription}},Dormindo em {{containerDescription}},A dormir em {{containerDescription}},Спит в: {{containerDescription}},Śpi w {{containerDescription}},,,,,
 ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},Dormant : {{tileDescription}},Durmiendo sobre {{tileDescription}},Schläft auf {{tileDescription}},Sta dormendo su: {{tileDescription}},Dormindo em {{tileDescription}},A dormir em {{tileDescription}},Спит на: {{tileDescription}},Śpi na {{tileDescription}},,,,,

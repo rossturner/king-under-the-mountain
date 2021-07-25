@@ -39,6 +39,13 @@
     "activeSoundAssetName": "Tilling"
   },
   {
+    "name": "LIGHT_CHARCOAL_CLAMP",
+    "defaultTimeToCompleteJob": 5,
+    "overrideI18nKey": "ACTION.JOB.SHOVELLING",
+    "activeSoundAssetName": "Tilling",
+    "mightStartFire": 0.05
+  },
+  {
     "name": "TILLING",
     "defaultTimeToCompleteJob": 4,
     "overrideI18nKey": "ACTION.JOB.TILLING",
@@ -93,7 +100,8 @@
     "name": "COOKING",
     "overrideI18nKey": "ACTION.JOB.GENERIC",
     "accessedFromAdjacentTile": true,
-    "requiredProfessionName": "CHEF"
+    "requiredProfessionName": "CHEF",
+    "mightStartFire": 0.01
   },
 
 

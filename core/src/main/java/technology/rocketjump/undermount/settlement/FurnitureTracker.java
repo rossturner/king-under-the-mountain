@@ -18,6 +18,8 @@ import technology.rocketjump.undermount.messaging.types.FurnitureAssignmentReque
 
 import java.util.*;
 
+import static java.util.Collections.emptyMap;
+
 /**
  * This class is responsible for keeping track of all items (allocated or not) on the map
  */
@@ -60,7 +62,7 @@ public class FurnitureTracker implements GameContextAware, Telegraph {
 		FurnitureType furnitureType = attributes.getFurnitureType();
 		byFurnitureType.get(furnitureType).remove(entity.getId());
 		for (Tag tag : entity.getTags()) {
-			byTag.get(tag.getClass()).remove(entity.getId());
+			byTag.getOrDefault(tag.getClass(), emptyMap()).remove(entity.getId());
 		}
 	}
 

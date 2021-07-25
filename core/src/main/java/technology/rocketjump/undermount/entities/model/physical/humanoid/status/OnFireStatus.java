@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import java.util.ArrayList;
 
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.ON_FIRE;
+import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class OnFireStatus extends StatusEffect {
 
@@ -68,7 +69,7 @@ public class OnFireStatus extends StatusEffect {
 			itemAllocationComponent.cancelAll();
 		}
 
-		messageDispatcher.dispatchMessage(MessageType.FIRE_REMOVED, parentEntity.getLocationComponent().getWorldPosition());
+		messageDispatcher.dispatchMessage(MessageType.FIRE_REMOVED, toGridPoint(parentEntity.getLocationComponent().getWorldPosition()));
 	}
 
 	@Override

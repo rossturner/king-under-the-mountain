@@ -65,6 +65,17 @@
   } ],
   "dismissable" : true
 }, {
+  "hintId" : "fire_encountered",
+  "i18nKeys" : [ "HINT.FIRE_ENCOUNTERED.1", "HINT.FIRE_ENCOUNTERED.2" ],
+  "progressDescriptors" : [ ],
+  "actions" : [ ],
+  "triggers" : [ {
+    "triggerType" : "ONGOING_EFFECT_TRIGGERED",
+    "relatedTypeName" : "Fire",
+    "quantity" : 0
+  } ],
+  "dismissable" : true
+}, {
   "hintId" : "welcome",
   "i18nKeys" : [ "HINT.WELCOME.INTRO", "HINT.WELCOME.NEXT_STEPS" ],
   "progressDescriptors" : [ ],

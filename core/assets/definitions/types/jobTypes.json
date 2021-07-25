@@ -45,6 +45,16 @@
   "activeSoundAssetName" : "Tilling",
   "accessedFromAdjacentTile" : false
 }, {
+  "name" : "LIGHT_CHARCOAL_CLAMP",
+  "overrideI18nKey" : "ACTION.JOB.SHOVELLING",
+  "workDuration" : 3.0,
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 5.0,
+  "mightStartFire" : 0.05,
+  "activeSoundAssetName" : "Tilling",
+  "accessedFromAdjacentTile" : false
+}, {
   "name" : "TILLING",
   "overrideI18nKey" : "ACTION.JOB.TILLING",
   "workDuration" : 3.0,
@@ -119,6 +129,7 @@
   "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
+  "mightStartFire" : 0.01,
   "requiredProfessionName" : "CHEF",
   "accessedFromAdjacentTile" : true
 }, {

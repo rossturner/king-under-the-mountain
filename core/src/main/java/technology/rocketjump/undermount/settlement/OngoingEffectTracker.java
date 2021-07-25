@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.Collections.emptyMap;
+import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 @Singleton
 public class OngoingEffectTracker implements GameContextAware {
@@ -65,7 +66,7 @@ public class OngoingEffectTracker implements GameContextAware {
 					statusComponent.remove(OnFireStatus.class);
 				}
 			}
-			messageDispatcher.dispatchMessage(MessageType.FIRE_REMOVED, entity.getLocationComponent().getWorldPosition());
+			messageDispatcher.dispatchMessage(MessageType.FIRE_REMOVED, toGridPoint(entity.getLocationComponent().getWorldPosition()));
 		}
 	}
 

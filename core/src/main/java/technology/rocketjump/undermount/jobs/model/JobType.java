@@ -23,6 +23,7 @@ public class JobType {
 	private boolean haulItemWhileWorking;
 	private SpecialGoal switchToSpecialGoal;
 	private Float defaultTimeToCompleteJob;
+	private Float mightStartFire;
 
 	private String requiredProfessionName;
 	@JsonIgnore
@@ -191,5 +192,13 @@ public class JobType {
 
 	public void setDefaultTimeToCompleteJob(Float defaultTimeToCompleteJob) {
 		this.defaultTimeToCompleteJob = defaultTimeToCompleteJob;
+	}
+
+	public Float getMightStartFire() {
+		return mightStartFire;
+	}
+
+	public void setMightStartFire(Float mightStartFire) {
+		this.mightStartFire = mightStartFire;
 	}
 }

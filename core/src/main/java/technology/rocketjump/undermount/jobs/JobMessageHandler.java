@@ -266,6 +266,16 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					jobCompletedMessage.getCompletedByEntity().getId(), jobCompletedMessage.getCompletedByEntity().getLocationComponent().getWorldOrParentPosition(), null));
 		}
 
+		if (completedJob.getType().getMightStartFire() != null) {
+			if (gameContext.getRandom().nextFloat() < completedJob.getType().getMightStartFire()) {
+				messageDispatcher.dispatchMessage(MessageType.SMALL_FIRE_STARTED, new StartSmallFireMessage(completedJob.getTargetId(), completedJob.getJobLocation()));
+			}
+		} else if (completedJob.getCraftingRecipe() != null && completedJob.getCraftingRecipe().getCraftingType().getMightStartFire() != null) {
+			if (gameContext.getRandom().nextFloat() < completedJob.getCraftingRecipe().getCraftingType().getMightStartFire()) {
+				messageDispatcher.dispatchMessage(MessageType.SMALL_FIRE_STARTED, new StartSmallFireMessage(completedJob.getTargetId(), completedJob.getJobLocation()));
+			}
+		}
+
 		// TODO Could the below be scripted rather than hard-coded?
 		switch (completedJob.getType().getName()) {
 			case "MINING": {
@@ -585,6 +595,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				messageDispatcher.dispatchMessage(MessageType.CONSTRUCTION_COMPLETED, construction);
 				break;
 			case "SHOVELLING":
+			case "LIGHT_CHARCOAL_CLAMP":
 			case "PRODUCE_ITEM":
 			case "PRODUCE_LIQUID":
 			case "CRAFT_ITEM":

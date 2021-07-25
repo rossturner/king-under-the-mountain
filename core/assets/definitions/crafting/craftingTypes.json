@@ -28,13 +28,15 @@
   "defaultItemTypeName" : "Tool-Large-Hammer",
   "constructsFurniture" : "METAL",
   "usesWorkstationTool" : true,
-  "particleEffectNames" : [ "Blacksmith sparks" ]
+  "particleEffectNames" : [ "Blacksmith sparks" ],
+  "mightStartFire" : 0.03
 }, {
   "name" : "SMELTING",
   "i18nKey" : "CRAFTING_TYPE.SMELTING",
   "professionRequiredName" : "BLACKSMITH",
   "defaultItemTypeName" : "Tool-Tongs",
-  "usesWorkstationTool" : false
+  "usesWorkstationTool" : false,
+  "mightStartFire" : 0.02
 }, {
   "name" : "ORE_CRUSHING",
   "i18nKey" : "CRAFTING_TYPE.ORE_CRUSHING",
@@ -44,7 +46,8 @@
   "name" : "COKE_OVEN_BAKING",
   "i18nKey" : "CRAFTING_TYPE.COKE_OVEN_BAKING",
   "professionRequiredName" : "BLACKSMITH",
-  "usesWorkstationTool" : false
+  "usesWorkstationTool" : false,
+  "mightStartFire" : 0.02
 }, {
   "name" : "MILLING",
   "i18nKey" : "CRAFTING_TYPE.MILLING",

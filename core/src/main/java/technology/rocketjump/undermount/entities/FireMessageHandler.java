@@ -48,12 +48,15 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Collections.emptySet;
+import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
+import static technology.rocketjump.undermount.entities.model.EntityType.STATIC_ENTITY_TYPES;
 import static technology.rocketjump.undermount.messaging.MessageType.*;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
+import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 
 @Singleton
 public class FireMessageHandler implements GameContextAware, Telegraph {
@@ -93,10 +96,12 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		blackenedColors.add(HexColors.get("#343231"));
 
 		messageDispatcher.addListener(this, MessageType.SPREAD_FIRE_FROM_LOCATION);
+		messageDispatcher.addListener(this, MessageType.SMALL_FIRE_STARTED);
 		messageDispatcher.addListener(this, CONSUME_TILE_BY_FIRE);
 		messageDispatcher.addListener(this, MessageType.CONSUME_ENTITY_BY_FIRE);
 		messageDispatcher.addListener(this, MessageType.ADD_FIRE_TO_ENTITY);
 		messageDispatcher.addListener(this, MessageType.FIRE_REMOVED);
+
 	}
 
 	@Override
@@ -104,7 +109,16 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		switch (msg.message) {
 			case SPREAD_FIRE_FROM_LOCATION:
 				Vector2 location = (Vector2) msg.extraInfo;
-				spreadFireFrom(location);
+				spreadFireFrom(location, emptySet(), 4, false, MAX_DISTANCE_TO_SPREAD_FIRE_IN);
+				return true;
+			case SMALL_FIRE_STARTED:
+				StartSmallFireMessage message = (StartSmallFireMessage) msg.extraInfo;
+				MapTile spreadFromTile = gameContext.getAreaMap().getTile(message.jobLocation);
+				if (spreadFromTile != null) {
+					Set<Long> entityIdsToIgnore = spreadFromTile.getEntities().stream().map(Entity::getId).collect(Collectors.toSet());
+					entityIdsToIgnore.add(message.targetEntityId);
+					spreadFireFrom(toVector(message.jobLocation), entityIdsToIgnore, 1, true, 2);
+				}
 				return true;
 			case CONSUME_TILE_BY_FIRE:
 				MapTile tile = gameContext.getAreaMap().getTile((Vector2) msg.extraInfo);
@@ -130,7 +144,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				consumeEntityByFire(entity);
 				return true;
 			case FIRE_REMOVED:
-				Vector2 removalLocation = (Vector2) msg.extraInfo;
+				GridPoint2 removalLocation = (GridPoint2) msg.extraInfo;
 				if (removalLocation != null) {
 					checkToRemoveExtinguishDesignation(removalLocation);
 				}
@@ -140,15 +154,18 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		}
 	}
 
-	private void spreadFireFrom(Vector2 location) {
+	private void spreadFireFrom(Vector2 location, Set<Long> entityIdsToIgnore, int maxFiresToStart, boolean staticEntitiesOnly, int maxDistanceToSpreadFire) {
 		GridPoint2 centre = toGridPoint(location);
+		int firesStarted = 0;
 		MapTile centreTile = gameContext.getAreaMap().getTile(centre);
 		if (centreTile == null) {
 			return;
 		}
-		for (CompassDirection direction : CompassDirection.DIAGONAL_DIRECTIONS) {
+		ArrayList<CompassDirection> directions = new ArrayList<>(CompassDirection.DIAGONAL_DIRECTIONS);
+		Collections.shuffle(directions, gameContext.getRandom());
+		for (CompassDirection direction : directions) {
 			MapTile nextTile = centreTile;
-			for (int distance = 1; distance <= MAX_DISTANCE_TO_SPREAD_FIRE_IN; distance++) {
+			for (int distance = 1; distance <= maxDistanceToSpreadFire; distance++) {
 				nextTile = selectNextTile(nextTile, direction);
 				if (nextTile == null) {
 					break;
@@ -157,11 +174,14 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				if (nextTile.hasWall()) {
 					if (nextTile.getWall().getMaterial().isCombustible()) {
 						createFireInTile(nextTile);
+						firesStarted++;
 					}
 					break;
 				} else {
 
 					Optional<Entity> combustibleEntity = nextTile.getEntities().stream()
+							.filter(e -> staticEntitiesOnly ? STATIC_ENTITY_TYPES.contains(e.getType()) : true)
+							.filter(e -> !entityIdsToIgnore.contains(e.getId()))
 							.filter(e -> e.getPhysicalEntityComponent().getAttributes()
 									.getMaterials().values().stream().anyMatch(GameMaterial::isCombustible))
 							.findFirst();
@@ -170,9 +190,11 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 						StatusComponent statusComponent = combustibleEntity.get().getOrCreateComponent(StatusComponent.class);
 						statusComponent.init(combustibleEntity.get(), messageDispatcher, gameContext);
 						statusComponent.apply(new OnFireStatus());
+						firesStarted++;
 						break;
 					} else if (nextTile.getFloor().getMaterial().isCombustible()) {
 						createFireInTile(nextTile);
+						firesStarted++;
 						break;
 					}
 
@@ -180,10 +202,13 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				}
 
 			}
+			if (firesStarted >= maxFiresToStart) {
+				return;
+			}
 		}
 	}
 
-	private void checkToRemoveExtinguishDesignation(Vector2 removalLocation) {
+	private void checkToRemoveExtinguishDesignation(GridPoint2 removalLocation) {
 		MapTile tile = gameContext.getAreaMap().getTile(removalLocation);
 		TileDesignation designation = tile.getDesignation();
 		if (designation != null) {
@@ -192,6 +217,18 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				if (!interactionMode.designationCheck.shouldDesignationApply(tile)) {
 					// designation no longer applies
 					messageDispatcher.dispatchMessage(REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, designation));
+
+					gameContext.getAreaMap().getTile(removalLocation).getEntities().stream()
+							.filter(e -> e.getType().equals(FURNITURE))
+							.forEach(
+									e -> {
+										FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) e.getPhysicalEntityComponent().getAttributes();
+										List<GridPoint2> extraTiles = attributes.getCurrentLayout().getExtraTiles();
+										for (GridPoint2 extraTileOffset : extraTiles) {
+											checkToRemoveExtinguishDesignation(removalLocation.cpy().add(extraTileOffset));
+										}
+									}
+							);
 				}
 			}
 		}
