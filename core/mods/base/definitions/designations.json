@@ -51,5 +51,12 @@
     "createsJobTypeName": "CONSTRUCT_FLOORING",
     "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
     "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
+  },
+  {
+    "designationName": "EXTINGUISH_FLAMES",
+    "iconName": "water-splash",
+    "createsJobTypeName": "EXTINGUISH_FLAMES",
+    "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
+    "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
   }
 ]

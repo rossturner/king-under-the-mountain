@@ -7,6 +7,7 @@ import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
+import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.rooms.StockpileGroup;
@@ -26,6 +27,7 @@ public class ItemTypeDictionary {
 	private List<ItemType> allTypesList = new ArrayList<>();
 	private Map<CraftingType, List<ItemType>> byCraftingType = new HashMap<>();
 	private final Map<StockpileGroup, List<ItemType>> byStockpileGroup = new HashMap<>();
+	private final Map<Class<? extends Tag>, List<ItemType>> byTag = new HashMap<>();
 
 	@Inject
 	public ItemTypeDictionary(CraftingTypeDictionary craftingTypeDictionary,
@@ -84,6 +86,7 @@ public class ItemTypeDictionary {
 
 			byName.put(itemType.getItemTypeName(), itemType);
 			allTypesList.add(itemType);
+
 		}
 
 
@@ -111,7 +114,19 @@ public class ItemTypeDictionary {
 		return byStockpileGroup.getOrDefault(stockpileGroup, emptyList());
 	}
 
+	public List<ItemType> getByTagClass(Class<? extends Tag> tagClass) {
+		return byTag.getOrDefault(tagClass, emptyList());
+	}
+
 	public ConstantsRepo getConstantsRepo() {
 		return constantsRepo;
+	}
+
+	public void tagsProcessed() {
+		for (ItemType itemType : getAll()) {
+			for (Tag tag : itemType.getProcessedTags()) {
+				byTag.computeIfAbsent(tag.getClass(), a -> new ArrayList<>()).add(itemType);
+			}
+		}
 	}
 }

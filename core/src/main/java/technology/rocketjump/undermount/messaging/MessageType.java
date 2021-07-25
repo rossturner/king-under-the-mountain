@@ -126,8 +126,9 @@ public class MessageType {
 	public static final int REQUEST_ITEM_HAULING = 702;
 	public static final int REQUEST_HAULING_ALLOCATION = 703;
 	public static final int LOOKUP_ITEM_TYPE = 704;
-	public static final int SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE = 705;
-	public static final int CANCEL_ITEM_ALLOCATION = 706;
+	public static final int LOOKUP_ITEM_TYPES_BY_TAG_CLASS = 705;
+	public static final int SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE = 706;
+	public static final int CANCEL_ITEM_ALLOCATION = 707;
 
 	// Furniture & doorway specific messages
 	public static final int CREATE_DOORWAY = 801;
@@ -222,6 +223,7 @@ public class MessageType {
 	public static final int CONSUME_TILE_BY_FIRE = 1701;
 	public static final int CONSUME_ENTITY_BY_FIRE = 1702;
 	public static final int ADD_FIRE_TO_ENTITY = 1703;
+	public static final int FIRE_REMOVED = 1704;
 
 
 }

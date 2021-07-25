@@ -232,5 +232,15 @@
     "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
     "haulItemWhileWorking": true,
     "onCompletionSoundAssetName": "ImpactPlank"
+  },
+  {
+    "name": "EXTINGUISH_FLAMES",
+    "defaultTimeToCompleteJob": 0.5,
+    "overrideI18nKey": "ACTION.JOB.EXTINGUISH_FLAMES",
+    "accessedFromAdjacentTile": true,
+    "haulItemWhileWorking": true,
+    "switchToSpecialGoal": "EXTINGUISH_FIRE",
+    "removeJobWhenAssignmentCancelled": false,
+    "onCompletionSoundAssetName": "WaterSizzle"
   }
 ]

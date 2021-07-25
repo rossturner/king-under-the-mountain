@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.doors.Doorway;
 import technology.rocketjump.undermount.entities.EntityStore;
+import technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.InnoculationLogBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.OnJobCompletion;
@@ -24,6 +25,7 @@ import technology.rocketjump.undermount.entities.components.LiquidContainerCompo
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.HarvestableEntityComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
@@ -31,10 +33,12 @@ import technology.rocketjump.undermount.entities.factories.PlantEntityAttributes
 import technology.rocketjump.undermount.entities.factories.PlantEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -699,6 +703,53 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				} else {
 					Logger.error("Could not find item entity for " + completedJob.getType().getName() + " job completion");
 				}
+				break;
+			}
+			case "EXTINGUISH_FLAMES": {
+				GridPoint2 jobLocation = completedJob.getJobLocation();
+				MapTile jobTargetTile = gameContext.getAreaMap().getTile(jobLocation);
+				Optional<Entity> entityOnFire = jobTargetTile.getEntities().stream().filter(Entity::isOnFire).findAny();
+				Optional<Entity> extinguishableEntity = jobTargetTile.getEntities().stream().filter(e -> e.getType().equals(ONGOING_EFFECT) &&
+								((OngoingEffectAttributes)e.getPhysicalEntityComponent().getAttributes()).getType().isCanBeExtinguished()).findAny();
+
+
+				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+				HaulingComponent haulingComponent = completedByEntity.getComponent(HaulingComponent.class);
+
+				Entity hauledEntity = haulingComponent.getHauledEntity();
+				if (hauledEntity != null && hauledEntity.getType().equals(ITEM)) {
+
+					LiquidContainerComponent liquidContainerComponent = hauledEntity.getComponent(LiquidContainerComponent.class);
+					if (liquidContainerComponent != null) {
+
+						if (entityOnFire.isPresent()) {
+							StatusComponent statusComponent = entityOnFire.get().getComponent(StatusComponent.class);
+							statusComponent.remove(OnFireStatus.class);
+						}
+						if (extinguishableEntity.isPresent()) {
+							BehaviourComponent behaviourComponent = extinguishableEntity.get().getBehaviourComponent();
+							if (behaviourComponent instanceof FireEffectBehaviour) {
+								((FireEffectBehaviour)behaviourComponent).setToFade();
+							} else {
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(extinguishableEntity.get().getId()));
+							}
+						}
+
+						messageDispatcher.dispatchMessage(MessageType.LIQUID_SPLASH, new LiquidSplashMessage(
+								entityOnFire.orElse(extinguishableEntity.orElse(null)),
+								liquidContainerComponent.getTargetLiquidMaterial()));
+
+						liquidContainerComponent.setLiquidQuantity(0);
+						liquidContainerComponent.setTargetLiquidMaterial(null);
+					}
+				} else {
+					Logger.error("Could not find item entity for " + completedJob.getType().getName() + " job completion");
+				}
+
+				// if so, remove liquid, remove fire in target tile (wall or floor) or entity in target tile on fire
+					// play hissing quenching sound
+					// trigger water splash particle effect on target
+
 				break;
 			}
 			case "CONSTRUCT_FLOORING": {

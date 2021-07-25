@@ -22,6 +22,7 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 	public static final String DEFAULT_VOLUME_AS_STRING = "0.24";
 	private final UserPreferences userPreferences;
 	private float volume;
+	private boolean stopped;
 	private Deque<FileHandle> playlist = new ArrayDeque<>();
 	private List<FileHandle> musicFileList = new ArrayList<>();
 	private Music currentTrack;
@@ -33,6 +34,9 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 
 		String volumeString = userPreferences.getPreference(UserPreferences.PreferenceKey.MUSIC_VOLUME, DEFAULT_VOLUME_AS_STRING);
 		this.volume = SoundEffectManager.GLOBAL_VOLUME_MULTIPLIER * Float.valueOf(volumeString);
+		if (this.volume < 0.01f) {
+			this.stopped = true;
+		}
 
 		FileHandle musicDir = new FileHandle("assets/music");
 
@@ -68,6 +72,16 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 				this.volume = SoundEffectManager.GLOBAL_VOLUME_MULTIPLIER * newVolume;
 				currentTrack.setVolume(volume);
 				userPreferences.setPreference(MUSIC_VOLUME, String.valueOf(newVolume));
+
+				if (this.stopped) {
+					if (this.volume > 0.01f) {
+						this.stopped = false;
+					}
+				} else {
+					if (this.volume < 0.01f) {
+						this.stopped = true;
+					}
+				}
 				return true;
 			}
 			default:
@@ -77,7 +91,7 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 
 	// Note: Not using Updatable interface as this should run on all screens
 	public void update() {
-		if (shutdown) {
+		if (shutdown || stopped) {
 			return;
 		}
 

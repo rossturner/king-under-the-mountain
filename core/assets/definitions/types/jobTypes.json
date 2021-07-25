@@ -283,4 +283,14 @@
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
   "onCompletionSoundAssetName" : "ImpactPlank",
   "accessedFromAdjacentTile" : true
+}, {
+  "name" : "EXTINGUISH_FLAMES",
+  "overrideI18nKey" : "ACTION.JOB.EXTINGUISH_FLAMES",
+  "workDuration" : 3.0,
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : true,
+  "switchToSpecialGoal" : "EXTINGUISH_FIRE",
+  "defaultTimeToCompleteJob" : 0.5,
+  "onCompletionSoundAssetName" : "WaterSizzle",
+  "accessedFromAdjacentTile" : true
 } ]

@@ -52,6 +52,7 @@ public class TagProcessor implements GameContextAware {
 		for (ItemType itemType : tagProcessingUtils.itemTypeDictionary.getAll()) {
 			itemType.setProcessedTags(processRawTags(itemType.getTags()));
 		}
+		tagProcessingUtils.itemTypeDictionary.tagsProcessed();
 		for (PlantSpecies plantSpecies : tagProcessingUtils.plantSpeciesDictionary.getAll()) {
 			plantSpecies.setProcessedTags(processRawTags(plantSpecies.getTags()));
 		}

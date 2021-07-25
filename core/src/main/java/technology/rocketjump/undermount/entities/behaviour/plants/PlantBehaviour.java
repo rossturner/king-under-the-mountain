@@ -55,6 +55,7 @@ public class PlantBehaviour implements BehaviourComponent {
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
+		this.lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
 		this.messageDispatcher = messageDispatcher;
 		this.parentEntity = parentEntity;
 

@@ -31,6 +31,7 @@ public class OngoingEffectType {
 	private List<Tag> processedTags = new ArrayList<>();
 
 	private String triggersNotification;
+	private boolean canBeExtinguished;
 
 	public String getName() {
 		return name;
@@ -123,5 +124,13 @@ public class OngoingEffectType {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
+	}
+
+	public boolean isCanBeExtinguished() {
+		return canBeExtinguished;
+	}
+
+	public void setCanBeExtinguished(boolean canBeExtinguished) {
+		this.canBeExtinguished = canBeExtinguished;
 	}
 }

@@ -13,7 +13,7 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.FloorTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.assets.model.FloorType;
-import technology.rocketjump.undermount.entities.behaviour.DoNothingBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.BurnedEntityBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.FurnitureBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
@@ -38,16 +38,15 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.ChangeFloorMessage;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
-import technology.rocketjump.undermount.messaging.types.HumanoidDeathMessage;
-import technology.rocketjump.undermount.messaging.types.TransformItemMessage;
+import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rendering.utils.ColorMixer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -97,6 +96,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, CONSUME_TILE_BY_FIRE);
 		messageDispatcher.addListener(this, MessageType.CONSUME_ENTITY_BY_FIRE);
 		messageDispatcher.addListener(this, MessageType.ADD_FIRE_TO_ENTITY);
+		messageDispatcher.addListener(this, MessageType.FIRE_REMOVED);
 	}
 
 	@Override
@@ -128,6 +128,12 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 			case CONSUME_ENTITY_BY_FIRE:
 				Entity entity = (Entity) msg.extraInfo;
 				consumeEntityByFire(entity);
+				return true;
+			case FIRE_REMOVED:
+				Vector2 removalLocation = (Vector2) msg.extraInfo;
+				if (removalLocation != null) {
+					checkToRemoveExtinguishDesignation(removalLocation);
+				}
 				return true;
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
@@ -177,6 +183,20 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		}
 	}
 
+	private void checkToRemoveExtinguishDesignation(Vector2 removalLocation) {
+		MapTile tile = gameContext.getAreaMap().getTile(removalLocation);
+		TileDesignation designation = tile.getDesignation();
+		if (designation != null) {
+			GameInteractionMode interactionMode = GameInteractionMode.getByDesignationName(designation.getDesignationName());
+			if (interactionMode != null) {
+				if (!interactionMode.designationCheck.shouldDesignationApply(tile)) {
+					// designation no longer applies
+					messageDispatcher.dispatchMessage(REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, designation));
+				}
+			}
+		}
+	}
+
 	private void consumeEntityByFire(Entity entity) {
 		AttachedLightSourceComponent lightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
 		if (lightSourceComponent != null) {
@@ -204,7 +224,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 			case PLANT:
 				PlantEntityAttributes plantEntityAttributes = (PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				plantEntityAttributes.setBurned(ashMaterial, blackenedColor());
-				entityStore.changeBehaviour(entity, new DoNothingBehaviour(), messageDispatcher);
+				entityStore.changeBehaviour(entity, new BurnedEntityBehaviour(), messageDispatcher);
 				messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, entity);
 				break;
 			case FURNITURE:

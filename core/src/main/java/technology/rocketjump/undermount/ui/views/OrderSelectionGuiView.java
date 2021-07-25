@@ -43,6 +43,10 @@ public class OrderSelectionGuiView implements GuiView {
 		clearGround.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_CLEAR_GROUND, messageDispatcher));
 		iconButtons.add(clearGround);
 
+		IconButton extinguishFlames = iconButtonFactory.create("GUI.ORDERS.EXTINGUISH_FLAMES", "water-splash", HexColors.get("#5ae9f0"), ButtonStyle.DEFAULT);
+		extinguishFlames.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_EXTINGUISH_FLAMES, messageDispatcher));
+		iconButtons.add(extinguishFlames);
+
 		IconButton removeDesignations = iconButtonFactory.create("GUI.REMOVE_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
 		removeDesignations.setAction(new SetInteractionMode(GameInteractionMode.REMOVE_DESIGNATIONS, messageDispatcher));
 		iconButtons.add(removeDesignations);

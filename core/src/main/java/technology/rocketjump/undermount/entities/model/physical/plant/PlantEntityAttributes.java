@@ -112,7 +112,11 @@ public class PlantEntityAttributes implements EntityAttributes {
 
 	@Override
 	public Map<GameMaterialType, GameMaterial> getMaterials() {
-		return Map.of(species.getMaterial().getMaterialType(), species.getMaterial());
+		if (burnedMaterial != null) {
+			return Map.of(species.getMaterial().getMaterialType(), burnedMaterial);
+		} else {
+			return Map.of(species.getMaterial().getMaterialType(), species.getMaterial());
+		}
 	}
 
 	public int getGrowthStageCursor() {

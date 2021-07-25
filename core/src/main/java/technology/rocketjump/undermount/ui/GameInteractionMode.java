@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.ui;
 
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -9,6 +10,9 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
 import technology.rocketjump.undermount.rooms.RoomType;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage.PlantSpeciesHarvestType.FORAGING;
@@ -52,7 +56,23 @@ public enum GameInteractionMode {
 			return false;
 		}
 	}, true),
-	DESIGNATE_ROOFING("roofing", null, mapTile -> mapTile.getRoof().getState().equals(OPEN) && mapTile.getRoof().getConstructionState().equals(NONE), true),
+	DESIGNATE_EXTINGUISH_FLAMES("splash", "EXTINGUISH_FLAMES", mapTile -> {
+		if (!mapTile.getExploration().equals(EXPLORED) || mapTile.getDesignation() != null) {
+			return false;
+		}
+		for (Entity entity : mapTile.getEntities()) {
+			if (STATIC_ENTITY_TYPES.contains(entity.getType()) && entity.isOnFire()) {
+				return true;
+			} else if (entity.getType().equals(ONGOING_EFFECT)) {
+				OngoingEffectAttributes attributes = (OngoingEffectAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				if (attributes.getType().isCanBeExtinguished()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}, true),
+	DESIGNATE_ROOFING("roofing", null,mapTile -> mapTile.getRoof().getState().equals(OPEN) && mapTile.getRoof().getConstructionState().equals(NONE), true),
 	CANCEL_ROOFING("cancel", null, mapTile -> mapTile.getRoof().getState().equals(OPEN) && !mapTile.getRoof().getConstructionState().equals(NONE), true),
 	DECONSTRUCT_ROOFING("deconstruct", null, mapTile -> mapTile.getRoof().getState().equals(CONSTRUCTED) && mapTile.getRoof().getConstructionState().equals(NONE), true),
 	REMOVE_DESIGNATIONS("cancel", null, mapTile -> mapTile.getDesignation() != null, true),
@@ -72,6 +92,7 @@ public enum GameInteractionMode {
 				(mapTile.hasWall() && mapTile.getWall().getWallType().isConstructed());
 	}, true);
 
+
 	public final String cursorName;
 	public final String designationName;
 	private TileDesignation designationToApply;
@@ -79,6 +100,7 @@ public enum GameInteractionMode {
 	private RoomType roomType;
 	private FurnitureType furnitureType;
 	public final boolean isDraggable;
+
 
 	GameInteractionMode(String cursorName, String designationName, DesignationCheck designationCheck, boolean isDraggable) {
 		this.cursorName = cursorName;
@@ -99,6 +121,16 @@ public enum GameInteractionMode {
 		}
 
 		PLACE_ROOM.roomType = new RoomType();
+	}
+
+	private static Map<String, GameInteractionMode> byDesignationName = new HashMap<>();
+	static {
+		for (GameInteractionMode interactionMode : GameInteractionMode.values()) {
+			byDesignationName.put(interactionMode.designationName, interactionMode);
+		}
+	}
+	public static GameInteractionMode getByDesignationName(String designationName) {
+		return byDesignationName.get(designationName);
 	}
 
 	public TileDesignation getDesignationToApply() {

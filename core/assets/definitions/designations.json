@@ -123,4 +123,20 @@
     "a" : 0.4
   },
   "createsJobTypeName" : "CONSTRUCT_FLOORING"
+}, {
+  "designationName" : "EXTINGUISH_FLAMES",
+  "iconName" : "water-splash",
+  "selectionColor" : {
+    "r" : 1.0,
+    "g" : 1.0,
+    "b" : 0.6,
+    "a" : 0.4
+  },
+  "designationColor" : {
+    "r" : 1.0,
+    "g" : 1.0,
+    "b" : 1.0,
+    "a" : 0.4
+  },
+  "createsJobTypeName" : "EXTINGUISH_FLAMES"
 } ]

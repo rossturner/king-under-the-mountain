@@ -77,6 +77,7 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.REQUEST_ITEM_HAULING);
 		messageDispatcher.addListener(this, MessageType.REQUEST_HAULING_ALLOCATION);
 		messageDispatcher.addListener(this, MessageType.LOOKUP_ITEM_TYPE);
+		messageDispatcher.addListener(this, MessageType.LOOKUP_ITEM_TYPES_BY_TAG_CLASS);
 		messageDispatcher.addListener(this, MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE);
 		messageDispatcher.addListener(this, MessageType.CANCEL_ITEM_ALLOCATION);
 	}
@@ -96,6 +97,9 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.LOOKUP_ITEM_TYPE: {
 				return handle((LookupMessage)msg.extraInfo);
 			}
+			case MessageType.LOOKUP_ITEM_TYPES_BY_TAG_CLASS: {
+				return handle((LookupItemTypesByTagClassMessage)msg.extraInfo);
+			}
 			case MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE: {
 				return handle((ItemMaterialSelectionMessage)msg.extraInfo);
 			}
@@ -107,6 +111,11 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
+	}
+
+	private boolean handle(LookupItemTypesByTagClassMessage message) {
+		message.callback.itemTypesFound(itemTypeDictionary.getByTagClass(message.tagClass));
+		return true;
 	}
 
 	private void cancelItemAllocation(ItemAllocation itemAllocation) {

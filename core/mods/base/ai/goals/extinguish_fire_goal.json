@@ -1,0 +1,45 @@
+{
+  "name": "Extinguish fire goal",
+  "i18nDescription": "GOAL.EXTINGUISH_FIRE.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["LocateLiquidContainer"],
+  "actionRelationships": {
+    "LocateLiquidContainer": {
+      "pass": ["GoToLocation", "PickUpEntity"],
+      "fail": ["UnassignJob"]
+    },
+    "GoToLocation": {
+      "fail": ["UnassignJob"]
+    },
+    "PickUpEntity": {
+      "pass": ["LocateLiquidAllocation"],
+      "fail": ["UnassignJob"]
+    },
+    "LocateLiquidAllocation": {
+      "pass": ["GoToLocation", "FillContainer"],
+      "fail": ["UnassignJob"]
+    },
+    "FillContainer": {
+      "pass": ["GoToJobLocation"],
+      "fail": ["UnassignJob"]
+    },
+    "GoToJobLocation": {
+      "pass": ["FaceTowardsLocation", "WorkOnJob"],
+      "fail": ["RequeueSameJobType"]
+    },
+    "RequeueSameJobType": {
+      "pass": ["GoToJobLocation"],
+      "fail": ["UnassignJob"]
+    },
+    "WorkOnJob": {
+      "fail": ["RequeueSameJobType"]
+    },
+    "FaceTowardsLocation": {},
+    "CancelHaulingAllocation": {},
+    "UnassignJob": {
+      "pass": ["CancelLiquidAllocation", "CancelHaulingAllocation"],
+      "fail": ["CancelLiquidAllocation", "CancelHaulingAllocation"]
+    },
+    "CancelLiquidAllocation": {}
+  }
+}

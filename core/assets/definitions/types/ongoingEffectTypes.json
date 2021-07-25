@@ -18,5 +18,6 @@
     "ATTACHES_LIGHT_SOURCE" : [ "#f7ffa9", "#f8cc5d", "#ff8f2c" ],
     "PARTICLE_EFFECTS_WHILE_PROCESSING" : [ "Smoking (small offset)" ]
   },
-  "triggersNotification" : "FIRE_STARTED"
+  "triggersNotification" : "FIRE_STARTED",
+  "canBeExtinguished" : true
 } ]

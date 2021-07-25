@@ -249,6 +249,7 @@ GOAL.ADD_TO_INVENTORY.DESCRIPTION,Collecting {{targetDescription}},,Sammelt {{ta
 GOAL.DRINK.DESCRIPTION,Drinking {{targetDescription}},,Trinkt {{targetZoneMaterial}},Boire {{targetZoneMaterial}},Bere {{targetZoneMaterial}},Beber {{targetZoneMaterial}},Beber {{targetZoneMaterial}},,,Питьевая {{targetZoneМатериал}}," {{targetZoneMaterial}} içiliyor",Drikker {{targetZoneMaterial}},,Dricka {{targetZoneMaterial}},,,,{{targetZoneMaterial}} を飲む,饮用 {{targetZoneMaterial}},마시는 {{대상 지역 재료}}
 GOAL.DUMP_LIQUID.DESCRIPTION,Dumping contents of {{targetDescription}},,,,,,,,,,,,,,,,,,,
 GOAL.EAT.DESCRIPTION,Eating {{targetDescription}},,Isst {{targetDescription}},Mange {{targetDescription}},Mangiare {{targetDescription}},Comer {{targetDescription}},Comer {{targetDescription}},,,Едят {{targetDescription}},{{targetDescription}} yeniliyor,Spise {{targetDescription}},,Äta {{targetDescription}},,,,{{targetDescription}} を食べる,吃 {{targetDescription}},{{대상 설명}} 먹는 것
+GOAL.EXTINGUISH_FIRE.DESCRIPTION,Putting out a fire,,,,,,,,,,,,,,,,,,,
 GOAL.HAULING.DESCRIPTION,Hauling {{targetDescription}},,Transportiert {{itemDescription}},Transporte: {{itemDescription}},Sta trasportando: {{itemDescription}},Transportando {{itemDescription}},Carregar {{itemDescription}},Transportando {{targetDescription}},,Переносит: {{itemDescription}},{{itemDescription}} taşınıyor,Hauling {{targetDescription}},,Släpa {{itemDescription}},,,,運搬 {{targetDescription}},拖运 {{targetDescription}},운반 {{대상 설명}}
 GOAL.IDLE.DESCRIPTION,Idle,,Untätig,Libre,Non sta facendo niente,Descansando,Inativo,À toa,,Бездельничает,Boşta,- Itomgang,,Inaktiv,,,,アイドル,闲置,유휴 상태
 GOAL.ON_FIRE.DESCRIPTION,On fire!,,,,,,,,,,,,,,,,,,,
@@ -359,6 +360,7 @@ GUI.OPTIONS.TWITCH.TITLE,Twitch Integration,,,,,,,,,,Twitch Entagrasyonu,,,,,,,,
 GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,Use viewers as settler names,,,,,,,,,,İzleyicileri vatandaş isimleri olarak gör,,,,,,,,,
 GUI.ORDERS.CHOP_WOOD,Chop,,Hacken,Couper,Taglia,Talar,Cortar,Cortar,,Рубить,Kes,Hak,,Hugga,,,,チョップ,印章,들어온다
 GUI.ORDERS.CLEAR_GROUND,Clear,,Aufräumen,Arracher,Rimuovi,Despejar,Limpar,Limpar,,Расчистить,Temizle,Klar,,Rensa,,,,クリア,清除,클리어
+GUI.ORDERS.EXTINGUISH_FLAMES,Extinguish,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.HARVEST_PLANTS,Harvest,,Ernten,"Récolter ",Raccogli,Cosechar,Colher,Colher,,Собирать,Hasat,Høst,,Skörda,,,,収穫,收获,수확
 GUI.ORDERS.MINE,Mine,,Graben,Miner,Scava,Excavar,Escavar,Minerar,,Добывать,Kaz,Mine,,Gräva,,,,採掘,我的,내
 GUI.ORDERS_LABEL,Orders,,Aufträge,"Ordres ",Ordini,"Pedidos ","Encomendas ",Ordens,,Приказы,Emirler,Ordrer,,Order,,,,注文,命令,주문

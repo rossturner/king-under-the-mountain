@@ -255,6 +255,7 @@ GOAL.DUMP_LIQUID.DESCRIPTION,,Dumping contents of {{targetDescription}},,,,,,,,,
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},,,,,,,,,,,,,
 GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},,,,,,,,,,,,,
 GOAL.ON_FIRE.DESCRIPTION,,On fire!,,,,,,,,,,,,,
+GOAL.EXTINGUISH_FIRE.DESCRIPTION,,Putting out a fire,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,Ajouter/retirer des cases,Añadir/eliminar baldosas,Felder hinzufügen/entfernen,Aggiungi/Rimuovi caselle,Adicionar/remover áreas,Adicionar/remover mosaicos,Добавление/удаление квадратов,Dodaj/usuń kafelki,,,,,
 GUI.ADD_TILES,This should be as short as possible,Add tiles,Ajouter des cases,Añadir baldosas,Felder hinzufügen,Aggiungi caselle,Adicionar áreas,Adicionar mosaicos,Добавить квадраты,Dodaj kafelki,Tegels toevoegen,Lägg till paneler,Legg til felter,Mezők hozzáadása,Lisää ruutuja
@@ -283,6 +284,7 @@ GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,Couper,Talar,Hacke
 GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,Arracher,Despejar,Aufräumen,Rimuovi,Limpar,Limpar,Расчистить,Sprzątaj,Ontginnen,Rensa,Rydd,Megtisztít,Tyhjentää
 GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,Récolter ,Cosechar,Ernten,Raccogli,Colher,Colher,Собирать,Zbieraj,Oogsten,Skörda,Høst inn,Begyűjtés,Korjaa
 GUI.ORDERS.MINE,This should be as short as possible,Mine,Miner,Excavar,Graben ,Scava,Minerar,Escavar,Добывать,Kop,Delven,Gräva,Utvinn,Bányászat,Louhi
+GUI.ORDERS.EXTINGUISH_FLAMES,This should be as short as possible - used to put out fires by throwing buckets of water on them,Extinguish,,,,,,,,,,,,,
 GUI.ORDERS_LABEL,This should be as short as possible,Orders,Ordres ,Pedidos ,Bestellungen ,Ordini,Ordens,Encomendas ,Приказы,Rozkazy,Orders ,Order,Bestillinger,Parancsok,Käskyt
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,,,,,,,,,,,,,
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,Retirer,Eliminar,Entfernen,Rimuovi,Remover,Remover,Удалить,Usuń,Verwijderen,Ta bort,Fjern,Eltávolít,Poista

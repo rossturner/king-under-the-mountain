@@ -23,6 +23,7 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 public class OnFireStatus extends StatusEffect {
 
 	private boolean litFire;
+	private boolean initialised;
 
 	public OnFireStatus() {
 		super(Death.class, Double.MAX_VALUE, DeathReason.BURNING);
@@ -30,6 +31,7 @@ public class OnFireStatus extends StatusEffect {
 
 	@Override
 	public void applyOngoingEffect(GameContext gameContext, MessageDispatcher messageDispatcher) {
+		initialised = true;
 		if (!litFire) {
 			messageDispatcher.dispatchMessage(MessageType.ADD_FIRE_TO_ENTITY, parentEntity);
 			litFire = true;
@@ -42,7 +44,6 @@ public class OnFireStatus extends StatusEffect {
 				itemAllocationComponent.createAllocation(itemAllocationComponent.getNumUnallocated(), parentEntity, ON_FIRE);
 			}
 		}
-
 
 		HappinessComponent happinessComponent = parentEntity.getComponent(HappinessComponent.class);
 		if (happinessComponent != null) {
@@ -66,11 +67,13 @@ public class OnFireStatus extends StatusEffect {
 		if (itemAllocationComponent != null) {
 			itemAllocationComponent.cancelAll();
 		}
+
+		messageDispatcher.dispatchMessage(MessageType.FIRE_REMOVED, parentEntity.getLocationComponent().getWorldPosition());
 	}
 
 	@Override
 	public boolean checkForRemoval(GameContext gameContext) {
-		if (litFire) {
+		if (initialised) {
 			AttachedEntitiesComponent attachedEntitiesComponent = parentEntity.getComponent(AttachedEntitiesComponent.class);
 			return attachedEntitiesComponent == null || attachedEntitiesComponent.getAttachedEntities().stream()
 					.noneMatch(a -> a.entity.getBehaviourComponent() instanceof FireEffectBehaviour);
@@ -86,6 +89,9 @@ public class OnFireStatus extends StatusEffect {
 		if (litFire) {
 			asJson.put("litFire", true);
 		}
+		if (initialised) {
+			asJson.put("initialised", true);
+		}
 	}
 
 	@Override
@@ -93,6 +99,7 @@ public class OnFireStatus extends StatusEffect {
 		super.readFrom(asJson, savedGameStateHolder, relatedStores);
 
 		this.litFire = asJson.getBooleanValue("litFire");
+		this.initialised = asJson.getBooleanValue("initialised");
 	}
 
 }

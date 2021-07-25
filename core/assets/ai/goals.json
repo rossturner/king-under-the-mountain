@@ -204,6 +204,50 @@
   } ],
   "initialActions" : [ "LocateFood" ]
 }, {
+  "i18nDescription" : "GOAL.EXTINGUISH_FIRE.DESCRIPTION",
+  "name" : "Extinguish fire goal",
+  "actionRelationships" : {
+    "WorkOnJob" : {
+      "fail" : [ "RequeueSameJobType" ]
+    },
+    "CancelHaulingAllocation" : { },
+    "CancelLiquidAllocation" : { },
+    "LocateLiquidContainer" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToLocation", "PickUpEntity" ]
+    },
+    "GoToLocation" : {
+      "fail" : [ "UnassignJob" ]
+    },
+    "FillContainer" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToJobLocation" ]
+    },
+    "GoToJobLocation" : {
+      "fail" : [ "RequeueSameJobType" ],
+      "pass" : [ "FaceTowardsLocation", "WorkOnJob" ]
+    },
+    "RequeueSameJobType" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToJobLocation" ]
+    },
+    "LocateLiquidAllocation" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "GoToLocation", "FillContainer" ]
+    },
+    "PickUpEntity" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "LocateLiquidAllocation" ]
+    },
+    "UnassignJob" : {
+      "fail" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ],
+      "pass" : [ "CancelLiquidAllocation", "CancelHaulingAllocation" ]
+    },
+    "FaceTowardsLocation" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "LocateLiquidContainer" ]
+}, {
   "i18nDescription" : "GOAL.HAULING.DESCRIPTION",
   "name" : "Haul item goal",
   "actionRelationships" : {
