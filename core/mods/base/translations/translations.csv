@@ -285,6 +285,7 @@ GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,Arracher,Despe
 GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,Récolter ,Cosechar,Ernten,Raccogli,Colher,Colher,Собирать,Zbieraj,Oogsten,Skörda,Høst inn,Begyűjtés,Korjaa
 GUI.ORDERS.MINE,This should be as short as possible,Mine,Miner,Excavar,Graben ,Scava,Minerar,Escavar,Добывать,Kop,Delven,Gräva,Utvinn,Bányászat,Louhi
 GUI.ORDERS.EXTINGUISH_FLAMES,This should be as short as possible - used to put out fires by throwing buckets of water on them,Extinguish,,,,,,,,,,,,,
+GUI.ORDERS.EXTINGUISH_FLAMES.TOOLTIP,,This order is used to extinguish fires that are currently burning.,,,,,,,,,,,,,
 GUI.ORDERS_LABEL,This should be as short as possible,Orders,Ordres ,Pedidos ,Bestellungen ,Ordini,Ordens,Encomendas ,Приказы,Rozkazy,Orders ,Order,Bestillinger,Parancsok,Käskyt
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,,,,,,,,,,,,,
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,Retirer,Eliminar,Entfernen,Rimuovi,Remover,Remover,Удалить,Usuń,Verwijderen,Ta bort,Fjern,Eltávolít,Poista
@@ -437,6 +438,9 @@ HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} availa
 HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,,,,,,,,,,,,,
 HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,,,,,,,,,,,,,
 HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+HINT.FIRE_ENCOUNTERED.1,,"A fire has started! Extinguish it quickly before it spreads.",,,,,,,,,,,,,
+HINT.FIRE_ENCOUNTERED.2,,"You can use the {{GUI.ORDERS.EXTINGUISH_FLAMES}} order to douse the flames with water. Any settlers on fire will attempt to put themselves out.",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.noun}}-{{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}",,"{{name}}, {{race.adjective}} og {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
 HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}",,,,,,,,,,,,,

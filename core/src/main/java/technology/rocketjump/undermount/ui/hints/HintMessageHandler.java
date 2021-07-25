@@ -6,6 +6,10 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
+import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -22,8 +26,7 @@ import technology.rocketjump.undermount.ui.views.HintGuiView;
 
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ALLOW_HINTS;
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.DISABLE_TUTORIAL;
-import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.GUI_SWITCH_VIEW;
-import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.ON_GAME_START;
+import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.*;
 
 @Singleton
 public class HintMessageHandler implements Telegraph, Updatable {
@@ -50,6 +53,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 		messageDispatcher.addListener(this, MessageType.START_NEW_GAME);
 		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_VIEW);
 		messageDispatcher.addListener(this, MessageType.HINT_ACTION_TRIGGERED);
+		messageDispatcher.addListener(this, MessageType.ENTITY_CREATED);
 	}
 
 
@@ -117,6 +121,21 @@ public class HintMessageHandler implements Telegraph, Updatable {
 					}
 				}
 
+				return false; // not primary handler
+			}
+			case MessageType.ENTITY_CREATED: {
+				Entity createdEntity = (Entity) msg.extraInfo;
+				if (createdEntity.getType().equals(EntityType.ONGOING_EFFECT)) {
+					OngoingEffectType type = ((OngoingEffectAttributes)createdEntity.getPhysicalEntityComponent().getAttributes()).getType();
+					for (Hint hint : hintDictionary.getByTriggerType(ONGOING_EFFECT_TRIGGERED)) {
+						for (HintTrigger trigger : hint.getTriggers()) {
+							if (trigger.getTriggerType().equals(ONGOING_EFFECT_TRIGGERED) && trigger.getRelatedTypeName().equals(type.getName()) && canBeShown(hint)) {
+								show(hint);
+								return false;
+							}
+						}
+					}
+				}
 				return false; // not primary handler
 			}
 			case MessageType.HINT_ACTION_TRIGGERED: {

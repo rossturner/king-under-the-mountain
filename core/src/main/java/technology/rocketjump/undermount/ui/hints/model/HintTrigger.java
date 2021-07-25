@@ -40,7 +40,8 @@ public class HintTrigger {
 
 		ON_GAME_START,
 		ITEM_AMOUNT,
-		GUI_SWITCH_VIEW
+		GUI_SWITCH_VIEW,
+		ONGOING_EFFECT_TRIGGERED
 
 	}
 

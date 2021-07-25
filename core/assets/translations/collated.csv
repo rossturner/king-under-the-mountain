@@ -361,6 +361,7 @@ GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,Use viewers as settler names,,,,,,,,,,İz
 GUI.ORDERS.CHOP_WOOD,Chop,,Hacken,Couper,Taglia,Talar,Cortar,Cortar,,Рубить,Kes,Hak,,Hugga,,,,チョップ,印章,들어온다
 GUI.ORDERS.CLEAR_GROUND,Clear,,Aufräumen,Arracher,Rimuovi,Despejar,Limpar,Limpar,,Расчистить,Temizle,Klar,,Rensa,,,,クリア,清除,클리어
 GUI.ORDERS.EXTINGUISH_FLAMES,Extinguish,,,,,,,,,,,,,,,,,,,
+GUI.ORDERS.EXTINGUISH_FLAMES.TOOLTIP,This order is used to extinguish fires that are currently burning.,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.HARVEST_PLANTS,Harvest,,Ernten,"Récolter ",Raccogli,Cosechar,Colher,Colher,,Собирать,Hasat,Høst,,Skörda,,,,収穫,收获,수확
 GUI.ORDERS.MINE,Mine,,Graben,Miner,Scava,Excavar,Escavar,Minerar,,Добывать,Kaz,Mine,,Gräva,,,,採掘,我的,내
 GUI.ORDERS_LABEL,Orders,,Aufträge,"Ordres ",Ordini,"Pedidos ","Encomendas ",Ordens,,Приказы,Emirler,Ordrer,,Order,,,,注文,命令,주문
@@ -420,6 +421,8 @@ HINT.BUTTON.DISMISS,Dismiss,,,,,,,,,,Sav,,,,,,,,,
 HINT.BUTTON.HINTS_ONLY,Hints only,,Nur Hinweise,Indications uniquement,Solo suggerimenti,Sólo sugerencias,Somente dicas,,,Только подсказки,Sadece İpuçları,Kun tip,,Endast tips,,,,,仅提示,힌트만
 HINT.BUTTON.NEXT,Next,,Neben,Prochain,Avanti,Próximo,Próximo,,,Следующий,Sornaki,Næste,,Nästa,,,,,下一个,다음
 HINT.BUTTON.TUTORIAL,Tutorial,,Tutorial,Tutoriel,Tutorial,Tutorial,Tutorial,,,Учебное пособие,Eğitim,Tutorial,,Handledning,,,,,教程,자습서
+HINT.FIRE_ENCOUNTERED.1,A fire has started! Extinguish it quickly before it spreads.,,,,,,,,,,,,,,,,,,,
+HINT.FIRE_ENCOUNTERED.2,You can use the {{GUI.ORDERS.EXTINGUISH_FLAMES}} order to douse the flames with water. Any settlers on fire will attempt to put themselves out.,,,,,,,,,,,,,,,,,,,
 HINT.OPEN_PRIORITY_MENU.1,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",,,,,,,,,,"Bu menüyü işlerin ve görevlerin önem sıralarını değiştirmek için kullanabilirsin. Bu sayede daha önemli işler, önemsiz işlerden önce atanır.",,,,,,,,,
 HINT.OPEN_PRIORITY_MENU.2,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",,,,,,,,,,"Öncelik menüsü açık iken, öncelik sembolleri yapılacak bir iş/görevin olduğu veya ileride bir iş/görev yaratabilecek eşya/oda alanlarda görünür hale gelir",,,,,,,,,
 HINT.PROGRESS.HEADER,Progress:,,,,,,,,,,İlerleme:,,,,,,,,,
