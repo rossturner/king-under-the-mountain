@@ -12,10 +12,7 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Singleton
 public class WeatherTypeDictionary {
@@ -57,4 +54,7 @@ public class WeatherTypeDictionary {
 		}
 	}
 
+	public Collection<WeatherType> getAll() {
+		return byName.values();
+	}
 }

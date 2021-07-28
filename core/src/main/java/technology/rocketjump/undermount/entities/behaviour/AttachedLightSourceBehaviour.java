@@ -41,7 +41,7 @@ public class AttachedLightSourceBehaviour {
 					}
 
 					outdoorLight = outdoorLight / numVertices;
-					float currentSunlightAmount = gameContext.getAreaMap().getEnvironment().getSunlightAmount();
+					float currentSunlightAmount = gameContext.getMapEnvironment().getSunlightAmount();
 
 					float nearbyLuminance = outdoorLight * currentSunlightAmount;
 

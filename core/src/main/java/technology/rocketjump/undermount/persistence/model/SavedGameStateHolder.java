@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.entities.components.LiquidAllocation;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.mapping.model.MapEnvironment;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.MapVertex;
@@ -32,7 +33,6 @@ import technology.rocketjump.undermount.settlement.SettlementState;
 import technology.rocketjump.undermount.settlement.production.ProductionAssignment;
 import technology.rocketjump.undermount.zones.Zone;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class SavedGameStateHolder {
@@ -58,6 +58,7 @@ public class SavedGameStateHolder {
 	private long sequentialIdPointer;
 	private Camera camera;
 	private TiledMap map;
+	private MapEnvironment mapEnvironment;
 
 	public final JSONArray dynamicMaterialsJson;
 	public final JSONArray itemAllocationsJson;
@@ -70,6 +71,7 @@ public class SavedGameStateHolder {
 	public final JSONArray bridgesJson;
 	public final JSONArray constructionsJson;
 	public final JSONObject mapJson;
+	public final JSONObject mapEnvironmentJson;
 	public final JSONArray roomsJson;
 	public final JSONArray zonesJson;
 	public final JSONArray tileJson;
@@ -93,6 +95,7 @@ public class SavedGameStateHolder {
 		bridgesJson = new JSONArray();
 		constructionsJson = new JSONArray();
 		mapJson = new JSONObject(true);
+		mapEnvironmentJson = new JSONObject(true);
 		roomsJson = new JSONArray();
 		zonesJson = new JSONArray();
 		tileJson = new JSONArray();
@@ -117,6 +120,7 @@ public class SavedGameStateHolder {
 		bridgesJson = combined.getJSONArray("bridges");
 		constructionsJson = combined.getJSONArray("constructions");
 		mapJson = combined.getJSONObject("map");
+		mapEnvironmentJson = combined.getJSONObject("mapEnvironment");
 		roomsJson = combined.getJSONArray("rooms");
 		zonesJson = combined.getJSONArray("zones");
 		tileJson = combined.getJSONArray("tiles");
@@ -145,6 +149,7 @@ public class SavedGameStateHolder {
 		combined.put("bridges", bridgesJson);
 		combined.put("constructions", constructionsJson);
 		combined.put("map", mapJson);
+		combined.put("mapEnvironment", mapEnvironmentJson);
 		combined.put("rooms", roomsJson);
 		combined.put("zones", zonesJson);
 		combined.put("tiles", tileJson);
@@ -210,6 +215,9 @@ public class SavedGameStateHolder {
 				map.getVertex(x, y).readFrom(vertexAsJson, this, relatedStores);
 			}
 		}
+
+		mapEnvironment = new MapEnvironment();
+		mapEnvironment.readFrom(mapEnvironmentJson, this, relatedStores);
 
 		convertJsonToInstances(roomsJson, Room.class, relatedStores);
 
@@ -314,5 +322,9 @@ public class SavedGameStateHolder {
 
 	public TiledMap getMap() {
 		return map;
+	}
+
+	public MapEnvironment getMapEnvironment() {
+		return mapEnvironment;
 	}
 }

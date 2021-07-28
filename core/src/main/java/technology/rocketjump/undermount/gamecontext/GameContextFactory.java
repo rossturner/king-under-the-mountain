@@ -10,6 +10,8 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.environment.GameClock;
+import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
+import technology.rocketjump.undermount.mapping.model.MapEnvironment;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -24,13 +26,16 @@ public class GameContextFactory {
 
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final GameMaterialDictionary gameMaterialDictionary;
+	private final WeatherTypeDictionary weatherTypeDictionary;
 	private final JSONObject itemProductionDefaultsJson;
 	private final JSONObject liquidProductionDefaultsJson;
 
 	@Inject
-	public GameContextFactory(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary) {
+	public GameContextFactory(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary,
+							  WeatherTypeDictionary weatherTypeDictionary) {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
+		this.weatherTypeDictionary = weatherTypeDictionary;
 		FileHandle itemProductionDefaultsFile = new FileHandle("assets/definitions/crafting/itemProductionDefaults.json");
 		itemProductionDefaultsJson = JSON.parseObject(itemProductionDefaultsFile.readString());
 		FileHandle liquidProductionDefaultsFile = new FileHandle("assets/definitions/crafting/liquidProductionDefaults.json");
@@ -43,7 +48,9 @@ public class GameContextFactory {
 		context.setAreaMap(areaMap);
 		context.setRandom(new RandomXS128(worldSeed));
 		context.setGameClock(clock);
+		context.setMapEnvironment(new MapEnvironment());
 		initialise(context.getSettlementState());
+		initialise(context.getMapEnvironment());
 		return context;
 	}
 
@@ -63,10 +70,15 @@ public class GameContextFactory {
 		context.setSettlementState(stateHolder.getSettlementState());
 
 		context.setAreaMap(stateHolder.getMap());
+		context.setMapEnvironment(stateHolder.getMapEnvironment());
 		context.setRandom(new RandomXS128()); // Not yet maintaining world seed
 		context.setGameClock(stateHolder.getGameClock());
 
 		return context;
+	}
+
+	private void initialise(MapEnvironment mapEnvironment) {
+		mapEnvironment.setCurrentWeather(weatherTypeDictionary.getAll().iterator().next());
 	}
 
 	private void initialise(SettlementState settlementState) {

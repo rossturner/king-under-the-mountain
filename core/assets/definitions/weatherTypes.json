@@ -1,4 +1,8 @@
 [ {
+  "name" : "Perfect",
+  "maxSunlight" : "#ffffff",
+  "oxidises" : false
+}, {
   "name" : "Rain",
   "particleEffectTypeName" : "Rain",
   "maxSunlight" : "#c8c8c8",

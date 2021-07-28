@@ -11,21 +11,20 @@ import technology.rocketjump.undermount.entities.factories.OngoingEffectEntityFa
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
+import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
-import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DebugMessage;
-import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Singleton
 public class DebugMessageHandler implements GameContextAware, Telegraph, Disposable {
@@ -36,6 +35,7 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 
 	private final OngoingEffectAttributesFactory ongoingEffectAttributesFactory;
 	private final OngoingEffectEntityFactory ongoingEffectEntityFactory;
+	private final WeatherTypeDictionary weatherTypeDictionary;
 	private final ParticleEffectType rainType;
 
 	private GameContext gameContext;
@@ -43,12 +43,14 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 	@Inject
 	public DebugMessageHandler(MessageDispatcher messageDispatcher, ItemTypeDictionary itemTypeDictionary,
 							   GameMaterialDictionary materialDictionary, OngoingEffectAttributesFactory ongoingEffectAttributesFactory,
-							   OngoingEffectEntityFactory ongoingEffectEntityFactory, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+							   OngoingEffectEntityFactory ongoingEffectEntityFactory, WeatherTypeDictionary weatherTypeDictionary,
+							   ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.materialDictionary = materialDictionary;
 		this.ongoingEffectAttributesFactory = ongoingEffectAttributesFactory;
 		this.ongoingEffectEntityFactory = ongoingEffectEntityFactory;
+		this.weatherTypeDictionary = weatherTypeDictionary;
 
 		this.rainType = particleEffectTypeDictionary.getByName("Rain");
 
@@ -80,9 +82,12 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 							}
 						}
 
-						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-								rainType, Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}
-						));
+						WeatherType currentWeather = gameContext.getMapEnvironment().getCurrentWeather();
+						if (currentWeather.getName().equals("Rain")) {
+							gameContext.getMapEnvironment().setCurrentWeather(weatherTypeDictionary.getByName("Perfect"));
+						} else {
+							gameContext.getMapEnvironment().setCurrentWeather(weatherTypeDictionary.getByName("Rain"));
+						}
 
 //						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
 

@@ -34,8 +34,6 @@ public class TiledMap {
 	private Array<Array<MapTile>> cells;
 	private Array<Array<MapVertex>> mapVertices;
 
-	private final MapEnvironment environment = new MapEnvironment(); // Should this be separated from the map and just in the game gamecontext? Probably doesn't matter
-
 	private GridPoint2 embarkPoint;
 
 	private int numRegions;
@@ -242,10 +240,6 @@ public class TiledMap {
 		} else {
 			nearest.add(new NullMapTile(tileX, tileY));
 		}
-	}
-
-	public MapEnvironment getEnvironment() {
-		return environment;
 	}
 
 	public GridPoint2 getEmbarkPoint() {

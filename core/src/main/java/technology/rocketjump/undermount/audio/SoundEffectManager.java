@@ -117,7 +117,7 @@ public class SoundEffectManager implements AssetDisposable {
 				if (entityId != null) {
 					unboxedId = entityId;
 				}
-				if (Math.abs(cameraPosition.x - worldPosition.x) < (viewportWidth / 2) + VIEWPORT_OVERFLOW_DISTANCE &&
+				if (cameraPosition != null && Math.abs(cameraPosition.x - worldPosition.x) < (viewportWidth / 2) + VIEWPORT_OVERFLOW_DISTANCE &&
 						Math.abs(cameraPosition.y - worldPosition.y) < (viewportHeight / 2) + VIEWPORT_OVERFLOW_DISTANCE) {
 					activeSoundEffect = new ActiveSoundEffect(asset, unboxedId, worldPosition);
 				}

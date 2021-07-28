@@ -138,7 +138,7 @@ public class PlantBehaviour implements BehaviourComponent {
 
 		float currentGrowth = attributes.getGrowthStageProgress();
 		if (currentSeasonSettings == null || currentSeasonSettings.isGrowth()) {
-			if (gameContext.getAreaMap().getEnvironment().getSunlightAmount() > MIN_SUNLIGHT_FOR_GROWING) {
+			if (gameContext.getMapEnvironment().getSunlightAmount() > MIN_SUNLIGHT_FOR_GROWING) {
 				// Multiplying growth to balance out nighttime
 				elapsedGameSeasons *= SUNLIGHT_MULTIPLIER;
 				float extraGrowth = (float)(elapsedGameSeasons / growthStage.getSeasonsUntilComplete());

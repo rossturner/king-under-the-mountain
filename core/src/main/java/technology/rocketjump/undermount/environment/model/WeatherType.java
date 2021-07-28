@@ -19,7 +19,7 @@ public class WeatherType {
 
 	private String maxSunlight;
 	@JsonIgnore
-	private Color maxSunlightColor;
+	private Color maxSunlightColor = Color.WHITE;
 
 	private boolean oxidises;
 	private Float chanceToExtinguishFire;

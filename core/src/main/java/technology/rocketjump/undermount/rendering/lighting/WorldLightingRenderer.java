@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.environment.SunlightCalculator;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.mapping.model.MapEnvironment;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -50,7 +51,7 @@ public class WorldLightingRenderer implements GameContextAware, AssetDisposable 
 
 	}
 
-	public void renderWorldLighting(TiledMap world, List<PointLight> lightList, OrthographicCamera camera, TextureRegion bumpMapTextureRegion) {
+	public void renderWorldLighting(GameContext gameContext, List<PointLight> lightList, OrthographicCamera camera, TextureRegion bumpMapTextureRegion) {
 		Gdx.gl.glClearColor(0.25f, 0.25f, 0.32f, 1); // Global ambient lighting - dark blue // MODDING expose this
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -58,7 +59,7 @@ public class WorldLightingRenderer implements GameContextAware, AssetDisposable 
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		Gdx.gl.glEnable(GL20.GL_BLEND);
 
-		renderOutdoorLighting(world, camera, bumpMapTextureRegion);
+		renderOutdoorLighting(gameContext.getAreaMap(), camera, bumpMapTextureRegion, gameContext.getMapEnvironment());
 
 		lightRenderer.begin(bumpMapTextureRegion);
 
@@ -74,18 +75,20 @@ public class WorldLightingRenderer implements GameContextAware, AssetDisposable 
 	}
 
 	private void renderOutdoorLighting(TiledMap tiledMap, OrthographicCamera camera,
-									   TextureRegion /* TODO use this with directional outdoor lighting */ bumpMapTextureRegion) {
+									   TextureRegion /* TODO use this with directional outdoor lighting */ bumpMapTextureRegion, MapEnvironment mapEnvironment) {
 
 		int minX = getMinX(camera);
 		int maxX = getMaxX(camera, tiledMap);
 		int minY = getMinY(camera);
 		int maxY = getMaxY(camera, tiledMap);
 
-		Color sunlightColor = Color.WHITE;
-		if (gameContext != null) {
-			sunlightColor = sunlightCalculator.getSunlightColor(gameContext.getGameClock().getGameTimeInHours());
-		}
-		tiledMap.getEnvironment().setSunlightAmount((sunlightColor.r + sunlightColor.g + sunlightColor.b) / 3f);
+		Color sunlightColor = sunlightCalculator.getSunlightColor(gameContext.getGameClock().getGameTimeInHours());
+		sunlightColor.r = Math.min(sunlightColor.r, gameContext.getMapEnvironment().getWeatherColor().r);
+		sunlightColor.g = Math.min(sunlightColor.g, gameContext.getMapEnvironment().getWeatherColor().g);
+		sunlightColor.b = Math.min(sunlightColor.b, gameContext.getMapEnvironment().getWeatherColor().b);
+
+//		currentSunlightColor.lerp(sunlightColor, Gdx.graphics.getDeltaTime());
+
 		outdoorLightingBatch.setColor(sunlightColor);
 		outdoorLightingBatch.setProjectionMatrix(camera.combined);
 		outdoorLightingBatch.begin();
@@ -113,6 +116,7 @@ public class WorldLightingRenderer implements GameContextAware, AssetDisposable 
 			}
 		}
 		outdoorLightingBatch.end();
+		outdoorLightingBatch.setColor(Color.WHITE);
 	}
 
 	@Override

@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEf
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.entities.tags.TagDictionary;
+import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
@@ -71,6 +72,7 @@ public class SavedGameDependentDictionaries {
 	public final JobStore jobStore;
 	public final ParticleEffectTypeDictionary particleEffectTypeDictionary;
 	public final OngoingEffectTypeDictionary ongoingEffectTypeDictionary;
+	public final WeatherTypeDictionary weatherTypeDictionary;
 
 	@Inject
 	public SavedGameDependentDictionaries(DynamicMaterialFactory dynamicMaterialFactory, GameMaterialDictionary gameMaterialDictionary,
@@ -86,7 +88,8 @@ public class SavedGameDependentDictionaries {
 										  RoomComponentDictionary roomComponentDictionary, TileDesignationDictionary tileDesignationDictionary,
 										  StockpileGroupDictionary stockpileGroupDictionary, TagDictionary tagDictionary,
 										  SoundAssetDictionary soundAssetDictionary, BridgeTypeDictionary bridgeTypeDictionary,
-										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary, OngoingEffectTypeDictionary ongoingEffectTypeDictionary) {
+										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary,
+										  OngoingEffectTypeDictionary ongoingEffectTypeDictionary, WeatherTypeDictionary weatherTypeDictionary) {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.messageDispatcher = messageDispatcher;
@@ -118,5 +121,6 @@ public class SavedGameDependentDictionaries {
 		this.jobStore = jobStore;
 		this.particleEffectTypeDictionary = particleEffectTypeDictionary;
 		this.ongoingEffectTypeDictionary = ongoingEffectTypeDictionary;
+		this.weatherTypeDictionary = weatherTypeDictionary;
 	}
 }

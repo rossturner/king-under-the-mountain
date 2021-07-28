@@ -6,6 +6,7 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.math.GridPoint2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
@@ -13,9 +14,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
-import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
-import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,14 +25,12 @@ import java.util.Optional;
 public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 
 
-	private final ParticleEffectType rainType;
 	private final MessageDispatcher messageDispatcher;
 	private GameContext gameContext;
 	private final Map<GridPoint2, ParticleEffectInstance> instancesByTileLocation = new HashMap<>();
 
 	@Inject
-	public WeatherEffectUpdater(ParticleEffectTypeDictionary particleEffectTypeDictionary, MessageDispatcher messageDispatcher) {
-		this.rainType = particleEffectTypeDictionary.getByName("Rain");
+	public WeatherEffectUpdater(MessageDispatcher messageDispatcher) {
 		this.messageDispatcher = messageDispatcher;
 
 		messageDispatcher.addListener(this, MessageType.GAME_PAUSED);
@@ -52,10 +49,15 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 			}
 		}
 
-		if (particleEffectInstance == null) {
-			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-					rainType, Optional.empty(), Optional.of(new JobTarget(mapTile)), (p) -> instancesByTileLocation.put(mapTile.getTilePosition(), p)
-			));
+
+		WeatherType currentWeather = gameContext.getMapEnvironment().getCurrentWeather();
+		if (currentWeather.getParticleEffectType() != null) {
+			if (particleEffectInstance == null) {
+				messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
+						currentWeather.getParticleEffectType(), Optional.empty(),
+						Optional.of(new JobTarget(mapTile)), (p) -> instancesByTileLocation.put(mapTile.getTilePosition(), p)
+				));
+			}
 		}
 	}
 
@@ -73,7 +75,6 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 			iterator.remove();
 		}
 	}
-
 
 	@Override
 	public boolean handleMessage(Telegram msg) {
