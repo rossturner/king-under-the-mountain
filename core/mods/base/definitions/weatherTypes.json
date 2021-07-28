@@ -1,0 +1,14 @@
+[{
+  "name": "Rain",
+  "particleEffectTypeName": "Rain",
+
+  "maxSunlight": "#c8c8c8",
+  "oxidises": true,
+  "chanceToExtinguishFire": 0.35,
+
+  "happinessModifiers": {
+    "WALKING": "CAUGHT_IN_RAIN",
+    "WORKING": "WORKED_IN_RAIN",
+    "SLEEPING": "SLEEPING_IN_RAIN"
+  }
+}]

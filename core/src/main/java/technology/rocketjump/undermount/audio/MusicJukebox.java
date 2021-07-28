@@ -70,7 +70,9 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 			case MessageType.GUI_CHANGE_MUSIC_VOLUME: {
 				Float newVolume = (Float)msg.extraInfo;
 				this.volume = SoundEffectManager.GLOBAL_VOLUME_MULTIPLIER * newVolume;
-				currentTrack.setVolume(volume);
+				if (currentTrack != null) {
+					currentTrack.setVolume(volume);
+				}
 				userPreferences.setPreference(MUSIC_VOLUME, String.valueOf(newVolume));
 
 				if (this.stopped) {

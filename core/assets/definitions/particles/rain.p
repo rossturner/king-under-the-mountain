@@ -84,8 +84,8 @@ timeline0: 0.0
 - X Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 10.0
-highMax: 10.0
+highMin: 5.0
+highMax: 5.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -145,9 +145,9 @@ timelineCount: 1
 timeline0: 0.0
 - Tint - 
 colorsCount: 3
-colors0: 0.64705884
-colors1: 0.99215686
-colors2: 1.0
+colors0: 0.6039216
+colors1: 0.92156863
+colors2: 0.93333334
 timelineCount: 1
 timeline0: 0.0
 - Transparency - 
@@ -177,5 +177,5 @@ behind: false
 premultipliedAlpha: false
 spriteMode: single
 - Image Paths -
-/C:/workspace/king-under-the-mountain/core/mods/base/entities/particleSprites/drop.png
+/C:/workspace/king-under-the-mountain/core/mods/base/entities/particleSprites/longdrop.png
 

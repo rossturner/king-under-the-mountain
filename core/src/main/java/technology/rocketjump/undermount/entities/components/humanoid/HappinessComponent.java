@@ -138,6 +138,10 @@ public class HappinessComponent implements EntityComponent {
 		SLEPT_IN_ENCLOSED_BEDROOM(30, 5.0),
 		SLEPT_IN_SMALL_BEDROOM(-5, 5.0),
 
+		CAUGHT_IN_RAIN(-10, 0.5),
+		WORKED_IN_RAIN(-20, 0.5),
+		SLEEPING_IN_RAIN(-30, 4),
+
 		DRANK_ALCOHOL(40, 8),
 		ALCOHOL_WITHDRAWAL(-30, 0.5);
 

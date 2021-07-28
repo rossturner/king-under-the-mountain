@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
+import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -132,6 +133,8 @@ public class ModArtifactListing {
 
 				def("definitions", "materials", SINGLE_FILE, JSON_ARRAY, GameMaterial.class,
 						"definitions/materials", "*-materials.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions", "weatherTypes", SINGLE_FILE, JSON_ARRAY, WeatherType.class,
+						"definitions", "weatherTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "designations", SINGLE_FILE, JSON_ARRAY, TileDesignation.class,
 						"definitions", "designations.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "constants", SINGLE_FILE, JSON_OBJECT, null,
