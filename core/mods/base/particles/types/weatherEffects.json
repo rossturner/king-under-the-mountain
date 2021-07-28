@@ -5,6 +5,7 @@
     "scale": 0.5,
     "isLooping": true,
     "isAffectedByLighting": true,
+    "overrideYDepth": true,
     "usesTargetMaterialAsTintColor": false,
     "attachedToParent": false
   }

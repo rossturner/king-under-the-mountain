@@ -12,8 +12,8 @@ max: 100
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 10.0
-highMax: 10.0
+highMin: 12.0
+highMax: 12.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -28,19 +28,19 @@ relative: false
 scalingCount: 3
 scaling0: 1.0
 scaling1: 1.0
-scaling2: 0.3
+scaling2: 1.0
 timelineCount: 3
 timeline0: 0.0
 timeline1: 0.66
 timeline2: 1.0
-independent: true
+independent: false
 - Life Offset - 
 active: false
 independent: false
 - X Offset - 
 active: true
-lowMin: -64.0
-lowMax: 64.0
+lowMin: -70.0
+lowMax: 70.0
 highMin: 0.0
 highMax: 0.0
 relative: false
@@ -51,7 +51,7 @@ timeline0: 0.0
 - Y Offset - 
 active: true
 lowMin: 54.0
-lowMax: 74.0
+lowMax: 94.0
 highMin: 0.0
 highMax: 0.0
 relative: false

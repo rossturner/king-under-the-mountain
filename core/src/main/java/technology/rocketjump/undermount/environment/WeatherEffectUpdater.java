@@ -1,6 +1,8 @@
 package technology.rocketjump.undermount.environment;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.math.GridPoint2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -16,11 +18,12 @@ import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
 @Singleton
-public class WeatherManager implements GameContextAware {
+public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 
 
 	private final ParticleEffectType rainType;
@@ -29,9 +32,11 @@ public class WeatherManager implements GameContextAware {
 	private final Map<GridPoint2, ParticleEffectInstance> instancesByTileLocation = new HashMap<>();
 
 	@Inject
-	public WeatherManager(ParticleEffectTypeDictionary particleEffectTypeDictionary, MessageDispatcher messageDispatcher) {
+	public WeatherEffectUpdater(ParticleEffectTypeDictionary particleEffectTypeDictionary, MessageDispatcher messageDispatcher) {
 		this.rainType = particleEffectTypeDictionary.getByName("Rain");
 		this.messageDispatcher = messageDispatcher;
+
+		messageDispatcher.addListener(this, MessageType.GAME_PAUSED);
 	}
 
 	public void updateVisibleTile(MapTile mapTile) {
@@ -61,6 +66,26 @@ public class WeatherManager implements GameContextAware {
 
 	@Override
 	public void clearContextRelatedState() {
-		instancesByTileLocation.clear();
+		Iterator<ParticleEffectInstance> iterator = instancesByTileLocation.values().iterator();
+		while (iterator.hasNext()) {
+			ParticleEffectInstance instance = iterator.next();
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_FORCE_REMOVE, instance);
+			iterator.remove();
+		}
 	}
+
+
+	@Override
+	public boolean handleMessage(Telegram msg) {
+		switch (msg.message) {
+			case MessageType.GAME_PAUSED: {
+				// Clear all on pause so panning camera doesn't look weird
+				clearContextRelatedState();
+				return true;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
+		}
+	}
+
 }
