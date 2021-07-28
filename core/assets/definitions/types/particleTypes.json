@@ -11,8 +11,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.4,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -82,8 +82,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 2.0,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -101,8 +101,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.6,
     "y" : 1.5,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -120,8 +120,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.35,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -139,8 +139,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.5,
     "y" : 1.3,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -158,8 +158,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.5,
     "y" : 1.6,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -177,8 +177,8 @@
   "offsetFromParentEntity" : {
     "x" : 1.15,
     "y" : 0.9,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -196,8 +196,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.3,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -216,8 +216,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.3,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -236,8 +236,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.3,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -255,8 +255,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : -0.2,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : true,
   "overrideYDepth" : false,
@@ -274,8 +274,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : -0.2,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : true,
   "overrideYDepth" : false,
@@ -293,8 +293,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.2,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : true,
   "overrideYDepth" : false,
@@ -312,8 +312,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.15,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
@@ -331,8 +331,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.15,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : true,
@@ -350,8 +350,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.3,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : true,
@@ -369,8 +369,8 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.3,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : true,
@@ -389,10 +389,23 @@
   "offsetFromParentEntity" : {
     "x" : 0.0,
     "y" : 0.25,
-    "zero" : false,
-    "unit" : false
+    "unit" : false,
+    "zero" : false
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
   "attachedToParent" : true
+}, {
+  "name" : "Rain",
+  "particleFile" : "rain.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
+  "scale" : 0.5,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false
 } ]

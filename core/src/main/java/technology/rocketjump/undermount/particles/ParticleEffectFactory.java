@@ -87,7 +87,7 @@ public class ParticleEffectFactory {
 		} else if (type.getFragmentShaderFile() != null && type.getVertexShaderFile() != null) {
 			return buildShaderEffect(type, parentEntity, parentTile);
 		} else {
-			return buildLibgdxParticleEffect(type, parentEntity, parentTile, optionalMaterialColor);
+  			return buildLibgdxParticleEffect(type, parentEntity, parentTile, optionalMaterialColor);
 		}
 	}
 
