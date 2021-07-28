@@ -11,8 +11,8 @@ import technology.rocketjump.undermount.entities.factories.OngoingEffectEntityFa
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.environment.WeatherManager;
 import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
-import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -36,6 +36,7 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 	private final OngoingEffectAttributesFactory ongoingEffectAttributesFactory;
 	private final OngoingEffectEntityFactory ongoingEffectEntityFactory;
 	private final WeatherTypeDictionary weatherTypeDictionary;
+	private final WeatherManager weatherManager;
 	private final ParticleEffectType rainType;
 
 	private GameContext gameContext;
@@ -44,13 +45,14 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 	public DebugMessageHandler(MessageDispatcher messageDispatcher, ItemTypeDictionary itemTypeDictionary,
 							   GameMaterialDictionary materialDictionary, OngoingEffectAttributesFactory ongoingEffectAttributesFactory,
 							   OngoingEffectEntityFactory ongoingEffectEntityFactory, WeatherTypeDictionary weatherTypeDictionary,
-							   ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+							   WeatherManager weatherManager, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.materialDictionary = materialDictionary;
 		this.ongoingEffectAttributesFactory = ongoingEffectAttributesFactory;
 		this.ongoingEffectEntityFactory = ongoingEffectEntityFactory;
 		this.weatherTypeDictionary = weatherTypeDictionary;
+		this.weatherManager = weatherManager;
 
 		this.rainType = particleEffectTypeDictionary.getByName("Rain");
 
@@ -82,12 +84,7 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 							}
 						}
 
-						WeatherType currentWeather = gameContext.getMapEnvironment().getCurrentWeather();
-						if (currentWeather.getName().equals("Rain")) {
-							gameContext.getMapEnvironment().setCurrentWeather(weatherTypeDictionary.getByName("Perfect"));
-						} else {
-							gameContext.getMapEnvironment().setCurrentWeather(weatherTypeDictionary.getByName("Rain"));
-						}
+						weatherManager.triggerNextWeather();
 
 //						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
 

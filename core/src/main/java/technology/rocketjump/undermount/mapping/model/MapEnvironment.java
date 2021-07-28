@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.mapping.model;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.graphics.Color;
+import technology.rocketjump.undermount.environment.model.DailyWeatherType;
 import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
@@ -14,7 +15,9 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
  */
 public class MapEnvironment implements ChildPersistable {
 
+	private DailyWeatherType dailyWeather;
 	private WeatherType currentWeather;
+	private double weatherTimeRemaining;
 
 	private Color sunlightColor = Color.WHITE.cpy();
 	private Color weatherColor = Color.WHITE.cpy();
@@ -51,6 +54,7 @@ public class MapEnvironment implements ChildPersistable {
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
+		asJson.put("dailyWeather", dailyWeather.getName());
 		asJson.put("weather", currentWeather.getName());
 		asJson.put("sunlight", HexColors.toHexString(sunlightColor));
 		asJson.put("weatherColor", HexColors.toHexString(weatherColor));
@@ -58,11 +62,32 @@ public class MapEnvironment implements ChildPersistable {
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		this.dailyWeather = relatedStores.dailyWeatherTypeDictionary.getByName(asJson.getString("dailyWeather"));
+		if (this.dailyWeather == null) {
+			throw new InvalidSaveException("Could not find daily weather type with name " + asJson.getString("dailyWeather"));
+		}
+
 		this.currentWeather = relatedStores.weatherTypeDictionary.getByName(asJson.getString("weather"));
 		if (this.currentWeather == null) {
 			throw new InvalidSaveException("Could not find weather type with name " + asJson.getString("weather"));
 		}
 		setSunlightColor(HexColors.get(asJson.getString("sunlight")));
 		setWeatherColor(HexColors.get(asJson.getString("weatherColor")));
+	}
+
+	public double getWeatherTimeRemaining() {
+		return weatherTimeRemaining;
+	}
+
+	public void setWeatherTimeRemaining(double weatherTimeRemaining) {
+		this.weatherTimeRemaining = weatherTimeRemaining;
+	}
+
+	public DailyWeatherType getDailyWeather() {
+		return dailyWeather;
+	}
+
+	public void setDailyWeather(DailyWeatherType dailyWeather) {
+		this.dailyWeather = dailyWeather;
 	}
 }

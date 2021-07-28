@@ -76,6 +76,15 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 		}
 	}
 
+	public void weatherChanged() {
+		Iterator<ParticleEffectInstance> iterator = instancesByTileLocation.values().iterator();
+		while (iterator.hasNext()) {
+			ParticleEffectInstance instance = iterator.next();
+			messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, instance);
+			iterator.remove();
+		}
+	}
+
 	@Override
 	public boolean handleMessage(Telegram msg) {
 		switch (msg.message) {
@@ -88,5 +97,4 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
 	}
-
 }

@@ -1,9 +1,11 @@
 [ {
   "name" : "Perfect",
+  "i18nKey" : "WEATHER.TYPE.PERFECT",
   "maxSunlight" : "#ffffff",
   "oxidises" : false
 }, {
   "name" : "Rain",
+  "i18nKey" : "WEATHER.TYPE.RAIN",
   "particleEffectTypeName" : "Rain",
   "maxSunlight" : "#c8c8c8",
   "oxidises" : true,

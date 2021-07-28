@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
+import technology.rocketjump.undermount.environment.model.DailyWeatherType;
 import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobType;
@@ -159,6 +160,8 @@ public class ModArtifactListing {
 						"settings", "timeAndDaySettings.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 				def("settings", "immigrationSettings", SINGLE_FILE, JSON_OBJECT, null,
 						"settings", "immigrationSettings.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
+				def("settings", "dailyWeather", SINGLE_FILE, JSON_ARRAY, DailyWeatherType.class,
+						"settings", "dailyWeather.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				////////// sounds //////////
 				def("sounds/data", null, COPY_ORIGINAL_FILES, WAV, null,

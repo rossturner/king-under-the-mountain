@@ -1,0 +1,30 @@
+package technology.rocketjump.undermount.environment.model;
+
+import technology.rocketjump.undermount.misc.Name;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DailyWeatherType {
+
+	@Name
+	private String name;
+
+	private List<ForecastItem> forecast = new ArrayList<>();
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<ForecastItem> getForecast() {
+		return forecast;
+	}
+
+	public void setForecast(List<ForecastItem> forecast) {
+		this.forecast = forecast;
+	}
+}

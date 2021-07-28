@@ -9,6 +9,7 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.environment.DailyWeatherTypeDictionary;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
 import technology.rocketjump.undermount.mapping.model.MapEnvironment;
@@ -27,15 +28,17 @@ public class GameContextFactory {
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final GameMaterialDictionary gameMaterialDictionary;
 	private final WeatherTypeDictionary weatherTypeDictionary;
+	private final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
 	private final JSONObject itemProductionDefaultsJson;
 	private final JSONObject liquidProductionDefaultsJson;
 
 	@Inject
 	public GameContextFactory(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary,
-							  WeatherTypeDictionary weatherTypeDictionary) {
+							  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary) {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.weatherTypeDictionary = weatherTypeDictionary;
+		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
 		FileHandle itemProductionDefaultsFile = new FileHandle("assets/definitions/crafting/itemProductionDefaults.json");
 		itemProductionDefaultsJson = JSON.parseObject(itemProductionDefaultsFile.readString());
 		FileHandle liquidProductionDefaultsFile = new FileHandle("assets/definitions/crafting/liquidProductionDefaults.json");
@@ -78,6 +81,7 @@ public class GameContextFactory {
 	}
 
 	private void initialise(MapEnvironment mapEnvironment) {
+		mapEnvironment.setDailyWeather(dailyWeatherTypeDictionary.getAll().iterator().next());
 		mapEnvironment.setCurrentWeather(weatherTypeDictionary.getAll().iterator().next());
 	}
 

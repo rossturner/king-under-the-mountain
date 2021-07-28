@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEf
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.entities.tags.TagDictionary;
+import technology.rocketjump.undermount.environment.DailyWeatherTypeDictionary;
 import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.JobStore;
@@ -106,6 +107,8 @@ public class PersistenceTestHarness {
 	private OngoingEffectTypeDictionary mockOngoingEffectTypeDictionary;
 	@Mock
 	private WeatherTypeDictionary mockWeatherTypeDictionary;
+	@Mock
+	private DailyWeatherTypeDictionary mockDailyWeatherTypeDictionary;
 
 	@Before
 	public void setup() {
@@ -143,7 +146,8 @@ public class PersistenceTestHarness {
 				mockJobStore,
 				mockParticleEffectTypeDictionary,
 				mockOngoingEffectTypeDictionary,
-				mockWeatherTypeDictionary);
+				mockWeatherTypeDictionary,
+				mockDailyWeatherTypeDictionary);
 
 	}
 
