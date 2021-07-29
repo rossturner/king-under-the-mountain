@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestLiquidAllocationMessage;
 import technology.rocketjump.undermount.misc.Destructible;
@@ -40,6 +41,7 @@ import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOI
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
+import static technology.rocketjump.undermount.environment.model.WeatherType.HappinessInteraction.STANDING;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 
@@ -277,6 +279,11 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 		parentEntity.getOrCreateComponent(StatusComponent.class).infrequentUpdate(elapsed);
 
 		HappinessComponent happinessComponent = parentEntity.getOrCreateComponent(HappinessComponent.class);
+		MapTile currentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
+		if (currentTile != null && currentTile.getRoof().getState().equals(TileRoofState.OPEN) &&
+			gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().containsKey(STANDING)) {
+			happinessComponent.add(gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().get(STANDING));
+		}
 		happinessComponent.infrequentUpdate(elapsed);
 		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 

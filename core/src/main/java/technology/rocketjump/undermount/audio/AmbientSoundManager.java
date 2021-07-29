@@ -11,7 +11,6 @@ import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.persistence.UserPreferences;
-import technology.rocketjump.undermount.rendering.ScreenWriter;
 
 import static technology.rocketjump.undermount.audio.SoundEffectManager.GLOBAL_VOLUME_MULTIPLIER;
 
@@ -25,15 +24,13 @@ public class AmbientSoundManager implements Updatable, AssetDisposable {
 	private float outdoorRatio;
 	private float riverRatio;
 	private GameContext gameContext;
-	private final ScreenWriter screenWriter;
 
 	public static final String DEFAULT_AMBIENT_AUDIO_VOLUME_AS_STRING = "0.5";
 	private float globalAmbientVolumeModifier;
 
 	@Inject
-	public AmbientSoundManager(SoundAssetDictionary soundAssetDictionary, UserPreferences userPreferences, ScreenWriter screenWriter) {
+	public AmbientSoundManager(SoundAssetDictionary soundAssetDictionary, UserPreferences userPreferences) {
 		this.riverAmbience = soundAssetDictionary.getByName("River");
-		this.screenWriter = screenWriter;
 
 		try {
 			riverActiveSound = new ActiveSoundEffect(riverAmbience, 0L, null);
@@ -101,9 +98,6 @@ public class AmbientSoundManager implements Updatable, AssetDisposable {
 			} else if (riverActiveSound.getVolume() < desiredRiverAmbienceVolume) {
 				increaseVolume(riverActiveSound);
 			}
-
-			screenWriter.printLine("Weather ambience: " + (weatherActiveSound == null ? null : weatherActiveSound.getAsset().getName() + " " + weatherActiveSound.getVolume()));
-			screenWriter.printLine("River volume: " + riverActiveSound.getVolume());
 		} catch (GdxAudioException e) {
 			Logger.error(e.getMessage(), e);
 		}

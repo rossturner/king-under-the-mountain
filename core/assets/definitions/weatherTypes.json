@@ -4,7 +4,8 @@
   "maxSunlight" : "#ffffff",
   "dayAmbienceSoundAssetName" : "Daytime",
   "nightAmbienceSoundAssetName" : "Nighttime",
-  "oxidises" : false
+  "oxidises" : false,
+  "happinessModifiers" : { }
 }, {
   "name" : "Rain",
   "i18nKey" : "WEATHER.TYPE.RAIN",
@@ -15,7 +16,7 @@
   "oxidises" : true,
   "chanceToExtinguishFire" : 0.35,
   "happinessModifiers" : {
-    "WALKING" : "CAUGHT_IN_RAIN",
+    "STANDING" : "CAUGHT_IN_RAIN",
     "WORKING" : "WORKED_IN_RAIN",
     "SLEEPING" : "SLEEPING_IN_RAIN"
   }

@@ -391,6 +391,7 @@ GUI.ZONES_LABEL,Zones,,Zonen,Zones,Zone,Zonas,Áreas,Zonas,,Зоны,Bölgeler,Z
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWAL,Going sober,,,,,,,,,,Ayılıyor,,,,,,,,,
 HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,Ate a nicely prepared meal,,Hat eine gute Mahlzeit gegessen,A mangé un repas cuisiné,Mangiato un pasto ben preparato,Comí una comida bien preparada,Comi uma refeição bem preparada,,,Ели красиво приготовленную еду,Güzel hazırlanmış bir yemek yedi,Spiste et pænt tilberedt måltid,,Åt en fint tillagad måltid,,,,きれいに準備された食事を食べた,吃了一顿精心准备的餐,멋지게 준비된 식사를 먹었다.
 HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,Carried a dead body,,Trug einen toten Körper,A porté un cadavre,Portava un cadavere.,Llevaba un cadáver.,Carregava um cadáver,,,У него труп,Bir ceset taşıdı,Brevet et lig,,Bär en död kropp,,,,死体を運んだ,带着一具尸体,시체를 운반한
+HAPPINESS_MODIFIER.CAUGHT_IN_RAIN,Caught outside in the rain,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.DRANK_ALCOHOL,Under the effects of alcohol,,,,,,,,,,Alkolün etksii altında,,,,,,,,,
 HAPPINESS_MODIFIER.DRANK_FROM_RIVER,Drank river water,,Trank Flusswasser,A bu de l'eau de rivière,Bevuto acqua di fiume,Bebió agua de río,Bebeu água do rio,,,Пьянь речной воды,Nehir suyu içti,Drak floden vand,,Drack flod vatten,,,,飲料水,喝河水,마신 강 물
 HAPPINESS_MODIFIER.DYING_OF_HUNGER,Starving,,Am Verhungern,- Affamé,Morendo di fame,Muerto de hambre,Morrendo de fome,,,Голод,Açlıktan Ölüyor,Sulter,,Svältande,,,,飢えだ,饿死了,굶주린
@@ -399,6 +400,7 @@ HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,Optimistic about new settlement,,Opti
 HAPPINESS_MODIFIER.ON_FIRE,Was badly burned,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.POISONED,Poisoned,,Vergiftet,Empoisonné,Avvelenato,Envenenado,Envenenado,,,Отравлен,Zehirlendi,Forgiftet,,Förgiftad,,,,毒殺されてる,中毒,중독
 HAPPINESS_MODIFIER.SAW_DEAD_BODY,Saw a dead body,,Sah einen toten Körper,J'ai vu un cadavre,Ho visto un cadavere.,Vi un cadáver.,Vi um cadáver.,,,Видел труп,Ceset gördü,Så et lig,,Såg en död kropp,,,,死体を見たの,看见一具尸体,죽은 시체를 보았다
+HAPPINESS_MODIFIER.SLEEPING_IN_RAIN,Slept in the rain,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.SLEPT_IN_ENCLOSED_BEDROOM,Slept in an enclosed bedroom,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,"Slept in a spacious, private bedroom",,"Schlief in einem geräumigen, eigenen Schlafzimmer",A dormi dans une chambre spacieuse et individuelle,Dormiva in una spaziosa camera da letto privata,Dormía en un amplio dormitorio privado,Dormi em um quarto espaçoso e privado,,,"Спал в просторной, отдельной спальне",Kişisel ve geniş bir yatak odasında uyudu,"Sov i et rummeligt, privat soveværelse",,"Sov i ett rymligt, privat sovrum",,,,広々としたプライベートベッドルームで寝る,睡在宽敞的私人卧室,넓은 개인 침실에서 잠을 자다.
 HAPPINESS_MODIFIER.SLEPT_IN_PRIVATE_BEDROOM,,,Schlief in eigenem Schlafzimmer,A dormi dans une chambre individuelle,Dormiva in una camera da letto privata,Dormía en un dormitorio privado,Dormi em um quarto privado,,,Спал в отдельной спальне,Kişisel yatak odasında uyudu,Sov i et privat soveværelse,,Sov i ett privat sovrum,,,,プライベートベッドルームで寝た,睡在私人卧室,개인 침실에서 잤다.
@@ -411,6 +413,7 @@ HAPPINESS_MODIFIER.VERY_HUNGRY,Very hungry,,Sehr hungrig,Très faim,Molto affama
 HAPPINESS_MODIFIER.VERY_THIRSTY,Very thirsty,,Sehr durstig,Très soif,Molto sete,Muy sediento,Muito sedento.,,,Очень хочется пить,Aşırı susamış,Meget tørstig,,Mycket törstig,,,,のどが渇いた,非常口渴,매우 목마른
 HAPPINESS_MODIFIER.VERY_TIRED,Extremely tired,,Extrem müde,Extrêmement fatigué,Estremamente stanco,Extremadamente cansado,Extremamente cansado,,,Очень устал,Aşırı yorgun,Ekstremt træt,,Extremt trött,,,,非常に疲れている,极度疲惫,매우 피곤함
 HAPPINESS_MODIFIER.WORKED_IN_ENCLOSED_ROOM,Worked in an enclosed room,,,,,,,,,,,,,,,,,,,
+HAPPINESS_MODIFIER.WORKED_IN_RAIN,Working in the rain,,,,,,,,,,,,,,,,,,,
 
 HAULING.ASSIGNMENT.DESCRIPTION,{{quantity}} assigned to {{targetDescription}},,{{quantity}} zugewiesen an {{targetDescription}},{{quantity}} affecté à {{targetDescription}},{{quantity}} assegnato a {{targetDescription}},{{quantity}} asignado a {{targetDescription}},{{quantity}} atribuído a {{targetDescription}},,,{{quantity}} назначено {{targetDescription}},{{quantity}} atandı {{targetDescription}},{{quantity}} tildelt {{targetDescription},,{{kvantitet}} tilldelad till {{targetDescription}},,,,{{{itemDescription}} が {{targetDescription}} に割り当てられました,{{quantity}} 已分配给 {{targetDescription}},{{대상 설명}} 에 {{quantity}} 이 (가) 할당되었습니다.
 

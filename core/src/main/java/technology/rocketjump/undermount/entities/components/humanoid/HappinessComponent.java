@@ -140,7 +140,7 @@ public class HappinessComponent implements EntityComponent {
 
 		CAUGHT_IN_RAIN(-10, 0.5),
 		WORKED_IN_RAIN(-20, 0.5),
-		SLEEPING_IN_RAIN(-30, 4),
+		SLEEPING_IN_RAIN(-40, 4),
 
 		DRANK_ALCOHOL(40, 8),
 		ALCOHOL_WITHDRAWAL(-30, 0.5);
@@ -157,6 +157,12 @@ public class HappinessComponent implements EntityComponent {
 			DYING_OF_THIRST.replaces.add(VERY_THIRSTY);
 
 			DRANK_ALCOHOL.replaces.add(ALCOHOL_WITHDRAWAL);
+
+			SLEEPING_IN_RAIN.replaces.add(WORKED_IN_RAIN);
+			SLEEPING_IN_RAIN.replaces.add(CAUGHT_IN_RAIN);
+			SLEEPING_IN_RAIN.replaces.add(SLEPT_OUTSIDE);
+
+			WORKED_IN_RAIN.replaces.add(CAUGHT_IN_RAIN);
 
 			for (HappinessModifier happinessModifier : HappinessModifier.values()) {
 				for (HappinessModifier otherModifier : HappinessModifier.values()) {

@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.entities.components.humanoid.HappinessCo
 import technology.rocketjump.undermount.misc.Name;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -33,7 +34,15 @@ public class WeatherType {
 	private boolean oxidises;
 	private Float chanceToExtinguishFire;
 
-	private Map<String, HappinessComponent.HappinessModifier> happinessModifiers;
+	private Map<HappinessInteraction, HappinessComponent.HappinessModifier> happinessModifiers = new EnumMap<>(HappinessInteraction.class);
+
+	public enum HappinessInteraction {
+
+		STANDING,
+		WORKING,
+		SLEEPING
+
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -104,11 +113,11 @@ public class WeatherType {
 		this.chanceToExtinguishFire = chanceToExtinguishFire;
 	}
 
-	public Map<String, HappinessComponent.HappinessModifier> getHappinessModifiers() {
+	public Map<HappinessInteraction, HappinessComponent.HappinessModifier> getHappinessModifiers() {
 		return happinessModifiers;
 	}
 
-	public void setHappinessModifiers(Map<String, HappinessComponent.HappinessModifier> happinessModifiers) {
+	public void setHappinessModifiers(Map<HappinessInteraction, HappinessComponent.HappinessModifier> happinessModifiers) {
 		this.happinessModifiers = happinessModifiers;
 	}
 
