@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.environment.model;
 
 import com.badlogic.gdx.graphics.Color;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.misc.Name;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
@@ -21,6 +22,13 @@ public class WeatherType {
 	private String maxSunlight;
 	@JsonIgnore
 	private Color maxSunlightColor = Color.WHITE;
+
+	private String dayAmbienceSoundAssetName;
+	@JsonIgnore
+	private SoundAsset dayAmbienceSoundAsset;
+	private String nightAmbienceSoundAssetName;
+	@JsonIgnore
+	private SoundAsset nightAmbienceSoundAsset;
 
 	private boolean oxidises;
 	private Float chanceToExtinguishFire;
@@ -110,5 +118,42 @@ public class WeatherType {
 
 	public void setI18nKey(String i18nKey) {
 		this.i18nKey = i18nKey;
+	}
+
+	public String getDayAmbienceSoundAssetName() {
+		return dayAmbienceSoundAssetName;
+	}
+
+	public void setDayAmbienceSoundAssetName(String dayAmbienceSoundAssetName) {
+		this.dayAmbienceSoundAssetName = dayAmbienceSoundAssetName;
+	}
+
+	public SoundAsset getDayAmbienceSoundAsset() {
+		return dayAmbienceSoundAsset;
+	}
+
+	public void setDayAmbienceSoundAsset(SoundAsset dayAmbienceSoundAsset) {
+		this.dayAmbienceSoundAsset = dayAmbienceSoundAsset;
+	}
+
+	public String getNightAmbienceSoundAssetName() {
+		return nightAmbienceSoundAssetName;
+	}
+
+	public void setNightAmbienceSoundAssetName(String nightAmbienceSoundAssetName) {
+		this.nightAmbienceSoundAssetName = nightAmbienceSoundAssetName;
+	}
+
+	public SoundAsset getNightAmbienceSoundAsset() {
+		return nightAmbienceSoundAsset;
+	}
+
+	public void setNightAmbienceSoundAsset(SoundAsset nightAmbienceSoundAsset) {
+		this.nightAmbienceSoundAsset = nightAmbienceSoundAsset;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }

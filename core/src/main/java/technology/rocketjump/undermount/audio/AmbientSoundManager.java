@@ -8,7 +8,6 @@ import technology.rocketjump.undermount.audio.model.ActiveSoundEffect;
 import technology.rocketjump.undermount.audio.model.GdxAudioException;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
-import technology.rocketjump.undermount.environment.model.Season;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.persistence.UserPreferences;
@@ -20,32 +19,25 @@ import static technology.rocketjump.undermount.audio.SoundEffectManager.GLOBAL_V
 public class AmbientSoundManager implements Updatable, AssetDisposable {
 
 	private boolean initialised;
-	private final SoundAsset daytimeAmbience;
-	private final SoundAsset nighttimeAmbience;
-	private final SoundAsset riverAmbience;
-	private ActiveSoundEffect daytimeActive;
-	private ActiveSoundEffect nighttimeActive;
-	private ActiveSoundEffect riverActive;
+	private SoundAsset riverAmbience;
+	private ActiveSoundEffect weatherActiveSound;
+	private ActiveSoundEffect riverActiveSound;
 	private float outdoorRatio;
 	private float riverRatio;
 	private GameContext gameContext;
+	private final ScreenWriter screenWriter;
 
 	public static final String DEFAULT_AMBIENT_AUDIO_VOLUME_AS_STRING = "0.5";
 	private float globalAmbientVolumeModifier;
 
 	@Inject
-	public AmbientSoundManager(SoundAssetDictionary soundAssetDictionary, ScreenWriter screenWriter, UserPreferences userPreferences) {
-		this.daytimeAmbience = soundAssetDictionary.getByName("Daytime");
-		this.nighttimeAmbience = soundAssetDictionary.getByName("Nighttime");
+	public AmbientSoundManager(SoundAssetDictionary soundAssetDictionary, UserPreferences userPreferences, ScreenWriter screenWriter) {
 		this.riverAmbience = soundAssetDictionary.getByName("River");
+		this.screenWriter = screenWriter;
 
 		try {
-			daytimeActive = new ActiveSoundEffect(daytimeAmbience, 0L, null);
-			daytimeActive.loop(0f);
-			nighttimeActive = new ActiveSoundEffect(nighttimeAmbience, 0L, null);
-			nighttimeActive.loop(0f);
-			riverActive = new ActiveSoundEffect(riverAmbience, 0L, null);
-			riverActive.loop(0f);
+			riverActiveSound = new ActiveSoundEffect(riverAmbience, 0L, null);
+			riverActiveSound.loop(0f);
 			initialised = true;
 		} catch (GdxAudioException e) {
 			Logger.error("Gdx.audio is null, did audio initialisation fail?");
@@ -71,43 +63,63 @@ public class AmbientSoundManager implements Updatable, AssetDisposable {
 		if (!initialised) {
 			return;
 		}
-		// MODDING expose this
-		// outdoor audio between 60% and 100% of ratio
-		float desiredOutdoorAmbienceVolume = Math.max((outdoorRatio - 0.75f), 0f) * (1f / (1f - 0.75f));
-		float desiredRiverAmbienceVolume = Math.min(riverRatio, 0.15f) * (1f / 0.15f);
 
-		desiredOutdoorAmbienceVolume *= globalAmbientVolumeModifier;
-		desiredRiverAmbienceVolume *= globalAmbientVolumeModifier;
+		try {
+			// MODDING expose this
+			// outdoor audio between 60% and 100% of ratio
+			float desiredOutdoorAmbienceVolume = Math.max((outdoorRatio - 0.2f), 0f) * (1f / (1f - 0.75f));
+			float desiredRiverAmbienceVolume = Math.min(riverRatio, 0.2f) * (1f / 0.15f);
 
-		if (daytimeHours()) {
-			decreaseVolume(nighttimeActive);
+			desiredOutdoorAmbienceVolume *= globalAmbientVolumeModifier;
+			desiredRiverAmbienceVolume *= globalAmbientVolumeModifier;
 
-			if (daytimeActive.getVolume() > desiredOutdoorAmbienceVolume) {
-				decreaseVolume(daytimeActive);
-			} else if (daytimeActive.getVolume() < desiredOutdoorAmbienceVolume) {
-				increaseVolume(daytimeActive);
+			SoundAsset weatherAmbienceAsset = getCurrentWeatherAmbienceAsset(daytimeHours());
+			if (weatherActiveSound == null && weatherAmbienceAsset != null) {
+				weatherActiveSound = new ActiveSoundEffect(weatherAmbienceAsset, 0L, null);
+				weatherActiveSound.loop(0f);
 			}
 
-		} else if (nightTimeHours()) {
-			decreaseVolume(daytimeActive);
-
-			if (nighttimeActive.getVolume() > desiredOutdoorAmbienceVolume) {
-				decreaseVolume(nighttimeActive);
-			} else if (nighttimeActive.getVolume() < desiredOutdoorAmbienceVolume) {
-				increaseVolume(nighttimeActive);
+			if (weatherActiveSound != null) {
+				if (matchesCurrentWeather(weatherAmbienceAsset)) {
+					if (weatherActiveSound.getVolume() > desiredOutdoorAmbienceVolume) {
+						decreaseVolume(weatherActiveSound);
+					} else if (weatherActiveSound.getVolume() < desiredOutdoorAmbienceVolume) {
+						increaseVolume(weatherActiveSound);
+					}
+				} else {
+					decreaseVolume(weatherActiveSound);
+					if (weatherActiveSound.getVolume() <= 0f) {
+						weatherActiveSound.stop();
+						weatherActiveSound.dispose();
+						weatherActiveSound = null;
+					}
+				}
 			}
 
+			if (riverActiveSound.getVolume() > desiredRiverAmbienceVolume) {
+				decreaseVolume(riverActiveSound);
+			} else if (riverActiveSound.getVolume() < desiredRiverAmbienceVolume) {
+				increaseVolume(riverActiveSound);
+			}
+
+			screenWriter.printLine("Weather ambience: " + (weatherActiveSound == null ? null : weatherActiveSound.getAsset().getName() + " " + weatherActiveSound.getVolume()));
+			screenWriter.printLine("River volume: " + riverActiveSound.getVolume());
+		} catch (GdxAudioException e) {
+			Logger.error(e.getMessage(), e);
+		}
+
+	}
+
+	private boolean matchesCurrentWeather(SoundAsset weatherAmbienceAsset) {
+		return weatherActiveSound.getAsset() == weatherAmbienceAsset;
+	}
+
+	private SoundAsset getCurrentWeatherAmbienceAsset(boolean isDaytime) {
+		if (isDaytime) {
+			return gameContext.getMapEnvironment().getCurrentWeather().getDayAmbienceSoundAsset();
 		} else {
-			decreaseVolume(daytimeActive);
-			decreaseVolume(nighttimeActive);
+			return gameContext.getMapEnvironment().getCurrentWeather().getNightAmbienceSoundAsset();
 		}
-
-		if (riverActive.getVolume() > desiredRiverAmbienceVolume) {
-			decreaseVolume(riverActive);
-		} else if (riverActive.getVolume() < desiredRiverAmbienceVolume) {
-			increaseVolume(riverActive);
-		}
-
 	}
 
 	public void setPaused(Boolean pause) {
@@ -115,13 +127,15 @@ public class AmbientSoundManager implements Updatable, AssetDisposable {
 			return;
 		}
 		if (pause) {
-			daytimeActive.pause();
-			nighttimeActive.pause();
-			riverActive.pause();
+			if (weatherActiveSound != null) {
+				weatherActiveSound.pause();
+			}
+			riverActiveSound.pause();
 		} else {
-			daytimeActive.resume();
-			nighttimeActive.resume();
-			riverActive.resume();
+			if (weatherActiveSound != null) {
+				weatherActiveSound.resume();
+			}
+			riverActiveSound.resume();
 		}
 	}
 
@@ -131,12 +145,12 @@ public class AmbientSoundManager implements Updatable, AssetDisposable {
 
 	@Override
 	public void dispose() {
-		daytimeActive.stop();
-		daytimeActive.dispose();
-		nighttimeActive.stop();
-		nighttimeActive.dispose();
-		riverActive.stop();
-		riverActive.dispose();
+		if (weatherActiveSound != null) {
+			weatherActiveSound.stop();
+			weatherActiveSound.dispose();
+		}
+		riverActiveSound.stop();
+		riverActiveSound.dispose();
 	}
 
 	@Override
@@ -167,18 +181,7 @@ public class AmbientSoundManager implements Updatable, AssetDisposable {
 		}
 	}
 
-	private boolean nightTimeHours() {
-		if (gameContext.getGameClock().getCurrentSeason().equals(Season.WINTER)) {
-			return false;
-		}
-		int hourOfDay = gameContext.getGameClock().getHourOfDay();
-		return hourOfDay < 4 || hourOfDay > 21;
-	}
-
 	private boolean daytimeHours() {
-		if (gameContext.getGameClock().getCurrentSeason().equals(Season.WINTER)) {
-			return false;
-		}
 		int hourOfDay = gameContext.getGameClock().getHourOfDay();
 		return 5 <= hourOfDay && hourOfDay <= 19;
 	}

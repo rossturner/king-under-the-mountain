@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -33,9 +34,9 @@ public class GetTwitchSubscribers implements Callable<List<TwitchViewer>> {
 		Response response = twitchRequestHandler.get("https://api.twitch.tv/helix/subscriptions?broadcaster_id="+accountInfo.getUser_id(), twitchDataStore);
 
 		try {
+			JSONObject responseJson = JSON.parseObject(response.body().string());
 			if (response.isSuccessful()) {
 				List<TwitchViewer> subscribers = new ArrayList<>();
-				JSONObject responseJson = JSON.parseObject(response.body().string());
 
 				JSONArray data = responseJson.getJSONArray("data");
 				for (int cursor = 0; cursor < data.size(); cursor++) {
@@ -47,7 +48,11 @@ public class GetTwitchSubscribers implements Callable<List<TwitchViewer>> {
 				}
 				return subscribers;
 			} else {
-				throw new Exception("Received " + response.code() + " while calling " + this.getClass().getSimpleName());
+				if (responseJson.getString("message").equals("channel_id must be a partner or affiliate")) {
+					return Collections.emptyList();
+				} else {
+					throw new Exception("Received " + response.code() + " while calling " + this.getClass().getSimpleName());
+				}
 			}
 		} finally {
 			IOUtils.closeQuietly(response);

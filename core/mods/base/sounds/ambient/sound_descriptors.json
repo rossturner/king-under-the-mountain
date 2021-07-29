@@ -6,7 +6,7 @@
     ],
     "minPitch": 1.0,
     "maxPitch": 1.0,
-    "volumeModifier": 0.8,
+    "volumeModifier": 0.5,
     "looping": true
   },
   {
@@ -16,7 +16,17 @@
     ],
     "minPitch": 1.0,
     "maxPitch": 1.0,
-    "volumeModifier": 0.8,
+    "volumeModifier": 0.5,
+    "looping": true
+  },
+  {
+    "name": "Rain",
+    "filenames": [
+      "Countryside_rain_with_far_thunders.wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 1.0,
     "looping": true
   },
   {
@@ -26,7 +36,7 @@
     ],
     "minPitch": 1.0,
     "maxPitch": 1.0,
-    "volumeModifier": 0.5,
+    "volumeModifier": 0.3,
     "looping": true
   },
   {
@@ -42,7 +52,7 @@
   {
     "name": "Burning",
     "filenames": [
-      "FireBarnInt_Short.ogg"
+      "FireBarnInt_Short.wav"
     ],
     "minPitch": 1.0,
     "maxPitch": 1.0,

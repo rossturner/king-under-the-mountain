@@ -2,13 +2,17 @@
   {
     "name": "Perfect",
     "i18nKey": "WEATHER.TYPE.PERFECT",
-    "maxSunlight": "#ffffff"
+    "maxSunlight": "#ffffff",
+    "dayAmbienceSoundAssetName": "Daytime",
+    "nightAmbienceSoundAssetName": "Nighttime"
   },
   {
     "name": "Rain",
     "i18nKey": "WEATHER.TYPE.RAIN",
     "particleEffectTypeName": "Rain",
     "maxSunlight": "#c8c8c8",
+    "dayAmbienceSoundAssetName": "Rain",
+    "nightAmbienceSoundAssetName": "Rain",
     "oxidises": true,
     "chanceToExtinguishFire": 0.35,
     "happinessModifiers": {
