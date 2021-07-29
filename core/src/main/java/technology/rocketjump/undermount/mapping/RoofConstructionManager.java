@@ -54,7 +54,7 @@ public class RoofConstructionManager implements GameContextAware {
 	public void roofConstructionAdded(MapTile mapTile) {
 		switchState(mapTile, RoofConstructionState.PENDING);
 
-		if (!withinRangeOfSupport(mapTile)) {
+		if (!withinRangeOfSupport(mapTile, false)) {
 			switchState(mapTile, TOO_FAR_FROM_SUPPORT);
 		} else {
 			// is in range of support
@@ -142,7 +142,7 @@ public class RoofConstructionManager implements GameContextAware {
 		for (int yCursor = mapTile.getTileY()-ROOF_SUPPORT_MAX_DISTANCE; yCursor <= mapTile.getTileY()+ROOF_SUPPORT_MAX_DISTANCE; yCursor++) {
 			for (int xCursor = mapTile.getTileX()-ROOF_SUPPORT_MAX_DISTANCE; xCursor <= mapTile.getTileX()+ROOF_SUPPORT_MAX_DISTANCE; xCursor++) {
 				MapTile tile = gameContext.getAreaMap().getTile(xCursor, yCursor);
-				if (tile != null && tile.getRoof().getState().equals(TileRoofState.CONSTRUCTED) && !withinRangeOfSupport(tile)) {
+				if (tile != null && tile.getRoof().getState().equals(TileRoofState.CONSTRUCTED) && !withinRangeOfSupport(tile, true)) {
 					roofTilesWithoutSupport.add(tile);
 				}
 			}
@@ -203,12 +203,12 @@ public class RoofConstructionManager implements GameContextAware {
 		return false;
 	}
 
-	private boolean withinRangeOfSupport(MapTile mapTile) {
+	private boolean withinRangeOfSupport(MapTile mapTile, boolean requireContinuousRoof) {
 		for (int yCursor = mapTile.getTileY()-ROOF_SUPPORT_MAX_DISTANCE; yCursor <= mapTile.getTileY()+ROOF_SUPPORT_MAX_DISTANCE; yCursor++) {
 			for (int xCursor = mapTile.getTileX()-ROOF_SUPPORT_MAX_DISTANCE; xCursor <= mapTile.getTileX()+ROOF_SUPPORT_MAX_DISTANCE; xCursor++) {
 				MapTile tile = gameContext.getAreaMap().getTile(xCursor, yCursor);
 				if (tile != null && (tile.hasWall() || containsSupport(tile))) {
-					if (continuousRoofBetween(mapTile, tile)) {
+					if (!requireContinuousRoof || continuousRoofBetween(mapTile, tile)) {
 						return true;
 					}
 				}

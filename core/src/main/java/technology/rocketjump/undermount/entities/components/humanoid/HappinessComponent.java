@@ -133,8 +133,8 @@ public class HappinessComponent implements EntityComponent {
 		DYING_OF_THIRST(-50, 0.5),
 
 		SLEPT_OUTSIDE(-20, 3.0),
-		SLEPT_ON_GROUND(-20, 5.0),
-		SLEPT_IN_SHARED_BEDROOM(-10, 5.0),
+		SLEPT_ON_GROUND(-10, 5.0),
+		SLEPT_IN_SHARED_BEDROOM(-15, 5.0),
 		SLEPT_IN_ENCLOSED_BEDROOM(30, 5.0),
 		SLEPT_IN_SMALL_BEDROOM(-5, 5.0),
 

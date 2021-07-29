@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
+import technology.rocketjump.undermount.messaging.types.RoofConstructionMessage;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 
 import java.util.HashMap;
@@ -34,6 +35,7 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 		this.messageDispatcher = messageDispatcher;
 
 		messageDispatcher.addListener(this, MessageType.GAME_PAUSED);
+		messageDispatcher.addListener(this, MessageType.ROOF_CONSTRUCTED);
 	}
 
 	public void updateVisibleTile(MapTile mapTile) {
@@ -92,6 +94,14 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 				// Clear all on pause so panning camera doesn't look weird
 				clearContextRelatedState();
 				return true;
+			}
+			case MessageType.ROOF_CONSTRUCTED: {
+				RoofConstructionMessage roofConstructionMessage = (RoofConstructionMessage) msg.extraInfo;
+				ParticleEffectInstance particleEffectInstance = instancesByTileLocation.get(roofConstructionMessage.roofTileLocation);
+				if (particleEffectInstance != null && particleEffectInstance.isActive()) {
+					messageDispatcher.dispatchMessage(MessageType.PARTICLE_RELEASE, particleEffectInstance);
+				}
+				return false;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
