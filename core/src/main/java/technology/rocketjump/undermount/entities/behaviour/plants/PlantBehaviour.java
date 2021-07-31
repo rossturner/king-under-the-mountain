@@ -6,11 +6,9 @@ import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
-import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.plant.*;
@@ -184,13 +182,6 @@ public class PlantBehaviour implements BehaviourComponent {
 
 		if (currentSeasonSettings != null && currentSeasonSettings.isShedsLeaves()) {
 			messageDispatcher.dispatchMessage(MessageType.TREE_SHED_LEAVES, new ShedLeavesMessage(parentEntity, attributes.getColor(ColoringLayer.LEAF_COLOR)));
-		}
-
-		AttachedLightSourceBehaviour.infrequentUpdate(gameContext, parentEntity);
-
-		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
-		if (statusComponent != null) {
-			statusComponent.infrequentUpdate(elapsedTime);
 		}
 	}
 

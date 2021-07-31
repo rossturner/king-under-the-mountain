@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
-import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
+import technology.rocketjump.undermount.entities.components.InfrequentlyUpdatableComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StatusComponent implements ParentDependentEntityComponent {
+public class StatusComponent implements InfrequentlyUpdatableComponent {
 
 	private Entity parentEntity;
 	private MessageDispatcher messageDispatcher;
@@ -36,6 +36,7 @@ public class StatusComponent implements ParentDependentEntityComponent {
 		}
 	}
 
+	@Override
 	public void infrequentUpdate(double elapsedTime) {
 		for (StatusEffect statusEffect : new ArrayList<>(byClassType.values())) {
 			statusEffect.infrequentUpdate(elapsedTime, gameContext, messageDispatcher);

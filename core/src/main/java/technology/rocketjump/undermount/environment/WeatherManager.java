@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -40,7 +41,9 @@ public class WeatherManager implements Updatable {
 
 			gameContext.getMapEnvironment().setWeatherTimeRemaining(gameContext.getMapEnvironment().getWeatherTimeRemaining() - elapsedGameTime);
 
-			screenWriter.printLine(gameContext.getMapEnvironment().getCurrentWeather().getName() + ", remaining: " + gameContext.getMapEnvironment().getWeatherTimeRemaining());
+			if (GlobalSettings.DEV_MODE) {
+				screenWriter.printLine(gameContext.getMapEnvironment().getCurrentWeather().getName() + ", remaining: " + gameContext.getMapEnvironment().getWeatherTimeRemaining());
+			}
 
 			if (gameContext.getMapEnvironment().getWeatherTimeRemaining() < 0) {
 				triggerNextWeather();

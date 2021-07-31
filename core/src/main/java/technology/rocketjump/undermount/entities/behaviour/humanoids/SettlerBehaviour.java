@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.GridPoint2;
 import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.entities.ai.goap.*;
 import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
-import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBehaviour;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -267,8 +266,6 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
-		AttachedLightSourceBehaviour.infrequentUpdate(gameContext, parentEntity);
-
 		double gameTime = gameContext.getGameClock().getCurrentGameTime();
 		double elapsed = gameTime - lastUpdateGameTime;
 		lastUpdateGameTime = gameTime;
@@ -284,7 +281,6 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 			gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().containsKey(STANDING)) {
 			happinessComponent.add(gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().get(STANDING));
 		}
-		happinessComponent.infrequentUpdate(elapsed);
 		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 
 		addGoalsToQueue(gameContext);

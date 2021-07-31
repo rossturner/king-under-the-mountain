@@ -13,7 +13,7 @@ public interface BehaviourComponent extends ParentDependentEntityComponent {
 
 	boolean isUpdateEveryFrame();
 
-	boolean isUpdateInfrequently();
+	boolean isUpdateInfrequently(); // Note this needs to be true if Entity is going to have any InfrequentUpdateComponents
 
 	boolean isJobAssignable();
 

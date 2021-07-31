@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import org.apache.commons.lang3.EnumUtils;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
+import technology.rocketjump.undermount.entities.components.InfrequentlyUpdatableComponent;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -14,7 +16,7 @@ import java.util.*;
 /**
  * This class is to keep track of current changes in a Settler's happiness
  */
-public class HappinessComponent implements EntityComponent {
+public class HappinessComponent implements InfrequentlyUpdatableComponent {
 
 	public static final int MAX_HAPPINESS_VALUE = 100;
 	public static final int MIN_HAPPINESS_VALUE = -100;
@@ -22,6 +24,12 @@ public class HappinessComponent implements EntityComponent {
 
 	private int netModifier = 0;
 
+	@Override
+	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
+
+	}
+
+	@Override
 	public void infrequentUpdate(double elapsedTime) {
 		for (HappinessModifier happinessModifier : new HashSet<>(timesToExpiry.keySet())) {
 			double currentExpiry = timesToExpiry.get(happinessModifier);
