@@ -52,8 +52,10 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 	private boolean useMaterialTypeAsAdjective; // Used for not-fully implemented materials that aren't craftable and not translated
 	private boolean useInRandomGeneration = true;
 
-	public static final GameMaterial NULL_MATERIAL = new GameMaterial("null-material", -1, GameMaterialType.OTHER, "#FF00FF", RockGroup.None,
-			0f, null, false, false,false, false, false);
+	private MaterialOxidisation oxidisation;
+
+	public static final GameMaterial NULL_MATERIAL = new GameMaterial("null-material", -1, GameMaterialType.OTHER, "#FF00FF", null, 0f, RockGroup.None,
+			false, false,false, false, false, null);
 
 	// Empty constructor for initialising from saved game
 	public GameMaterial() {
@@ -63,7 +65,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 
 	// Simple constructor for testing
 	public GameMaterial(String materialName, long materialId, GameMaterialType type) {
-		this(materialName, materialId, type, null, null, null, null, false, false, false, false, false);
+		this(materialName, materialId, type, null, null, null, null, false, false, false, false, false, null);
 	}
 
 	// TODO try to remove usage of this
@@ -94,11 +96,12 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 	@JsonCreator
 	public GameMaterial(@JsonProperty("materialName") String materialName, @JsonProperty("materialId") long materialId,
 						@JsonProperty("materialType") GameMaterialType materialType, @JsonProperty("colorCode") String colorCode,
-						@JsonProperty("rockGroup") RockGroup rockGroup, @JsonProperty("prevalence") Float prevalence,
-						@JsonProperty("oreNames") List<String> oreNames, @JsonProperty("alcoholic") boolean alcoholic,
+						@JsonProperty("oreNames") List<String> oreNames, @JsonProperty("prevalence") Float prevalence, @JsonProperty("rockGroup") RockGroup rockGroup,
+						@JsonProperty("alcoholic") boolean alcoholic,
 						@JsonProperty("combustible") boolean combustible,
 						@JsonProperty("edible") boolean edible, @JsonProperty("poisonous") boolean poisonous,
-						@JsonProperty("quenchesThirst") boolean quenchesThirst) {
+						@JsonProperty("quenchesThirst") boolean quenchesThirst,
+						@JsonProperty("oxidisation") MaterialOxidisation oxidisation) {
 		this.materialName = materialName;
 		this.materialId = materialId;
 		this.colorCode = colorCode;
@@ -111,6 +114,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 		this.poisonous = poisonous;
 		this.quenchesThirst = quenchesThirst;
 		this.constituentMaterials = null;
+		this.oxidisation = oxidisation;
 
 		if (materialType != null) {
 			this.materialType = materialType;
@@ -222,6 +226,10 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 
 	public boolean isPoisonous() {
 		return poisonous;
+	}
+
+	public MaterialOxidisation getOxidisation() {
+		return oxidisation;
 	}
 
 	@Override

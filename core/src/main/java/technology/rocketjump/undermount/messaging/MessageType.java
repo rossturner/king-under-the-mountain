@@ -95,6 +95,7 @@ public class MessageType {
 
 	public static final int FURNITURE_IN_USE = 345;
 	public static final int FURNITURE_NO_LONGER_IN_USE = 346;
+	public static final int MATERIAL_OXIDISED = 347;
 
 	// Assets and modding related messages
 	public static final int SHUTDOWN_IN_PROGRESS = 400;

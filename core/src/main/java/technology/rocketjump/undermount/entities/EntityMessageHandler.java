@@ -28,6 +28,7 @@ import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesF
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
@@ -37,6 +38,7 @@ import technology.rocketjump.undermount.entities.model.physical.humanoid.Humanoi
 import technology.rocketjump.undermount.entities.model.physical.humanoid.status.Death;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesItem;
@@ -49,6 +51,8 @@ import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
@@ -82,6 +86,7 @@ import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
 import static technology.rocketjump.undermount.jobs.JobMessageHandler.deconstructFurniture;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
+import static technology.rocketjump.undermount.messaging.MessageType.TRANSFORM_ITEM_TYPE;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FURNITURE;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.*;
@@ -103,6 +108,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final I18nTranslator i18nTranslator;
 	private final JobStore jobStore;
+	private final GameMaterialDictionary materialDictionary;
 	private final SoundAssetDictionary soundAssetDictionary;
 	private final SoundAsset treeFallSoundEffect;
 	private GameContext gameContext;
@@ -118,7 +124,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, OngoingEffectTracker ongoingEffectTracker, RoomStore roomStore,
 								ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory,
 								ItemTypeDictionary itemTypeDictionary, I18nTranslator i18nTranslator, JobStore jobStore,
-								SoundAssetDictionary soundAssetDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+								GameMaterialDictionary materialDictionary, SoundAssetDictionary soundAssetDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.entityAssetUpdater = entityAssetUpdater;
 		this.jobFactory = jobFactory;
@@ -133,6 +139,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.i18nTranslator = i18nTranslator;
 		this.jobStore = jobStore;
+		this.materialDictionary = materialDictionary;
 		this.soundAssetDictionary = soundAssetDictionary;
 
 		this.leafExplosionParticleType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
@@ -164,6 +171,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
 		messageDispatcher.addListener(this, MessageType.FURNITURE_IN_USE);
 		messageDispatcher.addListener(this, MessageType.FURNITURE_NO_LONGER_IN_USE);
+		messageDispatcher.addListener(this, MessageType.MATERIAL_OXIDISED);
 	}
 
 	@Override
@@ -279,7 +287,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.ITEM_PRIMARY_MATERIAL_CHANGED: {
-				ItemPrimaryMaterialChangedMessage message = (ItemPrimaryMaterialChangedMessage)msg.extraInfo;
+				ItemPrimaryMaterialChangedMessage message = (ItemPrimaryMaterialChangedMessage) msg.extraInfo;
 				itemTracker.primaryMaterialChanged(message.item, message.oldPrimaryMaterial);
 				return true;
 			}
@@ -327,7 +335,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.TREE_FELLED: {
-				return handle((TreeFallenMessage)msg.extraInfo);
+				return handle((TreeFallenMessage) msg.extraInfo);
 			}
 			case MessageType.TREE_SHED_LEAVES: {
 				ShedLeavesMessage message = (ShedLeavesMessage) msg.extraInfo;
@@ -347,7 +355,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.REQUEST_DOOR_OPEN: {
-				EntityMessage entityMessage = (EntityMessage)msg.extraInfo;
+				EntityMessage entityMessage = (EntityMessage) msg.extraInfo;
 				Entity doorEntity = entityStore.getById(entityMessage.getEntityId());
 				DoorBehaviour doorBehaviour = (DoorBehaviour) doorEntity.getBehaviourComponent();
 				doorBehaviour.doorOpenRequested();
@@ -362,7 +370,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						// FIXME This and its shared usage would be better dealt with by a ACTUALLY_DO_THE_DECONSTRUCT type message
 						deconstructFurniture(entity, entityTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory,
 								deconstructParticleEffect);
-					} else if (!constructedEntityComponent.isBeingDeconstructed()){
+					} else if (!constructedEntityComponent.isBeingDeconstructed()) {
 						Job deconstructionJob = jobFactory.deconstructionJob(entityTile);
 						if (deconstructionJob != null) {
 							constructedEntityComponent.setDeconstructionJob(deconstructionJob);
@@ -390,7 +398,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.CHANGE_PROFESSION:
-				return handle((ChangeProfessionMessage)msg.extraInfo);
+				return handle((ChangeProfessionMessage) msg.extraInfo);
 			case MessageType.HAULING_ALLOCATION_CANCELLED: {
 				HaulingAllocation allocation = (HaulingAllocation) msg.extraInfo;
 
@@ -405,7 +413,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						if (targetFurniture == null) {
 							Logger.error("Could not find target furniture of cancelled hauling allocation for type " + HUMANOID);
 						} else {
-							((FurnitureEntityAttributes)targetFurniture.getPhysicalEntityComponent().getAttributes()).setAssignedToEntityId(null);
+							((FurnitureEntityAttributes) targetFurniture.getPhysicalEntityComponent().getAttributes()).setAssignedToEntityId(null);
 						}
 					}
 					return true;
@@ -421,8 +429,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						return true;
 					}
 					if (!allocation.getItemAllocation().getState().equals(CANCELLED) &&
-						!allocation.getItemAllocation().getPurpose().equals(HAULING) &&
-						!allocation.getItemAllocation().getPurpose().equals(HELD_IN_INVENTORY)) {
+							!allocation.getItemAllocation().getPurpose().equals(HAULING) &&
+							!allocation.getItemAllocation().getPurpose().equals(HELD_IN_INVENTORY)) {
 						ItemAllocationComponent itemAllocationComponent = targetItemEntity.getOrCreateComponent(ItemAllocationComponent.class);
 						itemAllocationComponent.cancel(allocation.getItemAllocation());
 					}
@@ -472,7 +480,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				try {
 					StatusEffect statusEffect = message.statusClass.getDeclaredConstructor().newInstance();
 					if (statusEffect instanceof Death) {
-						((Death)statusEffect).setDeathReason(message.deathReason);
+						((Death) statusEffect).setDeathReason(message.deathReason);
 					}
 					message.entity.getComponent(StatusComponent.class).apply(statusEffect);
 				} catch (ReflectiveOperationException e) {
@@ -486,10 +494,10 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.TRANSFORM_FURNITURE_TYPE: {
-				return handle((TransformFurnitureMessage)msg.extraInfo);
+				return handle((TransformFurnitureMessage) msg.extraInfo);
 			}
 			case MessageType.TRANSFORM_ITEM_TYPE: {
-				return handle((TransformItemMessage)msg.extraInfo);
+				return handle((TransformItemMessage) msg.extraInfo);
 			}
 			case MessageType.HUMANOID_DEATH: {
 				return handle((HumanoidDeathMessage) msg.extraInfo);
@@ -501,7 +509,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return handleLiquidSplash((LiquidSplashMessage) msg.extraInfo);
 			}
 			case MessageType.FURNITURE_IN_USE: {
-				Entity furnitureEntity = (Entity)msg.extraInfo;
+				Entity furnitureEntity = (Entity) msg.extraInfo;
 				FurnitureParticleEffectsComponent particleEffectsComponent = furnitureEntity.getComponent(FurnitureParticleEffectsComponent.class);
 				if (particleEffectsComponent != null) {
 					Optional<JobTarget> targetItem = Optional.empty();
@@ -521,12 +529,15 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.FURNITURE_NO_LONGER_IN_USE: {
-				Entity furnitureEntity = (Entity)msg.extraInfo;
+				Entity furnitureEntity = (Entity) msg.extraInfo;
 				FurnitureParticleEffectsComponent particleEffectsComponent = furnitureEntity.getComponent(FurnitureParticleEffectsComponent.class);
 				if (particleEffectsComponent != null) {
 					particleEffectsComponent.releaseParticles();
 				}
 				return true;
+			}
+			case MessageType.MATERIAL_OXIDISED: {
+				return handleMaterialOxidised((OxidisationMessage) msg.extraInfo);
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
@@ -561,8 +572,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 	private boolean handle(TreeFallenMessage treeFallenMessage) {
 		GridPoint2 treeTilePosition = new GridPoint2(
-				(int)Math.floor(treeFallenMessage.getTreeWorldPosition().x),
-				(int)Math.floor(treeFallenMessage.getTreeWorldPosition().y)
+				(int) Math.floor(treeFallenMessage.getTreeWorldPosition().x),
+				(int) Math.floor(treeFallenMessage.getTreeWorldPosition().y)
 		);
 
 		messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(treeFallSoundEffect, -1L,
@@ -651,7 +662,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		// Reset behaviour component
 		BehaviourComponent oldBehaviour = transformFurnitureMessage.furnitureEntity.getBehaviourComponent();
 		if (oldBehaviour instanceof Destructible) {
-			((Destructible)oldBehaviour).destroy(transformFurnitureMessage.furnitureEntity, messageDispatcher, gameContext);
+			((Destructible) oldBehaviour).destroy(transformFurnitureMessage.furnitureEntity, messageDispatcher, gameContext);
 		}
 		FurnitureBehaviour newBehaviour = new FurnitureBehaviour();
 		newBehaviour.init(transformFurnitureMessage.furnitureEntity, messageDispatcher, gameContext);
@@ -661,7 +672,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, transformFurnitureMessage.furnitureEntity);
 
 		if (oldBehaviour instanceof Prioritisable && transformFurnitureMessage.furnitureEntity.getBehaviourComponent() instanceof Prioritisable) {
-			((Prioritisable)transformFurnitureMessage.furnitureEntity.getBehaviourComponent()).setPriority(((Prioritisable)oldBehaviour).getPriority());
+			((Prioritisable) transformFurnitureMessage.furnitureEntity.getBehaviourComponent()).setPriority(((Prioritisable) oldBehaviour).getPriority());
 		}
 
 		entityStore.add(transformFurnitureMessage.furnitureEntity);
@@ -735,7 +746,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private boolean handleInsanity(Entity entity) {
 		BehaviourComponent currentBehaviour = entity.getBehaviourComponent();
 		if (currentBehaviour instanceof Destructible) {
-			((Destructible)currentBehaviour).destroy(entity, messageDispatcher, gameContext);
+			((Destructible) currentBehaviour).destroy(entity, messageDispatcher, gameContext);
 		}
 
 		BrokenDwarfBehaviour brokenDwarfBehaviour = new BrokenDwarfBehaviour();
@@ -759,6 +770,68 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				p.getWrappedInstance().setTint(message.liquidMaterial.getColor());
 			}));
 		}
+		return true;
+	}
+
+	private boolean handleMaterialOxidised(OxidisationMessage message) {
+		EntityAttributes entityAttributes = message.targetEntity.getPhysicalEntityComponent().getAttributes();
+
+		switch (message.oxidisedMaterial.getOxidisation().getEffect()) {
+
+			case CONVERT_MATERIAL:
+				// just swap out material
+
+				GameMaterial newMaterial = materialDictionary.getByName(message.oxidisedMaterial.getOxidisation().getChangesTo());
+				if (newMaterial == null) {
+					Logger.error("Can not find material with name " + message.oxidisedMaterial.getOxidisation().getChangesTo() + " for oxidisation of " + message.oxidisedMaterial.getMaterialName());
+				} else if (entityAttributes instanceof ItemEntityAttributes) {
+					ItemEntityAttributes attributes = (ItemEntityAttributes) entityAttributes;
+					attributes.removeMaterial(message.oxidisedMaterial.getMaterialType());
+					attributes.setMaterial(newMaterial);
+				} else if (entityAttributes instanceof FurnitureEntityAttributes) {
+					FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entityAttributes;
+					attributes.removeMaterial(message.oxidisedMaterial.getMaterialType());
+					attributes.setMaterial(newMaterial);
+				} else {
+					Logger.error("Not yet implemented: material oxidised within " + entityAttributes.getClass().getSimpleName());
+				}
+				break;
+			case DESTROY_PARENT:
+				ItemType targetItemType = itemTypeDictionary.getByName(message.oxidisedMaterial.getOxidisation().getChangesTo());
+
+				if (targetItemType == null) {
+					Logger.error("Can not find item type with name " + message.oxidisedMaterial.getOxidisation().getChangesTo() + " for oxidisation of " + message.oxidisedMaterial.getMaterialName());
+				} else if (entityAttributes instanceof ItemEntityAttributes) {
+					ItemEntityAttributes attributes = (ItemEntityAttributes) entityAttributes;
+					if (attributes.getPrimaryMaterial().equals(message.oxidisedMaterial)) {
+						// Only destroy if parent primary material is that which oxidised
+
+						messageDispatcher.dispatchMessage(TRANSFORM_ITEM_TYPE, new TransformItemMessage(message.targetEntity, targetItemType));
+						attributes.getMaterials().clear();
+						attributes.setMaterial(message.oxidisedMaterial);
+
+						// TODO send notification that an item rusted?
+
+						// TODO if this is in DecorationInventoryComponent, set furniture as destroyed
+
+					}
+				} else if (entityAttributes instanceof FurnitureEntityAttributes) {
+					FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entityAttributes;
+					if (attributes.getPrimaryMaterial().equals(message.oxidisedMaterial)) {
+						// Only destroy if parent primary material is that which oxidised
+
+						// TODO set furniture as destroyed similar to charred
+
+					}
+				} else {
+					Logger.error("Not yet implemented: destroy parent due to oxidisation for " + entityAttributes.getClass().getSimpleName());
+				}
+				break;
+			default:
+				Logger.error("Not yet implemented: effect of oxidisation " + message.oxidisedMaterial.getOxidisation().getEffect());
+		}
+
+
 		return true;
 	}
 

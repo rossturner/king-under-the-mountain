@@ -126,7 +126,7 @@ public class ItemEntityAttributes implements EntityAttributes {
 		materials.remove(gameMaterialType);
 	}
 
-	public Collection<? extends GameMaterial> getAllMaterials() {
+	public Collection<GameMaterial> getAllMaterials() {
 		return materials.values();
 	}
 

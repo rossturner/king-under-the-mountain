@@ -7,4 +7,13 @@
   "maxStackSize": 50,
   "maxHauledAtOnce": 50,
   "equippedWhileWorkingOnJob": false
+}, {
+  "itemTypeName": "Rusted scrap",
+  "materialTypes": ["METAL"],
+  "primaryMaterialType": "METAL",
+  "stockpileGroupName": null,
+  "hoursInInventoryUntilUnused": 0.5,
+  "maxStackSize": 50,
+  "maxHauledAtOnce": 50,
+  "equippedWhileWorkingOnJob": false
 }]
