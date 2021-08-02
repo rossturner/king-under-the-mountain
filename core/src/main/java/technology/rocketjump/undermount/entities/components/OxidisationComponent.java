@@ -8,6 +8,8 @@ import technology.rocketjump.undermount.entities.model.physical.EntityAttributes
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.OxidisationMessage;
@@ -49,6 +51,11 @@ public class OxidisationComponent implements InfrequentlyUpdatableComponent {
 	@Override
 	public void infrequentUpdate(double elapsedTime) {
 		if (gameContext.getMapEnvironment().getCurrentWeather().isOxidises()) {
+			MapTile currentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldOrParentPosition());
+			if (currentTile == null ||  !currentTile.getRoof().getState().equals(TileRoofState.OPEN)) {
+				// Don't oxidise unless outside
+				return;
+			}
 
 			EntityAttributes attributes = parentEntity.getPhysicalEntityComponent().getAttributes();
 			Collection<GameMaterial> parentMaterials = List.of();

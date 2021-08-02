@@ -6,7 +6,7 @@
     "oxidisation": {
       "effect": "CONVERT_MATERIAL",
       "changesTo": "Rusted Iron",
-      "hoursToConvert": 2.8
+      "hoursToConvert": 280
     }
   },
   {
@@ -16,7 +16,7 @@
     "oxidisation": {
       "effect": "CONVERT_MATERIAL",
       "changesTo": "Rusted Iron",
-      "hoursToConvert": 4.8
+      "hoursToConvert": 380
     }
   },
   {
@@ -27,13 +27,24 @@
     "oxidisation": {
       "effect": "DESTROY_PARENT",
       "changesTo": "Rusted scrap",
-      "hoursToConvert": 2.48
+      "hoursToConvert": 248
     }
   },
   {
     "materialName": "Copper",
     "materialType": "METAL",
     "colorCode": "#c67852",
+    "useInRandomGeneration": false,
+    "oxidisation": {
+      "effect": "CONVERT_MATERIAL",
+      "changesTo": "Copper Patina",
+      "hoursToConvert": 248
+    }
+  },
+  {
+    "materialName": "Copper Patina",
+    "materialType": "METAL",
+    "colorCode": "#70d0b5",
     "useInRandomGeneration": false
   },
   {

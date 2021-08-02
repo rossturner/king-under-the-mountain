@@ -1,10 +1,6 @@
 [ {
   "name" : "Scattered showers",
   "forecast" : [ {
-    "weatherTypeName" : "Perfect",
-    "minDurationHours" : 0.5,
-    "maxDurationHours" : 9.0
-  }, {
     "weatherTypeName" : "Rain",
     "minDurationHours" : 0.5,
     "maxDurationHours" : 6.0

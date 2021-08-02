@@ -583,7 +583,7 @@
   "oxidisation" : {
     "effect" : "CONVERT_MATERIAL",
     "changesTo" : "Rusted Iron",
-    "hoursToConvert" : 2.8
+    "hoursToConvert" : 280.0
   },
   "i18nKey" : "METAL.IRON",
   "useMaterialTypeAsAdjective" : false,
@@ -602,7 +602,7 @@
   "oxidisation" : {
     "effect" : "CONVERT_MATERIAL",
     "changesTo" : "Rusted Iron",
-    "hoursToConvert" : 4.8
+    "hoursToConvert" : 480.0
   },
   "i18nKey" : "METAL.STEEL",
   "useMaterialTypeAsAdjective" : false,
@@ -621,7 +621,7 @@
   "oxidisation" : {
     "effect" : "DESTROY_PARENT",
     "changesTo" : "Rusted scrap",
-    "hoursToConvert" : 2.48
+    "hoursToConvert" : 248.0
   },
   "i18nKey" : "METAL.RUSTED_IRON",
   "useMaterialTypeAsAdjective" : false,
@@ -637,13 +637,32 @@
   "edible" : false,
   "poisonous" : false,
   "quenchesThirst" : false,
+  "oxidisation" : {
+    "effect" : "CONVERT_MATERIAL",
+    "changesTo" : "Copper Patina",
+    "hoursToConvert" : 380.0
+  },
   "i18nKey" : "METAL.COPPER",
   "useMaterialTypeAsAdjective" : false,
   "useInRandomGeneration" : false,
   "dynamicallyCreated" : false
 }, {
-  "materialName" : "Tin",
+  "materialName" : "Copper Patina",
   "materialId" : 42,
+  "materialType" : "METAL",
+  "colorCode" : "#70d0b5",
+  "alcoholic" : false,
+  "combustible" : false,
+  "edible" : false,
+  "poisonous" : false,
+  "quenchesThirst" : false,
+  "i18nKey" : "METAL.COPPER_PATINA",
+  "useMaterialTypeAsAdjective" : false,
+  "useInRandomGeneration" : false,
+  "dynamicallyCreated" : false
+}, {
+  "materialName" : "Tin",
+  "materialId" : 43,
   "materialType" : "METAL",
   "colorCode" : "#c9c6b9",
   "alcoholic" : false,
@@ -657,7 +676,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Bronze",
-  "materialId" : 43,
+  "materialId" : 44,
   "materialType" : "METAL",
   "colorCode" : "#9d6d34",
   "alcoholic" : false,
@@ -671,7 +690,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Gold",
-  "materialId" : 44,
+  "materialId" : 45,
   "materialType" : "METAL",
   "colorCode" : "#feed76",
   "alcoholic" : false,
@@ -685,7 +704,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Platinum",
-  "materialId" : 45,
+  "materialId" : 46,
   "materialType" : "METAL",
   "colorCode" : "#f6f6f6",
   "alcoholic" : false,
@@ -699,7 +718,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Silver",
-  "materialId" : 46,
+  "materialId" : 47,
   "materialType" : "METAL",
   "colorCode" : "#f3f3f3",
   "alcoholic" : false,
@@ -713,7 +732,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Hematite",
-  "materialId" : 47,
+  "materialId" : 48,
   "materialType" : "ORE",
   "colorCode" : "#991E1E",
   "prevalence" : 1.5,
@@ -728,7 +747,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Bituminous Coal",
-  "materialId" : 48,
+  "materialId" : 49,
   "materialType" : "ORE",
   "colorCode" : "#3E3E3E",
   "prevalence" : 2.2,
@@ -743,7 +762,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Coke",
-  "materialId" : 49,
+  "materialId" : 50,
   "materialType" : "ORE",
   "colorCode" : "#bdbdbd",
   "prevalence" : 0.0,
@@ -758,7 +777,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Charcoal",
-  "materialId" : 50,
+  "materialId" : 51,
   "materialType" : "ORE",
   "colorCode" : "#635f5b",
   "prevalence" : 0.0,
@@ -773,7 +792,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Native Gold",
-  "materialId" : 51,
+  "materialId" : 52,
   "materialType" : "ORE",
   "colorCode" : "#FFFF1C",
   "prevalence" : 0.3,
@@ -788,7 +807,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Native Platinum",
-  "materialId" : 52,
+  "materialId" : 53,
   "materialType" : "ORE",
   "colorCode" : "#f6f6f6",
   "prevalence" : 0.1,
@@ -803,7 +822,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Pyrite",
-  "materialId" : 53,
+  "materialId" : 54,
   "materialType" : "ORE",
   "colorCode" : "#f3f48e",
   "prevalence" : 0.2,
@@ -818,7 +837,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Cassiterite",
-  "materialId" : 54,
+  "materialId" : 55,
   "materialType" : "ORE",
   "colorCode" : "#CCE6FF",
   "prevalence" : 0.3,
@@ -833,7 +852,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Native Copper",
-  "materialId" : 55,
+  "materialId" : 56,
   "materialType" : "ORE",
   "colorCode" : "#FF8C1A",
   "prevalence" : 0.6,
@@ -848,7 +867,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Galena",
-  "materialId" : 56,
+  "materialId" : 57,
   "materialType" : "ORE",
   "colorCode" : "#CCCCCC",
   "prevalence" : 0.4,
@@ -863,7 +882,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Native Silver",
-  "materialId" : 57,
+  "materialId" : 58,
   "materialType" : "ORE",
   "colorCode" : "#EAEAEA",
   "prevalence" : 0.4,
@@ -878,7 +897,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Malachite",
-  "materialId" : 58,
+  "materialId" : 59,
   "materialType" : "ORE",
   "colorCode" : "#8CC87E",
   "prevalence" : 0.6,
@@ -893,7 +912,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Wolframite",
-  "materialId" : 59,
+  "materialId" : 60,
   "materialType" : "ORE",
   "colorCode" : "#96a7bf",
   "prevalence" : 0.2,
@@ -908,7 +927,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Thorium",
-  "materialId" : 60,
+  "materialId" : 61,
   "materialType" : "ORE",
   "colorCode" : "#f1f1ef",
   "prevalence" : 0.1,
@@ -923,7 +942,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Chrysocolla",
-  "materialId" : 61,
+  "materialId" : 62,
   "materialType" : "ORE",
   "colorCode" : "#54DDF2",
   "prevalence" : 0.2,
@@ -938,7 +957,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Pollucite",
-  "materialId" : 62,
+  "materialId" : 63,
   "materialType" : "ORE",
   "colorCode" : "#f2c6ce",
   "prevalence" : 0.05,
@@ -953,7 +972,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Ilmenite",
-  "materialId" : 63,
+  "materialId" : 64,
   "materialType" : "ORE",
   "colorCode" : "#60605d",
   "prevalence" : 0.1,
@@ -968,7 +987,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Bauxite",
-  "materialId" : 64,
+  "materialId" : 65,
   "materialType" : "ORE",
   "colorCode" : "#996B4B",
   "prevalence" : 0.1,
@@ -983,7 +1002,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Green Vitriol",
-  "materialId" : 65,
+  "materialId" : 66,
   "materialType" : "VITRIOL",
   "colorCode" : "#7fccbb",
   "alcoholic" : false,
@@ -997,7 +1016,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "brick",
-  "materialId" : 66,
+  "materialId" : 67,
   "materialType" : "OTHER",
   "alcoholic" : false,
   "combustible" : false,
@@ -1010,7 +1029,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Grass",
-  "materialId" : 67,
+  "materialId" : 68,
   "materialType" : "EARTH",
   "colorCode" : "#639448",
   "alcoholic" : false,
@@ -1024,7 +1043,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Dirt",
-  "materialId" : 68,
+  "materialId" : 69,
   "materialType" : "EARTH",
   "colorCode" : "#91694c",
   "alcoholic" : false,
@@ -1038,7 +1057,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Tilled earth",
-  "materialId" : 69,
+  "materialId" : 70,
   "materialType" : "EARTH",
   "alcoholic" : false,
   "combustible" : false,
@@ -1051,7 +1070,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "clay_soil",
-  "materialId" : 70,
+  "materialId" : 71,
   "materialType" : "OTHER",
   "alcoholic" : false,
   "combustible" : false,
@@ -1064,7 +1083,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Gravel",
-  "materialId" : 71,
+  "materialId" : 72,
   "materialType" : "OTHER",
   "colorCode" : "#7e796f",
   "alcoholic" : false,
@@ -1078,7 +1097,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Plant",
-  "materialId" : 72,
+  "materialId" : 73,
   "materialType" : "OTHER",
   "alcoholic" : false,
   "combustible" : true,
@@ -1091,7 +1110,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Flesh",
-  "materialId" : 73,
+  "materialId" : 74,
   "materialType" : "OTHER",
   "alcoholic" : false,
   "combustible" : true,
@@ -1104,7 +1123,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Bone",
-  "materialId" : 74,
+  "materialId" : 75,
   "materialType" : "OTHER",
   "colorCode" : "#fbfbf9",
   "alcoholic" : false,
@@ -1118,7 +1137,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Ash",
-  "materialId" : 75,
+  "materialId" : 76,
   "materialType" : "OTHER",
   "colorCode" : "#2c2927",
   "alcoholic" : false,
@@ -1132,7 +1151,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Sandstone",
-  "materialId" : 76,
+  "materialId" : 77,
   "materialType" : "STONE",
   "colorCode" : "#F0C297",
   "oreNames" : [ "Hematite", "Bituminous Coal", "Cassiterite", "Pyrite", "Bauxite" ],
@@ -1149,7 +1168,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Limestone",
-  "materialId" : 77,
+  "materialId" : 78,
   "materialType" : "STONE",
   "colorCode" : "#FFFFE6",
   "oreNames" : [ "Hematite", "Bituminous Coal", "Cassiterite", "Pyrite", "Bauxite" ],
@@ -1166,7 +1185,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Dolostone",
-  "materialId" : 78,
+  "materialId" : 79,
   "materialType" : "STONE",
   "colorCode" : "#F3D8D8",
   "oreNames" : [ "Hematite", "Bituminous Coal", "Cassiterite", "Pyrite", "Ilmenite", "Bauxite" ],
@@ -1183,7 +1202,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Shale",
-  "materialId" : 79,
+  "materialId" : 80,
   "materialType" : "STONE",
   "colorCode" : "#8A6565",
   "oreNames" : [ "Hematite", "Chrysocolla", "Bituminous Coal", "Cassiterite", "Ilmenite", "Bauxite" ],
@@ -1200,7 +1219,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Slate",
-  "materialId" : 80,
+  "materialId" : 81,
   "materialType" : "STONE",
   "colorCode" : "#8C8C8C",
   "oreNames" : [ "Malachite", "Chrysocolla", "Galena", "Thorium", "Pyrite", "Ilmenite" ],
@@ -1217,7 +1236,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Marble",
-  "materialId" : 81,
+  "materialId" : 82,
   "materialType" : "STONE",
   "colorCode" : "#FAFAFA",
   "oreNames" : [ "Malachite", "Chrysocolla", "Galena", "Wolframite", "Pyrite", "Ilmenite" ],
@@ -1234,7 +1253,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Granite",
-  "materialId" : 82,
+  "materialId" : 83,
   "materialType" : "STONE",
   "colorCode" : "#4D4D4D",
   "oreNames" : [ "Native Gold", "Native Platinum", "Hematite", "Native Copper", "Native Silver", "Wolframite", "Pollucite" ],
@@ -1251,7 +1270,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Basalt",
-  "materialId" : 83,
+  "materialId" : 84,
   "materialType" : "STONE",
   "colorCode" : "#8C8C8C",
   "oreNames" : [ "Native Gold", "Native Platinum", "Hematite", "Native Copper", "Wolframite", "Ilmenite" ],
@@ -1268,7 +1287,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Fronite",
-  "materialId" : 84,
+  "materialId" : 85,
   "materialType" : "STONE",
   "colorCode" : "#404e73",
   "oreNames" : [ "Native Gold", "Native Platinum", "Hematite", "Native Copper" ],
@@ -1285,7 +1304,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Light rope",
-  "materialId" : 85,
+  "materialId" : 86,
   "materialType" : "ROPE",
   "colorCode" : "#d9bc8b",
   "alcoholic" : false,
@@ -1299,7 +1318,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Aged rope",
-  "materialId" : 86,
+  "materialId" : 87,
   "materialType" : "ROPE",
   "colorCode" : "#ac8f6f",
   "alcoholic" : false,
@@ -1313,7 +1332,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Tobacco rope",
-  "materialId" : 87,
+  "materialId" : 88,
   "materialType" : "ROPE",
   "colorCode" : "#d2bfaa",
   "alcoholic" : false,
@@ -1327,7 +1346,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Gray rope",
-  "materialId" : 88,
+  "materialId" : 89,
   "materialType" : "ROPE",
   "colorCode" : "#b4aaa1",
   "alcoholic" : false,
@@ -1341,7 +1360,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Bronzed rope",
-  "materialId" : 89,
+  "materialId" : 90,
   "materialType" : "ROPE",
   "colorCode" : "#e59e55",
   "alcoholic" : false,
@@ -1355,7 +1374,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Wheat Seed",
-  "materialId" : 90,
+  "materialId" : 91,
   "materialType" : "SEED",
   "colorCode" : "#ead025",
   "alcoholic" : false,
@@ -1369,7 +1388,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Barley Seed",
-  "materialId" : 91,
+  "materialId" : 92,
   "materialType" : "SEED",
   "colorCode" : "#e29a39",
   "alcoholic" : false,
@@ -1383,7 +1402,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Tomato Seed",
-  "materialId" : 92,
+  "materialId" : 93,
   "materialType" : "SEED",
   "colorCode" : "#bf1f20",
   "alcoholic" : false,
@@ -1397,7 +1416,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Potato Seed",
-  "materialId" : 93,
+  "materialId" : 94,
   "materialType" : "SEED",
   "colorCode" : "#ab8f59",
   "alcoholic" : false,
@@ -1411,7 +1430,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Carrot Seed",
-  "materialId" : 94,
+  "materialId" : 95,
   "materialType" : "SEED",
   "colorCode" : "#ff7d1f",
   "alcoholic" : false,
@@ -1425,7 +1444,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Hops Seed",
-  "materialId" : 95,
+  "materialId" : 96,
   "materialType" : "SEED",
   "colorCode" : "#9dd248",
   "alcoholic" : false,
@@ -1439,7 +1458,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Corn Seed",
-  "materialId" : 96,
+  "materialId" : 97,
   "materialType" : "SEED",
   "colorCode" : "#d4ea58",
   "alcoholic" : false,
@@ -1453,7 +1472,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Purple Helmet Spawn",
-  "materialId" : 97,
+  "materialId" : 98,
   "materialType" : "SEED",
   "colorCode" : "#963482",
   "alcoholic" : false,
@@ -1467,7 +1486,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Death Cap Spawn",
-  "materialId" : 98,
+  "materialId" : 99,
   "materialType" : "SEED",
   "colorCode" : "#423d3d",
   "alcoholic" : false,
@@ -1481,7 +1500,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Fist Spawn",
-  "materialId" : 99,
+  "materialId" : 100,
   "materialType" : "SEED",
   "colorCode" : "#4e4c4c",
   "alcoholic" : false,
@@ -1495,7 +1514,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Berserker Mushroom Spawn",
-  "materialId" : 100,
+  "materialId" : 101,
   "materialType" : "SEED",
   "colorCode" : "#ffb6c1",
   "alcoholic" : false,
@@ -1509,7 +1528,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Rociomycota Mushroom Spawn",
-  "materialId" : 101,
+  "materialId" : 102,
   "materialType" : "SEED",
   "colorCode" : "#f6f6f6",
   "alcoholic" : false,
@@ -1523,7 +1542,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Miltonia Spawn",
-  "materialId" : 102,
+  "materialId" : 103,
   "materialType" : "SEED",
   "colorCode" : "#185BBF",
   "alcoholic" : false,
@@ -1537,7 +1556,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Elfsbane Spawn",
-  "materialId" : 103,
+  "materialId" : 104,
   "materialType" : "SEED",
   "colorCode" : "#ea92e7",
   "alcoholic" : false,
@@ -1551,7 +1570,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Sunglow Spawn",
-  "materialId" : 104,
+  "materialId" : 105,
   "materialType" : "SEED",
   "colorCode" : "#f6f76f",
   "alcoholic" : false,
@@ -1565,7 +1584,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Glow Spawn",
-  "materialId" : 105,
+  "materialId" : 106,
   "materialType" : "SEED",
   "colorCode" : "#ffd5d5",
   "alcoholic" : false,
@@ -1579,7 +1598,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Syrup Powder Spawn",
-  "materialId" : 106,
+  "materialId" : 107,
   "materialType" : "SEED",
   "colorCode" : "#ffe700",
   "alcoholic" : false,
@@ -1593,7 +1612,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Wheat",
-  "materialId" : 107,
+  "materialId" : 108,
   "materialType" : "VEGETABLE",
   "colorCode" : "#d7ce86",
   "alcoholic" : false,
@@ -1607,7 +1626,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Barley",
-  "materialId" : 108,
+  "materialId" : 109,
   "materialType" : "VEGETABLE",
   "colorCode" : "#e29a39",
   "alcoholic" : false,
@@ -1621,7 +1640,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Tomato",
-  "materialId" : 109,
+  "materialId" : 110,
   "materialType" : "VEGETABLE",
   "colorCode" : "#bf1f20",
   "alcoholic" : false,
@@ -1635,7 +1654,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Potato",
-  "materialId" : 110,
+  "materialId" : 111,
   "materialType" : "VEGETABLE",
   "colorCode" : "#ab8f59",
   "alcoholic" : false,
@@ -1649,7 +1668,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Carrot",
-  "materialId" : 111,
+  "materialId" : 112,
   "materialType" : "VEGETABLE",
   "colorCode" : "#ff7d1f",
   "alcoholic" : false,
@@ -1663,7 +1682,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Hops",
-  "materialId" : 112,
+  "materialId" : 113,
   "materialType" : "VEGETABLE",
   "colorCode" : "#9dd248",
   "alcoholic" : false,
@@ -1677,7 +1696,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Corn",
-  "materialId" : 113,
+  "materialId" : 114,
   "materialType" : "VEGETABLE",
   "colorCode" : "#d4ea58",
   "alcoholic" : false,
@@ -1691,7 +1710,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Loquat",
-  "materialId" : 114,
+  "materialId" : 115,
   "materialType" : "VEGETABLE",
   "colorCode" : "#fcc04a",
   "alcoholic" : false,
@@ -1705,7 +1724,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Thimbleberry",
-  "materialId" : 115,
+  "materialId" : 116,
   "materialType" : "VEGETABLE",
   "colorCode" : "#c7323f",
   "alcoholic" : false,
@@ -1719,7 +1738,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Tamarillo",
-  "materialId" : 116,
+  "materialId" : 117,
   "materialType" : "VEGETABLE",
   "colorCode" : "#de4720",
   "alcoholic" : false,
@@ -1733,7 +1752,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Dragonfruit",
-  "materialId" : 117,
+  "materialId" : 118,
   "materialType" : "VEGETABLE",
   "colorCode" : "#c52660",
   "alcoholic" : false,
@@ -1747,7 +1766,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Purple Helmet Mushroom",
-  "materialId" : 118,
+  "materialId" : 119,
   "materialType" : "VEGETABLE",
   "colorCode" : "#963482",
   "alcoholic" : false,
@@ -1761,7 +1780,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Death Cap Mushroom",
-  "materialId" : 119,
+  "materialId" : 120,
   "materialType" : "VEGETABLE",
   "colorCode" : "#423d3d",
   "alcoholic" : false,
@@ -1775,7 +1794,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Fist Mushroom",
-  "materialId" : 120,
+  "materialId" : 121,
   "materialType" : "VEGETABLE",
   "colorCode" : "#4e4c4c",
   "alcoholic" : false,
@@ -1789,7 +1808,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Berserker Mushroom",
-  "materialId" : 121,
+  "materialId" : 122,
   "materialType" : "VEGETABLE",
   "colorCode" : "#ffb6c1",
   "alcoholic" : false,
@@ -1803,7 +1822,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Rociomycota Mushroom",
-  "materialId" : 122,
+  "materialId" : 123,
   "materialType" : "VEGETABLE",
   "colorCode" : "#f6f6f6",
   "alcoholic" : false,
@@ -1817,7 +1836,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Miltonia Mushroom",
-  "materialId" : 123,
+  "materialId" : 124,
   "materialType" : "VEGETABLE",
   "colorCode" : "#185BBF",
   "alcoholic" : false,
@@ -1831,7 +1850,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Elfsbane Mushroom",
-  "materialId" : 124,
+  "materialId" : 125,
   "materialType" : "VEGETABLE",
   "colorCode" : "#f4f2bb",
   "alcoholic" : false,
@@ -1845,7 +1864,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Sunglow Mushroom",
-  "materialId" : 125,
+  "materialId" : 126,
   "materialType" : "VEGETABLE",
   "colorCode" : "#f6f76f",
   "alcoholic" : false,
@@ -1859,7 +1878,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Glow Mushroom",
-  "materialId" : 126,
+  "materialId" : 127,
   "materialType" : "VEGETABLE",
   "colorCode" : "#ffd5d5",
   "alcoholic" : false,
@@ -1873,7 +1892,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Syrup Powder Mushroom",
-  "materialId" : 127,
+  "materialId" : 128,
   "materialType" : "VEGETABLE",
   "colorCode" : "#ffe700",
   "alcoholic" : false,
@@ -1887,7 +1906,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Beech",
-  "materialId" : 128,
+  "materialId" : 129,
   "materialType" : "WOOD",
   "colorCode" : "#e2c793",
   "alcoholic" : false,
@@ -1901,7 +1920,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Birch",
-  "materialId" : 129,
+  "materialId" : 130,
   "materialType" : "WOOD",
   "colorCode" : "#edd7ae",
   "alcoholic" : false,
@@ -1915,7 +1934,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Fir",
-  "materialId" : 130,
+  "materialId" : 131,
   "materialType" : "WOOD",
   "colorCode" : "#be926e",
   "alcoholic" : false,
@@ -1929,7 +1948,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Maple",
-  "materialId" : 131,
+  "materialId" : 132,
   "materialType" : "WOOD",
   "colorCode" : "#e9b775",
   "alcoholic" : false,
@@ -1943,7 +1962,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Pine",
-  "materialId" : 132,
+  "materialId" : 133,
   "materialType" : "WOOD",
   "colorCode" : "#e0ba83",
   "alcoholic" : false,
@@ -1957,7 +1976,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Oak",
-  "materialId" : 133,
+  "materialId" : 134,
   "materialType" : "WOOD",
   "colorCode" : "#634735",
   "alcoholic" : false,
@@ -1971,7 +1990,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Ebony",
-  "materialId" : 134,
+  "materialId" : 135,
   "materialType" : "WOOD",
   "colorCode" : "#424647",
   "alcoholic" : false,
@@ -1985,7 +2004,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Pecan",
-  "materialId" : 135,
+  "materialId" : 136,
   "materialType" : "WOOD",
   "colorCode" : "#dbb396",
   "alcoholic" : false,
@@ -1999,7 +2018,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Sycamore",
-  "materialId" : 136,
+  "materialId" : 137,
   "materialType" : "WOOD",
   "colorCode" : "#e4d2b2",
   "alcoholic" : false,
@@ -2013,7 +2032,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Ironwood",
-  "materialId" : 137,
+  "materialId" : 138,
   "materialType" : "WOOD",
   "colorCode" : "#74342f",
   "alcoholic" : false,
@@ -2027,7 +2046,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Rosewood",
-  "materialId" : 138,
+  "materialId" : 139,
   "materialType" : "WOOD",
   "colorCode" : "#970b28",
   "alcoholic" : false,
@@ -2041,7 +2060,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Aspen",
-  "materialId" : 139,
+  "materialId" : 140,
   "materialType" : "WOOD",
   "colorCode" : "#ecb35b",
   "alcoholic" : false,
@@ -2055,7 +2074,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Spruce",
-  "materialId" : 140,
+  "materialId" : 141,
   "materialType" : "WOOD",
   "colorCode" : "#f1d3ab",
   "alcoholic" : false,
@@ -2069,7 +2088,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Nuytsia",
-  "materialId" : 141,
+  "materialId" : 142,
   "materialType" : "WOOD",
   "colorCode" : "#ad9160",
   "alcoholic" : false,
@@ -2083,7 +2102,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Red cedar",
-  "materialId" : 142,
+  "materialId" : 143,
   "materialType" : "WOOD",
   "colorCode" : "#b9624e",
   "alcoholic" : false,
@@ -2097,7 +2116,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Red emperor",
-  "materialId" : 143,
+  "materialId" : 144,
   "materialType" : "WOOD",
   "colorCode" : "#832a1a",
   "alcoholic" : false,
@@ -2111,7 +2130,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Baobab",
-  "materialId" : 144,
+  "materialId" : 145,
   "materialType" : "WOOD",
   "colorCode" : "#daba7f",
   "alcoholic" : false,
@@ -2125,7 +2144,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Star pine",
-  "materialId" : 145,
+  "materialId" : 146,
   "materialType" : "WOOD",
   "colorCode" : "#c7b198",
   "alcoholic" : false,
@@ -2139,7 +2158,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Loquat bush wood",
-  "materialId" : 146,
+  "materialId" : 147,
   "materialType" : "WOOD",
   "colorCode" : "#6b4a34",
   "alcoholic" : false,
@@ -2153,7 +2172,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Thimbleberry bush wood",
-  "materialId" : 147,
+  "materialId" : 148,
   "materialType" : "WOOD",
   "colorCode" : "#9d683c",
   "alcoholic" : false,
@@ -2167,7 +2186,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Tamarillo bush wood",
-  "materialId" : 148,
+  "materialId" : 149,
   "materialType" : "WOOD",
   "colorCode" : "#946d51",
   "alcoholic" : false,
@@ -2181,7 +2200,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Dragonfruit tree wood",
-  "materialId" : 149,
+  "materialId" : 150,
   "materialType" : "WOOD",
   "colorCode" : "#6e653d",
   "alcoholic" : false,
@@ -2195,7 +2214,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Breadfruit tree wood",
-  "materialId" : 150,
+  "materialId" : 151,
   "materialType" : "WOOD",
   "colorCode" : "#6f5a4a",
   "alcoholic" : false,
@@ -2209,7 +2228,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Shrub branch wood",
-  "materialId" : 151,
+  "materialId" : 152,
   "materialType" : "WOOD",
   "colorCode" : "#b08070",
   "alcoholic" : false,
@@ -2223,7 +2242,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Fungiwood",
-  "materialId" : 152,
+  "materialId" : 153,
   "materialType" : "WOOD",
   "colorCode" : "#7ca47b",
   "alcoholic" : false,
@@ -2237,7 +2256,7 @@
   "dynamicallyCreated" : false
 }, {
   "materialName" : "Barkshroom",
-  "materialId" : 153,
+  "materialId" : 154,
   "materialType" : "WOOD",
   "colorCode" : "#37b5b7",
   "alcoholic" : false,

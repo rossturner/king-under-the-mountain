@@ -526,6 +526,9 @@ METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and muc
 METAL.COPPER.ADJECTIVE,,Copper,en cuivre,De cobre,Kupfer,di rame,de cobre,De cobre,(медь),Miedziany,Koperen,Koppar-,Kobber,Réz,Kuparinen
 METAL.COPPER.NOUN,,Copper,Cuivre,Cobre,Kupfer,Rame,de cobre,Cobre,Медь,Miedź,Koper,Koppar,Kobber,Réz,Kupari
 METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.",,,,,,,,,,,,,
+METAL.COPPER_PATINA.ADJECTIVE,,Copper,en cuivre,De cobre,Kupfer,di rame,de cobre,De cobre,(медь),Miedziany,Koperen,Koppar-,Kobber,Réz,Kuparinen
+METAL.COPPER_PATINA.NOUN,,Copper (Patina),,,,,,,,,,,,,
+METAL.COPPER_PATINA.TOOLTIP,,{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}}
 METAL.GOLD.ADJECTIVE,,Golden,en or,De oro,Gold,d'oro,de ouro,De ouro,(золото),Złoty,Gouden,Guld-,Gull,Arany,Kultainen
 METAL.GOLD.NOUN,,Gold,Or,Oro,Gold,Oro,Ouro,Ouro,Золото,Złoto,Goud,Guld,Gull,Arany,Kulta
 METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.",,,,,,,,,,,,,
