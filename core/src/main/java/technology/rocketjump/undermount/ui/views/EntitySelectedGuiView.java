@@ -230,6 +230,10 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 							entityDescriptionTable.add(new I18nTextWidget(i18nTranslator.getAssignedToLabel(assignedToEntity), uiSkin, messageDispatcher)).left().row();
 						}
 					}
+					if (furnitureEntityAttributes.isDestroyed()) {
+						entityDescriptionTable.add(new I18nTextWidget(i18nTranslator.getTranslatedString(furnitureEntityAttributes.getDestructionCause().i18nKey),
+								uiSkin, messageDispatcher)).left().row();
+					}
 				}
 
 				if (entity.getType().equals(EntityType.PLANT)) {
@@ -251,6 +255,12 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 						replacements.put("quantity", new I18nWord(String.valueOf(targetDescriptionEntry.getValue())));
 						I18nText allocationDescription = i18nTranslator.getTranslatedWordWithReplacements("HAULING.ASSIGNMENT.DESCRIPTION", replacements);
 						entityDescriptionTable.add(new I18nTextWidget(allocationDescription, uiSkin, messageDispatcher)).left().row();
+					}
+
+					ItemEntityAttributes itemEntityAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+					if (itemEntityAttributes.isDestroyed()) {
+						entityDescriptionTable.add(new I18nTextWidget(i18nTranslator.getTranslatedString(itemEntityAttributes.getDestructionCause().i18nKey),
+								uiSkin, messageDispatcher)).left().row();
 					}
 
 				}

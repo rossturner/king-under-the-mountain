@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehav
 import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
+import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
@@ -75,6 +76,7 @@ import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import java.util.*;
 
+import static technology.rocketjump.undermount.assets.entities.model.ColoringLayer.METAL_COLOR;
 import static technology.rocketjump.undermount.assets.entities.model.ColoringLayer.SKIN_COLOR;
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.CancelLiquidAllocationAction.cancelLiquidAllocation;
@@ -83,9 +85,11 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HAULING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
+import static technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause.OXIDISED;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
 import static technology.rocketjump.undermount.jobs.JobMessageHandler.deconstructFurniture;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
+import static technology.rocketjump.undermount.messaging.MessageType.DESTROY_ENTITY;
 import static technology.rocketjump.undermount.messaging.MessageType.TRANSFORM_ITEM_TYPE;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FURNITURE;
@@ -171,6 +175,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
 		messageDispatcher.addListener(this, MessageType.FURNITURE_IN_USE);
 		messageDispatcher.addListener(this, MessageType.FURNITURE_NO_LONGER_IN_USE);
+		messageDispatcher.addListener(this, MessageType.DAMAGE_FURNITURE);
 		messageDispatcher.addListener(this, MessageType.MATERIAL_OXIDISED);
 	}
 
@@ -536,6 +541,9 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				}
 				return true;
 			}
+			case MessageType.DAMAGE_FURNITURE: {
+				return handleFurnitureDamaged((FurnitureDamagedMessage)msg.extraInfo);
+			}
 			case MessageType.MATERIAL_OXIDISED: {
 				return handleMaterialOxidised((OxidisationMessage) msg.extraInfo);
 			}
@@ -773,6 +781,69 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		return true;
 	}
 
+	private boolean handleFurnitureDamaged(FurnitureDamagedMessage message) {
+		FurnitureEntityAttributes furnitureEntityAttributes = (FurnitureEntityAttributes) message.targetEntity.getPhysicalEntityComponent().getAttributes();
+		if (furnitureEntityAttributes.isDestroyed()) {
+			return true;
+		}
+		furnitureEntityAttributes.setDestroyed(message.destructionCause);
+		List<ColoringLayer> allColors = new ArrayList<>(furnitureEntityAttributes.getOtherColors().keySet());
+		for (GameMaterial material : furnitureEntityAttributes.getMaterials().values()) {
+			ColoringLayer coloringLayer = ColoringLayer.getByMaterialType(material.getMaterialType());
+			if (coloringLayer != null) {
+				allColors.add(coloringLayer);
+			}
+		}
+
+		for (ColoringLayer coloringLayer : allColors) {
+			if (METAL_COLOR.equals(coloringLayer)) {
+				furnitureEntityAttributes.setColor(coloringLayer, message.metalColor);
+			} else if (message.otherColor != null) {
+				furnitureEntityAttributes.setColor(coloringLayer, message.otherColor);
+			} else {
+				Color color = furnitureEntityAttributes.getColor(coloringLayer);
+				if (color != null) {
+					Color newColor = color.cpy();
+					newColor.r *= 0.3f;
+					newColor.g *= 0.3f;
+					newColor.b *= 0.3f;
+					furnitureEntityAttributes.setColor(coloringLayer, newColor);
+				}
+			}
+		}
+
+		if (message.replacementPrimaryMaterial != null) {
+			furnitureEntityAttributes.getMaterials().clear();
+			furnitureEntityAttributes.getMaterials().put(furnitureEntityAttributes.getPrimaryMaterialType(), message.replacementPrimaryMaterial);
+		}
+
+		if (!message.targetEntity.getBehaviourComponent().getClass().equals(FurnitureBehaviour.class)) {
+			// remove crafting station or other behaviour
+			entityStore.changeBehaviour(message.targetEntity, new FurnitureBehaviour(), messageDispatcher);
+		}
+
+		// Removes from usage such as beds
+		furnitureTracker.furnitureRemoved(message.targetEntity);
+
+		InventoryComponent inventoryComponent = message.targetEntity.getComponent(InventoryComponent.class);
+		if (inventoryComponent != null) {
+			for (InventoryComponent.InventoryEntry inventoryEntry : new ArrayList<>(inventoryComponent.getInventoryEntries())) {
+				messageDispatcher.dispatchMessage(DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
+			}
+		}
+		DecorationInventoryComponent decorationInventoryComponent = message.targetEntity.getComponent(DecorationInventoryComponent.class);
+		if (decorationInventoryComponent != null) {
+			for (Entity decorationEntity : new ArrayList<>(decorationInventoryComponent.getDecorationEntities())) {
+				messageDispatcher.dispatchMessage(DESTROY_ENTITY, new EntityMessage(decorationEntity.getId()));
+			}
+			decorationInventoryComponent.clear();
+		}
+
+		message.targetEntity.getLocationComponent().setRotation(slightRotation());
+
+		return true;
+	}
+
 	private boolean handleMaterialOxidised(OxidisationMessage message) {
 		EntityAttributes entityAttributes = message.targetEntity.getPhysicalEntityComponent().getAttributes();
 
@@ -785,13 +856,17 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				if (newMaterial == null) {
 					Logger.error("Can not find material with name " + message.oxidisedMaterial.getOxidisation().getChangesTo() + " for oxidisation of " + message.oxidisedMaterial.getMaterialName());
 				} else if (entityAttributes instanceof ItemEntityAttributes) {
+					itemTracker.itemRemoved(message.targetEntity);
 					ItemEntityAttributes attributes = (ItemEntityAttributes) entityAttributes;
 					attributes.removeMaterial(message.oxidisedMaterial.getMaterialType());
 					attributes.setMaterial(newMaterial);
+					itemTracker.itemAdded(message.targetEntity);
 				} else if (entityAttributes instanceof FurnitureEntityAttributes) {
+					furnitureTracker.furnitureRemoved(message.targetEntity);
 					FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entityAttributes;
 					attributes.removeMaterial(message.oxidisedMaterial.getMaterialType());
 					attributes.setMaterial(newMaterial);
+					furnitureTracker.furnitureAdded(message.targetEntity);
 				} else {
 					Logger.error("Not yet implemented: material oxidised within " + entityAttributes.getClass().getSimpleName());
 				}
@@ -806,13 +881,27 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 					if (attributes.getPrimaryMaterial().equals(message.oxidisedMaterial)) {
 						// Only destroy if parent primary material is that which oxidised
 
+						if (attributes.getQuantity() == 0) {
+							Logger.error("Should not be converting quantity 0 item");
+						}
+
 						messageDispatcher.dispatchMessage(TRANSFORM_ITEM_TYPE, new TransformItemMessage(message.targetEntity, targetItemType));
 						attributes.getMaterials().clear();
 						attributes.setMaterial(message.oxidisedMaterial);
+						attributes.setDestroyed(OXIDISED);
 
 						// TODO send notification that an item rusted?
 
-						// TODO if this is in DecorationInventoryComponent, set furniture as destroyed
+						// If this is within DecorationInventoryComponent, set furniture as destroyed
+						if (message.targetEntity.getLocationComponent().getContainerEntity() != null) {
+							DecorationInventoryComponent decorationInventoryComponent = message.targetEntity.getLocationComponent().getContainerEntity().getComponent(DecorationInventoryComponent.class);
+							if (decorationInventoryComponent != null && decorationInventoryComponent.getDecorationEntities().stream().anyMatch(e -> e.equals(message.targetEntity))) {
+								messageDispatcher.dispatchMessage(MessageType.DAMAGE_FURNITURE, new FurnitureDamagedMessage(
+										message.targetEntity.getLocationComponent().getContainerEntity(), OXIDISED, null,
+										message.oxidisedMaterial.getColor(), null
+								));
+							}
+						}
 
 					}
 				} else if (entityAttributes instanceof FurnitureEntityAttributes) {
@@ -820,7 +909,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 					if (attributes.getPrimaryMaterial().equals(message.oxidisedMaterial)) {
 						// Only destroy if parent primary material is that which oxidised
 
-						// TODO set furniture as destroyed similar to charred
+						messageDispatcher.dispatchMessage(MessageType.DAMAGE_FURNITURE, new FurnitureDamagedMessage(
+								message.targetEntity, OXIDISED, message.oxidisedMaterial,
+								message.oxidisedMaterial.getColor(), null
+						));
+
+						// TODO send notification that an item rusted
 
 					}
 				} else {
@@ -861,6 +955,14 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		hauledEntity.getLocationComponent().setWorldPosition(position, false);
 		hauledEntity.getLocationComponent().setFacing(DOWN.toVector2());
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, hauledEntity);
+	}
+
+	private float slightRotation() {
+		float rotationAmount = gameContext.getRandom().nextFloat() * 15f;
+		if (gameContext.getRandom().nextBoolean()) {
+			rotationAmount *= -1f;
+		}
+		return rotationAmount;
 	}
 
 	@Override

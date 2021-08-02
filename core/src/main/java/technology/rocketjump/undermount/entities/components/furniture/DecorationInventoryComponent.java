@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -45,7 +46,9 @@ public class DecorationInventoryComponent implements InfrequentlyUpdatableCompon
 
 	@Override
 	public void infrequentUpdate(double elapsedTime) {
-		decorationEntities.values().forEach(e -> e.infrequentUpdate(gameContext));
+		for (Entity entity : new ArrayList<>(decorationEntities.values())) {
+			entity.infrequentUpdate(gameContext);
+		}
 	}
 
 	public void clear() {

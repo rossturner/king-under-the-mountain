@@ -63,8 +63,14 @@ public class OxidisationComponent implements InfrequentlyUpdatableComponent {
 						return;
 					}
 				}
+				if (((ItemEntityAttributes)attributes).isDestroyed()) {
+					return;
+				}
 
 			} else if (attributes instanceof FurnitureEntityAttributes) {
+				if (((FurnitureEntityAttributes)attributes).isDestroyed()) {
+					return;
+				}
 				parentMaterials = ((FurnitureEntityAttributes)attributes).getMaterials().values();
 			} else {
 				Logger.warn("Not yet implemented: OxidisationComponent update for " + attributes.getClass().getSimpleName());

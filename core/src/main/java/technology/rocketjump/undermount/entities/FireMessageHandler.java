@@ -11,21 +11,18 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.FloorTypeDictionary;
-import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.entities.behaviour.BurnedEntityBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.furniture.FurnitureBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.components.AttachedEntitiesComponent;
 import technology.rocketjump.undermount.entities.components.AttachedLightSourceComponent;
-import technology.rocketjump.undermount.entities.components.InventoryComponent;
-import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.factories.OngoingEffectAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.OngoingEffectEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
+import technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
@@ -257,6 +254,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				messageDispatcher.dispatchMessage(TRANSFORM_ITEM_TYPE, new TransformItemMessage(entity, ashesItemType));
 				attributes.getMaterials().clear();
 				attributes.setMaterial(ashMaterial);
+				attributes.setDestroyed(EntityDestructionCause.BURNED);
 				break;
 			case PLANT:
 				PlantEntityAttributes plantEntityAttributes = (PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
@@ -265,55 +263,16 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, entity);
 				break;
 			case FURNITURE:
-				FurnitureEntityAttributes furnitureEntityAttributes = (FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-				furnitureEntityAttributes.setDestroyed(true);
-				for (ColoringLayer coloringLayer : furnitureEntityAttributes.getOtherColors().keySet()) {
-					furnitureEntityAttributes.setColor(coloringLayer, blackenedColor());
-				}
-				for (GameMaterial material : furnitureEntityAttributes.getMaterials().values()) {
-					ColoringLayer coloringLayer = ColoringLayer.getByMaterialType(material.getMaterialType());
-					furnitureEntityAttributes.setColor(coloringLayer, blackenedColor());
-				}
-				furnitureEntityAttributes.getMaterials().clear();
-				furnitureEntityAttributes.getMaterials().put(furnitureEntityAttributes.getPrimaryMaterialType(), ashMaterial);
-				if (!entity.getBehaviourComponent().getClass().equals(FurnitureBehaviour.class)) {
-					// remove crafting station or other behaviour
-					entityStore.changeBehaviour(entity, new FurnitureBehaviour(), messageDispatcher);
-				}
-
-				// Removes from usage such as beds
-				furnitureTracker.furnitureRemoved(entity);
-
-				InventoryComponent inventoryComponent = entity.getComponent(InventoryComponent.class);
-				if (inventoryComponent != null) {
-					for (InventoryComponent.InventoryEntry inventoryEntry : new ArrayList<>(inventoryComponent.getInventoryEntries())) {
-						messageDispatcher.dispatchMessage(DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
-					}
-				}
-				DecorationInventoryComponent decorationInventoryComponent = entity.getComponent(DecorationInventoryComponent.class);
-				if (decorationInventoryComponent != null) {
-					for (Entity decorationEntity : new ArrayList<>(decorationInventoryComponent.getDecorationEntities())) {
-						messageDispatcher.dispatchMessage(DESTROY_ENTITY, new EntityMessage(decorationEntity.getId()));
-					}
-					decorationInventoryComponent.clear();
-				}
-
-				entity.getLocationComponent().setRotation(slightRotation());
-
+				Color blackenedColor = blackenedColor();
+				messageDispatcher.dispatchMessage(MessageType.DAMAGE_FURNITURE, new FurnitureDamagedMessage(
+						entity, EntityDestructionCause.BURNED, ashMaterial, blackenedColor, blackenedColor
+				));
 				break;
 			default:
 				Logger.error("Not yet implemented: Consuming entity of type " + entity.getType() + " by fire");
 		}
 
 		entity.setTags(emptySet());
-	}
-
-	private float slightRotation() {
-		float rotationAmount = gameContext.getRandom().nextFloat() * 15f;
-		if (gameContext.getRandom().nextBoolean()) {
-			rotationAmount *= -1f;
-		}
-		return rotationAmount;
 	}
 
 	/**
