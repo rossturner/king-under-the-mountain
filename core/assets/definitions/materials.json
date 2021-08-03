@@ -602,7 +602,7 @@
   "oxidisation" : {
     "effect" : "CONVERT_MATERIAL",
     "changesTo" : "Rusted Iron",
-    "hoursToConvert" : 480.0
+    "hoursToConvert" : 380.0
   },
   "i18nKey" : "METAL.STEEL",
   "useMaterialTypeAsAdjective" : false,
@@ -640,7 +640,7 @@
   "oxidisation" : {
     "effect" : "CONVERT_MATERIAL",
     "changesTo" : "Copper Patina",
-    "hoursToConvert" : 380.0
+    "hoursToConvert" : 248.0
   },
   "i18nKey" : "METAL.COPPER",
   "useMaterialTypeAsAdjective" : false,

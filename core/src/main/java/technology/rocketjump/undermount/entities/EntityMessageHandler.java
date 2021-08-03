@@ -890,7 +890,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						attributes.setMaterial(message.oxidisedMaterial);
 						attributes.setDestroyed(OXIDISED);
 
-						// TODO send notification that an item rusted?
+						showNotificationOxidisationDestroyedSomething(message.targetEntity);
 
 						// If this is within DecorationInventoryComponent, set furniture as destroyed
 						if (message.targetEntity.getLocationComponent().getContainerEntity() != null) {
@@ -914,7 +914,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 								message.oxidisedMaterial.getColor(), null
 						));
 
-						// TODO send notification that an item rusted
+						showNotificationOxidisationDestroyedSomething(message.targetEntity);
 
 					}
 				} else {
@@ -927,6 +927,11 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 
 		return true;
+	}
+
+	private void showNotificationOxidisationDestroyedSomething(Entity targetEntity) {
+		Notification notification = new Notification(NotificationType.OXIDISATION_DESTRUCTION, targetEntity.getLocationComponent().getWorldOrParentPosition());
+		messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, notification);
 	}
 
 	private void dropEquippedItems(Entity entity, Vector2 entityPosition) {
