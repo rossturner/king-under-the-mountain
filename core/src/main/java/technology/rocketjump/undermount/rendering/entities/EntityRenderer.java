@@ -30,6 +30,7 @@ import static technology.rocketjump.undermount.assets.entities.model.NullEntityA
 
 public class EntityRenderer implements Disposable {
 
+	private static final boolean RENDER_SNOW = true;
 	public static float PIXELS_PER_TILE = 64f;
 
 	private EntityRenderSteps entityRenderSteps = new EntityRenderSteps();
@@ -39,6 +40,7 @@ public class EntityRenderer implements Disposable {
 	private boolean usingNormalMapInverseShader = false;
 	private ShaderProgram defaultShader;
 	private ShaderProgram inverseNormalShader;
+	private ShaderProgram snowShader;
 
 	@Inject
 	public EntityRenderer(CompleteAssetDictionary completeAssetDictionary,
@@ -46,9 +48,12 @@ public class EntityRenderer implements Disposable {
 		this.assetDictionary = completeAssetDictionary;
 		this.renderLayerDictionary = renderLayerDictionary;
 
-		FileHandle vertexShaderFile = Gdx.files.classpath("shaders/default_vertex_shader.glsl");
+		FileHandle defaultVertexShaderFile = Gdx.files.classpath("shaders/default_vertex_shader.glsl");
 		FileHandle fragmentShaderFile = Gdx.files.classpath("shaders/invert_normal_map_red_channel_fragment_shader.glsl");
-		inverseNormalShader = ShaderLoader.createShader(vertexShaderFile, fragmentShaderFile);
+		inverseNormalShader = ShaderLoader.createShader(defaultVertexShaderFile, fragmentShaderFile);
+
+		FileHandle snowFragmentShaderFile = Gdx.files.classpath("shaders/snow_fragment_shader.glsl");
+		snowShader = ShaderLoader.createShader(defaultVertexShaderFile, snowFragmentShaderFile);
 	}
 
 	/**
@@ -254,25 +259,7 @@ public class EntityRenderer implements Disposable {
 		}
 
 
-		Sprite sprite = null;
-
-		if (spriteDescriptor.getIsAnimated()) {
-			Array<Sprite> animatedSprites = spriteDescriptor.getAnimatedSprites(renderMode);
-			if (animatedSprites != null && animatedSprites.size > 0) {
-				float animationProgress = renderStep.getEntity().getPhysicalEntityComponent().getAnimationProgress();
-
-				int frameSelection = Math.round(animationProgress * animatedSprites.size);
-				if (frameSelection >= animatedSprites.size) {
-					frameSelection = animatedSprites.size - 1;
-				} else if (frameSelection <= 0) {
-					frameSelection = 0;
-				}
-				sprite = animatedSprites.get(frameSelection);
-			}
-		} else {
-			sprite = spriteDescriptor.getSprite(renderMode);
-		}
-
+		Sprite sprite = getSprite(renderStep, renderMode, spriteDescriptor);
 
 		if (sprite == null) {
 			if (renderMode.equals(RenderMode.NORMALS)) {
@@ -299,6 +286,40 @@ public class EntityRenderer implements Disposable {
 		}
 		affine.translate(-spriteWorldSize.x / 2, -spriteWorldSize.y / 2);
 		spriteBatch.draw(sprite, spriteWorldSize.x, spriteWorldSize.y, affine);
+
+		if (renderMode.equals(RenderMode.DIFFUSE) && RENDER_SNOW) {
+			Sprite normalSprite = getSprite(renderStep, RenderMode.NORMALS, spriteDescriptor);
+			if (normalSprite != null) {
+				ShaderProgram currentShader = spriteBatch.getShader();
+				spriteBatch.setShader(snowShader);
+				snowShader.setUniformf("u_snowAmount", 0.5f);
+				spriteBatch.setColor(Color.WHITE);
+				spriteBatch.draw(normalSprite, spriteWorldSize.x, spriteWorldSize.y, affine);
+				spriteBatch.setShader(currentShader);
+			}
+		}
+	}
+
+	private Sprite getSprite(EntityPartRenderStep renderStep, RenderMode renderMode, SpriteDescriptor spriteDescriptor) {
+		Sprite sprite = null;
+
+		if (spriteDescriptor.getIsAnimated()) {
+			Array<Sprite> animatedSprites = spriteDescriptor.getAnimatedSprites(renderMode);
+			if (animatedSprites != null && animatedSprites.size > 0) {
+				float animationProgress = renderStep.getEntity().getPhysicalEntityComponent().getAnimationProgress();
+
+				int frameSelection = Math.round(animationProgress * animatedSprites.size);
+				if (frameSelection >= animatedSprites.size) {
+					frameSelection = animatedSprites.size - 1;
+				} else if (frameSelection <= 0) {
+					frameSelection = 0;
+				}
+				sprite = animatedSprites.get(frameSelection);
+			}
+		} else {
+			sprite = spriteDescriptor.getSprite(renderMode);
+		}
+		return sprite;
 	}
 
 	private Vector2 spriteWorldSize = new Vector2(); // Private member to avoid new instance on every render call
