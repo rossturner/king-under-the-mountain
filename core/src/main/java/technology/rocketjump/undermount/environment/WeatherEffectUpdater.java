@@ -34,7 +34,6 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 	public WeatherEffectUpdater(MessageDispatcher messageDispatcher) {
 		this.messageDispatcher = messageDispatcher;
 
-		messageDispatcher.addListener(this, MessageType.GAME_PAUSED);
 		messageDispatcher.addListener(this, MessageType.ROOF_CONSTRUCTED);
 	}
 
@@ -90,11 +89,6 @@ public class WeatherEffectUpdater implements GameContextAware, Telegraph {
 	@Override
 	public boolean handleMessage(Telegram msg) {
 		switch (msg.message) {
-			case MessageType.GAME_PAUSED: {
-				// Clear all on pause so panning camera doesn't look weird
-				clearContextRelatedState();
-				return true;
-			}
 			case MessageType.ROOF_CONSTRUCTED: {
 				RoofConstructionMessage roofConstructionMessage = (RoofConstructionMessage) msg.extraInfo;
 				ParticleEffectInstance particleEffectInstance = instancesByTileLocation.get(roofConstructionMessage.roofTileLocation);

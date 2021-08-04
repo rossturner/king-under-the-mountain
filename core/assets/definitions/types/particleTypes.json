@@ -16,7 +16,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : true
+  "attachedToParent" : true,
+  "unaffectedByPause" : false
 }, {
   "name" : "Dust cloud",
   "particleFile" : "smoke.p",
@@ -29,7 +30,8 @@
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Dust cloud above",
   "particleFile" : "smoke.p",
@@ -42,7 +44,8 @@
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
   "overrideYDepth" : true,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Leaf explosion",
   "particleFile" : "leafexplosion.p",
@@ -55,7 +58,8 @@
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Chip explosion",
   "particleFile" : "chipexplosion.p",
@@ -68,7 +72,8 @@
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Falling leaf",
   "particleFile" : "fallingleaf.p",
@@ -87,7 +92,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Smoking",
   "particleFile" : "smoking.p",
@@ -106,7 +112,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Smoking (small offset)",
   "particleFile" : "smoking.p",
@@ -125,7 +132,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : true
+  "attachedToParent" : true,
+  "unaffectedByPause" : false
 }, {
   "name" : "Smoking (charcoal)",
   "particleFile" : "smoking.p",
@@ -144,7 +152,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "White smoking",
   "particleFile" : "white_smoking.p",
@@ -163,7 +172,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Ore chips",
   "particleFile" : "orechips.p",
@@ -182,7 +192,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Milling",
   "particleFile" : "milling.p",
@@ -201,7 +212,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Chipping rock",
   "particleFile" : "rockparticle.p",
@@ -221,7 +233,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Chipping wood",
   "particleFile" : "woodchip.p",
@@ -241,7 +254,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Digging ground same tile",
   "particleFile" : "groundsplat.p",
@@ -260,7 +274,8 @@
   },
   "renderBehindParent" : true,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Digging ground offset tile",
   "particleFile" : "groundsplat.p",
@@ -279,7 +294,8 @@
   },
   "renderBehindParent" : true,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Small leaf explosion",
   "particleFile" : "smallleafexplosion.p",
@@ -298,7 +314,8 @@
   },
   "renderBehindParent" : true,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Liquid splash",
   "particleFile" : "splash.p",
@@ -317,7 +334,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Wood shavings",
   "particleFile" : "shavings.p",
@@ -336,7 +354,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : true,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Chipping stone",
   "particleFile" : "stonechip.p",
@@ -355,7 +374,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : true,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Blacksmith sparks",
   "particleFile" : "sparks.p",
@@ -374,7 +394,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : true,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
 }, {
   "name" : "Fire",
   "vertexShaderFile" : "fire_vertex_shader.glsl",
@@ -394,7 +415,8 @@
   },
   "renderBehindParent" : false,
   "overrideYDepth" : false,
-  "attachedToParent" : true
+  "attachedToParent" : true,
+  "unaffectedByPause" : false
 }, {
   "name" : "Rain",
   "particleFile" : "rain.p",
@@ -407,7 +429,8 @@
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
   "overrideYDepth" : true,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : true
 }, {
   "name" : "Snow",
   "particleFile" : "snow.p",
@@ -420,5 +443,6 @@
   "distanceFromParentEntityOrientation" : 0.0,
   "renderBehindParent" : false,
   "overrideYDepth" : true,
-  "attachedToParent" : false
+  "attachedToParent" : false,
+  "unaffectedByPause" : true
 } ]

@@ -68,8 +68,8 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 		GdxAI.getTimepiece().update(multipliedDeltaTime); // This is used for message delays, not actual AI, so runs when paused
 		if (!gameContext.getGameClock().isPaused()) {
 			gameContext.getGameClock().update(multipliedDeltaTime, messageDispatcher);
-			particleEffectUpdater.update(multipliedDeltaTime, new TileBoundingBox(primaryCameraWrapper.getCamera(), gameContext.getAreaMap()));
 		}
+		particleEffectUpdater.update(multipliedDeltaTime, new TileBoundingBox(primaryCameraWrapper.getCamera(), gameContext.getAreaMap()));
 		primaryCameraWrapper.update(deltaTime);
 		gameUpdateRegister.update(multipliedDeltaTime, gameContext.getGameClock().isPaused());
 

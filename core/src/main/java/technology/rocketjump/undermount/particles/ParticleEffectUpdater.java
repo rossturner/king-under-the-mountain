@@ -1,5 +1,6 @@
 package technology.rocketjump.undermount.particles;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
@@ -69,7 +70,14 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 			if (instance.getWrappedInstance().isComplete()) {
 				store.remove(instance, iterator);
 			} else {
-				instance.getWrappedInstance().update(deltaTime);
+
+				if (gameContext.getGameClock().isPaused()) {
+					if (instance.getType().isUnaffectedByPause()) {
+						instance.getWrappedInstance().update(Gdx.graphics.getDeltaTime());
+					}
+				} else {
+					instance.getWrappedInstance().update(deltaTime);
+				}
 			}
 		}
 

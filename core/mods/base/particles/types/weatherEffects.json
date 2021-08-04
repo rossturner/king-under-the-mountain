@@ -6,8 +6,7 @@
     "isLooping": true,
     "isAffectedByLighting": true,
     "overrideYDepth": true,
-    "usesTargetMaterialAsTintColor": false,
-    "attachedToParent": false
+    "unaffectedByPause": true
   },
   {
     "name": "Snow",
@@ -16,7 +15,6 @@
     "isLooping": true,
     "isAffectedByLighting": true,
     "overrideYDepth": true,
-    "usesTargetMaterialAsTintColor": false,
-    "attachedToParent": false
+    "unaffectedByPause": true
   }
 ]
