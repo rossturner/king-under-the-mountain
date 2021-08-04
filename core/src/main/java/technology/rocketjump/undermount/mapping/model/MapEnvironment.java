@@ -22,6 +22,7 @@ public class MapEnvironment implements ChildPersistable {
 	private Color sunlightColor = Color.WHITE.cpy();
 	private Color weatherColor = Color.WHITE.cpy();
 	private float sunlightAmount = 1;
+	private double fallenSnow = 0;
 
 	public WeatherType getCurrentWeather() {
 		return currentWeather;
@@ -52,12 +53,21 @@ public class MapEnvironment implements ChildPersistable {
 		this.weatherColor = weatherColor;
 	}
 
+	public double getFallenSnow() {
+		return fallenSnow;
+	}
+
+	public void setFallenSnow(double fallenSnow) {
+		this.fallenSnow = fallenSnow;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("dailyWeather", dailyWeather.getName());
 		asJson.put("weather", currentWeather.getName());
 		asJson.put("sunlight", HexColors.toHexString(sunlightColor));
 		asJson.put("weatherColor", HexColors.toHexString(weatherColor));
+		asJson.put("snow", fallenSnow);
 	}
 
 	@Override
@@ -73,6 +83,7 @@ public class MapEnvironment implements ChildPersistable {
 		}
 		setSunlightColor(HexColors.get(asJson.getString("sunlight")));
 		setWeatherColor(HexColors.get(asJson.getString("weatherColor")));
+		this.fallenSnow = asJson.getDoubleValue("snow");
 	}
 
 	public double getWeatherTimeRemaining() {
@@ -90,4 +101,5 @@ public class MapEnvironment implements ChildPersistable {
 	public void setDailyWeather(DailyWeatherType dailyWeather) {
 		this.dailyWeather = dailyWeather;
 	}
+
 }

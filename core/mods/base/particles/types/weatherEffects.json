@@ -8,5 +8,15 @@
     "overrideYDepth": true,
     "usesTargetMaterialAsTintColor": false,
     "attachedToParent": false
+  },
+  {
+    "name": "Snow",
+    "particleFile": "snow.p",
+    "scale": 0.5,
+    "isLooping": true,
+    "isAffectedByLighting": true,
+    "overrideYDepth": true,
+    "usesTargetMaterialAsTintColor": false,
+    "attachedToParent": false
   }
 ]

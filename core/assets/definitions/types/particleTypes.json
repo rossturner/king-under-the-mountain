@@ -408,4 +408,17 @@
   "renderBehindParent" : false,
   "overrideYDepth" : true,
   "attachedToParent" : false
+}, {
+  "name" : "Snow",
+  "particleFile" : "snow.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
+  "scale" : 0.5,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : false,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "renderBehindParent" : false,
+  "overrideYDepth" : true,
+  "attachedToParent" : false
 } ]

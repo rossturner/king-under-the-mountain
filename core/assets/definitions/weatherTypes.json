@@ -5,6 +5,7 @@
   "dayAmbienceSoundAssetName" : "Daytime",
   "nightAmbienceSoundAssetName" : "Nighttime",
   "oxidises" : false,
+  "accumulatesSnowPerHour" : -0.08,
   "happinessModifiers" : { }
 }, {
   "name" : "Rain",
@@ -15,9 +16,21 @@
   "nightAmbienceSoundAssetName" : "Rain",
   "oxidises" : true,
   "chanceToExtinguishFire" : 0.7,
+  "accumulatesSnowPerHour" : -0.4,
   "happinessModifiers" : {
     "STANDING" : "CAUGHT_IN_RAIN",
     "WORKING" : "WORKED_IN_RAIN",
+    "SLEEPING" : "SLEEPING_IN_RAIN"
+  }
+}, {
+  "name" : "Snow",
+  "i18nKey" : "WEATHER.TYPE.SNOW",
+  "particleEffectTypeName" : "Snow",
+  "maxSunlight" : "#EEEEEE",
+  "oxidises" : true,
+  "chanceToExtinguishFire" : 0.2,
+  "accumulatesSnowPerHour" : 0.15,
+  "happinessModifiers" : {
     "SLEEPING" : "SLEEPING_IN_RAIN"
   }
 } ]

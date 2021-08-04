@@ -13,6 +13,8 @@ import java.util.Objects;
 
 public class WeatherType {
 
+	private static final Double DEFAULT_SNOW_ACCUMULATION = -0.08;
+
 	@Name
 	private String name;
 	private String i18nKey;
@@ -33,6 +35,7 @@ public class WeatherType {
 
 	private boolean oxidises;
 	private Float chanceToExtinguishFire;
+	private Double accumulatesSnowPerHour = DEFAULT_SNOW_ACCUMULATION;
 
 	private Map<HappinessInteraction, HappinessComponent.HappinessModifier> happinessModifiers = new EnumMap<>(HappinessInteraction.class);
 
@@ -159,6 +162,14 @@ public class WeatherType {
 
 	public void setNightAmbienceSoundAsset(SoundAsset nightAmbienceSoundAsset) {
 		this.nightAmbienceSoundAsset = nightAmbienceSoundAsset;
+	}
+
+	public Double getAccumulatesSnowPerHour() {
+		return accumulatesSnowPerHour;
+	}
+
+	public void setAccumulatesSnowPerHour(Double accumulatesSnowPerHour) {
+		this.accumulatesSnowPerHour = accumulatesSnowPerHour;
 	}
 
 	@Override

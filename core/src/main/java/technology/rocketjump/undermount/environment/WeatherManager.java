@@ -41,8 +41,17 @@ public class WeatherManager implements Updatable {
 
 			gameContext.getMapEnvironment().setWeatherTimeRemaining(gameContext.getMapEnvironment().getWeatherTimeRemaining() - elapsedGameTime);
 
+			if (gameContext.getMapEnvironment().getCurrentWeather().getAccumulatesSnowPerHour() != null) {
+				double extraSnow = gameContext.getMapEnvironment().getCurrentWeather().getAccumulatesSnowPerHour() * elapsedGameTime;
+				double currentSnow = gameContext.getMapEnvironment().getFallenSnow();
+				currentSnow += extraSnow;
+				currentSnow = Math.max(0.0, Math.min(currentSnow, 1.0));
+				gameContext.getMapEnvironment().setFallenSnow(currentSnow);
+			}
+
 			if (GlobalSettings.DEV_MODE) {
 				screenWriter.printLine(gameContext.getMapEnvironment().getCurrentWeather().getName() + ", remaining: " + gameContext.getMapEnvironment().getWeatherTimeRemaining());
+				screenWriter.printLine("Fallen snow: " + gameContext.getMapEnvironment().getFallenSnow());
 			}
 
 			if (gameContext.getMapEnvironment().getWeatherTimeRemaining() < 0) {
