@@ -1,16 +1,11 @@
 [
   {
-    "name": "Scattered snow",
+    "name": "Rain into thunderstorm",
     "forecast": [
       {
-        "weatherTypeName": "Perfect",
-        "minDurationHours": 0.5,
-        "maxDurationHours": 5.0
-      },
-      {
-        "weatherTypeName": "Snow",
+        "weatherTypeName": "Wet Thunderstorm",
         "minDurationHours": 1.0,
-        "maxDurationHours": 6.0
+        "maxDurationHours": 12.0
       }
     ]
   }

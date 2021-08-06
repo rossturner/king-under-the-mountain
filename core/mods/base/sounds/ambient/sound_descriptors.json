@@ -30,6 +30,16 @@
     "looping": true
   },
   {
+    "name": "Thunderstorm with rain",
+    "filenames": [
+      "thunderstorm_long_rumbles_thunder_rain_wind.wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 1.0,
+    "looping": true
+  },
+  {
     "name": "River",
     "filenames": [
       "River Flowing (Loop).wav"

@@ -98,6 +98,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.CONSUME_ENTITY_BY_FIRE);
 		messageDispatcher.addListener(this, MessageType.ADD_FIRE_TO_ENTITY);
 		messageDispatcher.addListener(this, MessageType.FIRE_REMOVED);
+		messageDispatcher.addListener(this, MessageType.START_FIRE_IN_TILE);
 
 	}
 
@@ -116,6 +117,10 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 					entityIdsToIgnore.add(message.targetEntityId);
 					spreadFireFrom(toVector(message.jobLocation), entityIdsToIgnore, 1, true, 2);
 				}
+				return true;
+			case START_FIRE_IN_TILE:
+				MapTile fireTile = (MapTile) msg.extraInfo;
+				startFireInTile(fireTile.getWorldPositionOfCenter());
 				return true;
 			case CONSUME_TILE_BY_FIRE:
 				MapTile tile = gameContext.getAreaMap().getTile((Vector2) msg.extraInfo);
@@ -151,7 +156,17 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		}
 	}
 
+	private void startFireInTile(Vector2 location) {
+		spreadFireFrom(location, emptySet(), 1, false, 0, true);
+	}
+
+
 	private void spreadFireFrom(Vector2 location, Set<Long> entityIdsToIgnore, int maxFiresToStart, boolean staticEntitiesOnly, int maxDistanceToSpreadFire) {
+		spreadFireFrom(location, entityIdsToIgnore, maxFiresToStart, staticEntitiesOnly, maxDistanceToSpreadFire, false);
+	}
+
+	private void spreadFireFrom(Vector2 location, Set<Long> entityIdsToIgnore, int maxFiresToStart, boolean staticEntitiesOnly,
+								int maxDistanceToSpreadFire, boolean includeCentreTile) {
 		GridPoint2 centre = toGridPoint(location);
 		int firesStarted = 0;
 		MapTile centreTile = gameContext.getAreaMap().getTile(centre);
@@ -162,7 +177,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		Collections.shuffle(directions, gameContext.getRandom());
 		for (CompassDirection direction : directions) {
 			MapTile nextTile = centreTile;
-			for (int distance = 1; distance <= maxDistanceToSpreadFire; distance++) {
+			for (int distance = includeCentreTile ? 0 : 1; distance <= maxDistanceToSpreadFire; distance++) {
 				nextTile = selectNextTile(nextTile, direction);
 				if (nextTile == null) {
 					break;

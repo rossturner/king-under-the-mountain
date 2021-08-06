@@ -16,5 +16,19 @@
     "isAffectedByLighting": true,
     "overrideYDepth": true,
     "unaffectedByPause": true
+  },
+  {
+    "name": "Lightning strike",
+    "particleFile": "lightning.p",
+    "scale": 1,
+    "isLooping": false,
+    "isAffectedByLighting": false,
+    "usesTargetMaterialAsTintColor": false,
+    "overrideYDepth": false,
+    "attachedToParent": false,
+    "offsetFromParentEntity": {
+      "x": 0,
+      "y": 3
+    }
   }
 ]

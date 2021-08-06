@@ -229,6 +229,7 @@ public class MessageType {
 	public static final int ADD_FIRE_TO_ENTITY = 1703;
 	public static final int FIRE_REMOVED = 1704;
 	public static final int SMALL_FIRE_STARTED = 1705;
+	public static final int START_FIRE_IN_TILE = 1706;
 
 
 }

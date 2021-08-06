@@ -36,9 +36,18 @@ public class WeatherType {
 	private boolean oxidises;
 	private Float chanceToExtinguishFire;
 	private Float chanceToFreezeToDeathFromSleeping;
+	private Double lightningStrikesPerHour;
 	private Double accumulatesSnowPerHour = DEFAULT_SNOW_ACCUMULATION;
 
 	private Map<HappinessInteraction, HappinessComponent.HappinessModifier> happinessModifiers = new EnumMap<>(HappinessInteraction.class);
+
+	public Double getLightningStrikesPerHour() {
+		return lightningStrikesPerHour;
+	}
+
+	public void setLightningStrikesPerHour(Double lightningStrikesPerHour) {
+		this.lightningStrikesPerHour = lightningStrikesPerHour;
+	}
 
 	public enum HappinessInteraction {
 

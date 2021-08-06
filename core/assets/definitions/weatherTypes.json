@@ -23,6 +23,22 @@
     "SLEEPING" : "SLEEPING_IN_RAIN"
   }
 }, {
+  "name" : "Wet Thunderstorm",
+  "i18nKey" : "WEATHER.TYPE.THUNDERSTORM",
+  "particleEffectTypeName" : "Rain",
+  "maxSunlight" : "#b8b8b8",
+  "dayAmbienceSoundAssetName" : "Thunderstorm with rain",
+  "nightAmbienceSoundAssetName" : "Thunderstorm with rain",
+  "oxidises" : true,
+  "chanceToExtinguishFire" : 0.7,
+  "lightningStrikesPerHour" : 6.0,
+  "accumulatesSnowPerHour" : -0.4,
+  "happinessModifiers" : {
+    "STANDING" : "CAUGHT_IN_RAIN",
+    "WORKING" : "WORKED_IN_RAIN",
+    "SLEEPING" : "SLEEPING_IN_RAIN"
+  }
+}, {
   "name" : "Snow",
   "i18nKey" : "WEATHER.TYPE.SNOW",
   "particleEffectTypeName" : "Snow",
