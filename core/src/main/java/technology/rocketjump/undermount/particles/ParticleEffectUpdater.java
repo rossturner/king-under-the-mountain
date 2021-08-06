@@ -73,7 +73,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 
 				if (gameContext.getGameClock().isPaused()) {
 					if (instance.getType().isUnaffectedByPause()) {
-						instance.getWrappedInstance().update(Gdx.graphics.getDeltaTime());
+						instance.getWrappedInstance().update(Gdx.graphics.getDeltaTime() * 0.3f);
 					}
 				} else {
 					instance.getWrappedInstance().update(deltaTime);

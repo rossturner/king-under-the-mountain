@@ -55,9 +55,24 @@
   "highColorCode" : "#b1896c",
   "constructed" : false
 }, {
+  "floorTypeName" : "fallen_snow",
+  "i18nKey" : "FLOOR.SNOW",
+  "floorTypeId" : 5,
+  "materialType" : "EARTH",
+  "layer" : 13,
+  "numSprites" : 5,
+  "overlapType" : {
+    "overlapName" : "ground"
+  },
+  "useMaterialColor" : false,
+  "speedModifier" : 0.85,
+  "lowColorCode" : "#d9eaea",
+  "highColorCode" : "#f3f3f3",
+  "constructed" : false
+}, {
   "floorTypeName" : "floorboards",
   "i18nKey" : "FLOOR.WOODEN",
-  "floorTypeId" : 5,
+  "floorTypeId" : 6,
   "materialType" : "WOOD",
   "layer" : 0,
   "numSprites" : 10,
@@ -78,7 +93,7 @@
 }, {
   "floorTypeName" : "grass",
   "i18nKey" : "FLOOR.GRASS",
-  "floorTypeId" : 6,
+  "floorTypeId" : 7,
   "materialType" : "EARTH",
   "layer" : 10,
   "numSprites" : 5,
@@ -93,7 +108,7 @@
 }, {
   "floorTypeName" : "gravel",
   "i18nKey" : "FLOOR.GRAVEL",
-  "floorTypeId" : 7,
+  "floorTypeId" : 8,
   "materialType" : "OTHER",
   "layer" : 4,
   "numSprites" : 5,
@@ -108,7 +123,7 @@
 }, {
   "floorTypeName" : "cobblestone",
   "i18nKey" : "FLOOR.COBBLESTONE",
-  "floorTypeId" : 8,
+  "floorTypeId" : 9,
   "materialType" : "STONE",
   "layer" : 1,
   "numSprites" : 5,
@@ -121,7 +136,7 @@
 }, {
   "floorTypeName" : "river-edge-dirt",
   "i18nKey" : "FLOOR.DIRT",
-  "floorTypeId" : 9,
+  "floorTypeId" : 10,
   "materialType" : "EARTH",
   "layer" : 5,
   "numSprites" : 5,
@@ -136,7 +151,7 @@
 }, {
   "floorTypeName" : "rough_stone",
   "i18nKey" : "FLOOR.ROUGH_STONE",
-  "floorTypeId" : 10,
+  "floorTypeId" : 11,
   "materialType" : "STONE",
   "layer" : 1,
   "numSprites" : 5,
@@ -149,7 +164,7 @@
 }, {
   "floorTypeName" : "paving",
   "i18nKey" : "FLOOR.STONE_PAVING",
-  "floorTypeId" : 11,
+  "floorTypeId" : 12,
   "materialType" : "STONE",
   "layer" : 0,
   "numSprites" : 7,
@@ -170,7 +185,7 @@
 }, {
   "floorTypeName" : "stone_slab",
   "i18nKey" : "FLOOR.STONE_SLAB",
-  "floorTypeId" : 12,
+  "floorTypeId" : 13,
   "materialType" : "STONE",
   "layer" : 0,
   "numSprites" : 5,
@@ -183,7 +198,7 @@
 }, {
   "floorTypeName" : "tilled_earth",
   "i18nKey" : "FLOOR.TILLED_EARTH",
-  "floorTypeId" : 13,
+  "floorTypeId" : 14,
   "materialType" : "EARTH",
   "layer" : 3,
   "numSprites" : 5,

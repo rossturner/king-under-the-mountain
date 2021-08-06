@@ -65,6 +65,7 @@ public class MapEnvironment implements ChildPersistable {
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("dailyWeather", dailyWeather.getName());
 		asJson.put("weather", currentWeather.getName());
+		asJson.put("weatherRemaining", weatherTimeRemaining);
 		asJson.put("sunlight", HexColors.toHexString(sunlightColor));
 		asJson.put("weatherColor", HexColors.toHexString(weatherColor));
 		asJson.put("snow", fallenSnow);
@@ -81,6 +82,7 @@ public class MapEnvironment implements ChildPersistable {
 		if (this.currentWeather == null) {
 			throw new InvalidSaveException("Could not find weather type with name " + asJson.getString("weather"));
 		}
+		this.weatherTimeRemaining = asJson.getDoubleValue("weatherRemaining");
 		setSunlightColor(HexColors.get(asJson.getString("sunlight")));
 		setWeatherColor(HexColors.get(asJson.getString("weatherColor")));
 		this.fallenSnow = asJson.getDoubleValue("snow");

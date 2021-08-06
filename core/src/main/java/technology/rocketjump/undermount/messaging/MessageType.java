@@ -117,10 +117,11 @@ public class MessageType {
 	public static final int JOB_REMOVED = 609; // As the job is actually removed from the game world
 	public static final int JOB_CREATED = 610;
 	public static final int JOB_CANCELLED = 611; // When the job is longer wanted
-	public static final int CHANGE_FLOOR = 612;
-	public static final int REMOVE_HAULING_JOBS_TO_POSITION = 613;
-	public static final int JOB_STATE_CHANGE = 614;
-	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 615;
+	public static final int REPLACE_FLOOR = 612;
+	public static final int UNDO_REPLACE_FLOOR = 613;
+	public static final int REMOVE_HAULING_JOBS_TO_POSITION = 614;
+	public static final int JOB_STATE_CHANGE = 615;
+	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 616;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;

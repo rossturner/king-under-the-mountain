@@ -29,8 +29,8 @@
   "maxSunlight" : "#EEEEEE",
   "oxidises" : true,
   "chanceToExtinguishFire" : 0.2,
-  "accumulatesSnowPerHour" : 0.15,
+  "accumulatesSnowPerHour" : 0.12,
   "happinessModifiers" : {
-    "SLEEPING" : "SLEEPING_IN_RAIN"
+    "SLEEPING" : "SLEEPING_IN_SNOW"
   }
 } ]

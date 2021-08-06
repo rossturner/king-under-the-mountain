@@ -327,8 +327,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				break;
 			}
 			case "TILLING": {
-				messageDispatcher.dispatchMessage(MessageType.CHANGE_FLOOR,
-						new ChangeFloorMessage(completedJob.getJobLocation(), completedJob.getReplacementFloorType(), completedJob.getReplacementFloorMaterial()));
+				messageDispatcher.dispatchMessage(MessageType.REPLACE_FLOOR,
+						new ReplaceFloorMessage(completedJob.getJobLocation(), completedJob.getReplacementFloorType(), completedJob.getReplacementFloorMaterial()));
 				break;
 			}
 			case "PLANTING": {

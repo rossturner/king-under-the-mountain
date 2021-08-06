@@ -1,11 +1,20 @@
 package technology.rocketjump.undermount.environment;
 
 
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
+import technology.rocketjump.undermount.assets.FloorTypeDictionary;
+import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.environment.model.ForecastItem;
 import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.ReplaceFloorMessage;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
@@ -16,20 +25,29 @@ import java.util.List;
 @Singleton
 public class WeatherManager implements Updatable {
 
+	private final GameMaterial snowMaterialType;
+	private final FloorType snowFloorType;
 	private GameContext gameContext;
 
 	private final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
 	private final WeatherEffectUpdater weatherEffectUpdater;
 	private final ScreenWriter screenWriter;
+	private final MessageDispatcher messageDispatcher;
 
 	private static final float TOTAL_COLOR_CHANGE_TIME = 10f;
 	private double lastUpdateGameTime;
 
 	@Inject
-	public WeatherManager(DailyWeatherTypeDictionary dailyWeatherTypeDictionary, WeatherEffectUpdater weatherEffectUpdater, ScreenWriter screenWriter) {
+	public WeatherManager(DailyWeatherTypeDictionary dailyWeatherTypeDictionary, WeatherEffectUpdater weatherEffectUpdater,
+						  ScreenWriter screenWriter, FloorTypeDictionary floorTypeDictionary,
+						  GameMaterialDictionary gameMaterialDictionary, MessageDispatcher messageDispatcher) {
 		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
 		this.weatherEffectUpdater = weatherEffectUpdater;
 		this.screenWriter = screenWriter;
+
+		snowFloorType = floorTypeDictionary.getByFloorTypeName("fallen_snow");
+		snowMaterialType = gameMaterialDictionary.getByName("Snowfall");
+		this.messageDispatcher = messageDispatcher;
 	}
 
 	@Override
@@ -42,11 +60,7 @@ public class WeatherManager implements Updatable {
 			gameContext.getMapEnvironment().setWeatherTimeRemaining(gameContext.getMapEnvironment().getWeatherTimeRemaining() - elapsedGameTime);
 
 			if (gameContext.getMapEnvironment().getCurrentWeather().getAccumulatesSnowPerHour() != null) {
-				double extraSnow = gameContext.getMapEnvironment().getCurrentWeather().getAccumulatesSnowPerHour() * elapsedGameTime;
-				double currentSnow = gameContext.getMapEnvironment().getFallenSnow();
-				currentSnow += extraSnow;
-				currentSnow = Math.max(0.0, Math.min(currentSnow, 1.0));
-				gameContext.getMapEnvironment().setFallenSnow(currentSnow);
+				updateSnowfall(elapsedGameTime);
 			}
 
 			if (GlobalSettings.DEV_MODE) {
@@ -59,6 +73,49 @@ public class WeatherManager implements Updatable {
 			}
 
 			updateWeatherColor(deltaTime);
+		}
+	}
+
+	private void updateSnowfall(double elapsedGameTime) {
+		double extraSnow = gameContext.getMapEnvironment().getCurrentWeather().getAccumulatesSnowPerHour() * elapsedGameTime;
+		double currentSnow = gameContext.getMapEnvironment().getFallenSnow();
+		double newSnow = currentSnow + extraSnow;
+		newSnow = Math.max(0.0, Math.min(newSnow, 1.0));
+
+		int currentSnowPercentile = toSnowPercentile(currentSnow);
+		int newSnowPercentile = toSnowPercentile(newSnow);
+
+		if (newSnowPercentile != currentSnowPercentile) {
+			if (newSnowPercentile > currentSnowPercentile) {
+				// Increasing snowfall
+				for (int percentileToAdd = currentSnowPercentile; percentileToAdd < newSnowPercentile || percentileToAdd == 100; percentileToAdd++) {
+					addSnowToGround(percentileToAdd);
+				}
+			} else {
+				// Decreasing snowfall
+				for (int percentileToRemove = currentSnowPercentile; percentileToRemove > newSnowPercentile || percentileToRemove == 0; percentileToRemove--) {
+					removeSnowFromGround(percentileToRemove);
+				}
+			}
+		}
+
+		gameContext.getMapEnvironment().setFallenSnow(newSnow);
+	}
+
+	private void addSnowToGround(int percentileToAdd) {
+		for (MapTile mapTile : gameContext.getAreaMap().getTilesForPercentile(percentileToAdd)) {
+			if (mapTile.getRoof().getState().equals(TileRoofState.OPEN) && !mapTile.getFloor().getFloorType().equals(snowFloorType) &&
+				!mapTile.hasWall() && !mapTile.getFloor().isRiverTile() & !mapTile.getFloor().hasBridge()) {
+				messageDispatcher.dispatchMessage(MessageType.REPLACE_FLOOR, new ReplaceFloorMessage(mapTile.getTilePosition(), snowFloorType, snowMaterialType));
+			}
+		}
+	}
+
+	private void removeSnowFromGround(int percentileToRemove) {
+		for (MapTile mapTile : gameContext.getAreaMap().getTilesForPercentile(percentileToRemove)) {
+			if (mapTile.getFloor().getFloorType().equals(snowFloorType)) {
+				messageDispatcher.dispatchMessage(MessageType.UNDO_REPLACE_FLOOR, mapTile.getTilePosition());
+			}
 		}
 	}
 
@@ -119,6 +176,18 @@ public class WeatherManager implements Updatable {
 				currentWeatherColor.b += changeAmount;
 			}
 
+		}
+	}
+
+	private static final double MIN_SNOW_TO_TRIGGER_PERCENTILE = 0.3;
+	private static final double MAX_SNOW_TO_TRIGGER_PERCENTILE = 0.7;
+
+	private int toSnowPercentile(double snowAmount) {
+		snowAmount -= MIN_SNOW_TO_TRIGGER_PERCENTILE;
+		if (snowAmount < 0) {
+			return 0;
+		} else {
+			return Math.min((int) (snowAmount / ((MAX_SNOW_TO_TRIGGER_PERCENTILE - MIN_SNOW_TO_TRIGGER_PERCENTILE) / 100.0)), 100);
 		}
 	}
 

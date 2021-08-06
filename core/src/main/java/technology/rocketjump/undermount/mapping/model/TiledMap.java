@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.zones.Zone;
 
 import java.util.*;
 
+import static java.util.Collections.emptyList;
 import static technology.rocketjump.undermount.mapping.tile.CompassDirection.*;
 
 /**
@@ -33,6 +34,8 @@ public class TiledMap {
 
 	private Array<Array<MapTile>> cells;
 	private Array<Array<MapVertex>> mapVertices;
+
+	private Map<Integer, List<MapTile>> tilesByPercentile = new HashMap<>();
 
 	private GridPoint2 embarkPoint;
 
@@ -58,7 +61,9 @@ public class TiledMap {
 			Array<MapTile> column = new Array<>(height);
 			Array<MapVertex> vertexColumn = new Array<>(height + 1);
 			for (int y = 0; y < height; y++) {
-				column.add(new MapTile(random.nextLong(), x, y, defaultFloor, defaultFloorMaterial));
+				MapTile mapTile = new MapTile(random.nextLong(), x, y, defaultFloor, defaultFloorMaterial);
+				column.add(mapTile);
+				tilesByPercentile.computeIfAbsent((int)Math.abs(mapTile.getSeed() % 100), a -> new ArrayList<>()).add(mapTile);
 				vertexColumn.add(new MapVertex(x, y));
 			}
 			vertexColumn.add(new MapVertex(x, height));
@@ -278,5 +283,9 @@ public class TiledMap {
 	public void addZone(Zone movedZone) {
 		regionsToZonesMap.computeIfAbsent(movedZone.getRegionId(), x -> new HashMap<>()).put(movedZone.getZoneId(), movedZone);
 		movedZone.addToAllTiles(this);
+	}
+
+	public List<MapTile> getTilesForPercentile(int percentile) {
+		return tilesByPercentile.getOrDefault(percentile, emptyList());
 	}
 }

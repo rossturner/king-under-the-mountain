@@ -19,6 +19,7 @@ public class TileFloor implements ChildPersistable {
 
 	private FloorType type;
 	private GameMaterial material;
+
 	private RiverTile riverTile;
 
 	private Bridge bridge;

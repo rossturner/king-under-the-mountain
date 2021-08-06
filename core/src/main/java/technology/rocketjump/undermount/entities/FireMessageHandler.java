@@ -123,7 +123,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 					if (tile.hasWall()) {
 						messageDispatcher.dispatchMessage(MessageType.REMOVE_WALL, tile.getTilePosition());
 					}
-					messageDispatcher.dispatchMessage(MessageType.CHANGE_FLOOR, new ChangeFloorMessage(tile.getTilePosition(), ashFloor, ashMaterial));
+					messageDispatcher.dispatchMessage(MessageType.REPLACE_FLOOR, new ReplaceFloorMessage(tile.getTilePosition(), ashFloor, ashMaterial));
 				}
 				return true;
 			case ADD_FIRE_TO_ENTITY:

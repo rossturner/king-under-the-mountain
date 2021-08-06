@@ -149,6 +149,7 @@ public class HappinessComponent implements InfrequentlyUpdatableComponent {
 		CAUGHT_IN_RAIN(-10, 0.5),
 		WORKED_IN_RAIN(-20, 0.5),
 		SLEEPING_IN_RAIN(-40, 4),
+		SLEEPING_IN_SNOW(-40, 4),
 
 		DRANK_ALCOHOL(40, 8),
 		ALCOHOL_WITHDRAWAL(-30, 0.5);
@@ -169,8 +170,11 @@ public class HappinessComponent implements InfrequentlyUpdatableComponent {
 			SLEEPING_IN_RAIN.replaces.add(WORKED_IN_RAIN);
 			SLEEPING_IN_RAIN.replaces.add(CAUGHT_IN_RAIN);
 			SLEEPING_IN_RAIN.replaces.add(SLEPT_OUTSIDE);
+			SLEEPING_IN_RAIN.replaces.add(SLEEPING_IN_SNOW);
 
 			WORKED_IN_RAIN.replaces.add(CAUGHT_IN_RAIN);
+
+			SLEEPING_IN_SNOW.replaces.add(SLEEPING_IN_RAIN); // Just one of sleeping in rain or snow appliesa
 
 			for (HappinessModifier happinessModifier : HappinessModifier.values()) {
 				for (HappinessModifier otherModifier : HappinessModifier.values()) {

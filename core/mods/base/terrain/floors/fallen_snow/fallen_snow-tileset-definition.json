@@ -1,0 +1,15 @@
+{
+  "floorTypeName": "fallen_snow",
+  "i18nKey": "FLOOR.SNOW",
+  "materialType": "EARTH",
+  "type": "floor",
+  "numSprites": 5,
+  "layer": 13,
+  "overlapType": {
+    "overlapName": "ground"
+  },
+  "useMaterialColor": false,
+  "lowColorCode": "#d9eaea",
+  "highColorCode": "#f3f3f3",
+  "speedModifier": 0.85
+}
