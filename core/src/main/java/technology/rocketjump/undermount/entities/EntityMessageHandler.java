@@ -32,10 +32,7 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.*;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.status.Death;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -86,6 +83,7 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause.OXIDISED;
+import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
 import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
 import static technology.rocketjump.undermount.jobs.JobMessageHandler.deconstructFurniture;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
@@ -704,7 +702,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private boolean handle(HumanoidDeathMessage deathMessage) {
 		Entity deceased = deathMessage.deceased;
 		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) deceased.getPhysicalEntityComponent().getAttributes();
-		if (attributes.getConsciousness().equals(DEAD)) {
+		Consciousness previousConciousness = attributes.getConsciousness();
+		if (previousConciousness.equals(DEAD)) {
 			// Already dead! Doesn't need killing again
 			return true;
 		}
@@ -729,7 +728,11 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		historyComponent.setDeathReason(deathMessage.reason);
 
 		// Rotate and change orientation of deceased
-		changeToConsciousnessOnFloor(deceased, DEAD, gameContext, messageDispatcher);
+		if (previousConciousness.equals(AWAKE)) {
+			changeToConsciousnessOnFloor(deceased, DEAD, gameContext, messageDispatcher);
+		} else {
+			messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, deceased);
+		}
 
 		// TODO check for game-over state
 		boolean allDead = true;

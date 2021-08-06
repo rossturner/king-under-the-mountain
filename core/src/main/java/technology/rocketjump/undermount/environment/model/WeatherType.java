@@ -35,6 +35,7 @@ public class WeatherType {
 
 	private boolean oxidises;
 	private Float chanceToExtinguishFire;
+	private Float chanceToFreezeToDeathFromSleeping;
 	private Double accumulatesSnowPerHour = DEFAULT_SNOW_ACCUMULATION;
 
 	private Map<HappinessInteraction, HappinessComponent.HappinessModifier> happinessModifiers = new EnumMap<>(HappinessInteraction.class);
@@ -114,6 +115,14 @@ public class WeatherType {
 
 	public void setChanceToExtinguishFire(Float chanceToExtinguishFire) {
 		this.chanceToExtinguishFire = chanceToExtinguishFire;
+	}
+
+	public Float getChanceToFreezeToDeathFromSleeping() {
+		return chanceToFreezeToDeathFromSleeping;
+	}
+
+	public void setChanceToFreezeToDeathFromSleeping(Float chanceToFreezeToDeathFromSleeping) {
+		this.chanceToFreezeToDeathFromSleeping = chanceToFreezeToDeathFromSleeping;
 	}
 
 	public Map<HappinessInteraction, HappinessComponent.HappinessModifier> getHappinessModifiers() {
