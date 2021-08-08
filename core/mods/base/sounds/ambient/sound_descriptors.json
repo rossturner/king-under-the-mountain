@@ -40,6 +40,26 @@
     "looping": true
   },
   {
+    "name": "Isolated thunder",
+    "filenames": [
+      "isolated_thunder.wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 1.0,
+    "looping": true
+  },
+  {
+    "name": "Wind",
+    "filenames": [
+      "City_Wind_Blowing_Interior.wav"
+    ],
+    "minPitch": 1.0,
+    "maxPitch": 1.0,
+    "volumeModifier": 1.0,
+    "looping": true
+  },
+  {
     "name": "River",
     "filenames": [
       "River Flowing (Loop).wav"

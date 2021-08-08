@@ -1,8 +1,266 @@
 [ {
-  "name" : "Rain into thunderstorm",
+  "name" : "Perfect day spring",
+  "applicableSeason" : "SPRING",
+  "chance" : 0.25,
   "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 12.0,
+    "chance" : 1.0
+  } ]
+}, {
+  "name" : "Scattered showers",
+  "applicableSeason" : "SPRING",
+  "chance" : 0.45,
+  "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 4.0,
+    "chance" : 0.3
+  }, {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.3
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Miserable showers",
+  "applicableSeason" : "SPRING",
+  "chance" : 0.2,
+  "forecast" : [ {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 8.0,
+    "chance" : 0.6
+  } ]
+}, {
+  "name" : "Wet thunderstorm (spring)",
+  "applicableSeason" : "SPRING",
+  "chance" : 0.1,
+  "forecast" : [ {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.2
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 8.0,
+    "chance" : 0.4
+  }, {
     "weatherTypeName" : "Wet Thunderstorm",
     "minDurationHours" : 1.0,
-    "maxDurationHours" : 12.0
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Perfect day summer",
+  "applicableSeason" : "SUMMER",
+  "chance" : 0.5,
+  "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 12.0,
+    "chance" : 1.0
+  } ]
+}, {
+  "name" : "Scattered showers (summer)",
+  "applicableSeason" : "SUMMER",
+  "chance" : 0.3,
+  "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.3
+  }, {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 3.0,
+    "chance" : 0.3
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 4.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Wet thunderstorm (summer)",
+  "applicableSeason" : "SUMMER",
+  "chance" : 0.1,
+  "forecast" : [ {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.2
+  }, {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 8.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Wet Thunderstorm",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Summer dry thunderstorm",
+  "applicableSeason" : "SUMMER",
+  "chance" : 0.1,
+  "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 7.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 4.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Dry Thunderstorm",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 5.0,
+    "chance" : 0.2
+  } ]
+}, {
+  "name" : "Perfect day autumn",
+  "applicableSeason" : "AUTUMN",
+  "chance" : 0.3,
+  "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 12.0,
+    "chance" : 1.0
+  } ]
+}, {
+  "name" : "Scattered showers (autumn)",
+  "applicableSeason" : "AUTUMN",
+  "chance" : 0.4,
+  "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 4.0,
+    "chance" : 0.3
+  }, {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.3
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Miserable showers (autumn)",
+  "applicableSeason" : "AUTUMN",
+  "chance" : 0.2,
+  "forecast" : [ {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 8.0,
+    "chance" : 0.6
+  } ]
+}, {
+  "name" : "Wet thunderstorm (autumn)",
+  "applicableSeason" : "AUTUMN",
+  "chance" : 0.1,
+  "forecast" : [ {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.2
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 8.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Wet Thunderstorm",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Nice or cloudy",
+  "applicableSeason" : "WINTER",
+  "chance" : 0.1,
+  "forecast" : [ {
+    "weatherTypeName" : "Perfect",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 8.0,
+    "chance" : 0.6
+  } ]
+}, {
+  "name" : "Mostly cold winds",
+  "applicableSeason" : "WINTER",
+  "chance" : 0.2,
+  "forecast" : [ {
+    "weatherTypeName" : "Cold winds",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 14.0,
+    "chance" : 0.6
+  }, {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 4.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Snowy day",
+  "applicableSeason" : "WINTER",
+  "chance" : 0.6,
+  "forecast" : [ {
+    "weatherTypeName" : "Cold winds",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.6
+  }, {
+    "weatherTypeName" : "Snow",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
+  } ]
+}, {
+  "name" : "Wet thunderstorm (winter)",
+  "applicableSeason" : "WINTER",
+  "chance" : 0.1,
+  "forecast" : [ {
+    "weatherTypeName" : "Rain",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.2
+  }, {
+    "weatherTypeName" : "Cloudy",
+    "minDurationHours" : 1.5,
+    "maxDurationHours" : 8.0,
+    "chance" : 0.4
+  }, {
+    "weatherTypeName" : "Wet Thunderstorm",
+    "minDurationHours" : 1.0,
+    "maxDurationHours" : 6.0,
+    "chance" : 0.4
   } ]
 } ]

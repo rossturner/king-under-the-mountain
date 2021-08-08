@@ -22,6 +22,8 @@ import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 
 import java.util.HashMap;
 
+import static technology.rocketjump.undermount.environment.WeatherManager.selectDailyWeather;
+
 @Singleton
 public class GameContextFactory {
 
@@ -53,7 +55,7 @@ public class GameContextFactory {
 		context.setGameClock(clock);
 		context.setMapEnvironment(new MapEnvironment());
 		initialise(context.getSettlementState());
-		initialise(context.getMapEnvironment());
+		initialise(context.getMapEnvironment(), context);
 		return context;
 	}
 
@@ -80,8 +82,8 @@ public class GameContextFactory {
 		return context;
 	}
 
-	private void initialise(MapEnvironment mapEnvironment) {
-		mapEnvironment.setDailyWeather(dailyWeatherTypeDictionary.getAll().iterator().next());
+	private void initialise(MapEnvironment mapEnvironment, GameContext context) {
+		mapEnvironment.setDailyWeather(selectDailyWeather(context, dailyWeatherTypeDictionary));
 		mapEnvironment.setCurrentWeather(weatherTypeDictionary.getAll().iterator().next());
 	}
 

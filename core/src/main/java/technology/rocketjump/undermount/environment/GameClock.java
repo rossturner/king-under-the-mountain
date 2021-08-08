@@ -74,16 +74,16 @@ public class GameClock implements Persistable {
 
 			dayOfSeason++;
 			currentDayNumber++;
-			messageDispatcher.dispatchMessage(MessageType.DAY_ELAPSED);
 			if (dayOfSeason > DAYS_IN_SEASON) {
 				dayOfSeason = 1;
 				currentSeason = currentSeason.getNext();
 //				messageDispatcher.dispatchMessage(MessageType.SEASON_ELAPSED);
 				if (currentSeason.equals(Season.SPRING)) {
-					messageDispatcher.dispatchMessage(MessageType.YEAR_ELAPSED);
 					currentYear++;
+					messageDispatcher.dispatchMessage(MessageType.YEAR_ELAPSED);
 				}
 			}
+			messageDispatcher.dispatchMessage(MessageType.DAY_ELAPSED);
 		}
 	}
 

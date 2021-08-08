@@ -10,6 +10,10 @@ public class DailyWeatherType {
 	@Name
 	private String name;
 
+	private Season applicableSeason;
+
+	private float chance;
+
 	private List<ForecastItem> forecast = new ArrayList<>();
 
 	public String getName() {
@@ -26,5 +30,21 @@ public class DailyWeatherType {
 
 	public void setForecast(List<ForecastItem> forecast) {
 		this.forecast = forecast;
+	}
+
+	public Season getApplicableSeason() {
+		return applicableSeason;
+	}
+
+	public void setApplicableSeason(Season applicableSeason) {
+		this.applicableSeason = applicableSeason;
+	}
+
+	public float getChance() {
+		return chance;
+	}
+
+	public void setChance(float chance) {
+		this.chance = chance;
 	}
 }

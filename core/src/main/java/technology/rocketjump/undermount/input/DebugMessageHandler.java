@@ -15,19 +15,16 @@ import technology.rocketjump.undermount.environment.WeatherManager;
 import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
-import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DebugMessage;
-import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Singleton
 public class DebugMessageHandler implements GameContextAware, Telegraph, Disposable {
@@ -89,13 +86,11 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 							}
 						}
 
-						weatherManager.triggerNextWeather();
+//						weatherManager.triggerNextWeather();
 
 //						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
 
-						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-								lightningEffectType, Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}
-						));
+						weatherManager.triggerStrikeAt(tile);
 
 //						ongoingEffectEntityFactory.create(ongoingEffectAttributesFactory.createByTypeName("Fire"),
 //							message.getWorldPosition(), gameContext);

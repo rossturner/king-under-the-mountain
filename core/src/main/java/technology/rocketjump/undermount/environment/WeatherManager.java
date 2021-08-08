@@ -2,11 +2,14 @@ package technology.rocketjump.undermount.environment;
 
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.Color;
 import technology.rocketjump.undermount.assets.FloorTypeDictionary;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.environment.model.DailyWeatherType;
 import technology.rocketjump.undermount.environment.model.ForecastItem;
 import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -32,9 +35,10 @@ import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Singleton
-public class WeatherManager implements Updatable {
+public class WeatherManager implements Updatable, Telegraph {
 
 	private final GameMaterial snowMaterialType;
 	private final FloorType snowFloorType;
@@ -65,6 +69,41 @@ public class WeatherManager implements Updatable {
 		lightningEffectType = particleEffectTypeDictionary.getByName("Lightning strike");
 		thunderCrackSoundAsset = soundAssetDictionary.getByName("Thundercrack");
 		this.messageDispatcher = messageDispatcher;
+
+		messageDispatcher.addListener(this, MessageType.DAY_ELAPSED);
+	}
+
+	@Override
+	public boolean handleMessage(Telegram msg) {
+		switch (msg.message) {
+			case MessageType.DAY_ELAPSED: {
+				gameContext.getMapEnvironment().setDailyWeather(selectDailyWeather(gameContext, dailyWeatherTypeDictionary));
+				return true;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
+		}
+	}
+
+	public static DailyWeatherType selectDailyWeather(GameContext gameContext, DailyWeatherTypeDictionary dailyWeatherTypeDictionary) {
+		List<DailyWeatherType> weatherTypesForSeason = dailyWeatherTypeDictionary.getAll().stream()
+				.filter(dailyWeatherType -> dailyWeatherType.getApplicableSeason().equals(gameContext.getGameClock().getCurrentSeason()))
+				.collect(Collectors.toList());
+
+		float combinedChance = 0f;
+		for (DailyWeatherType dailyWeatherType : weatherTypesForSeason) {
+			combinedChance += dailyWeatherType.getChance();
+		}
+		float roll = gameContext.getRandom().nextFloat() * combinedChance;
+		for (DailyWeatherType dailyWeatherType : weatherTypesForSeason) {
+			roll -= dailyWeatherType.getChance();
+			if (roll <= 0f) {
+				return dailyWeatherType;
+			}
+		}
+
+		// should not get here
+		return weatherTypesForSeason.get(0);
 	}
 
 	@Override
@@ -92,7 +131,7 @@ public class WeatherManager implements Updatable {
 
 			if (GlobalSettings.DEV_MODE) {
 				screenWriter.printLine(gameContext.getMapEnvironment().getCurrentWeather().getName() + ", remaining: " + gameContext.getMapEnvironment().getWeatherTimeRemaining());
-				screenWriter.printLine("Time to next strike: " + timeToNextLightningStrike);
+				screenWriter.printLine("Daily weather: " + gameContext.getMapEnvironment().getDailyWeather().getName());
 			}
 
 			if (gameContext.getMapEnvironment().getWeatherTimeRemaining() < 0) {
@@ -158,8 +197,27 @@ public class WeatherManager implements Updatable {
 		if (forecast.size() == 1) {
 			selectedForecast = forecast.get(0);
 		} else {
-			while (selectedForecast == null || selectedForecast.getWeatherType().equals(currentWeather)) {
-				selectedForecast = forecast.get(gameContext.getRandom().nextInt(forecast.size()));
+			float combinedChance = 0f;
+			for (ForecastItem forecastItem : forecast) {
+				if (!forecastItem.getWeatherType().equals(currentWeather)) {
+					combinedChance += forecastItem.getChance();
+				}
+			}
+
+			float roll = gameContext.getRandom().nextFloat() * combinedChance;
+			for (ForecastItem forecastItem : forecast) {
+				if (!forecastItem.getWeatherType().equals(currentWeather)) {
+					roll -= forecastItem.getChance();
+					if (roll <= 0f) {
+						selectedForecast = forecastItem;
+						break;
+					}
+				}
+			}
+
+			if (selectedForecast == null) {
+				// should not happen
+				selectedForecast = forecast.get(0);
 			}
 		}
 
@@ -212,8 +270,8 @@ public class WeatherManager implements Updatable {
 	}
 
 	private static final double MIN_SNOW_TO_TRIGGER_PERCENTILE = 0.3;
-
 	private static final double MAX_SNOW_TO_TRIGGER_PERCENTILE = 0.7;
+
 	private int toSnowPercentile(double snowAmount) {
 		snowAmount -= MIN_SNOW_TO_TRIGGER_PERCENTILE;
 		if (snowAmount < 0) {
@@ -239,18 +297,23 @@ public class WeatherManager implements Updatable {
 				.findFirst();
 
 		if (strikeLocation.isPresent()) {
-			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
-					lightningEffectType, Optional.empty(), Optional.of(new JobTarget(strikeLocation.get())), (p) -> {}
-			));
-			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(
-					thunderCrackSoundAsset, null, strikeLocation.get().getWorldPositionOfCenter(), null
-			));
-
-			if (gameContext.getRandom().nextBoolean()) {
-				messageDispatcher.dispatchMessage(MessageType.START_FIRE_IN_TILE, strikeLocation.get());
-			}
+			triggerStrikeAt(strikeLocation.get());
 		}
 
+	}
+
+	public void triggerStrikeAt(MapTile targetTile) {
+		messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(
+				lightningEffectType, Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {}
+		));
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(
+				thunderCrackSoundAsset,
+				targetTile.getEntities().isEmpty() ? null : targetTile.getEntities().iterator().next().getId(),
+				targetTile.getWorldPositionOfCenter(), null
+		));
+		if (gameContext.getRandom().nextBoolean()) {
+			messageDispatcher.dispatchMessage(MessageType.START_FIRE_IN_TILE, targetTile);
+		}
 	}
 
 	private int strikeChance(MapTile a) {

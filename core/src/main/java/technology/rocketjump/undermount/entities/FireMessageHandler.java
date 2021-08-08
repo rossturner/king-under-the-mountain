@@ -157,16 +157,36 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	private void startFireInTile(Vector2 location) {
-		spreadFireFrom(location, emptySet(), 1, false, 0, true);
+		MapTile targetTile = gameContext.getAreaMap().getTile(location);
+		if (targetTile == null) {
+			return;
+		}
+
+		if (targetTile.hasWall()) {
+			if (targetTile.getWall().getMaterial().isCombustible()) {
+				createFireInTile(targetTile);
+				return;
+			}
+		} else {
+			Optional<Entity> combustibleEntity = targetTile.getEntities().stream()
+					.filter(e -> e.getPhysicalEntityComponent().getAttributes()
+							.getMaterials().values().stream().anyMatch(GameMaterial::isCombustible))
+					.findFirst();
+
+			if (combustibleEntity.isPresent()) {
+				StatusComponent statusComponent = combustibleEntity.get().getOrCreateComponent(StatusComponent.class);
+				statusComponent.init(combustibleEntity.get(), messageDispatcher, gameContext);
+				statusComponent.apply(new OnFireStatus());
+				return;
+			} else if (targetTile.getFloor().getMaterial().isCombustible()) {
+				createFireInTile(targetTile);
+				return;
+			}
+		}
 	}
 
 
 	private void spreadFireFrom(Vector2 location, Set<Long> entityIdsToIgnore, int maxFiresToStart, boolean staticEntitiesOnly, int maxDistanceToSpreadFire) {
-		spreadFireFrom(location, entityIdsToIgnore, maxFiresToStart, staticEntitiesOnly, maxDistanceToSpreadFire, false);
-	}
-
-	private void spreadFireFrom(Vector2 location, Set<Long> entityIdsToIgnore, int maxFiresToStart, boolean staticEntitiesOnly,
-								int maxDistanceToSpreadFire, boolean includeCentreTile) {
 		GridPoint2 centre = toGridPoint(location);
 		int firesStarted = 0;
 		MapTile centreTile = gameContext.getAreaMap().getTile(centre);
@@ -177,7 +197,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		Collections.shuffle(directions, gameContext.getRandom());
 		for (CompassDirection direction : directions) {
 			MapTile nextTile = centreTile;
-			for (int distance = includeCentreTile ? 0 : 1; distance <= maxDistanceToSpreadFire; distance++) {
+			for (int distance = 1; distance <= maxDistanceToSpreadFire; distance++) {
 				nextTile = selectNextTile(nextTile, direction);
 				if (nextTile == null) {
 					break;

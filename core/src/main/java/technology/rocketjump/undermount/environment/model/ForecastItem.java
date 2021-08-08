@@ -9,6 +9,7 @@ public class ForecastItem {
 	private WeatherType weatherType;
 	private double minDurationHours;
 	private double maxDurationHours;
+	private float chance;
 
 	public String getWeatherTypeName() {
 		return weatherTypeName;
@@ -40,5 +41,13 @@ public class ForecastItem {
 
 	public void setWeatherType(WeatherType weatherType) {
 		this.weatherType = weatherType;
+	}
+
+	public float getChance() {
+		return chance;
+	}
+
+	public void setChance(float chance) {
+		this.chance = chance;
 	}
 }

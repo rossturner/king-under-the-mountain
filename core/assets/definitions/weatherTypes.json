@@ -8,6 +8,15 @@
   "accumulatesSnowPerHour" : -0.08,
   "happinessModifiers" : { }
 }, {
+  "name" : "Cloudy",
+  "i18nKey" : "WEATHER.TYPE.CLOUDY",
+  "maxSunlight" : "#c8c8c8",
+  "dayAmbienceSoundAssetName" : "Daytime",
+  "nightAmbienceSoundAssetName" : "Nighttime",
+  "oxidises" : false,
+  "accumulatesSnowPerHour" : 0.0,
+  "happinessModifiers" : { }
+}, {
   "name" : "Rain",
   "i18nKey" : "WEATHER.TYPE.RAIN",
   "particleEffectTypeName" : "Rain",
@@ -39,6 +48,16 @@
     "SLEEPING" : "SLEEPING_IN_RAIN"
   }
 }, {
+  "name" : "Dry Thunderstorm",
+  "i18nKey" : "WEATHER.TYPE.THUNDERSTORM",
+  "maxSunlight" : "#DDDDDD",
+  "dayAmbienceSoundAssetName" : "Isolated thunder",
+  "nightAmbienceSoundAssetName" : "Isolated thunder",
+  "oxidises" : false,
+  "lightningStrikesPerHour" : 2.0,
+  "accumulatesSnowPerHour" : -0.08,
+  "happinessModifiers" : { }
+}, {
   "name" : "Snow",
   "i18nKey" : "WEATHER.TYPE.SNOW",
   "particleEffectTypeName" : "Snow",
@@ -50,4 +69,14 @@
   "happinessModifiers" : {
     "SLEEPING" : "SLEEPING_IN_SNOW"
   }
+}, {
+  "name" : "Cold winds",
+  "i18nKey" : "WEATHER.TYPE.COLD_WINDS",
+  "maxSunlight" : "#EEEEEE",
+  "dayAmbienceSoundAssetName" : "Wind",
+  "nightAmbienceSoundAssetName" : "Wind",
+  "oxidises" : false,
+  "chanceToFreezeToDeathFromSleeping" : 0.01,
+  "accumulatesSnowPerHour" : 0.0,
+  "happinessModifiers" : { }
 } ]
