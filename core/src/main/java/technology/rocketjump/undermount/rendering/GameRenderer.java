@@ -103,7 +103,7 @@ public class GameRenderer implements AssetDisposable {
 		cursorLight.dispose();
 	}
 
-	public void renderGame(GameContext gameContext, OrthographicCamera camera) {
+	public void renderGame(GameContext gameContext, OrthographicCamera camera, float fadeAmount) {
 		TiledMap worldMap = gameContext.getAreaMap();
 		int screenX = Gdx.input.getX();
 		int screenY = Gdx.input.getY();
@@ -152,7 +152,7 @@ public class GameRenderer implements AssetDisposable {
 			////// Draw combined final render ///
 
 			combinedFrameBuffer.begin();
-			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion);
+			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion, fadeAmount);
 			combinedFrameBuffer.end();
 
 			frameBufferSpriteBatch.begin();
@@ -173,7 +173,7 @@ public class GameRenderer implements AssetDisposable {
 
 			frameBufferSpriteBatch.end();
 		} else {
-			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion);
+			combinedRenderer.renderFinal(diffuseTextureRegion, lightingTextureRegion, fadeAmount);
 			inWorldUIRenderer.render(gameContext, camera, particlesToRenderAsUI, diffuseSpriteCache);
 		}
 

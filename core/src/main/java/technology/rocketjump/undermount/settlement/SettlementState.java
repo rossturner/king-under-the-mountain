@@ -7,10 +7,12 @@ import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipeMaterialSelection;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
+import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -21,6 +23,9 @@ import technology.rocketjump.undermount.settlement.production.ProductionAssignme
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 
 import java.util.*;
+
+import static technology.rocketjump.undermount.gamecontext.GameState.GAME_OVER;
+import static technology.rocketjump.undermount.gamecontext.GameState.NORMAL;
 
 /**
  * Simple bean to hold "global" settlement data
@@ -52,7 +57,7 @@ public class SettlementState implements Persistable {
 	private int immigrantCounter;
 	private Vector2 immigrationPoint;
 	private Double nextImmigrationGameTime;
-	private boolean gameOver;
+	private GameState gameState;
 
 	public String getSettlementName() {
 		return settlementName;
@@ -94,12 +99,8 @@ public class SettlementState implements Persistable {
 		this.immigrationPoint = immigrationPoint;
 	}
 
-	public void setGameOver(boolean gameOver) {
-		this.gameOver = gameOver;
-	}
-
 	public boolean isGameOver() {
-		return gameOver;
+		return gameState.equals(GAME_OVER);
 	}
 
 	public Map<String, Boolean> getPreviousHints() {
@@ -108,6 +109,14 @@ public class SettlementState implements Persistable {
 
 	public List<String> getCurrentHints() {
 		return currentHints;
+	}
+
+	public GameState getGameState() {
+		return gameState;
+	}
+
+	public void setGameState(GameState currentState) {
+		this.gameState = currentState;
 	}
 
 	@Override
@@ -217,8 +226,8 @@ public class SettlementState implements Persistable {
 			asJson.put("impendingCollapses", collapsesJson);
 		}
 
-		if (gameOver) {
-			asJson.put("gameOver", true);
+		if (!gameState.equals(NORMAL)) {
+			asJson.put("gameState", gameState.name());
 		}
 
 		if (!craftingRecipePriority.isEmpty()) {
@@ -400,7 +409,7 @@ public class SettlementState implements Persistable {
 			}
 		}
 
-		gameOver = asJson.getBooleanValue("gameOver");
+		this.gameState = EnumParser.getEnumValue(asJson, "gameState", GameState.class, NORMAL);
 
 
 		JSONObject craftingRecipePriorityJson = asJson.getJSONObject("craftingRecipePriority");

@@ -14,6 +14,9 @@ public class MessageType {
 	public static final int SWITCH_MENU = 3;
 	public static final int CRASH_REPORTING_OPT_IN_MODIFIED = 4;
 	public static final int CANCEL_SCREEN_OR_GO_TO_MAIN_MENU = 5;
+	public static final int BEGIN_SPAWN_SETTLEMENT = 6;
+	public static final int INITIALISE_SPAWN_POINT = 7;
+	public static final int SETTLEMENT_SPAWNED = 8;
 
 	// Mouse & Input messages
 	public static final int MOUSE_DOWN = 200;

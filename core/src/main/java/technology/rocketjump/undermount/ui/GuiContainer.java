@@ -12,6 +12,9 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.InfoWindow;
@@ -28,7 +31,7 @@ import static technology.rocketjump.undermount.persistence.UserPreferences.Prefe
 import static technology.rocketjump.undermount.rendering.camera.DisplaySettings.DEFAULT_UI_SCALE;
 
 @Singleton
-public class GuiContainer implements Telegraph {
+public class GuiContainer implements Telegraph, GameContextAware {
 
 	private final InfoWindow infoWindow;
 	private final Table containerTable;
@@ -94,7 +97,6 @@ public class GuiContainer implements Telegraph {
 
 		this.guiViewRepository = guiViewRepository;
 		switchView(GuiViewName.DEFAULT_MENU);
-
 
 		timeAndDateStage = new Stage(viewport);
 
@@ -245,5 +247,19 @@ public class GuiContainer implements Telegraph {
 
 	public Stage getPrimaryStage() {
 		return primaryStage;
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		if (gameContext != null && gameContext.getSettlementState().getGameState().equals(GameState.SELECT_SPAWN_LOCATION)) {
+			switchView(GuiViewName.SELECT_STARTING_LOCATION);
+		} else {
+			switchView(GuiViewName.DEFAULT_MENU);
+		}
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
 	}
 }

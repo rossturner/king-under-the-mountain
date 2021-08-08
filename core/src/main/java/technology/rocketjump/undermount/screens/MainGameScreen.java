@@ -6,6 +6,8 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ai.GdxAI;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.environment.model.GameSpeed;
@@ -24,8 +26,10 @@ import technology.rocketjump.undermount.ui.GuiContainer;
 import technology.rocketjump.undermount.ui.widgets.GameDialog;
 import technology.rocketjump.undermount.ui.widgets.ModalDialog;
 
+import static technology.rocketjump.undermount.gamecontext.GameState.SELECT_SPAWN_LOCATION;
+
 @Singleton
-public class MainGameScreen implements GameContextAware, GameScreen {
+public class MainGameScreen implements GameContextAware, GameScreen, Telegraph {
 
 	private final GameRenderer gameRenderer;
 	private final PrimaryCameraWrapper primaryCameraWrapper;
@@ -37,6 +41,10 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 
 	private GameContext gameContext;
 	private GameUpdateRegister gameUpdateRegister;
+
+	private boolean fadingOut;
+	private boolean fadingIn;
+	private float fadeAmount;
 
 	@Inject
 	public MainGameScreen(GameRenderer gameRenderer, PrimaryCameraWrapper primaryCameraWrapper, GuiContainer guiContainer,
@@ -50,13 +58,15 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 		this.messageDispatcher = messageDispatcher;
 		this.particleEffectUpdater = particleEffectUpdater;
 		this.gameUpdateRegister = gameUpdateRegister;
+
+		messageDispatcher.addListener(this, MessageType.BEGIN_SPAWN_SETTLEMENT);
 	}
 
 	@Override
 	public void render(float deltaTime) {
 		updateGameLogic(deltaTime);
 
-		gameRenderer.renderGame(gameContext, primaryCameraWrapper.getCamera());
+		gameRenderer.renderGame(gameContext, primaryCameraWrapper.getCamera(), fadeAmount);
 		if (DisplaySettings.showGui) {
 			guiContainer.render();
 		}
@@ -66,7 +76,7 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 		screenWriter.clearText();
 		float multipliedDeltaTime = deltaTime * gameContext.getGameClock().getSpeedMultiplier();
 		GdxAI.getTimepiece().update(multipliedDeltaTime); // This is used for message delays, not actual AI, so runs when paused
-		if (!gameContext.getGameClock().isPaused()) {
+		if (!gameContext.getGameClock().isPaused() && !gameContext.getSettlementState().getGameState().equals(SELECT_SPAWN_LOCATION)) {
 			gameContext.getGameClock().update(multipliedDeltaTime, messageDispatcher);
 		}
 		particleEffectUpdater.update(multipliedDeltaTime, new TileBoundingBox(primaryCameraWrapper.getCamera(), gameContext.getAreaMap()));
@@ -83,6 +93,38 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 //		screenWriter.printLine("Zoom: " + primaryCameraWrapper.getCamera().zoom);
 
 		guiContainer.update(deltaTime);
+
+		updateScreenFade(deltaTime);
+	}
+
+	private void updateScreenFade(float deltaTime) {
+		if (fadingOut) {
+			fadeAmount += deltaTime;
+			if (fadeAmount >= 1f) {
+				fadeAmount = 1f;
+				fadingOut = false;
+				fadingIn = true;
+				messageDispatcher.dispatchMessage(MessageType.INITIALISE_SPAWN_POINT);
+			}
+		} else if (fadingIn) {
+			fadeAmount -= deltaTime;
+			if (fadeAmount <= 0f) {
+				fadingIn = false;
+				fadeAmount = 0f;
+			}
+		}
+	}
+
+	@Override
+	public boolean handleMessage(Telegram msg) {
+		switch (msg.message) {
+			case MessageType.BEGIN_SPAWN_SETTLEMENT: {
+				this.fadingOut = true;
+				return true;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
+		}
 	}
 
 	@Override
@@ -140,6 +182,8 @@ public class MainGameScreen implements GameContextAware, GameScreen {
 
 	@Override
 	public void clearContextRelatedState() {
-
+		fadingOut = false;
+		fadingIn = false;
+		fadeAmount = 0f;
 	}
 }

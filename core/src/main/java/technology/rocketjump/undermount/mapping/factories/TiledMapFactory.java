@@ -107,7 +107,15 @@ public class TiledMapFactory {
 	}
 
 	// Note this passes in MessageDispatcher as a guard against using it in this class before the GameContext is set up
-	public void postInitStep(GameContext gameContext, MessageDispatcher messageDispatcher, List<Profession> professionList) {
+	public void preSelectSpawnStep(GameContext gameContext, MessageDispatcher messageDispatcher) {
+		TiledMap areaMap = gameContext.getAreaMap();
+		GridPoint2 embarkPoint = areaMap.getEmbarkPoint();
+		messageDispatcher.dispatchMessage(MessageType.FLOOD_FILL_EXPLORATION, embarkPoint);
+	}
+
+
+	// Note this passes in MessageDispatcher as a guard against using it in this class before the GameContext is set up
+	public void postSelectSpawnStep(GameContext gameContext, MessageDispatcher messageDispatcher, List<Profession> professionList) {
 		TiledMap areaMap = gameContext.getAreaMap();
 		GridPoint2 embarkPoint = areaMap.getEmbarkPoint();
 		messageDispatcher.dispatchMessage(MessageType.FLOOD_FILL_EXPLORATION, embarkPoint);

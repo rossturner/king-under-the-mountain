@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 import java.util.HashMap;
 
 import static technology.rocketjump.undermount.environment.WeatherManager.selectDailyWeather;
+import static technology.rocketjump.undermount.gamecontext.GameState.SELECT_SPAWN_LOCATION;
 
 @Singleton
 public class GameContextFactory {
@@ -50,8 +51,10 @@ public class GameContextFactory {
 	public GameContext create(String settlementName, TiledMap areaMap, long worldSeed, GameClock clock) {
 		GameContext context = new GameContext();
 		context.getSettlementState().setSettlementName(settlementName);
+		context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);
 		context.setAreaMap(areaMap);
 		context.setRandom(new RandomXS128(worldSeed));
+		clock.setPaused(true);
 		context.setGameClock(clock);
 		context.setMapEnvironment(new MapEnvironment());
 		initialise(context.getSettlementState());
@@ -84,7 +87,7 @@ public class GameContextFactory {
 
 	private void initialise(MapEnvironment mapEnvironment, GameContext context) {
 		mapEnvironment.setDailyWeather(selectDailyWeather(context, dailyWeatherTypeDictionary));
-		mapEnvironment.setCurrentWeather(weatherTypeDictionary.getAll().iterator().next());
+		mapEnvironment.setCurrentWeather(weatherTypeDictionary.getByName("Perfect"));
 	}
 
 	private void initialise(SettlementState settlementState) {

@@ -44,6 +44,7 @@ import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import java.util.*;
 
+import static technology.rocketjump.undermount.gamecontext.GameState.SELECT_SPAWN_LOCATION;
 import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
@@ -138,7 +139,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 	}
 
 	public void update() {
-		if (gameContext == null) {
+		if (gameContext == null || gameContext.getSettlementState().getGameState().equals(SELECT_SPAWN_LOCATION)) {
 			return;
 		}
 		TiledMap map = gameContext.getAreaMap();

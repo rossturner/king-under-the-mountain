@@ -1,6 +1,8 @@
 package technology.rocketjump.undermount.ui.views;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.ai.msg.Telegram;
+import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -11,6 +13,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.environment.model.GameSpeed;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.screens.GameScreenDictionary;
 import technology.rocketjump.undermount.screens.ManagementScreen;
@@ -23,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
-public class TimeDateGuiView implements GuiView, GameContextAware {
+public class TimeDateGuiView implements GuiView, GameContextAware, Telegraph {
 
 	private final I18nTranslator i18nTranslator;
 	private final I18nTextWidget dateTimeLabel;
@@ -74,8 +77,17 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 		timeDateTable.add(dateTimeLabel).colspan(speedButtons.size()).center().padTop(4);
 
 		layoutTable = new Table(uiSkin);
-		layoutTable.add(managementScreenButtonTable).right().top();
-		layoutTable.add(timeDateTable).center();
+		reset(null);
+
+		messageDispatcher.addListener(this, MessageType.SETTLEMENT_SPAWNED);
+	}
+
+	private void reset(GameContext gameContext) {
+		layoutTable.clearChildren();
+		if (gameContext == null || !gameContext.getSettlementState().getGameState().equals(GameState.SELECT_SPAWN_LOCATION)) {
+			layoutTable.add(managementScreenButtonTable).right().top();
+			layoutTable.add(timeDateTable).center();
+		}
 	}
 
 
@@ -121,6 +133,18 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 	}
 
 	@Override
+	public boolean handleMessage(Telegram msg) {
+		switch (msg.message) {
+			case MessageType.SETTLEMENT_SPAWNED: {
+				reset(gameContext);
+				return true;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
+		}
+	}
+
+	@Override
 	public void onContextChange(GameContext gameContext) {
 		this.gameContext = gameContext;
 		if (gameContext != null) {
@@ -137,11 +161,11 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 				speedButton.setHighlighted(highlight);
 			}
 		}
+		reset(gameContext);
 	}
 
 	@Override
 	public void clearContextRelatedState() {
 
 	}
-
 }

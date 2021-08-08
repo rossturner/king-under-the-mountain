@@ -60,7 +60,7 @@ public class CombinedLightingResultRenderer implements Disposable {
 		combinedShader = ShaderLoader.createShader(vertexShaderFile, fragmentShaderFile);
 	}
 
-	public void renderFinal(TextureRegion diffuseTextureRegion, TextureRegion lightingTextureRegion) {
+	public void renderFinal(TextureRegion diffuseTextureRegion, TextureRegion lightingTextureRegion, float fadeAmount) {
 		Gdx.gl.glDisable(GL20.GL_BLEND);
 
 		combinedShader.begin();
@@ -68,6 +68,7 @@ public class CombinedLightingResultRenderer implements Disposable {
 		lightingTextureRegion.getTexture().bind(1);
 		combinedShader.setUniformi("u_textureDiffuse", 0);
 		diffuseTextureRegion.getTexture().bind(0);
+		combinedShader.setUniformf("u_alpha", 1 - fadeAmount);
 
 
 		fullScrenMesh.render(combinedShader, GL20.GL_TRIANGLES);

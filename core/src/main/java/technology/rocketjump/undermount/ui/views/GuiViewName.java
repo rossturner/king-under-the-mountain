@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.ui.views;
 
 public enum GuiViewName {
 
+	SELECT_STARTING_LOCATION,
 	DEFAULT_MENU,
 
 	BUILD_MENU,

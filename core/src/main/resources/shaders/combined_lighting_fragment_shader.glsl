@@ -8,6 +8,7 @@ varying vec2 v_position;
 //uniform sampler2D u_texture;
 uniform sampler2D u_textureDiffuse;
 uniform sampler2D u_textureLighting;
+uniform float u_alpha;
 
 void main() {
     vec2 correctedCoords = vec2(
@@ -18,6 +19,7 @@ void main() {
     vec4 diffuseColor = texture2D(u_textureDiffuse, correctedCoords);
     vec4 lightingColor = texture2D(u_textureLighting, correctedCoords);
 
+    vec4 combined = diffuseColor * lightingColor;
 
-    gl_FragColor = diffuseColor * lightingColor;//vec4(correctedCoords.y, correctedCoords.y, correctedCoords.y, 1.0);
+    gl_FragColor = combined * u_alpha;
 }

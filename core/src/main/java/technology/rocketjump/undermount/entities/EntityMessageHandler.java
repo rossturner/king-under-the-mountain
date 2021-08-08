@@ -42,6 +42,7 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntit
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesItem;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.jobs.JobFactory;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.model.Job;
@@ -747,7 +748,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		if (allDead) {
 			Notification gameOverNotification = new Notification(NotificationType.GAME_OVER, null);
 			messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, gameOverNotification);
-			gameContext.getSettlementState().setGameOver(true);
+			gameContext.getSettlementState().setGameState(GameState.GAME_OVER);
 		}
 
 

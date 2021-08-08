@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.WallPlacementMode;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -31,6 +32,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.Room;
+import technology.rocketjump.undermount.rooms.RoomTile;
 import technology.rocketjump.undermount.rooms.StockpileGroup;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 import technology.rocketjump.undermount.sprites.BridgeTypeDictionary;
@@ -41,6 +43,8 @@ import java.util.*;
 
 import static technology.rocketjump.undermount.mapping.tile.TileExploration.EXPLORED;
 import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
+import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
+import static technology.rocketjump.undermount.ui.GameInteractionMode.PLACE_ROOM;
 import static technology.rocketjump.undermount.ui.Selectable.SelectableType.*;
 
 @Singleton
@@ -93,6 +97,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.REPLACE_JOB_PRIORITY);
 		messageDispatcher.addListener(this, MessageType.GUI_STOCKPILE_GROUP_SELECTED);
 		messageDispatcher.addListener(this, MessageType.CANCEL_SCREEN_OR_GO_TO_MAIN_MENU);
+		messageDispatcher.addListener(this, MessageType.BEGIN_SPAWN_SETTLEMENT);
 		// FIXME Should these really live here?
 		for (WallType wallType : wallTypeDictionary.getAllDefinitions()) {
 			if (wallType.isConstructed()) {
@@ -249,6 +254,10 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				interactionStateContainer.setJobPriorityToApply(jobPriority);
 				return true;
 			}
+			case MessageType.BEGIN_SPAWN_SETTLEMENT: {
+				interactionStateContainer.virtualRoom.clearTiles();
+				return true;
+			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
@@ -274,10 +283,12 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 	}
 
 	private void primaryButtonClicked(MouseChangeMessage mouseChangeMessage) {
-		if (interactionStateContainer.isDragging()) {
+		if (gameContext != null && gameContext.getSettlementState().getGameState().equals(GameState.SELECT_SPAWN_LOCATION)) {
+			setPotentialEmbarkLocation(mouseChangeMessage);
+		} else if (interactionStateContainer.isDragging()) {
 			interactionStateContainer.setDragging(false);
 
-			if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.PLACE_ROOM)) {
+			if (interactionStateContainer.getInteractionMode().equals(PLACE_ROOM)) {
 				RoomPlacementMessage roomPlacementMessage = new RoomPlacementMessage(interactionStateContainer.virtualRoom.getRoomTiles(),
 						interactionStateContainer.getInteractionMode().getRoomType(), interactionStateContainer.getSelectedStockpileGroup());
 				messageDispatcher.dispatchMessage(MessageType.ROOM_PLACEMENT, roomPlacementMessage);
@@ -318,6 +329,40 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 			}
 
 		}
+	}
+
+	private void setPotentialEmbarkLocation(MouseChangeMessage mouseChangeMessage) {
+		interactionStateContainer.virtualRoom.clearTiles();
+		gameContext.getAreaMap().setEmbarkPoint(null);
+
+		Vector2 worldClickPosition = mouseChangeMessage.getWorldPosition();
+		MapTile centreTile = gameContext.getAreaMap().getTile(worldClickPosition);
+		if (centreTile != null) {
+
+			for (int x = centreTile.getTileX() - 1; x <= centreTile.getTileX() + 1; x++) {
+				for (int y = centreTile.getTileY() - 1; y <= centreTile.getTileY() + 1; y++) {
+					MapTile tile = gameContext.getAreaMap().getTile(x, y);
+					if (tile == null) {
+						continue;
+					}
+					if (PLACE_ROOM.designationCheck.shouldDesignationApply(tile)) {
+						GridPoint2 position = new GridPoint2(x, y);
+						RoomTile newRoomTile = new RoomTile();
+						newRoomTile.setRoom(interactionStateContainer.virtualRoom);
+						newRoomTile.setTilePosition(position);
+						newRoomTile.setTile(tile);
+						tile.setRoomTile(newRoomTile);
+						interactionStateContainer.virtualRoom.addTile(newRoomTile);
+					}
+				}
+			}
+
+			interactionStateContainer.virtualRoom.updateLayout(gameContext.getAreaMap());
+			if (interactionStateContainer.virtualRoom.getRoomTiles().size() == 9) {
+				gameContext.getAreaMap().setEmbarkPoint(toGridPoint(worldClickPosition));
+			}
+		}
+
 	}
 
 	private void defaultWorldClick(MouseChangeMessage mouseChangeMessage) {

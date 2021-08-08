@@ -12,9 +12,8 @@ import org.apache.commons.io.IOUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.EntityStore;
 import technology.rocketjump.undermount.environment.GameClock;
-import technology.rocketjump.undermount.gamecontext.GameContext;
-import technology.rocketjump.undermount.gamecontext.GameContextFactory;
-import technology.rocketjump.undermount.gamecontext.GameContextRegister;
+import technology.rocketjump.undermount.environment.model.GameSpeed;
+import technology.rocketjump.undermount.gamecontext.*;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.mapping.factories.TiledMapFactory;
@@ -41,7 +40,7 @@ import java.util.List;
 import static technology.rocketjump.undermount.rendering.camera.GlobalSettings.DEV_MODE;
 
 @Singleton
-public class ScreenManager implements Telegraph {
+public class ScreenManager implements Telegraph, GameContextAware {
 
 	private final GameScreenDictionary gameScreenDictionary;
 	private final MessageDispatcher messageDispatcher;
@@ -56,6 +55,7 @@ public class ScreenManager implements Telegraph {
 
 	private MainGameScreen mainGameScreen;
 	private MainMenuScreen mainMenuScreen;
+	private GameContext gameContext;
 
 	@Inject
 	public ScreenManager(GameScreenDictionary gameScreenDictionary, MessageDispatcher messageDispatcher, TiledMapFactory mapFactory,
@@ -80,6 +80,7 @@ public class ScreenManager implements Telegraph {
 		messageDispatcher.addListener(this, MessageType.GUI_SHOW_INFO);
 		messageDispatcher.addListener(this, MessageType.NOTIFY_RESTART_REQUIRED);
 		messageDispatcher.addListener(this, MessageType.SHOW_DIALOG);
+		messageDispatcher.addListener(this, MessageType.INITIALISE_SPAWN_POINT);
 	}
 
 	private void startNewGame(StartNewGameMessage newGameMessage) {
@@ -102,9 +103,10 @@ public class ScreenManager implements Telegraph {
 			}
 		}
 
-		mapFactory.postInitStep(gameContext, messageDispatcher, buildProfessionList());
+		mapFactory.preSelectSpawnStep(gameContext, messageDispatcher);
 		// Trigger context change again for camera to be updated with map
 		gameContextRegister.setNewContext(gameContext);
+		gameContext.getAreaMap().setEmbarkPoint(null);
 
 		mainGameScreen.show();
 	}
@@ -208,7 +210,7 @@ public class ScreenManager implements Telegraph {
 				return true;
 			}
 			case MessageType.GUI_SHOW_ERROR: {
-				ErrorType errorType = (ErrorType)msg.extraInfo;
+				ErrorType errorType = (ErrorType) msg.extraInfo;
 				ModalDialog dialog = dialogDictionary.getErrorDialog(errorType);
 				currentScreen.showDialog(dialog);
 				return true;
@@ -220,7 +222,7 @@ public class ScreenManager implements Telegraph {
 				return true;
 			}
 			case MessageType.SHOW_DIALOG: {
-				GameDialog dialog = (GameDialog)msg.extraInfo;
+				GameDialog dialog = (GameDialog) msg.extraInfo;
 				currentScreen.showDialog(dialog);
 				return true;
 			}
@@ -228,6 +230,14 @@ public class ScreenManager implements Telegraph {
 				// TODO this can be inlined to GUI_SHOW_INFO message
 				ModalDialog dialog = dialogDictionary.getInfoDialog(InfoType.RESTART_REQUIRED);
 				currentScreen.showDialog(dialog);
+				return true;
+			}
+			case MessageType.INITIALISE_SPAWN_POINT: {
+				mapFactory.postSelectSpawnStep(gameContext, messageDispatcher, buildProfessionList());
+				gameContext.getSettlementState().setGameState(GameState.NORMAL);
+				messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.PAUSED);
+				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.DEFAULT_MENU);
+				messageDispatcher.dispatchMessage(MessageType.SETTLEMENT_SPAWNED);
 				return true;
 			}
 			default:
@@ -267,11 +277,21 @@ public class ScreenManager implements Telegraph {
 		}
 	}
 
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
+	}
+
 	private static class GameSeed {
 
 		public final long seed;
 		public final int mapWidth;
-		public final int  mapHeight;
+		public final int mapHeight;
 
 		public GameSeed(long seed, int mapWidth, int mapHeight) {
 			this.seed = seed;
