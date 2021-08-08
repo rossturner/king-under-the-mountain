@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.behaviour.items.ItemBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
+import technology.rocketjump.undermount.entities.components.OxidisationComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -73,10 +74,17 @@ public class ItemEntityFactory {
 		BehaviourComponent behaviorComponent = new ItemBehaviour();
 		LocationComponent locationComponent = createLocationComponent(tilePosition, attributes.getSeed());
 
-
 		Entity entity = new Entity(EntityType.ITEM, physicalComponent, behaviorComponent, locationComponent, messageDispatcher, gameContext);
 		entity.addComponent(new ItemAllocationComponent());
 		entity.init(messageDispatcher, gameContext);
+
+		attributes.getAllMaterials().stream().filter(m -> m.getOxidisation() != null)
+				.findAny()
+				.ifPresent((a) -> {
+					OxidisationComponent oxidisationComponent = new OxidisationComponent();
+					oxidisationComponent.init(entity, messageDispatcher, gameContext);
+					entity.addComponent(oxidisationComponent);
+				});
 
 		entityAssetUpdater.updateEntityAssets(entity);
 		if (addToGameContext) {

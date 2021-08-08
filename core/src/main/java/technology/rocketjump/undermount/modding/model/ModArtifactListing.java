@@ -23,6 +23,8 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
+import technology.rocketjump.undermount.environment.model.DailyWeatherType;
+import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -132,6 +134,8 @@ public class ModArtifactListing {
 
 				def("definitions", "materials", SINGLE_FILE, JSON_ARRAY, GameMaterial.class,
 						"definitions/materials", "*-materials.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions", "weatherTypes", SINGLE_FILE, JSON_ARRAY, WeatherType.class,
+						"definitions", "weatherTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "designations", SINGLE_FILE, JSON_ARRAY, TileDesignation.class,
 						"definitions", "designations.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "constants", SINGLE_FILE, JSON_OBJECT, null,
@@ -156,12 +160,13 @@ public class ModArtifactListing {
 						"settings", "timeAndDaySettings.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 				def("settings", "immigrationSettings", SINGLE_FILE, JSON_OBJECT, null,
 						"settings", "immigrationSettings.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
+				def("settings", "dailyWeather", SINGLE_FILE, JSON_ARRAY, DailyWeatherType.class,
+						"settings", "dailyWeather.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				////////// sounds //////////
+					// Do not use anything but .wav for sound effects or else game freezes while parsing ogg/mp3
 				def("sounds/data", null, COPY_ORIGINAL_FILES, WAV, null,
 						"sounds", "**/*.wav", WAV, ADDITIVE, CopyFilesProcessor.class),
-				def("sounds/data", null, COPY_ORIGINAL_FILES, OGG, null,
-						"sounds", "**/*.ogg", OGG, ADDITIVE, CopyFilesProcessor.class, DoNotDeleteExistingFiles.class),
 				def("sounds", "soundAssets", SINGLE_FILE, JSON_ARRAY, SoundAsset.class,
 						"sounds", "**/sound_descriptors.json", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedSoundsExist.class, UniqueNames.class),

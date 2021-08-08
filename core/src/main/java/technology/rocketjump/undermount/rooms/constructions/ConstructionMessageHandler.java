@@ -277,6 +277,8 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 				constructionAttributes.getFurnitureType(), findApplicableMaterial(itemsRemovedFromConstruction.values(), constructionAttributes.getPrimaryMaterialType()));
 		createdAttributes.setCurrentLayout(constructionAttributes.getCurrentLayout());
 
+		copyMaterials(createdAttributes, itemsRemovedFromConstruction);
+
 		Entity createdFurnitureEntity = furnitureEntityFactory.create(createdAttributes, construction.getPrimaryLocation(), new FurnitureBehaviour(), gameContext);
 
 		ConstructedEntityComponent constructedEntityComponent = new ConstructedEntityComponent();
@@ -286,7 +288,6 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 
 		createdFurnitureEntity.getBehaviourComponent().init(createdFurnitureEntity, messageDispatcher, gameContext);
 
-		copyMaterials(createdAttributes, itemsRemovedFromConstruction);
 		copyLiquids(createdFurnitureEntity, itemsRemovedFromConstruction);
 
 		// Add some applicable tools

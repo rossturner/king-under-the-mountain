@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import org.apache.commons.lang3.EnumUtils;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
+import technology.rocketjump.undermount.entities.components.InfrequentlyUpdatableComponent;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -14,7 +16,7 @@ import java.util.*;
 /**
  * This class is to keep track of current changes in a Settler's happiness
  */
-public class HappinessComponent implements EntityComponent {
+public class HappinessComponent implements InfrequentlyUpdatableComponent {
 
 	public static final int MAX_HAPPINESS_VALUE = 100;
 	public static final int MIN_HAPPINESS_VALUE = -100;
@@ -22,6 +24,12 @@ public class HappinessComponent implements EntityComponent {
 
 	private int netModifier = 0;
 
+	@Override
+	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
+
+	}
+
+	@Override
 	public void infrequentUpdate(double elapsedTime) {
 		for (HappinessModifier happinessModifier : new HashSet<>(timesToExpiry.keySet())) {
 			double currentExpiry = timesToExpiry.get(happinessModifier);
@@ -133,10 +141,15 @@ public class HappinessComponent implements EntityComponent {
 		DYING_OF_THIRST(-50, 0.5),
 
 		SLEPT_OUTSIDE(-20, 3.0),
-		SLEPT_ON_GROUND(-20, 5.0),
-		SLEPT_IN_SHARED_BEDROOM(-10, 5.0),
+		SLEPT_ON_GROUND(-10, 5.0),
+		SLEPT_IN_SHARED_BEDROOM(-15, 5.0),
 		SLEPT_IN_ENCLOSED_BEDROOM(30, 5.0),
 		SLEPT_IN_SMALL_BEDROOM(-5, 5.0),
+
+		CAUGHT_IN_RAIN(-10, 0.5),
+		WORKED_IN_RAIN(-20, 0.5),
+		SLEEPING_IN_RAIN(-40, 4),
+		SLEEPING_IN_SNOW(-40, 4),
 
 		DRANK_ALCOHOL(40, 8),
 		ALCOHOL_WITHDRAWAL(-30, 0.5);
@@ -153,6 +166,15 @@ public class HappinessComponent implements EntityComponent {
 			DYING_OF_THIRST.replaces.add(VERY_THIRSTY);
 
 			DRANK_ALCOHOL.replaces.add(ALCOHOL_WITHDRAWAL);
+
+			SLEEPING_IN_RAIN.replaces.add(WORKED_IN_RAIN);
+			SLEEPING_IN_RAIN.replaces.add(CAUGHT_IN_RAIN);
+			SLEEPING_IN_RAIN.replaces.add(SLEPT_OUTSIDE);
+			SLEEPING_IN_RAIN.replaces.add(SLEEPING_IN_SNOW);
+
+			WORKED_IN_RAIN.replaces.add(CAUGHT_IN_RAIN);
+
+			SLEEPING_IN_SNOW.replaces.add(SLEEPING_IN_RAIN); // Just one of sleeping in rain or snow appliesa
 
 			for (HappinessModifier happinessModifier : HappinessModifier.values()) {
 				for (HappinessModifier otherModifier : HappinessModifier.values()) {

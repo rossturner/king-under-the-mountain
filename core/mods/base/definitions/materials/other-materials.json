@@ -1,55 +1,12 @@
 [
   {
-    "materialName": "Iron",
-    "materialType": "METAL",
-    "colorCode": "#a8b5c1"
-  },
-  {
-    "materialName": "Steel",
-    "materialType": "METAL",
-    "colorCode": "#DDDDDE"
-  },
-  {
-    "materialName": "Tin",
-    "materialType": "METAL",
-    "colorCode": "#c9c6b9"
-  },
-  {
-    "materialName": "Bronze",
-    "materialType": "METAL",
-    "colorCode": "#9d6d34",
-    "useInRandomGeneration": false
-  },
-  {
-    "materialName": "Copper",
-    "materialType": "METAL",
-    "colorCode": "#c67852",
-    "useInRandomGeneration": false
-  },
-  {
-    "materialName": "Gold",
-    "materialType": "METAL",
-    "colorCode": "#feed76",
-    "useInRandomGeneration": false
-  },
-  {
-    "materialName": "Platinum",
-    "materialType": "METAL",
-    "colorCode": "#f6f6f6",
-    "useInRandomGeneration": false
-  },
-  {
-    "materialName": "Silver",
-    "materialType": "METAL",
-    "colorCode": "#f3f3f3",
-    "useInRandomGeneration": false
-  },
-
-
-  {
     "materialName": "Green Vitriol",
     "materialType": "VITRIOL",
     "colorCode": "#7fccbb"
+  },
+  {
+    "materialName": "Snowfall",
+    "materialType": "OTHER"
   },
 
   {

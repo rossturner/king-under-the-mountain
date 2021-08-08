@@ -525,14 +525,14 @@ public class I18nTranslator implements I18nUpdatable {
 				// Only expecting one . for now
 				String[] split = token.split("\\.");
 				replacement = replacements.getOrDefault(split[0], new I18nWord(split[0]));
-				if (split[1].equals("noun_or_plural")) {
+				if (split[split.length - 1].equals("noun_or_plural")) {
 					if (getQuantity(replacements) > 1) {
 						replacementWordclass = I18nWordClass.PLURAL;
 					} else {
 						replacementWordclass = I18nWordClass.NOUN;
 					}
 				} else {
-					replacementWordclass = I18nWordClass.valueOf(split[1].toUpperCase());
+					replacementWordclass = I18nWordClass.valueOf(split[split.length - 1].toUpperCase());
 				}
 			} else {
 				replacement = replacements.getOrDefault(token, I18nWord.BLANK);

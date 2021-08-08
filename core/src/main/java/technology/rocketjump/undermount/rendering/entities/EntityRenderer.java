@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.CompleteAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.RenderLayerDictionary;
@@ -21,14 +22,20 @@ import technology.rocketjump.undermount.entities.model.physical.EntityAttributes
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.custom_libgdx.ShaderLoader;
 
 import java.util.Map;
 
 import static technology.rocketjump.undermount.assets.entities.model.NullEntityAsset.NULL_ASSET;
+import static technology.rocketjump.undermount.entities.model.EntityType.STATIC_ENTITY_TYPES;
+import static technology.rocketjump.undermount.mapping.tile.roof.TileRoofState.OPEN;
 
-public class EntityRenderer implements Disposable {
+@Singleton
+public class EntityRenderer implements GameContextAware, Disposable {
 
 	public static float PIXELS_PER_TILE = 64f;
 
@@ -39,6 +46,8 @@ public class EntityRenderer implements Disposable {
 	private boolean usingNormalMapInverseShader = false;
 	private ShaderProgram defaultShader;
 	private ShaderProgram inverseNormalShader;
+	private ShaderProgram snowShader;
+	private GameContext gameContext;
 
 	@Inject
 	public EntityRenderer(CompleteAssetDictionary completeAssetDictionary,
@@ -46,9 +55,12 @@ public class EntityRenderer implements Disposable {
 		this.assetDictionary = completeAssetDictionary;
 		this.renderLayerDictionary = renderLayerDictionary;
 
-		FileHandle vertexShaderFile = Gdx.files.classpath("shaders/default_vertex_shader.glsl");
+		FileHandle defaultVertexShaderFile = Gdx.files.classpath("shaders/default_vertex_shader.glsl");
 		FileHandle fragmentShaderFile = Gdx.files.classpath("shaders/invert_normal_map_red_channel_fragment_shader.glsl");
-		inverseNormalShader = ShaderLoader.createShader(vertexShaderFile, fragmentShaderFile);
+		inverseNormalShader = ShaderLoader.createShader(defaultVertexShaderFile, fragmentShaderFile);
+
+		FileHandle snowFragmentShaderFile = Gdx.files.classpath("shaders/snow_fragment_shader.glsl");
+		snowShader = ShaderLoader.createShader(defaultVertexShaderFile, snowFragmentShaderFile);
 	}
 
 	/**
@@ -175,7 +187,8 @@ public class EntityRenderer implements Disposable {
 		return asset;
 	}
 
-	private void render(EntityPartRenderStep renderStep, Batch spriteBatch, LocationComponent locationComponent, RenderMode renderMode, Color overrideColor, Color extraMultiplyColor) {
+	private void render(EntityPartRenderStep renderStep, Batch spriteBatch, LocationComponent locationComponent, RenderMode renderMode,
+						Color overrideColor, Color extraMultiplyColor) {
 		if (renderStep.isAnotherEntity()) {
 			Entity entity = renderStep.getEntity();
 			LocationComponent otherEntityLocation = renderStep.getOtherEntity().getLocationComponent();
@@ -254,25 +267,7 @@ public class EntityRenderer implements Disposable {
 		}
 
 
-		Sprite sprite = null;
-
-		if (spriteDescriptor.getIsAnimated()) {
-			Array<Sprite> animatedSprites = spriteDescriptor.getAnimatedSprites(renderMode);
-			if (animatedSprites != null && animatedSprites.size > 0) {
-				float animationProgress = renderStep.getEntity().getPhysicalEntityComponent().getAnimationProgress();
-
-				int frameSelection = Math.round(animationProgress * animatedSprites.size);
-				if (frameSelection >= animatedSprites.size) {
-					frameSelection = animatedSprites.size - 1;
-				} else if (frameSelection <= 0) {
-					frameSelection = 0;
-				}
-				sprite = animatedSprites.get(frameSelection);
-			}
-		} else {
-			sprite = spriteDescriptor.getSprite(renderMode);
-		}
-
+		Sprite sprite = getSprite(renderStep, renderMode, spriteDescriptor);
 
 		if (sprite == null) {
 			if (renderMode.equals(RenderMode.NORMALS)) {
@@ -299,13 +294,70 @@ public class EntityRenderer implements Disposable {
 		}
 		affine.translate(-spriteWorldSize.x / 2, -spriteWorldSize.y / 2);
 		spriteBatch.draw(sprite, spriteWorldSize.x, spriteWorldSize.y, affine);
+
+		if (renderMode.equals(RenderMode.DIFFUSE) && snowRenderingEnabled() && isStaticEntityAndOutside(renderStep.getEntity())) {
+			Sprite normalSprite = getSprite(renderStep, RenderMode.NORMALS, spriteDescriptor);
+			if (normalSprite != null) {
+				ShaderProgram currentShader = spriteBatch.getShader();
+				spriteBatch.setShader(snowShader);
+				snowShader.setUniformf("u_snowAmount", (float)gameContext.getMapEnvironment().getFallenSnow());
+				spriteBatch.setColor(Color.WHITE);
+				spriteBatch.draw(normalSprite, spriteWorldSize.x, spriteWorldSize.y, affine);
+				spriteBatch.setShader(currentShader);
+			}
+		}
+	}
+
+	private Sprite getSprite(EntityPartRenderStep renderStep, RenderMode renderMode, SpriteDescriptor spriteDescriptor) {
+		Sprite sprite = null;
+
+		if (spriteDescriptor.getIsAnimated()) {
+			Array<Sprite> animatedSprites = spriteDescriptor.getAnimatedSprites(renderMode);
+			if (animatedSprites != null && animatedSprites.size > 0) {
+				float animationProgress = renderStep.getEntity().getPhysicalEntityComponent().getAnimationProgress();
+
+				int frameSelection = Math.round(animationProgress * animatedSprites.size);
+				if (frameSelection >= animatedSprites.size) {
+					frameSelection = animatedSprites.size - 1;
+				} else if (frameSelection <= 0) {
+					frameSelection = 0;
+				}
+				sprite = animatedSprites.get(frameSelection);
+			}
+		} else {
+			sprite = spriteDescriptor.getSprite(renderMode);
+		}
+		return sprite;
 	}
 
 	private Vector2 spriteWorldSize = new Vector2(); // Private member to avoid new instance on every render call
-	private Affine2 affine = new Affine2(); // Private member to avoid new instance on every render call
 
+	private boolean snowRenderingEnabled() {
+		return gameContext.getMapEnvironment().getFallenSnow() > 0;
+	}
+
+	private Affine2 affine = new Affine2(); // Private member to avoid new instance on every render call
 	@Override
 	public void dispose() {
 		inverseNormalShader.dispose();
+	}
+
+	private boolean isStaticEntityAndOutside(Entity entity) {
+		if (STATIC_ENTITY_TYPES.contains(entity.getType()) && (entity.getLocationComponent().getContainerEntity() == null)) {
+			MapTile mapTile = gameContext.getAreaMap().getTile(entity.getLocationComponent().getWorldPosition());
+			return mapTile != null && mapTile.getRoof().getState().equals(OPEN);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
 	}
 }

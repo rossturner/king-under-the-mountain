@@ -95,6 +95,7 @@ public class MessageType {
 
 	public static final int FURNITURE_IN_USE = 345;
 	public static final int FURNITURE_NO_LONGER_IN_USE = 346;
+	public static final int MATERIAL_OXIDISED = 347;
 
 	// Assets and modding related messages
 	public static final int SHUTDOWN_IN_PROGRESS = 400;
@@ -116,10 +117,11 @@ public class MessageType {
 	public static final int JOB_REMOVED = 609; // As the job is actually removed from the game world
 	public static final int JOB_CREATED = 610;
 	public static final int JOB_CANCELLED = 611; // When the job is longer wanted
-	public static final int CHANGE_FLOOR = 612;
-	public static final int REMOVE_HAULING_JOBS_TO_POSITION = 613;
-	public static final int JOB_STATE_CHANGE = 614;
-	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 615;
+	public static final int REPLACE_FLOOR = 612;
+	public static final int UNDO_REPLACE_FLOOR = 613;
+	public static final int REMOVE_HAULING_JOBS_TO_POSITION = 614;
+	public static final int JOB_STATE_CHANGE = 615;
+	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 616;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;
@@ -152,6 +154,7 @@ public class MessageType {
 	public static final int ROOF_COLLAPSE = 819;
 	public static final int ROOF_TILE_COLLAPSE = 820;
 	public static final int FLOOR_MATERIAL_SELECTED = 821;
+	public static final int DAMAGE_FURNITURE = 822;
 
 	// Construction-specific messages
 	public static final int CANCEL_CONSTRUCTION = 900;
@@ -217,6 +220,7 @@ public class MessageType {
 	public static final int PARTICLE_REQUEST = 1600;
 	public static final int PARTICLE_RELEASE = 1602; // Used to set particles to expire
 	public static final int GET_PROGRESS_BAR_EFFECT_TYPE = 1603;
+	public static final int PARTICLE_FORCE_REMOVE = 1604;
 
 	// Weather and fire messages
 	public static final int SPREAD_FIRE_FROM_LOCATION = 1700;
@@ -225,6 +229,7 @@ public class MessageType {
 	public static final int ADD_FIRE_TO_ENTITY = 1703;
 	public static final int FIRE_REMOVED = 1704;
 	public static final int SMALL_FIRE_STARTED = 1705;
+	public static final int START_FIRE_IN_TILE = 1706;
 
 
 }

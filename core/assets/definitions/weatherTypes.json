@@ -1,0 +1,82 @@
+[ {
+  "name" : "Perfect",
+  "i18nKey" : "WEATHER.TYPE.PERFECT",
+  "maxSunlight" : "#ffffff",
+  "dayAmbienceSoundAssetName" : "Daytime",
+  "nightAmbienceSoundAssetName" : "Nighttime",
+  "oxidises" : false,
+  "accumulatesSnowPerHour" : -0.08,
+  "happinessModifiers" : { }
+}, {
+  "name" : "Cloudy",
+  "i18nKey" : "WEATHER.TYPE.CLOUDY",
+  "maxSunlight" : "#c8c8c8",
+  "dayAmbienceSoundAssetName" : "Daytime",
+  "nightAmbienceSoundAssetName" : "Nighttime",
+  "oxidises" : false,
+  "accumulatesSnowPerHour" : 0.0,
+  "happinessModifiers" : { }
+}, {
+  "name" : "Rain",
+  "i18nKey" : "WEATHER.TYPE.RAIN",
+  "particleEffectTypeName" : "Rain",
+  "maxSunlight" : "#c8c8c8",
+  "dayAmbienceSoundAssetName" : "Rain",
+  "nightAmbienceSoundAssetName" : "Rain",
+  "oxidises" : true,
+  "chanceToExtinguishFire" : 0.7,
+  "accumulatesSnowPerHour" : -0.4,
+  "happinessModifiers" : {
+    "STANDING" : "CAUGHT_IN_RAIN",
+    "WORKING" : "WORKED_IN_RAIN",
+    "SLEEPING" : "SLEEPING_IN_RAIN"
+  }
+}, {
+  "name" : "Wet Thunderstorm",
+  "i18nKey" : "WEATHER.TYPE.THUNDERSTORM",
+  "particleEffectTypeName" : "Rain",
+  "maxSunlight" : "#b8b8b8",
+  "dayAmbienceSoundAssetName" : "Thunderstorm with rain",
+  "nightAmbienceSoundAssetName" : "Thunderstorm with rain",
+  "oxidises" : true,
+  "chanceToExtinguishFire" : 0.7,
+  "lightningStrikesPerHour" : 6.0,
+  "accumulatesSnowPerHour" : -0.4,
+  "happinessModifiers" : {
+    "STANDING" : "CAUGHT_IN_RAIN",
+    "WORKING" : "WORKED_IN_RAIN",
+    "SLEEPING" : "SLEEPING_IN_RAIN"
+  }
+}, {
+  "name" : "Dry Thunderstorm",
+  "i18nKey" : "WEATHER.TYPE.THUNDERSTORM",
+  "maxSunlight" : "#DDDDDD",
+  "dayAmbienceSoundAssetName" : "Isolated thunder",
+  "nightAmbienceSoundAssetName" : "Isolated thunder",
+  "oxidises" : false,
+  "lightningStrikesPerHour" : 2.0,
+  "accumulatesSnowPerHour" : -0.08,
+  "happinessModifiers" : { }
+}, {
+  "name" : "Snow",
+  "i18nKey" : "WEATHER.TYPE.SNOW",
+  "particleEffectTypeName" : "Snow",
+  "maxSunlight" : "#EEEEEE",
+  "oxidises" : true,
+  "chanceToExtinguishFire" : 0.2,
+  "chanceToFreezeToDeathFromSleeping" : 0.03,
+  "accumulatesSnowPerHour" : 0.12,
+  "happinessModifiers" : {
+    "SLEEPING" : "SLEEPING_IN_SNOW"
+  }
+}, {
+  "name" : "Cold winds",
+  "i18nKey" : "WEATHER.TYPE.COLD_WINDS",
+  "maxSunlight" : "#EEEEEE",
+  "dayAmbienceSoundAssetName" : "Wind",
+  "nightAmbienceSoundAssetName" : "Wind",
+  "oxidises" : false,
+  "chanceToFreezeToDeathFromSleeping" : 0.01,
+  "accumulatesSnowPerHour" : 0.0,
+  "happinessModifiers" : { }
+} ]

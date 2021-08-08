@@ -148,6 +148,7 @@ public class HintGuiView implements GuiView, GameContextAware {
 		for (Hint hint : new ArrayList<>(displayedHints)) {
 			remove(hint);
 		}
+		doUpdate();
 	}
 
 	private void remove(Hint hint) {

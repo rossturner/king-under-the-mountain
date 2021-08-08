@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
-import technology.rocketjump.undermount.entities.behaviour.AttachedLightSourceBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
@@ -69,8 +68,6 @@ public class FurnitureBehaviour implements BehaviourComponent {
 
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
-		AttachedLightSourceBehaviour.infrequentUpdate(gameContext, parentEntity);
-
 		double gameTime = gameContext.getGameClock().getCurrentGameTime();
 		double elapsed = gameTime - lastUpdateGameTime;
 		lastUpdateGameTime = gameTime;

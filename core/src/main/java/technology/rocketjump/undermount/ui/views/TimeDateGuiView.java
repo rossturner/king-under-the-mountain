@@ -30,6 +30,7 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 	private final MessageDispatcher messageDispatcher;
 	private final I18nWidgetFactory i18nWidgetFactory;
 	private final Label settlementNameLabel;
+	private final I18nTextWidget weatherLabel;
 	private Table layoutTable;
 	private Table timeDateTable;
 	private Table managementScreenButtonTable;
@@ -66,6 +67,9 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 		}
 		timeDateTable.row();
 
+		this.weatherLabel = new I18nTextWidget(new I18nText(""), uiSkin, messageDispatcher);
+		timeDateTable.add(weatherLabel).colspan(speedButtons.size()).center().padTop(4).row();
+
 		this.dateTimeLabel = new I18nTextWidget(new I18nText(""), uiSkin, messageDispatcher);
 		timeDateTable.add(dateTimeLabel).colspan(speedButtons.size()).center().padTop(4);
 
@@ -99,6 +103,7 @@ public class TimeDateGuiView implements GuiView, GameContextAware {
 	@Override
 	public void update() {
 		if (gameContext != null) {
+			weatherLabel.setI18nText(i18nTranslator.getTranslatedString(gameContext.getMapEnvironment().getCurrentWeather().getI18nKey()));
 			dateTimeLabel.setI18nText(i18nTranslator.getDateTimeString(gameContext.getGameClock()));
 		}
 	}

@@ -28,6 +28,7 @@ public class ParticleEffectType {
 	private boolean renderBehindParent;
 	private boolean overrideYDepth;
 	private boolean attachedToParent; // if true, adjusts world position according to parent entity
+	private boolean unaffectedByPause;
 
 	public String getName() {
 		return name;
@@ -163,5 +164,13 @@ public class ParticleEffectType {
 
 	public void setShaderEffectHeight(float shaderEffectHeight) {
 		this.shaderEffectHeight = shaderEffectHeight;
+	}
+
+	public boolean isUnaffectedByPause() {
+		return unaffectedByPause;
+	}
+
+	public void setUnaffectedByPause(boolean unaffectedByPause) {
+		this.unaffectedByPause = unaffectedByPause;
 	}
 }

@@ -65,10 +65,15 @@ DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.
 DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,,,,,,,,,,,,,
 DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,,,,,,,,,,,,,
 DEATH_REASON.BURNING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Burning,,,,,,,,,,,,,
+DEATH_REASON.FROZEN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exposure to freezing weather,,,,,,,,,,,,,
 DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 EARTH.GRASS,,Grass,Herbe,Hierba,Gras,Erba,Relva,Erva,Трава,Trawa,,,,Fű,
 EARTH.DIRT,,Dirt,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+ENTITY.DESTRUCTION_DESCRIPTION.BURNED,,Destroyed by fire,,,,,,,,,,,,,
+ENTITY.DESTRUCTION_DESCRIPTION.OXIDISED,,Destroyed by prolonged exposure to rain,,,,,,,,,,,,,
+ENTITY.DESTRUCTION_DESCRIPTION.TANTRUM,,Destroyed in a tantrum,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 FLOOR.COBBLESTONE,,Cobblestone,Pavé,Adoquines,Pflasterstein,Ciottoli,Calçamento,Pedra,Булыжный,Bruk,,,,,
 FLOOR.DESCRIPTION,,{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},,,,,
@@ -82,6 +87,7 @@ FLOOR.TILLED_EARTH,,Tilled earth,Terre labourée,Tierra labrada,Ackerboden,Terre
 FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,,,,,,,,,,,,,
 FLOOR.WOODEN,,Wooden floorboards,,,,,,,,,,,,,
 FLOOR.STONE_PAVING,,Stone paving,,,,,,,,,,,,,
+FLOOR.SNOW,,Fallen snow,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,,,,,,,,,,,,,
 FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,,,,,,,,,,,,,
@@ -411,6 +417,10 @@ HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,,"Slept in a spacious, private
 HAPPINESS_MODIFIER.DRANK_ALCOHOL,,Under the effects of alcohol,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWAL,,Going sober,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.ON_FIRE,,Was badly burned,,,,,,,,,,,,,
+HAPPINESS_MODIFIER.CAUGHT_IN_RAIN,,Caught outside in the rain,,,,,,,,,,,,,
+HAPPINESS_MODIFIER.WORKED_IN_RAIN,,Working in the rain,,,,,,,,,,,,,
+HAPPINESS_MODIFIER.SLEEPING_IN_RAIN,,Slept in the rain,,,,,,,,,,,,,
+HAPPINESS_MODIFIER.SLEEPING_IN_SNOW,,Slept in the snow,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -519,6 +529,9 @@ METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and muc
 METAL.COPPER.ADJECTIVE,,Copper,en cuivre,De cobre,Kupfer,di rame,de cobre,De cobre,(медь),Miedziany,Koperen,Koppar-,Kobber,Réz,Kuparinen
 METAL.COPPER.NOUN,,Copper,Cuivre,Cobre,Kupfer,Rame,de cobre,Cobre,Медь,Miedź,Koper,Koppar,Kobber,Réz,Kupari
 METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.",,,,,,,,,,,,,
+METAL.COPPER_PATINA.ADJECTIVE,,Copper,en cuivre,De cobre,Kupfer,di rame,de cobre,De cobre,(медь),Miedziany,Koperen,Koppar-,Kobber,Réz,Kuparinen
+METAL.COPPER_PATINA.NOUN,,Copper (Patina),,,,,,,,,,,,,
+METAL.COPPER_PATINA.TOOLTIP,,{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}},{{METAL.COPPER.TOOLTIP}}
 METAL.GOLD.ADJECTIVE,,Golden,en or,De oro,Gold,d'oro,de ouro,De ouro,(золото),Złoty,Gouden,Guld-,Gull,Arany,Kultainen
 METAL.GOLD.NOUN,,Gold,Or,Oro,Gold,Oro,Ouro,Ouro,Золото,Złoto,Goud,Guld,Gull,Arany,Kulta
 METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.",,,,,,,,,,,,,
@@ -537,6 +550,9 @@ METAL.TIN.TOOLTIP,,Tin can be smelted from {{ORE.CASSITERITE.NOUN}} and alloyed 
 METAL.PLATINUM.ADJECTIVE,,Platinum,,,,,,,,,,,,,
 METAL.PLATINUM.NOUN,,Platinum,,,,,,,,,,,,,
 METAL.PLATINUM.TOOLTIP,,A silver-white metal that is highly resistant to corrosion. Platinum is rarer and therefore more valuable than {{METAL.GOLD.NOUN}}.,,,,,,,,,,,,,
+METAL.RUSTED_IRON.ADJECTIVE,,Rusted iron,,,,,,,,,,,,,
+METAL.RUSTED_IRON.NOUN,,Rust,,,,,,,,,,,,,
+METAL.RUSTED_IRON.TOOLTIP,,Iron turns to rust when exposed to rain for a long period. Eventually this will decay completely!,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 MODS.APPLY,,Apply,,,,,,,,,,,,,
 MODS.TABLE.ORDERING,,Re-order,,,,,,,,,,,,,
@@ -571,6 +587,8 @@ NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,,,,,,,,,,,,,
 NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,,,,,,,,,,,,,
 NOTIFICATION.FIRE_STARTED.TITLE,,Fire!,,,,,,,,,,,,,
 NOTIFICATION.FIRE_STARTED.DESCRIPTION,,A fire has broken out in your settlement!,,,,,,,,,,,,,
+NOTIFICATION.OXIDISATION_DESTRUCTION.TITLE,,"Rusted away",,,,,,,,,,,,,
+NOTIFICATION.OXIDISATION_DESTRUCTION.DESCRIPTION,,"An item or piece of furniture has been destroyed due to prolonged exposure to rain.\nSome materials such as iron and steel should not be left outside for a long period.",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ORE.BITUMINOUS_COAL.ADJECTIVE,,Bituminous coal,,De carbón bituminoso,,di carbone bituminoso,,,,,,,,,
 ORE.BITUMINOUS_COAL.NOUN,,Bituminous coal,Charbon bitumineux,Carbón bituminoso,Steinkohle,Carbone bituminoso,Carvão betuminoso,Hematite,Каменный уголь,Węgiel bitumiczny,Bitumineuze steenkool,Stenkol,Steinkull,Bitumenes szén,Rasvahiili
@@ -846,6 +864,9 @@ ROOMS.STOCKPILE.TOOLTIP,,This area stores different kinds of items depending on 
 ,,,,,,,,,,,,,,,
 ROOMS.COMPONENT.STOCKPILE.DESCRIPTION,,{{allocated}} of {{total}} spaces currently in use,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
+RUSTED_SCRAP.NOUN,,Scrap,,,,,,,,,,,,,
+RUSTED_SCRAP.TOOLTIP,,These are the remains of an item that has completed corroded due to rust.,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 SEASON.AUTUMN,,Autumn,Automne,Otoño,Herbst,Autunno,Outono,Outono,Осень,Jesień,Herfst,Höst,Høst,Ősz,Syksy
 SEASON.SPRING,,Spring,Printemps,Primavera,Frühling,Primavera,Primavera,Primavera,Весна,Wiosna,Lente,Vår,Vår,Tavasz,Kevät
 SEASON.SUMMER,,Summer,Été,Verano,Sommer,Estate,Verão,Verão,Лето,Lato,Zomer,Sommar,Sommer,Nyár,Kesä
@@ -1065,6 +1086,13 @@ WALL.ORE.NOUN,,Ore,Mur en,Muro,Erz,Parete,Minério,Minério,Руда,Ruda,{{BLAN
 WALL.ROUGH_STONE.NOUN,,Rock wall,Mur de pierre,Muro rocoso,Steinwand,Parete di roccia,Parede de rocha,Muro de pedra,Каменная стена,Skalna ściana,Stenen muur,Stenmur,Steinmur,Kő fal,Kiviseinä
 WALL.STONE_BLOCK.NOUN,,Smooth stone wall,Paroi lisse,Muro pulido,Glatte Steinwand,Parete di pietra liscia,Parede de rocha polida,Muro de pedra suave,Стена из гладкого камня,Gładka skalna ściana,Gladde stenen muur,Slät stenmur,Glatt steinmur,Minőségi kő fal,Laattaseinä
 WALL.WOODEN.NOUN,,Wood wall,Mur,Muro de madera,Holzwand,Parete di legno,Parede de madeira,Muro de madeira,Деревянная стена,Drewniana ściana,Houten wand,Trävägg,Tremur,Fa fal,Puuseinä
+,,,,,,,,,,,,,,,
+WEATHER.TYPE.PERFECT,,Perfect weather,,,,,,,,,,,,,
+WEATHER.TYPE.RAIN,,Pouring rain,,,,,,,,,,,,,
+WEATHER.TYPE.THUNDERSTORM,,Thunderstorm,,,,,,,,,,,,,
+WEATHER.TYPE.SNOW,,Snow flurries,,,,,,,,,,,,,
+WEATHER.TYPE.CLOUDY,,Cloudy & grey,,,,,,,,,,,,,
+WEATHER.TYPE.COLD_WINDS,,Cold winds,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 WOOD.BEECH.ADJECTIVE,,Beech,en hêtre,De haya,Buche,di faggio,de faia,De faia,(бук),Bukowe,Beukenhouten,Bok-,Bøk,Bükk,Pyökistä tehty
 WOOD.BEECH.NOUN,,Beech,Hêtre,Haya,Buche,Faggio,de faia,Faia,Бук,Buk,Beukenhout,Bok,Bøk,Bükk,Pyökki

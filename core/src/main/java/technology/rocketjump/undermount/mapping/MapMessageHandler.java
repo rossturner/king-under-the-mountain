@@ -25,6 +25,7 @@ import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.*;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
@@ -95,7 +96,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.REMOVE_WALL);
 		messageDispatcher.addListener(this, MessageType.REMOVE_ROOM);
 		messageDispatcher.addListener(this, MessageType.REMOVE_ROOM_TILES);
-		messageDispatcher.addListener(this, MessageType.CHANGE_FLOOR);
+		messageDispatcher.addListener(this, MessageType.REPLACE_FLOOR);
+		messageDispatcher.addListener(this, MessageType.UNDO_REPLACE_FLOOR);
 		messageDispatcher.addListener(this, MessageType.REPLACE_REGION);
 		messageDispatcher.addListener(this, MessageType.FLOORING_CONSTRUCTED);
 	}
@@ -130,9 +132,14 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				this.removeRoomTiles(roomTilesToRemove);
 				return true;
 			}
-			case MessageType.CHANGE_FLOOR: {
-				ChangeFloorMessage message = (ChangeFloorMessage) msg.extraInfo;
-				this.changeFloor(message.targetLocation, message.newFloorType, message.newMaterial);
+			case MessageType.REPLACE_FLOOR: {
+				ReplaceFloorMessage message = (ReplaceFloorMessage) msg.extraInfo;
+				this.replaceFloor(message.targetLocation, message.newFloorType, message.newMaterial);
+				return true;
+			}
+			case MessageType.UNDO_REPLACE_FLOOR: {
+				GridPoint2 location = (GridPoint2) msg.extraInfo;
+				this.undoReplaceFloor(location);
 				return true;
 			}
 			case MessageType.REPLACE_REGION: {
@@ -144,7 +151,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				FloorConstructionMessage message = (FloorConstructionMessage) msg.extraInfo;
 				FloorType floorType = floorTypesByInputRequirement.get(message.constructionItem);
 				if (floorType != null) {
-					changeFloor(message.location, floorType, message.constructionMaterial);
+					replaceFloor(message.location, floorType, message.constructionMaterial);
 				} else {
 					Logger.error("Could not look up floor type constructed by " + message.constructionItem.getItemTypeName());
 				}
@@ -631,13 +638,27 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 	}
 
-	public void changeFloor(GridPoint2 location, FloorType floorType, GameMaterial material) {
-		MapTile cell = gameContext.getAreaMap().getTile(location);
+	public void replaceFloor(GridPoint2 location, FloorType floorType, GameMaterial material) {
+		MapTile mapTile = gameContext.getAreaMap().getTile(location);
+
+		TileFloor newFloor = new TileFloor(floorType, material);
+		mapTile.replaceFloor(newFloor);
 
 		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
-		cell.getFloor().setFloorType(floorType);
-		cell.getFloor().setMaterial(material);
-		cell.update(tileNeighbours, gameContext.getAreaMap().getVertices(location.x, location.y));
+		mapTile.update(tileNeighbours, gameContext.getAreaMap().getVertices(location.x, location.y));
+
+		for (MapTile neighbourCell : tileNeighbours.values()) {
+			neighbourCell.update(gameContext.getAreaMap().getNeighbours(neighbourCell.getTileX(), neighbourCell.getTileY()),
+					gameContext.getAreaMap().getVertices(neighbourCell.getTileX(), neighbourCell.getTileY()));
+		}
+	}
+
+	public void undoReplaceFloor(GridPoint2 location) {
+		MapTile mapTile = gameContext.getAreaMap().getTile(location);
+		mapTile.popFloor();
+
+		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
+		mapTile.update(tileNeighbours, gameContext.getAreaMap().getVertices(location.x, location.y));
 
 		for (MapTile neighbourCell : tileNeighbours.values()) {
 			neighbourCell.update(gameContext.getAreaMap().getNeighbours(neighbourCell.getTileX(), neighbourCell.getTileY()),

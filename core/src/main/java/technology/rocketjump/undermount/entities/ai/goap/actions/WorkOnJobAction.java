@@ -11,6 +11,7 @@ import technology.rocketjump.undermount.entities.tags.ItemUsageSoundTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.*;
 import technology.rocketjump.undermount.particles.custom_libgdx.ProgressBarEffect;
@@ -28,6 +29,7 @@ import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.C
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.WORKED_IN_ENCLOSED_ROOM;
 import static technology.rocketjump.undermount.entities.model.EntityType.FURNITURE;
+import static technology.rocketjump.undermount.environment.model.WeatherType.HappinessInteraction.WORKING;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class WorkOnJobAction extends Action {
@@ -71,11 +73,13 @@ public class WorkOnJobAction extends Action {
 			}
 
 			MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldPosition());
-			if (currentTile != null && currentTile.hasRoom() && currentTile.getRoomTile().getRoom().isFullyEnclosed()) {
-				HappinessComponent happinessComponent = parent.parentEntity.getComponent(HappinessComponent.class);
-				if (happinessComponent != null) {
-					happinessComponent.add(WORKED_IN_ENCLOSED_ROOM);
-				}
+			HappinessComponent happinessComponent = parent.parentEntity.getComponent(HappinessComponent.class);
+			if (currentTile != null && currentTile.hasRoom() && currentTile.getRoomTile().getRoom().isFullyEnclosed() && happinessComponent != null) {
+				happinessComponent.add(WORKED_IN_ENCLOSED_ROOM);
+			}
+			if (currentTile != null && currentTile.getRoof().getState().equals(TileRoofState.OPEN) &&
+					gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().containsKey(WORKING) && happinessComponent != null) {
+				happinessComponent.add(gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().get(WORKING));
 			}
 
 			Action This = this;

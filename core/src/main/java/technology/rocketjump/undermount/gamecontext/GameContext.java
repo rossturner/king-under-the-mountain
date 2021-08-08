@@ -4,6 +4,7 @@ import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.mapping.model.MapEnvironment;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.types.JobRequestMessage;
@@ -32,6 +33,7 @@ public class GameContext {
 	private SettlementState settlementState = new SettlementState();
 
 	private TiledMap areaMap;
+	private MapEnvironment mapEnvironment;
 	private Random random;
 	private GameClock gameClock;
 	private ConstantsRepo constantsRepo; // not persisted, assigned by ConstantsRepo singleton
@@ -42,6 +44,14 @@ public class GameContext {
 
 	public void setAreaMap(TiledMap areaMap) {
 		this.areaMap = areaMap;
+	}
+
+	public MapEnvironment getMapEnvironment() {
+		return mapEnvironment;
+	}
+
+	public void setMapEnvironment(MapEnvironment mapEnvironment) {
+		this.mapEnvironment = mapEnvironment;
 	}
 
 	public Random getRandom() {

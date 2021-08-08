@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
+import technology.rocketjump.undermount.environment.WeatherEffectUpdater;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
@@ -58,6 +59,7 @@ public class WorldRenderer implements Disposable {
 	private final ExplorationRenderer explorationRenderer;
 	private final MessageDispatcher messageDispatcher;
 	private final ParticleEffectStore particleEffectStore;
+	private final WeatherEffectUpdater weatherEffectUpdater;
 
 	private final SpriteBatch basicSpriteBatch = new SpriteBatch();
 
@@ -83,7 +85,7 @@ public class WorldRenderer implements Disposable {
 	public WorldRenderer(RenderingOptions renderingOptions, TerrainRenderer terrainRenderer, EntityRenderer entityRenderer,
 						 WaterRenderer waterRenderer, FloorOverlapRenderer floorOverlapRenderer, RoomRenderer roomRenderer,
 						 ExplorationRenderer explorationRenderer, MessageDispatcher messageDispatcher,
-						 ParticleEffectStore particleEffectStore, LightProcessor lightProcessor) {
+						 ParticleEffectStore particleEffectStore, WeatherEffectUpdater weatherEffectUpdater, LightProcessor lightProcessor) {
 		this.renderingOptions = renderingOptions;
 		this.terrainRenderer = terrainRenderer;
 		this.entityRenderer = entityRenderer;
@@ -93,6 +95,7 @@ public class WorldRenderer implements Disposable {
 		this.explorationRenderer = explorationRenderer;
 		this.messageDispatcher = messageDispatcher;
 		this.particleEffectStore = particleEffectStore;
+		this.weatherEffectUpdater = weatherEffectUpdater;
 		this.lightProcessor = lightProcessor;
 	}
 
@@ -137,6 +140,7 @@ public class WorldRenderer implements Disposable {
 				if (mapTile.getFloor().hasBridge()) {
 					bridgeTiles.computeIfAbsent(mapTile.getFloor().getBridge(), (a) -> new LinkedList<>()).add(mapTile);
 				}
+				weatherEffectUpdater.updateVisibleTile(mapTile);
 
 				mapTile.getEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
 				mapTile.getParticleEffects().values().forEach(p -> {

@@ -46,6 +46,7 @@ public class Entity implements Persistable, Disposable {
 
 	private final EntityComponentMap componentMap = new EntityComponentMap();
 	private Set<Tag> tags = new LinkedHashSet<>();
+	private double lastUpdateGameTime;
 
 	public static final Entity NULL_ENTITY = new Entity();
 
@@ -98,6 +99,7 @@ public class Entity implements Persistable, Disposable {
 				((ParentDependentEntityComponent)component).init(this, messageDispatcher, gameContext);
 			}
 		}
+		this.lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
 	}
 
 	public void destroy(MessageDispatcher messageDispatcher, GameContext gameContext) {
@@ -224,6 +226,15 @@ public class Entity implements Persistable, Disposable {
 
 	public void infrequentUpdate(GameContext gameContext) {
 		behaviourComponent.infrequentUpdate(gameContext);
+
+		double gameTime = gameContext.getGameClock().getCurrentGameTime();
+		double elapsed = gameTime - lastUpdateGameTime;
+		lastUpdateGameTime = gameTime;
+		for (EntityComponent c : componentMap.values()) {
+			if (c instanceof InfrequentlyUpdatableComponent) {
+				((InfrequentlyUpdatableComponent)c).infrequentUpdate(elapsed);
+			}
+		}
 	}
 
 	public boolean isUpdateEveryFrame() {

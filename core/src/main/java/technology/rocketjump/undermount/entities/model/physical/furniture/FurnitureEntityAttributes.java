@@ -29,7 +29,7 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 	private FurnitureLayout currentLayout;
 
 	private Long assignedToEntityId;
-	private boolean destroyed;
+	private EntityDestructionCause destructionCause;
 
 	public FurnitureEntityAttributes() {
 
@@ -60,21 +60,23 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		}
 		cloned.primaryMaterialType = this.primaryMaterialType;
 		cloned.currentLayout = this.currentLayout;
+		cloned.assignedToEntityId = this.assignedToEntityId;
+		cloned.destructionCause = this.destructionCause;
 		return cloned;
 	}
 
 	@Override
 	public Color getColor(ColoringLayer coloringLayer) {
 		GameMaterialType materialType = coloringLayer.getLinkedMaterialType();
-		if (materialType != null) {
+		if (otherColors.containsKey(coloringLayer)) {
+			return otherColors.get(coloringLayer);
+		} else {
 			GameMaterial gameMaterial = materials.get(materialType);
 			if (gameMaterial != null) {
 				return gameMaterial.getColor();
 			} else {
-				return otherColors.get(coloringLayer);
+				return null;
 			}
-		} else {
-			return otherColors.get(coloringLayer);
 		}
 	}
 
@@ -96,7 +98,7 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 	}
 
 	public void setColor(ColoringLayer coloringLayer, Color color) {
-		if (color != null) {
+		if (color != null && coloringLayer != null) {
 			otherColors.put(coloringLayer, color);
 		}
 	}
@@ -168,11 +170,15 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 	}
 
 	public boolean isDestroyed() {
-		return destroyed;
+		return destructionCause != null;
 	}
 
-	public void setDestroyed(boolean destroyed) {
-		this.destroyed = destroyed;
+	public void setDestroyed(EntityDestructionCause cause) {
+		this.destructionCause = cause;
+	}
+
+	public EntityDestructionCause getDestructionCause() {
+		return destructionCause;
 	}
 
 	@Override
@@ -203,8 +209,8 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		if (assignedToEntityId != null) {
 			asJson.put("assignedToEntityId", assignedToEntityId);
 		}
-		if (destroyed) {
-			asJson.put("destroyed", true);
+		if (destructionCause != null) {
+			asJson.put("destructionCause", this.destructionCause);
 		}
 	}
 
@@ -255,7 +261,8 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 			}
 		}
 		assignedToEntityId = asJson.getLong("assignedToEntityId");
-		destroyed = asJson.getBooleanValue("destroyed");
+
+		destructionCause = EnumParser.getEnumValue(asJson, "destructionCause", EntityDestructionCause.class, null);
 	}
 
 }

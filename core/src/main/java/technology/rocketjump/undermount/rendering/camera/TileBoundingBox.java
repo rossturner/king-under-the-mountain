@@ -1,7 +1,7 @@
 package technology.rocketjump.undermount.rendering.camera;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.GridPoint2;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 
 public class TileBoundingBox {
@@ -55,7 +55,7 @@ public class TileBoundingBox {
 		this.maxY = getMaxY(camera, map);
 	}
 
-	public boolean contains(Vector2 position) {
-		return minX < position.x && position.x < maxX && minY < position.y && position.y < maxY;
+	public boolean contains(GridPoint2 position) {
+		return minX <= position.x && position.x <= maxX && minY <= position.y && position.y <= maxY;
 	}
 }

@@ -9,18 +9,21 @@ import technology.rocketjump.undermount.entities.components.humanoid.HappinessCo
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.HumanoidDeathMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
+import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.*;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.SLEEPING;
 import static technology.rocketjump.undermount.mapping.tile.roof.TileRoofState.OPEN;
 
 public class SleepOnFloorAction extends Action {
@@ -31,7 +34,7 @@ public class SleepOnFloorAction extends Action {
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
-		if (!SLEEPING.equals(attributes.getConsciousness())) {
+		if (!Consciousness.SLEEPING.equals(attributes.getConsciousness())) {
 			changeToSleeping(gameContext);
 		}
 
@@ -64,11 +67,25 @@ public class SleepOnFloorAction extends Action {
 		MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldOrParentPosition());
 		if (OPEN.equals(currentTile.getRoof().getState())) {
 			parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_OUTSIDE);
+
+			if (gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().containsKey(WeatherType.HappinessInteraction.SLEEPING)) {
+				parent.parentEntity.getComponent(HappinessComponent.class).add(gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().get(WeatherType.HappinessInteraction.SLEEPING));
+			}
 		}
 
 		NeedsComponent needsComponent = parent.parentEntity.getComponent(NeedsComponent.class);
 		// All changes in need amounts are handled by SettlerBehaviour
 		if (needsComponent.getValue(EntityNeed.SLEEP) >= 100.0) {
+			if (OPEN.equals(currentTile.getRoof().getState()) && gameContext.getMapEnvironment().getCurrentWeather().getChanceToFreezeToDeathFromSleeping() != null) {
+				float roll = gameContext.getRandom().nextFloat();
+				if (roll < gameContext.getMapEnvironment().getCurrentWeather().getChanceToFreezeToDeathFromSleeping()) {
+					// RIP
+					parent.messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(parent.parentEntity, DeathReason.FROZEN));
+					completionType = FAILURE;
+					return;
+				}
+			}
+
 			changeToAwake();
 			completionType = SUCCESS;
 		} else if (needsComponent.getValue(EntityNeed.FOOD) <= 0.0 || needsComponent.getValue(EntityNeed.DRINK) <= 0.0) {
@@ -84,7 +101,7 @@ public class SleepOnFloorAction extends Action {
 	}
 
 	protected void changeToSleeping(GameContext gameContext) {
-		changeToConsciousnessOnFloor(parent.parentEntity, SLEEPING, gameContext, parent.messageDispatcher);
+		changeToConsciousnessOnFloor(parent.parentEntity, Consciousness.SLEEPING, gameContext, parent.messageDispatcher);
 	}
 
 	public static void changeToConsciousnessOnFloor(Entity entity, Consciousness consciousness,

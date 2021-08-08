@@ -1,5 +1,6 @@
 package technology.rocketjump.undermount.particles;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
@@ -22,6 +23,7 @@ import java.util.Iterator;
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.jobs.model.JobTarget.NULL_TARGET;
+import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.particles.CustomEffectFactory.PROGRESS_BAR_EFFECT_TYPE_NAME;
 
 @Singleton
@@ -40,6 +42,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 
 		messageDispatcher.addListener(this, MessageType.PARTICLE_REQUEST);
 		messageDispatcher.addListener(this, MessageType.PARTICLE_RELEASE);
+		messageDispatcher.addListener(this, MessageType.PARTICLE_FORCE_REMOVE);
 		messageDispatcher.addListener(this, MessageType.GET_PROGRESS_BAR_EFFECT_TYPE);
 	}
 
@@ -59,7 +62,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 				// Not yet implemented - updating effects not attached to an entity
 			}
 
-			if (!currentBoundingBox.contains(instance.getWorldPosition())) {
+			if (!currentBoundingBox.contains(toGridPoint(instance.getWorldPosition()))) {
 				store.remove(instance, iterator);
 				continue;
 			}
@@ -67,7 +70,14 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 			if (instance.getWrappedInstance().isComplete()) {
 				store.remove(instance, iterator);
 			} else {
-				instance.getWrappedInstance().update(deltaTime);
+
+				if (gameContext.getGameClock().isPaused()) {
+					if (instance.getType().isUnaffectedByPause()) {
+						instance.getWrappedInstance().update(Gdx.graphics.getDeltaTime() * 0.3f);
+					}
+				} else {
+					instance.getWrappedInstance().update(deltaTime);
+				}
 			}
 		}
 
@@ -82,6 +92,11 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 			}
 			case MessageType.PARTICLE_RELEASE: {
 				release((ParticleEffectInstance) msg.extraInfo);
+				return true;
+			}
+			case MessageType.PARTICLE_FORCE_REMOVE: {
+				ParticleEffectInstance instance = (ParticleEffectInstance) msg.extraInfo;
+				store.remove(instance, null);
 				return true;
 			}
 			case MessageType.GET_PROGRESS_BAR_EFFECT_TYPE: {
@@ -143,7 +158,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 		if (currentBoundingBox == null || position == null) {
 			return false;
 		} else {
-			return currentBoundingBox.contains(position);
+			return currentBoundingBox.contains(toGridPoint(position));
 		}
 	}
 

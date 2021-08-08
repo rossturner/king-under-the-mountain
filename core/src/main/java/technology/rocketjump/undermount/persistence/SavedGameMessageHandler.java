@@ -241,6 +241,7 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 			}
 		}
 
+		gameContext.getMapEnvironment().writeTo(stateHolder.mapEnvironmentJson, stateHolder);
 		gameContext.getSettlementState().writeTo(stateHolder);
 		((ThreadSafeMessageDispatcher) messageDispatcher).writeTo(stateHolder);
 		gameContext.getGameClock().writeTo(stateHolder);

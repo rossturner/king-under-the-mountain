@@ -5,7 +5,6 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -26,11 +25,9 @@ public class ItemBehaviour implements BehaviourComponent {
 	private LocationComponent locationComponent;
 	private MessageDispatcher messageDispatcher;
 	private Entity parentEntity;
-	private double lastUpdateGameTime;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
-		this.lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
 		this.locationComponent = parentEntity.getLocationComponent();
 		this.messageDispatcher = messageDispatcher;
 		this.parentEntity = parentEntity;
@@ -69,14 +66,6 @@ public class ItemBehaviour implements BehaviourComponent {
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, JobPriority.NORMAL, null));
 			}
 
-		}
-
-		double gameTime = gameContext.getGameClock().getCurrentGameTime();
-		double elapsed = gameTime - lastUpdateGameTime;
-		lastUpdateGameTime = gameTime;
-		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
-		if (statusComponent != null) {
-			statusComponent.infrequentUpdate(elapsed);
 		}
 	}
 

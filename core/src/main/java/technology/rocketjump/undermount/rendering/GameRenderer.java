@@ -144,7 +144,7 @@ public class GameRenderer implements AssetDisposable {
 		/////// Draw lighting info ///
 
 		lightingFrameBuffer.begin();
-		worldLightingRenderer.renderWorldLighting(worldMap, lightsToRenderThisFrame, camera, bumpMapTextureRegion);
+		worldLightingRenderer.renderWorldLighting(gameContext, lightsToRenderThisFrame, camera, bumpMapTextureRegion);
 		lightingFrameBuffer.end();
 
 

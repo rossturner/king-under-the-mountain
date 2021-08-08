@@ -4,22 +4,32 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Disposable;
+import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
+import technology.rocketjump.undermount.mapping.tile.CompassDirection;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.MapVertex;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rendering.lighting.LightProcessor;
 import technology.rocketjump.undermount.rendering.lighting.PointLight;
 
-public class AttachedLightSourceComponent implements ParentDependentEntityComponent, Disposable {
+import java.util.EnumMap;
+
+public class AttachedLightSourceComponent implements InfrequentlyUpdatableComponent, Disposable {
 
 	private PointLight light = new PointLight();
 	private Entity parentEntity;
 	private boolean requiresMeshUpdate = true;
 	private boolean enabled = false; // For entity to toggle off in bright outdoor light
 	private boolean useParentBodyColor;
+	private GameContext gameContext;
 
 	public AttachedLightSourceComponent() {
 
@@ -31,7 +41,46 @@ public class AttachedLightSourceComponent implements ParentDependentEntityCompon
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
+		this.gameContext = gameContext;
 		this.parentEntity = parentEntity;
+	}
+
+	@Override
+	public void infrequentUpdate(double elapsedTime) {
+		if (this.isUseParentBodyColor()) {
+			EntityAttributes attributes = parentEntity.getPhysicalEntityComponent().getAttributes();
+			if (attributes instanceof PlantEntityAttributes) {
+				this.setColor(attributes.getColor(ColoringLayer.BRANCHES_COLOR));
+			} else {
+				Logger.warn("Not yet implemented: useParentBodyColor attached light source for type " + parentEntity.getType());
+			}
+		}
+
+		if (parentEntity.getLocationComponent().getWorldPosition() != null) {
+			MapTile currentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
+			if (currentTile != null) {
+				EnumMap<CompassDirection, MapVertex> vertexNeighboursOfCell = gameContext.getAreaMap().getVertexNeighboursOfCell(currentTile);
+
+				float numVertices = 0f;
+				float outdoorLight = 0f;
+				for (MapVertex mapVertex : vertexNeighboursOfCell.values()) {
+					numVertices += 1f;
+					outdoorLight += mapVertex.getOutsideLightAmount();
+				}
+
+				outdoorLight = outdoorLight / numVertices;
+				float currentSunlightAmount = gameContext.getMapEnvironment().getSunlightAmount();
+
+				float nearbyLuminance = outdoorLight * currentSunlightAmount;
+
+				if (nearbyLuminance > gameContext.getConstantsRepo().getWorldConstants().getAttachedLightSourceTogglePoint()) {
+					this.setEnabled(false);
+				} else {
+					this.setEnabled(true);
+				}
+
+			}
+		}
 	}
 
 	@Override

@@ -70,7 +70,9 @@ public class ParticleEffectStore implements GameContextAware {
 
 	public void remove(ParticleEffectInstance instance, Iterator<ParticleEffectInstance> instanceIdIterator) {
 		instance.setActive(false);
-		instanceIdIterator.remove();
+		if (instanceIdIterator != null) {
+			instanceIdIterator.remove();
+		}
 		if (instance.getAttachedToEntity().isPresent()) {
 			long entityId = instance.getAttachedToEntity().get().getId();
 			List<ParticleEffectInstance> attachedToEntity = byRelatedEntityId.getOrDefault(entityId, EMPTY_LIST);

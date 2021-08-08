@@ -4,15 +4,16 @@ package technology.rocketjump.undermount.entities.behaviour.effects;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.particles.custom_libgdx.ShaderEffect;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 
-import java.util.Random;
-
 import static technology.rocketjump.undermount.entities.behaviour.effects.BaseOngoingEffectBehaviour.OngoingEffectState.ACTIVE;
 import static technology.rocketjump.undermount.entities.behaviour.effects.BaseOngoingEffectBehaviour.OngoingEffectState.FADING;
 import static technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour.FireContinuationAction.CONTINUE_BURNING;
+import static technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour.FireContinuationAction.DIE_OUT;
 
 public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 
@@ -87,7 +88,7 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 				}
 				*/
 
-				FireContinuationAction continuation = rollForContinuation(gameContext.getRandom());
+				FireContinuationAction continuation = rollForContinuation(gameContext);
 				switch (continuation) {
 					case SPREAD_TO_OTHER_TILES:
 						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, parentEntity.getLocationComponent().getWorldOrParentPosition());
@@ -117,8 +118,15 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 		this.stateDuration = 0f;
 	}
 
-	private FireContinuationAction rollForContinuation(Random random) {
-		float roll = random.nextFloat();
+	private FireContinuationAction rollForContinuation(GameContext gameContext) {
+		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldOrParentPosition());
+		if (parentTile != null && parentTile.getRoof().getState().equals(TileRoofState.OPEN) && gameContext.getMapEnvironment().getCurrentWeather().getChanceToExtinguishFire() != null) {
+			if (gameContext.getRandom().nextFloat() < gameContext.getMapEnvironment().getCurrentWeather().getChanceToExtinguishFire()) {
+				return DIE_OUT;
+			}
+		}
+
+		float roll = gameContext.getRandom().nextFloat();
 		for (FireContinuationAction continuationAction : FireContinuationAction.values()) {
 			if (roll <= continuationAction.chance) {
 				return continuationAction;

@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.assets.entities.item.model.ItemSize;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemStyle;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.persistence.EnumParser;
@@ -32,6 +33,7 @@ public class ItemEntityAttributes implements EntityAttributes {
 	private ItemPlacement itemPlacement = ItemPlacement.ON_GROUND;
 
 	private int quantity;
+	private EntityDestructionCause destructionCause;
 
 	public ItemEntityAttributes() {
 
@@ -57,6 +59,7 @@ public class ItemEntityAttributes implements EntityAttributes {
 		cloned.itemPlacement = this.itemPlacement;
 
 		cloned.quantity = this.quantity;
+		cloned.destructionCause = this.destructionCause;
 
 		return cloned;
 	}
@@ -126,7 +129,7 @@ public class ItemEntityAttributes implements EntityAttributes {
 		materials.remove(gameMaterialType);
 	}
 
-	public Collection<? extends GameMaterial> getAllMaterials() {
+	public Collection<GameMaterial> getAllMaterials() {
 		return materials.values();
 	}
 
@@ -171,6 +174,18 @@ public class ItemEntityAttributes implements EntityAttributes {
 		this.itemPlacement = itemPlacement;
 	}
 
+	public boolean isDestroyed() {
+		return destructionCause != null;
+	}
+
+	public void setDestroyed(EntityDestructionCause cause) {
+		this.destructionCause = cause;
+	}
+
+	public EntityDestructionCause getDestructionCause() {
+		return destructionCause;
+	}
+
 	@Override
 	public String toString() {
 		return "ItemEntityAttributes{" +
@@ -210,7 +225,9 @@ public class ItemEntityAttributes implements EntityAttributes {
 		if (quantity != 1) {
 			asJson.put("quantity", quantity);
 		}
-
+		if (destructionCause != null) {
+			asJson.put("destructionCause", this.destructionCause);
+		}
 	}
 
 	@Override
@@ -250,6 +267,8 @@ public class ItemEntityAttributes implements EntityAttributes {
 		} else {
 			this.quantity = quantity;
 		}
+
+		destructionCause = EnumParser.getEnumValue(asJson, "destructionCause", EntityDestructionCause.class, null);
 	}
 
 	public GameMaterial getPrimaryMaterial() {

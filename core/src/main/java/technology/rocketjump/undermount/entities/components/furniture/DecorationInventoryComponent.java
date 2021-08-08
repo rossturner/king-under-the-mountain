@@ -5,9 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
-import technology.rocketjump.undermount.entities.components.InventoryComponent;
+import technology.rocketjump.undermount.entities.components.InfrequentlyUpdatableComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
-import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
@@ -17,18 +16,22 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 
-public class DecorationInventoryComponent implements ParentDependentEntityComponent {
+public class DecorationInventoryComponent implements InfrequentlyUpdatableComponent {
 
 	private Map<Long, Entity> decorationEntities = new LinkedHashMap<>();
 	private Entity parentEntity;
+	private GameContext gameContext;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
-		// Note that gameContext is passed in as null
+		this.gameContext = gameContext;
 		this.parentEntity = parentEntity;
 	}
 
@@ -39,6 +42,13 @@ public class DecorationInventoryComponent implements ParentDependentEntityCompon
 			cloned.add(decorationItem.clone(messageDispatcher, gameContext));
 		}
 		return cloned;
+	}
+
+	@Override
+	public void infrequentUpdate(double elapsedTime) {
+		for (Entity entity : new ArrayList<>(decorationEntities.values())) {
+			entity.infrequentUpdate(gameContext);
+		}
 	}
 
 	public void clear() {

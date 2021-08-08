@@ -58,7 +58,7 @@ public class MapTile implements Persistable {
 	private Map<Long, ParticleEffectInstance> particleEffects = new HashMap<>();
 
 	private TileRoof roof;
-	private TileFloor floor;
+	private Deque<TileFloor> floors = new ArrayDeque<>();
 	private Wall wall = null;
 	private Doorway doorway = null;
 
@@ -71,7 +71,7 @@ public class MapTile implements Persistable {
 	public MapTile(long seed, int tileX, int tileY, FloorType floorType, GameMaterial floorMaterial) {
 		this.seed = seed;
 		this.tilePosition = new GridPoint2(tileX, tileY);
-		this.floor = new TileFloor(floorType, floorMaterial);
+		floors.push(new TileFloor(floorType, floorMaterial));
 		this.roof = new TileRoof();
 
 		if (GlobalSettings.MAP_REVEALED) {
@@ -87,7 +87,7 @@ public class MapTile implements Persistable {
 
 		// Always update FloorOverlaps for all tiles
 		Set<FloorOverlap> overlaps = new TreeSet<>(new FloorType.FloorDefinitionComparator());
-		int thisLayer = this.floor.getFloorType().getLayer();
+		int thisLayer = getFloor().getFloorType().getLayer();
 		if (this.hasWall()) {
 			thisLayer = Integer.MIN_VALUE;
 		}
@@ -98,23 +98,23 @@ public class MapTile implements Persistable {
 			}
 		}
 
-		floor.getOverlaps().clear();
+		getFloor().getOverlaps().clear();
 		// For sort
 		for (FloorOverlap overlap : overlaps) {
-			floor.getOverlaps().add(overlap);
+			getFloor().getOverlaps().add(overlap);
 		}
 
-		if (floor.getFloorType().isUseMaterialColor()) {
-			Color floorMaterialColor = floor.getMaterial().getColor();
-			floor.vertexColors[0] = floorMaterialColor;
-			floor.vertexColors[1] = floorMaterialColor;
-			floor.vertexColors[2] = floorMaterialColor;
-			floor.vertexColors[3] = floorMaterialColor;
+		if (getFloor().getFloorType().isUseMaterialColor()) {
+			Color floorMaterialColor = getFloor().getMaterial().getColor();
+			getFloor().vertexColors[0] = floorMaterialColor;
+			getFloor().vertexColors[1] = floorMaterialColor;
+			getFloor().vertexColors[2] = floorMaterialColor;
+			getFloor().vertexColors[3] = floorMaterialColor;
 		} else {
-			floor.vertexColors[0] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[0].getHeightmapValue());
-			floor.vertexColors[1] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[1].getHeightmapValue());
-			floor.vertexColors[2] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[2].getHeightmapValue());
-			floor.vertexColors[3] = floor.getFloorType().getColorForHeightValue(vertexNeighboursOfCell[3].getHeightmapValue());
+			getFloor().vertexColors[0] = getFloor().getFloorType().getColorForHeightValue(vertexNeighboursOfCell[0].getHeightmapValue());
+			getFloor().vertexColors[1] = getFloor().getFloorType().getColorForHeightValue(vertexNeighboursOfCell[1].getHeightmapValue());
+			getFloor().vertexColors[2] = getFloor().getFloorType().getColorForHeightValue(vertexNeighboursOfCell[2].getHeightmapValue());
+			getFloor().vertexColors[3] = getFloor().getFloorType().getColorForHeightValue(vertexNeighboursOfCell[3].getHeightmapValue());
 		}
 
 		if (hasConstruction()) {
@@ -153,14 +153,14 @@ public class MapTile implements Persistable {
 		if (this.equals(startingPoint)) {
 			// Can always navigate if this tile is the starting point
 			return true;
-		} else if (floor.isRiverTile() && !floor.isBridgeNavigable()) {
+		} else if (getFloor().isRiverTile() && !getFloor().isBridgeNavigable()) {
 			if (startingPoint != null && startingPoint.getFloor().isRiverTile()) {
 				return true; // Can navigate from a river tile to another river tile
 			} else {
 				return false; // Otherwise rivers are not navigable
 			}
 		} else if (!hasWall() && !hasTree()) {
-			if (floor.hasBridge() && !floor.isBridgeNavigable()) {
+			if (getFloor().hasBridge() && !getFloor().isBridgeNavigable()) {
 				return false;
 			}
 			for (Entity entity : getEntities()) {
@@ -221,7 +221,7 @@ public class MapTile implements Persistable {
 	}
 
 	public TileFloor getFloor() {
-		return floor;
+		return floors.peek();
 	}
 
 	public int getTileX() {
@@ -367,7 +367,7 @@ public class MapTile implements Persistable {
 	}
 
 	public boolean isEmptyExceptEntities() {
-		return !(this.hasWall() || this.hasDoorway() || this.hasConstruction() || this.floor.isRiverTile());
+		return !(this.hasWall() || this.hasDoorway() || this.hasConstruction() || this.getFloor().isRiverTile());
 	}
 
 	public Entity getEntity(long entityId) {
@@ -408,7 +408,7 @@ public class MapTile implements Persistable {
 	}
 
 	public boolean isWaterSource() {
-		return floor.getRiverTile() != null;
+		return getFloor().getRiverTile() != null;
 	}
 
 	public int getRegionId() {
@@ -428,7 +428,7 @@ public class MapTile implements Persistable {
 	}
 
 	public RegionType getRegionType() {
-		if (floor.isRiverTile()) {
+		if (getFloor().isRiverTile()) {
 			return RegionType.RIVER;
 		} else if (hasWall()) {
 			return RegionType.WALL;
@@ -458,10 +458,16 @@ public class MapTile implements Persistable {
 		roof.writeTo(roofJson, savedGameStateHolder);
 		asJson.put("roof", roofJson);
 
-		if (floor != null) {
-			JSONObject floorJson = new JSONObject(true);
-			floor.writeTo(floorJson, savedGameStateHolder);
-			asJson.put("floor", floorJson);
+		if (!floors.isEmpty()) {
+			JSONArray floorsArray = new JSONArray();
+			Iterator<TileFloor> descendingIterator = floors.descendingIterator();
+			while (descendingIterator.hasNext()) {
+				TileFloor floor = descendingIterator.next();
+				JSONObject floorJson = new JSONObject(true);
+				floor.writeTo(floorJson, savedGameStateHolder);
+				floorsArray.add(floorJson);
+			}
+			asJson.put("floors", floorsArray);
 		}
 
 		if (wall != null) {
@@ -527,10 +533,15 @@ public class MapTile implements Persistable {
 			throw new InvalidSaveException("Map tile roof is old version");
 		}
 
-		JSONObject floorJson = asJson.getJSONObject("floor");
-		if (floorJson != null) {
-			this.floor = new TileFloor();
-			this.floor.readFrom(floorJson, savedGameStateHolder, relatedStores);
+		JSONArray floorsJson = asJson.getJSONArray("floors");
+		this.floors.clear();
+		if (floorsJson != null) {
+			for (int cursor = 0; cursor < floorsJson.size(); cursor++) {
+				JSONObject floorJson = floorsJson.getJSONObject(cursor);
+				TileFloor floor = new TileFloor();
+				floor.readFrom(floorJson, savedGameStateHolder, relatedStores);
+				this.floors.push(floor);
+			}
 		}
 
 		JSONObject wallJson = asJson.getJSONObject("wall");
@@ -596,6 +607,14 @@ public class MapTile implements Persistable {
 
 	public Map<Long, ParticleEffectInstance> getParticleEffects() {
 		return particleEffects;
+	}
+
+	public void replaceFloor(TileFloor newFloor) {
+		this.floors.push(newFloor);
+	}
+
+	public void popFloor() {
+		this.floors.pop();
 	}
 
 	public enum RegionType {

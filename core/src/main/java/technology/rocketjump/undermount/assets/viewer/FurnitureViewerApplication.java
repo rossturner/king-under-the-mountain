@@ -112,7 +112,7 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 		attributes.setColor(ColoringLayer.MISC_COLOR_1, gameMaterialDictionary.getByName("Tin").getColor());
 
 		GameMaterial testMetal = new GameMaterial("Test metal material", -1L, GameMaterialType.METAL, "#DDDDDE",
-				null, null, null, false, false, false, false, false);
+				null, null, null, false, false, false, false, false, null);
 		attributes.getMaterials().put(GameMaterialType.METAL, testMetal);
 
 		attributes.setPrimaryMaterialType(GameMaterialType.WOOD);

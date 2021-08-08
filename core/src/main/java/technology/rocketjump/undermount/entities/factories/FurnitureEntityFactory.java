@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
+import technology.rocketjump.undermount.entities.components.OxidisationComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
@@ -34,6 +35,16 @@ public class FurnitureEntityFactory {
 		LocationComponent locationComponent = createLocationComponent(tilePosition);
 
 		Entity entity = new Entity(EntityType.FURNITURE, physicalComponent, behaviour, locationComponent, messageDispatcher, gameContext);
+
+		attributes.getMaterials().values().stream().filter(m -> m.getOxidisation() != null)
+				.findAny()
+				.ifPresent((a) -> {
+					OxidisationComponent oxidisationComponent = new OxidisationComponent();
+					oxidisationComponent.init(entity, messageDispatcher, gameContext);
+					entity.addComponent(oxidisationComponent);
+				});
+
+
 		entityAssetUpdater.updateEntityAssets(entity);
 		return entity;
 	}

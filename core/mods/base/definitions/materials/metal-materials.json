@@ -1,0 +1,79 @@
+[
+  {
+    "materialName": "Iron",
+    "materialType": "METAL",
+    "colorCode": "#a8b5c1",
+    "oxidisation": {
+      "effect": "CONVERT_MATERIAL",
+      "changesTo": "Rusted Iron",
+      "hoursToConvert": 280
+    }
+  },
+  {
+    "materialName": "Steel",
+    "materialType": "METAL",
+    "colorCode": "#DDDDDE",
+    "oxidisation": {
+      "effect": "CONVERT_MATERIAL",
+      "changesTo": "Rusted Iron",
+      "hoursToConvert": 380
+    }
+  },
+  {
+    "materialName": "Rusted Iron",
+    "materialType": "METAL",
+    "colorCode": "#a15f33",
+    "useInRandomGeneration": false,
+    "oxidisation": {
+      "effect": "DESTROY_PARENT",
+      "changesTo": "Rusted scrap",
+      "hoursToConvert": 248
+    }
+  },
+  {
+    "materialName": "Copper",
+    "materialType": "METAL",
+    "colorCode": "#c67852",
+    "useInRandomGeneration": false,
+    "oxidisation": {
+      "effect": "CONVERT_MATERIAL",
+      "changesTo": "Copper Patina",
+      "hoursToConvert": 248
+    }
+  },
+  {
+    "materialName": "Copper Patina",
+    "materialType": "METAL",
+    "colorCode": "#70d0b5",
+    "useInRandomGeneration": false
+  },
+  {
+    "materialName": "Tin",
+    "materialType": "METAL",
+    "colorCode": "#c9c6b9"
+  },
+  {
+    "materialName": "Bronze",
+    "materialType": "METAL",
+    "colorCode": "#9d6d34",
+    "useInRandomGeneration": false
+  },
+  {
+    "materialName": "Gold",
+    "materialType": "METAL",
+    "colorCode": "#feed76",
+    "useInRandomGeneration": false
+  },
+  {
+    "materialName": "Platinum",
+    "materialType": "METAL",
+    "colorCode": "#f6f6f6",
+    "useInRandomGeneration": false
+  },
+  {
+    "materialName": "Silver",
+    "materialType": "METAL",
+    "colorCode": "#f3f3f3",
+    "useInRandomGeneration": false
+  }
+]
