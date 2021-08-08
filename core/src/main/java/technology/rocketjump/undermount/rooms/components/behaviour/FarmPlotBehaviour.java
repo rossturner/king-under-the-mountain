@@ -39,6 +39,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage.PlantSpeciesHarvestType.FARMING;
+import static technology.rocketjump.undermount.environment.model.Season.WINTER;
 import static technology.rocketjump.undermount.jobs.model.JobState.REMOVED;
 
 public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCreatedCallback, Prioritisable {
@@ -127,7 +128,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 			}
 
 			// Turn ground to tilled
-			if (tileNeedsTilling(tile, messageDispatcher)) {
+			if (tileNeedsTilling(tile, gameContext, messageDispatcher)) {
 				return;
 			}
 
@@ -213,7 +214,12 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 		return false;
 	}
 
-	private boolean tileNeedsTilling(MapTile tile, MessageDispatcher messageDispatcher) {
+	private boolean tileNeedsTilling(MapTile tile, GameContext gameContext, MessageDispatcher messageDispatcher) {
+		if (gameContext.getGameClock().getCurrentSeason().equals(WINTER)) {
+			// Just don't till in winter to avoid conflicting with snow cover
+			return false;
+		}
+
 		FloorType currentFloorType = tile.getFloor().getFloorType();
 		FarmPlotComponent farmPlotComponent = parent.getComponent(FarmPlotComponent.class);
 		FloorType desiredFloorType = farmPlotComponent.getFarmingFloorType();

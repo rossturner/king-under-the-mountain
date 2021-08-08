@@ -27,8 +27,6 @@ import technology.rocketjump.undermount.messaging.types.ReplaceFloorMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
-import technology.rocketjump.undermount.rendering.ScreenWriter;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -46,7 +44,6 @@ public class WeatherManager implements Updatable, Telegraph {
 
 	private final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
 	private final WeatherEffectUpdater weatherEffectUpdater;
-	private final ScreenWriter screenWriter;
 	private final MessageDispatcher messageDispatcher;
 
 	private static final float TOTAL_COLOR_CHANGE_TIME = 10f;
@@ -57,12 +54,11 @@ public class WeatherManager implements Updatable, Telegraph {
 
 	@Inject
 	public WeatherManager(DailyWeatherTypeDictionary dailyWeatherTypeDictionary, WeatherEffectUpdater weatherEffectUpdater,
-						  ScreenWriter screenWriter, FloorTypeDictionary floorTypeDictionary,
+						  FloorTypeDictionary floorTypeDictionary,
 						  GameMaterialDictionary gameMaterialDictionary, MessageDispatcher messageDispatcher,
 						  ParticleEffectTypeDictionary particleEffectTypeDictionary, SoundAssetDictionary soundAssetDictionary) {
 		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
 		this.weatherEffectUpdater = weatherEffectUpdater;
-		this.screenWriter = screenWriter;
 
 		snowFloorType = floorTypeDictionary.getByFloorTypeName("fallen_snow");
 		snowMaterialType = gameMaterialDictionary.getByName("Snowfall");
@@ -127,11 +123,6 @@ public class WeatherManager implements Updatable, Telegraph {
 					triggerLightningStrike();
 					timeToNextLightningStrike = null;
 				}
-			}
-
-			if (GlobalSettings.DEV_MODE) {
-				screenWriter.printLine(gameContext.getMapEnvironment().getCurrentWeather().getName() + ", remaining: " + gameContext.getMapEnvironment().getWeatherTimeRemaining());
-				screenWriter.printLine("Daily weather: " + gameContext.getMapEnvironment().getDailyWeather().getName());
 			}
 
 			if (gameContext.getMapEnvironment().getWeatherTimeRemaining() < 0) {
