@@ -1,0 +1,60 @@
+[
+  {
+    "uniqueName": "Dwarf-HairFG",
+    "type": "HUMANOID_HAIR",
+    "race": "DWARF",
+    "gender": "FEMALE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Dwarf-HairFG-Color-F.png",
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -13.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Dwarf-HairFG-Color-F34.png",
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": -2.5,
+          "y": -13.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Dwarf-HairFG-Color-F34.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": 2.5,
+          "y": -13.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Dwarf-HairFG-Color-B34.png",
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": -2.5,
+          "y": -15.0
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Dwarf-HairFG-Color-B34.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": 2.5,
+          "y": -15.0
+        }
+      },
+      "UP": {
+        "filename": "Dwarf-HairFG-Color-B.png",
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -14.5
+        }
+      }
+    }
+  }
+]
