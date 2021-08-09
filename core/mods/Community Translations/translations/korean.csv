@@ -1,10 +1,15 @@
 KEY,NOTES,ENGLISH,KOREAN
 
 ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},{{대상 플랜트}} 지우기
+ACTION.JOB.CONSTRUCT_FLOORING,,Laying floor,
 ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.CONSTRUCT_ROOFING,,Constructing roof,
 ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},{{대상 설명}} 을 (를) 생성하는 중입니다.
 ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},{{대상 설명}} 을 (를) 제거하는 중
+ACTION.JOB.DECONSTRUCT_ROOFING,,Removing roof,
 ACTION.JOB.DIGGING,,Digging {{targetDescription}},파기 {{대상 설명}}
+ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER,For emptying the liquid contents out of a container,Emptying out contents of {{targetDescription}},
+ACTION.JOB.EXTINGUISH_FLAMES,,Putting out a fire,
 ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},{{대상 설명}} 을 (를) 채우는 중입니다.
 ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},수확 {{타겟 플랜트}}
@@ -20,6 +25,8 @@ ACTION.PREPARATION.VERB,,Preparing,준비 중
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,할 일을 찾고 있습니다.
 ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},{{containerDescription}} 에서 휴면 중
 ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},{{tileDescription}} 에서 일시 정지 중
+
+ASHES.NOUN,,Ash,
 
 CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{furnitureType.noun}} 의 건설
 CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,{{{항목 설명}} 의 {{quantity}} 이 (가) 할당되었습니다.
@@ -52,15 +59,21 @@ CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive nu
 CROP.DESCRIPTION,,{{materialType.noun}} plant,{{materialType.noun}} 식물
 CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,수확을 향한 진전: {{progress}}%
 
+DEATH_REASON.BURNING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Burning,
 DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,떨어지는 파편
 DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,탈수
 DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,피로
 DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,식중독
+DEATH_REASON.FROZEN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exposure to freezing weather,
 DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,기아
 DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,신비한 상황
 
 EARTH.DIRT,,Dirt,먼지
 EARTH.GRASS,,Grass,잔디
+
+ENTITY.DESTRUCTION_DESCRIPTION.BURNED,,Destroyed by fire,
+ENTITY.DESTRUCTION_DESCRIPTION.OXIDISED,,Destroyed by prolonged exposure to rain,
+ENTITY.DESTRUCTION_DESCRIPTION.TANTRUM,,Destroyed in a tantrum,
 
 FLOOR.COBBLESTONE,,Cobblestone,조약돌
 FLOOR.DESCRIPTION,,{{floorType.noun}},{{floorType.noun}}
@@ -69,9 +82,12 @@ FLOOR.GRASS,,Grass,잔디
 FLOOR.GRAVEL,,Gravel,자갈
 FLOOR.RIVER,,River,강
 FLOOR.ROUGH_STONE,,Rough stone floor,거친 돌 바닥
+FLOOR.SNOW,,Fallen snow,
+FLOOR.STONE_PAVING,,Stone paving,
 FLOOR.STONE_SLAB,,Stone slab,석판
 FLOOR.TILLED_EARTH,,Tilled earth,경작 지구
 FLOOR.UNEXPLORED,Used when the player clicks on an area they have not discovered yet,Unexplored,미개척
+FLOOR.WOODEN,,Wooden floorboards,
 
 FOODSTUFF.ROCKBREAD,This is a made-up fantasy food,Rockbread,록브레드
 FOODSTUFF.ROCKBREAD.TOOLTIP,,This is an infamously tough bread which is so hard and practically inedible that it takes a very long time to turn mouldy. The human explorer J. A. Moffatt once described eating it as “akin to chewing gravel that has been dredged from a swamp”. Fortunately most dwarves don’t seem to mind.,이것은 매우 단단하고 실질적으로 먹을 수없는 불명예 힘든 빵입니다 곰팡이를 설정하는 데 매우 오랜 시간이 걸립니다. 인간 탐험가 J. A. Moffatt는 그것을 “늪에서 준설된 자갈을 씹는 것과 비슷합니다”라고 묘사했습니다. 다행히 대부분의 드워프는 마음에 들지 않는 것 같습니다.
@@ -238,9 +254,12 @@ GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is tho
 
 GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},{{대상 설명}} 수집하는 중
 GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},마시는 {{대상 지역 재료}}
+GOAL.DUMP_LIQUID.DESCRIPTION,,Dumping contents of {{targetDescription}},
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},{{대상 설명}} 먹는 것
+GOAL.EXTINGUISH_FIRE.DESCRIPTION,,Putting out a fire,
 GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},운반 {{대상 설명}}
 GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,유휴 상태
+GOAL.ON_FIRE.DESCRIPTION,,On fire!,
 GOAL.SLEEP.DESCRIPTION,,Going to sleep,잠자기
 GOAL.TRANSFER_LIQUID.DESCRIPTION,Becomes “Transferring water”,Transferring {{targetZoneMaterial}},{{대상 지역 소재}} 전송 중
 
@@ -250,9 +269,11 @@ GUI.AMBIENT_EFFECT_VOLUME,This is a volume setting for ambient effects such as b
 GUI.BACK_LABEL,This should be as short as possible,Back,뒤로
 GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,다리
 GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,문
+GUI.BUILD.FLOOR,For building floorboards/stone slabs across the ground,Flooring,
+GUI.BUILD.ROOFING,,Roofing,
 GUI.BUILD.WALLS,,Walls,벽
 GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,L자형
-GUI.BUILD.WALLS.QUAD,For building 4 walls at once,Quad,쿼드
+GUI.BUILD.WALLS.ROOM,For building 4 walls and a rof at once,Room,
 GUI.BUILD.WALLS.SINGLE,For building a single wall,Single,싱글
 GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,가구
 GUI.BUILD_LABEL,This should be as short as possible,Build,빌드
@@ -291,6 +312,9 @@ GUI.EMBARK.MAP_SEED,,Map seed:,
 GUI.EMBARK.SETTLEMENT_NAME,,Settlement name:,
 GUI.EMBARK.START,,Begin!,
 GUI.EMBARK.TITLE,,Embark Options,
+GUI.EMPTY_CONTAINER_LABEL,This should be as short as possible,Empty,
+GUI.EMPTY_CONTAINER_LABEL.BEING_ACTIONED,,Contents are being emptied.,
+GUI.EMPTY_CONTAINER_LABEL.HINT,,Dump the contents of this container on the ground.,
 GUI.FURNITURE_ASSIGNED_TO,Used to show who owns a piece of furniture,Assigned to {{name}},{{name}} 에 할당됨
 GUI.FURNITURE_BEING_REMOVED,Label for when a piece of furniture is in the process of being removed,Currently being removed,현재 제거 중입니다.
 GUI.FURNITURE_REQUIRES_FLOOR_MATERIALTYPE,,This furniture must be placed on {{materialType}}.,이 가구는 {{재료 유형}} 에 배치해야 합니다.
@@ -314,6 +338,10 @@ GUI.OPTIONS.GAMEPLAY.HIDE_TREES_OBSCURING_SETTLERS,This is an option that makes 
 GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION,,Pause for notifications,알림을 위해 일시 중지
 GUI.OPTIONS.GAMEPLAY.TITLE,,"Gameplay Options ",게임플레이 옵션
 GUI.OPTIONS.GAMEPLAY.USE_EDGE_SCROLLING,This is for a question to ask if the player would like the camera to scroll/pan by placing the mouse at the edge of the screen,Scroll when cursor is at the edge of the screen,커서가 화면 가장자리에있을 때 스크롤
+GUI.OPTIONS.GAMEPLAY.ZOOM_TO_CURSOR,This is for a question to ask if the player would like the camera to scroll/pan based on where the mouse cursor is when they zoom in or out,Scroll to cursor when zooming,
+GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.BORDERLESS_FULLSCREEN,,Borderless,
+GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.EXCLUSIVE_FULLSCREEN,,Exclusive fullscreen,
+GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.WINDOWED,,Windowed,
 GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ",그래픽 옵션
 GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,자동 충돌 보고서 허용
 GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
@@ -338,6 +366,8 @@ GUI.OPTIONS.TWITCH.TITLE,,Twitch Integration,
 GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,,Use viewers as settler names,
 GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,들어온다
 GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,클리어
+GUI.ORDERS.EXTINGUISH_FLAMES,This should be as short as possible - used to put out fires by throwing buckets of water on them,Extinguish,
+GUI.ORDERS.EXTINGUISH_FLAMES.TOOLTIP,,This order is used to extinguish fires that are currently burning.,
 GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,수확
 GUI.ORDERS.MINE,This should be as short as possible,Mine,내
 GUI.ORDERS_LABEL,This should be as short as possible,Orders,주문
@@ -347,6 +377,7 @@ GUI.REMOVE_LABEL,This should be as short as possible,Remove,제거
 GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,타일 제거
 GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,리소스
 GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},사용 가능: {{count}}
+GUI.ROOFING.ADD,,Add,
 GUI.ROTATE_FURNITURE.HINT,This is a longer label as a hint to the player,Press (R) to rotate furniture,가구를 회전하려면 (R) 키를 누릅니다.
 GUI.SAVING_PROMPT,Displayed to the player when the game is paused for autosaving,Saving…,저장하는 중...
 GUI.SETTINGS.LABEL,,Settings,
@@ -362,18 +393,22 @@ GUI.UI_SCALE,Used to make the game interface larger or smaller,UI scale:,UI 배�
 GUI.VIEW_ROADMAP,,View development roadmap,
 GUI.ZONES_LABEL,This should be as short as possible,Zones,영역
 
-HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWL,,Going sober,
+HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWAL,,Going sober,
 HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,멋지게 준비된 식사를 먹었다.
 HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,시체를 운반한
+HAPPINESS_MODIFIER.CAUGHT_IN_RAIN,,Caught outside in the rain,
 HAPPINESS_MODIFIER.DRANK_ALCOHOL,,Under the effects of alcohol,
 HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,마신 강 물
 HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,굶주린
 HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,비판적으로 탈수
 HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,,Optimistic about new settlement,새로운 정착에 대한 낙관적
+HAPPINESS_MODIFIER.ON_FIRE,,Was badly burned,
 HAPPINESS_MODIFIER.POISONED,,Poisoned,중독
 HAPPINESS_MODIFIER.SAW_DEAD_BODY,,Saw a dead body,죽은 시체를 보았다
+HAPPINESS_MODIFIER.SLEEPING_IN_RAIN,,Slept in the rain,
+HAPPINESS_MODIFIER.SLEEPING_IN_SNOW,,Slept in the snow,
+HAPPINESS_MODIFIER.SLEPT_IN_ENCLOSED_BEDROOM,,Slept in an enclosed bedroom,
 HAPPINESS_MODIFIER.SLEPT_IN_LARGE_PRIVATE_BEDROOM,,"Slept in a spacious, private bedroom",넓은 개인 침실에서 잠을 자다.
-HAPPINESS_MODIFIER.SLEPT_IN_PRIVATE_BEDROOM,,Slept in a private bedroom,개인 침실에서 잤다.
 HAPPINESS_MODIFIER.SLEPT_IN_SHARED_BEDROOM,,Shared a bedroom with others,다른 사람들과 침실을 공유했습니다.
 HAPPINESS_MODIFIER.SLEPT_IN_SMALL_BEDROOM,,Slept in a cramped bedroom,비좁은 침실에서 잤다.
 HAPPINESS_MODIFIER.SLEPT_ON_GROUND,,Slept on rough ground,거친 땅에서 잤다.
@@ -382,14 +417,21 @@ HAPPINESS_MODIFIER.TITLE,,Happiness:,행복:
 HAPPINESS_MODIFIER.VERY_HUNGRY,,Very hungry,매우 배고픈
 HAPPINESS_MODIFIER.VERY_THIRSTY,,Very thirsty,매우 목마른
 HAPPINESS_MODIFIER.VERY_TIRED,,Extremely tired,매우 피곤함
+HAPPINESS_MODIFIER.WORKED_IN_ENCLOSED_ROOM,,Worked in an enclosed room,
+HAPPINESS_MODIFIER.WORKED_IN_RAIN,,Working in the rain,
 
 HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},{{대상 설명}} 에 {{quantity}} 이 (가) 할당되었습니다.
 
+HINT.BUILD_ROOFING.1,,"This view allows you to see which tiles are outside with no roof above them (light blue), and those which have had a roof built overhead (dark brown).",
+HINT.BUILD_ROOFING.2,,"You can use the {{GUI.ROOFING.ADD}} and {{GUI.CANCEL_LABEL}} options to queue up roofing to be constructed, and {{GUI.DECONSTRUCT_LABEL}} to remove any existing roof tiles.",
+HINT.BUILD_ROOFING.3,,A roof can only be constructed within 3 tiles of a wall or {{FURNITURE.PILLAR}}.,
 HINT.BUTTON.DISABLE_ALL,,Disable all hints,모든 힌트 비활성화
 HINT.BUTTON.DISMISS,,Dismiss,
 HINT.BUTTON.HINTS_ONLY,,Hints only,힌트만
 HINT.BUTTON.NEXT,,Next,다음
 HINT.BUTTON.TUTORIAL,,Tutorial,자습서
+HINT.FIRE_ENCOUNTERED.1,,A fire has started! Extinguish it quickly before it spreads.,
+HINT.FIRE_ENCOUNTERED.2,,You can use the {{GUI.ORDERS.EXTINGUISH_FLAMES}} order to douse the flames with water. Any settlers on fire will attempt to put themselves out.,
 HINT.OPEN_PRIORITY_MENU.1,,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",
 HINT.OPEN_PRIORITY_MENU.2,,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",
 HINT.PROGRESS.HEADER,,Progress:,
@@ -401,8 +443,9 @@ HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} availa
 HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,
 HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,
 HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",
-HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this location to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","산 아래 왕의 세계에 오신 것을 환영합니다! 이것은 더 많은 기능과 게임 플레이 요소가 여전히 구현 될 게임의 초기 알파 버전입니다. 당신의 용맹 한 드워프 정착민들이 그들의 왕국의 새로운 식민지를 발견하기 위해이 위치를 선택했습니다. 음식, 피난처와 번영을 제공하고 누가 알고, 어쩌면 언젠가는 자신의 왕국의 수도가 될 것입니다!"
+HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this area to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!","산 아래 왕의 세계에 오신 것을 환영합니다! 이것은 더 많은 기능과 게임 플레이 요소가 여전히 구현 될 게임의 초기 알파 버전입니다. 당신의 용맹 한 드워프 정착민들이 그들의 왕국의 새로운 식민지를 발견하기 위해이 위치를 선택했습니다. 음식, 피난처와 번영을 제공하고 누가 알고, 어쩌면 언젠가는 자신의 왕국의 수도가 될 것입니다!"
 HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",텍스트를 입력합니다
+HINT.WELCOME.PRE_SPAWN,,"Start the game by selecting a location on the map with enough space, and clicking the '{{GUI.EMBARK.START}}' button.",
 
 HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}","{{name}}, {{madness.adjective}} {{race.noun}}"
 HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
@@ -484,6 +527,9 @@ METAL.BRONZE.TOOLTIP,,Bronze is an alloy of copper and tin. It is harder and muc
 METAL.COPPER.ADJECTIVE,,Copper,구리
 METAL.COPPER.NOUN,,Copper,구리
 METAL.COPPER.TOOLTIP,,"As well as occuring naturally as {{ORE.NATIVE_COPPER.NOUN}}, it is also easy to smelt from {{ORE.MALACHITE.NOUN}} ore. Copper has many uses, particularly in coinage, though it is not hard enough to create effective weapons.","{{ORE.NATIVE_COPPER.NOUN}} 처럼 자연적으로 발생하는 것뿐만 아니라, {{ORE.MALACHITE.NOUN}} 광석에서 쉽게 제련할 수 있습니다. 구리는 효과적인 무기를 만들기에 충분하지 않지만 특히 주화 분야에서 많은 용도를 가지고 있습니다."
+METAL.COPPER_PATINA.ADJECTIVE,,Copper,
+METAL.COPPER_PATINA.NOUN,,Copper (Patina),
+METAL.COPPER_PATINA.TOOLTIP,,{{METAL.COPPER.TOOLTIP}},
 METAL.GOLD.ADJECTIVE,,Golden,황금
 METAL.GOLD.NOUN,,Gold,금
 METAL.GOLD.TOOLTIP,,"The king of metals. Although it is not the rarest or most valuable, gold is the most coveted metal by most races – particularly dwarves.","금속의 왕. 가장 희귀하거나 가장 가치있는 것은 아니지만, 금은 대부분의 종족들, 특히 드워프에 의해 가장 탐낼 수 있는 금속입니다."
@@ -493,6 +539,9 @@ METAL.IRON.TOOLTIP,,It is a poor military which does not have access to iron. Dw
 METAL.PLATINUM.ADJECTIVE,,Platinum,플래티넘
 METAL.PLATINUM.NOUN,,Platinum,플래티넘
 METAL.PLATINUM.TOOLTIP,,A silver-white metal that is highly resistant to corrosion. Platinum is rarer and therefore more valuable than {{METAL.GOLD.NOUN}}.,부식에 강한 은백색 금속입니다. 플래티넘은 {{METAL.GOLD.NOUN}} 보다 더 희귀하고 귀중합니다.
+METAL.RUSTED_IRON.ADJECTIVE,,Rusted iron,
+METAL.RUSTED_IRON.NOUN,,Rust,
+METAL.RUSTED_IRON.TOOLTIP,,Iron turns to rust when exposed to rain for a long period. Eventually this will decay completely!,
 METAL.SILVER.ADJECTIVE,,Silver,실버
 METAL.SILVER.NOUN,,Silver,실버
 METAL.SILVER.TOOLTIP,,"Like {{METAL.GOLD.NOUN}}, silver is often used for coinage and as solid bars for the trading of wealth. ",{{METAL.GOLD.NOUN}} 처럼 은은 주화 및 부의 거래를 위한 견고한 막대로 자주 사용됩니다.
@@ -526,12 +575,18 @@ NOTIFICATION.AREA_REVEALED.TITLE,,Exploration,탐사
 NOTIFICATION.DEATH.DESCRIPTION,,"{{character}}, has died due to {{reason}}.","{{character}}, {{reason}} (으) 로 인해 사망했습니다."
 NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},{{reason}} (으) 로 인해 사망했습니다.
 NOTIFICATION.DEATH.TITLE,,Settler death,세틀러 죽음
+NOTIFICATION.FIRE_STARTED.DESCRIPTION,,A fire has broken out in your settlement!,
+NOTIFICATION.FIRE_STARTED.TITLE,,Fire!,
 NOTIFICATION.GAME_OVER.DESCRIPTION,,All things must come to an end. Your settlement lies abandoned.,모든 것이 끝나야합니다. 당신의 정착은 버려진 거짓말.
 NOTIFICATION.GAME_OVER.TITLE,,Game Over,게임 오버
 NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,당신의 정착지의 번영은 당신의 인구를 높이기 위해 새로운 이민자의 숫자를 끌고있다.
 NOTIFICATION.IMMIGRANTS_ARRIVED.TITLE,,Immigration,이민
 NOTIFICATION.MINING_COLLAPSE.DESCRIPTION,,An area has caved in due to a lack of pillars and supports.,이 지역은 기둥과 지지대가 부족하여 동굴에 파견되었습니다.
 NOTIFICATION.MINING_COLLAPSE.TITLE,,Mining collapse,분류: 광업 붕괴
+NOTIFICATION.OXIDISATION_DESTRUCTION.DESCRIPTION,,An item or piece of furniture has been destroyed due to prolonged exposure to rain.\nSome materials such as iron and steel should not be left outside for a long period.,
+NOTIFICATION.OXIDISATION_DESTRUCTION.TITLE,,Rusted away,
+NOTIFICATION.ROOFING_COLLAPSE.DESCRIPTION,,A roof has collapsed due to a lack of pillars and supports.,
+NOTIFICATION.ROOFING_COLLAPSE.TITLE,,Roof collapsed,
 NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,이 지저분한 어려움은 {{character}} 을 (를) 처리하기에는 너무 많은 것으로 입증되었습니다.
 NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,정신 휴식
 
@@ -590,6 +645,7 @@ ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,울프라마이트
 ORE.WOLFRAMITE.NOUN,,Wolframite,울프라마이트
 ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,주석의 제련을 복잡하게 만드는 금속 광석. 용융점이 너무 높아 정상적인 공정으로 제련할 수 없습니다.
 
+OTHER.ASH,,Charred,
 OTHER.BRICK.NOUN,,Brick,벽돌
 OTHER.CLAY_SOIL.NOUN,,Clay soil,클레이 토양
 OTHER.GRASS.NOUN,,,
@@ -806,6 +862,9 @@ ROOMS.STOCKPILE.TOOLTIP,,This area stores different kinds of items depending on 
 ROOMS.STOCKPILES,,Stockpiles,비축
 ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,사용하지 않은 품목은 쉽게 접근 할 수 있도록 비축 보관에 보관됩니다.
 
+RUSTED_SCRAP.NOUN,,Scrap,
+RUSTED_SCRAP.TOOLTIP,,These are the remains of an item that has completed corroded due to rust.,
+
 SEASON.AUTUMN,,Autumn,가을
 SEASON.SPRING,,Spring,봄
 SEASON.SUMMER,,Summer,여름
@@ -925,7 +984,7 @@ TUTORIAL.4.A,,Your {{PROFESSION.FARMER.PLURAL}} will now get to work sowing the 
 TUTORIAL.4.B,,"Clicking on a settler lets you see their name, professions, inventory, needs and happiness. Click on the blank square button next to their other professions to set a 3rd and final profession as a {{PROFESSION.FARMER.NOUN}}.","정착민을 클릭하면 자신의 이름, 직업, 재고, 필요와 행복을 볼 수 있습니다. 다른 직업 옆에 있는 빈 사각형 버튼을 클릭하여 세 번째 직업과 마지막 직업을 {{PROFESSION.FARMER.NOUN}} 으로 설정합니다."
 TUTORIAL.4.C,,"Note that some jobs require the settler to have a specific tool in their inventory, and if none are available in the settlement they won’t work on the jobs that require it. For example, you can assign more settlers as a {{PROFESSION.WOODCUTTER}}, but they can’t chop down trees without an available {{TOOL.AXE.NOUN}}.","일부 작업은 정산자에게 인벤토리에 특정 도구가 있어야 하며, 정산에서 사용할 수 있는 도구가 없는 경우 필요한 작업에서는 작동하지 않습니다. 예를 들어, 더 많은 정착민을 {{PROFESSION.WOODCUTTER}} 로 지정할 수 있지만 사용 가능한 {{TOOL.AXE.NOUN}} 이 없으면 나무를 잘라낼 수 없습니다."
 TUTORIAL.5.A,,"Your crops will now grow and eventually be harvested by your {{PROFESSION.FARMER.PLURAL}} in the {{SEASON.AUTUMN}}. Some crops can be planted again later in the year and survive through the {{SEASON.WINTER}}, but some do not. To get the most out of your crops, it is best to produce soup from the vegetables harvested, or bread from grain.",당신의 작물은 이제 {{PROFESSION.FARMER.PLURAL}} 에 당신의 {{SEASON.AUTUMN}} 에 의해 수확됩니다. 일부 작물은 올해 후반에 다시 심어 {{SEASON.WINTER}} 을 통해 생존할 수 있지만 일부는 그렇지 않습니다. 작물을 최대한 활용하려면 수확 한 채소에서 수프를 생산하거나 곡물에서 빵을 만드는 것이 가장 좋습니다.
-TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. At this point in the development of King under the Mountain it does not matter if it is outside or indoors, but in the future you’ll want all your rooms to have a ceiling to protect them from the elements.","작물이 준비되면 {{ROOMS.KITCHEN}} 을 (를) 만들어 봅시다. 상위 레벨 메뉴로 이동한 다음 {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} 을 (를) 클릭하고 {{ROOMS.KITCHEN}} 영역을 드래그합니다. 그것은 외부 또는 실내에있는 경우 산 아래 왕의 개발이 시점에서 그것은 중요하지 않습니다, 하지만 미래에 당신은 모든 객실 요소로부터 그들을 보호하기 위해 천장을 가지고 할 것입니다."
+TUTORIAL.5.B,,"Let’s get a {{ROOMS.KITCHEN}} set up to produce soup once your crops are ready. Go to the top level menu then {{GUI.ZONES_LABEL}} > {{ROOMS.KITCHEN}} and drag out a {{ROOMS.KITCHEN}} area. For now you can build this outside, but you will eventually want to move the majority of your work areas inside for protection from the elements.","작물이 준비되면 {{ROOMS.KITCHEN}} 을 (를) 만들어 봅시다. 상위 레벨 메뉴로 이동한 다음 {{ZONES.LABEL}} > {{ROOMS.KITCHEN}} 을 (를) 클릭하고 {{ROOMS.KITCHEN}} 영역을 드래그합니다. 그것은 외부 또는 실내에있는 경우 산 아래 왕의 개발이 시점에서 그것은 중요하지 않습니다, 하지만 미래에 당신은 모든 객실 요소로부터 그들을 보호하기 위해 천장을 가지고 할 것입니다."
 TUTORIAL.5.C,,"Unlike farm plots, kitchens (and most other rooms) need furniture to function. Click “Furniture” when you have placed a kitchen zone and you’ll be presented with the furniture that can be added. To produce soup, you need to build a {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} and {{FURNITURE.CAULDRON}} in the same kitchen zone. Also, designate a {{STOCKPILE.GROUP.FOOD}} {{ROOMS.STOCKPILE}} to store any harvested crops.","농장 플롯과 달리 부엌 (및 대부분의 다른 방) 은 기능하기 위해 가구가 필요합니다. 주방 구역을 배치하면 “가구”를 클릭하면 추가할 수 있는 가구가 표시됩니다. 수프를 생산하려면 같은 주방 구역에 {{FURNITURE.WATER_BARREL}}, {{FURNITURE.KITCHEN_WORKTOP}} 및 {{FURNITURE.CAULDRON}} 를 만들어야 합니다. 또한 수확한 작물을 저장할 {{STOCKPILE.PANTRY}} 영역을 지정합니다."
 TUTORIAL.6.A,,"When your crops have been harvested, cooks will bring vegetables to the {{FURNITURE.KITCHEN_WORKTOP}} before adding them to the {{FURNITURE.CAULDRON}} with water and producing soup! Making soup and baking bread means your food supplies will go much further - a single vegetable will feed a dwarf for a single meal, but 3 vegetables cooked into soup will provide 12 meals!","작물이 수확되면 요리사는 {{FURNITURE.KITCHEN_WORKTOP}} 에 야채를 가져와 물과 생산 수프로 {{FURNITURE.CHEFS_CAULDRON}} 에 야채를 넣습니다! 수프를 만들고 빵을 굽는 것은 식량이 훨씬 더 나아갈 것이라는 것을 의미합니다. 단 하나의 야채는 한 끼에 난쟁이를 먹일 것이지만, 수프에 조리 된 3 가지 야채는 12 가지 식사를 제공합니다!"
 TUTORIAL.6.B,,"Eventually this kitchen will produce a cauldron full of steaming hot soup, but the cooks don’t like other dwarves getting in the way in their kitchen, so instead you need to have the soup brought to a feasting hall for the whole settlement to enjoy. Designate a feasting hall by clicking on {{GUI.ZONES_LABEL}} > {{ROOMS.FEASTING_HALL}}, then add a {{FURNITURE.CAULDRON}} to it. Note that a feasting hall cauldron won’t be placed until a cauldron containing thick, delicious soup is available.",결국 이 주방은 김이 나는 뜨거운 국물이 가득 찬 가마솥을 만들지만 요리사들은 다른 드워프들이 부엌에 들어가는 것을 좋아하지 않으므로 대신 수프를 잔치 홀로 가져와 전체 정착을 즐기십시오. {{ZONES.LABEL}} > {{ROOMS.FEASTING_HALL}} 을 (를) 클릭하여 잔치 홀을 지정한 다음 {{FURNITURE.CAULDRON}} 을 (를) 추가합니다. 잔치 홀의 가마솥은 두껍고 맛있는 수프가 들어 있는 가마솥이 나올 때까지 놓지 않습니다.
@@ -1019,6 +1078,13 @@ WALL.ORE.NOUN,,Ore,광석
 WALL.ROUGH_STONE.NOUN,,Rock wall,바위 벽
 WALL.STONE_BLOCK.NOUN,,Smooth stone wall,부드러운 석재 벽
 WALL.WOODEN.NOUN,,Wood wall,나무 벽
+
+WEATHER.TYPE.CLOUDY,,Cloudy & grey,
+WEATHER.TYPE.COLD_WINDS,,Cold winds,
+WEATHER.TYPE.PERFECT,,Perfect weather,
+WEATHER.TYPE.RAIN,,Pouring rain,
+WEATHER.TYPE.SNOW,,Snow flurries,
+WEATHER.TYPE.THUNDERSTORM,,Thunderstorm,
 
 WOOD.ASPEN.ADJECTIVE,,Aspen,아스펜
 WOOD.ASPEN.NOUN,,Aspen,아스펜
