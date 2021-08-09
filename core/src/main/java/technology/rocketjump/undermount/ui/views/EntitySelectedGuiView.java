@@ -382,7 +382,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		Cell<I18nTextWidget> nameCell = nameTable.add(new I18nTextWidget(i18nTranslator.getDescription(entity), uiSkin, messageDispatcher)).left();
 
 		if (imageButtonFactory != null) {
-			ImageButton changeSettlerNameButton = imageButtonFactory.create("fountain-pen", true);
+			ImageButton changeSettlerNameButton = imageButtonFactory.create("fountain-pen", true).clone();
 			changeSettlerNameButton.setAction(() -> {
 				// Grabbing translations here so they're always for the correct language
 				I18nText renameDialogTitle = i18nTranslator.getTranslatedString("GUI.DIALOG.RENAME_SETTLER_TITLE");

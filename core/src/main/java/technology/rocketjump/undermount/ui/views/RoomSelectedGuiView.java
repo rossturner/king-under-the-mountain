@@ -139,7 +139,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 		});
 
 
-		changeRoomNameButton = imageButtonFactory.create("fountain-pen", true);
+		changeRoomNameButton = imageButtonFactory.create("fountain-pen", true).clone();
 		changeRoomNameButton.setAction(() -> {
 			if (currentSelectable.getRoom() != null) {
 				// Grabbing translations here so they're always for the correct language
@@ -163,6 +163,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 					if (!originalRoomName.equals(newRoomName)) {
 						try {
 							roomStore.rename(currentSelectable.getRoom(), newRoomName);
+							doUpdate();
 						} catch (RoomStore.RoomNameCollisionException e) {
 							ModalDialog errorDialog = gameDialogDictionary.getErrorDialog(ErrorType.ROOM_NAME_ALREADY_EXISTS);
 							messageDispatcher.dispatchMessage(MessageType.SHOW_DIALOG, errorDialog);
