@@ -14972,12 +14972,12 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 1.0,
+        "x" : -1.0,
         "y" : -17.0,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : false,
+      "flipX" : true,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
@@ -14989,12 +14989,12 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -1.0,
+        "x" : 1.0,
         "y" : -17.0,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : true,
+      "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
@@ -15008,6 +15008,116 @@
       "offsetPixels" : {
         "x" : 1.0,
         "y" : -17.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Dwarf-HairFC",
+  "type" : "HUMANOID_HAIR",
+  "race" : "DWARF",
+  "gender" : "FEMALE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Dwarf-HairFC-Color-FB.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -4.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Dwarf-HairFC-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -4.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Dwarf-HairFC-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -4.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Dwarf-HairFC-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Dwarf-HairFC-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "Dwarf-HairFC-Color-FB.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -6.0,
         "zero" : false,
         "unit" : false
       },
