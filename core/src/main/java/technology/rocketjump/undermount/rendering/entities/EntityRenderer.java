@@ -333,7 +333,7 @@ public class EntityRenderer implements GameContextAware, Disposable {
 	private Vector2 spriteWorldSize = new Vector2(); // Private member to avoid new instance on every render call
 
 	private boolean snowRenderingEnabled() {
-		return gameContext.getMapEnvironment().getFallenSnow() > 0;
+		return gameContext != null && gameContext.getMapEnvironment().getFallenSnow() > 0;
 	}
 
 	private Affine2 affine = new Affine2(); // Private member to avoid new instance on every render call

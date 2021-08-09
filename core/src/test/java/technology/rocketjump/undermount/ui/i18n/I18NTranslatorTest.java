@@ -151,7 +151,7 @@ public class I18NTranslatorTest {
 	public void describeHumanoid() throws IOException {
 		NorseNameGenerator nameGenerator = new NorseNameGenerator();
 		HumanoidEntityAttributes attributes = new HumanoidEntityAttributesFactory(
-				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(), new DwarvenNameGenerator(new NorseNameGenerator()),
+				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(gameMaterialDictionary), new DwarvenNameGenerator(new NorseNameGenerator()),
 				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary).create(new GameContext());
 		attributes.setName(nameGenerator.create(88L, Gender.MALE));
 

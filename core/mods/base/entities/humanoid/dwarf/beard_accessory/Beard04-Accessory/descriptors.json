@@ -1,0 +1,34 @@
+[{
+  "uniqueName": "Dwarf-Beard04-Accessory",
+  "type": "BEARD_ACCESSORY",
+  "race": "DWARF",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Beard04-Accessory-F.png",
+      "coloringLayer": "ACCESSORY_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Beard04-Accessory-F34.png",
+      "coloringLayer": "ACCESSORY_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Beard04-Accessory-F34.png",
+      "flipX": true,
+      "coloringLayer": "ACCESSORY_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Beard04-Accessory-F34.png",
+      "coloringLayer": "ACCESSORY_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Beard04-Accessory-F34.png",
+      "flipX": true,
+      "coloringLayer": "ACCESSORY_COLOR"
+    },
+    "UP": {
+      "filename": "Dwarf-Beard04-Accessory-F.png",
+      "coloringLayer": "ACCESSORY_COLOR"
+    }
+  }
+}]

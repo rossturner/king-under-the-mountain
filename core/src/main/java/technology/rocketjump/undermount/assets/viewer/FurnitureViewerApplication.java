@@ -169,7 +169,7 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 
 		Color skinColor = new SkinColorFactory().randomSkinColor(random);
 		Color hairColor = new HairColorFactory().randomHairColor(random);
-		Color accessoryColor = new AccessoryColorFactory().randomAccessoryColor(random);
+		Color accessoryColor = new AccessoryColorFactory(gameMaterialDictionary).randomAccessoryColor(random);
 
 		HumanoidEntityAttributes attributes = new HumanoidEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor, GameMaterial.NULL_MATERIAL);
 		Vector2 facing = new Vector2(0, 0f);
