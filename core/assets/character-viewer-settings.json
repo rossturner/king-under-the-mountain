@@ -1,12 +1,12 @@
 {
-  "gender" : "MALE",
+  "gender" : "FEMALE",
   "race" : "DWARF",
   "bodyType" : "AVERAGE",
   "typeToUniqueNameMap" : {
-    "HUMANOID_BEARD" : "Dwarf-Beard02-Color",
-    "HUMANOID_EYEBROWS" : "Eyebrows F",
-    "BODY_CLOTHING" : "Dwarf-Male-Average-Carpenter-Clothing",
-    "HUMANOID_HAIR" : "Dwarf-HairD-Color"
+    "HUMANOID_BEARD" : "None",
+    "HUMANOID_EYEBROWS" : "None",
+    "BODY_CLOTHING" : "Dwarf-Female-Average-Carpenter-Clothing",
+    "HUMANOID_HAIR" : "Dwarf-HairFB"
   },
   "skinColor" : {
     "r" : 1.0,
@@ -15,9 +15,9 @@
     "a" : 1.0
   },
   "hairColor" : {
-    "r" : 0.70980394,
-    "g" : 0.32156864,
-    "b" : 0.22352941,
+    "r" : 0.9019608,
+    "g" : 0.80784315,
+    "b" : 0.65882355,
     "a" : 1.0
   },
   "accessoryColor" : {

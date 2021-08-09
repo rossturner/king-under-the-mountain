@@ -14799,14 +14799,234 @@
     }
   }
 }, {
-  "uniqueName" : "Dwarf-HairD",
+  "uniqueName" : "Dwarf-HairFA",
   "type" : "HUMANOID_HAIR",
   "race" : "DWARF",
   "gender" : "FEMALE",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "Dwarf-HairD-Color-F.png",
+      "filename" : "Dwarf-HairFA-Color-FB.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Dwarf-HairFA-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Dwarf-HairFA-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Dwarf-HairFA-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -17.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Dwarf-HairFA-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -17.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "Dwarf-HairFA-Color-FB.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -17.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Dwarf-HairFB",
+  "type" : "HUMANOID_HAIR",
+  "race" : "DWARF",
+  "gender" : "FEMALE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Dwarf-HairFB-Color-FB.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Dwarf-HairFB-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Dwarf-HairFB-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Dwarf-HairFB-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -17.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Dwarf-HairFB-Color-FB34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -17.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "Dwarf-HairFB-Color-FB.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -17.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Dwarf-HairFD",
+  "type" : "HUMANOID_HAIR",
+  "race" : "DWARF",
+  "gender" : "FEMALE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Dwarf-HairFD-Color-F.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -14820,7 +15040,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairD-Outline",
+        "specificAssetName" : "Dwarf-HairFD-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -14832,7 +15052,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "Dwarf-HairD-Color-F34.png",
+      "filename" : "Dwarf-HairFD-Color-F34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -14846,7 +15066,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairD-Outline",
+        "specificAssetName" : "Dwarf-HairFD-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -14858,7 +15078,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "Dwarf-HairD-Color-F34.png",
+      "filename" : "Dwarf-HairFD-Color-F34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -14872,7 +15092,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairD-Outline",
+        "specificAssetName" : "Dwarf-HairFD-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -14884,7 +15104,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "Dwarf-HairD-Color-B34.png",
+      "filename" : "Dwarf-HairFD-Color-B34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -14898,7 +15118,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairD-Outline",
+        "specificAssetName" : "Dwarf-HairFD-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -14910,7 +15130,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "Dwarf-HairD-Color-B34.png",
+      "filename" : "Dwarf-HairFD-Color-B34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -14924,7 +15144,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairD-Outline",
+        "specificAssetName" : "Dwarf-HairFD-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -14936,7 +15156,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "Dwarf-HairD-Color-B.png",
+      "filename" : "Dwarf-HairFD-Color-B.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -14950,7 +15170,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairD-Outline",
+        "specificAssetName" : "Dwarf-HairFD-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -14963,14 +15183,14 @@
     }
   }
 }, {
-  "uniqueName" : "Dwarf-HairE",
+  "uniqueName" : "Dwarf-HairFE",
   "type" : "HUMANOID_HAIR",
   "race" : "DWARF",
   "gender" : "FEMALE",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "Dwarf-HairE-Color-F.png",
+      "filename" : "Dwarf-HairFE-Color-F.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -14984,7 +15204,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairE-Outline",
+        "specificAssetName" : "Dwarf-HairFE-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -14996,7 +15216,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "Dwarf-HairE-Color-F34.png",
+      "filename" : "Dwarf-HairFE-Color-F34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -15010,7 +15230,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairE-Outline",
+        "specificAssetName" : "Dwarf-HairFE-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15022,7 +15242,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "Dwarf-HairE-Color-F34.png",
+      "filename" : "Dwarf-HairFE-Color-F34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -15036,7 +15256,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairE-Outline",
+        "specificAssetName" : "Dwarf-HairFE-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15048,7 +15268,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "Dwarf-HairE-Color-B34.png",
+      "filename" : "Dwarf-HairFE-Color-B34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -15062,7 +15282,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairE-Outline",
+        "specificAssetName" : "Dwarf-HairFE-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15074,7 +15294,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "Dwarf-HairE-Color-B34.png",
+      "filename" : "Dwarf-HairFE-Color-B34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -15088,7 +15308,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairE-Outline",
+        "specificAssetName" : "Dwarf-HairFE-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15100,7 +15320,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "Dwarf-HairE-Color-B.png",
+      "filename" : "Dwarf-HairFE-Color-B.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.05,
@@ -15114,7 +15334,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairE-Outline",
+        "specificAssetName" : "Dwarf-HairFE-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15127,14 +15347,14 @@
     }
   }
 }, {
-  "uniqueName" : "Dwarf-HairF",
+  "uniqueName" : "Dwarf-HairFF",
   "type" : "HUMANOID_HAIR",
   "race" : "DWARF",
   "gender" : "FEMALE",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "Dwarf-HairF-Color-F.png",
+      "filename" : "Dwarf-HairFF-Color-F.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
@@ -15148,7 +15368,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairF-Outline",
+        "specificAssetName" : "Dwarf-HairFF-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15160,7 +15380,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "Dwarf-HairF-Color-F34.png",
+      "filename" : "Dwarf-HairFF-Color-F34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
@@ -15174,7 +15394,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairF-Outline",
+        "specificAssetName" : "Dwarf-HairFF-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15186,7 +15406,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "Dwarf-HairF-Color-F34.png",
+      "filename" : "Dwarf-HairFF-Color-F34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
@@ -15200,7 +15420,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairF-Outline",
+        "specificAssetName" : "Dwarf-HairFF-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15212,7 +15432,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "Dwarf-HairF-Color-B34.png",
+      "filename" : "Dwarf-HairFF-Color-B34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
@@ -15226,7 +15446,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairF-Outline",
+        "specificAssetName" : "Dwarf-HairFF-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15238,7 +15458,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "Dwarf-HairF-Color-B34.png",
+      "filename" : "Dwarf-HairFF-Color-B34.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
@@ -15252,7 +15472,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairF-Outline",
+        "specificAssetName" : "Dwarf-HairFF-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15264,7 +15484,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "Dwarf-HairF-Color-B.png",
+      "filename" : "Dwarf-HairFF-Color-B.png",
       "coloringLayer" : "HAIR_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
@@ -15278,7 +15498,7 @@
       "flipY" : false,
       "childAssets" : [ {
         "type" : "HAIR_OUTLINE",
-        "specificAssetName" : "Dwarf-HairF-Outline",
+        "specificAssetName" : "Dwarf-HairFF-Outline",
         "offsetPixels" : {
           "x" : 0.0,
           "y" : 0.0,
@@ -15839,14 +16059,234 @@
     }
   }
 }, {
-  "uniqueName" : "Dwarf-HairD-Outline",
+  "uniqueName" : "Dwarf-HairE-Color",
+  "type" : "HUMANOID_HAIR",
+  "race" : "DWARF",
+  "gender" : "MALE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Dwarf-HairE-Color-F.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : -2.0,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Dwarf-HairE-Color-F34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Dwarf-HairE-Color-F34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Dwarf-HairE-Color-B34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Dwarf-HairE-Color-B34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "Dwarf-HairE-Color-B.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 2.0,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Dwarf-HairF-Color",
+  "type" : "HUMANOID_HAIR",
+  "race" : "DWARF",
+  "gender" : "MALE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Dwarf-HairF-Color-F.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Dwarf-HairF-Color-F34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Dwarf-HairF-Color-F34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Dwarf-HairF-Color-B34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Dwarf-HairF-Color-B34.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "Dwarf-HairF-Color-B.png",
+      "coloringLayer" : "HAIR_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.05,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Dwarf-HairFD-Outline",
   "type" : "HAIR_OUTLINE",
   "race" : "DWARF",
   "gender" : "FEMALE",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "Dwarf-HairD-Outline-F.png",
+      "filename" : "Dwarf-HairFD-Outline-F.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15862,7 +16302,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "Dwarf-HairD-Outline-F34.png",
+      "filename" : "Dwarf-HairFD-Outline-F34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15878,7 +16318,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "Dwarf-HairD-Outline-F34.png",
+      "filename" : "Dwarf-HairFD-Outline-F34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15894,7 +16334,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "Dwarf-HairD-Outline-B34.png",
+      "filename" : "Dwarf-HairFD-Outline-B34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15910,7 +16350,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "Dwarf-HairD-Outline-B34.png",
+      "filename" : "Dwarf-HairFD-Outline-B34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15926,7 +16366,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "Dwarf-HairD-Outline-B.png",
+      "filename" : "Dwarf-HairFD-Outline-B.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15943,14 +16383,14 @@
     }
   }
 }, {
-  "uniqueName" : "Dwarf-HairE-Outline",
+  "uniqueName" : "Dwarf-HairFE-Outline",
   "type" : "HAIR_OUTLINE",
   "race" : "DWARF",
   "gender" : "FEMALE",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "Dwarf-HairE-Outline-F.png",
+      "filename" : "Dwarf-HairFE-Outline-F.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15966,7 +16406,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "Dwarf-HairE-Outline-F34.png",
+      "filename" : "Dwarf-HairFE-Outline-F34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15982,7 +16422,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "Dwarf-HairE-Outline-F34.png",
+      "filename" : "Dwarf-HairFE-Outline-F34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -15998,7 +16438,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "Dwarf-HairE-Outline-B34.png",
+      "filename" : "Dwarf-HairFE-Outline-B34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16014,7 +16454,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "Dwarf-HairE-Outline-B34.png",
+      "filename" : "Dwarf-HairFE-Outline-B34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16030,7 +16470,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "Dwarf-HairE-Outline-B.png",
+      "filename" : "Dwarf-HairFE-Outline-B.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16047,14 +16487,14 @@
     }
   }
 }, {
-  "uniqueName" : "Dwarf-HairF-Outline",
+  "uniqueName" : "Dwarf-HairFF-Outline",
   "type" : "HAIR_OUTLINE",
   "race" : "DWARF",
   "gender" : "FEMALE",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "Dwarf-HairF-Outline-F.png",
+      "filename" : "Dwarf-HairFF-Outline-F.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16070,7 +16510,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "Dwarf-HairF-Outline-F34.png",
+      "filename" : "Dwarf-HairFF-Outline-F34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16086,7 +16526,7 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "Dwarf-HairF-Outline-F34.png",
+      "filename" : "Dwarf-HairFF-Outline-F34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16102,7 +16542,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "Dwarf-HairF-Outline-B34.png",
+      "filename" : "Dwarf-HairFF-Outline-B34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16118,7 +16558,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "Dwarf-HairF-Outline-B34.png",
+      "filename" : "Dwarf-HairFF-Outline-B34.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -16134,7 +16574,7 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "Dwarf-HairF-Outline-B.png",
+      "filename" : "Dwarf-HairFF-Outline-B.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {

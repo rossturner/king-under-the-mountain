@@ -79,7 +79,7 @@ public class HumanoidEntityAttributesFactory {
 	private float chanceToHaveHair(HumanoidEntityAttributes attributes) {
 		// MODDING expose these values
 		if (attributes.getGender().equals(Gender.MALE)) {
-			return 0.3f;
+			return 0.6f;
 		} else if (attributes.getGender().equals(Gender.FEMALE)) {
 			return 1f;
 		} else{
