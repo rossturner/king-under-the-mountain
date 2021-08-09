@@ -1,8 +1,21 @@
 [
   {
-    "hintId": "welcome",
+    "hintId": "pre-spawn",
     "i18nKeys": [
       "HINT.WELCOME.INTRO",
+      "HINT.WELCOME.PRE_SPAWN"
+    ],
+    "triggers": [
+      {
+        "triggerType": "ON_GAME_START"
+      }
+    ],
+    "dismissable": false
+  },
+
+  {
+    "hintId": "welcome",
+    "i18nKeys": [
       "HINT.WELCOME.NEXT_STEPS"
     ],
     "actions": [
@@ -22,7 +35,7 @@
     ],
     "triggers": [
       {
-        "triggerType": "ON_GAME_START"
+        "triggerType": "ON_SETTLEMENT_SPAWNED"
       }
     ],
     "dismissable": false

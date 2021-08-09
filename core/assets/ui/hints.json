@@ -76,8 +76,18 @@
   } ],
   "dismissable" : true
 }, {
+  "hintId" : "pre-spawn",
+  "i18nKeys" : [ "HINT.WELCOME.INTRO", "HINT.WELCOME.PRE_SPAWN" ],
+  "progressDescriptors" : [ ],
+  "actions" : [ ],
+  "triggers" : [ {
+    "triggerType" : "ON_GAME_START",
+    "quantity" : 0
+  } ],
+  "dismissable" : false
+}, {
   "hintId" : "welcome",
-  "i18nKeys" : [ "HINT.WELCOME.INTRO", "HINT.WELCOME.NEXT_STEPS" ],
+  "i18nKeys" : [ "HINT.WELCOME.NEXT_STEPS" ],
   "progressDescriptors" : [ ],
   "actions" : [ {
     "type" : "SHOW_OTHER_HINT",
@@ -91,7 +101,7 @@
     "buttonTextI18nKey" : "HINT.BUTTON.DISABLE_ALL"
   } ],
   "triggers" : [ {
-    "triggerType" : "ON_GAME_START",
+    "triggerType" : "ON_SETTLEMENT_SPAWNED",
     "quantity" : 0
   } ],
   "dismissable" : false

@@ -54,6 +54,8 @@ public class HintMessageHandler implements Telegraph, Updatable {
 		messageDispatcher.addListener(this, MessageType.GUI_SWITCH_VIEW);
 		messageDispatcher.addListener(this, MessageType.HINT_ACTION_TRIGGERED);
 		messageDispatcher.addListener(this, MessageType.ENTITY_CREATED);
+		messageDispatcher.addListener(this, MessageType.BEGIN_SPAWN_SETTLEMENT);
+		messageDispatcher.addListener(this, MessageType.SETTLEMENT_SPAWNED);
 	}
 
 
@@ -100,8 +102,20 @@ public class HintMessageHandler implements Telegraph, Updatable {
 	public boolean handleMessage(Telegram msg) {
 		switch (msg.message) {
 			case MessageType.START_NEW_GAME: {
+				for (Hint hint : hintDictionary.getByTriggerType(ON_GAME_START)) {
+					if (canBeShown(hint)) {
+						show(hint);
+					}
+				}
+				return false; // Not main handler
+			}
+			case MessageType.BEGIN_SPAWN_SETTLEMENT: {
+				hintGuiView.dismissAll();
+				return false; // Not main handler
+			}
+			case MessageType.SETTLEMENT_SPAWNED: {
 				if ((!Boolean.parseBoolean(userPreferences.getPreference(DISABLE_TUTORIAL, "false")))) {
-					for (Hint hint : hintDictionary.getByTriggerType(ON_GAME_START)) {
+					for (Hint hint : hintDictionary.getByTriggerType(ON_SETTLEMENT_SPAWNED)) {
 						if (canBeShown(hint)) {
 							show(hint);
 						}
@@ -126,7 +140,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 			case MessageType.ENTITY_CREATED: {
 				Entity createdEntity = (Entity) msg.extraInfo;
 				if (createdEntity.getType().equals(EntityType.ONGOING_EFFECT)) {
-					OngoingEffectType type = ((OngoingEffectAttributes)createdEntity.getPhysicalEntityComponent().getAttributes()).getType();
+					OngoingEffectType type = ((OngoingEffectAttributes) createdEntity.getPhysicalEntityComponent().getAttributes()).getType();
 					for (Hint hint : hintDictionary.getByTriggerType(ONGOING_EFFECT_TRIGGERED)) {
 						for (HintTrigger trigger : hint.getTriggers()) {
 							if (trigger.getTriggerType().equals(ONGOING_EFFECT_TRIGGERED) && trigger.getRelatedTypeName().equals(type.getName()) && canBeShown(hint)) {

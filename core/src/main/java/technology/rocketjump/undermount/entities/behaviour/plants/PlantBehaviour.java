@@ -29,6 +29,7 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType.CROP;
+import static technology.rocketjump.undermount.materials.model.GameMaterialType.EARTH;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class PlantBehaviour implements BehaviourComponent {
@@ -90,6 +91,11 @@ public class PlantBehaviour implements BehaviourComponent {
 		PlantEntityAttributes attributes = (PlantEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 		PlantSpecies species = attributes.getSpecies();
 		MapTile parentEntityTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldOrParentPosition());
+
+		if (!EARTH.equals(parentEntityTile.getFloor().getFloorType().getMaterialType())) {
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(this.parentEntity.getId()));
+			return;
+		}
 
 		if (species.getPlantType().equals(PlantSpeciesType.SHRUB)) {
 			if (checkForCompetition(gameContext)) {
