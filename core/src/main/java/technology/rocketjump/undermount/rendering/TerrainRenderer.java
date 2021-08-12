@@ -65,6 +65,10 @@ public class TerrainRenderer implements Disposable {
 		vertexColorSpriteBatch.end();
 	}
 
+	public void renderChannels(List<MapTile> terrainTiles, OrthographicCamera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
+
+	}
+
 	public void renderWalls(List<MapTile> mapTiles, Camera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
 		vertexColorSpriteBatch.setProjectionMatrix(camera.combined);
 		vertexColorSpriteBatch.enableBlending();

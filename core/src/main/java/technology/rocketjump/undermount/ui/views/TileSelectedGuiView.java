@@ -89,6 +89,9 @@ public class TileSelectedGuiView implements GuiView {
 					descriptionTable.add(new Label("Roof: " + tile.getRoof().getState(), uiSkin)).left().row();
 					descriptionTable.add(new Label("Region: " + tile.getRegionId(), uiSkin)).left().row();
 					descriptionTable.add(new Label("Zones: " + StringUtils.join(tile.getZones(), ", "), uiSkin)).left().row();
+					if (tile.getUnderTile() != null) {
+						descriptionTable.add(new Label("UnderTile: " + tile.getUnderTile().toString(), uiSkin)).left().row();
+					}
 				}
 			}
 		}

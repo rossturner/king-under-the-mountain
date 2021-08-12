@@ -125,6 +125,8 @@ public class MessageType {
 	public static final int REMOVE_HAULING_JOBS_TO_POSITION = 614;
 	public static final int JOB_STATE_CHANGE = 615;
 	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 616;
+	public static final int ADD_CHANNEL = 617;
+	public static final int REMOVE_CHANNEL = 618;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;

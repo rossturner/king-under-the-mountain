@@ -29,6 +29,8 @@ import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
+import technology.rocketjump.undermount.mapping.tile.underground.ChannelLayout;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -100,6 +102,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.UNDO_REPLACE_FLOOR);
 		messageDispatcher.addListener(this, MessageType.REPLACE_REGION);
 		messageDispatcher.addListener(this, MessageType.FLOORING_CONSTRUCTED);
+		messageDispatcher.addListener(this, MessageType.ADD_CHANNEL);
+		messageDispatcher.addListener(this, MessageType.REMOVE_CHANNEL);
 	}
 
 	@Override
@@ -121,6 +125,14 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			case MessageType.REMOVE_WALL: {
 				GridPoint2 location = (GridPoint2) msg.extraInfo;
 				return handleRemoveWall(location);
+			}
+			case MessageType.ADD_CHANNEL: {
+				GridPoint2 location = (GridPoint2) msg.extraInfo;
+				return handleAddChannel(location);
+			}
+			case MessageType.REMOVE_CHANNEL: {
+				GridPoint2 location = (GridPoint2) msg.extraInfo;
+				return handleRemoveChannel(location);
 			}
 			case MessageType.REMOVE_ROOM: {
 				Room roomToRemove = (Room) msg.extraInfo;
@@ -414,18 +426,49 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 		propagateDarknessFromTile(tileToAddWallTo, gameContext, outdoorLightProcessor);
 
+		updateRegions(tileToAddWallTo, tileNeighbours);
+
+		return true;
+	}
+
+
+	private boolean handleAddChannel(GridPoint2 location) {
+		MapTile tileToAddChannelTo = gameContext.getAreaMap().getTile(location);
+
+		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
+		ChannelLayout channelLayout = new ChannelLayout(tileNeighbours);
+
+		if (tileToAddChannelTo.hasRoom()) {
+			messageDispatcher.dispatchMessage(MessageType.REMOVE_ROOM_TILES, Set.of(location));
+		}
+
+		UnderTile underTile = tileToAddChannelTo.getUnderTile();
+		if (underTile == null) {
+			underTile = new UnderTile();
+			tileToAddChannelTo.setUnderTile(underTile);
+		}
+		underTile.setChannelLayout(channelLayout);
+		updateTile(tileToAddChannelTo, gameContext);
+
+		updateRegions(tileToAddChannelTo, tileNeighbours);
+
+		return true;
+	}
+
+	private void updateRegions(MapTile modifiedTile, TileNeighbours tileNeighbours) {
 		MapTile north = tileNeighbours.get(CompassDirection.NORTH);
 		MapTile south = tileNeighbours.get(CompassDirection.SOUTH);
 		MapTile east = tileNeighbours.get(CompassDirection.EAST);
 		MapTile west = tileNeighbours.get(CompassDirection.WEST);
 
-		// Change the tile's region to be neighbouring wall region, or else a new region
+		// Change the tile's region to be neighbouring same region type, or else a new region
+		MapTile.RegionType myRegionType = modifiedTile.getRegionType();
 		Integer neighbourRegionId = null;
 		for (MapTile neighbourTile : Arrays.asList(north, south, east, west)) {
-			if (neighbourTile != null && neighbourTile.hasWall()) {
+			if (neighbourTile != null && neighbourTile.getRegionType().equals(myRegionType)) {
 				if (neighbourRegionId == null) {
 					neighbourRegionId = neighbourTile.getRegionId();
-					tileToAddWallTo.setRegionId(neighbourRegionId);
+					modifiedTile.setRegionId(neighbourRegionId);
 				} else if (neighbourTile.getRegionId() != neighbourRegionId) {
 					// Encountered a different neighbour region ID, merge together
 					replaceRegion(neighbourTile, neighbourRegionId);
@@ -436,10 +479,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		}
 		if (neighbourRegionId == null) {
 			neighbourRegionId = gameContext.getAreaMap().createNewRegionId();
-			tileToAddWallTo.setRegionId(neighbourRegionId);
+			modifiedTile.setRegionId(neighbourRegionId);
 		}
 
-		// Figure out if new wall has split region into two - if so, create new region on one side
+		// Figure out if new channel has split region into two - if so, create new region on one side
 		boolean emptyEitherSide = false;
 		MapTile sideA = null;
 		MapTile sideB = null;
@@ -455,7 +498,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		);
 
 		for (List<MapTile> pair : pairings) {
-			if (pair.get(0) != null && !pair.get(0).hasWall() && pair.get(1) != null && !pair.get(1).hasWall()) {
+			if (pair.get(0) != null && !pair.get(0).getRegionType().equals(myRegionType) && pair.get(1) != null && !pair.get(1).getRegionType().equals(myRegionType) &&
+				pair.get(0).getRegionType().equals(pair.get(1).getRegionType())) {
 				emptyEitherSide = true;
 				sideA = pair.get(0);
 				sideB = pair.get(1);
@@ -483,7 +527,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 				for (MapTile orthogonalNeighbour : gameContext.getAreaMap().getOrthogonalNeighbours(current.getTileX(), current.getTileY()).values()) {
 					if (!explored.contains(orthogonalNeighbour) && !frontier.contains(orthogonalNeighbour)) {
-						if (!orthogonalNeighbour.hasWall() && !orthogonalNeighbour.isWaterSource()) {
+						if (orthogonalNeighbour.getRegionType().equals(sideA.getRegionType())) {
 							frontier.add(orthogonalNeighbour);
 						}
 					}
@@ -496,8 +540,6 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				replaceRegion(sideA, newRegionId);
 			}
 		}
-
-		return true;
 	}
 
 	public static void propagateDarknessFromTile(MapTile tile, GameContext gameContext, OutdoorLightProcessor outdoorLightProcessor) {
@@ -571,6 +613,50 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			if (unexploredTile != null) {
 				Notification areaUncoveredNotification = new Notification(AREA_REVEALED, unexploredTile.getWorldPositionOfCenter());
 				messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, areaUncoveredNotification);
+			}
+			if (neighbourRegionId == null) {
+				neighbourRegionId = gameContext.getAreaMap().createNewRegionId();
+				tile.setRegionId(neighbourRegionId);
+			}
+			messageDispatcher.dispatchMessage(MessageType.WALL_REMOVED, location);
+		}
+		return true;
+	}
+
+
+	private boolean handleRemoveChannel(GridPoint2 location) {
+		MapTile tile = gameContext.getAreaMap().getTile(location);
+		if (tile != null && tile.hasChannel()) {
+			tile.getUnderTile().setChannelLayout(null);
+			updateTile(tile, gameContext);
+
+//			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
+//					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
+//			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(wallRemovedSoundAsset, -1L,
+//					tile.getWorldPositionOfCenter(), null));
+			updateRegions(tile, gameContext.getAreaMap().getNeighbours(location));;
+
+			Integer neighbourRegionId = null;
+			MapTile unexploredTile = null;
+			for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(location.x, location.y).values()) {
+				if (neighbourTile.hasFloor() && !neighbourTile.getFloor().isRiverTile()) {
+					if (!neighbourTile.getExploration().equals(TileExploration.EXPLORED)) {
+						unexploredTile = neighbourTile;
+					}
+					if (neighbourRegionId == null) {
+						neighbourRegionId = neighbourTile.getRegionId();
+						tile.setRegionId(neighbourRegionId);
+					} else if (neighbourTile.getRegionId() != neighbourRegionId) {
+						// Encountered a different neighbour region ID, merge together
+						replaceRegion(neighbourTile, neighbourRegionId);
+					}
+				}
+				if (neighbourTile.hasDoorway()) {
+					messageDispatcher.dispatchMessage(MessageType.DECONSTRUCT_DOOR, neighbourTile.getDoorway());
+				}
+				if (neighbourTile.hasRoom()) {
+					neighbourTile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
+				}
 			}
 			if (neighbourRegionId == null) {
 				neighbourRegionId = gameContext.getAreaMap().createNewRegionId();

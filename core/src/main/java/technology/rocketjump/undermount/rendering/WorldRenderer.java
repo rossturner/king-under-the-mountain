@@ -188,6 +188,7 @@ public class WorldRenderer implements Disposable {
 			floorOverlapRenderer.render(riverTiles, camera, renderMode, spriteCache);
 			floorOverlapRenderer.render(terrainTiles, camera, renderMode, spriteCache);
 		}
+		terrainRenderer.renderChannels(terrainTiles, camera, spriteCache, renderMode);
 		terrainRenderer.renderWalls(terrainTiles, camera, spriteCache, renderMode);
 
 

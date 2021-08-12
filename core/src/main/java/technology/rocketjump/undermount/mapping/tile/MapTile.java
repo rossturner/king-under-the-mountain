@@ -22,6 +22,7 @@ import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallConstructionLayout;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
@@ -54,13 +55,14 @@ public class MapTile implements Persistable {
 	private final GridPoint2 tilePosition;
 	private int regionId = -1; // -1 for unset
 
-	private Map<Long, Entity> entities = new ConcurrentHashMap<>(); // Concurrent for access by PathfindingTask
-	private Map<Long, ParticleEffectInstance> particleEffects = new HashMap<>();
+	private final Map<Long, Entity> entities = new ConcurrentHashMap<>(); // Concurrent for access by PathfindingTask
+	private final Map<Long, ParticleEffectInstance> particleEffects = new HashMap<>();
 
 	private TileRoof roof;
-	private Deque<TileFloor> floors = new ArrayDeque<>();
 	private Wall wall = null;
 	private Doorway doorway = null;
+	private final Deque<TileFloor> floors = new ArrayDeque<>();
+	private UnderTile underTile;
 
 	private TileDesignation designation = null;
 	private RoomTile roomTile = null;
@@ -432,6 +434,8 @@ public class MapTile implements Persistable {
 			return RegionType.RIVER;
 		} else if (hasWall()) {
 			return RegionType.WALL;
+		} else if (hasChannel()) {
+			return RegionType.CHANNEL;
 		} else {
 			return RegionType.GENERIC;
 		}
@@ -480,6 +484,12 @@ public class MapTile implements Persistable {
 			JSONObject doorwayJson = new JSONObject(true);
 			doorway.writeTo(doorwayJson, savedGameStateHolder);
 			asJson.put("door", doorwayJson);
+		}
+
+		if (underTile != null) {
+			JSONObject undertileJson = new JSONObject(true);
+			underTile.writeTo(undertileJson, savedGameStateHolder);
+			asJson.put("underTile", undertileJson);
 		}
 
 		if (designation != null) {
@@ -556,6 +566,12 @@ public class MapTile implements Persistable {
 			this.doorway.readFrom(doorJson, savedGameStateHolder, relatedStores);
 		}
 
+		JSONObject underTileJson = asJson.getJSONObject("underTile");
+		if (underTileJson != null) {
+			this.underTile = new UnderTile();
+			this.underTile.readFrom(underTileJson, savedGameStateHolder, relatedStores);
+		}
+
 		String designationName = asJson.getString("designation");
 		if (designationName != null) {
 			this.designation = relatedStores.tileDesignationDictionary.getByName(designationName);
@@ -617,7 +633,19 @@ public class MapTile implements Persistable {
 		this.floors.pop();
 	}
 
+	public UnderTile getUnderTile() {
+		return underTile;
+	}
+
+	public void setUnderTile(UnderTile underTile) {
+		this.underTile = underTile;
+	}
+
+	public boolean hasChannel() {
+		return underTile != null && underTile.getChannelLayout() != null;
+	}
+
 	public enum RegionType {
-		RIVER, WALL, GENERIC
+		RIVER, WALL, CHANNEL, GENERIC
 	}
 }

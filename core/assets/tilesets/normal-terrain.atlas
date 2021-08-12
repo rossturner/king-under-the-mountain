@@ -578,7 +578,21 @@ dirt
   orig: 64, 64
   offset: 0, 0
   index: 0
+river-edge-dirt
+  rotate: false
+  xy: 1770, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
 dirt
+  rotate: false
+  xy: 1838, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+river-edge-dirt
   rotate: false
   xy: 1838, 106
   size: 64, 64
@@ -592,6 +606,13 @@ dirt
   orig: 64, 64
   offset: 0, 0
   index: 2
+river-edge-dirt
+  rotate: false
+  xy: 1906, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
 dirt
   rotate: false
   xy: 1838, 38
@@ -599,7 +620,21 @@ dirt
   orig: 64, 64
   offset: 0, 0
   index: 3
+river-edge-dirt
+  rotate: false
+  xy: 1838, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
 dirt
+  rotate: false
+  xy: 1906, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+river-edge-dirt
   rotate: false
   xy: 1906, 106
   size: 64, 64
@@ -837,247 +872,212 @@ placeholder
   orig: 64, 64
   offset: 0, 0
   index: -1
-river-edge-dirt
+rough_stone
   rotate: false
   xy: 2722, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
-river-edge-dirt
+rough_stone
   rotate: false
   xy: 2654, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 1
-river-edge-dirt
+rough_stone
   rotate: false
   xy: 2722, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 2
-river-edge-dirt
+rough_stone
   rotate: false
   xy: 2790, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 3
-river-edge-dirt
+rough_stone
   rotate: false
   xy: 2722, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 4
-rough_stone
+rough_stone_wall_0
   rotate: false
   xy: 2790, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
-rough_stone
-  rotate: false
-  xy: 2858, 174
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 1
-rough_stone
-  rotate: false
-  xy: 2790, 38
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 2
-rough_stone
-  rotate: false
-  xy: 2858, 106
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 3
-rough_stone
-  rotate: false
-  xy: 2926, 174
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 4
-rough_stone_wall_0
-  rotate: false
-  xy: 2858, 38
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 0
 rough_stone_wall_24
   rotate: false
-  xy: 2926, 106
+  xy: 2858, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 rough_stone_wall_255
   rotate: false
-  xy: 2994, 174
+  xy: 2790, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 rough_stone_wall_66
   rotate: false
-  xy: 2926, 38
+  xy: 2858, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 rough_stone_wall_90
   rotate: false
-  xy: 2994, 106
+  xy: 2926, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 stone_block_0
   rotate: false
-  xy: 3062, 174
+  xy: 2858, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 stone_block_24
   rotate: false
-  xy: 2994, 38
+  xy: 2926, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 stone_block_255
   rotate: false
-  xy: 3062, 106
+  xy: 2994, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 stone_block_66
   rotate: false
-  xy: 3130, 174
+  xy: 2926, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 stone_block_90
   rotate: false
-  xy: 3062, 38
+  xy: 2994, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 stone_slab
+  rotate: false
+  xy: 3062, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+stone_slab
+  rotate: false
+  xy: 2994, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+stone_slab
+  rotate: false
+  xy: 3062, 106
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+stone_slab
+  rotate: false
+  xy: 3130, 174
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+stone_slab
+  rotate: false
+  xy: 3062, 38
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+tilled_earth
   rotate: false
   xy: 3130, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
-stone_slab
+tilled_earth
   rotate: false
   xy: 3198, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 1
-stone_slab
+tilled_earth
   rotate: false
   xy: 3130, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 2
-stone_slab
+tilled_earth
   rotate: false
   xy: 3198, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 3
-stone_slab
+tilled_earth
   rotate: false
   xy: 3266, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 4
-tilled_earth
+wooden_plank_wall_0
   rotate: false
   xy: 3198, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
-tilled_earth
-  rotate: false
-  xy: 3266, 106
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 1
-tilled_earth
-  rotate: false
-  xy: 3334, 174
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 2
-tilled_earth
-  rotate: false
-  xy: 3266, 38
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 3
-tilled_earth
-  rotate: false
-  xy: 3334, 106
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 4
-wooden_plank_wall_0
-  rotate: false
-  xy: 3402, 174
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 0
 wooden_plank_wall_24
   rotate: false
-  xy: 3334, 38
+  xy: 3266, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 wooden_plank_wall_255
   rotate: false
-  xy: 3402, 106
+  xy: 3334, 174
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 wooden_plank_wall_66
   rotate: false
-  xy: 3470, 174
+  xy: 3266, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 wooden_plank_wall_90
   rotate: false
-  xy: 3402, 38
+  xy: 3334, 106
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

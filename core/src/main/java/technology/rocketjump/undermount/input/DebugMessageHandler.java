@@ -86,11 +86,16 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 							}
 						}
 
+
+						if (!tile.hasWall() && !tile.hasChannel()) {
+							messageDispatcher.dispatchMessage(MessageType.ADD_CHANNEL, tile.getTilePosition());
+						}
+
 //						weatherManager.triggerNextWeather();
 
 //						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
 
-						weatherManager.triggerStrikeAt(tile);
+//						weatherManager.triggerStrikeAt(tile);
 
 //						ongoingEffectEntityFactory.create(ongoingEffectAttributesFactory.createByTypeName("Fire"),
 //							message.getWorldPosition(), gameContext);
