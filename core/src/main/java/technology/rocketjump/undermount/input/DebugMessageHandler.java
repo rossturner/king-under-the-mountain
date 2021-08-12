@@ -90,7 +90,7 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 
 //						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
 
-						weatherManager.triggerStrikeAt(tile);
+//						weatherManager.triggerStrikeAt(tile);
 
 //						ongoingEffectEntityFactory.create(ongoingEffectAttributesFactory.createByTypeName("Fire"),
 //							message.getWorldPosition(), gameContext);

@@ -30,7 +30,6 @@ import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
 import technology.rocketjump.undermount.misc.AnalyticsManager;
 import technology.rocketjump.undermount.misc.twitch.TwitchMessageHandler;
 import technology.rocketjump.undermount.misc.twitch.TwitchTaskRunner;
-import technology.rocketjump.undermount.misc.versioning.VersionRequester;
 import technology.rocketjump.undermount.modding.LocalModRepository;
 import technology.rocketjump.undermount.modding.model.ParsedMod;
 import technology.rocketjump.undermount.persistence.UserFileManager;
@@ -146,8 +145,6 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 				// Update preference string
 				localModRepository.setActiveMods(localModRepository.getActiveMods());
 			}
-
-			backgroundTaskManager.postUntrackedRunnable(new VersionRequester(messageDispatcher));
 
 		} catch (Exception e) {
 			CrashHandler.logCrash(e);

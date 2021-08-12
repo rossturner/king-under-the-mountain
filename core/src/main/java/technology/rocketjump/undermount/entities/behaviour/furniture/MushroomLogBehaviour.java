@@ -53,12 +53,14 @@ public class MushroomLogBehaviour extends FurnitureBehaviour implements Destruct
 	private MushroomLogState state = SPAWNING;
 	private JobType harvestJobType;
 	private Job harvestJob;
+	private GameContext gameContext;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		super.init(parentEntity, messageDispatcher, gameContext);
 		lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
 		totalTimeToSpawnMushroom = gameContext.getGameClock().HOURS_IN_DAY * 3.2;
+		this.gameContext = gameContext;
 	}
 
 	@Override
@@ -194,7 +196,7 @@ public class MushroomLogBehaviour extends FurnitureBehaviour implements Destruct
 			DecorationInventoryComponent decorationInventoryComponent = parentEntity.getComponent(DecorationInventoryComponent.class);
 			if (decorationInventoryComponent == null) {
 				decorationInventoryComponent = new DecorationInventoryComponent();
-				decorationInventoryComponent.init(parentEntity, messageDispatcher, null);
+				decorationInventoryComponent.init(parentEntity, messageDispatcher, gameContext);
 				parentEntity.addComponent(decorationInventoryComponent);
 			}
 			decorationInventoryComponent.add(entity);
