@@ -285,6 +285,8 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 	private void primaryButtonClicked(MouseChangeMessage mouseChangeMessage) {
 		if (gameContext != null && gameContext.getSettlementState().getGameState().equals(GameState.SELECT_SPAWN_LOCATION)) {
 			setPotentialEmbarkLocation(mouseChangeMessage);
+		} else if (gameContext != null && gameContext.getSettlementState().getGameState().equals(GameState.STARTING_SPAWN)) {
+			// Do nothing
 		} else if (interactionStateContainer.isDragging()) {
 			interactionStateContainer.setDragging(false);
 

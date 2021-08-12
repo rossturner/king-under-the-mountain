@@ -16,7 +16,6 @@ import technology.rocketjump.undermount.environment.WeatherTypeDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DebugMessage;
@@ -106,9 +105,9 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 //						}));
 
 
-						if (tile.getExploration().equals(TileExploration.UNEXPLORED)) {
-							messageDispatcher.dispatchMessage(MessageType.FLOOD_FILL_EXPLORATION, tile.getTilePosition());
-						}
+//						if (tile.getExploration().equals(TileExploration.UNEXPLORED)) {
+//							messageDispatcher.dispatchMessage(MessageType.FLOOD_FILL_EXPLORATION, tile.getTilePosition());
+//						}
 
 					}
 				}
