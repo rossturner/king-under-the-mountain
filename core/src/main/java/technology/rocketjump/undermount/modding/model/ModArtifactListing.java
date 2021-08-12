@@ -8,6 +8,7 @@ import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAss
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.assets.entities.plant.model.PlantEntityAsset;
 import technology.rocketjump.undermount.assets.entities.wallcap.model.WallCapAsset;
+import technology.rocketjump.undermount.assets.model.ChannelType;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.OverlapType;
 import technology.rocketjump.undermount.assets.model.WallType;
@@ -103,6 +104,8 @@ public class ModArtifactListing {
 
 				def("definitions/types", "wallTypes", SINGLE_FILE, JSON_ARRAY, WallType.class,
 						"terrain/walls", "**/definition.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/types", "channelTypes", SINGLE_FILE, JSON_ARRAY, ChannelType.class,
+						"terrain/channels", "**/definition.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "bridgeTypes", SINGLE_FILE, JSON_ARRAY, BridgeType.class,
 						"terrain/bridges", "**/bridge-tileset-definition.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "overlapTypes", SINGLE_FILE, JSON_ARRAY, OverlapType.class,

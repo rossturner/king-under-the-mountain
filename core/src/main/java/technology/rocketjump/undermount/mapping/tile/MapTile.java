@@ -22,6 +22,7 @@ import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallConstructionLayout;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.underground.ChannelLayout;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -85,6 +86,10 @@ public class MapTile implements Persistable {
 		if (hasWall()) {
 			WallLayout newLayout = new WallLayout(neighbours);
 			wall.setTrueLayout(newLayout);
+		}
+		if (hasChannel()) {
+			ChannelLayout newLayout = new ChannelLayout(neighbours);
+			getUnderTile().setChannelLayout(newLayout);
 		}
 
 		// Always update FloorOverlaps for all tiles
@@ -160,6 +165,12 @@ public class MapTile implements Persistable {
 				return true; // Can navigate from a river tile to another river tile
 			} else {
 				return false; // Otherwise rivers are not navigable
+			}
+		} else if (hasChannel() && !getFloor().isBridgeNavigable()) {
+			if (startingPoint != null && startingPoint.hasChannel()) {
+				return true; // Can navigate from a channel tile to another channel tile
+			} else {
+				return false; // Otherwise channels are not navigable
 			}
 		} else if (!hasWall() && !hasTree()) {
 			if (getFloor().hasBridge() && !getFloor().isBridgeNavigable()) {

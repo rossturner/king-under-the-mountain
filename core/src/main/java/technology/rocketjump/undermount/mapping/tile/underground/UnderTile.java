@@ -26,7 +26,7 @@ public class UnderTile implements ChildPersistable {
 	@Override
 	public String toString() {
 		return MoreObjects.toStringHelper(this)
-				.add("channelLayout", "\n"+channelLayout.toString())
+				.add("channelLayout", channelLayout.getId()+"\n"+channelLayout.toString())
 				.toString();
 	}
 

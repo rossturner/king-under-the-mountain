@@ -292,7 +292,8 @@ public class GameInteractionStateContainer implements GameContextAware {
 					}
 				}
 				if (validBridgePlacement) {
-					if (!coversBothSidesRiver(bridgeTiles, minX, maxX, minY, maxY, orientation)) {
+					if (!(coversBothSidesRiver(bridgeTiles, minX, maxX, minY, maxY, orientation) ||
+						crossesChannels(bridgeTiles, minX, maxX, minY, maxY))) {
 						validBridgePlacement = false;
 					}
 				}
@@ -328,6 +329,30 @@ public class GameInteractionStateContainer implements GameContextAware {
 		if (tileSelected && (previousDragWidth != currentDragWidth || previousDragHeight != currentDragHeight)) {
 			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(dragAreaSoundAsset));
 		}
+	}
+
+	private boolean crossesChannels(List<MapTile> bridgeTiles, int minX, int maxX, int minY, int maxY) {
+		boolean minCornerNavigable = true;
+		boolean maxCornerNavigable = true;
+		boolean crossesChannels = false;
+
+		for (MapTile mapTile : bridgeTiles) {
+			if (mapTile.getTileX() == minX && mapTile.getTileY() == minY) {
+				minCornerNavigable = mapTile.isNavigable();
+				if (!minCornerNavigable) {
+					break;
+				}
+			} else if (mapTile.getTileX() == maxX && mapTile.getTileY() == maxY) {
+				maxCornerNavigable = mapTile.isNavigable();
+				if (!maxCornerNavigable) {
+					break;
+				}
+			} else if (mapTile.hasChannel()) {
+				crossesChannels = true;
+			}
+		}
+
+		return minCornerNavigable && maxCornerNavigable && crossesChannels;
 	}
 
 	private boolean canFitRequiredResourcesOnCorrectSide(List<MapTile> bridgeTiles, BridgeType bridgeTypeToPlace) {

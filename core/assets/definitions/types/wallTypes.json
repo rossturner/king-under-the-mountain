@@ -42,7 +42,7 @@
     } ]
   },
   "i18nKey" : "WALL.STONE_BLOCK",
-  "constructed" : true
+  "constructed" : false
 }, {
   "wallTypeName" : "rough_stone_wall",
   "wallTypeId" : 6,
@@ -71,5 +71,5 @@
     } ]
   },
   "i18nKey" : "WALL.WOODEN",
-  "constructed" : true
+  "constructed" : false
 } ]

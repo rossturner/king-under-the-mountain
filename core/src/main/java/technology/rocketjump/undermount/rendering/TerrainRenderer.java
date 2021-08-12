@@ -8,12 +8,19 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.utils.Disposable;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import technology.rocketjump.undermount.assets.ChannelTypeDictionary;
+import technology.rocketjump.undermount.assets.model.ChannelType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.TileLayout;
+import technology.rocketjump.undermount.mapping.tile.underground.ChannelLayout;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rendering.custom_libgdx.VertexColorSpriteBatch;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.rooms.constructions.BridgeConstruction;
@@ -30,6 +37,7 @@ import java.util.Map;
 
 import static technology.rocketjump.undermount.rendering.WorldRenderer.CONSTRUCTION_COLOR;
 
+@Singleton
 public class TerrainRenderer implements Disposable {
 
 	private final float WALL_QUADRANT_MIDPOINT_X = 0.5f;
@@ -40,6 +48,16 @@ public class TerrainRenderer implements Disposable {
 	private final float QUADRANT_C_D_HEIGHT = WALL_QUADRANT_MIDPOINT_Y;
 
 	private final VertexColorSpriteBatch vertexColorSpriteBatch = new VertexColorSpriteBatch();
+	private ChannelType channelFloorType;
+	private ChannelType channelEdgeType;
+	private GameMaterial dirtMaterial;
+
+	@Inject
+	public TerrainRenderer(ChannelTypeDictionary channelTypeDictionary, GameMaterialDictionary gameMaterialDictionary) {
+		channelFloorType = channelTypeDictionary.getByName("channel_floor");
+		channelEdgeType = channelTypeDictionary.getByName("channel_edge");
+		this.dirtMaterial = gameMaterialDictionary.getByName("Dirt");
+	}
 
 	public void render(List<MapTile> mapTiles, Camera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
 		vertexColorSpriteBatch.setProjectionMatrix(camera.combined);
@@ -66,7 +84,33 @@ public class TerrainRenderer implements Disposable {
 	}
 
 	public void renderChannels(List<MapTile> terrainTiles, OrthographicCamera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
+		vertexColorSpriteBatch.setProjectionMatrix(camera.combined);
+		vertexColorSpriteBatch.enableBlending();
+		if (renderMode.equals(RenderMode.DIFFUSE)) {
+			vertexColorSpriteBatch.setColor(dirtMaterial.getColor());
+		} else {
+			vertexColorSpriteBatch.setColor(Color.WHITE);
+		}
+		vertexColorSpriteBatch.begin();
+		for (MapTile terrainTile: terrainTiles) {
+			if (terrainTile.hasChannel()) {
+				ChannelLayout channelLayout = terrainTile.getUnderTile().getChannelLayout();
+				QuadrantSprites quadrantSprites = spriteCache.getSpritesForChannel(channelFloorType, channelLayout, terrainTile.getSeed());
+				renderChannelQuadrants(terrainTile.getTileX(), terrainTile.getTileY(), vertexColorSpriteBatch, quadrantSprites);
+			}
+		}
+		vertexColorSpriteBatch.end();
 
+		vertexColorSpriteBatch.setColor(Color.WHITE);
+		vertexColorSpriteBatch.begin();
+		for (MapTile terrainTile: terrainTiles) {
+			if (terrainTile.hasChannel()) {
+				ChannelLayout channelLayout = terrainTile.getUnderTile().getChannelLayout();
+				QuadrantSprites quadrantSprites = spriteCache.getSpritesForChannel(channelEdgeType, channelLayout, terrainTile.getSeed());
+				renderChannelQuadrants(terrainTile.getTileX(), terrainTile.getTileY(), vertexColorSpriteBatch, quadrantSprites);
+			}
+		}
+		vertexColorSpriteBatch.end();
 	}
 
 	public void renderWalls(List<MapTile> mapTiles, Camera camera, TerrainSpriteCache spriteCache, RenderMode renderMode) {
@@ -169,12 +213,7 @@ public class TerrainRenderer implements Disposable {
 		}
 
 		QuadrantSprites quadrantSprites = spriteCache.getSpritesForWall(wallType, layout, seed);
-
-		if (quadrantSprites.isSingleSprite()) {
-			vertexColorSpriteBatch.draw(quadrantSprites.getA(), worldX, worldY, QUADRANT_A_B_HEIGHT + WALL_QUADRANT_MIDPOINT_Y, TILE_WIDTH_HEIGHT);
-		} else {
-			renderWallQuadrants(worldX, worldY, vertexColorSpriteBatch, quadrantSprites);
-		}
+		renderWallQuadrants(worldX, worldY, vertexColorSpriteBatch, quadrantSprites);
 	}
 
 	private void setColor(VertexColorSpriteBatch spriteBatch, MapTile mapTile) {
@@ -294,6 +333,104 @@ public class TerrainRenderer implements Disposable {
 				spritesForWall.getD().getRegionY() + 16,
 				spritesForWall.getD().getRegionWidth() - 32, // src image width
 				spritesForWall.getD().getRegionHeight() - 16, // src image height
+				false,
+				false);
+	}
+
+
+	private void renderChannelQuadrants(int worldX, int worldY, VertexColorSpriteBatch vertexColorSpriteBatch, QuadrantSprites spritesForChannel) {
+		/*
+			Drawing 4 channel quadrants a, b, c, d where
+
+			A | B
+			-----
+			C | D
+
+			A) (0, 32) -> (32, 64)
+
+			B) (32, 23) -> (64, 64)
+
+			C) (0, 0) -> (32, 23)
+
+			D) (32, 0) -> (64, 32)
+
+		 */
+
+		// FIXME MODDING Replace magic numbers based on 64px tile e.g. 32 and 50
+
+		// Quadrant A
+		vertexColorSpriteBatch.draw(
+				spritesForChannel.getA().getTexture(), // texture
+				worldX,
+				worldY + 0.5f,
+				0.5f / 2f, // midpointX relative to world position
+				0.5f / 2f, // midpointY relative to world position
+				0.5f, // width in world units
+				0.5f, // height in world units
+				spritesForChannel.getA().getScaleX(),
+				spritesForChannel.getA().getScaleY(),
+				0,
+				spritesForChannel.getA().getRegionX(),
+				spritesForChannel.getA().getRegionY(),
+				spritesForChannel.getA().getRegionWidth() - 32, // src image width
+				spritesForChannel.getA().getRegionHeight() - 32, // src image height
+				false,
+				false);
+
+		// Quadrant B
+		vertexColorSpriteBatch.draw(
+				spritesForChannel.getB().getTexture(), // texture
+				worldX + 0.5f,
+				worldY + 0.5f,
+				0.5f / 2f, // midpointX relative to world position
+				0.5f / 2f, // midpointY relative to world position
+				0.5f, // width in world units
+				0.5f, // height in world units
+				spritesForChannel.getB().getScaleX(),
+				spritesForChannel.getB().getScaleY(),
+				0,
+				spritesForChannel.getB().getRegionX() + 32,
+				spritesForChannel.getB().getRegionY(),
+				spritesForChannel.getB().getRegionWidth() - 32, // src image width
+				spritesForChannel.getB().getRegionHeight() - 32, // src image height
+				false,
+				false);
+
+		// Quadrant C
+		vertexColorSpriteBatch.draw(
+				spritesForChannel.getC().getTexture(), // texture
+				worldX,
+				worldY,
+				0.5f / 2f, // midpointX relative to world position
+				0.5f / 2f, // midpointY relative to world position
+				0.5f, // width in world units
+				0.5f, // height in world units
+				spritesForChannel.getC().getScaleX(),
+				spritesForChannel.getC().getScaleY(),
+				0,
+				spritesForChannel.getC().getRegionX(),
+				spritesForChannel.getC().getRegionY() + 32,
+				spritesForChannel.getC().getRegionWidth() - 32, // src image width
+				spritesForChannel.getC().getRegionHeight() - 32, // src image height
+				false,
+				false);
+
+		// Quadrant D
+		vertexColorSpriteBatch.draw(
+				spritesForChannel.getD().getTexture(), // texture
+				worldX + 0.5f,
+				worldY,
+				0.5f / 2f, // midpointX relative to world position
+				0.5f / 2f, // midpointY relative to world position
+				0.5f, // width in world units
+				0.5f, // height in world units
+				spritesForChannel.getD().getScaleX(),
+				spritesForChannel.getD().getScaleY(),
+				0,
+				spritesForChannel.getD().getRegionX() + 32,
+				spritesForChannel.getD().getRegionY() + 32,
+				spritesForChannel.getD().getRegionWidth() - 32, // src image width
+				spritesForChannel.getD().getRegionHeight() - 32, // src image height
 				false,
 				false);
 	}

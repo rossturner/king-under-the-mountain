@@ -17,11 +17,13 @@ public class NormalTerrainSpriteCacheProvider implements Provider<TerrainSpriteC
 	private final TextureAtlasRepository textureAtlasRepository;
 	private final RoomEdgeTypeDictionary roomEdgeTypeDictionary;
 	private final BridgeTypeDictionary bridgeTypeDictionary;
+	private final ChannelTypeDictionary channelTypeDictionary;
 
 	@Inject
 	public NormalTerrainSpriteCacheProvider(WallTypeDictionary wallTypeDictionary, FloorTypeDictionary floorTypeDictionary,
 											WallQuadrantDictionary wallQuadrantDictionary, TileLayoutAtlas layoutAtlas,
-											TextureAtlasRepository textureAtlasRepository, RoomEdgeTypeDictionary roomEdgeTypeDictionary, BridgeTypeDictionary bridgeTypeDictionary) {
+											TextureAtlasRepository textureAtlasRepository, RoomEdgeTypeDictionary roomEdgeTypeDictionary,
+											BridgeTypeDictionary bridgeTypeDictionary, ChannelTypeDictionary channelTypeDictionary) {
 		this.wallTypeDictionary = wallTypeDictionary;
 		this.floorTypeDictionary = floorTypeDictionary;
 		this.wallQuadrantDictionary = wallQuadrantDictionary;
@@ -29,12 +31,14 @@ public class NormalTerrainSpriteCacheProvider implements Provider<TerrainSpriteC
 		this.textureAtlasRepository = textureAtlasRepository;
 		this.roomEdgeTypeDictionary = roomEdgeTypeDictionary;
 		this.bridgeTypeDictionary = bridgeTypeDictionary;
+		this.channelTypeDictionary = channelTypeDictionary;
 	}
 
 	@Override
 	public TerrainSpriteCache get() {
 		TextureAtlas normalTextureAtlas = textureAtlasRepository.get(NORMAL_TERRAIN);
 		BridgeTileSpriteCache bridgeTileSpriteCache = new BridgeTileSpriteCache(normalTextureAtlas, bridgeTypeDictionary);
-		return new TerrainSpriteCache(normalTextureAtlas, wallTypeDictionary, floorTypeDictionary, wallQuadrantDictionary, layoutAtlas, roomEdgeTypeDictionary, bridgeTileSpriteCache);
+		return new TerrainSpriteCache(normalTextureAtlas, wallTypeDictionary, floorTypeDictionary, wallQuadrantDictionary,
+				layoutAtlas, roomEdgeTypeDictionary, bridgeTileSpriteCache, channelTypeDictionary);
 	}
 }

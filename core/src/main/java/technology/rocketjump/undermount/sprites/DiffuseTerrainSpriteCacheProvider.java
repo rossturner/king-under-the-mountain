@@ -17,12 +17,13 @@ public class DiffuseTerrainSpriteCacheProvider implements Provider<TerrainSprite
 	private final TextureAtlasRepository textureAtlasRepository;
 	private final RoomEdgeTypeDictionary roomEdgeTypeDictionary;
 	private final BridgeTypeDictionary bridgeTypeDictionary;
+	private final ChannelTypeDictionary channelTypeDictionary;
 
 	@Inject
 	public DiffuseTerrainSpriteCacheProvider(WallTypeDictionary wallTypeDictionary, FloorTypeDictionary floorTypeDictionary,
 											 WallQuadrantDictionary wallQuadrantDictionary, TileLayoutAtlas layoutAtlas,
 											 TextureAtlasRepository textureAtlasRepository, RoomEdgeTypeDictionary roomEdgeTypeDictionary,
-											 BridgeTypeDictionary bridgeTypeDictionary) {
+											 BridgeTypeDictionary bridgeTypeDictionary, ChannelTypeDictionary channelTypeDictionary) {
 		this.wallTypeDictionary = wallTypeDictionary;
 		this.floorTypeDictionary = floorTypeDictionary;
 		this.wallQuadrantDictionary = wallQuadrantDictionary;
@@ -30,12 +31,14 @@ public class DiffuseTerrainSpriteCacheProvider implements Provider<TerrainSprite
 		this.textureAtlasRepository = textureAtlasRepository;
 		this.roomEdgeTypeDictionary = roomEdgeTypeDictionary;
 		this.bridgeTypeDictionary = bridgeTypeDictionary;
+		this.channelTypeDictionary = channelTypeDictionary;
 	}
 
 	@Override
 	public TerrainSpriteCache get() {
 		TextureAtlas diffuseTextureAtlas = textureAtlasRepository.get(DIFFUSE_TERRAIN);
 		BridgeTileSpriteCache bridgeTileSpriteCache = new BridgeTileSpriteCache(diffuseTextureAtlas, bridgeTypeDictionary);
-		return new TerrainSpriteCache(diffuseTextureAtlas, wallTypeDictionary, floorTypeDictionary, wallQuadrantDictionary, layoutAtlas, roomEdgeTypeDictionary, bridgeTileSpriteCache);
+		return new TerrainSpriteCache(diffuseTextureAtlas, wallTypeDictionary, floorTypeDictionary, wallQuadrantDictionary,
+				layoutAtlas, roomEdgeTypeDictionary, bridgeTileSpriteCache, channelTypeDictionary);
 	}
 }
