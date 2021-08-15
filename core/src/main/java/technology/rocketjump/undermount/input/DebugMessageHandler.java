@@ -6,6 +6,7 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.utils.Disposable;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.factories.OngoingEffectAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.OngoingEffectEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -80,6 +81,7 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 
 						for (Entity entity : new ArrayList<>(tile.getEntities())) {
 							if (entity.getType().equals(EntityType.HUMANOID)) {
+								((SettlerBehaviour)entity.getBehaviourComponent()).getCurrentGoal().setInterrupted(true);
 //								StatusComponent statusComponent = entity.getOrCreateComponent(StatusComponent.class);
 //								statusComponent.apply(new OnFireStatus());
 							}
