@@ -1,3 +1,8 @@
+Alpha 6.1.2 - 16th August 2021
+
+- Snow on ground will no longer trigger tilling jobs to be created
+- Fire notifications are not sent when the current weather can cause lightning strikes
+
 Alpha 6.1.1 - 15th August 2021
 
 - Fix for a bug where rations where often being lost while a dwarf attempted to eat them, they will be a bit more careful with their food now

@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.lang3.EnumUtils;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.behaviour.effects.BaseOngoingEffectBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -38,9 +39,10 @@ public class OngoingEffectTracker implements GameContextAware {
 
 	public void entityAdded(Entity entity) {
 		OngoingEffectAttributes attributes = (OngoingEffectAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		BaseOngoingEffectBehaviour behaviour = (BaseOngoingEffectBehaviour) entity.getBehaviourComponent();
 
 		Map<Long, Entity> entitiesForType = byEffectType.computeIfAbsent(attributes.getType(), a -> new HashMap<>());
-		if (gameContext != null && entitiesForType.isEmpty() && attributes.getType().getTriggersNotification() != null) {
+		if (gameContext != null && entitiesForType.isEmpty() && attributes.getType().getTriggersNotification() != null && behaviour.shouldNotificationApply(gameContext)) {
 			NotificationType notificationType = EnumUtils.getEnum(NotificationType.class, attributes.getType().getTriggersNotification());
 			if (notificationType != null) {
 				messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, new Notification(notificationType,
