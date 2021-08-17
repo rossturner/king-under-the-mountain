@@ -656,6 +656,10 @@ public class MapTile implements Persistable {
 		return underTile != null && underTile.getChannelLayout() != null;
 	}
 
+	public boolean hasPipe() {
+		return underTile != null && underTile.getPipeLayout() != null;
+	}
+
 	public enum RegionType {
 		RIVER, WALL, CHANNEL, GENERIC
 	}

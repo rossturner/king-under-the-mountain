@@ -50,6 +50,13 @@ public class BuildMenuGuiView implements GuiView {
 		doors.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_DOORS, messageDispatcher));
 		iconButtons.add(doors);
 
+		IconButton piping = iconButtonFactory.create("GUI.BUILD.PIPING", "pipes", HexColors.get("#26e1ed"), ButtonStyle.DEFAULT);
+		piping.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.PIPING);
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.BUILD_PIPING);
+		});
+		iconButtons.add(piping);
+
 		IconButton bridge = iconButtonFactory.create("GUI.BUILD.BRIDGE", "stone-bridge", HexColors.get("#8fd0c1"), ButtonStyle.DEFAULT);
 		bridge.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_BRIDGE, messageDispatcher));
 		iconButtons.add(bridge);

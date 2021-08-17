@@ -147,7 +147,7 @@ public class PersistenceTestHarness {
 				mockParticleEffectTypeDictionary,
 				mockOngoingEffectTypeDictionary,
 				mockWeatherTypeDictionary,
-				mockDailyWeatherTypeDictionary);
+				mockDailyWeatherTypeDictionary, mechanismTypeDictionary);
 
 	}
 

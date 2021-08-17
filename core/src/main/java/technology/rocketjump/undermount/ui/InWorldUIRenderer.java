@@ -38,6 +38,7 @@ import technology.rocketjump.undermount.rendering.RoomRenderer;
 import technology.rocketjump.undermount.rendering.TerrainRenderer;
 import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.piping.PipingViewModeRenderer;
 import technology.rocketjump.undermount.rendering.roofing.RoofingViewModeRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.rooms.constructions.BridgeConstruction;
@@ -68,6 +69,7 @@ public class InWorldUIRenderer {
 	private final TerrainRenderer terrainRenderer;
 	private final SelectableOutlineRenderer selectableOutlineRenderer;
 	private final RoofingViewModeRenderer roofingViewModeRenderer;
+	private final PipingViewModeRenderer pipingViewModeRenderer;
 
 	private final ShapeRenderer shapeRenderer = new ShapeRenderer();
 	private final SpriteBatch spriteBatch = new SpriteBatch();
@@ -84,7 +86,8 @@ public class InWorldUIRenderer {
 	public InWorldUIRenderer(GameInteractionStateContainer interactionStateContainer, EntityRenderer entityRenderer,
 							 TerrainRenderer terrainRenderer, RoomRenderer roomRenderer, RenderingOptions renderingOptions, JobStore jobStore,
 							 FurnitureTypeDictionary furnitureTypeDictionary, IconSpriteCache iconSpriteCache,
-							 SelectableOutlineRenderer selectableOutlineRenderer, RoofingViewModeRenderer roofingViewModeRenderer) {
+							 SelectableOutlineRenderer selectableOutlineRenderer, RoofingViewModeRenderer roofingViewModeRenderer,
+							 PipingViewModeRenderer pipingViewModeRenderer) {
 		this.interactionStateContainer = interactionStateContainer;
 		this.entityRenderer = entityRenderer;
 		this.terrainRenderer = terrainRenderer;
@@ -94,6 +97,7 @@ public class InWorldUIRenderer {
 		this.selectableOutlineRenderer = selectableOutlineRenderer;
 		this.iconSpriteCache = iconSpriteCache;
 		this.roofingViewModeRenderer = roofingViewModeRenderer;
+		this.pipingViewModeRenderer = pipingViewModeRenderer;
 
 		customShaderSpriteBatch = new CustomShaderSpriteBatch(1000, defaultShaderInstance);
 
@@ -133,6 +137,10 @@ public class InWorldUIRenderer {
 
 		if (interactionStateContainer.getGameViewMode().equals(GameViewMode.ROOFING_INFO)) {
 			roofingViewModeRenderer.render(map, camera, spriteBatch, shapeRenderer, blinkState);
+			return;
+		}
+		if (interactionStateContainer.getGameViewMode().equals(GameViewMode.PIPING)) {
+			pipingViewModeRenderer.render(map, camera, spriteBatch, shapeRenderer, blinkState);
 			return;
 		}
 

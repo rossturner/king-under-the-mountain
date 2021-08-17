@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.entities.dictionaries.furniture.Furnitur
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.entities.tags.TagDictionary;
 import technology.rocketjump.undermount.environment.DailyWeatherTypeDictionary;
@@ -75,6 +76,7 @@ public class SavedGameDependentDictionaries {
 	public final OngoingEffectTypeDictionary ongoingEffectTypeDictionary;
 	public final WeatherTypeDictionary weatherTypeDictionary;
 	public final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
+	public final MechanismTypeDictionary mechanismTypeDictionary;
 
 	@Inject
 	public SavedGameDependentDictionaries(DynamicMaterialFactory dynamicMaterialFactory, GameMaterialDictionary gameMaterialDictionary,
@@ -92,7 +94,8 @@ public class SavedGameDependentDictionaries {
 										  SoundAssetDictionary soundAssetDictionary, BridgeTypeDictionary bridgeTypeDictionary,
 										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary,
 										  OngoingEffectTypeDictionary ongoingEffectTypeDictionary,
-										  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary) {
+										  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary,
+										  MechanismTypeDictionary mechanismTypeDictionary) {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.messageDispatcher = messageDispatcher;
@@ -126,5 +129,6 @@ public class SavedGameDependentDictionaries {
 		this.ongoingEffectTypeDictionary = ongoingEffectTypeDictionary;
 		this.weatherTypeDictionary = weatherTypeDictionary;
 		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
+		this.mechanismTypeDictionary = mechanismTypeDictionary;
 	}
 }
