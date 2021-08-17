@@ -1,0 +1,158 @@
+[
+  {
+    "uniqueName": "Product-Stone-Gear-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Stone-Gear",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Product-Stone-Gear.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Stone-Gear-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Stone-Gear",
+    "itemPlacements": ["BEING_CARRIED"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Product-Stone-Gear.png",
+        "scale": 0.6,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Product-Stone-Gear.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Product-Stone-Gear.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Product-Stone-Gear.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Product-Stone-Gear.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Product-Stone-Gear.png",
+        "scale": 0.5,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+]

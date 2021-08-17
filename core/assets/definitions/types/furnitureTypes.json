@@ -733,6 +733,28 @@
   },
   "hiddenFromPlacementMenu" : false
 }, {
+  "name" : "WATER_PUMP",
+  "i18nKey" : "FURNITURE.WATER_PUMP",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "Water Pump WE Layout",
+  "colorCode" : "#26e1ed",
+  "iconName" : "tap",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "METAL" : [ {
+      "itemTypeName" : "Resource-Metal-Plate",
+      "quantity" : 3,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Stone-Gear",
+      "quantity" : 2,
+      "liquid" : false
+    } ]
+  },
+  "tags" : { },
+  "hiddenFromPlacementMenu" : false
+}, {
   "name" : "WOODCUTTERS_BENCH",
   "i18nKey" : "FURNITURE.WOODCUTTERS_BENCH",
   "categoryName" : "TABLE",

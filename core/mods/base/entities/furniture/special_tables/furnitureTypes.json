@@ -237,5 +237,30 @@
       "FURNITURE_BEHAVIOUR": ["BEER_TAPPER", "Material_Beer", "ItemType_Product-Barrel", "JobType_HAULING"]
     }
 
+  },
+
+  {
+    "name": "WATER_PUMP",
+    "i18nKey": "FURNITURE.WATER_PUMP",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "Water Pump WE Layout",
+    "colorCode": "#26e1ed",
+    "iconName": "tap",
+    "placeAnywhere": true,
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Plate",
+          "quantity": 3
+        },
+        {
+          "itemTypeName": "Product-Stone-Gear",
+          "quantity": 2
+        }
+      ]
+    },
+    "tags": {
+    }
+
   }
 ]

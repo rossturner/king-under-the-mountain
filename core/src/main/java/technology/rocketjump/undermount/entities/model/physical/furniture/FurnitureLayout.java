@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.model.physical.furniture;
 
 import com.badlogic.gdx.math.GridPoint2;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.misc.Name;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class FurnitureLayout {
 
 	private List<GridPoint2> extraTiles = new ArrayList<>();
 	private List<FurnitureLayout.Workspace> workspaces = new ArrayList<>();
+	private List<FurnitureLayout.SpecialTile> specialTiles = new ArrayList<>();
 
 	public String getUniqueName() {
 		return uniqueName;
@@ -58,6 +60,14 @@ public class FurnitureLayout {
 		this.workspaces = workspaces;
 	}
 
+	public List<SpecialTile> getSpecialTiles() {
+		return specialTiles;
+	}
+
+	public void setSpecialTiles(List<SpecialTile> specialTiles) {
+		this.specialTiles = specialTiles;
+	}
+
 	public static class Workspace {
 
 		private GridPoint2 location;
@@ -82,6 +92,49 @@ public class FurnitureLayout {
 		@Override
 		public String toString() {
 			return "Location: " + location + ", Accessed from " + accessedFrom;
+		}
+	}
+
+	public static class SpecialTile {
+
+		private GridPoint2 location;
+		private SpecialTileRequirment requirement;
+
+		public enum SpecialTileRequirment {
+
+			IS_RIVER(mapTile -> mapTile.getFloor().isRiverTile());
+
+			public final TileCheck tileCheck;
+
+			private SpecialTileRequirment(TileCheck tileCheck) {
+				this.tileCheck = tileCheck;
+			}
+
+			public interface TileCheck {
+				boolean isValid(MapTile mapTile);
+			}
+
+		}
+
+		public GridPoint2 getLocation() {
+			return location;
+		}
+
+		public void setLocation(GridPoint2 location) {
+			this.location = location;
+		}
+
+		public SpecialTileRequirment getRequirement() {
+			return requirement;
+		}
+
+		public void setRequirement(SpecialTileRequirment requirement) {
+			this.requirement = requirement;
+		}
+
+		@Override
+		public String toString() {
+			return "Location: " + location + ", Requirement " + requirement.name();
 		}
 	}
 

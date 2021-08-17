@@ -148,6 +148,19 @@
   "materialTypesToCopyOver" : [ "STONE" ],
   "defaultTimeToCompleteCrafting" : 5.0
 }, {
+  "recipeName" : "Craft gear",
+  "craftingTypeName" : "STONEMASONRY",
+  "input" : [ {
+    "itemTypeName" : "Resource-Stone-Block",
+    "quantity" : 1
+  } ],
+  "output" : [ {
+    "itemTypeName" : "Product-Stone-Gear",
+    "quantity" : 1
+  } ],
+  "materialTypesToCopyOver" : [ "STONE" ],
+  "defaultTimeToCompleteCrafting" : 4.0
+}, {
   "recipeName" : "Craft barrel hoops",
   "craftingTypeName" : "BLACKSMITHING",
   "input" : [ {
