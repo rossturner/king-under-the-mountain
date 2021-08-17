@@ -1,1 +1,0 @@
-gradlew clean dist iconWin packrMac packrLinux && steamcmd +login rocketjumptechnology %STEAM_PASSWORD% +run_app_build c:/workspace/king-under-the-mountain/release_tools/steam/app_build_930230.vdf
