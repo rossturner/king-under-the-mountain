@@ -5,7 +5,6 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.furniture.model.DoorState;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -260,7 +259,7 @@ public class SteeringComponent implements ChildPersistable {
 							continue;
 						}
 
-						if (((SettlerBehaviour)otherEntity.getBehaviourComponent()).getSteeringComponent().pauseTime > 0) {
+						if (otherEntity.getBehaviourComponent().getSteeringComponent().pauseTime > 0) {
 							break;
 						}
 
