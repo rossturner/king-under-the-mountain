@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DebugMessage;
+import technology.rocketjump.undermount.messaging.types.PipeConstructionMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
@@ -87,8 +88,13 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 						}
 
 
-						if (!tile.hasWall() && !tile.hasChannel()) {
-							messageDispatcher.dispatchMessage(MessageType.ADD_CHANNEL, tile.getTilePosition());
+						if (!tile.hasWall()) {
+							 if (tile.hasPipe()) {
+								 messageDispatcher.dispatchMessage(MessageType.REMOVE_PIPE, tile.getTilePosition());
+							 } else {
+								 messageDispatcher.dispatchMessage(MessageType.ADD_PIPE, new PipeConstructionMessage(
+										 tile.getTilePosition(), materialDictionary.getByName("Dolostone")));
+							 }
 						}
 
 //						weatherManager.triggerNextWeather();

@@ -143,7 +143,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 							}
 						}
 						tileAtLocation.setConstruction(null);
-						updateTile(tileAtLocation, gameContext);
+						updateTile(tileAtLocation, gameContext, messageDispatcher);
 					}
 					messageDispatcher.dispatchMessage(MessageType.REMOVE_HAULING_JOBS_TO_POSITION, tileLocation);
 				}

@@ -127,6 +127,8 @@ public class MessageType {
 	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 616;
 	public static final int ADD_CHANNEL = 617;
 	public static final int REMOVE_CHANNEL = 618;
+	public static final int ADD_PIPE = 619;
+	public static final int REMOVE_PIPE = 620;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;

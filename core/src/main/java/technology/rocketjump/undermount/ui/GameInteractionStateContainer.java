@@ -150,7 +150,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 			for (WallConstruction virtualWallConstruction : virtualWallConstructions) {
 				MapTile tile = map.getTile(virtualWallConstruction.getPrimaryLocation());
 				tile.setConstruction(null);
-				MapMessageHandler.updateTile(tile, gameContext);
+				MapMessageHandler.updateTile(tile, gameContext, messageDispatcher);
 			}
 			virtualWallConstructions.clear();
 		}
@@ -250,7 +250,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 						WallConstruction wallConstruction = new WallConstruction(potentialLocation, wallTypeToPlace, selectedMaterial);
 						virtualWallConstructions.add(wallConstruction);
 						tile.setConstruction(wallConstruction); // do NOT add to construction store, else virtual walls will attempt to be built
-						MapMessageHandler.updateTile(tile, gameContext);
+						MapMessageHandler.updateTile(tile, gameContext, messageDispatcher);
 						tileSelected = true;
 					}
 				}
@@ -260,7 +260,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 					WallConstruction wallConstruction = new WallConstruction(tilePosition, wallTypeToPlace, selectedMaterial);
 					virtualWallConstructions.add(wallConstruction);
 					tile.setConstruction(wallConstruction); // do NOT add to construction store, else virtual walls will attempt to be built
-					MapMessageHandler.updateTile(tile, gameContext);
+					MapMessageHandler.updateTile(tile, gameContext, messageDispatcher);
 				}
 			}
 		} else if (interactionMode.equals(GameInteractionMode.PLACE_BRIDGE)) {

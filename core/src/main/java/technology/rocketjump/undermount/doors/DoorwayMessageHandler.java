@@ -103,7 +103,7 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(doorway.getDoorEntity().getId()));
 					targetTile.setDoorway(null);
-					updateTile(targetTile, gameContext);
+					updateTile(targetTile, gameContext, messageDispatcher);
 
 					for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(targetTile.getTileX(), targetTile.getTileY()).values()) {
 						if (neighbourTile.hasRoom()) {
@@ -238,7 +238,7 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 		// Wall cap should be bottom of tile  (+1 pixel) to overlap entities
 		wallCapEntity.getLocationComponent().setWorldPosition(toVector(doorway.getTileLocation()).add(0, positionYOffset), false, false);
 
-		tileAtPosition.update(gameContext.getAreaMap().getNeighbours(wallTileLocation), gameContext.getAreaMap().getVertices(wallTileLocation.x, wallTileLocation.y));
+		tileAtPosition.update(gameContext.getAreaMap().getNeighbours(wallTileLocation), gameContext.getAreaMap().getVertices(wallTileLocation.x, wallTileLocation.y), messageDispatcher);
 		return wallCapEntity;
 	}
 

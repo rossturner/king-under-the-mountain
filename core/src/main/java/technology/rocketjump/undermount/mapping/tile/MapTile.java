@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.mapping.tile;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
@@ -13,6 +14,7 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
@@ -23,10 +25,12 @@ import technology.rocketjump.undermount.mapping.tile.layout.WallConstructionLayo
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
 import technology.rocketjump.undermount.mapping.tile.underground.ChannelLayout;
+import technology.rocketjump.undermount.mapping.tile.underground.PipeLayout;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -82,7 +86,7 @@ public class MapTile implements Persistable {
 		}
 	}
 
-	public void update(TileNeighbours neighbours, MapVertex[] vertexNeighboursOfCell) {
+	public void update(TileNeighbours neighbours, MapVertex[] vertexNeighboursOfCell, MessageDispatcher messageDispatcher) {
 		if (hasWall()) {
 			WallLayout newLayout = new WallLayout(neighbours);
 			wall.setTrueLayout(newLayout);
@@ -90,6 +94,16 @@ public class MapTile implements Persistable {
 		if (hasChannel()) {
 			ChannelLayout newLayout = new ChannelLayout(neighbours);
 			getUnderTile().setChannelLayout(newLayout);
+		}
+		if (hasPipe()) {
+			PipeLayout newPipeLayout = new PipeLayout(neighbours);
+			MechanismEntityAttributes attributes = (MechanismEntityAttributes) underTile.getPipeEntity().getPhysicalEntityComponent().getAttributes();
+			if (!newPipeLayout.equals(attributes.getPipeLayout())) {
+				attributes.setPipeLayout(newPipeLayout);
+				if (messageDispatcher != null) {
+					messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, underTile.getPipeEntity());
+				}
+			}
 		}
 
 		// Always update FloorOverlaps for all tiles
@@ -253,6 +267,13 @@ public class MapTile implements Persistable {
 	}
 
 	public Entity removeEntity(long entityId) {
+		if (hasPipe()) {
+			Entity pipeEntity = underTile.getPipeEntity();
+			if (pipeEntity.getId() == entityId) {
+				underTile.setPipeEntity(null);
+				return pipeEntity;
+			}
+		}
 		return entities.remove(entityId);
 	}
 
