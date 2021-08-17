@@ -5,6 +5,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.entities.furniture.model.FurnitureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAsset;
+import technology.rocketjump.undermount.assets.entities.mechanism.model.MechanismEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.assets.entities.plant.model.PlantEntityAsset;
 import technology.rocketjump.undermount.assets.entities.wallcap.model.WallCapAsset;
@@ -23,6 +24,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.environment.model.DailyWeatherType;
 import technology.rocketjump.undermount.environment.model.WeatherType;
@@ -90,6 +92,9 @@ public class ModArtifactListing {
 				def("definitions/entityAssets", "wallCapAssets", SINGLE_FILE, JSON_ARRAY, WallCapAsset.class,
 						"entities/wallCap", "**/descriptors", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
+				def("definitions/entityAssets", "mechanismEntityAssets", SINGLE_FILE, JSON_ARRAY, MechanismEntityAsset.class,
+						"entities/mechanisms", "**/descriptors", JSON_ARRAY, ADDITIVE,
+						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
 
 				def("definitions/crafting", "cookingRecipes", SINGLE_FILE, JSON_ARRAY, CookingRecipe.class,
 						"definitions/crafting", "cookingRecipes", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
@@ -134,6 +139,8 @@ public class ModArtifactListing {
 						"entities/plant", "**/plantSpecies.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "ongoingEffectTypes", SINGLE_FILE, JSON_ARRAY, OngoingEffectType.class,
 						"entities/ongoingEffects", "**/effectTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/types", "mechanismTypes", SINGLE_FILE, JSON_ARRAY, MechanismType.class,
+						"entities/mechanisms", "**/mechanismTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				def("definitions", "materials", SINGLE_FILE, JSON_ARRAY, GameMaterial.class,
 						"definitions/materials", "*-materials.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),

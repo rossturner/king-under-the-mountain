@@ -3,7 +3,7 @@ package technology.rocketjump.undermount.mapping.tile.underground;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.MoreObjects;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -12,8 +12,6 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 public class UnderTile implements ChildPersistable {
 
 	private Entity pipeEntity;
-	private GameMaterial pipeMaterial;
-	private PipeLayout pipeLayout;
 
 	private ChannelLayout channelLayout; // Channels either exist or don't, which is represented by the channelLayout existing
 
@@ -31,26 +29,20 @@ public class UnderTile implements ChildPersistable {
 		if (channelLayout != null) {
 			stringHelper.add("channelLayout", channelLayout.getId()+"\n"+channelLayout.toString());
 		}
-		if (pipeLayout != null) {
-			stringHelper.add("pipeLayout", pipeLayout.getId()+"\n"+pipeLayout.toString());
+		if (pipeEntity != null) {
+			MechanismEntityAttributes attributes = (MechanismEntityAttributes) pipeEntity.getPhysicalEntityComponent().getAttributes();
+			PipeLayout pipeLayout = attributes.getPipeLayout();
+			stringHelper.add("pipe", pipeLayout.getId()+"\n"+pipeLayout);
 		}
 		return stringHelper.toString();
 	}
 
-	public GameMaterial getPipeMaterial() {
-		return pipeMaterial;
+	public Entity getPipeEntity() {
+		return pipeEntity;
 	}
 
-	public void setPipeMaterial(GameMaterial pipeMaterial) {
-		this.pipeMaterial = pipeMaterial;
-	}
-
-	public PipeLayout getPipeLayout() {
-		return pipeLayout;
-	}
-
-	public void setPipeLayout(PipeLayout pipeLayout) {
-		this.pipeLayout = pipeLayout;
+	public void setPipeEntity(Entity pipeEntity) {
+		this.pipeEntity = pipeEntity;
 	}
 
 	@Override
@@ -58,9 +50,9 @@ public class UnderTile implements ChildPersistable {
 		if (channelLayout != null) {
 			asJson.put("channelLayout", channelLayout.getId());
 		}
-		if (pipeLayout != null) {
-			asJson.put("pipeLayout", pipeLayout.getId());
-			asJson.put("pipeMaterial", pipeMaterial.getMaterialName());
+		if (pipeEntity != null) {
+			pipeEntity.writeTo(savedGameStateHolder);
+			asJson.put("pipeEntity", pipeEntity.getId());
 		}
 	}
 
@@ -71,13 +63,9 @@ public class UnderTile implements ChildPersistable {
 			this.channelLayout = new ChannelLayout(channelLayoutId);
 		}
 
-		Integer pipeLayoutId = asJson.getInteger("pipeLayout");
-		if (pipeLayoutId != null) {
-			this.pipeLayout = new PipeLayout(pipeLayoutId);
-			this.pipeMaterial = relatedStores.gameMaterialDictionary.getByName(asJson.getString("pipeMaterial"));
-			if (this.pipeMaterial == null) {
-				throw new InvalidSaveException("Could not find pipe material with name " + asJson.getString("pipeMaterial"));
-			}
+		Long pipeEntityId = asJson.getLong("pipeEntity");
+		if (pipeEntityId != null) {
+			this.pipeEntity = savedGameStateHolder.entities.get(pipeEntityId);
 		}
 	}
 

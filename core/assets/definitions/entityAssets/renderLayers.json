@@ -52,6 +52,32 @@
       "sameAs" : "DOWN"
     }
   },
+  "MECHANISM" : {
+    "UP_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN_RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "DOWN" : {
+      "ordering" : [ "MECHANISM_BASE_LAYER" ]
+    },
+    "DOWN_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP_LEFT" : {
+      "sameAs" : "DOWN"
+    },
+    "RIGHT" : {
+      "sameAs" : "DOWN"
+    },
+    "UP" : {
+      "sameAs" : "DOWN"
+    }
+  },
   "HUMANOID" : {
     "UP_RIGHT" : {
       "sameAs" : "UP"

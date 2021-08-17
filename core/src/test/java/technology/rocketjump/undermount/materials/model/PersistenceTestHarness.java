@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.entities.dictionaries.furniture.Furnitur
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.entities.tags.TagDictionary;
 import technology.rocketjump.undermount.environment.DailyWeatherTypeDictionary;
@@ -109,6 +110,8 @@ public class PersistenceTestHarness {
 	private WeatherTypeDictionary mockWeatherTypeDictionary;
 	@Mock
 	private DailyWeatherTypeDictionary mockDailyWeatherTypeDictionary;
+	@Mock
+	private MechanismTypeDictionary mockMechanismTypeDictionary;
 
 	@Before
 	public void setup() {
@@ -147,7 +150,8 @@ public class PersistenceTestHarness {
 				mockParticleEffectTypeDictionary,
 				mockOngoingEffectTypeDictionary,
 				mockWeatherTypeDictionary,
-				mockDailyWeatherTypeDictionary, mechanismTypeDictionary);
+				mockDailyWeatherTypeDictionary,
+				mockMechanismTypeDictionary);
 
 	}
 

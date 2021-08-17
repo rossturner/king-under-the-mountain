@@ -9,6 +9,8 @@ import technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityA
 import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
 import technology.rocketjump.undermount.assets.entities.item.ItemEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAsset;
+import technology.rocketjump.undermount.assets.entities.mechanism.MechanismEntityAssetDictionary;
+import technology.rocketjump.undermount.assets.entities.mechanism.model.MechanismEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.*;
 import technology.rocketjump.undermount.assets.entities.plant.PlantEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.plant.model.PlantEntityAsset;
@@ -46,6 +48,7 @@ public class EntityAssetUpdater {
 	private final ItemEntityAssetDictionary itemEntityAssetDictionary;
 	private final FurnitureEntityAssetDictionary furnitureEntityAssetDictionary;
 	private final PlantEntityAssetDictionary plantEntityAssetDictionary;
+	private final MechanismEntityAssetDictionary mechanismEntityAssetDictionary;
 	private final TagProcessor tagProcessor;
 	private final Profession defaultProfession;
 
@@ -65,15 +68,18 @@ public class EntityAssetUpdater {
 	public final EntityAssetType HUMANOID_HEAD;
 	public final EntityAssetType FURNITURE_LIQUID_LAYER;
 	public final EntityAssetType FURNITURE_COVER_LAYER;
+	public final EntityAssetType MECHANISM_BASE_LAYER;
 
 	@Inject
 	public EntityAssetUpdater(ItemEntityAssetDictionary itemEntityAssetDictionary, FurnitureEntityAssetDictionary furnitureEntityAssetDictionary,
-							  PlantEntityAssetDictionary plantEntityAssetDictionary, EntityAssetTypeDictionary entityAssetTypeDictionary,
+							  PlantEntityAssetDictionary plantEntityAssetDictionary, MechanismEntityAssetDictionary mechanismEntityAssetDictionary,
+							  EntityAssetTypeDictionary entityAssetTypeDictionary,
 							  ProfessionDictionary professionDictionary, HumanoidEntityAssetDictionary humanoidEntityAssetDictionary,
 							  TagProcessor tagProcessor) {
 		this.itemEntityAssetDictionary = itemEntityAssetDictionary;
 		this.plantEntityAssetDictionary = plantEntityAssetDictionary;
 		this.furnitureEntityAssetDictionary = furnitureEntityAssetDictionary;
+		this.mechanismEntityAssetDictionary = mechanismEntityAssetDictionary;
 
 		this.defaultProfession = professionDictionary.getByName("VILLAGER");
 		HUMANOID_BODY = entityAssetTypeDictionary.getByName("HUMANOID_BODY");
@@ -97,6 +103,8 @@ public class EntityAssetUpdater {
 
 		HUMANOID_LEFT_HAND = entityAssetTypeDictionary.getByName("HUMANOID_LEFT_HAND");
 		HUMANOID_RIGHT_HAND = entityAssetTypeDictionary.getByName("HUMANOID_RIGHT_HAND");
+
+		MECHANISM_BASE_LAYER = entityAssetTypeDictionary.getByName("MECHANISM_BASE_LAYER");
 
 		this.humanoidEntityAssetDictionary = humanoidEntityAssetDictionary;
 		this.tagProcessor = tagProcessor;
@@ -233,10 +241,10 @@ public class EntityAssetUpdater {
 	private void updateMechanismAssets(Entity entity) {
 		MechanismEntityAttributes attributes = (MechanismEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 
-		ItemEntityAsset baseAsset = mechanismEntityAssetDictionary.getMechanismEntityAsset(ITEM_BASE_LAYER, attributes);
+		MechanismEntityAsset baseAsset = mechanismEntityAssetDictionary.getMechanismEntityAsset(MECHANISM_BASE_LAYER, attributes);
 		entity.getPhysicalEntityComponent().setBaseAsset(baseAsset);
 		if (baseAsset != null) {
-			addOtherItemAssetTypes(baseAsset.getType(), entity, attributes);
+			addOtherMechanismAssetTypes(baseAsset.getType(), entity, attributes);
 		}
 
 		// Tag processing

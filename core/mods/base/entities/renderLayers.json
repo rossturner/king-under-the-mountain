@@ -217,5 +217,33 @@
     "RIGHT": {
       "sameAs": "DOWN"
     }
+  },
+  "MECHANISM": {
+    "DOWN": {
+      "ordering": [
+        "MECHANISM_BASE_LAYER"
+      ]
+    },
+    "UP": {
+      "sameAs": "DOWN"
+    },
+    "DOWN_LEFT": {
+      "sameAs": "DOWN"
+    },
+    "DOWN_RIGHT": {
+      "sameAs": "DOWN"
+    },
+    "UP_LEFT": {
+      "sameAs": "DOWN"
+    },
+    "UP_RIGHT": {
+      "sameAs": "DOWN"
+    },
+    "LEFT": {
+      "sameAs": "DOWN"
+    },
+    "RIGHT": {
+      "sameAs": "DOWN"
+    }
   }
 }

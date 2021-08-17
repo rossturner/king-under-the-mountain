@@ -657,7 +657,7 @@ public class MapTile implements Persistable {
 	}
 
 	public boolean hasPipe() {
-		return underTile != null && underTile.getPipeLayout() != null;
+		return underTile != null && underTile.getPipeEntity() != null;
 	}
 
 	public enum RegionType {

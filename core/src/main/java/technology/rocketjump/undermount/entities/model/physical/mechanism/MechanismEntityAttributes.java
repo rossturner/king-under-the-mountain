@@ -46,7 +46,12 @@ public class MechanismEntityAttributes implements EntityAttributes {
 
 	@Override
 	public EntityAttributes clone() {
-		throw new RuntimeException("To be implemented: clone() in " + getClass().getSimpleName());
+		MechanismEntityAttributes cloned = new MechanismEntityAttributes(seed);
+		cloned.materials.putAll(this.materials);
+		cloned.otherColors.putAll(this.otherColors);
+		cloned.mechanismType = this.mechanismType;
+		cloned.pipeLayout = this.pipeLayout;
+		return cloned;
 	}
 
 	@Override
