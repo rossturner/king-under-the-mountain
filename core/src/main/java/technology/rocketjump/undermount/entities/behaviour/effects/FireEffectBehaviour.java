@@ -54,6 +54,12 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 	}
 
 	@Override
+	public boolean shouldNotificationApply(GameContext gameContext) {
+		return gameContext != null && gameContext.getMapEnvironment().getCurrentWeather().getLightningStrikesPerHour() == null;
+	}
+
+
+	@Override
 	protected void nextState(GameContext gameContext) {
 		switch (state) {
 			case STARTING:

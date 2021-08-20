@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
+import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.IdleAction.pickRandomLocation;
 
 public class GoToRandomLocationAction extends GoToLocationAction {
@@ -35,7 +36,7 @@ public class GoToRandomLocationAction extends GoToLocationAction {
 
 		elapsedTime += deltaTime;
 		if (elapsedTime > MAX_ELAPSED_TIME) {
-			parent.setInterrupted(true);
+			completionType = SUCCESS;
 		}
 
 		super.update(deltaTime, gameContext);
