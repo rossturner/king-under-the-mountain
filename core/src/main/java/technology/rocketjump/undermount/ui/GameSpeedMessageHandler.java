@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.ui.widgets.IconButtonFactory;
 import technology.rocketjump.undermount.ui.widgets.IconOnlyButton;
 
 import static technology.rocketjump.undermount.gamecontext.GameState.SELECT_SPAWN_LOCATION;
+import static technology.rocketjump.undermount.gamecontext.GameState.STARTING_SPAWN;
 
 @Singleton
 public class GameSpeedMessageHandler implements Telegraph, GameContextAware {
@@ -68,7 +69,8 @@ public class GameSpeedMessageHandler implements Telegraph, GameContextAware {
 				return true;
 			}
 			case MessageType.SET_GAME_SPEED: {
-				if (gameContext == null || gameContext.getSettlementState().getGameState().equals(SELECT_SPAWN_LOCATION)) {
+				if (gameContext == null || gameContext.getSettlementState().getGameState().equals(SELECT_SPAWN_LOCATION) ||
+						gameContext.getSettlementState().getGameState().equals(STARTING_SPAWN)) {
 					return true;
 				}
 				GameSpeed selectedSpeed = (GameSpeed) msg.extraInfo;

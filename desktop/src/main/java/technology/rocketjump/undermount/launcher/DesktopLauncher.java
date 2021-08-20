@@ -26,14 +26,15 @@ import static technology.rocketjump.undermount.screens.menus.options.GraphicsOpt
 
 public class DesktopLauncher {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         try {
             forceUtf8();
             launchMainWindow();
         } catch (Exception e) {
             Logger.error(e);
             CrashHandler.logCrash(e);
-            throw e;
+            System.exit(-1);
+//            throw e;
         }
     }
 

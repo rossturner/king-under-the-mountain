@@ -27,6 +27,7 @@ import technology.rocketjump.undermount.ui.widgets.GameDialog;
 import technology.rocketjump.undermount.ui.widgets.ModalDialog;
 
 import static technology.rocketjump.undermount.gamecontext.GameState.SELECT_SPAWN_LOCATION;
+import static technology.rocketjump.undermount.gamecontext.GameState.STARTING_SPAWN;
 
 @Singleton
 public class MainGameScreen implements GameContextAware, GameScreen, Telegraph {
@@ -76,7 +77,8 @@ public class MainGameScreen implements GameContextAware, GameScreen, Telegraph {
 		screenWriter.clearText();
 		float multipliedDeltaTime = deltaTime * gameContext.getGameClock().getSpeedMultiplier();
 		GdxAI.getTimepiece().update(multipliedDeltaTime); // This is used for message delays, not actual AI, so runs when paused
-		if (!gameContext.getGameClock().isPaused() && !gameContext.getSettlementState().getGameState().equals(SELECT_SPAWN_LOCATION)) {
+		if (!gameContext.getGameClock().isPaused() && !gameContext.getSettlementState().getGameState().equals(SELECT_SPAWN_LOCATION) &&
+				!gameContext.getSettlementState().getGameState().equals(STARTING_SPAWN)) {
 			gameContext.getGameClock().update(multipliedDeltaTime, messageDispatcher);
 		}
 		particleEffectUpdater.update(multipliedDeltaTime, new TileBoundingBox(primaryCameraWrapper.getCamera(), gameContext.getAreaMap()));
