@@ -273,6 +273,9 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							}
 						}
 					}
+				} else {
+					// Might be an untracked entity like a pipe
+
 				}
 				return true;
 			}

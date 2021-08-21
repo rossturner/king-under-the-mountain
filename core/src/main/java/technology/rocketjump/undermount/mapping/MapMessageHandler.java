@@ -106,7 +106,6 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			}
 		}
 
-
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
 		messageDispatcher.addListener(this, MessageType.ROOM_PLACEMENT);

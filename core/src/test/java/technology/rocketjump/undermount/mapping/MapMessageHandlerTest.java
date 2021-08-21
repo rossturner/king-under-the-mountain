@@ -11,6 +11,9 @@ import technology.rocketjump.undermount.assets.FloorTypeDictionary;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.entities.factories.MechanismEntityAttributesFactory;
+import technology.rocketjump.undermount.entities.factories.MechanismEntityFactory;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismTypeDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
@@ -56,6 +59,12 @@ public class MapMessageHandlerTest {
 	private RoofConstructionManager mockRoofConstructionManager;
 	@Mock
 	private FloorTypeDictionary mockFloorTypeDictionary;
+	@Mock
+	private MechanismTypeDictionary mockMechanismTypeDictionary;
+	@Mock
+	private MechanismEntityAttributesFactory mockMechanismEntityAttributesFactory;
+	@Mock
+	private MechanismEntityFactory mockMechanismEntityFactory;
 
 	@Test
 	public void removeWall_joinsRegions_keepsZones() {
@@ -138,7 +147,8 @@ public class MapMessageHandlerTest {
 
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
 				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, mockStockpileComponentUpdater,
-				mockRoofConstructionManager, mockParticleEffectTypeDictionary, mockSoundAssetDictionary, mockFloorTypeDictionary, mechanismTypeDictionary, mechanismEntityAttributesFactory, mechanismEntityFactory);
+				mockRoofConstructionManager, mockParticleEffectTypeDictionary, mockSoundAssetDictionary, mockFloorTypeDictionary,
+				mockMechanismTypeDictionary, mockMechanismEntityAttributesFactory, mockMechanismEntityFactory);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);
