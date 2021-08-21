@@ -8,7 +8,6 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
@@ -35,7 +34,7 @@ public class ConsumeLiquidFromTankardAction extends ConsumeLiquidFromContainerAc
             LiquidContainerComponent liquidContainerComponent = tankardEntity.getOrCreateComponent(LiquidContainerComponent.class);
             GameMaterial consumedLiquid = liquidContainerComponent.getTargetLiquidMaterial();
             effectsOfDrinkConsumption(consumedLiquid, null, gameContext);
-            parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(tankardEntity.getId()));
+            parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, tankardEntity);
             completionType = SUCCESS;
         }
     }

@@ -178,8 +178,8 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 			}
 			case MessageType.DESTROY_ENTITY: { // Need to stop showing destroyed entities
 				if (interactionStateContainer.getSelectable() != null && interactionStateContainer.getSelectable().type.equals(ENTITY)) {
-					EntityMessage message = (EntityMessage) msg.extraInfo;
-					if (message.getEntityId() == interactionStateContainer.getSelectable().getId()) {
+					Entity entity = (Entity) msg.extraInfo;
+					if (entity.getId() == interactionStateContainer.getSelectable().getId()) {
 						clearSelectable();
 					}
 				}

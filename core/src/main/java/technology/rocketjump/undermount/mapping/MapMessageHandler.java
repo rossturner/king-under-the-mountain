@@ -221,7 +221,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private boolean handleRemovePipe(GridPoint2 location) {
 		MapTile tile = gameContext.getAreaMap().getTile(location);
 		if (tile != null && tile.hasPipe()) {
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(tile.getUnderTile().getPipeEntity().getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, tile.getUnderTile().getPipeEntity());
 			updateTile(tile, gameContext, messageDispatcher);
 		}
 		return true;

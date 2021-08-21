@@ -348,7 +348,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							ItemEntityAttributes attributes = (ItemEntityAttributes) inventoryItem.entity.getPhysicalEntityComponent().getAttributes();
 							attributes.setQuantity(attributes.getQuantity() - 1); // FIXME handle planting quantities other than 1?
 							if (attributes.getQuantity() <= 0) {
-								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(inventoryItem.entity.getId()));
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, inventoryItem.entity);
 							}
 						}
 					}
@@ -401,7 +401,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							if (currentGrowthStage.getHarvestSwitchesToGrowthStage() == null) {
 								messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
 										Optional.empty(), Optional.of(new JobTarget(targetEntity)), (p) -> {}));
-								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 							} else {
 								attributes.setGrowthStageCursor(currentGrowthStage.getHarvestSwitchesToGrowthStage());
 								attributes.setGrowthStageProgress(0f);
@@ -582,7 +582,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				if (targetEntity != null) {
 					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
 							Optional.empty(), Optional.of(new JobTarget(targetEntity)), (p) -> {}));
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 				}
 				break;
 			}
@@ -661,7 +661,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						}
 
 						if (relatedInventoryItem != null) {
-							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(relatedInventoryItem.getId()));
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, relatedInventoryItem);
 						} else {
 							Logger.error("Could not find correct item in " + InnoculationLogBehaviour.class + " inventory");
 						}
@@ -742,7 +742,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							if (behaviourComponent instanceof FireEffectBehaviour) {
 								((FireEffectBehaviour)behaviourComponent).setToFade();
 							} else {
-								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(extinguishableEntity.get().getId()));
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, extinguishableEntity.get());
 							}
 						}
 
@@ -773,7 +773,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						GameMaterial material = attributes.getPrimaryMaterial();
 						attributes.setQuantity(attributes.getQuantity() - 1);
 						if (attributes.getQuantity() == 0) {
-							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(equippedItem.getId()));
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
 						} else {
 							// put back as equipped for AI to clear
 							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
@@ -797,7 +797,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						GameMaterial material = attributes.getPrimaryMaterial();
 						attributes.setQuantity(attributes.getQuantity() - 1);
 						if (attributes.getQuantity() == 0) {
-							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(equippedItem.getId()));
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
 						} else {
 							// put back as equipped for AI to clear
 							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
@@ -946,7 +946,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {}));
 		}
 
-		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
+		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 		for (ItemEntityAttributes itemAttributes : itemAttributeList) {
 			GridPoint2 targetPosition = targetTile.getTilePosition();
 			if (!targetPositions.isEmpty()) {

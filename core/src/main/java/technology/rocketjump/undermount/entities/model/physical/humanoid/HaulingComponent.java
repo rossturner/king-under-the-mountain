@@ -13,7 +13,6 @@ import technology.rocketjump.undermount.entities.model.physical.EntityAttributes
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -26,7 +25,7 @@ public class HaulingComponent implements EntityComponent, Destructible {
 	@Override
 	public void destroy(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		if (hauledEntity != null) {
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(hauledEntity.getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, hauledEntity);
 		}
 	}
 

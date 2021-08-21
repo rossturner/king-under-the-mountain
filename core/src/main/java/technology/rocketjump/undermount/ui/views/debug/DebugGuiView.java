@@ -31,7 +31,6 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DebugMessage;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.PipeConstructionMessage;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.settlement.ImmigrationManager;
@@ -203,7 +202,7 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 			}
 			case DESTROY_ENTITY: {
 				tile.getEntities().stream().findFirst().ifPresent(entity -> {
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);
 				});
 				break;
 			}
@@ -225,7 +224,13 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 				break;
 			}
 			case TOGGLE_CHANNEL: {
-
+				if (!tile.hasWall()) {
+					if (tile.hasChannel()) {
+						messageDispatcher.dispatchMessage(MessageType.REMOVE_CHANNEL, tile.getTilePosition());
+					} else {
+						messageDispatcher.dispatchMessage(MessageType.ADD_CHANNEL, tile.getTilePosition());
+					}
+				}
 				break;
 			}
 			case TOGGLE_PIPE: {

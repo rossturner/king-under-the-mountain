@@ -244,7 +244,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 				for (Entity entity : tileAtLocation.getEntities()) {
 					if (entity.getType().equals(EntityType.ITEM)) {
 						itemsRemovedFromConstruction.put(entity.getId(), entity);
-						messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+						messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, entity);
 					}
 				}
 				tileAtLocation.setConstruction(null);
@@ -410,7 +410,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		for (Entity entity : tileAtLocation.getEntities()) {
 			if (entity.getType().equals(EntityType.ITEM)) {
 				itemAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-				messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+				messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, entity);
 			}
 		}
 
@@ -452,7 +452,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 					if (itemAttributes.getItemType().equals(construction.getBridge().getBridgeType().getBuildingRequirement().getItemType())) {
 						construction.getBridge().setMaterial(itemAttributes.getMaterial(construction.getPrimaryMaterialType()));
 					}
-					messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+					messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, entity);
 				}
 			}
 

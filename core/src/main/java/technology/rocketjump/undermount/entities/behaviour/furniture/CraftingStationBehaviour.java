@@ -544,7 +544,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		}
 
 		for (InventoryComponent.InventoryEntry inventoryEntry : new ArrayList<>(inventoryComponent.getInventoryEntries())) {
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, inventoryEntry.entity);
 		}
 		for (Entity outputEntity : output) {
 			inventoryComponent.add(outputEntity, parentEntity, messageDispatcher, gameContext.getGameClock());
