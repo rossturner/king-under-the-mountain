@@ -739,7 +739,7 @@
   "defaultLayoutName" : "Water Pump WE Layout",
   "colorCode" : "#26e1ed",
   "iconName" : "tap",
-  "placeAnywhere" : false,
+  "placeAnywhere" : true,
   "autoConstructed" : false,
   "requirements" : {
     "METAL" : [ {

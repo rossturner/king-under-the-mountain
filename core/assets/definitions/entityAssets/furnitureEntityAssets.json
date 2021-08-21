@@ -3897,6 +3897,378 @@
     }
   }
 }, {
+  "uniqueName" : "WATER_PUMP-WE_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump WE Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-EW_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump EW Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-NS_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump NS Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_n_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-SN_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump SN Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_s_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-WE_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump WE Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -20.0,
+        "y" : 20.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-EW_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump EW Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 20.0,
+        "y" : 20.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-NS_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump NS Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_n_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 17.0,
+        "y" : 22.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-SN_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump SN Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_s_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -15.0,
+        "y" : -14.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-WE_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump WE Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 17.5,
+        "y" : -12.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-EW_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump EW Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -17.5,
+        "y" : -12.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-NS_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump NS Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_n_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -8.5,
+        "y" : -23.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-SN_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump SN Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_s_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 10.0,
+        "y" : 11.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "table-1x2-stone",
   "type" : "BASE_LAYER",
   "furnitureTypeNames" : [ "KITCHEN_WORKTOP" ],

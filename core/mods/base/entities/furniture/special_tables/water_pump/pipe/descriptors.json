@@ -1,0 +1,71 @@
+[
+  {
+    "uniqueName": "WATER_PUMP-WE_Layout-Pipe",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump WE Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_ew_pipe.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 17.5,
+          "y": -12
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "WATER_PUMP-EW_Layout-Pipe",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump EW Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_ew_pipe.png",
+        "flipX": true,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -17.5,
+          "y": -12
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "WATER_PUMP-NS_Layout-Pipe",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump NS Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_n_pipe.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -8.5,
+          "y": -23
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "WATER_PUMP-SN_Layout-Pipe",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump SN Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_s_pipe.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 10,
+          "y": 11
+        }
+      }
+    }
+  }
+]

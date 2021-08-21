@@ -1,0 +1,103 @@
+[
+  {
+    "uniqueName": "WATER_PUMP-WE_Layout-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump WE Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_ew_base.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          },
+          {
+            "type": "FURNITURE_BELOW_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "WATER_PUMP-EW_Layout-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump EW Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_ew_base.png",
+        "coloringLayer": "METAL_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -32,
+          "y": 0
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          },
+          {
+            "type": "FURNITURE_BELOW_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "WATER_PUMP-NS_Layout-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump NS Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_n_base.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -32
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          },
+          {
+            "type": "FURNITURE_BELOW_LAYER_2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "WATER_PUMP-SN_Layout-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["WATER_PUMP"],
+    "furnitureLayoutName": "Water Pump SN Layout",
+    "validMaterialTypes": ["METAL"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "pump_s_base.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1"
+          },
+          {
+            "type": "FURNITURE_BELOW_LAYER_2"
+          }
+        ]
+      }
+    }
+  }
+]
