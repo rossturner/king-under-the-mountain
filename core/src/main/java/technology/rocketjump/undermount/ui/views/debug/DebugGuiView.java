@@ -68,9 +68,9 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 	private Table layoutTable;
 	private GameContext gameContext;
 
-	private boolean displayed = true;
+	private boolean displayed = false;
 
-	private DebugAction currentAction = DebugAction.SPAWN_ITEM;
+	private DebugAction currentAction = DebugAction.NONE;
 	private ItemType itemTypeToSpawn;
 	private GameMaterial selectedMaterial = GameMaterial.NULL_MATERIAL;
 
