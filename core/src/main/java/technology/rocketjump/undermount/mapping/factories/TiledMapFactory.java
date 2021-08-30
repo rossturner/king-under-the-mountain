@@ -27,10 +27,12 @@ import technology.rocketjump.undermount.mapgen.model.output.GameMap;
 import technology.rocketjump.undermount.mapping.model.InvalidMapGenerationException;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.PipeConstructionMessage;
 import technology.rocketjump.undermount.messaging.types.RoomPlacementMessage;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rooms.*;
@@ -173,6 +175,25 @@ public class TiledMapFactory {
 		for (ItemType placedItemType : placedItems) {
 			if (!stockpileComponent.isEnabled(placedItemType)) {
 				stockpileComponentUpdater.toggleItem(stockpileComponent, placedItemType, true, true, true);
+			}
+		}
+
+
+		if (GlobalSettings.DEV_MODE) {
+			for (int x = 0; x < areaMap.getWidth(); x++ ){
+				for (int y = 0; y < areaMap.getHeight(); y++) {
+					MapTile tile = areaMap.getTile(x, y);
+					if (tile.getExploration().equals(TileExploration.EXPLORED)) {
+						if (!tile.hasWall() && !tile.getFloor().isRiverTile()) {
+							if (tile.hasPipe()) {
+								messageDispatcher.dispatchMessage(MessageType.REMOVE_PIPE, tile.getTilePosition());
+							} else {
+								messageDispatcher.dispatchMessage(MessageType.ADD_PIPE, new PipeConstructionMessage(
+										tile.getTilePosition(), stoneBlockMaterialType));
+							}
+						}
+					}
+				}
 			}
 		}
 	}

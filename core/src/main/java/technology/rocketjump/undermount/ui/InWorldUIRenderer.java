@@ -29,6 +29,7 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
+import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
 import technology.rocketjump.undermount.particles.custom_libgdx.ShaderEffect;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
@@ -170,6 +171,11 @@ public class InWorldUIRenderer {
 				GridPoint2 workspaceAccessedFrom = furnitureGridPoint.cpy().add(workspace.getAccessedFrom());
 				shapeRenderer.circle(workspaceAccessedFrom.x + 0.5f, workspaceAccessedFrom.y + 0.5f, 0.35f, 50);
 			}
+			for (FurnitureLayout.SpecialTile specialTile : attributes.getCurrentLayout().getSpecialTiles()) {
+				GridPoint2 specialTileLocation = furnitureGridPoint.cpy().add(specialTile.getLocation());
+				shapeRenderer.setColor(specialTile.getRequirement().color);
+				shapeRenderer.circle(specialTileLocation.x + 0.5f, specialTileLocation.y + 0.5f, 0.35f, 50);
+			}
 
 			shapeRenderer.end();
 		} else if (interactionStateContainer.getInteractionMode().equals(PLACE_DOOR)) {
@@ -292,6 +298,48 @@ public class InWorldUIRenderer {
 								}
 
 								shapeRenderer.line(location.x, location.y, location.x + velocity.x, location.y + velocity.y);
+							}
+						}
+					}
+
+					if (renderingOptions.debug().isShowLiquidFlow()) {
+						shapeRenderer.end();
+						shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+						if (mapTile.getUnderTile() != null) {
+							TileLiquidFlow liquidFlow = mapTile.getUnderTile().getLiquidFlow();
+							if (liquidFlow != null && liquidFlow.getLiquidAmount() > 0) {
+								switch (liquidFlow.getLiquidAmount()) {
+									case 7:
+										shapeRenderer.setColor(HexColors.get("#28ecf866"));
+										break;
+									case 6:
+										shapeRenderer.setColor(HexColors.get("#25d8e366"));
+										break;
+									case 5:
+										shapeRenderer.setColor(HexColors.get("#21bcc666"));
+										break;
+									case 4:
+										shapeRenderer.setColor(HexColors.get("#18969f66"));
+										break;
+									case 3:
+										shapeRenderer.setColor(HexColors.get("#13727866"));
+										break;
+									case 2:
+										shapeRenderer.setColor(HexColors.get("#0c4b4f66"));
+										break;
+									case 1:
+										shapeRenderer.setColor(HexColors.get("#06262866"));
+										break;
+									default:
+										shapeRenderer.setColor(HexColors.get("#00000066"));
+								}
+								shapeRenderer.rect(mapTile.getTileX(), mapTile.getTileY(), 1,1);
+
+								shapeRenderer.end();
+								shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+								shapeRenderer.setColor(Color.RED);
+								shapeRenderer.line(mapTile.getTileX() + 0.5f, mapTile.getTileY() + 0.5f,
+										mapTile.getTileX() + 0.5f + liquidFlow.getAveragedFlowDirection().x, mapTile.getTileY() + 0.5f + liquidFlow.getAveragedFlowDirection().y);
 							}
 						}
 					}

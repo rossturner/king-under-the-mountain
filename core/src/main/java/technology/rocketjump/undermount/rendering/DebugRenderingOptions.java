@@ -9,6 +9,7 @@ public class DebugRenderingOptions {
 	private boolean showPathfindingNodes = false;
 	private boolean showZones = false;
 	private boolean showPathfindingSlowdown = false;
+	private boolean showLiquidFlow = false;
 
 	public boolean showIndividualLightingBuffers() {
 		return showIndividualLightingBuffers;
@@ -64,5 +65,13 @@ public class DebugRenderingOptions {
 
 	public void setShowPathfindingSlowdown(boolean showPathfindingSlowdown) {
 		this.showPathfindingSlowdown = showPathfindingSlowdown;
+	}
+
+	public boolean isShowLiquidFlow() {
+		return showLiquidFlow;
+	}
+
+	public void setShowLiquidFlow(boolean showLiquidFlow) {
+		this.showLiquidFlow = showLiquidFlow;
 	}
 }

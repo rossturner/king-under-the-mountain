@@ -669,6 +669,13 @@ public class MapTile implements Persistable {
 		return underTile;
 	}
 
+	public UnderTile getOrCreateUnderTile() {
+		if (underTile == null) {
+			underTile = new UnderTile();
+		}
+		return underTile;
+	}
+
 	public void setUnderTile(UnderTile underTile) {
 		this.underTile = underTile;
 	}

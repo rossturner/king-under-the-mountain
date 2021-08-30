@@ -202,12 +202,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private boolean handleAddPipe(PipeConstructionMessage message) {
 		MapTile tile = gameContext.getAreaMap().getTile(message.tilePosition);
 		if (tile != null) {
-			UnderTile underTile = tile.getUnderTile();
-			if (underTile == null) {
-				underTile = new UnderTile();
-				tile.setUnderTile(underTile);
-			}
-
+			UnderTile underTile = tile.getOrCreateUnderTile();
 			if (underTile.getPipeEntity() == null) {
 				MechanismEntityAttributes attributes = mechanismEntityAttributesFactory.byType(pipeMechanismType, message.material);
 				Entity pipeEntity = mechanismEntityFactory.create(attributes, message.tilePosition, new DoNothingBehaviour(), gameContext);
@@ -495,11 +490,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			messageDispatcher.dispatchMessage(MessageType.REMOVE_ROOM_TILES, Set.of(location));
 		}
 
-		UnderTile underTile = tileToAddChannelTo.getUnderTile();
-		if (underTile == null) {
-			underTile = new UnderTile();
-			tileToAddChannelTo.setUnderTile(underTile);
-		}
+		UnderTile underTile = tileToAddChannelTo.getOrCreateUnderTile();
 		underTile.setChannelLayout(channelLayout);
 		updateTile(tileToAddChannelTo, gameContext, messageDispatcher);
 

@@ -15,6 +15,10 @@ public class UnderTile implements ChildPersistable {
 
 	private ChannelLayout channelLayout; // Channels either exist or don't, which is represented by the channelLayout existing
 
+	private boolean liquidOutput;
+	private boolean liquidInput;
+	private TileLiquidFlow liquidFlow;
+
 	public ChannelLayout getChannelLayout() {
 		return channelLayout;
 	}
@@ -34,6 +38,9 @@ public class UnderTile implements ChildPersistable {
 			PipeLayout pipeLayout = attributes.getPipeLayout();
 			stringHelper.add("pipe", pipeLayout.getId()+"\n"+pipeLayout);
 		}
+		if (liquidFlow != null) {
+			stringHelper.add("liquidFlowAmount", liquidFlow.getLiquidAmount());
+		}
 		return stringHelper.toString();
 	}
 
@@ -45,6 +52,42 @@ public class UnderTile implements ChildPersistable {
 		this.pipeEntity = pipeEntity;
 	}
 
+	public boolean isLiquidOutput() {
+		return liquidOutput;
+	}
+
+	public void setLiquidOutput(boolean liquidOutput) {
+		this.liquidOutput = liquidOutput;
+	}
+
+	public boolean isLiquidInput() {
+		return liquidInput;
+	}
+
+	public void setLiquidInput(boolean liquidInput) {
+		this.liquidInput = liquidInput;
+	}
+
+	public boolean liquidCanFlow() {
+		// liquids flow through either pipes or channels
+		return pipeEntity != null || channelLayout != null;
+	}
+
+	public TileLiquidFlow getLiquidFlow() {
+		return liquidFlow;
+	}
+
+	public TileLiquidFlow getOrCreateLiquidFlow() {
+		if (liquidFlow == null) {
+			liquidFlow = new TileLiquidFlow();
+		}
+		return liquidFlow;
+	}
+
+	public void setLiquidFlow(TileLiquidFlow liquidFlow) {
+		this.liquidFlow = liquidFlow;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		if (channelLayout != null) {
@@ -53,6 +96,17 @@ public class UnderTile implements ChildPersistable {
 		if (pipeEntity != null) {
 			pipeEntity.writeTo(savedGameStateHolder);
 			asJson.put("pipeEntity", pipeEntity.getId());
+		}
+		if (liquidOutput) {
+			asJson.put("liquidOutput", true);
+		}
+		if (liquidInput) {
+			asJson.put("liquidInput", true);
+		}
+		if (liquidFlow != null) {
+			JSONObject liquidFlowJson = new JSONObject(true);
+			liquidFlow.writeTo(liquidFlowJson, savedGameStateHolder);
+			asJson.put("liquidFlow", liquidFlowJson);
 		}
 	}
 
@@ -67,6 +121,14 @@ public class UnderTile implements ChildPersistable {
 		if (pipeEntityId != null) {
 			this.pipeEntity = savedGameStateHolder.entities.get(pipeEntityId);
 		}
-	}
 
+		this.liquidOutput = asJson.getBooleanValue("liquidOutput");
+		this.liquidInput = asJson.getBooleanValue("liquidInput");
+
+		JSONObject liquidFlowJson = asJson.getJSONObject("liquidFlow");
+		if (liquidFlowJson != null) {
+			this.liquidFlow = new TileLiquidFlow();
+			this.liquidFlow.readFrom(liquidFlowJson, savedGameStateHolder, relatedStores);
+		}
+	}
 }

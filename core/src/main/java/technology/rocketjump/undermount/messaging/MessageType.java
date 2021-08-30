@@ -239,5 +239,8 @@ public class MessageType {
 	public static final int SMALL_FIRE_STARTED = 1705;
 	public static final int START_FIRE_IN_TILE = 1706;
 
+	// Liquid flow messages
+	public static final int ADD_LIQUID_TO_FLOW = 1800;
+	public static final int REMOVE_LIQUID_FROM_FLOW = 1801;
 
 }

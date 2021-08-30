@@ -1,9 +1,11 @@
 package technology.rocketjump.undermount.entities.model.physical.furniture;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.GridPoint2;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.misc.Name;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,12 +104,14 @@ public class FurnitureLayout {
 
 		public enum SpecialTileRequirment {
 
-			IS_RIVER(mapTile -> mapTile.getFloor().isRiverTile());
+			IS_RIVER(mapTile -> mapTile.getFloor().isRiverTile(), HexColors.get("#26e1ed"));
 
 			public final TileCheck tileCheck;
+			public final Color color;
 
-			private SpecialTileRequirment(TileCheck tileCheck) {
+			private SpecialTileRequirment(TileCheck tileCheck, Color color) {
 				this.tileCheck = tileCheck;
+				this.color = color;
 			}
 
 			public interface TileCheck {

@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
@@ -221,8 +222,6 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 
 				validFurniturePlacement = isFurniturePlacementValid(map, tilePosition, attributes);
-
-
 			}
 
 		} else if (interactionMode.equals(GameInteractionMode.PLACE_WALLS)) {
@@ -580,6 +579,24 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 			if (!oneWorkspaceAccessible) {
 				return false;
+			}
+		}
+
+		for (FurnitureLayout.SpecialTile specialTile : attributes.getCurrentLayout().getSpecialTiles()) {
+			MapTile tileToCheck = map.getTile(tilePosition.cpy().add(specialTile.getLocation()));
+			if (tileToCheck == null) {
+				return false;
+			}
+
+			switch (specialTile.getRequirement()) {
+				case IS_RIVER:
+					if (!tileToCheck.getFloor().isRiverTile() || tileToCheck.getFloor().hasBridge()) {
+						return false;
+					}
+					break;
+				default:
+					Logger.warn("Not yet implemented, check for furniture special location of type " + specialTile.getRequirement());
+					return false;
 			}
 		}
 

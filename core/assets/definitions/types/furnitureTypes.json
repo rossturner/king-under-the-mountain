@@ -752,7 +752,9 @@
       "liquid" : false
     } ]
   },
-  "tags" : { },
+  "tags" : {
+    "FURNITURE_BEHAVIOUR" : [ "WATER_PUMP" ]
+  },
   "hiddenFromPlacementMenu" : false
 }, {
   "name" : "WOODCUTTERS_BENCH",

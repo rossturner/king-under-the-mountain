@@ -12,10 +12,9 @@ import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.jobs.JobStore;
-import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -37,10 +36,14 @@ public class PipingViewModeRenderer {
 	private final EntityRenderer entityRenderer;
 
 	// MODDING expose this
-	private final Sprite roofingSprite;
+	private final Sprite liquidInputSprite;
+	private final Color liquidInputColor = HexColors.get("#26e1ed");
+	private final Sprite liquidOutputSprite;
+	private final Color liquidOutputColor = HexColors.POSITIVE_COLOR;
 //	private final Sprite deconstructSprite;
 	private final Color viewMaskColor = HexColors.get("#999999BB");
 	private final List<Entity> entitiesToRender = new ArrayList<>();
+	private final List<MapTile> tilesWithInputsOrOutputs = new ArrayList<>();
 
 	@Inject
 	public PipingViewModeRenderer(GameInteractionStateContainer interactionStateContainer, JobStore jobStore,
@@ -50,7 +53,8 @@ public class PipingViewModeRenderer {
 		this.entityRenderer = entityRenderer;
 
 		TextureAtlas guiAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
-		roofingSprite = guiAtlas.createSprite("tee-pipe");
+		liquidInputSprite = guiAtlas.createSprite("input");
+		liquidOutputSprite = guiAtlas.createSprite("output");
 //		deconstructSprite = guiAtlas.createSprite("demolish");
 	}
 
@@ -64,6 +68,7 @@ public class PipingViewModeRenderer {
 		GridPoint2 minDraggingTile = new GridPoint2(MathUtils.floor(minDraggingPoint.x), MathUtils.floor(minDraggingPoint.y));
 		GridPoint2 maxDraggingTile = new GridPoint2(MathUtils.floor(maxDraggingPoint.x), MathUtils.floor(maxDraggingPoint.y));
 		entitiesToRender.clear();
+		tilesWithInputsOrOutputs.clear();
 
 		shapeRenderer.setColor(viewMaskColor);
 		shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -77,8 +82,16 @@ public class PipingViewModeRenderer {
 
 					shapeRenderer.rect(x, y, 1, 1);
 
-					if (mapTile.hasPipe()) {
-						entitiesToRender.add(mapTile.getUnderTile().getPipeEntity());
+					UnderTile underTile = mapTile.getUnderTile();
+
+					if (underTile != null) {
+						if (mapTile.hasPipe()) {
+							entitiesToRender.add(underTile.getPipeEntity());
+						}
+
+						if (underTile.isLiquidInput() || underTile.isLiquidOutput()) {
+							tilesWithInputsOrOutputs.add(mapTile);
+						}
 					}
 
 				}
@@ -92,33 +105,18 @@ public class PipingViewModeRenderer {
 			entityRenderer.render(entity, spriteBatch, RenderMode.DIFFUSE,
 					null, null, null);
 		}
+		for (MapTile tile : tilesWithInputsOrOutputs) {
+			if (tile.getUnderTile().isLiquidInput()) {
+				spriteBatch.setColor(liquidInputColor);
+				spriteBatch.draw(liquidInputSprite, tile.getTileX(), tile.getTileY(), 1, 1);
+			} else if (tile.getUnderTile().isLiquidOutput()) {
+				spriteBatch.setColor(liquidOutputColor);
+				spriteBatch.draw(liquidOutputSprite, tile.getTileX(), tile.getTileY(), 1, 1);
+			}
+		}
 		spriteBatch.end();
 
 
-	}
-
-	private void renderExistingRoofConstruction(int x, int y, MapTile mapTile, Batch spriteBatch, boolean blinkState) {
-		RoofConstructionState roofConstructionState = mapTile.getRoof().getConstructionState();
-		if (!roofConstructionState.equals(RoofConstructionState.NONE)) {
-			for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
-				if (job.getAssignedToEntityId() != null) {
-					// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off
-					if (!blinkState) {
-						return;
-					}
-				}
-			}
-
-			spriteBatch.setColor(roofConstructionState.renderColor);
-			spriteBatch.draw(roofingSprite, x, y, 1, 1);
-		}
-	}
-
-	private boolean shouldHighlight(MapTile mapTile) {
-		if (interactionStateContainer.getInteractionMode().designationCheck != null) {
-			return interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(mapTile);
-		}
-		return false;
 	}
 
 }
