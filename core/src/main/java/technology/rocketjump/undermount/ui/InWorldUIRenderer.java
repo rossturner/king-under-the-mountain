@@ -27,6 +27,7 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.MapVertex;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
@@ -338,8 +339,13 @@ public class InWorldUIRenderer {
 								shapeRenderer.end();
 								shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 								shapeRenderer.setColor(Color.RED);
-								shapeRenderer.line(mapTile.getTileX() + 0.5f, mapTile.getTileY() + 0.5f,
-										mapTile.getTileX() + 0.5f + liquidFlow.getAveragedFlowDirection().x, mapTile.getTileY() + 0.5f + liquidFlow.getAveragedFlowDirection().y);
+
+								for (MapVertex vertex : gameContext.getAreaMap().getVertices(mapTile.getTileX(), mapTile.getTileY())) {
+									shapeRenderer.line(vertex.getVertexX(), vertex.getVertexY(),
+											vertex.getVertexX() + vertex.getWaterFlowDirection().x, vertex.getVertexY() + vertex.getWaterFlowDirection().y);
+								}
+
+
 							}
 						}
 					}

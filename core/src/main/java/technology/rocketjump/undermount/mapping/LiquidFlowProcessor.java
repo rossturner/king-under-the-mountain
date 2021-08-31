@@ -4,6 +4,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -11,6 +12,7 @@ import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.mapping.factories.WaterFlowCalculator;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.MapVertex;
 import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
@@ -27,11 +29,12 @@ import static technology.rocketjump.undermount.mapping.tile.underground.TileLiqu
 @Singleton
 public class LiquidFlowProcessor implements Updatable, Telegraph {
 
+	private static final float MAX_UPDATES_PER_SECOND = 100f;
 	private final GameMaterial waterMaterial;
 	private GameContext gameContext;
 	private Deque<MapTile> currentLiquidFlowTiles = new ArrayDeque<>();
-	private Deque<MapTile> nextActiveLiquidFlowTiles = new ArrayDeque<>();
 	private List<WaterFlowCalculator.FlowTransition> transitionsToApply = new ArrayList<>();
+	private final Set<MapVertex> verticesToUpdate = new HashSet<>();
 
 	private final ScreenWriter screenWriter;
 
@@ -46,21 +49,23 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 
 	@Override
 	public void update(float deltaTime) {
+		// gameContext.settlementState.activeLiquidFlowTiles are actually the tiles that should be active *next* frame
+
 		transitionsToApply.clear();
-		float numUpdatesPerSecond = 1000f;
-		int numPerFrame = Math.round(numUpdatesPerSecond * deltaTime);
+		verticesToUpdate.clear();
+		int numPerFrame = Math.round(MAX_UPDATES_PER_SECOND * deltaTime);
 		int numTilesToUpdateThisFrame = Math.min(numPerFrame, Math.max(1, currentLiquidFlowTiles.size()));
 
 		if (GlobalSettings.DEV_MODE) {
 			screenWriter.printLine("Active flow tiles: " + currentLiquidFlowTiles.size());
-			screenWriter.printLine("Next active flow tiles: " + nextActiveLiquidFlowTiles.size());
+			screenWriter.printLine("Next active flow tiles: " + gameContext.getSettlementState().activeLiquidFlowTiles.size());
 			screenWriter.printLine("Updating this frame: " + numTilesToUpdateThisFrame);
 		}
 
 		if (currentLiquidFlowTiles.isEmpty()) {
-			if (!nextActiveLiquidFlowTiles.isEmpty()) {
-				currentLiquidFlowTiles.addAll(nextActiveLiquidFlowTiles);
-				nextActiveLiquidFlowTiles.clear();
+			if (!gameContext.getSettlementState().activeLiquidFlowTiles.isEmpty()) {
+				currentLiquidFlowTiles.addAll(gameContext.getSettlementState().activeLiquidFlowTiles);
+				gameContext.getSettlementState().activeLiquidFlowTiles.clear();
 			}
 		} else {
 			while (numTilesToUpdateThisFrame > 0) {
@@ -115,6 +120,7 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 		}
 
 		transitionsToApply.forEach(this::transitionFlow);
+		verticesToUpdate.forEach(this::updateVertexFlow);
 	}
 
 	private void transitionFlow(WaterFlowCalculator.FlowTransition transition) {
@@ -125,6 +131,7 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 
 
 		transition.source.getUnderTile().getLiquidFlow().decrementWater(transition.flowDirection, gameContext.getRandom());
+		Collections.addAll(verticesToUpdate, gameContext.getAreaMap().getVertices(transition.source.getTileX(), transition.source.getTileY()));
 		// activate tiles around source
 		activateTile(transition.source);
 		for (CompassDirection neighbourDirection : CompassDirection.CARDINAL_DIRECTIONS) {
@@ -137,6 +144,7 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 		boolean liquidEvaporated = transition.source.getUnderTile().getLiquidFlow().getLiquidAmount() == 0 && gameContext.getRandom().nextFloat() < CHANCE_SINGLE_WATER_EVAPORATES;
 		if (!liquidEvaporated) {
 			transition.target.getUnderTile().getOrCreateLiquidFlow().incrementWater(transition.flowDirection);
+			Collections.addAll(verticesToUpdate, gameContext.getAreaMap().getVertices(transition.target.getTileX(), transition.target.getTileY()));
 			transition.target.getUnderTile().getLiquidFlow().setLiquidMaterial(transition.source.getUnderTile().getLiquidFlow().getLiquidMaterial());
 			// activate tiles around target
 			activateTile(transition.target);
@@ -151,6 +159,20 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 		if (transition.source.getUnderTile().getLiquidFlow().getLiquidAmount() == 0) {
 			transition.source.getUnderTile().getLiquidFlow().setLiquidMaterial(null);
 		}
+	}
+
+	private void updateVertexFlow(MapVertex mapVertex) {
+		Vector2 flowDirection = new Vector2();
+		for (MapTile tileNeighbour : gameContext.getAreaMap().getTileNeighboursOfVertex(mapVertex).values()) {
+			if (tileNeighbour != null && tileNeighbour.getUnderTile() != null) {
+				TileLiquidFlow liquidFlow = tileNeighbour.getUnderTile().getLiquidFlow();
+				if (liquidFlow != null) {
+					flowDirection.add(liquidFlow.getAveragedFlowDirection());
+				}
+			}
+		}
+		flowDirection.scl(0.25f); // always divide by 4 so flow is slower at edges
+		mapVertex.setWaterFlowDirection(flowDirection);
 	}
 
 	@Override
@@ -180,15 +202,14 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 	}
 
 	private void activateTile(MapTile tileToUpdate) {
-		if (!nextActiveLiquidFlowTiles.contains(tileToUpdate)) {
-			nextActiveLiquidFlowTiles.add(tileToUpdate);
+		if (!gameContext.getSettlementState().activeLiquidFlowTiles.contains(tileToUpdate)) {
+			gameContext.getSettlementState().activeLiquidFlowTiles.add(tileToUpdate);
 		}
 	}
 
 	@Override
 	public void clearContextRelatedState() {
 		currentLiquidFlowTiles.clear();
-		nextActiveLiquidFlowTiles.clear();
 	}
 
 	@Override
