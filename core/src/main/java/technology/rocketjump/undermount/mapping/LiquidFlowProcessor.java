@@ -47,7 +47,9 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 	@Override
 	public void update(float deltaTime) {
 		transitionsToApply.clear();
-		int numTilesToUpdateThisFrame = Math.min(500, Math.max(1, currentLiquidFlowTiles.size()));
+		float numUpdatesPerSecond = 1000f;
+		int numPerFrame = Math.round(numUpdatesPerSecond * deltaTime);
+		int numTilesToUpdateThisFrame = Math.min(numPerFrame, Math.max(1, currentLiquidFlowTiles.size()));
 
 		if (GlobalSettings.DEV_MODE) {
 			screenWriter.printLine("Active flow tiles: " + currentLiquidFlowTiles.size());

@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.entities.behaviour.furniture;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.google.common.collect.Lists;
+import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -28,6 +29,12 @@ public class WaterPumpBehaviour extends FurnitureBehaviour implements Destructib
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
+		PoweredFurnitureComponent poweredFurnitureComponent = parentEntity.getComponent(PoweredFurnitureComponent.class);
+		if (poweredFurnitureComponent != null) {
+			poweredFurnitureComponent.update(deltaTime, gameContext);
+		}
+
+
 		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 		if (parentTile != null) {
 			UnderTile underTile = parentTile.getOrCreateUnderTile();

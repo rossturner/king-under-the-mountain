@@ -260,7 +260,8 @@
       ]
     },
     "tags": {
-      "FURNITURE_BEHAVIOUR": ["WATER_PUMP"]
+      "FURNITURE_BEHAVIOUR": ["WATER_PUMP"],
+      "POWERED_FURNITURE": [-10, 0.8]
     }
 
   }
