@@ -3,11 +3,13 @@ package technology.rocketjump.undermount.sprites;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.*;
 import technology.rocketjump.undermount.mapping.tile.layout.TileLayoutAtlas;
 
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.NORMAL_TERRAIN;
 
+@Singleton
 public class NormalTerrainSpriteCacheProvider implements Provider<TerrainSpriteCache> {
 
 	private final WallTypeDictionary wallTypeDictionary;
@@ -18,6 +20,7 @@ public class NormalTerrainSpriteCacheProvider implements Provider<TerrainSpriteC
 	private final RoomEdgeTypeDictionary roomEdgeTypeDictionary;
 	private final BridgeTypeDictionary bridgeTypeDictionary;
 	private final ChannelTypeDictionary channelTypeDictionary;
+	private final TerrainSpriteCache instance;
 
 	@Inject
 	public NormalTerrainSpriteCacheProvider(WallTypeDictionary wallTypeDictionary, FloorTypeDictionary floorTypeDictionary,
@@ -32,13 +35,15 @@ public class NormalTerrainSpriteCacheProvider implements Provider<TerrainSpriteC
 		this.roomEdgeTypeDictionary = roomEdgeTypeDictionary;
 		this.bridgeTypeDictionary = bridgeTypeDictionary;
 		this.channelTypeDictionary = channelTypeDictionary;
+
+		TextureAtlas normalTextureAtlas = textureAtlasRepository.get(NORMAL_TERRAIN);
+		BridgeTileSpriteCache bridgeTileSpriteCache = new BridgeTileSpriteCache(normalTextureAtlas, bridgeTypeDictionary);
+		instance = new TerrainSpriteCache(normalTextureAtlas, wallTypeDictionary, floorTypeDictionary, wallQuadrantDictionary,
+				layoutAtlas, roomEdgeTypeDictionary, bridgeTileSpriteCache, channelTypeDictionary);
 	}
 
 	@Override
 	public TerrainSpriteCache get() {
-		TextureAtlas normalTextureAtlas = textureAtlasRepository.get(NORMAL_TERRAIN);
-		BridgeTileSpriteCache bridgeTileSpriteCache = new BridgeTileSpriteCache(normalTextureAtlas, bridgeTypeDictionary);
-		return new TerrainSpriteCache(normalTextureAtlas, wallTypeDictionary, floorTypeDictionary, wallQuadrantDictionary,
-				layoutAtlas, roomEdgeTypeDictionary, bridgeTileSpriteCache, channelTypeDictionary);
+		return instance;
 	}
 }

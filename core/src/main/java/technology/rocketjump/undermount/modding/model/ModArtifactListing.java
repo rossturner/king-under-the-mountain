@@ -242,15 +242,13 @@ public class ModArtifactListing {
 						"ui", "uiSettings", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 
 				////////// water //////////
-				def("water", "water", SINGLE_FILE, PNG, null,
+				def("water/sprite", "water", SINGLE_FILE, PNG, null,
 						"water", "water.png", PNG, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "water_flow_fragment_shader", SINGLE_FILE, GLSL, null,
-						"water", "water_flow_fragment_shader.glsl", GLSL, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "water_flow_vertex_shader", SINGLE_FILE, GLSL, null,
-						"water", "water_flow_vertex_shader.glsl", GLSL, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "water_NORMALS", SINGLE_FILE, PNG, null,
+				def("water/shaders", null, COPY_ORIGINAL_FILES, GLSL, null,
+						"water", "*.glsl", GLSL, ADDITIVE, CopyFilesProcessor.class),
+				def("water/normal_sprite", "water_NORMALS", SINGLE_FILE, PNG, null,
 						"water", "water_NORMALS.png", PNG, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "wave_mask", SINGLE_FILE, PNG, null,
+				def("water/mask", "wave_mask", SINGLE_FILE, PNG, null,
 						"water", "wave_mask.png", PNG, REPLACES_EXISTING, CopyFilesProcessor.class)
 
 		);

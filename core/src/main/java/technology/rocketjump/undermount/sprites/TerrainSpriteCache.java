@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.IntArray;
-import com.google.inject.Inject;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.*;
 import technology.rocketjump.undermount.assets.model.ChannelType;
@@ -34,7 +33,6 @@ public class TerrainSpriteCache {
 	private final BridgeTileSpriteCache bridgeTileSpriteCache;
 	private final Sprite placeholderSprite;
 
-	@Inject
 	public TerrainSpriteCache(TextureAtlas textureAtlas, WallTypeDictionary wallTypeDictionary, FloorTypeDictionary floorTypeDictionary,
 							  WallQuadrantDictionary wallQuadrantDictionary, TileLayoutAtlas tileLayoutAtlas,
 							  RoomEdgeTypeDictionary roomEdgeTypeDictionary, BridgeTileSpriteCache bridgeTileSpriteCache,

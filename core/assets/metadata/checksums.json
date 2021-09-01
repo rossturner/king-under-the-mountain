@@ -22,7 +22,7 @@
   "definitions/shaders/*.glsl" : 2152534794052923686,
   "definitions/stockpileGroups.json" : 3265438186010058936,
   "definitions/types/bridgeTypes.json" : -2397196698070613465,
-  "definitions/types/channelTypes.json" : 6231518749301849460,
+  "definitions/types/channelTypes.json" : 6010570133834805095,
   "definitions/types/floorTypes.json" : 2544809008575287004,
   "definitions/types/furnitureCategories.json" : -861173479385694810,
   "definitions/types/furnitureLayouts.json" : 4173564657097766054,
@@ -58,7 +58,7 @@
   "tilesets/entities.atlas" : -6100261527923402849,
   "tilesets/gui.atlas" : 874215796094733096,
   "tilesets/masks.atlas" : -7267469657370952532,
-  "tilesets/terrain.atlas" : 5005886820925262996,
+  "tilesets/terrain.atlas" : -665071630563014754,
   "translations/collated.csv" : 1398756209299349521,
   "translations/languages.json" : 8557385612734997329,
   "ui/cursors/*.png" : -5156863323457290688,
@@ -67,9 +67,8 @@
   "ui/minimapSelection.png" : -3535605703365898592,
   "ui/notifications/*.png" : -5877532487799215175,
   "ui/uiSettings.json" : -7697124379203867199,
-  "water/water.png" : 6960048606248037690,
-  "water/water_NORMALS.png" : -5907475484380682703,
-  "water/water_flow_fragment_shader.glsl" : -4328515133184847907,
-  "water/water_flow_vertex_shader.glsl" : 6690885500231892356,
-  "water/wave_mask.png" : -9173809931267608735
+  "water/mask/wave_mask.png" : -9173809931267608735,
+  "water/normal_sprite/water_NORMALS.png" : -5907475484380682703,
+  "water/shaders/*.glsl" : -3802806778295679751,
+  "water/sprite/water.png" : 6960048606248037690
 }

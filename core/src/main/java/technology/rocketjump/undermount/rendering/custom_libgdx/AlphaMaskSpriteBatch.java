@@ -152,7 +152,7 @@ public class AlphaMaskSpriteBatch implements Disposable {
 	}
 
 	public void setColor(Color tint) {
-		color = tint.toFloatBits();
+		vertexColors = new Color[] {tint, tint, tint, tint};
 	}
 
 	public void setColor(float r, float g, float b, float a) {

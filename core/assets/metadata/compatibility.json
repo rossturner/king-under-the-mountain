@@ -67,9 +67,8 @@
   "ui/hints.json" : "Alpha 3.2",
   "ui/minimapSelection.png" : "Alpha 3",
   "ui/uiSettings.json" : "Alpha 3",
-  "water/water.png" : "Alpha 3",
-  "water/water_flow_fragment_shader.glsl" : "Alpha 3",
-  "water/water_flow_vertex_shader.glsl" : "Alpha 3",
-  "water/water_NORMALS.png" : "Alpha 3",
-  "water/wave_mask.png" : "Alpha 3"
+  "water/sprite/water.png" : "Alpha 7",
+  "water/shaders/*.glsl" : "Alpha 7",
+  "water/normal_sprite/water_NORMALS.png" : "Alpha 7",
+  "water/mask/wave_mask.png" : "Alpha 7"
 }
