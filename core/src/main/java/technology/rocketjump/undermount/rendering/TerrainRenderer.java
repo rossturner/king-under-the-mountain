@@ -51,6 +51,8 @@ public class TerrainRenderer implements Disposable {
 	private final float QUADRANT_A_B_HEIGHT = 14f / 64f;
 	private final float QUADRANT_C_D_HEIGHT = WALL_QUADRANT_MIDPOINT_Y;
 
+	private final FloorOverlapRenderer floorOverlapRenderer;
+
 	private final VertexColorSpriteBatch vertexColorSpriteBatch = new VertexColorSpriteBatch();
 	private final AlphaMaskSpriteBatch alphaMaskSpriteBatch = new AlphaMaskSpriteBatch();
 	private final WaterRenderer waterRenderer;
@@ -61,8 +63,9 @@ public class TerrainRenderer implements Disposable {
 	private GameMaterial dirtMaterial;
 
 	@Inject
-	public TerrainRenderer(WaterRenderer waterRenderer, ChannelTypeDictionary channelTypeDictionary,
+	public TerrainRenderer(FloorOverlapRenderer floorOverlapRenderer, WaterRenderer waterRenderer, ChannelTypeDictionary channelTypeDictionary,
 						   GameMaterialDictionary gameMaterialDictionary, DiffuseTerrainSpriteCacheProvider diffuseTerrainSpriteCacheProvider) {
+		this.floorOverlapRenderer = floorOverlapRenderer;
 		this.waterRenderer = waterRenderer;
 		channelFloorType = channelTypeDictionary.getByName("channel_floor");
 		channelEdgeType = channelTypeDictionary.getByName("channel_edge");
@@ -100,6 +103,7 @@ public class TerrainRenderer implements Disposable {
 			renderFloorWithChannelMasks(mapTile, spriteCache, renderMode);
 		}
 		alphaMaskSpriteBatch.end();
+		floorOverlapRenderer.renderWithChannelMasks(tilesToShowWater, camera, renderMode, spriteCache);
 
 
 		vertexColorSpriteBatch.setProjectionMatrix(camera.combined);

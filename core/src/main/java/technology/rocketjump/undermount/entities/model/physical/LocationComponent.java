@@ -32,7 +32,7 @@ public class LocationComponent implements ParentDependentEntityComponent {
 	private float maxLinearAcceleration = 1.2f;
 	private float angularVelocity = 0f;
 	private float maxAngularSpeed = 5f;
-	private float maxAngularAcceleration = 1f;
+	private float maxAngularAcceleration = 2f;
 
 	private float rotation;
 

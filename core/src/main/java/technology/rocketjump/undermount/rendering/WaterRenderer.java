@@ -11,10 +11,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.MapVertex;
 import technology.rocketjump.undermount.mapping.tile.underground.ChannelLayout;
-import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
-import technology.rocketjump.undermount.rendering.custom_libgdx.ChanneledWaterSpriteBatch;
 import technology.rocketjump.undermount.rendering.custom_libgdx.FlowingWaterSpriteBatch;
 import technology.rocketjump.undermount.sprites.DiffuseTerrainSpriteCacheProvider;
 import technology.rocketjump.undermount.sprites.TerrainSpriteCache;
@@ -30,7 +27,6 @@ public class WaterRenderer implements GameContextAware, AssetDisposable {
 	private final ChannelTypeDictionary channelTypeDictionary;
 	private final TerrainSpriteCache diffuseTerrainSpriteCache;
 	private final FlowingWaterSpriteBatch flowingWaterSpriteBatch = new FlowingWaterSpriteBatch();
-	private final ChanneledWaterSpriteBatch channeledWaterSpriteBatch = new ChanneledWaterSpriteBatch();
 	private final Sprite waterTexture;
 	private final Sprite waterNormalTexture;
 	private final Sprite waveTexture;
@@ -68,78 +64,6 @@ public class WaterRenderer implements GameContextAware, AssetDisposable {
 		}
 
 		flowingWaterSpriteBatch.end();
-	}
-
-	public void renderChannels(List<MapTile> terrainTiles, Camera camera, RenderMode renderMode) {
-		channeledWaterSpriteBatch.setProjectionMatrix(camera.combined);
-		channeledWaterSpriteBatch.setElapsedTime(elapsedSeconds);
-		channeledWaterSpriteBatch.begin();
-		for (MapTile terrainTile : terrainTiles) {
-			if (terrainTile.hasChannel()) {
-				TileLiquidFlow liquidFlow = terrainTile.getUnderTile().getLiquidFlow();
-				if (liquidFlow != null && liquidFlow.getLiquidAmount() > 0) {
-					renderChannelLiquid(terrainTile, renderMode);
-				}
-			}
-		}
-		channeledWaterSpriteBatch.end();
-	}
-
-	private void renderChannelLiquid(MapTile terrainTile, RenderMode renderMode) {
-		Sprite waterTexture = this.waterTexture;
-		if (renderMode == RenderMode.NORMALS) {
-			waterTexture = this.waterNormalTexture;
-		}
-
-		ChannelLayout channelLayout = terrainTile.getUnderTile().getChannelLayout();
-		QuadrantSprites quadrantMasks = diffuseTerrainSpriteCache.getSpritesForChannel(channelMask, channelLayout, terrainTile.getSeed());
-
-		MapVertex[] tileVertices = gameContext.getAreaMap().getVertices(terrainTile.getTileX(), terrainTile.getTileY());
-
-		float offsetX, offsetY;
-/*
-			Drawing 4 channel quadrants a, b, c, d where
-
-			A | B
-			-----
-			C | D
-			*/
-
-		// Quadrant A
-		offsetX = 0f;
-		offsetY = 0.5f;
-		channeledWaterSpriteBatch.draw(waterTexture, waveTexture, quadrantMasks.getA(),
-				terrainTile.getTileX(), terrainTile.getTileY(),
-				offsetX, offsetY,
-				0.5f, 0.5f,
-				tileVertices);
-
-		// Quadrant B
-		offsetX = 0.5f;
-		offsetY = 0.5f;
-		channeledWaterSpriteBatch.draw(waterTexture, waveTexture, quadrantMasks.getA(),
-				terrainTile.getTileX(), terrainTile.getTileY(),
-				offsetX, offsetY,
-				0.5f, 0.5f,
-				tileVertices);
-
-		// Quadrant C
-		offsetX = 0f;
-		offsetY = 0f;
-		channeledWaterSpriteBatch.draw(waterTexture, waveTexture, quadrantMasks.getA(),
-				terrainTile.getTileX(), terrainTile.getTileY(),
-				offsetX, offsetY,
-				0.5f, 0.5f,
-				tileVertices);
-
-		// Quadrant D
-		offsetX = 0.5f;
-		offsetY = 0f;
-		channeledWaterSpriteBatch.draw(waterTexture, waveTexture, quadrantMasks.getA(),
-				terrainTile.getTileX(), terrainTile.getTileY(),
-				offsetX, offsetY,
-				0.5f, 0.5f,
-				tileVertices);
 	}
 
 	public void updateElapsedTime() {
