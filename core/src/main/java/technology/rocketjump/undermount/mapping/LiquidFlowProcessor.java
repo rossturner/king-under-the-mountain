@@ -19,7 +19,6 @@ import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 
 import java.util.*;
 
@@ -36,13 +35,10 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 	private List<WaterFlowCalculator.FlowTransition> transitionsToApply = new ArrayList<>();
 	private final Set<MapVertex> verticesToUpdate = new HashSet<>();
 
-	private final ScreenWriter screenWriter;
-
 	@Inject
 	public LiquidFlowProcessor(GameMaterialDictionary gameMaterialDictionary, MessageDispatcher messageDispatcher, ScreenWriter screenWriter) {
 		// TODO all liquid flow is currently water only, needs to be based on what is adding liquid to flow
 		this.waterMaterial = gameMaterialDictionary.getByName("Water");
-		this.screenWriter = screenWriter;
 
 		messageDispatcher.addListener(this, MessageType.ADD_LIQUID_TO_FLOW);
 		messageDispatcher.addListener(this, MessageType.ADD_CHANNEL);
@@ -59,12 +55,6 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 		verticesToUpdate.clear();
 		int numPerFrame = Math.round(MAX_UPDATES_PER_SECOND * deltaTime);
 		int numTilesToUpdateThisFrame = Math.min(numPerFrame, Math.max(1, currentLiquidFlowTiles.size()));
-
-		if (GlobalSettings.DEV_MODE) {
-			screenWriter.printLine("Active flow tiles: " + currentLiquidFlowTiles.size());
-			screenWriter.printLine("Next active flow tiles: " + gameContext.getSettlementState().activeLiquidFlowTiles.size());
-			screenWriter.printLine("Updating this frame: " + numTilesToUpdateThisFrame);
-		}
 
 		if (currentLiquidFlowTiles.isEmpty()) {
 			if (!gameContext.getSettlementState().activeLiquidFlowTiles.isEmpty()) {
@@ -167,16 +157,25 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 
 	private void updateVertexFlow(MapVertex mapVertex) {
 		Vector2 flowDirection = new Vector2();
+		List<Float> nearbyFlowDepths = new ArrayList<>();
 		for (MapTile tileNeighbour : gameContext.getAreaMap().getTileNeighboursOfVertex(mapVertex).values()) {
 			if (tileNeighbour != null && tileNeighbour.getUnderTile() != null) {
 				TileLiquidFlow liquidFlow = tileNeighbour.getUnderTile().getLiquidFlow();
 				if (liquidFlow != null) {
 					flowDirection.add(liquidFlow.getAveragedFlowDirection());
+					nearbyFlowDepths.add((float) liquidFlow.getLiquidAmount());
 				}
 			}
 		}
 		flowDirection.scl(0.125f); // divide by 4 so flow is slower at edges, divide by 2 again
 		mapVertex.setWaterFlowDirection(flowDirection);
+
+		if (nearbyFlowDepths.isEmpty()) {
+			mapVertex.setAverageWaterDepth(0);
+		} else {
+			// else set to average of values
+			mapVertex.setAverageWaterDepth(nearbyFlowDepths.stream().reduce(0f, Float::sum) / (float)nearbyFlowDepths.size());
+		}
 	}
 
 	@Override

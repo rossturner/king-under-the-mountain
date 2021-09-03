@@ -69,13 +69,9 @@ public class WaterRenderer implements GameContextAware, AssetDisposable {
 		}
 		flowingWaterSpriteBatch.setProjectionMatrix(camera.combined);
 		flowingWaterSpriteBatch.setElapsedTime(elapsedSeconds);
-		flowingWaterSpriteBatch.setColor(Color.WHITE);
 		flowingWaterSpriteBatch.begin();
 
 		for (MapTile waterTile : riverTiles) {
-			if (waterTile.getUnderTile() != null && waterTile.getUnderTile().getLiquidFlow() != null) {
-				flowingWaterSpriteBatch.setColor(depthMap.get(waterTile.getUnderTile().getLiquidFlow().getLiquidAmount()));
-			}
 			flowingWaterSpriteBatch.draw(waterTexture, waveTexture, waterTile.getTileX(), waterTile.getTileY(), 1f, 1f, map.getVertices(waterTile.getTileX(), waterTile.getTileY()));
 		}
 

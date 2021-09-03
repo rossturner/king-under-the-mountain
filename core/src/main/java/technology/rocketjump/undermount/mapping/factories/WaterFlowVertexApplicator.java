@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow.MAX_LIQUID_FLOW_PER_TILE;
+
 public class WaterFlowVertexApplicator {
 
 	public void applyFlowToVertices(TiledMap tiledMap, List<GridPoint2> riverTileLocations) {
@@ -45,6 +47,7 @@ public class WaterFlowVertexApplicator {
 		flowDirection.scl(0.25f);
 
 		vertexToUpdate.setWaterFlowDirection(flowDirection);
+		vertexToUpdate.setAverageWaterDepth(MAX_LIQUID_FLOW_PER_TILE);
 	}
 
 
