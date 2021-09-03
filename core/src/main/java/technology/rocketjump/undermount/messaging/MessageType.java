@@ -130,6 +130,7 @@ public class MessageType {
 	public static final int REMOVE_CHANNEL = 618;
 	public static final int ADD_PIPE = 619;
 	public static final int REMOVE_PIPE = 620;
+	public static final int PIPE_ADDED = 621;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;

@@ -95,17 +95,6 @@ public class TerrainRenderer implements Disposable {
 				.filter(t -> t.hasChannel() && !renderLiquidFlow(t))
 				.collect(Collectors.toList());
 
-		waterRenderer.render(map, tilesToShowWater, camera, renderMode);
-		// Re-render terrain over water using channel mask
-		alphaMaskSpriteBatch.setProjectionMatrix(camera.combined);
-		alphaMaskSpriteBatch.begin();
-		for (MapTile mapTile : tilesToShowWater) {
-			renderFloorWithChannelMasks(mapTile, spriteCache, renderMode);
-		}
-		alphaMaskSpriteBatch.end();
-		floorOverlapRenderer.renderWithChannelMasks(tilesToShowWater, camera, renderMode, spriteCache);
-
-
 		vertexColorSpriteBatch.setProjectionMatrix(camera.combined);
 		vertexColorSpriteBatch.enableBlending();
 		if (renderMode.equals(RenderMode.DIFFUSE)) {
@@ -119,7 +108,24 @@ public class TerrainRenderer implements Disposable {
 			QuadrantSprites quadrantSprites = spriteCache.getSpritesForChannel(channelFloorType, channelLayout, terrainTile.getSeed());
 			renderChannelQuadrants(terrainTile.getTileX(), terrainTile.getTileY(), vertexColorSpriteBatch, quadrantSprites);
 		}
+		for (MapTile terrainTile : tilesToShowWater) {
+			ChannelLayout channelLayout = terrainTile.getUnderTile().getChannelLayout();
+			QuadrantSprites quadrantSprites = spriteCache.getSpritesForChannel(channelFloorType, channelLayout, terrainTile.getSeed());
+			renderChannelQuadrants(terrainTile.getTileX(), terrainTile.getTileY(), vertexColorSpriteBatch, quadrantSprites);
+		}
 		vertexColorSpriteBatch.end();
+
+		waterRenderer.render(map, tilesToShowWater, camera, renderMode);
+		// Re-render terrain over water using channel mask
+		alphaMaskSpriteBatch.setProjectionMatrix(camera.combined);
+		alphaMaskSpriteBatch.begin();
+		for (MapTile mapTile : tilesToShowWater) {
+			renderFloorWithChannelMasks(mapTile, spriteCache, renderMode);
+		}
+		alphaMaskSpriteBatch.end();
+		floorOverlapRenderer.renderWithChannelMasks(tilesToShowWater, camera, renderMode, spriteCache);
+
+
 
 //		waterRenderer.renderChannels(terrainTiles, camera, renderMode);
 

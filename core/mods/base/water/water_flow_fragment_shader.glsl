@@ -51,6 +51,6 @@ void main() {
         (upperLeftContribution.rgb * upperLeftContribution.a) +
         (upperRightContribution.rgb * upperRightContribution.a) +
         (lowerRightContribution.rgb * lowerRightContribution.a)) / totalContributions,
-        1
+        v_color.a
     );
 }

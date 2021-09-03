@@ -45,6 +45,10 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 		this.screenWriter = screenWriter;
 
 		messageDispatcher.addListener(this, MessageType.ADD_LIQUID_TO_FLOW);
+		messageDispatcher.addListener(this, MessageType.ADD_CHANNEL);
+		messageDispatcher.addListener(this, MessageType.REMOVE_CHANNEL);
+		messageDispatcher.addListener(this, MessageType.PIPE_ADDED);
+		messageDispatcher.addListener(this, MessageType.REMOVE_PIPE);
 	}
 
 	@Override
@@ -98,7 +102,7 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 		for (CompassDirection directionToTry : randomisedDirections) {
 			MapTile tileInDirection = gameContext.getAreaMap().getTile(cursorPosition.x + directionToTry.getXOffset(), cursorPosition.y + directionToTry.getYOffset());
 
-			if (tileInDirection != null && tileInDirection.getUnderTile() != null && tileInDirection.getUnderTile().liquidCanFlow()) {
+			if (tileInDirection != null && tileInDirection.getUnderTile() != null && tileInDirection.getUnderTile().liquidCanFlowFrom(tileToUpdate)) {
 				// Liquid flow tile to move to
 				TileLiquidFlow liquidFlowInDirection = tileInDirection.getUnderTile().getOrCreateLiquidFlow();
 				int liquidAmountInDirection = liquidFlowInDirection.getLiquidAmount();
@@ -171,7 +175,7 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 				}
 			}
 		}
-		flowDirection.scl(0.25f); // always divide by 4 so flow is slower at edges
+		flowDirection.scl(0.125f); // divide by 4 so flow is slower at edges, divide by 2 again
 		mapVertex.setWaterFlowDirection(flowDirection);
 	}
 
@@ -191,6 +195,19 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 				}
 				return true;
 			}
+			case MessageType.ADD_CHANNEL:
+			case MessageType.REMOVE_CHANNEL:
+			case MessageType.PIPE_ADDED:
+			case MessageType.REMOVE_PIPE:
+				GridPoint2 targetTile = (GridPoint2) msg.extraInfo;
+				activateTile(gameContext.getAreaMap().getTile(targetTile));
+				for (CompassDirection neighbourDirection : CompassDirection.CARDINAL_DIRECTIONS) {
+					MapTile neighbourTile = gameContext.getAreaMap().getTile(targetTile.x + neighbourDirection.getXOffset(), targetTile.y + neighbourDirection.getYOffset());
+					if (neighbourTile != null && neighbourTile.getUnderTile() != null && neighbourTile.getUnderTile().liquidCanFlow()) {
+						activateTile(neighbourTile);
+					}
+				}
+				return true;
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this + ", " + msg);
 		}

@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.rendering;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import technology.rocketjump.undermount.assets.AssetDisposable;
@@ -20,6 +21,7 @@ import technology.rocketjump.undermount.sprites.model.QuadrantSprites;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.List;
+import java.util.Map;
 
 @Singleton
 public class WaterRenderer implements GameContextAware, AssetDisposable {
@@ -36,6 +38,16 @@ public class WaterRenderer implements GameContextAware, AssetDisposable {
 	private float elapsedSeconds = 0f;
 	private GameContext gameContext;
 	private boolean elapsedTimeUpdatedThisFrame;
+
+	private static final Map<Integer, Color> depthMap = Map.of(
+			1, new Color(1, 1, 1, 1f / 7f),
+			2, new Color(1, 1, 1, 2f / 7f),
+			3, new Color(1, 1, 1, 3f / 7f),
+			4, new Color(1, 1, 1, 4f / 7f),
+			5, new Color(1, 1, 1, 5f / 7f),
+			6, new Color(1, 1, 1, 6f / 7f),
+			7, Color.WHITE
+	);
 
 	@Inject
 	public WaterRenderer(ChannelTypeDictionary channelTypeDictionary, DiffuseTerrainSpriteCacheProvider diffuseTerrainSpriteCacheProvider) {
@@ -57,9 +69,13 @@ public class WaterRenderer implements GameContextAware, AssetDisposable {
 		}
 		flowingWaterSpriteBatch.setProjectionMatrix(camera.combined);
 		flowingWaterSpriteBatch.setElapsedTime(elapsedSeconds);
+		flowingWaterSpriteBatch.setColor(Color.WHITE);
 		flowingWaterSpriteBatch.begin();
 
 		for (MapTile waterTile : riverTiles) {
+			if (waterTile.getUnderTile() != null && waterTile.getUnderTile().getLiquidFlow() != null) {
+				flowingWaterSpriteBatch.setColor(depthMap.get(waterTile.getUnderTile().getLiquidFlow().getLiquidAmount()));
+			}
 			flowingWaterSpriteBatch.draw(waterTexture, waveTexture, waterTile.getTileX(), waterTile.getTileY(), 1f, 1f, map.getVertices(waterTile.getTileX(), waterTile.getTileY()));
 		}
 

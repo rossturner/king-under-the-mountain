@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.MoreObjects;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -130,5 +131,13 @@ public class UnderTile implements ChildPersistable {
 			this.liquidFlow = new TileLiquidFlow();
 			this.liquidFlow.readFrom(liquidFlowJson, savedGameStateHolder, relatedStores);
 		}
+	}
+
+	public boolean liquidCanFlowFrom(MapTile sourceTile) {
+		UnderTile sourceUnderTile = sourceTile.getUnderTile();
+		// Following is to check that source and this both have a pipe or both have a channel
+		return this.liquidCanFlow() && sourceUnderTile != null && sourceUnderTile.liquidCanFlow() &&
+				((this.getPipeEntity() != null && sourceUnderTile.getPipeEntity() != null) ||
+						(this.channelLayout != null && sourceUnderTile.getChannelLayout() != null));
 	}
 }

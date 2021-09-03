@@ -208,6 +208,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				Entity pipeEntity = mechanismEntityFactory.create(attributes, message.tilePosition, new DoNothingBehaviour(), gameContext);
 				underTile.setPipeEntity(pipeEntity);
 				updateTile(tile, gameContext, messageDispatcher);
+				messageDispatcher.dispatchMessage(MessageType.PIPE_ADDED, message.tilePosition);
 			}
 		}
 		return true;

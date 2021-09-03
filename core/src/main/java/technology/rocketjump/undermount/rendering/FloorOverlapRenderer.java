@@ -114,14 +114,22 @@ public class FloorOverlapRenderer implements Disposable {
 						dualAlphaMaskSpriteBatch.setColors(WHITE_ARRAY);
 					}
 
-					dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getA(), quadrantChannelMaskSprites.getA(),
-							mapTile.getTileX(), mapTile.getTileY(), 0, 0.5f, 0.5f, 0.5f);
-					dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getB(), quadrantChannelMaskSprites.getB(),
-							mapTile.getTileX(), mapTile.getTileY(), 0.5f, 0.5f, 0.5f, 0.5f);
-					dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getC(), quadrantChannelMaskSprites.getC(),
-							mapTile.getTileX(), mapTile.getTileY(), 0, 0f, 0.5f, 0.5f);
-					dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getD(), quadrantChannelMaskSprites.getD(),
-							mapTile.getTileX(), mapTile.getTileY(), 0.5f, 0f, 0.5f, 0.5f);
+					if (overlapQuadrants.get(0) != 0) {
+						dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getA(), quadrantChannelMaskSprites.getA(),
+								mapTile.getTileX(), mapTile.getTileY(), 0, 0.5f, 0.5f, 0.5f);
+					}
+					if (overlapQuadrants.get(1) != 0) {
+						dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getB(), quadrantChannelMaskSprites.getB(),
+								mapTile.getTileX(), mapTile.getTileY(), 0.5f, 0.5f, 0.5f, 0.5f);
+					}
+					if (overlapQuadrants.get(2) != 0) {
+						dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getC(), quadrantChannelMaskSprites.getC(),
+								mapTile.getTileX(), mapTile.getTileY(), 0, 0f, 0.5f, 0.5f);
+					}
+					if (overlapQuadrants.get(3) != 0) {
+						dualAlphaMaskSpriteBatch.draw(overlapSprite, quadrantAlphaSprites.getD(), quadrantChannelMaskSprites.getD(),
+								mapTile.getTileX(), mapTile.getTileY(), 0.5f, 0f, 0.5f, 0.5f);
+					}
 				}
 
 			}

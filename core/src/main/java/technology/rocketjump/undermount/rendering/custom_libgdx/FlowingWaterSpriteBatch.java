@@ -101,7 +101,6 @@ public class FlowingWaterSpriteBatch implements Disposable {
 				new VertexAttribute(VertexAttributes.Usage.Generic, 2, "a_lowerRightFlow"),
 				new VertexAttribute(VertexAttributes.Usage.Generic, 1, "a_distanceFromLowerRight"),
 
-
 				new VertexAttribute(VertexAttributes.Usage.ColorPacked, 4, ShaderProgram.COLOR_ATTRIBUTE),
 				new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, ShaderProgram.TEXCOORD_ATTRIBUTE + "0"),
 				new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, ShaderProgram.TEXCOORD_ATTRIBUTE + "1")); // RT - This line added for texCoord1
