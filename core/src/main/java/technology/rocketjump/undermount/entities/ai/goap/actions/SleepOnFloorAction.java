@@ -107,7 +107,6 @@ public class SleepOnFloorAction extends Action {
 	public static void changeToConsciousnessOnFloor(Entity entity, Consciousness consciousness,
 													GameContext gameContext, MessageDispatcher messageDispatcher) {
 		entity.getLocationComponent().setLinearVelocity(Vector2.Zero);
-		entity.getLocationComponent().setAngularVelocity(0);
 		entity.getBehaviourComponent().getSteeringComponent().destinationReached();
 
 		// face in a direction and rotate as appropriate
