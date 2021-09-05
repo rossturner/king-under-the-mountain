@@ -2,12 +2,14 @@ package technology.rocketjump.undermount.assets.entities;
 
 import org.junit.Before;
 import org.junit.Test;
+import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 
 import java.io.File;
 import java.io.IOException;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
+import static technology.rocketjump.undermount.assets.entities.model.EntityAssetType.UNSPECIFIED;
 import static technology.rocketjump.undermount.entities.model.EntityType.ANIMAL;
 import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOID;
 
@@ -34,7 +36,8 @@ public class RenderLayerDictionaryTest {
 		// Probably have to remove the below line when all types have assets
 		assertThat(renderLayerDictionary.getRenderingLayer(ANIMAL, DOWN, entityAssetTypeDictionary.getByName("HUMANOID_BODY"))).isEqualTo(-3);
 		assertThat(renderLayerDictionary.getRenderingLayer(HUMANOID, null, entityAssetTypeDictionary.getByName("HUMANOID_BODY"))).isEqualTo(-2);
-		assertThat(renderLayerDictionary.getRenderingLayer(HUMANOID, DOWN, null)).isEqualTo(-1);
+		EntityAssetType unspecifiedAsset = new EntityAssetType(UNSPECIFIED);
+		assertThat(renderLayerDictionary.getRenderingLayer(HUMANOID, DOWN, unspecifiedAsset)).isEqualTo(100);
 	}
 
 }

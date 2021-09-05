@@ -89,7 +89,7 @@ public class DebugMessageHandler implements GameContextAware, Telegraph, Disposa
 
 //						weatherManager.triggerNextWeather();
 
-//						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
+						messageDispatcher.dispatchMessage(MessageType.SPREAD_FIRE_FROM_LOCATION, message.getWorldPosition());
 
 //						weatherManager.triggerStrikeAt(tile);
 
