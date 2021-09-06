@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -90,7 +91,6 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 		this.immigrationManager = immigrationManager;
 
 		layoutTable = new Table(uiSkin);
-		layoutTable.background("default-rect");
 
 		this.titleLabel = new Label("Debug Menu - press middle mouse button to trigger action", uiSkin);
 
@@ -268,6 +268,7 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 
 			layoutTable.clearChildren();
 			if (displayed) {
+				layoutTable.background("default-rect");
 				layoutTable.add(titleLabel).pad(5).row();
 				layoutTable.add(actionSelect).pad(5).left().row();
 
@@ -277,6 +278,8 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 				} else if (currentAction.equals(DebugAction.TOGGLE_PIPE)) {
 					layoutTable.add(materialSelect).pad(5).left().row();
 				}
+			} else {
+				layoutTable.setBackground((Drawable) null);
 			}
 		}
 	}
