@@ -29,6 +29,7 @@ import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rooms.Bridge;
@@ -47,6 +48,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
+import static technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow.MAX_LIQUID_FLOW_PER_TILE;
 import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.ZONE;
 import static technology.rocketjump.undermount.ui.i18n.I18nText.BLANK;
@@ -341,6 +343,21 @@ public class I18nTranslator implements I18nUpdatable {
 		} else {
 			if (tile.isWaterSource()) {
 				return getTranslatedString("FLOOR.RIVER");
+			} else if (tile.hasChannel()) {
+				int liquidAmount = 0;
+				TileLiquidFlow liquidFlow = tile.getUnderTile().getLiquidFlow();
+				if (liquidFlow != null) {
+					liquidAmount = liquidFlow.getLiquidAmount();
+				}
+
+				if (liquidAmount == 0) {
+					replacements.put("state", dictionary.getWord("FLOOR.CHANNEL.STATE.EMPTY"));
+				} else if (liquidAmount >= MAX_LIQUID_FLOW_PER_TILE) {
+					replacements.put("state", dictionary.getWord("FLOOR.CHANNEL.STATE.FULL"));
+				} else {
+					replacements.put("state", dictionary.getWord("FLOOR.CHANNEL.STATE.PARTIALLY_FILLED"));
+				}
+				return applyReplacements(dictionary.getWord("FLOOR.CHANNEL.DESCRIPTION"), replacements, Gender.ANY);
 			} else {
 				replacements.put("floorType", dictionary.getWord(tile.getFloor().getFloorType().getI18nKey()));
 				return applyReplacements(dictionary.getWord("FLOOR.DESCRIPTION"), replacements, Gender.ANY);
@@ -496,7 +513,7 @@ public class I18nTranslator implements I18nUpdatable {
 
 	public I18nText applyReplacements(I18nWord originalWord, Map<String, I18nString> replacements, Gender gender) {
 		String string = originalWord.get(I18nWordClass.UNSPECIFIED, gender);
-		I18nText i18nText = new I18nText(string);
+		I18nText i18nText = new I18nText(string, originalWord.hasTooltip() ? originalWord.get(I18nWordClass.TOOLTIP) : null);
 
 		String REGEX_START = Pattern.quote("{{");
 		String REGEX_END = Pattern.quote("}}");

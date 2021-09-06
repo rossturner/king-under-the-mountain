@@ -75,6 +75,11 @@ ENTITY.DESTRUCTION_DESCRIPTION.BURNED,Destroyed by fire,,,,,,,,,,,,,,,,,,,
 ENTITY.DESTRUCTION_DESCRIPTION.OXIDISED,Destroyed by prolonged exposure to rain,,,,,,,,,,,,,,,,,,,
 ENTITY.DESTRUCTION_DESCRIPTION.TANTRUM,Destroyed in a tantrum,,,,,,,,,,,,,,,,,,,
 
+FLOOR.CHANNEL.DESCRIPTION,Irrigation channel ({{state}}),,,,,,,,,,,,,,,,,,,
+FLOOR.CHANNEL.DESCRIPTION.TOOLTIP,Irrigation channels provide access to water to crops within 2 tiles. Build a water pump and connect the channels to it using pipes.,,,,,,,,,,,,,,,,,,,
+FLOOR.CHANNEL.STATE.EMPTY,Empty,,,,,,,,,,,,,,,,,,,
+FLOOR.CHANNEL.STATE.FULL,Full,,,,,,,,,,,,,,,,,,,
+FLOOR.CHANNEL.STATE.PARTIALLY_FILLED,Partially-filled,,,,,,,,,,,,,,,,,,,
 FLOOR.COBBLESTONE,Cobblestone,,Pflasterstein,Pavé,Ciottoli,Adoquines,Pedra,Calçamento,,Булыжный,Kaldırım Taşı,Brosten,,Kullersten,,,,石畳,鹅卵石,조약돌
 FLOOR.DESCRIPTION,{{floorType.noun}},,{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},,{{floorType.noun}},{{floorType.noun}},{{floorType.noun}},,{{Floortype.noun}},,,,{{floorType.noun}},{{地板类型. 名词}},{{floorType.noun}}
 FLOOR.DIRT,Dirt,,Boden,Terre,Terra,Tierra,Terra,Solo,,Грязь,Toprak,Jord,,Smuts,,,,土,污垢,먼지
