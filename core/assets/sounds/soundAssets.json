@@ -17,18 +17,18 @@
 }, {
   "name" : "Rain",
   "soundAssetId" : 3,
-  "filenames" : [ "Countryside_rain_with_far_thunders.wav" ],
+  "filenames" : [ "Ambience_Rain.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
-  "volumeModifier" : 1.0,
+  "volumeModifier" : 1.4,
   "looping" : true
 }, {
   "name" : "Thunderstorm with rain",
   "soundAssetId" : 4,
-  "filenames" : [ "thunderstorm_long_rumbles_thunder_rain_wind.wav" ],
+  "filenames" : [ "Ambience_Thunder.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
-  "volumeModifier" : 1.0,
+  "volumeModifier" : 1.4,
   "looping" : true
 }, {
   "name" : "Isolated thunder",
@@ -41,10 +41,10 @@
 }, {
   "name" : "Wind",
   "soundAssetId" : 6,
-  "filenames" : [ "City_Wind_Blowing_Interior.wav" ],
+  "filenames" : [ "Ambience_Winter.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
-  "volumeModifier" : 1.0,
+  "volumeModifier" : 1.4,
   "looping" : true
 }, {
   "name" : "River",
