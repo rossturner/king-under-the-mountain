@@ -44,7 +44,6 @@ public class ConsumeFoodAction extends Action {
 			return;
 		}
 
-
 		if (!activeSoundTriggered) {
 			Entity targetEntity = parent.getFoodAllocation().getTargetEntity();
 			ItemEntityAttributes itemEntityAttributes = (ItemEntityAttributes) targetEntity.getPhysicalEntityComponent().getAttributes();
@@ -66,22 +65,7 @@ public class ConsumeFoodAction extends Action {
 			if (itemEntityAttributes.getQuantity() <= 0) {
 				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 			} else {
-				// Place (back) into inventory
-				InventoryComponent parentInventory = parent.parentEntity.getOrCreateComponent(InventoryComponent.class);
-				EquippedItemComponent equippedItemComponent = parent.parentEntity.getComponent(EquippedItemComponent.class);
-				if (equippedItemComponent != null && equippedItemComponent.getEquippedItem().equals(targetEntity)) {
-					equippedItemComponent.clearEquippedItem();
-					parent.parentEntity.removeComponent(EquippedItemComponent.class);
-					parentInventory.add(targetEntity, parent.parentEntity, parent.messageDispatcher, gameContext.getGameClock());
-				} else {
-					Entity containerEntity = targetEntity.getLocationComponent().getContainerEntity();
-					if (containerEntity != null && !containerEntity.equals(parent.parentEntity)) {
-						// Currently within a different inventory
-						InventoryComponent otherInventoryComponent = containerEntity.getComponent(InventoryComponent.class);
-						otherInventoryComponent.remove(targetEntity.getId());
-						parentInventory.add(targetEntity, parent.parentEntity, parent.messageDispatcher, gameContext.getGameClock());
-					}
-				}
+				placeFoodBackIntoInventory(gameContext, targetEntity);
 
 			}
 
@@ -100,6 +84,34 @@ public class ConsumeFoodAction extends Action {
 			}
 			completionType = SUCCESS;
 		}
+	}
+
+	private void placeFoodBackIntoInventory(GameContext gameContext, Entity targetEntity) {
+		// Place (back) into inventory
+		InventoryComponent parentInventory = parent.parentEntity.getOrCreateComponent(InventoryComponent.class);
+		EquippedItemComponent equippedItemComponent = parent.parentEntity.getComponent(EquippedItemComponent.class);
+		if (equippedItemComponent != null && equippedItemComponent.getEquippedItem().equals(targetEntity)) {
+			equippedItemComponent.clearEquippedItem();
+			parent.parentEntity.removeComponent(EquippedItemComponent.class);
+			parentInventory.add(targetEntity, parent.parentEntity, parent.messageDispatcher, gameContext.getGameClock());
+		} else {
+			Entity containerEntity = targetEntity.getLocationComponent().getContainerEntity();
+			if (containerEntity != null && !containerEntity.equals(parent.parentEntity)) {
+				// Currently within a different inventory
+				InventoryComponent otherInventoryComponent = containerEntity.getComponent(InventoryComponent.class);
+				otherInventoryComponent.remove(targetEntity.getId());
+				parentInventory.add(targetEntity, parent.parentEntity, parent.messageDispatcher, gameContext.getGameClock());
+			}
+		}
+	}
+
+	@Override
+	public void actionInterrupted(GameContext gameContext) {
+		Entity targetEntity = parent.getFoodAllocation().getTargetEntity();
+		if (targetEntity != null) {
+			placeFoodBackIntoInventory(gameContext, targetEntity);
+		}
+		completionType = CompletionType.FAILURE;
 	}
 
 	@Override

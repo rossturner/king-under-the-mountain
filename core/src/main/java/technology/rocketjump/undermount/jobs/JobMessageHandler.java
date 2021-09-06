@@ -993,6 +993,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 			newJob.setJobLocation(applyDesignationMessage.getTargetTile().getTilePosition());
 			newJob.setJobState(calculateNewJobState(jobType, applyDesignationMessage.getTargetTile()));
+			newJob.setJobPriority(applyDesignationMessage.getDesignationToApply().getDefaultJobPriority());
 
 			jobStore.add(newJob);
 		}

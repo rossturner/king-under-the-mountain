@@ -135,6 +135,10 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 		this.stateDuration = 0f;
 	}
 
+	public boolean shouldNotificationApply(GameContext gameContext) {
+		return true;
+	}
+
 	@Override
 	public void destroy(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		ParticleEffectInstance effectInstance = currentParticleEffect.get();

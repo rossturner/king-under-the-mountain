@@ -13,6 +13,7 @@
     "b" : 1.0,
     "a" : 0.4
   },
+  "defaultJobPriority" : "NORMAL",
   "createsJobTypeName" : "MINING"
 }, {
   "designationName" : "CHOP_WOOD",
@@ -29,6 +30,7 @@
     "b" : 1.0,
     "a" : 0.4
   },
+  "defaultJobPriority" : "NORMAL",
   "createsJobTypeName" : "LOGGING"
 }, {
   "designationName" : "HARVEST",
@@ -45,6 +47,7 @@
     "b" : 1.0,
     "a" : 0.4
   },
+  "defaultJobPriority" : "NORMAL",
   "createsJobTypeName" : "HARVESTING"
 }, {
   "designationName" : "CLEAR_GROUND",
@@ -61,6 +64,7 @@
     "b" : 1.0,
     "a" : 0.4
   },
+  "defaultJobPriority" : "NORMAL",
   "createsJobTypeName" : "CLEAR_GROUND"
 }, {
   "designationName" : "REMOVE_ROOMS",
@@ -76,7 +80,8 @@
     "g" : 0.2,
     "b" : 0.2,
     "a" : 0.3
-  }
+  },
+  "defaultJobPriority" : "NORMAL"
 }, {
   "designationName" : "REMOVE_CONSTRUCTIONS",
   "iconName" : "block",
@@ -91,7 +96,8 @@
     "g" : 0.2,
     "b" : 0.2,
     "a" : 0.3
-  }
+  },
+  "defaultJobPriority" : "NORMAL"
 }, {
   "designationName" : "DECONSTRUCT",
   "iconName" : "demolish",
@@ -106,7 +112,8 @@
     "g" : 0.45,
     "b" : 0.18,
     "a" : 0.3
-  }
+  },
+  "defaultJobPriority" : "NORMAL"
 }, {
   "designationName" : "FLOORING",
   "iconName" : "floorboards",
@@ -122,6 +129,7 @@
     "b" : 1.0,
     "a" : 0.4
   },
+  "defaultJobPriority" : "NORMAL",
   "createsJobTypeName" : "CONSTRUCT_FLOORING"
 }, {
   "designationName" : "EXTINGUISH_FLAMES",
@@ -138,5 +146,6 @@
     "b" : 1.0,
     "a" : 0.4
   },
+  "defaultJobPriority" : "HIGHEST",
   "createsJobTypeName" : "EXTINGUISH_FLAMES"
 } ]

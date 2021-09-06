@@ -829,7 +829,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			furnitureEntityAttributes.getMaterials().put(furnitureEntityAttributes.getPrimaryMaterialType(), message.replacementPrimaryMaterial);
 		}
 
-		if (!message.targetEntity.getBehaviourComponent().getClass().equals(FurnitureBehaviour.class)) {
+		if (message.targetEntity.getBehaviourComponent() != null && !message.targetEntity.getBehaviourComponent().getClass().equals(FurnitureBehaviour.class)) {
 			// remove crafting station or other behaviour
 			entityStore.changeBehaviour(message.targetEntity, new FurnitureBehaviour(), messageDispatcher);
 		}

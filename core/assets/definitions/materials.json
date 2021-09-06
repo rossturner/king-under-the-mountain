@@ -1017,13 +1017,13 @@
 }, {
   "materialName" : "Snowfall",
   "materialId" : 67,
-  "materialType" : "OTHER",
+  "materialType" : "LIQUID",
   "alcoholic" : false,
   "combustible" : false,
   "edible" : false,
   "poisonous" : false,
   "quenchesThirst" : false,
-  "i18nKey" : "OTHER.SNOWFALL",
+  "i18nKey" : "LIQUID.SNOWFALL",
   "useMaterialTypeAsAdjective" : false,
   "useInRandomGeneration" : true,
   "dynamicallyCreated" : false

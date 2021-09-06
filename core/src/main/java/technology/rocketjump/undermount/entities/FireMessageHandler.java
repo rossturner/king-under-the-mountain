@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBeh
 import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.components.AttachedEntitiesComponent;
 import technology.rocketjump.undermount.entities.components.AttachedLightSourceComponent;
+import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.factories.OngoingEffectAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.OngoingEffectEntityFactory;
@@ -54,6 +55,7 @@ import static technology.rocketjump.undermount.entities.model.EntityType.STATIC_
 import static technology.rocketjump.undermount.messaging.MessageType.*;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
+import static technology.rocketjump.undermount.ui.GameInteractionMode.DEFAULT;
 
 @Singleton
 public class FireMessageHandler implements GameContextAware, Telegraph {
@@ -190,6 +192,10 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		GridPoint2 centre = toGridPoint(location);
 		int firesStarted = 0;
 		MapTile centreTile = gameContext.getAreaMap().getTile(centre);
+		TileDesignation extinguishFlamesDesignation = null;
+		if (centreTile.getDesignation() != null && centreTile.getDesignation().getDesignationName().equals("EXTINGUISH_FLAMES")) {
+			extinguishFlamesDesignation = centreTile.getDesignation();
+		}
 		if (centreTile == null) {
 			return;
 		}
@@ -206,6 +212,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				if (nextTile.hasWall()) {
 					if (nextTile.getWall().getMaterial().isCombustible()) {
 						createFireInTile(nextTile);
+						applyDesignation(nextTile, extinguishFlamesDesignation);
 						firesStarted++;
 					}
 					break;
@@ -223,9 +230,13 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 						statusComponent.init(combustibleEntity.get(), messageDispatcher, gameContext);
 						statusComponent.apply(new OnFireStatus());
 						firesStarted++;
+						if (STATIC_ENTITY_TYPES.contains(combustibleEntity.get().getType())) {
+							applyDesignation(nextTile, extinguishFlamesDesignation);
+						}
 						break;
 					} else if (nextTile.getFloor().getMaterial().isCombustible()) {
 						createFireInTile(nextTile);
+						applyDesignation(nextTile, extinguishFlamesDesignation);
 						firesStarted++;
 						break;
 					}
@@ -270,6 +281,12 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		AttachedLightSourceComponent lightSourceComponent = entity.getComponent(AttachedLightSourceComponent.class);
 		if (lightSourceComponent != null) {
 			lightSourceComponent.setEnabled(false);
+		}
+
+		LiquidContainerComponent liquidContainerComponent = entity.getComponent(LiquidContainerComponent.class);
+		if (liquidContainerComponent != null) {
+			// TODO explode with flammable contents or something
+			liquidContainerComponent.setLiquidQuantity(0f);
 		}
 
 		switch (entity.getType()) {
@@ -339,6 +356,16 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 	private Color blackenedColor() {
 		return ColorMixer.randomBlend(gameContext.getRandom(),
 				blackenedColors);
+	}
+
+	private void applyDesignation(MapTile targetTile, TileDesignation extinguishFlamesDesignation) {
+		if (extinguishFlamesDesignation != null) {
+			if (targetTile.getDesignation() != null) {
+				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(targetTile, targetTile.getDesignation()));
+			}
+			targetTile.setDesignation(extinguishFlamesDesignation);
+			messageDispatcher.dispatchMessage(MessageType.DESIGNATION_APPLIED, new ApplyDesignationMessage(targetTile, extinguishFlamesDesignation, DEFAULT));
+		}
 	}
 
 	@Override

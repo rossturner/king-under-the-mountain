@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.ui.widgets.ButtonStyle;
@@ -26,6 +27,7 @@ public class SelectStartLocationGuiView implements GuiView, GameContextAware {
 		confirmEmbarkButton.setAction(() -> {
 			if (gameContext.getAreaMap().getEmbarkPoint() != null) {
 				this.hidden = true;
+				gameContext.getSettlementState().setGameState(GameState.STARTING_SPAWN);
 				messageDispatcher.dispatchMessage(MessageType.BEGIN_SPAWN_SETTLEMENT);
 			}
 		});

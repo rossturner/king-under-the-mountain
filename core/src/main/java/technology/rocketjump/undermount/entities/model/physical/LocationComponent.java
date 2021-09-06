@@ -30,9 +30,6 @@ public class LocationComponent implements ParentDependentEntityComponent {
 	private Vector2 linearVelocity = new Vector2();
 	private float maxLinearSpeed = 1.8f;
 	private float maxLinearAcceleration = 1.2f;
-	private float angularVelocity = 0f;
-	private float maxAngularSpeed = 5f;
-	private float maxAngularAcceleration = 2f;
 
 	private float rotation;
 
@@ -79,9 +76,6 @@ public class LocationComponent implements ParentDependentEntityComponent {
 		cloned.linearVelocity = this.linearVelocity.cpy();
 		cloned.maxLinearSpeed = this.maxLinearSpeed;
 		cloned.maxLinearAcceleration = this.maxLinearAcceleration;
-		cloned.angularVelocity = this.angularVelocity;
-		cloned.maxAngularSpeed = this.maxAngularSpeed;
-		cloned.maxAngularAcceleration = this.maxAngularAcceleration;
 		cloned.rotation = this.rotation;
 		cloned.untracked = this.untracked;
 		cloned.containerEntity = this.containerEntity;
@@ -183,45 +177,12 @@ public class LocationComponent implements ParentDependentEntityComponent {
 		this.linearVelocity = linearVelocity;
 	}
 
-	public float getAngularVelocity() {
-		return angularVelocity;
-	}
-
-	public void setAngularVelocity(float angularVelocity) {
-		this.angularVelocity = angularVelocity;
-	}
-
 	public float getMaxLinearSpeed() {
 		return maxLinearSpeed;
 	}
 
 	public void setMaxLinearSpeed(float maxLinearSpeed) {
 		this.maxLinearSpeed = maxLinearSpeed;
-	}
-
-
-	public float getMaxLinearAcceleration() {
-		return maxLinearAcceleration;
-	}
-
-	public void setMaxLinearAcceleration(float maxLinearAcceleration) {
-		this.maxLinearAcceleration = maxLinearAcceleration;
-	}
-
-	public float getMaxAngularSpeed() {
-		return maxAngularSpeed;
-	}
-
-	public void setMaxAngularSpeed(float maxAngularSpeed) {
-		this.maxAngularSpeed = maxAngularSpeed;
-	}
-
-	public float getMaxAngularAcceleration() {
-		return maxAngularAcceleration;
-	}
-
-	public void setMaxAngularAcceleration(float maxAngularAcceleration) {
-		this.maxAngularAcceleration = maxAngularAcceleration;
 	}
 
 	public float getRotation() {
@@ -275,15 +236,6 @@ public class LocationComponent implements ParentDependentEntityComponent {
 		if (maxLinearAcceleration != 1.2f) {
 			asJson.put("maxLinearAcceleration", maxLinearAcceleration);
 		}
-		if (angularVelocity != 0f) {
-			asJson.put("angularVelocity", angularVelocity);
-		}
-		if (maxAngularSpeed != 5f) {
-			asJson.put("maxAngularSpeed", maxAngularSpeed);
-		}
-		if (maxAngularAcceleration != 1f) {
-			asJson.put("maxAngularAcceleration", maxAngularAcceleration);
-		}
 		if (rotation != 0f) {
 			asJson.put("rotation", rotation);
 		}
@@ -333,21 +285,6 @@ public class LocationComponent implements ParentDependentEntityComponent {
 		Float maxLinearAcceleration = asJson.getFloat("maxLinearAcceleration");
 		if (maxLinearAcceleration != null) {
 			this.maxLinearAcceleration = maxLinearAcceleration;
-		}
-
-		Float angularVelocity = asJson.getFloat("angularVelocity");
-		if (angularVelocity != null) {
-			this.angularVelocity = angularVelocity;
-		}
-
-		Float maxAngularSpeed = asJson.getFloat("maxAngularSpeed");
-		if (maxAngularSpeed != null) {
-			this.maxAngularSpeed = maxAngularSpeed;
-		}
-
-		Float maxAngularAcceleration = asJson.getFloat("maxAngularAcceleration");
-		if (maxAngularAcceleration != null) {
-			this.maxAngularAcceleration = maxAngularAcceleration;
 		}
 
 		Float rotation = asJson.getFloat("rotation");

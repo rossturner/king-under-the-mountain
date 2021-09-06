@@ -5,7 +5,6 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.furniture.model.DoorState;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -25,6 +24,7 @@ import static technology.rocketjump.undermount.entities.model.physical.humanoid.
 
 public class SteeringComponent implements ChildPersistable {
 
+	private static final float ROTATION_MULTIPLIER = 1.5f; // for quicker turning speed
 	private LocationComponent locationComponent;
 	private MessageDispatcher messageDispatcher;
 	private Entity parentEntity;
@@ -199,8 +199,8 @@ public class SteeringComponent implements ChildPersistable {
 				difference = 360f - difference;
 				positiveRotation = !positiveRotation;
 			}
-			if (difference > 75f) {
-				difference = 75f;
+			if (difference > 120f) {
+				difference = 120f;
 //				 Relatively large angle, so let's slow down velocity
 //				currentVelocity.mulAdd(currentVelocity.cpy().scl(-3f), deltaTime);
 			}
@@ -208,7 +208,7 @@ public class SteeringComponent implements ChildPersistable {
 			if (!positiveRotation) {
 				difference = -difference;
 			}
-			currentVelocity.rotate(difference * deltaTime);
+			currentVelocity.rotate(difference * deltaTime * ROTATION_MULTIPLIER);
 		}
 	}
 
@@ -260,7 +260,7 @@ public class SteeringComponent implements ChildPersistable {
 							continue;
 						}
 
-						if (((SettlerBehaviour)otherEntity.getBehaviourComponent()).getSteeringComponent().pauseTime > 0) {
+						if (otherEntity.getBehaviourComponent().getSteeringComponent().pauseTime > 0) {
 							break;
 						}
 

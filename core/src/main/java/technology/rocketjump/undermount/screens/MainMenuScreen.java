@@ -22,11 +22,12 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.lang3.NotImplementedException;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.logging.CrashHandler;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchAccountInfo;
-import technology.rocketjump.undermount.misc.versioning.Version;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.ScreenWriter;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
@@ -52,7 +53,7 @@ import static technology.rocketjump.undermount.rendering.camera.GlobalSettings.V
  * Should slowly pan across a background image
  */
 @Singleton
-public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
+public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable, GameContextAware {
 
 	private static final float PIXEL_SCROLL_PER_SECOND = 70f;
 	private final MessageDispatcher messageDispatcher;
@@ -84,10 +85,10 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 
 	private float uiScaleChangeTimer;
 	private float uiScale;
-	private Version remoteVersion;
 	private final UserPreferences userPreferences;
 	private final TwitchDataStore twitchDataStore;
 	private final I18nTranslator i18nTranslator;
+	private GameContext gameContext;
 
 	@Inject
 	public MainMenuScreen(MessageDispatcher messageDispatcher, ScreenWriter screenWriter, EmbarkMenu embarkMenu,
@@ -158,7 +159,6 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		messageDispatcher.addListener(this, MessageType.SWITCH_MENU);
 		messageDispatcher.addListener(this, MessageType.GUI_SET_SCALE);
 		messageDispatcher.addListener(this, MessageType.GUI_SCALE_CHANGED);
-		messageDispatcher.addListener(this, MessageType.REMOTE_VERSION_FOUND);
 		messageDispatcher.addListener(this, MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING);
 		messageDispatcher.addListener(this, MessageType.TWITCH_ACCOUNT_INFO_UPDATED);
 		messageDispatcher.addListener(this, MessageType.PREFERENCE_CHANGED);
@@ -211,12 +211,6 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 			}
 			case MessageType.GUI_SCALE_CHANGED: {
 				resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-				return true;
-			}
-			case MessageType.REMOTE_VERSION_FOUND: {
-				this.remoteVersion = (Version) msg.extraInfo;
-				resetVersionTable();
-				reset();
 				return true;
 			}
 			case MessageType.SET_MAIN_MENU_BACKGROUND_SCROLLING: {
@@ -409,13 +403,10 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 		if (GlobalSettings.DEV_MODE) {
 			versionText += " (DEV MODE ENABLED)";
 		}
-		versionTable.add(new Label(versionText, uiSkin)).left().pad(5);
-		if (remoteVersion != null) {
-			if (remoteVersion.toInteger() > VERSION.toInteger()) {
-				versionTable.add(newVersionButton).pad(5);
-			} else if (remoteVersion.toInteger() < VERSION.toInteger()) {
-				versionTable.add(new Label("(Unreleased)", uiSkin));
-			}
+		versionTable.add(new Label(versionText, uiSkin)).left().pad(5).row();
+		if (gameContext != null && gameContext.getAreaMap() != null) {
+			String currentMapSeedText = i18nTranslator.getTranslatedString("GUI.MAP_SEED_DISPLAY").toString();
+			versionTable.add(new Label(currentMapSeedText + " " + gameContext.getAreaMap().getSeed(), uiSkin)).left().pad(5).row();
 		}
 	}
 
@@ -427,6 +418,20 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable {
 	public void onLanguageUpdated() {
 		// Not translated but needs triggering for font change
 		resetVersionTable();
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+		resetVersionTable();
+		reset();
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+		this.gameContext = null;
+		resetVersionTable();
+		reset();
 	}
 
 	private static class MainMenuInputHandler implements InputProcessor {

@@ -90,7 +90,7 @@ public class NeedsComponent implements EntityComponent {
 		needValues.put(need, newValue);
 	}
 
-	public double getValue(EntityNeed need) {
+	public Double getValue(EntityNeed need) {
 		return needValues.get(need);
 	}
 

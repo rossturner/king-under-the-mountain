@@ -54,40 +54,18 @@ public class FireEffectBehaviour extends BaseOngoingEffectBehaviour {
 	}
 
 	@Override
+	public boolean shouldNotificationApply(GameContext gameContext) {
+		return gameContext != null && gameContext.getMapEnvironment().getCurrentWeather().getLightningStrikesPerHour() == null;
+	}
+
+
+	@Override
 	protected void nextState(GameContext gameContext) {
 		switch (state) {
 			case STARTING:
 				this.state = ACTIVE;
 				break;
 			case ACTIVE:
-				// Is this on a combustible tile or entity
-				/*
-				MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
-				if (parentTile != null) {
-
-					for (Entity entity : parentTile.getEntities()) {
-						boolean isCombustible = entity.getPhysicalEntityComponent().getAttributes().getMaterials().values()
-								.stream().anyMatch(GameMaterial::isCombustible);
-						if (isCombustible) {
-							StatusComponent statusComponent = entity.getOrCreateComponent(StatusComponent.class);
-							statusComponent.apply(new OnFireStatus());
-						}
-					}
-
-
-					if (parentTile.hasWall()) {
-						if (parentTile.getWall().getMaterial().isCombustible()) {
-							continuationAction = );
-						}
-					} else {
-						if (parentTile.getFloor().getMaterial().isCombustible()) {
-							continuationAction = rollForContinuation(gameContext.getRandom());
-						}
-					}
-
-				}
-				*/
-
 				FireContinuationAction continuation = rollForContinuation(gameContext);
 				switch (continuation) {
 					case SPREAD_TO_OTHER_TILES:

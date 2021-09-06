@@ -82,14 +82,14 @@ public class PathfindingTaskTest implements PathfindingCallback {
 
 	@Test
 	public void testLargeUnnavigableCase() throws Exception {
-		TiledMap map = new TiledMap(1L, 1000, 1000, mockFloorType, baseFloorMaterial);
-		map.getTile(998, 998).addWall(new TileNeighbours(), mockMaterial, mockWallType);
-		map.getTile(999, 998).addWall(new TileNeighbours(), mockMaterial, mockWallType);
-		map.getTile(998, 999).addWall(new TileNeighbours(), mockMaterial, mockWallType);
-		map.getTile(999, 999).setRegionId(2);
+		TiledMap map = new TiledMap(1L, 500, 500, mockFloorType, baseFloorMaterial);
+		map.getTile(498, 498).addWall(new TileNeighbours(), mockMaterial, mockWallType);
+		map.getTile(499, 498).addWall(new TileNeighbours(), mockMaterial, mockWallType);
+		map.getTile(498, 499).addWall(new TileNeighbours(), mockMaterial, mockWallType);
+		map.getTile(499, 499).setRegionId(2);
 
 		Vector2 origin = new Vector2(0.5f, 0.5f);
-		Vector2 destination = new Vector2(999.5f, 999.5f);
+		Vector2 destination = new Vector2(499.5f, 499.5f);
 		// Destination is top-right corner blocked off by walls
 
 		long startTime = System.currentTimeMillis();

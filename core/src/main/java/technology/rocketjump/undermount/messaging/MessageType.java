@@ -50,7 +50,6 @@ public class MessageType {
 	public static final int NOTIFY_RESTART_REQUIRED = 266;
 	public static final int POST_NOTIFICATION = 267;
 	public static final int SHOW_DIALOG = 268;
-	public static final int REMOTE_VERSION_FOUND = 269;
 	public static final int CHOOSE_SELECTABLE = 270;
 	public static final int TOOLTIP_AREA_ENTERED = 271;
 	public static final int TOOLTIP_AREA_EXITED = 272;

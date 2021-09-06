@@ -62,6 +62,8 @@
   "i18nKey" : "WEATHER.TYPE.SNOW",
   "particleEffectTypeName" : "Snow",
   "maxSunlight" : "#EEEEEE",
+  "dayAmbienceSoundAssetName" : "Wind",
+  "nightAmbienceSoundAssetName" : "Wind",
   "oxidises" : true,
   "chanceToExtinguishFire" : 0.2,
   "chanceToFreezeToDeathFromSleeping" : 0.03,

@@ -23,7 +23,7 @@ import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.C
 public class LocateLiquidContainerAction extends Action implements RequestHaulingAllocationMessage.ItemAllocationCallback,
 		LookupItemTypesByTagClassMessage.LookupItemTypesCallback {
 
-	private List<ItemType> itemTypes;
+	private List<ItemType> itemTypes = Collections.emptyList();
 
 	public LocateLiquidContainerAction(AssignedGoal parent) {
 		super(parent);

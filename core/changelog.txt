@@ -2,6 +2,43 @@ Alpha 7
 
 - Updated dirt floor texture
 
+Alpha 6.1.7 - 5th September 2021
+
+- Fire extinguish designations spread with fire
+- Fire extinguish designation defaults job to top priority
+- Increased settler rotation speed to avoid getting stuck in circles
+
+Alpha 6.1.6 - 23rd August 2021
+
+- Fixed an issue when displayed a settler with some needs missing
+
+Alpha 6.1.5 - 21st August 2021
+
+- Fix for a rare crash for when furniture is damaged
+
+Alpha 6.1.4 - 17th August 2021
+
+- Fix for a rare crash when pathfinding over dead bodies
+
+Alpha 6.1.3 - 17th August 2021
+
+- Fix for crash from change below - lightning strikes not triggering fire notifications
+
+Alpha 6.1.2 - 16th August 2021
+
+- Snow on ground will no longer trigger tilling jobs to be created
+- Fire notifications are not sent when the current weather can cause lightning strikes
+
+Alpha 6.1.1 - 15th August 2021
+
+- Fix for a bug where rations where often being lost while a dwarf attempted to eat them, they will be a bit more careful with their food now
+- Fix for crash when clicking around after starting settlement spawn
+
+Alpha 6.1 - 12th August 2021
+
+- Fix for crash from mushroom logs
+- Displaying map seed on main menu
+
 Alpha 6 - 9th August 2021
 
 - !FIRE! Fires can now be started by rogue sparks and flames (which should be rare) and there's a new order to attempt to put out fires
