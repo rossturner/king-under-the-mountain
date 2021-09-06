@@ -20,7 +20,7 @@
   "filenames" : [ "Ambience_Rain.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
-  "volumeModifier" : 1.0,
+  "volumeModifier" : 1.4,
   "looping" : true
 }, {
   "name" : "Thunderstorm with rain",
@@ -28,7 +28,7 @@
   "filenames" : [ "Ambience_Thunder.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
-  "volumeModifier" : 1.0,
+  "volumeModifier" : 1.4,
   "looping" : true
 }, {
   "name" : "Isolated thunder",
@@ -44,7 +44,7 @@
   "filenames" : [ "Ambience_Winter.wav" ],
   "minPitch" : 1.0,
   "maxPitch" : 1.0,
-  "volumeModifier" : 1.0,
+  "volumeModifier" : 1.4,
   "looping" : true
 }, {
   "name" : "River",
