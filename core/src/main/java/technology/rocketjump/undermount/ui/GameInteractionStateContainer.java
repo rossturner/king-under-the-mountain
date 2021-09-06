@@ -285,6 +285,19 @@ public class GameInteractionStateContainer implements GameContextAware {
 				BridgeOrientation orientation = EAST_WEST;
 				if (maxY - minY > maxX - minX) {
 					orientation = NORTH_SOUTH;
+				} else if (maxY - minY == maxX - minX) {
+					// bridge is square
+					boolean channelCrossesEastWestBridge = false;
+					for (int y = minY + 1; y <= maxY - 1; y++) {
+						MapTile tile = map.getTile(minX, y);
+						if (tile != null && tile.hasChannel()) {
+							channelCrossesEastWestBridge = true;
+							break;
+						}
+					}
+					if (channelCrossesEastWestBridge) {
+						orientation = NORTH_SOUTH;
+					}
 				}
 
 				if (validBridgePlacement) {
@@ -300,6 +313,11 @@ public class GameInteractionStateContainer implements GameContextAware {
 				}
 				if (validBridgePlacement) {
 					if (!canFitRequiredResourcesOnCorrectSide(bridgeTiles, bridgeTypeToPlace)) {
+						validBridgePlacement = false;
+					}
+				}
+				if (validBridgePlacement) {
+					if (channelIsUnderEndOfBridge(minX, maxX, minY, maxY, orientation)) {
 						validBridgePlacement = false;
 					}
 				}
@@ -790,5 +808,29 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 	public MaterialSelectionMessage getFloorMaterialSelection() {
 		return floorMaterialSelection;
+	}
+
+	private boolean channelIsUnderEndOfBridge(int minX, int maxX, int minY, int maxY, BridgeOrientation orientation) {
+		if (orientation.equals(NORTH_SOUTH)) {
+			for (Integer y : List.of(minY, maxY)) {
+				for (int x = minX; x <= maxX; x++) {
+					MapTile tile = gameContext.getAreaMap().getTile(x, y);
+					if (tile == null || tile.hasChannel()) {
+						return true;
+					}
+				}
+			}
+		} else {
+			for (Integer x : List.of(minX, maxX)) {
+				for (int y = minY; y <= maxY; y++) {
+					MapTile tile = gameContext.getAreaMap().getTile(x, y);
+					if (tile == null || tile.hasChannel()) {
+						return true;
+					}
+				}
+			}
+
+		}
+		return false;
 	}
 }

@@ -334,12 +334,14 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 
 				if (removedJob.getType().getName().equals("DECONSTRUCT")) {
-					long potentialTargetEntityId = removedJob.getTargetId();
-					Entity entity = entityStore.getById(potentialTargetEntityId);
-					if (entity != null) {
-						ConstructedEntityComponent constructedEntityComponent = entity.getComponent(ConstructedEntityComponent.class);
-						if (constructedEntityComponent != null) {
-							constructedEntityComponent.setDeconstructionJob(null);
+					Long potentialTargetEntityId = removedJob.getTargetId();
+					if (potentialTargetEntityId != null) {
+						Entity entity = entityStore.getById(potentialTargetEntityId);
+						if (entity != null) {
+							ConstructedEntityComponent constructedEntityComponent = entity.getComponent(ConstructedEntityComponent.class);
+							if (constructedEntityComponent != null) {
+								constructedEntityComponent.setDeconstructionJob(null);
+							}
 						}
 					}
 					return true;

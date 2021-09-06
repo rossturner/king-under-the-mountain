@@ -621,6 +621,10 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				} else if (targetTile.getFloor().hasBridge()) {
 					Bridge bridge = targetTile.getFloor().getBridge();
 					messageDispatcher.dispatchMessage(MessageType.DECONSTRUCT_BRIDGE, bridge);
+				} else if (targetTile.hasFloor() && targetTile.getFloor().getFloorType().isConstructed()) {
+					messageDispatcher.dispatchMessage(MessageType.UNDO_REPLACE_FLOOR, targetTile.getTilePosition());
+				} else if (targetTile.hasChannel()) {
+					messageDispatcher.dispatchMessage(MessageType.REMOVE_CHANNEL, targetTile.getTilePosition());
 				} else {
 					// Assuming we're deconstructing a furniture entity in the target tile
 					Entity targetEntity = null;
@@ -691,6 +695,40 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					}
 				} else {
 					Logger.error("Could not find furniture entity for " + completedJob.getType().getName() + " job completion");
+				}
+				break;
+			}
+			case "DIG_CHANNEL": {
+				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
+
+				if (targetTile != null) {
+					// deconstruct any furniture
+					for (Entity entity : targetTile.getEntities()) {
+						if (entity.getType().equals(FURNITURE)) {
+							deconstructFurniture(entity, targetTile, messageDispatcher, gameContext,
+									itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory, deconstructParticleEffect);
+						}
+					}
+					// then shift any items or plants
+					for (Entity entity : targetTile.getEntities()) {
+						if (entity.getType().equals(PLANT)) {
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);
+						} else if (entity.getType().equals(ITEM)) {
+							boolean entityMoved = false;
+							for (MapTile neighbourTile : gameContext.getAreaMap().getNeighbours(targetTile.getTilePosition()).values()) {
+								if (neighbourTile.isNavigable()) {
+									entity.getLocationComponent().setWorldPosition(neighbourTile.getWorldPositionOfCenter(), false);
+									entityMoved = true;
+									break;
+								}
+							}
+							if (!entityMoved) {
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);
+							}
+						}
+					}
+
+					messageDispatcher.dispatchMessage(MessageType.ADD_CHANNEL, targetTile.getTilePosition());
 				}
 				break;
 			}
@@ -1023,7 +1061,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					}
 				}
 
-				if (applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) {
+				if ((applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) ||
+						applyDesignationMessage.getTargetTile().hasChannel() ||
+						(applyDesignationMessage.getTargetTile().hasFloor() && applyDesignationMessage.getTargetTile().getFloor().getFloorType().isConstructed())) {
 					Job deconstructionJob = jobFactory.deconstructionJob(applyDesignationMessage.getTargetTile());
 					messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
 				}
@@ -1039,22 +1079,13 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	private boolean handle(RemoveDesignationMessage removeDesignationMessage) {
-		JobType jobType = removeDesignationMessage.getDesignationToRemove().getCreatesJobType();
-		if (jobType != null) {
-			List<Job> jobsAtLocation = jobStore.getJobsAtLocation(removeDesignationMessage.getTargetTile().getTilePosition());
-			List<Job> jobsToRemove = new LinkedList<>();
-			for (Job job : jobsAtLocation) {
-				if (job.getType().equals(jobType)) {
-					jobsToRemove.add(job);
-				}
-			}
+		List<Job> jobsToRemove = new ArrayList<>(jobStore.getJobsAtLocation(removeDesignationMessage.getTargetTile().getTilePosition()));
 
-			for (Job job : jobsToRemove) {
-				if (job.getAssignedToEntityId() != null) {
-					messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
-				}
-				jobStore.remove(job);
+		for (Job job : jobsToRemove) {
+			if (job.getAssignedToEntityId() != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
 			}
+			jobStore.remove(job);
 		}
 		removeDesignationMessage.getTargetTile().setDesignation(null);
 		return true;

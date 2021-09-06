@@ -39,9 +39,13 @@ public class OrderSelectionGuiView implements GuiView {
 		harvest.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_HARVEST_PLANTS, messageDispatcher));
 		iconButtons.add(harvest);
 
-		IconButton clearGround = iconButtonFactory.create("GUI.ORDERS.CLEAR_GROUND", "spade", HexColors.get("#B3733B"), ButtonStyle.DEFAULT);
+		IconButton clearGround = iconButtonFactory.create("GUI.ORDERS.CLEAR_GROUND", "spade", HexColors.get("#e1a774"), ButtonStyle.DEFAULT);
 		clearGround.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_CLEAR_GROUND, messageDispatcher));
 		iconButtons.add(clearGround);
+
+		IconButton digChannels = iconButtonFactory.create("GUI.ORDERS.DIG_CHANNELS", "trench", HexColors.get("#b56a28"), ButtonStyle.DEFAULT);
+		digChannels.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_DIG_CHANNEL, messageDispatcher));
+		iconButtons.add(digChannels);
 
 		IconButton extinguishFlames = iconButtonFactory.create("GUI.ORDERS.EXTINGUISH_FLAMES", "water-splash", HexColors.get("#5ae9f0"), ButtonStyle.DEFAULT);
 		extinguishFlames.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_EXTINGUISH_FLAMES, messageDispatcher));

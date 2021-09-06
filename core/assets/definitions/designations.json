@@ -148,4 +148,21 @@
   },
   "defaultJobPriority" : "HIGHEST",
   "createsJobTypeName" : "EXTINGUISH_FLAMES"
+}, {
+  "designationName" : "DIG_CHANNEL",
+  "iconName" : "trench",
+  "selectionColor" : {
+    "r" : 1.0,
+    "g" : 1.0,
+    "b" : 0.6,
+    "a" : 0.4
+  },
+  "designationColor" : {
+    "r" : 1.0,
+    "g" : 1.0,
+    "b" : 1.0,
+    "a" : 0.4
+  },
+  "defaultJobPriority" : "NORMAL",
+  "createsJobTypeName" : "DIG_CHANNEL"
 } ]

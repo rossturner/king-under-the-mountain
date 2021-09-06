@@ -62,6 +62,16 @@
     "workOnJobParticleEffectNames": ["Digging ground offset tile"]
   },
   {
+    "name": "DIG_CHANNEL",
+    "defaultTimeToCompleteJob": 5,
+    "overrideI18nKey": "ACTION.JOB.SHOVELLING",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "MINER",
+    "requiredItemTypeName": "Tool-Pickaxe",
+    "activeSoundAssetName": "Tilling",
+    "workOnJobParticleEffectNames": ["Digging ground offset tile"]
+  },
+  {
     "name": "PLANTING",
     "defaultTimeToCompleteJob": 2,
     "overrideI18nKey": "ACTION.JOB.PLANTING",

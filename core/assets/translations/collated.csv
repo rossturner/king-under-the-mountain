@@ -369,6 +369,8 @@ GUI.OPTIONS.TWITCH.TITLE,Twitch Integration,,Twitch Integration,,,,,,,,Twitch En
 GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,Use viewers as settler names,,Benutze Zuschauer für Siedlernamen,,,,,,,,İzleyicileri vatandaş isimleri olarak gör,,,,,,,,,
 GUI.ORDERS.CHOP_WOOD,Chop,,Hacken,Couper,Taglia,Talar,Cortar,Cortar,,Рубить,Kes,Hak,,Hugga,,,,チョップ,印章,들어온다
 GUI.ORDERS.CLEAR_GROUND,Clear,,Aufräumen,Arracher,Rimuovi,Despejar,Limpar,Limpar,,Расчистить,Temizle,Klar,,Rensa,,,,クリア,清除,클리어
+GUI.ORDERS.DIG_CHANNELS,Irrigation,,,,,,,,,,,,,,,,,,,
+GUI.ORDERS.DIG_CHANNELS.TOOLTIP,This order is used to dig channels in the ground.,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.EXTINGUISH_FLAMES,Extinguish,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.EXTINGUISH_FLAMES.TOOLTIP,This order is used to extinguish fires that are currently burning.,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.HARVEST_PLANTS,Harvest,,Ernten,"Récolter ",Raccogli,Cosechar,Colher,Colher,,Собирать,Hasat,Høst,,Skörda,,,,収穫,收获,수확
