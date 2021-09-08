@@ -178,6 +178,10 @@ public class MessageType {
 	public static final int ROOF_CONSTRUCTED = 910;
 	public static final int ROOF_DECONSTRUCTED = 911;
 	public static final int FLOORING_CONSTRUCTED = 912;
+	public static final int PIPE_CONSTRUCTION_QUEUE_CHANGE = 913;
+	public static final int PIPE_DECONSTRUCTION_QUEUE_CHANGE = 914;
+	public static final int PIPE_CONSTRUCTED = 915;
+	public static final int PIPE_DECONSTRUCTED = 916;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;

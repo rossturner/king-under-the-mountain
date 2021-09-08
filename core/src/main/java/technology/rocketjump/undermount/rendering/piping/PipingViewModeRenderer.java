@@ -12,12 +12,15 @@ import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.jobs.JobStore;
+import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.underground.PipeConstructionState;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 
 import javax.inject.Inject;
@@ -26,7 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static technology.rocketjump.undermount.mapping.tile.TileExploration.UNEXPLORED;
+import static technology.rocketjump.undermount.mapping.tile.underground.PipeConstructionState.NONE;
 import static technology.rocketjump.undermount.rendering.camera.TileBoundingBox.*;
+import static technology.rocketjump.undermount.ui.InWorldUIRenderer.insideSelectionArea;
 
 @Singleton
 public class PipingViewModeRenderer {
@@ -40,6 +45,8 @@ public class PipingViewModeRenderer {
 	private final Color liquidInputColor = HexColors.get("#26e1ed");
 	private final Sprite liquidOutputSprite;
 	private final Color liquidOutputColor = HexColors.POSITIVE_COLOR;
+	private final Sprite pipesSprite;
+	private final Color pendingPipesColor = HexColors.get("#FFFF9966");
 //	private final Sprite deconstructSprite;
 	private final Color viewMaskColor = HexColors.get("#999999BB");
 	private final List<Entity> entitiesToRender = new ArrayList<>();
@@ -55,6 +62,7 @@ public class PipingViewModeRenderer {
 		TextureAtlas guiAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
 		liquidInputSprite = guiAtlas.createSprite("input");
 		liquidOutputSprite = guiAtlas.createSprite("output");
+		pipesSprite = guiAtlas.createSprite("pipes");
 //		deconstructSprite = guiAtlas.createSprite("demolish");
 	}
 
@@ -101,6 +109,43 @@ public class PipingViewModeRenderer {
 
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
+		for (int x = minX; x <= maxX; x++) {
+			for (int y = maxY; y >= minY; y--) {
+				MapTile mapTile = map.getTile(x, y);
+				if (mapTile != null) {
+					if (mapTile.getExploration().equals(UNEXPLORED)) {
+						continue;
+					}
+
+					if (insideSelectionArea(minDraggingTile, maxDraggingTile, x, y, interactionStateContainer)) {
+						if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_PIPING)) {
+							// Don't show designations
+						} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_PIPING)) {
+							// This is within dragging area
+							if (shouldHighlight(mapTile)) {
+								spriteBatch.setColor(pendingPipesColor);
+								spriteBatch.draw(pipesSprite, x, y, 1, 1);
+							} else {
+								renderExistingPipeConstruction(x, y, mapTile, spriteBatch, blinkState);
+							}
+						} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_PIPING)) {
+							if (shouldHighlight(mapTile)) {
+								spriteBatch.setColor(PipeConstructionState.PENDING_DECONSTRUCTION.renderColor);
+								spriteBatch.draw(pipesSprite, x, y, 1, 1);
+							} else {
+								renderExistingPipeConstruction(x, y, mapTile, spriteBatch, blinkState);
+							}
+						} else {
+							// Not a designation-type drag
+							renderExistingPipeConstruction(x, y, mapTile, spriteBatch, blinkState);
+						}
+					} else {
+						// Outside selection area
+						renderExistingPipeConstruction(x, y, mapTile, spriteBatch, blinkState);
+					}
+				}
+			}
+		}
 		for (Entity entity : entitiesToRender) {
 			entityRenderer.render(entity, spriteBatch, RenderMode.DIFFUSE,
 					null, null, null);
@@ -117,6 +162,34 @@ public class PipingViewModeRenderer {
 		spriteBatch.end();
 
 
+	}
+
+
+	private void renderExistingPipeConstruction(int x, int y, MapTile mapTile, Batch spriteBatch, boolean blinkState) {
+		UnderTile underTile = mapTile.getUnderTile();
+		if (underTile != null) {
+			PipeConstructionState pipeConstructionState = underTile.getPipeConstructionState();
+			if (!pipeConstructionState.equals(NONE)) {
+				for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
+					if (job.getAssignedToEntityId() != null) {
+						// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off
+						if (!blinkState) {
+							return;
+						}
+					}
+				}
+
+				spriteBatch.setColor(pipeConstructionState.renderColor);
+				spriteBatch.draw(pipesSprite, x, y, 1, 1);
+			}
+		}
+	}
+
+	private boolean shouldHighlight(MapTile mapTile) {
+		if (interactionStateContainer.getInteractionMode().designationCheck != null) {
+			return interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(mapTile);
+		}
+		return false;
 	}
 
 }

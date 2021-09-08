@@ -28,7 +28,7 @@ import static technology.rocketjump.undermount.mapping.tile.underground.TileLiqu
 @Singleton
 public class LiquidFlowProcessor implements Updatable, Telegraph {
 
-	private static final float MAX_UPDATES_PER_SECOND = 100f;
+	private static final float MAX_UPDATES_PER_SECOND = 200f;
 	private final GameMaterial waterMaterial;
 	private GameContext gameContext;
 	private Deque<MapTile> currentLiquidFlowTiles = new ArrayDeque<>();

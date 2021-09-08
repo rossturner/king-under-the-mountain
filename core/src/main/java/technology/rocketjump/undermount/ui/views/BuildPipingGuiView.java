@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.rendering.utils.HexColors;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameViewMode;
+import technology.rocketjump.undermount.ui.actions.SetInteractionMode;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.ButtonStyle;
@@ -49,18 +50,18 @@ public class BuildPipingGuiView implements GuiView {
 		iconButtons.add(back);
 
 		// add roofing
-		IconButton addRoofing = iconButtonFactory.create("GUI.ROOFING.ADD", "pipes", HexColors.POSITIVE_COLOR, ButtonStyle.DEFAULT);
-//		addRoofing.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_PIPING, messageDispatcher));
-		iconButtons.add(addRoofing);
+		IconButton addPiping = iconButtonFactory.create("GUI.ROOFING.ADD", "pipes", HexColors.POSITIVE_COLOR, ButtonStyle.DEFAULT);
+		addPiping.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_PIPING, messageDispatcher));
+		iconButtons.add(addPiping);
 
 		// cancel roofing
 		IconButton cancelRoofing = iconButtonFactory.create("GUI.CANCEL_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
-//		cancelRoofing.setAction(new SetInteractionMode(GameInteractionMode.CANCEL_PIPING, messageDispatcher));
+		cancelRoofing.setAction(new SetInteractionMode(GameInteractionMode.CANCEL_PIPING, messageDispatcher));
 		iconButtons.add(cancelRoofing);
 
 		// deconstruct roofing
 		IconButton deconstructRoofing = iconButtonFactory.create("GUI.DECONSTRUCT_LABEL", "demolish", HexColors.get("#d1752e"), ButtonStyle.DEFAULT);
-//		deconstructRoofing.setAction(new SetInteractionMode(GameInteractionMode.DECONSTRUCT_PIPING, messageDispatcher));
+		deconstructRoofing.setAction(new SetInteractionMode(GameInteractionMode.DECONSTRUCT_PIPING, messageDispatcher));
 		iconButtons.add(deconstructRoofing);
 
 	}

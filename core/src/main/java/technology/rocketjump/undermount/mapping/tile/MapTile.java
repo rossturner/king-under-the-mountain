@@ -688,6 +688,10 @@ public class MapTile implements Persistable {
 		return underTile != null && underTile.getPipeEntity() != null;
 	}
 
+	public Deque<TileFloor> getAllFloors() {
+		return floors;
+	}
+
 	public enum RegionType {
 		RIVER, WALL, CHANNEL, GENERIC
 	}

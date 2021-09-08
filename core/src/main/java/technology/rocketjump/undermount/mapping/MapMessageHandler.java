@@ -218,6 +218,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		MapTile tile = gameContext.getAreaMap().getTile(location);
 		if (tile != null && tile.hasPipe()) {
 			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, tile.getUnderTile().getPipeEntity());
+			if (!tile.getUnderTile().liquidCanFlow()) {
+				tile.getUnderTile().setLiquidFlow(null);
+			}
 			updateTile(tile, gameContext, messageDispatcher);
 		}
 		return true;
@@ -320,12 +323,20 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 						}
 
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_ROOFING)) {
-						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, true));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, true));
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_ROOFING)) {
-						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, false));
-						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new RoofDeconstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, false));
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_ROOFING)) {
-						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new RoofDeconstructionQueueMessage(tile, true));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, true));
+
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_PIPING)) {
+						messageDispatcher.dispatchMessage(MessageType.PIPE_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, true));
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_PIPING)) {
+						messageDispatcher.dispatchMessage(MessageType.PIPE_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, false));
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_PIPING)) {
+						messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, true));
 					} else {
 						Logger.warn("Unhandled area selection message in " + getClass().getSimpleName());
 					}
@@ -674,14 +685,12 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		MapTile tile = gameContext.getAreaMap().getTile(location);
 		if (tile != null && tile.hasChannel()) {
 			tile.getUnderTile().setChannelLayout(null);
+			if (!tile.getUnderTile().liquidCanFlow()) {
+				tile.getUnderTile().setLiquidFlow(null);
+			}
 			updateTile(tile, gameContext, messageDispatcher);
 
-//			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
-//					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
-//			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(wallRemovedSoundAsset, -1L,
-//					tile.getWorldPositionOfCenter(), null));
 			updateRegions(tile, gameContext.getAreaMap().getNeighbours(location));
-			;
 
 			Integer neighbourRegionId = null;
 			MapTile unexploredTile = null;

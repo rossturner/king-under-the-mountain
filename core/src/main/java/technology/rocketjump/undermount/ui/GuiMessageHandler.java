@@ -303,7 +303,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 					MapTile tile = gameContext.getAreaMap().getTile(location);
 					if (tile != null && tile.getRoof().getState().equals(TileRoofState.OPEN) && tile.getRoof().getConstructionState().equals(RoofConstructionState.NONE)) {
 						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE,
-								new RoofConstructionQueueMessage(tile, true));
+								new TileConstructionQueueMessage(tile, true));
 					}
 				}
 

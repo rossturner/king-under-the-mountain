@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeci
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.underground.PipeConstructionState;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.rooms.RoomType;
 
@@ -29,7 +30,7 @@ public enum GameInteractionMode {
 	DESIGNATE_MINING("mining", "MINING", mapTile -> ((!mapTile.getExploration().equals(EXPLORED) && mapTile.getDesignation() == null) || (mapTile.hasWall() && mapTile.getDesignation() == null)), true),
 	DESIGNATE_CHOP_WOOD("logging", "CHOP_WOOD", mapTile -> (mapTile.getExploration().equals(EXPLORED) && mapTile.hasTree() && mapTile.getDesignation() == null), true),
 	DESIGNATE_DIG_CHANNEL("spade", "DIG_CHANNEL", mapTile -> {
-		if (!mapTile.getExploration().equals(EXPLORED) || mapTile.getDesignation() != null || mapTile.hasChannel()) {
+		if (!mapTile.getExploration().equals(EXPLORED) || mapTile.getDesignation() != null || mapTile.hasChannel() || isRiverEdge(mapTile)) {
 			return false;
 		}
 		for (Entity entity : mapTile.getEntities()) {
@@ -84,9 +85,20 @@ public enum GameInteractionMode {
 		}
 		return false;
 	}, true),
-	DESIGNATE_ROOFING("roofing", null,mapTile -> mapTile.getRoof().getState().equals(OPEN) && mapTile.getRoof().getConstructionState().equals(NONE), true),
-	CANCEL_ROOFING("cancel", null, mapTile -> mapTile.getRoof().getState().equals(OPEN) && !mapTile.getRoof().getConstructionState().equals(NONE), true),
-	DECONSTRUCT_ROOFING("deconstruct", null, mapTile -> mapTile.getRoof().getState().equals(CONSTRUCTED) && mapTile.getRoof().getConstructionState().equals(NONE), true),
+
+	DESIGNATE_ROOFING("roofing", null, mapTile -> mapTile.getExploration().equals(EXPLORED) &&
+			mapTile.getRoof().getState().equals(OPEN) && mapTile.getRoof().getConstructionState().equals(NONE), true),
+	CANCEL_ROOFING("cancel", null, mapTile -> mapTile.getExploration().equals(EXPLORED) &&
+			mapTile.getRoof().getState().equals(OPEN) && !mapTile.getRoof().getConstructionState().equals(NONE), true),
+	DECONSTRUCT_ROOFING("deconstruct", null, mapTile -> mapTile.getExploration().equals(EXPLORED) &&
+			mapTile.getRoof().getState().equals(CONSTRUCTED) && mapTile.getRoof().getConstructionState().equals(NONE), true),
+
+	DESIGNATE_PIPING("splash", null, mapTile ->  mapTile.getExploration().equals(EXPLORED) &&
+			!isRiverEdge(mapTile) && !mapTile.getFloor().isRiverTile() && !mapTile.hasPipe(), true),
+	CANCEL_PIPING("cancel", null, mapTile -> mapTile.getExploration().equals(EXPLORED) &&
+			mapTile.getUnderTile() != null && mapTile.getUnderTile().getPipeConstructionState().equals(PipeConstructionState.READY_FOR_CONSTRUCTION), true),
+	DECONSTRUCT_PIPING("deconstruct", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && mapTile.hasPipe(), true),
+
 	REMOVE_DESIGNATIONS("cancel", null, mapTile -> mapTile.getDesignation() != null, true),
 	PLACE_ROOM("rooms", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && !mapTile.hasWall() &&
 			!mapTile.hasRoom() && !mapTile.hasDoorway() && !mapTile.isWaterSource() && !mapTile.getFloor().hasBridge(), true),
@@ -107,13 +119,13 @@ public enum GameInteractionMode {
 
 
 	public final String cursorName;
+
 	public final String designationName;
 	private TileDesignation designationToApply;
 	public final DesignationCheck designationCheck;
 	private RoomType roomType;
 	private FurnitureType furnitureType;
 	public final boolean isDraggable;
-
 
 	GameInteractionMode(String cursorName, String designationName, DesignationCheck designationCheck, boolean isDraggable) {
 		this.cursorName = cursorName;
@@ -137,6 +149,7 @@ public enum GameInteractionMode {
 	}
 
 	private static Map<String, GameInteractionMode> byDesignationName = new HashMap<>();
+
 	static {
 		for (GameInteractionMode interactionMode : GameInteractionMode.values()) {
 			byDesignationName.put(interactionMode.designationName, interactionMode);
@@ -145,7 +158,6 @@ public enum GameInteractionMode {
 	public static GameInteractionMode getByDesignationName(String designationName) {
 		return byDesignationName.get(designationName);
 	}
-
 	public TileDesignation getDesignationToApply() {
 		return designationToApply;
 	}
@@ -171,7 +183,11 @@ public enum GameInteractionMode {
 	}
 
 	public interface DesignationCheck {
+
 		boolean shouldDesignationApply(MapTile mapTile);
 	}
 
+	private static boolean isRiverEdge(MapTile mapTile) {
+		return mapTile.getAllFloors().stream().anyMatch(f -> f.getFloorType().getFloorTypeName().equals("river-edge-dirt"));
+	}
 }
