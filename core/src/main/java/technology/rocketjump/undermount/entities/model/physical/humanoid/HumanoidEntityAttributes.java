@@ -247,7 +247,7 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		sanity = EnumParser.getEnumValue(asJson, "sanity", Sanity.class, SANE);
 		bodyMaterial = relatedStores.gameMaterialDictionary.getByName(asJson.getString("bodyMaterial"));
 		if (bodyMaterial == null) {
-			throw new InvalidSaveException("Cound not find material with name " + asJson.getString("bodyMaterial"));
+			throw new InvalidSaveException("Could not find material with name " + asJson.getString("bodyMaterial"));
 		}
 	}
 }
