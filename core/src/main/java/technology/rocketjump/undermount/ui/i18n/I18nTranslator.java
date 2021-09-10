@@ -22,6 +22,7 @@ import technology.rocketjump.undermount.entities.model.physical.humanoid.Sanity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -30,6 +31,7 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.rooms.Bridge;
@@ -363,6 +365,26 @@ public class I18nTranslator implements I18nUpdatable {
 				return applyReplacements(dictionary.getWord("FLOOR.DESCRIPTION"), replacements, Gender.ANY);
 			}
 		}
+	}
+	public I18nText getPipeDescription(Entity pipeEntity, UnderTile underTile) {
+		Map<String, I18nString> replacements = new HashMap<>();
+		TileLiquidFlow liquidFlow = underTile.getLiquidFlow();
+		int liquidAmount = 0;
+		if (liquidFlow != null) {
+			liquidAmount = liquidFlow.getLiquidAmount();
+		}
+
+		if (liquidAmount == 0) {
+			replacements.put("state", dictionary.getWord("FLOOR.CHANNEL.STATE.EMPTY"));
+		} else if (liquidAmount >= MAX_LIQUID_FLOW_PER_TILE) {
+			replacements.put("state", dictionary.getWord("FLOOR.CHANNEL.STATE.FULL"));
+		} else {
+			replacements.put("state", dictionary.getWord("FLOOR.CHANNEL.STATE.PARTIALLY_FILLED"));
+		}
+
+		replacements.put("material", ((MechanismEntityAttributes)pipeEntity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial().getI18nValue());
+
+		return applyReplacements(dictionary.getWord("FLOOR.PIPE.DESCRIPTION"), replacements, Gender.ANY);
 	}
 
 	public I18nText getDescription(Construction construction) {

@@ -22,6 +22,36 @@
     }
   },
   {
+    "name": "WELL",
+    "i18nKey": "FURNITURE.WELL",
+    "categoryName": "LIQUID_CONTAINER",
+    "defaultLayoutName": "2x2 with lower workspaces",
+    "colorCode": "#26e1ed",
+    "iconName": "well",
+    "placeAnywhere": true,
+    "autoConstructed": false,
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 8
+        },
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 3
+        },
+        {
+          "itemTypeName": "Product-Bucket",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "LIQUID_CONTAINER": ["32", "Water"],
+      "FURNITURE_BEHAVIOUR": ["FILL_LIQUID_CONTAINER", "ItemType_Product-Bucket"]
+    }
+  },
+  {
     "name": "CHEFS_CAULDRON",
     "i18nKey": "FURNITURE.CAULDRON",
     "categoryName": "LIQUID_CONTAINER",

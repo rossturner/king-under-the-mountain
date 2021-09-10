@@ -855,6 +855,36 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				));
 				break;
 			}
+			case "CONSTRUCT_PIPING": {
+				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+				EquippedItemComponent equippedItemComponent = completedByEntity.getOrCreateComponent(EquippedItemComponent.class);
+				if (equippedItemComponent != null) {
+					Entity equippedItem = equippedItemComponent.clearEquippedItem();
+					if (equippedItem != null && equippedItem.getType().equals(ITEM)) {
+						ItemEntityAttributes attributes = (ItemEntityAttributes) equippedItem.getPhysicalEntityComponent().getAttributes();
+						GameMaterial material = attributes.getPrimaryMaterial();
+						attributes.setQuantity(attributes.getQuantity() - 1);
+						if (attributes.getQuantity() == 0) {
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
+						} else {
+							// put back as equipped for AI to clear
+							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
+						}
+
+						messageDispatcher.dispatchMessage(MessageType.PIPE_CONSTRUCTED, new PipeConstructionMessage(
+								jobCompletedMessage.getJob().getJobLocation(), material
+						));
+
+					}
+				}
+				break;
+			}
+			case "DECONSTRUCT_PIPING": {
+				messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTED, new PipeConstructionMessage(
+						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
+				));
+				break;
+			}
 			default: {
 				Logger.error("Not yet implemented job completion: " + completedJob.getType());
 			}

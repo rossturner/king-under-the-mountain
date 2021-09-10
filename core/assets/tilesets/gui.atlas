@@ -329,7 +329,7 @@ button
   index: -1
 button_blank
   rotate: false
-  xy: 3937, 140
+  xy: 3829, 72
   size: 28, 31
   split: 12, 10, 13, 4
   orig: 28, 31
@@ -855,7 +855,7 @@ output
   index: -1
 pause
   rotate: false
-  xy: 3697, 73
+  xy: 3763, 139
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
@@ -890,7 +890,7 @@ planks
   index: -1
 play
   rotate: false
-  xy: 3763, 139
+  xy: 3763, 105
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
@@ -1086,14 +1086,14 @@ spade
   index: -1
 speed2
   rotate: false
-  xy: 3763, 105
+  xy: 3829, 139
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
 speed3
   rotate: false
-  xy: 3829, 139
+  xy: 3763, 71
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
@@ -1238,37 +1238,44 @@ water-splash
   orig: 64, 64
   offset: 0, 0
   index: -1
-wheat
+well
   rotate: false
   xy: 3565, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-windmill
+wheat
   rotate: false
   xy: 3565, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wood-pile
+windmill
   rotate: false
   xy: 3631, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wooden-crate
+wood-pile
   rotate: false
   xy: 3631, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wooden-door
+wooden-crate
   rotate: false
   xy: 3697, 107
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+wooden-door
+  rotate: false
+  xy: 3697, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

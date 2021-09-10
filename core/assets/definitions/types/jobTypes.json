@@ -297,6 +297,25 @@
   "onCompletionSoundAssetName" : "ImpactPlank",
   "accessedFromAdjacentTile" : true
 }, {
+  "name" : "CONSTRUCT_PIPING",
+  "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_PIPING",
+  "workDuration" : 3.0,
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : true,
+  "defaultTimeToCompleteJob" : 4.0,
+  "requiredItemTypeName" : "Product-Stone-Pipe",
+  "workOnJobParticleEffectNames" : [ "Digging ground same tile" ],
+  "accessedFromAdjacentTile" : true
+}, {
+  "name" : "DECONSTRUCT_PIPING",
+  "overrideI18nKey" : "ACTION.JOB.DECONSTRUCT_PIPING",
+  "workDuration" : 3.0,
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 4.0,
+  "workOnJobParticleEffectNames" : [ "Digging ground same tile" ],
+  "accessedFromAdjacentTile" : true
+}, {
   "name" : "CONSTRUCT_FLOORING",
   "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_FLOORING",
   "workDuration" : 3.0,

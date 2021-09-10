@@ -7,7 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.lang3.StringUtils;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rooms.StockpileAllocation;
 import technology.rocketjump.undermount.rooms.components.StockpileComponent;
@@ -62,11 +64,18 @@ public class TileSelectedGuiView implements GuiView {
 			MapTile tile = selectable.getTile();
 			if (tile != null) {
 				if (tile.getExploration().equals(EXPLORED)) {
-					descriptionTable.add(new I18nTextWidget(i18nTranslator.getDescription(tile), uiSkin, messageDispatcher)).left();
+					descriptionTable.add(new I18nTextWidget(i18nTranslator.getDescription(tile), uiSkin, messageDispatcher)).left().row();
+
+					UnderTile underTile = tile.getUnderTile();
+					if (underTile != null) {
+						Entity pipeEntity = underTile.getPipeEntity();
+						if (pipeEntity != null) {
+							descriptionTable.add(new I18nTextWidget(i18nTranslator.getPipeDescription(pipeEntity, underTile), uiSkin, messageDispatcher)).left().row();
+						}
+					}
 				} else {
-					descriptionTable.add(new I18nTextWidget(i18nTranslator.getTranslatedString("FLOOR.UNEXPLORED"), uiSkin, messageDispatcher)).left();
+					descriptionTable.add(new I18nTextWidget(i18nTranslator.getTranslatedString("FLOOR.UNEXPLORED"), uiSkin, messageDispatcher)).left().row();
 				}
-				descriptionTable.row();
 				if (GlobalSettings.DEV_MODE) {
 					if (tile.getRoomTile() != null) {
 						StockpileComponent stockpileComponent = tile.getRoomTile().getRoom().getComponent(StockpileComponent.class);

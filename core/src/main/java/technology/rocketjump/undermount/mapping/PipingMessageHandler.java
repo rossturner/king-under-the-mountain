@@ -59,6 +59,7 @@ public class PipingMessageHandler implements Telegraph, GameContextAware {
 
 	private boolean handle(TileConstructionQueueMessage message) {
 		if (message.constructionQueued) {
+
 			pipeConstructionManager.pipeConstructionAdded(message.parentTile);
 		} else {
 			pipeConstructionManager.pipeConstructionRemoved(message.parentTile);
@@ -83,6 +84,8 @@ public class PipingMessageHandler implements Telegraph, GameContextAware {
 		if (tile != null) {
 			UnderTile underTile = tile.getOrCreateUnderTile();
 			underTile.setPipeConstructionState(PipeConstructionState.NONE);
+			messageDispatcher.dispatchMessage(MessageType.ADD_PIPE, new PipeConstructionMessage(
+					tile.getTilePosition(), message.material));
 		}
 		return true;
 	}
@@ -92,6 +95,7 @@ public class PipingMessageHandler implements Telegraph, GameContextAware {
 		if (tile != null) {
 			UnderTile underTile = tile.getOrCreateUnderTile();
 			underTile.setPipeConstructionState(PipeConstructionState.NONE);
+			messageDispatcher.dispatchMessage(MessageType.REMOVE_PIPE, message.tilePosition);
 		}
 		return true;
 	}
