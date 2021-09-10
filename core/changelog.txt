@@ -1,3 +1,8 @@
+Alpha 6.1.8 - 10th September 2021
+
+- Fix for crash with minimap and null room for roomtile
+- Fix for crash when entity selected without NeedsComponent
+
 Alpha 6.1.7 - 5th September 2021
 
 - Fire extinguish designations spread with fire

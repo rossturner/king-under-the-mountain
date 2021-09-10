@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.mapping.minimap;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
@@ -11,6 +12,7 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.rooms.Room;
 
 import java.util.ArrayList;
 
@@ -46,8 +48,13 @@ public class MinimapPixmapGenerator {
 				return rgba8888(tile.getWall().getMaterial().getColor());
 			}
 		} else if (tile.hasRoom()) {
-			return rgba8888(tile.getRoomTile().getRoom().getRoomType().getColor());
-
+			Room room = tile.getRoomTile().getRoom();
+			if (room != null) {
+				return rgba8888(room.getRoomType().getColor());
+			} else {
+				Logger.error("Room is null in " + MinimapPixmapGenerator.class.getSimpleName());
+				return DEFAULT_GROUND_COLOR;
+			}
 		} else if (tile.hasDoorway()) {
 			FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) tile.getDoorway().getDoorEntity().getPhysicalEntityComponent().getAttributes();
 			return rgba8888(attributes.getMaterials().get(attributes.getPrimaryMaterialType()).getColor());
