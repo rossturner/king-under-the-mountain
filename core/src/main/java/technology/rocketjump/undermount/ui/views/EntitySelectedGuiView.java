@@ -481,18 +481,19 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 
 	public static void populateNeedsTable(Table needsTable, Entity entity, Map<EntityNeed, I18nLabel> needLabels, Skin uiSkin) {
 		NeedsComponent needsComponent = entity.getComponent(NeedsComponent.class);
-
-		for (Map.Entry<EntityNeed, I18nLabel> entry : needLabels.entrySet()) {
-			Double needValue = needsComponent.getValue(entry.getKey());
-			if (needValue == null) {
-				continue;
+		if (needsComponent != null) {
+			for (Map.Entry<EntityNeed, I18nLabel> entry : needLabels.entrySet()) {
+				Double needValue = needsComponent.getValue(entry.getKey());
+				if (needValue == null) {
+					continue;
+				}
+				needsTable.add(new I18nLabel(entry.getValue())).pad(5);
+				ProgressBar progressBar = new VisProgressBar(0, 100, 1, false);
+				progressBar.setValue(Math.round(needValue));
+				progressBar.setDisabled(true);
+				needsTable.add(progressBar).left().padRight(5);
+				needsTable.row();
 			}
-			needsTable.add(new I18nLabel(entry.getValue())).pad(5);
-			ProgressBar progressBar = new VisProgressBar(0, 100, 1, false);
-			progressBar.setValue(Math.round(needValue));
-			progressBar.setDisabled(true);
-			needsTable.add(progressBar).left().padRight(5);
-			needsTable.row();
 		}
 
 	}
