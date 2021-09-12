@@ -45,6 +45,7 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 		messageDispatcher.addListener(this, MessageType.REMOVE_CHANNEL);
 		messageDispatcher.addListener(this, MessageType.PIPE_ADDED);
 		messageDispatcher.addListener(this, MessageType.REMOVE_PIPE);
+		messageDispatcher.addListener(this, MessageType.LIQUID_REMOVED_FROM_FLOW);
 	}
 
 	@Override

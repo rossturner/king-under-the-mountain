@@ -1531,7 +1531,7 @@
           "unit" : false
         }
       }, {
-        "type" : "FURNITURE_ABOVE_LAYER_3",
+        "type" : "FURNITURE_LIQUID_LAYER",
         "offsetPixels" : {
           "x" : 1.0,
           "y" : 12.0,
@@ -1605,7 +1605,7 @@
   }
 }, {
   "uniqueName" : "Furniture-Well-Water-Layer",
-  "type" : "FURNITURE_ABOVE_LAYER_3",
+  "type" : "FURNITURE_LIQUID_LAYER",
   "furnitureTypeName" : "WELL",
   "furnitureLayoutName" : "2x2 with lower workspaces",
   "validMaterialTypes" : [ "STONE" ],
@@ -1613,7 +1613,6 @@
   "spriteDescriptors" : {
     "DOWN" : {
       "filename" : "well_3-64.png",
-      "coloringLayer" : "LIQUID_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
