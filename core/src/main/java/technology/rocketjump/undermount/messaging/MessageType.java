@@ -245,6 +245,6 @@ public class MessageType {
 
 	// Liquid flow messages
 	public static final int ADD_LIQUID_TO_FLOW = 1800;
-	public static final int REMOVE_LIQUID_FROM_FLOW = 1801;
+	public static final int LIQUID_REMOVED_FROM_FLOW = 1801;
 
 }

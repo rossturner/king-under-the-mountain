@@ -198,6 +198,7 @@ public class LiquidFlowProcessor implements Updatable, Telegraph {
 			case MessageType.REMOVE_CHANNEL:
 			case MessageType.PIPE_ADDED:
 			case MessageType.REMOVE_PIPE:
+			case MessageType.LIQUID_REMOVED_FROM_FLOW:
 				GridPoint2 targetTile = (GridPoint2) msg.extraInfo;
 				activateTile(gameContext.getAreaMap().getTile(targetTile));
 				for (CompassDirection neighbourDirection : CompassDirection.CARDINAL_DIRECTIONS) {

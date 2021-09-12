@@ -192,7 +192,7 @@
   },
   "tags" : {
     "LIQUID_CONTAINER" : [ "32", "Water" ],
-    "FURNITURE_BEHAVIOUR" : [ "FILL_LIQUID_CONTAINER", "ItemType_Product-Bucket" ]
+    "FURNITURE_BEHAVIOUR" : [ "WELL" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {
