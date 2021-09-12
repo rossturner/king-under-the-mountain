@@ -156,7 +156,8 @@ public class SpriteCropper {
 
 				Vector2 originalMidpoint = new Vector2(((float)width) / 2f, ((float)height) / 2f);
 				Vector2 newMidpoint = new Vector2(cropLeft + (((float)newWidth) / 2f), cropBottom + ((float)newHeight / 2f));
-				Vector2 offset = originalMidpoint.cpy().sub(newMidpoint); // TODO might need inverting
+				Vector2 offset = originalMidpoint.cpy().sub(newMidpoint);
+				offset.x = 0-offset.x;
 				newOffsets.put(filename, offset);
 			}
 		}
@@ -190,6 +191,25 @@ public class SpriteCropper {
 						originalOffset.addProperty("y", replacementOffset.y);
 
 						directionJson.add("offsetPixels", originalOffset);
+
+						JsonArray childAssets = directionJson.getAsJsonArray("childAssets");
+						if (childAssets != null) {
+							for (int childCursor = 0; childCursor < childAssets.size(); childCursor++) {
+								JsonObject childAssetJson = childAssets.get(childCursor).getAsJsonObject();
+								JsonObject childOffsetJson = childAssetJson.getAsJsonObject("offsetPixels");
+								if (childOffsetJson == null) {
+									childOffsetJson = new JsonObject();
+								}
+								Vector2 childOffsetVec = new Vector2(
+										childOffsetJson.get("x") == null ? 0f : childOffsetJson.get("x").getAsFloat(),
+										childOffsetJson.get("y") == null ? 0f : childOffsetJson.get("y").getAsFloat()
+								);
+								childOffsetVec.sub(newOffset);
+								childOffsetJson.addProperty("x", childOffsetVec.x);
+								childOffsetJson.addProperty("y", childOffsetVec.y);
+								childAssetJson.add("offsetPixels", childOffsetJson);
+							}
+						}
 					}
 				}
 			}
