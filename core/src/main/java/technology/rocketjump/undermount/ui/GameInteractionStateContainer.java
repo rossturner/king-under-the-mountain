@@ -53,6 +53,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 import static technology.rocketjump.undermount.rooms.RoomTypeDictionary.VIRTUAL_PLACING_ROOM;
 import static technology.rocketjump.undermount.sprites.model.BridgeOrientation.EAST_WEST;
 import static technology.rocketjump.undermount.sprites.model.BridgeOrientation.NORTH_SOUTH;
+import static technology.rocketjump.undermount.ui.GameInteractionMode.isRiverEdge;
 
 /**
  * This class keeps track of how the player is interacting with the game world - for example an input event not captured
@@ -557,6 +558,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 			positionsToCheck.add(tilePosition.cpy().add(extraTileOffset));
 		}
 
+		boolean oneTileNotRiverEdge = false;
 		for (GridPoint2 positionToCheck : positionsToCheck) {
 			MapTile tileToCheck = map.getTile(positionToCheck);
 			if (tileToCheck == null || !tileToCheck.isEmptyExceptItemsAndPlants()) {
@@ -573,7 +575,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 					return false;
 				}
 			} else {
-				// If this is place-anywhere, disallow placement inside stockpiles
+				// If this is place-anywhere, disallow placement inside stockpiles and at river edge
 				RoomTile roomTile = tileToCheck.getRoomTile();
 				if (roomTile != null) {
 					if (roomTile.getRoom().getRoomType().getFurnitureNames().isEmpty()) {
@@ -581,8 +583,15 @@ public class GameInteractionStateContainer implements GameContextAware {
 						return false;
 					}
 				}
-
 			}
+
+			if (!isRiverEdge(tileToCheck)) {
+				oneTileNotRiverEdge = true;
+			}
+		}
+
+		if (!oneTileNotRiverEdge) {
+			return false;
 		}
 
 		if (attributes.getCurrentLayout().getWorkspaces().size() > 0) {

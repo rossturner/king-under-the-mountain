@@ -187,7 +187,7 @@ public enum GameInteractionMode {
 		boolean shouldDesignationApply(MapTile mapTile);
 	}
 
-	private static boolean isRiverEdge(MapTile mapTile) {
+	public static boolean isRiverEdge(MapTile mapTile) {
 		return mapTile.getAllFloors().stream().anyMatch(f -> f.getFloorType().getFloorTypeName().equals("river-edge-dirt"));
 	}
 }
