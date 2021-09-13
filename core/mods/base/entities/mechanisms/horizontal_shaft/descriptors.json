@@ -1,0 +1,18 @@
+[
+  {
+    "uniqueName": "Mechanism-Shaft-Horz-Body",
+    "type": "MECHANISM_BASE_LAYER",
+    "mechanismTypeName": "Shaft_Horizontal",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "shaft-horz",
+        "isAnimated": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

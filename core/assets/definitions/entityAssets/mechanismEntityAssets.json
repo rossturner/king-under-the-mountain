@@ -22,6 +22,29 @@
     }
   }
 }, {
+  "uniqueName" : "Mechanism-Shaft-Horz-Body",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Shaft_Horizontal",
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "shaft-horz",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "Pipe-0",
   "type" : "MECHANISM_BASE_LAYER",
   "mechanismTypeName" : "Pipe",
@@ -391,6 +414,29 @@
       "filename" : "Resources_Pipe 4-way-junction.png",
       "coloringLayer" : "STONE_COLOR",
       "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Mechanism-Shaft-Vert-Body",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Shaft_Vertical",
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "shaft-vert",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : true,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
