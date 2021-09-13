@@ -24,6 +24,7 @@ public class GuiViewRepository implements Telegraph {
 							 BuildWallsGuiView buildWallsGuiView, ConstructionSelectedGuiView constructionSelectedGuiView,
 							 BuildDoorsGuiView buildDoorsGuiView, DoorwaySelectedGuiView doorwaySelectedGuiView, TileSelectedGuiView tileSelectedGuiView,
 							 BuildRoofingGuiView buildRoofingGuiView, BuildPipingGuiView buildPipingGuiView,
+							 BuildMechanismsGuiView buildMechanismsGuiView,
 							 RoomSelectedGuiView roomSelectedGuiView, StockpileSelectionGuiView stockpileSelectionGuiView,
 							 ChangeProfessionGuiView changeProfessionGuiView, BuildBridgeGuiView buildBridgeGuiView,
 							 BridgeSelectedGuiView bridgeSelectedGuiView, PrioritiesGuiView prioritiesGuiView,
@@ -33,7 +34,7 @@ public class GuiViewRepository implements Telegraph {
 				furnitureSelectionGuiView, entitySelectedGuiView, buildMenuGuiView, buildFlooringGuiView, buildWallsGuiView,
 				buildDoorsGuiView, doorwaySelectedGuiView,
 				tileSelectedGuiView, buildRoofingGuiView, buildPipingGuiView, roomSelectedGuiView, stockpileSelectionGuiView,
-				changeProfessionGuiView, buildBridgeGuiView,
+				changeProfessionGuiView, buildBridgeGuiView, buildMechanismsGuiView,
 				bridgeSelectedGuiView, prioritiesGuiView, selectStartLocationGuiView);
 	}
 

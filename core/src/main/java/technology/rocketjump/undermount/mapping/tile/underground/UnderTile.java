@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.MoreObjects;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -24,6 +25,9 @@ public class UnderTile implements ChildPersistable {
 
 	private boolean powerSource;
 	private boolean powerConsumer;
+
+	private MechanismType queuedMechanismType;
+	private Entity powerMechanismEntity;
 
 	public ChannelLayout getChannelLayout() {
 		return channelLayout;
@@ -118,6 +122,22 @@ public class UnderTile implements ChildPersistable {
 		this.powerConsumer = powerConsumer;
 	}
 
+	public MechanismType getQueuedMechanismType() {
+		return queuedMechanismType;
+	}
+
+	public void setQueuedMechanismType(MechanismType queuedMechanismType) {
+		this.queuedMechanismType = queuedMechanismType;
+	}
+
+	public Entity getPowerMechanismEntity() {
+		return powerMechanismEntity;
+	}
+
+	public void setPowerMechanismEntity(Entity powerMechanismEntity) {
+		this.powerMechanismEntity = powerMechanismEntity;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		if (channelLayout != null) {
@@ -148,6 +168,15 @@ public class UnderTile implements ChildPersistable {
 		if (powerConsumer) {
 			asJson.put("powerConsumer", true);
 		}
+
+		if (queuedMechanismType != null) {
+			asJson.put("queuedMechanismType", queuedMechanismType.getName());
+		}
+
+		if (powerMechanismEntity != null) {
+			powerMechanismEntity.writeTo(savedGameStateHolder);
+			asJson.put("powerMechanismEntity", powerMechanismEntity.getId());
+		}
 	}
 
 	@Override
@@ -175,6 +204,22 @@ public class UnderTile implements ChildPersistable {
 
 		this.powerSource = asJson.getBooleanValue("powerSource");
 		this.powerConsumer = asJson.getBooleanValue("powerConsumer");
+
+		String queuedMechanismTypeName = asJson.getString("queuedMechanismType");
+		if (queuedMechanismTypeName != null) {
+			this.queuedMechanismType = relatedStores.mechanismTypeDictionary.getByName(queuedMechanismTypeName);
+			if (this.queuedMechanismType == null) {
+				throw new InvalidSaveException("Could not find mechanism type " + queuedMechanismTypeName);
+			}
+		}
+
+		Long powerMechanismEntityId = asJson.getLong("powerMechanismEntity");
+		if (powerMechanismEntityId != null) {
+			this.powerMechanismEntity = savedGameStateHolder.entities.get(powerMechanismEntityId);
+			if (this.powerMechanismEntity == null) {
+				throw new InvalidSaveException("Could not find mechanism entity with ID " + powerMechanismEntityId);
+			}
+		}
 	}
 
 	public boolean liquidCanFlowFrom(MapTile sourceTile) {

@@ -19,6 +19,7 @@ import java.util.List;
 
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.DIFFUSE_ENTITIES;
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.NORMAL_ENTITIES;
+import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addAnimatedSpriteArray;
 import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addSprite;
 
 public class MechanismEntityAssetDictionaryProvider implements Provider<MechanismEntityAssetDictionary> {
@@ -49,8 +50,13 @@ public class MechanismEntityAssetDictionaryProvider implements Provider<Mechanis
 
 			for (MechanismEntityAsset asset : assetList) {
 				for (SpriteDescriptor spriteDescriptor : asset.getSpriteDescriptors().values()) {
-					addSprite(spriteDescriptor, diffuseTextureAtlas, RenderMode.DIFFUSE);
-					addSprite(spriteDescriptor, normalTextureAtlas, RenderMode.NORMALS);
+					if (spriteDescriptor.getIsAnimated()) {
+						addAnimatedSpriteArray(spriteDescriptor, diffuseTextureAtlas, RenderMode.DIFFUSE);
+						addAnimatedSpriteArray(spriteDescriptor, normalTextureAtlas, RenderMode.NORMALS);
+					} else {
+						addSprite(spriteDescriptor, diffuseTextureAtlas, RenderMode.DIFFUSE);
+						addSprite(spriteDescriptor, normalTextureAtlas, RenderMode.NORMALS);
+					}
 				}
 			}
 

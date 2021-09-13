@@ -137,13 +137,18 @@ public class MechanismViewerUI implements Disposable {
 		for (Integer layout : pipeLayoutAtlas.getUniqueLayouts()) {
 			layouts.add(layout);
 		}
+		layouts.add(-1);
 		pipeLayoutSelect.setItems(layouts);
 		pipeLayoutSelect.setSelected(entityAttributes.getPipeLayout().getId());
 
 		pipeLayoutSelect.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				Integer selectedLayout = pipeLayoutSelect.getSelected();
-				entityAttributes.setPipeLayout(new PipeLayout(selectedLayout));
+				if (selectedLayout == -1) {
+					entityAttributes.setPipeLayout(null);
+				} else {
+					entityAttributes.setPipeLayout(new PipeLayout(selectedLayout));
+				}
 				entityAssetUpdater.updateEntityAssets(currentEntity);
 			}
 		});

@@ -40,6 +40,7 @@ import technology.rocketjump.undermount.rendering.RoomRenderer;
 import technology.rocketjump.undermount.rendering.TerrainRenderer;
 import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.mechanisms.MechanismsViewModeRenderer;
 import technology.rocketjump.undermount.rendering.piping.PipingViewModeRenderer;
 import technology.rocketjump.undermount.rendering.roofing.RoofingViewModeRenderer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -62,8 +63,8 @@ import static technology.rocketjump.undermount.ui.GameViewMode.JOB_PRIORITY;
 public class InWorldUIRenderer {
 
 	// MODDING expose furniture placement colors
-	public static final String VALID_PLACEMENT_COLOR = "#00ee00aa";
-	public static final String INVALID_PLACEMENT_COLOR = "#ee0000aa";
+	public static final Color VALID_PLACEMENT_COLOR = HexColors.get("#00ee00aa");
+	public static final Color INVALID_PLACEMENT_COLOR = HexColors.get("#ee0000aa");
 	private static final long BLINK_DURATION_MILLIS = 800L;
 
 	private final GameInteractionStateContainer interactionStateContainer;
@@ -72,6 +73,7 @@ public class InWorldUIRenderer {
 	private final SelectableOutlineRenderer selectableOutlineRenderer;
 	private final RoofingViewModeRenderer roofingViewModeRenderer;
 	private final PipingViewModeRenderer pipingViewModeRenderer;
+	private final MechanismsViewModeRenderer mechanismsViewModeRenderer;
 
 	private final ShapeRenderer shapeRenderer = new ShapeRenderer();
 	private final SpriteBatch spriteBatch = new SpriteBatch();
@@ -89,7 +91,7 @@ public class InWorldUIRenderer {
 							 TerrainRenderer terrainRenderer, RoomRenderer roomRenderer, RenderingOptions renderingOptions, JobStore jobStore,
 							 FurnitureTypeDictionary furnitureTypeDictionary, IconSpriteCache iconSpriteCache,
 							 SelectableOutlineRenderer selectableOutlineRenderer, RoofingViewModeRenderer roofingViewModeRenderer,
-							 PipingViewModeRenderer pipingViewModeRenderer) {
+							 PipingViewModeRenderer pipingViewModeRenderer, MechanismsViewModeRenderer mechanismsViewModeRenderer) {
 		this.interactionStateContainer = interactionStateContainer;
 		this.entityRenderer = entityRenderer;
 		this.terrainRenderer = terrainRenderer;
@@ -100,6 +102,7 @@ public class InWorldUIRenderer {
 		this.iconSpriteCache = iconSpriteCache;
 		this.roofingViewModeRenderer = roofingViewModeRenderer;
 		this.pipingViewModeRenderer = pipingViewModeRenderer;
+		this.mechanismsViewModeRenderer = mechanismsViewModeRenderer;
 
 		customShaderSpriteBatch = new CustomShaderSpriteBatch(1000, defaultShaderInstance);
 
@@ -145,6 +148,10 @@ public class InWorldUIRenderer {
 			pipingViewModeRenderer.render(map, camera, spriteBatch, shapeRenderer, blinkState);
 			return;
 		}
+		if (interactionStateContainer.getGameViewMode().equals(GameViewMode.MECHANISMS)) {
+			mechanismsViewModeRenderer.render(map, camera, spriteBatch, shapeRenderer, blinkState);
+			return;
+		}
 
 		if (interactionStateContainer.getInteractionMode().equals(DEFAULT)) {
 			Selectable selectable = interactionStateContainer.getSelectable();
@@ -152,9 +159,9 @@ public class InWorldUIRenderer {
 				selectableOutlineRenderer.render(selectable, shapeRenderer);
 			}
 		} else if (interactionStateContainer.getInteractionMode().equals(PLACE_FURNITURE)) {
-			Color furnitureColor = HexColors.get(VALID_PLACEMENT_COLOR);
+			Color furnitureColor = VALID_PLACEMENT_COLOR;
 			if (!interactionStateContainer.isValidFurniturePlacement()) {
-				furnitureColor = HexColors.get(INVALID_PLACEMENT_COLOR);
+				furnitureColor = INVALID_PLACEMENT_COLOR;
 			}
 
 			Entity furnitureEntity = interactionStateContainer.getFurnitureEntityToPlace();
@@ -182,9 +189,9 @@ public class InWorldUIRenderer {
 		} else if (interactionStateContainer.getInteractionMode().equals(PLACE_DOOR)) {
 			DoorwayPlacementMessage virtualDoorPlacement = interactionStateContainer.getVirtualDoorPlacement();
 			if (virtualDoorPlacement != null) {
-				Color doorPlacementColor = HexColors.get(VALID_PLACEMENT_COLOR);
+				Color doorPlacementColor = VALID_PLACEMENT_COLOR;
 				if (!interactionStateContainer.isValidDoorPlacement()) {
-					doorPlacementColor = HexColors.get(INVALID_PLACEMENT_COLOR);
+					doorPlacementColor = INVALID_PLACEMENT_COLOR;
 				}
 
 				spriteBatch.begin();
@@ -195,9 +202,9 @@ public class InWorldUIRenderer {
 		} else if (interactionStateContainer.getInteractionMode().equals(PLACE_BRIDGE)) {
 			BridgeConstruction virtualBridgeConstruction = interactionStateContainer.getVirtualBridgeConstruction();
 			if (virtualBridgeConstruction != null) {
-				Color bridgePlacementColor = HexColors.get(VALID_PLACEMENT_COLOR);
+				Color bridgePlacementColor = VALID_PLACEMENT_COLOR;
 				if (!interactionStateContainer.isValidBridgePlacement()) {
-					bridgePlacementColor = HexColors.get(INVALID_PLACEMENT_COLOR);
+					bridgePlacementColor = INVALID_PLACEMENT_COLOR;
 				}
 
 				spriteBatch.begin();

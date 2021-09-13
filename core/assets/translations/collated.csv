@@ -342,6 +342,8 @@ GUI.LOAD_GAME.TABLE.SETTLEMENT_NAME,Name,,Name,,,,,,,,,,,,,,,,,
 GUI.LOAD_GAME.TABLE.VERSION,Version,,Version,,,,,,,,,,,,,,,,,
 GUI.LOAD_GAME.TITLE,Load Game,,Lade Spiel,,,,,,,,,,,,,,,,,
 GUI.MAP_SEED_DISPLAY,"Current map seed: ",,,,,,,,,,,,,,,,,,,
+GUI.MECHANISM.SHAFT.HORIZONTAL,Horizontal,,,,,,,,,,,,,,,,,,,
+GUI.MECHANISM.SHAFT.VERTICAL,Vertical,,,,,,,,,,,,,,,,,,,
 GUI.MINIMAP.LABEL,Minimap,,Minikarte,Minimap,Minimap,Minimapa,Minimapa,,,Минимап,El Haritası,Minimap,,Minimap,,,,ミニマップ,最低限度,미니맵
 GUI.MUSIC_VOLUME,Music volume:,,Musiklautstärke:,Volume de la musique:,Volume della musica:,Volumen de la música:,Volume da música:,Volume da música:,,Громкость музыки:,Müzik seviyesi:,Musikvolumen:,,Musik volym:,,,,音楽ボリューム:,音乐音量：,음악 볼륨:
 GUI.NEW_VERSION_AVAILABLE,,,Neue Version jetzt auf itch.io verfügbar,Nouvelle version maintenant disponible sur Itch.io,Nuova versione ora disponibile su Itch.io,Nueva versión disponible en Itch.io,Nova versão agora disponível no ItC.io,,,Новая версия теперь доступна на Itch.io,Yeni versiyon Itch.io da.,Ny version nu tilgængelig på Itch.io,,Ny version nu tillgänglig på Itch.io,,,,新しいバージョンがItch.ioで利用可能になりました,新版本现已在 iTch.io 上推出,Itch.io에서 새 버전을 사용할 수 있습니다.
@@ -722,6 +724,12 @@ PRODUCT.STONE.GEAR.TOOLTIP,Used in the construction of mechanisms.,,,,,,,,,,,,,,
 PRODUCT.STONE.PIPE.NOUN,Pipe,,,,,,,,,,,,,,,,,,,
 PRODUCT.STONE.PIPE.PLURAL,Pipes,,,,,,,,,,,,,,,,,,,
 PRODUCT.STONE.PIPE.TOOLTIP,Used for liquids to flow between tiles underground.,,,,,,,,,,,,,,,,,,,
+PRODUCT.WOODEN.SHAFT.HORIZONTAL.NOUN,Horizontal shaft,,,,,,,,,,,,,,,,,,,
+PRODUCT.WOODEN.SHAFT.HORIZONTAL.PLURAL,Horizontal shafts,,,,,,,,,,,,,,,,,,,
+PRODUCT.WOODEN.SHAFT.HORIZONTAL.TOOLTIP,Used to connect mechanisms which produce and require power.,,,,,,,,,,,,,,,,,,,
+PRODUCT.WOODEN.SHAFT.VERTICAL.NOUN,Vertical shaft,,,,,,,,,,,,,,,,,,,
+PRODUCT.WOODEN.SHAFT.VERTICAL.PLURAL,Vertical shafts,,,,,,,,,,,,,,,,,,,
+PRODUCT.WOODEN.SHAFT.VERTICAL.TOOLTIP,Used to connect mechanisms which produce and require power.,,,,,,,,,,,,,,,,,,,
 
 PROFESSION.BAKER.VERB,Baking,,Backt,Fabrique,Sta cuocendo,Horneando,Cozer,Assando,,Выпекание,Pişirmek,Bagning,,Bakning,,,,ベーキング,烘烤,베이킹
 PROFESSION.BLACKSMITH.FEMALE_NOUN,Blacksmith,,Schmiedin,Forgeronne,Fabbro,Herrera,Ferreira,Ferreira,,Кузнец,Demirci,Smed,,Smed,,,,鍛冶屋,铁匠,대장장이

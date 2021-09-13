@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.doors.DoorwaySize;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -113,6 +114,8 @@ public class GameInteractionStateContainer implements GameContextAware {
 	// Floor placement info
 	private MaterialSelectionMessage floorMaterialSelection = new MaterialSelectionMessage(GameMaterialType.STONE, NULL_MATERIAL, null);
 	private FloorType floorTypeToPlace;
+	// Mechanism placement info
+	private MechanismType mechanismTypeToPlace;
 
 
 	@Inject
@@ -223,10 +226,10 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 				furnitureEntityToPlace.getLocationComponent().setWorldPosition(toVector(tilePosition), false);
 
-
 				validFurniturePlacement = isFurniturePlacementValid(map, tilePosition, attributes);
 			}
 
+		} else if (interactionMode.equals(GameInteractionMode.DESIGNATE_MECHANISMS)) {
 		} else if (interactionMode.equals(GameInteractionMode.PLACE_WALLS)) {
 			GameMaterial selectedMaterial = wallMaterialSelection.selectedMaterial;
 
@@ -841,5 +844,13 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 		}
 		return false;
+	}
+
+	public MechanismType getMechanismTypeToPlace() {
+		return mechanismTypeToPlace;
+	}
+
+	public void setMechanismTypeToPlace(MechanismType mechanismTypeToPlace) {
+		this.mechanismTypeToPlace = mechanismTypeToPlace;
 	}
 }

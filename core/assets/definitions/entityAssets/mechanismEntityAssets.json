@@ -1,4 +1,27 @@
 [ {
+  "uniqueName" : "Mechanism-Gear-Body",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Gear",
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "gears",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "Pipe-0",
   "type" : "MECHANISM_BASE_LAYER",
   "mechanismTypeName" : "Pipe",

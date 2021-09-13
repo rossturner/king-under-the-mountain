@@ -1,5 +1,17 @@
 [ {
+  "name" : "Gear",
+  "primaryMaterialType" : "STONE",
+  "tags" : { }
+}, {
+  "name" : "Shaft_Horizontal",
+  "primaryMaterialType" : "WOOD",
+  "tags" : { }
+}, {
   "name" : "Pipe",
   "primaryMaterialType" : "STONE",
+  "tags" : { }
+}, {
+  "name" : "Shaft_Vertical",
+  "primaryMaterialType" : "WOOD",
   "tags" : { }
 } ]

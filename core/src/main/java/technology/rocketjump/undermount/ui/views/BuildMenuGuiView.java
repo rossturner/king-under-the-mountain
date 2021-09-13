@@ -66,7 +66,7 @@ public class BuildMenuGuiView implements GuiView {
 
 		IconButton mechanisms = iconButtonFactory.create("GUI.BUILD.MECHANISMS", "auto-repair", HexColors.get("#c14545"), ButtonStyle.DEFAULT);
 		mechanisms.setAction(() -> {
-			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.PIPING);
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.MECHANISMS);
 			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.BUILD_MECHANISMS);
 		});
 		iconButtons.add(mechanisms);

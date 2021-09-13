@@ -692,6 +692,10 @@ public class MapTile implements Persistable {
 		return floors;
 	}
 
+	public boolean hasPowerMechanism() {
+		return underTile != null && underTile.getPowerMechanismEntity() != null;
+	}
+
 	public enum RegionType {
 		RIVER, WALL, CHANNEL, GENERIC
 	}

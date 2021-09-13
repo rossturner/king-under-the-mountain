@@ -99,6 +99,12 @@ public enum GameInteractionMode {
 			mapTile.getUnderTile() != null && mapTile.getUnderTile().getPipeConstructionState().equals(PipeConstructionState.READY_FOR_CONSTRUCTION), true),
 	DECONSTRUCT_PIPING("deconstruct", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && mapTile.hasPipe(), true),
 
+	DESIGNATE_MECHANISMS("gears", null, mapTile -> mapTile.getExploration().equals(EXPLORED) &&
+			!mapTile.getFloor().isRiverTile() && !mapTile.hasPowerMechanism() && (mapTile.getUnderTile() == null || mapTile.getUnderTile().getQueuedMechanismType() == null), false),
+	CANCEL_MECHANISMS("cancel", null, mapTile -> mapTile.getExploration().equals(EXPLORED) &&
+			mapTile.getUnderTile() != null && mapTile.getUnderTile().getQueuedMechanismType() != null, true),
+	DECONSTRUCT_MECHANISMS("deconstruct", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && mapTile.hasPowerMechanism(), true),
+
 	REMOVE_DESIGNATIONS("cancel", null, mapTile -> mapTile.getDesignation() != null, true),
 	PLACE_ROOM("rooms", null, mapTile -> mapTile.getExploration().equals(EXPLORED) && !mapTile.hasWall() &&
 			!mapTile.hasRoom() && !mapTile.hasDoorway() && !mapTile.isWaterSource() && !mapTile.getFloor().hasBridge(), true),
