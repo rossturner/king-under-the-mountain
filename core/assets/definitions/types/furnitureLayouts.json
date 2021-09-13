@@ -297,6 +297,20 @@
     "requirement" : "IS_RIVER"
   } ]
 }, {
+  "uniqueName" : "2x2",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
+}, {
   "uniqueName" : "2x2 with lower workspaces",
   "extraTiles" : [ {
     "x" : 0,

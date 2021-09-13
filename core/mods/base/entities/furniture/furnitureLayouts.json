@@ -219,6 +219,15 @@
   },
 
   {
+    "uniqueName": "2x2",
+    "rotatesToName": null,
+    "extraTiles": [
+      { "x": 0, "y": 1 },
+      { "x": 1, "y": 0 },
+      { "x": 1, "y": 1 }
+    ]
+  },
+  {
     "uniqueName": "2x2 with lower workspaces",
     "rotatesToName": null,
     "extraTiles": [

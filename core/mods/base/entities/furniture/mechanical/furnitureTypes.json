@@ -1,0 +1,26 @@
+[
+  {
+    "name": "WINDMILL",
+    "i18nKey": "FURNITURE.WINDMILL",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x2",
+    "colorCode": "#c14545",
+    "iconName": "windmill",
+    "placeAnywhere": true,
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 12
+        },
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 6
+        }
+      ]
+    },
+    "tags": {
+      "POWERED_FURNITURE": [20, 0.8]
+    }
+  }
+]
