@@ -38,7 +38,7 @@ public class WaterPumpBehaviour extends FurnitureBehaviour implements Destructib
 		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 		if (parentTile != null) {
 			UnderTile underTile = parentTile.getOrCreateUnderTile();
-			underTile.setLiquidInput(true);
+			underTile.setLiquidSource(true);
 
 			if (powered) {
 				if (underTile.liquidCanFlow()) {
@@ -61,7 +61,7 @@ public class WaterPumpBehaviour extends FurnitureBehaviour implements Destructib
 		if (parentTile != null) {
 			UnderTile underTile = parentTile.getUnderTile();
 			if (underTile != null) {
-				underTile.setLiquidInput(false);
+				underTile.setLiquidSource(false);
 			}
 		}
 	}

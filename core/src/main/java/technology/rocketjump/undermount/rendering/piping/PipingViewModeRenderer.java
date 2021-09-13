@@ -41,16 +41,16 @@ public class PipingViewModeRenderer {
 	private final EntityRenderer entityRenderer;
 
 	// MODDING expose this
-	private final Sprite liquidInputSprite;
-	private final Color liquidInputColor = HexColors.get("#26e1ed");
-	private final Sprite liquidOutputSprite;
-	private final Color liquidOutputColor = HexColors.POSITIVE_COLOR;
+	private final Sprite liquidSourceSprite;
+	private final Color liquidSouceColor = HexColors.get("#26e1ed");
+	private final Sprite liquidConsumerSprite;
+	private final Color liquidConsumerColor = HexColors.POSITIVE_COLOR;
 	private final Sprite pipesSprite;
 	private final Color pendingPipesColor = HexColors.get("#FFFF9966");
 //	private final Sprite deconstructSprite;
 	private final Color viewMaskColor = HexColors.get("#999999BB");
 	private final List<Entity> entitiesToRender = new ArrayList<>();
-	private final List<MapTile> tilesWithInputsOrOutputs = new ArrayList<>();
+	private final List<MapTile> tilesWithSourceOrConsumer = new ArrayList<>();
 
 	@Inject
 	public PipingViewModeRenderer(GameInteractionStateContainer interactionStateContainer, JobStore jobStore,
@@ -60,8 +60,8 @@ public class PipingViewModeRenderer {
 		this.entityRenderer = entityRenderer;
 
 		TextureAtlas guiAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
-		liquidInputSprite = guiAtlas.createSprite("input");
-		liquidOutputSprite = guiAtlas.createSprite("output");
+		liquidSourceSprite = guiAtlas.createSprite("input");
+		liquidConsumerSprite = guiAtlas.createSprite("output");
 		pipesSprite = guiAtlas.createSprite("pipes");
 //		deconstructSprite = guiAtlas.createSprite("demolish");
 	}
@@ -76,7 +76,7 @@ public class PipingViewModeRenderer {
 		GridPoint2 minDraggingTile = new GridPoint2(MathUtils.floor(minDraggingPoint.x), MathUtils.floor(minDraggingPoint.y));
 		GridPoint2 maxDraggingTile = new GridPoint2(MathUtils.floor(maxDraggingPoint.x), MathUtils.floor(maxDraggingPoint.y));
 		entitiesToRender.clear();
-		tilesWithInputsOrOutputs.clear();
+		tilesWithSourceOrConsumer.clear();
 
 		shapeRenderer.setColor(viewMaskColor);
 		shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -97,8 +97,8 @@ public class PipingViewModeRenderer {
 							entitiesToRender.add(underTile.getPipeEntity());
 						}
 
-						if (underTile.isLiquidInput() || underTile.isLiquidOutput()) {
-							tilesWithInputsOrOutputs.add(mapTile);
+						if (underTile.isLiquidSource() || underTile.isLiquidConsumer()) {
+							tilesWithSourceOrConsumer.add(mapTile);
 						}
 					}
 
@@ -150,13 +150,13 @@ public class PipingViewModeRenderer {
 			entityRenderer.render(entity, spriteBatch, RenderMode.DIFFUSE,
 					null, null, null);
 		}
-		for (MapTile tile : tilesWithInputsOrOutputs) {
-			if (tile.getUnderTile().isLiquidInput()) {
-				spriteBatch.setColor(liquidInputColor);
-				spriteBatch.draw(liquidInputSprite, tile.getTileX(), tile.getTileY(), 1, 1);
-			} else if (tile.getUnderTile().isLiquidOutput()) {
-				spriteBatch.setColor(liquidOutputColor);
-				spriteBatch.draw(liquidOutputSprite, tile.getTileX(), tile.getTileY(), 1, 1);
+		for (MapTile tile : tilesWithSourceOrConsumer) {
+			if (tile.getUnderTile().isLiquidSource()) {
+				spriteBatch.setColor(liquidSouceColor);
+				spriteBatch.draw(liquidSourceSprite, tile.getTileX(), tile.getTileY(), 1, 1);
+			} else if (tile.getUnderTile().isLiquidConsumer()) {
+				spriteBatch.setColor(liquidConsumerColor);
+				spriteBatch.draw(liquidConsumerSprite, tile.getTileX(), tile.getTileY(), 1, 1);
 			}
 		}
 		spriteBatch.end();

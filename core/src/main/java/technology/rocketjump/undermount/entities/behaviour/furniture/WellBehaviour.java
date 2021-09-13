@@ -33,7 +33,7 @@ public class WellBehaviour extends FurnitureBehaviour implements Destructible {
 		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 		if (parentTile != null) {
 			UnderTile underTile = parentTile.getOrCreateUnderTile();
-			underTile.setLiquidOutput(false);
+			underTile.setLiquidConsumer(false);
 		}
 	}
 
@@ -50,7 +50,7 @@ public class WellBehaviour extends FurnitureBehaviour implements Destructible {
 		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 		if (parentTile != null) {
 			UnderTile underTile = parentTile.getOrCreateUnderTile();
-			underTile.setLiquidOutput(true);
+			underTile.setLiquidConsumer(true);
 
 			float availableLiquidCapacity = ((float)liquidContainerComponent.getMaxLiquidCapacity()) - liquidContainerComponent.getLiquidQuantity();
 			if (availableLiquidCapacity >= 1f) {

@@ -258,7 +258,8 @@
     } ]
   },
   "tags" : {
-    "POWERED_FURNITURE" : [ "20", "0.8" ]
+    "FURNITURE_BEHAVIOUR" : [ "POWER_SOURCE" ],
+    "POWERED_FURNITURE" : [ "20", "0.9" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {

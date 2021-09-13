@@ -72,6 +72,7 @@ public class SpriteCropper {
 
 		for (Map.Entry<String, Path> entry : spriteFiles.entrySet()) {
 			String filename = entry.getKey();
+			System.out.println("Processing " + filename);
 			Path spriteFile = entry.getValue();
 
 			BufferedImage original = ImageIO.read(spriteFile.toFile());
@@ -79,7 +80,7 @@ public class SpriteCropper {
 			int height = original.getHeight();
 
 			int cropLeft, cropTop, cropRight, cropBottom;
-			for (cropLeft = 0; cropLeft < width / 2; cropLeft++) {
+			for (cropLeft = 0; cropLeft < width; cropLeft++) {
 				boolean entireLineTransparent = true;
 				for (int y = 0; y < height; y++) {
 					boolean transparent = original.getData().getSample(cropLeft, y, ALPHA_BAND) == 0;
@@ -92,7 +93,7 @@ public class SpriteCropper {
 					break;
 				}
 			}
-			for (cropTop = 0; cropTop < height / 2; cropTop++) {
+			for (cropTop = 0; cropTop < height; cropTop++) {
 				boolean entireLineTransparent = true;
 				for (int x = 0; x < width; x++) {
 					boolean transparent = original.getData().getSample(x, height - 1 - cropTop, ALPHA_BAND) == 0;
@@ -105,7 +106,7 @@ public class SpriteCropper {
 					break;
 				}
 			}
-			for (cropRight = 0; cropRight < width / 2; cropRight++) {
+			for (cropRight = 0; cropRight < width; cropRight++) {
 				boolean entireLineTransparent = true;
 				for (int y = 0; y < height; y++) {
 					boolean transparent = original.getData().getSample(width - 1 - cropRight, y, ALPHA_BAND) == 0;
@@ -118,7 +119,7 @@ public class SpriteCropper {
 					break;
 				}
 			}
-			for (cropBottom = 0; cropBottom < height / 2; cropBottom++) {
+			for (cropBottom = 0; cropBottom < height; cropBottom++) {
 				boolean entireLineTransparent = true;
 				for (int x = 0; x < width; x++) {
 					boolean transparent = original.getData().getSample(x, cropBottom, ALPHA_BAND) == 0;
@@ -177,6 +178,7 @@ public class SpriteCropper {
 					JsonObject directionJson = spriteDescriptors.getAsJsonObject(direction);
 
 					String filename = directionJson.get("filename").getAsString();
+					System.out.println("Processing descriptors for " + filename);
 					Vector2 newOffset = newOffsets.get(filename);
 					if (newOffset != null) {
 						JsonObject originalOffset = directionJson.getAsJsonObject("offsetPixels");
