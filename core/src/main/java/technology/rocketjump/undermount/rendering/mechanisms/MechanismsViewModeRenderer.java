@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
+import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -22,7 +23,9 @@ import technology.rocketjump.undermount.entities.model.physical.mechanism.Mechan
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.JobStore;
+import technology.rocketjump.undermount.jobs.JobTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.underground.PipeConstructionState;
@@ -64,10 +67,13 @@ public class MechanismsViewModeRenderer {
 
 	private final MechanismEntityAttributes mechanismConstructionAttributes;
 	private final Entity mechanismConstructionEntity;
+	private JobType deconstructMechanismJobType;
 
 	@Inject
 	public MechanismsViewModeRenderer(GameInteractionStateContainer interactionStateContainer, JobStore jobStore,
-									  TextureAtlasRepository textureAtlasRepository, EntityRenderer entityRenderer, EntityAssetUpdater entityAssetUpdater) {
+									  TextureAtlasRepository textureAtlasRepository, EntityRenderer entityRenderer,
+									  EntityAssetUpdater entityAssetUpdater, ConstantsRepo constantsRepo,
+									  JobTypeDictionary jobTypeDictionary) {
 		this.interactionStateContainer = interactionStateContainer;
 		this.jobStore = jobStore;
 		this.entityRenderer = entityRenderer;
@@ -77,6 +83,7 @@ public class MechanismsViewModeRenderer {
 		powerSourceSprite = guiAtlas.createSprite("input");
 		powerConsumerSprite = guiAtlas.createSprite("output");
 		deconstructSprite = guiAtlas.createSprite("demolish");
+		deconstructMechanismJobType = jobTypeDictionary.getByName(constantsRepo.getSettlementConstants().getDeconstructMechanismJobType());
 
 		mechanismConstructionAttributes = new MechanismEntityAttributes(1L);
 		PhysicalEntityComponent physicalEntityComponent = new PhysicalEntityComponent();
@@ -133,6 +140,10 @@ public class MechanismsViewModeRenderer {
 
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
+		for (Entity entity : entitiesToRender) {
+			entityRenderer.render(entity, spriteBatch, RenderMode.DIFFUSE,
+					null, null, null);
+		}
 		for (int x = minX; x <= maxX; x++) {
 			for (int y = maxY; y >= minY; y--) {
 				MapTile mapTile = map.getTile(x, y);
@@ -176,10 +187,6 @@ public class MechanismsViewModeRenderer {
 			}
 
 		}
-		for (Entity entity : entitiesToRender) {
-			entityRenderer.render(entity, spriteBatch, RenderMode.DIFFUSE,
-					null, null, null);
-		}
 		for (MapTile tile : tilesWithSourceOrConsumer) {
 			if (tile.getUnderTile().isPowerSource()) {
 				spriteBatch.setColor(powerSourceColor);
@@ -198,16 +205,18 @@ public class MechanismsViewModeRenderer {
 	private void renderExistingMechanismConstruction(int x, int y, MapTile mapTile, Batch spriteBatch, boolean blinkState) {
 		UnderTile underTile = mapTile.getUnderTile();
 		if (underTile != null) {
+			for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
+				if (job.getAssignedToEntityId() != null && !blinkState) {
+					// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off
+					return;
+				} else if (job.getType().equals(deconstructMechanismJobType)) {
+					spriteBatch.setColor(PipeConstructionState.PENDING_DECONSTRUCTION.renderColor);
+					spriteBatch.draw(deconstructSprite, x, y, 1, 1);
+				}
+			}
+
 			MechanismType queuedMechanismType = underTile.getQueuedMechanismType();
 			if (queuedMechanismType != null) {
-				for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
-					if (job.getAssignedToEntityId() != null) {
-						// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off
-						if (!blinkState) {
-							return;
-						}
-					}
-				}
 
 				renderPlacingEntity(x, y, queuedMechanismType, spriteBatch, CONSTRUCTION_COLOR);
 			}

@@ -1,10 +1,14 @@
 [ {
   "name" : "Gear",
   "primaryMaterialType" : "STONE",
+  "relatedProfessionName" : "STONEMASON",
+  "relatedItemTypeName" : "Product-Stone-Gear",
   "tags" : { }
 }, {
   "name" : "Shaft_Horizontal",
   "primaryMaterialType" : "WOOD",
+  "relatedProfessionName" : "CARPENTER",
+  "relatedItemTypeName" : "Resource-Planks",
   "tags" : { }
 }, {
   "name" : "Pipe",
@@ -13,5 +17,7 @@
 }, {
   "name" : "Shaft_Vertical",
   "primaryMaterialType" : "WOOD",
+  "relatedProfessionName" : "CARPENTER",
+  "relatedItemTypeName" : "Resource-Planks",
   "tags" : { }
 } ]

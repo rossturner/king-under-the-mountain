@@ -259,6 +259,22 @@
     "workOnJobParticleEffectNames": ["Digging ground same tile"]
   },
   {
+    "name": "CONSTRUCT_MECHANISM",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.CONSTRUCT_MECHANISM",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
+    "haulItemWhileWorking": true,
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
+  },
+  {
+    "name": "DECONSTRUCT_MECHANISM",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.DECONSTRUCT_PIPING",
+    "accessedFromAdjacentTile": true,
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
+  },
+  {
     "name": "CONSTRUCT_FLOORING",
     "defaultTimeToCompleteJob": 3,
     "overrideI18nKey": "ACTION.JOB.CONSTRUCT_FLOORING",

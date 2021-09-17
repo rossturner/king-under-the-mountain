@@ -328,6 +328,13 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				if (interactionStateContainer.isValidDoorPlacement()) {
 					messageDispatcher.dispatchMessage(MessageType.DOOR_PLACEMENT, interactionStateContainer.getVirtualDoorPlacement());
 				}
+			} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_MECHANISMS)) {
+				MapTile cursorTile = gameContext.getAreaMap().getTile(mouseChangeMessage.getWorldPosition());
+				if (cursorTile != null && interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(cursorTile)) {
+					messageDispatcher.dispatchMessage(MessageType.MECHANISM_CONSTRUCTION_ADDED, new MechanismPlacementMessage(
+							cursorTile, interactionStateContainer.getMechanismTypeToPlace()
+					));
+				}
 			}
 
 		}

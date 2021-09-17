@@ -82,13 +82,13 @@ public class BuildMechanismsGuiView implements GuiView {
 		});
 		iconButtons.add(addVerticalShafts);
 
-		IconButton cancelRoofing = iconButtonFactory.create("GUI.CANCEL_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
-		cancelRoofing.setAction(new SetInteractionMode(GameInteractionMode.CANCEL_MECHANISMS, messageDispatcher));
-		iconButtons.add(cancelRoofing);
+		IconButton cancel = iconButtonFactory.create("GUI.CANCEL_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
+		cancel.setAction(new SetInteractionMode(GameInteractionMode.CANCEL_MECHANISMS, messageDispatcher));
+		iconButtons.add(cancel);
 
-		IconButton deconstructRoofing = iconButtonFactory.create("GUI.DECONSTRUCT_LABEL", "demolish", HexColors.get("#d1752e"), ButtonStyle.DEFAULT);
-		deconstructRoofing.setAction(new SetInteractionMode(GameInteractionMode.DECONSTRUCT_MECHANISMS, messageDispatcher));
-		iconButtons.add(deconstructRoofing);
+		IconButton deconstruct = iconButtonFactory.create("GUI.DECONSTRUCT_LABEL", "demolish", HexColors.get("#d1752e"), ButtonStyle.DEFAULT);
+		deconstruct.setAction(new SetInteractionMode(GameInteractionMode.DECONSTRUCT_MECHANISMS, messageDispatcher));
+		iconButtons.add(deconstruct);
 	}
 
 	@Override

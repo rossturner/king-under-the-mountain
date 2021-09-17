@@ -1,7 +1,9 @@
 package technology.rocketjump.undermount.entities.model.physical.mechanism;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.tags.Tag;
+import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.misc.Name;
 
@@ -13,6 +15,14 @@ public class MechanismType {
 	private String name;
 
 	private GameMaterialType primaryMaterialType;
+
+	private String relatedProfessionName;
+	@JsonIgnore
+	private Profession relatedProfession;
+
+	private String relatedItemTypeName;
+	@JsonIgnore
+	private ItemType relatedItemType;
 
 	private Map<String, List<String>> tags = new HashMap<>();
 	@JsonIgnore
@@ -61,5 +71,37 @@ public class MechanismType {
 
 	public void setPrimaryMaterialType(GameMaterialType primaryMaterialType) {
 		this.primaryMaterialType = primaryMaterialType;
+	}
+
+	public String getRelatedProfessionName() {
+		return relatedProfessionName;
+	}
+
+	public void setRelatedProfessionName(String relatedProfessionName) {
+		this.relatedProfessionName = relatedProfessionName;
+	}
+
+	public Profession getRelatedProfession() {
+		return relatedProfession;
+	}
+
+	public void setRelatedProfession(Profession relatedProfession) {
+		this.relatedProfession = relatedProfession;
+	}
+
+	public String getRelatedItemTypeName() {
+		return relatedItemTypeName;
+	}
+
+	public void setRelatedItemTypeName(String relatedItemTypeName) {
+		this.relatedItemTypeName = relatedItemTypeName;
+	}
+
+	public ItemType getRelatedItemType() {
+		return relatedItemType;
+	}
+
+	public void setRelatedItemType(ItemType relatedItemType) {
+		this.relatedItemType = relatedItemType;
 	}
 }

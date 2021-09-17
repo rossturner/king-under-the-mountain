@@ -57,6 +57,7 @@ import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -879,10 +880,44 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				}
 				break;
 			}
+			case "CONSTRUCT_MECHANISM": {
+				UnderTile underTile = tile.getUnderTile();
+				if (underTile != null && underTile.getQueuedMechanismType() != null) {
+					Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+					EquippedItemComponent equippedItemComponent = completedByEntity.getOrCreateComponent(EquippedItemComponent.class);
+					if (equippedItemComponent != null) {
+						Entity equippedItem = equippedItemComponent.clearEquippedItem();
+						if (equippedItem != null && equippedItem.getType().equals(ITEM)) {
+							ItemEntityAttributes attributes = (ItemEntityAttributes) equippedItem.getPhysicalEntityComponent().getAttributes();
+							GameMaterial material = attributes.getPrimaryMaterial();
+							attributes.setQuantity(attributes.getQuantity() - 1);
+							if (attributes.getQuantity() == 0) {
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
+							} else {
+								// put back as equipped for AI to clear
+								equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
+							}
+
+							messageDispatcher.dispatchMessage(MessageType.MECHANISM_CONSTRUCTED, new MechanismConstructionMessage(
+									jobCompletedMessage.getJob().getJobLocation(), underTile.getQueuedMechanismType(), material
+							));
+
+						}
+					}
+				}
+			}
 			case "DECONSTRUCT_PIPING": {
 				messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTED, new PipeConstructionMessage(
 						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
 				));
+				break;
+			}
+			case "DECONSTRUCT_MECHANISM": {
+				UnderTile underTile = tile.getUnderTile();
+				if (underTile != null && underTile.getPowerMechanismEntity() != null) {
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, underTile.getPowerMechanismEntity());
+					underTile.setPowerMechanismEntity(null);
+				}
 				break;
 			}
 			default: {

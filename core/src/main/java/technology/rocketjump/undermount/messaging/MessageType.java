@@ -182,6 +182,11 @@ public class MessageType {
 	public static final int PIPE_DECONSTRUCTION_QUEUE_CHANGE = 914;
 	public static final int PIPE_CONSTRUCTED = 915;
 	public static final int PIPE_DECONSTRUCTED = 916;
+	public static final int MECHANISM_CONSTRUCTION_ADDED = 917;
+	public static final int MECHANISM_CONSTRUCTION_REMOVED = 918;
+	public static final int MECHANISM_DECONSTRUCTION_QUEUE_CHANGE = 919;
+	public static final int MECHANISM_CONSTRUCTED = 920;
+	public static final int MECHANISM_DECONSTRUCTED = 921;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;

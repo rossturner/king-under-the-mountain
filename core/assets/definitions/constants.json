@@ -1,9 +1,11 @@
 {
+  "constructMechanismJobType" : "CONSTRUCT_MECHANISM",
   "deconstructRoofingJobType" : "DECONSTRUCT_ROOFING",
   "constructPipingJobType" : "CONSTRUCT_PIPING",
   "kitchenProfession" : "CHEF",
   "deconstructPipingJobType" : "DECONSTRUCT_PIPING",
   "haulingJobType" : "HAULING",
+  "deconstructMechanismJobType" : "DECONSTRUCT_MECHANISM",
   "constructRoofingJobType" : "CONSTRUCT_ROOFING",
   "mushroomShockTimeHours" : 24.0,
   "defaultFont" : "NotoSans-Medium.ttf",
