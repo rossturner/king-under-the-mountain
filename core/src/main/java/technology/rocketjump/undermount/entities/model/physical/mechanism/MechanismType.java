@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.jobs.model.Profession;
+import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.misc.Name;
 
@@ -27,6 +28,8 @@ public class MechanismType {
 	private Map<String, List<String>> tags = new HashMap<>();
 	@JsonIgnore
 	private List<Tag> processedTags = new ArrayList<>();
+
+	private List<CompassDirection> powerTransmission = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -103,5 +106,13 @@ public class MechanismType {
 
 	public void setRelatedItemType(ItemType relatedItemType) {
 		this.relatedItemType = relatedItemType;
+	}
+
+	public List<CompassDirection> getPowerTransmission() {
+		return powerTransmission;
+	}
+
+	public void setPowerTransmission(List<CompassDirection> powerTransmission) {
+		this.powerTransmission = powerTransmission;
 	}
 }

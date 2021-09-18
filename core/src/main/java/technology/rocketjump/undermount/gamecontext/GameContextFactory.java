@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.settlement.SettlementState;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 
@@ -51,10 +52,19 @@ public class GameContextFactory {
 	public GameContext create(String settlementName, TiledMap areaMap, long worldSeed, GameClock clock) {
 		GameContext context = new GameContext();
 		context.getSettlementState().setSettlementName(settlementName);
-		context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);
+		if (GlobalSettings.DEV_MODE) {
+			if (GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+				context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);
+				clock.setPaused(true);
+			} else {
+				context.getSettlementState().setGameState(GameState.NORMAL);
+			}
+		} else {
+			context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);
+			clock.setPaused(true);
+		}
 		context.setAreaMap(areaMap);
 		context.setRandom(new RandomXS128(worldSeed));
-		clock.setPaused(true);
 		context.setGameClock(clock);
 		context.setMapEnvironment(new MapEnvironment());
 		initialise(context.getSettlementState());

@@ -3,21 +3,25 @@
   "primaryMaterialType" : "STONE",
   "relatedProfessionName" : "STONEMASON",
   "relatedItemTypeName" : "Product-Stone-Gear",
-  "tags" : { }
+  "tags" : { },
+  "powerTransmission" : [ "NORTH", "SOUTH", "EAST", "WEST" ]
 }, {
   "name" : "Shaft_Horizontal",
   "primaryMaterialType" : "WOOD",
   "relatedProfessionName" : "CARPENTER",
   "relatedItemTypeName" : "Resource-Planks",
-  "tags" : { }
+  "tags" : { },
+  "powerTransmission" : [ "EAST", "WEST" ]
 }, {
   "name" : "Pipe",
   "primaryMaterialType" : "STONE",
-  "tags" : { }
+  "tags" : { },
+  "powerTransmission" : [ ]
 }, {
   "name" : "Shaft_Vertical",
   "primaryMaterialType" : "WOOD",
   "relatedProfessionName" : "CARPENTER",
   "relatedItemTypeName" : "Resource-Planks",
-  "tags" : { }
+  "tags" : { },
+  "powerTransmission" : [ "NORTH", "SOUTH" ]
 } ]

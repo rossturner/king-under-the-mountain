@@ -25,6 +25,7 @@ public class UnderTile implements ChildPersistable {
 
 	private boolean powerSource;
 	private boolean powerConsumer;
+	private PowerGrid powerGrid; // Not persisted here, handled by PowerGrid persistence
 
 	private MechanismType queuedMechanismType;
 	private Entity powerMechanismEntity;
@@ -50,6 +51,9 @@ public class UnderTile implements ChildPersistable {
 		}
 		if (liquidFlow != null) {
 			stringHelper.add("liquidFlowAmount", liquidFlow.getLiquidAmount());
+		}
+		if (powerGrid != null) {
+			stringHelper.add("powerGrid", powerGrid.getPowerGridId() + " - " + powerGrid.getTotalPowerAvailable());
 		}
 		return stringHelper.toString();
 	}
@@ -168,6 +172,9 @@ public class UnderTile implements ChildPersistable {
 		if (powerConsumer) {
 			asJson.put("powerConsumer", true);
 		}
+		if (powerGrid != null) {
+			powerGrid.writeTo(savedGameStateHolder);
+		}
 
 		if (queuedMechanismType != null) {
 			asJson.put("queuedMechanismType", queuedMechanismType.getName());
@@ -228,5 +235,13 @@ public class UnderTile implements ChildPersistable {
 		return this.liquidCanFlow() && sourceUnderTile != null && sourceUnderTile.liquidCanFlow() &&
 				((this.getPipeEntity() != null && sourceUnderTile.getPipeEntity() != null) ||
 						(this.channelLayout != null && sourceUnderTile.getChannelLayout() != null));
+	}
+
+	public PowerGrid getPowerGrid() {
+		return powerGrid;
+	}
+
+	public void setPowerGrid(PowerGrid powerGrid) {
+		this.powerGrid = powerGrid;
 	}
 }

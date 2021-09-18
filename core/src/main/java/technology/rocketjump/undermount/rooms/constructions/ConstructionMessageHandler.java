@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
+import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
 import technology.rocketjump.undermount.entities.factories.FurnitureEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.FurnitureEntityFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
@@ -338,6 +339,10 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		RequirementToColorMappingsTag requirementToColorMappingsTag = createdFurnitureEntity.getTag(RequirementToColorMappingsTag.class);
 		if (requirementToColorMappingsTag != null) {
 			requirementToColorMappingsTag.apply(createdFurnitureEntity, itemsRemovedFromConstruction, itemTypeDictionary);
+		}
+		PoweredFurnitureComponent poweredFurnitureComponent = createdFurnitureEntity.getComponent(PoweredFurnitureComponent.class);
+		if (poweredFurnitureComponent != null) {
+			poweredFurnitureComponent.updatePowerGridAtParentLocation();
 		}
 		if (createdFurnitureEntity.getTag(SupportsRoofTag.class) != null) {
 			for (GridPoint2 tileLocation : construction.getTileLocations()) {

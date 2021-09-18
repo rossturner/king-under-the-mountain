@@ -5,20 +5,26 @@ import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.behaviour.mechanisms.PowerMechanismBehaviour;
 import technology.rocketjump.undermount.entities.factories.MechanismEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.MechanismEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.underground.PowerGrid;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.MechanismConstructionMessage;
 import technology.rocketjump.undermount.messaging.types.MechanismPlacementMessage;
 import technology.rocketjump.undermount.messaging.types.TileConstructionQueueMessage;
 import technology.rocketjump.undermount.messaging.types.TileDeconstructionQueueMessage;
+
+import static technology.rocketjump.undermount.mapping.tile.CompassDirection.oppositeOf;
 
 @Singleton
 public class MechanismMessageHandler implements Telegraph, GameContextAware {
@@ -58,9 +64,6 @@ public class MechanismMessageHandler implements Telegraph, GameContextAware {
 			case MessageType.MECHANISM_CONSTRUCTED: {
 				return mechanismConstructed((MechanismConstructionMessage) msg.extraInfo);
 			}
-//			case MessageType.PIPE_DECONSTRUCTED: {
-//				return pipeDeconstructed((PipeConstructionMessage) msg.extraInfo);
-//			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this + ", " + msg);
 		}
@@ -99,8 +102,30 @@ public class MechanismMessageHandler implements Telegraph, GameContextAware {
 			UnderTile underTile = tile.getOrCreateUnderTile();
 			underTile.setQueuedMechanismType(null);
 			underTile.setPowerMechanismEntity(mechanismEntity);
+			createPowerGrid(tile);
 		}
 		return true;
+	}
+
+	private void createPowerGrid(MapTile tile) {
+		PowerGrid grid = new PowerGrid(SequentialIdGenerator.nextId());
+		grid.addTile(tile);
+
+		Entity entity = tile.getUnderTile().getPowerMechanismEntity();
+		MechanismType mechanismType = ((MechanismEntityAttributes)entity.getPhysicalEntityComponent().getAttributes()).getMechanismType();
+		for (CompassDirection powerTransmissionDirection : mechanismType.getPowerTransmission()) {
+			MapTile tileInDirection = gameContext.getAreaMap().getTile(tile.getTilePosition().x + powerTransmissionDirection.getXOffset(), tile.getTileY() + powerTransmissionDirection.getYOffset());
+			if (tileInDirection.getUnderTile() != null) {
+				PowerGrid powerGridInDirection = tileInDirection.getUnderTile().getPowerGrid();
+				if (powerGridInDirection != null) {
+					MechanismEntityAttributes attributesInDirection = (MechanismEntityAttributes) tileInDirection.getUnderTile().getPowerMechanismEntity().getPhysicalEntityComponent().getAttributes();
+					if (attributesInDirection.getMechanismType().getPowerTransmission().contains(oppositeOf(powerTransmissionDirection))) {
+						grid = powerGridInDirection.mergeIn(grid);
+					}
+				}
+			}
+		}
+
 	}
 
 	@Override

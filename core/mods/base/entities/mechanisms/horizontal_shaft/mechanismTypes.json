@@ -2,5 +2,6 @@
   "name": "Shaft_Horizontal",
   "primaryMaterialType": "WOOD",
   "relatedProfessionName": "CARPENTER",
-  "relatedItemTypeName": "Resource-Planks"
+  "relatedItemTypeName": "Resource-Planks",
+  "powerTransmission": ["EAST", "WEST"]
 }]

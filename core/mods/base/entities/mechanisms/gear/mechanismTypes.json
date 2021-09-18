@@ -2,5 +2,6 @@
   "name": "Gear",
   "primaryMaterialType": "STONE",
   "relatedProfessionName": "STONEMASON",
-  "relatedItemTypeName": "Product-Stone-Gear"
+  "relatedItemTypeName": "Product-Stone-Gear",
+  "powerTransmission": ["NORTH", "SOUTH","EAST", "WEST"]
 }]

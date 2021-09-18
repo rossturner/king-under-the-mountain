@@ -6,21 +6,23 @@ import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
-public class PoweredFurnitureComponent implements ParentDependentEntityComponent {
+public class PoweredFurnitureComponent implements ParentDependentEntityComponent, Destructible {
 
 	private Entity parentEntity;
-	private MessageDispatcher messageDispatcher;
+	private GameContext gameContext;
 	private int powerAmount;
 	private float animationSpeed;
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		this.parentEntity = parentEntity;
-		this.messageDispatcher = messageDispatcher;
+		this.gameContext = gameContext;
 	}
 
 	@Override
@@ -31,8 +33,19 @@ public class PoweredFurnitureComponent implements ParentDependentEntityComponent
 		return clone;
 	}
 
+	@Override
+	public void destroy(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
+		this.powerAmount = 0;
+		updatePowerGridAtParentLocation();
+		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
+		parentTile.getOrCreateUnderTile().setPowerConsumer(false);
+	}
+
 	public void update(float deltaTime, GameContext gameContext) {
 		// TODO actually apply power usage
+
+		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
+		parentTile.getOrCreateUnderTile().setPowerConsumer(true);
 
 		float animationProgress = parentEntity.getPhysicalEntityComponent().getAnimationProgress();
 		animationProgress += deltaTime * animationSpeed;
@@ -40,6 +53,13 @@ public class PoweredFurnitureComponent implements ParentDependentEntityComponent
 			animationProgress -= 1f;
 		}
 		parentEntity.getPhysicalEntityComponent().setAnimationProgress(animationProgress);
+	}
+
+	public void updatePowerGridAtParentLocation() {
+		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
+		if (parentTile != null && parentTile.getUnderTile() != null && parentTile.getUnderTile().getPowerGrid() != null) {
+			parentTile.getUnderTile().getPowerGrid().update();
+		}
 	}
 
 	@Override

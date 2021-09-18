@@ -880,6 +880,12 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				}
 				break;
 			}
+			case "DECONSTRUCT_PIPING": {
+				messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTED, new PipeConstructionMessage(
+						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
+				));
+				break;
+			}
 			case "CONSTRUCT_MECHANISM": {
 				UnderTile underTile = tile.getUnderTile();
 				if (underTile != null && underTile.getQueuedMechanismType() != null) {
@@ -905,11 +911,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						}
 					}
 				}
-			}
-			case "DECONSTRUCT_PIPING": {
-				messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTED, new PipeConstructionMessage(
-						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
-				));
 				break;
 			}
 			case "DECONSTRUCT_MECHANISM": {
@@ -917,6 +918,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				if (underTile != null && underTile.getPowerMechanismEntity() != null) {
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, underTile.getPowerMechanismEntity());
 					underTile.setPowerMechanismEntity(null);
+					messageDispatcher.dispatchMessage(MessageType.MECHANISM_DECONSTRUCTED, tile);
+					underTile.getPowerGrid().removeTile(tile, gameContext.getAreaMap());
 				}
 				break;
 			}
