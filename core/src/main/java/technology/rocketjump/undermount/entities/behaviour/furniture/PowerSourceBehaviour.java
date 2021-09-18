@@ -14,22 +14,11 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 public class PowerSourceBehaviour extends FurnitureBehaviour implements Destructible {
 
-	private boolean powered = true; // TODO introduce power
-
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		PoweredFurnitureComponent poweredFurnitureComponent = parentEntity.getComponent(PoweredFurnitureComponent.class);
 		if (poweredFurnitureComponent != null) {
 			poweredFurnitureComponent.update(deltaTime, gameContext);
-		}
-
-
-		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
-		if (parentTile != null) {
-			UnderTile underTile = parentTile.getOrCreateUnderTile();
-			underTile.setPowerSource(true);
-
-			// TODO add gear to undertile
 		}
 	}
 
@@ -40,8 +29,6 @@ public class PowerSourceBehaviour extends FurnitureBehaviour implements Destruct
 			UnderTile underTile = parentTile.getUnderTile();
 			if (underTile != null) {
 				underTile.setPowerSource(false);
-
-				// TODO remove gear from undertile
 			}
 		}
 	}
@@ -54,17 +41,11 @@ public class PowerSourceBehaviour extends FurnitureBehaviour implements Destruct
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
-
-		if (powered) {
-			asJson.put("powered", true);
-		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		super.readFrom(asJson, savedGameStateHolder, relatedStores);
-
-		this.powered = asJson.getBooleanValue("powered");
 	}
 
 }

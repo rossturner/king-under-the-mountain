@@ -21,6 +21,7 @@ import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
+import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
@@ -851,6 +852,10 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				messageDispatcher.dispatchMessage(DESTROY_ENTITY, decorationEntity);
 			}
 			decorationInventoryComponent.clear();
+		}
+		PoweredFurnitureComponent poweredFurnitureComponent = message.targetEntity.getComponent(PoweredFurnitureComponent.class);
+		if (poweredFurnitureComponent != null) {
+			poweredFurnitureComponent.destroy(message.targetEntity, messageDispatcher, gameContext);
 		}
 
 		message.targetEntity.getLocationComponent().setRotation(slightRotation());

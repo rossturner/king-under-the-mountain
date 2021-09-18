@@ -72,6 +72,10 @@ public class TileSelectedGuiView implements GuiView {
 						if (pipeEntity != null) {
 							descriptionTable.add(new I18nTextWidget(i18nTranslator.getPipeDescription(pipeEntity, underTile), uiSkin, messageDispatcher)).left().row();
 						}
+						Entity powerMechanismEntity = underTile.getPowerMechanismEntity();
+						if (powerMechanismEntity != null) {
+							descriptionTable.add(new I18nTextWidget(i18nTranslator.getPowerMechanismDescription(powerMechanismEntity, underTile), uiSkin, messageDispatcher)).left().row();
+						}
 					}
 				} else {
 					descriptionTable.add(new I18nTextWidget(i18nTranslator.getTranslatedString("FLOOR.UNEXPLORED"), uiSkin, messageDispatcher)).left().row();

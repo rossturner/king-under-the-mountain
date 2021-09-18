@@ -1,5 +1,6 @@
 [ {
   "name" : "Gear",
+  "i18nKey" : "MECHANISM.STONE.GEAR",
   "primaryMaterialType" : "STONE",
   "relatedProfessionName" : "STONEMASON",
   "relatedItemTypeName" : "Product-Stone-Gear",
@@ -7,6 +8,7 @@
   "powerTransmission" : [ "NORTH", "SOUTH", "EAST", "WEST" ]
 }, {
   "name" : "Shaft_Horizontal",
+  "i18nKey" : "MECHANISM.WOODEN.SHAFT",
   "primaryMaterialType" : "WOOD",
   "relatedProfessionName" : "CARPENTER",
   "relatedItemTypeName" : "Resource-Planks",
@@ -14,11 +16,13 @@
   "powerTransmission" : [ "EAST", "WEST" ]
 }, {
   "name" : "Pipe",
+  "i18nKey" : "PRODUCT.STONE.PIPE",
   "primaryMaterialType" : "STONE",
   "tags" : { },
   "powerTransmission" : [ ]
 }, {
   "name" : "Shaft_Vertical",
+  "i18nKey" : "MECHANISM.WOODEN.SHAFT",
   "primaryMaterialType" : "WOOD",
   "relatedProfessionName" : "CARPENTER",
   "relatedItemTypeName" : "Resource-Planks",

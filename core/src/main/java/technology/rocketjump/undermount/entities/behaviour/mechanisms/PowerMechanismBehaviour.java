@@ -6,8 +6,9 @@ import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.underground.PowerGrid;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -28,15 +29,18 @@ public class PowerMechanismBehaviour implements BehaviourComponent {
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
+		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
+		PowerGrid powerGrid = parentTile.getUnderTile().getPowerGrid();
 
-		MechanismEntityAttributes attributes = (MechanismEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
-		float animationProgress = parentEntity.getPhysicalEntityComponent().getAnimationProgress();
-		float animationSpeed = 1f;
-		animationProgress += deltaTime * animationSpeed;
-		while (animationProgress > 1f) {
-			animationProgress -= 1f;
+		if (powerGrid != null && powerGrid.getTotalPowerAvailable() > 0) {
+			float animationProgress = parentEntity.getPhysicalEntityComponent().getAnimationProgress();
+			float animationSpeed = 1f;
+			animationProgress += deltaTime * animationSpeed;
+			while (animationProgress > 1f) {
+				animationProgress -= 1f;
+			}
+			parentEntity.getPhysicalEntityComponent().setAnimationProgress(animationProgress);
 		}
-		parentEntity.getPhysicalEntityComponent().setAnimationProgress(animationProgress);
 	}
 
 	@Override

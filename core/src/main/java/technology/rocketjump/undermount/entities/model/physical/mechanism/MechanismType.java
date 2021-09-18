@@ -14,6 +14,7 @@ public class MechanismType {
 
 	@Name
 	private String name;
+	private String i18nKey;
 
 	private GameMaterialType primaryMaterialType;
 
@@ -114,5 +115,13 @@ public class MechanismType {
 
 	public void setPowerTransmission(List<CompassDirection> powerTransmission) {
 		this.powerTransmission = powerTransmission;
+	}
+
+	public String getI18nKey() {
+		return i18nKey;
+	}
+
+	public void setI18nKey(String i18nKey) {
+		this.i18nKey = i18nKey;
 	}
 }

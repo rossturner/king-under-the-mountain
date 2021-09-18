@@ -186,7 +186,6 @@ public class MessageType {
 	public static final int MECHANISM_CONSTRUCTION_REMOVED = 918;
 	public static final int MECHANISM_DECONSTRUCTION_QUEUE_CHANGE = 919;
 	public static final int MECHANISM_CONSTRUCTED = 920;
-	public static final int MECHANISM_DECONSTRUCTED = 921;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;

@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -110,6 +111,9 @@ public class I18nTranslator implements I18nUpdatable {
 			case ITEM:
 				ItemEntityAttributes itemAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				return getItemDescription(itemAttributes.getQuantity(), itemAttributes.getMaterial(itemAttributes.getItemType().getPrimaryMaterialType()), itemAttributes.getItemType());
+			case MECHANISM:
+				MechanismEntityAttributes mechanismEntityAttributes = (MechanismEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				return getMechanismDescription(mechanismEntityAttributes.getMechanismType(), mechanismEntityAttributes.getPrimaryMaterial());
 			case PLANT:
 				return getDescription(entity, (PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());
 			case FURNITURE:
@@ -366,6 +370,7 @@ public class I18nTranslator implements I18nUpdatable {
 			}
 		}
 	}
+
 	public I18nText getPipeDescription(Entity pipeEntity, UnderTile underTile) {
 		Map<String, I18nString> replacements = new HashMap<>();
 		TileLiquidFlow liquidFlow = underTile.getLiquidFlow();
@@ -385,6 +390,14 @@ public class I18nTranslator implements I18nUpdatable {
 		replacements.put("material", ((MechanismEntityAttributes)pipeEntity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial().getI18nValue());
 
 		return applyReplacements(dictionary.getWord("FLOOR.PIPE.DESCRIPTION"), replacements, Gender.ANY);
+	}
+
+
+	public I18nText getPowerMechanismDescription(Entity powerMechanismEntity, UnderTile underTile) {
+		Map<String, I18nString> replacements = new HashMap<>();
+		replacements.put("entity", getDescription(powerMechanismEntity));
+		replacements.put("powerAmount", new I18nWord(String.valueOf(underTile.getPowerGrid().getTotalPowerAvailable())));
+		return applyReplacements(dictionary.getWord("FLOOR.POWER.DESCRIPTION"), replacements, Gender.ANY);
 	}
 
 	public I18nText getDescription(Construction construction) {
@@ -470,6 +483,23 @@ public class I18nTranslator implements I18nUpdatable {
 		} else {
 			return applyReplacements(dictionary.getWord("ITEM.DESCRIPTION"), replacements, Gender.ANY);
 		}
+	}
+
+	public I18nText getMechanismDescription(MechanismType mechanismType, GameMaterial material) {
+		Map<String, I18nString> replacements = new HashMap<>();
+		if (material == null) {
+			replacements.put("materialType", I18nWord.BLANK);
+		} else {
+			replacements.put("materialType", material.getI18nValue());
+		}
+		if (mechanismType == null) {
+			replacements.put("itemType", I18nWord.BLANK);
+			return applyReplacements(dictionary.getWord("ITEM.DESCRIPTION"), replacements, Gender.ANY);
+		} else {
+			replacements.put("itemType", dictionary.getWord(mechanismType.getI18nKey()));
+		}
+
+		return applyReplacements(dictionary.getWord("ITEM.DESCRIPTION"), replacements, Gender.ANY);
 	}
 
 	public I18nText getLiquidDescription(GameMaterial material, float quantity) {

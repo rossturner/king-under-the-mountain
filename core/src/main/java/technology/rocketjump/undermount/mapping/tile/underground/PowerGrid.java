@@ -162,11 +162,13 @@ public class PowerGrid implements Persistable {
 					this.tiles.remove(newGridTile);
 					newGrid.addTile(newGridTile);
 				}
+				newGrid.update();
 			}
 
 			remainingTiles.removeAll(newGridTiles);
 
 			gridCursor++;
 		}
+		this.update();
 	}
 }

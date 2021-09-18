@@ -3,10 +3,12 @@ KEY,ENGLISH,NOTES,GERMAN,FRENCH,ITALIAN,SPANISH,PORTUGUESE,PORTUGUESE BR,POLISH,
 ACTION.JOB.CLEAR_GROUND,Clearing {{targetPlant}},,Entfernt {{plantDescription}},Arrache: {{plantDescription}},Sta rimuovendo: {{plantDescription}},Eliminando {{plantDescription}},Limpar {{plantDescription}},Retirando {{targetPlant}},,Расчищает: {{plantDescription}},{{plantDescription}} temizleniyor,Rydder {{targetPlant},,Rensa {{plantDescription}},,,,{{targetPlant}} をクリアしています,清除 {{targetPlant}},{{대상 플랜트}} 지우기
 ACTION.JOB.CONSTRUCT_FLOORING,Laying floor,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_FURNITURE,{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},,,,{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.CONSTRUCT_MECHANISM,Placing mechanisms,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_PIPING,Placing pipe,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_ROOFING,Constructing roof,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CREATE_GENERIC,Producing {{targetDescription}},,Produziert {{targetDescription}},Production de {{targetDescription}},Produzione di {{targetDescription}},Produciendo {{targetDescription}},Produzindo {{targetDescription}},,,Создание {{targetDescription}},{{targetDescription}} üretiliyor,Producerer {{targetDescription}},,Producerar {{targetDescription}},,,,{{targetDescription}} を生成しています,生产 {{targetDescription}},{{대상 설명}} 을 (를) 생성하는 중입니다.
 ACTION.JOB.DECONSTRUCT,Removing {{targetDescription}},,Baut {{targetDescription}} ab,Retire: {{targetDescription}},Sta rimuovendo: {{targetDescription}},Quitando {{targetDescription}},A remover {{targetDescription}},Removendo {{targetDescription}},,Удаляет: {{targetDescription}},{{targetDescription}} kaldırılıyor,Fjerner {{targetDescription}},,Ta bort {{targetDescription}},,,,{{targetDescription}} を削除しています,删除 {{targetDescription}},{{대상 설명}} 을 (를) 제거하는 중
+ACTION.JOB.DECONSTRUCT_MECHANISM,Removing mechanism,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.DECONSTRUCT_PIPING,Removing pipe,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.DECONSTRUCT_ROOFING,Removing roof,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.DIGGING,Digging {{targetDescription}},,Gräbt {{targetDescription}},Creuse {{targetDescription}},Scavare {{targetDescription}},Excavando {{targetDescription}},Cavando {{targetDescription}},,,Копание {{targetDescription}},{{targetDescription}} kazılıyor,Hakker {{targetDescription}},,Gräva {{targetDescription},,,,{{targetDescription}} を掘っています,挖掘 {{targetDescription}},파기 {{대상 설명}}
@@ -88,6 +90,7 @@ FLOOR.DIRT,Dirt,,Boden,Terre,Terra,Tierra,Terra,Solo,,Грязь,Toprak,Jord,,Sm
 FLOOR.GRASS,Grass,,Gras,Herbe,Erba,Hierba,Erva,Relva,,Трава,Çimen,Gras,,Gräs,,,,草,草,잔디
 FLOOR.GRAVEL,Gravel,,Kies,Gravier,Ghiaia,Grava,Gravilha,Cascalho,,Гравий,Çakıl,Grus,,Grus,,,,砂利,砾石,자갈
 FLOOR.PIPE.DESCRIPTION,{{material}} pipe ({{state}}),,,,,,,,,,,,,,,,,,,
+FLOOR.POWER.DESCRIPTION,{{entity}} - Power available: {{powerAmount}},,,,,,,,,,,,,,,,,,,
 FLOOR.RIVER,River,,Fluss,Rivière,Fiume,Río,Rio,Rio,,Река,Nehir,Flod,,Floden,,,,川,河流,강
 FLOOR.ROUGH_STONE,Rough stone floor,,Grober Steinboden,Rocher brut,Pietra grezza,Piedra áspera,Chão de pedra,Terreno rochoso,,Грубый каменный пол,Ser taş zemin,Ru stengulv,,Grovt stengolv,,,,粗い石造りの床,粗糙的石地板,거친 돌 바닥
 FLOOR.SNOW,Fallen snow,,,,,,,,,,,,,,,,,,,
@@ -532,6 +535,17 @@ MATERIAL_TYPE.VITRIOL.ADJECTIVE,Vitriol of,,Vitriol,Vitriol de,Vitriolo di,Vitri
 MATERIAL_TYPE.VITRIOL.NOUN,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,Витриол,Vitriol,Vitriol,,Vitriol,,,,ヴィトリオール,维特里奥尔,비트리올
 MATERIAL_TYPE.WOOD.ADJECTIVE,Wooden,,Holz,en bois,di legno,De madera,De madeira,de madeira,,(дерево),Tahtadan,Træ,,Trä-,,,,木製,木制的,나무
 MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерево,Tahta,Træ,,Trä,,,,木材,木,나무
+
+MECHANISM.FURNITURE.CONSUMING_POWER,Working - consuming {{power}} power,,,,,,,,,,,,,,,,,,,
+MECHANISM.FURNITURE.PRODUCING_POWER,Working - producing {{power}} power,,,,,,,,,,,,,,,,,,,
+MECHANISM.FURNITURE.REQUIRES_POWER,Disabled - not enough power,,,,,,,,,,,,,,,,,,,
+MECHANISM.FURNITURE.REQUIRES_POWER.TOOLTIP,This furniture requires an underground power connection to a power-producer such as a {{FURNITURE.WINDMILL}} or {{FURNITURE.WATER_WHEEL}}.,,,,,,,,,,,,,,,,,,,
+MECHANISM.FURNITURE.REQUIRES_POWER_GRID,Disabled - connect to an underground power connection,,,,,,,,,,,,,,,,,,,
+MECHANISM.FURNITURE.REQUIRES_POWER_GRID.TOOLTIP,This furniture requires an underground power connection - see the {{GUI.BUILD.POWER}} option in the {{GUI.BUILD_LABEL}} menu.,,,,,,,,,,,,,,,,,,,
+MECHANISM.STONE.GEAR.NOUN,Gear assembly,,,,,,,,,,,,,,,,,,,
+MECHANISM.STONE.GEAR.TOOLTIP,This contraption links up mechanical power in all 4 directions.,,,,,,,,,,,,,,,,,,,
+MECHANISM.WOODEN.SHAFT.NOUN,Shaft,,,,,,,,,,,,,,,,,,,
+MECHANISM.WOODEN.SHAFT.TOOLTIP,A wooden shaft links mechanical power in 2 directions.,,,,,,,,,,,,,,,,,,,
 
 MENU.CONTINUE_GAME,Continue game,,Spiel fortsetzen,Continuer,Continua partita,Continuar partida,Continuar jogo,Continuar jogo,,Продолжить игру,Oyuna Devam Et,Fortsæt spil,,Fortsätt spela,,,,ゲームを続ける,继续游戏,게임 계속
 MENU.LOAD_GAME,Load game,,Spiel laden,,,,,,,,,,,,,,,,,
