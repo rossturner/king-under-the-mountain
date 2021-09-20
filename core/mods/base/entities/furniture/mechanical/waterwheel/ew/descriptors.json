@@ -2,23 +2,27 @@
   {
     "uniqueName": "Waterwheel-E-Building",
     "type": "BASE_LAYER",
-    "furnitureTypeNames": ["WATERWHEEL"],
+    "furnitureTypeNames": [
+      "WATERWHEEL"
+    ],
     "furnitureLayoutName": "Waterwheel E side",
-    "validMaterialTypes": ["WOOD"],
+    "validMaterialTypes": [
+      "WOOD"
+    ],
     "spriteDescriptors": {
       "DOWN": {
         "filename": "wheelhouse-wood-ew-64.png",
         "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
-          "x": 32.0,
-          "y": 42.0
+          "x": 31.5,
+          "y": 41.5
         },
         "childAssets": [
           {
             "type": "FURNITURE_BELOW_LAYER_1",
             "offsetPixels": {
-              "x": 0.0,
-              "y": 0.0
+              "x": 0.5,
+              "y": 0.5
             }
           },
           {
@@ -35,16 +39,20 @@
   {
     "uniqueName": "Waterwheel-E-Base",
     "type": "FURNITURE_BELOW_LAYER_1",
-    "furnitureTypeNames": ["WATERWHEEL"],
+    "furnitureTypeNames": [
+      "WATERWHEEL"
+    ],
     "furnitureLayoutName": "Waterwheel E side",
-    "validMaterialTypes": ["WOOD"],
+    "validMaterialTypes": [
+      "WOOD"
+    ],
     "spriteDescriptors": {
       "DOWN": {
         "filename": "wheelhouse-stone-ew-64.png",
         "coloringLayer": "STONE_COLOR",
         "offsetPixels": {
-          "x": 0.0,
-          "y": 0
+          "x": -26.5,
+          "y": -39.0
         }
       }
     }
@@ -52,9 +60,13 @@
   {
     "uniqueName": "Waterwheel-E-Wheel",
     "type": "FURNITURE_ABOVE_LAYER_1",
-    "furnitureTypeNames": ["WATERWHEEL"],
+    "furnitureTypeNames": [
+      "WATERWHEEL"
+    ],
     "furnitureLayoutName": "Waterwheel E side",
-    "validMaterialTypes": ["WOOD"],
+    "validMaterialTypes": [
+      "WOOD"
+    ],
     "spriteDescriptors": {
       "DOWN": {
         "filename": "wheel-ew",
@@ -65,6 +77,89 @@
         }
       }
     }
-  }
+  },
 
+
+  {
+    "uniqueName": "Waterwheel-W-Building",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "WATERWHEEL"
+    ],
+    "furnitureLayoutName": "Waterwheel W side",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "wheelhouse-wood-ew-64.png",
+        "coloringLayer": "WOOD_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -31.5,
+          "y": 41.5
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_BELOW_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": 0.5
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0.0,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Waterwheel-W-Base",
+    "type": "FURNITURE_BELOW_LAYER_1",
+    "furnitureTypeNames": [
+      "WATERWHEEL"
+    ],
+    "furnitureLayoutName": "Waterwheel W side",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "wheelhouse-stone-ew-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": 26.5,
+          "y": -39.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Waterwheel-W-Wheel",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": [
+      "WATERWHEEL"
+    ],
+    "furnitureLayoutName": "Waterwheel W side",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "wheel-ew",
+        "isAnimated": true,
+        "flipX": true,
+        "offsetPixels": {
+          "x": -32,
+          "y": 5
+        }
+      }
+    }
+  }
 ]

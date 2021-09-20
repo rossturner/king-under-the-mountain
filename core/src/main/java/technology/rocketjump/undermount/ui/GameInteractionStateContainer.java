@@ -593,7 +593,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 			}
 		}
 
-		if (!oneTileNotRiverEdge) {
+		if (!oneTileNotRiverEdge && !attributes.getFurnitureType().getName().equals("WATERWHEEL")) {
 			return false;
 		}
 

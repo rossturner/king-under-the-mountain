@@ -238,6 +238,7 @@
   "specialTiles" : [ ]
 }, {
   "uniqueName" : "Waterwheel S side",
+  "rotatesToName" : "Waterwheel W side",
   "extraTiles" : [ {
     "x" : 1,
     "y" : 0
@@ -257,7 +258,29 @@
     "requirement" : "IS_RIVER"
   } ]
 }, {
+  "uniqueName" : "Waterwheel W side",
+  "rotatesToName" : "Waterwheel N side",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : -1,
+      "y" : 0
+    },
+    "requirement" : "IS_RIVER"
+  }, {
+    "location" : {
+      "x" : -1,
+      "y" : 1
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
   "uniqueName" : "Waterwheel N side",
+  "rotatesToName" : "Waterwheel E side",
   "extraTiles" : [ {
     "x" : 1,
     "y" : 0
@@ -278,6 +301,7 @@
   } ]
 }, {
   "uniqueName" : "Waterwheel E side",
+  "rotatesToName" : "Waterwheel S side",
   "extraTiles" : [ {
     "x" : 0,
     "y" : 1
