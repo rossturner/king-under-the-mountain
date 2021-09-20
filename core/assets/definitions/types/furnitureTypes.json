@@ -263,6 +263,31 @@
   },
   "hiddenFromPlacementMenu" : false
 }, {
+  "name" : "WATERWHEEL",
+  "i18nKey" : "FURNITURE.WATERWHEEL",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "Waterwheel S side",
+  "colorCode" : "#8ee1da",
+  "iconName" : "water-mill",
+  "placeAnywhere" : true,
+  "autoConstructed" : false,
+  "requirements" : {
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 22,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 4,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "FURNITURE_BEHAVIOUR" : [ "POWER_SOURCE" ],
+    "POWERED_FURNITURE" : [ "31", "0.8" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
   "name" : "INNOCULATION_LOG",
   "i18nKey" : "FURNITURE.MUSHROOM_LOG",
   "categoryName" : "LOG",
