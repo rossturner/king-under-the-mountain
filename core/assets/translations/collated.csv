@@ -181,6 +181,7 @@ FURNITURE.WATERWHEEL.TOOLTIP,Provides mechanical power to other contraptions via
 FURNITURE.WATER_BARREL,Water barrel,,Wasserfass,Tonneau à eau,Barile d'acqua,Barril de agua,Barril de água,Barril de água,,Бочка для воды,Su Fıçısı,Vand tønde,,Vatten fat,,,,水バレル,水桶,물 배럴
 FURNITURE.WATER_BARREL.TOOLTIP,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.",,“Bei einem Wasserfass können deine Siedler ihren Durst löschen statt eine natürliche Wasserquelle wie einen Fluss suchen zu müssen.“,"Un baril d'eau est un endroit où vos colons peuvent prendre une boisson désaltérante, plutôt que d'avoir à trouver une source d'eau naturelle comme la rivière.","Un barile d'acqua è un luogo dove i tuoi coloni possono bere una bevanda dissetante, piuttosto che dover trovare una fonte d'acqua naturale come il fiume.","Un barril de agua es un lugar para que sus colonos tomen una bebida que refresque la sed, en lugar de tener que encontrar una fuente de agua natural como el río.","Um barril de água é um lugar para seus colonos obterem uma bebida que sacia a sede, em vez de terem que encontrar uma fonte de água natural como o rio.",,,"Бочка с водой — это место для ваших поселенцев, чтобы получить утоляющий жажду напиток, вместо того, чтобы найти естественный источник воды, такой как река.","Su fıçısı, vatandaşların nehir gibi doğal su kaynağı bulmalarına gerek kalmadan  susuzluklarını giderdiği yerdir.","En vandtønde er et sted, hvor dine bosættere kan få en tørstslukkende drink, i stedet for at skulle finde en naturlig vandkilde som floden.",,"Ett vattenfat är en plats för dina nybyggare att få en törstsläckande dryck, snarare än att behöva hitta en naturlig vattenkälla som floden.",,,,水筒は、川のような天然の水源を見つけるのではなく、あなたの入植者が喉の渇きを飲むための場所です。,水桶是您的定居者获得口渴淬火饮料的地方，而不必找到像河流这样的天然水源。,물 배럴은 이주민들이 강과 같은 천연 수원을 찾지 않고 갈증을 식힐 수있는 장소입니다.
 FURNITURE.WATER_PUMP,Water pump,,,,,,,,,,,,,,,,,,,
+FURNITURE.WATER_PUMP.TOOLTIP,Moves water from the river to a pipe system.,,,,,,,,,,,,,,,,,,,
 FURNITURE.WELL,Well,,,,,,,,,,,,,,,,,,,
 FURNITURE.WELL.TOOLTIP,"A well provides a source of water, but must be connected to a working pipe system.",,,,,,,,,,,,,,,,,,,
 FURNITURE.WINDMILL,Windmill,,,,,,,,,,,,,,,,,,,
@@ -447,6 +448,9 @@ HAPPINESS_MODIFIER.WORKED_IN_RAIN,Working in the rain,,,,,,,,,,,,,,,,,,,
 
 HAULING.ASSIGNMENT.DESCRIPTION,{{quantity}} assigned to {{targetDescription}},,{{quantity}} zugewiesen an {{targetDescription}},{{quantity}} affecté à {{targetDescription}},{{quantity}} assegnato a {{targetDescription}},{{quantity}} asignado a {{targetDescription}},{{quantity}} atribuído a {{targetDescription}},,,{{quantity}} назначено {{targetDescription}},{{quantity}} atandı {{targetDescription}},{{quantity}} tildelt {{targetDescription},,{{kvantitet}} tilldelad till {{targetDescription}},,,,{{{itemDescription}} が {{targetDescription}} に割り当てられました,{{quantity}} 已分配给 {{targetDescription}},{{대상 설명}} 에 {{quantity}} 이 (가) 할당되었습니다.
 
+HINT.BUILD_POWER.1,Use this view to link constructions that require power with mechanisms built from {{PRODUCT.STONE.GEAR.PLURAL}} and shafts.,,,,,,,,,,,,,,,,,,,
+HINT.BUILD_POWER.2,"These are placed below the ground, so make sure your settlers can access each tile from the side.",,,,,,,,,,,,,,,,,,,
+HINT.BUILD_POWER.3,Constructions which require or produce power will display a red or green icon indicating if they are an input or output to the network.,,,,,,,,,,,,,,,,,,,
 HINT.BUILD_ROOFING.1,"This view allows you to see which tiles are outside with no roof above them (light blue), and those which have had a roof built overhead (dark brown).",,,,,,,,,,,,,,,,,,,
 HINT.BUILD_ROOFING.2,"You can use the {{GUI.ROOFING.ADD}} and {{GUI.CANCEL_LABEL}} options to queue up roofing to be constructed, and {{GUI.DECONSTRUCT_LABEL}} to remove any existing roof tiles.",,,,,,,,,,,,,,,,,,,
 HINT.BUILD_ROOFING.3,A roof can only be constructed within 3 tiles of a wall or {{FURNITURE.PILLAR}}.,,,,,,,,,,,,,,,,,,,
@@ -540,8 +544,9 @@ MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерев
 
 MECHANISM.FURNITURE.CONSUMING_POWER,Working - consuming {{power}} power,,,,,,,,,,,,,,,,,,,
 MECHANISM.FURNITURE.PRODUCING_POWER,Working - producing {{power}} power,,,,,,,,,,,,,,,,,,,
+MECHANISM.FURNITURE.REQUIRES_OUTSIDE_PLACEMENT,This must be outside to function correctly,,,,,,,,,,,,,,,,,,,
 MECHANISM.FURNITURE.REQUIRES_POWER,Disabled - not enough power,,,,,,,,,,,,,,,,,,,
-MECHANISM.FURNITURE.REQUIRES_POWER.TOOLTIP,This furniture requires an underground power connection to a power-producer such as a {{FURNITURE.WINDMILL}} or {{FURNITURE.WATER_WHEEL}}.,,,,,,,,,,,,,,,,,,,
+MECHANISM.FURNITURE.REQUIRES_POWER.TOOLTIP,This furniture requires an underground power connection to a power-producer such as a {{FURNITURE.WINDMILL}} or {{FURNITURE.WATERWHEEL}}.,,,,,,,,,,,,,,,,,,,
 MECHANISM.FURNITURE.REQUIRES_POWER_GRID,Disabled - connect to an underground power connection,,,,,,,,,,,,,,,,,,,
 MECHANISM.FURNITURE.REQUIRES_POWER_GRID.TOOLTIP,This furniture requires an underground power connection - see the {{GUI.BUILD.POWER}} option in the {{GUI.BUILD_LABEL}} menu.,,,,,,,,,,,,,,,,,,,
 MECHANISM.STONE.GEAR.NOUN,Gear assembly,,,,,,,,,,,,,,,,,,,

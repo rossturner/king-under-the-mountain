@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.math.GridPoint2;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
+import technology.rocketjump.undermount.entities.behaviour.furniture.PowerSourceBehaviour;
+import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -66,6 +68,12 @@ public class PowerGrid implements Persistable {
 					PoweredFurnitureComponent poweredFurnitureComponent = entity.getComponent(PoweredFurnitureComponent.class);
 					if (poweredFurnitureComponent != null && toGridPoint(entity.getLocationComponent().getWorldPosition()).equals(tile.getTilePosition())) {
 						// Only if this is furniture's main position
+						BehaviourComponent behaviourComponent = entity.getBehaviourComponent();
+						if (behaviourComponent instanceof PowerSourceBehaviour) {
+							if (!((PowerSourceBehaviour)entity.getBehaviourComponent()).isWorking()) {
+								continue;
+							}
+						}
 						totalPowerAvailable += poweredFurnitureComponent.getPowerAmount();
 					}
 				}

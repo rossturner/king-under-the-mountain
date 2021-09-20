@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.entities.components.LiquidContainerCompo
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
+import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -162,7 +163,23 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			return;
 		}
 
+
+		PoweredFurnitureComponent poweredFurnitureComponent = parentEntity.getComponent(PoweredFurnitureComponent.class);
+		if (poweredFurnitureComponent != null) {
+			poweredFurnitureComponent.update(0, gameContext);
+		}
+
 		if (craftingJob != null) {
+			if (poweredFurnitureComponent != null) {
+				if (poweredFurnitureComponent.isPowered(poweredFurnitureComponent.getParentUnderTile(gameContext))) {
+					// powered, job should take normal length of time
+					craftingJob.setOverrideWorkDuration(null);
+				} else {
+					// not powered, make job take longer
+					craftingJob.setOverrideWorkDuration(craftingJob.getJobTypeTotalWorkToDo() * poweredFurnitureComponent.getAnimationSpeed());
+				}
+			}
+
 			return; // Waiting for entity to craft item with materials
 		}
 

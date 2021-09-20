@@ -310,6 +310,8 @@ public class WeatherManager implements Updatable, Telegraph {
 	private int strikeChance(MapTile a) {
 		if (a.hasTree()) {
 			return 100;
+		} else if (a.hasPlant()) {
+			return -1; // quick fix to avoid crops
 		} else {
 			return a.getEntities().size();
 		}

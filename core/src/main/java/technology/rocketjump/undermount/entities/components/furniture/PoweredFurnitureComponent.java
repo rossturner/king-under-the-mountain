@@ -37,7 +37,7 @@ public class PoweredFurnitureComponent implements ParentDependentEntityComponent
 	private Entity parentEntity;
 	private GameContext gameContext;
 	private int powerAmount;
-	private float animationSpeed;
+	private float animationSpeed; // also used as powered crafting station job time multiplier
 	private boolean animatedReversed;
 
 	@Override
@@ -100,7 +100,7 @@ public class PoweredFurnitureComponent implements ParentDependentEntityComponent
 		return powered;
 	}
 
-	private UnderTile getParentUnderTile(GameContext gameContext) {
+	public UnderTile getParentUnderTile(GameContext gameContext) {
 		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 		UnderTile underTile = parentTile.getOrCreateUnderTile();
 		return underTile;

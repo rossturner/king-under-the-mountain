@@ -25,5 +25,19 @@
         "relatedTypeName": "BUILD_ROOFING"
       }
     ]
+  },
+  {
+    "hintId": "open_mechanisms_menu",
+    "i18nKeys": [
+      "HINT.BUILD_POWER.1",
+      "HINT.BUILD_POWER.2",
+      "HINT.BUILD_POWER.3"
+    ],
+    "triggers": [
+      {
+        "triggerType": "GUI_SWITCH_VIEW",
+        "relatedTypeName": "BUILD_MECHANISMS"
+      }
+    ]
   }
 ]

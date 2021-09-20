@@ -27,6 +27,7 @@ public class PoweredFurnitureTag extends Tag {
 		int powerAmount = Integer.parseInt(args.get(0));
 		float animationFps = Float.parseFloat(args.get(1));
 
+
 		PoweredFurnitureComponent poweredFurnitureComponent = new PoweredFurnitureComponent();
 		poweredFurnitureComponent.setPowerAmount(powerAmount);
 		poweredFurnitureComponent.setAnimationSpeed(animationFps);

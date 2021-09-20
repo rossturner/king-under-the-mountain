@@ -178,6 +178,10 @@ public class JobTarget {
 								return attributes.getColor(ColoringLayer.LEAF_COLOR);
 						}
 					}
+					case ITEM: {
+						ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+						return attributes.getPrimaryMaterial().getColor();
+					}
 					default: {
 						return null;
 					}
