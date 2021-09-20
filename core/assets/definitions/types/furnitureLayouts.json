@@ -241,24 +241,58 @@
   "extraTiles" : [ {
     "x" : 1,
     "y" : 0
-  }, {
-    "x" : 0,
-    "y" : -1
-  }, {
-    "x" : 1,
-    "y" : -1
   } ],
   "workspaces" : [ ],
   "specialTiles" : [ {
     "location" : {
       "x" : 0,
-      "y" : -2
+      "y" : -1
     },
     "requirement" : "IS_RIVER"
   }, {
     "location" : {
       "x" : 1,
-      "y" : -2
+      "y" : -1
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Waterwheel N side",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "requirement" : "IS_RIVER"
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Waterwheel E side",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "requirement" : "IS_RIVER"
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 1
     },
     "requirement" : "IS_RIVER"
   } ]
