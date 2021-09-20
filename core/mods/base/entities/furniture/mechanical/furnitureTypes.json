@@ -23,5 +23,30 @@
       "FURNITURE_BEHAVIOUR": ["POWER_SOURCE"],
       "POWERED_FURNITURE": [18, 0.9]
     }
+  },
+  {
+    "name": "WATERWHEEL",
+    "i18nKey": "FURNITURE.WATERWHEEL",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "Waterwheel S side",
+    "colorCode": "#8ee1da",
+    "iconName": "water-mill",
+    "placeAnywhere": true,
+    "requirements": {
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 22
+        },
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        }
+      ]
+    },
+    "tags": {
+      "FURNITURE_BEHAVIOUR": ["POWER_SOURCE"],
+      "POWERED_FURNITURE": [31, 0.8]
+    }
   }
 ]

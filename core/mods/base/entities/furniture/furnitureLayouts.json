@@ -166,6 +166,25 @@
   },
 
   {
+    "uniqueName": "Waterwheel S side",
+    "extraTiles": [
+      { "x": 1, "y": 0 },
+      { "x": 0, "y": -1 },
+      { "x": 1, "y": -1 }
+    ],
+    "specialTiles": [
+      {
+        "location": {"x": 0, "y": -2},
+        "requirement": "IS_RIVER"
+      },
+      {
+        "location": {"x": 1, "y": -2},
+        "requirement": "IS_RIVER"
+      }
+    ]
+  },
+
+  {
     "uniqueName": "Water Pump WE Layout",
     "rotatesToName": "Water Pump NS Layout",
     "extraTiles": [
