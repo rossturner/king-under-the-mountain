@@ -17,7 +17,6 @@ public class JobType {
 	@Name
 	private String name;
 	private String overrideI18nKey;
-	private float workDuration = 3f;
 	private boolean isAccessedFromAdjacentTile;
 	private boolean removeJobWhenAssignmentCancelled;
 	private boolean haulItemWhileWorking;
@@ -155,14 +154,6 @@ public class JobType {
 
 	public void setOnCompletionSoundAsset(SoundAsset onCompletionSoundAsset) {
 		this.onCompletionSoundAsset = onCompletionSoundAsset;
-	}
-
-	public float getWorkDuration() {
-		return workDuration;
-	}
-
-	public void setWorkDuration(float workDuration) {
-		this.workDuration = workDuration;
 	}
 
 	public List<String> getWorkOnJobParticleEffectNames() {

@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.ui.hints.model.Hint;
 import technology.rocketjump.undermount.ui.hints.model.HintAction;
@@ -102,6 +103,9 @@ public class HintMessageHandler implements Telegraph, Updatable {
 	public boolean handleMessage(Telegram msg) {
 		switch (msg.message) {
 			case MessageType.START_NEW_GAME: {
+				if (GlobalSettings.DEV_MODE && !GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+					return false;
+				}
 				for (Hint hint : hintDictionary.getByTriggerType(ON_GAME_START)) {
 					if (canBeShown(hint)) {
 						show(hint);

@@ -53,7 +53,8 @@
       "CRAFTING_STATION_BEHAVIOUR": ["ORE_CRUSHING", "PRODUCE_ITEM", "HAULING"],
       "PARTICLE_EFFECTS_WHILE_IN_USE": ["Ore chips"],
       "REQUIREMENT_TO_COLOR_MAPPINGS": ["Resource-Metal-Plate", "MISC_COLOR_1", "Product-Barrel-Hoops", "MISC_COLOR_2"],
-      "EXTRA_MATERIAL_TYPES": ["CLOTH"]
+      "EXTRA_MATERIAL_TYPES": ["CLOTH"],
+      "POWERED_FURNITURE": [-10, 8]
     }
   },
   {
@@ -235,6 +236,33 @@
     "tags": {
       "LIQUID_CONTAINER": ["6", "Beer"],
       "FURNITURE_BEHAVIOUR": ["BEER_TAPPER", "Material_Beer", "ItemType_Product-Barrel", "JobType_HAULING"]
+    }
+
+  },
+
+  {
+    "name": "WATER_PUMP",
+    "i18nKey": "FURNITURE.WATER_PUMP",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "Water Pump WE Layout",
+    "colorCode": "#26e1ed",
+    "iconName": "tap",
+    "placeAnywhere": true,
+    "requirements": {
+      "METAL": [
+        {
+          "itemTypeName": "Resource-Metal-Plate",
+          "quantity": 3
+        },
+        {
+          "itemTypeName": "Product-Stone-Gear",
+          "quantity": 2
+        }
+      ]
+    },
+    "tags": {
+      "FURNITURE_BEHAVIOUR": ["WATER_PUMP"],
+      "POWERED_FURNITURE": [-10, 0.8]
     }
 
   }

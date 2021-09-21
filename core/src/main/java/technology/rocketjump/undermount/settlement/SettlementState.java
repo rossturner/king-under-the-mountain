@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.settlement;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipeMaterialSelection;
@@ -10,6 +11,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.ImpendingMiningCollapse;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.persistence.EnumParser;
@@ -35,6 +37,7 @@ public class SettlementState implements Persistable {
 	private String settlementName;
 
 	public final Map<Long, Entity> furnitureHoldingCompletedCooking = new HashMap<>();
+	public final List<MapTile> activeLiquidFlowTiles = new ArrayList<>();
 
 	// Crafting-related state
 	public final Map<ItemType, ProductionQuota> itemTypeProductionQuotas = new HashMap<>();
@@ -130,6 +133,14 @@ public class SettlementState implements Persistable {
 			furnitureEntityJson.put(String.valueOf(entry.getKey()), entry.getValue().getId());
 		}
 		asJson.put("furnitureHoldingCompletedCooking", furnitureEntityJson);
+
+		JSONArray activeFlowTilesJson = new JSONArray();
+		for (MapTile activeLiquidFlowTile : activeLiquidFlowTiles) {
+			JSONObject activeFlowTileJson = JSONUtils.toJSON(activeLiquidFlowTile.getTilePosition());
+			activeFlowTilesJson.add(activeFlowTileJson);
+		}
+		asJson.put("activeFlowTiles", activeFlowTilesJson);
+
 
 		JSONObject productionQuotasJson = new JSONObject(true);
 		for (Map.Entry<ItemType, ProductionQuota> entry : itemTypeProductionQuotas.entrySet()) {
@@ -280,6 +291,20 @@ public class SettlementState implements Persistable {
 			furnitureHoldingCompletedCooking.put(key, entity);
 		}
 
+		JSONArray activeFlowTilesJson = asJson.getJSONArray("activeFlowTiles");
+		if (activeFlowTilesJson != null) {
+			for (int cursor = 0; cursor < activeFlowTilesJson.size(); cursor++) {
+				JSONObject tilePositionJson = activeFlowTilesJson.getJSONObject(cursor);
+				GridPoint2 location = JSONUtils.gridPoint2(tilePositionJson);
+				MapTile tile = savedGameStateHolder.getMap().getTile(location);
+				if (tile == null) {
+					throw new InvalidSaveException("Can not find tile at " + location);
+				} else {
+					activeLiquidFlowTiles.add(tile);
+				}
+			}
+		}
+
 		JSONObject productionQuotasJson = asJson.getJSONObject("productionQuotas");
 		for (Map.Entry<String, Object> entry : productionQuotasJson.entrySet()) {
 			ItemType itemType = relatedStores.itemTypeDictionary.getByName(entry.getKey());
@@ -317,7 +342,7 @@ public class SettlementState implements Persistable {
 			if (itemType == null) {
 				throw new InvalidSaveException("Could not find item type by name " + entry.getKey());
 			}
-			requiredItemCounts.put(itemType, (Integer)entry.getValue());
+			requiredItemCounts.put(itemType, (Integer) entry.getValue());
 		}
 
 		JSONObject liquidProductionQuotasJson = asJson.getJSONObject("liquidProductionQuotas");
@@ -363,7 +388,7 @@ public class SettlementState implements Persistable {
 					throw new InvalidSaveException("Could not find liquid material by name " + entry.getKey());
 				}
 				if (entry.getValue() instanceof Number) {
-					requiredLiquidCounts.put(liquidMaterial, ((Number)entry.getValue()).floatValue());
+					requiredLiquidCounts.put(liquidMaterial, ((Number) entry.getValue()).floatValue());
 				} else {
 					throw new InvalidSaveException("Unrecognised type " + entry.getValue().getClass() + " for parsing requiredLiquidCounts");
 				}

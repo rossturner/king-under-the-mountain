@@ -92,7 +92,7 @@ public class FurnitureViewerUI implements Disposable {
 //
 //		containerTable.row();
 
-		createMaterialWidget(GameMaterialType.WOOD);
+		createMaterialWidget(GameMaterialType.METAL);
 
 		containerTable.row();
 

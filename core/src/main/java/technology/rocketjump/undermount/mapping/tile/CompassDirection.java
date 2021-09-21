@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.mapping.tile;
 
 import com.badlogic.gdx.math.Vector2;
+import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,6 +48,29 @@ public enum CompassDirection {
 		// This will only be 1.0 or sqrt(2) but it's only calculated once, so it's not worth doing anything more complex
 		this.distance = (float) Math.sqrt((xOffset * xOffset) + (yOffset * yOffset));
     }
+
+	public static CompassDirection oppositeOf(CompassDirection direction) {
+		switch (direction) {
+			case NORTH:
+				return SOUTH;
+			case SOUTH:
+				return NORTH;
+			case EAST:
+				return WEST;
+			case WEST:
+				return EAST;
+			case NORTH_EAST:
+				return SOUTH_WEST;
+			case NORTH_WEST:
+				return SOUTH_EAST;
+			case SOUTH_EAST:
+				return NORTH_WEST;
+			case SOUTH_WEST:
+				return NORTH_EAST;
+			default:
+				throw new NotImplementedException("Unexpected value of " + CompassDirection.class.getSimpleName());
+		}
+	}
 
     public int getXOffset() {
         return xOffset;

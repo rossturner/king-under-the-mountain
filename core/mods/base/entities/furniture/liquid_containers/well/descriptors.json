@@ -1,0 +1,126 @@
+[
+  {
+    "uniqueName": "Furniture-Well-Body",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "WELL",
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "well_0-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 37.0,
+          "y": 24.0
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 12.0
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 12.0
+            }
+          },
+          {
+            "type": "FURNITURE_LIQUID_LAYER",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 12.0
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_4",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 12.0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Furniture-Well-Rope",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeName": "WELL",
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "well_1-64.png",
+        "coloringLayer": "ROPE_COLOR",
+        "offsetPixels": {
+          "x": -19.0,
+          "y": 13.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Furniture-Well-Wood-Layer",
+    "type": "FURNITURE_ABOVE_LAYER_2",
+    "furnitureTypeName": "WELL",
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "well_2-64.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 1.0,
+          "y": 0.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Furniture-Well-Water-Layer",
+    "type": "FURNITURE_LIQUID_LAYER",
+    "furnitureTypeName": "WELL",
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "well_3-64.png",
+        "offsetPixels": {
+          "x": -30.0,
+          "y": -20.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Furniture-Well-Metal-Layer",
+    "type": "FURNITURE_ABOVE_LAYER_4",
+    "furnitureTypeName": "WELL",
+    "furnitureLayoutName": "2x2 with lower workspaces",
+    "validMaterialTypes": [
+      "STONE"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "well_4-64.png",
+        "coloringLayer": "METAL_COLOR",
+        "offsetPixels": {
+          "x": -3.0,
+          "y": -4.0
+        }
+      }
+    }
+  }
+]

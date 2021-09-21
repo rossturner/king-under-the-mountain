@@ -14,9 +14,15 @@ import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.entities.behaviour.DoNothingBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
+import technology.rocketjump.undermount.entities.factories.MechanismEntityAttributesFactory;
+import technology.rocketjump.undermount.entities.factories.MechanismEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismTypeDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.JobStore;
@@ -29,6 +35,8 @@ import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
+import technology.rocketjump.undermount.mapping.tile.underground.ChannelLayout;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -57,6 +65,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private final JobStore jobStore;
 	private final StockpileComponentUpdater stockpileComponentUpdater;
 	private final RoofConstructionManager roofConstructionManager;
+	private final MechanismTypeDictionary mechanismTypeDictionary;
+	private final MechanismEntityAttributesFactory mechanismEntityAttributesFactory;
+	private final MechanismEntityFactory mechanismEntityFactory;
+	private final MechanismType pipeMechanismType;
 
 	private GameContext gameContext;
 
@@ -69,7 +81,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 							 GameInteractionStateContainer interactionStateContainer, RoomFactory roomFactory,
 							 RoomStore roomStore, JobStore jobStore, StockpileComponentUpdater stockpileComponentUpdater,
 							 RoofConstructionManager roofConstructionManager, ParticleEffectTypeDictionary particleEffectTypeDictionary,
-							 SoundAssetDictionary soundAssetDictionary, FloorTypeDictionary floorTypeDictionary) {
+							 SoundAssetDictionary soundAssetDictionary, FloorTypeDictionary floorTypeDictionary,
+							 MechanismTypeDictionary mechanismTypeDictionary, MechanismEntityAttributesFactory mechanismEntityAttributesFactory,
+							 MechanismEntityFactory mechanismEntityFactory) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
@@ -81,13 +95,16 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 		this.wallRemovedParticleEffectType = particleEffectTypeDictionary.getByName("Dust cloud"); // MODDING expose this
 		this.wallRemovedSoundAsset = soundAssetDictionary.getByName("Mining Drop");
+		this.mechanismTypeDictionary = mechanismTypeDictionary;
+		this.mechanismEntityAttributesFactory = mechanismEntityAttributesFactory;
+		this.mechanismEntityFactory = mechanismEntityFactory;
+		this.pipeMechanismType = mechanismTypeDictionary.getByName("Pipe");
 
 		for (FloorType floorType : floorTypeDictionary.getAllDefinitions()) {
 			if (floorType.isConstructed()) {
 				floorTypesByInputRequirement.put(floorType.getRequirements().get(floorType.getMaterialType()).get(0).getItemType(), floorType);
 			}
 		}
-
 
 		messageDispatcher.addListener(this, MessageType.ENTITY_POSITION_CHANGED);
 		messageDispatcher.addListener(this, MessageType.AREA_SELECTION);
@@ -100,6 +117,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.UNDO_REPLACE_FLOOR);
 		messageDispatcher.addListener(this, MessageType.REPLACE_REGION);
 		messageDispatcher.addListener(this, MessageType.FLOORING_CONSTRUCTED);
+		messageDispatcher.addListener(this, MessageType.ADD_CHANNEL);
+		messageDispatcher.addListener(this, MessageType.REMOVE_CHANNEL);
+		messageDispatcher.addListener(this, MessageType.ADD_PIPE);
+		messageDispatcher.addListener(this, MessageType.REMOVE_PIPE);
 	}
 
 	@Override
@@ -121,6 +142,22 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			case MessageType.REMOVE_WALL: {
 				GridPoint2 location = (GridPoint2) msg.extraInfo;
 				return handleRemoveWall(location);
+			}
+			case MessageType.ADD_CHANNEL: {
+				GridPoint2 location = (GridPoint2) msg.extraInfo;
+				return handleAddChannel(location);
+			}
+			case MessageType.REMOVE_CHANNEL: {
+				GridPoint2 location = (GridPoint2) msg.extraInfo;
+				return handleRemoveChannel(location);
+			}
+			case MessageType.ADD_PIPE: {
+				PipeConstructionMessage message = (PipeConstructionMessage) msg.extraInfo;
+				return handleAddPipe(message);
+			}
+			case MessageType.REMOVE_PIPE: {
+				GridPoint2 location = (GridPoint2) msg.extraInfo;
+				return handleRemovePipe(location);
 			}
 			case MessageType.REMOVE_ROOM: {
 				Room roomToRemove = (Room) msg.extraInfo;
@@ -160,6 +197,33 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
+	}
+
+	private boolean handleAddPipe(PipeConstructionMessage message) {
+		MapTile tile = gameContext.getAreaMap().getTile(message.tilePosition);
+		if (tile != null) {
+			UnderTile underTile = tile.getOrCreateUnderTile();
+			if (underTile.getPipeEntity() == null) {
+				MechanismEntityAttributes attributes = mechanismEntityAttributesFactory.byType(pipeMechanismType, message.material);
+				Entity pipeEntity = mechanismEntityFactory.create(attributes, message.tilePosition, new DoNothingBehaviour(), gameContext);
+				underTile.setPipeEntity(pipeEntity);
+				updateTile(tile, gameContext, messageDispatcher);
+				messageDispatcher.dispatchMessage(MessageType.PIPE_ADDED, message.tilePosition);
+			}
+		}
+		return true;
+	}
+
+	private boolean handleRemovePipe(GridPoint2 location) {
+		MapTile tile = gameContext.getAreaMap().getTile(location);
+		if (tile != null && tile.hasPipe()) {
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, tile.getUnderTile().getPipeEntity());
+			if (!tile.getUnderTile().liquidCanFlow()) {
+				tile.getUnderTile().setLiquidFlow(null);
+			}
+			updateTile(tile, gameContext, messageDispatcher);
+		}
+		return true;
 	}
 
 	private boolean handle(RoomPlacementMessage roomPlacementMessage) {
@@ -259,12 +323,30 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 						}
 
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_ROOFING)) {
-						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, true));
+						if (interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(tile)) {
+							messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, true));
+						}
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_ROOFING)) {
-						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new RoofConstructionQueueMessage(tile, false));
-						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new RoofDeconstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, false));
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_ROOFING)) {
-						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new RoofDeconstructionQueueMessage(tile, true));
+						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, true));
+
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_PIPING)) {
+						if (interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(tile)) {
+							messageDispatcher.dispatchMessage(MessageType.PIPE_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, true));
+						}
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_PIPING)) {
+						messageDispatcher.dispatchMessage(MessageType.PIPE_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, false));
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_PIPING)) {
+						messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, true));
+
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_MECHANISMS)) {
+						messageDispatcher.dispatchMessage(MessageType.MECHANISM_CONSTRUCTION_REMOVED, new TileConstructionQueueMessage(tile, false));
+						messageDispatcher.dispatchMessage(MessageType.MECHANISM_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, false));
+					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DECONSTRUCT_MECHANISMS)) {
+						messageDispatcher.dispatchMessage(MessageType.MECHANISM_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, true));
 					} else {
 						Logger.warn("Unhandled area selection message in " + getClass().getSimpleName());
 					}
@@ -409,23 +491,50 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		tileToAddWallTo.setWall(new Wall(wallLayout, wallType, wallMaterial), new TileRoof(newRoofState, wallMaterial));
 		roofConstructionManager.supportConstructed(tileToAddWallTo);
 		roofConstructionManager.roofConstructed(tileToAddWallTo);
-		updateTile(tileToAddWallTo, gameContext);
+		updateTile(tileToAddWallTo, gameContext, messageDispatcher);
 		messageDispatcher.dispatchMessage(MessageType.WALL_CREATED, location);
 
 		propagateDarknessFromTile(tileToAddWallTo, gameContext, outdoorLightProcessor);
 
+		updateRegions(tileToAddWallTo, tileNeighbours);
+
+		return true;
+	}
+
+
+	private boolean handleAddChannel(GridPoint2 location) {
+		MapTile tileToAddChannelTo = gameContext.getAreaMap().getTile(location);
+
+		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
+		ChannelLayout channelLayout = new ChannelLayout(tileNeighbours);
+
+		if (tileToAddChannelTo.hasRoom()) {
+			messageDispatcher.dispatchMessage(MessageType.REMOVE_ROOM_TILES, Set.of(location));
+		}
+
+		UnderTile underTile = tileToAddChannelTo.getOrCreateUnderTile();
+		underTile.setChannelLayout(channelLayout);
+		updateTile(tileToAddChannelTo, gameContext, messageDispatcher);
+
+		updateRegions(tileToAddChannelTo, tileNeighbours);
+
+		return true;
+	}
+
+	private void updateRegions(MapTile modifiedTile, TileNeighbours tileNeighbours) {
 		MapTile north = tileNeighbours.get(CompassDirection.NORTH);
 		MapTile south = tileNeighbours.get(CompassDirection.SOUTH);
 		MapTile east = tileNeighbours.get(CompassDirection.EAST);
 		MapTile west = tileNeighbours.get(CompassDirection.WEST);
 
-		// Change the tile's region to be neighbouring wall region, or else a new region
+		// Change the tile's region to be neighbouring same region type, or else a new region
+		MapTile.RegionType myRegionType = modifiedTile.getRegionType();
 		Integer neighbourRegionId = null;
 		for (MapTile neighbourTile : Arrays.asList(north, south, east, west)) {
-			if (neighbourTile != null && neighbourTile.hasWall()) {
+			if (neighbourTile != null && neighbourTile.getRegionType().equals(myRegionType)) {
 				if (neighbourRegionId == null) {
 					neighbourRegionId = neighbourTile.getRegionId();
-					tileToAddWallTo.setRegionId(neighbourRegionId);
+					modifiedTile.setRegionId(neighbourRegionId);
 				} else if (neighbourTile.getRegionId() != neighbourRegionId) {
 					// Encountered a different neighbour region ID, merge together
 					replaceRegion(neighbourTile, neighbourRegionId);
@@ -436,10 +545,10 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		}
 		if (neighbourRegionId == null) {
 			neighbourRegionId = gameContext.getAreaMap().createNewRegionId();
-			tileToAddWallTo.setRegionId(neighbourRegionId);
+			modifiedTile.setRegionId(neighbourRegionId);
 		}
 
-		// Figure out if new wall has split region into two - if so, create new region on one side
+		// Figure out if new channel has split region into two - if so, create new region on one side
 		boolean emptyEitherSide = false;
 		MapTile sideA = null;
 		MapTile sideB = null;
@@ -455,7 +564,8 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		);
 
 		for (List<MapTile> pair : pairings) {
-			if (pair.get(0) != null && !pair.get(0).hasWall() && pair.get(1) != null && !pair.get(1).hasWall()) {
+			if (pair.get(0) != null && !pair.get(0).getRegionType().equals(myRegionType) && pair.get(1) != null && !pair.get(1).getRegionType().equals(myRegionType) &&
+					pair.get(0).getRegionType().equals(pair.get(1).getRegionType())) {
 				emptyEitherSide = true;
 				sideA = pair.get(0);
 				sideB = pair.get(1);
@@ -483,7 +593,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 				for (MapTile orthogonalNeighbour : gameContext.getAreaMap().getOrthogonalNeighbours(current.getTileX(), current.getTileY()).values()) {
 					if (!explored.contains(orthogonalNeighbour) && !frontier.contains(orthogonalNeighbour)) {
-						if (!orthogonalNeighbour.hasWall() && !orthogonalNeighbour.isWaterSource()) {
+						if (orthogonalNeighbour.getRegionType().equals(sideA.getRegionType())) {
 							frontier.add(orthogonalNeighbour);
 						}
 					}
@@ -496,8 +606,6 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				replaceRegion(sideA, newRegionId);
 			}
 		}
-
-		return true;
 	}
 
 	public static void propagateDarknessFromTile(MapTile tile, GameContext gameContext, OutdoorLightProcessor outdoorLightProcessor) {
@@ -539,10 +647,11 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				outdoorLightProcessor.propagateLightFromMapVertex(gameContext.getAreaMap(), vertex, vertex.getOutsideLightAmount());
 			}
 
-			updateTile(tile, gameContext);
+			updateTile(tile, gameContext, messageDispatcher);
 
 			messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(wallRemovedParticleEffectType,
-					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {}));
+					Optional.empty(), Optional.of(new JobTarget(tile)), (p) -> {
+			}));
 			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(wallRemovedSoundAsset, -1L,
 					tile.getWorldPositionOfCenter(), null));
 
@@ -571,6 +680,49 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			if (unexploredTile != null) {
 				Notification areaUncoveredNotification = new Notification(AREA_REVEALED, unexploredTile.getWorldPositionOfCenter());
 				messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, areaUncoveredNotification);
+			}
+			if (neighbourRegionId == null) {
+				neighbourRegionId = gameContext.getAreaMap().createNewRegionId();
+				tile.setRegionId(neighbourRegionId);
+			}
+			messageDispatcher.dispatchMessage(MessageType.WALL_REMOVED, location);
+		}
+		return true;
+	}
+
+
+	private boolean handleRemoveChannel(GridPoint2 location) {
+		MapTile tile = gameContext.getAreaMap().getTile(location);
+		if (tile != null && tile.hasChannel()) {
+			tile.getUnderTile().setChannelLayout(null);
+			if (!tile.getUnderTile().liquidCanFlow()) {
+				tile.getUnderTile().setLiquidFlow(null);
+			}
+			updateTile(tile, gameContext, messageDispatcher);
+
+			updateRegions(tile, gameContext.getAreaMap().getNeighbours(location));
+
+			Integer neighbourRegionId = null;
+			MapTile unexploredTile = null;
+			for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(location.x, location.y).values()) {
+				if (neighbourTile.hasFloor() && !neighbourTile.getFloor().isRiverTile()) {
+					if (!neighbourTile.getExploration().equals(TileExploration.EXPLORED)) {
+						unexploredTile = neighbourTile;
+					}
+					if (neighbourRegionId == null) {
+						neighbourRegionId = neighbourTile.getRegionId();
+						tile.setRegionId(neighbourRegionId);
+					} else if (neighbourTile.getRegionId() != neighbourRegionId) {
+						// Encountered a different neighbour region ID, merge together
+						replaceRegion(neighbourTile, neighbourRegionId);
+					}
+				}
+				if (neighbourTile.hasDoorway()) {
+					messageDispatcher.dispatchMessage(MessageType.DECONSTRUCT_DOOR, neighbourTile.getDoorway());
+				}
+				if (neighbourTile.hasRoom()) {
+					neighbourTile.getRoomTile().getRoom().checkIfEnclosed(gameContext.getAreaMap());
+				}
 			}
 			if (neighbourRegionId == null) {
 				neighbourRegionId = gameContext.getAreaMap().createNewRegionId();
@@ -620,13 +772,13 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		}
 	}
 
-	public static void updateTile(MapTile tile, GameContext gameContext) {
+	public static void updateTile(MapTile tile, GameContext gameContext, MessageDispatcher messageDispatcher) {
 		TileNeighbours neighbours = gameContext.getAreaMap().getNeighbours(tile.getTileX(), tile.getTileY());
-		tile.update(neighbours, gameContext.getAreaMap().getVertices(tile.getTileX(), tile.getTileY()));
+		tile.update(neighbours, gameContext.getAreaMap().getVertices(tile.getTileX(), tile.getTileY()), messageDispatcher);
 
 		for (MapTile cellNeighbour : neighbours.values()) {
 			cellNeighbour.update(gameContext.getAreaMap().getNeighbours(cellNeighbour.getTileX(), cellNeighbour.getTileY()),
-					gameContext.getAreaMap().getVertices(cellNeighbour.getTileX(), cellNeighbour.getTileY()));
+					gameContext.getAreaMap().getVertices(cellNeighbour.getTileX(), cellNeighbour.getTileY()), messageDispatcher);
 		}
 
 		for (Zone zone : new ArrayList<>(tile.getZones())) {
@@ -644,26 +796,14 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		TileFloor newFloor = new TileFloor(floorType, material);
 		mapTile.replaceFloor(newFloor);
 
-		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
-		mapTile.update(tileNeighbours, gameContext.getAreaMap().getVertices(location.x, location.y));
-
-		for (MapTile neighbourCell : tileNeighbours.values()) {
-			neighbourCell.update(gameContext.getAreaMap().getNeighbours(neighbourCell.getTileX(), neighbourCell.getTileY()),
-					gameContext.getAreaMap().getVertices(neighbourCell.getTileX(), neighbourCell.getTileY()));
-		}
+		updateTile(mapTile, gameContext, messageDispatcher);
 	}
 
 	public void undoReplaceFloor(GridPoint2 location) {
 		MapTile mapTile = gameContext.getAreaMap().getTile(location);
 		mapTile.popFloor();
 
-		TileNeighbours tileNeighbours = gameContext.getAreaMap().getNeighbours(location);
-		mapTile.update(tileNeighbours, gameContext.getAreaMap().getVertices(location.x, location.y));
-
-		for (MapTile neighbourCell : tileNeighbours.values()) {
-			neighbourCell.update(gameContext.getAreaMap().getNeighbours(neighbourCell.getTileX(), neighbourCell.getTileY()),
-					gameContext.getAreaMap().getVertices(neighbourCell.getTileX(), neighbourCell.getTileY()));
-		}
+		updateTile(mapTile, gameContext, messageDispatcher);
 	}
 
 	public static void markAsOutside(MapTile tile, GameContext gameContext, OutdoorLightProcessor outdoorLightProcessor) {

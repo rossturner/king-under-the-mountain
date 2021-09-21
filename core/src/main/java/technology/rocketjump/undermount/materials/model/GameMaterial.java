@@ -234,7 +234,7 @@ public class GameMaterial implements Comparable<GameMaterial>, Persistable {
 
 	@Override
 	public String toString() {
-		return materialName + "(" + materialType.name() + ")";
+		return materialName + " (" + materialType.name().toLowerCase() + ")";
 	}
 
 	@Override

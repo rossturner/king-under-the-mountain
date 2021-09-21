@@ -138,6 +138,10 @@ public class ItemEntityAttributesFactory {
 	}
 
 	public ItemEntityAttributes createItemAttributes(ItemType itemTypeToCreate, int quantityToCreate, GameMaterial... materials) {
+		return createItemAttributes(itemTypeToCreate, quantityToCreate, List.of(materials));
+	}
+
+	public ItemEntityAttributes createItemAttributes(ItemType itemTypeToCreate, int quantityToCreate, List<GameMaterial> materials) {
 		ItemEntityAttributes newItemAttributes = new ItemEntityAttributes(SequentialIdGenerator.nextId());
 		newItemAttributes.setItemPlacement(ItemPlacement.ON_GROUND);
 		newItemAttributes.setItemType(itemTypeToCreate);

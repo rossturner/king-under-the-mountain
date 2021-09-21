@@ -19,7 +19,6 @@ import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.PlantSeedDispersedMessage;
 import technology.rocketjump.undermount.messaging.types.RemoveDesignationMessage;
 import technology.rocketjump.undermount.messaging.types.ShedLeavesMessage;
@@ -93,13 +92,13 @@ public class PlantBehaviour implements BehaviourComponent {
 		MapTile parentEntityTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldOrParentPosition());
 
 		if (!EARTH.equals(parentEntityTile.getFloor().getFloorType().getMaterialType())) {
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(this.parentEntity.getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, this.parentEntity);
 			return;
 		}
 
 		if (species.getPlantType().equals(PlantSpeciesType.SHRUB)) {
 			if (checkForCompetition(gameContext)) {
-				messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(this.parentEntity.getId()));
+				messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, this.parentEntity);
 				return;
 			}
 		}
@@ -211,7 +210,7 @@ public class PlantBehaviour implements BehaviourComponent {
 							new PlantSeedDispersedMessage(species, parentEntity.getLocationComponent().getWorldPosition(), growthStage.isShowFruit()));
 					break;
 				case DESTROY_PLANT:
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(parentEntity.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, parentEntity);
 					break;
 				default:
 					Logger.error("Not yet implemented: Handling of " + onCompletion);

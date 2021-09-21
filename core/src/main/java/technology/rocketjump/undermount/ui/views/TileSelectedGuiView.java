@@ -7,7 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.lang3.StringUtils;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rooms.StockpileAllocation;
 import technology.rocketjump.undermount.rooms.components.StockpileComponent;
@@ -62,11 +64,22 @@ public class TileSelectedGuiView implements GuiView {
 			MapTile tile = selectable.getTile();
 			if (tile != null) {
 				if (tile.getExploration().equals(EXPLORED)) {
-					descriptionTable.add(new I18nTextWidget(i18nTranslator.getDescription(tile), uiSkin, messageDispatcher)).left();
+					descriptionTable.add(new I18nTextWidget(i18nTranslator.getDescription(tile), uiSkin, messageDispatcher)).left().row();
+
+					UnderTile underTile = tile.getUnderTile();
+					if (underTile != null) {
+						Entity pipeEntity = underTile.getPipeEntity();
+						if (pipeEntity != null) {
+							descriptionTable.add(new I18nTextWidget(i18nTranslator.getPipeDescription(pipeEntity, underTile), uiSkin, messageDispatcher)).left().row();
+						}
+						Entity powerMechanismEntity = underTile.getPowerMechanismEntity();
+						if (powerMechanismEntity != null) {
+							descriptionTable.add(new I18nTextWidget(i18nTranslator.getPowerMechanismDescription(powerMechanismEntity, underTile), uiSkin, messageDispatcher)).left().row();
+						}
+					}
 				} else {
-					descriptionTable.add(new I18nTextWidget(i18nTranslator.getTranslatedString("FLOOR.UNEXPLORED"), uiSkin, messageDispatcher)).left();
+					descriptionTable.add(new I18nTextWidget(i18nTranslator.getTranslatedString("FLOOR.UNEXPLORED"), uiSkin, messageDispatcher)).left().row();
 				}
-				descriptionTable.row();
 				if (GlobalSettings.DEV_MODE) {
 					if (tile.getRoomTile() != null) {
 						StockpileComponent stockpileComponent = tile.getRoomTile().getRoom().getComponent(StockpileComponent.class);
@@ -89,6 +102,9 @@ public class TileSelectedGuiView implements GuiView {
 					descriptionTable.add(new Label("Roof: " + tile.getRoof().getState(), uiSkin)).left().row();
 					descriptionTable.add(new Label("Region: " + tile.getRegionId(), uiSkin)).left().row();
 					descriptionTable.add(new Label("Zones: " + StringUtils.join(tile.getZones(), ", "), uiSkin)).left().row();
+					if (tile.getUnderTile() != null) {
+						descriptionTable.add(new Label("UnderTile: " + tile.getUnderTile().toString(), uiSkin)).left().row();
+					}
 				}
 			}
 		}

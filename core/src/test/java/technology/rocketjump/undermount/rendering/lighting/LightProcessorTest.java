@@ -214,7 +214,7 @@ public class LightProcessorTest {
 
 		for (int x = 0; x < worldMap.getWidth(); x++) {
 			for (int y = 0; y < worldMap.getHeight(); y++) {
-				worldMap.getTile(x, y).update(worldMap.getNeighbours(x, y), worldMap.getVertices(x, y));
+				worldMap.getTile(x, y).update(worldMap.getNeighbours(x, y), worldMap.getVertices(x, y), null);
 			}
 		}
 
@@ -237,7 +237,7 @@ public class LightProcessorTest {
 
 		for (int x = 0; x < worldMap.getWidth(); x++) {
 			for (int y = 0; y < worldMap.getHeight(); y++) {
-				worldMap.getTile(x, y).update(worldMap.getNeighbours(x, y), worldMap.getVertices(x, y));
+				worldMap.getTile(x, y).update(worldMap.getNeighbours(x, y), worldMap.getVertices(x, y), null);
 			}
 		}
 

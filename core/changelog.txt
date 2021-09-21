@@ -1,3 +1,15 @@
+Alpha 7
+
+- Added channels and piping for liquid flow between tiles
+- Added water pump furniture to extract liquid from river and pump into pipes
+- Added well furniture for usage of pumped water
+- Added power generating furniture - windmill and water wheel
+- Added mechanical power grid system for transfer of power between producers and consumers (such as windmill and water pump)
+- Ore crusher now requires power to operate, or else it will take significantly longer
+- Updated dirt floor texture
+- Fixed particle effects on furniture in use like Ore Crusher
+- Made settlers eat rations before other edible items in inventory
+
 Alpha 6.1.7 - 5th September 2021
 
 - Fire extinguish designations spread with fire
@@ -6,7 +18,7 @@ Alpha 6.1.7 - 5th September 2021
 
 Alpha 6.1.6 - 23rd August 2021
 
-- Fixed an issue when displayed a settler with some needs missing 
+- Fixed an issue when displayed a settler with some needs missing
 
 Alpha 6.1.5 - 21st August 2021
 

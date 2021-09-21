@@ -468,4 +468,7 @@ public class Entity implements Persistable, Disposable {
 		this.locationComponent = overrideLocationComponent;
 	}
 
+	public List<EntityComponent> getAllComponents() {
+		return componentMap.values();
+	}
 }

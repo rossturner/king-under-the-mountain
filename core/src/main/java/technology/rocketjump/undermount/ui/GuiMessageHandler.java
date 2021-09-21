@@ -178,8 +178,8 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 			}
 			case MessageType.DESTROY_ENTITY: { // Need to stop showing destroyed entities
 				if (interactionStateContainer.getSelectable() != null && interactionStateContainer.getSelectable().type.equals(ENTITY)) {
-					EntityMessage message = (EntityMessage) msg.extraInfo;
-					if (message.getEntityId() == interactionStateContainer.getSelectable().getId()) {
+					Entity entity = (Entity) msg.extraInfo;
+					if (entity.getId() == interactionStateContainer.getSelectable().getId()) {
 						clearSelectable();
 					}
 				}
@@ -303,7 +303,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 					MapTile tile = gameContext.getAreaMap().getTile(location);
 					if (tile != null && tile.getRoof().getState().equals(TileRoofState.OPEN) && tile.getRoof().getConstructionState().equals(RoofConstructionState.NONE)) {
 						messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE,
-								new RoofConstructionQueueMessage(tile, true));
+								new TileConstructionQueueMessage(tile, true));
 					}
 				}
 
@@ -327,6 +327,13 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 			} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.PLACE_DOOR)) {
 				if (interactionStateContainer.isValidDoorPlacement()) {
 					messageDispatcher.dispatchMessage(MessageType.DOOR_PLACEMENT, interactionStateContainer.getVirtualDoorPlacement());
+				}
+			} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_MECHANISMS)) {
+				MapTile cursorTile = gameContext.getAreaMap().getTile(mouseChangeMessage.getWorldPosition());
+				if (cursorTile != null && interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(cursorTile)) {
+					messageDispatcher.dispatchMessage(MessageType.MECHANISM_CONSTRUCTION_ADDED, new MechanismPlacementMessage(
+							cursorTile, interactionStateContainer.getMechanismTypeToPlace()
+					));
 				}
 			}
 

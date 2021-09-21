@@ -10,7 +10,9 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.rooms.Bridge;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
 
 @Singleton
 public class JobFactory {
@@ -55,6 +57,14 @@ public class JobFactory {
 			Bridge bridge = targetTile.getFloor().getBridge();
 			job.setRequiredProfession(bridge.getBridgeType().getCraftingType().getProfessionRequired());
 			job.setRequiredItemType(bridge.getBridgeType().getCraftingType().getDefaultItemType());
+		} else if (targetTile.hasFloor() && targetTile.getFloor().getFloorType().isConstructed()) {
+			CraftingType craftingType = targetTile.getFloor().getFloorType().getCraftingType();
+			job.setRequiredProfession(craftingType.getProfessionRequired());
+			job.setRequiredItemType(craftingType.getDefaultItemType());
+		} else if (targetTile.hasChannel()) {
+			TileDesignation originalDesignation = GameInteractionMode.DESIGNATE_DIG_CHANNEL.getDesignationToApply();
+			job.setRequiredProfession(originalDesignation.getCreatesJobType().getRequiredProfession());
+			job.setRequiredItemType(originalDesignation.getCreatesJobType().getRequiredItemType());
 		} else {
 			Entity targetFurniture = null;
 			for (Entity entity : targetTile.getEntities()) {

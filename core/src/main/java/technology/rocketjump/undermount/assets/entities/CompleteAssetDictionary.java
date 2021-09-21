@@ -5,6 +5,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.entities.furniture.FurnitureEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.item.ItemEntityAssetDictionary;
+import technology.rocketjump.undermount.assets.entities.mechanism.MechanismEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.plant.PlantEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.wallcap.WallCapAssetDictionary;
@@ -22,12 +23,13 @@ public class CompleteAssetDictionary {
 	@Inject
 	public CompleteAssetDictionary(HumanoidEntityAssetDictionary humanoidEntityAssetDictionary, FurnitureEntityAssetDictionary furnitureEntityAssetDictionary,
 								   PlantEntityAssetDictionary plantEntityAssetDictionary, ItemEntityAssetDictionary itemEntityAssetDictionary,
-								   WallCapAssetDictionary wallCapAssetDictionary) {
+								   WallCapAssetDictionary wallCapAssetDictionary, MechanismEntityAssetDictionary mechanismEntityAssetDictionary) {
 		allAssetsByName.putAll(humanoidEntityAssetDictionary.getAll());
 		allAssetsByName.putAll(plantEntityAssetDictionary.getAll());
 		allAssetsByName.putAll(itemEntityAssetDictionary.getAll());
 		allAssetsByName.putAll(furnitureEntityAssetDictionary.getAll());
 		allAssetsByName.putAll(wallCapAssetDictionary.getAll());
+		allAssetsByName.putAll(mechanismEntityAssetDictionary.getAll());
 		allAssetsByName.put(NULL_ASSET.getUniqueName(), NULL_ASSET);
 	}
 

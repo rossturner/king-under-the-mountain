@@ -195,14 +195,16 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			} else {
 				entityDescriptionTable.add(new I18nTextWidget(i18nTranslator.getDescription(entity), uiSkin, messageDispatcher)).left().row();
 
-				BehaviourComponent behaviourComponent = entity.getBehaviourComponent();
-				if (behaviourComponent instanceof SelectableDescription) {
-					for (I18nText description : ((SelectableDescription) behaviourComponent).getDescription(i18nTranslator, gameContext)) {
-						if (!description.isEmpty()) {
-							entityDescriptionTable.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).left().row();
+				for (EntityComponent component : entity.getAllComponents()) {
+					if (component instanceof SelectableDescription) {
+						for (I18nText description : ((SelectableDescription) component).getDescription(i18nTranslator, gameContext)) {
+							if (!description.isEmpty()) {
+								entityDescriptionTable.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).left().row();
+							}
 						}
 					}
 				}
+
 
 				InventoryComponent inventoryComponent = entity.getComponent(InventoryComponent.class);
 				LiquidContainerComponent liquidContainerComponent = entity.getComponent(LiquidContainerComponent.class);

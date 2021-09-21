@@ -6,10 +6,10 @@ public enum GameSpeed {
 	NORMAL("play", 1),
 	SPEED2("speed2", 2),
 	SPEED3("speed3", 5),
-	SPEED4("speed4", 10),
+	SPEED4("speed4", 8),
 
 	VERY_SLOW(null, 0.25f),
-	SPEED5(null, 20);
+	SPEED5(null, 18);
 
 	public final String iconName;
 	public final float speedMultiplier;

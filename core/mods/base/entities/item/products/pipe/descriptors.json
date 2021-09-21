@@ -1,0 +1,159 @@
+[
+  {
+    "uniqueName": "Product-Stone-Pipe-On-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Stone-Pipe",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Resources_Half-pipe centre-to-north.png",
+        "scale": 0.8,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Product-Stone-Pipe-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Product-Stone-Pipe",
+    "itemPlacements": ["BEING_CARRIED"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Resources_Half-pipe centre-to-north.png",
+        "scale": 0.6,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Resources_Half-pipe centre-to-north.png",
+        "scale": 0.6,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Resources_Half-pipe centre-to-north.png",
+        "scale": 0.6,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Resources_Half-pipe centre-to-north.png",
+        "scale": 0.6,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "Resources_Half-pipe centre-to-north.png",
+        "scale": 0.6,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Resources_Half-pipe centre-to-north.png",
+        "scale": 0.6,
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+]

@@ -23,6 +23,7 @@ public class MapVertex implements Persistable {
 	private float outsideLightAmount = 0.0f; // This is from 0.0 (none) to 1.0 (total) amount of lighting from "outside" e.g. the sun or moon
 	private float heightmapValue;
 	private Vector2 waterFlowDirection = Vector2.Zero;
+	private float averageWaterDepth;
 	private final int vertexX;
 	private final int vertexY;
 	private float explorationVisibility = 0f; // 0 to 1 for unexplored to explored
@@ -86,6 +87,14 @@ public class MapVertex implements Persistable {
 		this.explorationVisibility = explorationVisibility;
 	}
 
+	public float getAverageWaterDepth() {
+		return averageWaterDepth;
+	}
+
+	public void setAverageWaterDepth(float averageWaterDepth) {
+		this.averageWaterDepth = averageWaterDepth;
+	}
+
 	@Override
 	public void writeTo(SavedGameStateHolder savedGameStateHolder) {
 		// Not checking if this is already in stateHolder
@@ -99,6 +108,9 @@ public class MapVertex implements Persistable {
 
 		if (!waterFlowDirection.equals(Vector2.Zero)) {
 			asJson.put("flow", JSONUtils.toJSON(waterFlowDirection));
+		}
+		if (averageWaterDepth > 0) {
+			asJson.put("depth", averageWaterDepth);
 		}
 
 		if (explorationVisibility > 0) {
@@ -118,6 +130,7 @@ public class MapVertex implements Persistable {
 		if (this.waterFlowDirection == null) {
 			this.waterFlowDirection = Vector2.Zero;
 		}
+		this.averageWaterDepth = asJson.getFloatValue("depth");
 
 		this.explorationVisibility = asJson.getFloatValue("exploration");
 

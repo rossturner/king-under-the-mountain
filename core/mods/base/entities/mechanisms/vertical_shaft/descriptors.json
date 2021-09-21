@@ -1,0 +1,18 @@
+[
+  {
+    "uniqueName": "Mechanism-Shaft-Vert-Body",
+    "type": "MECHANISM_BASE_LAYER",
+    "mechanismTypeName": "Shaft_Vertical",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "shaft-vert",
+        "isAnimated": true,
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

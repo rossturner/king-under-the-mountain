@@ -25,7 +25,6 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.AddWallMessage;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.HumanoidDeathMessage;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
@@ -271,10 +270,10 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 				messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(entity, DeathReason.CRUSHED_BY_FALLING_DEBRIS));
 				MapTile deceasedTile = gameContext.getAreaMap().getTile(entity.getLocationComponent().getWorldOrParentPosition());
 				if (deceasedTile == null || deceasedTile.hasWall()) {
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);
 				}
 			} else {
-				messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+				messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);
 			}
 		}
 		for (Construction construction : constructionsStruckByCollapse) {

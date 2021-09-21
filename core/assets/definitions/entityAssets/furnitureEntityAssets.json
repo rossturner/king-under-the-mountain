@@ -1494,6 +1494,666 @@
     }
   }
 }, {
+  "uniqueName" : "Furniture-Well-Body",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "WELL",
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "well_0-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 37.0,
+        "y" : 24.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_LIQUID_LAYER",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_4",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 12.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Well-Rope",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeName" : "WELL",
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "well_1-64.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -19.0,
+        "y" : 13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Well-Wood-Layer",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeName" : "WELL",
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "well_2-64.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : 0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Well-Water-Layer",
+  "type" : "FURNITURE_LIQUID_LAYER",
+  "furnitureTypeName" : "WELL",
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "well_3-64.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -30.0,
+        "y" : -20.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Furniture-Well-Metal-Layer",
+  "type" : "FURNITURE_ABOVE_LAYER_4",
+  "furnitureTypeName" : "WELL",
+  "furnitureLayoutName" : "2x2 with lower workspaces",
+  "validMaterialTypes" : [ "STONE" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "well_4-64.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -3.0,
+        "y" : -4.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-E-Building",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel E side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-wood-ew-64.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 31.5,
+        "y" : 41.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.5,
+          "y" : 0.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-E-Base",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel E side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-stone-ew-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -26.5,
+        "y" : -39.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-E-Wheel",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel E side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheel-ew",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 5.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-W-Building",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel W side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-wood-ew-64.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -31.5,
+        "y" : 41.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : -0.5,
+          "y" : 0.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-W-Base",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel W side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-stone-ew-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 26.5,
+        "y" : -39.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-W-Wheel",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel W side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheel-ew",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 5.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-S-Building",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel S side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-wood-s-64.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -42.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-S-Base",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel S side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-stone-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -50.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-S-Wheel",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel S side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheel-ns",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-N-Building",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel N side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-wood-n-64.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 52.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 64.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-N-Base",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel N side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheelhouse-stone-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -50.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Waterwheel-N-Wheel",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATERWHEEL" ],
+  "furnitureLayoutName" : "Waterwheel N side",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wheel-ns",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Windmill-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WINDMILL" ],
+  "furnitureLayoutName" : "2x2",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "windmill-0-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 94.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 94.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_3",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 94.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Windmill-Wood-Section",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WINDMILL" ],
+  "furnitureLayoutName" : "2x2",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "windmill-1-64.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.5,
+        "y" : -9.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Windmill-Roof-Section",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "WINDMILL" ],
+  "furnitureLayoutName" : "2x2",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "windmill-2-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.5,
+        "y" : 48.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Windmill-Blades-Section",
+  "type" : "FURNITURE_ABOVE_LAYER_3",
+  "furnitureTypeNames" : [ "WINDMILL" ],
+  "furnitureLayoutName" : "2x2",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "windmill-3",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "mushroom-log-1x1EW-base",
   "type" : "BASE_LAYER",
   "furnitureTypeNames" : [ "INNOCULATION_LOG", "INNOCULATED_LOG" ],
@@ -3886,6 +4546,378 @@
       "offsetPixels" : {
         "x" : 0.0,
         "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-WE_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump WE Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 32.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-EW_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump EW Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -32.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-NS_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump NS Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_n_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -32.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-SN_Layout-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump SN Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_s_base.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 38.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_2",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-WE_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump WE Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -20.0,
+        "y" : 20.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-EW_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump EW Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 20.0,
+        "y" : 20.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-NS_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump NS Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_n_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 17.0,
+        "y" : 22.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-SN_Layout-Mechanism",
+  "type" : "FURNITURE_BELOW_LAYER_2",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump SN Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_s_mechanism",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -15.0,
+        "y" : -14.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-WE_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump WE Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 17.5,
+        "y" : -12.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-EW_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump EW Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_ew_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -17.5,
+        "y" : -12.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-NS_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump NS Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_n_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -8.5,
+        "y" : -23.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "WATER_PUMP-SN_Layout-Pipe",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "WATER_PUMP" ],
+  "furnitureLayoutName" : "Water Pump SN Layout",
+  "validMaterialTypes" : [ "METAL" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "pump_s_pipe.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 10.0,
+        "y" : 11.0,
         "zero" : false,
         "unit" : false
       },

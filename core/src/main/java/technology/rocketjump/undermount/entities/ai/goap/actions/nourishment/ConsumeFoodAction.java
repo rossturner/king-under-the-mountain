@@ -15,7 +15,6 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.messaging.types.StatusMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -64,7 +63,7 @@ public class ConsumeFoodAction extends Action {
 			itemEntityAttributes.setQuantity(itemEntityAttributes.getQuantity() - 1);
 
 			if (itemEntityAttributes.getQuantity() <= 0) {
-				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
+				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 			} else {
 				placeFoodBackIntoInventory(gameContext, targetEntity);
 

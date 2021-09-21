@@ -167,6 +167,35 @@
   },
   "hiddenFromPlacementMenu" : false
 }, {
+  "name" : "WELL",
+  "i18nKey" : "FURNITURE.WELL",
+  "categoryName" : "LIQUID_CONTAINER",
+  "defaultLayoutName" : "2x2 with lower workspaces",
+  "colorCode" : "#26e1ed",
+  "iconName" : "well",
+  "placeAnywhere" : true,
+  "autoConstructed" : false,
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 8,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 3,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Bucket",
+      "quantity" : 1,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "LIQUID_CONTAINER" : [ "32", "Water" ],
+    "FURNITURE_BEHAVIOUR" : [ "WELL" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
   "name" : "CHEFS_CAULDRON",
   "i18nKey" : "FURNITURE.CAULDRON",
   "categoryName" : "LIQUID_CONTAINER",
@@ -206,6 +235,56 @@
     "LIQUID_CONTAINER" : [ "12", "Water", "ALWAYS_INACTIVE" ],
     "CONSTRUCTION_OVERRIDE" : [ "DO_NOT_ALLOCATE", "REQUIRES_EDIBLE_LIQUID" ],
     "FURNITURE_BEHAVIOUR" : [ "EDIBLE_LIQUID_SOURCE", "ItemType_Ingredient-Soup-Bowl" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "WINDMILL",
+  "i18nKey" : "FURNITURE.WINDMILL",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "2x2",
+  "colorCode" : "#c14545",
+  "iconName" : "windmill",
+  "placeAnywhere" : true,
+  "autoConstructed" : false,
+  "requirements" : {
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 12,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 6,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "FURNITURE_BEHAVIOUR" : [ "POWER_SOURCE" ],
+    "POWERED_FURNITURE" : [ "18", "0.9" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "WATERWHEEL",
+  "i18nKey" : "FURNITURE.WATERWHEEL",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "Waterwheel S side",
+  "colorCode" : "#8ee1da",
+  "iconName" : "water-mill",
+  "placeAnywhere" : true,
+  "autoConstructed" : false,
+  "requirements" : {
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 16,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 4,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "FURNITURE_BEHAVIOUR" : [ "POWER_SOURCE" ],
+    "POWERED_FURNITURE" : [ "31", "0.9" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {
@@ -546,7 +625,8 @@
     "CRAFTING_STATION_BEHAVIOUR" : [ "ORE_CRUSHING", "PRODUCE_ITEM", "HAULING" ],
     "PARTICLE_EFFECTS_WHILE_IN_USE" : [ "Ore chips" ],
     "REQUIREMENT_TO_COLOR_MAPPINGS" : [ "Resource-Metal-Plate", "MISC_COLOR_1", "Product-Barrel-Hoops", "MISC_COLOR_2" ],
-    "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ]
+    "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ],
+    "POWERED_FURNITURE" : [ "-10", "8" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {
@@ -730,6 +810,31 @@
   "tags" : {
     "LIQUID_CONTAINER" : [ "6", "Beer" ],
     "FURNITURE_BEHAVIOUR" : [ "BEER_TAPPER", "Material_Beer", "ItemType_Product-Barrel", "JobType_HAULING" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "WATER_PUMP",
+  "i18nKey" : "FURNITURE.WATER_PUMP",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "Water Pump WE Layout",
+  "colorCode" : "#26e1ed",
+  "iconName" : "tap",
+  "placeAnywhere" : true,
+  "autoConstructed" : false,
+  "requirements" : {
+    "METAL" : [ {
+      "itemTypeName" : "Resource-Metal-Plate",
+      "quantity" : 3,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Stone-Gear",
+      "quantity" : 2,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "FURNITURE_BEHAVIOUR" : [ "WATER_PUMP" ],
+    "POWERED_FURNITURE" : [ "-10", "0.8" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {

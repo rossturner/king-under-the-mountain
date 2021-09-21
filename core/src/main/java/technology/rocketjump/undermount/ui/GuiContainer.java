@@ -18,9 +18,11 @@ import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.InfoWindow;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.ui.cursor.CursorManager;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.views.*;
+import technology.rocketjump.undermount.ui.views.debug.DebugGuiView;
 import technology.rocketjump.undermount.ui.widgets.GameDialog;
 import technology.rocketjump.undermount.ui.widgets.tooltips.Tooltip;
 
@@ -40,6 +42,7 @@ public class GuiContainer implements Telegraph, GameContextAware {
 	private final Table lowerRightContainerTable;
 	private final Table timeAndDateContainerTable;
 	private final Table hintContainerTable;
+	private final Table debugContainerTable;
 	private final Table notificationTable;
 	private final Table minimapContainerTable;
 	private final MessageDispatcher messageDispatcher;
@@ -47,6 +50,7 @@ public class GuiContainer implements Telegraph, GameContextAware {
 	private final GameInteractionStateContainer interactionStateContainer;
 	private final TimeDateGuiView timeDateGuiView;
 	private final HintGuiView hintGuiView;
+	private final DebugGuiView debugGuiView;
 	private final NotificationGuiView notificationGuiView;
 	private final MinimapGuiView minimapGuiView;
 	private Stage primaryStage;
@@ -62,10 +66,12 @@ public class GuiContainer implements Telegraph, GameContextAware {
 	@Inject
 	public GuiContainer(MessageDispatcher messageDispatcher, CursorManager cursorManager, GameInteractionStateContainer interactionStateContainer,
 						GuiSkinRepository guiSkinRepository, GuiViewRepository guiViewRepository, TimeDateGuiView timeDateGuiView,
-						UserPreferences userPreferences, InfoWindow infoWindow, HintGuiView hintGuiView, NotificationGuiView notificationGuiView,
+						UserPreferences userPreferences, InfoWindow infoWindow, HintGuiView hintGuiView,
+						DebugGuiView debugGuiView, NotificationGuiView notificationGuiView,
 						MinimapGuiView minimapGuiView) {
 		this.infoWindow = infoWindow;
 		this.hintGuiView = hintGuiView;
+		this.debugGuiView = debugGuiView;
 		this.notificationGuiView = notificationGuiView;
 		Skin uiSkin = guiSkinRepository.getDefault();
 		this.timeDateGuiView = timeDateGuiView;
@@ -105,6 +111,8 @@ public class GuiContainer implements Telegraph, GameContextAware {
 
 		hintContainerTable = new Table(uiSkin);
 		hintContainerTable.left().top();
+		debugContainerTable = new Table(uiSkin);
+		debugContainerTable.left().top();
 
 		notificationTable = new Table(uiSkin);
 		minimapContainerTable = new Table(uiSkin);
@@ -118,6 +126,7 @@ public class GuiContainer implements Telegraph, GameContextAware {
 		upperLeftContainerTable = new Table(uiSkin);
 		upperLeftContainerTable.left().top();
 		upperLeftContainerTable.add(hintContainerTable).top().left().pad(10).row();
+		upperLeftContainerTable.add(debugContainerTable).top().left().pad(10).row();
 		upperLeftContainerTable.setFillParent(true);
 
 		lowerRightContainerTable = new Table(uiSkin);
@@ -133,6 +142,8 @@ public class GuiContainer implements Telegraph, GameContextAware {
 		notificationGuiView.populate(timeAndDateContainerTable);
 		minimapGuiView.populate(minimapContainerTable);
 		hintGuiView.populate(hintContainerTable);
+		debugGuiView.populate(debugContainerTable);
+		debugGuiView.update();
 
 		timeAndDateStageInputHandler = new StageAreaOnlyInputHandler(timeAndDateStage, interactionStateContainer);
 	}
@@ -235,6 +246,9 @@ public class GuiContainer implements Telegraph, GameContextAware {
 			newView.populate(containerTable);
 		}
 		currentView = newView;
+		if (GlobalSettings.DEV_MODE) {
+			debugGuiView.update();
+		}
 	}
 
 	public void showDialog(GameDialog dialog) {

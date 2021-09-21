@@ -19,7 +19,6 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -57,7 +56,7 @@ public class InventoryComponent implements EntityComponent, Destructible {
 				MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldOrParentPosition());
 				if (parentTile == null) {
 					// Not on a valid tile, just destroy inventory entity
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, inventoryEntry.entity);
 				} else {
 					parentTiles.add(parentTile);
 					if (parentEntity.getType().equals(EntityType.FURNITURE)) {
@@ -86,18 +85,18 @@ public class InventoryComponent implements EntityComponent, Destructible {
 						int newQuantity = Math.min(itemInTileAttributes.getQuantity() + itemAttributes.getQuantity(), itemAttributes.getItemType().getMaxStackSize());
 						itemInTileAttributes.setQuantity(newQuantity);
 						messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, matchingInTile);
-						messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
+						messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, inventoryEntry.entity);
 					}
 				}
 			} else {
-				messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
+				messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, inventoryEntry.entity);
 			}
 		}
 	}
 
 	public void destroyAllEntities(MessageDispatcher messageDispatcher) {
 		for (InventoryComponent.InventoryEntry inventoryEntry : new ArrayList<>(getInventoryEntries())) {
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, inventoryEntry.entity);
 		}
 	}
 
@@ -165,7 +164,7 @@ public class InventoryComponent implements EntityComponent, Destructible {
 						}
 					}
 
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(entityToAdd.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entityToAdd);
 					messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, matchingEntry.entity);
 					inventoryEntityModified(matchingEntry.entity, gameClock);
 					return matchingEntry;

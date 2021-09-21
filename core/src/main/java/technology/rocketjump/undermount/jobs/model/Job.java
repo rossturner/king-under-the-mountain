@@ -42,6 +42,7 @@ public class Job implements Persistable {
 	private Long assignedToEntityId;
 
 	private float workDoneSoFar;
+	private Float overrideWorkDuration;
 
 	private GridPoint2 jobLocation;
 	private GridPoint2 secondaryLocation; // Used in crafting where jobLocation is position to stand, secondary is workspace
@@ -142,7 +143,7 @@ public class Job implements Persistable {
 		this.assignedToEntityId = assignedToEntityId;
 	}
 
-	public float getTotalWorkToDo() {
+	public float getJobTypeTotalWorkToDo() {
 		Float defaultTime = null;
 		if (craftingRecipe != null) {
 			defaultTime = craftingRecipe.getDefaultTimeToCompleteCrafting();
@@ -165,6 +166,18 @@ public class Job implements Persistable {
 
 	public void setWorkDoneSoFar(float workDoneSoFar) {
 		this.workDoneSoFar = workDoneSoFar;
+	}
+
+	public float getTotalWorkToDo() {
+		if (overrideWorkDuration != null) {
+			return overrideWorkDuration;
+		} else {
+			return getJobTypeTotalWorkToDo();
+		}
+	}
+
+	public void setOverrideWorkDuration(Float overrideWorkDuration) {
+		this.overrideWorkDuration = overrideWorkDuration;
 	}
 
 	public GridPoint2 getJobLocation() {

@@ -242,86 +242,93 @@ arrow-up
   orig: 64, 64
   offset: 0, 0
   index: -1
-axe-in-stump
+auto-repair
   rotate: false
   xy: 2173, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-barrel
+axe-in-stump
   rotate: false
   xy: 2239, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-battle-axe
+barrel
   rotate: false
   xy: 2305, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-bed
+battle-axe
   rotate: false
   xy: 2371, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-beer-stein
+bed
   rotate: false
   xy: 2437, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-black-bar
+beer-stein
   rotate: false
   xy: 2503, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-block
+black-bar
   rotate: false
   xy: 2569, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-block-50pct
+block
   rotate: false
   xy: 2635, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-brick-pile
+block-50pct
   rotate: false
   xy: 2701, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-brick-wall
+brick-pile
   rotate: false
   xy: 2767, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-broom
+brick-wall
   rotate: false
   xy: 2833, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+broom
+  rotate: false
+  xy: 2899, 173
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 button
   rotate: false
-  xy: 3697, 131
+  xy: 4027, 131
   size: 40, 40
   split: 8, 9, 8, 9
   orig: 40, 40
@@ -329,7 +336,7 @@ button
   index: -1
 button_blank
   rotate: false
-  xy: 3739, 140
+  xy: 3829, 40
   size: 28, 31
   split: 12, 10, 13, 4
   orig: 28, 31
@@ -337,126 +344,126 @@ button_blank
   index: -1
 cancel
   rotate: false
-  xy: 2899, 173
+  xy: 2965, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cardboard-box
   rotate: false
-  xy: 2965, 173
+  xy: 3031, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cash
   rotate: false
-  xy: 3031, 173
+  xy: 3097, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 castle-ruins
   rotate: false
-  xy: 3097, 173
+  xy: 3163, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cauldron
   rotate: false
-  xy: 3163, 173
+  xy: 3229, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 check-mark
   rotate: false
-  xy: 3229, 173
+  xy: 3295, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 chef-toque
   rotate: false
-  xy: 3295, 173
+  xy: 3361, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 chemical-tank
   rotate: false
-  xy: 3361, 173
+  xy: 3427, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 chicken-oven
   rotate: false
-  xy: 3427, 173
+  xy: 3493, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 circular-sawblade
   rotate: false
-  xy: 3493, 173
+  xy: 3559, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 clockwise-rotation
   rotate: false
-  xy: 3559, 173
+  xy: 3625, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 closed-doors
   rotate: false
-  xy: 3625, 173
+  xy: 3691, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 coins
   rotate: false
-  xy: 3691, 173
+  xy: 3757, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 concrete-bag
   rotate: false
-  xy: 3757, 173
+  xy: 3823, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 contract
   rotate: false
-  xy: 3823, 173
+  xy: 3889, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cooking-pot
   rotate: false
-  xy: 3889, 173
+  xy: 3955, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cracked-shield
   rotate: false
-  xy: 3955, 173
+  xy: 4021, 173
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 crossbow
   rotate: false
-  xy: 4021, 173
+  xy: 133, 78
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -470,189 +477,189 @@ cursor-corner
   index: -1
 dead-head
   rotate: false
-  xy: 133, 78
+  xy: 133, 12
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 demolish
   rotate: false
-  xy: 133, 12
+  xy: 199, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 diamond-hard
   rotate: false
-  xy: 199, 107
+  xy: 199, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 dig-dug
   rotate: false
-  xy: 199, 41
+  xy: 265, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 dough-roller
   rotate: false
-  xy: 265, 107
+  xy: 265, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 drop
   rotate: false
-  xy: 265, 41
+  xy: 331, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 dwarf-face
   rotate: false
-  xy: 331, 107
+  xy: 331, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 emerald
   rotate: false
-  xy: 331, 41
+  xy: 397, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 expand
   rotate: false
-  xy: 397, 107
+  xy: 397, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 fast-forward-button-down
   rotate: false
-  xy: 397, 41
+  xy: 463, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 fast-forward-button-up
   rotate: false
-  xy: 463, 107
+  xy: 463, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 female
   rotate: false
-  xy: 463, 41
+  xy: 529, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 fireplace
   rotate: false
-  xy: 529, 107
+  xy: 529, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 flame
   rotate: false
-  xy: 529, 41
+  xy: 595, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 floorboards
   rotate: false
-  xy: 595, 107
+  xy: 595, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 flying-flag
   rotate: false
-  xy: 595, 41
+  xy: 661, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 fountain-pen
   rotate: false
-  xy: 661, 107
+  xy: 661, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 fruit-bowl
   rotate: false
-  xy: 661, 41
+  xy: 727, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 gamepad
   rotate: false
-  xy: 727, 107
+  xy: 727, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 gears
   rotate: false
-  xy: 727, 41
+  xy: 793, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 gems
   rotate: false
-  xy: 793, 107
+  xy: 793, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 gold-bar
   rotate: false
-  xy: 793, 41
+  xy: 859, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 gold-mine
   rotate: false
-  xy: 859, 107
+  xy: 859, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 gold-stack
   rotate: false
-  xy: 859, 41
+  xy: 925, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 grain
   rotate: false
-  xy: 925, 107
+  xy: 925, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 grass
   rotate: false
-  xy: 925, 41
+  xy: 991, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 graveyard
   rotate: false
-  xy: 991, 107
+  xy: 991, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -666,567 +673,630 @@ green_button01
   index: -1
 hammer-nails
   rotate: false
-  xy: 991, 41
+  xy: 1057, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 hand-saw
   rotate: false
-  xy: 1057, 107
+  xy: 1057, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 help
   rotate: false
-  xy: 1057, 41
+  xy: 1123, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 info
   rotate: false
-  xy: 1123, 107
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-ionic-column
-  rotate: false
   xy: 1123, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-keyboard
+input
   rotate: false
   xy: 1189, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-king
+ionic-column
   rotate: false
   xy: 1189, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-kitchen-knives
+keyboard
   rotate: false
   xy: 1255, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-knife-fork
+king
   rotate: false
   xy: 1255, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-l-shape
+kitchen-knives
   rotate: false
   xy: 1321, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-lantern-flame
+knife-fork
   rotate: false
   xy: 1321, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-load
+l-shape
   rotate: false
   xy: 1387, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-locked-chest
+lantern-flame
   rotate: false
   xy: 1387, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-log
+load
   rotate: false
   xy: 1453, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-logging
+locked-chest
   rotate: false
   xy: 1453, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-male
+log
   rotate: false
   xy: 1519, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-mashtun
+logging
   rotate: false
   xy: 1519, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-meal
+male
   rotate: false
   xy: 1585, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-metal-bar
+mashtun
   rotate: false
   xy: 1585, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-mining
+meal
   rotate: false
   xy: 1651, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-move
+metal-bar
   rotate: false
   xy: 1651, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-mushroom-gills
+mining
   rotate: false
   xy: 1717, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-mushrooms
+move
   rotate: false
   xy: 1717, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-nailed-head
+mushroom-gills
   rotate: false
   xy: 1783, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-ore
+mushrooms
   rotate: false
   xy: 1783, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-pause
-  rotate: false
-  xy: 3499, 73
-  size: 64, 32
-  orig: 64, 32
-  offset: 0, 0
-  index: -1
-pause-button
+nailed-head
   rotate: false
   xy: 1849, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-placeholder
+ore
   rotate: false
   xy: 1849, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-planks
+output
   rotate: false
   xy: 1915, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-play
+pause
   rotate: false
-  xy: 3565, 139
+  xy: 3829, 73
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
-play-button
+pause-button
   rotate: false
   xy: 1915, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-play-button-down
+pipes
   rotate: false
   xy: 1981, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-play-button-up
+placeholder
   rotate: false
   xy: 1981, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-powder
+planks
   rotate: false
   xy: 2047, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-power-button
+play
+  rotate: false
+  xy: 3895, 139
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+play-button
   rotate: false
   xy: 2047, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-axe
+play-button-down
   rotate: false
   xy: 2113, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-bread
+play-button-up
   rotate: false
   xy: 2113, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-brewer
+powder
   rotate: false
   xy: 2179, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-chisel
+power-button
   rotate: false
   xy: 2179, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-fishing-rod
+profession-axe
   rotate: false
   xy: 2245, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-knife
+profession-bread
   rotate: false
   xy: 2245, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-none
+profession-brewer
   rotate: false
   xy: 2311, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-pickaxe
+profession-chisel
   rotate: false
   xy: 2311, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-plane
+profession-fishing-rod
   rotate: false
   xy: 2377, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-seeds
+profession-knife
   rotate: false
   xy: 2377, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-profession-tongs
+profession-none
   rotate: false
   xy: 2443, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-pyre
+profession-pickaxe
   rotate: false
   xy: 2443, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-resize
+profession-plane
   rotate: false
   xy: 2509, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-rock
+profession-seeds
   rotate: false
   xy: 2509, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-round-bottom-flask-uncorked
+profession-tongs
   rotate: false
   xy: 2575, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-rune-sword
+pyre
   rotate: false
   xy: 2575, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-sarcophagus
+resize
   rotate: false
   xy: 2641, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-save
+rock
   rotate: false
   xy: 2641, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-scythe
+round-bottom-flask-uncorked
   rotate: false
   xy: 2707, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-sickle
+rune-sword
   rotate: false
   xy: 2707, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-sliced-bread
+sarcophagus
   rotate: false
   xy: 2773, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-spade
+save
   rotate: false
   xy: 2773, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-speed2
-  rotate: false
-  xy: 3565, 105
-  size: 64, 32
-  orig: 64, 32
-  offset: 0, 0
-  index: -1
-speed3
-  rotate: false
-  xy: 3631, 139
-  size: 64, 32
-  orig: 64, 32
-  offset: 0, 0
-  index: -1
-speed4
-  rotate: false
-  xy: 3631, 105
-  size: 64, 32
-  orig: 64, 32
-  offset: 0, 0
-  index: -1
-square
+scythe
   rotate: false
   xy: 2839, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-stone-bridge
+sickle
   rotate: false
   xy: 2839, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-stone-crafting
+sliced-bread
   rotate: false
   xy: 2905, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-stone-pile
+spade
   rotate: false
   xy: 2905, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-stone-throne
+speed2
+  rotate: false
+  xy: 3895, 105
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+speed3
+  rotate: false
+  xy: 3961, 139
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+speed4
+  rotate: false
+  xy: 3961, 105
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+square
   rotate: false
   xy: 2971, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-stone-wall
+stone-bridge
   rotate: false
   xy: 2971, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-straight-line
+stone-crafting
   rotate: false
   xy: 3037, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-super-mushroom
+stone-pile
   rotate: false
   xy: 3037, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-swap-bag
+stone-throne
   rotate: false
   xy: 3103, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-table
+stone-wall
   rotate: false
   xy: 3103, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-thumb-down
+straight-line
   rotate: false
   xy: 3169, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-thumb-up
+straight-line-horiz
   rotate: false
   xy: 3169, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tombstone
+super-mushroom
   rotate: false
   xy: 3235, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-triple-gate
+swap-bag
   rotate: false
   xy: 3235, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-village
+table
   rotate: false
   xy: 3301, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-water-splash
+tap
   rotate: false
   xy: 3301, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wheat
+tee-pipe
   rotate: false
   xy: 3367, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-windmill
+thumb-down
   rotate: false
   xy: 3367, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wood-pile
+thumb-up
   rotate: false
   xy: 3433, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wooden-crate
+tombstone
   rotate: false
   xy: 3433, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wooden-door
+trench
   rotate: false
   xy: 3499, 107
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+triple-gate
+  rotate: false
+  xy: 3499, 41
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+village
+  rotate: false
+  xy: 3565, 107
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+water-mill
+  rotate: false
+  xy: 3565, 41
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+water-splash
+  rotate: false
+  xy: 3631, 107
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+well
+  rotate: false
+  xy: 3631, 41
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+wheat
+  rotate: false
+  xy: 3697, 107
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+windmill
+  rotate: false
+  xy: 3697, 41
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+wood-pile
+  rotate: false
+  xy: 3763, 107
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+wooden-crate
+  rotate: false
+  xy: 3763, 41
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+wooden-door
+  rotate: false
+  xy: 3829, 107
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

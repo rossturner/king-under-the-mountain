@@ -22,12 +22,12 @@ import static technology.rocketjump.undermount.mapping.tile.CompassDirection.*;
  */
 public class WaterFlowCalculator {
 
-	private static final float CHANCE_SINGLE_WATER_EVAPORATES = 0.05f;
+	public static final float CHANCE_SINGLE_WATER_EVAPORATES = 0.05f;
 
 	private Random random;
 	private int stepCounter;
 	private int numStepsSinceLastUpdate;
-	private List<WaterTransition> transitionsToApply;
+	private List<FlowTransition> transitionsToApply;
 	private List<GridPoint2> activeWaterTiles;
 	private List<GridPoint2> riverStartTiles;
 	private List<GridPoint2> riverEndTiles;
@@ -83,13 +83,13 @@ public class WaterFlowCalculator {
 			processTile(map, cursor);
 		}
 
-		for (WaterTransition waterTransition : transitionsToApply) {
-			waterTransition.source.getFloor().getRiverTile().decrementWater(waterTransition.flowDirection, random);
-			if (waterTransition.source.getFloor().getRiverTile().getWaterAmount() == 0 && random.nextFloat() < CHANCE_SINGLE_WATER_EVAPORATES) {
+		for (FlowTransition flowTransition : transitionsToApply) {
+			flowTransition.source.getFloor().getRiverTile().decrementWater(flowTransition.flowDirection, random);
+			if (flowTransition.source.getFloor().getRiverTile().getWaterAmount() == 0 && random.nextFloat() < CHANCE_SINGLE_WATER_EVAPORATES) {
 				continue;
 			}
-			if (waterTransition.target != null) {
-				waterTransition.target.getFloor().getRiverTile().incrementWater(waterTransition.flowDirection);
+			if (flowTransition.target != null) {
+				flowTransition.target.getFloor().getRiverTile().incrementWater(flowTransition.flowDirection);
 			}
 		}
 		if (transitionsToApply.isEmpty()) {
@@ -115,7 +115,6 @@ public class WaterFlowCalculator {
 		MapTile cursorTile = map.getTile(cursorPosition);
 		RiverTile cursorRiverTile = cursorTile.getFloor().getRiverTile();
 		int cursorTileWaterAmount = cursorRiverTile.getWaterAmount();
-
 		boolean surroundedByMaxWater = true;
 
 		List<CompassDirection> randomisedDirections = new ArrayList<>();
@@ -144,7 +143,7 @@ public class WaterFlowCalculator {
 			if (tileInDirection == null && !cursorRiverTile.isSourceTile()) {
 				// Only flow out on river ends
 				if (isRiverEnd(cursorPosition) && random.nextFloat() < 0.1f && cursorTileWaterAmount > 1) {
-					transitionsToApply.add(new WaterTransition(cursorTile, null, directionToTry));
+					transitionsToApply.add(new FlowTransition(cursorTile, null, directionToTry));
 					transitionFound = true;
 				}
 			} else if (tileInDirection != null && shouldBeRiver(tileInDirection)) {
@@ -169,11 +168,11 @@ public class WaterFlowCalculator {
 							activeWaterTiles.add(tileInDirection.getTilePosition());
 						}
 
-						transitionsToApply.add(new WaterTransition(cursorTile, tileInDirection, directionToTry));
+						transitionsToApply.add(new FlowTransition(cursorTile, tileInDirection, directionToTry));
 
 						if (waterAmountInDirection < cursorTileWaterAmount / 2) {
 							// Double move for more than twice different
-							transitionsToApply.add(new WaterTransition(cursorTile, tileInDirection, directionToTry));
+							transitionsToApply.add(new FlowTransition(cursorTile, tileInDirection, directionToTry));
 						}
 						transitionFound = true;
 					}
@@ -214,13 +213,13 @@ public class WaterFlowCalculator {
 	}
 
 
-	class WaterTransition {
+	public static class FlowTransition {
 
 		public final MapTile source;
 		public final MapTile target;
 		public final CompassDirection flowDirection;
 
-		public WaterTransition(MapTile source, MapTile target, CompassDirection flowDirection) {
+		public FlowTransition(MapTile source, MapTile target, CompassDirection flowDirection) {
 			this.source = source;
 			this.target = target;
 			this.flowDirection = flowDirection;

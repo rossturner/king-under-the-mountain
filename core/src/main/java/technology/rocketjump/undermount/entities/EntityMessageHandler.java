@@ -21,6 +21,7 @@ import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
+import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
@@ -203,13 +204,15 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.DESTROY_ENTITY: {
-				EntityMessage entityMessage = (EntityMessage) msg.extraInfo;
-				long entityId = entityMessage.getEntityId();
-				Entity removedEntity = entityStore.getById(entityId);
+				Entity entity = (Entity) msg.extraInfo;
+				if (entity == null) {
+					return true;
+				}
+				Entity removedEntity = entityStore.getById(entity.getId());
 				if (removedEntity != null) {
 					removedEntity.destroy(messageDispatcher, gameContext);
 					// Need to remove after destroy() so things can clean their state up while the entity still exists
-					entityStore.remove(entityId);
+					entityStore.remove(entity.getId());
 					if (removedEntity.getType().equals(ITEM)) {
 						itemTracker.itemRemoved(removedEntity);
 					} else if (removedEntity.getType().equals(EntityType.FURNITURE)) {
@@ -229,7 +232,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						List<MapTile> allTiles = new ArrayList<>();
 						MapTile mapTile = gameContext.getAreaMap().getTile(removedEntity.getLocationComponent().getWorldPosition());
 						if (mapTile != null) {
-							mapTile.removeEntity(entityId);
+							mapTile.removeEntity(removedEntity.getId());
 						}
 
 						// TODO Maybe this should be refactored into a MultiTileEntityComponent which defines how an entity bridges extra tiles
@@ -238,7 +241,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							for (GridPoint2 extraTileOffset : attributes.getCurrentLayout().getExtraTiles()) {
 								MapTile extraTile = gameContext.getAreaMap().getTile(mapTile.getTilePosition().cpy().add(extraTileOffset));
 								if (extraTile != null) {
-									extraTile.removeEntity(entityId);
+									extraTile.removeEntity(removedEntity.getId());
 								}
 							}
 						} else if (removedEntity.getType().equals(PLANT)) {
@@ -272,6 +275,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 								containerEntity.removeComponent(AttachedEntitiesComponent.class);
 							}
 						}
+					}
+				} else {
+					// Might be an untracked entity like a pipe
+					MapTile parentTile = gameContext.getAreaMap().getTile(entity.getLocationComponent().getWorldOrParentPosition());
+					if (parentTile != null && parentTile.hasPipe() && parentTile.getUnderTile().getPipeEntity().equals(entity)) {
+						parentTile.getUnderTile().setPipeEntity(null);
 					}
 				}
 				return true;
@@ -326,12 +335,14 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 
 				if (removedJob.getType().getName().equals("DECONSTRUCT")) {
-					long potentialTargetEntityId = removedJob.getTargetId();
-					Entity entity = entityStore.getById(potentialTargetEntityId);
-					if (entity != null) {
-						ConstructedEntityComponent constructedEntityComponent = entity.getComponent(ConstructedEntityComponent.class);
-						if (constructedEntityComponent != null) {
-							constructedEntityComponent.setDeconstructionJob(null);
+					Long potentialTargetEntityId = removedJob.getTargetId();
+					if (potentialTargetEntityId != null) {
+						Entity entity = entityStore.getById(potentialTargetEntityId);
+						if (entity != null) {
+							ConstructedEntityComponent constructedEntityComponent = entity.getComponent(ConstructedEntityComponent.class);
+							if (constructedEntityComponent != null) {
+								constructedEntityComponent.setDeconstructionJob(null);
+							}
 						}
 					}
 					return true;
@@ -832,15 +843,19 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		InventoryComponent inventoryComponent = message.targetEntity.getComponent(InventoryComponent.class);
 		if (inventoryComponent != null) {
 			for (InventoryComponent.InventoryEntry inventoryEntry : new ArrayList<>(inventoryComponent.getInventoryEntries())) {
-				messageDispatcher.dispatchMessage(DESTROY_ENTITY, new EntityMessage(inventoryEntry.entity.getId()));
+				messageDispatcher.dispatchMessage(DESTROY_ENTITY, inventoryEntry.entity);
 			}
 		}
 		DecorationInventoryComponent decorationInventoryComponent = message.targetEntity.getComponent(DecorationInventoryComponent.class);
 		if (decorationInventoryComponent != null) {
 			for (Entity decorationEntity : new ArrayList<>(decorationInventoryComponent.getDecorationEntities())) {
-				messageDispatcher.dispatchMessage(DESTROY_ENTITY, new EntityMessage(decorationEntity.getId()));
+				messageDispatcher.dispatchMessage(DESTROY_ENTITY, decorationEntity);
 			}
 			decorationInventoryComponent.clear();
+		}
+		PoweredFurnitureComponent poweredFurnitureComponent = message.targetEntity.getComponent(PoweredFurnitureComponent.class);
+		if (poweredFurnitureComponent != null) {
+			poweredFurnitureComponent.destroy(message.targetEntity, messageDispatcher, gameContext);
 		}
 
 		message.targetEntity.getLocationComponent().setRotation(slightRotation());

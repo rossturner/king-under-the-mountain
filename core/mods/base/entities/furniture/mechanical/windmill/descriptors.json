@@ -1,0 +1,109 @@
+[
+  {
+    "uniqueName": "Windmill-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "WINDMILL"
+    ],
+    "furnitureLayoutName": "2x2",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "windmill-0-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32.0,
+          "y": 2.0
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0.0,
+              "y": 94.0
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 0.0,
+              "y": 94.0
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": 0.0,
+              "y": 94.0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Windmill-Wood-Section",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": [
+      "WINDMILL"
+    ],
+    "furnitureLayoutName": "2x2",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "windmill-1-64.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -9.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Windmill-Roof-Section",
+    "type": "FURNITURE_ABOVE_LAYER_2",
+    "furnitureTypeNames": [
+      "WINDMILL"
+    ],
+    "furnitureLayoutName": "2x2",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "windmill-2-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 48.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Windmill-Blades-Section",
+    "type": "FURNITURE_ABOVE_LAYER_3",
+    "furnitureTypeNames": [
+      "WINDMILL"
+    ],
+    "furnitureLayoutName": "2x2",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "windmill-3",
+        "isAnimated": true,
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

@@ -175,6 +175,7 @@ public class TiledMapFactory {
 				stockpileComponentUpdater.toggleItem(stockpileComponent, placedItemType, true, true, true);
 			}
 		}
+
 	}
 
 	private void addStartingInventory(Deque<QuantifiedItemTypeWithMaterial> inventoryStartingItems, List<Entity> allSettlers, GameContext gameContext, MessageDispatcher messageDispatcher) {

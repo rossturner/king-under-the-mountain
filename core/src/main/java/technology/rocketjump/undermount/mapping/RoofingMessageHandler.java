@@ -62,10 +62,10 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 	public boolean handleMessage(Telegram msg) {
 		switch (msg.message) {
 			case MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE: {
-				return handle((RoofConstructionQueueMessage) msg.extraInfo);
+				return handle((TileConstructionQueueMessage) msg.extraInfo);
 			}
 			case MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE: {
-				return handle((RoofDeconstructionQueueMessage) msg.extraInfo);
+				return handle((TileDeconstructionQueueMessage) msg.extraInfo);
 			}
 			case MessageType.ROOF_CONSTRUCTED: {
 				return roofConstructed((RoofConstructionMessage) msg.extraInfo);
@@ -90,9 +90,9 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 		}
 	}
 
-	private boolean handle(RoofConstructionQueueMessage message) {
+	private boolean handle(TileConstructionQueueMessage message) {
 		if (message.parentTile.getRoof().getState().equals(TileRoofState.OPEN)) {
-			if (message.roofConstructionQueued) {
+			if (message.constructionQueued) {
 				roofConstructionManager.roofConstructionAdded(message.parentTile);
 			} else {
 				roofConstructionManager.roofConstructionRemoved(message.parentTile);
@@ -101,9 +101,9 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 		return true;
 	}
 
-	private boolean handle(RoofDeconstructionQueueMessage message) {
+	private boolean handle(TileDeconstructionQueueMessage message) {
 		if (message.parentTile.getRoof().getState().equals(TileRoofState.CONSTRUCTED)) {
-			if (message.roofDeconstructionQueued) {
+			if (message.deconstructionQueued) {
 				roofConstructionManager.roofDeconstructionAdded(message.parentTile);
 			} else {
 				roofConstructionManager.roofConstructionRemoved(message.parentTile);

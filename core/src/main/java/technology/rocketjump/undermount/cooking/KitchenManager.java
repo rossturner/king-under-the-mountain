@@ -31,7 +31,6 @@ import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.CookingCompleteMessage;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
 import technology.rocketjump.undermount.rooms.constructions.ConstructionStore;
@@ -274,8 +273,8 @@ public class KitchenManager implements Telegraph, Updatable {
 				return true;
 			}
 			case MessageType.DESTROY_ENTITY: {
-				EntityMessage entityMessage = (EntityMessage) msg.extraInfo;
-				gameContext.getSettlementState().furnitureHoldingCompletedCooking.remove(entityMessage.getEntityId());
+				Entity entity = (Entity) msg.extraInfo;
+				gameContext.getSettlementState().furnitureHoldingCompletedCooking.remove(entity.getId());
 				return false; // Not the primary handler for this message type
 			}
 			case MessageType.HAULING_ALLOCATION_CANCELLED: {

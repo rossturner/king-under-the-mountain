@@ -185,7 +185,7 @@ public class ImmigrationManager implements Updatable, Telegraph {
 		return totalNumImmigrants;
 	}
 
-	private void triggerImmigration() {
+	public void triggerImmigration() {
 		int numImmigrants = gameContext.getSettlementState().getImmigrantsDue();
 		gameContext.getSettlementState().setImmigrantsDue(0);
 		gameContext.getSettlementState().setNextImmigrationGameTime(null);

@@ -12,7 +12,6 @@ import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEf
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundStopMessage;
@@ -67,7 +66,7 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 			nextState(gameContext);
 		}
 		if (this.state == null) {
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(parentEntity.getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, parentEntity);
 			return;
 		}
 

@@ -6,14 +6,11 @@ public class QuadrantSprites {
 
 	private final Sprite a, b, c, d;
 
-	private final boolean isSingleSprite;
-
 	public QuadrantSprites(Sprite a, Sprite b, Sprite c, Sprite d) {
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
-		isSingleSprite = false;
 	}
 
 	public QuadrantSprites(Sprite single) {
@@ -21,7 +18,6 @@ public class QuadrantSprites {
 		this.b = null;
 		this.c = null;
 		this.d = null;
-		this.isSingleSprite = true;
 	}
 
 	public Sprite getA() {
@@ -40,7 +36,4 @@ public class QuadrantSprites {
 		return d;
 	}
 
-	public boolean isSingleSprite() {
-		return isSingleSprite;
-	}
 }
