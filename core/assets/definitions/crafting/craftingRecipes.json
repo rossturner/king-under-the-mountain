@@ -498,7 +498,7 @@
     "quantity" : 5
   } ],
   "materialTypesToCopyOver" : [ "ORE" ],
-  "defaultTimeToCompleteCrafting" : 7.0
+  "defaultTimeToCompleteCrafting" : 4.0
 }, {
   "recipeName" : "Crush pyrite to iron sulfate / green vitriol",
   "craftingTypeName" : "ORE_CRUSHING",
@@ -513,7 +513,7 @@
     "quantity" : 2,
     "materialName" : "Green Vitriol"
   } ],
-  "defaultTimeToCompleteCrafting" : 5.0
+  "defaultTimeToCompleteCrafting" : 3.0
 }, {
   "recipeName" : "Smelt iron",
   "craftingTypeName" : "SMELTING",

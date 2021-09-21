@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.environment.model.Season;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -30,6 +31,7 @@ public class PlantEntityAttributes implements EntityAttributes {
 	private int growthStageCursor = 0;
 	private float growthStageProgress = 0.75f;
 	private float growthRate = 1;
+	private MoistureState moistureState = MoistureState.WATERED;
 
 	private double seasonProgress = 0;
 
@@ -147,6 +149,14 @@ public class PlantEntityAttributes implements EntityAttributes {
 		this.growthRate = growthRate;
 	}
 
+	public MoistureState getMoistureState() {
+		return moistureState;
+	}
+
+	public void setMoistureState(MoistureState moistureState) {
+		this.moistureState = moistureState;
+	}
+
 	public PlantSpecies getSpecies() {
 		return species;
 	}
@@ -240,6 +250,9 @@ public class PlantEntityAttributes implements EntityAttributes {
 		asJson.put("growthStage", growthStageCursor);
 		asJson.put("stageProgress", growthStageProgress);
 		asJson.put("growthRate", growthRate);
+		if (!moistureState.equals(MoistureState.WATERED)) {
+			asJson.put("moistureState", moistureState.name());
+		}
 		asJson.put("seasonProgress", seasonProgress);
 		if (afflictedByPests) {
 			asJson.put("afflicted", true);
@@ -274,6 +287,7 @@ public class PlantEntityAttributes implements EntityAttributes {
 		growthStageCursor = asJson.getIntValue("growthStage");
 		growthStageProgress = asJson.getFloatValue("stageProgress");
 		growthRate = asJson.getFloatValue("growthRate");
+		moistureState = EnumParser.getEnumValue(asJson, "moistureState", MoistureState.class, MoistureState.WATERED);
 		seasonProgress = asJson.getFloatValue("seasonProgress");
 		afflictedByPests = asJson.getBooleanValue("afflicted");
 		Long removePestsJobId = asJson.getLong("removePestsJob");
