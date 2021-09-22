@@ -14,29 +14,29 @@
         "filename": "Loom_Back_Empty.png",
         "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
-          "x": -22,
-          "y": 24
+          "x": -1.0,
+          "y": 13.0
         },
         "childAssets": [
           {
             "type": "FURNITURE_ABOVE_LAYER_1",
             "offsetPixels": {
-              "x": 0,
-              "y": 0
+              "x": -21.0,
+              "y": 11.0
             }
           },
           {
             "type": "FURNITURE_ABOVE_LAYER_2",
             "offsetPixels": {
-              "x": 0,
-              "y": 0
+              "x": -21.0,
+              "y": 11.0
             }
           },
           {
             "type": "FURNITURE_BELOW_LAYER_1",
             "offsetPixels": {
-              "x": 0,
-              "y": 0
+              "x": -21.0,
+              "y": 11.0
             }
           }
         ]
@@ -58,8 +58,8 @@
         "filename": "Loom_Back_Thread.png",
         "coloringLayer": "CLOTH_COLOR",
         "offsetPixels": {
-          "x": 0,
-          "y": 0
+          "x": 21.5,
+          "y": 22.5
         }
       }
     }
@@ -79,8 +79,8 @@
         "filename": "Loom_Back_Cloth_Plain.png",
         "coloringLayer": "CLOTH_COLOR",
         "offsetPixels": {
-          "x": 0,
-          "y": 0
+          "x": 20.5,
+          "y": -13.5
         }
       }
     }
@@ -99,8 +99,8 @@
       "DOWN": {
         "filename": "Loom_Back_Shadow.png",
         "offsetPixels": {
-          "x": 0,
-          "y": 0
+          "x": 19.0,
+          "y": -39.0
         }
       }
     }
