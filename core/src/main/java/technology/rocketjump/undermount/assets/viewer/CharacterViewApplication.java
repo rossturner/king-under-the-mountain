@@ -20,8 +20,8 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -95,15 +95,15 @@ public class CharacterViewApplication extends ApplicationAdapter {
 
 		injector.getInstance(EntityAssetUpdater.class).updateEntityAssets(currentEntity);
 
-		Entity heldItem = createItemEntity("Product-Stone-Gear", injector, ItemPlacement.BEING_CARRIED);
+		Entity heldItem = createItemEntity("Resource-Hemp-Bundle", injector, ItemPlacement.BEING_CARRIED);
 		ItemAllocationComponent itemAllocationComponent = heldItem.getOrCreateComponent(ItemAllocationComponent.class);
 		itemAllocationComponent.init(heldItem, null, null);
 
-		EquippedItemComponent equippedItemComponent = currentEntity.getOrCreateComponent(EquippedItemComponent.class);
-		equippedItemComponent.setEquippedItem(heldItem, currentEntity, new MessageDispatcher());
-//		HaulingComponent haulingComponent = new HaulingComponent();
-//		haulingComponent.setHauledEntity(heldItem, new MessageDispatcher(), currentEntity);
-//		currentEntity.addComponent(haulingComponent);
+//		EquippedItemComponent equippedItemComponent = currentEntity.getOrCreateComponent(EquippedItemComponent.class);
+//		equippedItemComponent.setEquippedItem(heldItem, currentEntity, new MessageDispatcher());
+		HaulingComponent haulingComponent = new HaulingComponent();
+		haulingComponent.setHauledEntity(heldItem, new MessageDispatcher(), currentEntity);
+		currentEntity.addComponent(haulingComponent);
 
 		ui = injector.getInstance(CharacterViewUI.class);
 		ui.init(currentEntity);

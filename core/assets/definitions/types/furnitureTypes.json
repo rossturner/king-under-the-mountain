@@ -598,6 +598,32 @@
   },
   "hiddenFromPlacementMenu" : false
 }, {
+  "name" : "RETTING_TANK",
+  "i18nKey" : "FURNITURE.RETTING_TANK",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "2x1 with workspaces",
+  "colorCode" : "#25a2d0",
+  "iconName" : "drop",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 4,
+      "liquid" : false
+    } ],
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 4,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "LIQUID_CONTAINER" : [ "4", "Water", "ALWAYS_INACTIVE" ],
+    "FURNITURE_BEHAVIOUR" : [ "MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Hemp-Bundle", "ItemType_Resource-Resource-Hemp-Fibre-Bundle", "Material_Hemp_Fibre" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
   "name" : "ORE_CRUSHING_STATION",
   "i18nKey" : "FURNITURE.ORE_CRUSHING_STATION",
   "categoryName" : "TABLE",

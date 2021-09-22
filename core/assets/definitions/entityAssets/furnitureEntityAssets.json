@@ -3002,7 +3002,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3036,7 +3036,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -3070,7 +3070,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-stone-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3096,7 +3096,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-wood-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -3122,7 +3122,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3156,7 +3156,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -3190,7 +3190,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-stone-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3216,7 +3216,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-wood-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },

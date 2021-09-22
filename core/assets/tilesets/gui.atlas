@@ -336,7 +336,7 @@ button
   index: -1
 button_blank
   rotate: false
-  xy: 3829, 40
+  xy: 3961, 72
   size: 28, 31
   split: 12, 10, 13, 4
   orig: 28, 31
@@ -862,7 +862,7 @@ output
   index: -1
 pause
   rotate: false
-  xy: 3829, 73
+  xy: 3895, 139
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
@@ -897,7 +897,7 @@ planks
   index: -1
 play
   rotate: false
-  xy: 3895, 139
+  xy: 3895, 105
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
@@ -1093,14 +1093,14 @@ spade
   index: -1
 speed2
   rotate: false
-  xy: 3895, 105
+  xy: 3961, 139
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
 speed3
   rotate: false
-  xy: 3961, 139
+  xy: 3895, 71
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
@@ -1297,6 +1297,13 @@ wooden-crate
 wooden-door
   rotate: false
   xy: 3829, 107
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+yarn
+  rotate: false
+  xy: 3829, 41
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

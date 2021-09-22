@@ -25,6 +25,32 @@
       "FURNITURE_BEHAVIOUR": ["MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Mushroom-Log", "ItemType_Resource-Shocked-Mushroom-Log"]
     }
   },
+  {
+    "name": "RETTING_TANK",
+    "i18nKey": "FURNITURE.RETTING_TANK",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x1 with workspaces",
+    "colorCode": "#25a2d0",
+    "iconName": "drop",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        }
+      ]
+    },
+    "tags": {
+      "LIQUID_CONTAINER": ["4", "Water", "ALWAYS_INACTIVE"],
+      "FURNITURE_BEHAVIOUR": ["MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Hemp-Bundle", "ItemType_Resource-Resource-Hemp-Fibre-Bundle", "Material_Hemp_Fibre"]
+    }
+  },
 
   {
     "name": "ORE_CRUSHING_STATION",

@@ -8,7 +8,13 @@
   {
     "materialName": "Hemp",
     "materialType": "VEGETABLE",
-    "colorCode": "#cccc8f",
+    "colorCode": "#a9c98f",
+    "combustible": true
+  },
+  {
+    "materialName": "Hemp_Fibre",
+    "materialType": "VEGETABLE",
+    "colorCode": "#e3ed7d",
     "combustible": true
   },
   {

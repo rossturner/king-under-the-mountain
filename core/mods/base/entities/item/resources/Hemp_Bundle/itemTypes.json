@@ -1,10 +1,21 @@
 [{
   "itemTypeName": "Resource-Hemp-Bundle",
-  "materialTypes": ["VEGETABLE", "CLOTH", "ROPE"],
+  "materialTypes": ["VEGETABLE"],
   "primaryMaterialType": "VEGETABLE",
   "stockpileGroupName": "GRANARY",
-  "hoursInInventoryUntilUnused": 1,
-  "maxStackSize": 30,
-  "maxHauledAtOnce": 30,
+  "hoursInInventoryUntilUnused": 0.25,
+  "maxStackSize": 4,
+  "maxHauledAtOnce": 2,
+  "describeAsMaterialOnly": true,
+  "equippedWhileWorkingOnJob": true
+},{
+  "itemTypeName": "Resource-Hemp-Fibre-Bundle",
+  "materialTypes": ["VEGETABLE"],
+  "primaryMaterialType": "VEGETABLE",
+  "stockpileGroupName": "RAW_MATERIALS",
+  "hoursInInventoryUntilUnused": 0.25,
+  "maxStackSize": 4,
+  "maxHauledAtOnce": 2,
+  "describeAsMaterialOnly": true,
   "equippedWhileWorkingOnJob": true
 }]

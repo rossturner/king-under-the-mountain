@@ -93,6 +93,13 @@
   "furnitureNames" : [ "WATER_BARREL", "MALTING_STATION", "MASH_TUN", "BREW_KETTLE", "FERMENTATION_TANK" ],
   "tags" : { }
 }, {
+  "roomName" : "TEXTILE_WORKSHOP",
+  "i18nKey" : "ROOMS.TEXTILE_WORKSHOP",
+  "colorCode" : "#cccc8f",
+  "iconName" : "yarn",
+  "furnitureNames" : [ "RETTING_TANK" ],
+  "tags" : { }
+}, {
   "roomName" : "GRAVEYARD",
   "i18nKey" : "ROOMS.GRAVEYARD",
   "colorCode" : "#7b7575",

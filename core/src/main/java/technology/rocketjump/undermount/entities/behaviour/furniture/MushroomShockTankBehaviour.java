@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.entities.components.LiquidContainerCompo
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.TransformItemMessage;
 import technology.rocketjump.undermount.persistence.EnumParser;
@@ -72,6 +73,12 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 					InventoryComponent.InventoryEntry inventoryEntry = getPrimaryItemFromInventory();
 					messageDispatcher.dispatchMessage(MessageType.TRANSFORM_ITEM_TYPE, new TransformItemMessage(inventoryEntry.entity, relatedItemTypes.get(2)));
 					inventoryEntry.entity.getOrCreateComponent(ItemAllocationComponent.class).cancelAll(HELD_IN_INVENTORY);
+					if (!relatedMaterials.isEmpty()) {
+						ItemEntityAttributes attributes = (ItemEntityAttributes) inventoryEntry.entity.getPhysicalEntityComponent().getAttributes();
+						for (GameMaterial material : relatedMaterials) {
+							attributes.setMaterial(material);
+						}
+					}
 					state = LOG_SHOCK_COMPLETE;
 				}
 				break;
