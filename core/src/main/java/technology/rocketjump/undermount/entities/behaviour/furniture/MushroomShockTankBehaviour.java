@@ -1,5 +1,6 @@
 package technology.rocketjump.undermount.entities.behaviour.furniture;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.google.common.collect.Lists;
@@ -8,9 +9,14 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.Job;
+import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RequestHaulingAllocationMessage;
+import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
 import technology.rocketjump.undermount.messaging.types.TransformItemMessage;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -21,18 +27,22 @@ import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nWord;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.MushroomShockTankBehaviour.MushrooomShockTankState.*;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
+import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
+import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FURNITURE;
 import static technology.rocketjump.undermount.ui.i18n.I18nTranslator.oneDecimalFormat;
 
 public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour implements SelectableDescription {
 
 	private MushrooomShockTankState state = WAITING_FOR_LIQUID;
 	private double TIME_TO_SHOCK_MUSHROOM_LOG;
+	private List<Job> haulingJobs = new ArrayList<>();
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
@@ -54,6 +64,7 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 
 		LiquidContainerComponent liquidContainerComponent = parentEntity.getComponent(LiquidContainerComponent.class);
 		InventoryComponent inventoryComponent = parentEntity.getOrCreateComponent(InventoryComponent.class);
+		haulingJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
 
 		switch (state) {
 			case WAITING_FOR_LIQUID: {
@@ -65,11 +76,15 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 			case AVAILABLE: {
 				if (liquidContainerComponent.getLiquidQuantity() < liquidContainerComponent.getMaxLiquidCapacity()) {
 					state = WAITING_FOR_LIQUID;
+				} else {
+					attemptToAssignItemToSelf(gameContext);
 				}
 				break;
 			}
 			case ASSIGNED: {
-				if (shockingProgress(gameContext) >= 1f) {
+				if (inventoryComponent.isEmpty() && haulingJobs.isEmpty()) {
+					state = AVAILABLE;
+				} else if (shockingProgress(gameContext) >= 1f) {
 					InventoryComponent.InventoryEntry inventoryEntry = getPrimaryItemFromInventory();
 					messageDispatcher.dispatchMessage(MessageType.TRANSFORM_ITEM_TYPE, new TransformItemMessage(inventoryEntry.entity, relatedItemTypes.get(2)));
 					inventoryEntry.entity.getOrCreateComponent(ItemAllocationComponent.class).cancelAll(HELD_IN_INVENTORY);
@@ -80,16 +95,33 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 						}
 					}
 					state = LOG_SHOCK_COMPLETE;
+
+					if (!relatedJobTypes.isEmpty()) {
+						haulItemOut(inventoryEntry);
+					}
 				}
 				break;
 			}
 			case LOG_SHOCK_COMPLETE: {
 				if (inventoryComponent.isEmpty()) {
 					state = AVAILABLE;
+				} else if (!relatedJobTypes.isEmpty() && haulingJobs.isEmpty()) {
+					haulItemOut(getSecondaryItemFromInventory());
 				}
 				break;
 			}
 		}
+	}
+
+	private void haulItemOut(InventoryComponent.InventoryEntry inventoryEntry) {
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(
+				inventoryEntry.entity, parentEntity, true, priority, job -> {
+					if (job != null) {
+						haulingJobs.add(job);
+					}
+				}
+			)
+		);
 	}
 
 	public MushrooomShockTankState getState() {
@@ -104,6 +136,34 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 		replacements.put("progress", new I18nWord("progress", oneDecimalFormat.format(progress)));
 		replacements.put("itemType", i18nTranslator.getDictionary().getWord(relatedItemTypes.get(1).getI18nKey()));
 		return Lists.newArrayList(i18nTranslator.getTranslatedWordWithReplacements(state.descriptionI18nKey, replacements));
+	}
+
+	private void attemptToAssignItemToSelf(GameContext gameContext) {
+		ItemType targetItemType = relatedItemTypes.get(1);
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_HAULING_ALLOCATION, new RequestHaulingAllocationMessage(
+				parentEntity, parentEntity.getLocationComponent().getWorldPosition(), targetItemType, null,
+				false, 1, null, haulingAllocation -> {
+					if (haulingAllocation != null) {
+						haulingAllocation.setTargetPosition(toGridPoint(parentEntity.getLocationComponent().getWorldPosition()));
+						haulingAllocation.setTargetId(parentEntity.getId());
+						haulingAllocation.setTargetPositionType(FURNITURE);
+
+						Job haulingJob = new Job(relatedJobTypes.get(0));
+						haulingJob.setJobPriority(priority);
+						haulingJob.setTargetId(haulingAllocation.getTargetId());
+						haulingJob.setJobLocation(haulingAllocation.getSourcePosition());
+						haulingJob.setHaulingAllocation(haulingAllocation);
+//						haulingJob.setRequiredProfession(mushroomFarmingProfession);
+
+						this.haulingJobs.add(haulingJob);
+						messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, haulingJob);
+
+						setState(ASSIGNED);
+						infrequentUpdate(gameContext);
+					}
+				}
+			)
+		);
 	}
 
 	private float shockingProgress(GameContext gameContext) {
@@ -156,6 +216,10 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 		this.state = state;
 	}
 
+	public List<Job> getHaulingJobs() {
+		return haulingJobs;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
@@ -163,11 +227,32 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 		if (!WAITING_FOR_LIQUID.equals(state)) {
 			asJson.put("state", state.name());
 		}
+
+		if (!haulingJobs.isEmpty()) {
+			JSONArray incomingJobsJson = new JSONArray();
+			for (Job incomingHaulingJob : haulingJobs) {
+				incomingJobsJson.add(incomingHaulingJob.getJobId());
+			}
+			asJson.put("incomingHaulingJobs", incomingJobsJson);
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		super.readFrom(asJson, savedGameStateHolder, relatedStores);
+
+		JSONArray incomingJobsJson = asJson.getJSONArray("incomingHaulingJobs");
+		if (incomingJobsJson != null) {
+			for (int cursor = 0; cursor < incomingJobsJson.size(); cursor++) {
+				Long jobId = incomingJobsJson.getLong(cursor);
+				Job job = savedGameStateHolder.jobs.get(jobId);
+				if (job != null) {
+					haulingJobs.add(job);
+				} else {
+					throw new InvalidSaveException("Could not find job with ID " + jobId);
+				}
+			}
+		}
 
 		this.state = EnumParser.getEnumValue(asJson, "state", MushrooomShockTankState.class, WAITING_FOR_LIQUID);
 	}

@@ -45,6 +45,66 @@
   } ],
   "specialTiles" : [ ]
 }, {
+  "uniqueName" : "1x1 with S workspace",
+  "rotatesToName" : "1x1 with W workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "1x1 with W workspace",
+  "rotatesToName" : "1x1 with N workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "1x1 with N workspace",
+  "rotatesToName" : "1x1 with E workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "1x1 with E workspace",
+  "rotatesToName" : "1x1 with S workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  } ],
+  "specialTiles" : [ ]
+}, {
   "uniqueName" : "1x1NS",
   "rotatesToName" : "1x1EW",
   "extraTiles" : [ ],

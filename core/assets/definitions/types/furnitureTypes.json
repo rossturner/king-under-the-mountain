@@ -620,7 +620,28 @@
   },
   "tags" : {
     "LIQUID_CONTAINER" : [ "4", "Water", "ALWAYS_INACTIVE" ],
-    "FURNITURE_BEHAVIOUR" : [ "MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Hemp-Bundle", "ItemType_Resource-Resource-Hemp-Fibre-Bundle", "Material_Hemp_Fibre" ]
+    "FURNITURE_BEHAVIOUR" : [ "MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Hemp-Bundle", "ItemType_Resource-Hemp-Fibre-Bundle", "Material_Hemp_Fibre", "JobType_HAULING" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "LOOM",
+  "i18nKey" : "FURNITURE.LOOM",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "1x1 with W workspace",
+  "colorCode" : "#dce551",
+  "iconName" : "sewing-string",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 7,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "CRAFTING_STATION_BEHAVIOUR" : [ "WEAVING", "CRAFT_ITEM", "HAULING" ],
+    "EXTRA_MATERIAL_TYPES" : [ "CLOTH", "METAL" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {

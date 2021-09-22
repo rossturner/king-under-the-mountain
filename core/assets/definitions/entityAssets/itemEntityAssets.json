@@ -6414,7 +6414,7 @@
   "type" : "ITEM_BASE_LAYER",
   "itemTypeNames" : [ "Resource-Hemp-Bundle", "Resource-Hemp-Fibre-Bundle" ],
   "minQuantity" : 1,
-  "maxQuantity" : 2,
+  "maxQuantity" : 4,
   "itemPlacements" : [ "ON_GROUND" ],
   "spriteDescriptors" : {
     "DOWN" : {
@@ -6440,7 +6440,7 @@
   "type" : "ITEM_BASE_LAYER",
   "itemTypeNames" : [ "Resource-Hemp-Bundle", "Resource-Hemp-Fibre-Bundle" ],
   "minQuantity" : 1,
-  "maxQuantity" : 2,
+  "maxQuantity" : 4,
   "itemPlacements" : [ "BEING_CARRIED" ],
   "spriteDescriptors" : {
     "DOWN" : {
@@ -6471,7 +6471,7 @@
         "type" : "HUMANOID_RIGHT_HAND",
         "offsetPixels" : {
           "x" : -18.0,
-          "y" : -16.0,
+          "y" : 0.0,
           "zero" : false,
           "unit" : false
         },
@@ -6497,7 +6497,7 @@
         "type" : "HUMANOID_RIGHT_HAND",
         "offsetPixels" : {
           "x" : -16.0,
-          "y" : -16.0,
+          "y" : 0.0,
           "zero" : false,
           "unit" : false
         },
@@ -6541,7 +6541,7 @@
         "type" : "HUMANOID_RIGHT_HAND",
         "offsetPixels" : {
           "x" : -22.0,
-          "y" : -10.0,
+          "y" : 0.0,
           "zero" : false,
           "unit" : false
         },
@@ -6564,10 +6564,10 @@
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ {
-        "type" : "HUMANOID_RIGHT_HAND",
+        "type" : "HUMANOID_LEFT_HAND",
         "offsetPixels" : {
           "x" : -16.0,
-          "y" : -16.0,
+          "y" : 0.0,
           "zero" : false,
           "unit" : false
         },

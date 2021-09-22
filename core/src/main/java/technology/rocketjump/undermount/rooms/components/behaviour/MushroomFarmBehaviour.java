@@ -108,6 +108,7 @@ public class MushroomFarmBehaviour extends RoomBehaviourComponent implements Pri
 			messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, haulingJob);
 
 			MushroomShockTankBehaviour shockTankBehaviour = (MushroomShockTankBehaviour) shockTank.getBehaviourComponent();
+			shockTankBehaviour.getHaulingJobs().add(haulingJob);
 			shockTankBehaviour.setState(ASSIGNED);
 		} else {
 			Logger.warn("Can not haul log to mushroom shock tank - no navigable workspaces");
