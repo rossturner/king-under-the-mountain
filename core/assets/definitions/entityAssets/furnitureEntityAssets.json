@@ -3806,8 +3806,8 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -22.0,
-        "y" : 22.0,
+        "x" : 0.0,
+        "y" : 11.0,
         "zero" : false,
         "unit" : false
       },
@@ -3816,9 +3816,9 @@
       "childAssets" : [ {
         "type" : "FURNITURE_ABOVE_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -22.0,
+          "y" : 11.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -3840,9 +3840,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 22.5,
+        "y" : -15.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -3851,18 +3851,18 @@
         "type" : "FURNITURE_ABOVE_LAYER_2",
         "specificAssetName" : "Loom-Front-WeightsA",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "FURNITURE_BELOW_LAYER_1",
         "specificAssetName" : "Loom-Front-ShadowA",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -3884,9 +3884,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 22.5,
+        "y" : -15.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -3895,18 +3895,18 @@
         "type" : "FURNITURE_ABOVE_LAYER_2",
         "specificAssetName" : "Loom-Front-WeightsB",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "FURNITURE_BELOW_LAYER_1",
         "specificAssetName" : "Loom-Front-ShadowB",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -3928,9 +3928,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 22.5,
+        "y" : -58.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -3954,9 +3954,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 22.5,
+        "y" : -58.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -3979,9 +3979,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 23.0,
+        "y" : -47.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -4004,9 +4004,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 21.5,
+        "y" : -47.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
