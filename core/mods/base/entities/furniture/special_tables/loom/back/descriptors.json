@@ -1,0 +1,108 @@
+[
+  {
+    "uniqueName": "Loom-Back-Base",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": [
+      "LOOM"
+    ],
+    "furnitureLayoutName": "1x1 with N workspace",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Loom_Back_Empty.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": -22,
+          "y": 24
+        },
+        "childAssets": [
+          {
+            "type": "FURNITURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "type": "FURNITURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "type": "FURNITURE_BELOW_LAYER_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Loom-Back-Thread",
+    "type": "FURNITURE_ABOVE_LAYER_1",
+    "furnitureTypeNames": [
+      "LOOM"
+    ],
+    "furnitureLayoutName": "1x1 with N workspace",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Loom_Back_Thread.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Loom-Back-Cloth",
+    "type": "FURNITURE_ABOVE_LAYER_2",
+    "furnitureTypeNames": [
+      "LOOM"
+    ],
+    "furnitureLayoutName": "1x1 with N workspace",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Loom_Back_Cloth_Plain.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Loom-Back-Shadow",
+    "type": "FURNITURE_BELOW_LAYER_1",
+    "furnitureTypeNames": [
+      "LOOM"
+    ],
+    "furnitureLayoutName": "1x1 with N workspace",
+    "validMaterialTypes": [
+      "WOOD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Loom_Back_Shadow.png",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]
