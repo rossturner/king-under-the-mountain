@@ -1,0 +1,84 @@
+[{
+  "speciesName": "Hemp",
+  "plantType": "CROP",
+  "materialName": "Plant",
+  "maxGrowthSpeedVariance": 0.03,
+  "defaultColors": {
+    "BRANCHES_COLOR": {
+      "colorCode": "#566b4b"
+    },
+    "FRUIT_COLOR": {
+      "colorCode": "#a58aa4"
+    }
+  },
+  "seed": {
+    "itemTypeName": "Ingredient-Seeds",
+    "materialName": "Hemp Seed",
+    "plantingSeasons": [
+      "SPRING"
+    ]
+  },
+  "seasons": {
+    "WINTER": {
+      "switchToGrowthStage": 5
+    }
+  },
+  "growthStages": [
+    {
+      "name": "Seeds",
+      "nextGrowthStage": 1,
+      "seasonsUntilComplete": 0.4,
+      "tileHeight": 1
+    },
+    {
+      "name": "Shoots",
+      "nextGrowthStage": 2,
+      "seasonsUntilComplete": 0.5,
+      "tileHeight": 1
+    },
+    {
+      "name": "Mid-growth no fruit",
+      "nextGrowthStage": 4,
+      "seasonsUntilComplete": 0.6,
+      "tileHeight": 1
+    },
+    {
+      "name": "Late growth",
+      "nextGrowthStage": 6,
+      "seasonsUntilComplete": 0.6,
+      "tileHeight": 1
+    },
+    {
+      "name": "Ripe",
+      "nextGrowthStage": 7,
+      "seasonsUntilComplete": 0.6,
+      "tileHeight": 1,
+      "harvestType": "FARMING",
+      "harvestedItems": [
+        {
+          "itemTypeName": "Resource-Hemp-Bundle",
+          "materialName": "Hemp",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Ingredient-Seeds",
+          "materialName": "Hemp Seed",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "name": "Decaying",
+      "seasonsUntilComplete": 0.05,
+      "tileHeight": 1,
+      "colors": {
+        "BRANCHES_COLOR": {
+          "colorCode": "#746b1b"
+        }
+      },
+      "onCompletion": [
+        "DESTROY_PLANT"
+      ]
+    }
+  ]
+}]

@@ -1,0 +1,10 @@
+[{
+  "itemTypeName": "Resource-Hemp-Bundle",
+  "materialTypes": ["VEGETABLE", "CLOTH", "ROPE"],
+  "primaryMaterialType": "VEGETABLE",
+  "stockpileGroupName": "GRANARY",
+  "hoursInInventoryUntilUnused": 1,
+  "maxStackSize": 30,
+  "maxHauledAtOnce": 30,
+  "equippedWhileWorkingOnJob": true
+}]

@@ -1,12 +1,162 @@
 [ {
   "uniqueName" : "Planted-Seeds",
   "type" : "PLANT_BRANCHES",
-  "speciesNames" : [ "Wheat", "Barley", "Tomato", "Potato", "Carrot", "Maize" ],
+  "speciesNames" : [ "Wheat", "Barley", "Tomato", "Potato", "Carrot", "Maize", "Hemp" ],
   "growthStages" : [ 0 ],
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
       "filename" : "crop_planted_seeds.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Hemp-Shoots-1",
+  "type" : "PLANT_BRANCHES",
+  "speciesNames" : [ "Hemp" ],
+  "growthStages" : [ 1 ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_Shoots.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -6.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Hemp-Shoots-2",
+  "type" : "PLANT_BRANCHES",
+  "speciesNames" : [ "Hemp" ],
+  "growthStages" : [ 1 ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_shoots2.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -6.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Hemp-Med-1",
+  "type" : "PLANT_BRANCHES",
+  "speciesNames" : [ "Hemp" ],
+  "growthStages" : [ 2 ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_Med.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Hemp-Med-2",
+  "type" : "PLANT_BRANCHES",
+  "speciesNames" : [ "Hemp" ],
+  "growthStages" : [ 2 ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_Med2.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Hemp-Large-1",
+  "type" : "PLANT_BRANCHES",
+  "speciesNames" : [ "Hemp" ],
+  "growthStages" : [ 3, 4, 5 ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_large.png",
+      "coloringLayer" : "BRANCHES_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Hemp-Large-2",
+  "type" : "PLANT_BRANCHES",
+  "speciesNames" : [ "Hemp" ],
+  "growthStages" : [ 3, 4, 5 ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_large2.png",
       "coloringLayer" : "BRANCHES_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
