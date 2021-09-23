@@ -86,7 +86,7 @@
   {
     "name": "Perfect day summer",
     "applicableSeason": "SUMMER",
-    "chance": 0.5,
+    "chance": 0.8,
     "forecast": [
       {
         "weatherTypeName": "Perfect",
@@ -99,7 +99,7 @@
   {
     "name": "Scattered showers (summer)",
     "applicableSeason": "SUMMER",
-    "chance": 0.3,
+    "chance": 0.1,
     "forecast": [
       {
         "weatherTypeName": "Perfect",
@@ -124,7 +124,7 @@
   {
     "name": "Wet thunderstorm (summer)",
     "applicableSeason": "SUMMER",
-    "chance": 0.1,
+    "chance": 0.05,
     "forecast": [
       {
         "weatherTypeName": "Rain",
@@ -149,7 +149,7 @@
   {
     "name": "Summer dry thunderstorm",
     "applicableSeason": "SUMMER",
-    "chance": 0.1,
+    "chance": 0.05,
     "forecast": [
       {
         "weatherTypeName": "Perfect",

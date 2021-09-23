@@ -35,11 +35,19 @@
   "Product-Cauldron" : {
     "perSettler" : 0.1
   },
+  "Product-Linen" : {
+    "fixedAmount" : 6,
+    "perSettler" : 0.0
+  },
   "Product-Liquid-Tank" : {
     "fixedAmount" : 1,
     "perSettler" : 0.0
   },
   "Product-Millstone" : {
+    "fixedAmount" : 1,
+    "perSettler" : 0.0
+  },
+  "Product-Rope" : {
     "fixedAmount" : 1,
     "perSettler" : 0.0
   },

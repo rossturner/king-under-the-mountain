@@ -120,7 +120,7 @@ public class MechanismMessageHandler implements Telegraph, GameContextAware {
 				if (powerGridInDirection != null) {
 					MechanismEntityAttributes attributesInDirection = (MechanismEntityAttributes) tileInDirection.getUnderTile().getPowerMechanismEntity().getPhysicalEntityComponent().getAttributes();
 					if (attributesInDirection.getMechanismType().getPowerTransmission().contains(oppositeOf(powerTransmissionDirection))) {
-						grid = powerGridInDirection.mergeIn(grid);
+						grid = powerGridInDirection.mergeIn(grid, gameContext);
 					}
 				}
 			}

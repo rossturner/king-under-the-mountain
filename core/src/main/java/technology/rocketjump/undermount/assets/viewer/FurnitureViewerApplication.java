@@ -101,7 +101,7 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 		Random random = new Random();
 
 		attributes = new FurnitureEntityAttributes(0); // or 1 or 2
-		attributes.setFurnitureType(furnitureTypeDictionary.getByName("WATERWHEEL"));
+		attributes.setFurnitureType(furnitureTypeDictionary.getByName("LOOM"));
 		attributes.getMaterials().put(GameMaterialType.WOOD, gameMaterialDictionary.getByName("Pine"));
 		attributes.getMaterials().put(GameMaterialType.STONE, gameMaterialDictionary.getByName("Dolostone"));
 		attributes.getMaterials().put(GameMaterialType.ORE, gameMaterialDictionary.getByName("Hematite"));

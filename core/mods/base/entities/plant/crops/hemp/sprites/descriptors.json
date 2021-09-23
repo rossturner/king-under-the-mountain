@@ -1,0 +1,126 @@
+[
+  {
+    "uniqueName": "Hemp-Shoots-1",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": [
+      "Hemp"
+    ],
+    "growthStages": [
+      1
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Hemp_Shoots.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 1.0,
+          "y": -6.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Hemp-Shoots-2",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": [
+      "Hemp"
+    ],
+    "growthStages": [
+      1
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Hemp_shoots2.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -12.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Hemp-Med-1",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": [
+      "Hemp"
+    ],
+    "growthStages": [
+      2
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Hemp_Med.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 2.5,
+          "y": -6.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Hemp-Med-2",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": [
+      "Hemp"
+    ],
+    "growthStages": [
+      2
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Hemp_Med2.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -6.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Hemp-Large-1",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": [
+      "Hemp"
+    ],
+    "growthStages": [
+      3,
+      4,
+      5
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Hemp_large.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Hemp-Large-2",
+    "type": "PLANT_BRANCHES",
+    "speciesNames": [
+      "Hemp"
+    ],
+    "growthStages": [
+      3,
+      4,
+      5
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Hemp_large2.png",
+        "coloringLayer": "BRANCHES_COLOR",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    }
+  }
+]

@@ -184,9 +184,9 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("seed", seed);
-		JSONArray materialsJson = new JSONArray();
+		JSONObject materialsJson = new JSONObject();
 		for (GameMaterial material : materials.values()) {
-			materialsJson.add(material.getMaterialName());
+			materialsJson.put(material.getMaterialType().name(), material.getMaterialName());
 		}
 		asJson.put("materials", materialsJson);
 		if (!otherColors.isEmpty()) {
@@ -217,13 +217,16 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		seed = asJson.getLongValue("seed");
-		JSONArray materialsJson = asJson.getJSONArray("materials");
-		for (int cursor = 0; cursor < materialsJson.size(); cursor++) {
-			GameMaterial material = relatedStores.gameMaterialDictionary.getByName(materialsJson.getString(cursor));
+		if (asJson.get("materials") instanceof JSONArray) {
+			throw new InvalidSaveException("Old save file structure");
+		}
+		JSONObject materialsJson = asJson.getJSONObject("materials");
+		for (Map.Entry<String, Object> entry : materialsJson.entrySet()) {
+			GameMaterial material = relatedStores.gameMaterialDictionary.getByName(entry.getValue().toString());
 			if (material == null) {
-				throw new InvalidSaveException("Could not find material by name " + materialsJson.getString(cursor));
+				throw new InvalidSaveException("Could not find material by name " + entry.getValue().toString());
 			} else {
-				materials.put(material.getMaterialType(), material);
+				materials.put(GameMaterialType.valueOf(entry.getKey()), material);
 			}
 		}
 		JSONObject otherColorsJson = asJson.getJSONObject("otherColors");

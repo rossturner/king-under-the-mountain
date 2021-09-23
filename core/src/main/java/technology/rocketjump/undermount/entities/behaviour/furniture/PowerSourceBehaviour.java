@@ -26,11 +26,11 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class PowerSourceBehaviour extends FurnitureBehaviour implements Destructible, SelectableDescription {
 
-	private boolean isOutside;
+	private Boolean isOutside;
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
-		if (isOutside) {
+		if (isWorking(gameContext)) {
 			PoweredFurnitureComponent poweredFurnitureComponent = parentEntity.getComponent(PoweredFurnitureComponent.class);
 			if (poweredFurnitureComponent != null) {
 				poweredFurnitureComponent.update(deltaTime, gameContext);
@@ -57,7 +57,7 @@ public class PowerSourceBehaviour extends FurnitureBehaviour implements Destruct
 
 	@Override
 	public List<I18nText> getDescription(I18nTranslator i18nTranslator, GameContext gameContext) {
-		if (isOutside) {
+		if (isWorking(gameContext)) {
 			return Collections.emptyList();
 		} else {
 			return List.of(
@@ -66,7 +66,10 @@ public class PowerSourceBehaviour extends FurnitureBehaviour implements Destruct
 		}
 	}
 
-	public boolean isWorking() {
+	public boolean isWorking(GameContext gameContext) {
+		if (isOutside == null) {
+			this.isOutside = isOutside(gameContext);
+		}
 		return isOutside;
 	}
 

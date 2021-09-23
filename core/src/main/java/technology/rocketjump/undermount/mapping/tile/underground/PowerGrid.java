@@ -11,7 +11,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
-import technology.rocketjump.undermount.mapping.model.TiledMap;
+import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.persistence.JSONUtils;
@@ -49,17 +49,17 @@ public class PowerGrid implements Persistable {
 	}
 
 
-	public PowerGrid mergeIn(PowerGrid other) {
+	public PowerGrid mergeIn(PowerGrid other, GameContext gameContext) {
 		for (MapTile tile : other.tiles) {
 			addTile(tile);
 		}
 
-		update();
+		update(gameContext);
 
 		return this;
 	}
 
-	public void update() {
+	public void update(GameContext gameContext) {
 		totalPowerAvailable = 0;
 		for (MapTile tile : tiles) {
 			for (Entity entity : tile.getEntities()) {
@@ -70,7 +70,7 @@ public class PowerGrid implements Persistable {
 						// Only if this is furniture's main position
 						BehaviourComponent behaviourComponent = entity.getBehaviourComponent();
 						if (behaviourComponent instanceof PowerSourceBehaviour) {
-							if (!((PowerSourceBehaviour)entity.getBehaviourComponent()).isWorking()) {
+							if (!((PowerSourceBehaviour)entity.getBehaviourComponent()).isWorking(gameContext)) {
 								continue;
 							}
 						}
@@ -127,7 +127,7 @@ public class PowerGrid implements Persistable {
 		totalPowerAvailable = asJson.getIntValue("totalPower");
 	}
 
-	public void removeTile(MapTile mapTile, TiledMap map) {
+	public void removeTile(MapTile mapTile, GameContext gameContext) {
 		tiles.remove(mapTile);
 		mapTile.getUnderTile().setPowerGrid(null);
 
@@ -148,7 +148,7 @@ public class PowerGrid implements Persistable {
 					MechanismEntityAttributes attributes = (MechanismEntityAttributes) currentTile.getUnderTile().getPowerMechanismEntity().getPhysicalEntityComponent().getAttributes();
 					MechanismType mechanismType = attributes.getMechanismType();
 					for (CompassDirection direction : mechanismType.getPowerTransmission()) {
-						MapTile neighbour = map.getTile(currentTile.getTileX() + direction.getXOffset(), currentTile.getTileY() + direction.getYOffset());
+						MapTile neighbour = gameContext.getAreaMap().getTile(currentTile.getTileX() + direction.getXOffset(), currentTile.getTileY() + direction.getYOffset());
 						if (!visited.contains(neighbour)) {
 							if (neighbour.getUnderTile() != null && neighbour.getUnderTile().getPowerMechanismEntity() != null) {
 								MechanismEntityAttributes neighbourAttributes = (MechanismEntityAttributes) neighbour.getUnderTile().getPowerMechanismEntity().getPhysicalEntityComponent().getAttributes();
@@ -170,13 +170,13 @@ public class PowerGrid implements Persistable {
 					this.tiles.remove(newGridTile);
 					newGrid.addTile(newGridTile);
 				}
-				newGrid.update();
+				newGrid.update(gameContext);
 			}
 
 			remainingTiles.removeAll(newGridTiles);
 
 			gridCursor++;
 		}
-		this.update();
+		this.update(gameContext);
 	}
 }

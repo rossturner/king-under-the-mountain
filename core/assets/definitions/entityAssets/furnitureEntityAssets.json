@@ -563,6 +563,34 @@
     }
   }
 }, {
+  "uniqueName" : "sleeping-spot-1x1",
+  "type" : "BASE_LAYER",
+  "furnitureTypeName" : "SLEEPING_SPOT",
+  "furnitureLayoutName" : "1x1",
+  "validMaterialTypes" : [ "EARTH" ],
+  "tags" : {
+    "BED_SLEEPING_POSITION" : [ "DOWN", "true" ]
+  },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "sleep_spot.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "chair-1x1N-stone",
   "type" : "BASE_LAYER",
   "furnitureTypeNames" : [ "FEASTING_CHAIR" ],
@@ -3002,7 +3030,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3036,7 +3064,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -3070,7 +3098,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-stone-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3096,7 +3124,7 @@
 }, {
   "uniqueName" : "shock-tank-1x2-wood-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "1x2 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -3122,7 +3150,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3156,7 +3184,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -3190,7 +3218,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-stone-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -3216,7 +3244,7 @@
 }, {
   "uniqueName" : "shock-tank-2x1-wood-liquid",
   "type" : "FURNITURE_LIQUID_LAYER",
-  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK" ],
+  "furnitureTypeNames" : [ "MUSHROOM_SHOCK_TANK", "RETTING_TANK" ],
   "furnitureLayoutName" : "2x1 with workspaces",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -3659,6 +3687,611 @@
         "unit" : false
       },
       "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Back-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with N workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Back_Empty.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : 13.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : -21.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : -21.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : -21.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Back-Thread",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with N workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Back_Thread.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 21.5,
+        "y" : 22.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Back-Cloth",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with N workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Back_Cloth_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 20.5,
+        "y" : -13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Back-Shadow",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with N workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Back_Shadow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 19.0,
+        "y" : -39.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Front-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with S workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Front_Empty.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 11.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : -22.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Front-StringA",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with S workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_A_String2.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 22.5,
+        "y" : -15.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "specificAssetName" : "Loom-Front-WeightsA",
+        "offsetPixels" : {
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "specificAssetName" : "Loom-Front-ShadowA",
+        "offsetPixels" : {
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Front-StringB",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with S workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_B_String2.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 22.5,
+        "y" : -15.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "specificAssetName" : "Loom-Front-WeightsB",
+        "offsetPixels" : {
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "specificAssetName" : "Loom-Front-ShadowB",
+        "offsetPixels" : {
+          "x" : -22.5,
+          "y" : 15.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Front-WeightsA",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with S workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_A_Weights.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 22.5,
+        "y" : -58.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Front-WeightsB",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with S workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_B_Weights.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 22.5,
+        "y" : -58.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Front-ShadowA",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with S workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_A_Shadow_Underneath.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 23.0,
+        "y" : -47.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Front-ShadowB",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with S workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_B_Shadow_Underneath.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 21.5,
+        "y" : -47.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with W workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Side_Empty.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : 9.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : -17.5,
+          "y" : 12.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : -17.5,
+          "y" : 12.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : -17.5,
+          "y" : 12.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Weights",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with W workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Side_Weights.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -20.5,
+        "y" : -42.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Thread",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with W workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Side_Loom_Thread Cloth.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 18.5,
+        "y" : -10.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Shadow",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with W workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Side_Shadow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 18.0,
+        "y" : -40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Flipped-Base",
+  "type" : "BASE_LAYER",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with E workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Side_Empty.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 9.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "FURNITURE_ABOVE_LAYER_1",
+        "offsetPixels" : {
+          "x" : 17.5,
+          "y" : 12.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_ABOVE_LAYER_2",
+        "offsetPixels" : {
+          "x" : 17.5,
+          "y" : 12.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "FURNITURE_BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : 17.5,
+          "y" : 12.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Flipped-Weights",
+  "type" : "FURNITURE_ABOVE_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with E workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Side_Weights.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 20.5,
+        "y" : -42.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Flipped-Thread",
+  "type" : "FURNITURE_ABOVE_LAYER_2",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with E workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Side_Loom_Thread Cloth.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -18.5,
+        "y" : -10.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Loom-Side-Flipped-Shadow",
+  "type" : "FURNITURE_BELOW_LAYER_1",
+  "furnitureTypeNames" : [ "LOOM" ],
+  "furnitureLayoutName" : "1x1 with E workspace",
+  "validMaterialTypes" : [ "WOOD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Loom_Side_Shadow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -18.0,
+        "y" : -40.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],

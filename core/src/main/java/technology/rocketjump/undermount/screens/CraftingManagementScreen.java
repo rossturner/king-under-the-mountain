@@ -156,7 +156,6 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 						}
 					}
 
-
 					Map<ItemType, List<CraftingRecipe>> recipesForProducedItems = new HashMap<>();
 					Map<GameMaterial, List<CraftingRecipe>> recipesForProducedLiquids = new HashMap<>();
 					for (CraftingRecipe craftingRecipe : craftingRecipeDictionary.getByCraftingType(craftingType)) {

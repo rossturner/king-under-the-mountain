@@ -12,7 +12,25 @@
       "itemTypeName" : "Resource-Planks",
       "quantity" : 4,
       "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Linen",
+      "quantity" : 1,
+      "liquid" : false
     } ]
+  },
+  "tags" : { },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "SLEEPING_SPOT",
+  "i18nKey" : "FURNITURE.SLEEPING_SPOT",
+  "categoryName" : "NAVIGABLE",
+  "defaultLayoutName" : "1x1",
+  "colorCode" : "#9f7d60",
+  "iconName" : "sleeping-bag",
+  "placeAnywhere" : false,
+  "autoConstructed" : true,
+  "requirements" : {
+    "EARTH" : [ ]
   },
   "tags" : {
     "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ]
@@ -188,6 +206,10 @@
       "itemTypeName" : "Product-Bucket",
       "quantity" : 1,
       "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Rope",
+      "quantity" : 1,
+      "liquid" : false
     } ]
   },
   "tags" : {
@@ -249,11 +271,15 @@
   "requirements" : {
     "WOOD" : [ {
       "itemTypeName" : "Resource-Planks",
-      "quantity" : 12,
+      "quantity" : 8,
       "liquid" : false
     }, {
       "itemTypeName" : "Resource-Stone-Block",
-      "quantity" : 6,
+      "quantity" : 4,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Linen",
+      "quantity" : 4,
       "liquid" : false
     } ]
   },
@@ -595,6 +621,53 @@
   "tags" : {
     "LIQUID_CONTAINER" : [ "4", "Water", "ALWAYS_INACTIVE" ],
     "FURNITURE_BEHAVIOUR" : [ "MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Mushroom-Log", "ItemType_Resource-Shocked-Mushroom-Log" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "RETTING_TANK",
+  "i18nKey" : "FURNITURE.RETTING_TANK",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "2x1 with workspaces",
+  "colorCode" : "#25a2d0",
+  "iconName" : "drop",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 4,
+      "liquid" : false
+    } ],
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 4,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "LIQUID_CONTAINER" : [ "4", "Water", "ALWAYS_INACTIVE" ],
+    "FURNITURE_BEHAVIOUR" : [ "MUSHROOM_SHOCK_TANK", "ItemType_Product-Bucket", "ItemType_Resource-Hemp-Bundle", "ItemType_Resource-Hemp-Fibre-Bundle", "Material_Hemp_Fibre", "JobType_HAULING" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "LOOM",
+  "i18nKey" : "FURNITURE.LOOM",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "1x1 with S workspace",
+  "colorCode" : "#dce551",
+  "iconName" : "sewing-string",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 7,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "CRAFTING_STATION_BEHAVIOUR" : [ "WEAVING", "CRAFT_ITEM", "HAULING" ],
+    "EXTRA_MATERIAL_TYPES" : [ "CLOTH", "METAL" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {

@@ -90,7 +90,8 @@
     "colorCode": "#c17200",
     "iconName": "bed",
     "furnitureNames": [
-      "SINGLE_BED"
+      "SINGLE_BED",
+      "SLEEPING_SPOT"
     ]
   },
   {
@@ -135,6 +136,16 @@
       "MASH_TUN",
       "BREW_KETTLE",
       "FERMENTATION_TANK"
+    ]
+  },
+  {
+    "roomName": "TEXTILE_WORKSHOP",
+    "i18nKey": "ROOMS.TEXTILE_WORKSHOP",
+    "colorCode": "#cccc8f",
+    "iconName": "yarn",
+    "furnitureNames": [
+      "RETTING_TANK",
+      "LOOM"
     ]
   },
 

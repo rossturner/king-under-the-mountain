@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
+import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
@@ -18,6 +19,8 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
+import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
+import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.PlantSeedDispersedMessage;
 import technology.rocketjump.undermount.messaging.types.RemoveDesignationMessage;
@@ -26,12 +29,17 @@ import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.ui.i18n.I18nText;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
+import java.util.List;
+
+import static technology.rocketjump.undermount.entities.model.physical.plant.MoistureState.*;
 import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType.CROP;
 import static technology.rocketjump.undermount.materials.model.GameMaterialType.EARTH;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
-public class PlantBehaviour implements BehaviourComponent {
+public class PlantBehaviour implements BehaviourComponent, SelectableDescription {
 
 	public static final float MIN_SUNLIGHT_FOR_GROWING = 0.8f;
 	private static final double SUNLIGHT_MULTIPLIER = 1.5;
@@ -43,6 +51,7 @@ public class PlantBehaviour implements BehaviourComponent {
 	private JobType removePestsJobType;
 
 	private Double lastUpdateGameTime;
+	private double lastGameTimeConsumedWater;
 
 	// TODO Should the below be moved to plant attributes?
 	private double gameSeasonsToNoticeSeasonChange;
@@ -103,14 +112,14 @@ public class PlantBehaviour implements BehaviourComponent {
 			}
 		}
 
+		updateMoistureState(parentEntityTile, attributes, gameContext);
 
 		PlantSpeciesGrowthStage growthStage = species.getGrowthStages().get(attributes.getGrowthStageCursor());
 		Season currentSeason = gameContext.getGameClock().getCurrentSeason();
 
 		double currentGameTime = gameContext.getGameClock().getCurrentGameTime();
 		double elapsedGameSeasons = gameContext.getGameClock().gameHoursAsNumSeasons(currentGameTime - lastUpdateGameTime);
-		elapsedGameSeasons = elapsedGameSeasons * (double) attributes.getGrowthRate();
-		double elapsedTime = currentGameTime - lastUpdateGameTime;
+		elapsedGameSeasons = elapsedGameSeasons * attributes.getMoistureState().growthModifier * (double) attributes.getGrowthRate();
 		lastUpdateGameTime = currentGameTime;
 
 		boolean dayElapsed = false;
@@ -141,9 +150,17 @@ public class PlantBehaviour implements BehaviourComponent {
 
 		float currentGrowth = attributes.getGrowthStageProgress();
 		if (currentSeasonSettings == null || currentSeasonSettings.isGrowth()) {
+
+			if (dayElapsed && attributes.getSpecies().getPlantType().equals(CROP)) {
+				// Should pests apply today? Only check when growing
+				boolean applyPestsToday = gameContext.getRandom().nextFloat() < CHANCE_OF_PEST_PER_DAY;
+				if (!attributes.isAfflictedByPests() && applyPestsToday) {
+					gameTimeToApplyPests = gameContext.getGameClock().getCurrentGameTime() + (gameContext.getRandom().nextFloat() * gameContext.getGameClock().HOURS_IN_DAY);
+				}
+			}
+
 			if (gameContext.getMapEnvironment().getSunlightAmount() > MIN_SUNLIGHT_FOR_GROWING) {
 				// Multiplying growth to balance out nighttime
-				elapsedGameSeasons *= SUNLIGHT_MULTIPLIER;
 				float extraGrowth = (float)(elapsedGameSeasons / growthStage.getSeasonsUntilComplete());
 				if (attributes.isAfflictedByPests()) {
 					extraGrowth *= PEST_GROWTH_SPEED_MULTIPLIER;
@@ -151,14 +168,6 @@ public class PlantBehaviour implements BehaviourComponent {
 				currentGrowth += extraGrowth;
 			}
 
-
-			// Should pests apply today? Only check when growing
-			if (dayElapsed && attributes.getSpecies().getPlantType().equals(CROP)) {
-				boolean applyPestsToday = gameContext.getRandom().nextFloat() < CHANCE_OF_PEST_PER_DAY;
-				if (!attributes.isAfflictedByPests() && applyPestsToday) {
-					gameTimeToApplyPests = gameContext.getGameClock().getCurrentGameTime() + (gameContext.getRandom().nextFloat() * gameContext.getGameClock().HOURS_IN_DAY);
-				}
-			}
 		}
 
 		if (gameTimeToApplyPests != null && gameTimeToApplyPests < gameContext.getGameClock().getCurrentGameTime()) {
@@ -265,6 +274,53 @@ public class PlantBehaviour implements BehaviourComponent {
 		}
 	}
 
+	private void updateMoistureState(MapTile parentEntityTile, PlantEntityAttributes attributes, GameContext gameContext) {
+		double timeSinceWaterConsumed = gameContext.getGameClock().getCurrentGameTime() - lastGameTimeConsumedWater;
+		if (gameContext.getMapEnvironment().getCurrentWeather().isOxidises() && parentEntityTile.getRoof().getState().equals(TileRoofState.OPEN)) {
+			// Outside when it is raining
+			this.lastGameTimeConsumedWater = gameContext.getGameClock().getCurrentGameTime();
+		} else if (timeSinceWaterConsumed > GAME_HOURS_BETWEEN_WATER_REQUIRED) {
+			// Try to consume water from nearby irrigation or river
+			boolean liquidConsumed = false;
+			GridPoint2 position = parentEntityTile.getTilePosition();
+			for (int x = position.x - DISTANCE_TO_CONSUME_WATER; x <= position.x + DISTANCE_TO_CONSUME_WATER; x++) {
+				for (int y = position.y - DISTANCE_TO_CONSUME_WATER; y <= position.y + DISTANCE_TO_CONSUME_WATER; y++) {
+					MapTile targetTile = gameContext.getAreaMap().getTile(x, y);
+					if (targetTile != null) {
+						if (targetTile.getFloor().isRiverTile()) {
+							liquidConsumed = true;
+							break;
+						} else if (targetTile.hasChannel()) {
+							TileLiquidFlow liquidFlow = targetTile.getUnderTile().getLiquidFlow();
+							if (liquidFlow != null && liquidFlow.getLiquidAmount() > 0) {
+								liquidFlow.setLiquidAmount(liquidFlow.getLiquidAmount() - 1);
+								messageDispatcher.dispatchMessage(MessageType.LIQUID_REMOVED_FROM_FLOW, targetTile.getTilePosition());
+								liquidConsumed = true;
+								break;
+							}
+						}
+					}
+				}
+				if (liquidConsumed) {
+					break;
+				}
+			}
+			if (liquidConsumed) {
+				this.lastGameTimeConsumedWater = gameContext.getGameClock().getCurrentGameTime();
+			}
+		}
+
+
+		timeSinceWaterConsumed = gameContext.getGameClock().getCurrentGameTime() - lastGameTimeConsumedWater;
+		if (timeSinceWaterConsumed > GAME_HOURS_BEFORE_DROUGHT) {
+			attributes.setMoistureState(DROUGHTED);
+		} else if (timeSinceWaterConsumed > GAME_HOURS_BETWEEN_WATER_REQUIRED) {
+			attributes.setMoistureState(NEEDS_WATERING);
+		} else {
+			attributes.setMoistureState(WATERED);
+		}
+	}
+
 	@Override
 	public EntityComponent clone(MessageDispatcher messageDispatcher, GameContext gameContext) {
 		PlantBehaviour cloned = new PlantBehaviour();
@@ -309,6 +365,7 @@ public class PlantBehaviour implements BehaviourComponent {
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("removePestsJobType", removePestsJobType.getName());
 		asJson.put("lastUpdateGameTime", lastUpdateGameTime);
+		asJson.put("lastGameTimeConsumedWater", lastGameTimeConsumedWater);
 		asJson.put("gameSeasonsToNoticeSeasonChange", gameSeasonsToNoticeSeasonChange);
 		asJson.put("season", seasonPlantThinksItIs.name());
 		if (lastUpdateDayNumber != 0) {
@@ -326,9 +383,18 @@ public class PlantBehaviour implements BehaviourComponent {
 			throw new InvalidSaveException("Could not find job type with name " + asJson.getString("removePestsJobType"));
 		}
 		this.lastUpdateGameTime = asJson.getDouble("lastUpdateGameTime");
+		this.lastGameTimeConsumedWater = asJson.getDoubleValue("lastGameTimeConsumedWater");
 		this.gameSeasonsToNoticeSeasonChange = asJson.getDoubleValue("gameSeasonsToNoticeSeasonChange");
 		this.seasonPlantThinksItIs = EnumParser.getEnumValue(asJson, "season", Season.class, null);
 		this.lastUpdateDayNumber = asJson.getIntValue("lastUpdateDayNumber");
 		this.gameTimeToApplyPests = asJson.getDouble("gameTimeToApplyPests");
+	}
+
+	@Override
+	public List<I18nText> getDescription(I18nTranslator i18nTranslator, GameContext gameContext) {
+		PlantEntityAttributes attributes = (PlantEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		return List.of(
+				i18nTranslator.getTranslatedString(attributes.getMoistureState().getI18nKey())
+		);
 	}
 }

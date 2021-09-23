@@ -1,0 +1,22 @@
+[
+  {
+    "uniqueName": "sleeping-spot-1x1",
+    "type": "BASE_LAYER",
+    "furnitureTypeName": "SLEEPING_SPOT",
+    "furnitureLayoutName": "1x1",
+    "validMaterialTypes": ["EARTH"],
+    "tags": {
+      "BED_SLEEPING_POSITION": ["DOWN", "true"]
+    },
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "sleep_spot.png",
+        "coloringLayer": "CLOTH_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  }
+]

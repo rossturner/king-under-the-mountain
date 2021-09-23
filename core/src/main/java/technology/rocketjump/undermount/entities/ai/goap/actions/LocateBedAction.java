@@ -20,16 +20,24 @@ public class LocateBedAction extends Action implements FurnitureAssignmentCallba
 		super(parent);
 	}
 
+	boolean willingToSleepOnFloor = false;
+
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_ASSIGNMENT,
-				new FurnitureAssignmentRequest(BedSleepingPositionTag.class, parent.parentEntity, this));
+				new FurnitureAssignmentRequest(BedSleepingPositionTag.class, parent.parentEntity, this, willingToSleepOnFloor));
 	}
 
 	@Override
 	public void furnitureAssigned(Entity furnitureEntity) {
 		if (furnitureEntity == null) {
-			completionType = FAILURE;
+			if (!willingToSleepOnFloor) {
+				willingToSleepOnFloor = true;
+				parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_ASSIGNMENT,
+						new FurnitureAssignmentRequest(BedSleepingPositionTag.class, parent.parentEntity, this, willingToSleepOnFloor));
+			} else {
+				completionType = FAILURE;
+			}
 		} else {
 			parent.setAssignedFurnitureId(furnitureEntity.getId());
 			completionType = SUCCESS;

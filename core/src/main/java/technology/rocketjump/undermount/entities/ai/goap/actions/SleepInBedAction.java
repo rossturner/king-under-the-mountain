@@ -13,6 +13,8 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -42,18 +44,24 @@ public class SleepInBedAction extends SleepOnFloorAction {
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
-		if (!inBed()) {
+		if (!isAsleep()) {
 			getIntoAssignedBedAndSleep(gameContext);
 		} else {
 
-			Entity bedEntity = parent.parentEntity.getLocationComponent().getContainerEntity();
+			Entity bedEntity = gameContext.getEntities().get(parent.getAssignedFurnitureId());
 			MapTile bedTile = gameContext.getAreaMap().getTile(bedEntity.getLocationComponent().getWorldPosition());
 			Room bedroom = null;
 			if (bedTile != null && bedTile.getRoomTile() != null) {
 				bedroom = bedTile.getRoomTile().getRoom();
 			}
 
-			if (bedroom == null || bedroomIsShared(bedroom)) {
+			Entity assignedFurniture = gameContext.getEntities().get(parent.getAssignedFurnitureId());
+			SleepingPositionComponent sleepingPositionComponent = assignedFurniture.getComponent(SleepingPositionComponent.class);
+			if (sleepingPositionComponent.isOnFloor()) {
+				parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_ON_GROUND);
+			}
+
+			if (bedroom == null || bedroomIsShared(bedroom, gameContext)) {
 				parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_SHARED_BEDROOM);
 				if (bedroom != null && bedroomIsSmall(bedroom)) {
 					parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_SMALL_BEDROOM);
@@ -80,8 +88,8 @@ public class SleepInBedAction extends SleepOnFloorAction {
 		return bedroom.getRoomTiles().size() < MIN_AVERAGE_BEDROOM_SIZE;
 	}
 
-	private boolean bedroomIsShared(Room room) {
-		Entity bedEntity = parent.parentEntity.getLocationComponent().getContainerEntity();
+	private boolean bedroomIsShared(Room room, GameContext gameContext) {
+		Entity bedEntity = gameContext.getEntities().get(parent.getAssignedFurnitureId());
 		for (RoomTile roomTile : room.getRoomTiles().values()) {
 			MapTile tile = roomTile.getTile();
 			for (Entity entity : tile.getEntities()) {
@@ -102,7 +110,7 @@ public class SleepInBedAction extends SleepOnFloorAction {
 
 	@Override
 	public void actionInterrupted(GameContext gameContext) {
-		if (inBed()) {
+		if (isAsleep()) {
 			changeToAwake();
 			getOutOfBed(gameContext);
 		}
@@ -111,7 +119,7 @@ public class SleepInBedAction extends SleepOnFloorAction {
 
 	@Override
 	public String getDescriptionOverrideI18nKey() {
-		return "ACTION.SLEEP_IN_BED.DESCRIPTION";
+		return "ACTION.SLEEP_ON_FLOOR.DESCRIPTION";
 	}
 
 	@Override
@@ -126,7 +134,10 @@ public class SleepInBedAction extends SleepOnFloorAction {
 
 	private void getIntoAssignedBedAndSleep(GameContext gameContext) {
 		Entity assignedFurniture = gameContext.getEntities().get(parent.getAssignedFurnitureId());
-		if (assignedFurniture == null || !locatedInFurnitureWorkspace(assignedFurniture)) {
+		SleepingPositionComponent sleepingPositionComponent = assignedFurniture.getComponent(SleepingPositionComponent.class);
+		if (sleepingPositionComponent.isOnFloor()) {
+			changeToSleeping(gameContext);
+		} else if (assignedFurniture == null || !locatedInFurnitureWorkspace(assignedFurniture)) {
 			completionType = FAILURE;
 		} else {
 			InventoryComponent inventoryComponent = assignedFurniture.getOrCreateComponent(InventoryComponent.class);
@@ -143,20 +154,21 @@ public class SleepInBedAction extends SleepOnFloorAction {
 			completionType = FAILURE;
 			return;
 		}
-		InventoryComponent inventoryComponent = assignedFurniture.getOrCreateComponent(InventoryComponent.class);
-		inventoryComponent.remove(parent.parentEntity.getId());
+		SleepingPositionComponent sleepingPositionComponent = assignedFurniture.getComponent(SleepingPositionComponent.class);
+		if (!sleepingPositionComponent.isOnFloor()) {
+			InventoryComponent inventoryComponent = assignedFurniture.getOrCreateComponent(InventoryComponent.class);
+			inventoryComponent.remove(parent.parentEntity.getId());
 
-		Vector2 furnitureLocation = assignedFurniture.getLocationComponent().getWorldPosition().cpy();
-		parent.parentEntity.getLocationComponent().setWorldPosition(furnitureLocation, false);
+			Vector2 furnitureLocation = assignedFurniture.getLocationComponent().getWorldPosition().cpy();
+			parent.parentEntity.getLocationComponent().setWorldPosition(furnitureLocation, false);
 
-		FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(assignedFurniture, gameContext.getAreaMap());
-		if (navigableWorkspace != null) {
-			Vector2 workspaceLocation = toVector(navigableWorkspace.getAccessedFrom());
-			parent.parentEntity.getLocationComponent().setWorldPosition(workspaceLocation, true);
-		} //  Else we can no longer get out of bed into a workspace, place onto bed tile instead
-
-
-		parent.messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parent.parentEntity);
+			FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(assignedFurniture, gameContext.getAreaMap());
+			if (navigableWorkspace != null) {
+				Vector2 workspaceLocation = toVector(navigableWorkspace.getAccessedFrom());
+				parent.parentEntity.getLocationComponent().setWorldPosition(workspaceLocation, true);
+			} //  Else we can no longer get out of bed into a workspace, place onto bed tile instead
+			parent.messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parent.parentEntity);
+		}
 	}
 
 	private void updateForSleepingOrientation(GameContext gameContext, Entity assignedFurniture) {
@@ -190,8 +202,9 @@ public class SleepInBedAction extends SleepOnFloorAction {
 		return false;
 	}
 
-	private boolean inBed() {
-		return parent.parentEntity.getLocationComponent().getContainerEntity() != null;
+	private boolean isAsleep() {
+		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
+		return attributes.getConsciousness().equals(Consciousness.SLEEPING);
 	}
 
 }
