@@ -58,7 +58,7 @@ public class PoweredFurnitureComponent implements ParentDependentEntityComponent
 
 	@Override
 	public void destroy(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
-		this.powerAmount = 0;
+		setPowerAmount(0);
 		updatePowerGridAtParentLocation();
 		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 		parentTile.getOrCreateUnderTile().setPowerSource(false);
@@ -140,7 +140,7 @@ public class PoweredFurnitureComponent implements ParentDependentEntityComponent
 	public void updatePowerGridAtParentLocation() {
 		MapTile parentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
 		if (parentTile != null && parentTile.getUnderTile() != null && parentTile.getUnderTile().getPowerGrid() != null) {
-			parentTile.getUnderTile().getPowerGrid().update();
+			parentTile.getUnderTile().getPowerGrid().update(gameContext);
 		}
 	}
 

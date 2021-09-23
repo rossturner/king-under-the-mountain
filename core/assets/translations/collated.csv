@@ -537,8 +537,8 @@ MATERIAL,Material,,Material,Matériau,Materiale,Material,Material,Material,,Ма
 
 MATERIAL_TYPE,Type,,Art,Sorte,Tipo,Tipo de material,Tipo,Tipo,,тип,Tip,Type,,Sort,,,,タイプ,类型,를 입력합니다
 MATERIAL_TYPE.ANY,Any,,Beliebig,Tous,Qualsiasi,Cualquiera,Qualquer,Qualquer,,Любой,Hepsi,Enhver,,Någon,,,,任意です,任何,아무 것도
-MATERIAL_TYPE.CLOTH.ADJECTIVE,Cloth,,,,,,,,,,,,,,,,,,,
-MATERIAL_TYPE.CLOTH.NOUN,Cloth,,,,,,,,,,,,,,,,,,,
+MATERIAL_TYPE.CLOTH.ADJECTIVE," ",,,,,,,,,,,,,,,,,,,
+MATERIAL_TYPE.CLOTH.NOUN," ",,,,,,,,,,,,,,,,,,,
 MATERIAL_TYPE.EARTH.ADJECTIVE,Earthen,,Erde,En terre,Terrestre,De tierra,Terráqueo,,,Землю,Topraktan,Jordens,,Jord,,,,土だ,土,흙
 MATERIAL_TYPE.EARTH.NOUN,Earth,,Erde,Terre,Terra,Tierra,Terra,,,Земной шар,Toprak,Jorden,,Jorden,,,,地球,地球,지구
 MATERIAL_TYPE.FOODSTUFF.NOUN,Food,,Nahrung,Nourriture,Cibo,Comida,Comida,,,Еда,Yemek,Mad,,Mat,,,,フード,食物,음식
@@ -547,6 +547,8 @@ MATERIAL_TYPE.METAL.ADJECTIVE,Metallic,,Metall,en métal,di metallo,De metal,De 
 MATERIAL_TYPE.METAL.NOUN,Metal,,Metall,Métal,Metallo,Metal,Metal,Metal,,Металл,Metal,Metal,,Metall,,,,金属,金属,금속
 MATERIAL_TYPE.ORE.NOUN,Ore,,Erz,Minerai,{{BLANK}},{{BLANK}},Minério,Minério,,Руда,Cevher,Malm,,Malm,,,,鉱石,矿石,광석
 MATERIAL_TYPE.OTHER.NOUN,Other,,Anderes,Autre,Altro,Otro,Outro,Outro(a),,Другое,Diğer,Andre varer,,Annat,,,,その他の,其他,기타
+MATERIAL_TYPE.ROPE.ADJECTIVE," ",,,,,,,,,,,,,,,,,,,
+MATERIAL_TYPE.ROPE.NOUN," ",,,,,,,,,,,,,,,,,,,
 MATERIAL_TYPE.SEED.NOUN,Seed,,Samen,Graine,Seme,Semilla,Semente,Semente,,Семя,Tohumu,Frø,,Frö,,,,シード,种子,씨앗
 MATERIAL_TYPE.STONE.ADJECTIVE,,,Stein,en pierre,di pietra,De piedra,De pedra,,,(камень),"Taştan ",,,Sten-,,,,,,
 MATERIAL_TYPE.STONE.NOUN,Stone,,Stein,Pierre,Pietra,Piedra,Pedra,Pedra,,Камень,Taş,Sten,,Sten,,,,ストーン,石头,스톤

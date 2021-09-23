@@ -918,7 +918,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				if (underTile != null && underTile.getPowerMechanismEntity() != null) {
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, underTile.getPowerMechanismEntity());
 					underTile.setPowerMechanismEntity(null);
-					underTile.getPowerGrid().removeTile(tile, gameContext.getAreaMap());
+					underTile.getPowerGrid().removeTile(tile, gameContext);
 				}
 				break;
 			}
