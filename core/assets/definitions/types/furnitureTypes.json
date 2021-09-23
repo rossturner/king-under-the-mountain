@@ -12,11 +12,13 @@
       "itemTypeName" : "Resource-Planks",
       "quantity" : 4,
       "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Linen",
+      "quantity" : 1,
+      "liquid" : false
     } ]
   },
-  "tags" : {
-    "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ]
-  },
+  "tags" : { },
   "hiddenFromPlacementMenu" : false
 }, {
   "name" : "FEASTING_CHAIR",
@@ -188,6 +190,10 @@
       "itemTypeName" : "Product-Bucket",
       "quantity" : 1,
       "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Rope",
+      "quantity" : 1,
+      "liquid" : false
     } ]
   },
   "tags" : {
@@ -249,11 +255,15 @@
   "requirements" : {
     "WOOD" : [ {
       "itemTypeName" : "Resource-Planks",
-      "quantity" : 12,
+      "quantity" : 8,
       "liquid" : false
     }, {
       "itemTypeName" : "Resource-Stone-Block",
-      "quantity" : 6,
+      "quantity" : 4,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Product-Linen",
+      "quantity" : 4,
       "liquid" : false
     } ]
   },

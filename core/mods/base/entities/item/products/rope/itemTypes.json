@@ -1,0 +1,10 @@
+[{
+  "itemTypeName": "Product-Rope",
+  "materialTypes": ["ROPE"],
+  "primaryMaterialType": "ROPE",
+  "stockpileGroupName": "PRODUCTS",
+  "hoursInInventoryUntilUnused": 1,
+  "maxStackSize": 4,
+  "maxHauledAtOnce": 1,
+  "equippedWhileWorkingOnJob": true
+}]

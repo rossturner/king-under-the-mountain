@@ -841,5 +841,47 @@
     ],
     "extraGameHoursToComplete": 28.0,
     "defaultTimeToCompleteCrafting": 2
+  },
+
+
+  {
+    "recipeName": "Craft rope",
+    "craftingTypeName": "WEAVING",
+    "verbOverrideI18nKey": "CRAFTING_TYPE.WEAVING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Hemp-Fibre-Bundle",
+        "materialName": "Hemp_Fibre",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Rope",
+        "materialName": "Hemp-Rope",
+        "quantity": 1
+      }
+    ],
+    "defaultTimeToCompleteCrafting": 5
+  },
+  {
+    "recipeName": "Craft cloth",
+    "craftingTypeName": "WEAVING",
+    "verbOverrideI18nKey": "CRAFTING_TYPE.WEAVING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Hemp-Fibre-Bundle",
+        "materialName": "Hemp_Fibre",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Product-Linen",
+        "materialName": "Hemp-Linen",
+        "quantity": 1
+      }
+    ],
+    "defaultTimeToCompleteCrafting": 5
   }
 ]
