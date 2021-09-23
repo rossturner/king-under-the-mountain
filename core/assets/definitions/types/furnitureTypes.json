@@ -21,6 +21,22 @@
   "tags" : { },
   "hiddenFromPlacementMenu" : false
 }, {
+  "name" : "SLEEPING_SPOT",
+  "i18nKey" : "FURNITURE.SLEEPING_SPOT",
+  "categoryName" : "NAVIGABLE",
+  "defaultLayoutName" : "1x1",
+  "colorCode" : "#9f7d60",
+  "iconName" : "sleeping-bag",
+  "placeAnywhere" : false,
+  "autoConstructed" : true,
+  "requirements" : {
+    "EARTH" : [ ]
+  },
+  "tags" : {
+    "EXTRA_MATERIAL_TYPES" : [ "CLOTH" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
   "name" : "FEASTING_CHAIR",
   "i18nKey" : "FURNITURE.CHAIR",
   "categoryName" : "CHAIR",

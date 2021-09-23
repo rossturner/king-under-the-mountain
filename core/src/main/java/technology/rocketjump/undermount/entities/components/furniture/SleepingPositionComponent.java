@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 public class SleepingPositionComponent implements EntityComponent {
 
 	private EntityAssetOrientation sleepingOrientation;
+	private boolean isOnFloor;
 
 	@Override
 	public EntityComponent clone(MessageDispatcher messageDispatcher, GameContext gameContext) {
@@ -34,10 +35,23 @@ public class SleepingPositionComponent implements EntityComponent {
 		if (!EntityAssetOrientation.DOWN.equals(sleepingOrientation)) {
 			asJson.put("orientation", sleepingOrientation.name());
 		}
+
+		if (isOnFloor) {
+			asJson.put("isOnFloor", true);
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		this.sleepingOrientation = EnumParser.getEnumValue(asJson, "orientation", EntityAssetOrientation.class, EntityAssetOrientation.DOWN);
+		this.isOnFloor = asJson.getBooleanValue("isOnFloor");
+	}
+
+	public boolean isOnFloor() {
+		return isOnFloor;
+	}
+
+	public void setOnFloor(boolean onFloor) {
+		isOnFloor = onFloor;
 	}
 }
