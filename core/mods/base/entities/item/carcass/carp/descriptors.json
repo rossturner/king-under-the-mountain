@@ -3,12 +3,18 @@
     "uniqueName": "Carcass-Carp-Raw-Pile01",
     "type": "ITEM_BASE_LAYER",
     "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": ["ON_GROUND"],
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
     "minQuantity": 1,
     "maxQuantity": 2,
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "Carp.png"
+        "filename": "Carp.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
       }
     }
   },
@@ -16,12 +22,18 @@
     "uniqueName": "Carcass-Carp-Raw-Pile02",
     "type": "ITEM_BASE_LAYER",
     "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": ["ON_GROUND"],
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
     "minQuantity": 3,
     "maxQuantity": 7,
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "CarpMedium.png"
+        "filename": "CarpMedium.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.5
+        }
       }
     }
   },
@@ -29,12 +41,18 @@
     "uniqueName": "Carcass-Carp-Raw-Pile03",
     "type": "ITEM_BASE_LAYER",
     "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": ["ON_GROUND"],
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
     "minQuantity": 8,
     "maxQuantity": 16,
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "CarpLarge.png"
+        "filename": "CarpLarge.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
       }
     }
   },
@@ -42,17 +60,21 @@
     "uniqueName": "Carcass-Carp-Prepared-Pile",
     "type": "ITEM_BASE_LAYER",
     "itemTypeName": "Carcass-Carp-Prepared",
-    "itemPlacements": ["ON_GROUND"],
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
     "minQuantity": 1,
     "maxQuantity": 4,
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "CarpFillet.png"
+        "filename": "CarpFillet.png",
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -0.5
+        }
       }
     }
   },
-
-
   {
     "uniqueName": "Carcass-Carp-Raw-Carried-1",
     "type": "ITEM_BASE_LAYER",
@@ -74,7 +96,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "Carp.png",
@@ -87,7 +113,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
       },
       "DOWN_LEFT": {
         "filename": "Carp.png",
@@ -100,7 +130,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
       },
       "UP_RIGHT": {
         "filename": "Carp.png",
@@ -113,7 +147,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
       }
     }
   },
@@ -146,7 +184,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "CarpMedium.png",
@@ -159,7 +201,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.5
+        }
       },
       "DOWN_LEFT": {
         "filename": "CarpMedium.png",
@@ -172,7 +218,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.5
+        }
       },
       "UP": {
         "filename": "CarpMedium.png",
@@ -193,7 +243,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.5
+        }
       },
       "UP_LEFT": {
         "filename": "CarpMedium.png",
@@ -206,7 +260,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.5
+        }
       },
       "UP_RIGHT": {
         "filename": "CarpMedium.png",
@@ -219,7 +277,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.5
+        }
       }
     }
   },
@@ -252,7 +314,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "CarpLarge.png",
@@ -265,7 +331,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
       },
       "DOWN_LEFT": {
         "filename": "CarpLarge.png",
@@ -278,7 +348,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
       },
       "UP": {
         "filename": "CarpLarge.png",
@@ -299,7 +373,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
       },
       "UP_LEFT": {
         "filename": "CarpLarge.png",
@@ -312,7 +390,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
       },
       "UP_RIGHT": {
         "filename": "CarpLarge.png",
@@ -325,7 +407,11 @@
               "y": 0
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": 0.5
+        }
       }
     }
   },
@@ -350,7 +436,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -0.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "CarpFillet.png",
@@ -363,7 +453,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -0.5
+        }
       },
       "DOWN_LEFT": {
         "filename": "CarpFillet.png",
@@ -376,7 +470,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -0.5
+        }
       },
       "UP_RIGHT": {
         "filename": "CarpFillet.png",
@@ -389,7 +487,11 @@
               "y": -6
             }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -0.5
+        }
       }
     }
   }

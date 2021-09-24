@@ -88,7 +88,7 @@ public class JobRequestHandler implements Updatable, Telegraph, Disposable {
 
 			for (Job currentJob : byProfession) {
 				if (currentJob.getAssignedToEntityId() == null) {
-					float distanceToJob = currentJob.getJobLocation().dst2(requesterLocation);
+					float distanceToJob = currentJob.getJobLocation().dst(requesterLocation);
 					jobsByDistance.put(distanceToJob, currentJob);
 				}
 			}

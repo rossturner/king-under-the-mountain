@@ -5,6 +5,12 @@
   "fishAvailable" : [ {
     "materialName" : "Carp Meat",
     "itemTypeName" : "Carcass-Carp-Raw"
+  }, {
+    "materialName" : "Perch Meat",
+    "itemTypeName" : "Carcass-Perch-Raw"
+  }, {
+    "materialName" : "Pike Meat",
+    "itemTypeName" : "Carcass-Pike-Raw"
   } ],
   "constructPipingJobType" : "CONSTRUCT_PIPING",
   "kitchenProfession" : "CHEF",
