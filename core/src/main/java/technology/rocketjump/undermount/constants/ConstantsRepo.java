@@ -7,8 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +37,19 @@ public class ConstantsRepo implements GameContextAware {
 		this.worldConstants = objectMapper.readValue(rawFileContents, WorldConstants.class);
 		this.uiConstants = objectMapper.readValue(rawFileContents, UiConstants.class);
 		this.settlementConstants = objectMapper.readValue(rawFileContents, SettlementConstants.class);
+	}
+
+	public void initialise(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary) {
+		for (ItemTypeWithMaterial fishType : this.settlementConstants.getFishAvailable()) {
+			fishType.setItemType(itemTypeDictionary.getByName(fishType.getItemTypeName()));
+			if (fishType.getItemType() == null) {
+				throw new RuntimeException("Can not find item type with name " + fishType.getItemTypeName());
+			}
+			fishType.setMaterial(gameMaterialDictionary.getByName(fishType.getMaterialName()));
+			if (fishType.getMaterial() == null) {
+				throw new RuntimeException("Can not find material with name " + fishType.getMaterialName());
+			}
+		}
 	}
 
 	public WorldConstants getWorldConstants() {

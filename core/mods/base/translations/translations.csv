@@ -3,6 +3,7 @@ KEY,NOTES,ENGLISH,FRENCH,SPANISH,GERMAN,ITALIAN,PORTUGUESE BR,PORTUGUESE,RUSSIAN
 ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},Arrachant : {{plantDescription}},Eliminando {{plantDescription}},Entfernt {{plantDescription}},Sta rimuovendo: {{plantDescription}},Retirando {{targetPlant}},Limpar {{plantDescription}},Расчищает: {{plantDescription}},Usuwanie {{plantDescription}},{plantDescription}} verwijderen,Rensa {{plantDescription}},Fjerner {{plantDescription}},,Poistaminen: {{plantDescription}}
 ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},Retirant : {{targetDescription}},Quitando {{targetDescription}},Baut {{targetDescription}} ab,Sta rimuovendo: {{targetDescription}},Removendo {{targetDescription}},A remover {{targetDescription}},Удаляет: {{targetDescription}},Usuwa {{targetDescription}},,,,,
+ACTION.JOB.FISHING,,Fishing,,,,,,,,,,,,,
 ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},Récoltant : {{targetPlant}},Cosechando {{targetPlant}},Erntet {{targetPlant}},Sta raccogliendo: {{targetPlant}},Colhendo {{targetPlant}},A colher {{targetPlant}},Собирает: {{targetPlant}},Zbiera {{targetPlant}},,,,,
 ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,,,,,,,,,,,,,
@@ -558,6 +559,9 @@ MATERIAL_TYPE.ROPE.ADJECTIVE,, ,,,,,,,,,,,,,
 MATERIAL_TYPE.ROPE.NOUN,, ,,,,,,,,,,,,,
 MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,,,,,,,,,,,,,
 MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+MEAT.CARP_MEAT.NOUN,,Carp,,,,,,,,,,,,,
+MEAT.CARP_MEAT.PLURAL,,Carp,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 MECHANISM.STONE.GEAR.NOUN,,Gear assembly,,,,,,,,,,,,,
 MECHANISM.STONE.GEAR.TOOLTIP,,This contraption links up mechanical power in all 4 directions.,,,,,,,,,,,,,

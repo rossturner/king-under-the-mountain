@@ -1,11 +1,17 @@
 {
   "constructMechanismJobType" : "CONSTRUCT_MECHANISM",
+  "numAnnualFish" : 120,
   "deconstructRoofingJobType" : "DECONSTRUCT_ROOFING",
+  "fishAvailable" : [ {
+    "materialName" : "Carp Meat",
+    "itemTypeName" : "Carcass-Carp-Raw"
+  } ],
   "constructPipingJobType" : "CONSTRUCT_PIPING",
   "kitchenProfession" : "CHEF",
   "deconstructPipingJobType" : "DECONSTRUCT_PIPING",
   "haulingJobType" : "HAULING",
   "deconstructMechanismJobType" : "DECONSTRUCT_MECHANISM",
+  "fishingJobType" : "FISHING",
   "constructRoofingJobType" : "CONSTRUCT_ROOFING",
   "mushroomShockTimeHours" : 24.0,
   "defaultFont" : "NotoSans-Medium.ttf",

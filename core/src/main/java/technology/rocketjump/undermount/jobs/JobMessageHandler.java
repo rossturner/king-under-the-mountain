@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
+import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.doors.Doorway;
 import technology.rocketjump.undermount.entities.EntityStore;
@@ -42,6 +43,7 @@ import technology.rocketjump.undermount.entities.model.physical.humanoid.status.
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.model.physical.plant.*;
 import technology.rocketjump.undermount.entities.tags.DeceasedContainerTag;
 import technology.rocketjump.undermount.entities.tags.ReplacementDeconstructionResourcesTag;
@@ -60,6 +62,7 @@ import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
+import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -102,6 +105,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final TileDesignationDictionary tileDesignationDictionary;
 	private final ParticleEffectType leafExplosionParticleEffectType;
 	private final GameInteractionStateContainer gameInteractionStateContainer;
+	private final List<ItemTypeWithMaterial> fishAvailable;
 	private GameContext gameContext;
 	private ParticleEffectType deconstructParticleEffect;
 
@@ -113,7 +117,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							 FurnitureTypeDictionary furnitureTypeDictionary, DynamicMaterialFactory dynamicMaterialFactory,
 							 ItemTypeDictionary itemTypeDictionary, JobTypeDictionary jobTypeDictionary,
 							 TileDesignationDictionary tileDesignationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary,
-							 GameInteractionStateContainer gameInteractionStateContainer) {
+							 GameInteractionStateContainer gameInteractionStateContainer, GameMaterialDictionary materialDictionary,
+							 ConstantsRepo constantsRepo) {
 		this.messageDispatcher = messageDispatcher;
 		this.jobStore = jobStore;
 		this.itemEntityFactory = itemEntityFactory;
@@ -134,6 +139,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		this.leafExplosionParticleEffectType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
 		this.deconstructParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above"); // MODDING expose this
 		this.gameInteractionStateContainer = gameInteractionStateContainer;
+		constantsRepo.initialise(itemTypeDictionary, materialDictionary);
+		this.fishAvailable = constantsRepo.getSettlementConstants().getFishAvailable();
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
 		messageDispatcher.addListener(this, MessageType.REMOVE_DESIGNATION);
@@ -920,6 +927,18 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					underTile.setPowerMechanismEntity(null);
 					underTile.getPowerGrid().removeTile(tile, gameContext);
 				}
+				break;
+			}
+			case "FISHING": {
+				ItemTypeWithMaterial fishType = fishAvailable.get(gameContext.getRandom().nextInt(fishAvailable.size()));
+				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+
+				ItemEntityAttributes fishItemAttributes = itemEntityAttributesFactory.createItemAttributes(fishType.getItemType(), 1, fishType.getMaterial());
+				Entity fishItemEntity = itemEntityFactory.create(fishItemAttributes, jobCompletedMessage.getJob().getJobLocation(), true, gameContext);
+
+				InventoryComponent inventoryComponent = completedByEntity.getComponent(InventoryComponent.class);
+				inventoryComponent.add(fishItemEntity, completedByEntity, messageDispatcher, gameContext.getGameClock());
+
 				break;
 			}
 			default: {

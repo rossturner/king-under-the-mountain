@@ -1,0 +1,184 @@
+[
+  {
+    "uniqueName": "Carcass-Carp-Raw-Pile01",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Carp-Raw",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Carp.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Carp-Raw-Pile02",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Carp-Raw",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 3,
+    "maxQuantity": 7,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "CarpMedium.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Carp-Raw-Pile03",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Carp-Raw",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 8,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "CarpLarge.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Carp-Prepared-Pile03",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Carp-Prepared",
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 4,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "CarpFillet.png"
+      }
+    }
+  },
+
+
+  {
+    "uniqueName": "Carcass-Carp-Raw-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Carp-Raw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Carp.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Carp.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Carp.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 2,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "Carp.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Carp-Prepared-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Carp-Prepared",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "CarpFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "CarpFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "CarpFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 2,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "CarpFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ]
+      }
+    }
+  }
+]

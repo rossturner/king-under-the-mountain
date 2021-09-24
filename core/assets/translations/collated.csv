@@ -15,6 +15,7 @@ ACTION.JOB.DIGGING,Digging {{targetDescription}},,Gräbt {{targetDescription}},C
 ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER,Emptying out contents of {{targetDescription}},,,,,,,,,,,,,,,,,,,
 ACTION.JOB.EXTINGUISH_FLAMES,Putting out a fire,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.FILL_GRAVE,Filling {{targetDescription}},,Füllt {{targetDescription}},Rempli {{targetDescription}},Riempimento {{targetDescription}},Rellenar {{targetDescription}},Preenchimento {{targetDescription}},,,Заполнение {{targetDescription}},{{targetDescription}} dolduruluyor,Fylder {{targetDescription}},,Fyllning {{targetDescription},,,,{{targetDescription}}を埋めています,填写 {{targetDescription}},{{대상 설명}} 을 (를) 채우는 중입니다.
+ACTION.JOB.FISHING,Fishing,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.GENERIC,{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},,,,{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.HARVESTING,Harvesting {{targetPlant}},,Erntet {{targetPlant}},Récolte: {{targetPlant}},Sta raccogliendo: {{targetPlant}},Cosechando {{targetPlant}},A colher {{targetPlant}},Colhendo {{targetPlant}},,Собирает: {{targetPlant}},{{targetPlant}} biçiliyor,Høster {{targetPlant}},,Skörd {{targetPlant}},,,,{{targetPlant}}を収穫しています,收获 {{targetPlant}},수확 {{타겟 플랜트}}
 ACTION.JOB.INNOCULATE_MUSHROOM_LOG,Injecting mushroom spawn,,Injiziert Pilzkultur,Plantation de la champignonnière,Iniezione delle uova di funghi,Inyección de hongos,Injetar desova de cogumelos,,,Впрыскивание грибов,Mantar özü aşılanıyor.,Indsprøjter svampe spawn,,Injicera svamp leka,,,,キノコの胞子を注入,注射蘑菇产卵,버섯 산란 주입
@@ -557,6 +558,8 @@ MATERIAL_TYPE.VITRIOL.ADJECTIVE,Vitriol of,,Vitriol,Vitriol de,Vitriolo di,Vitri
 MATERIAL_TYPE.VITRIOL.NOUN,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,Витриол,Vitriol,Vitriol,,Vitriol,,,,ヴィトリオール,维特里奥尔,비트리올
 MATERIAL_TYPE.WOOD.ADJECTIVE,Wooden,,Holz,en bois,di legno,De madera,De madeira,de madeira,,(дерево),Tahtadan,Træ,,Trä-,,,,木製,木制的,나무
 MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерево,Tahta,Træ,,Trä,,,,木材,木,나무
+
+MEAT.CARP_MEAT,Carp,,,,,,,,,,,,,,,,,,,
 
 MECHANISM.FURNITURE.CONSUMING_POWER,Working - consuming {{power}} power,,,,,,,,,,,,,,,,,,,
 MECHANISM.FURNITURE.PRODUCING_POWER,Working - producing {{power}} power,,,,,,,,,,,,,,,,,,,

@@ -12,11 +12,9 @@ import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobCollection;
 import technology.rocketjump.undermount.jobs.model.JobState;
+import technology.rocketjump.undermount.jobs.model.JobType;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Singleton
@@ -28,6 +26,7 @@ public class JobStore implements Updatable {
 	private Map<JobState, JobCollection> byState = new ConcurrentHashMap<>();
 	private Map<GridPoint2, List<Job>> byLocation = new ConcurrentHashMap<>();
 	private Map<Long, Job> byRelatedHaulingAllocationId = new ConcurrentHashMap<>();
+	private Map<JobType, List<Job>> byType = new ConcurrentHashMap<>();
 	private GameContext gameContext;
 
 	private float timeSinceLastUpdate;
@@ -45,6 +44,7 @@ public class JobStore implements Updatable {
 	public void add(Job job) {
 		gameContext.getJobs().put(job.getJobId(), job);
 		byState.get(job.getJobState()).add(job);
+		byType.computeIfAbsent(job.getType(), a -> new ArrayList<>()).add(job);
 		GridPoint2 jobLocation = job.getJobLocation();
 		if (jobLocation == null) {
 			Logger.error("Job location should never be null");
@@ -71,6 +71,7 @@ public class JobStore implements Updatable {
 	public void remove(Job jobToRemove) {
 		gameContext.getJobs().remove(jobToRemove.getJobId());
 		byState.get(jobToRemove.getJobState()).remove(jobToRemove);
+		byType.get(jobToRemove.getType()).remove(jobToRemove);
 		getJobsAtLocation(jobToRemove.getJobLocation()).remove(jobToRemove);
 		jobToRemove.setJobState(JobState.REMOVED);
 		jobToRemove.setAssignedToEntityId(-1L);
@@ -162,4 +163,9 @@ public class JobStore implements Updatable {
 	public boolean runWhilePaused() {
 		return false;
 	}
+
+	public Collection<Job> getByType(JobType jobType) {
+		return byType.getOrDefault(jobType, emptyList);
+	}
+
 }
