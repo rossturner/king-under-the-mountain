@@ -7,16 +7,19 @@
   {
     "materialName": "Carp Meat",
     "materialType": "MEAT",
+    "edible": true,
     "colorCode": "#f2c3be"
   },
   {
     "materialName": "Perch Meat",
     "materialType": "MEAT",
+    "edible": true,
     "colorCode": "#f9eccd"
   },
   {
     "materialName": "Pike Meat",
     "materialType": "MEAT",
+    "edible": true,
     "colorCode": "#f0deaf"
   }
 ]
