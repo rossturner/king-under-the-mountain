@@ -119,7 +119,8 @@
     "overrideI18nKey": "ACTION.JOB.FISHING",
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "FISHER",
-    "requiredItemTypeName": "Tool-Fishing-Rod"
+    "requiredItemTypeName": "Tool-Fishing-Rod",
+    "activeSoundAssetName": "Fishing_Cast"
   },
 
   {

@@ -84,10 +84,17 @@
     "professionRequiredName": "BREWER"
   },
   {
-    "name": "FOOD_PREPARATION",
+    "name": "DOUGH_PREPARATION",
     "i18nKey": "CRAFTING_TYPE.BAKING",
     "professionRequiredName": "CHEF",
     "defaultItemTypeName": "Tool-Rolling-Pin",
+    "usesWorkstationTool": true
+  },
+  {
+    "name": "FOOD_PREPARATION",
+    "i18nKey": "CRAFTING_TYPE.FOOD_PREPARATION",
+    "professionRequiredName": "CHEF",
+    "defaultItemTypeName": "Tool-Kitchen-Knife",
     "usesWorkstationTool": true
   }
 ]

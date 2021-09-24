@@ -886,6 +886,40 @@
   },
   "hiddenFromPlacementMenu" : false
 }, {
+  "name" : "BUTCHERY_WORKTOP",
+  "i18nKey" : "FURNITURE.BUTCHERY_WORKTOP",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "2x1 with workspaces",
+  "colorCode" : "#b25b47",
+  "iconName" : "kitchen-knives",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 3,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Kitchen-Knife",
+      "quantity" : 1,
+      "liquid" : false
+    } ],
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 3,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Kitchen-Knife",
+      "quantity" : 1,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "CRAFTING_STATION_BEHAVIOUR" : [ "FOOD_PREPARATION", "PRODUCE_ITEM", "HAULING" ],
+    "DECORATION_FROM_INPUT" : [ "Tool-Kitchen-Knife" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
   "name" : "WATER_PUMP",
   "i18nKey" : "FURNITURE.WATER_PUMP",
   "categoryName" : "TABLE",
@@ -1129,8 +1163,8 @@
   "i18nKey" : "FURNITURE.KITCHEN_WORKTOP",
   "categoryName" : "TABLE",
   "defaultLayoutName" : "2x1 with workspaces",
-  "colorCode" : "#27bd09",
-  "iconName" : "kitchen-knives",
+  "colorCode" : "#f8981e",
+  "iconName" : "carrot",
   "placeAnywhere" : false,
   "autoConstructed" : false,
   "requirements" : {
@@ -1237,7 +1271,7 @@
     } ]
   },
   "tags" : {
-    "CRAFTING_STATION_BEHAVIOUR" : [ "FOOD_PREPARATION", "CRAFT_ITEM", "HAULING" ],
+    "CRAFTING_STATION_BEHAVIOUR" : [ "DOUGH_PREPARATION", "CRAFT_ITEM", "HAULING" ],
     "CRAFTING_OVERRIDE" : [ "DO_NOT_HAUL_OUTPUT" ],
     "DECORATION_FROM_INPUT" : [ "Tool-Rolling-Pin", "Tool-Kitchen-Knife" ]
   },
