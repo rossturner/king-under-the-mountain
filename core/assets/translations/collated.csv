@@ -33,6 +33,16 @@ ACTION.SLEEP_ON_FLOOR.DESCRIPTION,Sleeping on {{tileDescription}},,Schläft auf 
 
 ASHES.NOUN,Ash,,,,,,,,,,,,,,,,,,,
 
+CARCASS.CARP.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.CARP.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.CARP.RAW,Carp,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.RAW,Carp,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.RAW,Carp,,,,,,,,,,,,,,,,,,,
+
 CLOTH.HEMP-LINEN,Hemp,,,,,,,,,,,,,,,,,,,
 
 CONSTRUCTION.DESCRIPTION,Construction of {{materialType.adjective}} {{furnitureType.noun}},,Herstellung von {{furnitureType.noun}} aus {{materialType}},Construction: {{furnitureType.noun}} {{materialType.adjective}},Costruzione di: {{furnitureType.noun}} {{materialType.adjective}},Construcción de {{furnitureType.noun}} {{materialType.adjective}},Construção de {{materialType.adjective}} {{furnitureType.noun}},Fabricação de {{furnitureType.noun}} {{materialType.adjective}},,Строительство: {{furnitureType.noun}} {{materialType.adjective}},{{furnitureType.noun}}  {{materialType}} inşa ediliyor.,Bygning af {{materialType.adjective}} {{furnitureType.noun}},,Konstruktion av {{materialType.adjective}} {{furnitureType.noun}},,,,{{materialType.adjective}} {{furnitureType.noun}} の構築,{{材料类型. 形容词}} {{家具. 名词}} 的构造,{{materialType.adjective}} {{furnitureType.noun}} 의 건설
@@ -561,6 +571,7 @@ MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерев
 
 MEAT.CARP_MEAT.NOUN,Carp,,,,,,,,,,,,,,,,,,,
 MEAT.CARP_MEAT.PLURAL,Carp,,,,,,,,,,,,,,,,,,,
+MEAT.DWARF_FLESH,Dwarf flesh,,,,,,,,,,,,,,,,,,,
 MEAT.PERCH_MEAT.NOUN,Perch,,,,,,,,,,,,,,,,,,,
 MEAT.PERCH_MEAT.PLURAL,Perch,,,,,,,,,,,,,,,,,,,
 MEAT.PIKE_MEAT.NOUN,Pike,,,,,,,,,,,,,,,,,,,
@@ -642,6 +653,8 @@ NOTIFICATION.DEATH.SHORT_DESCRIPTION,Died due to {{reason}},,Wegen {{reason}} ge
 NOTIFICATION.DEATH.TITLE,Settler death,,Siedlertod,Décès d'un colon,Morte colono,Muerte de colonos,Morte de colono,,,Смерть поселенцев,Vatandaş ölümü,Settler død,,Settler död,,,,セトラー・デス,定居者死亡,세틀러 죽음
 NOTIFICATION.FIRE_STARTED.DESCRIPTION,A fire has broken out in your settlement!,,,,,,,,,,,,,,,,,,,
 NOTIFICATION.FIRE_STARTED.TITLE,Fire!,,,,,,,,,,,,,,,,,,,
+NOTIFICATION.FISH_EXHAUSTED.DESCRIPTION,You have over-fished the river to such an extent that there are no more fish left. You will have to wait until the spawning season next spring for the fish to return.,,,,,,,,,,,,,,,,,,,
+NOTIFICATION.FISH_EXHAUSTED.TITLE,Fish depopulated,,,,,,,,,,,,,,,,,,,
 NOTIFICATION.GAME_OVER.DESCRIPTION,All things must come to an end. Your settlement lies abandoned.,,Alle Dinge müssen zu einem Ende kommen. Deine Siedlung ist verlassen.,Toutes les bonnes choses doivent prendre fin. Votre colonie est abandonnée.,Tutto deve finire. Il tuo insediamento e' abbandonato.,Todas las cosas deben llegar a su fin. Tu asentamiento está abandonado.,Todas as coisas devem chegar ao fim. Seu assentamento está abandonado.,,,Все должно закончиться. Ваше поселение заброшено.,Her güzel şeyin bir sonu var. Yerleşken terk edildi.,Alt må komme til en ende. Jeres forlig ligger forladt.,,Allt måste komma till ett slut. Din bosättning ligger övergiven.,,,,すべてのものは終わらなければならない。 あなたの和解は捨てられています。,一切都必须结束。 你的定居点就放弃了,모든 것이 끝나야합니다. 당신의 정착은 버려진 거짓말.
 NOTIFICATION.GAME_OVER.TITLE,Game Over,,Spielende,Fin de la partie,Partita finita,Fin del juego,Fim de jogo,,,Игра окончена,Oyun Bitti,Spil Over,,Game Over,,,,ゲームオーバー,游戏结束,게임 오버
 NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,,"Der Wohlstand deiner Siedlung hat eine Reihe neuer Einwanderer angezogen, um deine Bevölkerung zu verstärken.",La prospérité de votre établissement a attiré un certain nombre de nouveaux immigrants pour stimuler votre population.,La prosperità del vostro insediamento ha attirato un certo numero di nuovi immigrati per aumentare la vostra popolazione.,La prosperidad de su asentamiento ha atraído a un número de nuevos inmigrantes para impulsar su población.,A prosperidade do seu assentamento atraiu uma série de novos imigrantes para impulsionar a sua população.,,,"Процветание вашего поселения привлекло ряд новых иммигрантов, чтобы увеличить ваше население.",Yerleşkenin refahı nüfusunu arttıracak yeni göçmenleri cezbetti.,Velstanden i jeres bosættelse har tiltrukket en række nye indvandrere til at øge jeres befolkning.,,Välståndet i er bosättning har lockat ett antal nya invandrare för att öka er befolkning.,,,,あなたの和解の繁栄は、あなたの人口を高めるために新しい移民の数を集めています。,你们定居点的繁荣吸引了许多新移民来增加你们的人口。,당신의 정착지의 번영은 당신의 인구를 높이기 위해 새로운 이민자의 숫자를 끌고있다.

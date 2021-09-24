@@ -19,6 +19,8 @@ import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.settlement.notifications.Notification;
+import technology.rocketjump.undermount.settlement.notifications.NotificationType;
 import technology.rocketjump.undermount.zones.Zone;
 import technology.rocketjump.undermount.zones.ZoneClassification;
 import technology.rocketjump.undermount.zones.ZoneTile;
@@ -54,6 +56,7 @@ public class FishingManager implements Updatable, Telegraph {
 		this.fishingProfession = professionDictionary.getByName("FISHER");
 
 		messageDispatcher.addListener(this, MessageType.YEAR_ELAPSED);
+		messageDispatcher.addListener(this, MessageType.FISH_HARVESTED_FROM_RIVER);
 	}
 
 	@Override
@@ -64,7 +67,14 @@ public class FishingManager implements Updatable, Telegraph {
 				gameContext.getSettlementState().setFishRemainingInRiver(settlementConstants.getNumAnnualFish());
 				return true;
 			}
-			// TODO message when fish taken, which shows notification when emptied, and cancels outstanding fishing jobs
+			case MessageType.FISH_HARVESTED_FROM_RIVER: {
+				gameContext.getSettlementState().setFishRemainingInRiver(gameContext.getSettlementState().getFishRemainingInRiver() - 1);
+				if (gameContext.getSettlementState().getFishRemainingInRiver() <= 0) {
+					cancelAllOutstandingFishingJobs();
+					messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, new Notification(NotificationType.FISH_EXHAUSTED, null));
+				}
+				return true;
+			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}

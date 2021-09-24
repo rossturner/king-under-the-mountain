@@ -939,6 +939,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				InventoryComponent inventoryComponent = completedByEntity.getComponent(InventoryComponent.class);
 				inventoryComponent.add(fishItemEntity, completedByEntity, messageDispatcher, gameContext.getGameClock());
 
+				messageDispatcher.dispatchMessage(MessageType.FISH_HARVESTED_FROM_RIVER);
 				break;
 			}
 			default: {
