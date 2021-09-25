@@ -244,11 +244,11 @@ public class TopLevelMenu implements Menu, I18nUpdatable {
 
 		if (gameStarted) {
 			leftColumn.add(resumeGameButton).pad(10).row();
-		} else if (savedGameStore.hasSaveOrIsRefreshing()) {
+		} else if (savedGameStore.hasSave()) {
 			leftColumn.add(loadLatestGameButton).pad(10).row();
 		}
 
-		if (savedGameStore.hasSaveOrIsRefreshing()) {
+		if (savedGameStore.hasSave()) {
 			leftColumn.add(loadAnyGameButton).pad(10).row();
 		}
 

@@ -187,7 +187,7 @@ public class GuiContainer implements Telegraph, GameContextAware {
 			}
 			case MessageType.GUI_CANCEL_CURRENT_VIEW_OR_GO_TO_MAIN_MENU: {
 				GuiViewName parentViewName = currentView.getParentViewName();
-				if (currentViewName.equals(GuiViewName.DEFAULT_MENU)) {
+				if (currentViewName.equals(GuiViewName.DEFAULT_MENU) || currentViewName.equals(GuiViewName.SELECT_STARTING_LOCATION)) {
 					messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_MENU");
 				} else if (parentViewName != null) {
 					switchView(parentViewName);

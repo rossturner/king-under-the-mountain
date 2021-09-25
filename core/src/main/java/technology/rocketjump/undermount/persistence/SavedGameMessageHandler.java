@@ -17,10 +17,7 @@ import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.gamecontext.GameContext;
-import technology.rocketjump.undermount.gamecontext.GameContextAware;
-import technology.rocketjump.undermount.gamecontext.GameContextFactory;
-import technology.rocketjump.undermount.gamecontext.GameContextRegister;
+import technology.rocketjump.undermount.gamecontext.*;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.logging.CrashHandler;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
@@ -116,7 +113,7 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 			}
 			case MessageType.PERFORM_SAVE: {
 				GameSaveMessage message = (GameSaveMessage) msg.extraInfo;
-				if (gameContext != null) {
+				if (gameContext != null && !gameContext.getSettlementState().getGameState().equals(GameState.SELECT_SPAWN_LOCATION)) {
 					try {
 						save(gameContext.getSettlementState().getSettlementName(), message.asynchronous);
 					} catch (Exception e) {

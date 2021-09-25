@@ -1,0 +1,135 @@
+[
+  {
+    "uniqueName": "butchery-table-2x1-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["BUTCHERY_WORKTOP"],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -24,
+              "y": 10
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 24,
+              "y": 10
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "butchery-table-2x1-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["BUTCHERY_WORKTOP"],
+    "furnitureLayoutName": "2x1 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "2x1 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 32,
+          "y": 6
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": -24,
+              "y": 10
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 24,
+              "y": 10
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  {
+    "uniqueName": "butchery-table-1x2-stone",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["BUTCHERY_WORKTOP"],
+    "furnitureLayoutName": "1x2 with workspaces",
+    "validMaterialTypes": ["STONE"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 stone table.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 2
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 32
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "butchery-table-1x2-wood",
+    "type": "BASE_LAYER",
+    "furnitureTypeNames": ["BUTCHERY_WORKTOP"],
+    "furnitureLayoutName": "1x2 with workspaces",
+    "validMaterialTypes": ["WOOD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "1x2 wood table.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 38
+        },
+        "attachmentPoints": [
+          {
+            "type": "ATTACHMENT_WORKSPACE_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": -8
+            }
+          },
+          {
+            "type": "ATTACHMENT_DECO_1",
+            "offsetPixels": {
+              "x": 0,
+              "y": 32
+            }
+          }
+        ]
+      }
+    }
+  }
+]

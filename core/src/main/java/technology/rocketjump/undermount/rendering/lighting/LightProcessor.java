@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.google.inject.Inject;
 import technology.rocketjump.undermount.assets.entities.furniture.model.DoorState;
-import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.layout.TileLayoutAtlas;
@@ -126,14 +125,12 @@ public class LightProcessor {
 
 					addEdgeDefinitionToEdgeMap(light, sortedPointsToWallEdges, allEdges, lightPosition, yCursor, xCursor, edgeDefinition);
 				} else if (mapTile != null && mapTile.hasDoorway()) {
-					for (Entity wallCapEntity : mapTile.getDoorway().getWallCapEntities()) {
-						WallEdgeDefinition edgeDefinition = wallEdgeAtlas.getForWallCap(wallCapEntity, mapTile.getDoorway());
-						addEdgeDefinitionToEdgeMap(light, sortedPointsToWallEdges, allEdges, lightPosition, yCursor, xCursor, edgeDefinition);
-					}
+					WallEdgeDefinition edgeDefinition = wallEdgeAtlas.getForDoorway(mapTile.getDoorway());
+					addEdgeDefinitionToEdgeMap(light, sortedPointsToWallEdges, allEdges, lightPosition, yCursor, xCursor, edgeDefinition);
 
 					if (mapTile.getDoorway().getDoorState().equals(DoorState.CLOSED)) {
-						WallEdgeDefinition edgeDefinition = wallEdgeAtlas.getForClosedDoor(mapTile.getDoorway());
-						addEdgeDefinitionToEdgeMap(light, sortedPointsToWallEdges, allEdges, lightPosition, yCursor, xCursor, edgeDefinition);
+						WallEdgeDefinition closedDoorEdgeDefinition = wallEdgeAtlas.getForClosedDoor(mapTile.getDoorway());
+						addEdgeDefinitionToEdgeMap(light, sortedPointsToWallEdges, allEdges, lightPosition, yCursor, xCursor, closedDoorEdgeDefinition);
 					}
 
 				}

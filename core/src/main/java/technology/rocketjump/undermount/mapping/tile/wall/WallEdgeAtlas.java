@@ -9,13 +9,10 @@ import com.badlogic.gdx.utils.IntMap;
 import com.google.inject.ProvidedBy;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
-import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
 import technology.rocketjump.undermount.doors.Doorway;
 import technology.rocketjump.undermount.doors.DoorwayOrientation;
 import technology.rocketjump.undermount.doors.DoorwaySize;
-import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.guice.WallEdgeAtlasProvider;
-import technology.rocketjump.undermount.materials.model.GameMaterialType;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,20 +28,18 @@ public class WallEdgeAtlas {
 	private IntMap<WallEdgeDefinition> layoutToDefinitionMap = new IntMap<>(256);
 	private Map<String, Float> coordinateTranslationMap = new HashMap<>();
 
-	private Map<EntityAssetOrientation, Map<GameMaterialType, WallEdgeDefinition>> wallCapDefinitionMap = new HashMap<>();
-	private Map<DoorwaySize, Map<DoorwayOrientation, Map<GameMaterialType, WallEdgeDefinition>>> doorwayDefinitionMap = new HashMap<>();
+	private Map<DoorwaySize, Map<DoorwayOrientation, WallEdgeDefinition>> doorwayClosedDefinitionMap = new HashMap<>();
+	private Map<DoorwaySize, Map<DoorwayOrientation, WallEdgeDefinition>> doorwayDefinitionMap = new HashMap<>();
+	private static final WallEdgeDefinition emptyDefinition = new WallEdgeDefinition(new Array<>(), new Array<>());
 
-	public WallEdgeAtlas(File edgeVerticesFile, File wallCapEdgeVerticesFile, File DoorwayEdgeVerticesFile) throws IOException {
+	public WallEdgeAtlas(File edgeVerticesFile, File doorwayClosedVerticesFile, File doorwayEdgeVerticesFile) throws IOException {
 		JSONObject wallEdgeFileJson = JSON.parseObject(FileUtils.readFileToString(edgeVerticesFile, "UTF-8"));
-		JSONObject wallCapFileJson = JSON.parseObject(FileUtils.readFileToString(wallCapEdgeVerticesFile, "UTF-8"));
-		JSONObject doorwayEdgeFileJson = JSON.parseObject(FileUtils.readFileToString(DoorwayEdgeVerticesFile, "UTF-8"));
+		JSONObject doorwayClosedFileJson = JSON.parseObject(FileUtils.readFileToString(doorwayClosedVerticesFile, "UTF-8"));
+		JSONObject doorwayEdgeFileJson = JSON.parseObject(FileUtils.readFileToString(doorwayEdgeVerticesFile, "UTF-8"));
 
 		for (DoorwaySize doorwaySize : DoorwaySize.values()) {
-			Map<DoorwayOrientation, Map<GameMaterialType, WallEdgeDefinition>> doorSizeMap = new HashMap<>();
-			for (DoorwayOrientation doorwayOrientation : DoorwayOrientation.values()) {
-				doorSizeMap.put(doorwayOrientation, new HashMap<>());
-			}
-			doorwayDefinitionMap.put(doorwaySize, doorSizeMap);
+			doorwayDefinitionMap.put(doorwaySize, new HashMap<>());
+			doorwayClosedDefinitionMap.put(doorwaySize, new HashMap<>());
 		}
 
 
@@ -70,17 +65,14 @@ public class WallEdgeAtlas {
 			layoutToDefinitionMap.put(layoutIdInteger, definition);
 		}
 
-		for (String orientationName : wallCapFileJson.keySet()) {
-			EntityAssetOrientation orientation = EntityAssetOrientation.valueOf(orientationName);
-			JSONObject materialMapJson = wallCapFileJson.getJSONObject(orientationName);
-
-			Map<GameMaterialType, WallEdgeDefinition> typeToDefinitions = wallCapDefinitionMap.computeIfAbsent(orientation, o -> new HashMap<>());
-
-			for (String materialTypeName : materialMapJson.keySet()) {
-				GameMaterialType materialType = GameMaterialType.valueOf(materialTypeName);
-				JSONObject layoutJson = materialMapJson.getJSONObject(materialTypeName);
+		for (String doorwaySizeName : doorwayClosedFileJson.keySet()) {
+			DoorwaySize doorwaySize = DoorwaySize.valueOf(doorwaySizeName);
+			JSONObject doorwaySizeJson = doorwayClosedFileJson.getJSONObject(doorwaySizeName);
+			for (String doorOrientationName : doorwaySizeJson.keySet()) {
+				DoorwayOrientation doorOrientation = DoorwayOrientation.valueOf(doorOrientationName);
+				JSONObject layoutJson = doorwaySizeJson.getJSONObject(doorOrientationName);
 				WallEdgeDefinition definition = buildWallDefinitionFromJson(layoutJson);
-				typeToDefinitions.put(materialType, definition);
+				doorwayClosedDefinitionMap.get(doorwaySize).put(doorOrientation, definition);
 			}
 		}
 
@@ -89,16 +81,10 @@ public class WallEdgeAtlas {
 			JSONObject doorwaySizeJson = doorwayEdgeFileJson.getJSONObject(doorwaySizeName);
 			for (String doorOrientationName : doorwaySizeJson.keySet()) {
 				DoorwayOrientation doorOrientation = DoorwayOrientation.valueOf(doorOrientationName);
-				JSONObject doorOrientationJson = doorwaySizeJson.getJSONObject(doorOrientationName);
-				for (String materialTypeName : doorOrientationJson.keySet()) {
-					GameMaterialType materialType = GameMaterialType.valueOf(materialTypeName);
-					JSONObject layoutJson = doorOrientationJson.getJSONObject(materialTypeName);
-					WallEdgeDefinition definition = buildWallDefinitionFromJson(layoutJson);
-					doorwayDefinitionMap.get(doorwaySize).get(doorOrientation).put(materialType, definition);
-				}
-
+				JSONObject layoutJson = doorwaySizeJson.getJSONObject(doorOrientationName);
+				WallEdgeDefinition definition = buildWallDefinitionFromJson(layoutJson);
+				doorwayDefinitionMap.get(doorwaySize).put(doorOrientation, definition);
 			}
-
 		}
 	}
 
@@ -127,15 +113,12 @@ public class WallEdgeAtlas {
 		return layoutToDefinitionMap.get(layoutId);
 	}
 
-	public WallEdgeDefinition getForWallCap(Entity wallCapEntity, Doorway doorway) {
-		EntityAssetOrientation orientation = wallCapEntity.getLocationComponent().getOrientation();
-		GameMaterialType materialType = doorway.getDoorwayMaterialType();
-
-		return wallCapDefinitionMap.get(orientation).get(materialType);
+	public WallEdgeDefinition getForDoorway(Doorway doorway) {
+		return doorwayDefinitionMap.get(doorway.getDoorwaySize()).getOrDefault(doorway.getOrientation(), emptyDefinition);
 	}
 
 	public WallEdgeDefinition getForClosedDoor(Doorway doorway) {
-		return doorwayDefinitionMap.get(doorway.getDoorwaySize()).get(doorway.getOrientation()).get(doorway.getDoorwayMaterialType());
+		return doorwayClosedDefinitionMap.get(doorway.getDoorwaySize()).getOrDefault(doorway.getOrientation(), emptyDefinition);
 	}
 
 	private Edge pointArrayToWallEdge(JSONArray pointArray) {

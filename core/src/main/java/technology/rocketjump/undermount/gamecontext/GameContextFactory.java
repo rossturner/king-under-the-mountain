@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.RandomXS128;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.constants.ConstantsRepo;
+import technology.rocketjump.undermount.constants.SettlementConstants;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.environment.DailyWeatherTypeDictionary;
@@ -35,10 +37,12 @@ public class GameContextFactory {
 	private final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
 	private final JSONObject itemProductionDefaultsJson;
 	private final JSONObject liquidProductionDefaultsJson;
+	private final SettlementConstants settlementConstants;
 
 	@Inject
 	public GameContextFactory(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary,
-							  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary) {
+							  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary,
+							  ConstantsRepo constantsRepo) {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.weatherTypeDictionary = weatherTypeDictionary;
@@ -47,6 +51,7 @@ public class GameContextFactory {
 		itemProductionDefaultsJson = JSON.parseObject(itemProductionDefaultsFile.readString());
 		FileHandle liquidProductionDefaultsFile = new FileHandle("assets/definitions/crafting/liquidProductionDefaults.json");
 		liquidProductionDefaultsJson = JSON.parseObject(liquidProductionDefaultsFile.readString());
+		settlementConstants = constantsRepo.getSettlementConstants();
 	}
 
 	public GameContext create(String settlementName, TiledMap areaMap, long worldSeed, GameClock clock) {
@@ -63,6 +68,7 @@ public class GameContextFactory {
 			context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);
 			clock.setPaused(true);
 		}
+		context.getSettlementState().setFishRemainingInRiver(settlementConstants.getNumAnnualFish());
 		context.setAreaMap(areaMap);
 		context.setRandom(new RandomXS128(worldSeed));
 		context.setGameClock(clock);

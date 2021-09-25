@@ -60,6 +60,7 @@ public class SettlementState implements Persistable {
 	private int immigrantCounter;
 	private Vector2 immigrationPoint;
 	private Double nextImmigrationGameTime;
+	private int fishRemainingInRiver;
 	private GameState gameState;
 
 	public String getSettlementName() {
@@ -120,6 +121,14 @@ public class SettlementState implements Persistable {
 
 	public void setGameState(GameState currentState) {
 		this.gameState = currentState;
+	}
+
+	public int getFishRemainingInRiver() {
+		return fishRemainingInRiver;
+	}
+
+	public void setFishRemainingInRiver(int fishRemainingInRiver) {
+		this.fishRemainingInRiver = fishRemainingInRiver;
 	}
 
 	@Override
@@ -269,6 +278,8 @@ public class SettlementState implements Persistable {
 			}
 			asJson.put("usedTwitchViewers", viewerNames);
 		}
+
+		asJson.put("fishRemaining", fishRemainingInRiver);
 
 		savedGameStateHolder.setSettlementState(this);
 	}
@@ -470,6 +481,8 @@ public class SettlementState implements Persistable {
 				usedTwitchViewers.add(new TwitchViewer(o.toString()));
 			}
 		}
+
+		this.fishRemainingInRiver = asJson.getIntValue("fishRemaining");
 	}
 
 }

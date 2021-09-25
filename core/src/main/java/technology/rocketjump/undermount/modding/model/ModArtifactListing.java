@@ -184,8 +184,8 @@ public class ModArtifactListing {
 				////////// terrain //////////
 				def("terrain", "doorwayEdges", SINGLE_FILE, JSON_OBJECT, null,
 						"terrain", "doorwayEdges.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
-				def("terrain", "wallCapEdges", SINGLE_FILE, JSON_OBJECT, null,
-						"terrain", "wallCapEdges.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
+				def("terrain", "doorwayClosedEdges", SINGLE_FILE, JSON_OBJECT, null,
+						"terrain", "doorwayClosedEdges.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 				def("terrain", "wallEdges", SINGLE_FILE, JSON_OBJECT, null,
 						"terrain", "wallEdges.json", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 				def("terrain", "wallLayoutQuadrants", SINGLE_FILE, JSON_OBJECT, null,

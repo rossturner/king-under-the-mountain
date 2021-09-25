@@ -434,4 +434,7 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 		this.priority = EnumParser.getEnumValue(asJson, "priority", JobPriority.class, JobPriority.NORMAL);
 	}
 
+	public Room getParent() {
+		return parent;
+	}
 }

@@ -8,11 +8,11 @@
     "spriteDescriptors": {
       "DOWN": {
         "isAnimated": true,
-        "filename": "MetalDoor_Single_EW",
+        "filename": "door_metal_EW_anim",
         "coloringLayer": "METAL_COLOR",
         "offsetPixels": {
           "x": 0,
-          "y": -43
+          "y": -32
         }
       }
     }
@@ -25,11 +25,11 @@
     "validMaterialTypes": ["METAL"],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "MetalDoor_Single_EW_0.png",
+        "filename": "door_metal_EW_anim_0.png",
         "coloringLayer": "METAL_COLOR",
         "offsetPixels": {
           "x": 0,
-          "y": -4
+          "y": 0
         }
       }
     }
@@ -43,11 +43,11 @@
     "spriteDescriptors": {
       "DOWN": {
         "isAnimated": true,
-        "filename": "MetalDoor_Single_NS",
+        "filename": "door_metal_NS_anim",
         "coloringLayer": "METAL_COLOR",
         "offsetPixels": {
-          "x": -6,
-          "y": 0
+          "x": 0,
+          "y": -32
         }
       }
     }

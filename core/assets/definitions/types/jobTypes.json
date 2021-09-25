@@ -1,7 +1,6 @@
 [ {
   "name" : "MINING",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -13,7 +12,6 @@
 }, {
   "name" : "DIGGING",
   "overrideI18nKey" : "ACTION.JOB.DIGGING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -25,7 +23,6 @@
 }, {
   "name" : "LOGGING",
   "overrideI18nKey" : "ACTION.JOB.LOGGING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -38,7 +35,6 @@
 }, {
   "name" : "SHOVELLING",
   "overrideI18nKey" : "ACTION.JOB.SHOVELLING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -47,7 +43,6 @@
 }, {
   "name" : "LIGHT_CHARCOAL_CLAMP",
   "overrideI18nKey" : "ACTION.JOB.SHOVELLING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -57,7 +52,6 @@
 }, {
   "name" : "TILLING",
   "overrideI18nKey" : "ACTION.JOB.TILLING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 4.0,
@@ -68,7 +62,6 @@
 }, {
   "name" : "FILL_GRAVE",
   "overrideI18nKey" : "ACTION.JOB.FILL_GRAVE",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -78,7 +71,6 @@
 }, {
   "name" : "DIG_CHANNEL",
   "overrideI18nKey" : "ACTION.JOB.SHOVELLING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -90,7 +82,6 @@
 }, {
   "name" : "PLANTING",
   "overrideI18nKey" : "ACTION.JOB.PLANTING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 2.0,
@@ -100,7 +91,6 @@
 }, {
   "name" : "REMOVE_PESTS_FROM_CROP",
   "overrideI18nKey" : "ACTION.JOB.REMOVE_PESTS_FROM_CROP",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -110,7 +100,6 @@
 }, {
   "name" : "MUSHROOM_INNOCULATION",
   "overrideI18nKey" : "ACTION.JOB.INNOCULATE_MUSHROOM_LOG",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 5.0,
@@ -119,7 +108,6 @@
 }, {
   "name" : "HARVESTING",
   "overrideI18nKey" : "ACTION.JOB.HARVESTING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 4.0,
@@ -129,7 +117,6 @@
 }, {
   "name" : "CLEAR_GROUND",
   "overrideI18nKey" : "ACTION.JOB.CLEAR_GROUND",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 3.0,
@@ -138,16 +125,24 @@
 }, {
   "name" : "COOKING",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "mightStartFire" : 0.01,
   "requiredProfessionName" : "CHEF",
   "accessedFromAdjacentTile" : true
 }, {
+  "name" : "FISHING",
+  "overrideI18nKey" : "ACTION.JOB.FISHING",
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : false,
+  "defaultTimeToCompleteJob" : 38.0,
+  "requiredProfessionName" : "FISHER",
+  "requiredItemTypeName" : "Tool-Fishing-Rod",
+  "activeSoundAssetName" : "Fishing_Cast",
+  "accessedFromAdjacentTile" : true
+}, {
   "name" : "HAULING",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "HAUL_ITEM",
@@ -155,7 +150,6 @@
 }, {
   "name" : "COLLECT_ITEM",
   "overrideI18nKey" : "GOAL.HAULING.DESCRIPTION",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "switchToSpecialGoal" : "HAUL_ITEM",
@@ -164,7 +158,6 @@
 }, {
   "name" : "TRANSFER_LIQUID",
   "overrideI18nKey" : "ACTION.JOB.TRANSFER_LIQUID",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "TRANSFER_LIQUID",
@@ -174,7 +167,6 @@
 }, {
   "name" : "MOVE_LIQUID_IN_ITEM",
   "overrideI18nKey" : "ACTION.JOB.TRANSFER_LIQUID",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "MOVE_LIQUID_IN_ITEM",
@@ -184,7 +176,6 @@
 }, {
   "name" : "REMOVE_LIQUID",
   "overrideI18nKey" : "ACTION.JOB.TRANSFER_LIQUID",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "REMOVE_LIQUID",
@@ -193,7 +184,6 @@
 }, {
   "name" : "DUMP_LIQUID_FROM_CONTAINER",
   "overrideI18nKey" : "ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "DUMP_LIQUID",
@@ -203,7 +193,6 @@
 }, {
   "name" : "FORGE_ITEM",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
@@ -212,7 +201,6 @@
 }, {
   "name" : "CRAFT_ITEM",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
@@ -220,7 +208,6 @@
 }, {
   "name" : "PRODUCE_ITEM",
   "overrideI18nKey" : "ACTION.JOB.CREATE_GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
@@ -228,7 +215,6 @@
 }, {
   "name" : "PRODUCE_LIQUID",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiredProfessionName" : "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
@@ -236,7 +222,6 @@
 }, {
   "name" : "CONSTRUCT_WOODEN_FURNITURE",
   "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_FURNITURE",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 6.0,
@@ -247,7 +232,6 @@
 }, {
   "name" : "CONSTRUCT_STONE_FURNITURE",
   "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_FURNITURE",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 6.0,
@@ -258,7 +242,6 @@
 }, {
   "name" : "CONSTRUCT",
   "overrideI18nKey" : "ACTION.JOB.GENERIC",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 6.0,
@@ -267,7 +250,6 @@
 }, {
   "name" : "DECONSTRUCT",
   "overrideI18nKey" : "ACTION.JOB.DECONSTRUCT",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 6.0,
@@ -276,7 +258,6 @@
 }, {
   "name" : "CONSTRUCT_ROOFING",
   "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_ROOFING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
   "defaultTimeToCompleteJob" : 4.0,
@@ -289,7 +270,6 @@
 }, {
   "name" : "DECONSTRUCT_ROOFING",
   "overrideI18nKey" : "ACTION.JOB.DECONSTRUCT_ROOFING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 4.0,
@@ -299,7 +279,6 @@
 }, {
   "name" : "CONSTRUCT_PIPING",
   "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_PIPING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
   "defaultTimeToCompleteJob" : 4.0,
@@ -309,7 +288,6 @@
 }, {
   "name" : "DECONSTRUCT_PIPING",
   "overrideI18nKey" : "ACTION.JOB.DECONSTRUCT_PIPING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 4.0,
@@ -318,7 +296,6 @@
 }, {
   "name" : "CONSTRUCT_MECHANISM",
   "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_MECHANISM",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
   "defaultTimeToCompleteJob" : 4.0,
@@ -328,7 +305,6 @@
 }, {
   "name" : "DECONSTRUCT_MECHANISM",
   "overrideI18nKey" : "ACTION.JOB.DECONSTRUCT_PIPING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "defaultTimeToCompleteJob" : 4.0,
@@ -337,7 +313,6 @@
 }, {
   "name" : "CONSTRUCT_FLOORING",
   "overrideI18nKey" : "ACTION.JOB.CONSTRUCT_FLOORING",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
   "defaultTimeToCompleteJob" : 3.0,
@@ -347,7 +322,6 @@
 }, {
   "name" : "EXTINGUISH_FLAMES",
   "overrideI18nKey" : "ACTION.JOB.EXTINGUISH_FLAMES",
-  "workDuration" : 3.0,
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : true,
   "switchToSpecialGoal" : "EXTINGUISH_FIRE",

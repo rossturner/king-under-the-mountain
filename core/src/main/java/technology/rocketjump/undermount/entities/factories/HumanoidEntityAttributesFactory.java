@@ -38,7 +38,7 @@ public class HumanoidEntityAttributesFactory {
 		this.userPreferences = userPreferences;
 		this.twitchDataStore = twitchDataStore;
 
-		this.fleshMaterial = gameMaterialDictionary.getByName("Flesh");
+		this.fleshMaterial = gameMaterialDictionary.getByName("Dwarf Flesh");
 	}
 
 	public HumanoidEntityAttributes create(GameContext gameContext) {

@@ -243,6 +243,9 @@ public class TiledMapFactory {
 			}
 
 			itemAttributes.setQuantity(1 + gameContext.getRandom().nextInt(10));
+			if (itemAttributes.getQuantity() > itemAttributes.getItemType().getMaxStackSize()) {
+				itemAttributes.setQuantity(itemAttributes.getItemType().getMaxStackSize());
+			}
 
 			Entity itemEntity = itemEntityFactory.create(itemAttributes, new GridPoint2(tileX, tileY), true, gameContext);
 			haulingComponent.setHauledEntity(itemEntity, messageDispatcher, settler);

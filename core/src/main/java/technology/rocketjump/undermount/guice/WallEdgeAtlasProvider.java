@@ -12,7 +12,7 @@ public class WallEdgeAtlasProvider implements Provider<WallEdgeAtlas> {
 		try {
 			return new WallEdgeAtlas(
 					Gdx.files.internal("assets/terrain/wallEdges.json").file(),
-					Gdx.files.internal("assets/terrain/wallCapEdges.json").file(),
+					Gdx.files.internal("assets/terrain/doorwayClosedEdges.json").file(),
 					Gdx.files.internal("assets/terrain/doorwayEdges.json").file()
 					);
 		} catch (IOException e) {

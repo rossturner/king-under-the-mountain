@@ -404,10 +404,6 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable, Gam
 			versionText += " (DEV MODE ENABLED)";
 		}
 		versionTable.add(new Label(versionText, uiSkin)).left().pad(5).row();
-		if (gameContext != null && gameContext.getAreaMap() != null) {
-			String currentMapSeedText = i18nTranslator.getTranslatedString("GUI.MAP_SEED_DISPLAY").toString();
-			versionTable.add(new Label(currentMapSeedText + " " + gameContext.getAreaMap().getSeed(), uiSkin)).left().pad(5).row();
-		}
 	}
 
 	private boolean twitchEnabled() {

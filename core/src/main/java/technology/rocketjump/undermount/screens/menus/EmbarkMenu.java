@@ -189,6 +189,9 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 	private long parseSeed() {
 		String seedText = seedInput.getText().trim();
 		if (StringUtils.isNumeric(seedText)) {
+			if (seedText.length() > 18) {
+				seedText = seedText.substring(0, 18);
+			}
 			return Long.parseLong(seedText);
 		} else {
 			long hash = 0;

@@ -29,7 +29,7 @@ public class Doorway implements ChildPersistable {
 	private GameMaterialType doorwayMaterialType;
 
 	private List<Entity> wallCapEntities = new ArrayList<>(); // feel this should be a list of separate caps to support different material wall ends
-	private Entity frameEntity; // the frame should be positioned at the bottom of the tile so it overlaps everything in the tile
+	private List<Entity> frameEntities = new ArrayList<>(); // the frame should be positioned at the bottom of the tile so it overlaps everything in the tile
 	private Entity doorEntity; // the door should be positioned at the top of the tile so other entities are in front of it
 
 	public DoorState getDoorState() {
@@ -68,12 +68,12 @@ public class Doorway implements ChildPersistable {
 		this.wallCapEntities = wallCapEntities;
 	}
 
-	public Entity getFrameEntity() {
-		return frameEntity;
+	public List<Entity> getFrameEntities() {
+		return frameEntities;
 	}
 
-	public void setFrameEntity(Entity frameEntity) {
-		this.frameEntity = frameEntity;
+	public void setFrameEntities(List<Entity> frameEntities) {
+		this.frameEntities = frameEntities;
 	}
 
 	public Entity getDoorEntity() {
@@ -112,10 +112,13 @@ public class Doorway implements ChildPersistable {
 		}
 		asJson.put("wallCaps", wallCapIds);
 
-		if (frameEntity != null) {
+		JSONArray frameEntityIds = new JSONArray();
+		for (Entity frameEntity : frameEntities) {
 			frameEntity.writeTo(savedGameStateHolder);
-			asJson.put("frameEntity", frameEntity.getId());
+			frameEntityIds.add(frameEntity.getId());
 		}
+		asJson.put("frameEnities", frameEntityIds);
+
 		if (doorEntity != null) {
 			doorEntity.writeTo(savedGameStateHolder);
 			asJson.put("doorEntity", doorEntity.getId());
@@ -134,12 +137,10 @@ public class Doorway implements ChildPersistable {
 			wallCapEntities.add(savedGameStateHolder.entities.get(wallCapIds.getLongValue(cursor)));
 		}
 
-		Long frameEntityId = asJson.getLong("frameEntity");
-		if (frameEntityId != null) {
-			frameEntity = savedGameStateHolder.entities.get(frameEntityId);
-			if (frameEntity == null) {
-				throw new InvalidSaveException("Could not find entity by ID " + frameEntityId);
-			}
+
+		JSONArray frameEntityIds = asJson.getJSONArray("frameEnities");
+		for (int cursor = 0; cursor < frameEntityIds.size(); cursor++) {
+			frameEntities.add(savedGameStateHolder.entities.get(frameEntityIds.getLongValue(cursor)));
 		}
 
 		Long doorEntityId = asJson.getLong("doorEntity");
