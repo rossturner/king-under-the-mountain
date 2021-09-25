@@ -1,25 +1,27 @@
-[{
-  "uniqueName": "wooden_plank_wall_cap_generic_NS",
-  "type": "BASE_LAYER",
-  "wallTypeName": "wooden_plank_wall",
-  "doorwayOrientation": "NORTH_SOUTH",
-  "doorwaySize": "SINGLE",
-  "spriteDescriptors": {
-    "DOWN": {
-      "filename": "wallcap_woodenPlank_S-64.png",
-      "coloringLayer": "STONE_COLOR",
-      "offsetPixels": {
-        "x": 0,
-        "y": 31
-      }
-    },
-    "UP": {
-      "filename": "wallcap_woodenPlank_N-64.png",
-      "coloringLayer": "STONE_COLOR",
-      "offsetPixels": {
-        "x": 0,
-        "y": -31
+[
+  {
+    "uniqueName": "wooden_plank_wall_cap_generic_NS",
+    "type": "BASE_LAYER",
+    "wallTypeName": "wooden_plank_wall",
+    "doorwayOrientation": "NORTH_SOUTH",
+    "doorwaySize": "SINGLE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "wallcap_woodenPlank_S-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": 12.5
+        }
+      },
+      "UP": {
+        "filename": "wallcap_woodenPlank_N-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 12.0
+        }
       }
     }
   }
-}]
+]
