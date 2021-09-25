@@ -113,7 +113,15 @@
     "requiredProfessionName": "CHEF",
     "mightStartFire": 0.01
   },
-
+  {
+    "name": "FISHING",
+    "defaultTimeToCompleteJob": 38,
+    "overrideI18nKey": "ACTION.JOB.FISHING",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "FISHER",
+    "requiredItemTypeName": "Tool-Fishing-Rod",
+    "activeSoundAssetName": "Fishing_Cast"
+  },
 
   {
     "name": "HAULING",

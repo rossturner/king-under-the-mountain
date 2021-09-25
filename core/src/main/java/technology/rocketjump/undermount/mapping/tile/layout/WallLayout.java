@@ -6,7 +6,7 @@ public class WallLayout extends TileLayout {
 
     public WallLayout(TileNeighbours neighbours) {
         super(neighbours, (tile, direction) ->
-                tile.hasWall() || (tile.hasDoorway() && direction.getYOffset() >= 0) // Don't count doorways below this Y level as they don't have North wall caps
+                tile.hasWall() || tile.hasDoorway()
         );
     }
 

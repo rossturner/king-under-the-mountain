@@ -156,7 +156,7 @@ public class WorldRenderer implements Disposable {
 					}
 				}
 				if (mapTile.hasDoorway()) {
-					renderables.add(new InWorldRenderable(mapTile.getDoorway().getFrameEntity()));
+					mapTile.getDoorway().getFrameEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
 					renderables.add(new InWorldRenderable(mapTile.getDoorway().getDoorEntity()));
 					mapTile.getDoorway().getWallCapEntities().forEach(e -> renderables.add(new InWorldRenderable(e)));
 				}

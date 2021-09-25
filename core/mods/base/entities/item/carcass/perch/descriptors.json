@@ -1,0 +1,498 @@
+[
+  {
+    "uniqueName": "Carcass-Perch-Raw-Pile01",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Raw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Perch.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Perch-Raw-Pile02",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Raw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 3,
+    "maxQuantity": 7,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PerchMedium.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Perch-Raw-Pile03",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Raw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 8,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PerchLarge.png",
+        "offsetPixels": {
+          "x": -2.0,
+          "y": 1.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Perch-Prepared-Pile",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Prepared",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 4,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PerchFillet.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Perch-Raw-Carried-1",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Raw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Perch.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Perch.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Perch.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 2,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Perch.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Perch-Raw-Carried-2",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Raw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 3,
+    "maxQuantity": 7,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PerchMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "PerchMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "PerchMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "UP": {
+        "filename": "PerchMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "UP_LEFT": {
+        "filename": "PerchMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "PerchMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Perch-Raw-Carried-3",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Raw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 8,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PerchLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -2.0,
+          "y": 1.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "PerchLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -2.0,
+          "y": 1.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "PerchLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -2.0,
+          "y": 1.0
+        }
+      },
+      "UP": {
+        "filename": "PerchLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -2.0,
+          "y": 1.0
+        }
+      },
+      "UP_LEFT": {
+        "filename": "PerchLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -2.0,
+          "y": 1.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "PerchLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -2.0,
+          "y": 1.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Perch-Prepared-Carried-1",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Perch-Prepared",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PerchFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.5
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "PerchFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.5
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "PerchFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 2,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.5
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "PerchFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": 0.5
+        }
+      }
+    }
+  }
+]

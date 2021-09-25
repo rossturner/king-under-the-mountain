@@ -126,7 +126,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "HUMANOID_LEFT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -12,
@@ -145,7 +145,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_LEFT_HAND",
+            "type": "HUMANOID_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": 12,

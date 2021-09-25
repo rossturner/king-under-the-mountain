@@ -1,0 +1,20 @@
+[
+  {
+    "itemTypeName": "Carcass-Perch-Raw",
+    "materialTypes": ["MEAT"],
+    "primaryMaterialType": "MEAT",
+    "describeAsMaterialOnly": true,
+    "hoursInInventoryUntilUnused": 2,
+    "maxStackSize": 16,
+    "maxHauledAtOnce": 16,
+    "stockpileGroupName": "FOOD"
+  },
+  {
+    "itemTypeName": "Carcass-Perch-Prepared",
+    "materialTypes": ["MEAT"],
+    "primaryMaterialType": "MEAT",
+    "maxStackSize": 4,
+    "maxHauledAtOnce": 4,
+    "stockpileGroupName": "FOOD"
+  }
+]

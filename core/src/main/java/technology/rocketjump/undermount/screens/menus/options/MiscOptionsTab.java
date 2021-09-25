@@ -3,44 +3,67 @@ package technology.rocketjump.undermount.screens.menus.options;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.screens.ScreenManager;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
-import technology.rocketjump.undermount.ui.widgets.I18nCheckbox;
-import technology.rocketjump.undermount.ui.widgets.I18nLabel;
-import technology.rocketjump.undermount.ui.widgets.I18nWidgetFactory;
-import technology.rocketjump.undermount.ui.widgets.IconButtonFactory;
+import technology.rocketjump.undermount.ui.widgets.*;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
 
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.CRASH_REPORTING;
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.MAIN_MENU_BACKGROUND_SCROLLING;
 
 @Singleton
-public class MiscOptionsTab implements OptionsTab, Telegraph {
+public class MiscOptionsTab implements OptionsTab, Telegraph, GameContextAware {
 
 	private final I18nLabel miscTitle;
 	private final I18nCheckbox crashReportingCheckbox;
 	private final I18nCheckbox mainMenuScrollingCheckbox;
 	private final CheckBox stressTestCheckbox;
+	private final I18nTranslator i18nTranslator;
+	private final Skin uiSkin;
+	private final I18nTextButton copyToClipboardButton;
+	private GameContext gameContext;
 
 	@Inject
 	public MiscOptionsTab(UserPreferences userPreferences, GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher,
-						  IconButtonFactory iconButtonFactory, I18nWidgetFactory i18NWidgetFactory, SoundAssetDictionary soundAssetDictionary) {
-		Skin uiSkin = guiSkinRepository.getDefault();
+						  IconButtonFactory iconButtonFactory, I18nWidgetFactory i18NWidgetFactory, SoundAssetDictionary soundAssetDictionary,
+						  I18nTranslator i18nTranslator) {
+		uiSkin = guiSkinRepository.getDefault();
 		final SoundAsset clickSoundAsset = soundAssetDictionary.getByName("MenuClick");
+		this.i18nTranslator = i18nTranslator;
 
 		miscTitle = i18NWidgetFactory.createLabel("GUI.OPTIONS.MISC.TITLE");
+
+		copyToClipboardButton = i18NWidgetFactory.createTextButton("GUI.MAP_SEED.COPY_TO_CLIPBOARD");
+		copyToClipboardButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				if (gameContext != null && gameContext.getAreaMap() != null) {
+					Toolkit.getDefaultToolkit().getSystemClipboard().setContents(
+							new StringSelection(String.valueOf(gameContext.getAreaMap().getSeed())),
+							null
+					);
+				}
+			}
+		});
 
 		stressTestCheckbox = new CheckBox("Stress test (1000 settlers)", uiSkin);
 		stressTestCheckbox.getLabelCell().padLeft(5f);
@@ -107,10 +130,26 @@ public class MiscOptionsTab implements OptionsTab, Telegraph {
 			menuTable.add(stressTestCheckbox).colspan(2).left().pad(10).row();
 		}
 
+		if (gameContext != null && gameContext.getAreaMap() != null) {
+			String currentMapSeedText = i18nTranslator.getTranslatedString("GUI.MAP_SEED_DISPLAY").toString();
+			menuTable.add(new Label(currentMapSeedText + " " + gameContext.getAreaMap().getSeed(), uiSkin)).left().pad(5);
+			menuTable.add(copyToClipboardButton).pad(5).row();
+		}
+
 	}
 
 	@Override
 	public OptionsTabName getTabName() {
 		return OptionsTabName.MISC;
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
 	}
 }

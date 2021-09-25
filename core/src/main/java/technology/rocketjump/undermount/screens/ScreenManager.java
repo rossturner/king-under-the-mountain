@@ -192,7 +192,11 @@ public class ScreenManager implements Telegraph, GameContextAware {
 				// Reset interaction state so cursor is not left in an odd setting
 				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_INTERACTION_MODE, GameInteractionMode.DEFAULT);
 				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.DEFAULT);
-				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.DEFAULT_MENU);
+				if (gameContext != null && gameContext.getSettlementState().getGameState().equals(GameState.SELECT_SPAWN_LOCATION)) {
+					messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.SELECT_STARTING_LOCATION);
+				} else {
+					messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.DEFAULT_MENU);
+				}
 
 				String targetScreenName = (String) msg.extraInfo;
 				GameScreen targetScreenInstance = gameScreenDictionary.getByName(targetScreenName);

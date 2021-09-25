@@ -8,12 +8,20 @@ Alpha 7
 - Plants now require water to grow, which can be provided by rain or nearby irrigation channels containing water
 - Ore crusher now requires power to operate, or else it will take significantly longer
 - Added hemp crop, which requires processing in a retting station and then it can be crafted into rope or linen
+    - Note that weaving is currently done by farmers, before a dedicated weaving profession will probably be added later
 - Beds now require linen to be constructed
 - Added sleeping spot to bedrooms to make up for more difficult bed requirements
+- Added fishing mechanic/jobs and re-implemented the fisher profession
+- Fish can be caught, prepared, and used in cooking soup
 - Fixed particle effects on furniture in use like Ore Crusher
 - Made settlers eat rations before other edible items in inventory
 - Made lightning very unlikely to strike plants other than trees
+- Moved map seed to options menu with copy to clipboard button
+- Updated single door assets and lighting information
 - Updated dirt floor texture
+- Can now press enter in the rename dialog to submit the rename text (you would not believe how awkward this is to do)
+- Changing stockpile settings now removes any *pending* hauling jobs which would be invalid with the new settings
+- Improved startup time by fixing a performance issue where sprite assets were loaded many times
 
 Alpha 6.1.8 - 10th September 2021
 

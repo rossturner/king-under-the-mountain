@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.mechanism.model.MechanismEntityAsset;
@@ -22,11 +23,13 @@ import static technology.rocketjump.undermount.assets.TextureAtlasRepository.Tex
 import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addAnimatedSpriteArray;
 import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addSprite;
 
+@Singleton
 public class MechanismEntityAssetDictionaryProvider implements Provider<MechanismEntityAssetDictionary> {
 
 	private final EntityAssetTypeDictionary entityAssetTypeDictionary;
 	private final TextureAtlasRepository textureAtlasRepository;
 	private final MechanismTypeDictionary mechanismTypeDictionary;
+	private MechanismEntityAssetDictionary instance;
 
 	@Inject
 	public MechanismEntityAssetDictionaryProvider(EntityAssetTypeDictionary entityAssetTypeDictionary,
@@ -39,6 +42,13 @@ public class MechanismEntityAssetDictionaryProvider implements Provider<Mechanis
 
 	@Override
 	public MechanismEntityAssetDictionary get() {
+		if (instance == null) {
+			instance = create();
+		}
+		return instance;
+	}
+
+	public MechanismEntityAssetDictionary create() {
 		TextureAtlas diffuseTextureAtlas = textureAtlasRepository.get(DIFFUSE_ENTITIES);
 		TextureAtlas normalTextureAtlas = textureAtlasRepository.get(NORMAL_ENTITIES);
 		FileHandle entityDefinitionsFile = Gdx.files.internal("assets/definitions/entityAssets/mechanismEntityAssets.json");

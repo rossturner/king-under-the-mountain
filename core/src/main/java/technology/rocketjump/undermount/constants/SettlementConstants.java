@@ -1,6 +1,9 @@
 package technology.rocketjump.undermount.constants;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
+
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SettlementConstants {
@@ -14,8 +17,11 @@ public class SettlementConstants {
 	private String deconstructPipingJobType;
 	private String constructMechanismJobType;
 	private String deconstructMechanismJobType;
+	private String fishingJobType;
+	private List<ItemTypeWithMaterial> fishAvailable;
 
 	private double mushroomShockTimeHours;
+	private int numAnnualFish;
 
 	public String getKitchenProfession() {
 		return kitchenProfession;
@@ -87,5 +93,29 @@ public class SettlementConstants {
 
 	public void setDeconstructMechanismJobType(String deconstructMechanismJobType) {
 		this.deconstructMechanismJobType = deconstructMechanismJobType;
+	}
+
+	public int getNumAnnualFish() {
+		return numAnnualFish;
+	}
+
+	public void setNumAnnualFish(int numAnnualFish) {
+		this.numAnnualFish = numAnnualFish;
+	}
+
+	public String getFishingJobType() {
+		return fishingJobType;
+	}
+
+	public void setFishingJobType(String fishingJobType) {
+		this.fishingJobType = fishingJobType;
+	}
+
+	public List<ItemTypeWithMaterial> getFishAvailable() {
+		return fishAvailable;
+	}
+
+	public void setFishAvailable(List<ItemTypeWithMaterial> fishAvailable) {
+		this.fishAvailable = fishAvailable;
 	}
 }

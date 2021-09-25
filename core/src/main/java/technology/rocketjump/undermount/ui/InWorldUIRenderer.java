@@ -278,7 +278,7 @@ public class InWorldUIRenderer {
 									break;
 							}
 
-							if (jobAtLocation.getType().getName().equals("HAULING")) {
+							if (jobAtLocation.getType().getName().equals("HAULING") && jobAtLocation.getHaulingAllocation().getTargetPosition() != null) {
 								shapeRenderer.line(jobAtLocation.getJobLocation().x + 0.5f, jobAtLocation.getJobLocation().y + 0.5f,
 										jobAtLocation.getHaulingAllocation().getTargetPosition().x + 0.5f, jobAtLocation.getHaulingAllocation().getTargetPosition().y + 0.5f);
 							} else if (mapTile.getDesignation() != null) {

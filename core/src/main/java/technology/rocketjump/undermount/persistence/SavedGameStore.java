@@ -164,8 +164,8 @@ public class SavedGameStore implements Telegraph, I18nUpdatable {
 		return bySettlementName.values();
 	}
 
-	public boolean hasSaveOrIsRefreshing() {
-		return refreshInProgress || !bySettlementName.isEmpty();
+	public boolean hasSave() {
+		return !bySettlementName.isEmpty();
 	}
 
 	@Override

@@ -1,4 +1,46 @@
 [ {
+  "uniqueName" : "brickwall_cap_generic_NS",
+  "type" : "BASE_LAYER",
+  "wallTypeName" : "brickwall",
+  "doorwayOrientation" : "NORTH_SOUTH",
+  "doorwaySize" : "SINGLE",
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "wallcap_brick_S-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 12.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "wallcap_brick_N-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 12.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "rough_stone_wall_cap_generic_NS",
   "type" : "BASE_LAYER",
   "wallTypeName" : "rough_stone_wall",
@@ -6,13 +48,30 @@
   "doorwaySize" : "SINGLE",
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "rough_stone_wall_cap_generic_NS_DOWN.png",
+      "filename" : "wallcap_roughStone_S-64.png",
       "coloringLayer" : "STONE_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 16.5,
+        "y" : 13.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "wallcap_roughStone_N-64.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 13.0,
         "zero" : false,
         "unit" : false
       },
@@ -24,21 +83,20 @@
     }
   }
 }, {
-  "uniqueName" : "rough_stone_wall_cap_metal_doorway_single_EW",
+  "uniqueName" : "wooden_plank_wall_cap_generic_NS",
   "type" : "BASE_LAYER",
-  "wallTypeName" : "rough_stone_wall",
-  "doorwayMaterialType" : "METAL",
-  "doorwayOrientation" : "EAST_WEST",
+  "wallTypeName" : "wooden_plank_wall",
+  "doorwayOrientation" : "NORTH_SOUTH",
   "doorwaySize" : "SINGLE",
   "spriteDescriptors" : {
-    "LEFT" : {
-      "filename" : "rough_stone_wall_cap_metal_doorway_single_EW_LEFT.png",
-      "coloringLayer" : "STONE_COLOR",
+    "DOWN" : {
+      "filename" : "wallcap_woodenPlank_S-64.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -27.0,
-        "y" : -32.0,
+        "x" : -0.5,
+        "y" : 12.5,
         "zero" : false,
         "unit" : false
       },
@@ -48,100 +106,14 @@
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
-    "RIGHT" : {
-      "filename" : "rough_stone_wall_cap_metal_doorway_single_EW_RIGHT.png",
-      "coloringLayer" : "STONE_COLOR",
+    "UP" : {
+      "filename" : "wallcap_woodenPlank_N-64.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 27.0,
-        "y" : -32.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    }
-  }
-}, {
-  "uniqueName" : "rough_stone_wall_cap_stone_doorway_single_EW",
-  "type" : "BASE_LAYER",
-  "wallTypeName" : "rough_stone_wall",
-  "doorwayMaterialType" : "STONE",
-  "doorwayOrientation" : "EAST_WEST",
-  "doorwaySize" : "SINGLE",
-  "spriteDescriptors" : {
-    "LEFT" : {
-      "filename" : "rough_stone_wall_cap_stone_doorway_single_EW_LEFT.png",
-      "coloringLayer" : "STONE_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -24.0,
-        "y" : -32.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "RIGHT" : {
-      "filename" : "rough_stone_wall_cap_stone_doorway_single_EW_RIGHT.png",
-      "coloringLayer" : "STONE_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 24.5,
-        "y" : -32.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    }
-  }
-}, {
-  "uniqueName" : "rough_stone_wall_cap_wood_doorway_single_EW",
-  "type" : "BASE_LAYER",
-  "wallTypeName" : "rough_stone_wall",
-  "doorwayMaterialType" : "WOOD",
-  "doorwayOrientation" : "EAST_WEST",
-  "doorwaySize" : "SINGLE",
-  "spriteDescriptors" : {
-    "LEFT" : {
-      "filename" : "rough_stone_wall_cap_wood_doorway_single_EW_LEFT.png",
-      "coloringLayer" : "STONE_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -29.0,
-        "y" : -32.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "RIGHT" : {
-      "filename" : "rough_stone_wall_cap_wood_doorway_single_EW_RIGHT.png",
-      "coloringLayer" : "STONE_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 29.5,
-        "y" : -32.0,
+        "x" : 0.0,
+        "y" : 12.0,
         "zero" : false,
         "unit" : false
       },

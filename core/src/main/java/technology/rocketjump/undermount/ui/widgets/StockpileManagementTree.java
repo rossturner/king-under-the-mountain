@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rooms.StockpileComponentUpdater;
 import technology.rocketjump.undermount.rooms.StockpileGroup;
 import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
@@ -25,6 +26,7 @@ public class StockpileManagementTree extends Table {
 	private final ScrollPane scrollPane;
 	private final Skin uiSkin;
 	private final I18nTranslator i18nTranslator;
+	private final MessageDispatcher messageDispatcher;
 
 	public StockpileManagementTree(Skin uiSkin, MessageDispatcher messageDispatcher, StockpileComponent stockpileComponent,
 								   StockpileComponentUpdater stockpileComponentUpdater, StockpileGroupDictionary stockpileGroupDictionary,
@@ -34,6 +36,7 @@ public class StockpileManagementTree extends Table {
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
 		this.stockpileGroupDictionary = stockpileGroupDictionary;
 		this.i18nTranslator = i18nTranslator;
+		this.messageDispatcher = messageDispatcher;
 
 		Tree<StockpileTreeNode, String> treeRoot = new Tree<>(uiSkin);
 
@@ -141,10 +144,13 @@ public class StockpileManagementTree extends Table {
 
 				if (value.isGroup()) {
 					stockpileComponentUpdater.toggleGroup(stockpileComponent, value.group, node.getActor().isChecked(), true);
+					messageDispatcher.dispatchMessage(MessageType.STOCKPILE_SETTING_UPDATED, stockpileComponent.getParent());
 				} else if (value.isItemType()) {
 					stockpileComponentUpdater.toggleItem(stockpileComponent, value.itemType, node.getActor().isChecked(), true, true);
+					messageDispatcher.dispatchMessage(MessageType.STOCKPILE_SETTING_UPDATED, stockpileComponent.getParent());
 				} else if (value.isMaterial()) {
 					stockpileComponentUpdater.toggleMaterial(stockpileComponent, value.itemType, value.material, node.getActor().isChecked(), true);
+					messageDispatcher.dispatchMessage(MessageType.STOCKPILE_SETTING_UPDATED, stockpileComponent.getParent());
 				}
 
 

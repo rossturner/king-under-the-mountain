@@ -1,0 +1,498 @@
+[
+  {
+    "uniqueName": "Carcass-Pike-Raw-Pile01",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Raw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Pike.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Pike-Raw-Pile02",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Raw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 3,
+    "maxQuantity": 7,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PikeMedium.png",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -0.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Pike-Raw-Pile03",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Raw",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 8,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PikeLarge.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -1.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Pike-Prepared-Pile",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Prepared",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 4,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PikeFillet.png",
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -2.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Pike-Raw-Carried-1",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Raw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 2,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Pike.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Pike.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Pike.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 2,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Pike.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Pike-Raw-Carried-2",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Raw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 3,
+    "maxQuantity": 7,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PikeMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -0.5
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "PikeMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -0.5
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "PikeMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -0.5
+        }
+      },
+      "UP": {
+        "filename": "PikeMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -0.5
+        }
+      },
+      "UP_LEFT": {
+        "filename": "PikeMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -0.5
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "PikeMedium.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -0.5
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Pike-Raw-Carried-3",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Raw",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 8,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PikeLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -1.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "PikeLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -1.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "PikeLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -1.0
+        }
+      },
+      "UP": {
+        "filename": "PikeLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -1.0
+        }
+      },
+      "UP_LEFT": {
+        "filename": "PikeLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -1.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "PikeLarge.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -1.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Pike-Prepared-Carried-1",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Pike-Prepared",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 16,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "PikeFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -2.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "PikeFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -2.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "PikeFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 2,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -2.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "PikeFillet.png",
+        "parentEntityAssets": [
+          {
+            "type": "HUMANOID_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -2.0
+        }
+      }
+    }
+  }
+]

@@ -15,6 +15,7 @@ ACTION.JOB.DIGGING,Digging {{targetDescription}},,Gräbt {{targetDescription}},C
 ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER,Emptying out contents of {{targetDescription}},,,,,,,,,,,,,,,,,,,
 ACTION.JOB.EXTINGUISH_FLAMES,Putting out a fire,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.FILL_GRAVE,Filling {{targetDescription}},,Füllt {{targetDescription}},Rempli {{targetDescription}},Riempimento {{targetDescription}},Rellenar {{targetDescription}},Preenchimento {{targetDescription}},,,Заполнение {{targetDescription}},{{targetDescription}} dolduruluyor,Fylder {{targetDescription}},,Fyllning {{targetDescription},,,,{{targetDescription}}を埋めています,填写 {{targetDescription}},{{대상 설명}} 을 (를) 채우는 중입니다.
+ACTION.JOB.FISHING,Fishing,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.GENERIC,{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},,,,{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.HARVESTING,Harvesting {{targetPlant}},,Erntet {{targetPlant}},Récolte: {{targetPlant}},Sta raccogliendo: {{targetPlant}},Cosechando {{targetPlant}},A colher {{targetPlant}},Colhendo {{targetPlant}},,Собирает: {{targetPlant}},{{targetPlant}} biçiliyor,Høster {{targetPlant}},,Skörd {{targetPlant}},,,,{{targetPlant}}を収穫しています,收获 {{targetPlant}},수확 {{타겟 플랜트}}
 ACTION.JOB.INNOCULATE_MUSHROOM_LOG,Injecting mushroom spawn,,Injiziert Pilzkultur,Plantation de la champignonnière,Iniezione delle uova di funghi,Inyección de hongos,Injetar desova de cogumelos,,,Впрыскивание грибов,Mantar özü aşılanıyor.,Indsprøjter svampe spawn,,Injicera svamp leka,,,,キノコの胞子を注入,注射蘑菇产卵,버섯 산란 주입
@@ -31,6 +32,16 @@ ACTION.SLEEP_IN_BED.DESCRIPTION,,,Schläft in {{containerDescription}},Dors: {{c
 ACTION.SLEEP_ON_FLOOR.DESCRIPTION,Sleeping on {{tileDescription}},,Schläft auf {{tileDescription}},Dors: {{tileDescription}},Sta dormendo su: {{tileDescription}},Durmiendo sobre {{tileDescription}},A dormir em {{tileDescription}},Dormindo em {{tileDescription}},,Спит на: {{tileDescription}},{{tileDescription}} üzerinde uyuyor.,Sover på {{tileDescription}},,Sova på {{TileDescription},,,,{{tileDescription}} でスリープ中,睡在 {{tileDescription}},{{tileDescription}} 에서 일시 정지 중
 
 ASHES.NOUN,Ash,,,,,,,,,,,,,,,,,,,
+
+CARCASS.CARP.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.CARP.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.CARP.RAW,Carp,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.RAW,Perch,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.RAW,Pike,,,,,,,,,,,,,,,,,,,
 
 CLOTH.HEMP-LINEN,Hemp,,,,,,,,,,,,,,,,,,,
 
@@ -51,6 +62,7 @@ CRAFTING_TYPE.BLACKSMITHING,Blacksmithing,,Schmieden,,,,,,,,Demirci,,,,,,,,,
 CRAFTING_TYPE.CARPENTRY,Carpentry,,Schreinern,,,,,,,,Marangoz,,,,,,,,,
 CRAFTING_TYPE.COKE_OVEN_BAKING,Coke baking,,Verkoken,,,,,,,,Fırıncılık,,,,,,,,,
 CRAFTING_TYPE.FERMENTING,Fermenting,,Gären,,,,,,,,Fermantasyon,,,,,,,,,
+CRAFTING_TYPE.FOOD_PREPARATION,Food preparation,,,,,,,,,,,,,,,,,,,
 CRAFTING_TYPE.MALTING,Malting,,Mälzen,,,,,,,,Çimlendirme,,,,,,,,,
 CRAFTING_TYPE.MALT_MASHING,Malt mashing,,Maischen,,,,,,,,Mayşeleme,,,,,,,,,
 CRAFTING_TYPE.MILLING,Milling,,Mahlen,,,,,,,,Frzeleme,,,,,,,,,
@@ -128,6 +140,8 @@ FURNITURE.BLOOMERY_FURNACE,Bloomery furnace,,Rennofen,Four à fleurs,Forno a fio
 FURNITURE.BLOOMERY_FURNACE.TOOLTIP,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,,"Ein {{PROFESSION.BLACKSMITH}} benutzt diese handbetriebene Schmiede, um {{RESOURCE.ORE.CRUSHED.PLURAL}} und {{FUEL.SACK}} zu {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} zu verarbeiten.",Un {{PROFESSION.BLACKSMITH}} utilise ce four à commande manuelle pour transformer {{RESOURCE.ORE.CRUSHED.PLURAL}} et {{FUEL.SACK}} en {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}}}}.,Un {{PROFESSION.BLACKSMITH} utilizza questo forno manuale per trasformare {{RESOURCE.ORE.CRUSHED.PLURAL}} e {{FUEL.SACK}} in {{MATERIAL_TYPE.METAL.ADJETTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}}}}}.,Un {{PROFESSION.BLACKSMITH}} utiliza este horno manual para convertir {{RESOURCE.ORE.CLUSH.PLURAL}} y {{FUEL.SACK}} en {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INTOT.PLURAL}}.,Um {{PROFISSION.BLACKSMITH}} usa este forno operado à mão para transformar {{RESOURCE.ORE.CROSSHED.PLURAL}} e {{FUEL.SACK}} em {{MATERIAL_TYPE.METAL.ADJECTIVE}} {RESOURCE.METAL.INGOT.PLURAL}}.,,,"{{PROFESSION.BLACKSMITH}} использует эту ручную печь, чтобы превратить {{RESOURCE.ORE.CRUSHED.PLURAL}} и {{FUEL.SACK}} в {{MATERIAL_TYPE.METAL.ADJECTIVE}} {RESOURCE.METAL.INGOT.PLURAL}}.","{{PROFESSION.BLACKSMITH}} manuel fırını kullanarak  {{RESOURCE.ORE.CRUSHED.PLURAL}} ve {{FUEL.SACK}} nı  {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} dönüştürür. ",En {{PROFESSION.BLACKSMITH}} bruger denne hånd-opereret ovn til at forvandle  {{RESOURCE.ORE.CRUSHED.PLURAL}} og {{FUEL.SACK}} om til {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,,En {{PROFESSI.BLAKSMITH}} använder denna handdrivna ugn för att omvandla {{RESOURCE.ORE.CRUSHED.PLURAL}} och {FUEL.SACK}} till {{MATERIAL_TYPE.METAL.INGOT.PLURAL}}.,,,,{{プロフェッショナル.ブラックスミス}} はこの手作業で操作する炉を使用して {{リソース.鉱石.くじ.多型}} と {{燃料.サック} を {材質.金属.調整可能} {リソース.金属.金属.多型} に変わります。,A {{{{专业. 铁匠}} 使用这个手动操作的炉子将 {{资源. 金属. 复数}} 和 {{燃料. 麻袋}} 转化为 {{材料 _ 类型. 金属. 形容词}}} {{资源. 金属. 复数}}。,{{PROFESSION.BLACKSMITH}} 는 이 수동식 용광로를 사용하여 {{RESOURCE.ORE.CRUSHED.PLURAL}} 과 {{FUEL.SACK}} 을 {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} 으로 전환합니다.
 FURNITURE.BREW_KETTLE,Brew kettle,,Braukessel,,,,,,,,Demleme tankı,,,,,,,,,
 FURNITURE.BREW_KETTLE.TOOLTIP,This is used to produce the final wort (unfermented beer) using {{VEGETABLE.HOPS}} and wort from the {{FURNITURE.MASH_TUN}}.,,Aus {{VEGETABLE.HOPS}} und Stammwürze vom {{FURNITURE.MASH_TUN}} wird hier die Bierwürze (ungegärtes Bier) hergestellt.,,,,,,,,Bu tank {{VEGETABLE.HOPS}} ve {{FURNITURE.MASH_TUN}} kullanarak fermente edilmemiş birayı yapmakta kullanılır.,,,,,,,,,
+FURNITURE.BUTCHERY_WORKTOP,Butchery worktop,,,,,,,,,,,,,,,,,,,
+FURNITURE.BUTCHERY_WORKTOP.TOOLTIP,Fish and animal carcasses are prepared here into usable meat.,,,,,,,,,,,,,,,,,,,
 FURNITURE.CARPENTRY_WORKBENCH,Carpentry workbench,,Schreinerstation,Établi de menuisier,Banco dell'artigiano,Mesa de trabajo de carpintero,Bancada de trabalho de carpintaria,Bancada de carpintaria,,Верстак плотника,Marangoz çalışma tezgahı,Tømers arbejdsbord,,Snickarbänk,,,,大工ワークベンチ,木工工作台,목공 작업대
 FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.",,"Die meisten Gegenstände und Werkzeuge aus Holz werden hier hergestellt, wie {{PRODUCT.BUCKET.PLURAL}} und {{PRODUCT.BARREL.PLURAL}}.","La plupart des articles et outils en bois sont produits ici, tels que {{PRODUCT.BUCKET.PLURAL}} et {{PRODUCT.BARREL.PLURAL}}.","La maggior parte degli oggetti e degli utensili in legno sono prodotti qui, come {PRODUCT.BUCKET.PLURAL}} e {PRODUCT.BARREL.PLURAL}}.","La mayoría de los artículos y herramientas de madera se producen aquí, como {{PRODUCT.BUCKET.PLURAL}} y {{PRODUCT.BARREL.PLURAL}}.","A maioria dos itens e ferramentas de madeira são produzidos aqui, como {{PRODUCT.BUCKET.PLURAL}} e {{PRODUCT.BARREL.PLURAL}}.",,,"Здесь производится большинство деревянных изделий и инструментов, таких как {{PRODUCT.BUCKET.PLURAL}} и {PRODUCT.BARREL.PLURAL}}.",Tahtadan yapılan {{PRODUCT.BUCKET.PLURAL}} ve {{PRODUCT.BARREL.PLURAL}} gibi eşya ve aletlerin bir çoğu burada yapılır.,"De fleste træ genstande og værktøjer er produceret her, såsom {{PRODUCT.BUCKET.PLURAL}} og {{PRODUCT.BARREL.PLURAL}}.",,"De flesta träartiklar och verktyg produceras här, till exempel {{PRODUCT.BOCKET.PLURAL} och {{PRODUCT.BARREL.PLURAL}}.",,,,{{PRODUCT.BUCKET.PLURAL}} や {{PRODUCT.BARREL.PLURAL} など、ほとんどの木製アイテムや道具がここで生産されています。,大多数木制物品和工具都在这里生产，例如 {{产品. 桶. 复数}} 和 {{产品. 桶. 复数}}。,대부분의 목재 항목과 도구는 여기서 생산됩니다. 예를 들어 {{PRODUCT.BUCKET.PLURAL}} 및 {{PRODUCT.BARREL.PLURAL}}.
 FURNITURE.CAULDRON,Cauldron,,Kessel,Chaudron,Calderone,Caldero,Caldeirão,Caldeirão,,Котел,Kessel,Kedel,,Kittel,,,,大釜だ,大锅,가마솥
@@ -360,6 +374,7 @@ GUI.LOAD_GAME.TABLE.GAME_TIME,World time,,Uhrzeit,,,,,,,,,,,,,,,,,
 GUI.LOAD_GAME.TABLE.SETTLEMENT_NAME,Name,,Name,,,,,,,,,,,,,,,,,
 GUI.LOAD_GAME.TABLE.VERSION,Version,,Version,,,,,,,,,,,,,,,,,
 GUI.LOAD_GAME.TITLE,Load Game,,Lade Spiel,,,,,,,,,,,,,,,,,
+GUI.MAP_SEED.COPY_TO_CLIPBOARD,Copy to clipboard,,,,,,,,,,,,,,,,,,,
 GUI.MAP_SEED_DISPLAY,"Current map seed: ",,,,,,,,,,,,,,,,,,,
 GUI.MECHANISM.SHAFT.HORIZONTAL,Horizontal,,,,,,,,,,,,,,,,,,,
 GUI.MECHANISM.SHAFT.VERTICAL,Vertical,,,,,,,,,,,,,,,,,,,
@@ -558,6 +573,14 @@ MATERIAL_TYPE.VITRIOL.NOUN,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,�
 MATERIAL_TYPE.WOOD.ADJECTIVE,Wooden,,Holz,en bois,di legno,De madera,De madeira,de madeira,,(дерево),Tahtadan,Træ,,Trä-,,,,木製,木制的,나무
 MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерево,Tahta,Træ,,Trä,,,,木材,木,나무
 
+MEAT.CARP_MEAT.NOUN,Carp,,,,,,,,,,,,,,,,,,,
+MEAT.CARP_MEAT.PLURAL,Carp,,,,,,,,,,,,,,,,,,,
+MEAT.DWARF_FLESH,Dwarf flesh,,,,,,,,,,,,,,,,,,,
+MEAT.PERCH_MEAT.NOUN,Perch,,,,,,,,,,,,,,,,,,,
+MEAT.PERCH_MEAT.PLURAL,Perch,,,,,,,,,,,,,,,,,,,
+MEAT.PIKE_MEAT.NOUN,Pike,,,,,,,,,,,,,,,,,,,
+MEAT.PIKE_MEAT.PLURAL,Pike,,,,,,,,,,,,,,,,,,,
+
 MECHANISM.FURNITURE.CONSUMING_POWER,Working - consuming {{power}} power,,,,,,,,,,,,,,,,,,,
 MECHANISM.FURNITURE.PRODUCING_POWER,Working - producing {{power}} power,,,,,,,,,,,,,,,,,,,
 MECHANISM.FURNITURE.REQUIRES_OUTSIDE_PLACEMENT,This must be outside to function correctly,,,,,,,,,,,,,,,,,,,
@@ -634,6 +657,8 @@ NOTIFICATION.DEATH.SHORT_DESCRIPTION,Died due to {{reason}},,Wegen {{reason}} ge
 NOTIFICATION.DEATH.TITLE,Settler death,,Siedlertod,Décès d'un colon,Morte colono,Muerte de colonos,Morte de colono,,,Смерть поселенцев,Vatandaş ölümü,Settler død,,Settler död,,,,セトラー・デス,定居者死亡,세틀러 죽음
 NOTIFICATION.FIRE_STARTED.DESCRIPTION,A fire has broken out in your settlement!,,,,,,,,,,,,,,,,,,,
 NOTIFICATION.FIRE_STARTED.TITLE,Fire!,,,,,,,,,,,,,,,,,,,
+NOTIFICATION.FISH_EXHAUSTED.DESCRIPTION,You have over-fished the river to such an extent that there are no more fish left. You will have to wait until the spawning season next spring for the fish to return.,,,,,,,,,,,,,,,,,,,
+NOTIFICATION.FISH_EXHAUSTED.TITLE,Fish depopulated,,,,,,,,,,,,,,,,,,,
 NOTIFICATION.GAME_OVER.DESCRIPTION,All things must come to an end. Your settlement lies abandoned.,,Alle Dinge müssen zu einem Ende kommen. Deine Siedlung ist verlassen.,Toutes les bonnes choses doivent prendre fin. Votre colonie est abandonnée.,Tutto deve finire. Il tuo insediamento e' abbandonato.,Todas las cosas deben llegar a su fin. Tu asentamiento está abandonado.,Todas as coisas devem chegar ao fim. Seu assentamento está abandonado.,,,Все должно закончиться. Ваше поселение заброшено.,Her güzel şeyin bir sonu var. Yerleşken terk edildi.,Alt må komme til en ende. Jeres forlig ligger forladt.,,Allt måste komma till ett slut. Din bosättning ligger övergiven.,,,,すべてのものは終わらなければならない。 あなたの和解は捨てられています。,一切都必须结束。 你的定居点就放弃了,모든 것이 끝나야합니다. 당신의 정착은 버려진 거짓말.
 NOTIFICATION.GAME_OVER.TITLE,Game Over,,Spielende,Fin de la partie,Partita finita,Fin del juego,Fim de jogo,,,Игра окончена,Oyun Bitti,Spil Over,,Game Over,,,,ゲームオーバー,游戏结束,게임 오버
 NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,,"Der Wohlstand deiner Siedlung hat eine Reihe neuer Einwanderer angezogen, um deine Bevölkerung zu verstärken.",La prospérité de votre établissement a attiré un certain nombre de nouveaux immigrants pour stimuler votre population.,La prosperità del vostro insediamento ha attirato un certo numero di nuovi immigrati per aumentare la vostra popolazione.,La prosperidad de su asentamiento ha atraído a un número de nuevos inmigrantes para impulsar su población.,A prosperidade do seu assentamento atraiu uma série de novos imigrantes para impulsionar a sua população.,,,"Процветание вашего поселения привлекло ряд новых иммигрантов, чтобы увеличить ваше население.",Yerleşkenin refahı nüfusunu arttıracak yeni göçmenleri cezbetti.,Velstanden i jeres bosættelse har tiltrukket en række nye indvandrere til at øge jeres befolkning.,,Välståndet i er bosättning har lockat ett antal nya invandrare för att öka er befolkning.,,,,あなたの和解の繁栄は、あなたの人口を高めるために新しい移民の数を集めています。,你们定居点的繁荣吸引了许多新移民来增加你们的人口。,당신의 정착지의 번영은 당신의 인구를 높이기 위해 새로운 이민자의 숫자를 끌고있다.
