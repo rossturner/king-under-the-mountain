@@ -36,21 +36,21 @@ allprojects {
 }
 
 project(":desktop") {
-    apply plugin: "java"
+    apply plugin: "java-library"
     sourceCompatibility = 11
 
 
     dependencies {
-        compile project(":core")
-//        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion" // Now part of core module (code smell)
-        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-        compile group: 'com.amazonaws', name: 'aws-java-sdk-translate', version: '1.11.708'
+        implementation project(":core")
+//        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion" // Now part of core module (code smell)
+        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        api group: 'com.amazonaws', name: 'aws-java-sdk-translate', version: '1.11.708'
 
 
-        testCompile "junit:junit:4.10"
-        testCompile "org.mockito:mockito-core:3.5.13"
-        testCompile "org.easytesting:fest-assert:1.4"
+        testImplementation "junit:junit:4.10"
+        testImplementation "org.mockito:mockito-core:3.5.13"
+        testImplementation "org.easytesting:fest-assert:1.4"
     }
 
     clean.doFirst {
@@ -83,32 +83,32 @@ project(":desktop") {
     }
 
     task('zipWin', type: Zip, dependsOn: 'iconWin') {
-        archiveName = "King under the Mountain $version win64.zip"
-        destinationDir = file("../release_tools")
+        archiveFileName = "King under the Mountain $project.version win64.zip"
+        destinationDirectory = file("../release_tools")
         from "../release_tools/win64_release"
     }
     task('zipMac', type: Zip, dependsOn: 'packrMac') {
-        archiveName = "King under the Mountain $version macosx.zip"
-        destinationDir = file("../release_tools")
+        archiveFileName = "King under the Mountain $project.version macosx.zip"
+        destinationDirectory = file("../release_tools")
         from "../release_tools/macosx_release"
     }
     task('zipLinux', type: Zip, dependsOn: 'packrLinux') {
-        archiveName = "King under the Mountain $version linux64.zip"
-        destinationDir = file("../release_tools")
+        archiveFileName = "King under the Mountain $project.version linux64.zip"
+        destinationDirectory = file("../release_tools")
         from "../release_tools/linux64_release"
     }
 
     task('butlerWin', type: Exec, dependsOn: 'iconWin') {
         workingDir '../release_tools'
-        commandLine 'butler', 'push', 'win64_release', 'rocketjumptechnology/king-under-the-mountain:win', '--userversion', "$version"
+        commandLine 'butler', 'push', 'win64_release', 'rocketjumptechnology/king-under-the-mountain:win', '--userversion', "$project.version"
     }
     task('butlerMac', type: Exec, dependsOn: 'packrMac') {
         workingDir '../release_tools'
-        commandLine 'butler', 'push', 'macosx_release', 'rocketjumptechnology/king-under-the-mountain:osx', '--userversion', "$version"
+        commandLine 'butler', 'push', 'macosx_release', 'rocketjumptechnology/king-under-the-mountain:osx', '--userversion', "$project.version"
     }
     task('butlerLinux', type: Exec, dependsOn: 'packrLinux') {
         workingDir '../release_tools'
-        commandLine 'butler', 'push', 'linux64_release', 'rocketjumptechnology/king-under-the-mountain:linux', '--userversion', "$version"
+        commandLine 'butler', 'push', 'linux64_release', 'rocketjumptechnology/king-under-the-mountain:linux', '--userversion', "$project.version"
     }
 
     task('zipAll') {
@@ -125,43 +125,43 @@ project(":desktop") {
 }
 
 project(":core") {
-    apply plugin: "java"
+    apply plugin: "java-library"
     sourceCompatibility = 11
 
 
     dependencies {
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion" // This is only here to multi-thread audio
-        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        compile ("com.badlogicgames.gdx:gdx-tools:$gdxVersion") {
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+        api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion" // This is only here to multi-thread audio
+        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        api ("com.badlogicgames.gdx:gdx-tools:$gdxVersion") {
             exclude group: 'com.badlogicgames.gdx', module: 'gdx-backend-lwjgl'
         }
-        compile 'com.google.inject:guice:4.2.3:no_aop'
-        compile "com.kotcrab.vis:vis-ui:1.4.0"
+        api 'com.google.inject:guice:4.2.3:no_aop'
+        api "com.kotcrab.vis:vis-ui:1.4.0"
 
-        compile "commons-io:commons-io:2.4"
-        compile "org.apache.commons:commons-csv:1.3"
-        compile "org.apache.commons:commons-lang3:3.4"
-        compile "org.apache.commons:commons-compress:1.20"
-        compile "com.alibaba:fastjson:1.2.7"
-        compile "com.fasterxml.jackson.core:jackson-databind:2.6.4"
-        compile 'org.reflections:reflections:0.9.11'
-        compile "org.tinylog:tinylog:1.3.4"
-        compile 'com.squareup.okhttp3:okhttp:3.10.0'
+        api "commons-io:commons-io:2.4"
+        api "org.apache.commons:commons-csv:1.3"
+        api "org.apache.commons:commons-lang3:3.4"
+        api "org.apache.commons:commons-compress:1.20"
+        api "com.alibaba:fastjson:1.2.7"
+        api "com.fasterxml.jackson.core:jackson-databind:2.6.4"
+        api 'org.reflections:reflections:0.9.11'
+        api "org.tinylog:tinylog:1.3.4"
+        api 'com.squareup.okhttp3:okhttp:3.10.0'
 
-        compile 'com.brsanthu:google-analytics-java:2.0.0' // comes with slf4j which is no-op below
-        compile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.25'
-        compile 'net.openhft:zero-allocation-hashing:0.9'
-        compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+        api 'com.brsanthu:google-analytics-java:2.0.0' // comes with slf4j which is no-op below
+        api group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.25'
+        api 'net.openhft:zero-allocation-hashing:0.9'
+        api group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
 
-        compile "technology.rocketjump:undermount-mapgen-core:1.6-SNAPSHOT"
+        api "technology.rocketjump:undermount-mapgen-core:1.6-SNAPSHOT"
 
-        testCompile "junit:junit:4.10"
-        testCompile "org.easytesting:fest-assert:1.4"
-        testCompile "org.mockito:mockito-core:3.5.13"
-        testCompile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        testCompile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        testImplementation "junit:junit:4.10"
+        testImplementation "org.easytesting:fest-assert:1.4"
+        testImplementation "org.mockito:mockito-core:3.5.13"
+        testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        testImplementation "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
     }
 
     task createProperties {
