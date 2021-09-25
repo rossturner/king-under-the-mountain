@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
+import technology.rocketjump.undermount.assets.WallTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.model.SpriteDescriptor;
 import technology.rocketjump.undermount.assets.entities.wallcap.model.WallCapAsset;
 import technology.rocketjump.undermount.rendering.RenderMode;
@@ -22,10 +23,12 @@ import static technology.rocketjump.undermount.assets.entities.humanoid.Humanoid
 public class WallCapAssetDictionaryProvider implements Provider<WallCapAssetDictionary> {
 
 	private final TextureAtlasRepository textureAtlasRepository;
+	private final WallTypeDictionary wallTypeDictionary;
 
 	@Inject
-	public WallCapAssetDictionaryProvider(TextureAtlasRepository textureAtlasRepository) {
+	public WallCapAssetDictionaryProvider(TextureAtlasRepository textureAtlasRepository, WallTypeDictionary wallTypeDictionary) {
 		this.textureAtlasRepository = textureAtlasRepository;
+		this.wallTypeDictionary = wallTypeDictionary;
 	}
 
 	@Override
@@ -46,7 +49,7 @@ public class WallCapAssetDictionaryProvider implements Provider<WallCapAssetDict
 				}
 			}
 
-			return new WallCapAssetDictionary(assetList);
+			return new WallCapAssetDictionary(assetList, wallTypeDictionary);
 		} catch (IOException e) {
 			// TODO better exception handling
 			throw new RuntimeException(e);

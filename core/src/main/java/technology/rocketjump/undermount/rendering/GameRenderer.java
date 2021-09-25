@@ -125,7 +125,8 @@ public class GameRenderer implements AssetDisposable {
 		particlesToRenderAsUI.clear();
 
 		MapTile cursorLightTile = worldMap.getTile(cursorLightPosition);
-		cursorLightEnabled = cursorLightTile != null && cursorLightTile.getExploration().equals(TileExploration.EXPLORED) && !cursorLightTile.hasWall();
+		cursorLightEnabled = cursorLightTile != null && cursorLightTile.getExploration().equals(TileExploration.EXPLORED) &&
+				!cursorLightTile.hasWall() && !cursorLightTile.hasDoorway();
 
 		if (cursorLightEnabled) {
 			lightProcessor.updateLightGeometry(cursorLight, worldMap);

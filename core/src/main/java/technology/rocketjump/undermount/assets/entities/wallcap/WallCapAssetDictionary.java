@@ -3,13 +3,15 @@ package technology.rocketjump.undermount.assets.entities.wallcap;
 import com.google.inject.Inject;
 import com.google.inject.ProvidedBy;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.WallTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.wallcap.model.WallCapAsset;
+import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.doors.Doorway;
 import technology.rocketjump.undermount.doors.DoorwayOrientation;
 import technology.rocketjump.undermount.doors.DoorwaySize;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
-import technology.rocketjump.undermount.materials.model.GameMaterialType;
 
 import java.util.List;
 import java.util.Map;
@@ -20,73 +22,42 @@ import java.util.concurrent.ConcurrentHashMap;
 public class WallCapAssetDictionary {
 
 	private final Map<String, WallCapAsset> assetsByName = new ConcurrentHashMap<>();
-	private final Map<String, Map<GameMaterialType, Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>>>> typedMap = new ConcurrentHashMap<>();
+	private final Map<WallType, Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>>> assetsByAttachedWallTypeByOrientation = new ConcurrentHashMap<>();
+	private WallCapAsset placeholder = new WallCapAsset();
 
 	@Inject
-	public WallCapAssetDictionary(List<WallCapAsset> completeAssetList) {
+	public WallCapAssetDictionary(List<WallCapAsset> completeAssetList, WallTypeDictionary wallTypeDictionary) {
 		for (WallCapAsset asset : completeAssetList) {
+			WallType wallType = wallTypeDictionary.getByWallTypeName(asset.getWallTypeName());
+			if (wallType == null) {
+				Logger.error("Could not find wall type with name " + asset.getWallTypeName() + " for " + asset.getUniqueName());
+				continue;
+			}
+
+			assetsByAttachedWallTypeByOrientation.computeIfAbsent(wallType, a -> new ConcurrentHashMap<>())
+					.computeIfAbsent(asset.getDoorwayOrientation(), a -> new ConcurrentHashMap<>())
+					.put(asset.getDoorwaySize(), asset);
+
 			assetsByName.put(asset.getUniqueName(), asset);
-
-			typedMap.computeIfAbsent(asset.getWallTypeName(), e -> new ConcurrentHashMap<>());
-
-			addToMapByMaterialType(asset, asset.getDoorwayMaterialType(), typedMap.get(asset.getWallTypeName()));
 		}
 	}
 
 	public WallCapAsset getMatching(Doorway doorway, DoorwayEntityAttributes wallCapAttributes) {
-		// TODO Need to return placeholder cap if none matched
-//		Map<GameMaterialType, Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>>> materialMap = typedMap.get(wallCapAttributes.getAttachedWallType().getWallTypeId());
-
-		// FIXME Forcing to only match against rough stone wall types
-		Map<GameMaterialType, Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>>> materialMap = typedMap.values().iterator().next();
-		if (materialMap == null) {
-			return null;
+		Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>> byOrientation = assetsByAttachedWallTypeByOrientation.get(wallCapAttributes.getAttachedWallType());
+		if (byOrientation == null) {
+			return placeholder;
 		}
-		Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>> orientationMap = materialMap.get(doorway.getDoorwayMaterialType());
-		if (orientationMap == null) {
-			return null;
+		Map<DoorwaySize, WallCapAsset> bySize = byOrientation.get(doorway.getOrientation());
+		if (bySize == null) {
+			return placeholder;
 		}
-		Map<DoorwaySize, WallCapAsset> sizeMap = orientationMap.get(doorway.getOrientation());
-		if (sizeMap == null) {
-			return null;
-		}
-		return sizeMap.get(doorway.getDoorwaySize());
-	}
-
-
-	private void addToMapByMaterialType(WallCapAsset asset, GameMaterialType doorwayMaterialType, Map<GameMaterialType, Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>>> assetMap) {
-		if (doorwayMaterialType == null) {
-			// Add to all material types
-			for (GameMaterialType gameMaterialType : GameMaterialType.values()) {
-				addToMapByMaterialType(asset, gameMaterialType, assetMap);
-			}
-			return;
-		}
-
-
-		if (!assetMap.containsKey(doorwayMaterialType)) {
-			assetMap.put(doorwayMaterialType, new ConcurrentHashMap<>());
-		}
-
-		addToMapByOrientation(asset, assetMap.get(doorwayMaterialType));
-	}
-
-	private void addToMapByOrientation(WallCapAsset asset, Map<DoorwayOrientation, Map<DoorwaySize, WallCapAsset>> assetMap) {
-		if (!assetMap.containsKey(asset.getDoorwayOrientation())) {
-			assetMap.put(asset.getDoorwayOrientation(), new ConcurrentHashMap<>());
-		}
-
-		addToMapByDoorwaySize(asset, assetMap.get(asset.getDoorwayOrientation()));
-	}
-
-	private void addToMapByDoorwaySize(WallCapAsset asset, Map<DoorwaySize, WallCapAsset> assetMap) {
-		if (!assetMap.containsKey(asset.getDoorwaySize())) {
-			assetMap.put(asset.getDoorwaySize(), asset);
+		WallCapAsset wallCapAsset = bySize.get(doorway.getDoorwaySize());
+		if (wallCapAsset == null) {
+			return placeholder;
 		} else {
-			throw new RuntimeException("Duplicated wall cap asset: " + asset.toString());
+			return wallCapAsset;
 		}
 	}
-
 
 	public Map<? extends String, ? extends EntityAsset> getAll() {
 		return assetsByName;
