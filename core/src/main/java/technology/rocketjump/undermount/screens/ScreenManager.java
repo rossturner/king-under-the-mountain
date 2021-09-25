@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.async.ErrorType;
 import technology.rocketjump.undermount.messaging.types.StartNewGameMessage;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameViewMode;
 import technology.rocketjump.undermount.ui.views.GuiViewName;
@@ -104,6 +105,9 @@ public class ScreenManager implements Telegraph, GameContextAware {
 		}
 
 		mapFactory.preSelectSpawnStep(gameContext, messageDispatcher);
+		if (DEV_MODE && !GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+			mapFactory.postSelectSpawnStep(gameContext, messageDispatcher, buildProfessionList());
+		}
 		// Trigger context change again for camera to be updated with map
 		gameContextRegister.setNewContext(gameContext);
 		gameContext.getAreaMap().setEmbarkPoint(null);

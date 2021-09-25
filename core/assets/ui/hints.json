@@ -21,6 +21,17 @@
   } ],
   "dismissable" : true
 }, {
+  "hintId" : "open_mechanisms_menu",
+  "i18nKeys" : [ "HINT.BUILD_POWER.1", "HINT.BUILD_POWER.2", "HINT.BUILD_POWER.3" ],
+  "progressDescriptors" : [ ],
+  "actions" : [ ],
+  "triggers" : [ {
+    "triggerType" : "GUI_SWITCH_VIEW",
+    "relatedTypeName" : "BUILD_MECHANISMS",
+    "quantity" : 0
+  } ],
+  "dismissable" : true
+}, {
   "hintId" : "no_axes_left",
   "i18nKeys" : [ "HINT.TOOL_DEPLETED.AXE1", "HINT.TOOL_DEPLETED.AXE2" ],
   "progressDescriptors" : [ ],

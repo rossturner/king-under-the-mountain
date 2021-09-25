@@ -228,7 +228,7 @@ public class GameMapConverter {
 		for (int x = 0; x < generatedSourceMap.getWidth(); x++) {
 			for (int y = 0; y < generatedSourceMap.getHeight(); y++) {
 				MapTile targetTile = targetMap.getTile(x, y);
-				targetTile.update(targetMap.getNeighbours(x, y), targetMap.getVertices(x, y));
+				targetTile.update(targetMap.getNeighbours(x, y), targetMap.getVertices(x, y), null);
 				if (targetTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 					markAsOutside(targetTile, targetMap);
 				}

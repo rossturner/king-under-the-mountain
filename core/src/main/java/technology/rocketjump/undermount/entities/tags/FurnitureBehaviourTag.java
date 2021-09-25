@@ -105,7 +105,10 @@ public class FurnitureBehaviourTag extends Tag {
 
 		// TODO Move these to dictionary in TagProcessingUtils and get by name
 		FILL_LIQUID_CONTAINER(FillLiquidContainerBehaviour.class),
+		WELL(WellBehaviour.class),
 		BEER_TAPPER(BeerTapperBehaviour.class),
+		WATER_PUMP(WaterPumpBehaviour.class),
+		POWER_SOURCE(PowerSourceBehaviour.class),
 		EDIBLE_LIQUID_SOURCE(EdibleLiquidSourceBehaviour.class),
 		MUSHROOM_SHOCK_TANK(MushroomShockTankBehaviour.class),
 		TRANSFORM_UPON_JOB_COMPLETION(TransformUponJobCompletionFurnitureBehaviour.class),

@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.mapping.model.MapEnvironment;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.MapVertex;
+import technology.rocketjump.undermount.mapping.tile.underground.PowerGrid;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.types.JobRequestMessage;
 import technology.rocketjump.undermount.misc.versioning.Version;
@@ -48,6 +49,7 @@ public class SavedGameStateHolder {
 	public final Map<Long, Construction> constructions = new HashMap<>();
 	public final Map<Long, Room> rooms = new HashMap<>();
 	public final Map<Long, Zone> zones = new HashMap<>();
+	public final Map<Long, PowerGrid> powerGrids = new HashMap<>();
 	public final Map<GridPoint2, MapTile> tiles = new HashMap<>();
 	public final Map<GridPoint2, MapVertex> vertices = new HashMap<>();
 	public final Map<Long, ProductionAssignment> productionAssignments = new HashMap<>();
@@ -74,6 +76,7 @@ public class SavedGameStateHolder {
 	public final JSONObject mapEnvironmentJson;
 	public final JSONArray roomsJson;
 	public final JSONArray zonesJson;
+	public final JSONArray powerGridJson;
 	public final JSONArray tileJson;
 	public final JSONArray vertexJson;
 	public final JSONArray productionAssignmentsJson;
@@ -98,6 +101,7 @@ public class SavedGameStateHolder {
 		mapEnvironmentJson = new JSONObject(true);
 		roomsJson = new JSONArray();
 		zonesJson = new JSONArray();
+		powerGridJson = new JSONArray();
 		tileJson = new JSONArray();
 		vertexJson = new JSONArray();
 		productionAssignmentsJson = new JSONArray();
@@ -123,6 +127,7 @@ public class SavedGameStateHolder {
 		mapEnvironmentJson = combined.getJSONObject("mapEnvironment");
 		roomsJson = combined.getJSONArray("rooms");
 		zonesJson = combined.getJSONArray("zones");
+		powerGridJson = combined.getJSONArray("powerGrids");
 		tileJson = combined.getJSONArray("tiles");
 		vertexJson = combined.getJSONArray("vertices");
 		productionAssignmentsJson = combined.getJSONArray("productionAssignments");
@@ -152,6 +157,7 @@ public class SavedGameStateHolder {
 		combined.put("mapEnvironment", mapEnvironmentJson);
 		combined.put("rooms", roomsJson);
 		combined.put("zones", zonesJson);
+		combined.put("powerGrids", powerGridJson);
 		combined.put("tiles", tileJson);
 		combined.put("vertices", vertexJson);
 		combined.put("productionAssignments", productionAssignmentsJson);
@@ -220,6 +226,7 @@ public class SavedGameStateHolder {
 		mapEnvironment.readFrom(mapEnvironmentJson, this, relatedStores);
 
 		convertJsonToInstances(roomsJson, Room.class, relatedStores);
+		convertJsonToInstances(powerGridJson, PowerGrid.class, relatedStores);
 
 		this.settlementState = new SettlementState();
 		this.settlementState.readFrom(settlementStateJson, this, relatedStores);
@@ -260,6 +267,9 @@ public class SavedGameStateHolder {
 	private  void convertJsonToInstances(JSONArray jsonArray,
 			 Class<? extends Persistable> persistableType, SavedGameDependentDictionaries relatedStores)
 			throws InvalidSaveException {
+		if (jsonArray == null) {
+			throw new InvalidSaveException("No json array persisted for " + persistableType.getSimpleName());
+		}
 		for (int cursor = 0; cursor < jsonArray.size(); cursor++) {
 			try {
 				JSONObject asJson = jsonArray.getJSONObject(cursor);

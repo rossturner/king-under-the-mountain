@@ -64,7 +64,7 @@ public class PlantViewApplication extends ApplicationAdapter {
 
 		Random random = new Random();
 
-		PlantSpecies species = plantSpeciesDictionary.getByName("Sunglow");
+		PlantSpecies species = plantSpeciesDictionary.getByName("Hemp");
 		attributes = new PlantEntityAttributes(random.nextLong(), species);
 
 		Vector2 position = new Vector2(cameraManager.getCamera().viewportWidth * 0.75f, cameraManager.getCamera().viewportHeight * 0.2f);

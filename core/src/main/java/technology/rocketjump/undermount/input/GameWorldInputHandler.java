@@ -75,6 +75,8 @@ public class GameWorldInputHandler implements InputProcessor, GameContextAware {
 				renderingOptions.toggleFloorOverlapRenderingEnabled();
 			} else if (keycode == Input.Keys.L) {
 				renderingOptions.debug().setShowIndividualLightingBuffers(!renderingOptions.debug().showIndividualLightingBuffers());
+			} else if (keycode == Input.Keys.F) {
+				renderingOptions.debug().setShowLiquidFlow(!renderingOptions.debug().isShowLiquidFlow());
 			} else if (keycode == Input.Keys.Z) {
 				renderingOptions.debug().setShowZones(!renderingOptions.debug().isShowZones());
 			} else if (keycode == Input.Keys.T) {
@@ -85,6 +87,8 @@ public class GameWorldInputHandler implements InputProcessor, GameContextAware {
 				messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.SPEED5);
 			} else if (keycode == Input.Keys.NUM_6 && gameContext != null) {
 				messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.VERY_SLOW);
+			} else if (keycode == Input.Keys.GRAVE) {
+				messageDispatcher.dispatchMessage(MessageType.TOGGLE_DEBUG_VIEW);
 			}
 		}
 

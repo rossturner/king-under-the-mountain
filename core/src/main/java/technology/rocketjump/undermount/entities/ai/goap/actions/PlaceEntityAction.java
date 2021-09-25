@@ -18,7 +18,6 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundAssetMessage;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -184,7 +183,7 @@ public class PlaceEntityAction extends Action {
 
 					if (itemToPlaceAttributes.getQuantity() <= 0) {
 						removeTargetFrom(containerComponent);
-						parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(entityToPlace.getId()));
+						parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entityToPlace);
 					} else if (parent.getAssignedHaulingAllocation() != null) {
 						// decrement allocation amount
 						parent.getAssignedHaulingAllocation().getItemAllocation().setAllocationAmount(itemToPlaceAttributes.getQuantity());

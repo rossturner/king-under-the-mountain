@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.mapping.tile;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
@@ -13,6 +14,7 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
@@ -22,9 +24,13 @@ import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallConstructionLayout;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
+import technology.rocketjump.undermount.mapping.tile.underground.ChannelLayout;
+import technology.rocketjump.undermount.mapping.tile.underground.PipeLayout;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
+import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.particles.model.ParticleEffectInstance;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -54,13 +60,14 @@ public class MapTile implements Persistable {
 	private final GridPoint2 tilePosition;
 	private int regionId = -1; // -1 for unset
 
-	private Map<Long, Entity> entities = new ConcurrentHashMap<>(); // Concurrent for access by PathfindingTask
-	private Map<Long, ParticleEffectInstance> particleEffects = new HashMap<>();
+	private final Map<Long, Entity> entities = new ConcurrentHashMap<>(); // Concurrent for access by PathfindingTask
+	private final Map<Long, ParticleEffectInstance> particleEffects = new HashMap<>();
 
 	private TileRoof roof;
-	private Deque<TileFloor> floors = new ArrayDeque<>();
 	private Wall wall = null;
 	private Doorway doorway = null;
+	private final Deque<TileFloor> floors = new ArrayDeque<>();
+	private UnderTile underTile;
 
 	private TileDesignation designation = null;
 	private RoomTile roomTile = null;
@@ -79,10 +86,24 @@ public class MapTile implements Persistable {
 		}
 	}
 
-	public void update(TileNeighbours neighbours, MapVertex[] vertexNeighboursOfCell) {
+	public void update(TileNeighbours neighbours, MapVertex[] vertexNeighboursOfCell, MessageDispatcher messageDispatcher) {
 		if (hasWall()) {
 			WallLayout newLayout = new WallLayout(neighbours);
 			wall.setTrueLayout(newLayout);
+		}
+		if (hasChannel()) {
+			ChannelLayout newLayout = new ChannelLayout(neighbours);
+			getUnderTile().setChannelLayout(newLayout);
+		}
+		if (hasPipe()) {
+			PipeLayout newPipeLayout = new PipeLayout(neighbours);
+			MechanismEntityAttributes attributes = (MechanismEntityAttributes) underTile.getPipeEntity().getPhysicalEntityComponent().getAttributes();
+			if (!newPipeLayout.equals(attributes.getPipeLayout())) {
+				attributes.setPipeLayout(newPipeLayout);
+				if (messageDispatcher != null) {
+					messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, underTile.getPipeEntity());
+				}
+			}
 		}
 
 		// Always update FloorOverlaps for all tiles
@@ -158,6 +179,12 @@ public class MapTile implements Persistable {
 				return true; // Can navigate from a river tile to another river tile
 			} else {
 				return false; // Otherwise rivers are not navigable
+			}
+		} else if (hasChannel() && !getFloor().isBridgeNavigable()) {
+			if (startingPoint != null && startingPoint.hasChannel()) {
+				return true; // Can navigate from a channel tile to another channel tile
+			} else {
+				return false; // Otherwise channels are not navigable
 			}
 		} else if (!hasWall() && !hasTree()) {
 			if (getFloor().hasBridge() && !getFloor().isBridgeNavigable()) {
@@ -240,6 +267,13 @@ public class MapTile implements Persistable {
 	}
 
 	public Entity removeEntity(long entityId) {
+		if (hasPipe()) {
+			Entity pipeEntity = underTile.getPipeEntity();
+			if (pipeEntity.getId() == entityId) {
+				underTile.setPipeEntity(null);
+				return pipeEntity;
+			}
+		}
 		return entities.remove(entityId);
 	}
 
@@ -432,6 +466,8 @@ public class MapTile implements Persistable {
 			return RegionType.RIVER;
 		} else if (hasWall()) {
 			return RegionType.WALL;
+		} else if (hasChannel()) {
+			return RegionType.CHANNEL;
 		} else {
 			return RegionType.GENERIC;
 		}
@@ -480,6 +516,12 @@ public class MapTile implements Persistable {
 			JSONObject doorwayJson = new JSONObject(true);
 			doorway.writeTo(doorwayJson, savedGameStateHolder);
 			asJson.put("door", doorwayJson);
+		}
+
+		if (underTile != null) {
+			JSONObject undertileJson = new JSONObject(true);
+			underTile.writeTo(undertileJson, savedGameStateHolder);
+			asJson.put("underTile", undertileJson);
 		}
 
 		if (designation != null) {
@@ -556,6 +598,12 @@ public class MapTile implements Persistable {
 			this.doorway.readFrom(doorJson, savedGameStateHolder, relatedStores);
 		}
 
+		JSONObject underTileJson = asJson.getJSONObject("underTile");
+		if (underTileJson != null) {
+			this.underTile = new UnderTile();
+			this.underTile.readFrom(underTileJson, savedGameStateHolder, relatedStores);
+		}
+
 		String designationName = asJson.getString("designation");
 		if (designationName != null) {
 			this.designation = relatedStores.tileDesignationDictionary.getByName(designationName);
@@ -617,7 +665,38 @@ public class MapTile implements Persistable {
 		this.floors.pop();
 	}
 
+	public UnderTile getUnderTile() {
+		return underTile;
+	}
+
+	public UnderTile getOrCreateUnderTile() {
+		if (underTile == null) {
+			underTile = new UnderTile();
+		}
+		return underTile;
+	}
+
+	public void setUnderTile(UnderTile underTile) {
+		this.underTile = underTile;
+	}
+
+	public boolean hasChannel() {
+		return underTile != null && underTile.getChannelLayout() != null;
+	}
+
+	public boolean hasPipe() {
+		return underTile != null && underTile.getPipeEntity() != null;
+	}
+
+	public Deque<TileFloor> getAllFloors() {
+		return floors;
+	}
+
+	public boolean hasPowerMechanism() {
+		return underTile != null && underTile.getPowerMechanismEntity() != null;
+	}
+
 	public enum RegionType {
-		RIVER, WALL, GENERIC
+		RIVER, WALL, CHANNEL, GENERIC
 	}
 }

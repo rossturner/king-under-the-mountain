@@ -5,9 +5,11 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.entities.furniture.model.FurnitureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAsset;
+import technology.rocketjump.undermount.assets.entities.mechanism.model.MechanismEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.assets.entities.plant.model.PlantEntityAsset;
 import technology.rocketjump.undermount.assets.entities.wallcap.model.WallCapAsset;
+import technology.rocketjump.undermount.assets.model.ChannelType;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.OverlapType;
 import technology.rocketjump.undermount.assets.model.WallType;
@@ -22,6 +24,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.environment.model.DailyWeatherType;
 import technology.rocketjump.undermount.environment.model.WeatherType;
@@ -89,6 +92,9 @@ public class ModArtifactListing {
 				def("definitions/entityAssets", "wallCapAssets", SINGLE_FILE, JSON_ARRAY, WallCapAsset.class,
 						"entities/wallCap", "**/descriptors", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
+				def("definitions/entityAssets", "mechanismEntityAssets", SINGLE_FILE, JSON_ARRAY, MechanismEntityAsset.class,
+						"entities/mechanisms", "**/descriptors", JSON_ARRAY, ADDITIVE,
+						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
 
 				def("definitions/crafting", "cookingRecipes", SINGLE_FILE, JSON_ARRAY, CookingRecipe.class,
 						"definitions/crafting", "cookingRecipes", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
@@ -103,6 +109,8 @@ public class ModArtifactListing {
 
 				def("definitions/types", "wallTypes", SINGLE_FILE, JSON_ARRAY, WallType.class,
 						"terrain/walls", "**/definition.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/types", "channelTypes", SINGLE_FILE, JSON_ARRAY, ChannelType.class,
+						"terrain/channels", "**/definition.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "bridgeTypes", SINGLE_FILE, JSON_ARRAY, BridgeType.class,
 						"terrain/bridges", "**/bridge-tileset-definition.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "overlapTypes", SINGLE_FILE, JSON_ARRAY, OverlapType.class,
@@ -131,6 +139,8 @@ public class ModArtifactListing {
 						"entities/plant", "**/plantSpecies.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "ongoingEffectTypes", SINGLE_FILE, JSON_ARRAY, OngoingEffectType.class,
 						"entities/ongoingEffects", "**/effectTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/types", "mechanismTypes", SINGLE_FILE, JSON_ARRAY, MechanismType.class,
+						"entities/mechanisms", "**/mechanismTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				def("definitions", "materials", SINGLE_FILE, JSON_ARRAY, GameMaterial.class,
 						"definitions/materials", "*-materials.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
@@ -232,15 +242,13 @@ public class ModArtifactListing {
 						"ui", "uiSettings", JSON_OBJECT, REPLACES_EXISTING, UntypedJsonProcessor.class),
 
 				////////// water //////////
-				def("water", "water", SINGLE_FILE, PNG, null,
+				def("water/sprite", "water", SINGLE_FILE, PNG, null,
 						"water", "water.png", PNG, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "water_flow_fragment_shader", SINGLE_FILE, GLSL, null,
-						"water", "water_flow_fragment_shader.glsl", GLSL, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "water_flow_vertex_shader", SINGLE_FILE, GLSL, null,
-						"water", "water_flow_vertex_shader.glsl", GLSL, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "water_NORMALS", SINGLE_FILE, PNG, null,
+				def("water/shaders", null, COPY_ORIGINAL_FILES, GLSL, null,
+						"water", "*.glsl", GLSL, ADDITIVE, CopyFilesProcessor.class),
+				def("water/normal_sprite", "water_NORMALS", SINGLE_FILE, PNG, null,
 						"water", "water_NORMALS.png", PNG, REPLACES_EXISTING, CopyFilesProcessor.class),
-				def("water", "wave_mask", SINGLE_FILE, PNG, null,
+				def("water/mask", "wave_mask", SINGLE_FILE, PNG, null,
 						"water", "wave_mask.png", PNG, REPLACES_EXISTING, CopyFilesProcessor.class)
 
 		);

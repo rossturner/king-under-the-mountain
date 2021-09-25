@@ -62,6 +62,16 @@
     "workOnJobParticleEffectNames": ["Digging ground offset tile"]
   },
   {
+    "name": "DIG_CHANNEL",
+    "defaultTimeToCompleteJob": 5,
+    "overrideI18nKey": "ACTION.JOB.SHOVELLING",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "MINER",
+    "requiredItemTypeName": "Tool-Pickaxe",
+    "activeSoundAssetName": "Tilling",
+    "workOnJobParticleEffectNames": ["Digging ground offset tile"]
+  },
+  {
     "name": "PLANTING",
     "defaultTimeToCompleteJob": 2,
     "overrideI18nKey": "ACTION.JOB.PLANTING",
@@ -231,6 +241,38 @@
     "accessedFromAdjacentTile": true,
     "requiredProfessionName": "CARPENTER",
     "onCompletionSoundAssetName": "ImpactPlank"
+  },
+  {
+    "name": "CONSTRUCT_PIPING",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.CONSTRUCT_PIPING",
+    "accessedFromAdjacentTile": true,
+    "requiredItemTypeName": "Product-Stone-Pipe",
+    "haulItemWhileWorking": true,
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
+  },
+  {
+    "name": "DECONSTRUCT_PIPING",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.DECONSTRUCT_PIPING",
+    "accessedFromAdjacentTile": true,
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
+  },
+  {
+    "name": "CONSTRUCT_MECHANISM",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.CONSTRUCT_MECHANISM",
+    "accessedFromAdjacentTile": true,
+    "requiredProfessionName": "CONTEXT_DEPENDENT_PROFESSION_REQUIRED",
+    "haulItemWhileWorking": true,
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
+  },
+  {
+    "name": "DECONSTRUCT_MECHANISM",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.DECONSTRUCT_PIPING",
+    "accessedFromAdjacentTile": true,
+    "workOnJobParticleEffectNames": ["Digging ground same tile"]
   },
   {
     "name": "CONSTRUCT_FLOORING",

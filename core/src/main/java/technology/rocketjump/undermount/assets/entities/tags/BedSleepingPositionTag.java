@@ -24,5 +24,8 @@ public class BedSleepingPositionTag extends Tag {
 	public void apply(Entity entity, TagProcessingUtils tagProcessingUtils, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		SleepingPositionComponent sleepingPositionComponent = entity.getOrCreateComponent(SleepingPositionComponent.class);
 		sleepingPositionComponent.setSleepingOrientation(EntityAssetOrientation.valueOf(args.get(0)));
+		if (args.size() >= 2) {
+			sleepingPositionComponent.setOnFloor(args.get(1).equalsIgnoreCase("true"));
+		}
 	}
 }

@@ -130,15 +130,20 @@ public class FoodAllocationMessageHandler implements Telegraph, GameContextAware
 	private FoodAllocation findAvailableRequesterInventoryFood(Entity requester) {
 		InventoryComponent inventoryComponent = requester.getComponent(InventoryComponent.class);
 		if (inventoryComponent != null) {
-			for (InventoryComponent.InventoryEntry inventoryEntry : inventoryComponent.getInventoryEntries()) {
-				if (isEdible(inventoryEntry.entity)) {
-					ItemAllocationComponent itemAllocationComponent = inventoryEntry.entity.getOrCreateComponent(ItemAllocationComponent.class);
+			List<Entity> edibleEntities = inventoryComponent.getInventoryEntries().stream()
+					.map(entry -> entry.entity)
+					.filter(this::isEdible)
+					.collect(Collectors.toList());
 
-					ItemAllocation itemAllocation = itemAllocationComponent.getAllocationForPurpose(HELD_IN_INVENTORY);
-					if (itemAllocation != null && itemAllocation.getAllocationAmount() > 0) {
-						return new FoodAllocation(FoodAllocation.FoodAllocationType.REQUESTER_INVENTORY, inventoryEntry.entity, itemAllocation);
+			if (!edibleEntities.isEmpty()) {
+				Entity selected = edibleEntities.stream()
+						.filter(e -> ((ItemEntityAttributes)e.getPhysicalEntityComponent().getAttributes()).getItemType().getItemTypeName().equals("Product-Ration"))
+						.findAny().orElse(edibleEntities.get(0));
+				ItemAllocationComponent itemAllocationComponent = selected.getOrCreateComponent(ItemAllocationComponent.class);
 
-					}
+				ItemAllocation itemAllocation = itemAllocationComponent.getAllocationForPurpose(HELD_IN_INVENTORY);
+				if (itemAllocation != null && itemAllocation.getAllocationAmount() > 0) {
+					return new FoodAllocation(FoodAllocation.FoodAllocationType.REQUESTER_INVENTORY, selected, itemAllocation);
 				}
 			}
 		}

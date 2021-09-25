@@ -1,7 +1,8 @@
 [ {
   "uniqueName" : "1x1",
   "extraTiles" : [ ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1 with workspaces",
   "extraTiles" : [ ],
@@ -41,17 +42,80 @@
       "x" : -1,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "1x1 with S workspace",
+  "rotatesToName" : "1x1 with W workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : -1
+    }
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "1x1 with W workspace",
+  "rotatesToName" : "1x1 with N workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : -1,
+      "y" : 0
+    }
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "1x1 with N workspace",
+  "rotatesToName" : "1x1 with E workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 0,
+      "y" : 1
+    }
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "1x1 with E workspace",
+  "rotatesToName" : "1x1 with S workspace",
+  "extraTiles" : [ ],
+  "workspaces" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 0
+    },
+    "accessedFrom" : {
+      "x" : 1,
+      "y" : 0
+    }
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1NS",
   "rotatesToName" : "1x1EW",
   "extraTiles" : [ ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1EW",
   "rotatesToName" : "1x1NS",
   "extraTiles" : [ ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1NS with workspaces",
   "rotatesToName" : "1x1EW with workspaces",
@@ -74,7 +138,8 @@
       "x" : 1,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1EW with workspaces",
   "rotatesToName" : "1x1NS with workspaces",
@@ -97,27 +162,32 @@
       "x" : 0,
       "y" : -1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1N",
   "rotatesToName" : "1x1E",
   "extraTiles" : [ ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1E",
   "rotatesToName" : "1x1S",
   "extraTiles" : [ ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1S",
   "rotatesToName" : "1x1W",
   "extraTiles" : [ ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x1W",
   "rotatesToName" : "1x1N",
   "extraTiles" : [ ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x2",
   "rotatesToName" : "2x1",
@@ -125,7 +195,8 @@
     "x" : 0,
     "y" : 1
   } ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x1",
   "rotatesToName" : "1x2",
@@ -133,7 +204,8 @@
     "x" : 1,
     "y" : 0
   } ],
-  "workspaces" : [ ]
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x2 with workspaces",
   "rotatesToName" : "2x1 with workspaces",
@@ -177,7 +249,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x1 with workspaces",
   "rotatesToName" : "1x2 with workspaces",
@@ -221,7 +294,166 @@
       "x" : 1,
       "y" : 1
     }
+  } ],
+  "specialTiles" : [ ]
+}, {
+  "uniqueName" : "Waterwheel S side",
+  "rotatesToName" : "Waterwheel W side",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : -1
+    },
+    "requirement" : "IS_RIVER"
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : -1
+    },
+    "requirement" : "IS_RIVER"
   } ]
+}, {
+  "uniqueName" : "Waterwheel W side",
+  "rotatesToName" : "Waterwheel N side",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : -1,
+      "y" : 0
+    },
+    "requirement" : "IS_RIVER"
+  }, {
+    "location" : {
+      "x" : -1,
+      "y" : 1
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Waterwheel N side",
+  "rotatesToName" : "Waterwheel E side",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 1
+    },
+    "requirement" : "IS_RIVER"
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Waterwheel E side",
+  "rotatesToName" : "Waterwheel S side",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 1,
+      "y" : 0
+    },
+    "requirement" : "IS_RIVER"
+  }, {
+    "location" : {
+      "x" : 1,
+      "y" : 1
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Water Pump WE Layout",
+  "rotatesToName" : "Water Pump NS Layout",
+  "extraTiles" : [ {
+    "x" : 1,
+    "y" : 0
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 2,
+      "y" : 0
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Water Pump NS Layout",
+  "rotatesToName" : "Water Pump EW Layout",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : -1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : -2
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Water Pump EW Layout",
+  "rotatesToName" : "Water Pump SN Layout",
+  "extraTiles" : [ {
+    "x" : -1,
+    "y" : 0
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : -2,
+      "y" : 0
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "Water Pump SN Layout",
+  "rotatesToName" : "Water Pump WE Layout",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ {
+    "location" : {
+      "x" : 0,
+      "y" : 2
+    },
+    "requirement" : "IS_RIVER"
+  } ]
+}, {
+  "uniqueName" : "2x2",
+  "extraTiles" : [ {
+    "x" : 0,
+    "y" : 1
+  }, {
+    "x" : 1,
+    "y" : 0
+  }, {
+    "x" : 1,
+    "y" : 1
+  } ],
+  "workspaces" : [ ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x2 with lower workspaces",
   "extraTiles" : [ {
@@ -270,7 +502,8 @@
       "x" : 2,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x2+SW with lower workspaces",
   "extraTiles" : [ {
@@ -304,7 +537,8 @@
       "x" : 1,
       "y" : -1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x3 with workspaces",
   "rotatesToName" : "3x1 with workspaces",
@@ -333,7 +567,8 @@
       "x" : 1,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "3x1 with workspaces",
   "rotatesToName" : "1x3 with workspaces",
@@ -362,7 +597,8 @@
       "x" : 0,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x4 with workspaces",
   "rotatesToName" : "4x1 with workspaces",
@@ -448,7 +684,8 @@
       "x" : 1,
       "y" : 2
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "4x1 with workspaces",
   "rotatesToName" : "1x4 with workspaces",
@@ -534,7 +771,8 @@
       "x" : 2,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x4 NS",
   "rotatesToName" : "4x1 EW",
@@ -584,7 +822,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "4x1 WE",
   "rotatesToName" : "1x4 NS",
@@ -634,7 +873,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x4 SN",
   "rotatesToName" : "4x1 WE",
@@ -684,7 +924,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "4x1 EW",
   "rotatesToName" : "1x4 SN",
@@ -734,7 +975,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x2N",
   "rotatesToName" : "2x1E",
@@ -760,7 +1002,8 @@
       "x" : -1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x1E",
   "rotatesToName" : "1x2S",
@@ -786,7 +1029,8 @@
       "x" : 1,
       "y" : -1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "1x2S",
   "rotatesToName" : "2x1W",
@@ -812,7 +1056,8 @@
       "x" : -1,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x1W",
   "rotatesToName" : "1x2N",
@@ -838,7 +1083,8 @@
       "x" : 0,
       "y" : -1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3L",
   "rotatesToName" : "2x3L1R",
@@ -861,7 +1107,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3L1R",
   "rotatesToName" : "2x3L2R",
@@ -884,7 +1131,8 @@
       "x" : 1,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3L2R",
   "rotatesToName" : "2x3L3R",
@@ -907,7 +1155,8 @@
       "x" : -1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3L3R",
   "rotatesToName" : "2x3L",
@@ -930,7 +1179,8 @@
       "x" : 0,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3BL",
   "rotatesToName" : "2x3BL1R",
@@ -953,7 +1203,8 @@
       "x" : -1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3BL1R",
   "rotatesToName" : "2x3BL2R",
@@ -976,7 +1227,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3BL2R",
   "rotatesToName" : "2x3BL3R",
@@ -999,7 +1251,8 @@
       "x" : 1,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3BL3R",
   "rotatesToName" : "2x3BL",
@@ -1022,7 +1275,8 @@
       "x" : -1,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "3x2",
   "rotatesToName" : "2x3",
@@ -1060,7 +1314,8 @@
       "x" : 0,
       "y" : 2
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x3",
   "rotatesToName" : "3x2",
@@ -1098,7 +1353,8 @@
       "x" : 2,
       "y" : 1
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "mashtun layout",
   "extraTiles" : [ {
@@ -1141,7 +1397,8 @@
       "x" : 2,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "4x2",
   "rotatesToName" : "2x4",
@@ -1239,7 +1496,8 @@
       "x" : 2,
       "y" : 2
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "2x4",
   "rotatesToName" : "4x2",
@@ -1337,7 +1595,8 @@
       "x" : 2,
       "y" : 3
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 }, {
   "uniqueName" : "inverted-U",
   "extraTiles" : [ {
@@ -1362,5 +1621,6 @@
       "x" : 1,
       "y" : 0
     }
-  } ]
+  } ],
+  "specialTiles" : [ ]
 } ]

@@ -31,6 +31,11 @@
   "particleEffectNames" : [ "Blacksmith sparks" ],
   "mightStartFire" : 0.03
 }, {
+  "name" : "WEAVING",
+  "i18nKey" : "CRAFTING_TYPE.WEAVING",
+  "professionRequiredName" : "FARMER",
+  "usesWorkstationTool" : false
+}, {
   "name" : "SMELTING",
   "i18nKey" : "CRAFTING_TYPE.SMELTING",
   "professionRequiredName" : "BLACKSMITH",

@@ -6,7 +6,6 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
 
 public class DestroyWhenInventoryEmptyBehaviour extends FurnitureBehaviour implements Prioritisable {
@@ -17,7 +16,7 @@ public class DestroyWhenInventoryEmptyBehaviour extends FurnitureBehaviour imple
 
 		InventoryComponent inventoryComponent = parentEntity.getComponent(InventoryComponent.class);
 		if (inventoryComponent.isEmpty()) {
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(parentEntity.getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, parentEntity);
 		} else {
 			for (InventoryComponent.InventoryEntry entry : inventoryComponent.getInventoryEntries()) {
 				if (entry.entity.getType().equals(EntityType.ITEM)) {

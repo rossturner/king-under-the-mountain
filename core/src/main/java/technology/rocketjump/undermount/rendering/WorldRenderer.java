@@ -179,6 +179,7 @@ public class WorldRenderer implements Disposable {
 			}
 		}
 
+		waterRenderer.updateElapsedTime();
 		if (!riverTiles.isEmpty()) {
 			waterRenderer.render(tiledMap, riverTiles, camera, renderMode);
 		}
@@ -188,6 +189,7 @@ public class WorldRenderer implements Disposable {
 			floorOverlapRenderer.render(riverTiles, camera, renderMode, spriteCache);
 			floorOverlapRenderer.render(terrainTiles, camera, renderMode, spriteCache);
 		}
+		terrainRenderer.renderChannels(tiledMap, terrainTiles, camera, spriteCache, renderMode);
 		terrainRenderer.renderWalls(terrainTiles, camera, spriteCache, renderMode);
 
 

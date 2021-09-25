@@ -9,6 +9,8 @@ import technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityA
 import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
 import technology.rocketjump.undermount.assets.entities.item.ItemEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAsset;
+import technology.rocketjump.undermount.assets.entities.mechanism.MechanismEntityAssetDictionary;
+import technology.rocketjump.undermount.assets.entities.mechanism.model.MechanismEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.*;
 import technology.rocketjump.undermount.assets.entities.plant.PlantEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.plant.model.PlantEntityAsset;
@@ -26,6 +28,7 @@ import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
@@ -45,6 +48,7 @@ public class EntityAssetUpdater {
 	private final ItemEntityAssetDictionary itemEntityAssetDictionary;
 	private final FurnitureEntityAssetDictionary furnitureEntityAssetDictionary;
 	private final PlantEntityAssetDictionary plantEntityAssetDictionary;
+	private final MechanismEntityAssetDictionary mechanismEntityAssetDictionary;
 	private final TagProcessor tagProcessor;
 	private final Profession defaultProfession;
 
@@ -64,15 +68,18 @@ public class EntityAssetUpdater {
 	public final EntityAssetType HUMANOID_HEAD;
 	public final EntityAssetType FURNITURE_LIQUID_LAYER;
 	public final EntityAssetType FURNITURE_COVER_LAYER;
+	public final EntityAssetType MECHANISM_BASE_LAYER;
 
 	@Inject
 	public EntityAssetUpdater(ItemEntityAssetDictionary itemEntityAssetDictionary, FurnitureEntityAssetDictionary furnitureEntityAssetDictionary,
-							  PlantEntityAssetDictionary plantEntityAssetDictionary, EntityAssetTypeDictionary entityAssetTypeDictionary,
+							  PlantEntityAssetDictionary plantEntityAssetDictionary, MechanismEntityAssetDictionary mechanismEntityAssetDictionary,
+							  EntityAssetTypeDictionary entityAssetTypeDictionary,
 							  ProfessionDictionary professionDictionary, HumanoidEntityAssetDictionary humanoidEntityAssetDictionary,
 							  TagProcessor tagProcessor) {
 		this.itemEntityAssetDictionary = itemEntityAssetDictionary;
 		this.plantEntityAssetDictionary = plantEntityAssetDictionary;
 		this.furnitureEntityAssetDictionary = furnitureEntityAssetDictionary;
+		this.mechanismEntityAssetDictionary = mechanismEntityAssetDictionary;
 
 		this.defaultProfession = professionDictionary.getByName("VILLAGER");
 		HUMANOID_BODY = entityAssetTypeDictionary.getByName("HUMANOID_BODY");
@@ -97,6 +104,8 @@ public class EntityAssetUpdater {
 		HUMANOID_LEFT_HAND = entityAssetTypeDictionary.getByName("HUMANOID_LEFT_HAND");
 		HUMANOID_RIGHT_HAND = entityAssetTypeDictionary.getByName("HUMANOID_RIGHT_HAND");
 
+		MECHANISM_BASE_LAYER = entityAssetTypeDictionary.getByName("MECHANISM_BASE_LAYER");
+
 		this.humanoidEntityAssetDictionary = humanoidEntityAssetDictionary;
 		this.tagProcessor = tagProcessor;
 	}
@@ -114,6 +123,9 @@ public class EntityAssetUpdater {
 				break;
 			case PLANT:
 				updatePlantAssets(entity);
+				break;
+			case MECHANISM:
+				updateMechanismAssets(entity);
 				break;
 			case ONGOING_EFFECT:
 				processTags(entity);
@@ -226,6 +238,19 @@ public class EntityAssetUpdater {
 		processTags(entity);
 	}
 
+	private void updateMechanismAssets(Entity entity) {
+		MechanismEntityAttributes attributes = (MechanismEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+
+		MechanismEntityAsset baseAsset = mechanismEntityAssetDictionary.getMechanismEntityAsset(MECHANISM_BASE_LAYER, attributes);
+		entity.getPhysicalEntityComponent().setBaseAsset(baseAsset);
+		if (baseAsset != null) {
+			addOtherMechanismAssetTypes(baseAsset.getType(), entity, attributes);
+		}
+
+		// Tag processing
+		processTags(entity);
+	}
+
 	public void processTags(Entity entity) {
 		Set<Tag> attachedTags = findAttachedTags(entity);
 		entity.setTags(attachedTags);
@@ -253,6 +278,32 @@ public class EntityAssetUpdater {
 			for (EntityAssetType attachedType : attachedTypes) {
 				if (shouldAssetTypeApply(attachedType, entity)) {
 					addOtherItemAssetTypes(attachedType, entity, attributes);
+				}
+			}
+		}
+	}
+
+	private void addOtherMechanismAssetTypes(EntityAssetType assetType, Entity entity, MechanismEntityAttributes attributes) {
+		MechanismEntityAsset asset = mechanismEntityAssetDictionary.getMechanismEntityAsset(assetType, attributes);
+
+		if (asset != null) {
+			entity.getPhysicalEntityComponent().getTypeMap().put(asset.getType(), asset);
+
+			Set<EntityAssetType> attachedTypes = new HashSet<>();
+			for (SpriteDescriptor spriteDescriptor : asset.getSpriteDescriptors().values()) {
+				for (EntityChildAssetDescriptor childAssetDescriptor : spriteDescriptor.getChildAssets()) {
+					if (childAssetDescriptor.getSpecificAssetName() == null) {
+						// FIXME https://github.com/rossturner/king-under-the-mountain/issues/18
+						// Specific assets should be found at setup time
+
+						attachedTypes.add(childAssetDescriptor.getType());
+					}
+				}
+			}
+
+			for (EntityAssetType attachedType : attachedTypes) {
+				if (shouldAssetTypeApply(attachedType, entity)) {
+					addOtherMechanismAssetTypes(attachedType, entity, attributes);
 				}
 			}
 		}

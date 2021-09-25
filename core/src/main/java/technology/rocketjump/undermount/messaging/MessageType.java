@@ -60,6 +60,7 @@ public class MessageType {
 	public static final int SET_MAIN_MENU_BACKGROUND_SCROLLING = 279;
 	public static final int PREFERENCE_CHANGED = 280;
 	public static final int GUI_CANCEL_CURRENT_VIEW_OR_GO_TO_MAIN_MENU = 281;
+	public static final int TOGGLE_DEBUG_VIEW = 282;
 
 	// i18n Messages
 	public static final int LANGUAGE_CHANGED = 290;
@@ -124,6 +125,11 @@ public class MessageType {
 	public static final int REMOVE_HAULING_JOBS_TO_POSITION = 614;
 	public static final int JOB_STATE_CHANGE = 615;
 	public static final int REQUEST_DUMP_LIQUID_CONTENTS = 616;
+	public static final int ADD_CHANNEL = 617;
+	public static final int REMOVE_CHANNEL = 618;
+	public static final int ADD_PIPE = 619;
+	public static final int REMOVE_PIPE = 620;
+	public static final int PIPE_ADDED = 621;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;
@@ -172,6 +178,14 @@ public class MessageType {
 	public static final int ROOF_CONSTRUCTED = 910;
 	public static final int ROOF_DECONSTRUCTED = 911;
 	public static final int FLOORING_CONSTRUCTED = 912;
+	public static final int PIPE_CONSTRUCTION_QUEUE_CHANGE = 913;
+	public static final int PIPE_DECONSTRUCTION_QUEUE_CHANGE = 914;
+	public static final int PIPE_CONSTRUCTED = 915;
+	public static final int PIPE_DECONSTRUCTED = 916;
+	public static final int MECHANISM_CONSTRUCTION_ADDED = 917;
+	public static final int MECHANISM_CONSTRUCTION_REMOVED = 918;
+	public static final int MECHANISM_DECONSTRUCTION_QUEUE_CHANGE = 919;
+	public static final int MECHANISM_CONSTRUCTED = 920;
 
 	// Production messages
 	public static final int REQUEST_PRODUCTION_ASSIGNMENT = 1000;
@@ -233,5 +247,8 @@ public class MessageType {
 	public static final int SMALL_FIRE_STARTED = 1705;
 	public static final int START_FIRE_IN_TILE = 1706;
 
+	// Liquid flow messages
+	public static final int ADD_LIQUID_TO_FLOW = 1800;
+	public static final int LIQUID_REMOVED_FROM_FLOW = 1801;
 
 }

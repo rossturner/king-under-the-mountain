@@ -34,7 +34,6 @@ import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.messaging.types.RoofConstructionMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
@@ -101,9 +100,9 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(dustCloudParticleEffect,
 							Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {}));
 
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(doorway.getDoorEntity().getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, doorway.getDoorEntity());
 					targetTile.setDoorway(null);
-					updateTile(targetTile, gameContext);
+					updateTile(targetTile, gameContext, messageDispatcher);
 
 					for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(targetTile.getTileX(), targetTile.getTileY()).values()) {
 						if (neighbourTile.hasRoom()) {
@@ -238,7 +237,7 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 		// Wall cap should be bottom of tile  (+1 pixel) to overlap entities
 		wallCapEntity.getLocationComponent().setWorldPosition(toVector(doorway.getTileLocation()).add(0, positionYOffset), false, false);
 
-		tileAtPosition.update(gameContext.getAreaMap().getNeighbours(wallTileLocation), gameContext.getAreaMap().getVertices(wallTileLocation.x, wallTileLocation.y));
+		tileAtPosition.update(gameContext.getAreaMap().getNeighbours(wallTileLocation), gameContext.getAreaMap().getVertices(wallTileLocation.x, wallTileLocation.y), messageDispatcher);
 		return wallCapEntity;
 	}
 

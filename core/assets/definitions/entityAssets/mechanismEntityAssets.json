@@ -1,0 +1,454 @@
+[ {
+  "uniqueName" : "Mechanism-Gear-Body",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Gear",
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "gears",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Mechanism-Shaft-Horz-Body",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Shaft_Horizontal",
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "shaft-horz",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-0",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 0,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-2",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 2,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-8",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 8,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Half-pipe centre-to-west.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -16.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-10",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 10,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe corner-shaped north-to-east.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -9.0,
+        "y" : 13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-16",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 16,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Half-pipe centre-to-east.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 16.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-18",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 18,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe corner-shaped north-to-east.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 9.0,
+        "y" : 13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-24",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 24,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe east-to-west.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-26",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 26,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe 3-way-junction north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-64",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 64,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Half-pipe centre-to-south.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -16.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-66",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 66,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe north-to-south.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-72",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 72,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe corner-shaped south-to-east.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -9.0,
+        "y" : -13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-74",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 74,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe 3-way-junction west.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -9.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-80",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 80,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe corner-shaped south-to-east.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 9.0,
+        "y" : -13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-82",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 82,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe 3-way-junction west.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 9.0,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-88",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 88,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe 3-way-junction south.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -13.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Pipe-90",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Pipe",
+  "layoutId" : 90,
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Pipe 4-way-junction.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Mechanism-Shaft-Vert-Body",
+  "type" : "MECHANISM_BASE_LAYER",
+  "mechanismTypeName" : "Shaft_Vertical",
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "shaft-vert",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : true,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+} ]

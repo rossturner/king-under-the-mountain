@@ -316,7 +316,7 @@ public class EntityRenderer implements GameContextAware, Disposable {
 			if (animatedSprites != null && animatedSprites.size > 0) {
 				float animationProgress = renderStep.getEntity().getPhysicalEntityComponent().getAnimationProgress();
 
-				int frameSelection = Math.round(animationProgress * animatedSprites.size);
+				int frameSelection = (int) Math.floor(animationProgress * animatedSprites.size);
 				if (frameSelection >= animatedSprites.size) {
 					frameSelection = animatedSprites.size - 1;
 				} else if (frameSelection <= 0) {

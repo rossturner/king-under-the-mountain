@@ -147,11 +147,9 @@ public class JobTarget {
 						return ((PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getSpecies().getMaterial();
 					case ITEM:
 						return ((ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes()).getPrimaryMaterial();
-					case HUMANOID:
-					case ONGOING_EFFECT:
+					default:
 						return null;
 				}
-				break;
 			}
 			default:
 		}
@@ -180,8 +178,11 @@ public class JobTarget {
 								return attributes.getColor(ColoringLayer.LEAF_COLOR);
 						}
 					}
-					case HUMANOID:
-					case ONGOING_EFFECT: {
+					case ITEM: {
+						ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+						return attributes.getPrimaryMaterial().getColor();
+					}
+					default: {
 						return null;
 					}
 				}

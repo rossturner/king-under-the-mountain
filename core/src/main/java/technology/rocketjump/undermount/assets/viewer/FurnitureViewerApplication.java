@@ -101,7 +101,7 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 		Random random = new Random();
 
 		attributes = new FurnitureEntityAttributes(0); // or 1 or 2
-		attributes.setFurnitureType(furnitureTypeDictionary.getByName("BEER_TAPPER"));
+		attributes.setFurnitureType(furnitureTypeDictionary.getByName("LOOM"));
 		attributes.getMaterials().put(GameMaterialType.WOOD, gameMaterialDictionary.getByName("Pine"));
 		attributes.getMaterials().put(GameMaterialType.STONE, gameMaterialDictionary.getByName("Dolostone"));
 		attributes.getMaterials().put(GameMaterialType.ORE, gameMaterialDictionary.getByName("Hematite"));
@@ -121,7 +121,7 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 //		PlantSpecies plantSpecies = plantSpeciesDictionary.getByName("Oak");
 
 
-		Vector2 position = new Vector2(cameraManager.getCamera().viewportWidth * 0.6f, cameraManager.getCamera().viewportHeight * 0.9f);
+		Vector2 position = new Vector2(cameraManager.getCamera().viewportWidth * 0.6f, cameraManager.getCamera().viewportHeight * 0.6f);
 		tilePostion = new GridPoint2((int) Math.floor(position.x), (int) Math.floor(position.y));
 
 		currentEntity = entityFactory.create(attributes, tilePostion, new FurnitureBehaviour(), new GameContext());
@@ -281,7 +281,7 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 
 		Vector3 newPosition = new Vector3(width, height, 0);
 		newPosition.x = newPosition.x * 0.55f;
-		newPosition.y = newPosition.y * 0.9f;
+		newPosition.y = newPosition.y * 0.6f;
 		cameraManager.getCamera().unproject(newPosition);
 		// Round to nearest tile boundary
 		newPosition.x = Math.round(newPosition.x) + 0.5f;

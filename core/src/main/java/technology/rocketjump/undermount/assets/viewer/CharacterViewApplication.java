@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.assets.viewer;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,10 +16,12 @@ import com.google.inject.Injector;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
+import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -92,18 +95,15 @@ public class CharacterViewApplication extends ApplicationAdapter {
 
 		injector.getInstance(EntityAssetUpdater.class).updateEntityAssets(currentEntity);
 
-//		Entity heldItem = createItemEntity("Resource-Metal-Plate", injector, ItemPlacement.BEING_CARRIED);
-//		ItemAllocationComponent itemAllocationComponent = heldItem.getOrCreateComponent(ItemAllocationComponent.class);
-//		itemAllocationComponent.init(heldItem, null, null);
-//		LiquidContainerComponent liquidContainerComponent = heldItem.getOrCreateComponent(LiquidContainerComponent.class);
-//		liquidContainerComponent.setLiquidQuantity(1);
-//		liquidContainerComponent.setTargetLiquidMaterial(GameMaterial.nullMaterialWithType(GameMaterialType.LIQUID));
+		Entity heldItem = createItemEntity("Resource-Hemp-Bundle", injector, ItemPlacement.BEING_CARRIED);
+		ItemAllocationComponent itemAllocationComponent = heldItem.getOrCreateComponent(ItemAllocationComponent.class);
+		itemAllocationComponent.init(heldItem, null, null);
 
 //		EquippedItemComponent equippedItemComponent = currentEntity.getOrCreateComponent(EquippedItemComponent.class);
 //		equippedItemComponent.setEquippedItem(heldItem, currentEntity, new MessageDispatcher());
-//		HaulingComponent haulingComponent = new HaulingComponent();
-//		haulingComponent.setHauledEntity(heldItem, new MessageDispatcher(), currentEntity);
-//		currentEntity.addComponent(haulingComponent);
+		HaulingComponent haulingComponent = new HaulingComponent();
+		haulingComponent.setHauledEntity(heldItem, new MessageDispatcher(), currentEntity);
+		currentEntity.addComponent(haulingComponent);
 
 		ui = injector.getInstance(CharacterViewUI.class);
 		ui.init(currentEntity);

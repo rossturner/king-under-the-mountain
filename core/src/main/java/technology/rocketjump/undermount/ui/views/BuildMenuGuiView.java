@@ -31,6 +31,13 @@ public class BuildMenuGuiView implements GuiView {
 		back.setAction(new SwitchGuiViewAction(DEFAULT_MENU, messageDispatcher));
 		iconButtons.add(back);
 
+		IconButton furniture = iconButtonFactory.create("GUI.BUILD_FURNITURE", "hammer-nails", HexColors.get("#1a7ce1"), ButtonStyle.DEFAULT);
+		furniture.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.GUI_ROOM_TYPE_SELECTED, null);
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, ROOM_FURNITURE_SELECTION);
+		});
+		iconButtons.add(furniture);
+
 		IconButton floor = iconButtonFactory.create("GUI.BUILD.FLOOR", "floorboards", HexColors.get("#c89d0b"), ButtonStyle.DEFAULT);
 		floor.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_FLOORING, messageDispatcher));
 		iconButtons.add(floor);
@@ -50,16 +57,23 @@ public class BuildMenuGuiView implements GuiView {
 		doors.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_DOORS, messageDispatcher));
 		iconButtons.add(doors);
 
+		IconButton piping = iconButtonFactory.create("GUI.BUILD.PIPING", "pipes", HexColors.get("#26e1ed"), ButtonStyle.DEFAULT);
+		piping.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.PIPING);
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.BUILD_PIPING);
+		});
+		iconButtons.add(piping);
+
+		IconButton mechanisms = iconButtonFactory.create("GUI.BUILD.POWER", "auto-repair", HexColors.get("#e1988e"), ButtonStyle.DEFAULT);
+		mechanisms.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW_MODE, GameViewMode.MECHANISMS);
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.BUILD_MECHANISMS);
+		});
+		iconButtons.add(mechanisms);
+
 		IconButton bridge = iconButtonFactory.create("GUI.BUILD.BRIDGE", "stone-bridge", HexColors.get("#8fd0c1"), ButtonStyle.DEFAULT);
 		bridge.setAction(new SwitchGuiViewAction(GuiViewName.BUILD_BRIDGE, messageDispatcher));
 		iconButtons.add(bridge);
-
-		IconButton furniture = iconButtonFactory.create("GUI.BUILD_FURNITURE", "hammer-nails", HexColors.get("#1a7ce1"), ButtonStyle.DEFAULT);
-		furniture.setAction(() -> {
-			messageDispatcher.dispatchMessage(MessageType.GUI_ROOM_TYPE_SELECTED, null);
-			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, ROOM_FURNITURE_SELECTION);
-		});
-		iconButtons.add(furniture);
 
 		IconButton removeConstructions = iconButtonFactory.create("GUI.CANCEL_LABEL", "cancel", HexColors.NEGATIVE_COLOR, ButtonStyle.DEFAULT);
 		removeConstructions.setAction(new SetInteractionMode(GameInteractionMode.REMOVE_CONSTRUCTIONS, messageDispatcher));

@@ -175,6 +175,7 @@ public class TiledMapFactory {
 				stockpileComponentUpdater.toggleItem(stockpileComponent, placedItemType, true, true, true);
 			}
 		}
+
 	}
 
 	private void addStartingInventory(Deque<QuantifiedItemTypeWithMaterial> inventoryStartingItems, List<Entity> allSettlers, GameContext gameContext, MessageDispatcher messageDispatcher) {
@@ -338,6 +339,7 @@ public class TiledMapFactory {
 
 		items.addAll(item("Ingredient-Seeds", 16, "Barley Seed"));
 		items.addAll(item("Ingredient-Seeds", 12, "Hops Seed"));
+		items.addAll(item("Ingredient-Seeds", 8, "Hemp Seed"));
 
 		return items;
 	}

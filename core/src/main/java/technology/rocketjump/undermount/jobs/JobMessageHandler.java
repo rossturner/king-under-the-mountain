@@ -57,6 +57,7 @@ import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
 import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
+import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -348,7 +349,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							ItemEntityAttributes attributes = (ItemEntityAttributes) inventoryItem.entity.getPhysicalEntityComponent().getAttributes();
 							attributes.setQuantity(attributes.getQuantity() - 1); // FIXME handle planting quantities other than 1?
 							if (attributes.getQuantity() <= 0) {
-								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(inventoryItem.entity.getId()));
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, inventoryItem.entity);
 							}
 						}
 					}
@@ -401,7 +402,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							if (currentGrowthStage.getHarvestSwitchesToGrowthStage() == null) {
 								messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
 										Optional.empty(), Optional.of(new JobTarget(targetEntity)), (p) -> {}));
-								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 							} else {
 								attributes.setGrowthStageCursor(currentGrowthStage.getHarvestSwitchesToGrowthStage());
 								attributes.setGrowthStageProgress(0f);
@@ -582,7 +583,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				if (targetEntity != null) {
 					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
 							Optional.empty(), Optional.of(new JobTarget(targetEntity)), (p) -> {}));
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 				}
 				break;
 			}
@@ -621,6 +622,10 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				} else if (targetTile.getFloor().hasBridge()) {
 					Bridge bridge = targetTile.getFloor().getBridge();
 					messageDispatcher.dispatchMessage(MessageType.DECONSTRUCT_BRIDGE, bridge);
+				} else if (targetTile.hasFloor() && targetTile.getFloor().getFloorType().isConstructed()) {
+					messageDispatcher.dispatchMessage(MessageType.UNDO_REPLACE_FLOOR, targetTile.getTilePosition());
+				} else if (targetTile.hasChannel()) {
+					messageDispatcher.dispatchMessage(MessageType.REMOVE_CHANNEL, targetTile.getTilePosition());
 				} else {
 					// Assuming we're deconstructing a furniture entity in the target tile
 					Entity targetEntity = null;
@@ -661,7 +666,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						}
 
 						if (relatedInventoryItem != null) {
-							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(relatedInventoryItem.getId()));
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, relatedInventoryItem);
 						} else {
 							Logger.error("Could not find correct item in " + InnoculationLogBehaviour.class + " inventory");
 						}
@@ -691,6 +696,40 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					}
 				} else {
 					Logger.error("Could not find furniture entity for " + completedJob.getType().getName() + " job completion");
+				}
+				break;
+			}
+			case "DIG_CHANNEL": {
+				targetTile = gameContext.getAreaMap().getTile(completedJob.getJobLocation());
+
+				if (targetTile != null) {
+					// deconstruct any furniture
+					for (Entity entity : targetTile.getEntities()) {
+						if (entity.getType().equals(FURNITURE)) {
+							deconstructFurniture(entity, targetTile, messageDispatcher, gameContext,
+									itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory, deconstructParticleEffect);
+						}
+					}
+					// then shift any items or plants
+					for (Entity entity : targetTile.getEntities()) {
+						if (entity.getType().equals(PLANT)) {
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);
+						} else if (entity.getType().equals(ITEM)) {
+							boolean entityMoved = false;
+							for (MapTile neighbourTile : gameContext.getAreaMap().getNeighbours(targetTile.getTilePosition()).values()) {
+								if (neighbourTile.isNavigable()) {
+									entity.getLocationComponent().setWorldPosition(neighbourTile.getWorldPositionOfCenter(), false);
+									entityMoved = true;
+									break;
+								}
+							}
+							if (!entityMoved) {
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);
+							}
+						}
+					}
+
+					messageDispatcher.dispatchMessage(MessageType.ADD_CHANNEL, targetTile.getTilePosition());
 				}
 				break;
 			}
@@ -742,7 +781,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							if (behaviourComponent instanceof FireEffectBehaviour) {
 								((FireEffectBehaviour)behaviourComponent).setToFade();
 							} else {
-								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(extinguishableEntity.get().getId()));
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, extinguishableEntity.get());
 							}
 						}
 
@@ -773,7 +812,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						GameMaterial material = attributes.getPrimaryMaterial();
 						attributes.setQuantity(attributes.getQuantity() - 1);
 						if (attributes.getQuantity() == 0) {
-							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(equippedItem.getId()));
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
 						} else {
 							// put back as equipped for AI to clear
 							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
@@ -797,7 +836,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						GameMaterial material = attributes.getPrimaryMaterial();
 						attributes.setQuantity(attributes.getQuantity() - 1);
 						if (attributes.getQuantity() == 0) {
-							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(equippedItem.getId()));
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
 						} else {
 							// put back as equipped for AI to clear
 							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
@@ -815,6 +854,72 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTED, new RoofConstructionMessage(
 						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
 				));
+				break;
+			}
+			case "CONSTRUCT_PIPING": {
+				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+				EquippedItemComponent equippedItemComponent = completedByEntity.getOrCreateComponent(EquippedItemComponent.class);
+				if (equippedItemComponent != null) {
+					Entity equippedItem = equippedItemComponent.clearEquippedItem();
+					if (equippedItem != null && equippedItem.getType().equals(ITEM)) {
+						ItemEntityAttributes attributes = (ItemEntityAttributes) equippedItem.getPhysicalEntityComponent().getAttributes();
+						GameMaterial material = attributes.getPrimaryMaterial();
+						attributes.setQuantity(attributes.getQuantity() - 1);
+						if (attributes.getQuantity() == 0) {
+							messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
+						} else {
+							// put back as equipped for AI to clear
+							equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
+						}
+
+						messageDispatcher.dispatchMessage(MessageType.PIPE_CONSTRUCTED, new PipeConstructionMessage(
+								jobCompletedMessage.getJob().getJobLocation(), material
+						));
+
+					}
+				}
+				break;
+			}
+			case "DECONSTRUCT_PIPING": {
+				messageDispatcher.dispatchMessage(MessageType.PIPE_DECONSTRUCTED, new PipeConstructionMessage(
+						jobCompletedMessage.getJob().getJobLocation(), NULL_MATERIAL
+				));
+				break;
+			}
+			case "CONSTRUCT_MECHANISM": {
+				UnderTile underTile = tile.getUnderTile();
+				if (underTile != null && underTile.getQueuedMechanismType() != null) {
+					Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
+					EquippedItemComponent equippedItemComponent = completedByEntity.getOrCreateComponent(EquippedItemComponent.class);
+					if (equippedItemComponent != null) {
+						Entity equippedItem = equippedItemComponent.clearEquippedItem();
+						if (equippedItem != null && equippedItem.getType().equals(ITEM)) {
+							ItemEntityAttributes attributes = (ItemEntityAttributes) equippedItem.getPhysicalEntityComponent().getAttributes();
+							GameMaterial material = attributes.getPrimaryMaterial();
+							attributes.setQuantity(attributes.getQuantity() - 1);
+							if (attributes.getQuantity() == 0) {
+								messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, equippedItem);
+							} else {
+								// put back as equipped for AI to clear
+								equippedItemComponent.setEquippedItem(equippedItem, completedByEntity, messageDispatcher);
+							}
+
+							messageDispatcher.dispatchMessage(MessageType.MECHANISM_CONSTRUCTED, new MechanismConstructionMessage(
+									jobCompletedMessage.getJob().getJobLocation(), underTile.getQueuedMechanismType(), material
+							));
+
+						}
+					}
+				}
+				break;
+			}
+			case "DECONSTRUCT_MECHANISM": {
+				UnderTile underTile = tile.getUnderTile();
+				if (underTile != null && underTile.getPowerMechanismEntity() != null) {
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, underTile.getPowerMechanismEntity());
+					underTile.setPowerMechanismEntity(null);
+					underTile.getPowerGrid().removeTile(tile, gameContext);
+				}
 				break;
 			}
 			default: {
@@ -946,7 +1051,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					Optional.empty(), Optional.of(new JobTarget(targetTile)), (p) -> {}));
 		}
 
-		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(targetEntity.getId()));
+		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 		for (ItemEntityAttributes itemAttributes : itemAttributeList) {
 			GridPoint2 targetPosition = targetTile.getTilePosition();
 			if (!targetPositions.isEmpty()) {
@@ -1023,7 +1128,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					}
 				}
 
-				if (applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) {
+				if ((applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) ||
+						applyDesignationMessage.getTargetTile().hasChannel() ||
+						(applyDesignationMessage.getTargetTile().hasFloor() && applyDesignationMessage.getTargetTile().getFloor().getFloorType().isConstructed())) {
 					Job deconstructionJob = jobFactory.deconstructionJob(applyDesignationMessage.getTargetTile());
 					messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
 				}
@@ -1039,22 +1146,13 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	private boolean handle(RemoveDesignationMessage removeDesignationMessage) {
-		JobType jobType = removeDesignationMessage.getDesignationToRemove().getCreatesJobType();
-		if (jobType != null) {
-			List<Job> jobsAtLocation = jobStore.getJobsAtLocation(removeDesignationMessage.getTargetTile().getTilePosition());
-			List<Job> jobsToRemove = new LinkedList<>();
-			for (Job job : jobsAtLocation) {
-				if (job.getType().equals(jobType)) {
-					jobsToRemove.add(job);
-				}
-			}
+		List<Job> jobsToRemove = new ArrayList<>(jobStore.getJobsAtLocation(removeDesignationMessage.getTargetTile().getTilePosition()));
 
-			for (Job job : jobsToRemove) {
-				if (job.getAssignedToEntityId() != null) {
-					messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
-				}
-				jobStore.remove(job);
+		for (Job job : jobsToRemove) {
+			if (job.getAssignedToEntityId() != null) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
 			}
+			jobStore.remove(job);
 		}
 		removeDesignationMessage.getTargetTile().setDesignation(null);
 		return true;

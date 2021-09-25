@@ -23,7 +23,6 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.ItemCreationRequestMessage;
 import technology.rocketjump.undermount.messaging.types.ItemPrimaryMaterialChangedMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -280,7 +279,7 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 
 
 			if (targetItemAttributes.getQuantity() <= 0) {
-				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(entityToPickUp.getId()));
+				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entityToPickUp);
 			} else {
 				parent.messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, entityToPickUp);
 			}
@@ -318,7 +317,7 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 				if (createdItem != null) {
 					createdItem.getLocationComponent().setWorldPosition(furnitureEntity.getLocationComponent().getWorldPosition(), false);
 					copyMaterialsAndContents(furnitureEntity, createdItem, messageDispatcher, gameContext);
-					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(furnitureEntity.getId()));
+					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, furnitureEntity);
 
 					/*
 					The following line removes the behaviour from the furniture as it is about to be cloned in the FURNITURE_PLACEMENT message

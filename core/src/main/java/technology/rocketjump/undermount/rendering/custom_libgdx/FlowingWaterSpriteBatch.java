@@ -101,7 +101,6 @@ public class FlowingWaterSpriteBatch implements Disposable {
 				new VertexAttribute(VertexAttributes.Usage.Generic, 2, "a_lowerRightFlow"),
 				new VertexAttribute(VertexAttributes.Usage.Generic, 1, "a_distanceFromLowerRight"),
 
-
 				new VertexAttribute(VertexAttributes.Usage.ColorPacked, 4, ShaderProgram.COLOR_ATTRIBUTE),
 				new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, ShaderProgram.TEXCOORD_ATTRIBUTE + "0"),
 				new VertexAttribute(VertexAttributes.Usage.TextureCoordinates, 2, ShaderProgram.TEXCOORD_ATTRIBUTE + "1")); // RT - This line added for texCoord1
@@ -123,8 +122,8 @@ public class FlowingWaterSpriteBatch implements Disposable {
 		}
 		mesh.setIndices(indices);
 
-		FileHandle vertexShaderFile = Gdx.files.internal("assets/water/water_flow_vertex_shader.glsl");
-		FileHandle fragmentShaderFile = Gdx.files.internal("assets/water/water_flow_fragment_shader.glsl");
+		FileHandle vertexShaderFile = Gdx.files.internal("assets/water/shaders/water_flow_vertex_shader.glsl");
+		FileHandle fragmentShaderFile = Gdx.files.internal("assets/water/shaders/water_flow_fragment_shader.glsl");
 		shader = ShaderLoader.createShader(vertexShaderFile, fragmentShaderFile);
 		ownsShader = true;
 	}
@@ -210,6 +209,7 @@ public class FlowingWaterSpriteBatch implements Disposable {
 		final float alpha_v = alphaSprite.getV2();
 		final float alpha_u2 = alphaSprite.getU2();
 		final float alpha_v2 = alphaSprite.getV();
+		Color white = new Color();
 
 		// lower-left
 		// a_position
@@ -236,7 +236,8 @@ public class FlowingWaterSpriteBatch implements Disposable {
 		// a_distanceFromLowerRight
 		vertices[idx++] = 1f;
 		// Generic attributes
-		vertices[idx++] = color;
+		white.a = flowVertices[0].getAverageWaterDepth() / 7f;
+		vertices[idx++] = white.toFloatBits();
 		vertices[idx++] = color_u;
 		vertices[idx++] = color_v;
 		vertices[idx++] = alpha_u;
@@ -266,7 +267,8 @@ public class FlowingWaterSpriteBatch implements Disposable {
 		// a_distanceFromLowerRight
 		vertices[idx++] = 1.4142136f;
 		// Generic attributes
-		vertices[idx++] = color;
+		white.a = flowVertices[1].getAverageWaterDepth() / 7f;
+		vertices[idx++] = white.toFloatBits();
 		vertices[idx++] = color_u;
 		vertices[idx++] = color_v2;
 		vertices[idx++] = alpha_u;
@@ -296,7 +298,8 @@ public class FlowingWaterSpriteBatch implements Disposable {
 		// a_distanceFromLowerRight
 		vertices[idx++] = 1f;
 		// Generic attributes
-		vertices[idx++] = color;
+		white.a = flowVertices[2].getAverageWaterDepth() / 7f;
+		vertices[idx++] = white.toFloatBits();
 		vertices[idx++] = color_u2;
 		vertices[idx++] = color_v2;
 		vertices[idx++] = alpha_u2;
@@ -326,7 +329,8 @@ public class FlowingWaterSpriteBatch implements Disposable {
 		// a_distanceFromLowerRight
 		vertices[idx++] = 0f;
 		// Generic attributes
-		vertices[idx++] = color;
+		white.a = flowVertices[3].getAverageWaterDepth() / 7f;
+		vertices[idx++] = white.toFloatBits();
 		vertices[idx++] = color_u2;
 		vertices[idx++] = color_v;
 		vertices[idx++] = alpha_u2;

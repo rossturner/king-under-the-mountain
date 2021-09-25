@@ -12,7 +12,6 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeci
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesItem;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.messaging.types.TreeFallenMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -74,7 +73,7 @@ public class FallingTreeBehaviour implements BehaviourComponent {
 
 			PlantSpeciesGrowthStage currentGrowthStage = attributes.getSpecies().getGrowthStages().get(attributes.getGrowthStageCursor());
 
-			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(parentEntity.getId()));
+			messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, parentEntity);
 
 			Color leafColor = attributes.getColor(ColoringLayer.LEAF_COLOR);
 			if (leafColor != null && leafColor.equals(Color.CLEAR)) {

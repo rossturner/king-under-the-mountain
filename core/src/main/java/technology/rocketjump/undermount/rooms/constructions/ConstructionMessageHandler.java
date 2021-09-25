@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
+import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
 import technology.rocketjump.undermount.entities.factories.FurnitureEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.FurnitureEntityFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
@@ -143,7 +144,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 							}
 						}
 						tileAtLocation.setConstruction(null);
-						updateTile(tileAtLocation, gameContext);
+						updateTile(tileAtLocation, gameContext, messageDispatcher);
 					}
 					messageDispatcher.dispatchMessage(MessageType.REMOVE_HAULING_JOBS_TO_POSITION, tileLocation);
 				}
@@ -244,7 +245,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 				for (Entity entity : tileAtLocation.getEntities()) {
 					if (entity.getType().equals(EntityType.ITEM)) {
 						itemsRemovedFromConstruction.put(entity.getId(), entity);
-						messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+						messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, entity);
 					}
 				}
 				tileAtLocation.setConstruction(null);
@@ -339,6 +340,10 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		if (requirementToColorMappingsTag != null) {
 			requirementToColorMappingsTag.apply(createdFurnitureEntity, itemsRemovedFromConstruction, itemTypeDictionary);
 		}
+		PoweredFurnitureComponent poweredFurnitureComponent = createdFurnitureEntity.getComponent(PoweredFurnitureComponent.class);
+		if (poweredFurnitureComponent != null) {
+			poweredFurnitureComponent.updatePowerGridAtParentLocation();
+		}
 		if (createdFurnitureEntity.getTag(SupportsRoofTag.class) != null) {
 			for (GridPoint2 tileLocation : construction.getTileLocations()) {
 				MapTile tileAtLocation = gameContext.getAreaMap().getTile(tileLocation);
@@ -410,7 +415,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 		for (Entity entity : tileAtLocation.getEntities()) {
 			if (entity.getType().equals(EntityType.ITEM)) {
 				itemAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-				messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+				messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, entity);
 			}
 		}
 
@@ -452,7 +457,7 @@ public class ConstructionMessageHandler implements GameContextAware, Telegraph {
 					if (itemAttributes.getItemType().equals(construction.getBridge().getBridgeType().getBuildingRequirement().getItemType())) {
 						construction.getBridge().setMaterial(itemAttributes.getMaterial(construction.getPrimaryMaterialType()));
 					}
-					messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, new EntityMessage(entity.getId()));
+					messageDispatcher.dispatchMessage(0.01f, MessageType.DESTROY_ENTITY, entity);
 				}
 			}
 

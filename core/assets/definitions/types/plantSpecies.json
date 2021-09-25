@@ -342,6 +342,143 @@
     "hidden" : false
   } ]
 }, {
+  "speciesName" : "Hemp",
+  "plantType" : "CROP",
+  "materialName" : "Plant",
+  "maxGrowthSpeedVariance" : 0.03,
+  "replacesOtherPlantsInRegion" : 0,
+  "defaultColors" : {
+    "BRANCHES_COLOR" : {
+      "colorCode" : "#566b4b",
+      "hidden" : false
+    },
+    "FRUIT_COLOR" : {
+      "colorCode" : "#a58aa4",
+      "hidden" : false
+    }
+  },
+  "seasons" : {
+    "WINTER" : {
+      "growth" : true,
+      "colors" : { },
+      "switchToGrowthStage" : 5,
+      "shedsLeaves" : false
+    }
+  },
+  "growthStages" : [ {
+    "name" : "Seeds",
+    "nextGrowthStage" : 1,
+    "seasonsUntilComplete" : 0.4,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Shoots",
+    "nextGrowthStage" : 2,
+    "seasonsUntilComplete" : 0.5,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Mid-growth no fruit",
+    "nextGrowthStage" : 4,
+    "seasonsUntilComplete" : 0.6,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Late growth",
+    "nextGrowthStage" : 6,
+    "seasonsUntilComplete" : 0.6,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestedItems" : [ ]
+  }, {
+    "name" : "Ripe",
+    "nextGrowthStage" : 7,
+    "seasonsUntilComplete" : 0.6,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : { },
+    "onCompletion" : [ ],
+    "harvestType" : "FARMING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Resource-Hemp-Bundle",
+      "materialName" : "Hemp",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Hemp Seed",
+      "quantity" : 2,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT"
+    } ]
+  }, {
+    "name" : "Decaying",
+    "seasonsUntilComplete" : 0.05,
+    "initialPlantScale" : 1.0,
+    "completionPlantScale" : 1.0,
+    "initialFruitScale" : 1.0,
+    "completionFruitScale" : 1.0,
+    "tileHeight" : 1,
+    "showFruit" : false,
+    "colors" : {
+      "BRANCHES_COLOR" : {
+        "colorCode" : "#746b1b",
+        "hidden" : false
+      }
+    },
+    "onCompletion" : [ "DESTROY_PLANT" ],
+    "harvestedItems" : [ ]
+  } ],
+  "seed" : {
+    "itemTypeName" : "Ingredient-Seeds",
+    "materialName" : "Hemp Seed",
+    "plantingSeasons" : [ "SPRING" ]
+  },
+  "occurenceWeight" : 0.0,
+  "tags" : { },
+  "allColorObjects" : [ {
+    "colorCode" : "#566b4b",
+    "hidden" : false
+  }, {
+    "colorCode" : "#a58aa4",
+    "hidden" : false
+  }, {
+    "colorCode" : "#746b1b",
+    "hidden" : false
+  } ]
+}, {
   "speciesName" : "Hops",
   "plantType" : "CROP",
   "materialName" : "Plant",

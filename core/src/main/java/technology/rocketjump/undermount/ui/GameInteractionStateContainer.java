@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
@@ -17,6 +18,7 @@ import technology.rocketjump.undermount.doors.DoorwaySize;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
+import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -52,6 +54,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 import static technology.rocketjump.undermount.rooms.RoomTypeDictionary.VIRTUAL_PLACING_ROOM;
 import static technology.rocketjump.undermount.sprites.model.BridgeOrientation.EAST_WEST;
 import static technology.rocketjump.undermount.sprites.model.BridgeOrientation.NORTH_SOUTH;
+import static technology.rocketjump.undermount.ui.GameInteractionMode.isRiverEdge;
 
 /**
  * This class keeps track of how the player is interacting with the game world - for example an input event not captured
@@ -111,6 +114,8 @@ public class GameInteractionStateContainer implements GameContextAware {
 	// Floor placement info
 	private MaterialSelectionMessage floorMaterialSelection = new MaterialSelectionMessage(GameMaterialType.STONE, NULL_MATERIAL, null);
 	private FloorType floorTypeToPlace;
+	// Mechanism placement info
+	private MechanismType mechanismTypeToPlace;
 
 
 	@Inject
@@ -152,7 +157,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 			for (WallConstruction virtualWallConstruction : virtualWallConstructions) {
 				MapTile tile = map.getTile(virtualWallConstruction.getPrimaryLocation());
 				tile.setConstruction(null);
-				MapMessageHandler.updateTile(tile, gameContext);
+				MapMessageHandler.updateTile(tile, gameContext, messageDispatcher);
 			}
 			virtualWallConstructions.clear();
 		}
@@ -221,12 +226,10 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 				furnitureEntityToPlace.getLocationComponent().setWorldPosition(toVector(tilePosition), false);
 
-
 				validFurniturePlacement = isFurniturePlacementValid(map, tilePosition, attributes);
-
-
 			}
 
+		} else if (interactionMode.equals(GameInteractionMode.DESIGNATE_MECHANISMS)) {
 		} else if (interactionMode.equals(GameInteractionMode.PLACE_WALLS)) {
 			GameMaterial selectedMaterial = wallMaterialSelection.selectedMaterial;
 
@@ -252,7 +255,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 						WallConstruction wallConstruction = new WallConstruction(potentialLocation, wallTypeToPlace, selectedMaterial);
 						virtualWallConstructions.add(wallConstruction);
 						tile.setConstruction(wallConstruction); // do NOT add to construction store, else virtual walls will attempt to be built
-						MapMessageHandler.updateTile(tile, gameContext);
+						MapMessageHandler.updateTile(tile, gameContext, messageDispatcher);
 						tileSelected = true;
 					}
 				}
@@ -262,7 +265,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 					WallConstruction wallConstruction = new WallConstruction(tilePosition, wallTypeToPlace, selectedMaterial);
 					virtualWallConstructions.add(wallConstruction);
 					tile.setConstruction(wallConstruction); // do NOT add to construction store, else virtual walls will attempt to be built
-					MapMessageHandler.updateTile(tile, gameContext);
+					MapMessageHandler.updateTile(tile, gameContext, messageDispatcher);
 				}
 			}
 		} else if (interactionMode.equals(GameInteractionMode.PLACE_BRIDGE)) {
@@ -286,6 +289,19 @@ public class GameInteractionStateContainer implements GameContextAware {
 				BridgeOrientation orientation = EAST_WEST;
 				if (maxY - minY > maxX - minX) {
 					orientation = NORTH_SOUTH;
+				} else if (maxY - minY == maxX - minX) {
+					// bridge is square
+					boolean channelCrossesEastWestBridge = false;
+					for (int y = minY + 1; y <= maxY - 1; y++) {
+						MapTile tile = map.getTile(minX, y);
+						if (tile != null && tile.hasChannel()) {
+							channelCrossesEastWestBridge = true;
+							break;
+						}
+					}
+					if (channelCrossesEastWestBridge) {
+						orientation = NORTH_SOUTH;
+					}
 				}
 
 				if (validBridgePlacement) {
@@ -294,12 +310,18 @@ public class GameInteractionStateContainer implements GameContextAware {
 					}
 				}
 				if (validBridgePlacement) {
-					if (!coversBothSidesRiver(bridgeTiles, minX, maxX, minY, maxY, orientation)) {
+					if (!(coversBothSidesRiver(bridgeTiles, minX, maxX, minY, maxY, orientation) ||
+						crossesChannels(bridgeTiles, minX, maxX, minY, maxY))) {
 						validBridgePlacement = false;
 					}
 				}
 				if (validBridgePlacement) {
 					if (!canFitRequiredResourcesOnCorrectSide(bridgeTiles, bridgeTypeToPlace)) {
+						validBridgePlacement = false;
+					}
+				}
+				if (validBridgePlacement) {
+					if (channelIsUnderEndOfBridge(minX, maxX, minY, maxY, orientation)) {
 						validBridgePlacement = false;
 					}
 				}
@@ -330,6 +352,30 @@ public class GameInteractionStateContainer implements GameContextAware {
 		if (tileSelected && (previousDragWidth != currentDragWidth || previousDragHeight != currentDragHeight)) {
 			messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(dragAreaSoundAsset));
 		}
+	}
+
+	private boolean crossesChannels(List<MapTile> bridgeTiles, int minX, int maxX, int minY, int maxY) {
+		boolean minCornerNavigable = true;
+		boolean maxCornerNavigable = true;
+		boolean crossesChannels = false;
+
+		for (MapTile mapTile : bridgeTiles) {
+			if (mapTile.getTileX() == minX && mapTile.getTileY() == minY) {
+				minCornerNavigable = mapTile.isNavigable();
+				if (!minCornerNavigable) {
+					break;
+				}
+			} else if (mapTile.getTileX() == maxX && mapTile.getTileY() == maxY) {
+				maxCornerNavigable = mapTile.isNavigable();
+				if (!maxCornerNavigable) {
+					break;
+				}
+			} else if (mapTile.hasChannel()) {
+				crossesChannels = true;
+			}
+		}
+
+		return minCornerNavigable && maxCornerNavigable && crossesChannels;
 	}
 
 	private boolean canFitRequiredResourcesOnCorrectSide(List<MapTile> bridgeTiles, BridgeType bridgeTypeToPlace) {
@@ -515,6 +561,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 			positionsToCheck.add(tilePosition.cpy().add(extraTileOffset));
 		}
 
+		boolean oneTileNotRiverEdge = false;
 		for (GridPoint2 positionToCheck : positionsToCheck) {
 			MapTile tileToCheck = map.getTile(positionToCheck);
 			if (tileToCheck == null || !tileToCheck.isEmptyExceptItemsAndPlants()) {
@@ -531,7 +578,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 					return false;
 				}
 			} else {
-				// If this is place-anywhere, disallow placement inside stockpiles
+				// If this is place-anywhere, disallow placement inside stockpiles and at river edge
 				RoomTile roomTile = tileToCheck.getRoomTile();
 				if (roomTile != null) {
 					if (roomTile.getRoom().getRoomType().getFurnitureNames().isEmpty()) {
@@ -539,8 +586,15 @@ public class GameInteractionStateContainer implements GameContextAware {
 						return false;
 					}
 				}
-
 			}
+
+			if (!isRiverEdge(tileToCheck)) {
+				oneTileNotRiverEdge = true;
+			}
+		}
+
+		if (!oneTileNotRiverEdge && !attributes.getFurnitureType().getName().equals("WATERWHEEL")) {
+			return false;
 		}
 
 		if (attributes.getCurrentLayout().getWorkspaces().size() > 0) {
@@ -557,6 +611,24 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 			if (!oneWorkspaceAccessible) {
 				return false;
+			}
+		}
+
+		for (FurnitureLayout.SpecialTile specialTile : attributes.getCurrentLayout().getSpecialTiles()) {
+			MapTile tileToCheck = map.getTile(tilePosition.cpy().add(specialTile.getLocation()));
+			if (tileToCheck == null) {
+				return false;
+			}
+
+			switch (specialTile.getRequirement()) {
+				case IS_RIVER:
+					if (!tileToCheck.getFloor().isRiverTile() || tileToCheck.getFloor().hasBridge()) {
+						return false;
+					}
+					break;
+				default:
+					Logger.warn("Not yet implemented, check for furniture special location of type " + specialTile.getRequirement());
+					return false;
 			}
 		}
 
@@ -748,5 +820,37 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 	public MaterialSelectionMessage getFloorMaterialSelection() {
 		return floorMaterialSelection;
+	}
+
+	private boolean channelIsUnderEndOfBridge(int minX, int maxX, int minY, int maxY, BridgeOrientation orientation) {
+		if (orientation.equals(NORTH_SOUTH)) {
+			for (Integer y : List.of(minY, maxY)) {
+				for (int x = minX; x <= maxX; x++) {
+					MapTile tile = gameContext.getAreaMap().getTile(x, y);
+					if (tile == null || tile.hasChannel()) {
+						return true;
+					}
+				}
+			}
+		} else {
+			for (Integer x : List.of(minX, maxX)) {
+				for (int y = minY; y <= maxY; y++) {
+					MapTile tile = gameContext.getAreaMap().getTile(x, y);
+					if (tile == null || tile.hasChannel()) {
+						return true;
+					}
+				}
+			}
+
+		}
+		return false;
+	}
+
+	public MechanismType getMechanismTypeToPlace() {
+		return mechanismTypeToPlace;
+	}
+
+	public void setMechanismTypeToPlace(MechanismType mechanismTypeToPlace) {
+		this.mechanismTypeToPlace = mechanismTypeToPlace;
 	}
 }

@@ -148,6 +148,32 @@
   "materialTypesToCopyOver" : [ "STONE" ],
   "defaultTimeToCompleteCrafting" : 5.0
 }, {
+  "recipeName" : "Craft gear",
+  "craftingTypeName" : "STONEMASONRY",
+  "input" : [ {
+    "itemTypeName" : "Resource-Stone-Block",
+    "quantity" : 1
+  } ],
+  "output" : [ {
+    "itemTypeName" : "Product-Stone-Gear",
+    "quantity" : 1
+  } ],
+  "materialTypesToCopyOver" : [ "STONE" ],
+  "defaultTimeToCompleteCrafting" : 4.0
+}, {
+  "recipeName" : "Craft pipe",
+  "craftingTypeName" : "STONEMASONRY",
+  "input" : [ {
+    "itemTypeName" : "Resource-Stone-Block",
+    "quantity" : 1
+  } ],
+  "output" : [ {
+    "itemTypeName" : "Product-Stone-Pipe",
+    "quantity" : 1
+  } ],
+  "materialTypesToCopyOver" : [ "STONE" ],
+  "defaultTimeToCompleteCrafting" : 4.0
+}, {
   "recipeName" : "Craft barrel hoops",
   "craftingTypeName" : "BLACKSMITHING",
   "input" : [ {
@@ -472,7 +498,7 @@
     "quantity" : 5
   } ],
   "materialTypesToCopyOver" : [ "ORE" ],
-  "defaultTimeToCompleteCrafting" : 7.0
+  "defaultTimeToCompleteCrafting" : 4.0
 }, {
   "recipeName" : "Crush pyrite to iron sulfate / green vitriol",
   "craftingTypeName" : "ORE_CRUSHING",
@@ -487,7 +513,7 @@
     "quantity" : 2,
     "materialName" : "Green Vitriol"
   } ],
-  "defaultTimeToCompleteCrafting" : 5.0
+  "defaultTimeToCompleteCrafting" : 3.0
 }, {
   "recipeName" : "Smelt iron",
   "craftingTypeName" : "SMELTING",
@@ -669,4 +695,34 @@
   } ],
   "extraGameHoursToComplete" : 28.0,
   "defaultTimeToCompleteCrafting" : 2.0
+}, {
+  "recipeName" : "Craft rope",
+  "verbOverrideI18nKey" : "CRAFTING_TYPE.WEAVING",
+  "craftingTypeName" : "WEAVING",
+  "input" : [ {
+    "itemTypeName" : "Resource-Hemp-Fibre-Bundle",
+    "quantity" : 1,
+    "materialName" : "Hemp_Fibre"
+  } ],
+  "output" : [ {
+    "itemTypeName" : "Product-Rope",
+    "quantity" : 1,
+    "materialName" : "Hemp-Rope"
+  } ],
+  "defaultTimeToCompleteCrafting" : 5.0
+}, {
+  "recipeName" : "Craft cloth",
+  "verbOverrideI18nKey" : "CRAFTING_TYPE.WEAVING",
+  "craftingTypeName" : "WEAVING",
+  "input" : [ {
+    "itemTypeName" : "Resource-Hemp-Fibre-Bundle",
+    "quantity" : 1,
+    "materialName" : "Hemp_Fibre"
+  } ],
+  "output" : [ {
+    "itemTypeName" : "Product-Linen",
+    "quantity" : 1,
+    "materialName" : "Hemp-Linen"
+  } ],
+  "defaultTimeToCompleteCrafting" : 5.0
 } ]

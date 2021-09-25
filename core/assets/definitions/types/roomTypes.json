@@ -67,7 +67,7 @@
   "i18nKey" : "ROOMS.BEDROOM",
   "colorCode" : "#c17200",
   "iconName" : "bed",
-  "furnitureNames" : [ "SINGLE_BED" ],
+  "furnitureNames" : [ "SINGLE_BED", "SLEEPING_SPOT" ],
   "tags" : { }
 }, {
   "roomName" : "KITCHEN",
@@ -91,6 +91,13 @@
   "colorCode" : "#e5b95b",
   "iconName" : "beer-stein",
   "furnitureNames" : [ "WATER_BARREL", "MALTING_STATION", "MASH_TUN", "BREW_KETTLE", "FERMENTATION_TANK" ],
+  "tags" : { }
+}, {
+  "roomName" : "TEXTILE_WORKSHOP",
+  "i18nKey" : "ROOMS.TEXTILE_WORKSHOP",
+  "colorCode" : "#cccc8f",
+  "iconName" : "yarn",
+  "furnitureNames" : [ "RETTING_TANK", "LOOM" ],
   "tags" : { }
 }, {
   "roomName" : "GRAVEYARD",

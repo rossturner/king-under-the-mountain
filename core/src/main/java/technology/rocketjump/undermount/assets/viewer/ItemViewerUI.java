@@ -185,7 +185,6 @@ public class ItemViewerUI implements Disposable {
 
 	private void createItemTypeWidget() {
 		SelectBox<String> itemTypeSelect = new SelectBox<>(uiSkin);
-
 		Array<String> itemTypeNames = new Array<>();
 		for (ItemType itemType : itemTypeDictionary.getAll()) {
 			itemTypeNames.add(itemType.getItemTypeName());

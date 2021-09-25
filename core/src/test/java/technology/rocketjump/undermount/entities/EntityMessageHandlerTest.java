@@ -21,7 +21,6 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
@@ -101,13 +100,14 @@ public class EntityMessageHandlerTest {
 	public void handles_DestroyEntityMessage() {
 		when(mockEntityStore.remove(TARGET_ENTITY_ID)).thenReturn(mockEntity);
 		Vector2 entityWorldPosition = new Vector2(0.5f, 0.5f);
+		when(mockEntity.getId()).thenReturn(TARGET_ENTITY_ID);
 		when(mockEntity.getLocationComponent()).thenReturn(mockLocationComponent);
 		when(mockEntity.getType()).thenReturn(EntityType.HUMANOID);
 		when(mockLocationComponent.getWorldPosition()).thenReturn(entityWorldPosition);
 		when(mockAreaMap.getTile(entityWorldPosition)).thenReturn(mockTile);
 		when(mockEntityStore.getById(TARGET_ENTITY_ID)).thenReturn(mockEntity);
 
-		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, new EntityMessage(TARGET_ENTITY_ID));
+		messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, mockEntity);
 
 		verify(mockEntityStore).remove(TARGET_ENTITY_ID);
 		verify(mockTile).removeEntity(TARGET_ENTITY_ID);

@@ -40,7 +40,7 @@
     "oxidises": true,
     "chanceToExtinguishFire": 0.7,
     "accumulatesSnowPerHour": -0.4,
-    "lightningStrikesPerHour": 6.0,
+    "lightningStrikesPerHour": 2.0,
     "happinessModifiers": {
       "STANDING": "CAUGHT_IN_RAIN",
       "WORKING": "WORKED_IN_RAIN",
@@ -53,15 +53,15 @@
     "maxSunlight": "#DDDDDD",
     "dayAmbienceSoundAssetName": "Isolated thunder",
     "nightAmbienceSoundAssetName": "Isolated thunder",
-    "lightningStrikesPerHour": 2.0
+    "lightningStrikesPerHour": 1.0
   },
   {
     "name": "Snow",
     "i18nKey": "WEATHER.TYPE.SNOW",
     "particleEffectTypeName": "Snow",
     "maxSunlight": "#EEEEEE",
-    "dayAmbienceSoundAssetName": null,
-    "nightAmbienceSoundAssetName": null,
+    "dayAmbienceSoundAssetName": "Wind",
+    "nightAmbienceSoundAssetName": "Wind",
     "oxidises": true,
     "chanceToExtinguishFire": 0.2,
     "chanceToFreezeToDeathFromSleeping": 0.03,

@@ -40,7 +40,7 @@
   "nightAmbienceSoundAssetName" : "Thunderstorm with rain",
   "oxidises" : true,
   "chanceToExtinguishFire" : 0.7,
-  "lightningStrikesPerHour" : 6.0,
+  "lightningStrikesPerHour" : 2.0,
   "accumulatesSnowPerHour" : -0.4,
   "happinessModifiers" : {
     "STANDING" : "CAUGHT_IN_RAIN",
@@ -54,7 +54,7 @@
   "dayAmbienceSoundAssetName" : "Isolated thunder",
   "nightAmbienceSoundAssetName" : "Isolated thunder",
   "oxidises" : false,
-  "lightningStrikesPerHour" : 2.0,
+  "lightningStrikesPerHour" : 1.0,
   "accumulatesSnowPerHour" : -0.08,
   "happinessModifiers" : { }
 }, {
@@ -62,6 +62,8 @@
   "i18nKey" : "WEATHER.TYPE.SNOW",
   "particleEffectTypeName" : "Snow",
   "maxSunlight" : "#EEEEEE",
+  "dayAmbienceSoundAssetName" : "Wind",
+  "nightAmbienceSoundAssetName" : "Wind",
   "oxidises" : true,
   "chanceToExtinguishFire" : 0.2,
   "chanceToFreezeToDeathFromSleeping" : 0.03,

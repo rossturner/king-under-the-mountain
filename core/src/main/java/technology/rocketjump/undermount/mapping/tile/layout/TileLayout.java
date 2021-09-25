@@ -114,7 +114,7 @@ public class TileLayout {
 		return builder;
 	}
 
-	private boolean meaningfulTileInDirection(CompassDirection direction) {
+	public boolean meaningfulTileInDirection(CompassDirection direction) {
 		return (id & direction.getBinaryMask()) > 0;
 	}
 

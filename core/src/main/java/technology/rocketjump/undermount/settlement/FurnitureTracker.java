@@ -6,6 +6,8 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.assets.entities.tags.BedSleepingPositionTag;
+import technology.rocketjump.undermount.entities.components.furniture.SleepingPositionComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
@@ -17,6 +19,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.FurnitureAssignmentRequest;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Collections.emptyMap;
 
@@ -98,7 +101,16 @@ public class FurnitureTracker implements GameContextAware, Telegraph {
 		switch (msg.message) {
 			case MessageType.REQUEST_FURNITURE_ASSIGNMENT: {
 				FurnitureAssignmentRequest request = (FurnitureAssignmentRequest) msg.extraInfo;
-				Collection<Entity> matched = findByTag(request.requiredTag, true);
+				List<Entity> matched = findByTag(request.requiredTag, true)
+						.stream().filter(e -> {
+							if (request.requiredTag.equals(BedSleepingPositionTag.class)) {
+								SleepingPositionComponent sleepingPositionComponent = e.getComponent(SleepingPositionComponent.class);
+								return sleepingPositionComponent.isOnFloor() == request.wantsToSleepOnFloor;
+							} else {
+								return true;
+							}
+						})
+						.collect(Collectors.toList());
 				Vector2 requesterPosition = request.requestingEntity.getLocationComponent().getWorldPosition();
 				long requesterRegionId = gameContext.getAreaMap().getTile(requesterPosition).getRegionId();
 				Entity nearest = null;

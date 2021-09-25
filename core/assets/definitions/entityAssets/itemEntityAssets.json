@@ -4817,6 +4817,424 @@
     }
   }
 }, {
+  "uniqueName" : "Product-Stone-Gear-On-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Stone-Gear",
+  "minQuantity" : 1,
+  "maxQuantity" : 50,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Product-Stone-Gear.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Product-Stone-Gear-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Stone-Gear",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Product-Stone-Gear.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.5,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 26.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Product-Stone-Gear.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.5,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Product-Stone-Gear.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.5,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP" : {
+      "filename" : "Product-Stone-Gear.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.5,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Product-Stone-Gear.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.5,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Product-Stone-Gear.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.5,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    }
+  }
+}, {
+  "uniqueName" : "Product-Linen-On-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Linen",
+  "minQuantity" : 1,
+  "maxQuantity" : 50,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Fabric_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Product-Linen-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Linen",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Fabric_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 26.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Fabric_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Fabric_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP" : {
+      "filename" : "Fabric_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Fabric_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Fabric_Plain.png",
+      "coloringLayer" : "CLOTH_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    }
+  }
+}, {
   "uniqueName" : "Product-Liquid-Tank-On-Ground",
   "type" : "ITEM_BASE_LAYER",
   "itemTypeName" : "Product-Liquid-Tank",
@@ -5235,6 +5653,215 @@
     }
   }
 }, {
+  "uniqueName" : "Product-Stone-Pipe-On-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Stone-Pipe",
+  "minQuantity" : 1,
+  "maxQuantity" : 50,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Product-Stone-Pipe-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Stone-Pipe",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 26.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Resources_Half-pipe centre-to-north.png",
+      "coloringLayer" : "STONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    }
+  }
+}, {
   "uniqueName" : "Product-Ration",
   "type" : "ITEM_BASE_LAYER",
   "itemTypeName" : "Product-Ration",
@@ -5370,6 +5997,215 @@
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Product-Rope-On-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Rope",
+  "minQuantity" : 1,
+  "maxQuantity" : 50,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Rope.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Product-Rope-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Product-Rope",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Rope.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 26.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Rope.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Rope.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 20.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP" : {
+      "filename" : "Rope.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Rope.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Rope.png",
+      "coloringLayer" : "ROPE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.6,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -8.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 12.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
     }
   }
 }, {
@@ -5984,6 +6820,198 @@
         "offsetPixels" : {
           "x" : -6.0,
           "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    }
+  }
+}, {
+  "uniqueName" : "Resource-Hemp-Bundle-Base",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeNames" : [ "Resource-Hemp-Bundle", "Resource-Hemp-Fibre-Bundle" ],
+  "minQuantity" : 1,
+  "maxQuantity" : 4,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_Bundle.png",
+      "coloringLayer" : "VEGETABLE_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Resource-Hemp-Bundle-Single01",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeNames" : [ "Resource-Hemp-Bundle", "Resource-Hemp-Fibre-Bundle" ],
+  "minQuantity" : 1,
+  "maxQuantity" : 4,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Hemp_Bundle.png",
+      "coloringLayer" : "VEGETABLE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 18.0,
+          "y" : -16.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -18.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Hemp_Bundle.png",
+      "coloringLayer" : "VEGETABLE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : -4.0,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -16.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 22.0,
+          "y" : -10.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : -100
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Hemp_Bundle.png",
+      "coloringLayer" : "VEGETABLE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 4.0,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 16.0,
+          "y" : -16.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      }, {
+        "type" : "HUMANOID_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -22.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : -100
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Hemp_Bundle.png",
+      "coloringLayer" : "VEGETABLE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : -16.0,
+          "y" : 0.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Hemp_Bundle.png",
+      "coloringLayer" : "VEGETABLE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.8,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "HUMANOID_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 16.0,
+          "y" : -16.0,
           "zero" : false,
           "unit" : false
         },

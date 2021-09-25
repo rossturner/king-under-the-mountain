@@ -2,8 +2,6 @@ package technology.rocketjump.undermount.sprites;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.sprites.model.BridgeOrientation;
@@ -13,13 +11,11 @@ import technology.rocketjump.undermount.sprites.model.BridgeType;
 import java.util.EnumMap;
 import java.util.Map;
 
-@Singleton
 public class BridgeTileSpriteCache {
 
 	private final Sprite placeholderSprite;
 	private Map<GameMaterialType, Map<BridgeOrientation, Map<BridgeTileLayout, Sprite>>> materialMap = new EnumMap<>(GameMaterialType.class);
 
-	@Inject
 	public BridgeTileSpriteCache(TextureAtlas textureAtlas, BridgeTypeDictionary bridgeTypeDictionary) {
 		for (BridgeType bridgeType : bridgeTypeDictionary.getAll()) {
 			for (Map.Entry<BridgeOrientation, Map<BridgeTileLayout, String>> orientationEntry : bridgeType.getAssets().entrySet()) {

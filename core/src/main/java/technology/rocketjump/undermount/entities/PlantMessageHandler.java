@@ -123,7 +123,8 @@ public class PlantMessageHandler implements GameContextAware, Telegraph {
 
 	private boolean isShrubAllowedAt(MapTile targetTile) {
 		if (targetTile == null || targetTile.getFloor() == null || targetTile.getFloor().getMaterial() == null || targetTile.getFloor().hasBridge() ||
-				!targetTile.getRoof().getState().equals(OPEN) || !targetTile.isEmpty() || !EARTH.equals(targetTile.getFloor().getMaterial().getMaterialType())) {
+				!targetTile.getRoof().getState().equals(OPEN) || !targetTile.isEmpty() || !EARTH.equals(targetTile.getFloor().getMaterial().getMaterialType()) ||
+				targetTile.hasChannel()) {
 			return false;
 		}
 
@@ -148,7 +149,7 @@ public class PlantMessageHandler implements GameContextAware, Telegraph {
 	 */
 	private boolean isTreeAllowedAt(MapTile targetTile) {
 		if (targetTile == null || !targetTile.getRoof().getState().equals(OPEN) || !targetTile.isEmpty() || targetTile.getFloor().hasBridge() ||
-				!EARTH.equals(targetTile.getFloor().getMaterial().getMaterialType()) || targetTile.isWaterSource()) {
+				!EARTH.equals(targetTile.getFloor().getMaterial().getMaterialType()) || targetTile.isWaterSource() || targetTile.hasChannel()) {
 			return false;
 		}
 		GridPoint2 position = targetTile.getTilePosition();
