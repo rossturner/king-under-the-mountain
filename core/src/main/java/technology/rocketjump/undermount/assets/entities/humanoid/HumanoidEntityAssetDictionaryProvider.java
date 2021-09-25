@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
@@ -22,12 +23,15 @@ import java.util.List;
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.DIFFUSE_ENTITIES;
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.NORMAL_ENTITIES;
 
+@Singleton
 public class HumanoidEntityAssetDictionaryProvider implements Provider<HumanoidEntityAssetDictionary> {
 
 	public static final float EPSILON = 0.0001f;
 
 	private final EntityAssetTypeDictionary entityAssetTypeDictionary;
 	private final TextureAtlasRepository textureAtlasRepository;
+
+	private HumanoidEntityAssetDictionary instance;
 
 	@Inject
 	public HumanoidEntityAssetDictionaryProvider(EntityAssetTypeDictionary entityAssetTypeDictionary, TextureAtlasRepository textureAtlasRepository) {
@@ -37,6 +41,13 @@ public class HumanoidEntityAssetDictionaryProvider implements Provider<HumanoidE
 
 	@Override
 	public HumanoidEntityAssetDictionary get() {
+		if (instance == null) {
+			instance = create();
+		}
+		return instance;
+	}
+
+	public HumanoidEntityAssetDictionary create() {
 		TextureAtlas diffuseTextureAtlas = textureAtlasRepository.get(DIFFUSE_ENTITIES);
 		TextureAtlas normalTextureAtlas = textureAtlasRepository.get(NORMAL_ENTITIES);
 		FileHandle entityDefinitionsFile = Gdx.files.internal("assets/definitions/entityAssets/humanoidEntityAssets.json");

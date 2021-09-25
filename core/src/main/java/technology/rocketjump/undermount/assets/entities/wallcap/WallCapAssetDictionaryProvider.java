@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.WallTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.model.SpriteDescriptor;
@@ -20,10 +21,12 @@ import static technology.rocketjump.undermount.assets.TextureAtlasRepository.Tex
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.NORMAL_ENTITIES;
 import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addSprite;
 
+@Singleton
 public class WallCapAssetDictionaryProvider implements Provider<WallCapAssetDictionary> {
 
 	private final TextureAtlasRepository textureAtlasRepository;
 	private final WallTypeDictionary wallTypeDictionary;
+	private WallCapAssetDictionary instance;
 
 	@Inject
 	public WallCapAssetDictionaryProvider(TextureAtlasRepository textureAtlasRepository, WallTypeDictionary wallTypeDictionary) {
@@ -33,6 +36,13 @@ public class WallCapAssetDictionaryProvider implements Provider<WallCapAssetDict
 
 	@Override
 	public WallCapAssetDictionary get() {
+		if (instance == null) {
+			instance = create();
+		}
+		return instance;
+	}
+
+	public WallCapAssetDictionary create() {
 		TextureAtlas diffuseTextureAtlas = textureAtlasRepository.get(DIFFUSE_ENTITIES);
 		TextureAtlas normalTextureAtlas = textureAtlasRepository.get(NORMAL_ENTITIES);
 		FileHandle assetDefinitionsFile = Gdx.files.internal("assets/definitions/entityAssets/wallCapAssets.json");

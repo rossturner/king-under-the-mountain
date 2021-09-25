@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.furniture.model.FurnitureEntityAsset;
@@ -23,6 +24,7 @@ import static technology.rocketjump.undermount.assets.TextureAtlasRepository.Tex
 import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addAnimatedSpriteArray;
 import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addSprite;
 
+@Singleton
 public class FurnitureEntityAssetDictionaryProvider implements Provider<FurnitureEntityAssetDictionary> {
 
 	private final TextureAtlasRepository textureAtlasRepository;
