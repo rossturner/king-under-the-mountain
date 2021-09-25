@@ -20,7 +20,8 @@ Alpha 7
 - Updated single door assets and lighting information
 - Updated dirt floor texture
 - Can now press enter in the rename dialog to submit the rename text (you would not believe how awkward this is to do)
-- Improved load time by fixing a performance issue where sprite assets were loaded many times
+- Changing stockpile settings now removes any *pending* hauling jobs which would be invalid with the new settings
+- Improved startup time by fixing a performance issue where sprite assets were loaded many times
 
 Alpha 6.1.7 - 5th September 2021
 
