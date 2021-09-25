@@ -8,7 +8,7 @@
     "spriteDescriptors": {
       "DOWN": {
         "filename": "wallcap_woodenPlank_S-64.png",
-        "coloringLayer": "STONE_COLOR",
+        "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
           "x": -0.5,
           "y": 12.5
@@ -16,7 +16,7 @@
       },
       "UP": {
         "filename": "wallcap_woodenPlank_N-64.png",
-        "coloringLayer": "STONE_COLOR",
+        "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
           "x": 0.0,
           "y": 12.0

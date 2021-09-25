@@ -137,7 +137,7 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 				doorway.getWallCapEntities().add(southCap);
 			}
 
-			Entity northCap = buildWallCap(doorwayLocation.cpy().add(0, 1), doorway, EntityAssetOrientation.UP, 0.5f - (1f / PIXELS_PER_TILE));
+			Entity northCap = buildWallCap(doorwayLocation.cpy().add(0, 1), doorway, EntityAssetOrientation.UP, 0.5f + (1f / PIXELS_PER_TILE));
 			if (northCap != null) {
 				doorway.getWallCapEntities().add(northCap);
 			}

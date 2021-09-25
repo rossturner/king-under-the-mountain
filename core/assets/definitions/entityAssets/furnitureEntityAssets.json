@@ -823,13 +823,13 @@
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "MetalDoor_Single_EW",
+      "filename" : "door_metal_EW_anim",
       "coloringLayer" : "METAL_COLOR",
       "isAnimated" : true,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : -43.0,
+        "y" : -32.0,
         "unit" : false,
         "zero" : false
       },
@@ -849,15 +849,15 @@
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "MetalDoor_Single_EW_0.png",
+      "filename" : "door_metal_EW_anim_0.png",
       "coloringLayer" : "METAL_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : -4.0,
+        "y" : 0.0,
         "unit" : false,
-        "zero" : false
+        "zero" : true
       },
       "flipX" : false,
       "flipY" : false,
@@ -875,13 +875,13 @@
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "MetalDoor_Single_NS",
+      "filename" : "door_metal_NS_anim",
       "coloringLayer" : "METAL_COLOR",
       "isAnimated" : true,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -6.0,
-        "y" : 0.0,
+        "x" : 0.0,
+        "y" : -32.0,
         "unit" : false,
         "zero" : false
       },
@@ -901,13 +901,13 @@
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "StoneDoor_Single_EW",
+      "filename" : "door_stone_EW_anim",
       "coloringLayer" : "STONE_COLOR",
       "isAnimated" : true,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : -36.0,
+        "y" : -32.0,
         "unit" : false,
         "zero" : false
       },
@@ -927,15 +927,15 @@
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "StoneDoor_Single_EW_0.png",
+      "filename" : "door_stone_EW_anim_0.png",
       "coloringLayer" : "STONE_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : -4.0,
+        "y" : 0.0,
         "unit" : false,
-        "zero" : false
+        "zero" : true
       },
       "flipX" : false,
       "flipY" : false,
@@ -953,13 +953,13 @@
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "StoneDoor_Single_NS",
+      "filename" : "door_stone_NS_anim",
       "coloringLayer" : "STONE_COLOR",
       "isAnimated" : true,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -6.0,
-        "y" : 0.0,
+        "x" : 0.0,
+        "y" : -32.0,
         "unit" : false,
         "zero" : false
       },
@@ -1037,9 +1037,9 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
+        "y" : -32.0,
         "unit" : false,
-        "zero" : true
+        "zero" : false
       },
       "flipX" : false,
       "flipY" : false,

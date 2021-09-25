@@ -71,7 +71,7 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 15.0,
+        "y" : 13.0,
         "zero" : false,
         "unit" : false
       },
@@ -91,7 +91,7 @@
   "spriteDescriptors" : {
     "DOWN" : {
       "filename" : "wallcap_woodenPlank_S-64.png",
-      "coloringLayer" : "STONE_COLOR",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
@@ -108,7 +108,7 @@
     },
     "UP" : {
       "filename" : "wallcap_woodenPlank_N-64.png",
-      "coloringLayer" : "STONE_COLOR",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
