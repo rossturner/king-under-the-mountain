@@ -147,8 +147,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 					OngoingEffectType type = ((OngoingEffectAttributes) createdEntity.getPhysicalEntityComponent().getAttributes()).getType();
 					for (Hint hint : hintDictionary.getByTriggerType(ONGOING_EFFECT_TRIGGERED)) {
 						for (HintTrigger trigger : hint.getTriggers()) {
-							if (trigger.getTriggerType().equals(ONGOING_EFFECT_TRIGGERED) && trigger.getRelatedTypeName().equals(type.getName()) &&
-									gameContext.getMapEnvironment().getCurrentWeather().getLightningStrikesPerHour() == null && canBeShown(hint)) {
+							if (trigger.getTriggerType().equals(ONGOING_EFFECT_TRIGGERED) && trigger.getRelatedTypeName().equals(type.getName()) && canBeShown(hint)) {
 								show(hint);
 								return false;
 							}

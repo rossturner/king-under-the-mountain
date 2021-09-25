@@ -27,6 +27,20 @@
     ]
   },
   {
+    "hintId": "open_pipes_menu",
+    "i18nKeys": [
+      "HINT.BUILD_PIPES.1",
+      "HINT.BUILD_PIPES.2",
+      "HINT.BUILD_PIPES.3"
+    ],
+    "triggers": [
+      {
+        "triggerType": "GUI_SWITCH_VIEW",
+        "relatedTypeName": "BUILD_PIPING"
+      }
+    ]
+  },
+  {
     "hintId": "open_mechanisms_menu",
     "i18nKeys": [
       "HINT.BUILD_POWER.1",

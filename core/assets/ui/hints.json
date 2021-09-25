@@ -21,6 +21,17 @@
   } ],
   "dismissable" : true
 }, {
+  "hintId" : "open_pipes_menu",
+  "i18nKeys" : [ "HINT.BUILD_PIPES.1", "HINT.BUILD_PIPES.2", "HINT.BUILD_PIPES.3" ],
+  "progressDescriptors" : [ ],
+  "actions" : [ ],
+  "triggers" : [ {
+    "triggerType" : "GUI_SWITCH_VIEW",
+    "relatedTypeName" : "BUILD_PIPING",
+    "quantity" : 0
+  } ],
+  "dismissable" : true
+}, {
   "hintId" : "open_mechanisms_menu",
   "i18nKeys" : [ "HINT.BUILD_POWER.1", "HINT.BUILD_POWER.2", "HINT.BUILD_POWER.3" ],
   "progressDescriptors" : [ ],
@@ -72,17 +83,6 @@
   "triggers" : [ {
     "triggerType" : "ITEM_AMOUNT",
     "relatedTypeName" : "Tool-Chisel",
-    "quantity" : 0
-  } ],
-  "dismissable" : true
-}, {
-  "hintId" : "fire_encountered",
-  "i18nKeys" : [ "HINT.FIRE_ENCOUNTERED.1", "HINT.FIRE_ENCOUNTERED.2" ],
-  "progressDescriptors" : [ ],
-  "actions" : [ ],
-  "triggers" : [ {
-    "triggerType" : "ONGOING_EFFECT_TRIGGERED",
-    "relatedTypeName" : "Fire",
     "quantity" : 0
   } ],
   "dismissable" : true
