@@ -566,7 +566,7 @@
   "type" : "ITEM_BASE_LAYER",
   "itemTypeName" : "Carcass-Carp-Prepared",
   "minQuantity" : 1,
-  "maxQuantity" : 4,
+  "maxQuantity" : 16,
   "itemPlacements" : [ "BEING_CARRIED" ],
   "spriteDescriptors" : {
     "DOWN" : {
@@ -1238,7 +1238,7 @@
   "type" : "ITEM_BASE_LAYER",
   "itemTypeName" : "Carcass-Perch-Prepared",
   "minQuantity" : 1,
-  "maxQuantity" : 32,
+  "maxQuantity" : 16,
   "itemPlacements" : [ "BEING_CARRIED" ],
   "spriteDescriptors" : {
     "DOWN" : {
@@ -1910,7 +1910,7 @@
   "type" : "ITEM_BASE_LAYER",
   "itemTypeName" : "Carcass-Pike-Prepared",
   "minQuantity" : 1,
-  "maxQuantity" : 32,
+  "maxQuantity" : 16,
   "itemPlacements" : [ "BEING_CARRIED" ],
   "spriteDescriptors" : {
     "DOWN" : {
