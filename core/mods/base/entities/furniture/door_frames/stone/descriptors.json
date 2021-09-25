@@ -7,15 +7,24 @@
     "validMaterialTypes": ["STONE"],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "StoneFrame_Single_EW.png",
+        "filename": "door_stone_EW_side-64.png",
         "coloringLayer": "STONE_COLOR",
         "offsetPixels": {
           "x": 0,
-          "y": 50
+          "y": -32
+        }
+      },
+      "UP": {
+        "filename": "door_stone_EW_top-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 32
         }
       }
     }
   },
+
   {
     "uniqueName": "doorframe-stone-single-ns",
     "type": "BASE_LAYER",
@@ -24,11 +33,19 @@
     "validMaterialTypes": ["STONE"],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "StoneFrame_Single_NS.png",
+        "filename": "door_stone_NS_side-64.png",
         "coloringLayer": "STONE_COLOR",
         "offsetPixels": {
           "x": 0,
-          "y": 64
+          "y": -32
+        }
+      },
+      "UP": {
+        "filename": "door_stone_NS_top-64.png",
+        "coloringLayer": "STONE_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 32
         }
       }
     }

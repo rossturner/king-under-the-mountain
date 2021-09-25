@@ -28,6 +28,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
+import technology.rocketjump.undermount.mapping.MapMessageHandler;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
@@ -130,28 +131,20 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 		targetTile.setDoorway(doorway);
 
-		GameMaterial attachedWallMaterial;
-
 		if (message.getOrientation().equals(NORTH_SOUTH)) {
 			Entity southCap = buildWallCap(doorwayLocation.cpy().add(0, -1), doorway, EntityAssetOrientation.DOWN, -0.5f + (1f / PIXELS_PER_TILE));
 			if (southCap != null) {
 				doorway.getWallCapEntities().add(southCap);
 			}
-			attachedWallMaterial = getAttachedWallMaterial(southCap);
-		} else {
-			Entity westCap = buildWallCap(doorwayLocation.cpy().add(-1, 0), doorway, EntityAssetOrientation.LEFT, 0.5f);
-			Entity eastCap = buildWallCap(doorwayLocation.cpy().add(1, 0), doorway, EntityAssetOrientation.RIGHT, 0.5f);
 
-			if (westCap != null) {
-				doorway.getWallCapEntities().add(westCap);
+			Entity northCap = buildWallCap(doorwayLocation.cpy().add(0, 1), doorway, EntityAssetOrientation.UP, 0.5f - (1f / PIXELS_PER_TILE));
+			if (northCap != null) {
+				doorway.getWallCapEntities().add(northCap);
 			}
-			if (eastCap != null) {
-				doorway.getWallCapEntities().add(eastCap);
-			}
-			attachedWallMaterial = getAttachedWallMaterial(westCap);
 		}
 
-		doorway.setFrameEntity(createFrameEntity(message, attachedWallMaterial));
+		doorway.getFrameEntities().add(createFrameEntity(message, EntityAssetOrientation.DOWN, 0.5f));
+		doorway.getFrameEntities().add(createFrameEntity(message, EntityAssetOrientation.UP, -0.5f));
 		doorway.setDoorEntity(createDoorEntity(message));
 
 		if (targetTile.getRoof().getState().equals(TileRoofState.OPEN)) {
@@ -159,6 +152,8 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 					doorwayLocation, message.getDoorwayMaterial()
 			));
 		}
+
+		MapMessageHandler.updateTile(targetTile, gameContext, messageDispatcher);
 
 		for (CompassDirection direction : CompassDirection.CARDINAL_DIRECTIONS) {
 			MapTile neighbourTile = gameContext.getAreaMap().getTile(doorwayLocation.x + direction.getXOffset(), doorwayLocation.y + direction.getYOffset());
@@ -169,50 +164,6 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 
 		return true;
-	}
-
-	private Entity createFrameEntity(DoorwayPlacementMessage message, GameMaterial attachedWallMaterial) {
-
-		FurnitureEntityAttributes attributes = new FurnitureEntityAttributes(SequentialIdGenerator.nextId());
-		attributes.setPrimaryMaterialType(message.getDoorwayMaterial().getMaterialType());
-
-		if (message.getDoorwayMaterial().getMaterialType().equals(attachedWallMaterial.getMaterialType())) {
-			// Same frame material type as attached wall, so use walls material as frame material
-			attributes.getMaterials().put(attachedWallMaterial.getMaterialType(), attachedWallMaterial);
-		} else {
-			// Different material type to wall, so use door's material
-			attributes.getMaterials().put(message.getDoorwayMaterial().getMaterialType(), message.getDoorwayMaterial());
-		}
-		attributes.setFurnitureType(furnitureTypeDictionary.getByName(selectFrameFurnitureTypeName(message)));
-		attributes.setCurrentLayout(pickFurnitureLayout(message));
-		Entity entity = furnitureEntityFactory.create(attributes, message.getTilePosition(), null, gameContext);
-
-		// Frame should be bottom of tile to overlap entities
-		entity.getLocationComponent().setWorldPosition(toVector(message.getTilePosition()).add(0, -0.5f), false, false);
-		return entity;
-	}
-
-	private Entity createDoorEntity(DoorwayPlacementMessage message) {
-
-		FurnitureEntityAttributes attributes = new FurnitureEntityAttributes(SequentialIdGenerator.nextId());
-		attributes.setPrimaryMaterialType(message.getDoorwayMaterial().getMaterialType());
-		attributes.getMaterials().put(message.getDoorwayMaterial().getMaterialType(), message.getDoorwayMaterial());
-		attributes.setFurnitureType(furnitureTypeDictionary.getByName(selectDoorFurnitureTypeName(message)));
-		attributes.setCurrentLayout(pickFurnitureLayout(message));
-
-		DoorBehaviour doorBehaviour = new DoorBehaviour();
-		doorBehaviour.setSoundAssets(soundAssetDictionary.getByName("DoorOpen"), null/*soundAssetDictionary.getByName("DoorClose")*/);
-
-		Entity entity = furnitureEntityFactory.create(attributes, message.getTilePosition(), doorBehaviour, gameContext);
-		entity.addComponent(new ConstructedEntityComponent());
-
-		messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, entity);
-
-		// Remove from map
-		entity.getLocationComponent().setWorldPosition(null, false, true);
-		// Door should be top of tile so entities overlap it
-		entity.getLocationComponent().setWorldPosition(toVector(message.getTilePosition()).add(0, 0.5f - (1f/PIXELS_PER_TILE)), false, false);
-		return entity;
 	}
 
 	private Entity buildWallCap(GridPoint2 wallTileLocation, Doorway doorway, EntityAssetOrientation assetOrientation, float positionYOffset) {
@@ -239,6 +190,45 @@ public class DoorwayMessageHandler implements GameContextAware, Telegraph {
 
 		tileAtPosition.update(gameContext.getAreaMap().getNeighbours(wallTileLocation), gameContext.getAreaMap().getVertices(wallTileLocation.x, wallTileLocation.y), messageDispatcher);
 		return wallCapEntity;
+	}
+
+	private Entity createFrameEntity(DoorwayPlacementMessage message, EntityAssetOrientation orientation, float positionYOffset) {
+
+		FurnitureEntityAttributes attributes = new FurnitureEntityAttributes(SequentialIdGenerator.nextId());
+		attributes.setPrimaryMaterialType(message.getDoorwayMaterial().getMaterialType());
+
+		attributes.getMaterials().put(message.getDoorwayMaterial().getMaterialType(), message.getDoorwayMaterial());
+		attributes.setFurnitureType(furnitureTypeDictionary.getByName(selectFrameFurnitureTypeName(message)));
+		attributes.setCurrentLayout(pickFurnitureLayout(message));
+		Entity entity = furnitureEntityFactory.create(attributes, message.getTilePosition(), null, gameContext);
+		entity.getLocationComponent().setOrientation(orientation);
+
+		// Frame should be bottom of tile to overlap entities
+		entity.getLocationComponent().setWorldPosition(toVector(message.getTilePosition()).add(0, positionYOffset), false, false);
+		return entity;
+	}
+
+	private Entity createDoorEntity(DoorwayPlacementMessage message) {
+
+		FurnitureEntityAttributes attributes = new FurnitureEntityAttributes(SequentialIdGenerator.nextId());
+		attributes.setPrimaryMaterialType(message.getDoorwayMaterial().getMaterialType());
+		attributes.getMaterials().put(message.getDoorwayMaterial().getMaterialType(), message.getDoorwayMaterial());
+		attributes.setFurnitureType(furnitureTypeDictionary.getByName(selectDoorFurnitureTypeName(message)));
+		attributes.setCurrentLayout(pickFurnitureLayout(message));
+
+		DoorBehaviour doorBehaviour = new DoorBehaviour();
+		doorBehaviour.setSoundAssets(soundAssetDictionary.getByName("DoorOpen"), null/*soundAssetDictionary.getByName("DoorClose")*/);
+
+		Entity entity = furnitureEntityFactory.create(attributes, message.getTilePosition(), doorBehaviour, gameContext);
+		entity.addComponent(new ConstructedEntityComponent());
+
+		messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, entity);
+
+		// Remove from map
+		entity.getLocationComponent().setWorldPosition(null, false, true);
+		// Door should be top of tile so entities overlap it
+		entity.getLocationComponent().setWorldPosition(toVector(message.getTilePosition()).add(0, 0.5f - (1f/PIXELS_PER_TILE)), false, false);
+		return entity;
 	}
 
 	private FurnitureLayout pickFurnitureLayout(DoorwayPlacementMessage message) {

@@ -8,11 +8,11 @@
     "spriteDescriptors": {
       "DOWN": {
         "isAnimated": true,
-        "filename": "WoodDoor_Single_EW",
+        "filename": "door_wood_EW_anim",
         "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
           "x": 0,
-          "y": -37
+          "y": -32
         }
       }
     }
@@ -25,11 +25,11 @@
     "validMaterialTypes": ["WOOD"],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "WoodDoor_Single_EW_0.png",
+        "filename": "door_wood_EW_anim_0.png",
         "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
           "x": 0,
-          "y": -5
+          "y": 0
         }
       }
     }
@@ -43,10 +43,10 @@
     "spriteDescriptors": {
       "DOWN": {
         "isAnimated": true,
-        "filename": "WoodDoor_Single_NS",
+        "filename": "door_wood_NS_anim",
         "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
-          "x": -6,
+          "x": 0,
           "y": 0
         }
       }

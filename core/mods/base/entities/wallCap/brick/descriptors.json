@@ -1,0 +1,25 @@
+[{
+  "uniqueName": "brickwall_cap_generic_NS",
+  "type": "BASE_LAYER",
+  "wallTypeName": "brickwall",
+  "doorwayOrientation": "NORTH_SOUTH",
+  "doorwaySize": "SINGLE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "wallcap_brick_S-64.png",
+      "coloringLayer": "STONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 31
+      }
+    },
+    "UP": {
+      "filename": "wallcap_brick_N-64.png",
+      "coloringLayer": "STONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -31
+      }
+    }
+  }
+}]

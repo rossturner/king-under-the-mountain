@@ -7,15 +7,24 @@
     "validMaterialTypes": ["WOOD"],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "WoodFrame_Single_EW.png",
+        "filename": "door_wood_EW_side-64.png",
         "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
           "x": 0,
-          "y": 55.5
+          "y": -32
+        }
+      },
+      "UP": {
+        "filename": "door_wood_EW_top-64.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 32
         }
       }
     }
   },
+
   {
     "uniqueName": "doorframe-wood-single-ns",
     "type": "BASE_LAYER",
@@ -24,11 +33,19 @@
     "validMaterialTypes": ["WOOD"],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "WoodFrame_Single_NS.png",
+        "filename": "door_wood_NS_side-64.png",
         "coloringLayer": "WOOD_COLOR",
         "offsetPixels": {
-          "x": 1,
-          "y": 68
+          "x": 0,
+          "y": -32
+        }
+      },
+      "UP": {
+        "filename": "door_wood_NS_top-64.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": 32
         }
       }
     }
