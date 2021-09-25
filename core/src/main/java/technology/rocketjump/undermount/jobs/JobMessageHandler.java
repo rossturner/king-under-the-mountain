@@ -1256,6 +1256,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				.stream()
 				// filter to all hauling jobs for this stockpile
 				.filter(j ->
+						j.getHaulingAllocation() != null && j.getHaulingAllocation().getTargetPositionType() != null &&
 						j.getHaulingAllocation().getTargetPositionType().equals(ROOM) &&
 								j.getHaulingAllocation().getTargetId().equals(targetRoom.getRoomId())
 				)
