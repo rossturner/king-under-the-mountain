@@ -393,7 +393,7 @@
     "harvestedItems" : [ ]
   }, {
     "name" : "Mid-growth no fruit",
-    "nextGrowthStage" : 4,
+    "nextGrowthStage" : 3,
     "seasonsUntilComplete" : 0.6,
     "initialPlantScale" : 1.0,
     "completionPlantScale" : 1.0,
@@ -406,7 +406,7 @@
     "harvestedItems" : [ ]
   }, {
     "name" : "Late growth",
-    "nextGrowthStage" : 6,
+    "nextGrowthStage" : 4,
     "seasonsUntilComplete" : 0.6,
     "initialPlantScale" : 1.0,
     "completionPlantScale" : 1.0,
@@ -419,7 +419,7 @@
     "harvestedItems" : [ ]
   }, {
     "name" : "Ripe",
-    "nextGrowthStage" : 7,
+    "nextGrowthStage" : 5,
     "seasonsUntilComplete" : 0.6,
     "initialPlantScale" : 1.0,
     "completionPlantScale" : 1.0,
