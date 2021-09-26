@@ -49,6 +49,10 @@ public class SleepInBedAction extends SleepOnFloorAction {
 		} else {
 
 			Entity bedEntity = gameContext.getEntities().get(parent.getAssignedFurnitureId());
+			if (bedEntity == null) {
+				completionType = FAILURE;
+				return;
+			}
 			MapTile bedTile = gameContext.getAreaMap().getTile(bedEntity.getLocationComponent().getWorldPosition());
 			Room bedroom = null;
 			if (bedTile != null && bedTile.getRoomTile() != null) {

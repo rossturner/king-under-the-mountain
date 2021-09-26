@@ -38,19 +38,19 @@
     },
     {
       "name": "Mid-growth no fruit",
-      "nextGrowthStage": 4,
+      "nextGrowthStage": 3,
       "seasonsUntilComplete": 0.6,
       "tileHeight": 1
     },
     {
       "name": "Late growth",
-      "nextGrowthStage": 6,
+      "nextGrowthStage": 4,
       "seasonsUntilComplete": 0.6,
       "tileHeight": 1
     },
     {
       "name": "Ripe",
-      "nextGrowthStage": 7,
+      "nextGrowthStage": 5,
       "seasonsUntilComplete": 0.6,
       "tileHeight": 1,
       "harvestType": "FARMING",
