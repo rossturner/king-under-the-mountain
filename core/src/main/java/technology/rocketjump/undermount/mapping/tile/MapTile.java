@@ -401,7 +401,7 @@ public class MapTile implements Persistable {
 	}
 
 	public boolean isEmptyExceptEntities() {
-		return !(this.hasWall() || this.hasDoorway() || this.hasConstruction() || this.getFloor().isRiverTile());
+		return !(this.hasWall() || this.hasDoorway() || this.hasConstruction() || this.getFloor().isRiverTile() || this.hasChannel());
 	}
 
 	public Entity getEntity(long entityId) {
