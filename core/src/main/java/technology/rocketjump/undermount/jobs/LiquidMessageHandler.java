@@ -130,7 +130,7 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 
 		// Pick source zone for filling
 		final Optional<Zone> nearestApplicableZone = findNearestZonesOfCorrectType(gameContext,
-				applicableMaterials, requesterTile.getRegionId(), message.requesterPosition, message.allowConstructedZones, amountRequired).findFirst();
+				applicableMaterials, requesterTile.getRegionId(), message.requesterPosition, message.useSmallCapacityZones, amountRequired).findFirst();
 
 
 		Job transferLiquidJob = new Job(transferLiquidJobType);
@@ -324,15 +324,15 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	private Stream<Zone> findNearestZonesOfCorrectType(GameContext gameContext, Collection<GameMaterial> targetMaterials,
-	                                                   int regionId, Vector2 requesterPosition, boolean allowConstructed, float amountRequired) {
+	                                                   int regionId, Vector2 requesterPosition, boolean useSmallCapacityZones, float amountRequired) {
 		return gameContext.getAreaMap().getZonesInRegion(regionId).stream()
 				.filter(zone -> zone.isActive() && LIQUID_SOURCE.equals(zone.getClassification().getZoneType()) &&
 						targetMaterials.contains(zone.getClassification().getTargetMaterial()))
 				.filter(zone -> {
-					if (allowConstructed) {
+					if (useSmallCapacityZones) {
 						return true;
 					} else {
-						return !zone.getClassification().isConstructed();
+						return zone.getClassification().isHighCapacity();
 					}
 				})
 				.filter(zone -> {

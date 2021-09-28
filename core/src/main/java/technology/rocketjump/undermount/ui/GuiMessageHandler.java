@@ -308,7 +308,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				}
 
 			} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.PLACE_BRIDGE)) {
-				if (interactionStateContainer.isValidBridgePlacement()) {
+				if (interactionStateContainer.isValidBridgePlacement() && interactionStateContainer.getVirtualBridgeConstruction() != null) {
 					messageDispatcher.dispatchMessage(MessageType.BRIDGE_PLACEMENT, interactionStateContainer.getVirtualBridgeConstruction().getBridge());
 				}
 			} else {

@@ -138,6 +138,11 @@ public class SleepInBedAction extends SleepOnFloorAction {
 
 	private void getIntoAssignedBedAndSleep(GameContext gameContext) {
 		Entity assignedFurniture = gameContext.getEntities().get(parent.getAssignedFurnitureId());
+		if (assignedFurniture == null) {
+			Logger.error("Could not find bed assigned for sleeping in");
+			completionType = FAILURE;
+			return;
+		}
 		SleepingPositionComponent sleepingPositionComponent = assignedFurniture.getComponent(SleepingPositionComponent.class);
 		if (sleepingPositionComponent.isOnFloor()) {
 			changeToSleeping(gameContext);

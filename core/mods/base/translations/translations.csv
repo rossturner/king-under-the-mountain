@@ -43,6 +43,7 @@ CONSTRUCTION.STATUS.WAITING_FOR_COMPLETION,This is displayed once all resources 
 CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction is waiting for resource items to be placed in the build area,Waiting for resources to arrive,Attendant l'arrivée de ressources,Esperando a que los recursos lleguen,Wartet auf Materialien,In attesa dell'arrivo delle risorse,Aguardando a chegada de recursos,A aguardar a chegada de recursos,Ожидание доставки ресурсов,Oczekuje na dostawę zasobów,,,,,
 ,,,,,,,,,,,,,,,
 COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} et {{materialTwo}},{{materialOne}} y {{materialTwo}},{{materialOne}} und {{materialTwo}},{{materialOne}} e {{materialTwo}},{{materialOne}} e {{materialTwo}},{{materialOne}} e {{materialTwo}},{{materialOne}} и {{materialTwo}},{{materialOne}} i {{materialTwo}},,,,,
+COOKING.TRIPLE_INGREDIENT.DESCRIPTION,"E.g. “Fish, tomato and potato”, to be used for for three ingredients together as below","{{materialOne}}, {{materialTwo}} and {{materialThree}}",,,,,,,,,,,,,
 COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,Soupe : {{materialDescription}},Sopa {{materialDescription}},Suppe aus {{materialDescription}},Zuppa ({{materialDescription}}),sopa de {{materialDescription}},Sopa de {{materialDescription}},{{materialDescription}} суп,Zupa z {{materialDescription}},,,,,
 COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -882,6 +883,8 @@ RESOURCE.FLOUR.SACK.NOUN,,Flour,,,,,,,,,,,,,
 RESOURCE.FLOUR.SACK.PLURAL,,Flour,,,,,,,,,,,,,
 RESOURCE.HEMP.BUNDLE.NOUN,,Hemp bundle,,,,,,,,,,,,,
 RESOURCE.HEMP.BUNDLE.PLURAL,,Hemp bundles,,,,,,,,,,,,,
+RESOURCE.HEMP.FIBRE.BUNDLE.NOUN,,Hemp fibre bundle,,,,,,,,,,,,,
+RESOURCE.HEMP.FIBRE.BUNDLE.PLURAL,,Hemp fibre bundles,,,,,,,,,,,,,
 RESOURCE.FLOUR.SACK.TOOLTIP,,Grain that has been milled into a fine powder ready to be used as an ingredient in the production of food.,,,,,,,,,,,,,
 RESOURCE.GEM.NOUN,,Gem,Gemme,Gema,Edelstein,Gemma,de gema,Joia,Самоцвет,Klejnot,Edelsteen,Ädelsten,Juvel,Drágakő,Jalokivi
 RESOURCE.GEM.PLURAL,,Gems,Gemmes,Gemas,Edelsteine,Gemme,Gemas,Joias,Самоцветы,Klejnoty,Edelstenen,Ädelstenar,Juveler,Drágakövek,Jalokivet

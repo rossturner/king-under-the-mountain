@@ -40,6 +40,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class LiquidContainerComponent implements ParentDependentEntityComponent, Destructible {
 
+	private static final int MIN_CAPACITY_TO_CLASS_AS_HIGH_CAPACITY = 10;
 	public static DecimalFormat oneDecimalFormat = new DecimalFormat("#.#");
 
 	private Entity parentEntity;
@@ -71,7 +72,8 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 				Logger.error("Creating LiquidContainer zone with no targetLiquidMaterial specified");
 			} else {
 				if (!attributes.getCurrentLayout().getWorkspaces().isEmpty()) {
-					liquidContainerAccessZone = new Zone(new ZoneClassification(ZoneClassification.ZoneType.LIQUID_SOURCE, true, targetLiquidMaterial));
+					liquidContainerAccessZone = new Zone(new ZoneClassification(ZoneClassification.ZoneType.LIQUID_SOURCE, true, targetLiquidMaterial,
+							maxLiquidCapacity >= MIN_CAPACITY_TO_CLASS_AS_HIGH_CAPACITY));
 
 					GridPoint2 furniturePosition = toGridPoint(parentEntity.getLocationComponent().getWorldPosition());
 					MapTile furnitureTile = gameContext.getAreaMap().getTile(furniturePosition);

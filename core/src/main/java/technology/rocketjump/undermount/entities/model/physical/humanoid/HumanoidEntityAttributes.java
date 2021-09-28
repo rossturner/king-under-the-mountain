@@ -245,9 +245,13 @@ public class HumanoidEntityAttributes implements EntityAttributes {
 		}
 		consciousness = EnumParser.getEnumValue(asJson, "consciousness", Consciousness.class, AWAKE);
 		sanity = EnumParser.getEnumValue(asJson, "sanity", Sanity.class, SANE);
-		bodyMaterial = relatedStores.gameMaterialDictionary.getByName(asJson.getString("bodyMaterial"));
-		if (bodyMaterial == null) {
-			throw new InvalidSaveException("Could not find material with name " + asJson.getString("bodyMaterial"));
+		String bodyMaterialName = asJson.getString("bodyMaterial");
+		if (bodyMaterialName == null) {
+			throw new InvalidSaveException("Old save format");
+		}
+		this.bodyMaterial = relatedStores.gameMaterialDictionary.getByName(bodyMaterialName);
+		if (this.bodyMaterial == null) {
+			throw new InvalidSaveException("Could not find material with name " + bodyMaterialName);
 		}
 	}
 }

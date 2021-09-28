@@ -312,7 +312,7 @@ public class GameMapConverter {
 					);
 				}
 
-				buildZone(tilesForNewZone, targetMap, riverFloorMaterial);
+				buildRiverZone(tilesForNewZone, targetMap, riverFloorMaterial);
 
 			}
 
@@ -320,12 +320,12 @@ public class GameMapConverter {
 
 	}
 
-	private void buildZone(Set<ZoneTile> tilesForNewZone, TiledMap targetMap, GameMaterial riverFloorMaterial) {
+	private void buildRiverZone(Set<ZoneTile> tilesForNewZone, TiledMap targetMap, GameMaterial riverFloorMaterial) {
 		if (tilesForNewZone.isEmpty()) {
 			return;
 		}
 
-		Zone currentZone = new Zone(new ZoneClassification(ZoneClassification.ZoneType.LIQUID_SOURCE, false, riverFloorMaterial));
+		Zone currentZone = new Zone(new ZoneClassification(ZoneClassification.ZoneType.LIQUID_SOURCE, false, riverFloorMaterial, true));
 		currentZone.setActive(true);
 
 		for (ZoneTile zoneTile : tilesForNewZone) {

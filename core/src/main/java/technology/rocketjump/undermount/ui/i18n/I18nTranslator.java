@@ -755,6 +755,12 @@ public class I18nTranslator implements I18nUpdatable {
 				replacements.put("materialTwo", iterator.next().getI18nValue());
 
 				replacements.put("materialDescription", applyReplacements(dictionary.getWord("COOKING.DUAL_INGREDIENT.DESCRIPTION"), replacements, Gender.ANY));
+			} else if (gameMaterial.getConstituentMaterials().size() == 3) {
+				replacements.put("materialOne", iterator.next().getI18nValue());
+				replacements.put("materialTwo", iterator.next().getI18nValue());
+				replacements.put("materialThree", iterator.next().getI18nValue());
+
+				replacements.put("materialDescription", applyReplacements(dictionary.getWord("COOKING.TRIPLE_INGREDIENT.DESCRIPTION"), replacements, Gender.ANY));
 			} else {
 				replacements.put("materialDescription", dictionary.getWord(iterator.next().getMaterialType().getI18nKey()));
 			}
