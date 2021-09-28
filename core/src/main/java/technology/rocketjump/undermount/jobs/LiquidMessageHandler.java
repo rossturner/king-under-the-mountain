@@ -332,7 +332,8 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 					if (useSmallCapacityZones) {
 						return true;
 					} else {
-						return zone.getClassification().isHighCapacity();
+						// this could just be return zone.getClassification().isHighCapacity() - || !isConstructed was to handle save compatibility between A7.0.2 and A7.03
+						return zone.getClassification().isHighCapacity() || !zone.getClassification().isConstructed();
 					}
 				})
 				.filter(zone -> {
