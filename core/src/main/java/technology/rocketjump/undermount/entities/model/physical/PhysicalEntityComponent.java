@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.body.Body;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -31,6 +32,7 @@ public class PhysicalEntityComponent implements EntityComponent {
 	private EntityAttributes attributes;
 	private EntityAsset baseAsset;
 	private final Map<EntityAssetType, EntityAsset> typeMap = new HashMap<>();
+	private Body body; // instance of a bodyStructure with damage/missing parts, for humanoid and animal type entities
 
 	private float animationProgress; // Interpolates to range of frames for animated assets
 

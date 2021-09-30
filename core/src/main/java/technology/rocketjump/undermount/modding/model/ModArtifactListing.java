@@ -23,6 +23,8 @@ import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEf
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureCategory;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.body.BodyStructure;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.body.organs.OrganDefinition;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
@@ -72,6 +74,12 @@ public class ModArtifactListing {
 				////////// definitions //////////
 				def("definitions/plantColorSwatches", null, COPY_ORIGINAL_FILES, PNG, null,
 						"entities/plant", "**/*-swatch.png", PNG, ADDITIVE, CopyFilesProcessor.class, UniqueFilenames.class),
+
+
+				def("definitions", "bodyStructures", SINGLE_FILE, JSON_ARRAY, BodyStructure.class,
+						"definitions/bodyStructures", "*.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions", "organs", SINGLE_FILE, JSON_ARRAY, OrganDefinition.class,
+						"definitions/bodyStructures/organs", "*.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				def("definitions/entityAssets", "entityAssetTypes", SINGLE_FILE, JSON_MAP, EntityAssetType.class,
 						"entities", "entityAssetTypes", JSON_MAP, REPLACES_EXISTING, UntypedJsonProcessor.class),
