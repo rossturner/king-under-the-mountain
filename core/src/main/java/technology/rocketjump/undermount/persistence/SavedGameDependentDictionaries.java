@@ -17,6 +17,7 @@ import technology.rocketjump.undermount.entities.components.StatusEffectDictiona
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.body.BodyStructureDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
@@ -77,6 +78,7 @@ public class SavedGameDependentDictionaries {
 	public final WeatherTypeDictionary weatherTypeDictionary;
 	public final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
 	public final MechanismTypeDictionary mechanismTypeDictionary;
+	public final BodyStructureDictionary bodyStructureDictionary;
 
 	@Inject
 	public SavedGameDependentDictionaries(DynamicMaterialFactory dynamicMaterialFactory, GameMaterialDictionary gameMaterialDictionary,
@@ -95,7 +97,7 @@ public class SavedGameDependentDictionaries {
 										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary,
 										  OngoingEffectTypeDictionary ongoingEffectTypeDictionary,
 										  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary,
-										  MechanismTypeDictionary mechanismTypeDictionary) {
+										  MechanismTypeDictionary mechanismTypeDictionary, BodyStructureDictionary bodyStructureDictionary) {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.messageDispatcher = messageDispatcher;
@@ -130,5 +132,6 @@ public class SavedGameDependentDictionaries {
 		this.weatherTypeDictionary = weatherTypeDictionary;
 		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
 		this.mechanismTypeDictionary = mechanismTypeDictionary;
+		this.bodyStructureDictionary = bodyStructureDictionary;
 	}
 }

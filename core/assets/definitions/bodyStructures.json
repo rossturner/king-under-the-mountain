@@ -9,6 +9,7 @@
     },
     "blood" : { }
   },
+  "rootPartName" : "Torso",
   "partDefinitions" : [ {
     "name" : "Head",
     "size" : 0.3,
@@ -24,7 +25,8 @@
       "type" : "Eye",
       "discriminator" : "Right",
       "relativeSize" : 0.05
-    } ]
+    } ],
+    "childParts" : [ ]
   }, {
     "name" : "Torso",
     "size" : 1.0,
@@ -40,17 +42,20 @@
       "type" : "Lung",
       "discriminator" : "Right",
       "relativeSize" : 0.3
-    } ]
+    } ],
+    "childParts" : [ "Head", "Abdomen", "Right-Arm", "Left-Arm" ]
   }, {
     "name" : "Arm",
     "size" : 0.2,
     "bones" : [ "MEDIUM" ],
-    "organs" : [ ]
+    "organs" : [ ],
+    "childParts" : [ "Hand" ]
   }, {
     "name" : "Hand",
     "size" : 0.04,
     "bones" : [ "SMALL" ],
-    "organs" : [ ]
+    "organs" : [ ],
+    "childParts" : [ ]
   }, {
     "name" : "Abdomen",
     "size" : 0.3,
@@ -66,16 +71,19 @@
     }, {
       "type" : "Intestines",
       "relativeSize" : 0.4
-    } ]
+    } ],
+    "childParts" : [ "Left-Leg", "Right-Leg" ]
   }, {
     "name" : "Leg",
-    "size" : 0.0,
+    "size" : 0.2,
     "bones" : [ "MEDIUM" ],
-    "organs" : [ ]
+    "organs" : [ ],
+    "childParts" : [ "Foot" ]
   }, {
     "name" : "Foot",
-    "size" : 0.0,
+    "size" : 0.02,
     "bones" : [ "SMALL" ],
-    "organs" : [ ]
+    "organs" : [ ],
+    "childParts" : [ ]
   } ]
 } ]

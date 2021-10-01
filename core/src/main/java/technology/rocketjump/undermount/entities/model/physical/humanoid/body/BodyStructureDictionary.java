@@ -1,14 +1,14 @@
 package technology.rocketjump.undermount.entities.model.physical.humanoid.body;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.body.organs.OrganDefinitionDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,9 +26,9 @@ public class BodyStructureDictionary {
 	public BodyStructureDictionary(OrganDefinitionDictionary organDefinitionDictionary, GameMaterialDictionary gameMaterialDictionary) throws IOException {
 		this.organDefinitionDictionary = organDefinitionDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
-		FileHandle jsonFile = Gdx.files.internal("assets/definitions/bodyStructures.json");
+		File jsonFile = new File("assets/definitions/bodyStructures.json");
 		ObjectMapper objectMapper = new ObjectMapper();
-		List<BodyStructure> bodyStructures = objectMapper.readValue(jsonFile.readString(),
+		List<BodyStructure> bodyStructures = objectMapper.readValue(FileUtils.readFileToString(jsonFile),
 				objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, BodyStructure.class));
 
 		for (BodyStructure bodyStructure : bodyStructures) {
@@ -38,6 +38,11 @@ public class BodyStructureDictionary {
 	}
 
 	private void initialise(BodyStructure bodyStructure) {
+		bodyStructure.getPartDefinitionByName(bodyStructure.getRootPartName()).ifPresent(bodyStructure::setRootPart);
+		if (bodyStructure.getRootPart() == null) {
+			throw new RuntimeException("Could not find root part with name " + bodyStructure.getRootPartName() + " for " + bodyStructure.getName());
+		}
+
 		if (bodyStructure.getFeatures().getBones() != null) {
 			bodyStructure.getFeatures().getBones().setMaterial(gameMaterialDictionary.getByName(bodyStructure.getFeatures().getBones().getMaterialName()));
 			if (bodyStructure.getFeatures().getBones().getMaterial() == null) {

@@ -94,11 +94,13 @@
     },
     {
       "name": "Leg",
+      "size": 0.2,
       "bones": ["MEDIUM"],
       "childParts": ["Foot"]
     },
     {
       "name": "Foot",
+      "size": 0.02,
       "bones": ["SMALL"],
       "function": "FOOT"
     }

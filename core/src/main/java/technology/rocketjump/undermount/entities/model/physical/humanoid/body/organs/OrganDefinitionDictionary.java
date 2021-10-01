@@ -1,11 +1,11 @@
 package technology.rocketjump.undermount.entities.model.physical.humanoid.body.organs;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,9 +19,9 @@ public class OrganDefinitionDictionary {
 
 	@Inject
 	public OrganDefinitionDictionary() throws IOException {
-		FileHandle jsonFile = Gdx.files.internal("assets/definitions/organs.json");
+		File jsonFile = new File("assets/definitions/organs.json");
 		ObjectMapper objectMapper = new ObjectMapper();
-		List<OrganDefinition> organDefinitions = objectMapper.readValue(jsonFile.readString(),
+		List<OrganDefinition> organDefinitions = objectMapper.readValue(FileUtils.readFileToString(jsonFile),
 				objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, OrganDefinition.class));
 
 		for (OrganDefinition organDefinition : organDefinitions) {

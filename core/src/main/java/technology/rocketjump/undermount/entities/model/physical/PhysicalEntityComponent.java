@@ -76,6 +76,14 @@ public class PhysicalEntityComponent implements EntityComponent {
 		this.animationProgress = animationProgress;
 	}
 
+	public Body getBody() {
+		return body;
+	}
+
+	public void setBody(Body body) {
+		this.body = body;
+	}
+
 	@Override
 	public String toString() {
 		return attributes.toString();
@@ -117,6 +125,11 @@ public class PhysicalEntityComponent implements EntityComponent {
 			asJson.put("animation", animationProgress);
 		}
 
+		if (body != null) {
+			JSONObject bodyJson = new JSONObject(true);
+			body.writeTo(bodyJson, savedGameStateHolder);
+			asJson.put("body", bodyJson);
+		}
 	}
 
 	@Override

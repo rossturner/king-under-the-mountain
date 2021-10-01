@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.humanoid.Sanity;
+import technology.rocketjump.undermount.entities.model.physical.humanoid.body.BodyPart;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
@@ -767,6 +768,10 @@ public class I18nTranslator implements I18nUpdatable {
 		}
 
 		return applyReplacements(descriptionWord, replacements, Gender.ANY);
+	}
+
+	public String getDescription(BodyPart bodyPart) {
+		return (bodyPart.getDiscriminator() != null ? bodyPart.getDiscriminator() + " " : "") + bodyPart.getPartDefinition().getName();
 	}
 
 	@Override

@@ -14,6 +14,7 @@ public class BodyPartDefinition {
 	private float size;
 	private List<BoneType> bones = new ArrayList<>();
 	private List<BodyPartOrgan> organs = new ArrayList<>();
+	private List<String> childParts = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -45,5 +46,18 @@ public class BodyPartDefinition {
 
 	public void setOrgans(List<BodyPartOrgan> organs) {
 		this.organs = organs;
+	}
+
+	public List<String> getChildParts() {
+		return childParts;
+	}
+
+	public void setChildParts(List<String> childParts) {
+		this.childParts = childParts;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }
