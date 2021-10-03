@@ -1,9 +1,13 @@
 {
-  "name": "Humanoid",
+  "name": "Dwarf",
 
   "features": {
     "skin": {
-      "hardness": 1
+      "damageReduction": {
+        "STABBING": 1,
+        "SLASHING": 2,
+        "CRUSHING": 2
+      }
     },
     "bones": {
       "materialName": "Bone"

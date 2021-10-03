@@ -1,17 +1,21 @@
 package technology.rocketjump.undermount.entities.model.physical.humanoid.body.features;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import technology.rocketjump.undermount.entities.model.physical.combat.CombatDamageType;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SkinFeature {
 
-	private float hardness;
+	private Map<CombatDamageType, Integer> damageReduction = new EnumMap<>(CombatDamageType.class);
 
-	public float getHardness() {
-		return hardness;
+	public Map<CombatDamageType, Integer> getDamageReduction() {
+		return damageReduction;
 	}
 
-	public void setHardness(float hardness) {
-		this.hardness = hardness;
+	public void setDamageReduction(Map<CombatDamageType, Integer> damageReduction) {
+		this.damageReduction = damageReduction;
 	}
 }
