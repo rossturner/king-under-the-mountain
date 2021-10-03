@@ -8,9 +8,9 @@ import technology.rocketjump.undermount.entities.ai.goap.actions.EntityCreatedCa
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.HarvestableEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.gamecontext.GameContext;

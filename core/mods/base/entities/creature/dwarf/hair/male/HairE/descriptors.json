@@ -1,0 +1,64 @@
+[{
+  "uniqueName": "Dwarf-HairE-Color",
+  "type": "CREATURE_HAIR",
+  "race": "DWARF",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-HairE-Color-F.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x":-2,
+        "y": -7
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-HairE-Color-F34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": -7
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-HairE-Color-F34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": -7
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-HairE-Color-B34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": -7
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-HairE-Color-B34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": -7
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-HairE-Color-B.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 2,
+        "y": -7
+      }
+    }
+  }
+}]

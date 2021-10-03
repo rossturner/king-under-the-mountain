@@ -30,8 +30,7 @@ public class SelectableOutlineRenderer {
 				switch (selectedEntity.getType()) {
 					case ITEM:
 					case PLANT:
-					case ANIMAL:
-					case HUMANOID:
+					case CREATURE:
 						shapeRenderer.circle(worldPosition.x, worldPosition.y,
 								selectedEntity.getLocationComponent().getRadius() + 0.3f, 100);
 						break;

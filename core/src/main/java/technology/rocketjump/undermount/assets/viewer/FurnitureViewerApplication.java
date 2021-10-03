@@ -23,9 +23,9 @@ import technology.rocketjump.undermount.entities.components.furniture.Decoration
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -171,7 +171,7 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 		Color hairColor = new HairColorFactory().randomHairColor(random);
 		Color accessoryColor = new AccessoryColorFactory(gameMaterialDictionary).randomAccessoryColor(random);
 
-		HumanoidEntityAttributes attributes = new HumanoidEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor, GameMaterial.NULL_MATERIAL);
+		CreatureEntityAttributes attributes = new CreatureEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor, GameMaterial.NULL_MATERIAL);
 		Vector2 facing = new Vector2(0, 0f);
 		HumanoidEntityFactory humanoidEntityFactory = injector.getInstance(HumanoidEntityFactory.class);
 		GameContext gameContext = new GameContext();

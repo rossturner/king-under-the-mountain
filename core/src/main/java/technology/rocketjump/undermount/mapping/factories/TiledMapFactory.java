@@ -16,7 +16,7 @@ import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.factories.SettlerFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.*;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
@@ -267,7 +267,7 @@ public class TiledMapFactory {
 		}
 		List<Long> entitiesToRemove = new LinkedList<>();
 		for (Entity entity : tile.getEntities()) {
-			if (!entity.getType().equals(EntityType.HUMANOID)) {
+			if (!entity.getType().equals(EntityType.CREATURE)) {
 				entitiesToRemove.add(entity.getId());
 			}
 		}

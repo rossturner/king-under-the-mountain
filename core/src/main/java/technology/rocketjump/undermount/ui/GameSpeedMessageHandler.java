@@ -6,8 +6,8 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.environment.model.GameSpeed;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
@@ -47,7 +47,7 @@ public class GameSpeedMessageHandler implements Telegraph, GameContextAware {
 			case MessageType.ENTITY_FELL_ASLEEP: {
 				boolean allAsleep = true;
 				for (Entity entity : settlerTracker.getLiving()) {
-					HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+					CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 					if (Consciousness.AWAKE.equals(attributes.getConsciousness())) {
 						allAsleep = false;
 						break;

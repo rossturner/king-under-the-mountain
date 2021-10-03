@@ -22,12 +22,12 @@ import technology.rocketjump.undermount.entities.components.humanoid.StatusCompo
 import technology.rocketjump.undermount.entities.factories.OngoingEffectAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.OngoingEffectEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -290,10 +290,10 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		}
 
 		switch (entity.getType()) {
-			case HUMANOID:
-				messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(entity, DeathReason.BURNING));
+			case CREATURE:
+				messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(entity, DeathReason.BURNING));
 				if (entity.getBehaviourComponent() instanceof CorpseBehaviour) {
-					HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+					CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 					CorpseBehaviour corpseBehaviour = (CorpseBehaviour) entity.getBehaviourComponent();
 					corpseBehaviour.setToFullyDecayed(attributes);
 					attributes.setBoneColor(blackenedColor());

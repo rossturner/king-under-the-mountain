@@ -16,8 +16,8 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -44,7 +44,7 @@ public class HumanoidEntityFactory {
 		this.roomStore = roomStore;
 	}
 
-	public Entity create(HumanoidEntityAttributes attributes, Vector2 worldPosition, Vector2 facing, Profession primaryProfession,
+	public Entity create(CreatureEntityAttributes attributes, Vector2 worldPosition, Vector2 facing, Profession primaryProfession,
 						 Profession secondaryProfession, GameContext gameContext) {
 		PhysicalEntityComponent physicalComponent = new PhysicalEntityComponent();
 		physicalComponent.setAttributes(attributes);
@@ -54,7 +54,7 @@ public class HumanoidEntityFactory {
 		LocationComponent locationComponent = new LocationComponent();
 		locationComponent.setWorldPosition(worldPosition, true);
 
-		Entity entity = new Entity(EntityType.HUMANOID, physicalComponent, behaviourComponent, locationComponent,
+		Entity entity = new Entity(EntityType.CREATURE, physicalComponent, behaviourComponent, locationComponent,
 				messageDispatcher, gameContext);
 		entity.addComponent(new HaulingComponent());
 		locationComponent.setFacing(facing);

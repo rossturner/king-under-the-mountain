@@ -13,9 +13,9 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
-import technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionary;
-import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidBodyType;
-import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
+import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
@@ -24,8 +24,8 @@ import technology.rocketjump.undermount.entities.factories.AccessoryColorFactory
 import technology.rocketjump.undermount.entities.factories.HairColorFactory;
 import technology.rocketjump.undermount.entities.factories.SkinColorFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
 
@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetsByProfession.NULL_ENTITY_ASSET;
+import static technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetsByProfession.NULL_ENTITY_ASSET;
 import static technology.rocketjump.undermount.assets.entities.model.ColoringLayer.*;
 
 public class CharacterViewUI implements Disposable {
@@ -50,12 +50,12 @@ public class CharacterViewUI implements Disposable {
 
 	private Entity currentEntity;
 	private Map<EntityAssetType, EntityAsset> assetMap;
-	private HumanoidEntityAttributes entityAttributes;
+	private CreatureEntityAttributes entityAttributes;
 
 	private final HairColorFactory hairColorFactory;
 	private final SkinColorFactory skinColorFactory;
 	private final AccessoryColorFactory accessoryColorFactory;
-	private final HumanoidEntityAssetDictionary assetDictionary;
+	private final CreatureEntityAssetDictionary assetDictionary;
 	private final CharacterViewPersistentSettings persistentSettings;
 	private final EntityAssetTypeDictionary assetTypeDictionary;
 	private final EntityAssetUpdater entityAssetUpdater;
@@ -64,7 +64,7 @@ public class CharacterViewUI implements Disposable {
 	@Inject
 	public CharacterViewUI(HairColorFactory hairColorFactory, SkinColorFactory skinColorFactory,
 						   AccessoryColorFactory accessoryColorFactory,
-						   HumanoidEntityAssetDictionary assetDictionary, CharacterViewPersistentSettings persistentSettings,
+						   CreatureEntityAssetDictionary assetDictionary, CharacterViewPersistentSettings persistentSettings,
 						   EntityAssetTypeDictionary assetTypeDictionary, ProfessionDictionary professionDictionary, EntityAssetUpdater entityAssetUpdater, ProfessionDictionary professionDictionary1) {
 		this.hairColorFactory = hairColorFactory;
 		this.skinColorFactory = skinColorFactory;
@@ -89,7 +89,7 @@ public class CharacterViewUI implements Disposable {
 
 	public void init(Entity entity) {
 		this.currentEntity = entity;
-		this.entityAttributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		this.entityAttributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		this.assetMap = entity.getPhysicalEntityComponent().getTypeMap();
 		persistentSettings.reloadFromSettings(entity);
 		containerTable.clearChildren();
@@ -173,12 +173,12 @@ public class CharacterViewUI implements Disposable {
 		Profession primaryProfession = currentEntity.getComponent(ProfessionsComponent.class).getPrimaryProfession(defaultProfession);
 		for (Map.Entry<EntityAssetType, SelectBox> entry : assetSelectWidgets.entrySet()) {
 			Array<String> newItems = new Array<>();
-			for (HumanoidEntityAsset entityAsset : assetDictionary.getAllMatchingAssets(entry.getKey(), entityAttributes, primaryProfession)) {
+			for (CreatureEntityAsset entityAsset : assetDictionary.getAllMatchingAssets(entry.getKey(), entityAttributes, primaryProfession)) {
 				newItems.add(entityAsset.getUniqueName());
 			}
 			newItems.add("None");
 			entry.getValue().setItems(newItems);
-			HumanoidEntityAsset entityAsset = (HumanoidEntityAsset) assetMap.get(entry.getKey());
+			CreatureEntityAsset entityAsset = (CreatureEntityAsset) assetMap.get(entry.getKey());
 			if (entityAsset != null) {
 				entry.getValue().setSelected(entityAsset.getUniqueName());
 			}
@@ -191,25 +191,25 @@ public class CharacterViewUI implements Disposable {
 		Array<String> assetNames = new Array<>();
 
 		Profession primaryProfession = currentEntity.getComponent(ProfessionsComponent.class).getPrimaryProfession(defaultProfession);
-		List<HumanoidEntityAsset> matchingAssetsWithSameType = assetDictionary.getAllMatchingAssets(assetType, entityAttributes, primaryProfession);
-		for (HumanoidEntityAsset asset : matchingAssetsWithSameType) {
+		List<CreatureEntityAsset> matchingAssetsWithSameType = assetDictionary.getAllMatchingAssets(assetType, entityAttributes, primaryProfession);
+		for (CreatureEntityAsset asset : matchingAssetsWithSameType) {
 			assetNames.add(asset.getUniqueName());
 		}
 		assetNames.add("None");
 		widget.setItems(assetNames);
 		if (assetMap.get(assetType) != null) {
-			HumanoidEntityAsset entityAsset = (HumanoidEntityAsset) assetMap.get(assetType);
+			CreatureEntityAsset entityAsset = (CreatureEntityAsset) assetMap.get(assetType);
 			widget.setSelected(entityAsset.getUniqueName());
 		}
 		widget.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				List<HumanoidEntityAsset> matchingAssetsWithSameType = assetDictionary.getAllMatchingAssets(assetType, entityAttributes, primaryProfession);
-				Optional<HumanoidEntityAsset> matchedAsset = matchingAssetsWithSameType.stream()
+				List<CreatureEntityAsset> matchingAssetsWithSameType = assetDictionary.getAllMatchingAssets(assetType, entityAttributes, primaryProfession);
+				Optional<CreatureEntityAsset> matchedAsset = matchingAssetsWithSameType.stream()
 						.filter(asset -> asset.getUniqueName().equalsIgnoreCase(widget.getSelected()))
 						.findFirst();
 
-				HumanoidEntityAsset selectedAsset;
+				CreatureEntityAsset selectedAsset;
 				if (matchedAsset.isPresent()) {
 					selectedAsset = matchedAsset.get();
 				} else if (widget.getSelected().equalsIgnoreCase("None")) {
@@ -230,16 +230,16 @@ public class CharacterViewUI implements Disposable {
 		containerTable.add(new Label("Body type: ", uiSkin));
 		SelectBox<String> bodyTypeSelect = new SelectBox<>(uiSkin);
 		Array<String> bodyTypeItems = new Array<>();
-		for (HumanoidBodyType bodyType : HumanoidBodyType.values()) {
+		for (CreatureBodyType bodyType : CreatureBodyType.values()) {
 			bodyTypeItems.add(bodyType.name().toLowerCase());
 		}
-		bodyTypeItems.removeValue(HumanoidBodyType.ANY.name().toLowerCase(), false);
+		bodyTypeItems.removeValue(CreatureBodyType.ANY.name().toLowerCase(), false);
 		bodyTypeSelect.setItems(bodyTypeItems);
 		bodyTypeSelect.setSelected(entityAttributes.getBodyType().name().toLowerCase());
 		bodyTypeSelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				HumanoidBodyType selectedType = HumanoidBodyType.valueOf(bodyTypeSelect.getSelected().toUpperCase());
+				CreatureBodyType selectedType = CreatureBodyType.valueOf(bodyTypeSelect.getSelected().toUpperCase());
 				entityAttributes.setBodyType(selectedType);
 				entityAssetUpdater.updateEntityAssets(currentEntity);
 				persistentSettings.setBodyType(selectedType);
@@ -333,7 +333,7 @@ public class CharacterViewUI implements Disposable {
 		stage.dispose();
 	}
 
-	public void updateAttributes(HumanoidEntityAttributes entityAttributes) {
+	public void updateAttributes(CreatureEntityAttributes entityAttributes) {
 		this.entityAttributes = entityAttributes;
 		hairColorButton.setColor(entityAttributes.getColor(HAIR_COLOR));
 		hairColorButton.setText("#" + entityAttributes.getColor(HAIR_COLOR).toString().substring(0, 6));

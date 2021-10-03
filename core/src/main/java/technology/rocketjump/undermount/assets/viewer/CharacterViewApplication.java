@@ -20,9 +20,9 @@ import technology.rocketjump.undermount.entities.components.ItemAllocationCompon
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -55,7 +55,7 @@ public class CharacterViewApplication extends ApplicationAdapter {
 	private CharacterViewUI ui;
 
 	private Entity currentEntity;
-	private HumanoidEntityAttributes attributes;
+	private CreatureEntityAttributes attributes;
 	private Color skinColor, hairColor, accessoryColor;
 	private ScreenWriter screenWriter;
 
@@ -82,7 +82,7 @@ public class CharacterViewApplication extends ApplicationAdapter {
 		hairColor = new HairColorFactory().randomHairColor(random);
 		accessoryColor = accessoryColorFactory.randomAccessoryColor(random);
 
-		attributes = new HumanoidEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor, GameMaterial.NULL_MATERIAL);
+		attributes = new CreatureEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor, GameMaterial.NULL_MATERIAL);
 		attributes.setGender(Gender.NONE);
 		Vector2 facing = new Vector2(0, 0f);
 		Vector2 position = new Vector2(cameraManager.getCamera().viewportWidth * 0.75f, cameraManager.getCamera().viewportHeight * 0.8f);

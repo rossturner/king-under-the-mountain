@@ -1,18 +1,15 @@
 package technology.rocketjump.undermount.entities.ai.goap.actions;
 
 import com.alibaba.fastjson.JSONObject;
-import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
-import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
-import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;

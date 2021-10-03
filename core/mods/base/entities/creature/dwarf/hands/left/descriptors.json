@@ -1,0 +1,31 @@
+[{
+  "uniqueName": "Basic dwarf left hand",
+  "type": "CREATURE_LEFT_HAND",
+  "race": "DWARF",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "basic dwarf hand.png",
+      "coloringLayer": "SKIN_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "basic dwarf hand.png",
+      "coloringLayer": "SKIN_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "basic dwarf hand.png",
+      "coloringLayer": "SKIN_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "basic dwarf hand.png",
+      "coloringLayer": "SKIN_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "basic dwarf hand.png",
+      "coloringLayer": "SKIN_COLOR"
+    },
+    "UP": {
+      "filename": "basic dwarf hand.png",
+      "coloringLayer": "SKIN_COLOR"
+    }
+  }
+}]

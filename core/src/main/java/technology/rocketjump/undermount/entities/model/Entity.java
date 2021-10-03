@@ -14,10 +14,10 @@ import technology.rocketjump.undermount.entities.components.humanoid.StatusCompo
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemHoldPosition;
 import technology.rocketjump.undermount.entities.tags.Tag;
@@ -31,7 +31,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import java.util.*;
 
-import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOID;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
@@ -152,14 +152,14 @@ public class Entity implements Persistable, Disposable {
 	public List<AttachedEntity> getAttachedEntities() {
 		attachedEntities.clear(); // Avoiding new instance on each call, is this a good idea or bad idea?
 
-		if (type.equals(EntityType.HUMANOID)) {
+		if (type.equals(EntityType.CREATURE)) {
 			HaulingComponent haulingComponent = getComponent(HaulingComponent.class);
 			if (haulingComponent != null && haulingComponent.getHauledEntity() != null) {
 				Entity hauledEntity = haulingComponent.getHauledEntity();
 				if (hauledEntity.getType().equals(ITEM)) {
 					ItemEntityAttributes attributes = (ItemEntityAttributes) hauledEntity.getPhysicalEntityComponent().getAttributes();
 					attachedEntities.add(new AttachedEntity(hauledEntity, attributes.getItemType().getHoldPosition()));
-				} else if (hauledEntity.getType().equals(HUMANOID)) {
+				} else if (hauledEntity.getType().equals(CREATURE)) {
 					attachedEntities.add(new AttachedEntity(hauledEntity, ItemHoldPosition.IN_FRONT));
 				}
 			} else {

@@ -7,11 +7,12 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
+import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -263,19 +264,22 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 				case FURNITURE:
 					furnitureTracker.furnitureAdded(entity);
 					break;
-				case HUMANOID:
-					settlerTracker.settlerAdded(entity);
-					for (InventoryComponent.InventoryEntry inventoryEntry : entity.getComponent(InventoryComponent.class).getInventoryEntries()) {
-						add(inventoryEntry.entity);
-						if (inventoryEntry.entity.getType().equals(ITEM)) {
-							itemTracker.itemAdded(inventoryEntry.entity);
+				case CREATURE:
+
+					if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
+						settlerTracker.settlerAdded(entity);
+						for (InventoryComponent.InventoryEntry inventoryEntry : entity.getComponent(InventoryComponent.class).getInventoryEntries()) {
+							add(inventoryEntry.entity);
+							if (inventoryEntry.entity.getType().equals(ITEM)) {
+								itemTracker.itemAdded(inventoryEntry.entity);
+							}
 						}
-					}
-					HaulingComponent haulingComponent = entity.getComponent(HaulingComponent.class);
-					if (haulingComponent != null && haulingComponent.getHauledEntity() != null) {
-						add(haulingComponent.getHauledEntity());
-						if (haulingComponent.getHauledEntity().getType().equals(ITEM)) {
-							itemTracker.itemAdded(haulingComponent.getHauledEntity());
+						HaulingComponent haulingComponent = entity.getComponent(HaulingComponent.class);
+						if (haulingComponent != null && haulingComponent.getHauledEntity() != null) {
+							add(haulingComponent.getHauledEntity());
+							if (haulingComponent.getHauledEntity().getType().equals(ITEM)) {
+								itemTracker.itemAdded(haulingComponent.getHauledEntity());
+							}
 						}
 					}
 					break;

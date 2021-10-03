@@ -9,10 +9,10 @@ import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Sanity;
+import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.Sanity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
@@ -36,10 +36,10 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SAW_DEAD_BODY;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.MIN_HAPPINESS_VALUE;
-import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOID;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.DEAD;
 import static technology.rocketjump.undermount.environment.model.WeatherType.HappinessInteraction.STANDING;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
@@ -98,7 +98,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 		}
 
 		// Not going to update steering when asleep so can't be pushed around
-		Consciousness consciousness = ((HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
+		Consciousness consciousness = ((CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
 		if (AWAKE.equals(consciousness)) {
 			steeringComponent.update(deltaTime);
 		}
@@ -281,7 +281,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 			gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().containsKey(STANDING)) {
 			happinessComponent.add(gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().get(STANDING));
 		}
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 
 		addGoalsToQueue(gameContext);
 
@@ -329,7 +329,9 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 	}
 
 	private void lookAtNearbyThings(GameContext gameContext) {
-		HumanoidEntityAttributes parentAttributes = (HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		// TODO check we can see
+
+		CreatureEntityAttributes parentAttributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 		if (!parentAttributes.getConsciousness().equals(AWAKE)) {
 			return;
 		}
@@ -347,9 +349,10 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 				}
 
 				for (Entity entityInTile : targetTile.getEntities()) {
-					if (entityInTile.getType().equals(HUMANOID)) {
-						HumanoidEntityAttributes humanoidEntityAttributes = (HumanoidEntityAttributes) entityInTile.getPhysicalEntityComponent().getAttributes();
-						if (humanoidEntityAttributes.getConsciousness().equals(DEAD)) {
+					if (entityInTile.getType().equals(CREATURE)) {
+						CreatureEntityAttributes creatureEntityAttributes = (CreatureEntityAttributes) entityInTile.getPhysicalEntityComponent().getAttributes();
+						if (creatureEntityAttributes.getConsciousness().equals(DEAD)
+								&& creatureEntityAttributes.getRace().equals(((CreatureEntityAttributes)parentEntity.getPhysicalEntityComponent().getAttributes()).getRace())) {
 							// Saw a dead body!
 							happinessComponent.add(SAW_DEAD_BODY);
 

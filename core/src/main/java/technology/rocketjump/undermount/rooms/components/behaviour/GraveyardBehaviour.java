@@ -93,7 +93,7 @@ public class GraveyardBehaviour extends RoomBehaviourComponent implements Priori
 		InventoryComponent inventoryComponent = deceasedContainer.getOrCreateComponent(InventoryComponent.class);
 		boolean containsDeceased = false;
 		for (InventoryComponent.InventoryEntry inventoryEntry : inventoryComponent.getInventoryEntries()) {
-			if (inventoryEntry.entity.getType().equals(EntityType.HUMANOID)) {
+			if (inventoryEntry.entity.getType().equals(EntityType.CREATURE)) {
 				containsDeceased = true;
 				break;
 			}

@@ -1,8 +1,8 @@
 package technology.rocketjump.undermount.messaging.types;
 
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.StatusEffect;
 
 public class StatusMessage {
 

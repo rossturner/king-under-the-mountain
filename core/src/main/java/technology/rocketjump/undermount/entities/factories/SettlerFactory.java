@@ -8,7 +8,7 @@ import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -74,7 +74,7 @@ public class SettlerFactory {
 	}
 
 	public Entity create(Vector2 worldPosition, Vector2 facing, Profession primaryProfession, Profession secondaryProfession, GameContext gameContext) {
-		HumanoidEntityAttributes attributes = attributesFactory.create(gameContext);
+		CreatureEntityAttributes attributes = attributesFactory.create(gameContext);
 
 		Entity entity = entityFactory.create(attributes, worldPosition, facing, primaryProfession, secondaryProfession, gameContext);
 

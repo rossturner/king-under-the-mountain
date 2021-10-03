@@ -26,9 +26,9 @@ import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.factories.names.NorseNameGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.*;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
@@ -150,7 +150,7 @@ public class I18NTranslatorTest {
 	@Test
 	public void describeHumanoid() throws IOException {
 		NorseNameGenerator nameGenerator = new NorseNameGenerator();
-		HumanoidEntityAttributes attributes = new HumanoidEntityAttributesFactory(
+		CreatureEntityAttributes attributes = new HumanoidEntityAttributesFactory(
 				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(gameMaterialDictionary), new DwarvenNameGenerator(new NorseNameGenerator()),
 				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary).create(new GameContext());
 		attributes.setName(nameGenerator.create(88L, Gender.MALE));

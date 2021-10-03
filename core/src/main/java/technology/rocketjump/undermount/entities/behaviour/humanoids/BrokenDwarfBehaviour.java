@@ -8,8 +8,8 @@ import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Sanity;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Sanity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -23,7 +23,7 @@ public class BrokenDwarfBehaviour extends SettlerBehaviour {
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		super.init(parentEntity, messageDispatcher, gameContext);
 
-		((HumanoidEntityAttributes)parentEntity.getPhysicalEntityComponent().getAttributes()).setSanity(Sanity.BROKEN);
+		((CreatureEntityAttributes)parentEntity.getPhysicalEntityComponent().getAttributes()).setSanity(Sanity.BROKEN);
 		parentEntity.removeComponent(ProfessionsComponent.class);
 	}
 

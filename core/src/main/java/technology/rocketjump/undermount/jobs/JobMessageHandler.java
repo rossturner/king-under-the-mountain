@@ -34,12 +34,12 @@ import technology.rocketjump.undermount.entities.factories.PlantEntityAttributes
 import technology.rocketjump.undermount.entities.factories.PlantEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;

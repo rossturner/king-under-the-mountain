@@ -8,8 +8,8 @@ import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -53,7 +53,7 @@ public class CorpseBehaviour implements BehaviourComponent {
 			decayedAmount += elapsedTime;
 
 			Color newSkinColor = ColorMixer.interpolate(0, (float) HOURS_TO_FULLY_DECAY, (float) decayedAmount, originalSkinColor, FULLY_DECAYED_COLOR);
-			HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+			CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 			attributes.setSkinColor(newSkinColor);
 
 			if (decayedAmount >= HOURS_TO_FULLY_DECAY) {
@@ -64,7 +64,7 @@ public class CorpseBehaviour implements BehaviourComponent {
 		lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
 	}
 
-	public void setToFullyDecayed(HumanoidEntityAttributes attributes) {
+	public void setToFullyDecayed(CreatureEntityAttributes attributes) {
 		decayedAmount = HOURS_TO_FULLY_DECAY;
 		attributes.setGender(Gender.NONE);
 		ProfessionsComponent professionsComponent = parentEntity.getComponent(ProfessionsComponent.class);

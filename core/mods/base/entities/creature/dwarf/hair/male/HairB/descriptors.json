@@ -1,0 +1,58 @@
+[{
+  "uniqueName": "Dwarf-HairB",
+  "type": "CREATURE_HAIR",
+  "race": "DWARF",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-HairB-F+B.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-HairB-F34+B34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-HairB-F34+B34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-HairB-F34+B34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-HairB-F34+B34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-HairB-F+B.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": -6
+      }
+    }
+  }
+}]

@@ -6,10 +6,10 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.ai.goap.EntityNeed;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.Exhausted;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.VeryHungry;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.VeryThirsty;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.Exhausted;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.VeryHungry;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.VeryThirsty;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.StatusMessage;
@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.entities.ai.goap.EntityNeed.*;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
 
 public class NeedsComponent implements EntityComponent {
 
@@ -55,7 +55,7 @@ public class NeedsComponent implements EntityComponent {
 	}
 
 	public void update(double elapsedGameHours, Entity parentEntity, MessageDispatcher messageDispatcher) {
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 		Double currentSleepValue = needValues.get(EntityNeed.SLEEP);
 
 		// TODO MODDING data-drive this

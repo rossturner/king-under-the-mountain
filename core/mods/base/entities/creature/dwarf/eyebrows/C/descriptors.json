@@ -1,0 +1,34 @@
+[{
+  "uniqueName": "Eyebrows C",
+  "type": "CREATURE_EYEBROWS",
+  "race": "DWARF",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "eyebrows C front.png",
+      "coloringLayer": "HAIR_COLOR"
+    },
+    "DOWN_RIGHT": {
+      "filename": "eyebrows C side.png",
+      "coloringLayer": "HAIR_COLOR"
+    },
+    "DOWN_LEFT": {
+      "filename": "eyebrows C side.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR"
+    },
+    "UP_RIGHT": {
+      "filename": "eyebrows C side.png",
+      "coloringLayer": "HAIR_COLOR"
+    },
+    "UP_LEFT": {
+      "filename": "eyebrows C side.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR"
+    },
+    "UP": {
+      "filename": "eyebrows C front.png",
+      "coloringLayer": "HAIR_COLOR"
+    }
+  }
+}]

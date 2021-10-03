@@ -15,9 +15,9 @@ import technology.rocketjump.undermount.entities.components.humanoid.SteeringCom
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
 import technology.rocketjump.undermount.entities.planning.PathfindingCallback;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;

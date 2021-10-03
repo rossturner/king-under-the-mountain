@@ -8,14 +8,14 @@ import technology.rocketjump.undermount.entities.ai.goap.EntityNeed;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.HumanoidDeathMessage;
+import technology.rocketjump.undermount.messaging.types.CreatureDeathMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -33,7 +33,7 @@ public class SleepOnFloorAction extends Action {
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
 		if (!Consciousness.SLEEPING.equals(attributes.getConsciousness())) {
 			changeToSleeping(gameContext);
 		}
@@ -80,7 +80,7 @@ public class SleepOnFloorAction extends Action {
 				float roll = gameContext.getRandom().nextFloat();
 				if (roll < gameContext.getMapEnvironment().getCurrentWeather().getChanceToFreezeToDeathFromSleeping()) {
 					// RIP
-					parent.messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(parent.parentEntity, DeathReason.FROZEN));
+					parent.messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(parent.parentEntity, DeathReason.FROZEN));
 					completionType = FAILURE;
 					return;
 				}
@@ -127,14 +127,14 @@ public class SleepOnFloorAction extends Action {
 			}
 
 		}
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		attributes.setConsciousness(consciousness);
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_FELL_ASLEEP);
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, entity);
 	}
 
 	protected void changeToAwake() {
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
 
 		// Stop rotation
 		parent.parentEntity.getLocationComponent().setRotation(0);

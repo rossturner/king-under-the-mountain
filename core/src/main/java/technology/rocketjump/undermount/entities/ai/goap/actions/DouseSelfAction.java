@@ -5,7 +5,7 @@ import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.actions.nourishment.ConsumeLiquidFromContainerAction;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;

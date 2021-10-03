@@ -31,11 +31,11 @@ import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.*;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.Death;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.StatusEffect;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.*;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.Death;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -84,9 +84,9 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HAULING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.DEAD;
 import static technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause.OXIDISED;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
 import static technology.rocketjump.undermount.jobs.JobMessageHandler.deconstructFurniture;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
 import static technology.rocketjump.undermount.messaging.MessageType.DESTROY_ENTITY;
@@ -169,7 +169,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.REMOVE_STATUS);
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_FURNITURE_TYPE);
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_ITEM_TYPE);
-		messageDispatcher.addListener(this, MessageType.HUMANOID_DEATH);
+		messageDispatcher.addListener(this, MessageType.CREATURE_DEATH);
 		messageDispatcher.addListener(this, MessageType.HUMANOID_INSANITY);
 		messageDispatcher.addListener(this, MessageType.LIQUID_SPLASH);
 		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
@@ -221,10 +221,10 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						ongoingEffectTracker.entityRemoved(removedEntity);
 					} else if (removedEntity.getBehaviourComponent() instanceof SettlerBehaviour) {
 						settlerTracker.settlerRemoved(removedEntity);
-						HumanoidEntityAttributes humanoidAttributes = (HumanoidEntityAttributes) removedEntity.getPhysicalEntityComponent().getAttributes();
+						CreatureEntityAttributes humanoidAttributes = (CreatureEntityAttributes) removedEntity.getPhysicalEntityComponent().getAttributes();
 						if (!humanoidAttributes.getConsciousness().equals(DEAD)) {
 							// Destroying non-dead settler entity
-							handle(new HumanoidDeathMessage(removedEntity, DeathReason.UNKNOWN));
+							handle(new CreatureDeathMessage(removedEntity, DeathReason.UNKNOWN));
 						}
 					}
 
@@ -421,12 +421,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 					messageDispatcher.dispatchMessage(MessageType.LIQUID_ALLOCATION_CANCELLED, allocation.getLiquidAllocation());
 				}
 
-				if (allocation.getHauledEntityType().equals(HUMANOID)) {
+				if (allocation.getHauledEntityType().equals(CREATURE)) {
 					// Probably assigned to a piece of furniture somewhere
 					if (allocation.getTargetPositionType().equals(HaulingAllocation.AllocationPositionType.FURNITURE)) {
 						Entity targetFurniture = entityStore.getById(allocation.getTargetId());
 						if (targetFurniture == null) {
-							Logger.error("Could not find target furniture of cancelled hauling allocation for type " + HUMANOID);
+							Logger.error("Could not find target furniture of cancelled hauling allocation for type " + CREATURE);
 						} else {
 							((FurnitureEntityAttributes) targetFurniture.getPhysicalEntityComponent().getAttributes()).setAssignedToEntityId(null);
 						}
@@ -514,8 +514,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.TRANSFORM_ITEM_TYPE: {
 				return handle((TransformItemMessage) msg.extraInfo);
 			}
-			case MessageType.HUMANOID_DEATH: {
-				return handle((HumanoidDeathMessage) msg.extraInfo);
+			case MessageType.CREATURE_DEATH: {
+				return handle((CreatureDeathMessage) msg.extraInfo);
 			}
 			case MessageType.HUMANOID_INSANITY: {
 				return handleInsanity((Entity) msg.extraInfo);
@@ -711,9 +711,9 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		return true;
 	}
 
-	private boolean handle(HumanoidDeathMessage deathMessage) {
+	private boolean handle(CreatureDeathMessage deathMessage) {
 		Entity deceased = deathMessage.deceased;
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) deceased.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) deceased.getPhysicalEntityComponent().getAttributes();
 		Consciousness previousConciousness = attributes.getConsciousness();
 		if (previousConciousness.equals(DEAD)) {
 			// Already dead! Doesn't need killing again
@@ -721,17 +721,20 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		}
 
 		attributes.setConsciousness(DEAD);
+		BehaviourComponent originalBehaviour = deceased.getBehaviourComponent();
 		CorpseBehaviour corpseBehaviour = new CorpseBehaviour();
 		corpseBehaviour.setOriginalSkinColor(attributes.getColor(SKIN_COLOR));
 		entityStore.changeBehaviour(deceased, corpseBehaviour, messageDispatcher);
 
 		Vector2 deceasedPosition = deceased.getLocationComponent().getWorldOrParentPosition();
-		Notification deathNotification = new Notification(NotificationType.DEATH, deceasedPosition);
-		deathNotification.addTextReplacement("character", i18nTranslator.getDescription(deceased));
-		deathNotification.addTextReplacement("reason", i18nTranslator.getTranslatedString(deathMessage.reason.getI18nKey()));
-		messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, deathNotification);
+		if (originalBehaviour instanceof SettlerBehaviour) {
+			Notification deathNotification = new Notification(NotificationType.DEATH, deceasedPosition);
+			deathNotification.addTextReplacement("character", i18nTranslator.getDescription(deceased));
+			deathNotification.addTextReplacement("reason", i18nTranslator.getTranslatedString(deathMessage.reason.getI18nKey()));
+			messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, deathNotification);
 
-		settlerTracker.settlerDied(deceased);
+			settlerTracker.settlerDied(deceased);
+		}
 
 		dropEquippedItems(deceased, deceasedPosition);
 		deceased.removeComponent(NeedsComponent.class);
@@ -747,21 +750,22 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		}
 
 		// TODO check for game-over state
-		boolean allDead = true;
-		for (Entity settler : settlerTracker.getAll()) {
-			HumanoidEntityAttributes otherSettlerAttributes = (HumanoidEntityAttributes) settler.getPhysicalEntityComponent().getAttributes();
-			if (!otherSettlerAttributes.getConsciousness().equals(DEAD)) {
-				allDead = false;
-				break;
+		if (originalBehaviour instanceof SettlerBehaviour) {
+			boolean allDead = true;
+			for (Entity settler : settlerTracker.getAll()) {
+				CreatureEntityAttributes otherSettlerAttributes = (CreatureEntityAttributes) settler.getPhysicalEntityComponent().getAttributes();
+				if (!otherSettlerAttributes.getConsciousness().equals(DEAD)) {
+					allDead = false;
+					break;
+				}
+			}
+
+			if (allDead) {
+				Notification gameOverNotification = new Notification(NotificationType.GAME_OVER, null);
+				messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, gameOverNotification);
+				gameContext.getSettlementState().setGameState(GameState.GAME_OVER);
 			}
 		}
-
-		if (allDead) {
-			Notification gameOverNotification = new Notification(NotificationType.GAME_OVER, null);
-			messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, gameOverNotification);
-			gameContext.getSettlementState().setGameState(GameState.GAME_OVER);
-		}
-
 
 		return true;
 	}

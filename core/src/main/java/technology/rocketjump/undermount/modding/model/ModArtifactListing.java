@@ -2,8 +2,8 @@ package technology.rocketjump.undermount.modding.model;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.furniture.model.FurnitureEntityAsset;
-import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAsset;
 import technology.rocketjump.undermount.assets.entities.mechanism.model.MechanismEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
@@ -19,12 +19,12 @@ import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.ai.goap.Goal;
 import technology.rocketjump.undermount.entities.ai.goap.Schedule;
 import technology.rocketjump.undermount.entities.factories.names.NameWord;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructure;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDefinition;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureCategory;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.body.BodyStructure;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.body.organs.OrganDefinition;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismType;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
@@ -88,8 +88,8 @@ public class ModArtifactListing {
 				def("definitions/entityAssets", "furnitureEntityAssets", SINGLE_FILE, JSON_ARRAY, FurnitureEntityAsset.class,
 						"entities/furniture", "**/descriptors", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
-				def("definitions/entityAssets", "humanoidEntityAssets", SINGLE_FILE, JSON_ARRAY, HumanoidEntityAsset.class,
-						"entities/humanoid", "**/descriptors", JSON_ARRAY, ADDITIVE,
+				def("definitions/entityAssets", "creatureEntityAssets", SINGLE_FILE, JSON_ARRAY, CreatureEntityAsset.class,
+						"entities/creature", "**/descriptors", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
 				def("definitions/entityAssets", "itemEntityAssets", SINGLE_FILE, JSON_ARRAY, ItemEntityAsset.class,
 						"entities/item", "**/descriptors", JSON_ARRAY, ADDITIVE,

@@ -2,8 +2,8 @@ package technology.rocketjump.undermount.settlement;
 
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 
@@ -26,7 +26,7 @@ public class SettlerTracker implements GameContextAware {
 			return;
 		}
 
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		if (attributes.getConsciousness().equals(Consciousness.DEAD)) {
 			deadSettlers.put(entity.getId(), entity);
 		} else {

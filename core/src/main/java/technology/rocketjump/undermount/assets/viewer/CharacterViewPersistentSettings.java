@@ -10,35 +10,35 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.inject.Inject;
 import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
-import technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionary;
-import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidBodyType;
-import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
+import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
 import technology.rocketjump.undermount.jobs.model.Profession;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetsByProfession.NULL_ENTITY_ASSET;
+import static technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetsByProfession.NULL_ENTITY_ASSET;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CharacterViewPersistentSettings {
 
 	private Gender gender;
 	private Race race = Race.DWARF;
-	private HumanoidBodyType bodyType;
+	private CreatureBodyType bodyType;
 	private Map<EntityAssetType, String> typeToUniqueNameMap = new HashMap<>();
 	private Color skinColor, hairColor, accessoryColor;
 
 	@JsonIgnore
-	private final HumanoidEntityAssetDictionary assetDictionary;
+	private final CreatureEntityAssetDictionary assetDictionary;
 	@JsonIgnore
 	private ObjectMapper mapper = new ObjectMapper();
 	@JsonIgnore
@@ -54,7 +54,7 @@ public class CharacterViewPersistentSettings {
 	}
 
 	@Inject
-	public CharacterViewPersistentSettings(HumanoidEntityAssetDictionary assetDictionary) throws IOException {
+	public CharacterViewPersistentSettings(CreatureEntityAssetDictionary assetDictionary) throws IOException {
 		isPersistable = true;
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		this.assetDictionary = assetDictionary;
@@ -76,7 +76,7 @@ public class CharacterViewPersistentSettings {
 	}
 
 	public void reloadFromSettings(Entity entity) {
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		Map<EntityAssetType, EntityAsset> assetMap = entity.getPhysicalEntityComponent().getTypeMap();
 
 		if (race != null) {
@@ -118,7 +118,7 @@ public class CharacterViewPersistentSettings {
 			if (entry.getValue().equals(NULL_ENTITY_ASSET.getUniqueName())) {
 //				assetMap.put(entry.getKey(), NULL_ENTITY_ASSET);
 			} else {
-				HumanoidEntityAsset assetFromDictionary = assetDictionary.getByUniqueName(entry.getValue());
+				CreatureEntityAsset assetFromDictionary = assetDictionary.getByUniqueName(entry.getValue());
 				if (assetFromDictionary.matches(attributes, primaryProfession)) {
 					assetMap.put(assetFromDictionary.getType(), assetFromDictionary);
 				} // else doesn't match, so leave as is
@@ -127,7 +127,7 @@ public class CharacterViewPersistentSettings {
 
 	}
 
-	public void update(EntityAssetType assetType, HumanoidEntityAsset selectedAsset) {
+	public void update(EntityAssetType assetType, CreatureEntityAsset selectedAsset) {
 		typeToUniqueNameMap.put(assetType, selectedAsset.getUniqueName());
 		persist();
 	}
@@ -162,11 +162,11 @@ public class CharacterViewPersistentSettings {
 		persist();
 	}
 
-	public HumanoidBodyType getBodyType() {
+	public CreatureBodyType getBodyType() {
 		return bodyType;
 	}
 
-	public void setBodyType(HumanoidBodyType bodyType) {
+	public void setBodyType(CreatureBodyType bodyType) {
 		this.bodyType = bodyType;
 		persist();
 	}

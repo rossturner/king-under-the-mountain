@@ -20,7 +20,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour.getAnyNavigableWorkspace;
-import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOID;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FLOOR;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FURNITURE;
@@ -81,7 +81,7 @@ public class GraveManager implements Updatable {
 		}
 
 		for (Job jobAtLocation : jobStore.getJobsAtLocation(location)) {
-			if (jobAtLocation.getType().equals(haulingJobType) && jobAtLocation.getHaulingAllocation().getHauledEntityType().equals(HUMANOID)) {
+			if (jobAtLocation.getType().equals(haulingJobType) && jobAtLocation.getHaulingAllocation().getHauledEntityType().equals(CREATURE)) {
 				return true;
 			}
 		}
@@ -118,7 +118,7 @@ public class GraveManager implements Updatable {
 		allocation.setSourcePosition(deceasedPosition);
 		allocation.setSourcePositionType(FLOOR);
 
-		allocation.setHauledEntityType(HUMANOID);
+		allocation.setHauledEntityType(CREATURE);
 		allocation.setHauledEntityId(deceased.getId());
 
 		allocation.setTargetId(deceasedContainer.getId());

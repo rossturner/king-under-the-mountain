@@ -1,0 +1,18 @@
+[{
+  "uniqueName": "Dead dwarf eyes",
+  "type": "CREATURE_EYES",
+  "race": "DWARF",
+  "consciousness": "DEAD",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Eyes-Dead-F.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Eyes-Dead-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Eyes-Dead-F34.png",
+      "flipX": true
+    }
+  }
+}]

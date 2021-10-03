@@ -57,7 +57,7 @@ public class BaseOngoingEffectBehaviour implements BehaviourComponent, Destructi
 	public void update(float deltaTime, GameContext gameContext) {
 		OngoingEffectAttributes attributes = (OngoingEffectAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 		Entity containerEntity = parentEntity.getLocationComponent().getContainerEntity();
-		if (state.equals(STARTING) && containerEntity != null && containerEntity.getType().equals(EntityType.HUMANOID)) {
+		if (state.equals(STARTING) && containerEntity != null && containerEntity.getType().equals(EntityType.CREATURE)) {
 			nextState(gameContext);
 		}
 

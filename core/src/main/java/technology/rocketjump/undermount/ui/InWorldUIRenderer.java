@@ -291,7 +291,7 @@ public class InWorldUIRenderer {
 
 					if (renderingOptions.debug().isShowPathfindingSlowdown()) {
 						for (Entity entity : mapTile.getEntities()) {
-							if (entity.getType().equals(EntityType.HUMANOID)) {
+							if (entity.getType().equals(EntityType.CREATURE)) {
 								Vector2 location = entity.getLocationComponent().getWorldPosition();
 								Vector2 velocity = entity.getLocationComponent().getLinearVelocity();
 

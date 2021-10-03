@@ -8,7 +8,7 @@ import technology.rocketjump.undermount.assets.entities.furniture.model.DoorStat
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.NullMapTile;
@@ -20,7 +20,7 @@ import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
 
 public class SteeringComponent implements ChildPersistable {
 
@@ -120,8 +120,8 @@ public class SteeringComponent implements ChildPersistable {
 			}
 
 			for (Entity otherEntity : tileNearPosition.getEntities()) {
-				if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.HUMANOID)) {
-					if (!AWAKE.equals(((HumanoidEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
+				if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.CREATURE)) {
+					if (!AWAKE.equals(((CreatureEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
 						continue;
 					}
 					Vector2 separation = currentPosition.cpy().sub(otherEntity.getLocationComponent().getWorldPosition());
@@ -255,8 +255,8 @@ public class SteeringComponent implements ChildPersistable {
 				}
 
 				for (Entity otherEntity : tileNearPosition.getEntities()) {
-					if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.HUMANOID)) {
-						if (!AWAKE.equals(((HumanoidEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
+					if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.CREATURE)) {
+						if (!AWAKE.equals(((CreatureEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
 							continue;
 						}
 

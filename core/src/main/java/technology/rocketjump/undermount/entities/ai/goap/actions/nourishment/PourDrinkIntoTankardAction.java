@@ -11,7 +11,7 @@ import technology.rocketjump.undermount.entities.components.LiquidAllocation;
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;

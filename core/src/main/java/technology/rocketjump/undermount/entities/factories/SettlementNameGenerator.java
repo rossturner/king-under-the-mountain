@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.factories.names.NameGenerator;
 import technology.rocketjump.undermount.entities.factories.names.NorseNameGenerator;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 
 import java.io.File;
 import java.io.IOException;

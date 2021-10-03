@@ -15,11 +15,11 @@ import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Sanity;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPart;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Sanity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.body.BodyPart;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
@@ -107,8 +107,8 @@ public class I18nTranslator implements I18nUpdatable {
 			return BLANK;
 		}
 		switch (entity.getType()) {
-			case HUMANOID:
-				return getDescription(entity, (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());
+			case CREATURE:
+				return getDescription(entity, (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());
 			case ITEM:
 				ItemEntityAttributes itemAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				return getItemDescription(itemAttributes.getQuantity(), itemAttributes.getMaterial(itemAttributes.getItemType().getPrimaryMaterialType()), itemAttributes.getItemType());
@@ -125,9 +125,9 @@ public class I18nTranslator implements I18nUpdatable {
 	}
 
 	public I18nText getCurrentGoalDescription(Entity entity, GameContext gameContext) {
-		if (entity.getType().equals(EntityType.HUMANOID)) {
+		if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
 			SettlerBehaviour behaviour = (SettlerBehaviour) entity.getBehaviourComponent();
-			HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+			CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 			AssignedGoal currentGoal = behaviour.getCurrentGoal();
 			if (currentGoal == null || currentGoal.goal.i18nDescription == null) {
 				return BLANK;
@@ -441,7 +441,7 @@ public class I18nTranslator implements I18nUpdatable {
 		return applyReplacements(dictionary.getWord("CONSTRUCTION.DESCRIPTION"), replacements, Gender.ANY);
 	}
 
-	private I18nText getDescription(Entity entity, HumanoidEntityAttributes attributes) {
+	private I18nText getDescription(Entity entity, CreatureEntityAttributes attributes) {
 		Map<String, I18nString> replacements = new HashMap<>();
 		replacements.put("name", new I18nWord(attributes.getName().toString()));
 		replacements.put("race", dictionary.getWord(attributes.getRace().i18nKey));
@@ -688,9 +688,9 @@ public class I18nTranslator implements I18nUpdatable {
 	}
 
 	public I18nText getAssignedToLabel(Entity assignedToEntity) {
-		if (assignedToEntity.getPhysicalEntityComponent().getAttributes() instanceof HumanoidEntityAttributes) {
+		if (assignedToEntity.getPhysicalEntityComponent().getAttributes() instanceof CreatureEntityAttributes) {
 			Map<String, I18nString> replacements = new HashMap<>();
-			HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) assignedToEntity.getPhysicalEntityComponent().getAttributes();
+			CreatureEntityAttributes attributes = (CreatureEntityAttributes) assignedToEntity.getPhysicalEntityComponent().getAttributes();
 			replacements.put("name", new I18nWord(attributes.getName().toString())); // Names aren't translated
 			return applyReplacements(dictionary.getWord("GUI.FURNITURE_ASSIGNED_TO"), replacements, Gender.ANY);
 		} else {

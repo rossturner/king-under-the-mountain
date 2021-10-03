@@ -3,8 +3,8 @@ package technology.rocketjump.undermount.entities.factories;
 import com.badlogic.gdx.math.RandomXS128;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -41,8 +41,8 @@ public class HumanoidEntityAttributesFactory {
 		this.fleshMaterial = gameMaterialDictionary.getByName("Dwarf Flesh");
 	}
 
-	public HumanoidEntityAttributes create(GameContext gameContext) {
-		HumanoidEntityAttributes attributes = new HumanoidEntityAttributes(random.nextLong(),
+	public CreatureEntityAttributes create(GameContext gameContext) {
+		CreatureEntityAttributes attributes = new CreatureEntityAttributes(random.nextLong(),
 				hairColorFactory.randomHairColor(random),
 				skinColorFactory.randomSkinColor(random),
 				accessoryColorFactory.randomAccessoryColor(random), fleshMaterial);
@@ -76,7 +76,7 @@ public class HumanoidEntityAttributesFactory {
 				Boolean.parseBoolean(userPreferences.getPreference(UserPreferences.PreferenceKey.TWITCH_VIEWERS_AS_SETTLER_NAMES, "false"));
 	}
 
-	private float chanceToHaveHair(HumanoidEntityAttributes attributes) {
+	private float chanceToHaveHair(CreatureEntityAttributes attributes) {
 		// MODDING expose these values
 		if (attributes.getGender().equals(Gender.MALE)) {
 			return 0.6f;

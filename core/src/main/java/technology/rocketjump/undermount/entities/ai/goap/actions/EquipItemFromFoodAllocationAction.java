@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;

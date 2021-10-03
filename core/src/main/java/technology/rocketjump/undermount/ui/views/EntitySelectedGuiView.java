@@ -20,10 +20,10 @@ import technology.rocketjump.undermount.entities.components.furniture.Constructe
 import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
@@ -190,8 +190,9 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 
 		if (selectable != null && selectable.type.equals(ENTITY)) {
 			Entity entity = selectable.getEntity();
-			if (entity.getType().equals(EntityType.HUMANOID)) {
-				buildHumanoidSelectedView(entity);
+			if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
+				buildSettlerSelectedView(entity);
+				// TODO description of any dead creatures
 			} else {
 				entityDescriptionTable.add(new I18nTextWidget(i18nTranslator.getDescription(entity), uiSkin, messageDispatcher)).left().row();
 
@@ -275,7 +276,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 							String allocationsString = StringUtils.join(itemAllocations, ", ");
 							entityDescriptionTable.add(new Label("Allocations: " + allocationsString, uiSkin)).left();
 						}
-					} else if (entity.getType().equals(EntityType.HUMANOID)) {
+					} else if (entity.getType().equals(EntityType.CREATURE)) {
 //					SettlerBehaviour behaviourComponent = (SettlerBehaviour) entity.getBehaviourComponent();
 //					if (behaviourComponent.getCurrentGoal() != null) {
 //						String goal = "Goal: " + behaviourComponent.getCurrentGoal().goal.name;
@@ -336,7 +337,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		}
 	}
 
-	private void buildHumanoidSelectedView(Entity entity) {
+	private void buildSettlerSelectedView(Entity entity) {
 
 		nameTable.clear();
 		professionsTable.clear();
@@ -358,7 +359,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			}
 		}
 
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 
 		if (attributes.getConsciousness().equals(Consciousness.DEAD)) {
 			upperRow.add(nameTable).top().padRight(5);
@@ -397,7 +398,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 					messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.PAUSED);
 				}
 
-				HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				String originalName = attributes.getName().toString();
 
 				TextInputDialog textInputDialog = new TextInputDialog(renameDialogTitle, descriptionText, originalName, buttonText, uiSkin, (newName) -> {

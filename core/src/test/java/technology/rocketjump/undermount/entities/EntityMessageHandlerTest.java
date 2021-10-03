@@ -102,7 +102,7 @@ public class EntityMessageHandlerTest {
 		Vector2 entityWorldPosition = new Vector2(0.5f, 0.5f);
 		when(mockEntity.getId()).thenReturn(TARGET_ENTITY_ID);
 		when(mockEntity.getLocationComponent()).thenReturn(mockLocationComponent);
-		when(mockEntity.getType()).thenReturn(EntityType.HUMANOID);
+		when(mockEntity.getType()).thenReturn(EntityType.CREATURE);
 		when(mockLocationComponent.getWorldPosition()).thenReturn(entityWorldPosition);
 		when(mockAreaMap.getTile(entityWorldPosition)).thenReturn(mockTile);
 		when(mockEntityStore.getById(TARGET_ENTITY_ID)).thenReturn(mockEntity);

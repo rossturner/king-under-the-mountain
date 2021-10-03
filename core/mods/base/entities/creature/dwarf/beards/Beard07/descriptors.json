@@ -1,0 +1,58 @@
+[{
+  "uniqueName": "Dwarf-Beard07-Color",
+  "type": "CREATURE_BEARD",
+  "race": "DWARF",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Beard07-Color-F.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Beard07-Color-F34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": -2,
+        "y": 0
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Beard07-Color-F34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 2,
+        "y": 0
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Beard07-Color-F34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": -2,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Beard07-Color-F34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 2,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Beard07-Color-F.png",
+      "coloringLayer": "HAIR_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

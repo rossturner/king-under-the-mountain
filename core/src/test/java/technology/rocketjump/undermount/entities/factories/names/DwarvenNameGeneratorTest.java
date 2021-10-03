@@ -5,15 +5,15 @@ import com.google.inject.Guice;
 import org.junit.Before;
 import org.junit.Test;
 import technology.rocketjump.undermount.entities.factories.DwarvenNameGenerator;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidName;
+import technology.rocketjump.undermount.entities.model.physical.creature.HumanoidName;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Gender.FEMALE;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Gender.MALE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Gender.FEMALE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Gender.MALE;
 
 public class DwarvenNameGeneratorTest {
 
