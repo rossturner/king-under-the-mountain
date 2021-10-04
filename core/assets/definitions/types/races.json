@@ -1,0 +1,28 @@
+[ {
+  "name" : "Dwarf",
+  "i18nKey" : "RACE.DWARF",
+  "minStrength" : 7.0,
+  "maxStrength" : 19.0,
+  "bodyTypes" : [ {
+    "value" : "FAT",
+    "maxStrength" : 10.0
+  }, {
+    "value" : "STRONG",
+    "minStrength" : 14.5
+  }, {
+    "value" : "AVERAGE"
+  } ],
+  "features" : {
+    "skin" : {
+      "damageReduction" : {
+        "STABBING" : 1,
+        "SLASHING" : 2,
+        "CRUSHING" : 2
+      }
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : { }
+  }
+} ]

@@ -34,7 +34,7 @@ import static technology.rocketjump.undermount.entities.components.humanoid.Happ
 @Singleton
 public class SettlerFactory {
 
-	private final HumanoidEntityAttributesFactory attributesFactory;
+	private final SettlerCreatureAttributesFactory settlerAttributesFactory;
 	private final HumanoidEntityFactory entityFactory;
 	private final ItemTypeDictionary itemTypeDictionary; // Needed to ensure order of JobType initialisation
 	private final PlantSpeciesDictionary plantSpeciesDictionary;
@@ -45,11 +45,11 @@ public class SettlerFactory {
 	private Map<Profession, Set<ItemType>> professionItemMapping = new HashMap<>();
 
 	@Inject
-	public SettlerFactory(HumanoidEntityAttributesFactory attributesFactory, HumanoidEntityFactory entityFactory,
+	public SettlerFactory(SettlerCreatureAttributesFactory settlerAttributesFactory, HumanoidEntityFactory entityFactory,
 						  ItemTypeDictionary itemTypeDictionary, CraftingTypeDictionary craftingTypeDictionary,
 						  PlantSpeciesDictionary plantSpeciesDictionary, ItemEntityFactory itemEntityFactory, MessageDispatcher messageDispatcher,
 						  JobTypeDictionary jobTypeDictionary, GameMaterialDictionary materialDictionary) {
-		this.attributesFactory = attributesFactory;
+		this.settlerAttributesFactory = settlerAttributesFactory;
 		this.entityFactory = entityFactory;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.plantSpeciesDictionary = plantSpeciesDictionary;
@@ -74,7 +74,7 @@ public class SettlerFactory {
 	}
 
 	public Entity create(Vector2 worldPosition, Vector2 facing, Profession primaryProfession, Profession secondaryProfession, GameContext gameContext) {
-		CreatureEntityAttributes attributes = attributesFactory.create(gameContext);
+		CreatureEntityAttributes attributes = settlerAttributesFactory.create(gameContext);
 
 		Entity entity = entityFactory.create(attributes, worldPosition, facing, primaryProfession, secondaryProfession, gameContext);
 

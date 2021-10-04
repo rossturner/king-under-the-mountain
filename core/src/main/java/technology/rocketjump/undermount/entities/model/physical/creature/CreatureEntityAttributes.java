@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.entities.model.physical.creature;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.graphics.Color;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyTypeDescriptor;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -13,8 +14,6 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -28,6 +27,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 	private long seed;
 	private Race race;
 	private Gender gender;
+	private float strength; // might want to move this to a Stats object
 	private CreatureBodyType bodyType;
 	private Color skinColor;
 	private Color hairColor;
@@ -38,26 +38,44 @@ public class CreatureEntityAttributes implements EntityAttributes {
 	private HumanoidName name;
 	private Consciousness consciousness = AWAKE;
 	private Sanity sanity = SANE;
-	private GameMaterial bodyMaterial;
-
-	static List<CreatureBodyType> bodyTypesToPickFrom = Arrays.asList(CreatureBodyType.AVERAGE, CreatureBodyType.FAT, CreatureBodyType.STRONG);
 
 	public CreatureEntityAttributes() {
 
 	}
 
-	public CreatureEntityAttributes(long seed, Color hairColor, Color skinColor, Color accessoryColor, GameMaterial fleshMaterial) {
+	public CreatureEntityAttributes(Race race, long seed, Color hairColor, Color skinColor, Color accessoryColor) {
 		this.seed = seed;
-		this.race = Race.DWARF;
+		this.race = race;
 		Random random = new Random(seed);
+		float strengthRange = race.getMaxStrength() - race.getMinStrength();
+		strength = race.getMinStrength();
+		for (int i = 0; i < 3; i++) {
+			strength += random.nextFloat() * (strengthRange / 3);
+		}
+
+		for (CreatureBodyTypeDescriptor bodyTypeDescriptor : race.getBodyTypes()) {
+			if (bodyTypeDescriptor.getMaxStrength() != null) {
+				if (strength > bodyTypeDescriptor.getMaxStrength()) {
+					continue;
+				}
+			}
+			if (bodyTypeDescriptor.getMinStrength() != null) {
+				if (strength < bodyTypeDescriptor.getMinStrength()) {
+					continue;
+				}
+			}
+
+			this.bodyType = bodyTypeDescriptor.getValue();
+			break;
+		}
+
+
 		this.gender = random.nextBoolean() ? Gender.MALE : Gender.FEMALE; // MODDING expose this, may not want 50/50 male/female
-		this.bodyType = bodyTypesToPickFrom.get(random.nextInt(bodyTypesToPickFrom.size()));
 		this.hairColor = hairColor;
 		this.skinColor = skinColor;
 		this.eyeColor = Color.BLACK;
 		this.hasHair = true;
 		this.accessoryColor = accessoryColor;
-		this.bodyMaterial = fleshMaterial;
 	}
 
 	@Override
@@ -78,7 +96,11 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	@Override
 	public Map<GameMaterialType, GameMaterial> getMaterials() {
-		return Map.of(bodyMaterial.getMaterialType(), bodyMaterial);
+		if (race.getFeatures().getSkin() != null && race.getFeatures().getSkin().getSkinMaterial() != null) {
+			return Map.of(race.getFeatures().getSkin().getSkinMaterial().getMaterialType(), race.getFeatures().getSkin().getSkinMaterial());
+		} else {
+			return Map.of();
+		}
 	}
 
 	public Race getRace() {
@@ -107,10 +129,6 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	public void setBoneColor(Color boneColor) {
 		this.boneColor = boneColor;
-	}
-
-	public void setBodyMaterial(GameMaterial bodyMaterial) {
-		this.bodyMaterial = bodyMaterial;
 	}
 
 	public long getSeed() {
@@ -191,9 +209,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("seed", seed);
-		if (!race.equals(Race.DWARF)) {
-			asJson.put("race", race.name());
-		}
+		asJson.put("race", race.getName());
 		asJson.put("gender", gender.name());
 		if (!bodyType.equals(CreatureBodyType.AVERAGE)) {
 			asJson.put("bodyType", bodyType.name());
@@ -218,13 +234,15 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		if (!sanity.equals(SANE)) {
 			asJson.put("sanity", sanity.name());
 		}
-		asJson.put("bodyMaterial", bodyMaterial.getMaterialName());
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		seed = asJson.getLongValue("seed");
-		race = EnumParser.getEnumValue(asJson, "race", Race.class, Race.DWARF);
+		race = relatedStores.raceDictionary.getByName(asJson.getString("race"));
+		if (race == null) {
+			throw new InvalidSaveException("Could not find race with name " + asJson.getString("race"));
+		}
 		gender = EnumParser.getEnumValue(asJson, "gender", Gender.class, Gender.FEMALE);
 		bodyType = EnumParser.getEnumValue(asJson, "bodyType", CreatureBodyType.class, CreatureBodyType.AVERAGE);
 		skinColor = HexColors.get(asJson.getString("skinColor"));
@@ -248,10 +266,6 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		String bodyMaterialName = asJson.getString("bodyMaterial");
 		if (bodyMaterialName == null) {
 			throw new InvalidSaveException("Old save format");
-		}
-		this.bodyMaterial = relatedStores.gameMaterialDictionary.getByName(bodyMaterialName);
-		if (this.bodyMaterial == null) {
-			throw new InvalidSaveException("Could not find material with name " + bodyMaterialName);
 		}
 	}
 }

@@ -297,7 +297,6 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 					CorpseBehaviour corpseBehaviour = (CorpseBehaviour) entity.getBehaviourComponent();
 					corpseBehaviour.setToFullyDecayed(attributes);
 					attributes.setBoneColor(blackenedColor());
-					attributes.setBodyMaterial(boneMaterial);
 				}
 				break;
 			case ITEM:

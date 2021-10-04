@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.assets.entities.creature;
 
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyTypeDescriptor;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -13,9 +14,9 @@ public class CreatureEntityAssetsByBodyType {
 
 	private Map<CreatureBodyType, CreatureEntityAssetsByGender> bodyTypeMap = new EnumMap<>(CreatureBodyType.class);
 
-	public CreatureEntityAssetsByBodyType() {
-		for (CreatureBodyType type : CreatureBodyType.values()) {
-			bodyTypeMap.put(type, new CreatureEntityAssetsByGender());
+	public CreatureEntityAssetsByBodyType(List<CreatureBodyTypeDescriptor> bodyTypesForRace) {
+		for (CreatureBodyTypeDescriptor type : bodyTypesForRace) {
+			bodyTypeMap.put(type.getValue(), new CreatureEntityAssetsByGender());
 		}
 	}
 

@@ -32,7 +32,7 @@ import static technology.rocketjump.undermount.assets.entities.creature.Creature
 public class CharacterViewPersistentSettings {
 
 	private Gender gender;
-	private Race race = Race.DWARF;
+	private Race race;
 	private CreatureBodyType bodyType;
 	private Map<EntityAssetType, String> typeToUniqueNameMap = new HashMap<>();
 	private Color skinColor, hairColor, accessoryColor;

@@ -43,14 +43,6 @@ public class BodyStructureDictionary {
 			throw new RuntimeException("Could not find root part with name " + bodyStructure.getRootPartName() + " for " + bodyStructure.getName());
 		}
 
-		if (bodyStructure.getFeatures().getBones() != null) {
-			bodyStructure.getFeatures().getBones().setMaterial(gameMaterialDictionary.getByName(bodyStructure.getFeatures().getBones().getMaterialName()));
-			if (bodyStructure.getFeatures().getBones().getMaterial() == null) {
-				Logger.error("Could not find material " + bodyStructure.getFeatures().getBones().getMaterialName() +
-						" for bones as part of body structure " + bodyStructure.getName());
-			}
-		}
-
 		for (BodyPartDefinition partDefinition : bodyStructure.getPartDefinitions()) {
 			for (BodyPartOrgan organ : partDefinition.getOrgans()) {
 				organ.setOrganDefinition(organDefinitionDictionary.getByName(organ.getType()));

@@ -7,6 +7,7 @@ import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionar
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
 
 import java.util.HashMap;
@@ -27,8 +28,8 @@ public class CreatureEntityAssetDictionary {
 	private final Map<String, CreatureEntityAsset> assetsByName = new HashMap<>();
 
 	public CreatureEntityAssetDictionary(List<CreatureEntityAsset> completeAssetList,
-										 EntityAssetTypeDictionary entityAssetTypeDictionary) {
-		this.typeMap = new CreatureEntityAssetsByType(entityAssetTypeDictionary);
+										 EntityAssetTypeDictionary entityAssetTypeDictionary, RaceDictionary raceDictionary) {
+		this.typeMap = new CreatureEntityAssetsByType(entityAssetTypeDictionary, raceDictionary);
 		for (CreatureEntityAsset asset : completeAssetList) {
 			typeMap.add(asset);
 			assetsByName.put(asset.getUniqueName(), asset);

@@ -36,7 +36,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 public class EntityStore implements GameContextAware, AssetDisposable {
 
 	private final HumanoidEntityFactory humanoidEntityFactory;
-	private final HumanoidEntityAttributesFactory humanoidEntityAttributesFactory;
+	private final SettlerCreatureAttributesFactory settlerCreatureAttributesFactory;
 
 	private final PlantEntityAttributesFactory plantEntityAttributesFactory;
 	private final PlantEntityFactory plantEntityFactory;
@@ -56,13 +56,13 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 	private final ConstantsRepo constantsRepo;
 
 	@Inject
-	public EntityStore(HumanoidEntityFactory humanoidEntityFactory, HumanoidEntityAttributesFactory humanoidEntityAttributesFactory,
+	public EntityStore(HumanoidEntityFactory humanoidEntityFactory, SettlerCreatureAttributesFactory settlerCreatureAttributesFactory,
 					   PlantEntityAttributesFactory plantEntityAttributesFactory, PlantEntityFactory plantEntityFactory,
 					   ItemTypeDictionary itemTypeDictionary, ItemEntityFactory itemEntityFactory,
 					   MessageDispatcher messageDispatcher, FurnitureTracker furnitureTracker,
 					   ItemTracker itemTracker, SettlerTracker settlerTracker, ConstantsRepo constantsRepo) {
 		this.humanoidEntityFactory = humanoidEntityFactory;
-		this.humanoidEntityAttributesFactory = humanoidEntityAttributesFactory;
+		this.settlerCreatureAttributesFactory = settlerCreatureAttributesFactory;
 		this.plantEntityAttributesFactory = plantEntityAttributesFactory;
 		this.plantEntityFactory = plantEntityFactory;
 		this.itemTypeDictionary = itemTypeDictionary;

@@ -28,6 +28,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.*;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -123,6 +124,8 @@ public class I18NTranslatorTest {
 	private TwitchDataStore mockTwitchDataStore;
 	@Mock
 	private GameMaterialDictionary mockMaterialDictionary;
+	@Mock
+	private RaceDictionary mockRaceDictionary;
 
 	@Before
 	public void setup() throws IOException {
@@ -150,9 +153,9 @@ public class I18NTranslatorTest {
 	@Test
 	public void describeHumanoid() throws IOException {
 		NorseNameGenerator nameGenerator = new NorseNameGenerator();
-		CreatureEntityAttributes attributes = new HumanoidEntityAttributesFactory(
+		CreatureEntityAttributes attributes = new SettlerCreatureAttributesFactory(
 				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(gameMaterialDictionary), new DwarvenNameGenerator(new NorseNameGenerator()),
-				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary).create(new GameContext());
+				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary, mockRaceDictionary).create(new GameContext());
 		attributes.setName(nameGenerator.create(88L, Gender.MALE));
 
 		Profession profession = new Profession();

@@ -2,7 +2,6 @@ package technology.rocketjump.undermount.entities.model.physical.creature.body;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import technology.rocketjump.undermount.entities.model.physical.creature.body.features.BodyStructureFeatures;
 import technology.rocketjump.undermount.misc.Name;
 
 import java.util.ArrayList;
@@ -14,8 +13,6 @@ public class BodyStructure {
 
 	@Name
 	private String name;
-
-	private BodyStructureFeatures features = new BodyStructureFeatures();
 
 	private String rootPartName;
 	@JsonIgnore
@@ -29,14 +26,6 @@ public class BodyStructure {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public BodyStructureFeatures getFeatures() {
-		return features;
-	}
-
-	public void setFeatures(BodyStructureFeatures features) {
-		this.features = features;
 	}
 
 	public String getRootPartName() {

@@ -1,4 +1,4 @@
-package technology.rocketjump.undermount.entities.model.physical.creature.body.features;
+package technology.rocketjump.undermount.entities.model.physical.creature.features;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

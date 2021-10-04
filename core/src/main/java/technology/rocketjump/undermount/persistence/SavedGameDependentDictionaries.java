@@ -16,6 +16,7 @@ import technology.rocketjump.undermount.entities.components.ComponentDictionary;
 import technology.rocketjump.undermount.entities.components.StatusEffectDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -79,6 +80,7 @@ public class SavedGameDependentDictionaries {
 	public final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
 	public final MechanismTypeDictionary mechanismTypeDictionary;
 	public final BodyStructureDictionary bodyStructureDictionary;
+	public final RaceDictionary raceDictionary;
 
 	@Inject
 	public SavedGameDependentDictionaries(DynamicMaterialFactory dynamicMaterialFactory, GameMaterialDictionary gameMaterialDictionary,
@@ -97,7 +99,8 @@ public class SavedGameDependentDictionaries {
 										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary,
 										  OngoingEffectTypeDictionary ongoingEffectTypeDictionary,
 										  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary,
-										  MechanismTypeDictionary mechanismTypeDictionary, BodyStructureDictionary bodyStructureDictionary) {
+										  MechanismTypeDictionary mechanismTypeDictionary, BodyStructureDictionary bodyStructureDictionary,
+										  RaceDictionary raceDictionary) {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.messageDispatcher = messageDispatcher;
@@ -133,5 +136,6 @@ public class SavedGameDependentDictionaries {
 		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
 		this.mechanismTypeDictionary = mechanismTypeDictionary;
 		this.bodyStructureDictionary = bodyStructureDictionary;
+		this.raceDictionary = raceDictionary;
 	}
 }

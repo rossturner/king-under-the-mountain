@@ -1,3 +1,11 @@
+Alpha 8
+
+- Reworked HUMANOID entities into more generic CREATURE entity type
+- Added "Race" type for creatures containing new data
+- Dwarven body shape (fat/average/strong) is now based on a strength stat, determined by a strength distribution described as part of the race
+
+- Fix for dwarves spinning in place
+
 Alpha 7.0.4
 
 - Furniture placements on top of irrigation channels no longer show as valid

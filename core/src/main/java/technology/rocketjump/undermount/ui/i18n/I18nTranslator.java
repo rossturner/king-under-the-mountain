@@ -444,7 +444,7 @@ public class I18nTranslator implements I18nUpdatable {
 	private I18nText getDescription(Entity entity, CreatureEntityAttributes attributes) {
 		Map<String, I18nString> replacements = new HashMap<>();
 		replacements.put("name", new I18nWord(attributes.getName().toString()));
-		replacements.put("race", dictionary.getWord(attributes.getRace().i18nKey));
+		replacements.put("race", dictionary.getWord(attributes.getRace().getI18nKey()));
 
 
 		if (attributes.getSanity().equals(Sanity.BROKEN)) {

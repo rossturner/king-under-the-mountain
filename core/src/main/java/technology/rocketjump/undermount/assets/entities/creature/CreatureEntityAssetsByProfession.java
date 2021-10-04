@@ -4,7 +4,6 @@ import technology.rocketjump.undermount.assets.entities.creature.model.CreatureB
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
-import technology.rocketjump.undermount.entities.model.physical.creature.Race;
 import technology.rocketjump.undermount.jobs.model.Profession;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class CreatureEntityAssetsByProfession {
 		NULL_ENTITY_ASSET = new CreatureEntityAsset();
 		NULL_ENTITY_ASSET.setBodyType(CreatureBodyType.ANY);
 		NULL_ENTITY_ASSET.setGender(Gender.ANY);
-		NULL_ENTITY_ASSET.setRace(Race.ANY);
+		NULL_ENTITY_ASSET.setRace(null);
 		NULL_ENTITY_ASSET.setType(null);
 		NULL_ENTITY_ASSET.setUniqueName("None");
 	}

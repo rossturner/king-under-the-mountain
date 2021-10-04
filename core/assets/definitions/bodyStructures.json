@@ -1,18 +1,5 @@
 [ {
   "name" : "Dwarf",
-  "features" : {
-    "skin" : {
-      "damageReduction" : {
-        "STABBING" : 1,
-        "SLASHING" : 2,
-        "CRUSHING" : 2
-      }
-    },
-    "bones" : {
-      "materialName" : "Bone"
-    },
-    "blood" : { }
-  },
   "rootPartName" : "Torso",
   "partDefinitions" : [ {
     "name" : "Head",

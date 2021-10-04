@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.SpriteDescriptor;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.rendering.RenderMode;
 
 import java.io.IOException;
@@ -32,11 +33,14 @@ public class CreatureEntityAssetDictionaryProvider implements Provider<CreatureE
 	private final TextureAtlasRepository textureAtlasRepository;
 
 	private CreatureEntityAssetDictionary instance;
+	private RaceDictionary raceDictionary;
 
 	@Inject
-	public CreatureEntityAssetDictionaryProvider(EntityAssetTypeDictionary entityAssetTypeDictionary, TextureAtlasRepository textureAtlasRepository) {
+	public CreatureEntityAssetDictionaryProvider(EntityAssetTypeDictionary entityAssetTypeDictionary,
+												 TextureAtlasRepository textureAtlasRepository, RaceDictionary raceDictionary) {
 		this.entityAssetTypeDictionary = entityAssetTypeDictionary;
 		this.textureAtlasRepository = textureAtlasRepository;
+		this.raceDictionary = raceDictionary;
 	}
 
 	@Override
@@ -58,13 +62,19 @@ public class CreatureEntityAssetDictionaryProvider implements Provider<CreatureE
 					objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, CreatureEntityAsset.class));
 
 			for (CreatureEntityAsset asset : assetList) {
+				asset.setRace(raceDictionary.getByName(asset.getRaceName()));
+				if (asset.getRace() == null) {
+					Logger.error("Could not find (required) race with name " + asset.getRaceName() + " for asset " + asset.getUniqueName());
+					continue;
+				}
+
 				for (SpriteDescriptor spriteDescriptor : asset.getSpriteDescriptors().values()) {
 					addSprite(spriteDescriptor, diffuseTextureAtlas, RenderMode.DIFFUSE);
 					addSprite(spriteDescriptor, normalTextureAtlas, RenderMode.NORMALS);
 				}
 			}
 
-			return new CreatureEntityAssetDictionary(assetList, entityAssetTypeDictionary);
+			return new CreatureEntityAssetDictionary(assetList, entityAssetTypeDictionary, raceDictionary);
 		} catch (IOException e) {
 			// TODO better exception handling
 			throw new RuntimeException(e);

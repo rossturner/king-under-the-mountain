@@ -1,9 +1,9 @@
-package technology.rocketjump.undermount.entities.model.physical.creature.body.features;
+package technology.rocketjump.undermount.entities.model.physical.creature.features;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BodyStructureFeatures {
+public class RaceFeatures {
 
 	private SkinFeature skin;
 	private BonesFeature bones;

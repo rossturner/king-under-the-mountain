@@ -19,6 +19,7 @@ import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.ai.goap.Goal;
 import technology.rocketjump.undermount.entities.ai.goap.Schedule;
 import technology.rocketjump.undermount.entities.factories.names.NameWord;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructure;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDefinition;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
@@ -133,6 +134,8 @@ public class ModArtifactListing {
 						"rooms", "roomTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "stockpileGroups", SINGLE_FILE, JSON_ARRAY, StockpileGroup.class,
 						"rooms", "stockpileGroups.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/types", "races", SINGLE_FILE, JSON_ARRAY, Race.class,
+						"entities/creature", "**/race.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "furnitureCategories", SINGLE_FILE, JSON_ARRAY, FurnitureCategory.class,
 						"entities/furniture", "furnitureCategories.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "furnitureCategories", SINGLE_FILE, JSON_ARRAY, FurnitureCategory.class,

@@ -1,5 +1,6 @@
 package technology.rocketjump.undermount.assets.entities.creature.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.model.physical.creature.*;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -14,6 +15,8 @@ public class CreatureEntityAssetDescriptor {
 	@Name
 	private String uniqueName;
 	private EntityAssetType type;
+	private String raceName;
+	@JsonIgnore
 	private Race race;
 	private CreatureBodyType bodyType;
 	private Gender gender;
@@ -24,7 +27,7 @@ public class CreatureEntityAssetDescriptor {
 	private Map<String, List<String>> tags = new HashMap<>();
 
 	public boolean matches(CreatureEntityAttributes entityAttributes, Profession primaryProfession) {
-		if (race != null && !race.equals(Race.ANY) && !race.equals(entityAttributes.getRace())) {
+		if (race != null && !race.equals(entityAttributes.getRace())) {
 			return false;
 		}
 		if (bodyType != null && !bodyType.equals(CreatureBodyType.ANY) && !bodyType.equals(entityAttributes.getBodyType())) {
@@ -115,5 +118,13 @@ public class CreatureEntityAssetDescriptor {
 
 	public void setSanity(Sanity sanity) {
 		this.sanity = sanity;
+	}
+
+	public String getRaceName() {
+		return raceName;
+	}
+
+	public void setRaceName(String raceName) {
+		this.raceName = raceName;
 	}
 }

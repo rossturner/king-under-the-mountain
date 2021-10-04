@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import static technology.rocketjump.undermount.entities.ai.goap.actions.location.GoToLocationAction.WAYPOINT_TOLERANCE;
 import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
 
 public class SteeringComponent implements ChildPersistable {
@@ -70,6 +71,15 @@ public class SteeringComponent implements ChildPersistable {
 		}
 
 		boolean updateFacing = true;
+
+		if (nextWaypoint != null) {
+			if (Math.abs(locationComponent.getWorldPosition().x - nextWaypoint.x) < WAYPOINT_TOLERANCE &&
+					Math.abs(locationComponent.getWorldPosition().y - nextWaypoint.y) < WAYPOINT_TOLERANCE) {
+				// reached next waypoint
+				nextWaypoint = null;
+			}
+		}
+
 		if (nextWaypoint == null) {
 			updateFacing = false;
 			if (currentVelocity.len2() > 0.5f) {

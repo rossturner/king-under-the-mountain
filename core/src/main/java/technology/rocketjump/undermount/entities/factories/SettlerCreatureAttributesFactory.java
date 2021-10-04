@@ -5,9 +5,10 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
-import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.misc.twitch.TwitchDataStore;
 import technology.rocketjump.undermount.misc.twitch.model.TwitchViewer;
 import technology.rocketjump.undermount.persistence.UserPreferences;
@@ -15,7 +16,7 @@ import technology.rocketjump.undermount.persistence.UserPreferences;
 import java.util.Random;
 
 @Singleton
-public class HumanoidEntityAttributesFactory {
+public class SettlerCreatureAttributesFactory {
 
 	private final HairColorFactory hairColorFactory;
 	private final SkinColorFactory skinColorFactory;
@@ -24,13 +25,13 @@ public class HumanoidEntityAttributesFactory {
 	private final UserPreferences userPreferences;
 	private final TwitchDataStore twitchDataStore;
 	private final Random random = new RandomXS128();
-	private final GameMaterial fleshMaterial;
+	private final Race dwarfRace;
 
 	@Inject
-	public HumanoidEntityAttributesFactory(HairColorFactory hairColorFactory, SkinColorFactory skinColorFactory,
-										   AccessoryColorFactory accessoryColorFactory, DwarvenNameGenerator nameGenerator,
-										   UserPreferences userPreferences, TwitchDataStore twitchDataStore,
-										   GameMaterialDictionary gameMaterialDictionary) {
+	public SettlerCreatureAttributesFactory(HairColorFactory hairColorFactory, SkinColorFactory skinColorFactory,
+											AccessoryColorFactory accessoryColorFactory, DwarvenNameGenerator nameGenerator,
+											UserPreferences userPreferences, TwitchDataStore twitchDataStore,
+											GameMaterialDictionary gameMaterialDictionary, RaceDictionary raceDictionary) {
 		this.hairColorFactory = hairColorFactory;
 		this.skinColorFactory = skinColorFactory;
 		this.accessoryColorFactory = accessoryColorFactory;
@@ -38,14 +39,14 @@ public class HumanoidEntityAttributesFactory {
 		this.userPreferences = userPreferences;
 		this.twitchDataStore = twitchDataStore;
 
-		this.fleshMaterial = gameMaterialDictionary.getByName("Dwarf Flesh");
+		this.dwarfRace = raceDictionary.getByName("Dwarf");
 	}
 
 	public CreatureEntityAttributes create(GameContext gameContext) {
-		CreatureEntityAttributes attributes = new CreatureEntityAttributes(random.nextLong(),
+		CreatureEntityAttributes attributes = new CreatureEntityAttributes(dwarfRace, random.nextLong(),
 				hairColorFactory.randomHairColor(random),
 				skinColorFactory.randomSkinColor(random),
-				accessoryColorFactory.randomAccessoryColor(random), fleshMaterial);
+				accessoryColorFactory.randomAccessoryColor(random));
 
 		if (twitchSettlerNameReplacementsEnabled()) {
 			for (TwitchViewer twitchViewer : twitchDataStore.getPrioritisedViewers()) {
