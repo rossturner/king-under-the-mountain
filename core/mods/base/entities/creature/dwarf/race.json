@@ -5,7 +5,9 @@
   "minStrength": 7.0,
   "maxStrength": 19.0,
 
-  "bodyTypes": [
+  "bodyStructureName": "Humanoid",
+
+  "bodyShapes": [
     {
       "value": "FAT",
       "maxStrength": 10
@@ -18,6 +20,11 @@
       "value": "AVERAGE"
     }
   ],
+
+  "genderDistribution": {
+    "MALE": 0.5,
+    "FEMALE": 0.5
+  },
 
   "features": {
     "skin": {

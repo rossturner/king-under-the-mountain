@@ -3,17 +3,17 @@ package technology.rocketjump.undermount.assets.entities.creature.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreatureBodyTypeDescriptor {
+public class CreatureBodyShapeDescriptor {
 
-	private CreatureBodyType value;
+	private CreatureBodyShape value;
 	private Float minStrength;
 	private Float maxStrength;
 
-	public CreatureBodyType getValue() {
+	public CreatureBodyShape getValue() {
 		return value;
 	}
 
-	public void setValue(CreatureBodyType value) {
+	public void setValue(CreatureBodyShape value) {
 		this.value = value;
 	}
 

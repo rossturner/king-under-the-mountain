@@ -11,7 +11,7 @@ import com.google.inject.Inject;
 import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShape;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
@@ -33,7 +33,7 @@ public class CharacterViewPersistentSettings {
 
 	private Gender gender;
 	private Race race;
-	private CreatureBodyType bodyType;
+	private CreatureBodyShape bodyType;
 	private Map<EntityAssetType, String> typeToUniqueNameMap = new HashMap<>();
 	private Color skinColor, hairColor, accessoryColor;
 
@@ -88,7 +88,7 @@ public class CharacterViewPersistentSettings {
 		}
 
 		if (bodyType != null) {
-			attributes.setBodyType(bodyType);
+			attributes.setBodyShape(bodyType);
 		}
 
 		if (hairColor != null) {
@@ -162,11 +162,11 @@ public class CharacterViewPersistentSettings {
 		persist();
 	}
 
-	public CreatureBodyType getBodyType() {
+	public CreatureBodyShape getBodyType() {
 		return bodyType;
 	}
 
-	public void setBodyType(CreatureBodyType bodyType) {
+	public void setBodyType(CreatureBodyShape bodyType) {
 		this.bodyType = bodyType;
 		persist();
 	}

@@ -14,7 +14,7 @@ import com.google.inject.Inject;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShape;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
@@ -230,17 +230,17 @@ public class CharacterViewUI implements Disposable {
 		containerTable.add(new Label("Body type: ", uiSkin));
 		SelectBox<String> bodyTypeSelect = new SelectBox<>(uiSkin);
 		Array<String> bodyTypeItems = new Array<>();
-		for (CreatureBodyType bodyType : CreatureBodyType.values()) {
+		for (CreatureBodyShape bodyType : CreatureBodyShape.values()) {
 			bodyTypeItems.add(bodyType.name().toLowerCase());
 		}
-		bodyTypeItems.removeValue(CreatureBodyType.ANY.name().toLowerCase(), false);
+		bodyTypeItems.removeValue(CreatureBodyShape.ANY.name().toLowerCase(), false);
 		bodyTypeSelect.setItems(bodyTypeItems);
-		bodyTypeSelect.setSelected(entityAttributes.getBodyType().name().toLowerCase());
+		bodyTypeSelect.setSelected(entityAttributes.getBodyShape().name().toLowerCase());
 		bodyTypeSelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				CreatureBodyType selectedType = CreatureBodyType.valueOf(bodyTypeSelect.getSelected().toUpperCase());
-				entityAttributes.setBodyType(selectedType);
+				CreatureBodyShape selectedType = CreatureBodyShape.valueOf(bodyTypeSelect.getSelected().toUpperCase());
+				entityAttributes.setBodyShape(selectedType);
 				entityAssetUpdater.updateEntityAssets(currentEntity);
 				persistentSettings.setBodyType(selectedType);
 				resetAssetSelections();

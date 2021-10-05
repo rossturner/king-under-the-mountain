@@ -34,7 +34,7 @@ public class CreatureEntityAssetsByRace {
 //		} else {
 		// currently assuming all creature assets are race-specific
 			// Specific race only
-			raceMap.computeIfAbsent(race, a -> new CreatureEntityAssetsByBodyType(race.getBodyTypes())).add(asset);
+			raceMap.computeIfAbsent(race, a -> new CreatureEntityAssetsByBodyType(race.getBodyShapes())).add(asset);
 //			raceMap.get(NO_RACE).add(asset);
 //		}
 	}

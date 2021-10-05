@@ -2,10 +2,12 @@ package technology.rocketjump.undermount.entities.model.physical.creature;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.graphics.Color;
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyTypeDescriptor;
+import com.badlogic.gdx.math.RandomXS128;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShape;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShapeDescriptor;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.Body;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.persistence.EnumParser;
@@ -14,6 +16,7 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
 
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -28,12 +31,10 @@ public class CreatureEntityAttributes implements EntityAttributes {
 	private Race race;
 	private Gender gender;
 	private float strength; // might want to move this to a Stats object
-	private CreatureBodyType bodyType;
-	private Color skinColor;
-	private Color hairColor;
-	private Color eyeColor;
-	private Color accessoryColor;
-	private Color boneColor = DEFAULT_BONE_COLOR; // MODDING expose this
+
+	private Body body; // instance of a bodyStructure with damage/missing parts, for humanoid and animal type entities
+	private CreatureBodyShape bodyShape;
+	private Map<ColoringLayer, Color> colors = new EnumMap<>(ColoringLayer.class);
 	private boolean hasHair;
 	private HumanoidName name;
 	private Consciousness consciousness = AWAKE;
@@ -46,14 +47,16 @@ public class CreatureEntityAttributes implements EntityAttributes {
 	public CreatureEntityAttributes(Race race, long seed, Color hairColor, Color skinColor, Color accessoryColor) {
 		this.seed = seed;
 		this.race = race;
-		Random random = new Random(seed);
+		this.body = new Body(race.getBodyStructure());
+		Random random = new RandomXS128(seed);
 		float strengthRange = race.getMaxStrength() - race.getMinStrength();
 		strength = race.getMinStrength();
+		// essentially 3d6 distribution with d6 replaced by 1/3 of strength range
 		for (int i = 0; i < 3; i++) {
 			strength += random.nextFloat() * (strengthRange / 3);
 		}
 
-		for (CreatureBodyTypeDescriptor bodyTypeDescriptor : race.getBodyTypes()) {
+		for (CreatureBodyShapeDescriptor bodyTypeDescriptor : race.getBodyShapes()) {
 			if (bodyTypeDescriptor.getMaxStrength() != null) {
 				if (strength > bodyTypeDescriptor.getMaxStrength()) {
 					continue;
@@ -65,17 +68,18 @@ public class CreatureEntityAttributes implements EntityAttributes {
 				}
 			}
 
-			this.bodyType = bodyTypeDescriptor.getValue();
+			this.bodyShape = bodyTypeDescriptor.getValue();
 			break;
 		}
 
+		selectGender(race, random);
 
-		this.gender = random.nextBoolean() ? Gender.MALE : Gender.FEMALE; // MODDING expose this, may not want 50/50 male/female
-		this.hairColor = hairColor;
-		this.skinColor = skinColor;
-		this.eyeColor = Color.BLACK;
+		colors.put(ColoringLayer.HAIR_COLOR, hairColor);
+		colors.put(ColoringLayer.SKIN_COLOR, skinColor);
+		colors.put(ColoringLayer.EYE_COLOR, Color.BLACK);
+		colors.put(ColoringLayer.ACCESSORY_COLOR, accessoryColor);
+		colors.put(ColoringLayer.BONE_COLOR, DEFAULT_BONE_COLOR);
 		this.hasHair = true;
-		this.accessoryColor = accessoryColor;
 	}
 
 	@Override
@@ -84,10 +88,8 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		cloned.seed = this.seed;
 		cloned.race = this.race;
 		cloned.gender = this.gender;
-		cloned.bodyType = this.bodyType;
-		cloned.hairColor = this.hairColor.cpy();
-		cloned.skinColor = this.skinColor.cpy();
-		cloned.accessoryColor = this.accessoryColor.cpy();
+		cloned.bodyShape = this.bodyShape;
+		cloned.colors.putAll(this.colors);
 		cloned.hasHair = this.hasHair;
 		cloned.consciousness= this.consciousness;
 		cloned.sanity = this.sanity;
@@ -111,24 +113,28 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		this.race = race;
 	}
 
-	public CreatureBodyType getBodyType() {
-		return bodyType;
+	public CreatureBodyShape getBodyShape() {
+		return bodyShape;
 	}
 
-	public void setBodyType(CreatureBodyType bodyType) {
-		this.bodyType = bodyType;
+	public void setBodyShape(CreatureBodyShape bodyShape) {
+		this.bodyShape = bodyShape;
 	}
 
 	public void setSkinColor(Color skinColor) {
-		this.skinColor = skinColor;
+		this.colors.put(ColoringLayer.SKIN_COLOR, skinColor);
 	}
 
 	public void setHairColor(Color hairColor) {
-		this.hairColor = hairColor;
+		this.colors.put(ColoringLayer.HAIR_COLOR, hairColor);
 	}
 
 	public void setBoneColor(Color boneColor) {
-		this.boneColor = boneColor;
+		this.colors.put(ColoringLayer.SKIN_COLOR, boneColor);
+	}
+
+	public void setAccessoryColor(Color accessoryColor) {
+		this.colors.put(ColoringLayer.ACCESSORY_COLOR, accessoryColor);
 	}
 
 	public long getSeed() {
@@ -137,20 +143,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	@Override
 	public Color getColor(ColoringLayer coloringLayer) {
-		switch (coloringLayer) {
-			case EYE_COLOR:
-				return eyeColor;
-			case HAIR_COLOR:
-				return hairColor;
-			case SKIN_COLOR:
-				return skinColor;
-			case ACCESSORY_COLOR:
-				return accessoryColor;
-			case BONE_COLOR:
-				return boneColor;
-			default:
-				return null;
-		}
+		return colors.get(coloringLayer);
 	}
 
 	public void setGender(Gender gender) {
@@ -159,10 +152,6 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	public Gender getGender() {
 		return gender;
-	}
-
-	public void setAccessoryColor(Color accessoryColor) {
-		this.accessoryColor = accessoryColor;
 	}
 
 	public boolean getHasHair() {
@@ -197,6 +186,22 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		this.sanity = sanity;
 	}
 
+	public float getStrength() {
+		return strength;
+	}
+
+	public void setStrength(float strength) {
+		this.strength = strength;
+	}
+
+	public Body getBody() {
+		return body;
+	}
+
+	public void setBody(Body body) {
+		this.body = body;
+	}
+
 	@Override
 	public String toString() {
 		return "HumanoidEntityAttributes{" +
@@ -206,20 +211,43 @@ public class CreatureEntityAttributes implements EntityAttributes {
 				'}';
 	}
 
+	private void selectGender(Race race, Random random) {
+		float genderTotal = 0;
+		for (Float value : race.getGenderDistribution().values()) {
+			genderTotal += value;
+		}
+		float genderRoll = random.nextFloat() * genderTotal;
+		this.gender = Gender.NONE;
+		for (Map.Entry<Gender, Float> entry : race.getGenderDistribution().entrySet()) {
+			genderRoll -= entry.getValue();
+			if (genderRoll <= 0) {
+				this.gender = entry.getKey();
+				break;
+			}
+		}
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("seed", seed);
 		asJson.put("race", race.getName());
 		asJson.put("gender", gender.name());
-		if (!bodyType.equals(CreatureBodyType.AVERAGE)) {
-			asJson.put("bodyType", bodyType.name());
+		asJson.put("strength", strength);
+
+
+		JSONObject bodyJson = new JSONObject(true);
+		body.writeTo(bodyJson, savedGameStateHolder);
+		asJson.put("body", bodyJson);
+		if (!bodyShape.equals(CreatureBodyShape.AVERAGE)) {
+			asJson.put("bodyShape", bodyShape.name());
 		}
-		asJson.put("skinColor", HexColors.toHexString(skinColor));
-		asJson.put("hairColor", HexColors.toHexString(hairColor));
-		asJson.put("accessoryColor", HexColors.toHexString(accessoryColor));
-		if (!boneColor.equals(DEFAULT_BONE_COLOR)) {
-			asJson.put("boneColor", HexColors.toHexString(boneColor));
+
+		JSONObject colorsJson = new JSONObject(true);
+		for (Map.Entry<ColoringLayer, Color> entry : colors.entrySet()) {
+			colorsJson.put(entry.getKey().name(), HexColors.toHexString(entry.getValue()));
 		}
+		asJson.put("colors", colorsJson);
+
 		if (hasHair) {
 			asJson.put("hasHair", true);
 		}
@@ -244,17 +272,21 @@ public class CreatureEntityAttributes implements EntityAttributes {
 			throw new InvalidSaveException("Could not find race with name " + asJson.getString("race"));
 		}
 		gender = EnumParser.getEnumValue(asJson, "gender", Gender.class, Gender.FEMALE);
-		bodyType = EnumParser.getEnumValue(asJson, "bodyType", CreatureBodyType.class, CreatureBodyType.AVERAGE);
-		skinColor = HexColors.get(asJson.getString("skinColor"));
-		hairColor = HexColors.get(asJson.getString("hairColor"));
-		accessoryColor = HexColors.get(asJson.getString("accessoryColor"));
+		strength = asJson.getFloatValue("strength");
 
-		String boneColorHex = asJson.getString("boneColor");
-		if (boneColorHex != null) {
-			this.boneColor = HexColors.get(boneColorHex);
+		JSONObject bodyJson = asJson.getJSONObject("body");
+		body = new Body();
+		body.readFrom(bodyJson, savedGameStateHolder, relatedStores);
+
+		bodyShape = EnumParser.getEnumValue(asJson, "bodyShape", CreatureBodyShape.class, CreatureBodyShape.AVERAGE);
+
+		JSONObject colorsJson = asJson.getJSONObject("colors");
+		if (colorsJson != null) {
+			for (String colorLayerName : colorsJson.keySet()) {
+				this.colors.put(ColoringLayer.valueOf(colorLayerName), HexColors.get(colorsJson.getString(colorLayerName)));
+			}
 		}
 
-		eyeColor = Color.BLACK;
 		hasHair = asJson.getBooleanValue("hasHair");
 		JSONObject nameJson = asJson.getJSONObject("name");
 		if (nameJson != null) {

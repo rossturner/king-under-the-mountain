@@ -1,11 +1,15 @@
 package technology.rocketjump.undermount.entities.model.physical.creature;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyTypeDescriptor;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShapeDescriptor;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructure;
 import technology.rocketjump.undermount.entities.model.physical.creature.features.RaceFeatures;
 import technology.rocketjump.undermount.misc.Name;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -18,7 +22,13 @@ public class Race {
 	private float minStrength;
 	private float maxStrength;
 
-	private List<CreatureBodyTypeDescriptor> bodyTypes;
+	private String bodyStructureName;
+	@JsonIgnore
+	private BodyStructure bodyStructure;
+
+	private List<CreatureBodyShapeDescriptor> bodyShapes;
+
+	private Map<Gender, Float> genderDistribution = new EnumMap<>(Gender.class);
 
 	private RaceFeatures features = new RaceFeatures();
 
@@ -80,11 +90,35 @@ public class Race {
 		return name;
 	}
 
-	public List<CreatureBodyTypeDescriptor> getBodyTypes() {
-		return bodyTypes;
+	public List<CreatureBodyShapeDescriptor> getBodyShapes() {
+		return bodyShapes;
 	}
 
-	public void setBodyTypes(List<CreatureBodyTypeDescriptor> bodyTypes) {
-		this.bodyTypes = bodyTypes;
+	public void setBodyShapes(List<CreatureBodyShapeDescriptor> bodyShapes) {
+		this.bodyShapes = bodyShapes;
+	}
+
+	public String getBodyStructureName() {
+		return bodyStructureName;
+	}
+
+	public void setBodyStructureName(String bodyStructureName) {
+		this.bodyStructureName = bodyStructureName;
+	}
+
+	public BodyStructure getBodyStructure() {
+		return bodyStructure;
+	}
+
+	public void setBodyStructure(BodyStructure bodyStructure) {
+		this.bodyStructure = bodyStructure;
+	}
+
+	public Map<Gender, Float> getGenderDistribution() {
+		return genderDistribution;
+	}
+
+	public void setGenderDistribution(Map<Gender, Float> genderDistribution) {
+		this.genderDistribution = genderDistribution;
 	}
 }

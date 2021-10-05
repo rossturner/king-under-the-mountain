@@ -1,6 +1,6 @@
 package technology.rocketjump.undermount.assets.entities.creature;
 
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShape;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
@@ -21,7 +21,7 @@ public class CreatureEntityAssetsByProfession {
 
 	static {
 		NULL_ENTITY_ASSET = new CreatureEntityAsset();
-		NULL_ENTITY_ASSET.setBodyType(CreatureBodyType.ANY);
+		NULL_ENTITY_ASSET.setBodyShape(CreatureBodyShape.ANY);
 		NULL_ENTITY_ASSET.setGender(Gender.ANY);
 		NULL_ENTITY_ASSET.setRace(null);
 		NULL_ENTITY_ASSET.setType(null);

@@ -82,6 +82,10 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			followPath(gameContext);
 
 			checkForCompletion();
+
+			if (completionType != null) {
+				parent.parentEntity.getBehaviourComponent().getSteeringComponent().destinationReached();
+			}
 		}
 	}
 
@@ -128,7 +132,6 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			boolean arrivedAtDestination = (Math.abs(worldPosition.x - destination.x) < DESTINATION_TOLERANCE &&
 					Math.abs(worldPosition.y - destination.y) < DESTINATION_TOLERANCE);
 			if (arrivedAtDestination) {
-				parent.parentEntity.getBehaviourComponent().getSteeringComponent().destinationReached();
 				completionType = SUCCESS;
 			}
 		}

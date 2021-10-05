@@ -18,7 +18,7 @@ public class CreatureEntityAssetDescriptor {
 	private String raceName;
 	@JsonIgnore
 	private Race race;
-	private CreatureBodyType bodyType;
+	private CreatureBodyShape bodyShape;
 	private Gender gender;
 	private String profession;
 	private Consciousness consciousness;
@@ -30,7 +30,7 @@ public class CreatureEntityAssetDescriptor {
 		if (race != null && !race.equals(entityAttributes.getRace())) {
 			return false;
 		}
-		if (bodyType != null && !bodyType.equals(CreatureBodyType.ANY) && !bodyType.equals(entityAttributes.getBodyType())) {
+		if (bodyShape != null && !bodyShape.equals(CreatureBodyShape.ANY) && !bodyShape.equals(entityAttributes.getBodyShape())) {
 			return false;
 		}
 		if (gender != null && !gender.equals(Gender.ANY) && !gender.equals(entityAttributes.getGender())) {
@@ -72,12 +72,12 @@ public class CreatureEntityAssetDescriptor {
 		this.race = race;
 	}
 
-	public CreatureBodyType getBodyType() {
-		return bodyType;
+	public CreatureBodyShape getBodyShape() {
+		return bodyShape;
 	}
 
-	public void setBodyType(CreatureBodyType bodyType) {
-		this.bodyType = bodyType;
+	public void setBodyShape(CreatureBodyShape bodyShape) {
+		this.bodyShape = bodyShape;
 	}
 
 	public Gender getGender() {

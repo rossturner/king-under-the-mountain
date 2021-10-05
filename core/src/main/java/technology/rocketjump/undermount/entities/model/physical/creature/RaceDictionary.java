@@ -5,21 +5,26 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import static java.lang.String.format;
+
 @Singleton
 public class RaceDictionary {
 
 	private final GameMaterialDictionary gameMaterialDictionary;
+	private final BodyStructureDictionary bodyStructureDictionary;
 	private final Map<String, Race> byName = new HashMap<>();
 
 	@Inject
-	public RaceDictionary(GameMaterialDictionary gameMaterialDictionary) throws IOException {
+	public RaceDictionary(GameMaterialDictionary gameMaterialDictionary, BodyStructureDictionary bodyStructureDictionary) throws IOException {
 		this.gameMaterialDictionary = gameMaterialDictionary;
+		this.bodyStructureDictionary = bodyStructureDictionary;
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		File itemTypeJsonFile = new File("assets/definitions/types/races.json");
@@ -42,6 +47,11 @@ public class RaceDictionary {
 	}
 
 	private void initialise(Race race) {
+		race.setBodyStructure(bodyStructureDictionary.getByName(race.getBodyStructureName()));
+		if (race.getBodyStructure() == null) {
+			throw new RuntimeException(format("Could not find body structure with name %s for race %s", race.getBodyStructureName(), race.getName()));
+		}
+
 		if (race.getFeatures().getBones() != null) {
 			race.getFeatures().getBones().setMaterial(gameMaterialDictionary.getByName(race.getFeatures().getBones().getMaterialName()));
 			if (race.getFeatures().getBones().getMaterial() == null) {

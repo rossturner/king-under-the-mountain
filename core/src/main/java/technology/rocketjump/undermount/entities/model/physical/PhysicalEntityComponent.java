@@ -10,7 +10,6 @@ import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.creature.body.Body;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -32,7 +31,6 @@ public class PhysicalEntityComponent implements EntityComponent {
 	private EntityAttributes attributes;
 	private EntityAsset baseAsset;
 	private final Map<EntityAssetType, EntityAsset> typeMap = new HashMap<>();
-	private Body body; // instance of a bodyStructure with damage/missing parts, for humanoid and animal type entities
 
 	private float animationProgress; // Interpolates to range of frames for animated assets
 
@@ -76,14 +74,6 @@ public class PhysicalEntityComponent implements EntityComponent {
 		this.animationProgress = animationProgress;
 	}
 
-	public Body getBody() {
-		return body;
-	}
-
-	public void setBody(Body body) {
-		this.body = body;
-	}
-
 	@Override
 	public String toString() {
 		return attributes.toString();
@@ -123,12 +113,6 @@ public class PhysicalEntityComponent implements EntityComponent {
 
 		if (animationProgress != 0f) {
 			asJson.put("animation", animationProgress);
-		}
-
-		if (body != null) {
-			JSONObject bodyJson = new JSONObject(true);
-			body.writeTo(bodyJson, savedGameStateHolder);
-			asJson.put("body", bodyJson);
 		}
 	}
 

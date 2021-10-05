@@ -1,7 +1,7 @@
 package technology.rocketjump.undermount.assets.entities.creature;
 
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyType;
-import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyTypeDescriptor;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShape;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShapeDescriptor;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -12,16 +12,17 @@ import java.util.Map;
 
 public class CreatureEntityAssetsByBodyType {
 
-	private Map<CreatureBodyType, CreatureEntityAssetsByGender> bodyTypeMap = new EnumMap<>(CreatureBodyType.class);
+	private Map<CreatureBodyShape, CreatureEntityAssetsByGender> bodyTypeMap = new EnumMap<>(CreatureBodyShape.class);
 
-	public CreatureEntityAssetsByBodyType(List<CreatureBodyTypeDescriptor> bodyTypesForRace) {
-		for (CreatureBodyTypeDescriptor type : bodyTypesForRace) {
+	public CreatureEntityAssetsByBodyType(List<CreatureBodyShapeDescriptor> bodyTypesForRace) {
+		for (CreatureBodyShapeDescriptor type : bodyTypesForRace) {
 			bodyTypeMap.put(type.getValue(), new CreatureEntityAssetsByGender());
 		}
+		bodyTypeMap.put(CreatureBodyShape.ANY, new CreatureEntityAssetsByGender());
 	}
 
 	public void add(CreatureEntityAsset asset) {
-		CreatureBodyType bodyType = asset.getBodyType();
+		CreatureBodyShape bodyType = asset.getBodyShape();
 		if (bodyType == null) {
 			// Any body type, add to all lists
 			for (CreatureEntityAssetsByGender creatureEntityAssetsByGender : bodyTypeMap.values()) {
@@ -30,22 +31,22 @@ public class CreatureEntityAssetsByBodyType {
 		} else {
 			// Specific bodytype only
 			bodyTypeMap.get(bodyType).add(asset);
-			bodyTypeMap.get(CreatureBodyType.ANY).add(asset);
+			bodyTypeMap.get(CreatureBodyShape.ANY).add(asset);
 		}
 	}
 
 	public CreatureEntityAsset get(CreatureEntityAttributes attributes, Profession primaryProfession) {
-		CreatureBodyType bodyType = attributes.getBodyType();
+		CreatureBodyShape bodyType = attributes.getBodyShape();
 		if (bodyType == null) {
-			bodyType = CreatureBodyType.ANY;
+			bodyType = CreatureBodyShape.ANY;
 		}
 		return bodyTypeMap.get(bodyType).get(attributes, primaryProfession);
 	}
 
 	public List<CreatureEntityAsset> getAll(CreatureEntityAttributes attributes, Profession primaryProfession) {
-		CreatureBodyType bodyType = attributes.getBodyType();
+		CreatureBodyShape bodyType = attributes.getBodyShape();
 		if (bodyType == null) {
-			bodyType = CreatureBodyType.ANY;
+			bodyType = CreatureBodyShape.ANY;
 		}
 		return bodyTypeMap.get(bodyType).getAll(attributes, primaryProfession);
 	}
