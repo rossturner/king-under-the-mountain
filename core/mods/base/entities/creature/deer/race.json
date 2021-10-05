@@ -1,0 +1,42 @@
+{
+  "name": "Deer",
+  "i18nKey": "RACE.DEER",
+
+  "minStrength": 5.0,
+  "maxStrength": 12.0,
+
+  "bodyStructureName": "Long-legged-quadruped",
+
+  "bodyShapes": [
+    {
+      "value": "AVERAGE"
+    }
+  ],
+
+  "behaviour": {
+    "type": "HerdAnimal",
+    "herd": {
+      "minSize": 2,
+      "maxSize": 4
+    },
+    "aggressionResponse": "FLEE"
+  },
+
+  "genderDistribution": {
+    "MALE": 0.5,
+    "FEMALE": 0.5
+  },
+
+  "features": {
+    "skin": {
+      "damageReduction": {
+      }
+    },
+    "bones": {
+      "materialName": "Bone"
+    },
+    "blood": {
+
+    }
+  }
+}
