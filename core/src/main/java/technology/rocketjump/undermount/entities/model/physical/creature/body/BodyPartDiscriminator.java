@@ -6,6 +6,11 @@ package technology.rocketjump.undermount.entities.model.physical.creature.body;
 public enum BodyPartDiscriminator {
 
 	Left,
-	Right
+	Right,
+
+	FrontRight,
+	FrontLeft,
+	BackRight,
+	BackLeft
 
 }

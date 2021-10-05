@@ -3,8 +3,10 @@ package technology.rocketjump.undermount.entities.model.physical.creature;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShapeDescriptor;
+import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructure;
 import technology.rocketjump.undermount.entities.model.physical.creature.features.RaceFeatures;
+import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
 import technology.rocketjump.undermount.misc.Name;
 
 import java.util.EnumMap;
@@ -27,6 +29,8 @@ public class Race {
 	private BodyStructure bodyStructure;
 
 	private List<CreatureBodyShapeDescriptor> bodyShapes;
+
+	private Map<ColoringLayer, SpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
 
 	private Map<Gender, Float> genderDistribution = new EnumMap<>(Gender.class);
 
@@ -120,5 +124,13 @@ public class Race {
 
 	public void setGenderDistribution(Map<Gender, Float> genderDistribution) {
 		this.genderDistribution = genderDistribution;
+	}
+
+	public Map<ColoringLayer, SpeciesColor> getColors() {
+		return colors;
+	}
+
+	public void setColors(Map<ColoringLayer, SpeciesColor> colors) {
+		this.colors = colors;
 	}
 }

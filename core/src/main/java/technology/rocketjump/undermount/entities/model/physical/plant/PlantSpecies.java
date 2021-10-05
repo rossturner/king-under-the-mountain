@@ -20,7 +20,7 @@ public class PlantSpecies {
 	private float maxGrowthSpeedVariance = 0f; // A positive or negative max multiplier on growth speed;
 	private int replacesOtherPlantsInRegion = 0;
 
-	private Map<ColoringLayer, PlantSpeciesColor> defaultColors = new EnumMap<>(ColoringLayer.class);
+	private Map<ColoringLayer, SpeciesColor> defaultColors = new EnumMap<>(ColoringLayer.class);
 	// Base material type for catching fire, that kind of thing
 	private Map<Season, PlantSeasonSettings> seasons = new EnumMap<>(Season.class);
 	private List<PlantSpeciesGrowthStage> growthStages = new ArrayList<>();
@@ -60,11 +60,11 @@ public class PlantSpecies {
 		this.representativeColor = representativeColor;
 	}
 
-	public Map<ColoringLayer, PlantSpeciesColor> getDefaultColors() {
+	public Map<ColoringLayer, SpeciesColor> getDefaultColors() {
 		return defaultColors;
 	}
 
-	public void setDefaultColors(Map<ColoringLayer, PlantSpeciesColor> defaultColors) {
+	public void setDefaultColors(Map<ColoringLayer, SpeciesColor> defaultColors) {
 		this.defaultColors = defaultColors;
 	}
 
@@ -140,8 +140,8 @@ public class PlantSpecies {
 		this.replacesOtherPlantsInRegion = replacesOtherPlantsInRegion;
 	}
 
-	public List<PlantSpeciesColor> getAllColorObjects() {
-		List<PlantSpeciesColor> allColors = new LinkedList<>();
+	public List<SpeciesColor> getAllColorObjects() {
+		List<SpeciesColor> allColors = new LinkedList<>();
 
 		allColors.addAll(defaultColors.values());
 

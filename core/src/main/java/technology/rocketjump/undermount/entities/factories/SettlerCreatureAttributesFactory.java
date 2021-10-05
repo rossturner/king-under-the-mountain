@@ -18,9 +18,6 @@ import java.util.Random;
 @Singleton
 public class SettlerCreatureAttributesFactory {
 
-	private final HairColorFactory hairColorFactory;
-	private final SkinColorFactory skinColorFactory;
-	private final AccessoryColorFactory accessoryColorFactory;
 	private final DwarvenNameGenerator nameGenerator;
 	private final UserPreferences userPreferences;
 	private final TwitchDataStore twitchDataStore;
@@ -28,13 +25,9 @@ public class SettlerCreatureAttributesFactory {
 	private final Race dwarfRace;
 
 	@Inject
-	public SettlerCreatureAttributesFactory(HairColorFactory hairColorFactory, SkinColorFactory skinColorFactory,
-											AccessoryColorFactory accessoryColorFactory, DwarvenNameGenerator nameGenerator,
+	public SettlerCreatureAttributesFactory(DwarvenNameGenerator nameGenerator,
 											UserPreferences userPreferences, TwitchDataStore twitchDataStore,
 											GameMaterialDictionary gameMaterialDictionary, RaceDictionary raceDictionary) {
-		this.hairColorFactory = hairColorFactory;
-		this.skinColorFactory = skinColorFactory;
-		this.accessoryColorFactory = accessoryColorFactory;
 		this.nameGenerator = nameGenerator;
 		this.userPreferences = userPreferences;
 		this.twitchDataStore = twitchDataStore;
@@ -43,10 +36,8 @@ public class SettlerCreatureAttributesFactory {
 	}
 
 	public CreatureEntityAttributes create(GameContext gameContext) {
-		CreatureEntityAttributes attributes = new CreatureEntityAttributes(dwarfRace, random.nextLong(),
-				hairColorFactory.randomHairColor(random),
-				skinColorFactory.randomSkinColor(random),
-				accessoryColorFactory.randomAccessoryColor(random));
+		CreatureEntityAttributes attributes = new CreatureEntityAttributes(dwarfRace, random.nextLong()
+		);
 
 		if (twitchSettlerNameReplacementsEnabled()) {
 			for (TwitchViewer twitchViewer : twitchDataStore.getPrioritisedViewers()) {

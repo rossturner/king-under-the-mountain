@@ -75,6 +75,8 @@ public class ModArtifactListing {
 				////////// definitions //////////
 				def("definitions/plantColorSwatches", null, COPY_ORIGINAL_FILES, PNG, null,
 						"entities/plant", "**/*-swatch.png", PNG, ADDITIVE, CopyFilesProcessor.class, UniqueFilenames.class),
+				def("definitions/creatureColorSwatches", null, COPY_ORIGINAL_FILES, PNG, null,
+						"entities/creature", "**/*-swatch.png", PNG, ADDITIVE, CopyFilesProcessor.class, UniqueFilenames.class),
 
 
 				def("definitions", "bodyStructures", SINGLE_FILE, JSON_ARRAY, BodyStructure.class,

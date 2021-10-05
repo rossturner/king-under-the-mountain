@@ -8,7 +8,7 @@ import java.util.Map;
 public class PlantSeasonSettings {
 
 	private boolean growth = true;
-	private Map<ColoringLayer, PlantSpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
+	private Map<ColoringLayer, SpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
 	private Integer switchToGrowthStage = null; // Can be used to switch to a decaying-type stage
 	private boolean shedsLeaves = false;
 
@@ -20,11 +20,11 @@ public class PlantSeasonSettings {
 		this.growth = growth;
 	}
 
-	public Map<ColoringLayer, PlantSpeciesColor> getColors() {
+	public Map<ColoringLayer, SpeciesColor> getColors() {
 		return colors;
 	}
 
-	public void setColors(Map<ColoringLayer, PlantSpeciesColor> colors) {
+	public void setColors(Map<ColoringLayer, SpeciesColor> colors) {
 		this.colors = colors;
 	}
 

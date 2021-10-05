@@ -8,6 +8,7 @@ import technology.rocketjump.undermount.assets.entities.creature.model.CreatureB
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.Body;
+import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.persistence.EnumParser;
@@ -44,7 +45,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	}
 
-	public CreatureEntityAttributes(Race race, long seed, Color hairColor, Color skinColor, Color accessoryColor) {
+	public CreatureEntityAttributes(Race race, long seed) {
 		this.seed = seed;
 		this.race = race;
 		this.body = new Body(race.getBodyStructure());
@@ -72,14 +73,10 @@ public class CreatureEntityAttributes implements EntityAttributes {
 			break;
 		}
 
+		for (Map.Entry<ColoringLayer, SpeciesColor> colorEntry : race.getColors().entrySet()) {
+			colors.put(colorEntry.getKey(), colorEntry.getValue().getColor(seed));
+		}
 		selectGender(race, random);
-
-		colors.put(ColoringLayer.HAIR_COLOR, hairColor);
-		colors.put(ColoringLayer.SKIN_COLOR, skinColor);
-		colors.put(ColoringLayer.EYE_COLOR, Color.BLACK);
-		colors.put(ColoringLayer.ACCESSORY_COLOR, accessoryColor);
-		colors.put(ColoringLayer.BONE_COLOR, DEFAULT_BONE_COLOR);
-		this.hasHair = true;
 	}
 
 	@Override

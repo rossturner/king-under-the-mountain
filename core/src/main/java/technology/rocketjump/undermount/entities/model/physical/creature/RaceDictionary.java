@@ -6,6 +6,7 @@ import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
+import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 
 import java.io.File;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.util.*;
 
 import static java.lang.String.format;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
+import static technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary.initialiseSpeciesColor;
 
 @Singleton
 public class RaceDictionary {
@@ -58,6 +61,10 @@ public class RaceDictionary {
 				Logger.error("Could not find material " + race.getFeatures().getBones().getMaterialName() +
 						" for bones as part of race " + race.getName());
 			}
+		}
+
+		for (SpeciesColor speciesColor : race.getColors().values()) {
+			initialiseSpeciesColor(CREATURE, speciesColor);
 		}
 
 		if (race.getFeatures().getSkin() != null && race.getFeatures().getSkin().getSkinMaterialName() != null) {

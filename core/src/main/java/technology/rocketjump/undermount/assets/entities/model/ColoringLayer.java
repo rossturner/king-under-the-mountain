@@ -9,8 +9,8 @@ import static technology.rocketjump.undermount.materials.model.GameMaterialType.
  */
 public enum ColoringLayer {
 
-	// Humanoid layers
-	HAIR_COLOR, SKIN_COLOR, EYE_COLOR, ACCESSORY_COLOR, BONE_COLOR,
+	// Creature layers
+	HAIR_COLOR, SKIN_COLOR, EYE_COLOR, ACCESSORY_COLOR, BONE_COLOR, MARKING_COLOR,
 
 	// Plant type layers
 	BRANCHES_COLOR, LEAF_COLOR, FRUIT_COLOR, FLOWER_COLOR,

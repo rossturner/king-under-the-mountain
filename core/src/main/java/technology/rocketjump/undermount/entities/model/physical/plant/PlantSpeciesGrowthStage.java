@@ -16,7 +16,7 @@ public class PlantSpeciesGrowthStage {
 	private float completionFruitScale = 1;
 	private int tileHeight = 1;
 	private boolean showFruit = false;
-	private Map<ColoringLayer, PlantSpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
+	private Map<ColoringLayer, SpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
 	private List<PlantGrowthCompleteTag> onCompletion = new LinkedList<>();
 
 	private PlantSpeciesHarvestType harvestType = null;
@@ -100,11 +100,11 @@ public class PlantSpeciesGrowthStage {
 		this.tileHeight = tileHeight;
 	}
 
-	public Map<ColoringLayer, PlantSpeciesColor> getColors() {
+	public Map<ColoringLayer, SpeciesColor> getColors() {
 		return colors;
 	}
 
-	public void setColors(Map<ColoringLayer, PlantSpeciesColor> colors) {
+	public void setColors(Map<ColoringLayer, SpeciesColor> colors) {
 		this.colors = colors;
 	}
 

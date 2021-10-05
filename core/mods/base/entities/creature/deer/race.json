@@ -5,13 +5,22 @@
   "minStrength": 5.0,
   "maxStrength": 12.0,
 
-  "bodyStructureName": "Long-legged-quadruped",
+  "bodyStructureName": "hooved-quadruped",
 
   "bodyShapes": [
     {
       "value": "AVERAGE"
     }
   ],
+
+  "colors": {
+    "SKIN_COLOR": {
+      "swatch": "deer-skin-swatch.png"
+    },
+    "MARKING_COLOR": {
+      "swatch": "deer-markings-swatch.png"
+    }
+  },
 
   "behaviour": {
     "type": "HerdAnimal",

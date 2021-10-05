@@ -107,8 +107,6 @@ public class I18NTranslatorTest {
 	@Mock
 	private RoomStore mockRoomStore;
 	@Mock
-	private HairColorFactory mockColorFactory;
-	@Mock
 	private JobTypeDictionary mockJobTypeDictionary;
 	@Mock
 	private CraftingTypeDictionary mockCraftingTypeDictionary;
@@ -154,7 +152,7 @@ public class I18NTranslatorTest {
 	public void describeHumanoid() throws IOException {
 		NorseNameGenerator nameGenerator = new NorseNameGenerator();
 		CreatureEntityAttributes attributes = new SettlerCreatureAttributesFactory(
-				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(gameMaterialDictionary), new DwarvenNameGenerator(new NorseNameGenerator()),
+				new DwarvenNameGenerator(new NorseNameGenerator()),
 				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary, mockRaceDictionary).create(new GameContext());
 		attributes.setName(nameGenerator.create(88L, Gender.MALE));
 
@@ -227,7 +225,7 @@ public class I18NTranslatorTest {
 	@Test
 	public void describeFurniture() throws IOException {
 		FurnitureEntityAttributes attributes = new FurnitureEntityAttributesFactory(new FurnitureTypeDictionary(new FurnitureCategoryDictionary(), new FurnitureLayoutDictionary(),
-				itemTypeDictionary), mockColorFactory).byName("STONEMASON_WORKBENCH", gameMaterialDictionary.getByName("Granite"));
+				itemTypeDictionary)).byName("STONEMASON_WORKBENCH", gameMaterialDictionary.getByName("Granite"));
 		Entity entity = new FurnitureEntityFactory(mockMessageDispatcher, mockEntityAssetUpdater).create(attributes, new GridPoint2(), null, mockGameContext);
 		I18nText description = translator.getDescription(entity);
 
@@ -237,7 +235,7 @@ public class I18NTranslatorTest {
 	@Test
 	public void describeDoor() throws IOException {
 		FurnitureEntityAttributes attributes = new FurnitureEntityAttributesFactory(new FurnitureTypeDictionary(new FurnitureCategoryDictionary(), new FurnitureLayoutDictionary(),
-				itemTypeDictionary), mockColorFactory).byName("SINGLE_DOOR", gameMaterialDictionary.getByName("Oak"));
+				itemTypeDictionary)).byName("SINGLE_DOOR", gameMaterialDictionary.getByName("Oak"));
 		Entity entity = new FurnitureEntityFactory(mockMessageDispatcher, mockEntityAssetUpdater).create(attributes, new GridPoint2(), null, mockGameContext);
 		I18nText description = translator.getDescription(entity);
 
@@ -248,7 +246,7 @@ public class I18NTranslatorTest {
 	public void describeFurnitureConstruction() throws IOException {
 		GameMaterial material = gameMaterialDictionary.getByName("Oak");
 		FurnitureEntityAttributes attributes = new FurnitureEntityAttributesFactory(new FurnitureTypeDictionary(new FurnitureCategoryDictionary(), new FurnitureLayoutDictionary(),
-				itemTypeDictionary), mockColorFactory).byName("STONEMASON_WORKBENCH", material);
+				itemTypeDictionary)).byName("STONEMASON_WORKBENCH", material);
 		Entity furnitureEntity = new FurnitureEntityFactory(mockMessageDispatcher, mockEntityAssetUpdater).create(attributes, new GridPoint2(), null, mockGameContext);
 
 		FurnitureConstruction construction = new FurnitureConstruction(furnitureEntity);

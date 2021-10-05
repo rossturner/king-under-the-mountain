@@ -18,7 +18,10 @@ import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
-import technology.rocketjump.undermount.entities.factories.*;
+import technology.rocketjump.undermount.entities.factories.HumanoidEntityFactory;
+import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
+import technology.rocketjump.undermount.entities.factories.PlantEntityAttributesFactory;
+import technology.rocketjump.undermount.entities.factories.PlantEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.*;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -57,7 +60,6 @@ public class CharacterViewApplication extends ApplicationAdapter {
 	private ScreenWriter screenWriter;
 
 	private Vector2 rotation = new Vector2(0, 1);
-	private AccessoryColorFactory accessoryColorFactory;
 	private RaceDictionary raceDictionary;
 
 	// Look at https://github.com/EsotericSoftware/tablelayout for laying out UI
@@ -69,7 +71,6 @@ public class CharacterViewApplication extends ApplicationAdapter {
 		this.humanoidEntityFactory = injector.getInstance(HumanoidEntityFactory.class);
 		this.cameraManager = injector.getInstance(PrimaryCameraWrapper.class);
 		this.screenWriter = injector.getInstance(ScreenWriter.class);
-		this.accessoryColorFactory = injector.getInstance(AccessoryColorFactory.class);
 		this.raceDictionary = injector.getInstance(RaceDictionary.class);
 		screenWriter.offsetPosition.x = 250f;
 
@@ -77,11 +78,8 @@ public class CharacterViewApplication extends ApplicationAdapter {
 		shapeRenderer = new ShapeRenderer();
 
 		Random random = new Random();
-		skinColor = new SkinColorFactory().randomSkinColor(random);
-		hairColor = new HairColorFactory().randomHairColor(random);
-		accessoryColor = accessoryColorFactory.randomAccessoryColor(random);
 		Race race = raceDictionary.getByName("Dwarf");
-		attributes = new CreatureEntityAttributes(race, random.nextLong(), hairColor, skinColor, accessoryColor);
+		attributes = new CreatureEntityAttributes(race, random.nextLong());
 		attributes.setGender(Gender.NONE);
 		Vector2 facing = new Vector2(0, 0f);
 		Vector2 position = new Vector2(cameraManager.getCamera().viewportWidth * 0.75f, cameraManager.getCamera().viewportHeight * 0.8f);

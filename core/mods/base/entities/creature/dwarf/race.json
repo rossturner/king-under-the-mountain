@@ -21,6 +21,24 @@
     }
   ],
 
+  "colors": {
+    "HAIR_COLOR": {
+      "colorChart": "dwarf-hair-swatch.png"
+    },
+    "SKIN_COLOR": {
+      "colorChart": "dwarf-skin-swatch.png"
+    },
+    "EYE_COLOR": {
+      "colorCode": "#000000"
+    },
+    "ACCESSORY_COLOR": {
+      "colorChart": "dwarf-accessory-swatch.png"
+    },
+    "BONE_COLOR": {
+      "colorCode": "#fbfbf9"
+    }
+  },
+
   "genderDistribution": {
     "MALE": 0.5,
     "FEMALE": 0.5
@@ -41,4 +59,4 @@
 
     }
   }
-}
+},

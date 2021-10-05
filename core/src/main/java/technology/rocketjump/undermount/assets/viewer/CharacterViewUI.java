@@ -1,8 +1,6 @@
 package technology.rocketjump.undermount.assets.viewer;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -20,9 +18,6 @@ import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
-import technology.rocketjump.undermount.entities.factories.AccessoryColorFactory;
-import technology.rocketjump.undermount.entities.factories.HairColorFactory;
-import technology.rocketjump.undermount.entities.factories.SkinColorFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
@@ -52,9 +47,6 @@ public class CharacterViewUI implements Disposable {
 	private Map<EntityAssetType, EntityAsset> assetMap;
 	private CreatureEntityAttributes entityAttributes;
 
-	private final HairColorFactory hairColorFactory;
-	private final SkinColorFactory skinColorFactory;
-	private final AccessoryColorFactory accessoryColorFactory;
 	private final CreatureEntityAssetDictionary assetDictionary;
 	private final CharacterViewPersistentSettings persistentSettings;
 	private final EntityAssetTypeDictionary assetTypeDictionary;
@@ -62,13 +54,8 @@ public class CharacterViewUI implements Disposable {
 	private final ProfessionDictionary professionDictionary;
 
 	@Inject
-	public CharacterViewUI(HairColorFactory hairColorFactory, SkinColorFactory skinColorFactory,
-						   AccessoryColorFactory accessoryColorFactory,
-						   CreatureEntityAssetDictionary assetDictionary, CharacterViewPersistentSettings persistentSettings,
+	public CharacterViewUI(CreatureEntityAssetDictionary assetDictionary, CharacterViewPersistentSettings persistentSettings,
 						   EntityAssetTypeDictionary assetTypeDictionary, ProfessionDictionary professionDictionary, EntityAssetUpdater entityAssetUpdater, ProfessionDictionary professionDictionary1) {
-		this.hairColorFactory = hairColorFactory;
-		this.skinColorFactory = skinColorFactory;
-		this.accessoryColorFactory = accessoryColorFactory;
 		this.assetDictionary = assetDictionary;
 		this.persistentSettings = persistentSettings;
 		this.assetTypeDictionary = assetTypeDictionary;
@@ -106,17 +93,10 @@ public class CharacterViewUI implements Disposable {
 
 		containerTable.row();
 
-		createHairColorWidget();
+//		createHairColorWidget();
+		// TODO replace with random widget for each color layer
 
-		containerTable.row();
-
-		createSkinColorWidget();
-
-		containerTable.row();
-
-		createAccessoryColorWidget();
-
-		containerTable.row();
+//		containerTable.row();
 
 		createProfessionWidget();
 
@@ -265,51 +245,6 @@ public class CharacterViewUI implements Disposable {
 			}
 		});
 		containerTable.add(new Label("Gender:", uiSkin), genderSelect);
-	}
-
-	private void createSkinColorWidget() {
-		containerTable.add(new Label("Skin color: ", uiSkin));
-		skinColorButton = new TextButton("#RRGGBB", uiSkin);
-		skinColorButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Color newColor = skinColorFactory.randomSkinColor(new RandomXS128());
-				entityAttributes.setSkinColor(newColor);
-				persistentSettings.setSkinColor(newColor);
-				updateAttributes(entityAttributes);
-			}
-		});
-		containerTable.add(skinColorButton);
-	}
-
-	private void createAccessoryColorWidget() {
-		containerTable.add(new Label("Accessory color: ", uiSkin));
-		accessoryColorButton = new TextButton("#RRGGBB", uiSkin);
-		accessoryColorButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Color newColor = accessoryColorFactory.randomAccessoryColor(new RandomXS128());
-				entityAttributes.setAccessoryColor(newColor);
-				persistentSettings.setAccessoryColor(newColor);
-				updateAttributes(entityAttributes);
-			}
-		});
-		containerTable.add(accessoryColorButton);
-	}
-
-	private void createHairColorWidget() {
-		containerTable.add(new Label("Hair color: ", uiSkin));
-		hairColorButton = new TextButton("#rrggbb", uiSkin);
-		hairColorButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Color newColor = hairColorFactory.randomHairColor(new RandomXS128());
-				entityAttributes.setHairColor(newColor);
-				persistentSettings.setHairColor(newColor);
-				updateAttributes(entityAttributes);
-			}
-		});
-		containerTable.add(hairColorButton);
 	}
 
 	private void createRaceWidgets() {
