@@ -35,7 +35,7 @@ import static technology.rocketjump.undermount.entities.components.humanoid.Happ
 public class SettlerFactory {
 
 	private final SettlerCreatureAttributesFactory settlerAttributesFactory;
-	private final HumanoidEntityFactory entityFactory;
+	private final SettlerEntityFactory entityFactory;
 	private final ItemTypeDictionary itemTypeDictionary; // Needed to ensure order of JobType initialisation
 	private final PlantSpeciesDictionary plantSpeciesDictionary;
 	private final ItemEntityFactory itemEntityFactory;
@@ -45,7 +45,7 @@ public class SettlerFactory {
 	private Map<Profession, Set<ItemType>> professionItemMapping = new HashMap<>();
 
 	@Inject
-	public SettlerFactory(SettlerCreatureAttributesFactory settlerAttributesFactory, HumanoidEntityFactory entityFactory,
+	public SettlerFactory(SettlerCreatureAttributesFactory settlerAttributesFactory, SettlerEntityFactory entityFactory,
 						  ItemTypeDictionary itemTypeDictionary, CraftingTypeDictionary craftingTypeDictionary,
 						  PlantSpeciesDictionary plantSpeciesDictionary, ItemEntityFactory itemEntityFactory, MessageDispatcher messageDispatcher,
 						  JobTypeDictionary jobTypeDictionary, GameMaterialDictionary materialDictionary) {

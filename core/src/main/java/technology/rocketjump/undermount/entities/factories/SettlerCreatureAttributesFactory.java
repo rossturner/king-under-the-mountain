@@ -36,8 +36,7 @@ public class SettlerCreatureAttributesFactory {
 	}
 
 	public CreatureEntityAttributes create(GameContext gameContext) {
-		CreatureEntityAttributes attributes = new CreatureEntityAttributes(dwarfRace, random.nextLong()
-		);
+		CreatureEntityAttributes attributes = new CreatureEntityAttributes(dwarfRace, random.nextLong());
 
 		if (twitchSettlerNameReplacementsEnabled()) {
 			for (TwitchViewer twitchViewer : twitchDataStore.getPrioritisedViewers()) {

@@ -13,10 +13,10 @@ import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.entities.behaviour.creature.BrokenDwarfBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.*;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.BrokenDwarfBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;

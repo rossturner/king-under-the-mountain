@@ -158,7 +158,7 @@ public class I18NTranslatorTest {
 
 		Profession profession = new Profession();
 		profession.setI18nKey("PROFESSION.BLACKSMITH");
-		Entity entity = new HumanoidEntityFactory(
+		Entity entity = new SettlerEntityFactory(
 				mockMessageDispatcher, new ProfessionDictionary(), mockEntityAssetUpdater,
 				mockGoalDictionary, mockScheduleDictionary, mockRoomStore).create(attributes, null, new Vector2(), profession, profession, mockGameContext);
 

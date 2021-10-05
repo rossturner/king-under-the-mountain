@@ -39,6 +39,10 @@
     }
   },
 
+  "behaviour": {
+    "type": "Settler"
+  },
+
   "genderDistribution": {
     "MALE": 0.5,
     "FEMALE": 0.5

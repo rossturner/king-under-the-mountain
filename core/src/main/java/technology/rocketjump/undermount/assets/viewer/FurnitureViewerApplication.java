@@ -22,7 +22,7 @@ import technology.rocketjump.undermount.entities.components.LiquidContainerCompo
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.factories.FurnitureEntityFactory;
-import technology.rocketjump.undermount.entities.factories.HumanoidEntityFactory;
+import technology.rocketjump.undermount.entities.factories.SettlerEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Race;
@@ -46,7 +46,7 @@ import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
-import static technology.rocketjump.undermount.assets.viewer.CharacterViewApplication.createItemEntity;
+import static technology.rocketjump.undermount.assets.viewer.CreatureViewApplication.createItemEntity;
 
 /**
  * This class is to be used from a separate desktop launcher for checking (and reloading) plant asset definitions
@@ -173,10 +173,10 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 		Race race = injector.getInstance(RaceDictionary.class).getByName("Dwarf");
 		CreatureEntityAttributes attributes = new CreatureEntityAttributes(race, random.nextLong());
 		Vector2 facing = new Vector2(0, 0f);
-		HumanoidEntityFactory humanoidEntityFactory = injector.getInstance(HumanoidEntityFactory.class);
+		SettlerEntityFactory settlerEntityFactory = injector.getInstance(SettlerEntityFactory.class);
 		GameContext gameContext = new GameContext();
 		gameContext.setRandom(random);
-		return humanoidEntityFactory.create(attributes, null, facing, null, null, gameContext);
+		return settlerEntityFactory.create(attributes, null, facing, null, null, gameContext);
 	}
 
 	private static final Color MAIN_TILE_COLOR = new Color(0f, 0f, 1f, 0.3f);

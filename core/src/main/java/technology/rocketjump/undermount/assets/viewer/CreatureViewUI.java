@@ -1,6 +1,8 @@
 package technology.rocketjump.undermount.assets.viewer;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -9,11 +11,14 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
+import org.apache.commons.lang3.text.WordUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShape;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShapeDescriptor;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
+import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
@@ -21,8 +26,12 @@ import technology.rocketjump.undermount.entities.components.humanoid.Professions
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
+import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,16 +39,13 @@ import java.util.Map;
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetsByProfession.NULL_ENTITY_ASSET;
-import static technology.rocketjump.undermount.assets.entities.model.ColoringLayer.*;
 
-public class CharacterViewUI implements Disposable {
+public class CreatureViewUI implements Disposable {
 
 	private final Profession defaultProfession;
 	private Skin uiSkin = new Skin(Gdx.files.internal("assets/ui/libgdx-default/uiskin.json")); // MODDING expose this or change uiskin.json
 	private Stage stage;
 	private Table containerTable;
-
-	private TextButton hairColorButton, skinColorButton, accessoryColorButton;
 
 	private Map<EntityAssetType, SelectBox> assetSelectWidgets = new HashMap<>();
 
@@ -48,18 +54,21 @@ public class CharacterViewUI implements Disposable {
 	private CreatureEntityAttributes entityAttributes;
 
 	private final CreatureEntityAssetDictionary assetDictionary;
-	private final CharacterViewPersistentSettings persistentSettings;
 	private final EntityAssetTypeDictionary assetTypeDictionary;
 	private final EntityAssetUpdater entityAssetUpdater;
+	private final RaceDictionary raceDictionary;
 	private final ProfessionDictionary professionDictionary;
+	private SelectBox<String> bodyTypeSelect;
 
 	@Inject
-	public CharacterViewUI(CreatureEntityAssetDictionary assetDictionary, CharacterViewPersistentSettings persistentSettings,
-						   EntityAssetTypeDictionary assetTypeDictionary, ProfessionDictionary professionDictionary, EntityAssetUpdater entityAssetUpdater, ProfessionDictionary professionDictionary1) {
+	public CreatureViewUI(CreatureEntityAssetDictionary assetDictionary,
+						  EntityAssetTypeDictionary assetTypeDictionary, ProfessionDictionary professionDictionary,
+						  EntityAssetUpdater entityAssetUpdater, RaceDictionary raceDictionary,
+						  ProfessionDictionary professionDictionary1) {
 		this.assetDictionary = assetDictionary;
-		this.persistentSettings = persistentSettings;
 		this.assetTypeDictionary = assetTypeDictionary;
 		this.entityAssetUpdater = entityAssetUpdater;
+		this.raceDictionary = raceDictionary;
 		this.professionDictionary = professionDictionary1;
 		stage = new Stage(new ScreenViewport());
 
@@ -74,24 +83,17 @@ public class CharacterViewUI implements Disposable {
 		containerTable.left().top();
 	}
 
-	public void init(Entity entity) {
+	public void reset(Entity entity) {
 		this.currentEntity = entity;
 		this.entityAttributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		this.assetMap = entity.getPhysicalEntityComponent().getTypeMap();
-		persistentSettings.reloadFromSettings(entity);
 		containerTable.clearChildren();
 
-		createRaceWidgets();
-
-		containerTable.row();
+		createRaceWidget();
 
 		createGenderWidget();
 
-		containerTable.row();
-
-		createBodyTypeWidget();
-
-		containerTable.row();
+		createBodyShapeWidget();
 
 //		createHairColorWidget();
 		// TODO replace with random widget for each color layer
@@ -100,27 +102,47 @@ public class CharacterViewUI implements Disposable {
 
 		createProfessionWidget();
 
-		containerTable.row();
+		for (String assetTypeName : List.of("CREATURE_EYEBROWS", "CREATURE_BEARD", "CREATURE_HAIR", "BODY_CLOTHING")) {
+			EntityAssetType assetType = assetTypeDictionary.getByName(assetTypeName);
+			if (assetMap.containsKey(assetType)) {
+				String label = WordUtils.capitalize(assetTypeName.substring(assetTypeName.indexOf("_") + 1).toLowerCase());
+				createAssetWidget(label, assetType);
+			}
+		}
 
-		createAssetWidget("Eyebrows", assetTypeDictionary.getByName("HUMANOID_EYEBROWS"));
+		for (Map.Entry<ColoringLayer, Color> colorEntry : entityAttributes.getColors().entrySet()) {
+			createColorWidget(colorEntry.getKey());
+		}
 
-		containerTable.row();
+	}
 
-		createAssetWidget("Beard", assetTypeDictionary.getByName("HUMANOID_BEARD"));
+	private void createRaceWidget() {
+		SelectBox<String> raceSelect = new SelectBox<>(uiSkin);
+		Array<String> items = new Array<>();
+		for (Race race : raceDictionary.getAll()) {
+			items.add(race.getName());
+		}
+		raceSelect.setItems(items);
+		raceSelect.setSelected(entityAttributes.getRace().getName());
+		raceSelect.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				Race race = raceDictionary.getByName(raceSelect.getSelected());
+				raceChanged(race);
+			}
+		});
 
-//		containerTable.row();
-//
-//		createAssetWidget("Head", assetTypeDictionary.getByName("HUMANOID_HEAD"));
+		containerTable.add(new Label("Race:", uiSkin), raceSelect).row();
+	}
 
-		containerTable.row();
+	private void raceChanged(Race race) {
+		entityAttributes = new CreatureEntityAttributes(race, 1L);
 
-		createAssetWidget("Hair", assetTypeDictionary.getByName("HUMANOID_HAIR"));
+		// Might need to do something with ProfessionsComponent dependent on race behaviour
 
-		containerTable.row();
-
-		createAssetWidget("Clothes", assetTypeDictionary.getByName("BODY_CLOTHING"));
-
-		updateAttributes(entityAttributes);
+		currentEntity.getPhysicalEntityComponent().setAttributes(entityAttributes);
+		entityAssetUpdater.updateEntityAssets(currentEntity);
+		reset(currentEntity);
 	}
 
 	private void createProfessionWidget() {
@@ -146,7 +168,7 @@ public class CharacterViewUI implements Disposable {
 //				persistentSettings.reloadFromSettings(currentEntity);
 			}
 		});
-		containerTable.add(professionSelect);
+		containerTable.add(professionSelect).row();
 	}
 
 	private void resetAssetSelections() {
@@ -199,59 +221,71 @@ public class CharacterViewUI implements Disposable {
 					return;
 				}
 				assetMap.put(assetType, selectedAsset);
-				persistentSettings.update(assetType, selectedAsset);
 			}
 		});
-		containerTable.add(widget);
+		containerTable.add(widget).row();
 		assetSelectWidgets.put(assetType, widget);
 	}
 
-	private void createBodyTypeWidget() {
-		containerTable.add(new Label("Body type: ", uiSkin));
-		SelectBox<String> bodyTypeSelect = new SelectBox<>(uiSkin);
-		Array<String> bodyTypeItems = new Array<>();
-		for (CreatureBodyShape bodyType : CreatureBodyShape.values()) {
-			bodyTypeItems.add(bodyType.name().toLowerCase());
-		}
-		bodyTypeItems.removeValue(CreatureBodyShape.ANY.name().toLowerCase(), false);
-		bodyTypeSelect.setItems(bodyTypeItems);
-		bodyTypeSelect.setSelected(entityAttributes.getBodyShape().name().toLowerCase());
+	private void createBodyShapeWidget() {
+		containerTable.add(new Label("Body shape: ", uiSkin));
+		bodyTypeSelect = new SelectBox<>(uiSkin);
+		resetBodyShapeSelect();
 		bodyTypeSelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				CreatureBodyShape selectedType = CreatureBodyShape.valueOf(bodyTypeSelect.getSelected().toUpperCase());
+				CreatureBodyShape selectedType = CreatureBodyShape.valueOf(bodyTypeSelect.getSelected());
 				entityAttributes.setBodyShape(selectedType);
 				entityAssetUpdater.updateEntityAssets(currentEntity);
-				persistentSettings.setBodyType(selectedType);
 				resetAssetSelections();
 //				persistentSettings.reloadFromSettings(currentEntity);
 			}
 		});
-		containerTable.add(bodyTypeSelect);
+		containerTable.add(bodyTypeSelect).row();
+	}
+
+	private void resetBodyShapeSelect() {
+		Array<String> bodyTypeItems = new Array<>();
+		for (CreatureBodyShapeDescriptor bodyShape : entityAttributes.getRace().getBodyShapes()) {
+			bodyTypeItems.add(bodyShape.getValue().name());
+		}
+		bodyTypeSelect.setItems(bodyTypeItems);
+		bodyTypeSelect.setSelected(entityAttributes.getBodyShape().name().toLowerCase());
 	}
 
 	private void createGenderWidget() {
 		SelectBox<String> genderSelect = new SelectBox<>(uiSkin);
-		genderSelect.setItems("Male", "Female", "None");
-		genderSelect.setSelected(entityAttributes.getGender().equals(Gender.MALE) ? "Male" : "Female");
+		Array<String> items = new Array<>();
+		for (Map.Entry<Gender, Float> genderEntry : entityAttributes.getRace().getGenderDistribution().entrySet()) {
+			items.add(genderEntry.getKey().name());
+		}
+		genderSelect.setItems(items);
+		genderSelect.setSelected(entityAttributes.getGender().name());
 		genderSelect.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				Gender selectedGender = Gender.valueOf(genderSelect.getSelected().toUpperCase());
+				Gender selectedGender = Gender.valueOf(genderSelect.getSelected());
 				entityAttributes.setGender(selectedGender);
 				entityAssetUpdater.updateEntityAssets(currentEntity);
-				persistentSettings.setGender(selectedGender);
 				resetAssetSelections();
-//				persistentSettings.reloadFromSettings(currentEntity);
 			}
 		});
-		containerTable.add(new Label("Gender:", uiSkin), genderSelect);
+		containerTable.add(new Label("Gender:", uiSkin), genderSelect).row();
 	}
 
-	private void createRaceWidgets() {
-		SelectBox raceSelect = new SelectBox(uiSkin);
-		raceSelect.setItems("Dwarf");
-		raceSelect.setSelected("Dwarf");
-		containerTable.add(new Label("Race:", uiSkin), raceSelect);
+	private void createColorWidget(ColoringLayer coloringLayer) {
+		containerTable.add(new Label(WordUtils.capitalize(coloringLayer.name().toLowerCase()) + " color: ", uiSkin));
+		TextButton colorButton = new TextButton(HexColors.toHexString(entityAttributes.getColor(coloringLayer)), uiSkin);
+		colorButton.setColor(entityAttributes.getColor(coloringLayer));
+		colorButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				SpeciesColor speciesColor = entityAttributes.getRace().getColors().get(coloringLayer);
+				entityAttributes.getColors().put(coloringLayer, speciesColor.getColor(new RandomXS128().nextLong()));
+				colorButton.setText(HexColors.toHexString(entityAttributes.getColor(coloringLayer)));
+				colorButton.setColor(entityAttributes.getColor(coloringLayer));
+			}
+		});
+		containerTable.add(colorButton).row();
 	}
 
 	public void render() {
@@ -266,16 +300,6 @@ public class CharacterViewUI implements Disposable {
 	@Override
 	public void dispose() {
 		stage.dispose();
-	}
-
-	public void updateAttributes(CreatureEntityAttributes entityAttributes) {
-		this.entityAttributes = entityAttributes;
-		hairColorButton.setColor(entityAttributes.getColor(HAIR_COLOR));
-		hairColorButton.setText("#" + entityAttributes.getColor(HAIR_COLOR).toString().substring(0, 6));
-		skinColorButton.setColor(entityAttributes.getColor(SKIN_COLOR));
-		skinColorButton.setText("#" + entityAttributes.getColor(SKIN_COLOR).toString().substring(0, 6));
-		accessoryColorButton.setColor(entityAttributes.getColor(ACCESSORY_COLOR));
-		accessoryColorButton.setText("#" + entityAttributes.getColor(ACCESSORY_COLOR).toString().substring(0, 6));
 	}
 
 	public Stage getStage() {

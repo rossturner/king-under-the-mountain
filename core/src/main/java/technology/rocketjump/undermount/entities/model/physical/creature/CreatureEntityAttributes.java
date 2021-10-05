@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.entities.model.physical.creature;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.RandomXS128;
+import com.google.common.base.MoreObjects;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShape;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShapeDescriptor;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
@@ -36,7 +37,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 	private Body body; // instance of a bodyStructure with damage/missing parts, for humanoid and animal type entities
 	private CreatureBodyShape bodyShape;
 	private Map<ColoringLayer, Color> colors = new EnumMap<>(ColoringLayer.class);
-	private boolean hasHair;
+	private boolean hasHair = true;
 	private HumanoidName name;
 	private Consciousness consciousness = AWAKE;
 	private Sanity sanity = SANE;
@@ -201,11 +202,12 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	@Override
 	public String toString() {
-		return "HumanoidEntityAttributes{" +
-				"race=" + race +
-				", name=" + name +
-				", consciousness=" + consciousness +
-				'}';
+		return MoreObjects.toStringHelper(this)
+				.add("race", race)
+				.add("gender", gender)
+				.add("bodyShape", bodyShape)
+				.add("consciousness", consciousness)
+				.toString();
 	}
 
 	private void selectGender(Race race, Random random) {
@@ -296,5 +298,9 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		if (bodyMaterialName == null) {
 			throw new InvalidSaveException("Old save format");
 		}
+	}
+
+	public Map<ColoringLayer, Color> getColors() {
+		return colors;
 	}
 }

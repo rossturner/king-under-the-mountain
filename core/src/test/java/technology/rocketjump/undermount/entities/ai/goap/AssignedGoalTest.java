@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.SettlerFactory;
 import technology.rocketjump.undermount.entities.model.Entity;

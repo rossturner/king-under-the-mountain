@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.google.inject.Inject;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
@@ -152,9 +153,14 @@ public class EntityAssetUpdater {
 			baseAsset = creatureEntityAssetDictionary.getMatching(CREATURE_HEAD, attributes, primaryProfession);
 		}
 
+		entity.getPhysicalEntityComponent().getTypeMap().clear();
 		entity.getPhysicalEntityComponent().setBaseAsset(baseAsset);
-		entity.getPhysicalEntityComponent().getTypeMap().put(baseAsset.getType(), baseAsset);
-		addOtherHumanoidAssetTypes(baseAsset.getType(), entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+		if (baseAsset == null) {
+			Logger.error("Base asset is null for " + attributes.toString());
+		} else {
+			entity.getPhysicalEntityComponent().getTypeMap().put(baseAsset.getType(), baseAsset);
+			addOtherCreatureAssetTypes(baseAsset.getType(), entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+		}
 
 		// Some gender-specific stuff that should be extracted elsewhere
 		if (!attributes.getHasHair()) {
@@ -166,15 +172,15 @@ public class EntityAssetUpdater {
 		}
 
 		if (entity.getLocationComponent().getContainerEntity() == null) {
-			addOtherHumanoidAssetTypes(CREATURE_LEFT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
-			addOtherHumanoidAssetTypes(CREATURE_RIGHT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+			addOtherCreatureAssetTypes(CREATURE_LEFT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+			addOtherCreatureAssetTypes(CREATURE_RIGHT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
 		}
 
 		// Tag processing
 		processTags(entity);
 	}
 
-	private void addOtherHumanoidAssetTypes(EntityAssetType assetType, PhysicalEntityComponent physicalComponent, CreatureEntityAttributes attributes,
+	private void addOtherCreatureAssetTypes(EntityAssetType assetType, PhysicalEntityComponent physicalComponent, CreatureEntityAttributes attributes,
 											Profession primaryProfession) {
 		CreatureEntityAsset asset = creatureEntityAssetDictionary.getMatching(assetType, attributes, primaryProfession);
 
@@ -195,7 +201,7 @@ public class EntityAssetUpdater {
 			}
 
 			for (EntityAssetType attachedType : attachedTypes) {
-				addOtherHumanoidAssetTypes(attachedType, physicalComponent, attributes, primaryProfession);
+				addOtherCreatureAssetTypes(attachedType, physicalComponent, attributes, primaryProfession);
 			}
 		}
 	}

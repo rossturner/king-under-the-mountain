@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.GridPoint2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;

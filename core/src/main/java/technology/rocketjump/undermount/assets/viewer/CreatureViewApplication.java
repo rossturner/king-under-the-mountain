@@ -2,7 +2,6 @@ package technology.rocketjump.undermount.assets.viewer;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,17 +15,15 @@ import com.google.inject.Injector;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
-import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
-import technology.rocketjump.undermount.entities.factories.HumanoidEntityFactory;
+import technology.rocketjump.undermount.entities.factories.CreatureEntityFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
-import technology.rocketjump.undermount.entities.factories.PlantEntityAttributesFactory;
-import technology.rocketjump.undermount.entities.factories.PlantEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.creature.*;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
-import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.guice.UndermountGuiceModule;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
@@ -43,24 +40,23 @@ import static technology.rocketjump.undermount.assets.entities.model.EntityAsset
 /**
  * This class is to be used from a separate desktop launcher for checking (and reloading) character asset definitions
  */
-public class CharacterViewApplication extends ApplicationAdapter {
+public class CreatureViewApplication extends ApplicationAdapter {
 
 	private SpriteBatch batch;
 	private ShapeRenderer shapeRenderer;
 
 	private EntityRenderer entityRenderer;
-	private HumanoidEntityFactory humanoidEntityFactory;
 	private PrimaryCameraWrapper cameraManager;
 
-	private CharacterViewUI ui;
+	private CreatureViewUI ui;
 
 	private Entity currentEntity;
 	private CreatureEntityAttributes attributes;
-	private Color skinColor, hairColor, accessoryColor;
 	private ScreenWriter screenWriter;
 
 	private Vector2 rotation = new Vector2(0, 1);
 	private RaceDictionary raceDictionary;
+	private CreatureEntityFactory creatureEntityFactory;
 
 	// Look at https://github.com/EsotericSoftware/tablelayout for laying out UI
 
@@ -68,7 +64,7 @@ public class CharacterViewApplication extends ApplicationAdapter {
 	public void create () {
 		Injector injector = Guice.createInjector(new UndermountGuiceModule());
 		this.entityRenderer = injector.getInstance(EntityRenderer.class);
-		this.humanoidEntityFactory = injector.getInstance(HumanoidEntityFactory.class);
+		this.creatureEntityFactory = injector.getInstance(CreatureEntityFactory.class);
 		this.cameraManager = injector.getInstance(PrimaryCameraWrapper.class);
 		this.screenWriter = injector.getInstance(ScreenWriter.class);
 		this.raceDictionary = injector.getInstance(RaceDictionary.class);
@@ -80,30 +76,29 @@ public class CharacterViewApplication extends ApplicationAdapter {
 		Random random = new Random();
 		Race race = raceDictionary.getByName("Dwarf");
 		attributes = new CreatureEntityAttributes(race, random.nextLong());
-		attributes.setGender(Gender.NONE);
 		Vector2 facing = new Vector2(0, 0f);
 		Vector2 position = new Vector2(cameraManager.getCamera().viewportWidth * 0.75f, cameraManager.getCamera().viewportHeight * 0.8f);
 		GameContext gameContext = new GameContext();
 		gameContext.setRandom(new RandomXS128());
-		currentEntity = humanoidEntityFactory.create(attributes, position, facing, null, null, gameContext);
+		currentEntity = creatureEntityFactory.create(attributes, position, facing, gameContext);
 
-		ProfessionsComponent professionsComponent = currentEntity.getComponent(ProfessionsComponent.class);
+		ProfessionsComponent professionsComponent = currentEntity.getOrCreateComponent(ProfessionsComponent.class);
 		professionsComponent.add(injector.getInstance(ProfessionDictionary.class).getByName("CARPENTER"), 0.8f);
 
 		injector.getInstance(EntityAssetUpdater.class).updateEntityAssets(currentEntity);
 
-		Entity heldItem = createItemEntity("Resource-Hemp-Bundle", injector, ItemPlacement.BEING_CARRIED);
-		ItemAllocationComponent itemAllocationComponent = heldItem.getOrCreateComponent(ItemAllocationComponent.class);
-		itemAllocationComponent.init(heldItem, null, null);
+//		Entity heldItem = createItemEntity("Resource-Hemp-Bundle", injector, ItemPlacement.BEING_CARRIED);
+//		ItemAllocationComponent itemAllocationComponent = heldItem.getOrCreateComponent(ItemAllocationComponent.class);
+//		itemAllocationComponent.init(heldItem, null, null);
 
 //		EquippedItemComponent equippedItemComponent = currentEntity.getOrCreateComponent(EquippedItemComponent.class);
 //		equippedItemComponent.setEquippedItem(heldItem, currentEntity, new MessageDispatcher());
-		HaulingComponent haulingComponent = new HaulingComponent();
-		haulingComponent.setHauledEntity(heldItem, new MessageDispatcher(), currentEntity);
-		currentEntity.addComponent(haulingComponent);
+//		HaulingComponent haulingComponent = new HaulingComponent();
+//		haulingComponent.setHauledEntity(heldItem, new MessageDispatcher(), currentEntity);
+//		currentEntity.addComponent(haulingComponent);
 
-		ui = injector.getInstance(CharacterViewUI.class);
-		ui.init(currentEntity);
+		ui = injector.getInstance(CreatureViewUI.class);
+		ui.reset(currentEntity);
 
 		Gdx.input.setInputProcessor(ui.getStage());
 	}
@@ -134,14 +129,6 @@ public class CharacterViewApplication extends ApplicationAdapter {
 		attributes.setItemPlacement(itemPlacement);
 
 		return entityFactory.create(attributes, new GridPoint2(), true, new GameContext());
-	}
-
-	public static Entity createPlantEntity(String speciesName, Injector injector) {
-		PlantEntityAttributesFactory entityAttributesFactory = injector.getInstance(PlantEntityAttributesFactory.class);
-		PlantEntityAttributes attributes = entityAttributesFactory.createBySpeciesName(speciesName);
-
-		PlantEntityFactory plantEntityFactory = injector.getInstance(PlantEntityFactory.class);
-		return plantEntityFactory.create(attributes, null, new GameContext());
 	}
 
 	@Override

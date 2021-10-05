@@ -1,4 +1,4 @@
-package technology.rocketjump.undermount.entities.behaviour.humanoids;
+package technology.rocketjump.undermount.entities.behaviour.creature;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;

@@ -5,7 +5,7 @@ import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.GoalSelectionCondition;
 import technology.rocketjump.undermount.entities.ai.goap.GoalSelector;
 import technology.rocketjump.undermount.entities.ai.goap.QueuedGoal;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.gamecontext.GameContext;

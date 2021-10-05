@@ -12,16 +12,16 @@ import java.util.Map;
 
 public class CreatureEntityAssetsByRace {
 
-//	private static final Race NO_RACE = new Race();
+	private static final Race NO_RACE = new Race();
 
 	private Map<Race, CreatureEntityAssetsByBodyType> raceMap = new HashMap<>();
 
 	public CreatureEntityAssetsByRace(RaceDictionary raceDictionary) {
-//		NO_RACE.setName("None");
+		NO_RACE.setName("None");
 		// not adding all race placeholders
-//		for (Race race : raceDictionary.getAll()) {
-//			raceMap.put(race, new CreatureEntityAssetsByBodyType());
-//		}
+		for (Race race : raceDictionary.getAll()) {
+			raceMap.put(race, new CreatureEntityAssetsByBodyType(race.getBodyShapes()));
+		}
 	}
 
 	public void add(CreatureEntityAsset asset) {
@@ -32,7 +32,7 @@ public class CreatureEntityAssetsByRace {
 //				assetsByBodyType.add(asset);
 //			}
 //		} else {
-		// currently assuming all creature assets are race-specific
+			// currently assuming all creature assets are race-specific
 			// Specific race only
 			raceMap.computeIfAbsent(race, a -> new CreatureEntityAssetsByBodyType(race.getBodyShapes())).add(asset);
 //			raceMap.get(NO_RACE).add(asset);

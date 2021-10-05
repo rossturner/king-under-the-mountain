@@ -7,7 +7,7 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.factories.*;
@@ -35,7 +35,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 @Singleton
 public class EntityStore implements GameContextAware, AssetDisposable {
 
-	private final HumanoidEntityFactory humanoidEntityFactory;
+	private final SettlerEntityFactory settlerEntityFactory;
 	private final SettlerCreatureAttributesFactory settlerCreatureAttributesFactory;
 
 	private final PlantEntityAttributesFactory plantEntityAttributesFactory;
@@ -56,12 +56,12 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 	private final ConstantsRepo constantsRepo;
 
 	@Inject
-	public EntityStore(HumanoidEntityFactory humanoidEntityFactory, SettlerCreatureAttributesFactory settlerCreatureAttributesFactory,
+	public EntityStore(SettlerEntityFactory settlerEntityFactory, SettlerCreatureAttributesFactory settlerCreatureAttributesFactory,
 					   PlantEntityAttributesFactory plantEntityAttributesFactory, PlantEntityFactory plantEntityFactory,
 					   ItemTypeDictionary itemTypeDictionary, ItemEntityFactory itemEntityFactory,
 					   MessageDispatcher messageDispatcher, FurnitureTracker furnitureTracker,
 					   ItemTracker itemTracker, SettlerTracker settlerTracker, ConstantsRepo constantsRepo) {
-		this.humanoidEntityFactory = humanoidEntityFactory;
+		this.settlerEntityFactory = settlerEntityFactory;
 		this.settlerCreatureAttributesFactory = settlerCreatureAttributesFactory;
 		this.plantEntityAttributesFactory = plantEntityAttributesFactory;
 		this.plantEntityFactory = plantEntityFactory;

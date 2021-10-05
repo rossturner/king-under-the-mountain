@@ -7,7 +7,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.ai.goap.GoalDictionary;
 import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
@@ -24,7 +24,7 @@ import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.rooms.RoomStore;
 
 @Singleton
-public class HumanoidEntityFactory {
+public class SettlerEntityFactory {
 
 	private final MessageDispatcher messageDispatcher;
 	private final EntityAssetUpdater entityAssetUpdater;
@@ -34,8 +34,8 @@ public class HumanoidEntityFactory {
 	private final RoomStore roomStore;
 
 	@Inject
-	public HumanoidEntityFactory(MessageDispatcher messageDispatcher, ProfessionDictionary professionDictionary,
-								 EntityAssetUpdater entityAssetUpdater, GoalDictionary goalDictionary, ScheduleDictionary scheduleDictionary, RoomStore roomStore) {
+	public SettlerEntityFactory(MessageDispatcher messageDispatcher, ProfessionDictionary professionDictionary,
+								EntityAssetUpdater entityAssetUpdater, GoalDictionary goalDictionary, ScheduleDictionary scheduleDictionary, RoomStore roomStore) {
 		this.messageDispatcher = messageDispatcher;
 		this.professionDictionary = professionDictionary;
 		this.entityAssetUpdater = entityAssetUpdater;
@@ -74,7 +74,6 @@ public class HumanoidEntityFactory {
 		entity.addComponent(new MemoryComponent());
 
 		entityAssetUpdater.updateEntityAssets(entity);
-
 
 		return entity;
 	}

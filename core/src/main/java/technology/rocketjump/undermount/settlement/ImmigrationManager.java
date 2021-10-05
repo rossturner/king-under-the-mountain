@@ -15,7 +15,7 @@ import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.Goal;
 import technology.rocketjump.undermount.entities.ai.goap.SpecialGoal;
 import technology.rocketjump.undermount.entities.ai.goap.actions.location.GoToLocationAction;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.factories.SettlerFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
