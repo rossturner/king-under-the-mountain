@@ -92,10 +92,7 @@ public class CreatureViewUI implements Disposable {
 
 		createBodyShapeWidget();
 
-//		createHairColorWidget();
-		// TODO replace with random widget for each color layer
-
-//		containerTable.row();
+		createConsciousnessWidget();
 
 		createProfessionWidget();
 
@@ -180,6 +177,9 @@ public class CreatureViewUI implements Disposable {
 			CreatureEntityAsset entityAsset = (CreatureEntityAsset) assetMap.get(entry.getKey());
 			if (entityAsset != null) {
 				entry.getValue().setSelected(entityAsset.getUniqueName());
+				entry.getValue().setDisabled(false);
+			} else {
+				entry.getValue().setDisabled(true);
 			}
 		}
 	}
@@ -250,6 +250,24 @@ public class CreatureViewUI implements Disposable {
 		bodyTypeSelect.setSelected(entityAttributes.getBodyShape().name().toLowerCase());
 	}
 
+	private void createConsciousnessWidget() {
+		SelectBox<String> consciousnessSelect = new SelectBox<>(uiSkin);
+		Array<String> items = new Array<>();
+		for (Consciousness value : Consciousness.values()) {
+			items.add(value.name());
+		}
+		consciousnessSelect.setItems(items);
+		consciousnessSelect.setSelected(entityAttributes.getConsciousness().name());
+		consciousnessSelect.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				Consciousness selectedConsciousness = Consciousness.valueOf(consciousnessSelect.getSelected());
+				entityAttributes.setConsciousness(selectedConsciousness);
+				entityAssetUpdater.updateEntityAssets(currentEntity);
+			}
+		});
+		containerTable.add(new Label("Consciousness:", uiSkin), consciousnessSelect).row();
+	}
+
 	private void createGenderWidget() {
 		SelectBox<String> genderSelect = new SelectBox<>(uiSkin);
 		Array<String> items = new Array<>();
@@ -263,7 +281,6 @@ public class CreatureViewUI implements Disposable {
 				Gender selectedGender = Gender.valueOf(genderSelect.getSelected());
 				entityAttributes.setGender(selectedGender);
 				entityAssetUpdater.updateEntityAssets(currentEntity);
-				resetAssetSelections();
 			}
 		});
 		containerTable.add(new Label("Gender:", uiSkin), genderSelect).row();

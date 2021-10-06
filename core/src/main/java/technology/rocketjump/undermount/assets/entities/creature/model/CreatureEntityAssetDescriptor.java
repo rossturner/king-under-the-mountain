@@ -22,6 +22,7 @@ public class CreatureEntityAssetDescriptor {
 	private Gender gender;
 	private String profession;
 	private Consciousness consciousness;
+	private List<Consciousness> consciousnessList;
 	private Sanity sanity;
 
 	private Map<String, List<String>> tags = new HashMap<>();
@@ -40,6 +41,9 @@ public class CreatureEntityAssetDescriptor {
 			return false;
 		}
 		if (consciousness != null && entityAttributes.getConsciousness() != consciousness) {
+			return false;
+		}
+		if (consciousnessList != null && !consciousnessList.contains(entityAttributes.getConsciousness())) {
 			return false;
 		}
 		if (sanity != null && entityAttributes.getSanity() != sanity) {
@@ -126,5 +130,13 @@ public class CreatureEntityAssetDescriptor {
 
 	public void setRaceName(String raceName) {
 		this.raceName = raceName;
+	}
+
+	public List<Consciousness> getConsciousnessList() {
+		return consciousnessList;
+	}
+
+	public void setConsciousnessList(List<Consciousness> consciousnessList) {
+		this.consciousnessList = consciousnessList;
 	}
 }

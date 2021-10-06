@@ -19,6 +19,7 @@ public class CreatureEntityAssetsByGender {
 			genderMap.put(type, new CreatureEntityAssetsByProfession());
 		}
 		genderMap.put(Gender.ANY, new CreatureEntityAssetsByProfession());
+		genderMap.put(Gender.NONE, new CreatureEntityAssetsByProfession());
 	}
 
 	public void add(CreatureEntityAsset asset) {

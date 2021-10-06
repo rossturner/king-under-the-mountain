@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
 
@@ -60,15 +61,13 @@ public class CreatureEntityAssetsByProfession {
 	}
 
 	public List<CreatureEntityAsset> getAll(CreatureEntityAttributes attributes, Profession primaryProfession) {
-		if (primaryProfession == null) {
-			primaryProfession = NULL_PROFESSION;
-		}
-		List<CreatureEntityAsset> assetsForProfession = professionNameMap.get(primaryProfession.getName());
+		final Profession profession = primaryProfession == null ? NULL_PROFESSION : primaryProfession;
+		List<CreatureEntityAsset> assetsForProfession = professionNameMap.get(profession.getName());
 
 		if (assetsForProfession == null || assetsForProfession.isEmpty()) {
 			assetsForProfession = professionNameMap.get(NULL_PROFESSION.getName());
 		}
 
-		return assetsForProfession;
+		return assetsForProfession.stream().filter(a -> a.matches(attributes, profession)).collect(Collectors.toList());
 	}
 }

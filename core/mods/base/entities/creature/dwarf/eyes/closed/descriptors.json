@@ -2,7 +2,7 @@
   "uniqueName": "Closed dwarf eyes",
   "type": "CREATURE_EYES",
   "raceName": "Dwarf",
-  "consciousness": "SLEEPING",
+  "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS"],
   "spriteDescriptors": {
     "DOWN": {
       "filename": "Dwarf-Eyes-Closed-F.png"

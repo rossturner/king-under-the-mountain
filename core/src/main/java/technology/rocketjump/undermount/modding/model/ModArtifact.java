@@ -24,7 +24,9 @@ public class ModArtifact {
 		}
 		long total = 0L;
 		for (Path relatedFile : sourceFiles) {
-			total += LongHashFunction.xx().hashBytes(Files.readAllBytes(relatedFile));
+			LongHashFunction hashFunction = LongHashFunction.xx();
+			total += hashFunction.hashBytes(Files.readAllBytes(relatedFile));
+			total += hashFunction.hashChars(relatedFile.getFileName().toString());
 		}
 		return total;
 	}
