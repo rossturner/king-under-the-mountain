@@ -32,7 +32,7 @@ public class Race {
 
 	private Map<ColoringLayer, SpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
 
-	private Map<Gender, Float> genderDistribution = new EnumMap<>(Gender.class);
+	private Map<Gender, RaceGenderDescriptor> genders = new EnumMap<>(Gender.class);
 
 	private RaceFeatures features = new RaceFeatures();
 
@@ -118,19 +118,19 @@ public class Race {
 		this.bodyStructure = bodyStructure;
 	}
 
-	public Map<Gender, Float> getGenderDistribution() {
-		return genderDistribution;
-	}
-
-	public void setGenderDistribution(Map<Gender, Float> genderDistribution) {
-		this.genderDistribution = genderDistribution;
-	}
-
 	public Map<ColoringLayer, SpeciesColor> getColors() {
 		return colors;
 	}
 
 	public void setColors(Map<ColoringLayer, SpeciesColor> colors) {
 		this.colors = colors;
+	}
+
+	public Map<Gender, RaceGenderDescriptor> getGenders() {
+		return genders;
+	}
+
+	public void setGenders(Map<Gender, RaceGenderDescriptor> genders) {
+		this.genders = genders;
 	}
 }

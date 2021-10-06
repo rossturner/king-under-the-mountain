@@ -15,11 +15,21 @@
     "MARKING_COLOR" : {
       "swatch" : "deer-markings-swatch.png",
       "hidden" : false
+    },
+    "HAIR_COLOR" : {
+      "swatch" : "deer-antlers-swatch.png",
+      "hidden" : false
     }
   },
-  "genderDistribution" : {
-    "MALE" : 0.5,
-    "FEMALE" : 0.5
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
   },
   "features" : {
     "skin" : {
@@ -67,9 +77,15 @@
       "hidden" : false
     }
   },
-  "genderDistribution" : {
-    "MALE" : 0.5,
-    "FEMALE" : 0.5
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.6
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    }
   },
   "features" : {
     "skin" : {

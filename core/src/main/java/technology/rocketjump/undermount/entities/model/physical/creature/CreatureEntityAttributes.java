@@ -37,7 +37,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 	private Body body; // instance of a bodyStructure with damage/missing parts, for humanoid and animal type entities
 	private CreatureBodyShape bodyShape;
 	private Map<ColoringLayer, Color> colors = new EnumMap<>(ColoringLayer.class);
-	private boolean hasHair = true;
+	private boolean hasHair;
 	private HumanoidName name;
 	private Consciousness consciousness = AWAKE;
 	private Sanity sanity = SANE;
@@ -78,6 +78,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 			colors.put(colorEntry.getKey(), colorEntry.getValue().getColor(seed));
 		}
 		selectGender(race, random);
+		this.hasHair = hasHair(race, gender, random);
 	}
 
 	@Override
@@ -156,10 +157,6 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		return hasHair;
 	}
 
-	public void setHasHair(boolean hasHair) {
-		this.hasHair = hasHair;
-	}
-
 	public void setName(HumanoidName name) {
 		this.name = name;
 	}
@@ -212,18 +209,23 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	private void selectGender(Race race, Random random) {
 		float genderTotal = 0;
-		for (Float value : race.getGenderDistribution().values()) {
-			genderTotal += value;
+		for (RaceGenderDescriptor genderDescriptor : race.getGenders().values()) {
+			genderTotal += genderDescriptor.getWeighting();
 		}
 		float genderRoll = random.nextFloat() * genderTotal;
 		this.gender = Gender.NONE;
-		for (Map.Entry<Gender, Float> entry : race.getGenderDistribution().entrySet()) {
-			genderRoll -= entry.getValue();
+		for (Map.Entry<Gender, RaceGenderDescriptor> genderDescriptorEntry : race.getGenders().entrySet()) {
+			genderRoll -= genderDescriptorEntry.getValue().getWeighting();
 			if (genderRoll <= 0) {
-				this.gender = entry.getKey();
+				this.gender = genderDescriptorEntry.getKey();
 				break;
 			}
 		}
+	}
+
+	private boolean hasHair(Race race, Gender gender, Random random) {
+		RaceGenderDescriptor genderDescriptor = race.getGenders().get(gender);
+		return random.nextFloat() < genderDescriptor.getHasHair();
 	}
 
 	@Override

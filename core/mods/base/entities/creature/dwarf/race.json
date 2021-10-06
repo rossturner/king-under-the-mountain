@@ -43,9 +43,15 @@
     "type": "Settler"
   },
 
-  "genderDistribution": {
-    "MALE": 0.5,
-    "FEMALE": 0.5
+  "genders": {
+    "MALE": {
+      "weighting": 0.5,
+      "hasHair": 0.6
+    },
+    "FEMALE": {
+      "weighting": 0.5,
+      "hasHair": 1
+    }
   },
 
   "features": {

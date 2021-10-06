@@ -24,10 +24,7 @@ import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
-import technology.rocketjump.undermount.entities.model.physical.creature.Race;
-import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
+import technology.rocketjump.undermount.entities.model.physical.creature.*;
 import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
@@ -256,7 +253,7 @@ public class CreatureViewUI implements Disposable {
 	private void createGenderWidget() {
 		SelectBox<String> genderSelect = new SelectBox<>(uiSkin);
 		Array<String> items = new Array<>();
-		for (Map.Entry<Gender, Float> genderEntry : entityAttributes.getRace().getGenderDistribution().entrySet()) {
+		for (Map.Entry<Gender, RaceGenderDescriptor> genderEntry : entityAttributes.getRace().getGenders().entrySet()) {
 			items.add(genderEntry.getKey().name());
 		}
 		genderSelect.setItems(items);

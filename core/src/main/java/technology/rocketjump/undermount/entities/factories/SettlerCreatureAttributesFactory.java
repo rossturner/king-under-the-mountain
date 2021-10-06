@@ -4,7 +4,6 @@ import com.badlogic.gdx.math.RandomXS128;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.entities.model.physical.creature.Race;
 import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -52,13 +51,6 @@ public class SettlerCreatureAttributesFactory {
 			attributes.setName(nameGenerator.create(attributes.getSeed(), attributes.getGender()));
 		}
 
-
-		if (random.nextFloat() <= chanceToHaveHair(attributes)) {
-			attributes.setHasHair(true);
-		} else {
-			attributes.setHasHair(false);
-		}
-
 		return attributes;
 	}
 
@@ -67,14 +59,4 @@ public class SettlerCreatureAttributesFactory {
 				Boolean.parseBoolean(userPreferences.getPreference(UserPreferences.PreferenceKey.TWITCH_VIEWERS_AS_SETTLER_NAMES, "false"));
 	}
 
-	private float chanceToHaveHair(CreatureEntityAttributes attributes) {
-		// MODDING expose these values
-		if (attributes.getGender().equals(Gender.MALE)) {
-			return 0.6f;
-		} else if (attributes.getGender().equals(Gender.FEMALE)) {
-			return 1f;
-		} else{
-			return 0;
-		}
-	}
 }
