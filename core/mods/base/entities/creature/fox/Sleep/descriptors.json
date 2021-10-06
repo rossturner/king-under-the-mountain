@@ -1,0 +1,161 @@
+[
+  {
+    "uniqueName": "Fox-Body-Sleep",
+    "type": "CREATURE_BODY",
+    "raceName": "Fox",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": [
+      "SLEEPING",
+      "KNOCKED_UNCONSCIOUS",
+      "DEAD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "FoxFrontBaseColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "FoxFrontSideBaseColourS.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "FoxFrontSideBaseColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "FoxBackSideBaseColourS.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "FoxBackSideBaseColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP": {
+        "filename": "FoxBackBaseColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Fox-Markings-Sleep",
+    "type": "BODY_CLOTHING",
+    "raceName": "Fox",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": [
+      "SLEEPING",
+      "KNOCKED_UNCONSCIOUS",
+      "DEAD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "FoxFrontMarkingsPlaceOntopS.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "FoxFrontSideMarkingsPlaceOntopS.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "FoxFrontSideMarkingsPlaceOntopS.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "FoxBackSideMarkingsPlaceOntopS.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "FoxBackSideMarkingsPlaceOntopS.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP": {
+        "filename": "FoxBackMarkingsPlaceOntopS.png",
+        "coloringLayer": "MARKING_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Fox-BodyOutline-Sleep",
+    "type": "BODY_OUTLINE",
+    "raceName": "Fox",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": [
+      "SLEEPING",
+      "KNOCKED_UNCONSCIOUS",
+      "DEAD"
+    ],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "FoxFrontLinesS.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "FoxFrontSideLinesS.png",
+        "flipX": true
+      },
+      "DOWN_LEFT": {
+        "filename": "FoxFrontSideLinesS.png"
+      },
+      "UP_RIGHT": {
+        "filename": "FoxBackSideLinesS.png",
+        "flipX": true
+      },
+      "UP_LEFT": {
+        "filename": "FoxBackSideLinesS.png"
+      },
+      "UP": {
+        "filename": "FoxBackLinesS.png"
+      }
+    }
+  }
+]

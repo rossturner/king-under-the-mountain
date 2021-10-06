@@ -1,0 +1,60 @@
+{
+  "name": "Replace",
+  "i18nKey": "RACE.REPLACE",
+
+  "minStrength": 5.0,
+  "maxStrength": 12.0,
+
+  "bodyStructureName": "hooved-quadruped",
+
+  "bodyShapes": [
+    {
+      "value": "AVERAGE"
+    }
+  ],
+
+  "colors": {
+    "SKIN_COLOR": {
+      "swatch": "deer-skin-swatch.png"
+    },
+    "MARKING_COLOR": {
+      "swatch": "deer-markings-swatch.png"
+    },
+    "HAIR_COLOR": {
+      "swatch": "deer-antlers-swatch.png"
+    }
+  },
+
+  "behaviour": {
+    "type": "HerdAnimal",
+    "herd": {
+      "minSize": 2,
+      "maxSize": 4
+    },
+    "aggressionResponse": "FLEE"
+  },
+
+  "genders": {
+    "MALE": {
+      "weighting": 0.5,
+      "hasHair": 1
+    },
+    "FEMALE": {
+      "weighting": 0.5,
+      "hasHair": 0
+    }
+  },
+
+  "features": {
+    "skin": {
+      "damageReduction": {
+      }
+    },
+    "bones": {
+      "materialName": "Bone"
+    },
+    "blood": {
+
+    }
+  }
+}

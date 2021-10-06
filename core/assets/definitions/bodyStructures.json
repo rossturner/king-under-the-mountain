@@ -127,4 +127,54 @@
     "organs" : [ ],
     "childParts" : [ ]
   } ]
+}, {
+  "name" : "pawed-quadruped",
+  "rootPartName" : "Torso",
+  "partDefinitions" : [ {
+    "name" : "Head",
+    "size" : 0.2,
+    "bones" : [ "SKULL" ],
+    "organs" : [ {
+      "type" : "Brain",
+      "relativeSize" : 0.25
+    }, {
+      "type" : "Eye",
+      "discriminator" : "Left",
+      "relativeSize" : 0.05
+    }, {
+      "type" : "Eye",
+      "discriminator" : "Right",
+      "relativeSize" : 0.05
+    } ],
+    "childParts" : [ ]
+  }, {
+    "name" : "Torso",
+    "size" : 1.0,
+    "bones" : [ "MEDIUM", "MEDIUM" ],
+    "organs" : [ {
+      "type" : "Heart",
+      "relativeSize" : 0.2
+    }, {
+      "type" : "Lung",
+      "discriminator" : "Left",
+      "relativeSize" : 0.25
+    }, {
+      "type" : "Lung",
+      "discriminator" : "Right",
+      "relativeSize" : 0.3
+    } ],
+    "childParts" : [ "Head", "FrontRight-Leg", "FrontLeft-Leg", "BackRight-Leg", "BackLeft-Leg" ]
+  }, {
+    "name" : "Leg",
+    "size" : 0.15,
+    "bones" : [ "MEDIUM" ],
+    "organs" : [ ],
+    "childParts" : [ "Paw" ]
+  }, {
+    "name" : "Hoof",
+    "size" : 0.01,
+    "bones" : [ ],
+    "organs" : [ ],
+    "childParts" : [ ]
+  } ]
 } ]

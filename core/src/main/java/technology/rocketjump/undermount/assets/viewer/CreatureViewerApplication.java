@@ -40,7 +40,7 @@ import static technology.rocketjump.undermount.assets.entities.model.EntityAsset
 /**
  * This class is to be used from a separate desktop launcher for checking (and reloading) character asset definitions
  */
-public class CreatureViewApplication extends ApplicationAdapter {
+public class CreatureViewerApplication extends ApplicationAdapter {
 
 	private SpriteBatch batch;
 	private ShapeRenderer shapeRenderer;
@@ -48,7 +48,7 @@ public class CreatureViewApplication extends ApplicationAdapter {
 	private EntityRenderer entityRenderer;
 	private PrimaryCameraWrapper cameraManager;
 
-	private CreatureViewUI ui;
+	private CreatureViewerUI ui;
 
 	private Entity currentEntity;
 	private CreatureEntityAttributes attributes;
@@ -97,7 +97,7 @@ public class CreatureViewApplication extends ApplicationAdapter {
 //		haulingComponent.setHauledEntity(heldItem, new MessageDispatcher(), currentEntity);
 //		currentEntity.addComponent(haulingComponent);
 
-		ui = injector.getInstance(CreatureViewUI.class);
+		ui = injector.getInstance(CreatureViewerUI.class);
 		ui.reset(currentEntity);
 
 		Gdx.input.setInputProcessor(ui.getStage());
@@ -154,12 +154,12 @@ public class CreatureViewApplication extends ApplicationAdapter {
 //		renderEntityWithOrientation(originalPosition, rotation, 2, 0, RenderMode.DIFFUSE);
 //		renderEntityWithOrientation(originalPosition, rotation, 2, -2, RenderMode.NORMALS);
 
-//		renderEntityWithOrientation(originalPosition, DOWN.toVector2(), 0, -2, RenderMode.NORMALS);
-//		renderEntityWithOrientation(originalPosition, DOWN_LEFT.toVector2(), -1, -2, RenderMode.NORMALS);
-//		renderEntityWithOrientation(originalPosition, DOWN_RIGHT.toVector2(), 1, -2, RenderMode.NORMALS);
-//		renderEntityWithOrientation(originalPosition, UP.toVector2(), 0, -1, RenderMode.NORMALS);
-//		renderEntityWithOrientation(originalPosition, UP_LEFT.toVector2(), -1, -1, RenderMode.NORMALS);
-//		renderEntityWithOrientation(originalPosition, UP_RIGHT.toVector2(), 1, -1, RenderMode.NORMALS);
+		renderEntityWithOrientation(originalPosition, DOWN.toVector2(), 0, -2, RenderMode.NORMALS);
+		renderEntityWithOrientation(originalPosition, DOWN_LEFT.toVector2(), -1, -2, RenderMode.NORMALS);
+		renderEntityWithOrientation(originalPosition, DOWN_RIGHT.toVector2(), 1, -2, RenderMode.NORMALS);
+		renderEntityWithOrientation(originalPosition, UP.toVector2(), 0, -1, RenderMode.NORMALS);
+		renderEntityWithOrientation(originalPosition, UP_LEFT.toVector2(), -1, -1, RenderMode.NORMALS);
+		renderEntityWithOrientation(originalPosition, UP_RIGHT.toVector2(), 1, -1, RenderMode.NORMALS);
 
 		batch.end();
 

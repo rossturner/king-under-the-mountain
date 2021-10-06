@@ -46,7 +46,7 @@ import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
-import static technology.rocketjump.undermount.assets.viewer.CreatureViewApplication.createItemEntity;
+import static technology.rocketjump.undermount.assets.viewer.CreatureViewerApplication.createItemEntity;
 
 /**
  * This class is to be used from a separate desktop launcher for checking (and reloading) plant asset definitions

@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.google.inject.Guice;
 import technology.rocketjump.undermount.AssetsPackager;
-import technology.rocketjump.undermount.assets.viewer.CreatureViewApplication;
+import technology.rocketjump.undermount.assets.viewer.CreatureViewerApplication;
 
 import java.io.IOException;
 
@@ -20,7 +20,7 @@ public class CreatureViewerLauncher {
 		AssetsPackager.main();
 
 
-		CreatureViewApplication gameInstance = Guice.createInjector().getInstance(CreatureViewApplication.class);
+		CreatureViewerApplication gameInstance = Guice.createInjector().getInstance(CreatureViewerApplication.class);
         new LwjglApplication(gameInstance, config);
 	}
 

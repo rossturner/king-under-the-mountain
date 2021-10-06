@@ -100,4 +100,42 @@
     },
     "blood" : { }
   }
+}, {
+  "name" : "Fox",
+  "i18nKey" : "RACE.FOX",
+  "minStrength" : 4.0,
+  "maxStrength" : 10.0,
+  "bodyStructureName" : "pawed-quadruped",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "SKIN_COLOR" : {
+      "swatch" : "fox-skin-swatch.png",
+      "hidden" : false
+    },
+    "MARKING_COLOR" : {
+      "swatch" : "fox-markings-swatch.png",
+      "hidden" : false
+    }
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : { }
+  }
 } ]

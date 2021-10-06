@@ -1,0 +1,149 @@
+[
+  {
+    "uniqueName": "Fox-Body-Awake",
+    "type": "CREATURE_BODY",
+    "raceName": "Fox",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "FoxFrontBaseColour.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "FoxFrontSideBaseColour.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "FoxFrontSideBaseColour.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "FoxBackSideBaseColour.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "FoxBackSideBaseColour.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP": {
+        "filename": "FoxBackBaseColour.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Fox-Markings-Awake",
+    "type": "BODY_CLOTHING",
+    "raceName": "Fox",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "FoxFrontMarkingsPlaceOntop.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "FoxFrontSideMarkingsPlaceOntop.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "FoxFrontSideMarkingsPlaceOntop.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "FoxBackSideMarkingsPlaceOntop.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "FoxBackSideMarkingsPlaceOntop.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP": {
+        "filename": "FoxBackMarkingsPlaceOntop.png",
+        "coloringLayer": "MARKING_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Fox-BodyOutline-Awake",
+    "type": "BODY_OUTLINE",
+    "raceName": "Fox",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "FoxFrontLines.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "FoxFrontSideLines.png",
+        "flipX": true
+      },
+      "DOWN_LEFT": {
+        "filename": "FoxFrontSideLines.png"
+      },
+      "UP_RIGHT": {
+        "filename": "FoxBackSideLines.png",
+        "flipX": true
+      },
+      "UP_LEFT": {
+        "filename": "FoxBackSideLines.png"
+      },
+      "UP": {
+        "filename": "FoxBackLines.png"
+      }
+    }
+  }
+]

@@ -13,8 +13,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -12.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -23,32 +23,32 @@
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 12.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 12.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 12.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 12.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -61,9 +61,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -10.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -71,33 +71,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -110,9 +110,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -10.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -120,33 +120,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 10.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -159,9 +159,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.5,
+        "y" : -8.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -169,33 +169,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -208,9 +208,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.5,
+        "y" : -8.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -218,33 +218,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.5,
+          "y" : 8.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -257,9 +257,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -267,33 +267,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 10.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 10.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 10.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 10.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -315,9 +315,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -8.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -332,9 +332,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -7.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -349,9 +349,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -7.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -366,9 +366,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -2.5,
+        "y" : -7.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -383,9 +383,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -2.5,
+        "y" : -7.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -400,9 +400,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -9.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -425,9 +425,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -441,9 +441,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.5,
+        "y" : -9.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -457,9 +457,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.5,
+        "y" : -9.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -473,9 +473,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.5,
+        "y" : -8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -489,9 +489,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.5,
+        "y" : -8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -505,9 +505,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -9.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -531,9 +531,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : 17.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -548,9 +548,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 7.0,
+        "y" : 18.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -565,9 +565,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -7.0,
+        "y" : 18.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -582,9 +582,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 9.0,
+        "y" : 19.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -599,9 +599,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -9.0,
+        "y" : 19.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -617,8 +617,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : 17.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -643,8 +643,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : 16.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -659,9 +659,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 6.0,
+        "y" : 18.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -676,9 +676,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -6.0,
+        "y" : 18.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -693,9 +693,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 8.5,
+        "y" : 19.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -710,9 +710,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -8.5,
+        "y" : 19.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -728,8 +728,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : 17.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -753,9 +753,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -15.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -763,33 +763,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -0.5,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -802,9 +802,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -13.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -812,33 +812,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -851,9 +851,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -13.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -861,33 +861,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 13.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -900,9 +900,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -910,33 +910,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -949,9 +949,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -959,33 +959,33 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 12.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -999,8 +999,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -17.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1009,32 +1009,32 @@
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 17.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 17.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "CREATURE_HAIR",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 17.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "HAIR_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 17.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -1056,9 +1056,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -16.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1073,9 +1073,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1090,9 +1090,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1107,9 +1107,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1124,9 +1124,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1141,9 +1141,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -17.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1166,9 +1166,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -14.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1182,9 +1182,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1198,9 +1198,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1214,9 +1214,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -11.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1230,9 +1230,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -11.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1246,9 +1246,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -17.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1272,9 +1272,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : 10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1289,9 +1289,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -9.0,
+        "y" : 11.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1306,9 +1306,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -9.0,
+        "y" : 11.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1323,9 +1323,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 8.5,
+        "y" : 12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1340,9 +1340,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 8.5,
+        "y" : 12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1358,8 +1358,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : 2.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1384,8 +1384,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : 10.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1400,9 +1400,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -7.5,
+        "y" : 12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1417,9 +1417,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -7.5,
+        "y" : 12.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1434,9 +1434,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 8.5,
+        "y" : 13.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -1451,9 +1451,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 8.5,
+        "y" : 13.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -1469,8 +1469,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : 2.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19362,6 +19362,852 @@
         "x" : 2.0,
         "y" : -3.0,
         "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-Body-Awake",
+  "type" : "CREATURE_BODY",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousness" : "AWAKE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-Markings-Awake",
+  "type" : "BODY_CLOTHING",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousness" : "AWAKE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-BodyOutline-Awake",
+  "type" : "BODY_OUTLINE",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousness" : "AWAKE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-Body-Sleep",
+  "type" : "CREATURE_BODY",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-Markings-Sleep",
+  "type" : "BODY_CLOTHING",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-BodyOutline-Sleep",
+  "type" : "BODY_OUTLINE",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
         "unit" : false
       },
       "flipX" : false,

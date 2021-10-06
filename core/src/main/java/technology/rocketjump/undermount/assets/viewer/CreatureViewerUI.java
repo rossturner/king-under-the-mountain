@@ -37,7 +37,7 @@ import java.util.Optional;
 
 import static technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetsByProfession.NULL_ENTITY_ASSET;
 
-public class CreatureViewUI implements Disposable {
+public class CreatureViewerUI implements Disposable {
 
 	private final Profession defaultProfession;
 	private Skin uiSkin = new Skin(Gdx.files.internal("assets/ui/libgdx-default/uiskin.json")); // MODDING expose this or change uiskin.json
@@ -58,10 +58,10 @@ public class CreatureViewUI implements Disposable {
 	private SelectBox<String> bodyTypeSelect;
 
 	@Inject
-	public CreatureViewUI(CreatureEntityAssetDictionary assetDictionary,
-						  EntityAssetTypeDictionary assetTypeDictionary, ProfessionDictionary professionDictionary,
-						  EntityAssetUpdater entityAssetUpdater, RaceDictionary raceDictionary,
-						  ProfessionDictionary professionDictionary1) {
+	public CreatureViewerUI(CreatureEntityAssetDictionary assetDictionary,
+							EntityAssetTypeDictionary assetTypeDictionary, ProfessionDictionary professionDictionary,
+							EntityAssetUpdater entityAssetUpdater, RaceDictionary raceDictionary,
+							ProfessionDictionary professionDictionary1) {
 		this.assetDictionary = assetDictionary;
 		this.assetTypeDictionary = assetTypeDictionary;
 		this.entityAssetUpdater = entityAssetUpdater;
