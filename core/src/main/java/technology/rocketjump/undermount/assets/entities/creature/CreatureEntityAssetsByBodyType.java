@@ -4,6 +4,7 @@ import technology.rocketjump.undermount.assets.entities.creature.model.CreatureB
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureBodyShapeDescriptor;
 import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
 import technology.rocketjump.undermount.jobs.model.Profession;
 
 import java.util.EnumMap;
@@ -14,11 +15,11 @@ public class CreatureEntityAssetsByBodyType {
 
 	private Map<CreatureBodyShape, CreatureEntityAssetsByGender> bodyTypeMap = new EnumMap<>(CreatureBodyShape.class);
 
-	public CreatureEntityAssetsByBodyType(List<CreatureBodyShapeDescriptor> bodyTypesForRace) {
-		for (CreatureBodyShapeDescriptor type : bodyTypesForRace) {
-			bodyTypeMap.put(type.getValue(), new CreatureEntityAssetsByGender());
+	public CreatureEntityAssetsByBodyType(Race race) {
+		for (CreatureBodyShapeDescriptor type : race.getBodyShapes()) {
+			bodyTypeMap.put(type.getValue(), new CreatureEntityAssetsByGender(race));
 		}
-		bodyTypeMap.put(CreatureBodyShape.ANY, new CreatureEntityAssetsByGender());
+		bodyTypeMap.put(CreatureBodyShape.ANY, new CreatureEntityAssetsByGender(race));
 	}
 
 	public void add(CreatureEntityAsset asset) {

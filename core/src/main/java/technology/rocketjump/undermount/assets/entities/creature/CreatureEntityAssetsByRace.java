@@ -20,7 +20,7 @@ public class CreatureEntityAssetsByRace {
 		NO_RACE.setName("None");
 		// not adding all race placeholders
 		for (Race race : raceDictionary.getAll()) {
-			raceMap.put(race, new CreatureEntityAssetsByBodyType(race.getBodyShapes()));
+			raceMap.put(race, new CreatureEntityAssetsByBodyType(race));
 		}
 	}
 
@@ -34,7 +34,7 @@ public class CreatureEntityAssetsByRace {
 //		} else {
 			// currently assuming all creature assets are race-specific
 			// Specific race only
-			raceMap.computeIfAbsent(race, a -> new CreatureEntityAssetsByBodyType(race.getBodyShapes())).add(asset);
+			raceMap.computeIfAbsent(race, a -> new CreatureEntityAssetsByBodyType(race)).add(asset);
 //			raceMap.get(NO_RACE).add(asset);
 //		}
 	}

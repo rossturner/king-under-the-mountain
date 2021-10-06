@@ -1,4 +1,307 @@
 [ {
+  "uniqueName" : "Deer-Body-Awake",
+  "type" : "CREATURE_BODY",
+  "raceName" : "Deer",
+  "bodyShape" : "AVERAGE",
+  "consciousness" : "AWAKE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Deer_ColourBody_Front.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "CREATURE_HAIR",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "HAIR_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "Deer_ColourBody_FrontSide.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "CREATURE_HAIR",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "HAIR_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "Deer_ColourBody_FrontSide.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "CREATURE_HAIR",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "HAIR_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "Deer_ColourBody_BackSide.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "CREATURE_HAIR",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "HAIR_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "Deer_ColourBody_BackSide.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "CREATURE_HAIR",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "HAIR_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "DeerColourBodyBack.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "CREATURE_HAIR",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      }, {
+        "type" : "HAIR_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 0.0,
+          "zero" : true,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "Dwarf-Beard01-Color",
   "type" : "CREATURE_BEARD",
   "raceName" : "Dwarf",
@@ -5099,7 +5402,7 @@
   "type" : "CREATURE_BODY",
   "raceName" : "Dwarf",
   "bodyShape" : "AVERAGE",
-  "gender" : "NONE",
+  "consciousness" : "DEAD",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
@@ -5264,7 +5567,7 @@
   "type" : "CREATURE_BODY",
   "raceName" : "Dwarf",
   "bodyShape" : "FAT",
-  "gender" : "NONE",
+  "consciousness" : "DEAD",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
@@ -5429,7 +5732,7 @@
   "type" : "CREATURE_BODY",
   "raceName" : "Dwarf",
   "bodyShape" : "STRONG",
-  "gender" : "NONE",
+  "consciousness" : "DEAD",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
@@ -17675,7 +17978,7 @@
   "uniqueName" : "Dwarf-Skull",
   "type" : "CREATURE_HEAD",
   "raceName" : "Dwarf",
-  "gender" : "NONE",
+  "consciousness" : "DEAD",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {

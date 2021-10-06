@@ -1,0 +1,119 @@
+[{
+  "uniqueName": "Deer-Body-Awake",
+  "type": "CREATURE_BODY",
+  "raceName": "Deer",
+  "bodyShape": "AVERAGE",
+  "consciousness": "AWAKE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Deer_ColourBody_Front.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "BODY_CLOTHING"
+        },
+        {
+          "type": "BODY_OUTLINE"
+        },
+        {
+          "type": "CREATURE_HAIR"
+        },
+        {
+          "type": "HAIR_OUTLINE"
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Deer_ColourBody_FrontSide.png",
+      "flipX": true,
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "BODY_CLOTHING"
+        },
+        {
+          "type": "BODY_OUTLINE"
+        },
+        {
+          "type": "CREATURE_HAIR"
+        },
+        {
+          "type": "HAIR_OUTLINE"
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Deer_ColourBody_FrontSide.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "BODY_CLOTHING"
+        },
+        {
+          "type": "BODY_OUTLINE"
+        },
+        {
+          "type": "CREATURE_HAIR"
+        },
+        {
+          "type": "HAIR_OUTLINE"
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Deer_ColourBody_BackSide.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "BODY_CLOTHING"
+        },
+        {
+          "type": "BODY_OUTLINE"
+        },
+        {
+          "type": "CREATURE_HAIR"
+        },
+        {
+          "type": "HAIR_OUTLINE"
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Deer_ColourBody_BackSide.png",
+      "flipX": true,
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "BODY_CLOTHING"
+        },
+        {
+          "type": "BODY_OUTLINE"
+        },
+        {
+          "type": "CREATURE_HAIR"
+        },
+        {
+          "type": "HAIR_OUTLINE"
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Deer_ColourBody_Back.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "BODY_CLOTHING"
+        },
+        {
+          "type": "BODY_OUTLINE"
+        },
+        {
+          "type": "CREATURE_HAIR"
+        },
+        {
+          "type": "HAIR_OUTLINE"
+        }
+      ]
+    }
+  }
+}]

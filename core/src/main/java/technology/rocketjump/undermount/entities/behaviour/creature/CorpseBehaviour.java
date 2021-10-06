@@ -9,7 +9,6 @@ import technology.rocketjump.undermount.entities.components.humanoid.Professions
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -66,7 +65,6 @@ public class CorpseBehaviour implements BehaviourComponent {
 
 	public void setToFullyDecayed(CreatureEntityAttributes attributes) {
 		decayedAmount = HOURS_TO_FULLY_DECAY;
-		attributes.setGender(Gender.NONE);
 		ProfessionsComponent professionsComponent = parentEntity.getComponent(ProfessionsComponent.class);
 		if (professionsComponent != null) {
 			professionsComponent.clear();
