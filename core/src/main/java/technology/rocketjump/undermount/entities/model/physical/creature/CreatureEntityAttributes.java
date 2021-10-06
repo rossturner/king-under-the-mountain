@@ -78,7 +78,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 			colors.put(colorEntry.getKey(), colorEntry.getValue().getColor(seed));
 		}
 		selectGender(race, random);
-		this.hasHair = hasHair(race, gender, random);
+		this.hasHair = hasHair(race);
 	}
 
 	@Override
@@ -147,6 +147,7 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+		this.hasHair = hasHair(race);
 	}
 
 	public Gender getGender() {
@@ -223,9 +224,9 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		}
 	}
 
-	private boolean hasHair(Race race, Gender gender, Random random) {
+	private boolean hasHair(Race race) {
 		RaceGenderDescriptor genderDescriptor = race.getGenders().get(gender);
-		return random.nextFloat() < genderDescriptor.getHasHair();
+		return new RandomXS128(seed).nextFloat() < genderDescriptor.getHasHair();
 	}
 
 	@Override

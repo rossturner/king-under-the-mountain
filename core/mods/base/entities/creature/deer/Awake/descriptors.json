@@ -1,119 +1,255 @@
-[{
-  "uniqueName": "Deer-Body-Awake",
-  "type": "CREATURE_BODY",
-  "raceName": "Deer",
-  "bodyShape": "AVERAGE",
-  "consciousness": "AWAKE",
-  "spriteDescriptors": {
-    "DOWN": {
-      "filename": "Deer_ColourBody_Front.png",
-      "coloringLayer": "SKIN_COLOR",
-      "childAssets": [
-        {
-          "type": "BODY_CLOTHING"
-        },
-        {
-          "type": "BODY_OUTLINE"
-        },
-        {
-          "type": "CREATURE_HAIR"
-        },
-        {
-          "type": "HAIR_OUTLINE"
-        }
-      ]
-    },
-    "DOWN_RIGHT": {
-      "filename": "Deer_ColourBody_FrontSide.png",
-      "flipX": true,
-      "coloringLayer": "SKIN_COLOR",
-      "childAssets": [
-        {
-          "type": "BODY_CLOTHING"
-        },
-        {
-          "type": "BODY_OUTLINE"
-        },
-        {
-          "type": "CREATURE_HAIR"
-        },
-        {
-          "type": "HAIR_OUTLINE"
-        }
-      ]
-    },
-    "DOWN_LEFT": {
-      "filename": "Deer_ColourBody_FrontSide.png",
-      "coloringLayer": "SKIN_COLOR",
-      "childAssets": [
-        {
-          "type": "BODY_CLOTHING"
-        },
-        {
-          "type": "BODY_OUTLINE"
-        },
-        {
-          "type": "CREATURE_HAIR"
-        },
-        {
-          "type": "HAIR_OUTLINE"
-        }
-      ]
-    },
-    "UP_RIGHT": {
-      "filename": "Deer_ColourBody_BackSide.png",
-      "coloringLayer": "SKIN_COLOR",
-      "childAssets": [
-        {
-          "type": "BODY_CLOTHING"
-        },
-        {
-          "type": "BODY_OUTLINE"
-        },
-        {
-          "type": "CREATURE_HAIR"
-        },
-        {
-          "type": "HAIR_OUTLINE"
-        }
-      ]
-    },
-    "UP_LEFT": {
-      "filename": "Deer_ColourBody_BackSide.png",
-      "flipX": true,
-      "coloringLayer": "SKIN_COLOR",
-      "childAssets": [
-        {
-          "type": "BODY_CLOTHING"
-        },
-        {
-          "type": "BODY_OUTLINE"
-        },
-        {
-          "type": "CREATURE_HAIR"
-        },
-        {
-          "type": "HAIR_OUTLINE"
-        }
-      ]
-    },
-    "UP": {
-      "filename": "Deer_ColourBody_Back.png",
-      "coloringLayer": "SKIN_COLOR",
-      "childAssets": [
-        {
-          "type": "BODY_CLOTHING"
-        },
-        {
-          "type": "BODY_OUTLINE"
-        },
-        {
-          "type": "CREATURE_HAIR"
-        },
-        {
-          "type": "HAIR_OUTLINE"
-        }
-      ]
+[
+  {
+    "uniqueName": "Deer-Body-Awake",
+    "type": "CREATURE_BODY",
+    "raceName": "Deer",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "DeerColourBodyFront.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "DeerColourBodyFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "DeerColourBodyFrontSide.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "DeerColourBodyBackSide.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "DeerColourBodyBackSide.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "UP": {
+        "filename": "DeerColourBodyBack.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Deer-Markings-Awake",
+    "type": "BODY_CLOTHING",
+    "raceName": "Deer",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "DeerColourMarkingsFront.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "DeerColourMarkingsFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "DeerColourMarkingsFrontSide.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "DeerColourMarkingsBackSide.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "DeerColourMarkingsBackSide.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP": {
+        "filename": "DeerColourMarkingsBack.png",
+        "coloringLayer": "MARKING_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Deer-BodyOutline-Awake",
+    "type": "BODY_OUTLINE",
+    "raceName": "Deer",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "DeerLinesBodyFront.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "DeerLinesBodyFrontSide.png",
+        "flipX": true
+      },
+      "DOWN_LEFT": {
+        "filename": "DeerLinesBodyFrontSide.png"
+      },
+      "UP_RIGHT": {
+        "filename": "DeerLinesBodyBackSide.png"
+      },
+      "UP_LEFT": {
+        "filename": "DeerLinesBodyBackSide.png",
+        "flipX": true
+      },
+      "UP": {
+        "filename": "DeerLinesBodyBack.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Deer-Antlers-Awake",
+    "type": "CREATURE_HAIR",
+    "raceName": "Deer",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "DeerColourAntlersFront.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "DeerColourAntlersFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "DeerColourAntlersFrontSide.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "DeerColourAntlersBackSide.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "DeerColourAntlersBackSide.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP": {
+        "filename": "DeerColourAntlersBack.png",
+        "coloringLayer": "HAIR_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Deer-AntlersOutline-Awake",
+    "type": "HAIR_OUTLINE",
+    "raceName": "Deer",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "DeerLinesAntlersFront.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "DeerLinesAntlersFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "DeerLinesAntlersFrontSide.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "DeerLinesAntlersBackSide.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "DeerLinesAntlersBackSide.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP": {
+        "filename": "DeerLinesAntlersBack.png",
+        "coloringLayer": "HAIR_COLOR"
+      }
     }
   }
-}]
+]

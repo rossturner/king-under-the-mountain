@@ -62,6 +62,7 @@ public class EntityAssetUpdater {
 	public final EntityAssetType FURNITURE_BASE_LAYER;
 	public final EntityAssetType CREATURE_BODY;
 	public final EntityAssetType CREATURE_HAIR;
+	public final EntityAssetType HAIR_OUTLINE;
 	public final EntityAssetType CREATURE_EYEBROWS;
 	public final EntityAssetType CREATURE_BEARD;
 	public final EntityAssetType CREATURE_LEFT_HAND;
@@ -99,6 +100,7 @@ public class EntityAssetUpdater {
 
 		CREATURE_HEAD = entityAssetTypeDictionary.getByName("CREATURE_HEAD");
 		CREATURE_HAIR = entityAssetTypeDictionary.getByName("CREATURE_HAIR");
+		HAIR_OUTLINE = entityAssetTypeDictionary.getByName("HAIR_OUTLINE");
 		CREATURE_EYEBROWS = entityAssetTypeDictionary.getByName("CREATURE_EYEBROWS");
 		CREATURE_BEARD = entityAssetTypeDictionary.getByName("CREATURE_BEARD");
 
@@ -165,6 +167,7 @@ public class EntityAssetUpdater {
 		// Some gender-specific stuff that should be extracted elsewhere
 		if (!attributes.getHasHair()) {
 			entity.getPhysicalEntityComponent().getTypeMap().remove(CREATURE_HAIR);
+			entity.getPhysicalEntityComponent().getTypeMap().remove(HAIR_OUTLINE);
 		}
 		if (attributes.getGender().equals(Gender.FEMALE)) {
 			entity.getPhysicalEntityComponent().getTypeMap().remove(CREATURE_EYEBROWS);
