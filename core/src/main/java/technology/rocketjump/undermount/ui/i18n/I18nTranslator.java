@@ -108,7 +108,11 @@ public class I18nTranslator implements I18nUpdatable {
 		}
 		switch (entity.getType()) {
 			case CREATURE:
-				return getDescription(entity, (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());
+				if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
+					return getSettlerDescription(entity, (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());
+				} else {
+					return getCreatureDescription(entity, (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());
+				}
 			case ITEM:
 				ItemEntityAttributes itemAttributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				return getItemDescription(itemAttributes.getQuantity(), itemAttributes.getMaterial(itemAttributes.getItemType().getPrimaryMaterialType()), itemAttributes.getItemType());
@@ -441,7 +445,7 @@ public class I18nTranslator implements I18nUpdatable {
 		return applyReplacements(dictionary.getWord("CONSTRUCTION.DESCRIPTION"), replacements, Gender.ANY);
 	}
 
-	private I18nText getDescription(Entity entity, CreatureEntityAttributes attributes) {
+	private I18nText getSettlerDescription(Entity entity, CreatureEntityAttributes attributes) {
 		Map<String, I18nString> replacements = new HashMap<>();
 		replacements.put("name", new I18nWord(attributes.getName().toString()));
 		replacements.put("race", dictionary.getWord(attributes.getRace().getI18nKey()));
@@ -462,6 +466,12 @@ public class I18nTranslator implements I18nUpdatable {
 
 			return applyReplacements(dictionary.getWord("HUMANOID.DESCRIPTION"), replacements, attributes.getGender());
 		}
+	}
+
+
+	private I18nText getCreatureDescription(Entity entity, CreatureEntityAttributes attributes) {
+		I18nWord raceWord = dictionary.getWord(attributes.getRace().getI18nKey());
+		return new I18nText(raceWord.get(I18nWordClass.NOUN, attributes.getGender()), raceWord.hasTooltip() ? raceWord.getKey() : null);
 	}
 
 	public I18nText getItemDescription(int quantity, GameMaterial material, ItemType itemType) {

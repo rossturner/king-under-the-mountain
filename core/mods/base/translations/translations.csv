@@ -509,6 +509,7 @@ HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENT
 HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,,,,,,,,,,,,,
 HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
+CREATURE.DESCRIPTION,,{{gender.adjective}} {{race.noun}},,,,,,,,,,,,,
 HUMANOID.DESCRIPTION,"E.g. “Urist McScrooge, Dwarven miner”","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{profession.noun}} {{race.adjective}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.noun}}-{{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}",,"{{name}}, {{race.adjective}} og {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}","{{name}}, {{race.adjective}} {{profession.noun}}"
 HUMANOID.BROKEN.DESCRIPTION,"E.g. “Urist McScrooge, insane dwarf”","{{name}}, {{madness.adjective}} {{race.noun}}",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -867,6 +868,8 @@ PROFESSION.WOODCUTTER.TOOLTIP,,Cuts down trees as lumber that can be used in a {
 QUOTA.FIXED_AMOUNT,,in total,,,,,,,,,,,,,
 QUOTA.PER_SETTLER,,per settler,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
+RACE.DEER.MALE_NOUN,,Stag,,,,,,,,,,,,,
+RACE.DEER.FEMALE_NOUN,,Doe,,,,,,,,,,,,,
 RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,Naine,Enana,zwergische,nana,Enânica,De anã,Гномий,Krasnoludzka,Dwergachtige,Dvärg-,Dverg,Törpe,kääpiöihin kuuluva
 RACE.DWARF.FEMALE_NOUN,,Dwarf,Naine,Enana,Zwergin,Nana,Anã,Anã,Гномка,Krasnoludka,Dwerg,Dvärg,Dverg,Törpe,Kääpiö
 RACE.DWARF.FEMALE_PLURAL,,Dwarves,Naines,Enanas,Zwerge,Nane,Anãs,Anãs,Гномы,Krasnoludki,Dwergen,Dvärgar,Dverger,Törpék,Kääpiöt

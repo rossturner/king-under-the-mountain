@@ -8,7 +8,6 @@ import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.ai.goap.GoalDictionary;
 import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
-import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
@@ -49,7 +48,8 @@ public class SettlerEntityFactory {
 		PhysicalEntityComponent physicalComponent = new PhysicalEntityComponent();
 		physicalComponent.setAttributes(attributes);
 
-		BehaviourComponent behaviourComponent = new SettlerBehaviour(goalDictionary, scheduleDictionary, roomStore);
+		SettlerBehaviour behaviourComponent = new SettlerBehaviour();
+		behaviourComponent.constructWith(goalDictionary, scheduleDictionary, roomStore);
 
 		LocationComponent locationComponent = new LocationComponent();
 		locationComponent.setWorldPosition(worldPosition, true);

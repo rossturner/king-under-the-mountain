@@ -65,7 +65,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 
 	}
 
-	public SettlerBehaviour(GoalDictionary goalDictionary, ScheduleDictionary scheduleDictionary, RoomStore roomStore) {
+	public void constructWith(GoalDictionary goalDictionary, ScheduleDictionary scheduleDictionary, RoomStore roomStore) {
 		this.goalDictionary = goalDictionary;
 		this.schedule = scheduleDictionary.settlerSchedule;
 		this.roomStore = roomStore;

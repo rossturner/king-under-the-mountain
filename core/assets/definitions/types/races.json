@@ -21,6 +21,13 @@
       "hidden" : false
     }
   },
+  "behaviour" : {
+    "behaviourName" : "HerdAnimal",
+    "group" : {
+      "minSize" : 2,
+      "maxSize" : 4
+    }
+  },
   "genders" : {
     "MALE" : {
       "weighting" : 0.5,
@@ -77,6 +84,9 @@
       "hidden" : false
     }
   },
+  "behaviour" : {
+    "behaviourName" : "Settler"
+  },
   "genders" : {
     "MALE" : {
       "weighting" : 0.5,
@@ -118,6 +128,9 @@
       "swatch" : "fox-markings-swatch.png",
       "hidden" : false
     }
+  },
+  "behaviour" : {
+    "behaviourName" : "SolitaryAnimal"
   },
   "genders" : {
     "MALE" : {

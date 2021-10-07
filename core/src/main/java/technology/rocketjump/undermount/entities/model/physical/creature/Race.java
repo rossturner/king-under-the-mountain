@@ -32,6 +32,8 @@ public class Race {
 
 	private Map<ColoringLayer, SpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
 
+	private RaceBehaviour behaviour;
+
 	private Map<Gender, RaceGenderDescriptor> genders = new EnumMap<>(Gender.class);
 
 	private RaceFeatures features = new RaceFeatures();
@@ -132,5 +134,13 @@ public class Race {
 
 	public void setGenders(Map<Gender, RaceGenderDescriptor> genders) {
 		this.genders = genders;
+	}
+
+	public RaceBehaviour getBehaviour() {
+		return behaviour;
+	}
+
+	public void setBehaviour(RaceBehaviour behaviour) {
+		this.behaviour = behaviour;
 	}
 }

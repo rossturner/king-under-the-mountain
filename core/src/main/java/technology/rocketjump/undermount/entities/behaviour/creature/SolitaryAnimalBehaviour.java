@@ -8,7 +8,7 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
-public class HerdAnimalBehaviour extends CreatureBehaviour {
+public class SolitaryAnimalBehaviour extends CreatureBehaviour {
 
 	@Override
 	public EntityComponent clone(MessageDispatcher messageDispatcher, GameContext gameContext) {

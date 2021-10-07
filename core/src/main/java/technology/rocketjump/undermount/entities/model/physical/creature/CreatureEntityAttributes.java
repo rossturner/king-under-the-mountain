@@ -297,10 +297,6 @@ public class CreatureEntityAttributes implements EntityAttributes {
 		}
 		consciousness = EnumParser.getEnumValue(asJson, "consciousness", Consciousness.class, AWAKE);
 		sanity = EnumParser.getEnumValue(asJson, "sanity", Sanity.class, SANE);
-		String bodyMaterialName = asJson.getString("bodyMaterial");
-		if (bodyMaterialName == null) {
-			throw new InvalidSaveException("Old save format");
-		}
 	}
 
 	public Map<ColoringLayer, Color> getColors() {

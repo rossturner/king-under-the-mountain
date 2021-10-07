@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviourDictionary;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
@@ -22,12 +23,15 @@ public class RaceDictionary {
 
 	private final GameMaterialDictionary gameMaterialDictionary;
 	private final BodyStructureDictionary bodyStructureDictionary;
+	private final CreatureBehaviourDictionary creatureBehaviourDictionary;
 	private final Map<String, Race> byName = new HashMap<>();
 
 	@Inject
-	public RaceDictionary(GameMaterialDictionary gameMaterialDictionary, BodyStructureDictionary bodyStructureDictionary) throws IOException {
+	public RaceDictionary(GameMaterialDictionary gameMaterialDictionary, BodyStructureDictionary bodyStructureDictionary,
+						  CreatureBehaviourDictionary creatureBehaviourDictionary) throws IOException {
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.bodyStructureDictionary = bodyStructureDictionary;
+		this.creatureBehaviourDictionary = creatureBehaviourDictionary;
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		File itemTypeJsonFile = new File("assets/definitions/types/races.json");
@@ -73,6 +77,14 @@ public class RaceDictionary {
 				Logger.error("Could not find material " + race.getFeatures().getSkin().getSkinMaterialName() +
 						" for skin as part of race " + race.getName());
 			}
+		}
+
+		if (race.getBehaviour() == null) {
+			throw new RuntimeException("Behaviour section does not exist for " + race.getName());
+		}
+		race.getBehaviour().setBehaviourClass(creatureBehaviourDictionary.getByName(race.getBehaviour().getBehaviourName()));
+		if (race.getBehaviour().getBehaviourClass() == null) {
+			Logger.error(String.format("Could not find behaviour with name %s for race %s", race.getBehaviour().getBehaviourName(), race.getName()));
 		}
 
 	}
