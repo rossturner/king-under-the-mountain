@@ -19385,9 +19385,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -4.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19395,17 +19395,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 0.5,
+          "y" : 4.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 0.5,
+          "y" : 4.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19419,8 +19419,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -2.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19429,16 +19429,16 @@
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19452,8 +19452,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -2.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19462,16 +19462,16 @@
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19484,9 +19484,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19494,17 +19494,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19517,9 +19517,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19527,17 +19527,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19551,8 +19551,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -5.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19561,16 +19561,16 @@
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 5.5,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 5.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19593,8 +19593,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -5.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19609,9 +19609,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.5,
+        "y" : -3.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19626,9 +19626,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.5,
+        "y" : -3.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19643,9 +19643,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -7.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19660,9 +19660,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -7.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19678,8 +19678,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -5.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19702,9 +19702,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -4.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19718,9 +19718,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 0.5,
+        "y" : -2.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19734,9 +19734,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -2.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19750,9 +19750,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19766,9 +19766,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19783,8 +19783,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -5.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19809,8 +19809,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -15.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19819,16 +19819,16 @@
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
           "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19841,9 +19841,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -15.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19851,17 +19851,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19874,9 +19874,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.0,
+        "y" : -15.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19884,17 +19884,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -1.0,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19907,9 +19907,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -11.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -19917,17 +19917,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19940,9 +19940,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -11.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19950,17 +19950,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19973,9 +19973,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -4.0,
+        "y" : -15.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19983,17 +19983,17 @@
       "childAssets" : [ {
         "type" : "BODY_CLOTHING",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 4.0,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       }, {
         "type" : "BODY_OUTLINE",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : 4.0,
+          "y" : 15.0,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -20015,9 +20015,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.5,
+        "y" : -23.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20032,9 +20032,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 6.5,
+        "y" : -20.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -20049,9 +20049,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -6.5,
+        "y" : -20.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20066,9 +20066,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -15.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -20083,9 +20083,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -15.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20100,9 +20100,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -4.0,
+        "y" : -24.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20125,9 +20125,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -0.5,
+        "y" : -15.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20142,8 +20142,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -10.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -20158,8 +20158,8 @@
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "y" : -10.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20173,9 +20173,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : true,
@@ -20189,9 +20189,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.0,
+        "y" : -10.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20205,9 +20205,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -4.0,
+        "y" : -13.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,

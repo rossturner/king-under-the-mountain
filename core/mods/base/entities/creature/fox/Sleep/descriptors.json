@@ -15,12 +15,24 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_CLOTHING"
+            "type": "BODY_CLOTHING",
+            "offsetPixels": {
+              "x": 0.0,
+              "y": 15.0
+            }
           },
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 0.0,
+              "y": 15.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -15.0
+        }
       },
       "DOWN_RIGHT": {
         "filename": "FoxFrontSideBaseColourS.png",
@@ -28,24 +40,48 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_CLOTHING"
+            "type": "BODY_CLOTHING",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 15.0
+            }
           },
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 15.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 1.0,
+          "y": -15.0
+        }
       },
       "DOWN_LEFT": {
         "filename": "FoxFrontSideBaseColourS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_CLOTHING"
+            "type": "BODY_CLOTHING",
+            "offsetPixels": {
+              "x": -1.0,
+              "y": 15.0
+            }
           },
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": -1.0,
+              "y": 15.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 1.0,
+          "y": -15.0
+        }
       },
       "UP_RIGHT": {
         "filename": "FoxBackSideBaseColourS.png",
@@ -53,36 +89,72 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_CLOTHING"
+            "type": "BODY_CLOTHING",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 11.0
+            }
           },
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 11.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -11.0
+        }
       },
       "UP_LEFT": {
         "filename": "FoxBackSideBaseColourS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_CLOTHING"
+            "type": "BODY_CLOTHING",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 11.0
+            }
           },
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 11.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -11.0
+        }
       },
       "UP": {
         "filename": "FoxBackBaseColourS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_CLOTHING"
+            "type": "BODY_CLOTHING",
+            "offsetPixels": {
+              "x": 4.0,
+              "y": 15.0
+            }
           },
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 4.0,
+              "y": 15.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -4.0,
+          "y": -15.0
+        }
       }
     }
   },
@@ -99,29 +171,53 @@
     "spriteDescriptors": {
       "DOWN": {
         "filename": "FoxFrontMarkingsPlaceOntopS.png",
-        "coloringLayer": "MARKING_COLOR"
+        "coloringLayer": "MARKING_COLOR",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -23.0
+        }
       },
       "DOWN_RIGHT": {
         "filename": "FoxFrontSideMarkingsPlaceOntopS.png",
         "flipX": true,
-        "coloringLayer": "MARKING_COLOR"
+        "coloringLayer": "MARKING_COLOR",
+        "offsetPixels": {
+          "x": 6.5,
+          "y": -20.0
+        }
       },
       "DOWN_LEFT": {
         "filename": "FoxFrontSideMarkingsPlaceOntopS.png",
-        "coloringLayer": "MARKING_COLOR"
+        "coloringLayer": "MARKING_COLOR",
+        "offsetPixels": {
+          "x": -6.5,
+          "y": -20.0
+        }
       },
       "UP_RIGHT": {
         "filename": "FoxBackSideMarkingsPlaceOntopS.png",
         "flipX": true,
-        "coloringLayer": "MARKING_COLOR"
+        "coloringLayer": "MARKING_COLOR",
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -15.5
+        }
       },
       "UP_LEFT": {
         "filename": "FoxBackSideMarkingsPlaceOntopS.png",
-        "coloringLayer": "MARKING_COLOR"
+        "coloringLayer": "MARKING_COLOR",
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -15.5
+        }
       },
       "UP": {
         "filename": "FoxBackMarkingsPlaceOntopS.png",
-        "coloringLayer": "MARKING_COLOR"
+        "coloringLayer": "MARKING_COLOR",
+        "offsetPixels": {
+          "x": -4.0,
+          "y": -24.5
+        }
       }
     }
   },
@@ -137,24 +233,48 @@
     ],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "FoxFrontLinesS.png"
+        "filename": "FoxFrontLinesS.png",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -15.0
+        }
       },
       "DOWN_RIGHT": {
         "filename": "FoxFrontSideLinesS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -10.0
+        }
       },
       "DOWN_LEFT": {
-        "filename": "FoxFrontSideLinesS.png"
+        "filename": "FoxFrontSideLinesS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -10.0
+        }
       },
       "UP_RIGHT": {
         "filename": "FoxBackSideLinesS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -10.5
+        }
       },
       "UP_LEFT": {
-        "filename": "FoxBackSideLinesS.png"
+        "filename": "FoxBackSideLinesS.png",
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -10.5
+        }
       },
       "UP": {
-        "filename": "FoxBackLinesS.png"
+        "filename": "FoxBackLinesS.png",
+        "offsetPixels": {
+          "x": -4.0,
+          "y": -13.0
+        }
       }
     }
   }
