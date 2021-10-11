@@ -5,6 +5,7 @@ import com.badlogic.gdx.ai.GdxAI;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.math.GridPoint2;
 import org.apache.commons.lang3.NotImplementedException;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.persistence.JSONUtils;
@@ -33,6 +34,8 @@ public class PersistableTelegram extends Telegram implements ChildPersistable {
 			if (extraInfo instanceof Job) {
 				Job job = (Job) extraInfo;
 				extraInfoJson.put("jobId", job.getJobId());
+			} else if (extraInfo instanceof Entity) {
+				extraInfoJson.put("entityId", ((Entity) extraInfo).getId());
 			} else if (extraInfo instanceof EntityMessage) {
 				EntityMessage entityMessage = (EntityMessage) extraInfo;
 				extraInfoJson.put("entityId", entityMessage.getEntityId());
@@ -64,10 +67,9 @@ public class PersistableTelegram extends Telegram implements ChildPersistable {
 					throw new InvalidSaveException("Could not find job by ID " + jobId);
 				}
 				this.extraInfo = job;
-			} else if (className.equals(EntityMessage.class.getSimpleName())) {
+			} else if (className.equals(Entity.class.getSimpleName())) {
 				Long entityId = extraInfoJson.getLong("entityId");
-				EntityMessage entityMessage = new EntityMessage(entityId);
-				this.extraInfo = entityMessage;
+				this.extraInfo = savedGameStateHolder.entities.get(entityId);
 			} else if (className.equals(GridPoint2.class.getSimpleName())) {
 				this.extraInfo = JSONUtils.gridPoint2(extraInfoJson.getJSONObject("location"));
 			} else {

@@ -110,7 +110,9 @@ public class ScreenManager implements Telegraph, GameContextAware {
 		}
 		// Trigger context change again for camera to be updated with map
 		gameContextRegister.setNewContext(gameContext);
-		gameContext.getAreaMap().setEmbarkPoint(null);
+		if (GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+			gameContext.getAreaMap().setEmbarkPoint(null);
+		}
 
 		mainGameScreen.show();
 	}

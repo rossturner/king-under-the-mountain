@@ -21,6 +21,8 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
+import static technology.rocketjump.undermount.entities.ai.goap.EntityNeed.DRINK;
+import static technology.rocketjump.undermount.entities.ai.goap.EntityNeed.FOOD;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.*;
@@ -38,11 +40,14 @@ public class SleepOnFloorAction extends Action {
 			changeToSleeping(gameContext);
 		}
 
-		parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_ON_GROUND);
+		HappinessComponent happinessComponent = parent.parentEntity.getComponent(HappinessComponent.class);
+		if (happinessComponent != null) {
+			happinessComponent.add(SLEPT_ON_GROUND);
 
-		MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldPosition());
-		if (currentTile != null && currentTile.hasRoom() && currentTile.getRoomTile().getRoom().isFullyEnclosed()) {
-			parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_IN_ENCLOSED_BEDROOM);
+			MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldPosition());
+			if (currentTile != null && currentTile.hasRoom() && currentTile.getRoomTile().getRoom().isFullyEnclosed()) {
+				happinessComponent.add(SLEPT_IN_ENCLOSED_BEDROOM);
+			}
 		}
 
 		checkForWakingUp(gameContext);
@@ -65,30 +70,35 @@ public class SleepOnFloorAction extends Action {
 
 	protected void checkForWakingUp(GameContext gameContext) {
 		MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldOrParentPosition());
-		if (OPEN.equals(currentTile.getRoof().getState())) {
-			parent.parentEntity.getComponent(HappinessComponent.class).add(SLEPT_OUTSIDE);
+		HappinessComponent happinessComponent = parent.parentEntity.getComponent(HappinessComponent.class);
+		if (OPEN.equals(currentTile.getRoof().getState()) && happinessComponent != null) {
+			happinessComponent.add(SLEPT_OUTSIDE);
 
 			if (gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().containsKey(WeatherType.HappinessInteraction.SLEEPING)) {
-				parent.parentEntity.getComponent(HappinessComponent.class).add(gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().get(WeatherType.HappinessInteraction.SLEEPING));
+				happinessComponent.add(gameContext.getMapEnvironment().getCurrentWeather().getHappinessModifiers().get(WeatherType.HappinessInteraction.SLEEPING));
 			}
 		}
 
 		NeedsComponent needsComponent = parent.parentEntity.getComponent(NeedsComponent.class);
 		// All changes in need amounts are handled by SettlerBehaviour
 		if (needsComponent.getValue(EntityNeed.SLEEP) >= 100.0) {
-			if (OPEN.equals(currentTile.getRoof().getState()) && gameContext.getMapEnvironment().getCurrentWeather().getChanceToFreezeToDeathFromSleeping() != null) {
-				float roll = gameContext.getRandom().nextFloat();
-				if (roll < gameContext.getMapEnvironment().getCurrentWeather().getChanceToFreezeToDeathFromSleeping()) {
-					// RIP
-					parent.messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(parent.parentEntity, DeathReason.FROZEN));
-					completionType = FAILURE;
-					return;
+			if (happinessComponent != null) {
+				// Only entities with tracked happiness can freeze outside
+
+				if (OPEN.equals(currentTile.getRoof().getState()) && gameContext.getMapEnvironment().getCurrentWeather().getChanceToFreezeToDeathFromSleeping() != null) {
+					float roll = gameContext.getRandom().nextFloat();
+					if (roll < gameContext.getMapEnvironment().getCurrentWeather().getChanceToFreezeToDeathFromSleeping()) {
+						parent.messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(parent.parentEntity, DeathReason.FROZEN));
+						completionType = FAILURE;
+						return;
+					}
 				}
 			}
 
 			changeToAwake();
 			completionType = SUCCESS;
-		} else if (needsComponent.getValue(EntityNeed.FOOD) <= 0.0 || needsComponent.getValue(EntityNeed.DRINK) <= 0.0) {
+		} else if ((needsComponent.has(FOOD) && needsComponent.getValue(FOOD) <= 0.0)
+				|| (needsComponent.has(DRINK) && needsComponent.getValue(DRINK) <= 0.0)) {
 			// Currently starving or dehydrated so wake up after sleep at 30%
 			if (needsComponent.getValue(EntityNeed.SLEEP) >= 30.0) {
 				changeToAwake();
@@ -109,27 +119,32 @@ public class SleepOnFloorAction extends Action {
 		entity.getLocationComponent().setLinearVelocity(Vector2.Zero);
 		entity.getBehaviourComponent().getSteeringComponent().destinationReached();
 
-		// face in a direction and rotate as appropriate
-		if (gameContext.getRandom().nextBoolean()) {
-			entity.getLocationComponent().setRotation(80f + (gameContext.getRandom().nextFloat() * 20f));
-			if (gameContext.getRandom().nextBoolean()) {
-				entity.getLocationComponent().setFacing(DOWN_LEFT.toVector2());
-			} else {
-				entity.getLocationComponent().setFacing(DOWN.toVector2());
-			}
+		if (entity.isJobAssignable()) {
+			// Only job assignable rotate and face certain direction
 
-		} else {
-			entity.getLocationComponent().setRotation(260f + (gameContext.getRandom().nextFloat() * 20f));
+			// face in a direction and rotate as appropriate
 			if (gameContext.getRandom().nextBoolean()) {
-				entity.getLocationComponent().setFacing(DOWN_RIGHT.toVector2());
-			} else {
-				entity.getLocationComponent().setFacing(DOWN.toVector2());
-			}
+				entity.getLocationComponent().setRotation(80f + (gameContext.getRandom().nextFloat() * 20f));
+				if (gameContext.getRandom().nextBoolean()) {
+					entity.getLocationComponent().setFacing(DOWN_LEFT.toVector2());
+				} else {
+					entity.getLocationComponent().setFacing(DOWN.toVector2());
+				}
 
+			} else {
+				entity.getLocationComponent().setRotation(260f + (gameContext.getRandom().nextFloat() * 20f));
+				if (gameContext.getRandom().nextBoolean()) {
+					entity.getLocationComponent().setFacing(DOWN_RIGHT.toVector2());
+				} else {
+					entity.getLocationComponent().setFacing(DOWN.toVector2());
+				}
+			}
 		}
 		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		attributes.setConsciousness(consciousness);
-		messageDispatcher.dispatchMessage(MessageType.ENTITY_FELL_ASLEEP);
+		if (entity.isJobAssignable()) {
+			messageDispatcher.dispatchMessage(MessageType.SETTLER_FELL_ASLEEP);
+		}
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, entity);
 	}
 
@@ -140,7 +155,9 @@ public class SleepOnFloorAction extends Action {
 		parent.parentEntity.getLocationComponent().setRotation(0);
 
 		attributes.setConsciousness(Consciousness.AWAKE);
-		parent.messageDispatcher.dispatchMessage(MessageType.ENTITY_WOKE_UP);
+		if (parent.parentEntity.isJobAssignable()) {
+			parent.messageDispatcher.dispatchMessage(MessageType.SETTLER_WOKE_UP);
+		}
 		parent.messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parent.parentEntity);
 	}
 }

@@ -23,6 +23,8 @@
   },
   "behaviour" : {
     "behaviourName" : "HerdAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ],
     "group" : {
       "minSize" : 2,
       "maxSize" : 4
@@ -85,7 +87,9 @@
     }
   },
   "behaviour" : {
-    "behaviourName" : "Settler"
+    "behaviourName" : "Settler",
+    "scheduleName" : "Default Settler Schedule",
+    "needs" : [ "FOOD", "DRINK", "SLEEP" ]
   },
   "genders" : {
     "MALE" : {
@@ -130,7 +134,9 @@
     }
   },
   "behaviour" : {
-    "behaviourName" : "SolitaryAnimal"
+    "behaviourName" : "SolitaryAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ]
   },
   "genders" : {
     "MALE" : {

@@ -240,7 +240,7 @@ public class I18nText implements I18nString {
 	}
 
 	public boolean isEmpty() {
-		return textElements.isEmpty();
+		return textElements.isEmpty() || textElements.stream().allMatch(e -> e.getText().isEmpty());
 	}
 
 	@Override

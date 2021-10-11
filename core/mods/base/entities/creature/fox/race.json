@@ -24,6 +24,8 @@
 
   "behaviour": {
     "behaviourName": "SolitaryAnimal",
+    "scheduleName": "Diurnal animal",
+    "needs": ["SLEEP"],
     "aggressionResponse": "MIXED"
   },
 

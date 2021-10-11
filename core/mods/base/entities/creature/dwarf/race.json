@@ -40,7 +40,9 @@
   },
 
   "behaviour": {
-    "behaviourName": "Settler"
+    "behaviourName": "Settler",
+    "scheduleName": "Default Settler Schedule",
+    "needs": ["FOOD", "DRINK", "SLEEP"]
   },
 
   "genders": {

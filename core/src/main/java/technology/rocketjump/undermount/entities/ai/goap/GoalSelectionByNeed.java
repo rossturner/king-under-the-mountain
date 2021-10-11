@@ -26,7 +26,7 @@ public class GoalSelectionByNeed implements GoalSelectionCondition {
 	@JsonIgnore
 	@Override
 	public boolean apply(GameClock gameClock, NeedsComponent needsComponent, MemoryComponent memoryComponent) {
-		if (needsComponent == null) {
+		if (needsComponent == null || !needsComponent.has(need)) {
 			return false;
 		}
 		double needValue = needsComponent.getValue(need);

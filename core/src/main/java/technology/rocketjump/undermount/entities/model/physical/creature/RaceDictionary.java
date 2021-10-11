@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
 import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviourDictionary;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
@@ -24,14 +25,16 @@ public class RaceDictionary {
 	private final GameMaterialDictionary gameMaterialDictionary;
 	private final BodyStructureDictionary bodyStructureDictionary;
 	private final CreatureBehaviourDictionary creatureBehaviourDictionary;
+	private final ScheduleDictionary scheduleDictionary;
 	private final Map<String, Race> byName = new HashMap<>();
 
 	@Inject
 	public RaceDictionary(GameMaterialDictionary gameMaterialDictionary, BodyStructureDictionary bodyStructureDictionary,
-						  CreatureBehaviourDictionary creatureBehaviourDictionary) throws IOException {
+						  CreatureBehaviourDictionary creatureBehaviourDictionary, ScheduleDictionary scheduleDictionary) throws IOException {
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.bodyStructureDictionary = bodyStructureDictionary;
 		this.creatureBehaviourDictionary = creatureBehaviourDictionary;
+		this.scheduleDictionary = scheduleDictionary;
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		File itemTypeJsonFile = new File("assets/definitions/types/races.json");
@@ -85,6 +88,10 @@ public class RaceDictionary {
 		race.getBehaviour().setBehaviourClass(creatureBehaviourDictionary.getByName(race.getBehaviour().getBehaviourName()));
 		if (race.getBehaviour().getBehaviourClass() == null) {
 			Logger.error(String.format("Could not find behaviour with name %s for race %s", race.getBehaviour().getBehaviourName(), race.getName()));
+		}
+		race.getBehaviour().setSchedule(scheduleDictionary.getByName(race.getBehaviour().getScheduleName()));
+		if (race.getBehaviour().getSchedule() == null) {
+			Logger.error(String.format("Could not find scheudle %s for race %s", race.getBehaviour().getBehaviourName(), race.getName()));
 		}
 
 	}

@@ -6,7 +6,6 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.ai.goap.GoalDictionary;
-import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
@@ -29,17 +28,15 @@ public class SettlerEntityFactory {
 	private final EntityAssetUpdater entityAssetUpdater;
 	private final ProfessionDictionary professionDictionary;
 	private final GoalDictionary goalDictionary;
-	private final ScheduleDictionary scheduleDictionary;
 	private final RoomStore roomStore;
 
 	@Inject
 	public SettlerEntityFactory(MessageDispatcher messageDispatcher, ProfessionDictionary professionDictionary,
-								EntityAssetUpdater entityAssetUpdater, GoalDictionary goalDictionary, ScheduleDictionary scheduleDictionary, RoomStore roomStore) {
+								EntityAssetUpdater entityAssetUpdater, GoalDictionary goalDictionary, RoomStore roomStore) {
 		this.messageDispatcher = messageDispatcher;
 		this.professionDictionary = professionDictionary;
 		this.entityAssetUpdater = entityAssetUpdater;
 		this.goalDictionary = goalDictionary;
-		this.scheduleDictionary = scheduleDictionary;
 		this.roomStore = roomStore;
 	}
 
@@ -49,7 +46,7 @@ public class SettlerEntityFactory {
 		physicalComponent.setAttributes(attributes);
 
 		SettlerBehaviour behaviourComponent = new SettlerBehaviour();
-		behaviourComponent.constructWith(goalDictionary, scheduleDictionary, roomStore);
+		behaviourComponent.constructWith(goalDictionary, roomStore);
 
 		LocationComponent locationComponent = new LocationComponent();
 		locationComponent.setWorldPosition(worldPosition, true);
@@ -69,7 +66,7 @@ public class SettlerEntityFactory {
 		}
 		entity.addComponent(professionsComponent);
 
-		NeedsComponent needsComponent = new NeedsComponent(gameContext.getRandom());
+		NeedsComponent needsComponent = new NeedsComponent(attributes.getRace().getBehaviour().getNeeds(), gameContext.getRandom());
 		entity.addComponent(needsComponent);
 		entity.addComponent(new MemoryComponent());
 

@@ -18,7 +18,6 @@ import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.EntityStore;
 import technology.rocketjump.undermount.entities.ai.goap.GoalDictionary;
-import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureCategoryDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
@@ -103,8 +102,6 @@ public class I18NTranslatorTest {
 	@Mock
 	private GoalDictionary mockGoalDictionary;
 	@Mock
-	private ScheduleDictionary mockScheduleDictionary;
-	@Mock
 	private RoomStore mockRoomStore;
 	@Mock
 	private JobTypeDictionary mockJobTypeDictionary;
@@ -160,7 +157,7 @@ public class I18NTranslatorTest {
 		profession.setI18nKey("PROFESSION.BLACKSMITH");
 		Entity entity = new SettlerEntityFactory(
 				mockMessageDispatcher, new ProfessionDictionary(), mockEntityAssetUpdater,
-				mockGoalDictionary, mockScheduleDictionary, mockRoomStore).create(attributes, null, new Vector2(), profession, profession, mockGameContext);
+				mockGoalDictionary, mockRoomStore).create(attributes, null, new Vector2(), profession, profession, mockGameContext);
 
 		I18nText description = translator.getDescription(entity);
 

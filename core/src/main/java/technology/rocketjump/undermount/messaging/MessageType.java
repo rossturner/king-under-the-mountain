@@ -77,8 +77,8 @@ public class MessageType {
 	public static final int ENTITY_DO_NOT_TRACK = 327;
 	public static final int ITEM_PRIMARY_MATERIAL_CHANGED = 328;
 
-	public static final int ENTITY_FELL_ASLEEP = 330;
-	public static final int ENTITY_WOKE_UP = 331;
+	public static final int SETTLER_FELL_ASLEEP = 330;
+	public static final int SETTLER_WOKE_UP = 331;
 
 	public static final int PATHFINDING_REQUEST = 332;
 	public static final int CHANGE_PROFESSION = 333;

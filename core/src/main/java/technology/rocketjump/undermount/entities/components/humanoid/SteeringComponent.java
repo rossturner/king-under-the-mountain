@@ -13,7 +13,6 @@ import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.NullMapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
@@ -84,7 +83,7 @@ public class SteeringComponent implements ChildPersistable {
 			if (nextTile.hasDoorway()) {
 				DoorState doorState = nextTile.getDoorway().getDoorState();
 				if (!doorState.equals(DoorState.OPEN)) {
-					messageDispatcher.dispatchMessage(MessageType.REQUEST_DOOR_OPEN, new EntityMessage(nextTile.getDoorway().getDoorEntity().getId()));
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_DOOR_OPEN, nextTile.getDoorway().getDoorEntity());
 					waitingForDoorToOpen = true;
 				}
 			}

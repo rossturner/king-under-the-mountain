@@ -370,8 +370,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.REQUEST_DOOR_OPEN: {
-				EntityMessage entityMessage = (EntityMessage) msg.extraInfo;
-				Entity doorEntity = entityStore.getById(entityMessage.getEntityId());
+				Entity doorEntity = (Entity) msg.extraInfo;
 				DoorBehaviour doorBehaviour = (DoorBehaviour) doorEntity.getBehaviourComponent();
 				doorBehaviour.doorOpenRequested();
 				return true;

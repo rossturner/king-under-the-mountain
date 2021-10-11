@@ -33,8 +33,8 @@ import java.util.stream.Collectors;
 @Singleton
 public class CreaturePopulator {
 
-	private static final int MIN_ANIMALS_PER_MAP = 19;
-	private static final int MAX_ANIMALS_PER_MAP = 37;
+	private static final int MIN_ANIMALS_PER_MAP = 29;
+	private static final int MAX_ANIMALS_PER_MAP = 57;
 	// MODDING expose the below as a global constant
 	private static final List<Class<? extends BehaviourComponent>> ANIMAL_BEHAVIOURS = List.of(
 			HerdAnimalBehaviour.class
@@ -61,6 +61,8 @@ public class CreaturePopulator {
 				.filter(r -> r.getBehaviour().getBehaviourClass() != null && ANIMAL_BEHAVIOURS.contains(r.getBehaviour().getBehaviourClass()))
 				.collect(Collectors.toList());
 		Set<GridPoint2> creatureSpawnLocations = new HashSet<>();
+
+		Logger.debug("Adding " + animalsToAdd + " animals");
 
 		while (animalsToAdd > 0) {
 			Race selectedRace = animalRaces.get(gameContext.getRandom().nextInt(animalRaces.size()));
@@ -96,6 +98,8 @@ public class CreaturePopulator {
 			}
 
 		}
+
+		Logger.debug("Finished adding animals with " + animalsToAdd + " remaining");
 	}
 
 	private MapTile findSpawnLocation(GameContext gameContext, Set<GridPoint2> creatureSpawnLocations) {

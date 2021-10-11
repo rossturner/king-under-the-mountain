@@ -128,158 +128,152 @@ public class I18nTranslator implements I18nUpdatable {
 		}
 	}
 
-	public I18nText getCurrentGoalDescription(Entity entity, GameContext gameContext) {
-		if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
-			SettlerBehaviour behaviour = (SettlerBehaviour) entity.getBehaviourComponent();
-			CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-			AssignedGoal currentGoal = behaviour.getCurrentGoal();
-			if (currentGoal == null || currentGoal.goal.i18nDescription == null) {
-				return BLANK;
-			} else {
-				I18nWord description = dictionary.getWord(currentGoal.goal.i18nDescription);
-				Action currentAction = currentGoal.getCurrentAction();
-				if (currentAction != null && currentAction.getDescriptionOverrideI18nKey() != null) {
-					description = dictionary.getWord(currentAction.getDescriptionOverrideI18nKey());
+	public I18nText getCurrentGoalDescription(Entity entity, AssignedGoal currentGoal, GameContext gameContext) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		if (currentGoal == null || currentGoal.goal.i18nDescription == null) {
+			return BLANK;
+		} else {
+			I18nWord description = dictionary.getWord(currentGoal.goal.i18nDescription);
+			Action currentAction = currentGoal.getCurrentAction();
+			if (currentAction != null && currentAction.getDescriptionOverrideI18nKey() != null) {
+				description = dictionary.getWord(currentAction.getDescriptionOverrideI18nKey());
+			}
+			if (entity.isOnFire()) {
+				description = dictionary.getWord("GOAL.ON_FIRE.DESCRIPTION");
+			}
+
+			Map<String, I18nString> replacements = new HashMap<>();
+
+			if (currentGoal.getFoodAllocation() != null && currentGoal.getFoodAllocation().getTargetEntity() != null) {
+				if (currentGoal.getFoodAllocation().getTargetEntity().getType().equals(EntityType.ITEM)) {
+					ItemEntityAttributes itemAttributes = (ItemEntityAttributes) currentGoal.getFoodAllocation().getTargetEntity().getPhysicalEntityComponent().getAttributes();
+					GameMaterial material = itemAttributes.getMaterial(itemAttributes.getItemType().getPrimaryMaterialType());
+					replacements.put("targetDescription", getItemDescription(1, material, itemAttributes.getItemType()));
 				}
-				if (entity.isOnFire()) {
-					description = dictionary.getWord("GOAL.ON_FIRE.DESCRIPTION");
+			} else if (currentGoal.getLiquidAllocation() != null) {
+				replacements.put("targetDescription", currentGoal.getLiquidAllocation().getLiquidMaterial().getI18nValue());
+			} else if (currentGoal.getAssignedHaulingAllocation() != null) {
+				HaulingAllocation haulingAllocation = currentGoal.getAssignedHaulingAllocation();
+				Entity hauledEntity = gameContext.getEntities().get(haulingAllocation.getHauledEntityId());
+				I18nString targetDescription = getDescription(hauledEntity);
+				if (hauledEntity != null && hauledEntity.getType().equals(EntityType.ITEM)) {
+					// Override item description to use hauled quantity
+					ItemEntityAttributes hauledEntityAttributes = (ItemEntityAttributes) hauledEntity.getPhysicalEntityComponent().getAttributes();
+					targetDescription = getItemDescription(haulingAllocation.getItemAllocation().getAllocationAmount(), hauledEntityAttributes.getPrimaryMaterial(), hauledEntityAttributes.getItemType());
 				}
 
-				Map<String, I18nString> replacements = new HashMap<>();
+				replacements.put("targetDescription", targetDescription);
 
-				if (currentGoal.getFoodAllocation() != null && currentGoal.getFoodAllocation().getTargetEntity() != null) {
-					if (currentGoal.getFoodAllocation().getTargetEntity().getType().equals(EntityType.ITEM)) {
-						ItemEntityAttributes itemAttributes = (ItemEntityAttributes) currentGoal.getFoodAllocation().getTargetEntity().getPhysicalEntityComponent().getAttributes();
-						GameMaterial material = itemAttributes.getMaterial(itemAttributes.getItemType().getPrimaryMaterialType());
-						replacements.put("targetDescription", getItemDescription(1, material, itemAttributes.getItemType()));
+				if (ZONE.equals(haulingAllocation.getTargetPositionType())) {
+					MapTile targetTile = gameContext.getAreaMap().getTile(haulingAllocation.getTargetPosition());
+					Optional<Zone> filteredZone = targetTile.getZones().stream().filter(zone -> zone.getClassification().getZoneType().equals(ZoneClassification.ZoneType.LIQUID_SOURCE)).findFirst();
+					if (filteredZone.isPresent()) {
+						replacements.put("targetZoneMaterial", filteredZone.get().getClassification().getTargetMaterial().getI18nValue());
 					}
-				} else if (currentGoal.getLiquidAllocation() != null) {
-					replacements.put("targetDescription", currentGoal.getLiquidAllocation().getLiquidMaterial().getI18nValue());
-				} else if (currentGoal.getAssignedHaulingAllocation() != null) {
-					HaulingAllocation haulingAllocation = currentGoal.getAssignedHaulingAllocation();
-					Entity hauledEntity = gameContext.getEntities().get(haulingAllocation.getHauledEntityId());
-					I18nString targetDescription = getDescription(hauledEntity);
-					if (hauledEntity != null && hauledEntity.getType().equals(EntityType.ITEM)) {
-						// Override item description to use hauled quantity
-						ItemEntityAttributes hauledEntityAttributes = (ItemEntityAttributes) hauledEntity.getPhysicalEntityComponent().getAttributes();
-						targetDescription = getItemDescription(haulingAllocation.getItemAllocation().getAllocationAmount(), hauledEntityAttributes.getPrimaryMaterial(), hauledEntityAttributes.getItemType());
-					}
+				}
+			} else if (currentGoal.getAssignedJob() != null) {
+				Job job = currentGoal.getAssignedJob();
+				description = dictionary.getWord(job.getType().getOverrideI18nKey());
+				Profession requiredProfession = job.getRequiredProfession();
+				if (requiredProfession == null || NULL_PROFESSION.equals(requiredProfession)) {
+					requiredProfession = professionDictionary.getDefault();
+				}
+				replacements.put("profession", dictionary.getWord(requiredProfession.getI18nKey()));
 
-					replacements.put("targetDescription", targetDescription);
-
-					if (ZONE.equals(haulingAllocation.getTargetPositionType())) {
-						MapTile targetTile = gameContext.getAreaMap().getTile(haulingAllocation.getTargetPosition());
-						Optional<Zone> filteredZone = targetTile.getZones().stream().filter(zone -> zone.getClassification().getZoneType().equals(ZoneClassification.ZoneType.LIQUID_SOURCE)).findFirst();
-						if (filteredZone.isPresent()) {
-							replacements.put("targetZoneMaterial", filteredZone.get().getClassification().getTargetMaterial().getI18nValue());
+				if (job.getTargetId() != null) {
+					Entity targetEntity = entityStore.getById(job.getTargetId());
+					if (job.getCookingRecipe() != null && job.getCookingRecipe().getOutputDescriptionI18nKey() != null) {
+						Map<String, I18nString> recipeReplacements = new HashMap<>();
+						if (job.getCookingRecipe().getOutputMaterial() != null) {
+							recipeReplacements.put("materialDescription", job.getCookingRecipe().getOutputMaterial().getI18nValue());
+						} else {
+							recipeReplacements.put("materialDescription", BLANK);
 						}
-					}
-				} else if (currentGoal.getAssignedJob() != null) {
-					Job job = currentGoal.getAssignedJob();
-					description = dictionary.getWord(job.getType().getOverrideI18nKey());
-					Profession requiredProfession = job.getRequiredProfession();
-					if (requiredProfession == null || NULL_PROFESSION.equals(requiredProfession)) {
-						requiredProfession = professionDictionary.getDefault();
-					}
-					replacements.put("profession", dictionary.getWord(requiredProfession.getI18nKey()));
+						I18nWord descriptionWord = dictionary.getWord(job.getCookingRecipe().getOutputDescriptionI18nKey());
 
-					if (job.getTargetId() != null) {
-						Entity targetEntity = entityStore.getById(job.getTargetId());
-						if (job.getCookingRecipe() != null && job.getCookingRecipe().getOutputDescriptionI18nKey() != null) {
-							Map<String, I18nString> recipeReplacements = new HashMap<>();
-							if (job.getCookingRecipe().getOutputMaterial() != null) {
-								recipeReplacements.put("materialDescription", job.getCookingRecipe().getOutputMaterial().getI18nValue());
-							} else {
-								recipeReplacements.put("materialDescription", BLANK);
-							}
-							I18nWord descriptionWord = dictionary.getWord(job.getCookingRecipe().getOutputDescriptionI18nKey());
-
-							if (job.getCookingRecipe().getVerbOverrideI18nKey() != null) {
-								replacements.put("profession", dictionary.getWord(job.getCookingRecipe().getVerbOverrideI18nKey()));
-							}
-
-							I18nText targetDescription = applyReplacements(descriptionWord, recipeReplacements, Gender.ANY);
-							replacements.put("targetDescription", targetDescription);
-						} else if (targetEntity != null) {
-							replacements.put("targetDescription", getDescription(targetEntity));
-							if (targetEntity.getType().equals(EntityType.PLANT)) {
-								replacements.put("targetPlant", getDescription(targetEntity));
-							}
-						} else if (job.getJobLocation() != null) {
-							MapTile targetTile = gameContext.getAreaMap().getTile(job.getJobLocation());
-							if (targetTile.hasConstruction()) {
-								replacements.put("targetDescription", getConstructionTargetDescrption(targetTile.getConstruction()));
-							}
+						if (job.getCookingRecipe().getVerbOverrideI18nKey() != null) {
+							replacements.put("profession", dictionary.getWord(job.getCookingRecipe().getVerbOverrideI18nKey()));
 						}
 
-						if (targetEntity != null && targetEntity.getBehaviourComponent() instanceof CraftingStationBehaviour) {
-							CraftingStationBehaviour craftingStationBehaviour = (CraftingStationBehaviour) targetEntity.getBehaviourComponent();
-							if (craftingStationBehaviour.getCurrentProductionAssignment() != null) {
-								ProductionAssignment assignment = craftingStationBehaviour.getCurrentProductionAssignment();
-								QuantifiedItemTypeWithMaterial output = assignment.targetRecipe.getOutput().get(0);
-								I18nText targetDescription;
-								// FIXME some duplication of the below
-								if (output.isLiquid()) {
-									targetDescription = getLiquidDescription(output.getMaterial(), output.getQuantity());
-								} else {
-									targetDescription = getItemDescription(output.getQuantity(),
-											output.getMaterial(),
-											output.getItemType());
-								}
-								replacements.put("targetDescription", targetDescription);
-
-								if (assignment.targetRecipe.getVerbOverrideI18nKey() != null) {
-									replacements.put("profession", dictionary.getWord(assignment.targetRecipe.getVerbOverrideI18nKey()));
-								}
-							}
+						I18nText targetDescription = applyReplacements(descriptionWord, recipeReplacements, Gender.ANY);
+						replacements.put("targetDescription", targetDescription);
+					} else if (targetEntity != null) {
+						replacements.put("targetDescription", getDescription(targetEntity));
+						if (targetEntity.getType().equals(EntityType.PLANT)) {
+							replacements.put("targetPlant", getDescription(targetEntity));
 						}
-
 					} else if (job.getJobLocation() != null) {
 						MapTile targetTile = gameContext.getAreaMap().getTile(job.getJobLocation());
 						if (targetTile.hasConstruction()) {
 							replacements.put("targetDescription", getConstructionTargetDescrption(targetTile.getConstruction()));
-						} else if (targetTile.hasDoorway()) {
-							replacements.put("targetDescription", getDescription(targetTile.getDoorway().getDoorEntity()));
-						} else if (targetTile.getFloor().hasBridge()) {
-							replacements.put("targetDescription", getDescription(targetTile.getFloor().getBridge()));
-						} else {
-							replacements.put("targetDescription", getDescription(targetTile));
 						}
+					}
 
-						for (Entity targetTileEntity : targetTile.getEntities()) {
-							if (targetTileEntity.getType().equals(EntityType.PLANT)) {
-								replacements.put("targetPlant", getDescription(targetTileEntity));
-								break;
+					if (targetEntity != null && targetEntity.getBehaviourComponent() instanceof CraftingStationBehaviour) {
+						CraftingStationBehaviour craftingStationBehaviour = (CraftingStationBehaviour) targetEntity.getBehaviourComponent();
+						if (craftingStationBehaviour.getCurrentProductionAssignment() != null) {
+							ProductionAssignment assignment = craftingStationBehaviour.getCurrentProductionAssignment();
+							QuantifiedItemTypeWithMaterial output = assignment.targetRecipe.getOutput().get(0);
+							I18nText targetDescription;
+							// FIXME some duplication of the below
+							if (output.isLiquid()) {
+								targetDescription = getLiquidDescription(output.getMaterial(), output.getQuantity());
+							} else {
+								targetDescription = getItemDescription(output.getQuantity(),
+										output.getMaterial(),
+										output.getItemType());
+							}
+							replacements.put("targetDescription", targetDescription);
+
+							if (assignment.targetRecipe.getVerbOverrideI18nKey() != null) {
+								replacements.put("profession", dictionary.getWord(assignment.targetRecipe.getVerbOverrideI18nKey()));
 							}
 						}
 					}
 
-					if (job.getRequiredItemType() != null) {
-						InventoryComponent.InventoryEntry requiredItem;
-						if (job.getRequiredItemMaterial() != null) {
-							requiredItem = entity.getComponent(InventoryComponent.class).findByItemTypeAndMaterial(job.getRequiredItemType(), job.getRequiredItemMaterial(), gameContext.getGameClock());
-						} else {
-							requiredItem = entity.getComponent(InventoryComponent.class).findByItemType(job.getRequiredItemType(), gameContext.getGameClock());
-						}
+				} else if (job.getJobLocation() != null) {
+					MapTile targetTile = gameContext.getAreaMap().getTile(job.getJobLocation());
+					if (targetTile.hasConstruction()) {
+						replacements.put("targetDescription", getConstructionTargetDescrption(targetTile.getConstruction()));
+					} else if (targetTile.hasDoorway()) {
+						replacements.put("targetDescription", getDescription(targetTile.getDoorway().getDoorEntity()));
+					} else if (targetTile.getFloor().hasBridge()) {
+						replacements.put("targetDescription", getDescription(targetTile.getFloor().getBridge()));
+					} else {
+						replacements.put("targetDescription", getDescription(targetTile));
+					}
 
-						if (requiredItem != null) {
-							replacements.put("requiredItem", getDescription(requiredItem.entity));
+					for (Entity targetTileEntity : targetTile.getEntities()) {
+						if (targetTileEntity.getType().equals(EntityType.PLANT)) {
+							replacements.put("targetPlant", getDescription(targetTileEntity));
+							break;
 						}
 					}
 				}
 
-				if (entity.getLocationComponent().getContainerEntity() != null) {
-					replacements.put("containerDescription", getDescription(entity.getLocationComponent().getContainerEntity()));
-				} else if (entity.getLocationComponent().getWorldPosition() != null) {
-					// Not in container entity
-					MapTile currentTile = gameContext.getAreaMap().getTile(entity.getLocationComponent().getWorldPosition());
-					replacements.put("tileDescription", getDescription(currentTile));
-				}
+				if (job.getRequiredItemType() != null) {
+					InventoryComponent.InventoryEntry requiredItem;
+					if (job.getRequiredItemMaterial() != null) {
+						requiredItem = entity.getComponent(InventoryComponent.class).findByItemTypeAndMaterial(job.getRequiredItemType(), job.getRequiredItemMaterial(), gameContext.getGameClock());
+					} else {
+						requiredItem = entity.getComponent(InventoryComponent.class).findByItemType(job.getRequiredItemType(), gameContext.getGameClock());
+					}
 
- 				return applyReplacements(description, replacements, attributes.getGender());
+					if (requiredItem != null) {
+						replacements.put("requiredItem", getDescription(requiredItem.entity));
+					}
+				}
 			}
-		} else {
-			return BLANK; // Not supporting non-humanoid entities yet
+
+			if (entity.getLocationComponent().getContainerEntity() != null) {
+				replacements.put("containerDescription", getDescription(entity.getLocationComponent().getContainerEntity()));
+			} else if (entity.getLocationComponent().getWorldPosition() != null) {
+				// Not in container entity
+				MapTile currentTile = gameContext.getAreaMap().getTile(entity.getLocationComponent().getWorldPosition());
+				replacements.put("tileDescription", getDescription(currentTile));
+			}
+
+			return applyReplacements(description, replacements, attributes.getGender());
 		}
 	}
 

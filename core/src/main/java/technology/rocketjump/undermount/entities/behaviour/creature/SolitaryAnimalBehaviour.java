@@ -16,11 +16,6 @@ public class SolitaryAnimalBehaviour extends CreatureBehaviour {
 	}
 
 	@Override
-	public void update(float deltaTime, GameContext gameContext) {
-
-	}
-
-	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
 	}

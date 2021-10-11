@@ -54,28 +54,22 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 	protected GoalDictionary goalDictionary;
 	protected RoomStore roomStore;
 
-	protected Schedule schedule;
 	protected AssignedGoal currentGoal;
 	protected final GoalQueue goalQueue = new GoalQueue();
 	protected SteeringComponent steeringComponent = new SteeringComponent();
 	protected transient double lastUpdateGameTime;
 	private static final int DISTANCE_TO_LOOK_AROUND = 5;
 
-	public SettlerBehaviour() {
-
-	}
-
-	public void constructWith(GoalDictionary goalDictionary, ScheduleDictionary scheduleDictionary, RoomStore roomStore) {
+	public void constructWith(GoalDictionary goalDictionary, RoomStore roomStore) {
 		this.goalDictionary = goalDictionary;
-		this.schedule = scheduleDictionary.settlerSchedule;
 		this.roomStore = roomStore;
 	}
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		this.lastUpdateGameTime = gameContext.getGameClock().getCurrentGameTime();
-		this.messageDispatcher = messageDispatcher;
 		this.parentEntity = parentEntity;
+		this.messageDispatcher = messageDispatcher;
 		steeringComponent.init(parentEntity, gameContext.getAreaMap(), parentEntity.getLocationComponent(), messageDispatcher);
 
 		if (currentGoal != null) {
@@ -176,7 +170,8 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 			return placeInventoryItemsGoal;
 		}
 
-		List<ScheduleCategory> currentScheduleCategories = schedule.getCurrentApplicableCategories(gameContext.getGameClock());
+		Schedule schedule = ((CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getRace().getBehaviour().getSchedule();
+		List<ScheduleCategory> currentScheduleCategories = schedule == null ? List.of() : schedule.getCurrentApplicableCategories(gameContext.getGameClock());
 		QueuedGoal nextGoal = goalQueue.popNextGoal(currentScheduleCategories);
 		if (nextGoal == null) {
 			return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
@@ -393,10 +388,6 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
-		if (schedule != null) {
-			asJson.put("schedule", schedule.getName());
-		}
-
 		if (currentGoal != null) {
 			JSONObject currentGoalJson = new JSONObject(true);
 			currentGoal.writeTo(currentGoalJson, savedGameStateHolder);
@@ -420,13 +411,6 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		this.goalDictionary = relatedStores.goalDictionary;
 		this.roomStore = relatedStores.roomStore;
-		String scheduleName = asJson.getString("schedule");
-		if (scheduleName != null) {
-			this.schedule = relatedStores.scheduleDictionary.getByName(asJson.getString("schedule"));
-			if (this.schedule == null) {
-				throw new InvalidSaveException("Could not find schedule with name " + asJson.getString("schedule"));
-			}
-		}
 
 		JSONObject currentGoalJson = asJson.getJSONObject("currentGoal");
 		if (currentGoalJson != null) {

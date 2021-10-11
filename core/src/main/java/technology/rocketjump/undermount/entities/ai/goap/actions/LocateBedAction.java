@@ -24,8 +24,13 @@ public class LocateBedAction extends Action implements FurnitureAssignmentCallba
 
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
-		parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_ASSIGNMENT,
-				new FurnitureAssignmentRequest(BedSleepingPositionTag.class, parent.parentEntity, this, willingToSleepOnFloor));
+		if (parent.parentEntity.getBehaviourComponent().isJobAssignable()) {
+			parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_ASSIGNMENT,
+					new FurnitureAssignmentRequest(BedSleepingPositionTag.class, parent.parentEntity, this, willingToSleepOnFloor));
+		} else {
+			// For animals / non-settlers
+			completionType = FAILURE;
+		}
 	}
 
 	@Override

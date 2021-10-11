@@ -5,7 +5,10 @@ import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.actions.location.GoToLocationAction;
 import technology.rocketjump.undermount.entities.ai.goap.actions.location.GoToRandomLocationAction;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureGroup;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -14,10 +17,12 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
+import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 
 public class IdleAction extends Action {
 
 	private static final double MAX_HOURS_TO_IDLE = 0.2;
+	private static final float MAX_SEPARATION_FROM_CREATURE_GROUP = 7f;
 
 	public IdleAction(AssignedGoal parent) {
 		super(parent);
@@ -78,13 +83,20 @@ public class IdleAction extends Action {
 	public static Vector2 pickRandomLocation(GameContext gameContext, Entity entity) {
 		Vector2 targetLocation = null;
 		int attempts = 0;
-		while (targetLocation == null && attempts < 16) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		while (targetLocation == null && attempts < 24) {
 			Vector2 worldPosition = entity.getLocationComponent().getWorldPosition();
 			MapTile randomCell = gameContext.getAreaMap().getTile(
 					(int)Math.floor(worldPosition.x) + (gameContext.getRandom().nextInt(14) - 6),
 					(int)Math.floor(worldPosition.y) + (gameContext.getRandom().nextInt(14) - 6));
 			if (randomCell != null && randomCell.isNavigable()) {
 				targetLocation = randomCell.getWorldPositionOfCenter();
+			}
+			if (targetLocation != null && entity.getBehaviourComponent() instanceof CreatureBehaviour) {
+				CreatureGroup creatureGroup = ((CreatureBehaviour) entity.getBehaviourComponent()).getCreatureGroup();
+				if (creatureGroup != null && targetLocation.dst(toVector(creatureGroup.getHomeLocation())) > MAX_SEPARATION_FROM_CREATURE_GROUP) {
+					targetLocation = null;
+				}
 			}
 			attempts++;
 		}

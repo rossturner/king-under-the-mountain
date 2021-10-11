@@ -418,7 +418,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		}
 
 		if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
-			I18nText goalDescription = i18nTranslator.getCurrentGoalDescription(entity, gameContext);
+			I18nText goalDescription = i18nTranslator.getCurrentGoalDescription(entity, ((SettlerBehaviour) entity.getBehaviourComponent()).getCurrentGoal(), gameContext);
 			nameTable.add(new I18nTextWidget(goalDescription, uiSkin, messageDispatcher)).left().row();
 		} else if (entity.getBehaviourComponent() instanceof CorpseBehaviour) {
 			HistoryComponent historyComponent = entity.getComponent(HistoryComponent.class);

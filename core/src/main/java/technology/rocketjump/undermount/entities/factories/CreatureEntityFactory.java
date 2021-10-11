@@ -7,10 +7,12 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.ai.goap.GoalDictionary;
-import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
 import technology.rocketjump.undermount.entities.behaviour.DoNothingBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -23,22 +25,17 @@ import technology.rocketjump.undermount.rooms.RoomStore;
 @Singleton
 public class CreatureEntityFactory  {
 
-	private final CreatureEntityAttributesFactory creatureEntityAttributesFactory;
 	private final MessageDispatcher messageDispatcher;
 	private final EntityAssetUpdater entityAssetUpdater;
 	private final GoalDictionary goalDictionary;
-	private final ScheduleDictionary scheduleDictionary;
 	private final RoomStore roomStore;
 
 	@Inject
-	public CreatureEntityFactory(CreatureEntityAttributesFactory creatureEntityAttributesFactory,
-								 MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater, GoalDictionary goalDictionary,
-								 ScheduleDictionary scheduleDictionary, RoomStore roomStore) {
-		this.creatureEntityAttributesFactory = creatureEntityAttributesFactory;
+	public CreatureEntityFactory(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater, GoalDictionary goalDictionary,
+								 RoomStore roomStore) {
 		this.messageDispatcher = messageDispatcher;
 		this.entityAssetUpdater = entityAssetUpdater;
 		this.goalDictionary = goalDictionary;
-		this.scheduleDictionary = scheduleDictionary;
 		this.roomStore = roomStore;
 	}
 
@@ -53,7 +50,9 @@ public class CreatureEntityFactory  {
 
 				if (behaviourComponent instanceof SettlerBehaviour) {
 					SettlerBehaviour settlerBehaviour = (SettlerBehaviour) behaviourComponent;
-					settlerBehaviour.constructWith(goalDictionary, scheduleDictionary, roomStore);
+					settlerBehaviour.constructWith(goalDictionary, roomStore);
+				} else if (behaviourComponent instanceof CreatureBehaviour) {
+					((CreatureBehaviour) behaviourComponent).constructWith(goalDictionary);
 				}
 
 			} catch (ReflectiveOperationException e) {
@@ -67,6 +66,9 @@ public class CreatureEntityFactory  {
 
 		Entity entity = new Entity(EntityType.CREATURE, physicalComponent, behaviourComponent, locationComponent,
 				messageDispatcher, gameContext);
+
+		entity.addComponent(new NeedsComponent(attributes.getRace().getBehaviour().getNeeds(), gameContext.getRandom()));
+		entity.addComponent(new MemoryComponent());
 
 		entityAssetUpdater.updateEntityAssets(entity);
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, entity);
