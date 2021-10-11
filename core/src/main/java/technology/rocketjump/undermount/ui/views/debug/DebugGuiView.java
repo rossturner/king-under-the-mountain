@@ -223,6 +223,10 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 				immigrationManager.triggerImmigration();
 				break;
 			}
+			case TRIGGER_YEAR_END: {
+				gameContext.getGameClock().forceYearChange(messageDispatcher);
+				break;
+			}
 			case TOGGLE_CHANNEL: {
 				if (!tile.hasWall()) {
 					if (tile.hasChannel()) {

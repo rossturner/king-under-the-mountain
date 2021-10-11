@@ -15,6 +15,7 @@ import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.behaviour.creature.BrokenDwarfBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.*;
 import technology.rocketjump.undermount.entities.components.*;
@@ -64,10 +65,7 @@ import technology.rocketjump.undermount.rooms.Room;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
-import technology.rocketjump.undermount.settlement.FurnitureTracker;
-import technology.rocketjump.undermount.settlement.ItemTracker;
-import technology.rocketjump.undermount.settlement.OngoingEffectTracker;
-import technology.rocketjump.undermount.settlement.SettlerTracker;
+import technology.rocketjump.undermount.settlement.*;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.settlement.notifications.NotificationType;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
@@ -105,6 +103,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private final ItemTracker itemTracker;
 	private final FurnitureTracker furnitureTracker;
 	private final SettlerTracker settlerTracker;
+	private final CreatureTracker creatureTracker;
 	private final OngoingEffectTracker ongoingEffectTracker;
 	private final RoomStore roomStore;
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
@@ -125,10 +124,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
 								JobFactory jobFactory, EntityStore entityStore, ItemTracker itemTracker,
-								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, OngoingEffectTracker ongoingEffectTracker, RoomStore roomStore,
+								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, CreatureTracker creatureTracker,
+								OngoingEffectTracker ongoingEffectTracker, RoomStore roomStore,
 								ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory,
 								ItemTypeDictionary itemTypeDictionary, I18nTranslator i18nTranslator, JobStore jobStore,
-								GameMaterialDictionary materialDictionary, SoundAssetDictionary soundAssetDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+								GameMaterialDictionary materialDictionary, SoundAssetDictionary soundAssetDictionary,
+								ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.entityAssetUpdater = entityAssetUpdater;
 		this.jobFactory = jobFactory;
@@ -136,6 +137,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.itemTracker = itemTracker;
 		this.furnitureTracker = furnitureTracker;
 		this.settlerTracker = settlerTracker;
+		this.creatureTracker = creatureTracker;
 		this.ongoingEffectTracker = ongoingEffectTracker;
 		this.roomStore = roomStore;
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
@@ -193,6 +195,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							itemTracker.itemAdded(inventoryEntry.entity);
 						}
 					}
+				} else if (createdEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+					creatureTracker.creatureAdded(createdEntity);
 				} else if (createdEntity.getType().equals(ITEM)) {
 					itemTracker.itemAdded(createdEntity);
 				} else if (createdEntity.getType().equals(EntityType.FURNITURE)) {
@@ -226,6 +230,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							// Destroying non-dead settler entity
 							handle(new CreatureDeathMessage(removedEntity, DeathReason.UNKNOWN));
 						}
+					} else if (removedEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+						creatureTracker.creatureRemoved(removedEntity);
 					}
 
 					if (removedEntity.getLocationComponent().getWorldPosition() != null) {

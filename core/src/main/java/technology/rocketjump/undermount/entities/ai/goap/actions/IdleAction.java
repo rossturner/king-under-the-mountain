@@ -8,7 +8,6 @@ import technology.rocketjump.undermount.entities.ai.goap.actions.location.GoToRa
 import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.CreatureGroup;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -83,12 +82,11 @@ public class IdleAction extends Action {
 	public static Vector2 pickRandomLocation(GameContext gameContext, Entity entity) {
 		Vector2 targetLocation = null;
 		int attempts = 0;
-		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		while (targetLocation == null && attempts < 24) {
 			Vector2 worldPosition = entity.getLocationComponent().getWorldPosition();
 			MapTile randomCell = gameContext.getAreaMap().getTile(
-					(int)Math.floor(worldPosition.x) + (gameContext.getRandom().nextInt(14) - 6),
-					(int)Math.floor(worldPosition.y) + (gameContext.getRandom().nextInt(14) - 6));
+					(int)Math.floor(worldPosition.x) + (gameContext.getRandom().nextInt(13) - 6),
+					(int)Math.floor(worldPosition.y) + (gameContext.getRandom().nextInt(13) - 6));
 			if (randomCell != null && randomCell.isNavigable()) {
 				targetLocation = randomCell.getWorldPositionOfCenter();
 			}

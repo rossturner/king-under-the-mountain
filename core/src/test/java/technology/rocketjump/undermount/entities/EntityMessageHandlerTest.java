@@ -86,7 +86,7 @@ public class EntityMessageHandlerTest {
 		messageDispatcher = new MessageDispatcher();
 
 		entityMessageHandler = new EntityMessageHandler(messageDispatcher, mockAssetUpdater, mockJobFactory,
-				mockEntityStore, mockItemTracker, mockFurnitureTracker, mockSettlerTracker, mockOngoingEffectTracker, mockRoomStore,
+				mockEntityStore, mockItemTracker, mockFurnitureTracker, mockSettlerTracker, creatureTracker, mockOngoingEffectTracker, mockRoomStore,
 				mockItemEntityAttributesFactory, mockItemEntityFactory, mockItemTypeDictionary, mockI18nTranslator, mockJobStore,
 				mockMaterialDictionary, mockSoundAssetDictionary, mockParticleEffectDictionary);
 

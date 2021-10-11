@@ -24,6 +24,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
+import technology.rocketjump.undermount.mapping.factories.CreaturePopulator;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -43,6 +44,7 @@ public class ImmigrationManager implements Updatable, Telegraph {
 	private final SettlerTracker settlerTracker;
 	private final SettlerFactory settlerFactory;
 	private final ProfessionDictionary professionDictionary;
+	private final CreaturePopulator creaturePopulator;
 	private final int baseImmigrationVarianceIterations;
 	private final int baseImmigrationExtraFixedAmount;
 	private final boolean extraFoodImmigrationEnabled;
@@ -59,7 +61,8 @@ public class ImmigrationManager implements Updatable, Telegraph {
 
 	@Inject
 	public ImmigrationManager(MessageDispatcher messageDispatcher, ItemTracker itemTracker, SettlerTracker settlerTracker,
-							  SettlerFactory settlerFactory, ProfessionDictionary professionDictionary) {
+							  SettlerFactory settlerFactory, ProfessionDictionary professionDictionary, CreaturePopulator creaturePopulator) {
+		this.creaturePopulator = creaturePopulator;
 		FileHandle settingsJsonFile = new FileHandle("assets/settings/immigrationSettings.json");
 		JSONObject immigrationSettings = JSON.parseObject(settingsJsonFile.readString());
 
@@ -89,6 +92,7 @@ public class ImmigrationManager implements Updatable, Telegraph {
 		switch (msg.message) {
 			case MessageType.YEAR_ELAPSED: {
 				calculateNextImmigration();
+				creaturePopulator.addAnimalsAtEdge(gameContext);
 				return true;
 			}
 			default:
