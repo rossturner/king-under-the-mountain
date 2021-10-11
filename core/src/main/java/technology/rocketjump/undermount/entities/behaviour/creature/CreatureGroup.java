@@ -2,19 +2,28 @@ package technology.rocketjump.undermount.entities.behaviour.creature;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.math.GridPoint2;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.CompassDirection;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.Persistable;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * This is used to track a group of Creatures such as a herd of deer, so they can move around a central point
  */
 public class CreatureGroup implements Persistable {
 
+	private static final double GAME_TIME_BETWEEN_UPDATES = 0.2;
 	private long groupId;
 	private GridPoint2 homeLocation;
+	private double lastUpdateGameTime;
 
 	public long getGroupId() {
 		return groupId;
@@ -30,6 +39,33 @@ public class CreatureGroup implements Persistable {
 
 	public void setHomeLocation(GridPoint2 homeLocation) {
 		this.homeLocation = homeLocation;
+	}
+
+	/**
+	 * This is called by child entity infrequent updates so it is not accurately updated, but "every so often" is good enough
+	 */
+	public void infrequentUpdate(GameContext gameContext) {
+		double now = gameContext.getGameClock().getCurrentGameTime();
+		if (now - lastUpdateGameTime > GAME_TIME_BETWEEN_UPDATES) {
+			lastUpdateGameTime = now;
+			moveHomeLocation(gameContext);
+		}
+	}
+
+	/**
+	 * This moves the home location by one tile, orthogonally, randomly
+	 */
+	private void moveHomeLocation(GameContext gameContext) {
+		List<CompassDirection> directions = new ArrayList<>(CompassDirection.CARDINAL_DIRECTIONS);
+		Collections.shuffle(directions, gameContext.getRandom());
+
+		for (CompassDirection direction : directions) {
+			MapTile adjacentTile = gameContext.getAreaMap().getTile(homeLocation.x + direction.getXOffset(), homeLocation.y + direction.getYOffset());
+			if (adjacentTile != null && adjacentTile.isNavigable()) {
+				this.homeLocation = adjacentTile.getTilePosition();
+				break;
+			}
+		}
 	}
 
 	@Override

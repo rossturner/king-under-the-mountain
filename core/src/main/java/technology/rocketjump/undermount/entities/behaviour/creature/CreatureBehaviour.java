@@ -118,6 +118,10 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		double elapsed = gameTime - lastUpdateGameTime;
 		lastUpdateGameTime = gameTime;
 
+		if (creatureGroup != null) {
+			creatureGroup.infrequentUpdate(gameContext);
+		}
+
 		NeedsComponent needsComponent = parentEntity.getComponent(NeedsComponent.class);
 		needsComponent.update(elapsed, parentEntity, messageDispatcher);
 

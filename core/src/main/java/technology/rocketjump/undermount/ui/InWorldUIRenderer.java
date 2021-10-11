@@ -12,6 +12,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureGroup;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
@@ -38,6 +40,7 @@ import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.RenderingOptions;
 import technology.rocketjump.undermount.rendering.RoomRenderer;
 import technology.rocketjump.undermount.rendering.TerrainRenderer;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.mechanisms.MechanismsViewModeRenderer;
@@ -157,6 +160,10 @@ public class InWorldUIRenderer {
 			Selectable selectable = interactionStateContainer.getSelectable();
 			if (selectable != null) {
 				selectableOutlineRenderer.render(selectable, shapeRenderer);
+
+				if (GlobalSettings.DEV_MODE) {
+					showCreatureGroupLocation(gameContext, selectable);
+				}
 			}
 		} else if (interactionStateContainer.getInteractionMode().equals(PLACE_FURNITURE)) {
 			Color furnitureColor = VALID_PLACEMENT_COLOR;
@@ -472,4 +479,16 @@ public class InWorldUIRenderer {
 		shapeRenderer.end();
 	}
 
+
+	private void showCreatureGroupLocation(GameContext gameContext, Selectable selectable) {
+		if (selectable.type.equals(Selectable.SelectableType.ENTITY)) {
+			Entity selectedEntity = selectable.getEntity();
+			if (selectedEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+				CreatureGroup creatureGroup = ((CreatureBehaviour) selectedEntity.getBehaviourComponent()).getCreatureGroup();
+				if (creatureGroup != null) {
+					selectableOutlineRenderer.render(new Selectable(gameContext.getAreaMap().getTile(creatureGroup.getHomeLocation())), shapeRenderer);
+				}
+			}
+		}
+	}
 }
