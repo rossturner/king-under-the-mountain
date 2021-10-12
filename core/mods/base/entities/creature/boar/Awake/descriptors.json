@@ -1,0 +1,280 @@
+[
+  {
+    "uniqueName": "Boar-Body-Awake",
+    "type": "CREATURE_BODY",
+    "raceName": "Boar",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "BoarBodyColourFront.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HELMET"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "CREATURE_BEARD"
+          },
+          {
+            "type": "BEARD_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "BoarBodyColourFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HELMET"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "CREATURE_BEARD"
+          },
+          {
+            "type": "BEARD_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "BoarBodyColourFrontSide.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HELMET"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "CREATURE_BEARD"
+          },
+          {
+            "type": "BEARD_OUTLINE"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "BoarColourBodyBackSide.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "CREATURE_BEARD"
+          },
+          {
+            "type": "BEARD_OUTLINE"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "BoarColourBodyBackSide.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "CREATURE_BEARD"
+          },
+          {
+            "type": "BEARD_OUTLINE"
+          }
+        ]
+      },
+      "UP": {
+        "filename": "BoarColourBodyBack.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "CREATURE_BEARD"
+          },
+          {
+            "type": "BEARD_OUTLINE"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Boar-Tusks-Awake",
+    "type": "CREATURE_BEARD",
+    "raceName": "Boar",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "BoarTuskColourFront.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "BoarTuskColourFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "BONE_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "BoarTuskColourFrontSide.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "BoarColourTuskBackSide.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "BoarColourTuskBackSide.png",
+        "flipX": true,
+        "coloringLayer": "BONE_COLOR"
+      },
+      "UP": {
+        "filename": "BoarColourTuskBack.png",
+        "coloringLayer": "BONE_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Boar-Tusks-Outline-Awake",
+    "type": "BEARD_OUTLINE",
+    "raceName": "Boar",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "BoarTuskLinesFront.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "BoarTuskLinesFrontSide.png",
+        "flipX": true
+      },
+      "DOWN_LEFT": {
+        "filename": "BoarTuskLinesFrontSide.png"
+      },
+      "UP_RIGHT": {
+        "filename": "BoarLinesTuskBackSide.png"
+      },
+      "UP_LEFT": {
+        "filename": "BoarLinesTuskBackSide.png",
+        "flipX": true
+      },
+      "UP": {
+        "filename": "BoarLinesTuskBack.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Boar-Hair-Awake",
+    "type": "CREATURE_HAIR",
+    "raceName": "Boar",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "BoarHeadColourFront.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "BoarHeadColourFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "BoarHeadColourFrontSide.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "BoarColourHeadBackSide.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "BoarColourHeadBackSide.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP": {
+        "filename": "BoarColourHeadBack.png",
+        "coloringLayer": "HAIR_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Boar-Outline-Awake",
+    "type": "BODY_OUTLINE",
+    "raceName": "Boar",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "BoarBodyLinesFront.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "BoarBodyLinesFrontSide.png",
+        "flipX": true
+      },
+      "DOWN_LEFT": {
+        "filename": "BoarBodyLinesFrontSide.png"
+      },
+      "UP_RIGHT": {
+        "filename": "BoarLinesBodyBackSide.png"
+      },
+      "UP_LEFT": {
+        "filename": "BoarLinesBodyBackSide.png",
+        "flipX": true
+      },
+      "UP": {
+        "filename": "BoarLinesBodyBack.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Boar-Nose-Awake",
+    "type": "CREATURE_HELMET",
+    "raceName": "Boar",
+    "bodyShape": "AVERAGE",
+    "consciousness": "AWAKE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "BoarNoseColourFront.png",
+        "coloringLayer": "SKIN_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "BoarNoseColourFrontSide.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "BoarNoseColourFrontSide.png",
+        "coloringLayer": "SKIN_COLOR"
+      }
+    }
+  }
+]

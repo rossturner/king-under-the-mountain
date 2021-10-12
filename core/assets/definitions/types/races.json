@@ -1,4 +1,53 @@
 [ {
+  "name" : "Boar",
+  "i18nKey" : "RACE.BOAR",
+  "minStrength" : 8.0,
+  "maxStrength" : 15.0,
+  "bodyStructureName" : "hooved-quadruped",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "SKIN_COLOR" : {
+      "swatch" : "boar-skin-swatch.png",
+      "hidden" : false
+    },
+    "BONE_COLOR" : {
+      "colorCode" : "#fbfbf9",
+      "hidden" : false
+    },
+    "HAIR_COLOR" : {
+      "swatch" : "boar-hair-swatch.png",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "needs" : [ ]
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : {
+        "STABBING" : 1,
+        "SLASHING" : 1,
+        "CRUSHING" : 1
+      }
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : { }
+  }
+}, {
   "name" : "Deer",
   "i18nKey" : "RACE.DEER",
   "minStrength" : 5.0,
