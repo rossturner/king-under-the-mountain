@@ -15,19 +15,19 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
-          },
-          {
             "type": "CREATURE_HELMET"
           },
           {
             "type": "CREATURE_HAIR"
           },
           {
-            "type": "CREATURE_BEARD"
+            "type": "CREATURE_ABOVE_LAYER_1"
           },
           {
-            "type": "BEARD_OUTLINE"
+            "type": "CREATURE_ABOVE_LAYER_2"
+          },
+          {
+            "type": "CREATURE_ABOVE_LAYER_3"
           }
         ]
       },
@@ -37,19 +37,19 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
-          },
-          {
             "type": "CREATURE_HELMET"
           },
           {
             "type": "CREATURE_HAIR"
           },
           {
-            "type": "CREATURE_BEARD"
+            "type": "CREATURE_ABOVE_LAYER_1"
           },
           {
-            "type": "BEARD_OUTLINE"
+            "type": "CREATURE_ABOVE_LAYER_2"
+          },
+          {
+            "type": "CREATURE_ABOVE_LAYER_3"
           }
         ]
       },
@@ -58,19 +58,19 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
-          },
-          {
             "type": "CREATURE_HELMET"
           },
           {
             "type": "CREATURE_HAIR"
           },
           {
-            "type": "CREATURE_BEARD"
+            "type": "CREATURE_ABOVE_LAYER_1"
           },
           {
-            "type": "BEARD_OUTLINE"
+            "type": "CREATURE_ABOVE_LAYER_2"
+          },
+          {
+            "type": "CREATURE_ABOVE_LAYER_3"
           }
         ]
       },
@@ -80,16 +80,16 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
-          },
-          {
             "type": "CREATURE_HAIR"
           },
           {
-            "type": "CREATURE_BEARD"
+            "type": "CREATURE_ABOVE_LAYER_1"
           },
           {
-            "type": "BEARD_OUTLINE"
+            "type": "CREATURE_ABOVE_LAYER_2"
+          },
+          {
+            "type": "CREATURE_ABOVE_LAYER_3"
           }
         ]
       },
@@ -98,16 +98,16 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
-          },
-          {
             "type": "CREATURE_HAIR"
           },
           {
-            "type": "CREATURE_BEARD"
+            "type": "CREATURE_ABOVE_LAYER_1"
           },
           {
-            "type": "BEARD_OUTLINE"
+            "type": "CREATURE_ABOVE_LAYER_2"
+          },
+          {
+            "type": "CREATURE_ABOVE_LAYER_3"
           }
         ]
       },
@@ -116,16 +116,16 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
-          },
-          {
             "type": "CREATURE_HAIR"
           },
           {
-            "type": "CREATURE_BEARD"
+            "type": "CREATURE_ABOVE_LAYER_1"
           },
           {
-            "type": "BEARD_OUTLINE"
+            "type": "CREATURE_ABOVE_LAYER_2"
+          },
+          {
+            "type": "CREATURE_ABOVE_LAYER_3"
           }
         ]
       }
@@ -133,7 +133,7 @@
   },
   {
     "uniqueName": "Boar-Tusks-Sleep",
-    "type": "CREATURE_BEARD",
+    "type": "CREATURE_ABOVE_LAYER_2",
     "raceName": "Boar",
     "bodyShape": "AVERAGE",
     "consciousnessList": [
@@ -157,11 +157,11 @@
       },
       "UP_RIGHT": {
         "filename": "BoarColourTuskBackSideS.png",
+        "flipX": true,
         "coloringLayer": "BONE_COLOR"
       },
       "UP_LEFT": {
         "filename": "BoarColourTuskBackSideS.png",
-        "flipX": true,
         "coloringLayer": "BONE_COLOR"
       },
       "UP": {
@@ -172,7 +172,7 @@
   },
   {
     "uniqueName": "Boar-Tusks-Outline-Sleep",
-    "type": "BEARD_OUTLINE",
+    "type": "CREATURE_ABOVE_LAYER_3",
     "raceName": "Boar",
     "bodyShape": "AVERAGE",
     "consciousnessList": [
@@ -192,11 +192,11 @@
         "filename": "BoarTuskLinesFrontSideS.png"
       },
       "UP_RIGHT": {
-        "filename": "BoarLinesTuskBackSideS.png"
-      },
-      "UP_LEFT": {
         "filename": "BoarLinesTuskBackSideS.png",
         "flipX": true
+      },
+      "UP_LEFT": {
+        "filename": "BoarLinesTuskBackSideS.png"
       },
       "UP": {
         "filename": "BoarLinesTuskBackS.png"
@@ -229,11 +229,11 @@
       },
       "UP_RIGHT": {
         "filename": "BoarColourHeadBackSideS.png",
+        "flipX": true,
         "coloringLayer": "HAIR_COLOR"
       },
       "UP_LEFT": {
         "filename": "BoarColourHeadBackSideS.png",
-        "flipX": true,
         "coloringLayer": "HAIR_COLOR"
       },
       "UP": {
@@ -244,7 +244,7 @@
   },
   {
     "uniqueName": "Boar-Outline-Sleep",
-    "type": "BODY_OUTLINE",
+    "type": "CREATURE_ABOVE_LAYER_1",
     "raceName": "Boar",
     "bodyShape": "AVERAGE",
     "consciousnessList": [
@@ -264,11 +264,11 @@
         "filename": "BoarBodyLinesFrontSideS.png"
       },
       "UP_RIGHT": {
-        "filename": "BoarLinesBodyBackSideS.png"
-      },
-      "UP_LEFT": {
         "filename": "BoarLinesBodyBackSideS.png",
         "flipX": true
+      },
+      "UP_LEFT": {
+        "filename": "BoarLinesBodyBackSideS.png"
       },
       "UP": {
         "filename": "BoarLinesBodyBackS.png"
@@ -288,16 +288,16 @@
     "spriteDescriptors": {
       "DOWN": {
         "filename": "BoarNoseColourFrontS.png",
-        "coloringLayer": "SKIN_COLOR"
+        "coloringLayer": "MISC_COLOR_1"
       },
       "DOWN_RIGHT": {
         "filename": "BoarNoseColourFrontSideS.png",
         "flipX": true,
-        "coloringLayer": "SKIN_COLOR"
+        "coloringLayer": "MISC_COLOR_1"
       },
       "DOWN_LEFT": {
         "filename": "BoarNoseColourFrontSideS.png",
-        "coloringLayer": "SKIN_COLOR"
+        "coloringLayer": "MISC_COLOR_1"
       }
     }
   }

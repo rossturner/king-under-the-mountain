@@ -20,7 +20,11 @@
         "ATTACHMENT_LEFT_HAND",
         "ATTACHMENT_RIGHT_HAND",
         "CREATURE_LEFT_HAND",
-        "CREATURE_RIGHT_HAND"
+        "CREATURE_RIGHT_HAND",
+        "CREATURE_ABOVE_LAYER_1",
+        "CREATURE_ABOVE_LAYER_2",
+        "CREATURE_ABOVE_LAYER_3",
+        "CREATURE_ABOVE_LAYER_4"
       ]
     },
     "UP": {
@@ -42,7 +46,11 @@
         "CREATURE_BODY",
         "BODY_CLOTHING",
         "BODY_OUTLINE",
-        "ATTACHMENT_ON_RIGHT_SHOULDER"
+        "ATTACHMENT_ON_RIGHT_SHOULDER",
+        "CREATURE_ABOVE_LAYER_1",
+        "CREATURE_ABOVE_LAYER_2",
+        "CREATURE_ABOVE_LAYER_3",
+        "CREATURE_ABOVE_LAYER_4"
       ]
     },
     "DOWN_LEFT": {
@@ -64,7 +72,11 @@
         "ATTACHMENT_FRONT_OF_BODY",
         "ATTACHMENT_LEFT_HAND",
         "CREATURE_LEFT_HAND",
-        "CREATURE_RIGHT_HAND"
+        "CREATURE_RIGHT_HAND",
+        "CREATURE_ABOVE_LAYER_1",
+        "CREATURE_ABOVE_LAYER_2",
+        "CREATURE_ABOVE_LAYER_3",
+        "CREATURE_ABOVE_LAYER_4"
       ]
     },
     "DOWN_RIGHT": {
@@ -89,7 +101,11 @@
         "CREATURE_HELMET",
         "CREATURE_BODY",
         "BODY_CLOTHING",
-        "BODY_OUTLINE"
+        "BODY_OUTLINE",
+        "CREATURE_ABOVE_LAYER_1",
+        "CREATURE_ABOVE_LAYER_2",
+        "CREATURE_ABOVE_LAYER_3",
+        "CREATURE_ABOVE_LAYER_4"
       ]
     },
     "UP_RIGHT": {
