@@ -15,21 +15,45 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "CREATURE_HELMET"
+            "type": "CREATURE_HELMET",
+            "offsetPixels": {
+              "x": 0.5,
+              "y": 13.5
+            }
           },
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": 0.5,
+              "y": 13.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_1"
+            "type": "CREATURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 0.5,
+              "y": 13.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_2"
+            "type": "CREATURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 0.5,
+              "y": 13.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_3"
+            "type": "CREATURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": 0.5,
+              "y": 13.5
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -13.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "BoarBodyColourFrontSideS.png",
@@ -37,42 +61,90 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "CREATURE_HELMET"
+            "type": "CREATURE_HELMET",
+            "offsetPixels": {
+              "x": -3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": -3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_1"
+            "type": "CREATURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_2"
+            "type": "CREATURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": -3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_3"
+            "type": "CREATURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": -3.0,
+              "y": 14.5
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 3.0,
+          "y": -14.5
+        }
       },
       "DOWN_LEFT": {
         "filename": "BoarBodyColourFrontSideS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "CREATURE_HELMET"
+            "type": "CREATURE_HELMET",
+            "offsetPixels": {
+              "x": 3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": 3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_1"
+            "type": "CREATURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_2"
+            "type": "CREATURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 3.0,
+              "y": 14.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_3"
+            "type": "CREATURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": 3.0,
+              "y": 14.5
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -3.0,
+          "y": -14.5
+        }
       },
       "UP_RIGHT": {
         "filename": "BoarColourBodyBackSideS.png",
@@ -80,54 +152,114 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": -2.5,
+              "y": 9.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_1"
+            "type": "CREATURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -2.5,
+              "y": 9.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_2"
+            "type": "CREATURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": -2.5,
+              "y": 9.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_3"
+            "type": "CREATURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": -2.5,
+              "y": 9.5
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 2.5,
+          "y": -9.5
+        }
       },
       "UP_LEFT": {
         "filename": "BoarColourBodyBackSideS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": 2.5,
+              "y": 9.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_1"
+            "type": "CREATURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": 2.5,
+              "y": 9.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_2"
+            "type": "CREATURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": 2.5,
+              "y": 9.5
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_3"
+            "type": "CREATURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": 2.5,
+              "y": 9.5
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -2.5,
+          "y": -9.5
+        }
       },
       "UP": {
         "filename": "BoarColourBodyBackS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": 13.0
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_1"
+            "type": "CREATURE_ABOVE_LAYER_1",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": 13.0
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_2"
+            "type": "CREATURE_ABOVE_LAYER_2",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": 13.0
+            }
           },
           {
-            "type": "CREATURE_ABOVE_LAYER_3"
+            "type": "CREATURE_ABOVE_LAYER_3",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": 13.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -13.0
+        }
       }
     }
   },
@@ -144,29 +276,53 @@
     "spriteDescriptors": {
       "DOWN": {
         "filename": "BoarTuskColourFrontS.png",
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -13.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "BoarTuskColourFrontSideS.png",
         "flipX": true,
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": 9.0,
+          "y": -14.0
+        }
       },
       "DOWN_LEFT": {
         "filename": "BoarTuskColourFrontSideS.png",
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": -9.0,
+          "y": -14.0
+        }
       },
       "UP_RIGHT": {
         "filename": "BoarColourTuskBackSideS.png",
         "flipX": true,
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": 25.5,
+          "y": -7.5
+        }
       },
       "UP_LEFT": {
         "filename": "BoarColourTuskBackSideS.png",
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": -25.5,
+          "y": -7.5
+        }
       },
       "UP": {
         "filename": "BoarColourTuskBackS.png",
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -10.5
+        }
       }
     }
   },
@@ -182,24 +338,48 @@
     ],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "BoarTuskLinesFrontS.png"
+        "filename": "BoarTuskLinesFrontS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -13.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "BoarTuskLinesFrontSideS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": -2.0,
+          "y": -13.5
+        }
       },
       "DOWN_LEFT": {
-        "filename": "BoarTuskLinesFrontSideS.png"
+        "filename": "BoarTuskLinesFrontSideS.png",
+        "offsetPixels": {
+          "x": 2.0,
+          "y": -13.5
+        }
       },
       "UP_RIGHT": {
         "filename": "BoarLinesTuskBackSideS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": 25.5,
+          "y": -7.5
+        }
       },
       "UP_LEFT": {
-        "filename": "BoarLinesTuskBackSideS.png"
+        "filename": "BoarLinesTuskBackSideS.png",
+        "offsetPixels": {
+          "x": -25.5,
+          "y": -7.5
+        }
       },
       "UP": {
-        "filename": "BoarLinesTuskBackS.png"
+        "filename": "BoarLinesTuskBackS.png",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -11.0
+        }
       }
     }
   },
@@ -216,29 +396,53 @@
     "spriteDescriptors": {
       "DOWN": {
         "filename": "BoarHeadColourFrontS.png",
-        "coloringLayer": "HAIR_COLOR"
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -1.0
+        }
       },
       "DOWN_RIGHT": {
         "filename": "BoarHeadColourFrontSideS.png",
         "flipX": true,
-        "coloringLayer": "HAIR_COLOR"
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -9.0
+        }
       },
       "DOWN_LEFT": {
         "filename": "BoarHeadColourFrontSideS.png",
-        "coloringLayer": "HAIR_COLOR"
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": 1.5,
+          "y": -9.0
+        }
       },
       "UP_RIGHT": {
         "filename": "BoarColourHeadBackSideS.png",
         "flipX": true,
-        "coloringLayer": "HAIR_COLOR"
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": -4.0,
+          "y": -7.5
+        }
       },
       "UP_LEFT": {
         "filename": "BoarColourHeadBackSideS.png",
-        "coloringLayer": "HAIR_COLOR"
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": 4.0,
+          "y": -7.5
+        }
       },
       "UP": {
         "filename": "BoarColourHeadBackS.png",
-        "coloringLayer": "HAIR_COLOR"
+        "coloringLayer": "HAIR_COLOR",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -7.0
+        }
       }
     }
   },
@@ -254,24 +458,48 @@
     ],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "BoarBodyLinesFrontS.png"
+        "filename": "BoarBodyLinesFrontS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -11.0
+        }
       },
       "DOWN_RIGHT": {
         "filename": "BoarBodyLinesFrontSideS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -12.0
+        }
       },
       "DOWN_LEFT": {
-        "filename": "BoarBodyLinesFrontSideS.png"
+        "filename": "BoarBodyLinesFrontSideS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -12.0
+        }
       },
       "UP_RIGHT": {
         "filename": "BoarLinesBodyBackSideS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -8.5
+        }
       },
       "UP_LEFT": {
-        "filename": "BoarLinesBodyBackSideS.png"
+        "filename": "BoarLinesBodyBackSideS.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -8.5
+        }
       },
       "UP": {
-        "filename": "BoarLinesBodyBackS.png"
+        "filename": "BoarLinesBodyBackS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -11.0
+        }
       }
     }
   },
@@ -288,16 +516,28 @@
     "spriteDescriptors": {
       "DOWN": {
         "filename": "BoarNoseColourFrontS.png",
-        "coloringLayer": "MISC_COLOR_1"
+        "coloringLayer": "MISC_COLOR_1",
+        "offsetPixels": {
+          "x": -0.5,
+          "y": -16.0
+        }
       },
       "DOWN_RIGHT": {
         "filename": "BoarNoseColourFrontSideS.png",
         "flipX": true,
-        "coloringLayer": "MISC_COLOR_1"
+        "coloringLayer": "MISC_COLOR_1",
+        "offsetPixels": {
+          "x": 24.5,
+          "y": -18.5
+        }
       },
       "DOWN_LEFT": {
         "filename": "BoarNoseColourFrontSideS.png",
-        "coloringLayer": "MISC_COLOR_1"
+        "coloringLayer": "MISC_COLOR_1",
+        "offsetPixels": {
+          "x": -24.5,
+          "y": -18.5
+        }
       }
     }
   }
