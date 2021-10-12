@@ -26,7 +26,13 @@
     }
   },
   "behaviour" : {
-    "needs" : [ ]
+    "behaviourName" : "HerdAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ],
+    "group" : {
+      "minSize" : 2,
+      "maxSize" : 5
+    }
   },
   "genders" : {
     "MALE" : {
