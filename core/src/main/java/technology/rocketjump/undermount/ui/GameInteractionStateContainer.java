@@ -27,6 +27,7 @@ import technology.rocketjump.undermount.mapping.MapMessageHandler;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.model.WallPlacementMode;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -564,7 +565,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 		boolean oneTileNotRiverEdge = false;
 		for (GridPoint2 positionToCheck : positionsToCheck) {
 			MapTile tileToCheck = map.getTile(positionToCheck);
-			if (tileToCheck == null || !tileToCheck.isEmptyExceptItemsAndPlants()) {
+			if (tileToCheck == null || !tileToCheck.isEmptyExceptItemsAndPlants() || !tileToCheck.getExploration().equals(TileExploration.EXPLORED)) {
 				return false;
 			}
 			if (attributes.getFurnitureType().getRequiredFloorMaterialType() != null &&

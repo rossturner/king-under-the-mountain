@@ -53,6 +53,9 @@ public class ItemType {
 	@JsonIgnore
 	private SoundAsset consumeSoundAsset;
 
+	private WeaponInfo weaponInfo;
+	private AmmoType isAmmoType;
+
 	private boolean describeAsMaterialOnly;
 
 	public long getItemTypeId() {
@@ -259,5 +262,21 @@ public class ItemType {
 
 	public void setDescribeAsMaterialOnly(boolean describeAsMaterialOnly) {
 		this.describeAsMaterialOnly = describeAsMaterialOnly;
+	}
+
+	public WeaponInfo getWeaponInfo() {
+		return weaponInfo;
+	}
+
+	public void setWeaponInfo(WeaponInfo weaponInfo) {
+		this.weaponInfo = weaponInfo;
+	}
+
+	public AmmoType getIsAmmoType() {
+		return isAmmoType;
+	}
+
+	public void setIsAmmoType(AmmoType isAmmoType) {
+		this.isAmmoType = isAmmoType;
 	}
 }

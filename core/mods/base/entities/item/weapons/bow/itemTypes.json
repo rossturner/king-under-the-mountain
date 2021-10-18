@@ -1,0 +1,17 @@
+[{
+  "itemTypeName": "Weapon-Bow",
+  "materialTypes": ["WOOD"],
+  "primaryMaterialType": "WOOD",
+  "maxStackSize": 1,
+  "maxHauledAtOnce": 1,
+  "stockpileGroupName": "WEAPONS",
+  "holdPosition": "LEFT_HAND",
+  "weaponInfo": {
+    "range": 9,
+    "damageType": "STABBING",
+    "modifiedByStrength": false,
+    "minDamage": 2,
+    "maxDamage": 8,
+    "requiresAmmoType": "ARROWS"
+  }
+}]

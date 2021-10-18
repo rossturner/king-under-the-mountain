@@ -6392,7 +6392,7 @@
 }, {
   "uniqueName" : "table-2x3L-metal",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L",
   "validMaterialTypes" : [ "METAL" ],
   "tags" : { },
@@ -6450,7 +6450,7 @@
 }, {
   "uniqueName" : "table-2x3L-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -6508,7 +6508,7 @@
 }, {
   "uniqueName" : "table-2x3L-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -6740,7 +6740,7 @@
 }, {
   "uniqueName" : "table-2x3L1R-metal",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L1R",
   "validMaterialTypes" : [ "METAL" ],
   "tags" : { },
@@ -6798,7 +6798,7 @@
 }, {
   "uniqueName" : "table-2x3L1R-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L1R",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -6856,7 +6856,7 @@
 }, {
   "uniqueName" : "table-2x3L1R-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L1R",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -7088,7 +7088,7 @@
 }, {
   "uniqueName" : "table-2x3L2R-metal",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L2R",
   "validMaterialTypes" : [ "METAL" ],
   "tags" : { },
@@ -7146,7 +7146,7 @@
 }, {
   "uniqueName" : "table-2x3L2R-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L2R",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -7204,7 +7204,7 @@
 }, {
   "uniqueName" : "table-2x3L2R-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L2R",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },
@@ -7436,7 +7436,7 @@
 }, {
   "uniqueName" : "table-2x3L3R-metal",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L3R",
   "validMaterialTypes" : [ "METAL" ],
   "tags" : { },
@@ -7494,7 +7494,7 @@
 }, {
   "uniqueName" : "table-2x3L3R-stone",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L3R",
   "validMaterialTypes" : [ "STONE" ],
   "tags" : { },
@@ -7552,7 +7552,7 @@
 }, {
   "uniqueName" : "table-2x3L3R-wood",
   "type" : "BASE_LAYER",
-  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH" ],
+  "furnitureTypeNames" : [ "CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH" ],
   "furnitureLayoutName" : "2x3L3R",
   "validMaterialTypes" : [ "WOOD" ],
   "tags" : { },

@@ -14,6 +14,13 @@
   "usesWorkstationTool" : true,
   "particleEffectNames" : [ "Wood shavings" ]
 }, {
+  "name" : "FLETCHING",
+  "i18nKey" : "CRAFTING_TYPE.FLETCHING",
+  "professionRequiredName" : "CARPENTER",
+  "defaultItemTypeName" : "Tool-Plane",
+  "usesWorkstationTool" : true,
+  "particleEffectNames" : [ "Wood shavings" ]
+}, {
   "name" : "STONEMASONRY",
   "i18nKey" : "CRAFTING_TYPE.STONEMASONRY",
   "professionRequiredName" : "STONEMASON",

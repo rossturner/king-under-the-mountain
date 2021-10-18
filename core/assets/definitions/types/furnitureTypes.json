@@ -1055,6 +1055,48 @@
   },
   "hiddenFromPlacementMenu" : false
 }, {
+  "name" : "FLETCHERS_WORKBENCH",
+  "i18nKey" : "FURNITURE.FLETCHERS_WORKBENCH",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "2x3L3R",
+  "colorCode" : "#8dd68a",
+  "iconName" : "bow-arrow",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 4,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Plane",
+      "quantity" : 1,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Kitchen-Knife",
+      "quantity" : 1,
+      "liquid" : false
+    } ],
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 4,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Plane",
+      "quantity" : 1,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Kitchen-Knife",
+      "quantity" : 1,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "CRAFTING_STATION_BEHAVIOUR" : [ "FLETCHING", "CRAFT_ITEM", "HAULING" ],
+    "DECORATION_FROM_INPUT" : [ "Tool-Plane", "Tool-Kitchen-Knife" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
   "name" : "STONEMASON_WORKBENCH",
   "i18nKey" : "FURNITURE.STONEMASON_WORKBENCH",
   "categoryName" : "TABLE",

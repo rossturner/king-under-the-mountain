@@ -111,6 +111,49 @@
       "DECORATION_FROM_INPUT": ["Tool-Plane", "Tool-Saw"]
     }
   },
+
+  {
+    "name": "FLETCHERS_WORKBENCH",
+    "i18nKey": "FURNITURE.FLETCHERS_WORKBENCH",
+    "categoryName": "TABLE",
+    "defaultLayoutName": "2x3L3R",
+    "colorCode": "#8dd68a",
+    "iconName": "bow-arrow",
+    "requirements": {
+      "STONE": [
+        {
+          "itemTypeName": "Resource-Stone-Block",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Plane",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Kitchen-Knife",
+          "quantity": 1
+        }
+      ],
+      "WOOD": [
+        {
+          "itemTypeName": "Resource-Planks",
+          "quantity": 4
+        },
+        {
+          "itemTypeName": "Tool-Plane",
+          "quantity": 1
+        },
+        {
+          "itemTypeName": "Tool-Kitchen-Knife",
+          "quantity": 1
+        }
+      ]
+    },
+    "tags": {
+      "CRAFTING_STATION_BEHAVIOUR": ["FLETCHING", "CRAFT_ITEM", "HAULING"],
+      "DECORATION_FROM_INPUT": ["Tool-Plane", "Tool-Kitchen-Knife"]
+    }
+  },
   {
     "name": "STONEMASON_WORKBENCH",
     "i18nKey": "FURNITURE.STONEMASON_WORKBENCH",

@@ -163,5 +163,16 @@
       "DUG_GRAVE",
       "FILLED_GRAVE"
     ]
+  },
+  {
+    "roomName": "ARMOURY",
+    "i18nKey": "ROOMS.ARMOURY",
+    "colorCode": "#e17151",
+    "iconName": "crossed-swords",
+    "tags": {
+    },
+    "furnitureNames": [
+      "FLETCHERS_WORKBENCH"
+    ]
   }
 ]

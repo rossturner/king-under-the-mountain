@@ -1,0 +1,283 @@
+[
+  {
+    "uniqueName": "Weapon-Arrows-On-Ground-Body",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Weapon-Bone-Arrows", "Weapon-Metal-Arrows"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "arrow-bodies.png",
+        "coloringLayer": "WOOD_COLOR",
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Weapon-Arrows-Carried-Body",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeNames": ["Weapon-Bone-Arrows", "Weapon-Metal-Arrows"],
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "arrow-bodies.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 26,
+              "y": 0
+            }
+          },
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "arrow-bodies.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "arrow-bodies.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 20,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP": {
+        "filename": "arrow-bodies.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 22,
+              "y": 0
+            }
+          },
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -22,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "arrow-bodies.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -12,
+              "y": 0
+            }
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "arrow-bodies.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 0,
+          "y": -8
+        },
+        "childAssets": [
+          {
+            "type": "BELOW_LAYER_1"
+          }
+        ],
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  {
+    "uniqueName": "Weapon-Arrows-On-Ground-Metal-Heads",
+    "type": "BELOW_LAYER_1",
+    "itemTypeNames": ["Weapon-Metal-Arrows"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Weapon-Arrows-Carried-Metal-Heads",
+    "type": "BELOW_LAYER_1",
+    "itemTypeNames": ["Weapon-Metal-Arrows"],
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "METAL_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "METAL_COLOR"
+      }
+    }
+  },
+
+  {
+    "uniqueName": "Weapon-Arrows-On-Ground-Bone-Heads",
+    "type": "BELOW_LAYER_1",
+    "itemTypeNames": ["Weapon-Bone-Arrows"],
+    "itemPlacements": ["ON_GROUND"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "BONE_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Weapon-Arrows-Carried-Bone-Heads",
+    "type": "BELOW_LAYER_1",
+    "itemTypeNames": ["Weapon-Bone-Arrows"],
+    "itemPlacements": ["BEING_CARRIED"],
+    "minQuantity": 1,
+    "maxQuantity": 50,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "UP": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "arrow-heads.png",
+        "coloringLayer": "BONE_COLOR"
+      }
+    }
+  }
+]
