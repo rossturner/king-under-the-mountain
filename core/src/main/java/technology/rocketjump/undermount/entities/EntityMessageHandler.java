@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.behaviour.creature.BrokenDwarfBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
@@ -23,10 +24,7 @@ import technology.rocketjump.undermount.entities.components.furniture.Constructe
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -167,6 +165,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.REQUEST_FURNITURE_REMOVAL);
 		messageDispatcher.addListener(this, MessageType.HAULING_ALLOCATION_CANCELLED);
 		messageDispatcher.addListener(this, MessageType.CHANGE_PROFESSION);
+		messageDispatcher.addListener(this, MessageType.CHANGE_WEAPON_SELECTION);
 		messageDispatcher.addListener(this, MessageType.APPLY_STATUS);
 		messageDispatcher.addListener(this, MessageType.REMOVE_STATUS);
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_FURNITURE_TYPE);
@@ -419,6 +418,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.CHANGE_PROFESSION:
 				return handle((ChangeProfessionMessage) msg.extraInfo);
+			case MessageType.CHANGE_WEAPON_SELECTION:
+				return handle((ChangeWeaponSelectionMessage) msg.extraInfo);
 			case MessageType.HAULING_ALLOCATION_CANCELLED: {
 				HaulingAllocation allocation = (HaulingAllocation) msg.extraInfo;
 
@@ -565,6 +566,21 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
+	}
+
+	private boolean handle(ChangeWeaponSelectionMessage weaponSelectionMessage) {
+		WeaponSelectionComponent weaponSelectionComponent = weaponSelectionMessage.entity.getOrCreateComponent(WeaponSelectionComponent.class);
+		if (weaponSelectionComponent.getSelectedWeapon().isPresent()) {
+			// forget existing memory to find weapon of that type
+			MemoryComponent memoryComponent = weaponSelectionMessage.entity.getOrCreateComponent(MemoryComponent.class);
+			memoryComponent.getShortTermMemories(gameContext.getGameClock())
+					.removeIf(memory -> memory.getType().equals(MemoryType.LACKING_REQUIRED_ITEM) &&
+							memory.getRelatedItemType().equals(weaponSelectionComponent.getSelectedWeapon().get()));
+		}
+
+		weaponSelectionComponent.setSelectedWeapon(weaponSelectionMessage.selectedWeaponType);
+
+		return true;
 	}
 
 	private boolean handle(ChangeProfessionMessage changeProfessionMessage) {

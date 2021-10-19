@@ -5,7 +5,6 @@ import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -18,14 +17,12 @@ import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipeMaterialSelection;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
-import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
+import technology.rocketjump.undermount.entities.model.physical.item.ExampleItemDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
-import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
-import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -65,12 +62,11 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 	private static final float INDENT_WIDTH = 50f;
 	public static final int DEFAULT_ROW_WIDTH = 1050;
 	public static final String NAME = "CRAFTING";
-	private final ItemType SHOW_LIQUID_ITEM_TYPE;
 
 	private final ClickableTableFactory clickableTableFactory;
+	private final ExampleItemDictionary exampleItemDictionary;
 	private final EntityRenderer entityRenderer;
 	private final CraftingRecipeDictionary craftingRecipeDictionary;
-	private final ItemEntityFactory itemEntityFactory;
 	private final RoomTypeDictionary roomTypeDictionary;
 	private final FurnitureTypeDictionary furnitureTypeDictionary;
 	private final CraftingTypeDictionary craftingTypeDictionary;
@@ -102,16 +98,16 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 									I18nTranslator i18nTranslator, IconButtonFactory iconButtonFactory,
 									CraftingTypeDictionary craftingTypeDictionary, FurnitureTypeDictionary furnitureTypeDictionary,
 									RoomTypeDictionary roomTypeDictionary, CraftingRecipeDictionary craftingRecipeDictionary,
-									ClickableTableFactory clickableTableFactory,
-									EntityRenderer entityRenderer, ItemEntityFactory itemEntityFactory, ProductionManager productionManager,
+									ClickableTableFactory clickableTableFactory, ExampleItemDictionary exampleItemDictionary,
+									EntityRenderer entityRenderer, ProductionManager productionManager,
 									SettlerTracker settlerTracker, ItemTracker itemTracker, LiquidTracker liquidTracker,
-									ItemTypeDictionary itemTypeDictionary, TextureAtlasRepository textureAtlasRepository, GameMaterialDictionary gameMaterialDictionary) {
+									TextureAtlasRepository textureAtlasRepository, GameMaterialDictionary gameMaterialDictionary) {
 		super(userPreferences, messageDispatcher, guiSkinRepository, i18nWidgetFactory, i18nTranslator, iconButtonFactory);
 		this.clickableTableFactory = clickableTableFactory;
+		this.exampleItemDictionary = exampleItemDictionary;
 		this.entityRenderer = entityRenderer;
 		this.craftingRecipeDictionary = craftingRecipeDictionary;
 		this.furnitureTypeDictionary = furnitureTypeDictionary;
-		this.itemEntityFactory = itemEntityFactory;
 		this.roomTypeDictionary = roomTypeDictionary;
 		this.craftingTypeDictionary = craftingTypeDictionary;
 		this.productionManager = productionManager;
@@ -119,7 +115,6 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.itemTracker = itemTracker;
 		this.liquidTracker = liquidTracker;
-		this.SHOW_LIQUID_ITEM_TYPE = itemTypeDictionary.getByName("Resource-Liquid-Example");
 
 		scrollableTable = new Table(uiSkin);
 		scrollableTablePane = Scene2DUtils.wrapWithScrollPane(scrollableTable, uiSkin);
@@ -293,7 +288,7 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 		if (craftingType.getProfessionRequired() != null) {
 			ImageButton imageButton = craftingType.getProfessionRequired().getImageButton();
-			clickableRow.add(new Image(imageButton.getIconSprite())).left().padLeft(10);
+			clickableRow.add(new Image(imageButton.getDrawable())).left().padLeft(10);
 		}
 		clickableRow.add(new I18nTextWidget(i18nTranslator.getTranslatedString(craftingType.getI18nKey()), uiSkin, messageDispatcher)).left().pad(5).padLeft(10);
 
@@ -419,6 +414,10 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 
 		rowContainerTable.add(clickableRow).width(DEFAULT_ROW_WIDTH - INDENT_WIDTH);
 		scrollableTable.add(rowContainerTable).width(DEFAULT_ROW_WIDTH).right().row();
+	}
+
+	private Entity getExampleEntity(ItemType itemType, GameMaterial material) {
+		return exampleItemDictionary.getExampleItemEntity(itemType, Optional.ofNullable(material));
 	}
 
 	private void addCraftingRecipeRow(CraftingRecipe craftingRecipe) {
@@ -632,36 +631,6 @@ public class CraftingManagementScreen extends ManagementScreen implements I18nUp
 		}
 	}
 
-	static	GameContext nullContext = new GameContext();
-	static {
-		nullContext.setRandom(new RandomXS128());
-	}
-	private final Map<ItemType, Map<GameMaterial, Entity>> exampleEntities = new HashMap<>();
-
-	private Entity getExampleEntity(ItemType itemType, GameMaterial material) {
-		final ItemType itemTypeOrLiquidIte = itemType == null ? SHOW_LIQUID_ITEM_TYPE : itemType;
-
-		Map<GameMaterial, Entity> materialsToEntitiesMap = exampleEntities.computeIfAbsent(itemTypeOrLiquidIte, a -> new HashMap<>());
-		if (material == null) {
-			// Get any entity in map or create one
-			if (materialsToEntitiesMap.isEmpty()) {
-				Entity entity = itemEntityFactory.createByItemType(itemTypeOrLiquidIte, nullContext, false);
-				ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-				materialsToEntitiesMap.put(attributes.getPrimaryMaterial(), entity);
-				return entity;
-			} else {
-				return materialsToEntitiesMap.values().iterator().next();
-			}
-		} else {
-			// Material is specified
-			return materialsToEntitiesMap.computeIfAbsent(material, a -> {
-				Entity entity = itemEntityFactory.createByItemType(itemTypeOrLiquidIte, nullContext, false);
-				ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-				attributes.setMaterial(material);
-				return entity;
-			});
-		}
-	}
 
 	@Override
 	public String getTitleI18nKey() {

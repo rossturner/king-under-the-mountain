@@ -22,6 +22,8 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
@@ -161,5 +163,13 @@ public class PourDrinkIntoTankardAction extends Action implements EntityCreatedC
 	@Override
 	public void itemTypeFound(Optional<ItemType> itemTypeLookup) {
 		this.itemTypeLookup = itemTypeLookup;
+	}
+
+	@Override
+	public void itemTypesFound(List<ItemType> itemTypes) {
+		Collections.shuffle(itemTypes);
+		if (!itemTypes.isEmpty()) {
+			this.itemTypeLookup = Optional.of(itemTypes.get(0));
+		}
 	}
 }

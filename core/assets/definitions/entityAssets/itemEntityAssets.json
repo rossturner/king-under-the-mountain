@@ -20202,4 +20202,134 @@
       "parentEntityAssets" : [ ]
     }
   }
+}, {
+  "uniqueName" : "Weapon-Bow-On-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Weapon-Bow",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Weapon-Bow-Being-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Weapon-Bow",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "bow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "bow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "bow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "bow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "bow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "bow.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "zero" : true,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
 } ]

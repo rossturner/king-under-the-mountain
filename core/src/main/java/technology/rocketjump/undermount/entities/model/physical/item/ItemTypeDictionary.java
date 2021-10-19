@@ -25,7 +25,9 @@ public class ItemTypeDictionary {
 	private final ConstantsRepo constantsRepo;
 	private Map<String, ItemType> byName = new HashMap<>();
 	private List<ItemType> allTypesList = new ArrayList<>();
+	private List<ItemType> itemTypesWithWeaponInfo = new ArrayList<>();
 	private Map<CraftingType, List<ItemType>> byCraftingType = new HashMap<>();
+	private Map<AmmoType, List<ItemType>> byAmmoType = new HashMap<>();
 	private final Map<StockpileGroup, List<ItemType>> byStockpileGroup = new HashMap<>();
 	private final Map<Class<? extends Tag>, List<ItemType>> byTag = new HashMap<>();
 
@@ -87,8 +89,15 @@ public class ItemTypeDictionary {
 			byName.put(itemType.getItemTypeName(), itemType);
 			allTypesList.add(itemType);
 
+			if (itemType.getWeaponInfo() != null) {
+				itemTypesWithWeaponInfo.add(itemType);
+			}
+			if (itemType.getIsAmmoType() != null) {
+				byAmmoType.computeIfAbsent(itemType.getIsAmmoType(), a -> new ArrayList<>()).add(itemType);
+			}
 		}
 
+		itemTypesWithWeaponInfo.sort(Comparator.comparing(ItemType::getItemTypeName));
 
 		for (CraftingType craftingType : craftingTypeDictionary.getAll()) {
 			if (craftingType.getDefaultItemTypeName() != null) {
@@ -129,4 +138,13 @@ public class ItemTypeDictionary {
 			}
 		}
 	}
+
+	public List<ItemType> getAllWeapons() {
+		return itemTypesWithWeaponInfo;
+	}
+
+	public Collection<ItemType> getByAmmoType(AmmoType ammoType) {
+		return byAmmoType.getOrDefault(ammoType, List.of());
+	}
+
 }

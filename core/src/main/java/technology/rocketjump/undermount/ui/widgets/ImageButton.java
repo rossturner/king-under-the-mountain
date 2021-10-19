@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
@@ -22,6 +23,7 @@ public class ImageButton extends Table {
 	private final boolean smallSize; // TODO Expand this to some style enum/class
 
 	private Sprite iconSprite;
+	private Drawable drawable;
 	private NinePatch ninePatch;
 	private Image currentIcon;
 
@@ -51,9 +53,30 @@ public class ImageButton extends Table {
 		resetChildren();
 	}
 
+	public ImageButton(Drawable drawableImage, NinePatch backgroundNinePatch, boolean smallSize) {
+		this.drawable = drawableImage;
+		this.ninePatch = backgroundNinePatch;
+
+		NinePatchDrawable buttonNinePatchDrawable = new NinePatchDrawable(backgroundNinePatch);
+		setBackground(buttonNinePatchDrawable);
+
+		this.currentIcon = new Image(drawableImage);
+		this.smallSize = smallSize;
+		if (smallSize) {
+			currentIcon.setSize(currentIcon.getWidth() / 3f, currentIcon.getHeight() / 3f);
+		}
+		this.setTouchable(Touchable.enabled);
+		addListener(new IconButtonClickListener(this));
+		resetChildren();
+	}
 
 	public ImageButton clone() {
-		ImageButton cloned = new ImageButton(iconSprite, ninePatch, smallSize);
+		ImageButton cloned;
+		if (iconSprite != null) {
+			cloned = new ImageButton(iconSprite, ninePatch, smallSize);
+		} else {
+			cloned = new ImageButton(drawable, ninePatch, smallSize);
+		}
 		cloned.defaultUnhighlightedColor = this.defaultUnhighlightedColor.cpy();
 		cloned.defaultHighlightedColor = this.defaultHighlightedColor.cpy();
 		cloned.currentBackgroundColor = this.currentBackgroundColor.cpy();
@@ -122,8 +145,8 @@ public class ImageButton extends Table {
 		this.toggledOn = toggledOn;
 	}
 
-	public Sprite getIconSprite() {
-		return iconSprite;
+	public Drawable getDrawable() {
+		return drawable;
 	}
 
 	protected static class IconButtonClickListener extends ClickListener {

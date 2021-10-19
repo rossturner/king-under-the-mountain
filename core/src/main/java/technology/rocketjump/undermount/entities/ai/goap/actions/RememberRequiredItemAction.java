@@ -27,7 +27,7 @@ public class RememberRequiredItemAction extends Action {
 			}
 		}
 
-		if (relevantMemory == null || relevantMemory.getRelatedItemType() == null) {
+		if (relevantMemory == null || (relevantMemory.getRelatedItemType() == null && relevantMemory.getRelatedAmmoType() == null)) {
 			completionType = CompletionType.FAILURE;
 		} else {
 			parent.setRelevantMemory(relevantMemory);

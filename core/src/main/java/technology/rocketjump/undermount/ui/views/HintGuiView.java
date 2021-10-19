@@ -183,7 +183,7 @@ public class HintGuiView implements GuiView, GameContextAware {
 
 	@Override
 	public void clearContextRelatedState() {
-		displayedHints.clear();
+		dismissAll();
 	}
 
 	private void buildProgressDescriptors(Hint hint, Table hintTable) throws HintProgressComplete {

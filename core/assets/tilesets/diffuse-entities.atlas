@@ -6159,7 +6159,7 @@ Resource-Logs-Small01-Single-Exterior-34
   index: -1
 Resource-Logs-Small02-Pile01-Exterior
   rotate: false
-  xy: 3384, 1758
+  xy: 3750, 1021
   size: 11, 46
   orig: 11, 46
   offset: 0, 0
@@ -6187,7 +6187,7 @@ Resource-Logs-Small02-Pile04-Exterior
   index: -1
 Resource-Logs-Small02-Single-Exterior
   rotate: false
-  xy: 3750, 1022
+  xy: 3763, 1022
   size: 11, 45
   orig: 11, 45
   offset: 0, 0
@@ -7662,6 +7662,13 @@ birch_04_t
   orig: 194, 301
   offset: 0, 0
   index: -1
+bow
+  rotate: false
+  xy: 3384, 1765
+  size: 12, 59
+  orig: 12, 59
+  offset: 0, 0
+  index: -1
 chair-1x1EW-stone
   rotate: false
   xy: 2371, 810
@@ -8504,7 +8511,7 @@ leaf2
   index: -1
 leaf3
   rotate: false
-  xy: 3384, 1806
+  xy: 3384, 1745
   size: 12, 18
   orig: 12, 18
   offset: 0, 0

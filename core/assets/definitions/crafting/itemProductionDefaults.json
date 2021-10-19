@@ -136,5 +136,12 @@
   },
   "Tool-Tongs" : {
     "perSettler" : 0.15
+  },
+  "Weapon-Bow" : {
+    "perSettler" : 0.1
+  },
+  "Weapon-Metal-Arrows" : {
+    "fixedAmount" : 100,
+    "perSettler" : 0.0
   }
 }

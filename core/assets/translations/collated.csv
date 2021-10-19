@@ -33,6 +33,8 @@ ACTION.SLEEP_ON_FLOOR.DESCRIPTION,Sleeping on {{tileDescription}},,Schläft auf 
 
 ASHES.NOUN,Ash,,,,,,,,,,,,,,,,,,,
 
+BONE.BONE,Bone,,,,,,,,,,,,,,,,,,,
+
 CARCASS.CARP.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
 CARCASS.CARP.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
 CARCASS.CARP.RAW,Carp,,,,,,,,,,,,,,,,,,,
@@ -63,6 +65,7 @@ CRAFTING_TYPE.BLACKSMITHING,Blacksmithing,,Schmieden,,,,,,,,Demirci,,,,,,,,,
 CRAFTING_TYPE.CARPENTRY,Carpentry,,Schreinern,,,,,,,,Marangoz,,,,,,,,,
 CRAFTING_TYPE.COKE_OVEN_BAKING,Coke baking,,Verkoken,,,,,,,,Fırıncılık,,,,,,,,,
 CRAFTING_TYPE.FERMENTING,Fermenting,,Gären,,,,,,,,Fermantasyon,,,,,,,,,
+CRAFTING_TYPE.FLETCHING,Fletching,,,,,,,,,,,,,,,,,,,
 CRAFTING_TYPE.FOOD_PREPARATION,Food preparation,,,,,,,,,,,,,,,,,,,
 CRAFTING_TYPE.MALTING,Malting,,Mälzen,,,,,,,,Çimlendirme,,,,,,,,,
 CRAFTING_TYPE.MALT_MASHING,Malt mashing,,Maischen,,,,,,,,Mayşeleme,,,,,,,,,
@@ -165,6 +168,8 @@ FURNITURE.FEASTING_TABLE,Feasting table,,Festtafel,Table de banquet,Tavolo da ba
 FURNITURE.FEASTING_TABLE.TOOLTIP,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.",,Mit platzierten {{FURNITURE.CHAIR}} können deine Siedler ihre Mahlzeiten an diesem Tisch genießen.,"Avec un {{FURNITURE.CHAIR}} en place, vos colons pourront profiter de leurs repas à cette table.","Con un {{FURNITURE.CHAIR}} in atto, i tuoi coloni potranno gustare i loro pasti a questo tavolo.","Con un {{Furniture.CHAIR}} en su lugar, sus colonos disfrutarán de sus comidas en esta mesa.","Com um {{FURNITURE.CHAIR}} no lugar, seus colonos irão desfrutar de suas refeições nesta mesa.",,,"С {{FURNITURE.CHAIR}}, ваши поселенцы будут наслаждаться трапезой за этим столом.",{{FURNITURE.CHAIR}} ile beraber vatandaşların yemeklerinin tadını masada çıkaracaklar,"Med en {{FURNITURE.CHAR}} til stede, vil dine beboer nyde deres måltid ved bordet",,"Med en {{Furniture.COOR}} på plats, kommer dina nybyggare njuta av sina måltider vid detta bord.",,,,{{FURNITURE.CHAIR}} を配置すると、入植者はこのテーブルで食事を楽しむことができます。,随着 {{{家具 .CAR}} 到位，您的定居者将在此餐桌上享用他们的餐点。,"{{FURNITURE.CHAIR}} 이 자리에 있으면, 이주민들은 이 테이블에서 식사를 즐길 수 있습니다."
 FURNITURE.FERMENTATION_TANK,Fermentation tank,,Gärtank,,,,,,,,Fermantasyon tankı,,,,,,,,,
 FURNITURE.FERMENTATION_TANK.TOOLTIP,This is where {{LIQUID.HOPPED_WORT}} is fermented into {{LIQUID.BEER}}.,,Hier wird {{LIQUID.HOPPED_WORT}} zu {{LIQUID.BEER}} gegärt.,,,,,,,,{{LIQUID.HOPPED_WORT}} un {{LIQUID.BEER}}ya dönüştüğü yer.,,,,,,,,,
+FURNITURE.FLETCHERS_WORKBENCH,Fletcher's workbench,,,,,,,,,,,,,,,,,,,
+FURNITURE.FLETCHERS_WORKBENCH.TOOTIP,This is a crafting station for ranged weapons and ammunition,,,,,,,,,,,,,,,,,,,
 FURNITURE.FLOUR_MILL,Gristmill,,Getreidemühle,Moulin à grains,Gristmill,Molino de Gristmill,Moinho de Gristill,,,Гристмилл,Un Değirmeni,Kværn,,Gristmill,,,,グリストミル,格斯米尔,그리스트밀
 FURNITURE.FLOUR_MILL.TOOLTIP,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,,“Die Getreidemühle mahlt {{VEGETABLE.WHEAT}} zu {{RESOURCE.FLOUR.SACK.NOUN}},Le moulin à grains broie {{Vegetable.WHEAT}} en {{RESOURCE.FLOUR.SACK.NOUN}} afin qu'il puisse être utilisé par un {{PROFESSION.CHEF}}.,Il mulino macina {{VEGETALE.WHEAT}} in {{RESOURCE.FLOUR.SACK.NOUN}} in modo che possa essere utilizzato da un {{PROFESSION.CHEF}}.,La molinillo muele {{VEGETADABLE WHEIGH}} en {{RESOURCE.FloUR.SACK.NOUN}} para que pueda ser utilizada por un {{PROFESSION.CHEF}}.,A moagem de moagem {{VEGETABLE.WORT}} em {{RESOURCE.FLOUR.SACK.NOUN}} para que possa ser usada por um {{PROFISSION.CHEF}}.,,,"Мельница измельчает {{VEGETABLE.WHEAT}} в {{RESOURCE.FLOUR.SACK.NOUN}}, чтобы ее можно было использовать {{PROFESSION.CHEF}}.",Un değirmeni {{VEGETABLE.WHEAT}} nı öğüterek {{PROFESSION.CHEF}} tarafından kullanılabilecek {{RESOURCE.FLOUR.SACK.NOUN}} elde eder.,Kværnen maler {{VEGETABLE.WHEAT}} til {{RESOURCE.FLOUR.SACK.NOUN}} så det kan bruges af en {{PROFESSION.CHEF}}.,,Gristmill malar {{VEETABL.VETE}} i {{RESOURCE.FLOUR.SACK.NOUN}} så att den kan användas av en {{PROCESTI.CHEF}}.,,,,このグリスミルは {{野菜.小麦}} を {{リソース.フローアー.サック.ノウン}} に粉砕し、{{PROFESSION.CHEF}} が使用できるようにします。,水晶磨坊将 {{{蔬菜. 小麦}} 研磨成 {{资源. 面粉. 沙克. 名词}}，以便 {{专业. 厨师}} 可以使用它。,분쇄기는 {{VEGETABLE.WHEAT}} 을 (를) {{RESOURCE.FLOUR.SACK.NOUN}} 로 갈아서 {{PROFESSION.CHEF}} 가 사용할 수 있도록 합니다.
 FURNITURE.FORGE,Forge,,Schmiede,Forge,Forgia,Falsificar,Forjar,,,Кузница,Demirhane,Smedeværksted,,Smida,,,,鍛冶だ,伪造,대장간
@@ -329,6 +334,7 @@ GUI.BUILD_FURNITURE,Furniture,,Möbel,Meubles,Suppellettili,Muebles,Mobília,Mob
 GUI.BUILD_LABEL,Build,,Bauen,"Construire ",Costruisci,"Construir ","Construir ",Construir,,Построить,İnşa Et,Byg,,Bygg,,,,ビルド,建立,빌드
 GUI.CANCEL_LABEL,Cancel,,Abbrechen,"Annuler ",Annulla,"Cancelar ","Cancelar ",Cancelar,,Отмена,İptal,Aflys,,"Avbryt ",,,,キャンセルします,取消,취소
 GUI.CHANGE_PROFESSION_LABEL,Change profession,,Beruf wechseln,Changer de profession,Cambia professione,Cambiar profesión,Mudar de profissão,,,Сменить профессию,Meslek Değiştir,Skift erhverv,,Byt yrke,,,,職業を変える,变革行业,직업 변경
+GUI.CHANGE_WEAPON_LABEL,Select weapon,,,,,,,,,,,,,,,,,,,
 GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,Maintaining,,Beibehalten,,,,,,,,Sabit Düzey,,,,,,,,,
 GUI.CRAFTING_MANAGEMENT.TITLE,Crafting,,Handwerk,,,,,,,,Üretim,,,,,,,,,
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,Current total: {{quantity}},,Gesamt: {{quantity}},,,,,,,,Anlık toplam: {{quantity}},,,,,,,,,
@@ -941,6 +947,8 @@ RESOURCE.STONE.UNREFINED.TOOLTIP,A huge piece of stone that must be chiselled in
 RESOURCE.WHEAT.SACK.NOUN,Wheat (sack),,,,,,,,,,,,,,,,,,,
 RESOURCE.WHEAT.SACK.PLURAL,Wheat (sack),,,,,,,,,,,,,,,,,,,
 
+ROOMS.ARMOURY,Armoury,,,,,,,,,,,,,,,,,,,
+ROOMS.ARMOURY.TOOLTIP,Weapons and armour are created here,,,,,,,,,,,,,,,,,,,
 ROOMS.BEDROOM,Bedroom,,Schlafzimmer,Chambre,Camera da letto,Dormitorio,Quarto,Dormitório,,Спальня,Yatakodası,Soveværelset,,Sovrummet,,,,寝室,卧室,침실
 ROOMS.BEDROOM.TOOLTIP,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",,Ein Platz für Ihre Siedler zum Schlafen. Sie bevorzugen individuelle Schlafzimmer mit einer Größe von mindestens 9 Fliesen und vorzugsweise mindestens 13 Fliesen.,"Un endroit où vos colons peuvent dormir. Ils préfèrent avoir des chambres individuelles qui ont au moins 9 tuiles de taille, ou de préférence au moins 13 tuiles de taille.","Un posto dove dormire i tuoi Settler. Preferiscono avere camere singole di almeno 9 piastrelle di dimensioni, e preferibilmente di almeno 13 piastrelle di dimensioni.","Un lugar para que sus colonos duerman. Prefieren tener habitaciones individuales que tengan al menos 9 azulejos de tamaño, y preferiblemente al menos 13 azulejos de tamaño.","Um lugar para seus colonos dormirem. Eles preferem ter quartos individuais com pelo menos 9 azulejos de tamanho e, de preferência, pelo menos, 13 azulejos de tamanho.",,,Место для ночлега ваших поселенцев. Они предпочитают иметь отдельные спальни размером не менее 9 плиток и предпочтительно не менее 13 плиток.,"Vatandaşlarının uyuması için bir alan. Vatandaşlar en az 9, tercihen 13 karo dan oluşan tek kişilik odalarda kalmayı tercih ederler.","Et sted, hvor dine bosættere kan sove. De foretrækker at have individuelle soveværelser, der er mindst 9 fliser i størrelse, og helst mindst 13 fliser i størrelse.",,"En plats för dina nybyggare att sova. De föredrar att ha individuella sovrum som är minst 9 plattor i storlek, och helst minst 13 plattor i storlek.",,,,あなたの入植者が眠る場所。 彼らは、少なくとも9タイルのサイズで、好ましくは少なくとも13タイルのサイズの個々の寝室を有することを好む。,你的工人睡觉的地方。 他们更喜欢拥有至少 9 个瓷砖大小的单独卧室，最好至少 13 个瓷砖大小。,"당신의 정착민을위한 장소. 그들은 크기가 최소 9 개의 타일, 바람직하게는 적어도 13 개의 타일 크기의 개별 침실을 선호합니다."
 ROOMS.BREWERY,Brewery,,,,,,,,,,Birahane,,,,,,,,,
@@ -1035,6 +1043,8 @@ STOCKPILE.GROUP.RAW_MATERIALS,Raw materials,,,,,,,,,,,,,,,,,,,
 STOCKPILE.GROUP.SEEDS,Seeds,,,,,,,,,,,,,,,,,,,
 STOCKPILE.GROUP.TOOLS,Tools,,Werkzeuglager,Outils,Attrezzi,Herramientas,Ferramentas,Ferramentas,,Инструменты,,,,,,,,,,
 STOCKPILE.GROUP.TOOLS.TOOLTIP,Stores tools required for working on jobs.,,,,,,,,,,,,,,,,,,,
+STOCKPILE.GROUP.WEAPONS,Weapons,,,,,,,,,,,,,,,,,,,
+STOCKPILE.GROUP.WEAPONS.TOOLTIP,Stores harvested fruit and vegetables which can expire.,,,,,,,,,,,,,,,,,,,
 
 STONE.BASALT.ADJECTIVE,Basalt,,Basalt,en basalte,di basalto,De basalto,De basalto,de basalto,,(базальт),Bazalt,Basalt,,Basalt-,,,,玄武岩,玄武岩,현무암
 STONE.BASALT.NOUN,Basalt,,Basalt,Basalte,Basalto,Basalto,Basalto,de basalto,,Базальт,Bazalt,Basalt,,Basalt,,,,玄武岩,玄武岩,현무암
@@ -1201,6 +1211,13 @@ WALL.ORE.NOUN,Ore,,Erz,Or,Parete,Muro,Minério,Minério,,Руда,Cevher,Malm,,M
 WALL.ROUGH_STONE.NOUN,Rock wall,,Steinwand,Mur de pierre,Parete di roccia,Muro rocoso,Muro de pedra,Parede de rocha,,Каменная стена,Taş duvar,Rock væg,,Stenmur,,,,ロックウォール,石牆,바위 벽
 WALL.STONE_BLOCK.NOUN,Smooth stone wall,,Glatte Steinwand,Paroi lisse,Parete di pietra liscia,Muro pulido,Muro de pedra suave,Parede de rocha polida,,Стена из гладкого камня,Pürüssüz taş duvar,Glat stenvæg,,Slät stenmur,,,,滑らかな石の壁。,光滑石墙,부드러운 석재 벽
 WALL.WOODEN.NOUN,Wood wall,,Holzwand,Mur en bois,Parete di legno,Muro de madera,Muro de madeira,Parede de madeira,,Деревянная стена,Tahta duvar,Træ væg,,Trävägg,,,,木造壁,木墙,나무 벽
+
+WEAPON.BONE.ARROWS.NOUN,Arrow,,,,,,,,,,,,,,,,,,,
+WEAPON.BONE.ARROWS.PLURAL,Arrows,,,,,,,,,,,,,,,,,,,
+WEAPON.BOW,Bow,,,,,,,,,,,,,,,,,,,
+WEAPON.METAL.ARROWS.NOUN,Arrow,,,,,,,,,,,,,,,,,,,
+WEAPON.METAL.ARROWS.PLURAL,Arrows,,,,,,,,,,,,,,,,,,,
+WEAPON.UNARMED,Unarmed,,,,,,,,,,,,,,,,,,,
 
 WEATHER.TYPE.CLOUDY,Cloudy & grey,,,,,,,,,,,,,,,,,,,
 WEATHER.TYPE.COLD_WINDS,Cold winds,,,,,,,,,,,,,,,,,,,

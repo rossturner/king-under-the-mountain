@@ -1,6 +1,8 @@
 package technology.rocketjump.undermount.entities.ai.memory;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang3.EnumUtils;
+import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -24,6 +26,7 @@ public class Memory implements ChildPersistable {
 	private ItemType relatedItemType;
 	private GameMaterial relatedMaterial;
 	private String relatedGoalName;
+	private AmmoType relatedAmmoType;
 
 	public Memory() {
 
@@ -86,6 +89,14 @@ public class Memory implements ChildPersistable {
 		this.relatedGoalName = relatedGoalName;
 	}
 
+	public AmmoType getRelatedAmmoType() {
+		return relatedAmmoType;
+	}
+
+	public void setRelatedAmmoType(AmmoType relatedAmmoType) {
+		this.relatedAmmoType = relatedAmmoType;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("type", type.name());
@@ -94,6 +105,9 @@ public class Memory implements ChildPersistable {
 
 		if (relatedItemType != null) {
 			asJson.put("relatedItemType", relatedItemType.getItemTypeName());
+		}
+		if (relatedAmmoType != null) {
+			asJson.put("relatedAmmoType", relatedAmmoType.name());
 		}
 		if (relatedMaterial != null) {
 			asJson.put("relatedMaterial", relatedMaterial.getMaterialName());
@@ -117,6 +131,14 @@ public class Memory implements ChildPersistable {
 			}
 		}
 
+		String relatedAmmoTypeName = asJson.getString("relatedAmmoType");
+		if (relatedAmmoTypeName != null) {
+			this.relatedAmmoType = EnumUtils.getEnum(AmmoType.class, relatedAmmoTypeName);
+			if (this.relatedAmmoType == null) {
+				throw new InvalidSaveException("Could not find ammo type by name " + relatedAmmoTypeName);
+			}
+		}
+
 		String relatedMaterialName = asJson.getString("relatedMaterial");
 		if (relatedMaterialName != null) {
 			this.relatedMaterial = relatedStores.gameMaterialDictionary.getByName(relatedMaterialName);
@@ -127,5 +149,4 @@ public class Memory implements ChildPersistable {
 
 		this.relatedGoalName = asJson.getString("relatedGoalName");
 	}
-
 }

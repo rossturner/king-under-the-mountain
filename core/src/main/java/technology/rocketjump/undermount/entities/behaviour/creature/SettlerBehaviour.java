@@ -5,6 +5,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.entities.ai.goap.*;
+import technology.rocketjump.undermount.entities.ai.memory.Memory;
 import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.humanoid.*;
@@ -13,7 +14,9 @@ import technology.rocketjump.undermount.entities.model.physical.creature.Conscio
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.creature.Sanity;
+import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -278,6 +281,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 		}
 		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 
+		thinkAboutRequiredEquipment(gameContext);
 		addGoalsToQueue(gameContext);
 
 		lookAtNearbyThings(gameContext);
@@ -294,6 +298,38 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 
 	public GoalQueue getGoalQueue() {
 		return goalQueue;
+	}
+
+	private void thinkAboutRequiredEquipment(GameContext gameContext) {
+		WeaponSelectionComponent weaponSelectionComponent = parentEntity.getOrCreateComponent(WeaponSelectionComponent.class);
+
+		if (weaponSelectionComponent.getSelectedWeapon().isPresent()) {
+			ItemType weaponItemType = weaponSelectionComponent.getSelectedWeapon().get();
+
+			InventoryComponent inventoryComponent = parentEntity.getComponent(InventoryComponent.class);
+			InventoryComponent.InventoryEntry weaponInInventory = inventoryComponent.findByItemType(weaponItemType, gameContext.getGameClock());
+
+			if (weaponInInventory == null) {
+				Memory itemRequiredMemory = new Memory(MemoryType.LACKING_REQUIRED_ITEM, gameContext.getGameClock());
+				itemRequiredMemory.setRelatedItemType(weaponItemType);
+				// Should set required material at some point
+				parentEntity.getOrCreateComponent(MemoryComponent.class).add(itemRequiredMemory, gameContext.getGameClock());
+			} else if (weaponItemType.getWeaponInfo() != null && weaponItemType.getWeaponInfo().getRequiresAmmoType() != null) {
+				// check for ammo
+				AmmoType requiredAmmoType = weaponItemType.getWeaponInfo().getRequiresAmmoType();
+
+				boolean hasAmmo = inventoryComponent.getInventoryEntries().stream()
+						.anyMatch(entry -> entry.entity.getType().equals(ITEM) &&
+								requiredAmmoType.equals(((ItemEntityAttributes) entry.entity.getPhysicalEntityComponent().getAttributes()).getItemType().getIsAmmoType()));
+
+				if (!hasAmmo) {
+					Memory itemRequiredMemory = new Memory(MemoryType.LACKING_REQUIRED_ITEM, gameContext.getGameClock());
+					itemRequiredMemory.setRelatedAmmoType(requiredAmmoType);
+					// Should set required material at some point
+					parentEntity.getOrCreateComponent(MemoryComponent.class).add(itemRequiredMemory, gameContext.getGameClock());
+				}
+			}
+		}
 	}
 
 	protected void addGoalsToQueue(GameContext gameContext) {

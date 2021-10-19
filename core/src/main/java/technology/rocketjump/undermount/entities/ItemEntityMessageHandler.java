@@ -6,6 +6,7 @@ import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.apache.commons.lang3.EnumUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
@@ -15,6 +16,7 @@ import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
+import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -137,8 +139,13 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 
 	private boolean handle(LookupMessage itemTypeLookupMessage) {
 		if (itemTypeLookupMessage.entityType.equals(EntityType.ITEM)) {
-			ItemType itemType = itemTypeDictionary.getByName(itemTypeLookupMessage.typeName);
-			itemTypeLookupMessage.callback.itemTypeFound(Optional.ofNullable(itemType));
+			AmmoType ammoType = EnumUtils.getEnum(AmmoType.class, itemTypeLookupMessage.typeName);
+			if (ammoType != null) {
+				itemTypeLookupMessage.callback.itemTypesFound(new ArrayList<>(itemTypeDictionary.getByAmmoType(ammoType)));
+			} else {
+				ItemType itemType = itemTypeDictionary.getByName(itemTypeLookupMessage.typeName);
+				itemTypeLookupMessage.callback.itemTypeFound(Optional.ofNullable(itemType));
+			}
 			return true;
 		} else {
 			return false;

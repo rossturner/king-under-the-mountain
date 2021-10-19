@@ -139,7 +139,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 		});
 
 
-		changeRoomNameButton = imageButtonFactory.create("fountain-pen", true).clone();
+		changeRoomNameButton = imageButtonFactory.getOrCreate("fountain-pen", true).clone();
 		changeRoomNameButton.setAction(() -> {
 			if (currentSelectable.getRoom() != null) {
 				// Grabbing translations here so they're always for the correct language

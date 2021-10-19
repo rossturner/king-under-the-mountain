@@ -947,28 +947,5 @@
       }
     ],
     "defaultTimeToCompleteCrafting": 5
-  },
-  {
-    "recipeName": "Fletch metal arrows",
-    "craftingTypeName": "FLETCHING",
-    "verbOverrideI18nKey": "CRAFTING_TYPE.FLETCHING",
-    "input": [
-      {
-        "itemTypeName": "Resource-Metal-Ingot",
-        "quantity": 1
-      },
-      {
-        "itemTypeName": "Resource-Planks",
-        "quantity": 1
-      }
-    ],
-    "output": [
-      {
-        "itemTypeName": "Weapon-Metal-Arrows",
-        "quantity": 10
-      }
-    ],
-    "materialTypesToCopyOver": ["METAL", "WOOD"],
-    "defaultTimeToCompleteCrafting": 5
   }
 ]
