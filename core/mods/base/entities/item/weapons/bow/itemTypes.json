@@ -6,6 +6,7 @@
   "maxHauledAtOnce": 1,
   "stockpileGroupName": "WEAPONS",
   "holdPosition": "LEFT_HAND",
+  "hoursInInventoryUntilUnused": 3.0,
   "weaponInfo": {
     "range": 9,
     "damageType": "STABBING",

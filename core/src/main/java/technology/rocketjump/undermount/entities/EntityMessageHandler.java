@@ -575,6 +575,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			MemoryComponent memoryComponent = weaponSelectionMessage.entity.getOrCreateComponent(MemoryComponent.class);
 			memoryComponent.getShortTermMemories(gameContext.getGameClock())
 					.removeIf(memory -> memory.getType().equals(MemoryType.LACKING_REQUIRED_ITEM) &&
+							memory.getRelatedItemType() != null &&
 							memory.getRelatedItemType().equals(weaponSelectionComponent.getSelectedWeapon().get()));
 		}
 

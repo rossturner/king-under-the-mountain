@@ -21,6 +21,7 @@ public class ExampleItemDictionary {
 	}
 	private final ItemType SHOW_LIQUID_ITEM_TYPE;
 	private final Map<ItemType, Map<GameMaterial, Entity>> exampleEntities = new HashMap<>();
+	private final Map<ItemType, Entity> ghostEntities = new HashMap<>();
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final ItemEntityFactory itemEntityFactory;
 

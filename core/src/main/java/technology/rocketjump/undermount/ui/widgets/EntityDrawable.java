@@ -21,8 +21,8 @@ public class EntityDrawable extends BaseDrawable {
         this.entity = entity;
         this.entityRenderer = entityRenderer;
 
-        setMinWidth(PIXELS_PER_TILE * 1.2f);
-        setMinHeight(PIXELS_PER_TILE * 1.2f);
+        setMinWidth(PIXELS_PER_TILE);
+        setMinHeight(PIXELS_PER_TILE);
     }
 
     @Override

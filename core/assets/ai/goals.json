@@ -21,7 +21,7 @@
     "ForgetRelevantMemory" : { }
   },
   "selectors" : [ {
-    "scheduleCategory" : "WORK",
+    "scheduleCategory" : "ANY",
     "conditions" : [ {
       "memoryType" : "LACKING_REQUIRED_ITEM",
       "type" : "MEMORY"

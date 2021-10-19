@@ -520,7 +520,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				imageButton = imageButtonFactory.getOrCreate(inventoryEntry.entity);
 			} else {
 				// Use generic drawable of itemtype
-				imageButton = imageButtonFactory.getOrCreate(exampleItemDictionary.getExampleItemEntity(selectedWeapon.get(), Optional.empty()));
+				imageButton = imageButtonFactory.getOrCreateGhostButton(exampleItemDictionary.getExampleItemEntity(selectedWeapon.get(), Optional.empty()));
 			}
 		} else {
 			// Unarmed

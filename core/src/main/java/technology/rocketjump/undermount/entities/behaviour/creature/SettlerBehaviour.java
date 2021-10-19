@@ -217,10 +217,24 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 	private AssignedGoal checkToPlaceInventoryItems(GameContext gameContext) {
 		// Place an unused item into a stockpile if a space is available
 		InventoryComponent inventory = parentEntity.getComponent(InventoryComponent.class);
+		WeaponSelectionComponent weaponSelectionComponent = parentEntity.getOrCreateComponent(WeaponSelectionComponent.class);
+
 		double currentGameTime = gameContext.getGameClock().getCurrentGameTime();
 		for (InventoryComponent.InventoryEntry entry : inventory.getInventoryEntries()) {
 			if (entry.entity.getType().equals(ITEM)) {
 				ItemEntityAttributes attributes = (ItemEntityAttributes) entry.entity.getPhysicalEntityComponent().getAttributes();
+
+				if (weaponSelectionComponent.getSelectedWeapon().isPresent()) {
+					ItemType weaponSelection = weaponSelectionComponent.getSelectedWeapon().get();
+					if (attributes.getItemType().equals(weaponSelection)) {
+						continue; // This is a weapon we have selected so do not drop
+					}
+
+					if (weaponSelection.getWeaponInfo().getRequiresAmmoType() != null && weaponSelection.getWeaponInfo().getRequiresAmmoType().equals(attributes.getItemType().getIsAmmoType())) {
+						continue; // This is ammo for selected weapon
+					}
+				}
+
 				if (entry.getLastUpdateGameTime() + attributes.getItemType().getHoursInInventoryUntilUnused() < currentGameTime) {
 					// Temp un-requestAllocation
 					ItemAllocationComponent itemAllocationComponent = entry.entity.getOrCreateComponent(ItemAllocationComponent.class);

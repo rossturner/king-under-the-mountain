@@ -53,5 +53,19 @@
         "relatedTypeName": "BUILD_MECHANISMS"
       }
     ]
+  },
+  {
+    "hintId": "open_weapon_selection",
+    "i18nKeys": [
+      "HINT.WEAPON_SELECTION.1",
+      "HINT.WEAPON_SELECTION.2",
+      "HINT.WEAPON_SELECTION.3"
+    ],
+    "triggers": [
+      {
+        "triggerType": "GUI_SWITCH_VIEW",
+        "relatedTypeName": "CHANGE_WEAPON_SELECTION"
+      }
+    ]
   }
 ]

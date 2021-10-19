@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDic
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.ChangeWeaponSelectionMessage;
+import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.I18nWidgetFactory;
@@ -37,6 +38,7 @@ public class ChangeWeaponSelectionGuiView implements GuiView {
 	private final I18nWidgetFactory i18nWidgetFactory;
 	private final ExampleItemDictionary exampleItemDictionary;
 	private final ImageButtonFactory imageButtonFactory;
+	private final ItemTracker itemTracker;
 	private final MessageDispatcher messageDispatcher;
 	private final ImageButton unarmedButton;
 
@@ -52,7 +54,7 @@ public class ChangeWeaponSelectionGuiView implements GuiView {
 	public ChangeWeaponSelectionGuiView(ProfessionDictionary professionDictionary, I18nWidgetFactory i18nWidgetFactory,
 										GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher,
 										GameInteractionStateContainer gameInteractionStateContainer,
-										ItemTypeDictionary itemTypeDictionary, ExampleItemDictionary exampleItemDictionary, ImageButtonFactory imageButtonFactory) {
+										ItemTypeDictionary itemTypeDictionary, ExampleItemDictionary exampleItemDictionary, ImageButtonFactory imageButtonFactory, ItemTracker itemTracker) {
 		this.professionDictionary = professionDictionary;
 		this.i18nWidgetFactory = i18nWidgetFactory;
 		this.messageDispatcher = messageDispatcher;
@@ -62,6 +64,7 @@ public class ChangeWeaponSelectionGuiView implements GuiView {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.exampleItemDictionary = exampleItemDictionary;
 		this.imageButtonFactory = imageButtonFactory;
+		this.itemTracker = itemTracker;
 
 		viewTable = new Table(uiSkin);
 		viewTable.background("default-rect");
@@ -106,7 +109,13 @@ public class ChangeWeaponSelectionGuiView implements GuiView {
 			Table innerTable = new Table(uiSkin);
 
 			Entity itemEntity = exampleItemDictionary.getExampleItemEntity(weaponItemType, Optional.empty());
-			ImageButton imageButton = imageButtonFactory.getOrCreate(itemEntity);
+			boolean hasItemsAvailable = !itemTracker.getItemsByType(weaponItemType, true).isEmpty();
+			ImageButton imageButton;
+			if (hasItemsAvailable) {
+				imageButton = imageButtonFactory.getOrCreate(itemEntity);
+			} else {
+				imageButton = imageButtonFactory.getOrCreateGhostButton(itemEntity);
+			}
 			imageButton.setAction(() -> {
 				messageDispatcher.dispatchMessage(MessageType.CHANGE_WEAPON_SELECTION, new ChangeWeaponSelectionMessage(
 						gameInteractionStateContainer.getSelectable().getEntity(), weaponItemType

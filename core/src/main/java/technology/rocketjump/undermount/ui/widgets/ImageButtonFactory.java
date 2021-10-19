@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class ImageButtonFactory {
 
 	private Map<String, ImageButton> byIconName = new HashMap<>();
 	private final Map<Long, ImageButton> entityButtonsByEntityId = new HashMap<>();
+	private final Map<Long, ImageButton> ghostButtonsByEntityId = new HashMap<>();
 	private final EntityRenderer entityRenderer;
 
 	@Inject
@@ -39,7 +41,7 @@ public class ImageButtonFactory {
 	}
 
 	public ImageButton getOrCreate(String iconName) {
-		return getOrCreate(iconName,false);
+		return getOrCreate(iconName, false);
 	}
 
 	public ImageButton getOrCreate(String iconName, boolean halfSize) {
@@ -55,6 +57,14 @@ public class ImageButtonFactory {
 
 	public ImageButton getOrCreate(Entity entity) {
 		return entityButtonsByEntityId.computeIfAbsent(entity.getId(), a -> new ImageButton(new EntityDrawable(entity, entityRenderer), buttonNinePatch, false));
+	}
+
+	public ImageButton getOrCreateGhostButton(Entity entity) {
+		return ghostButtonsByEntityId.computeIfAbsent(entity.getId(), a -> {
+			EntityDrawable entityDrawable = new EntityDrawable(entity, entityRenderer);
+			entityDrawable.setOverrideColor(HexColors.get("#D4534C88"));
+			return new ImageButton(entityDrawable, buttonNinePatch, false);
+		});
 	}
 
 }
