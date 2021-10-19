@@ -22,6 +22,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.ItemHoldPosition;
 import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -47,6 +48,7 @@ public class Entity implements Persistable, Disposable {
 	private final EntityComponentMap componentMap = new EntityComponentMap();
 	private Set<Tag> tags = new LinkedHashSet<>();
 	private double lastUpdateGameTime;
+	private Designation designation;
 
 	public static final Entity NULL_ENTITY = new Entity();
 
@@ -397,6 +399,10 @@ public class Entity implements Persistable, Disposable {
 			asJson.put("tags", tagsJson);
 		}
 
+		if (designation != null) {
+			asJson.put("designation", designation.getDesignationName());
+		}
+
 		savedGameStateHolder.entitiesJson.add(asJson);
 		savedGameStateHolder.entities.put(id, this);
 	}
@@ -450,6 +456,13 @@ public class Entity implements Persistable, Disposable {
 			}
 		}
 
+		String designationName = asJson.getString("designation");
+		if (designationName != null) {
+			this.designation = relatedStores.designationDictionary.getByName(designationName);
+			if (this.designation == null) {
+				throw new InvalidSaveException("Could not find designation with name " + designationName);
+			}
+		}
 	}
 
 	public <T> T getTag(Class<T> tagClass) {
@@ -470,5 +483,13 @@ public class Entity implements Persistable, Disposable {
 
 	public List<EntityComponent> getAllComponents() {
 		return componentMap.values();
+	}
+
+	public Designation getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
 	}
 }

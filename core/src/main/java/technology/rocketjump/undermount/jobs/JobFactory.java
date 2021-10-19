@@ -10,7 +10,7 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.rooms.Bridge;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 
@@ -62,7 +62,7 @@ public class JobFactory {
 			job.setRequiredProfession(craftingType.getProfessionRequired());
 			job.setRequiredItemType(craftingType.getDefaultItemType());
 		} else if (targetTile.hasChannel()) {
-			TileDesignation originalDesignation = GameInteractionMode.DESIGNATE_DIG_CHANNEL.getDesignationToApply();
+			Designation originalDesignation = GameInteractionMode.DESIGNATE_DIG_CHANNEL.getDesignationToApply();
 			job.setRequiredProfession(originalDesignation.getCreatesJobType().getRequiredProfession());
 			job.setRequiredItemType(originalDesignation.getCreatesJobType().getRequiredItemType());
 		} else {

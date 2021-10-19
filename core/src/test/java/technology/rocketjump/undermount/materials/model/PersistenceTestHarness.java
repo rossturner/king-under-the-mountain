@@ -29,7 +29,7 @@ import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.designation.DesignationDictionary;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
@@ -89,7 +89,7 @@ public class PersistenceTestHarness {
 	@Mock
 	protected RoomComponentDictionary mockRoomComponentDictionary;
 	@Mock
-	protected TileDesignationDictionary mockTileDesignationDictionary;
+	protected DesignationDictionary mockDesignationDictionary;
 	@Mock
 	protected StockpileGroupDictionary mockStockpileGroupDictionary;
 	@Mock
@@ -147,7 +147,7 @@ public class PersistenceTestHarness {
 				mockWallTypeDictionary,
 				mockRoomTypeDictionary,
 				mockRoomComponentDictionary,
-				mockTileDesignationDictionary,
+				mockDesignationDictionary,
 				mockStockpileGroupDictionary,
 				mockTagDictionary,
 				mockSoundAssetDictionary,

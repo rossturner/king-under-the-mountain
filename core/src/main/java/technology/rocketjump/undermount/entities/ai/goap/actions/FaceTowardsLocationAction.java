@@ -37,7 +37,7 @@ public class FaceTowardsLocationAction extends Action {
 			} else if (parent.getAssignedJob().getSecondaryLocation() != null) {
 				return toVector(parent.getAssignedJob().getSecondaryLocation());
 			} else {
-				return null;
+				return toVector(parent.getAssignedJob().getJobLocation());
 			}
 		} else {
 			return parent.getTargetLocation();

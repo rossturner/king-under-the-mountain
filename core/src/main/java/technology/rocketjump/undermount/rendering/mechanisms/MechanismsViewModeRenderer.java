@@ -179,7 +179,7 @@ public class MechanismsViewModeRenderer {
 			if (cursorTile != null) {
 				boolean hasOtherMechanismConstruction = cursorTile.getUnderTile() != null && cursorTile.getUnderTile().getQueuedMechanismType() != null;
 				if (!hasOtherMechanismConstruction) {
-					Color placementColor = GameInteractionMode.DESIGNATE_MECHANISMS.designationCheck.shouldDesignationApply(cursorTile)
+					Color placementColor = GameInteractionMode.DESIGNATE_MECHANISMS.tileDesignationCheck.shouldDesignationApply(cursorTile)
 							? VALID_PLACEMENT_COLOR : INVALID_PLACEMENT_COLOR;
 					renderPlacingEntity(cursorTilePosition.x, cursorTilePosition.y, interactionStateContainer.getMechanismTypeToPlace(),
 							spriteBatch, placementColor);
@@ -232,8 +232,8 @@ public class MechanismsViewModeRenderer {
 	}
 
 	private boolean shouldHighlight(MapTile mapTile) {
-		if (interactionStateContainer.getInteractionMode().designationCheck != null) {
-			return interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(mapTile);
+		if (interactionStateContainer.getInteractionMode().tileDesignationCheck != null) {
+			return interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(mapTile);
 		}
 		return false;
 	}

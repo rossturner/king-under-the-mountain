@@ -328,4 +328,11 @@
   "defaultTimeToCompleteJob" : 0.5,
   "onCompletionSoundAssetName" : "WaterSizzle",
   "accessedFromAdjacentTile" : true
+}, {
+  "name" : "HUNT_CREATURE",
+  "removeJobWhenAssignmentCancelled" : false,
+  "haulItemWhileWorking" : false,
+  "switchToSpecialGoal" : "ATTACK_CREATURE",
+  "requiredProfessionName" : "HUNTER",
+  "accessedFromAdjacentTile" : false
 } ]

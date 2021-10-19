@@ -3,6 +3,14 @@ Alpha 8
 - Reworked HUMANOID entities into more generic CREATURE entity type
 - Added "Race" type for creatures containing new data
 - Dwarven body shape (fat/average/strong) is now based on a strength stat, determined by a strength distribution described as part of the race
+- Added non-settler creature behaviour, to represent wild animals at this stage
+- Added the following wild animals:
+    - Deer
+    - Fox
+    - Wild boar
+- Added Armory zone for crafting of weapons (and later armour), alongside weapons stockpile type
+- Settler can now have a type of weapon assigned for them to keep hold of for combat
+- (Re-)added the hunter profession, along with a hunting order and designation on entities (as opposed to a static location)
 
 Alpha 7.0.4
 

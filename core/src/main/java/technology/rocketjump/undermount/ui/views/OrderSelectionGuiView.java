@@ -47,6 +47,10 @@ public class OrderSelectionGuiView implements GuiView {
 		digChannels.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_DIG_CHANNEL, messageDispatcher));
 		iconButtons.add(digChannels);
 
+		IconButton huntCreatures = iconButtonFactory.create("GUI.ORDERS.HUNT", "crosshair-arrow", HexColors.get("#bc4e2a"), ButtonStyle.DEFAULT);
+		huntCreatures.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_CREATURE_TO_HUNT, messageDispatcher));
+		iconButtons.add(huntCreatures);
+
 		IconButton extinguishFlames = iconButtonFactory.create("GUI.ORDERS.EXTINGUISH_FLAMES", "water-splash", HexColors.get("#5ae9f0"), ButtonStyle.DEFAULT);
 		extinguishFlames.setAction(new SetInteractionMode(GameInteractionMode.DESIGNATE_EXTINGUISH_FLAMES, messageDispatcher));
 		iconButtons.add(extinguishFlames);

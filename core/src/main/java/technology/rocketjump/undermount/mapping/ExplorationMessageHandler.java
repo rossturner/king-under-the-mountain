@@ -102,7 +102,7 @@ public class ExplorationMessageHandler implements Telegraph, GameContextAware {
 					}
 				}
 			} else {
-				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(currentTile, currentTile.getDesignation()));
+				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(currentTile));
 			}
 		}
 	}

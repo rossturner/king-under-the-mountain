@@ -34,7 +34,7 @@ import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.jobs.model.Profession;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.modding.processing.*;
 import technology.rocketjump.undermount.modding.validation.*;
@@ -159,7 +159,7 @@ public class ModArtifactListing {
 						"definitions/materials", "*-materials.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "weatherTypes", SINGLE_FILE, JSON_ARRAY, WeatherType.class,
 						"definitions", "weatherTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
-				def("definitions", "designations", SINGLE_FILE, JSON_ARRAY, TileDesignation.class,
+				def("definitions", "designations", SINGLE_FILE, JSON_ARRAY, Designation.class,
 						"definitions", "designations.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "constants", SINGLE_FILE, JSON_OBJECT, null,
 						"definitions/constants", "**.json", JSON_KEY_VALUES, ADDITIVE, UntypedJsonProcessor.class),

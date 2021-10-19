@@ -29,7 +29,7 @@ import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.designation.DesignationDictionary;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
@@ -68,7 +68,7 @@ public class SavedGameDependentDictionaries {
 	public final WallTypeDictionary wallTypeDictionary;
 	public final RoomTypeDictionary roomTypeDictionary;
 	public final RoomComponentDictionary roomComponentDictionary;
-	public final TileDesignationDictionary tileDesignationDictionary;
+	public final DesignationDictionary designationDictionary;
 	public final StockpileGroupDictionary stockpileGroupDictionary;
 	public final TagDictionary tagDictionary;
 	public final SoundAssetDictionary soundAssetDictionary;
@@ -93,7 +93,7 @@ public class SavedGameDependentDictionaries {
 										  ActionDictionary actionDictionary, FurnitureTypeDictionary furnitureTypeDictionary,
 										  FurnitureLayoutDictionary furnitureLayoutDictionary, PlantSpeciesDictionary plantSpeciesDictionary,
 										  WallTypeDictionary wallTypeDictionary, RoomTypeDictionary roomTypeDictionary,
-										  RoomComponentDictionary roomComponentDictionary, TileDesignationDictionary tileDesignationDictionary,
+										  RoomComponentDictionary roomComponentDictionary, DesignationDictionary designationDictionary,
 										  StockpileGroupDictionary stockpileGroupDictionary, TagDictionary tagDictionary,
 										  SoundAssetDictionary soundAssetDictionary, BridgeTypeDictionary bridgeTypeDictionary,
 										  JobStore jobStore, ParticleEffectTypeDictionary particleEffectTypeDictionary,
@@ -124,7 +124,7 @@ public class SavedGameDependentDictionaries {
 		this.wallTypeDictionary = wallTypeDictionary;
 		this.roomTypeDictionary = roomTypeDictionary;
 		this.roomComponentDictionary = roomComponentDictionary;
-		this.tileDesignationDictionary = tileDesignationDictionary;
+		this.designationDictionary = designationDictionary;
 		this.stockpileGroupDictionary = stockpileGroupDictionary;
 		this.tagDictionary = tagDictionary;
 		this.soundAssetDictionary = soundAssetDictionary;

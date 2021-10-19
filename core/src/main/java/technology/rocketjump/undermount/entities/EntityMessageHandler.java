@@ -49,7 +49,7 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
@@ -396,7 +396,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
 
 							// also apply designation to other tiles
-							TileDesignation deconstructDesignation = GameInteractionMode.DECONSTRUCT.getDesignationToApply();
+							Designation deconstructDesignation = GameInteractionMode.DECONSTRUCT.getDesignationToApply();
 							if (deconstructDesignation != null) {
 								Set<MapTile> locations = new HashSet<>();
 								locations.add(entityTile);

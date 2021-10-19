@@ -300,5 +300,10 @@
     "switchToSpecialGoal": "EXTINGUISH_FIRE",
     "removeJobWhenAssignmentCancelled": false,
     "onCompletionSoundAssetName": "WaterSizzle"
+  },
+  {
+    "name": "HUNT_CREATURE",
+    "switchToSpecialGoal": "ATTACK_CREATURE",
+    "requiredProfessionName": "HUNTER"
   }
 ]

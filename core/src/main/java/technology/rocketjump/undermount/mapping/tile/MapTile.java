@@ -17,7 +17,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.mapping.tile.floor.FloorOverlap;
 import technology.rocketjump.undermount.mapping.tile.floor.OverlapLayout;
 import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
@@ -69,7 +69,7 @@ public class MapTile implements Persistable {
 	private final Deque<TileFloor> floors = new ArrayDeque<>();
 	private UnderTile underTile;
 
-	private TileDesignation designation = null;
+	private Designation designation = null;
 	private RoomTile roomTile = null;
 	private Set<Zone> zones = new HashSet<>();
 	private Construction construction = null;
@@ -324,11 +324,11 @@ public class MapTile implements Persistable {
 		return false;
 	}
 
-	public TileDesignation getDesignation() {
+	public Designation getDesignation() {
 		return designation;
 	}
 
-	public void setDesignation(TileDesignation designation) {
+	public void setDesignation(Designation designation) {
 		this.designation = designation;
 	}
 
@@ -606,7 +606,7 @@ public class MapTile implements Persistable {
 
 		String designationName = asJson.getString("designation");
 		if (designationName != null) {
-			this.designation = relatedStores.tileDesignationDictionary.getByName(designationName);
+			this.designation = relatedStores.designationDictionary.getByName(designationName);
 			if (this.designation == null) {
 				throw new InvalidSaveException("Could not find tile designation by name " + designationName);
 			}

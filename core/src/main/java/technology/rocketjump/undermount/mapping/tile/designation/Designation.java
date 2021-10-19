@@ -11,7 +11,7 @@ import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.misc.Name;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TileDesignation {
+public class Designation {
 
 	@Name
 	private String designationName;
@@ -25,21 +25,24 @@ public class TileDesignation {
 	@JsonIgnore
 	private Sprite iconSprite;
 
-	private JobPriority defaultJobPriority = JobPriority.NORMAL;
+	private JobPriority defaultJobPriority;
+	private boolean appliesToEntities;
 
 	@JsonCreator
-	public TileDesignation(@JsonProperty("designationName") String designationName,
-						   @JsonProperty("iconName") String iconName,
-						   @JsonProperty("createsJobType") String createsJobTypeName,
-						   @JsonProperty("selectionColor") Color selectionColor,
-						   @JsonProperty("designationColor") Color designationColor,
-						   @JsonProperty("defaultJobPriority") JobPriority defaultJobPriority) {
+	public Designation(@JsonProperty("designationName") String designationName,
+					   @JsonProperty("iconName") String iconName,
+					   @JsonProperty("createsJobType") String createsJobTypeName,
+					   @JsonProperty("selectionColor") Color selectionColor,
+					   @JsonProperty("designationColor") Color designationColor,
+					   @JsonProperty("defaultJobPriority") JobPriority defaultJobPriority,
+					   @JsonProperty("appliesToEntities") Boolean appliesToEntities) {
 		this.designationName = designationName;
 		this.iconName = iconName;
 		this.createsJobTypeName = createsJobTypeName;
 		this.selectionColor = selectionColor;
 		this.designationColor = designationColor;
 		this.defaultJobPriority = defaultJobPriority == null ? JobPriority.NORMAL : defaultJobPriority;
+		this.appliesToEntities = appliesToEntities != null && appliesToEntities;
 	}
 
 	public String getDesignationName() {
@@ -80,6 +83,10 @@ public class TileDesignation {
 
 	public JobPriority getDefaultJobPriority() {
 		return defaultJobPriority;
+	}
+
+	public boolean isAppliesToEntities() {
+		return appliesToEntities;
 	}
 
 	public void setDefaultJobPriority(JobPriority defaultJobPriority) {

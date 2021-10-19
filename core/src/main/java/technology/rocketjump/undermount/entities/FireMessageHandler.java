@@ -36,7 +36,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -192,7 +192,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		GridPoint2 centre = toGridPoint(location);
 		int firesStarted = 0;
 		MapTile centreTile = gameContext.getAreaMap().getTile(centre);
-		TileDesignation extinguishFlamesDesignation = null;
+		Designation extinguishFlamesDesignation = null;
 		if (centreTile.getDesignation() != null && centreTile.getDesignation().getDesignationName().equals("EXTINGUISH_FLAMES")) {
 			extinguishFlamesDesignation = centreTile.getDesignation();
 		}
@@ -253,13 +253,13 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 
 	private void checkToRemoveExtinguishDesignation(GridPoint2 removalLocation) {
 		MapTile tile = gameContext.getAreaMap().getTile(removalLocation);
-		TileDesignation designation = tile.getDesignation();
+		Designation designation = tile.getDesignation();
 		if (designation != null) {
 			GameInteractionMode interactionMode = GameInteractionMode.getByDesignationName(designation.getDesignationName());
 			if (interactionMode != null) {
-				if (!interactionMode.designationCheck.shouldDesignationApply(tile)) {
+				if (!interactionMode.tileDesignationCheck.shouldDesignationApply(tile)) {
 					// designation no longer applies
-					messageDispatcher.dispatchMessage(REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, designation));
+					messageDispatcher.dispatchMessage(REMOVE_DESIGNATION, new RemoveDesignationMessage(tile));
 
 					gameContext.getAreaMap().getTile(removalLocation).getEntities().stream()
 							.filter(e -> e.getType().equals(FURNITURE))
@@ -357,10 +357,10 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				blackenedColors);
 	}
 
-	private void applyDesignation(MapTile targetTile, TileDesignation extinguishFlamesDesignation) {
+	private void applyDesignation(MapTile targetTile, Designation extinguishFlamesDesignation) {
 		if (extinguishFlamesDesignation != null) {
 			if (targetTile.getDesignation() != null) {
-				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(targetTile, targetTile.getDesignation()));
+				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(targetTile));
 			}
 			targetTile.setDesignation(extinguishFlamesDesignation);
 			messageDispatcher.dispatchMessage(MessageType.DESIGNATION_APPLIED, new ApplyDesignationMessage(targetTile, extinguishFlamesDesignation, DEFAULT));

@@ -30,7 +30,7 @@ import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.MapVertex;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
@@ -54,6 +54,7 @@ import technology.rocketjump.undermount.zones.Zone;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
@@ -137,7 +138,8 @@ public class InWorldUIRenderer {
 		GridPoint2 maxDraggingTile = new GridPoint2(MathUtils.floor(maxDraggingPoint.x), MathUtils.floor(maxDraggingPoint.y));
 
 		if (interactionStateContainer.isDragging() && (
-				interactionStateContainer.getInteractionMode().designationCheck != null ||
+				interactionStateContainer.getInteractionMode().tileDesignationCheck != null ||
+						interactionStateContainer.getInteractionMode().entityDesignationCheck != null ||
 						interactionStateContainer.getInteractionMode().equals(SET_JOB_PRIORITY)
 		)) {
 			drawDragAreaOutline(minDraggingPoint, maxDraggingPoint);
@@ -237,7 +239,7 @@ public class InWorldUIRenderer {
 						} else if (interactionStateContainer.getInteractionMode().designationName != null) { // Is a designation
 							// This is within dragging area
 							if (shouldHighlight(mapTile)) {
-								TileDesignation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
+								Designation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
 								spriteBatch.setColor(designationToApply.getSelectionColor());
 								spriteBatch.draw(designationToApply.getIconSprite(), x, y, 1, 1);
 							} else {
@@ -443,7 +445,7 @@ public class InWorldUIRenderer {
 
 	private void renderExistingDesignation(int x, int y, MapTile mapTile) {
 		if (mapTile.getDesignation() != null) {
-			TileDesignation designation = mapTile.getDesignation();
+			Designation designation = mapTile.getDesignation();
 			for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
 				if (job.getAssignedToEntityId() != null) {
 					// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off
@@ -455,6 +457,21 @@ public class InWorldUIRenderer {
 
 			spriteBatch.setColor(designation.getDesignationColor());
 			spriteBatch.draw(designation.getIconSprite(), x, y, 1, 1);
+		} else {
+			Optional<Entity> entityWithDesignation = mapTile.getEntities().stream().filter(e -> e.getDesignation() != null).findAny();
+			if (entityWithDesignation.isPresent()) {
+				Entity entity = entityWithDesignation.get();
+				Designation designation = entity.getDesignation();
+				if (jobStore.getByType(designation.getCreatesJobType()).stream().anyMatch(j -> j.getTargetId() == entity.getId())) {
+					if (!blinkState) {
+						return;
+					}
+				}
+
+				spriteBatch.setColor(designation.getDesignationColor());
+				Vector2 entityPosition = entity.getLocationComponent().getWorldOrParentPosition();
+				spriteBatch.draw(designation.getIconSprite(), entityPosition.x - 0.5f, entityPosition.y - 0.5f, 1, 1);
+			}
 		}
 	}
 
@@ -465,10 +482,13 @@ public class InWorldUIRenderer {
 	}
 
 	private boolean shouldHighlight(MapTile mapTile) {
-		if (interactionStateContainer.getInteractionMode().designationCheck != null) {
-			return interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(mapTile);
+		if (interactionStateContainer.getInteractionMode().tileDesignationCheck != null) {
+			return interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(mapTile);
+		} else if (interactionStateContainer.getInteractionMode().entityDesignationCheck != null) {
+			return mapTile.getEntities().stream().anyMatch(e -> interactionStateContainer.getInteractionMode().entityDesignationCheck.shouldDesignationApply(e));
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	private void drawDragAreaOutline(Vector2 minDraggingPoint, Vector2 maxDraggingPoint) {

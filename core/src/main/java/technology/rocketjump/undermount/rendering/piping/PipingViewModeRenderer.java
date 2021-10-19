@@ -186,8 +186,8 @@ public class PipingViewModeRenderer {
 	}
 
 	private boolean shouldHighlight(MapTile mapTile) {
-		if (interactionStateContainer.getInteractionMode().designationCheck != null) {
-			return interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(mapTile);
+		if (interactionStateContainer.getInteractionMode().tileDesignationCheck != null) {
+			return interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(mapTile);
 		}
 		return false;
 	}
