@@ -332,7 +332,7 @@
   "name" : "HUNT_CREATURE",
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
-  "switchToSpecialGoal" : "ATTACK_CREATURE",
+  "switchToSpecialGoal" : "HUNT_CREATURE",
   "requiredProfessionName" : "HUNTER",
   "accessedFromAdjacentTile" : false
 } ]

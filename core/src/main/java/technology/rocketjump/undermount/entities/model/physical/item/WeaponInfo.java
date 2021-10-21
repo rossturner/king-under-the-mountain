@@ -6,18 +6,27 @@ import technology.rocketjump.undermount.entities.model.physical.combat.CombatDam
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeaponInfo {
 
-	private int range;
+	private float range;
 	private CombatDamageType damageType;
 	private boolean modifiedByStrength;
 	private int minDamage;
 	private int maxDamage;
 	private AmmoType requiresAmmoType;
 
-	public int getRange() {
+	public static WeaponInfo UNARMED = new WeaponInfo();
+	static {
+		UNARMED.setRange(0.5f);
+		UNARMED.setDamageType(CombatDamageType.CRUSHING);
+		UNARMED.setModifiedByStrength(true);
+		UNARMED.setMinDamage(0);
+		UNARMED.setMaxDamage(2);
+	}
+
+	public float getRange() {
 		return range;
 	}
 
-	public void setRange(int range) {
+	public void setRange(float range) {
 		this.range = range;
 	}
 

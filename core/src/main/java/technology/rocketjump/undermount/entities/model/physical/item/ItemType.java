@@ -16,6 +16,11 @@ import java.util.*;
 public class ItemType {
 
 	public static final double DEFAULT_HOURS_FOR_ITEM_TO_BECOME_UNUSED = 12.0;
+	public static final ItemType UNARMED_WEAPON = new ItemType();
+	static {
+		UNARMED_WEAPON.setItemTypeName("UNARMED_WEAPON");
+		UNARMED_WEAPON.setWeaponInfo(WeaponInfo.UNARMED);
+	}
 
 	@SequentialId
 	private long itemTypeId;

@@ -1,7 +1,11 @@
 package technology.rocketjump.undermount.entities.model.physical.creature.body;
 
 
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel;
+
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Random;
 
 public class BodyPart {
 
@@ -19,6 +23,23 @@ public class BodyPart {
 
 	public BodyPartDiscriminator getDiscriminator() {
 		return discriminator;
+	}
+
+	public Optional<BodyPartOrgan> rollToHitOrgan(Random random, BodyPartDamage existingDamage) {
+		if (partDefinition.getOrgans().isEmpty()) {
+			return Optional.empty();
+		} else {
+			float roll = random.nextFloat();
+			for (BodyPartOrgan organ : partDefinition.getOrgans()) {
+				if (!existingDamage.getOrganDamageLevel(organ).equals(OrganDamageLevel.DESTROYED)) {
+					roll -= organ.getRelativeSize();
+					if (roll < 0) {
+						return Optional.of(organ);
+					}
+				}
+			}
+			return Optional.empty();
+		}
 	}
 
 	@Override

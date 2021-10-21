@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static java.util.Collections.emptyList;
+import static technology.rocketjump.undermount.entities.model.physical.item.ItemType.UNARMED_WEAPON;
 
 @Singleton
 public class ItemTypeDictionary {
@@ -96,6 +97,8 @@ public class ItemTypeDictionary {
 				byAmmoType.computeIfAbsent(itemType.getIsAmmoType(), a -> new ArrayList<>()).add(itemType);
 			}
 		}
+
+		byName.put(UNARMED_WEAPON.getItemTypeName(), UNARMED_WEAPON);
 
 		itemTypesWithWeaponInfo.sort(Comparator.comparing(ItemType::getItemTypeName));
 

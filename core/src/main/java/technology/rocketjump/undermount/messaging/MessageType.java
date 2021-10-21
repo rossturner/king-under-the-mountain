@@ -255,4 +255,11 @@ public class MessageType {
 	public static final int ADD_LIQUID_TO_FLOW = 1800;
 	public static final int LIQUID_REMOVED_FROM_FLOW = 1801;
 
+	// Combat messages
+	public static final int MAKE_ATTACK_WITH_WEAPON = 1900;
+	public static final int COMBAT_PROJECTILE_REACHED_TARGET = 1901;
+	public static final int APPLY_ATTACK_DAMAGE = 1902;
+	public static final int CREATURE_DAMAGE_APPLIED = 1903;
+	public static final int CREATURE_ORGAN_DAMAGE_APPLIED = 1904;
+
 }

@@ -3,6 +3,8 @@ package technology.rocketjump.undermount.entities.model.physical.creature.body.o
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import technology.rocketjump.undermount.misc.Name;
 
+import java.util.Objects;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrganDefinition {
 
@@ -33,5 +35,18 @@ public class OrganDefinition {
 
 	public void setDamage(OrganDamageMapping damage) {
 		this.damage = damage;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		OrganDefinition that = (OrganDefinition) o;
+		return name.equals(that.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
 	}
 }

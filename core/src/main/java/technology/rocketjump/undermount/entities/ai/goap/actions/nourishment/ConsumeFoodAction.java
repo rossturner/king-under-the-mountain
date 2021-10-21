@@ -66,7 +66,6 @@ public class ConsumeFoodAction extends Action {
 				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 			} else {
 				placeFoodBackIntoInventory(gameContext, targetEntity);
-
 			}
 
 			GameMaterial primaryMaterial = itemEntityAttributes.getMaterial(itemEntityAttributes.getItemType().getPrimaryMaterialType());

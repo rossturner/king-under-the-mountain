@@ -273,6 +273,31 @@
   "selectors" : [ ],
   "initialActions" : [ "GoToLocation", "PickUpEntity" ]
 }, {
+  "i18nDescription" : "GOAL.COMBAT.DESCRIPTION",
+  "name" : "Hunt creature goal",
+  "actionRelationships" : {
+    "EquipWeapon" : { },
+    "MoveInRangeOfTarget" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "AttackTarget" ]
+    },
+    "UnequipWeapon" : { },
+    "AttackTarget" : {
+      "fail" : [ "MoveInRangeOfTarget" ],
+      "pass" : [ "JobCompleted" ]
+    },
+    "JobCompleted" : {
+      "fail" : [ "UnequipWeapon" ],
+      "pass" : [ "UnequipWeapon" ]
+    },
+    "UnassignJob" : {
+      "fail" : [ "UnequipWeapon" ],
+      "pass" : [ "UnequipWeapon" ]
+    }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ]
+}, {
   "i18nDescription" : "GOAL.IDLE.DESCRIPTION",
   "name" : "Idle goal",
   "actionRelationships" : {

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDefinition;
 
+import java.util.Objects;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BodyPartOrgan {
 
@@ -43,5 +45,18 @@ public class BodyPartOrgan {
 
 	public void setDiscriminator(BodyPartDiscriminator discriminator) {
 		this.discriminator = discriminator;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		BodyPartOrgan that = (BodyPartOrgan) o;
+		return organDefinition.equals(that.organDefinition) && discriminator == that.discriminator;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(organDefinition, discriminator);
 	}
 }

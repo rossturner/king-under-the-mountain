@@ -1,0 +1,26 @@
+{
+  "name": "Hunt creature goal",
+  "i18nDescription": "GOAL.COMBAT.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["EquipWeapon", "MoveInRangeOfTarget"],
+  "actionRelationships": {
+    "EquipWeapon": {},
+    "MoveInRangeOfTarget": {
+      "pass": ["AttackTarget"],
+      "fail": ["UnassignJob"]
+    },
+    "AttackTarget": {
+      "pass": ["JobCompleted"],
+      "fail": ["MoveInRangeOfTarget"]
+    },
+    "UnassignJob": {
+      "pass": ["UnequipWeapon"],
+      "fail": ["UnequipWeapon"]
+    },
+    "JobCompleted": {
+      "pass": ["UnequipWeapon"],
+      "fail": ["UnequipWeapon"]
+    },
+    "UnequipWeapon": {}
+  }
+}

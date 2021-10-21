@@ -173,7 +173,9 @@ public class I18nTranslator implements I18nUpdatable {
 				}
 			} else if (currentGoal.getAssignedJob() != null) {
 				Job job = currentGoal.getAssignedJob();
-				description = dictionary.getWord(job.getType().getOverrideI18nKey());
+				if (job.getType().getOverrideI18nKey() != null) {
+					description = dictionary.getWord(job.getType().getOverrideI18nKey());
+				}
 				Profession requiredProfession = job.getRequiredProfession();
 				if (requiredProfession == null || NULL_PROFESSION.equals(requiredProfession)) {
 					requiredProfession = professionDictionary.getDefault();
