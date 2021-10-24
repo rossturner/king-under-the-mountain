@@ -45,6 +45,13 @@
             "x": -18,
             "y": -4
           }
+        },
+        {
+          "type": "ATTACHMENT_LEFT_HAND",
+          "offsetPixels": {
+            "x": 18,
+            "y": -4
+          }
         }
       ]
     },
@@ -85,6 +92,13 @@
           "type": "ATTACHMENT_RIGHT_HAND",
           "offsetPixels": {
             "x": 0,
+            "y": -2
+          }
+        },
+        {
+          "type": "ATTACHMENT_LEFT_HAND",
+          "offsetPixels": {
+            "x": 24,
             "y": -2
           }
         }
@@ -130,6 +144,13 @@
             "x": -20,
             "y": -2
           }
+        },
+        {
+          "type": "ATTACHMENT_LEFT_HAND",
+          "offsetPixels": {
+            "x": 0,
+            "y": -2
+          }
         }
       ]
     },
@@ -170,6 +191,13 @@
           "type": "ATTACHMENT_RIGHT_HAND",
           "offsetPixels": {
             "x": 18,
+            "y": 4
+          }
+        },
+        {
+          "type": "ATTACHMENT_LEFT_HAND",
+          "offsetPixels": {
+            "x": -10,
             "y": 4
           }
         }
@@ -215,6 +243,13 @@
             "x": -18,
             "y": 4
           }
+        },
+        {
+          "type": "ATTACHMENT_LEFT_HAND",
+          "offsetPixels": {
+            "x": -24,
+            "y": 4
+          }
         }
       ]
     },
@@ -255,6 +290,13 @@
           "type": "ATTACHMENT_RIGHT_HAND",
           "offsetPixels": {
             "x": 14,
+            "y": 4
+          }
+        },
+        {
+          "type": "ATTACHMENT_LEFT_HAND",
+          "offsetPixels": {
+            "x": -20,
             "y": 4
           }
         }

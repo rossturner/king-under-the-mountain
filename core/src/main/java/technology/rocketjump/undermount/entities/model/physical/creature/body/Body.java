@@ -113,7 +113,9 @@ public class Body implements ChildPersistable {
 			for (Map.Entry<BodyPart, BodyPartDamage> entry : damageMap.entrySet()) {
 				JSONObject entryJson = new JSONObject(true);
 				entryJson.put("definitionName", entry.getKey().getPartDefinition().getName());
-				entryJson.put("discriminator", entry.getKey().getDiscriminator().name());
+				if (entry.getKey().getDiscriminator() != null) {
+					entryJson.put("discriminator", entry.getKey().getDiscriminator().name());
+				}
 
 				JSONObject damageJson = new JSONObject(true);
 				entry.getValue().writeTo(damageJson, savedGameStateHolder);

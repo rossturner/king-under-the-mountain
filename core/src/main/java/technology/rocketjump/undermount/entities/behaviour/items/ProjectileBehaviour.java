@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class ProjectileBehaviour implements BehaviourComponent {
 
-	private static final float PROJECTILE_SPEED = 5f;
+	private static final float PROJECTILE_SPEED = 10f;
 
 	private LocationComponent locationComponent;
 	private MessageDispatcher messageDispatcher;
@@ -38,6 +38,7 @@ public class ProjectileBehaviour implements BehaviourComponent {
 		this.locationComponent = parentEntity.getLocationComponent();
 		this.messageDispatcher = messageDispatcher;
 		this.parentEntity = parentEntity;
+		otherEntitiesEncountered.add(parentEntity.getId());
 	}
 
 	@Override
@@ -47,7 +48,6 @@ public class ProjectileBehaviour implements BehaviourComponent {
 		cloned.attackerEntity = this.attackerEntity;
 		cloned.defenderEntity = this.defenderEntity;
 		cloned.weaponItemType = this.weaponItemType;
-		cloned.otherEntitiesEncountered.addAll(this.otherEntitiesEncountered);
 		return cloned;
 	}
 
@@ -61,7 +61,7 @@ public class ProjectileBehaviour implements BehaviourComponent {
 		Vector2 targetVector = targetPosition.cpy().sub(parentPosition);
 		targetVector.nor().scl(deltaTime * PROJECTILE_SPEED);
 
-		if (targetVector.len() <= separation) {
+		if (targetVector.len() >= separation) {
 			// going to hit this frame
 			impactWith(defenderEntity);
 		} else {
@@ -72,6 +72,9 @@ public class ProjectileBehaviour implements BehaviourComponent {
 			MapTile tile = gameContext.getAreaMap().getTile(newPosition);
 			if (tile != null) {
 				for (Entity otherEntity : tile.getEntities()) {
+					if (otherEntity.getId() == parentEntity.getId()) {
+						continue;
+					}
 					if (otherEntitiesEncountered.contains(otherEntity.getId())) {
 						continue;
 					}
@@ -80,6 +83,7 @@ public class ProjectileBehaviour implements BehaviourComponent {
 						otherEntity.getLocationComponent().getRadius()) {
 						if (gameContext.getRandom().nextFloat() < chanceToHitOtherEntity(otherEntity)) {
 							impactWith(otherEntity);
+							break;
 						} else {
 							otherEntitiesEncountered.add(otherEntity.getId());
 						}
@@ -126,6 +130,7 @@ public class ProjectileBehaviour implements BehaviourComponent {
 
 	public void setAttackerEntity(Entity attackerEntity) {
 		this.attackerEntity = attackerEntity;
+		this.otherEntitiesEncountered.add(attackerEntity.getId());
 	}
 
 	public Entity getAttackerEntity() {

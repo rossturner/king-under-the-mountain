@@ -366,7 +366,6 @@ public class InWorldUIRenderer {
 						}
 					}
 
-
 					if (renderingOptions.debug().isShowZones()) {
 						if (!mapTile.getZones().isEmpty()) {
 							Zone zone = mapTile.getZones().iterator().next();

@@ -59,4 +59,9 @@ public class BodyPartOrgan {
 	public int hashCode() {
 		return Objects.hash(organDefinition, discriminator);
 	}
+
+	@Override
+	public String toString() {
+		return (discriminator != null ? discriminator.name() + " " : "") + organDefinition.getName();
+	}
 }

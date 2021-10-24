@@ -8,6 +8,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.lang3.EnumUtils;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.entities.behaviour.items.ProjectileBehaviour;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -16,6 +17,7 @@ import technology.rocketjump.undermount.entities.model.physical.combat.CombatDam
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.*;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -92,8 +94,10 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 
 	private void createProjectile(CombatAttackMessage attackMessage) {
 		Vector2 attackerLocation = attackMessage.attackerEntity.getLocationComponent().getWorldOrParentPosition();
-		Entity projectileEntity = itemEntityFactory.create(attackMessage.ammoAttributes, toGridPoint(attackerLocation), false, gameContext);
-		projectileEntity.getLocationComponent().setWorldPosition(attackerLocation, true);
+		ItemEntityAttributes ammoAttributes = attackMessage.ammoAttributes.clone();
+		ammoAttributes.setItemPlacement(ItemPlacement.PROJECTILE);
+		Entity projectileEntity = itemEntityFactory.create(ammoAttributes, toGridPoint(attackerLocation), false, gameContext);
+		projectileEntity.getLocationComponent().setWorldPosition(attackerLocation, false);
 		ProjectileBehaviour projectileBehaviour = new ProjectileBehaviour();
 		projectileBehaviour.setAttackerEntity(attackMessage.attackerEntity);
 		projectileBehaviour.setDefenderEntity(attackMessage.defenderEntity);

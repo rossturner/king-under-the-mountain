@@ -19673,13 +19673,12 @@
   "spriteDescriptors" : {
     "DOWN" : {
       "filename" : "arrow-bodies.png",
-      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 3.0,
+        "y" : -2.5,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19687,12 +19686,64 @@
       "childAssets" : [ {
         "type" : "BELOW_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -3.0,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Weapon-Projectile-Bone",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeNames" : [ "Weapon-Bone-Arrows", "Weapon-Metal-Arrows" ],
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "PROJECTILE" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "arrow-projectile.png",
+      "coloringLayer" : "BONE_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.7,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Weapon-Projectile-Metal",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeNames" : [ "Weapon-Metal-Arrows" ],
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "PROJECTILE" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "arrow-projectile.png",
+      "coloringLayer" : "METAL_COLOR",
+      "isAnimated" : false,
+      "scale" : 0.7,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 0.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     }
@@ -19707,12 +19758,11 @@
   "spriteDescriptors" : {
     "DOWN" : {
       "filename" : "arrow-bodies.png",
-      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -8.0,
+        "x" : 3.0,
+        "y" : -10.5,
         "zero" : false,
         "unit" : false
       },
@@ -19721,9 +19771,9 @@
       "childAssets" : [ {
         "type" : "BELOW_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -3.0,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19750,12 +19800,11 @@
     },
     "DOWN_RIGHT" : {
       "filename" : "arrow-bodies.png",
-      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -8.0,
+        "x" : 3.0,
+        "y" : -10.5,
         "zero" : false,
         "unit" : false
       },
@@ -19764,9 +19813,9 @@
       "childAssets" : [ {
         "type" : "BELOW_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -3.0,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19784,12 +19833,11 @@
     },
     "DOWN_LEFT" : {
       "filename" : "arrow-bodies.png",
-      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -8.0,
+        "x" : 3.0,
+        "y" : -10.5,
         "zero" : false,
         "unit" : false
       },
@@ -19798,9 +19846,9 @@
       "childAssets" : [ {
         "type" : "BELOW_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -3.0,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19818,12 +19866,11 @@
     },
     "UP" : {
       "filename" : "arrow-bodies.png",
-      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -8.0,
+        "x" : 3.0,
+        "y" : -10.5,
         "zero" : false,
         "unit" : false
       },
@@ -19832,9 +19879,9 @@
       "childAssets" : [ {
         "type" : "BELOW_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -3.0,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19861,12 +19908,11 @@
     },
     "UP_LEFT" : {
       "filename" : "arrow-bodies.png",
-      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -8.0,
+        "x" : 3.0,
+        "y" : -10.5,
         "zero" : false,
         "unit" : false
       },
@@ -19875,9 +19921,9 @@
       "childAssets" : [ {
         "type" : "BELOW_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -3.0,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19895,12 +19941,11 @@
     },
     "UP_RIGHT" : {
       "filename" : "arrow-bodies.png",
-      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -8.0,
+        "x" : 3.0,
+        "y" : -10.5,
         "zero" : false,
         "unit" : false
       },
@@ -19909,9 +19954,9 @@
       "childAssets" : [ {
         "type" : "BELOW_LAYER_1",
         "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 0.0,
-          "zero" : true,
+          "x" : -3.0,
+          "y" : 2.5,
+          "zero" : false,
           "unit" : false
         }
       } ],
@@ -19942,9 +19987,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19968,9 +20013,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -19985,9 +20030,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20002,9 +20047,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20019,9 +20064,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20036,9 +20081,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20053,9 +20098,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20079,9 +20124,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20105,9 +20150,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20122,9 +20167,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20139,9 +20184,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20156,9 +20201,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20173,9 +20218,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20190,34 +20235,9 @@
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    }
-  }
-}, {
-  "uniqueName" : "Weapon-Bow-On-Ground",
-  "type" : "ITEM_BASE_LAYER",
-  "itemTypeName" : "Weapon-Bow",
-  "minQuantity" : 1,
-  "maxQuantity" : 1,
-  "itemPlacements" : [ "ON_GROUND" ],
-  "spriteDescriptors" : {
-    "DOWN" : {
-      "filename" : "bow.png",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -14.0,
+        "y" : 8.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20236,61 +20256,91 @@
   "itemPlacements" : [ "BEING_CARRIED" ],
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "bow.png",
+      "filename" : "Bow-B.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 2.5,
+        "y" : 6.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "bow.png",
+      "filename" : "Bow-F34.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : 1.5,
+        "y" : 6.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ]
     },
     "DOWN_LEFT" : {
-      "filename" : "bow.png",
+      "filename" : "Bow-F34.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : 0.0,
-        "zero" : true,
+        "x" : -1.5,
+        "y" : 6.0,
+        "zero" : false,
         "unit" : false
       },
-      "flipX" : false,
+      "flipX" : true,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
     },
     "UP" : {
-      "filename" : "bow.png",
+      "filename" : "Bow-B.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
+        "x" : 2.5,
         "y" : 0.0,
-        "zero" : true,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,
@@ -20300,14 +20350,15 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "bow.png",
+      "filename" : "Bow-B34.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
+        "x" : 1.0,
         "y" : 0.0,
-        "zero" : true,
-        "unit" : false
+        "zero" : false,
+        "unit" : true
       },
       "flipX" : false,
       "flipY" : false,
@@ -20316,13 +20367,81 @@
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "bow.png",
+      "filename" : "Bow-B34.png",
+      "coloringLayer" : "WOOD_COLOR",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
+        "x" : -1.0,
         "y" : 0.0,
-        "zero" : true,
+        "zero" : false,
+        "unit" : true
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ]
+    }
+  }
+}, {
+  "uniqueName" : "Weapon-Bow-On-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Weapon-Bow",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "Bow.png",
+      "coloringLayer" : "WOOD_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 2.0,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BELOW_LAYER_1",
+        "offsetPixels" : {
+          "x" : -2.0,
+          "y" : 0.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Weapon-Bow-String-On-Ground",
+  "type" : "BELOW_LAYER_1",
+  "itemTypeName" : "Weapon-Bow",
+  "minQuantity" : 1,
+  "maxQuantity" : 1,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "String-TrueColor.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 2.5,
+        "y" : 0.0,
+        "zero" : false,
         "unit" : false
       },
       "flipX" : false,

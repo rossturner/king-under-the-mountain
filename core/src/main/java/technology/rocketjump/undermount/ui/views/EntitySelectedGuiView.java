@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ExampleItemDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -519,8 +520,19 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				// use entitydrawable of actual entity
 				imageButton = imageButtonFactory.getOrCreate(inventoryEntry.entity);
 			} else {
-				// Use generic drawable of itemtype
-				imageButton = imageButtonFactory.getOrCreateGhostButton(exampleItemDictionary.getExampleItemEntity(selectedWeapon.get(), Optional.empty()));
+				// Might be equipped instead
+				EquippedItemComponent equippedItemComponent = entity.getComponent(EquippedItemComponent.class);
+				Entity equippedItem = null;
+				if (equippedItemComponent != null) {
+					equippedItem = equippedItemComponent.getEquippedItem();
+				}
+				if (equippedItem != null && equippedItem.getType().equals(ITEM) &&
+						((ItemEntityAttributes)equippedItem.getPhysicalEntityComponent().getAttributes()).getItemType().equals(selectedWeapon.get())) {
+					imageButton = imageButtonFactory.getOrCreate(equippedItem);
+				} else {
+					// Use generic drawable of itemtype
+					imageButton = imageButtonFactory.getOrCreateGhostButton(exampleItemDictionary.getExampleItemEntity(selectedWeapon.get(), Optional.empty()));
+				}
 			}
 		} else {
 			// Unarmed
