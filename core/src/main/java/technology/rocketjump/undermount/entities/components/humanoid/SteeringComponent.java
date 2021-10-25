@@ -37,6 +37,7 @@ public class SteeringComponent implements ChildPersistable {
 	private float pauseTime = 0;
 	private static float DEFAULT_PAUSE_TIME = 0.9f;
 	private boolean isSlowed;
+	private boolean movementImpaired;
 
 	public SteeringComponent() {
 
@@ -153,7 +154,7 @@ public class SteeringComponent implements ChildPersistable {
 
 		steeringOutputForce.add(entityAvoidanceForce.limit(1f));
 
-		if (isSlowed) {
+		if (isSlowed || movementImpaired) {
 			maxSpeed *= 0.5f;
 		}
 
@@ -291,6 +292,14 @@ public class SteeringComponent implements ChildPersistable {
 		return isSlowed;
 	}
 
+	public void setMovementImpaired(boolean movementImpaired) {
+		this.movementImpaired = movementImpaired;
+	}
+
+	public boolean getMovementImpaired() {
+		return movementImpaired;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		if (destination != null) {
@@ -299,11 +308,16 @@ public class SteeringComponent implements ChildPersistable {
 		if (nextWaypoint != null) {
 			asJson.put("nextWaypoint", JSONUtils.toJSON(nextWaypoint));
 		}
+		if (movementImpaired) {
+			asJson.put("movementImpaired", true);
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		this.destination = JSONUtils.vector2(asJson.getJSONObject("destination"));
 		this.nextWaypoint = JSONUtils.vector2(asJson.getJSONObject("destination"));
+		this.movementImpaired = asJson.getBooleanValue("movementImpaired");
 	}
+
 }

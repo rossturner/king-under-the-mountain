@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehav
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
@@ -69,6 +70,7 @@ public class CreatureEntityFactory  {
 
 		entity.addComponent(new NeedsComponent(attributes.getRace().getBehaviour().getNeeds(), gameContext.getRandom()));
 		entity.addComponent(new MemoryComponent());
+		entity.getOrCreateComponent(StatusComponent.class).init(entity, messageDispatcher, gameContext);
 
 		entityAssetUpdater.updateEntityAssets(entity);
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, entity);

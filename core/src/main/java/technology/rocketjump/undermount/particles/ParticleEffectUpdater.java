@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
@@ -110,7 +111,18 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 	}
 
 	private void handle(ParticleRequestMessage particleRequestMessage) {
+		if (particleRequestMessage.type == null) {
+			particleRequestMessage.type = particleEffectTypeDictionary.getByName(particleRequestMessage.typeName);
+			if (particleRequestMessage.type == null) {
+				Logger.error("Could not find particle effect type with name " + particleRequestMessage.typeName);
+				return;
+			}
+		}
+
 		Optional<Color> targetColor = Optional.ofNullable(particleRequestMessage.effectTarget.orElse(NULL_TARGET).getTargetColor());
+		if (particleRequestMessage.getOverrideColor() != null) {
+			targetColor = Optional.of(particleRequestMessage.getOverrideColor());
+		}
 		if (particleRequestMessage.parentEntity.isPresent()) {
 			Entity parentEntity = particleRequestMessage.parentEntity.get();
 			Vector2 parentPosition = parentEntity.getLocationComponent().getWorldOrParentPosition();

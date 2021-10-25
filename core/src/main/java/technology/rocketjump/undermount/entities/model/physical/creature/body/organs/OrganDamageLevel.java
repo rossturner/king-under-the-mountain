@@ -23,4 +23,12 @@ public enum OrganDamageLevel {
 		}
 		return NONE;
 	}
+
+	public boolean isGreaterThan(OrganDamageLevel other) {
+		return this.damageRequiredToCause > other.damageRequiredToCause;
+	}
+
+	public String i18nKey() {
+		return "BODY_STRUCTURE.ORGAN_DAMAGE."+name().toUpperCase();
+	}
 }

@@ -7,7 +7,6 @@ public enum OrganDamageEffect {
 	BLINDED,
 	BLEEDING,
 	INTERNAL_BLEEDING,
-	BRAINDEAD,
 	SUFFOCATION,
 	DEAD;
 

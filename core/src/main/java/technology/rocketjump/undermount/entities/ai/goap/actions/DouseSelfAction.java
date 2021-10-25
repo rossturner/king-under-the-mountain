@@ -26,9 +26,7 @@ public class DouseSelfAction extends ConsumeLiquidFromContainerAction {
 	protected void effectsOfDrinkConsumption(GameMaterial consumedLiquid, LiquidAllocation liquidAllocation, GameContext gameContext) {
 		if (consumedLiquid.isQuenchesThirst()) {
 			StatusComponent statusComponent = parent.parentEntity.getComponent(StatusComponent.class);
-			if (statusComponent != null) {
-				statusComponent.remove(OnFireStatus.class);
-			}
+			statusComponent.remove(OnFireStatus.class);
 
 			parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND_ASSET, new RequestSoundAssetMessage("WaterSizzle", (soundAsset) -> {
 				if (soundAsset != null) {

@@ -88,9 +88,7 @@ public class RollAroundAction extends Action {
 
 			if (gameContext.getRandom().nextFloat() < CHANCE_TO_PUT_OUT_FIRE) {
 				StatusComponent statusComponent = parent.parentEntity.getComponent(StatusComponent.class);
-				if (statusComponent != null) {
-					statusComponent.remove(OnFireStatus.class);
-				}
+				statusComponent.remove(OnFireStatus.class);
 			}
 
 			completionType = CompletionType.SUCCESS;

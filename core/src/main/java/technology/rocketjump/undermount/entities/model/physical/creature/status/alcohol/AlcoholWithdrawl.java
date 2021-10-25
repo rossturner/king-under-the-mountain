@@ -16,7 +16,7 @@ import static technology.rocketjump.undermount.entities.ai.memory.MemoryType.CON
 public class AlcoholWithdrawl extends StatusEffect {
 
     public AlcoholWithdrawl() {
-        super(null, 24 * 3, null);
+        super(null, 24.0 * 3.0, null);
     }
 
     @Override

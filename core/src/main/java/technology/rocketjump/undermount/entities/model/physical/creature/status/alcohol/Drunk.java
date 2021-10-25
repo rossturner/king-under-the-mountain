@@ -8,7 +8,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 public class Drunk extends StatusEffect {
 
     public Drunk() {
-        super(AlcoholDependent.class, 24 * 3, null);
+        super(AlcoholDependent.class, 24.0 * 3.0, null);
     }
 
     @Override

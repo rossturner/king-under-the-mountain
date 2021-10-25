@@ -11,6 +11,9 @@ public enum BodyPartDiscriminator {
 	FrontRight,
 	FrontLeft,
 	BackRight,
-	BackLeft
+	BackLeft;
 
+	public String i18nKey() {
+		return "BODY_STRUCTURE.DISCRIMINATOR."+name().toUpperCase();
+	}
 }

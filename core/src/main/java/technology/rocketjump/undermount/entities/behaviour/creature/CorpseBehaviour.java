@@ -3,12 +3,15 @@ package technology.rocketjump.undermount.entities.behaviour.creature;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
+import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -17,8 +20,15 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rendering.utils.ColorMixer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.ui.i18n.I18nString;
+import technology.rocketjump.undermount.ui.i18n.I18nText;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
-public class CorpseBehaviour implements BehaviourComponent {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CorpseBehaviour implements BehaviourComponent, SelectableDescription {
 
 	private SteeringComponent steeringComponent = new SteeringComponent(); // Is this needed?
 	private double lastUpdateGameTime;
@@ -113,5 +123,20 @@ public class CorpseBehaviour implements BehaviourComponent {
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		originalSkinColor = HexColors.get(asJson.getString("originalSkin"));
 		decayedAmount = asJson.getDoubleValue("decayed");
+	}
+
+	@Override
+	public List<I18nText> getDescription(I18nTranslator i18nTranslator, GameContext gameContext) {
+		HistoryComponent historyComponent = parentEntity.getComponent(HistoryComponent.class);
+		if (historyComponent != null && historyComponent.getDeathReason() != null) {
+			DeathReason reason = historyComponent.getDeathReason();
+
+			Map<String, I18nString> replacements = new HashMap<>();
+			replacements.put("reason", i18nTranslator.getDictionary().getWord(reason.getI18nKey()));
+			I18nText deathDescriptionString = i18nTranslator.getTranslatedWordWithReplacements("NOTIFICATION.DEATH.SHORT_DESCRIPTION", replacements);
+			return List.of(deathDescriptionString);
+		} else {
+			return List.of(i18nTranslator.getTranslatedString("CREATURE.STATUS.DEAD"));
+		}
 	}
 }

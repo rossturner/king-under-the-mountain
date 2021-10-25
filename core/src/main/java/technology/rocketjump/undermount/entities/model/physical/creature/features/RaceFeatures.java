@@ -7,7 +7,7 @@ public class RaceFeatures {
 
 	private SkinFeature skin;
 	private BonesFeature bones;
-	private Object blood;
+	private BloodFeature blood;
 
 	public SkinFeature getSkin() {
 		return skin;
@@ -25,11 +25,11 @@ public class RaceFeatures {
 		this.bones = bones;
 	}
 
-	public Object getBlood() {
+	public BloodFeature getBlood() {
 		return blood;
 	}
 
-	public void setBlood(Object blood) {
+	public void setBlood(BloodFeature blood) {
 		this.blood = blood;
 	}
 }

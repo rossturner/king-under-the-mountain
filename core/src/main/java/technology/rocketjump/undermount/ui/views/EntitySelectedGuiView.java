@@ -60,6 +60,7 @@ import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.CONTENTS_TO_BE_DUMPED;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.MAX_HAPPINESS_VALUE;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
@@ -217,6 +218,13 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 								entityDescriptionTable.add(new I18nTextWidget(description, uiSkin, messageDispatcher)).left().row();
 							}
 						}
+					}
+				}
+
+				if (entity.getType().equals(CREATURE)) {
+					CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+					for (I18nText damageDescription : attributes.getBody().getDamageDescriptions(i18nTranslator)) {
+						entityDescriptionTable.add(new I18nTextWidget(damageDescription, uiSkin, messageDispatcher)).left().row();
 					}
 				}
 
@@ -435,8 +443,10 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		}
 
 		if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
-			I18nText goalDescription = i18nTranslator.getCurrentGoalDescription(entity, ((SettlerBehaviour) entity.getBehaviourComponent()).getCurrentGoal(), gameContext);
-			nameTable.add(new I18nTextWidget(goalDescription, uiSkin, messageDispatcher)).left().row();
+			List<I18nText> description = ((SettlerBehaviour) entity.getBehaviourComponent()).getDescription(i18nTranslator, gameContext);
+			for (I18nText i18nText : description) {
+				nameTable.add(new I18nTextWidget(i18nText, uiSkin, messageDispatcher)).left().row();
+			}
 		} else if (entity.getBehaviourComponent() instanceof CorpseBehaviour) {
 			HistoryComponent historyComponent = entity.getComponent(HistoryComponent.class);
 			if (historyComponent != null && historyComponent.getDeathReason() != null) {
@@ -449,6 +459,12 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				nameTable.add(label).left().row();
 			}
 		}
+
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		for (I18nText damageDescription : attributes.getBody().getDamageDescriptions(i18nTranslator)) {
+			nameTable.add(new I18nTextWidget(damageDescription, uiSkin, messageDispatcher)).left().row();
+		}
+
 	}
 
 	private void populateProfessionTable(Entity entity) {

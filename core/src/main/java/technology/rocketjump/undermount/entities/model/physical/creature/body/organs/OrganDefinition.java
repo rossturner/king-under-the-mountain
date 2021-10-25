@@ -49,4 +49,8 @@ public class OrganDefinition {
 	public int hashCode() {
 		return Objects.hash(name);
 	}
+
+	public String getI18nKey() {
+		return "BODY_STRUCTURE.ORGAN."+name.toUpperCase();
+	}
 }

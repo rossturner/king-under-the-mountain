@@ -7,6 +7,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.entities.ai.goap.*;
 import technology.rocketjump.undermount.entities.ai.memory.Memory;
 import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
+import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -14,6 +15,8 @@ import technology.rocketjump.undermount.entities.model.physical.creature.Conscio
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.creature.Sanity;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.Blinded;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.TemporaryBlinded;
 import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
@@ -29,9 +32,13 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 import technology.rocketjump.undermount.rooms.RoomStore;
+import technology.rocketjump.undermount.ui.i18n.I18nText;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import static technology.rocketjump.undermount.entities.ItemEntityMessageHandler.findStockpileAllocation;
 import static technology.rocketjump.undermount.entities.ai.goap.SpecialGoal.*;
@@ -41,13 +48,13 @@ import static technology.rocketjump.undermount.entities.components.humanoid.Happ
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.MIN_HAPPINESS_VALUE;
 import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
-import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
-import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.DEAD;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.*;
 import static technology.rocketjump.undermount.environment.model.WeatherType.HappinessInteraction.STANDING;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 
-public class SettlerBehaviour implements BehaviourComponent, Destructible, RequestLiquidAllocationMessage.LiquidAllocationCallback {
+public class SettlerBehaviour implements BehaviourComponent, Destructible,
+		RequestLiquidAllocationMessage.LiquidAllocationCallback, SelectableDescription {
 
 	private static final float MAX_DISTANCE_TO_DOUSE_FIRE = 12f;
 	private static final float AMOUNT_REQUIRED_TO_DOUSE_FIRE = 0.5f;
@@ -62,6 +69,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 	protected SteeringComponent steeringComponent = new SteeringComponent();
 	protected transient double lastUpdateGameTime;
 	private static final int DISTANCE_TO_LOOK_AROUND = 5;
+	private float stunTime;
 
 	public void constructWith(GoalDictionary goalDictionary, RoomStore roomStore) {
 		this.goalDictionary = goalDictionary;
@@ -98,6 +106,16 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 		Consciousness consciousness = ((CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
 		if (AWAKE.equals(consciousness)) {
 			steeringComponent.update(deltaTime);
+		} else if (KNOCKED_UNCONSCIOUS.equals(consciousness)) {
+			return;
+		}
+
+		if (stunTime > 0) {
+			stunTime -= deltaTime;
+			if (stunTime < 0) {
+				stunTime = 0;
+			}
+			return;
 		}
 
 		try {
@@ -285,7 +303,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 		NeedsComponent needsComponent = parentEntity.getComponent(NeedsComponent.class);
 		needsComponent.update(elapsed, parentEntity, messageDispatcher);
 
-		parentEntity.getOrCreateComponent(StatusComponent.class).infrequentUpdate(elapsed);
+		parentEntity.getComponent(StatusComponent.class).infrequentUpdate(elapsed);
 
 		HappinessComponent happinessComponent = parentEntity.getOrCreateComponent(HappinessComponent.class);
 		MapTile currentTile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
@@ -374,7 +392,10 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 	}
 
 	private void lookAtNearbyThings(GameContext gameContext) {
-		// TODO check we can see
+		StatusComponent statusComponent = parentEntity.getComponent(StatusComponent.class);
+		if (statusComponent.contains(Blinded.class) || statusComponent.contains(TemporaryBlinded.class)) {
+			return;
+		}
 
 		CreatureEntityAttributes parentAttributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 		if (!parentAttributes.getConsciousness().equals(AWAKE)) {
@@ -431,6 +452,25 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 		return true;
 	}
 
+	public void applyStun(Random random) {
+		this.stunTime = 1f + (random.nextFloat() * 3f);
+	}
+
+	@Override
+	public List<I18nText> getDescription(I18nTranslator i18nTranslator, GameContext gameContext) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		if (attributes.getConsciousness().equals(KNOCKED_UNCONSCIOUS)) {
+			return List.of(i18nTranslator.getTranslatedString("ACTION.KNOCKED_UNCONSCIOUS"));
+		}
+
+		List<I18nText> descriptionStrings = new ArrayList<>();
+		descriptionStrings.add(i18nTranslator.getCurrentGoalDescription(parentEntity, currentGoal, gameContext));
+		if (stunTime > 0) {
+			descriptionStrings.add(i18nTranslator.getTranslatedString("ACTION.STUNNED"));
+		}
+		return descriptionStrings;
+	}
+
 	@Override
 	public EntityComponent clone(MessageDispatcher messageDispatcher, GameContext gameContext) {
 		throw new NotImplementedException("Not yet implemented " + this.getClass().getSimpleName() + ".clone()");
@@ -455,6 +495,10 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 			steeringComponent.writeTo(steeringComponentJson, savedGameStateHolder);
 			asJson.put("steeringComponent", steeringComponentJson);
 		}
+
+		if (stunTime > 0) {
+			asJson.put("stunTime", stunTime);
+		}
 	}
 
 	@Override
@@ -477,6 +521,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible, Reque
 		if (steeringComponentJson != null) {
 			this.steeringComponent.readFrom(steeringComponentJson, savedGameStateHolder, relatedStores);
 		}
-	}
 
+		this.stunTime = asJson.getFloatValue("stunTime");
+	}
 }

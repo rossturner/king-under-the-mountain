@@ -1,13 +1,18 @@
 package technology.rocketjump.undermount.entities.model.physical.creature.body;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDefinition;
+import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
+import technology.rocketjump.undermount.persistence.model.ChildPersistable;
+import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
+import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BodyPartOrgan {
+public class BodyPartOrgan implements ChildPersistable {
 
 	private String type;
 	@JsonIgnore
@@ -63,5 +68,15 @@ public class BodyPartOrgan {
 	@Override
 	public String toString() {
 		return (discriminator != null ? discriminator.name() + " " : "") + organDefinition.getName();
+	}
+
+	@Override
+	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
+
+	}
+
+	@Override
+	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+
 	}
 }

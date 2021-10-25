@@ -9,31 +9,43 @@ import com.google.inject.Singleton;
 import org.apache.commons.lang3.EnumUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.items.ProjectileBehaviour;
+import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.combat.CombatDamageType;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.*;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageEffect;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.*;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.CombatAttackMessage;
 import technology.rocketjump.undermount.messaging.types.CreatureDamagedMessage;
+import technology.rocketjump.undermount.messaging.types.CreatureDeathMessage;
 import technology.rocketjump.undermount.messaging.types.CreatureOrganDamagedMessage;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import static technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel.BrokenBones;
 import static technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel.Destroyed;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 @Singleton
 public class CombatMessageHandler implements Telegraph, GameContextAware {
 
-	private static final float FIXED_CHANCE_TO_HIT = 0.7f;
+	private static final float NORMAL_CHANCE_TO_HIT = 0.7f;
+	private static final float CHANCE_TO_HIT_WHEN_BLINDED = 0.05f;
 	private final MessageDispatcher messageDispatcher;
 	private final ItemEntityFactory itemEntityFactory;
 	private GameContext gameContext;
@@ -46,6 +58,8 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.MAKE_ATTACK_WITH_WEAPON);
 		messageDispatcher.addListener(this, MessageType.COMBAT_PROJECTILE_REACHED_TARGET);
 		messageDispatcher.addListener(this, MessageType.APPLY_ATTACK_DAMAGE);
+		messageDispatcher.addListener(this, MessageType.CREATURE_DAMAGE_APPLIED);
+		messageDispatcher.addListener(this, MessageType.CREATURE_ORGAN_DAMAGE_APPLIED);
 	}
 
 	@Override
@@ -63,6 +77,14 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 				applyAttackDamage((CombatAttackMessage) msg.extraInfo);
 				return true;
 			}
+			case MessageType.CREATURE_DAMAGE_APPLIED: {
+				applyDamageToCreature((CreatureDamagedMessage) msg.extraInfo);
+				return true;
+			}
+			case MessageType.CREATURE_ORGAN_DAMAGE_APPLIED: {
+				applyOrganDamageToCreature((CreatureOrganDamagedMessage) msg.extraInfo);
+				return true;
+			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
@@ -78,7 +100,7 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 			}
 		} else {
 			// is a melee attack
-			boolean attackHits = gameContext.getRandom().nextFloat() < FIXED_CHANCE_TO_HIT;
+			boolean attackHits = gameContext.getRandom().nextFloat() < getChanceToHitWithAttack(attackMessage.attackerEntity);
 			if (attackHits) {
 				applyAttackDamage(attackMessage);
 			}
@@ -86,7 +108,7 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 	}
 
 	private void handleProjectileImpact(CombatAttackMessage attackMessage) {
-		boolean attackHits = gameContext.getRandom().nextFloat() < FIXED_CHANCE_TO_HIT;
+		boolean attackHits = gameContext.getRandom().nextFloat() < getChanceToHitWithAttack(attackMessage.attackerEntity);
 		if (attackHits) {
 			applyAttackDamage(attackMessage);
 		}
@@ -105,6 +127,15 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 		projectileBehaviour.init(projectileEntity, messageDispatcher, gameContext);
 		projectileEntity.replaceBehaviourComponent(projectileBehaviour);
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_CREATED, projectileEntity);
+	}
+
+	private float getChanceToHitWithAttack(Entity attackerEntity) {
+		StatusComponent statusComponent = attackerEntity.getComponent(StatusComponent.class);
+		if (statusComponent.contains(Blinded.class) || statusComponent.contains(TemporaryBlinded.class)) {
+			return CHANCE_TO_HIT_WHEN_BLINDED;
+		} else {
+			return NORMAL_CHANCE_TO_HIT;
+		}
 	}
 
 	private void applyAttackDamage(CombatAttackMessage attackMessage) {
@@ -141,27 +172,138 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 				OrganDamageLevel currentOrganDamage = attributes.getBody().getOrganDamage(impactedBodyPart, targetOrgan);
 				damageAmount += currentOrganDamage.furtherDamageModifier;
 				OrganDamageLevel newOrganDamage = OrganDamageLevel.getForDamageAmount(damageAmount);
-				attributes.getBody().setOrganDamage(impactedBodyPart, targetOrgan, newOrganDamage);
-				messageDispatcher.dispatchMessage(MessageType.CREATURE_ORGAN_DAMAGE_APPLIED, new CreatureOrganDamagedMessage(
-						attackMessage.defenderEntity, impactedBodyPart, targetOrgan, newOrganDamage
-				));
-				Logger.debug("Applying " + newOrganDamage + " to " + targetOrgan.getType());
+				if (newOrganDamage.isGreaterThan(currentOrganDamage)) {
+					attributes.getBody().setOrganDamage(impactedBodyPart, targetOrgan, newOrganDamage);
+					messageDispatcher.dispatchMessage(MessageType.CREATURE_ORGAN_DAMAGE_APPLIED, new CreatureOrganDamagedMessage(
+							attackMessage.defenderEntity, impactedBodyPart, targetOrgan, newOrganDamage
+					));
+					Logger.debug("Applying " + newOrganDamage + " to " + targetOrgan.getType());
+				}
 			} else {
 				// impacted with body part only
 				damageAmount += currentDamage.getDamageLevel().furtherDamageModifier;
 				BodyPartDamageLevel newDamageLevel = BodyPartDamageLevel.getForDamageAmount(damageAmount);
-				attributes.getBody().setDamage(impactedBodyPart, newDamageLevel);
-				messageDispatcher.dispatchMessage(MessageType.CREATURE_DAMAGE_APPLIED, new CreatureDamagedMessage(
-						attackMessage.defenderEntity, impactedBodyPart, newDamageLevel
-				));
-				Logger.debug("Applying " + newDamageLevel + " from " + damageAmount + " damage to " + impactedBodyPart);
+				if (newDamageLevel.isGreaterThan(currentDamage.getDamageLevel())) {
+					attributes.getBody().setDamage(impactedBodyPart, newDamageLevel);
+					messageDispatcher.dispatchMessage(MessageType.CREATURE_DAMAGE_APPLIED, new CreatureDamagedMessage(
+							attackMessage.defenderEntity, impactedBodyPart, newDamageLevel
+					));
+					Logger.debug("Applying " + newDamageLevel + " from " + damageAmount + " damage to " + impactedBodyPart);
 
-				if (newDamageLevel.equals(Destroyed)) {
-					bodyPartDestroyed(impactedBodyPart, attributes.getBody(), attackMessage.defenderEntity);
+					if (newDamageLevel.equals(Destroyed)) {
+						bodyPartDestroyed(impactedBodyPart, attributes.getBody(), attackMessage.defenderEntity);
+					}
 				}
 			}
 		} else {
 			Logger.warn("TODO: Damage application to non-creature entities");
+		}
+	}
+
+	private void applyDamageToCreature(CreatureDamagedMessage message) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) message.targetCreature.getPhysicalEntityComponent().getAttributes();
+		StatusComponent statusComponent = message.targetCreature.getComponent(StatusComponent.class);
+
+		switch (message.damageLevel) {
+			case None:
+				return;
+			case Bruised:
+				if (attributes.getRace().getFeatures().getBlood() == null) {
+					// This creature does not have blood, so it is not affected by bruised
+					attributes.getBody().setDamage(message.impactedBodyPart, BodyPartDamageLevel.None);
+					return;
+				}
+			case Bleeding:
+				if (attributes.getRace().getFeatures().getBlood() == null) {
+					// This creature does not have blood, so it is not affected by bleeding
+					attributes.getBody().setDamage(message.impactedBodyPart, BodyPartDamageLevel.None);
+					return;
+				} else {
+					statusComponent.apply(new Bleeding());
+				}
+				break;
+			case BrokenBones:
+				if (attributes.getRace().getFeatures().getBones() == null) {
+					// This creature does not have bones, so it is unaffected
+					attributes.getBody().setDamage(message.impactedBodyPart, BodyPartDamageLevel.None);
+					return;
+				}
+				break;
+		}
+
+		if (gameContext.getRandom().nextFloat() < message.damageLevel.chanceToCauseStun) {
+			applyStun(message.targetCreature);
+		}
+
+		if (gameContext.getRandom().nextFloat() < message.damageLevel.chanceToGoUnconscious) {
+			statusComponent.apply(new KnockedUnconscious());
+		}
+
+		if (message.damageLevel.equals(BrokenBones) || message.damageLevel.equals(Destroyed)) {
+			statusComponent.apply(new MovementImpaired());
+		}
+	}
+
+	private void applyStun(Entity targetCreature) {
+		if (targetCreature.getBehaviourComponent() instanceof SettlerBehaviour) {
+			((SettlerBehaviour) targetCreature.getBehaviourComponent()).applyStun(gameContext.getRandom());
+		} else if (targetCreature.getBehaviourComponent() instanceof CreatureBehaviour) {
+			((CreatureBehaviour) targetCreature.getBehaviourComponent()).applyStun(gameContext.getRandom());
+		} else {
+			Logger.warn("Unknown target to apply stun to");
+		}
+	}
+
+	private void applyOrganDamageToCreature(CreatureOrganDamagedMessage message) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) message.targetEntity.getPhysicalEntityComponent().getAttributes();
+		StatusComponent statusComponent = message.targetEntity.getComponent(StatusComponent.class);
+
+		List<BodyPartOrgan> otherOrgansOfType = new ArrayList<>();
+		for (BodyPart bodyPart : attributes.getBody().getAllBodyParts()) {
+			for (BodyPartOrgan organForBodyPart : bodyPart.getPartDefinition().getOrgans()) {
+				if (message.impactedOrgan.getOrganDefinition().equals(organForBodyPart.getOrganDefinition()) &&
+					message.impactedOrgan.getDiscriminator() != organForBodyPart.getDiscriminator() &&
+						!attributes.getBody().getOrganDamage(bodyPart, organForBodyPart).equals(OrganDamageLevel.DESTROYED)) {
+					otherOrgansOfType.add(organForBodyPart);
+				}
+			}
+		}
+
+		boolean finalOrganInstance = otherOrgansOfType.isEmpty();
+
+		Map<OrganDamageLevel, OrganDamageEffect> damageEffectMap = finalOrganInstance ?
+				message.impactedOrgan.getOrganDefinition().getDamage().getFinalInstance() :
+				message.impactedOrgan.getOrganDefinition().getDamage().getOther();
+
+		OrganDamageEffect organDamageEffect = damageEffectMap.get(message.organDamageLevel);
+		if (organDamageEffect != null) {
+			switch (organDamageEffect) {
+				case DEAD:
+					messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH,
+							new CreatureDeathMessage(message.targetEntity, DeathReason.CRITICAL_ORGAN_DAMAGE));
+					break;
+				case BLINDED:
+					statusComponent.apply(new Blinded());
+					break;
+				case STUNNED:
+					applyStun(message.targetEntity);
+					break;
+				case BLEEDING:
+					statusComponent.apply(new Bleeding());
+					break;
+				case SUFFOCATION:
+					messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH,
+							new CreatureDeathMessage(message.targetEntity, DeathReason.SUFFOCATION));
+					break;
+				case VISION_IMPAIRED:
+					statusComponent.apply(new TemporaryBlinded());
+					break;
+				case INTERNAL_BLEEDING:
+					statusComponent.apply(new InternalBleeding());
+					break;
+				default:
+					Logger.error("Unrecognised " + OrganDamageEffect.class.getSimpleName() + ": ");
+			}
 		}
 	}
 

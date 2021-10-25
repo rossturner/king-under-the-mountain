@@ -18,10 +18,10 @@ public abstract class StatusEffect implements ChildPersistable {
 	protected double timeApplied = 0;
 
 	protected final Class<? extends StatusEffect> nextStage;
-	protected final double hoursUntilNextStage;
+	protected final Double hoursUntilNextStage;
 	protected final DeathReason deathReason; // Only used if this statuseffect applies death
 
-	protected StatusEffect(Class<? extends StatusEffect> nextStage, double hoursUntilNextStage, DeathReason deathReason) {
+	protected StatusEffect(Class<? extends StatusEffect> nextStage, Double hoursUntilNextStage, DeathReason deathReason) {
 		this.nextStage = nextStage;
 		this.hoursUntilNextStage = hoursUntilNextStage;
 		this.deathReason = deathReason;
@@ -32,7 +32,7 @@ public abstract class StatusEffect implements ChildPersistable {
 
 		if (checkForRemoval(gameContext)) {
 			messageDispatcher.dispatchMessage(MessageType.REMOVE_STATUS, new StatusMessage(parentEntity, this.getClass(), null));
-		} else if (nextStage != null && timeApplied > hoursUntilNextStage) {
+		} else if (nextStage != null && hoursUntilNextStage != null && timeApplied > hoursUntilNextStage) {
 			messageDispatcher.dispatchMessage(MessageType.REMOVE_STATUS, new StatusMessage(parentEntity, this.getClass(), null));
 			messageDispatcher.dispatchMessage(MessageType.APPLY_STATUS, new StatusMessage(parentEntity, nextStage, deathReason));
 		} else {

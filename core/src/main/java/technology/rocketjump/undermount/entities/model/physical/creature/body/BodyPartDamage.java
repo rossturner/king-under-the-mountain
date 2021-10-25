@@ -1,7 +1,9 @@
 package technology.rocketjump.undermount.entities.model.physical.creature.body;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel;
+import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
@@ -33,13 +35,41 @@ public class BodyPartDamage implements ChildPersistable {
 		this.organDamage.put(organ, organDamageLevel);
 	}
 
+	public Map<BodyPartOrgan, OrganDamageLevel> getOrganDamage() {
+		return organDamage;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
+		if (!damageLevel.equals(BodyPartDamageLevel.None)) {
+			asJson.put("damageLevel", damageLevel.name());
+		}
 
+		if (!organDamage.isEmpty()) {
+			JSONArray organDamageJson = new JSONArray();
+			for (Map.Entry<BodyPartOrgan, OrganDamageLevel> entry : organDamage.entrySet()) {
+				JSONObject organDamageEntryJson = new JSONObject(true);
+				entry.getKey().writeTo(organDamageEntryJson, savedGameStateHolder);
+				organDamageEntryJson.put("level", entry.getValue().name());
+				organDamageJson.add(organDamageEntryJson);
+			}
+			asJson.put("organDamage", organDamageJson);
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
+		this.damageLevel = EnumParser.getEnumValue(asJson, "damageLevel", BodyPartDamageLevel.class, BodyPartDamageLevel.None);
 
+		JSONArray organDamageJson = asJson.getJSONArray("organDamage");
+		if (organDamageJson != null) {
+			for (int cursor = 0; cursor < organDamageJson.size(); cursor++) {
+				JSONObject organDamageEntryJson = organDamageJson.getJSONObject(cursor);
+				BodyPartOrgan bodyPartOrgan = new BodyPartOrgan();
+				bodyPartOrgan.readFrom(organDamageEntryJson, savedGameStateHolder, relatedStores);
+				OrganDamageLevel organDamageLevel = EnumParser.getEnumValue(organDamageEntryJson, "level", OrganDamageLevel.class, NONE);
+				this.organDamage.put(bodyPartOrgan, organDamageLevel);
+			}
+		}
 	}
 }

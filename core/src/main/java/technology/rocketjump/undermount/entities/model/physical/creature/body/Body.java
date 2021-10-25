@@ -10,6 +10,8 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.ui.i18n.I18nText;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import java.util.*;
 
@@ -53,6 +55,23 @@ public class Body implements ChildPersistable {
 		return allBodyParts;
 	}
 
+	public List<I18nText> getDamageDescriptions(I18nTranslator i18nTranslator) {
+		List<I18nText> result = new ArrayList<>();
+		for (Map.Entry<BodyPart, BodyPartDamage> damageMapEntry : damageMap.entrySet()) {
+
+			if (!damageMapEntry.getValue().getDamageLevel().equals(BodyPartDamageLevel.None)) {
+				result.add(i18nTranslator.getDamageDescription(damageMapEntry.getKey(), damageMapEntry.getValue().getDamageLevel()));
+			}
+
+			for (Map.Entry<BodyPartOrgan, OrganDamageLevel> organDamageEntry : damageMapEntry.getValue().getOrganDamage().entrySet()) {
+				if (!organDamageEntry.getValue().equals(OrganDamageLevel.NONE)) {
+					result.add(i18nTranslator.getDamageDescription(organDamageEntry.getKey(), organDamageEntry.getValue()));
+				}
+			}
+		}
+		return result;
+	}
+
 	private void addBodyParts(BodyPartDefinition partDefinition, BodyPartDiscriminator discriminator, List<BodyPart> allBodyParts) {
 		if (partDefinition == null) {
 			Logger.error("Null body part definition");
@@ -82,6 +101,10 @@ public class Body implements ChildPersistable {
 			}
 			addBodyParts(childPartDefinition, childDiscriminator, allBodyParts);
 		}
+	}
+
+	public Collection<BodyPartDamage> getAllDamage() {
+		return damageMap.values();
 	}
 
 	public BodyPartDamage getDamage(BodyPart bodyPart) {

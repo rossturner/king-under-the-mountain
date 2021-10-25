@@ -19,11 +19,14 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static technology.rocketjump.undermount.entities.ai.goap.SpecialGoal.IDLE;
 import static technology.rocketjump.undermount.entities.ai.goap.SpecialGoal.ROLL_ON_FLOOR;
 import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.KNOCKED_UNCONSCIOUS;
 import static technology.rocketjump.undermount.environment.model.WeatherType.HappinessInteraction.STANDING;
 
 public abstract class CreatureBehaviour implements BehaviourComponent, Destructible, SelectableDescription {
@@ -39,6 +42,7 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 	protected transient double lastUpdateGameTime;
 
 	protected GoalDictionary goalDictionary;
+	private float stunTime;
 
 	public void constructWith(GoalDictionary goalDictionary) {
 		this.goalDictionary = goalDictionary;
@@ -75,6 +79,16 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		Consciousness consciousness = ((CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness();
 		if (AWAKE.equals(consciousness)) {
 			steeringComponent.update(deltaTime);
+		} else if (KNOCKED_UNCONSCIOUS.equals(consciousness)) {
+			return;
+		}
+
+		if (stunTime > 0) {
+			stunTime -= deltaTime;
+			if (stunTime < 0) {
+				stunTime = 0;
+			}
+			return;
 		}
 
 		try {
@@ -125,7 +139,7 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		NeedsComponent needsComponent = parentEntity.getComponent(NeedsComponent.class);
 		needsComponent.update(elapsed, parentEntity, messageDispatcher);
 
-		parentEntity.getOrCreateComponent(StatusComponent.class).infrequentUpdate(elapsed);
+		parentEntity.getComponent(StatusComponent.class).infrequentUpdate(elapsed);
 
 		HappinessComponent happinessComponent = parentEntity.getComponent(HappinessComponent.class);
 		if (happinessComponent != null) {
@@ -201,9 +215,23 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		}
 	}
 
+	public void applyStun(Random random) {
+		this.stunTime = 1f + (random.nextFloat() * 3f);
+	}
+
 	@Override
 	public List<I18nText> getDescription(I18nTranslator i18nTranslator, GameContext gameContext) {
-		return List.of(i18nTranslator.getCurrentGoalDescription(parentEntity, currentGoal, gameContext));
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		if (attributes.getConsciousness().equals(KNOCKED_UNCONSCIOUS)) {
+			return List.of(i18nTranslator.getTranslatedString("ACTION.KNOCKED_UNCONSCIOUS"));
+		}
+
+		List<I18nText> descriptionStrings = new ArrayList<>();
+		descriptionStrings.add(i18nTranslator.getCurrentGoalDescription(parentEntity, currentGoal, gameContext));
+		if (stunTime > 0) {
+			descriptionStrings.add(i18nTranslator.getTranslatedString("ACTION.STUNNED"));
+		}
+		return descriptionStrings;
 	}
 
 	@Override
@@ -229,6 +257,10 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 			JSONObject steeringComponentJson = new JSONObject(true);
 			steeringComponent.writeTo(steeringComponentJson, savedGameStateHolder);
 			asJson.put("steeringComponent", steeringComponentJson);
+		}
+
+		if (stunTime > 0) {
+			asJson.put("stunTime", stunTime);
 		}
 	}
 
@@ -259,6 +291,7 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		if (steeringComponentJson != null) {
 			this.steeringComponent.readFrom(steeringComponentJson, savedGameStateHolder, relatedStores);
 		}
-	}
 
+		this.stunTime = asJson.getFloatValue("stunTime");
+	}
 }

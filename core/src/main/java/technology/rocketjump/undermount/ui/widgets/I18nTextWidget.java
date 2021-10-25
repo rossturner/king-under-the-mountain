@@ -59,6 +59,9 @@ public class I18nTextWidget extends VerticalGroup {
 					style.fontColor = ERROR_COLOR;
 				}
 				Label label = new Label(i18nTextElement.getText(), style);
+				if (i18nTextElement.getText().equals(" ")) {
+					label.setWidth(100f);
+				}
 				if (i18nTextElement.getTooltipI18nKey() != null) {
 					label.addListener(new TooltipListener(label, i18nTextElement.getTooltipI18nKey(), messageDispatcher));
 				}

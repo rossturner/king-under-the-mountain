@@ -498,14 +498,16 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.APPLY_STATUS: {
 				StatusMessage message = (StatusMessage) msg.extraInfo;
-				try {
-					StatusEffect statusEffect = message.statusClass.getDeclaredConstructor().newInstance();
-					if (statusEffect instanceof Death) {
-						((Death) statusEffect).setDeathReason(message.deathReason);
+				if (message.statusClass != null) {
+					try {
+						StatusEffect statusEffect = message.statusClass.getDeclaredConstructor().newInstance();
+						if (statusEffect instanceof Death) {
+							((Death) statusEffect).setDeathReason(message.deathReason);
+						}
+						message.entity.getComponent(StatusComponent.class).apply(statusEffect);
+					} catch (ReflectiveOperationException e) {
+						Logger.error("Could not instantiate " + message.statusClass.getSimpleName() + " with expected constructor");
 					}
-					message.entity.getComponent(StatusComponent.class).apply(statusEffect);
-				} catch (ReflectiveOperationException e) {
-					Logger.error("Could not instantiate " + message.statusClass.getSimpleName() + " with expected constructor");
 				}
 				return true;
 			}

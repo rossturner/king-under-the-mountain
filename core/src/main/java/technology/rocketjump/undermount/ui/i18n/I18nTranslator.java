@@ -12,6 +12,7 @@ import technology.rocketjump.undermount.entities.ai.goap.actions.Action;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
+import technology.rocketjump.undermount.entities.components.LiquidAllocation;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
@@ -19,6 +20,9 @@ import technology.rocketjump.undermount.entities.model.physical.creature.Creatur
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.entities.model.physical.creature.Sanity;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPart;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartOrgan;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
@@ -151,7 +155,11 @@ public class I18nTranslator implements I18nUpdatable {
 					replacements.put("targetDescription", getItemDescription(1, material, itemAttributes.getItemType()));
 				}
 			} else if (currentGoal.getLiquidAllocation() != null) {
-				replacements.put("targetDescription", currentGoal.getLiquidAllocation().getLiquidMaterial().getI18nValue());
+				if (currentGoal.getLiquidAllocation().getType().equals(LiquidAllocation.LiquidAllocationType.FROM_RIVER)) {
+					replacements.put("targetDescription", getTranslatedString("ACTION.DRINK_FROM_RIVER"));
+				} else {
+					replacements.put("targetDescription", currentGoal.getLiquidAllocation().getLiquidMaterial().getI18nValue());
+				}
 			} else if (currentGoal.getAssignedHaulingAllocation() != null) {
 				HaulingAllocation haulingAllocation = currentGoal.getAssignedHaulingAllocation();
 				Entity hauledEntity = gameContext.getEntities().get(haulingAllocation.getHauledEntityId());
@@ -783,5 +791,51 @@ public class I18nTranslator implements I18nUpdatable {
 	@Override
 	public void onLanguageUpdated() {
 		dictionary = repo.getCurrentLanguage();
+	}
+
+	public I18nText getDamageDescription(BodyPart bodyPart, BodyPartDamageLevel damageLevel) {
+		if (bodyPart.getDiscriminator() != null) {
+			return applyReplacements(
+					dictionary.getWord("CREATURE.DAMAGE.DESCRIPTION_B"),
+					Map.of(
+						"damageType", dictionary.getWord(damageLevel.i18nKey()),
+						"discriminator", dictionary.getWord(bodyPart.getDiscriminator().i18nKey()),
+						"bodyPart", dictionary.getWord(bodyPart.getPartDefinition().getI18nKey())
+					),
+					Gender.ANY
+			);
+		} else {
+			return applyReplacements(
+					dictionary.getWord("CREATURE.DAMAGE.DESCRIPTION_A"),
+					Map.of(
+						"damageType", dictionary.getWord(damageLevel.i18nKey()),
+						"bodyPart", dictionary.getWord(bodyPart.getPartDefinition().getI18nKey())
+					),
+					Gender.ANY
+			);
+		}
+	}
+
+	public I18nText getDamageDescription(BodyPartOrgan bodyPartOrgan, OrganDamageLevel organDamageLevel) {
+		if (bodyPartOrgan.getDiscriminator() != null) {
+			return applyReplacements(
+					dictionary.getWord("CREATURE.DAMAGE.DESCRIPTION_B"),
+					Map.of(
+							"damageType", dictionary.getWord(organDamageLevel.i18nKey()),
+							"discriminator", dictionary.getWord(bodyPartOrgan.getDiscriminator().i18nKey()),
+							"bodyPart", dictionary.getWord(bodyPartOrgan.getOrganDefinition().getI18nKey())
+					),
+					Gender.ANY
+			);
+		} else {
+			return applyReplacements(
+					dictionary.getWord("CREATURE.DAMAGE.DESCRIPTION_A"),
+					Map.of(
+							"damageType", dictionary.getWord(organDamageLevel.i18nKey()),
+							"bodyPart", dictionary.getWord(bodyPartOrgan.getOrganDefinition().getI18nKey())
+					),
+					Gender.ANY
+			);
+		}
 	}
 }

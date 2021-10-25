@@ -60,4 +60,8 @@ public class BodyPartDefinition {
 	public String toString() {
 		return name;
 	}
+
+	public String getI18nKey() {
+		return "BODY_STRUCTURE."+name.toUpperCase();
+	}
 }

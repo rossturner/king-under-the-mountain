@@ -1,24 +1,24 @@
 package technology.rocketjump.undermount.entities.model.physical.creature.status;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
-import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.CreatureDeathMessage;
 
-public class Death extends StatusEffect {
+public class InternalBleeding extends StatusEffect {
 
-	private DeathReason deathReason;
+	private static final float CHANCE_OF_DEATH_ON_TICK = 1f / 35f;
 
-	public Death() {
-		super(null, 0.0, null);
+	public InternalBleeding() {
+		super(null, 24.0, null);
 	}
 
 	@Override
 	public void applyOngoingEffect(GameContext gameContext, MessageDispatcher messageDispatcher) {
-		if (parentEntity.getType().equals(EntityType.CREATURE)) {
-			messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(parentEntity, deathReason));
+		if (gameContext.getRandom().nextFloat() < CHANCE_OF_DEATH_ON_TICK) {
+			messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH,
+					new CreatureDeathMessage(parentEntity, DeathReason.INTERNAL_BLEEDING));
 		}
 	}
 
@@ -27,11 +27,4 @@ public class Death extends StatusEffect {
 		return false;
 	}
 
-	public void setDeathReason(DeathReason deathReason) {
-		this.deathReason = deathReason;
-	}
-
-	public DeathReason getDeathReason() {
-		return deathReason;
-	}
 }
