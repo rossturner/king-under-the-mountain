@@ -24,6 +24,12 @@ public class UnequipWeaponAction extends Action {
 		if (currentlyEquipped != null) {
 			inventoryComponent.add(currentlyEquipped, parent.parentEntity, parent.messageDispatcher, gameContext.getGameClock());
 		}
+		completionType = CompletionType.SUCCESS;
+	}
+
+	@Override
+	public boolean isInterruptible() {
+		return false;
 	}
 
 	@Override

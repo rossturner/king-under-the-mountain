@@ -45,7 +45,7 @@ public class EquipItemForJobFromInventoryAction extends Action {
 	}
 
 	@Override
-	public boolean isApplicable() {
+	public boolean isApplicable(GameContext gameContext) {
 		if (parent.getAssignedJob() != null && parent.getAssignedJob().getCraftingRecipe() != null && parent.getAssignedJob().getCraftingRecipe().getCraftingType().isUsesWorkstationTool()) {
 			return false;
 		} else if (parent.getAssignedJob() != null && parent.getAssignedJob().getRequiredItemType() != null) {

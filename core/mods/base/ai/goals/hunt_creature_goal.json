@@ -10,17 +10,20 @@
       "fail": ["UnassignJob"]
     },
     "AttackTarget": {
-      "pass": ["JobCompleted"],
+      "pass": ["GoToCombatTarget", "DeliverKillingBlow", "JobCompleted"],
       "fail": ["MoveInRangeOfTarget"]
     },
+    "GoToCombatTarget": {},
+    "DeliverKillingBlow": {},
     "UnassignJob": {
       "pass": ["UnequipWeapon"],
       "fail": ["UnequipWeapon"]
     },
     "JobCompleted": {
-      "pass": ["UnequipWeapon"],
+      "pass": ["UnequipWeapon", "PickUpEntity"],
       "fail": ["UnequipWeapon"]
     },
-    "UnequipWeapon": {}
+    "UnequipWeapon": {},
+    "PickUpEntity": {}
   }
 }

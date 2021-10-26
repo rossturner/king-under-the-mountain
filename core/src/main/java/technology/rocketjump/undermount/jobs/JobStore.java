@@ -74,6 +74,12 @@ public class JobStore implements Updatable {
 		byType.get(jobToRemove.getType()).remove(jobToRemove);
 		getJobsAtLocation(jobToRemove.getJobLocation()).remove(jobToRemove);
 		jobToRemove.setJobState(JobState.REMOVED);
+		if (jobToRemove.getAssignedToEntityId() != null) {
+			Entity assignedEntity = gameContext.getEntities().get(jobToRemove.getAssignedToEntityId());
+			if (assignedEntity != null && assignedEntity.getBehaviourComponent() instanceof SettlerBehaviour) {
+				((SettlerBehaviour)assignedEntity.getBehaviourComponent()).getCurrentGoal().setInterrupted(true);
+			}
+		}
 		jobToRemove.setAssignedToEntityId(-1L);
 		if (jobToRemove.getHaulingAllocation() != null) {
 			byRelatedHaulingAllocationId.remove(jobToRemove.getHaulingAllocation().getHaulingAllocationId());

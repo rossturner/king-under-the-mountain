@@ -958,6 +958,13 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				messageDispatcher.dispatchMessage(MessageType.FISH_HARVESTED_FROM_RIVER);
 				break;
 			}
+			case "HUNT_CREATURE": {
+				Entity targetEntity = gameContext.getEntities().get(jobCompletedMessage.getJob().getTargetId());
+				if (targetEntity != null) {
+					targetEntity.setDesignation(null);
+				}
+				break;
+			}
 			default: {
 				Logger.error("Not yet implemented job completion: " + completedJob.getType());
 			}

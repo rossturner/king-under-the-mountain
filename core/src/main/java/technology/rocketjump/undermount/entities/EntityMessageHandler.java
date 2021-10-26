@@ -76,6 +76,7 @@ import static technology.rocketjump.undermount.assets.entities.model.ColoringLay
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.CancelLiquidAllocationAction.cancelLiquidAllocation;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.SleepOnFloorAction.changeToConsciousnessOnFloor;
+import static technology.rocketjump.undermount.entities.ai.goap.actions.SleepOnFloorAction.showAsRotatedOnSide;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.AllocationState.CANCELLED;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HAULING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
@@ -758,6 +759,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, deathNotification);
 
 			settlerTracker.settlerDied(deceased);
+		} else if (originalBehaviour instanceof CreatureBehaviour) {
+			creatureTracker.creatureDied(deceased);
 		}
 
 		dropEquippedItems(deceased, deceasedPosition);
@@ -772,6 +775,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		} else {
 			messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, deceased);
 		}
+		showAsRotatedOnSide(deceased, gameContext);
 
 		// TODO check for game-over state
 		if (originalBehaviour instanceof SettlerBehaviour) {

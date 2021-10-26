@@ -289,6 +289,11 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 						if (tile.getDesignation() != null) {
 							messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile));
 						}
+						for (Entity entity : tile.getEntities()) {
+							if (entity.getDesignation() != null) {
+								messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(entity));
+							}
+						}
 					} else if (interactionStateContainer.getInteractionMode().tileDesignationCheck != null &&
 							interactionStateContainer.getInteractionMode().getDesignationToApply() != null) {
 

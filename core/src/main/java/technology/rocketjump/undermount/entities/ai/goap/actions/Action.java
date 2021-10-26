@@ -23,12 +23,13 @@ public abstract class Action implements ChildPersistable {
 
 	/**
 	 * Used to determine if this action should apply to the current parent
+	 * @param gameContext
 	 */
-	public boolean isApplicable() {
+	public boolean isApplicable(GameContext gameContext) {
 		return true;
 	}
 
-	public abstract void update(float deltaTime, GameContext gameContext);
+	public abstract void update(float deltaTime, GameContext gameContext) throws SwitchGoalException;
 
 	public boolean isInterruptible() {
 		return true;
@@ -51,7 +52,7 @@ public abstract class Action implements ChildPersistable {
 		}
 	}
 
-	public CompletionType isCompleted() throws SwitchGoalException {
+	public CompletionType isCompleted(GameContext gameContext) throws SwitchGoalException {
 		if (completionType != null) {
 			// This action is completed in some way so perform cleanup
 			if (spawnedParticles != null) {

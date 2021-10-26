@@ -4,8 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
+import technology.rocketjump.undermount.entities.ai.goap.SpecialGoal;
+import technology.rocketjump.undermount.entities.ai.goap.SwitchGoalException;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
+import technology.rocketjump.undermount.entities.components.WeaponSelectionComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -18,11 +23,15 @@ import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
 import java.util.Optional;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.location.MoveInRangeOfTargetAction.hasLineOfSightBetween;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
+import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
+import static technology.rocketjump.undermount.ui.views.EntitySelectedGuiView.hasSelectedWeaponAndAmmoInInventory;
 
 public class AttackTargetAction extends Action {
 
@@ -46,7 +55,32 @@ public class AttackTargetAction extends Action {
 	}
 
 	@Override
-	public void update(float deltaTime, GameContext gameContext) {
+	public CompletionType isCompleted(GameContext gameContext) throws SwitchGoalException {
+		Entity targetEntity = gameContext.getEntities().get(parent.getAssignedJob().getTargetId());
+		if (targetEntity == null) {
+			completionType = CompletionType.SUCCESS;
+		} else if (targetEntity.getType().equals(CREATURE)) {
+			CreatureEntityAttributes attributes = (CreatureEntityAttributes) targetEntity.getPhysicalEntityComponent().getAttributes();
+			if (attributes.getConsciousness().equals(Consciousness.KNOCKED_UNCONSCIOUS) ||
+					attributes.getConsciousness().equals(Consciousness.DEAD)) {
+				completionType = CompletionType.SUCCESS;
+
+				// Create fake hauling allocation to pick up entity
+				HaulingAllocation haulingAllocation = new HaulingAllocation();
+				haulingAllocation.setTargetPosition(toGridPoint(targetEntity.getLocationComponent().getWorldOrParentPosition()));
+				haulingAllocation.setTargetPositionType(HaulingAllocation.AllocationPositionType.FLOOR);
+				haulingAllocation.setTargetId(targetEntity.getId());
+				haulingAllocation.setHauledEntityId(targetEntity.getId());
+				haulingAllocation.setHauledEntityType(CREATURE);
+				parent.setAssignedHaulingAllocation(haulingAllocation);
+			}
+		}
+
+		return super.isCompleted(gameContext);
+	}
+
+	@Override
+	public void update(float deltaTime, GameContext gameContext) throws SwitchGoalException {
 		stateElapsedTime += deltaTime;
 
 		switch (state) {
@@ -106,7 +140,7 @@ public class AttackTargetAction extends Action {
 
 	}
 
-	private void initialCheck(GameContext gameContext) {
+	private void initialCheck(GameContext gameContext) throws SwitchGoalException {
 		if (parent.getAssignedJob() == null || parent.getAssignedJob().getTargetId() == null) {
 			Logger.error("No target for " + getSimpleName());
 			completionType = CompletionType.FAILURE;
@@ -122,6 +156,12 @@ public class AttackTargetAction extends Action {
 		if (!hasLineOfSightBetween(parent.parentEntity, targetEntity, gameContext)) {
 			completionType = CompletionType.FAILURE;
 			return;
+		}
+
+		WeaponSelectionComponent weaponSelectionComponent = parent.parentEntity.getOrCreateComponent(WeaponSelectionComponent.class);
+		if (!hasSelectedWeaponAndAmmoInInventory(parent.parentEntity, weaponSelectionComponent.getSelectedWeapon(), gameContext)) {
+			new UnequipWeaponAction(parent).update(0f, gameContext);
+			throw new SwitchGoalException(SpecialGoal.ABANDON_JOB);
 		}
 
 		WeaponInfo equippedWeaponInfo = getEquippedWeaponItemType(parent.parentEntity).getWeaponInfo();

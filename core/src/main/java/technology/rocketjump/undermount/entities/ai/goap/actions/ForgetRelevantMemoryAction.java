@@ -26,7 +26,7 @@ public class ForgetRelevantMemoryAction extends Action {
 	}
 
 	@Override
-	public boolean isApplicable() {
+	public boolean isApplicable(GameContext gameContext) {
 		return parent.getRelevantMemory() != null;
 	}
 

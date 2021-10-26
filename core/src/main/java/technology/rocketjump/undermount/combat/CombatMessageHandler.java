@@ -177,7 +177,6 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 					messageDispatcher.dispatchMessage(MessageType.CREATURE_ORGAN_DAMAGE_APPLIED, new CreatureOrganDamagedMessage(
 							attackMessage.defenderEntity, impactedBodyPart, targetOrgan, newOrganDamage
 					));
-					Logger.debug("Applying " + newOrganDamage + " to " + targetOrgan.getType());
 				}
 			} else {
 				// impacted with body part only
@@ -188,7 +187,6 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 					messageDispatcher.dispatchMessage(MessageType.CREATURE_DAMAGE_APPLIED, new CreatureDamagedMessage(
 							attackMessage.defenderEntity, impactedBodyPart, newDamageLevel
 					));
-					Logger.debug("Applying " + newDamageLevel + " from " + damageAmount + " damage to " + impactedBodyPart);
 
 					if (newDamageLevel.equals(Destroyed)) {
 						bodyPartDestroyed(impactedBodyPart, attributes.getBody(), attackMessage.defenderEntity);
@@ -249,9 +247,8 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 			((SettlerBehaviour) targetCreature.getBehaviourComponent()).applyStun(gameContext.getRandom());
 		} else if (targetCreature.getBehaviourComponent() instanceof CreatureBehaviour) {
 			((CreatureBehaviour) targetCreature.getBehaviourComponent()).applyStun(gameContext.getRandom());
-		} else {
-			Logger.warn("Unknown target to apply stun to");
 		}
+		// else probably already dead or else inanimate
 	}
 
 	private void applyOrganDamageToCreature(CreatureOrganDamagedMessage message) {

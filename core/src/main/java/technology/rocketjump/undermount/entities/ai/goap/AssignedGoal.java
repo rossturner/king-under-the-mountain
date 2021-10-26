@@ -109,7 +109,7 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 
 		// TODO Introduce INTERRUPTED completion type, which will still perform actions to unassign and clear up state, but will not perform long-running actions
 
-		Action.CompletionType actionCompletion = currentAction.isCompleted();
+		Action.CompletionType actionCompletion = currentAction.isCompleted(gameContext);
 		if (actionCompletion == null) {
 			if (this.interrupted && currentAction.isInterruptible()) {
 				currentAction.actionInterrupted(gameContext);
@@ -121,9 +121,9 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 			ActionTransitions transitions = goal.getAllTransitions().get(currentAction.getClass());
 			if (transitions != null) { // Might be null when extra actions added by code
 				if (actionCompletion.equals(SUCCESS)) {
-					addToQueue(transitions.onSuccess);
+					addToQueue(transitions.onSuccess, gameContext);
 				} else if (actionCompletion.equals(FAILURE)) {
-					addToQueue(transitions.onFailure);
+					addToQueue(transitions.onFailure, gameContext);
 				}
 			}
 		}
@@ -134,10 +134,10 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 		return actionQueue.peek();
 	}
 
-	private void addToQueue(List<Class<? extends Action>> actionTypeList) {
+	private void addToQueue(List<Class<? extends Action>> actionTypeList, GameContext gameContext) {
 		for (Class<? extends Action> actionType : actionTypeList) {
 			Action action = Action.newInstance(actionType, this);
-			if (action.isApplicable()) {
+			if (action.isApplicable(gameContext)) {
 				actionQueue.add(action);
 			}
 		}

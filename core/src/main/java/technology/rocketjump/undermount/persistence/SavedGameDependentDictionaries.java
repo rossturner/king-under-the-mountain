@@ -18,6 +18,7 @@ import technology.rocketjump.undermount.entities.dictionaries.furniture.Furnitur
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDefinitionDictionary;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismTypeDictionary;
@@ -80,6 +81,7 @@ public class SavedGameDependentDictionaries {
 	public final DailyWeatherTypeDictionary dailyWeatherTypeDictionary;
 	public final MechanismTypeDictionary mechanismTypeDictionary;
 	public final BodyStructureDictionary bodyStructureDictionary;
+	public final OrganDefinitionDictionary organDefinitionDictionary;
 	public final RaceDictionary raceDictionary;
 
 	@Inject
@@ -100,7 +102,7 @@ public class SavedGameDependentDictionaries {
 										  OngoingEffectTypeDictionary ongoingEffectTypeDictionary,
 										  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary,
 										  MechanismTypeDictionary mechanismTypeDictionary, BodyStructureDictionary bodyStructureDictionary,
-										  RaceDictionary raceDictionary) {
+										  OrganDefinitionDictionary organDefinitionDictionary, RaceDictionary raceDictionary) {
 		this.dynamicMaterialFactory = dynamicMaterialFactory;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.messageDispatcher = messageDispatcher;
@@ -136,6 +138,7 @@ public class SavedGameDependentDictionaries {
 		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
 		this.mechanismTypeDictionary = mechanismTypeDictionary;
 		this.bodyStructureDictionary = bodyStructureDictionary;
+		this.organDefinitionDictionary = organDefinitionDictionary;
 		this.raceDictionary = raceDictionary;
 	}
 }

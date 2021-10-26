@@ -1,4 +1,12 @@
 [ {
+  "i18nDescription" : "GOAL.ABANDON_JOB.DESCRIPTION",
+  "name" : "Abandon job goal",
+  "actionRelationships" : {
+    "UnassignJob" : { }
+  },
+  "selectors" : [ ],
+  "initialActions" : [ "UnassignJob" ]
+}, {
   "i18nDescription" : "GOAL.ADD_TO_INVENTORY.DESCRIPTION",
   "expiryHours" : 12,
   "name" : "Add to inventory goal",
@@ -277,6 +285,7 @@
   "name" : "Hunt creature goal",
   "actionRelationships" : {
     "EquipWeapon" : { },
+    "DeliverKillingBlow" : { },
     "MoveInRangeOfTarget" : {
       "fail" : [ "UnassignJob" ],
       "pass" : [ "AttackTarget" ]
@@ -284,12 +293,14 @@
     "UnequipWeapon" : { },
     "AttackTarget" : {
       "fail" : [ "MoveInRangeOfTarget" ],
-      "pass" : [ "JobCompleted" ]
+      "pass" : [ "GoToCombatTarget", "DeliverKillingBlow", "JobCompleted" ]
     },
+    "GoToCombatTarget" : { },
     "JobCompleted" : {
       "fail" : [ "UnequipWeapon" ],
-      "pass" : [ "UnequipWeapon" ]
+      "pass" : [ "UnequipWeapon", "PickUpEntity" ]
     },
+    "PickUpEntity" : { },
     "UnassignJob" : {
       "fail" : [ "UnequipWeapon" ],
       "pass" : [ "UnequipWeapon" ]

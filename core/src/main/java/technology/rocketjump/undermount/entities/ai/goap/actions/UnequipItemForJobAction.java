@@ -32,7 +32,7 @@ public class UnequipItemForJobAction extends Action {
 		EquippedItemComponent equippedItemComponent = parent.parentEntity.getOrCreateComponent(EquippedItemComponent.class);
 		Entity currentItem = equippedItemComponent.clearEquippedItem();
 		if (currentItem != null) {
-			if (new EquipItemForJobFromFurnitureAction(parent).isApplicable()) {
+			if (new EquipItemForJobFromFurnitureAction(parent).isApplicable(gameContext)) {
 				unequipItemToFurniture(currentItem, gameContext);
 			} else {
 				unequipItemToInventory(currentItem, gameContext);

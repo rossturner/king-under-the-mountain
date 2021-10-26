@@ -123,22 +123,7 @@ public class SleepOnFloorAction extends Action {
 			// Only job assignable rotate and face certain direction
 
 			// face in a direction and rotate as appropriate
-			if (gameContext.getRandom().nextBoolean()) {
-				entity.getLocationComponent().setRotation(80f + (gameContext.getRandom().nextFloat() * 20f));
-				if (gameContext.getRandom().nextBoolean()) {
-					entity.getLocationComponent().setFacing(DOWN_LEFT.toVector2());
-				} else {
-					entity.getLocationComponent().setFacing(DOWN.toVector2());
-				}
-
-			} else {
-				entity.getLocationComponent().setRotation(260f + (gameContext.getRandom().nextFloat() * 20f));
-				if (gameContext.getRandom().nextBoolean()) {
-					entity.getLocationComponent().setFacing(DOWN_RIGHT.toVector2());
-				} else {
-					entity.getLocationComponent().setFacing(DOWN.toVector2());
-				}
-			}
+			showAsRotatedOnSide(entity, gameContext);
 		}
 		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		attributes.setConsciousness(consciousness);
@@ -146,6 +131,25 @@ public class SleepOnFloorAction extends Action {
 			messageDispatcher.dispatchMessage(MessageType.SETTLER_FELL_ASLEEP);
 		}
 		messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, entity);
+	}
+
+	public static void showAsRotatedOnSide(Entity entity, GameContext gameContext) {
+		if (gameContext.getRandom().nextBoolean()) {
+			entity.getLocationComponent().setRotation(80f + (gameContext.getRandom().nextFloat() * 20f));
+			if (gameContext.getRandom().nextBoolean()) {
+				entity.getLocationComponent().setFacing(DOWN_LEFT.toVector2());
+			} else {
+				entity.getLocationComponent().setFacing(DOWN.toVector2());
+			}
+
+		} else {
+			entity.getLocationComponent().setRotation(260f + (gameContext.getRandom().nextFloat() * 20f));
+			if (gameContext.getRandom().nextBoolean()) {
+				entity.getLocationComponent().setFacing(DOWN_RIGHT.toVector2());
+			} else {
+				entity.getLocationComponent().setFacing(DOWN.toVector2());
+			}
+		}
 	}
 
 	protected void changeToAwake() {

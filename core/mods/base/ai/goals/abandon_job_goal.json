@@ -1,0 +1,9 @@
+{
+  "name": "Abandon job goal",
+  "i18nDescription": "GOAL.ABANDON_JOB.DESCRIPTION",
+  "selectors": [],
+  "initialActions": ["UnassignJob"],
+  "actionRelationships": {
+    "UnassignJob": {}
+  }
+}

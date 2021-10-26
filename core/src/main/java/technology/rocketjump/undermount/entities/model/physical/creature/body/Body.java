@@ -143,6 +143,7 @@ public class Body implements ChildPersistable {
 				JSONObject damageJson = new JSONObject(true);
 				entry.getValue().writeTo(damageJson, savedGameStateHolder);
 				entryJson.put("damage", damageJson);
+				damageMapJson.add(entryJson);
 			}
 			asJson.put("damageMap", damageMapJson);
 		}

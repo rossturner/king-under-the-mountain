@@ -304,6 +304,7 @@
   {
     "name": "HUNT_CREATURE",
     "switchToSpecialGoal": "HUNT_CREATURE",
-    "requiredProfessionName": "HUNTER"
+    "requiredProfessionName": "HUNTER",
+    "requiresWeapon": true
   }
 ]

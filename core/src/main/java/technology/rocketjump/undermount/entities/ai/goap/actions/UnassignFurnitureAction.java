@@ -43,7 +43,7 @@ public class UnassignFurnitureAction extends Action {
 	}
 
 	@Override
-	public boolean isApplicable() {
+	public boolean isApplicable(GameContext gameContext) {
 		return parent.getAssignedFurnitureId() != null;
 	}
 
