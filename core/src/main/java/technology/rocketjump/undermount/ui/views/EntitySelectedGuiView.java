@@ -528,31 +528,14 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		Optional<ItemType> selectedWeapon = weaponSelectionComponent.getSelectedWeapon();
 
 		ImageButton imageButton;
-		if (selectedWeapon.isPresent()) {
-			InventoryComponent inventoryComponent = entity.getComponent(InventoryComponent.class);
-			InventoryComponent.InventoryEntry inventoryEntry = inventoryComponent.findByItemType(selectedWeapon.get(), gameContext.getGameClock());
-
-			if (inventoryEntry != null) {
-				// use entitydrawable of actual entity
-				imageButton = imageButtonFactory.getOrCreate(inventoryEntry.entity);
-			} else {
-				// Might be equipped instead
-				EquippedItemComponent equippedItemComponent = entity.getComponent(EquippedItemComponent.class);
-				Entity equippedItem = null;
-				if (equippedItemComponent != null) {
-					equippedItem = equippedItemComponent.getEquippedItem();
-				}
-				if (equippedItem != null && equippedItem.getType().equals(ITEM) &&
-						((ItemEntityAttributes)equippedItem.getPhysicalEntityComponent().getAttributes()).getItemType().equals(selectedWeapon.get())) {
-					imageButton = imageButtonFactory.getOrCreate(equippedItem);
-				} else {
-					// Use generic drawable of itemtype
-					imageButton = imageButtonFactory.getOrCreateGhostButton(exampleItemDictionary.getExampleItemEntity(selectedWeapon.get(), Optional.empty()));
-				}
-			}
-		} else {
+		if (selectedWeapon.isEmpty()) {
 			// Unarmed
 			imageButton = UNARMED_IMAGE_BUTTON;
+		} else if (hasSelectedWeaponAndAmmoInInventory(entity, selectedWeapon, gameContext)) {
+			Optional<Entity> fromInventoryOrEquipped = getSelectedWeaponFromInventoryOrEquipped(entity, selectedWeapon, gameContext);
+			imageButton = imageButtonFactory.getOrCreate(fromInventoryOrEquipped.orElse(Entity.NULL_ENTITY));
+		} else {
+			imageButton = imageButtonFactory.getOrCreateGhostButton(exampleItemDictionary.getExampleItemEntity(selectedWeapon.get(), Optional.empty()));
 		}
 		weaponsTable.add(imageButton).pad(5);
 		imageButton.setAction(() -> {
@@ -565,6 +548,62 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			weaponsTable.add(i18nWidgetFactory.createLabel(selectedWeapon.get().getI18nKey())).pad(5);
 		} else {
 			weaponsTable.add(i18nWidgetFactory.createLabel("WEAPON.UNARMED")).pad(5);
+		}
+	}
+
+	public static Optional<Entity> getSelectedWeaponFromInventoryOrEquipped(Entity entity, Optional<ItemType> selectedWeapon, GameContext gameContext) {
+		if (selectedWeapon.isEmpty()) {
+			return Optional.empty();
+		} else {
+			InventoryComponent inventoryComponent = entity.getComponent(InventoryComponent.class);
+			InventoryComponent.InventoryEntry inventoryEntry = inventoryComponent.findByItemType(selectedWeapon.get(), gameContext.getGameClock());
+
+			if (inventoryEntry != null) {
+				// use entitydrawable of actual entity
+				return Optional.of(inventoryEntry.entity);
+			} else {
+				// Might be equipped instead
+				EquippedItemComponent equippedItemComponent = entity.getComponent(EquippedItemComponent.class);
+				Entity equippedItem = null;
+				if (equippedItemComponent != null) {
+					equippedItem = equippedItemComponent.getEquippedItem();
+				}
+				if (equippedItem != null && equippedItem.getType().equals(ITEM) &&
+						((ItemEntityAttributes) equippedItem.getPhysicalEntityComponent().getAttributes()).getItemType().equals(selectedWeapon.get())) {
+					return Optional.of(equippedItem);
+				} else {
+					return Optional.empty();
+				}
+			}
+		}
+	}
+
+	public static boolean hasSelectedWeaponAndAmmoInInventory(Entity entity, Optional<ItemType> selectedWeapon, GameContext gameContext) {
+		if (selectedWeapon.isEmpty()) {
+			return true;
+		}
+
+		Optional<Entity> weaponOnEntity = getSelectedWeaponFromInventoryOrEquipped(entity, selectedWeapon, gameContext);
+		if (weaponOnEntity.isEmpty()) {
+			return false;
+		} else {
+			if (selectedWeapon.get().getWeaponInfo().getRequiresAmmoType() == null) {
+				// No ammo
+				return true;
+			} else {
+				// any ammo in inventory?
+				InventoryComponent inventoryComponent = entity.getComponent(InventoryComponent.class);
+				return inventoryComponent.getInventoryEntries().stream()
+						.anyMatch(e -> {
+							if (e.entity.getType().equals(ITEM)) {
+									ItemEntityAttributes attributes = (ItemEntityAttributes) e.entity.getPhysicalEntityComponent().getAttributes();
+								return attributes.getItemType().getIsAmmoType() != null &&
+										attributes.getItemType().getIsAmmoType().equals(selectedWeapon.get().getWeaponInfo().getRequiresAmmoType());
+							} else {
+								return false;
+							}
+						});
+			}
 		}
 	}
 

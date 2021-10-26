@@ -17,7 +17,8 @@
       "discriminator" : "Right",
       "relativeSize" : 0.05
     } ],
-    "childParts" : [ ]
+    "childParts" : [ ],
+    "i18nKey" : "BODY_STRUCTURE.HEAD"
   }, {
     "name" : "Torso",
     "size" : 1.0,
@@ -34,19 +35,22 @@
       "discriminator" : "Right",
       "relativeSize" : 0.3
     } ],
-    "childParts" : [ "Head", "FrontRight-Leg", "FrontLeft-Leg", "BackRight-Leg", "BackLeft-Leg" ]
+    "childParts" : [ "Head", "FrontRight-Leg", "FrontLeft-Leg", "BackRight-Leg", "BackLeft-Leg" ],
+    "i18nKey" : "BODY_STRUCTURE.TORSO"
   }, {
     "name" : "Leg",
     "size" : 0.3,
     "bones" : [ "MEDIUM" ],
     "organs" : [ ],
-    "childParts" : [ "Hoof" ]
+    "childParts" : [ "Hoof" ],
+    "i18nKey" : "BODY_STRUCTURE.LEG"
   }, {
     "name" : "Hoof",
     "size" : 0.01,
     "bones" : [ ],
     "organs" : [ ],
-    "childParts" : [ ]
+    "childParts" : [ ],
+    "i18nKey" : "BODY_STRUCTURE.HOOF"
   } ]
 }, {
   "name" : "Humanoid",
@@ -67,7 +71,8 @@
       "discriminator" : "Right",
       "relativeSize" : 0.05
     } ],
-    "childParts" : [ ]
+    "childParts" : [ ],
+    "i18nKey" : "BODY_STRUCTURE.HEAD"
   }, {
     "name" : "Torso",
     "size" : 1.0,
@@ -84,19 +89,22 @@
       "discriminator" : "Right",
       "relativeSize" : 0.3
     } ],
-    "childParts" : [ "Head", "Abdomen", "Right-Arm", "Left-Arm" ]
+    "childParts" : [ "Head", "Abdomen", "Right-Arm", "Left-Arm" ],
+    "i18nKey" : "BODY_STRUCTURE.TORSO"
   }, {
     "name" : "Arm",
     "size" : 0.2,
     "bones" : [ "MEDIUM" ],
     "organs" : [ ],
-    "childParts" : [ "Hand" ]
+    "childParts" : [ "Hand" ],
+    "i18nKey" : "BODY_STRUCTURE.ARM"
   }, {
     "name" : "Hand",
     "size" : 0.04,
     "bones" : [ "SMALL" ],
     "organs" : [ ],
-    "childParts" : [ ]
+    "childParts" : [ ],
+    "i18nKey" : "BODY_STRUCTURE.HAND"
   }, {
     "name" : "Abdomen",
     "size" : 0.3,
@@ -113,19 +121,22 @@
       "type" : "Intestines",
       "relativeSize" : 0.4
     } ],
-    "childParts" : [ "Left-Leg", "Right-Leg" ]
+    "childParts" : [ "Left-Leg", "Right-Leg" ],
+    "i18nKey" : "BODY_STRUCTURE.ABDOMEN"
   }, {
     "name" : "Leg",
     "size" : 0.2,
     "bones" : [ "MEDIUM" ],
     "organs" : [ ],
-    "childParts" : [ "Foot" ]
+    "childParts" : [ "Foot" ],
+    "i18nKey" : "BODY_STRUCTURE.LEG"
   }, {
     "name" : "Foot",
     "size" : 0.02,
     "bones" : [ "SMALL" ],
     "organs" : [ ],
-    "childParts" : [ ]
+    "childParts" : [ ],
+    "i18nKey" : "BODY_STRUCTURE.FOOT"
   } ]
 }, {
   "name" : "pawed-quadruped",
@@ -146,7 +157,8 @@
       "discriminator" : "Right",
       "relativeSize" : 0.05
     } ],
-    "childParts" : [ ]
+    "childParts" : [ ],
+    "i18nKey" : "BODY_STRUCTURE.HEAD"
   }, {
     "name" : "Torso",
     "size" : 1.0,
@@ -163,18 +175,21 @@
       "discriminator" : "Right",
       "relativeSize" : 0.3
     } ],
-    "childParts" : [ "Head", "FrontRight-Leg", "FrontLeft-Leg", "BackRight-Leg", "BackLeft-Leg" ]
+    "childParts" : [ "Head", "FrontRight-Leg", "FrontLeft-Leg", "BackRight-Leg", "BackLeft-Leg" ],
+    "i18nKey" : "BODY_STRUCTURE.TORSO"
   }, {
     "name" : "Leg",
     "size" : 0.15,
     "bones" : [ "MEDIUM" ],
     "organs" : [ ],
-    "childParts" : [ "Paw" ]
+    "childParts" : [ "Paw" ],
+    "i18nKey" : "BODY_STRUCTURE.LEG"
   }, {
-    "name" : "Hoof",
+    "name" : "Paw",
     "size" : 0.01,
     "bones" : [ ],
     "organs" : [ ],
-    "childParts" : [ ]
+    "childParts" : [ ],
+    "i18nKey" : "BODY_STRUCTURE.PAW"
   } ]
 } ]
