@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
 import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
@@ -35,6 +36,8 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeci
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.entities.tags.TagProcessor;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -43,7 +46,8 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class EntityAssetUpdater {
+@Singleton
+public class EntityAssetUpdater implements GameContextAware {
 
 	private final CreatureEntityAssetDictionary creatureEntityAssetDictionary;
 	private final ItemEntityAssetDictionary itemEntityAssetDictionary;
@@ -71,6 +75,7 @@ public class EntityAssetUpdater {
 	public final EntityAssetType FURNITURE_LIQUID_LAYER;
 	public final EntityAssetType FURNITURE_COVER_LAYER;
 	public final EntityAssetType MECHANISM_BASE_LAYER;
+	private GameContext gameContext;
 
 	@Inject
 	public EntityAssetUpdater(ItemEntityAssetDictionary itemEntityAssetDictionary, FurnitureEntityAssetDictionary furnitureEntityAssetDictionary,
@@ -148,11 +153,12 @@ public class EntityAssetUpdater {
 
 
 		CreatureEntityAsset baseAsset;
-		if (entity.getLocationComponent().getContainerEntity() == null) {
-			baseAsset = creatureEntityAssetDictionary.getMatching(CREATURE_BODY, attributes, primaryProfession);
-		} else {
+		if (gameContext != null && entity.getLocationComponent().getContainerEntity() != null &&
+				attributes.getRace().equals(gameContext.getSettlementState().getSettlerRace())) {
 			// Only show head and above when inside a container
 			baseAsset = creatureEntityAssetDictionary.getMatching(CREATURE_HEAD, attributes, primaryProfession);
+		} else {
+			baseAsset = creatureEntityAssetDictionary.getMatching(CREATURE_BODY, attributes, primaryProfession);
 		}
 
 		entity.getPhysicalEntityComponent().getTypeMap().clear();
@@ -405,5 +411,15 @@ public class EntityAssetUpdater {
 
 	private boolean shouldShowLiquidLayer(GameMaterial material) {
 		return !material.isAlcoholic() && (material.isEdible() || material.isQuenchesThirst());
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
 	}
 }

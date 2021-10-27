@@ -134,10 +134,11 @@ public class MessageType {
 	public static final int PIPE_ADDED = 621;
 	public static final int FISH_HARVESTED_FROM_RIVER = 622;
 	public static final int STOCKPILE_SETTING_UPDATED = 623;
+	public static final int FIND_BUTCHERABLE_UNALLOCATED_CORPSE = 624;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;
-	public static final int REQUEST_ITEM_HAULING = 702;
+	public static final int REQUEST_ENTITY_HAULING = 702;
 	public static final int REQUEST_HAULING_ALLOCATION = 703;
 	public static final int LOOKUP_ITEM_TYPE = 704;
 	public static final int LOOKUP_ITEM_TYPES_BY_TAG_CLASS = 705;

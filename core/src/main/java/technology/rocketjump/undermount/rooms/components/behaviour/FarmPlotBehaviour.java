@@ -198,7 +198,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 			if (entity.getType().equals(EntityType.ITEM)) {
 				ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
 				if (itemAllocationComponent.getNumUnallocated() > 0) {
-					messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING,
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING,
 							new RequestHaulingMessage(entity, entity, true, priority, this));
 				}
 				return true;

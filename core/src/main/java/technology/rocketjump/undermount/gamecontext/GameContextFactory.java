@@ -9,6 +9,8 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.constants.SettlementConstants;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.environment.DailyWeatherTypeDictionary;
@@ -38,11 +40,12 @@ public class GameContextFactory {
 	private final JSONObject itemProductionDefaultsJson;
 	private final JSONObject liquidProductionDefaultsJson;
 	private final SettlementConstants settlementConstants;
+	private Race settlerRace;
 
 	@Inject
 	public GameContextFactory(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary,
 							  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary,
-							  ConstantsRepo constantsRepo) {
+							  ConstantsRepo constantsRepo, RaceDictionary raceDictionary) {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.weatherTypeDictionary = weatherTypeDictionary;
@@ -52,11 +55,13 @@ public class GameContextFactory {
 		FileHandle liquidProductionDefaultsFile = new FileHandle("assets/definitions/crafting/liquidProductionDefaults.json");
 		liquidProductionDefaultsJson = JSON.parseObject(liquidProductionDefaultsFile.readString());
 		settlementConstants = constantsRepo.getSettlementConstants();
+		this.settlerRace = raceDictionary.getByName("Dwarf"); // MODDING expose and test this
 	}
 
 	public GameContext create(String settlementName, TiledMap areaMap, long worldSeed, GameClock clock) {
 		GameContext context = new GameContext();
 		context.getSettlementState().setSettlementName(settlementName);
+		context.getSettlementState().setSettlerRace(settlerRace);
 		if (GlobalSettings.DEV_MODE) {
 			if (GlobalSettings.CHOOSE_SPAWN_LOCATION) {
 				context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);

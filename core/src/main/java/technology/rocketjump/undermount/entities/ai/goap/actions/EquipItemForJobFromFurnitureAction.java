@@ -70,7 +70,10 @@ public class EquipItemForJobFromFurnitureAction extends Action {
 
 	@Override
 	public boolean isApplicable(GameContext gameContext) {
-		return parent.getAssignedJob() != null && parent.getAssignedJob().getCraftingRecipe() != null && parent.getAssignedJob().getCraftingRecipe().getCraftingType().isUsesWorkstationTool();
+		return parent.getAssignedJob() != null && (
+				(parent.getAssignedJob().getCraftingRecipe() != null && parent.getAssignedJob().getCraftingRecipe().getCraftingType().isUsesWorkstationTool()) ||
+				(parent.getAssignedJob().getType().isUsesWorkstationTool())
+		);
 	}
 
 	@Override

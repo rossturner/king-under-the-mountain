@@ -291,14 +291,16 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				}
 
 				if (GlobalSettings.DEV_MODE) {
-					if (entity.getType().equals(ITEM)) {
-						ItemAllocationComponent itemAllocationComponent = entity.getOrCreateComponent(ItemAllocationComponent.class);
+
+					ItemAllocationComponent itemAllocationComponent = entity.getComponent(ItemAllocationComponent.class);
+					if (itemAllocationComponent != null) {
 						List<ItemAllocation> itemAllocations = itemAllocationComponent.getAll();
 						if (itemAllocations.size() > 0) {
 							String allocationsString = StringUtils.join(itemAllocations, ", ");
 							entityDescriptionTable.add(new Label("Allocations: " + allocationsString, uiSkin)).left();
 						}
-					} else if (entity.getType().equals(EntityType.CREATURE)) {
+					}
+					if (entity.getType().equals(EntityType.CREATURE)) {
 //					SettlerBehaviour behaviourComponent = (SettlerBehaviour) entity.getBehaviourComponent();
 //					if (behaviourComponent.getCurrentGoal() != null) {
 //						String goal = "Goal: " + behaviourComponent.getCurrentGoal().goal.name;

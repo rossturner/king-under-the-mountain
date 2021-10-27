@@ -179,6 +179,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.FURNITURE_NO_LONGER_IN_USE);
 		messageDispatcher.addListener(this, MessageType.DAMAGE_FURNITURE);
 		messageDispatcher.addListener(this, MessageType.MATERIAL_OXIDISED);
+		messageDispatcher.addListener(this, MessageType.FIND_BUTCHERABLE_UNALLOCATED_CORPSE);
 	}
 
 	@Override
@@ -565,6 +566,10 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.MATERIAL_OXIDISED: {
 				return handleMaterialOxidised((OxidisationMessage) msg.extraInfo);
+			}
+			case MessageType.FIND_BUTCHERABLE_UNALLOCATED_CORPSE: {
+				handleFindButcherableCorpse((RequestCorpseMessage) msg.extraInfo);
+				return true;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
@@ -978,6 +983,36 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 
 		return true;
+	}
+
+	private void handleFindButcherableCorpse(RequestCorpseMessage requestCorpseMessage) {
+		MapTile requesterTile = gameContext.getAreaMap().getTile(requestCorpseMessage.requesterPosition);
+		if (requesterTile == null) {
+			return;
+		}
+		int requesterRegionId = requesterTile.getRegionId();
+
+		Map<Float, Entity> eligibleCorpsesByDistance = new TreeMap<>();
+
+		for (Entity deadCreatureEntity : creatureTracker.getDead()) {
+			MapTile corpseTile = gameContext.getAreaMap().getTile(deadCreatureEntity.getLocationComponent().getWorldPosition());
+			if (corpseTile == null || corpseTile.getRegionId() != requesterRegionId) {
+				continue;
+			}
+
+			ItemAllocationComponent itemAllocationComponent = deadCreatureEntity.getComponent(ItemAllocationComponent.class);
+			if (itemAllocationComponent == null || itemAllocationComponent.getNumUnallocated() <= 0) {
+				continue;
+			}
+
+			// else this is unallocated and in same region
+			float distanceToCorpse = deadCreatureEntity.getLocationComponent().getWorldOrParentPosition().dst2(requestCorpseMessage.requesterPosition);
+			eligibleCorpsesByDistance.put(distanceToCorpse, deadCreatureEntity);
+		}
+
+		if (!eligibleCorpsesByDistance.isEmpty()) {
+			requestCorpseMessage.callback.corpseFound(eligibleCorpsesByDistance.values().iterator().next());
+		}
 	}
 
 	private void showNotificationOxidisationDestroyedSomething(Entity targetEntity) {

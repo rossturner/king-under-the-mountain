@@ -48,7 +48,7 @@ public class ItemBehaviour implements BehaviourComponent {
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
 		ItemEntityAttributes attributes = (ItemEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
-		ItemAllocationComponent itemAllocationComponent = parentEntity.getOrCreateComponent(ItemAllocationComponent.class);
+		ItemAllocationComponent itemAllocationComponent = parentEntity.getComponent(ItemAllocationComponent.class);
 		if (locationComponent.getWorldPosition() != null && attributes.getItemPlacement().equals(ItemPlacement.ON_GROUND) && itemAllocationComponent.getNumUnallocated() > 0) {
 			// Has some unallocated on ground
 			MapTile tile = gameContext.getAreaMap().getTile(locationComponent.getWorldPosition());
@@ -56,14 +56,14 @@ public class ItemBehaviour implements BehaviourComponent {
 			if (tile.getRoomTile() != null) {
 				Room room = tile.getRoomTile().getRoom();
 				StockpileComponent stockpileComponent = room.getComponent(StockpileComponent.class);
-				if (stockpileComponent != null && stockpileComponent.canHold(attributes)) {
+				if (stockpileComponent != null && stockpileComponent.canHold(parentEntity)) {
 					inStockpile = true;
 				}
 			}
 
 			if (!inStockpile) {
 				// Not in a stockpile and some unallocated, so see if we can be hauled to a stockpile
-				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, JobPriority.NORMAL, null));
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, JobPriority.NORMAL, null));
 			}
 
 		}

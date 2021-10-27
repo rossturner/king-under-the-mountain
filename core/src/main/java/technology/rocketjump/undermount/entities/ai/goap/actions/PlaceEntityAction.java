@@ -5,12 +5,14 @@ import com.badlogic.gdx.math.GridPoint2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
+import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.MushroomShockTankBehaviour;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
@@ -219,11 +221,6 @@ public class PlaceEntityAction extends Action {
 				stockpileComponent.itemPlaced(currentTile, itemToPlaceAttributes, quantityToPlace);
 			}
 
-			// Disabling place item sounds as it is getting to be a bit too much
-//			if (completionType.equals(SUCCESS) && itemToPlaceAttributes.getItemType().getPlacementSoundAsset() != null) {
-//				parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(itemToPlaceAttributes.getItemType().getPlacementSoundAsset(), parent.parentEntity));
-//			}
-
 		} else { // not of type ITEM
 
 			// Place entity into tile regardless
@@ -232,6 +229,12 @@ public class PlaceEntityAction extends Action {
 			entityToPlace.getLocationComponent().setFacing(DOWN.toVector2());
 			parent.parentEntity.removeComponent(HaulingComponent.class);
 			completionType = SUCCESS;
+
+			if (entityToPlace.getType().equals(EntityType.CREATURE) && entityToPlace.getBehaviourComponent() instanceof CorpseBehaviour &&
+					currentTile.getRoomTile() != null && currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class) != null) {
+				StockpileComponent stockpileComponent = currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class);
+				stockpileComponent.corpsePlaced(currentTile, (CreatureEntityAttributes)entityToPlace.getPhysicalEntityComponent().getAttributes());
+			}
 		}
 	}
 

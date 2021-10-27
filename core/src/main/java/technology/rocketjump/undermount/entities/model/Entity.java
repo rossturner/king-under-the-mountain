@@ -6,7 +6,6 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
@@ -194,8 +193,6 @@ public class Entity implements Persistable, Disposable {
 			if (inventoryComponent != null) {
 				workspaceItems.clear();
 
-
-
 				for (InventoryComponent.InventoryEntry inventoryItem : inventoryComponent.getInventoryEntries()) {
 					if (inventoryItem.getPreferredPosition() != null) {
 						workspaceItems.put(inventoryItem.getPreferredPosition(), new AttachedEntity(inventoryItem.entity, inventoryItem.getPreferredPosition()));
@@ -209,8 +206,8 @@ public class Entity implements Persistable, Disposable {
 						}
 						// Else no space to add/display item
 					}
-					attachedEntities.addAll(workspaceItems.values());
 				}
+				attachedEntities.addAll(workspaceItems.values());
 			}
 		}
 
@@ -305,10 +302,6 @@ public class Entity implements Persistable, Disposable {
 
 	public <T extends EntityComponent> T getOrCreateComponent(Class<T> classType) {
 		T component = componentMap.get(classType);
-		if (classType.getSimpleName().contains("ItemAllocation") && !this.type.equals(ITEM)) {
-			// TEMP remove me
-			Logger.error("Creating invalid component");
-		}
 		if (component == null) {
 			try {
 				component = classType.getDeclaredConstructor().newInstance();

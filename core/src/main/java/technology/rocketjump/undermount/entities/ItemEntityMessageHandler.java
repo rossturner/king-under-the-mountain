@@ -76,7 +76,7 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		this.itemTracker = itemTracker;
 		this.itemTypeDictionary = itemTypeDictionary;
 		messageDispatcher.addListener(this, MessageType.ITEM_CREATION_REQUEST);
-		messageDispatcher.addListener(this, MessageType.REQUEST_ITEM_HAULING);
+		messageDispatcher.addListener(this, MessageType.REQUEST_ENTITY_HAULING);
 		messageDispatcher.addListener(this, MessageType.REQUEST_HAULING_ALLOCATION);
 		messageDispatcher.addListener(this, MessageType.LOOKUP_ITEM_TYPE);
 		messageDispatcher.addListener(this, MessageType.LOOKUP_ITEM_TYPES_BY_TAG_CLASS);
@@ -90,7 +90,7 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.ITEM_CREATION_REQUEST: {
 				return handle((ItemCreationRequestMessage)msg.extraInfo);
 			}
-			case MessageType.REQUEST_ITEM_HAULING: {
+			case MessageType.REQUEST_ENTITY_HAULING: {
 				return handle((RequestHaulingMessage)msg.extraInfo);
 			}
 			case MessageType.REQUEST_HAULING_ALLOCATION: {
@@ -262,20 +262,19 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 		return true;
 	}
 
-	public static HaulingAllocation findStockpileAllocation(TiledMap areaMap, Entity itemEntity, RoomStore roomStore, Entity requestingEntity) {
-		Vector2 itemPosition = itemEntity.getLocationComponent().getWorldOrParentPosition();
-		ItemEntityAttributes attributes = (ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes();
-		int sourceRegionId = areaMap.getTile(itemPosition).getRegionId();
+	public static HaulingAllocation findStockpileAllocation(TiledMap areaMap, Entity entity, RoomStore roomStore, Entity requestingEntity) {
+		Vector2 entityPosition = entity.getLocationComponent().getWorldOrParentPosition();
+		int sourceRegionId = areaMap.getTile(entityPosition).getRegionId();
 		Map<JobPriority, Map<Float, Room>> stockpilesByDistanceByPriority = new EnumMap<>(JobPriority.class);
 
 
 		for (Room stockpile : roomStore.getByComponent(StockpileComponent.class)) {
 			StockpileComponent stockpileComponent = stockpile.getComponent(StockpileComponent.class);
-			if (stockpileComponent.canHold(attributes)) {
+			if (stockpileComponent.canHold(entity)) {
 				int roomRegionId = stockpile.getRoomTiles().values().iterator().next().getTile().getRegionId();
 				if (sourceRegionId == roomRegionId) {
 					Map<Float, Room> byDistance = stockpilesByDistanceByPriority.computeIfAbsent(stockpileComponent.getPriority(), a -> new TreeMap<>(Comparator.comparingInt(o -> (int) (o * 10))));
-					byDistance.put(itemPosition.dst2(stockpile.getAvgWorldPosition()), stockpile);
+					byDistance.put(entityPosition.dst2(stockpile.getAvgWorldPosition()), stockpile);
 				}
 			}
 		}
@@ -287,16 +286,17 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 
 			Map<Float, Room> byDistance = stockpilesByDistanceByPriority.getOrDefault(priority, Collections.emptyMap());
 			for (Room room : byDistance.values()) {
-				StockpileAllocationResponse stockpileAllocationResponse = room.getComponent(StockpileComponent.class).requestAllocation(itemEntity, areaMap);
+				StockpileAllocationResponse stockpileAllocationResponse = room.getComponent(StockpileComponent.class).requestAllocation(entity, areaMap);
 				if (stockpileAllocationResponse != null) {
 					HaulingAllocation allocation = new HaulingAllocation();
 					allocation.setTargetPosition(stockpileAllocationResponse.position);
 					allocation.setTargetPositionType(ROOM);
 					allocation.setTargetId(room.getRoomId());
 
-					ItemAllocation itemAllocation = itemEntity.getOrCreateComponent(ItemAllocationComponent.class).createAllocation(stockpileAllocationResponse.quantity,
+					ItemAllocation itemAllocation = entity.getOrCreateComponent(ItemAllocationComponent.class).createAllocation(stockpileAllocationResponse.quantity,
 							requestingEntity, ItemAllocation.Purpose.DUE_TO_BE_HAULED);
 					allocation.setItemAllocation(itemAllocation);
+					allocation.setHauledEntityType(entity.getType());
 
 					return allocation;
 				}
@@ -317,11 +317,11 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	private boolean handle(RequestHaulingMessage message) {
-		HaulingAllocation haulingAllocation = findStockpileAllocation(gameContext.getAreaMap(), message.getItemToBeMoved(), roomStore, message.requestingEntity);
+		HaulingAllocation haulingAllocation = findStockpileAllocation(gameContext.getAreaMap(), message.getEntityToBeMoved(), roomStore, message.requestingEntity);
 
 		if (haulingAllocation == null && message.forceHaulingEvenWithoutStockpile()) {
-			ItemEntityAttributes itemAttributes = (ItemEntityAttributes) message.getItemToBeMoved().getPhysicalEntityComponent().getAttributes();
-			ItemAllocationComponent itemAllocationComponent = message.getItemToBeMoved().getOrCreateComponent(ItemAllocationComponent.class);
+			ItemEntityAttributes itemAttributes = (ItemEntityAttributes) message.getEntityToBeMoved().getPhysicalEntityComponent().getAttributes();
+			ItemAllocationComponent itemAllocationComponent = message.getEntityToBeMoved().getOrCreateComponent(ItemAllocationComponent.class);
 
 			int quantityToAllocate = Math.min(itemAllocationComponent.getNumUnallocated(), itemAttributes.getItemType().getMaxHauledAtOnce());
 			if (quantityToAllocate == 0) {
@@ -333,18 +333,18 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 			haulingAllocation = new HaulingAllocation();
 			haulingAllocation.setSourcePositionType(FLOOR); // May be overridden below
 			haulingAllocation.setTargetPosition(null);
-			haulingAllocation.setHauledEntityId(message.getItemToBeMoved().getId());
+			haulingAllocation.setHauledEntityId(message.getEntityToBeMoved().getId());
 
-			ItemAllocation itemAllocation = itemAllocationComponent.createAllocation(quantityToAllocate, message.getItemToBeMoved(), ItemAllocation.Purpose.DUE_TO_BE_HAULED);
+			ItemAllocation itemAllocation = itemAllocationComponent.createAllocation(quantityToAllocate, message.getEntityToBeMoved(), ItemAllocation.Purpose.DUE_TO_BE_HAULED);
 			if (itemAllocation != null) {
 				haulingAllocation.setItemAllocation(itemAllocation);
 			}
 		}
 
 		if (haulingAllocation != null) {
-			Job haulingJob = createHaulingJob(haulingAllocation, message.getItemToBeMoved(), haulingJobType, message.jobPriority);
+			Job haulingJob = createHaulingJob(haulingAllocation, message.getEntityToBeMoved(), haulingJobType, message.jobPriority);
 
-			Entity itemToBeMoved = message.getItemToBeMoved();
+			Entity itemToBeMoved = message.getEntityToBeMoved();
 			Entity containerEntity = itemToBeMoved.getLocationComponent().getContainerEntity();
 			if (containerEntity != null) {
 				if (!containerEntity.getType().equals(EntityType.FURNITURE)) {

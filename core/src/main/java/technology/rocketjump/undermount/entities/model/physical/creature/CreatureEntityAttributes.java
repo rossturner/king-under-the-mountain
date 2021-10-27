@@ -226,7 +226,11 @@ public class CreatureEntityAttributes implements EntityAttributes {
 
 	private boolean hasHair(Race race) {
 		RaceGenderDescriptor genderDescriptor = race.getGenders().get(gender);
-		return new RandomXS128(seed).nextFloat() < genderDescriptor.getHasHair();
+		if (genderDescriptor == null) {
+			return false;
+		} else {
+			return new RandomXS128(seed).nextFloat() < genderDescriptor.getHasHair();
+		}
 	}
 
 	@Override

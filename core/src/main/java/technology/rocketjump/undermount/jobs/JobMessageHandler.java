@@ -1298,8 +1298,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				.filter(j -> {
 					Entity itemEntity = gameContext.getEntities().get(j.getTargetId());
 					if (itemEntity != null) {
-						ItemEntityAttributes attributes = (ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes();
-						return !stockpileComponent.canHold(attributes);
+						return !stockpileComponent.canHold(itemEntity);
 					} else {
 						return false;
 					}

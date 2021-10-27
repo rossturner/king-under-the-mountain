@@ -8,7 +8,6 @@ import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -36,13 +35,17 @@ public class HaulingComponent implements EntityComponent, Destructible {
 	public void setHauledEntity(Entity hauledEntity, MessageDispatcher messageDispatcher, Entity parentEntity) {
 		this.hauledEntity = hauledEntity;
 		EntityAttributes attributes = hauledEntity.getPhysicalEntityComponent().getAttributes();
+		int quantity = 1;
 		if (attributes instanceof ItemEntityAttributes) {
 			ItemEntityAttributes itemAttributes = (ItemEntityAttributes) attributes;
 			itemAttributes.setItemPlacement(ItemPlacement.BEING_CARRIED);
+			quantity = itemAttributes.getQuantity();
 			messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, hauledEntity);
+		}
 
-			ItemAllocationComponent itemAllocationComponent = hauledEntity.getOrCreateComponent(ItemAllocationComponent.class);
-			itemAllocationComponent.createAllocation(itemAttributes.getQuantity(), parentEntity, ItemAllocation.Purpose.HAULING);
+		ItemAllocationComponent itemAllocationComponent = hauledEntity.getComponent(ItemAllocationComponent.class);
+		if (itemAllocationComponent != null) {
+			itemAllocationComponent.createAllocation(quantity, parentEntity, ItemAllocation.Purpose.HAULING);
 		}
 		hauledEntity.getLocationComponent().setWorldPosition(null, false);
 		hauledEntity.getLocationComponent().setContainerEntity(parentEntity);
@@ -50,8 +53,8 @@ public class HaulingComponent implements EntityComponent, Destructible {
 
 	public void clearHauledEntity() {
 		hauledEntity.getLocationComponent().setContainerEntity(null);
-		if (hauledEntity.getType().equals(EntityType.ITEM)) {
-			ItemAllocationComponent itemAllocationComponent = hauledEntity.getOrCreateComponent(ItemAllocationComponent.class);
+		ItemAllocationComponent itemAllocationComponent = hauledEntity.getComponent(ItemAllocationComponent.class);
+		if (itemAllocationComponent != null) {
 			itemAllocationComponent.cancelAll(ItemAllocation.Purpose.HAULING);
 		}
 		hauledEntity = null;

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
+import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
@@ -14,12 +15,17 @@ import technology.rocketjump.undermount.entities.model.physical.creature.Creatur
 import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
+import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rendering.utils.ColorMixer;
 import technology.rocketjump.undermount.rendering.utils.HexColors;
+import technology.rocketjump.undermount.rooms.Room;
+import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.ui.i18n.I18nString;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
@@ -58,6 +64,30 @@ public class CorpseBehaviour implements BehaviourComponent, SelectableDescriptio
 
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
+		ItemAllocationComponent itemAllocationComponent = parentEntity.getComponent(ItemAllocationComponent.class);
+		if (itemAllocationComponent == null) {
+			itemAllocationComponent = new ItemAllocationComponent();
+			itemAllocationComponent.init(parentEntity, messageDispatcher, gameContext);
+			parentEntity.addComponent(itemAllocationComponent);
+		}
+		if (parentEntity.getLocationComponent().getWorldPosition() != null && itemAllocationComponent.getNumUnallocated() > 0) {
+			// Is unallocated
+			MapTile tile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
+			boolean inStockpile = false;
+			if (tile.getRoomTile() != null) {
+				Room room = tile.getRoomTile().getRoom();
+				StockpileComponent stockpileComponent = room.getComponent(StockpileComponent.class);
+				if (stockpileComponent != null && stockpileComponent.canHold(parentEntity)) {
+					inStockpile = true;
+				}
+			}
+
+			if (!inStockpile) {
+				// Not in a stockpile and some unallocated, so see if we can be hauled to a stockpile
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, JobPriority.NORMAL, null));
+			}
+		}
+
 		if (decayedAmount < HOURS_TO_FULLY_DECAY) {
 			double elapsedTime = gameContext.getGameClock().getCurrentGameTime() - lastUpdateGameTime;
 			decayedAmount += elapsedTime;

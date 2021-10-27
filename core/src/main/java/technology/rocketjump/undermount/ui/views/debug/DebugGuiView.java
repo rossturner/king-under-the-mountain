@@ -15,10 +15,12 @@ import com.badlogic.gdx.utils.Array;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.factories.SettlerFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -31,6 +33,7 @@ import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.messaging.types.CreatureDeathMessage;
 import technology.rocketjump.undermount.messaging.types.DebugMessage;
 import technology.rocketjump.undermount.messaging.types.PipeConstructionMessage;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
@@ -45,6 +48,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 
 /**
@@ -198,6 +202,15 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 			}
 			case SPAWN_SETTLER: {
 				settlerFactory.create(worldPosition, DOWN.toVector2(), null, null, gameContext);
+				break;
+			}
+			case KILL_CREATURE: {
+				for (Entity entity : tile.getEntities()) {
+					if (entity.getType().equals(CREATURE) && !(entity.getBehaviourComponent() instanceof CorpseBehaviour)) {
+						messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(entity, DeathReason.UNKNOWN));
+						break;
+					}
+				}
 				break;
 			}
 			case DESTROY_ENTITY: {

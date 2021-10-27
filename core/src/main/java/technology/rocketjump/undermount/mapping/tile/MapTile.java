@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.doors.Doorway;
+import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
@@ -384,6 +385,9 @@ public class MapTile implements Persistable {
 			if (entity.getType().equals(EntityType.ITEM) || entity.getType().equals(EntityType.PLANT) || entity.getType().equals(EntityType.FURNITURE)) {
 				return false;
 			}
+			if (entity.getType().equals(EntityType.CREATURE) && entity.getBehaviourComponent() instanceof CorpseBehaviour) {
+				return false;
+			}
 		}
 		return true;
 	}
@@ -411,6 +415,15 @@ public class MapTile implements Persistable {
 	public Entity getFirstItem() {
 		for (Entity entity : entities.values()) {
 			if (entity.getType().equals(EntityType.ITEM)) {
+				return entity;
+			}
+		}
+		return null;
+	}
+
+	public Entity getFirstCorpse() {
+		for (Entity entity : entities.values()) {
+			if (entity.getType().equals(EntityType.CREATURE) && entity.getBehaviourComponent() instanceof CorpseBehaviour) {
 				return entity;
 			}
 		}

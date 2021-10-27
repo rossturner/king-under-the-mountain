@@ -574,7 +574,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				if (craftingJob != null) {
 					requestHaulingMessage.setSpecificProfessionRequired(craftingJob.getRequiredProfession());
 				}
-				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, requestHaulingMessage);
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, requestHaulingMessage);
 			}
 		}
 
@@ -659,7 +659,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			ItemAllocationComponent itemAllocationComponent = entry.entity.getOrCreateComponent(ItemAllocationComponent.class);
 			itemAllocationComponent.cancelAll(HELD_IN_INVENTORY);
 			if (itemAllocationComponent.getNumUnallocated() > 0) {
-				messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entry.entity, parentEntity, true, priority, job -> {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(entry.entity, parentEntity, true, priority, job -> {
 					// Do nothing with job
 				}));
 			}

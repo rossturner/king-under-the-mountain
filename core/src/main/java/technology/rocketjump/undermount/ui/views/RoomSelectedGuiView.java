@@ -13,6 +13,7 @@ import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
@@ -59,6 +60,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 	private final MessageDispatcher messageDispatcher;
 	private final IconButton manageStockpileButton;
 	private final ItemTypeDictionary itemTypeDictionary;
+	private final RaceDictionary raceDictionary;
 	private Table outerTable;
 	private Table descriptionTable;
 
@@ -82,7 +84,8 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 							   GameInteractionStateContainer gameInteractionStateContainer, GameDialogDictionary gameDialogDictionary,
 							   ImageButtonFactory imageButtonFactory, IconButtonFactory iconButtonFactory,
 							   RoomStore roomStore, PlantSpeciesDictionary plantSpeciesDictionary,
-							   TextureAtlasRepository textureAtlasRepository, ItemTypeDictionary itemTypeDictionary, StockpileComponentUpdater stockpileComponentUpdater,
+							   TextureAtlasRepository textureAtlasRepository, ItemTypeDictionary itemTypeDictionary,
+							   RaceDictionary raceDictionary, StockpileComponentUpdater stockpileComponentUpdater,
 							   StockpileGroupDictionary stockpileGroupDictionary, GameMaterialDictionary gameMaterialDictionary) {
 		uiSkin = guiSkinRepository.getDefault();
 		this.messageDispatcher = messageDispatcher;
@@ -92,6 +95,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 		this.roomStore = roomStore;
 		this.plantSpeciesDictionary = plantSpeciesDictionary;
 		this.itemTypeDictionary = itemTypeDictionary;
+		this.raceDictionary = raceDictionary;
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
 		this.stockpileGroupDictionary = stockpileGroupDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
@@ -248,7 +252,8 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 
 			if (showStockpileManagement && currentStockpileComponent != null) {
 				outerTable.add(new StockpileManagementTree(uiSkin, messageDispatcher, currentStockpileComponent,
-						stockpileComponentUpdater, stockpileGroupDictionary, i18nTranslator, itemTypeDictionary, gameMaterialDictionary))
+						stockpileComponentUpdater, stockpileGroupDictionary, i18nTranslator, itemTypeDictionary, gameMaterialDictionary, raceDictionary,
+								gameContext.getSettlementState().getSettlerRace()))
 						.left().pad(4).row();
 			}
 

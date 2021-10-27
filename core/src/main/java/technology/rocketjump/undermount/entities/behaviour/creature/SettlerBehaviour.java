@@ -148,30 +148,33 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 				// need somewhere to place it
 
 				HaulingAllocation stockpileAllocation = null;
-				if (hauledEntity.getType().equals(ITEM)) {
-					// Special case - if recently attempted to place item and failed, just dump it instead
-					boolean recentlyFailedPlaceItemGoal = parentEntity.getOrCreateComponent(MemoryComponent.class)
-							.getShortTermMemories(gameContext.getGameClock())
-							.stream()
-							.anyMatch(m -> m.getType().equals(MemoryType.FAILED_GOAL) && PLACE_ITEM.goalName.equals(m.getRelatedGoalName()));
+				// Special case - if recently attempted to place item and failed, just dump it instead
+				boolean recentlyFailedPlaceItemGoal = parentEntity.getOrCreateComponent(MemoryComponent.class)
+						.getShortTermMemories(gameContext.getGameClock())
+						.stream()
+						.anyMatch(m -> m.getType().equals(MemoryType.FAILED_GOAL) && PLACE_ITEM.goalName.equals(m.getRelatedGoalName()));
 
-					if (!recentlyFailedPlaceItemGoal) {
-						// Temp un-requestAllocation
-						ItemAllocationComponent itemAllocationComponent = hauledEntity.getOrCreateComponent(ItemAllocationComponent.class);
-						itemAllocationComponent.cancelAll(ItemAllocation.Purpose.HAULING);
+				if (!recentlyFailedPlaceItemGoal) {
+					// Temp un-requestAllocation
+					ItemAllocationComponent itemAllocationComponent = hauledEntity.getComponent(ItemAllocationComponent.class);
+					if (itemAllocationComponent == null) {
+						itemAllocationComponent = new ItemAllocationComponent();
+						itemAllocationComponent.init(hauledEntity, messageDispatcher, gameContext);
+						hauledEntity.addComponent(itemAllocationComponent);
+					}
+					itemAllocationComponent.cancelAll(ItemAllocation.Purpose.HAULING);
 
-						stockpileAllocation = findStockpileAllocation(gameContext.getAreaMap(), hauledEntity, roomStore, parentEntity);
+					stockpileAllocation = findStockpileAllocation(gameContext.getAreaMap(), hauledEntity, roomStore, parentEntity);
 
-						if (stockpileAllocation != null && stockpileAllocation.getItemAllocation() != null) {
-							// Stockpile allocation found, swap from DUE_TO_BE_HAULED
-							ItemAllocation newAllocation = itemAllocationComponent.swapAllocationPurpose(DUE_TO_BE_HAULED, ItemAllocation.Purpose.HAULING, stockpileAllocation.getItemAllocation().getAllocationAmount());
-							stockpileAllocation.setItemAllocation(newAllocation);
-						}
+					if (stockpileAllocation != null && stockpileAllocation.getItemAllocation() != null) {
+						// Stockpile allocation found, swap from DUE_TO_BE_HAULED
+						ItemAllocation newAllocation = itemAllocationComponent.swapAllocationPurpose(DUE_TO_BE_HAULED, ItemAllocation.Purpose.HAULING, stockpileAllocation.getItemAllocation().getAllocationAmount());
+						stockpileAllocation.setItemAllocation(newAllocation);
+					}
 
-						// Always re-allocate remaining amount to hauling
-						if (itemAllocationComponent.getNumUnallocated() > 0) {
-							itemAllocationComponent.createAllocation(itemAllocationComponent.getNumUnallocated(), parentEntity, ItemAllocation.Purpose.HAULING);
-						}
+					// Always re-allocate remaining amount to hauling
+					if (itemAllocationComponent.getNumUnallocated() > 0) {
+						itemAllocationComponent.createAllocation(itemAllocationComponent.getNumUnallocated(), parentEntity, ItemAllocation.Purpose.HAULING);
 					}
 				}
 

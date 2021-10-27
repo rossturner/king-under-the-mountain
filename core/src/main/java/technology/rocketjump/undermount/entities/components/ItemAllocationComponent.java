@@ -21,15 +21,14 @@ public class ItemAllocationComponent implements ParentDependentEntityComponent, 
 	private Entity parentEntity;
 
 	private List<ItemAllocation> allocations = new ArrayList<>();
-	private GameContext gameContext;
+
+	public ItemAllocationComponent() {
+
+	}
 
 	@Override
 	public void init(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		this.parentEntity = parentEntity;
-		this.gameContext = gameContext;
-		if (!parentEntity.getType().equals(EntityType.ITEM)) {
-//			throw new RuntimeException("ItemAllocationComponent can only be applied to ITEM entities");
-		}
 	}
 
 	@Override
@@ -42,12 +41,16 @@ public class ItemAllocationComponent implements ParentDependentEntityComponent, 
 	}
 
 	public ItemAllocation createAllocation(int numToAllocate, Entity requestingEntity, ItemAllocation.Purpose purpose) {
-		ItemEntityAttributes attributes = (ItemEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		int quantity = 1;
+		if (parentEntity.getType().equals(EntityType.ITEM)) {
+			ItemEntityAttributes attributes = (ItemEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+			quantity = attributes.getQuantity();
+		}
 		int currentAllocated = this.getNumAllocated();
-		if (currentAllocated + numToAllocate > attributes.getQuantity()) {
+		if (currentAllocated + numToAllocate > quantity) {
 			throw new RuntimeException("Attempting to requestAllocation too many items");
 		} else {
-			ItemAllocation itemAllocation = new ItemAllocation(this.parentEntity, numToAllocate, requestingEntity, purpose);
+			ItemAllocation itemAllocation = new ItemAllocation(parentEntity, numToAllocate, requestingEntity, purpose);
 			allocations.add(itemAllocation);
 			return itemAllocation;
 		}
@@ -75,20 +78,6 @@ public class ItemAllocationComponent implements ParentDependentEntityComponent, 
 	public void cancelAll() {
 		for (ItemAllocation allocation : new ArrayList<>(allocations)) {
 			cancel(allocation);
-		}
-	}
-
-	public void cancelAllocationAndDecrementQuantity(ItemAllocation allocation) {
-		allocation = this.cancel(allocation);
-
-		if (allocation != null) {
-			Entity itemEntity = gameContext.getEntities().get(allocation.getTargetItemEntityId());
-			if (itemEntity != null) {
-				ItemEntityAttributes attributes = (ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes();
-				attributes.setQuantity(attributes.getQuantity() - allocation.getAllocationAmount());
-			} else {
-				Logger.error("Could not find item with ID " + allocation.getTargetItemEntityId());
-			}
 		}
 	}
 
@@ -131,8 +120,12 @@ public class ItemAllocationComponent implements ParentDependentEntityComponent, 
 	}
 
 	public int getNumUnallocated() {
-		ItemEntityAttributes attributes = (ItemEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
-		return attributes.getQuantity() - getNumAllocated();
+		int quantity = 1;
+		if (parentEntity.getType().equals(EntityType.ITEM)) {
+			ItemEntityAttributes attributes = (ItemEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+			quantity = attributes.getQuantity();
+		}
+		return quantity - getNumAllocated();
 	}
 
 

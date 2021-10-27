@@ -306,5 +306,11 @@
     "switchToSpecialGoal": "HUNT_CREATURE",
     "requiredProfessionName": "HUNTER",
     "requiresWeapon": true
+  },
+  {
+    "name": "BUTCHER_CREATURE",
+    "requiredProfessionName": "CHEF",
+    "usesWorkstationTool": true,
+    "workOnJobParticleEffectNames": ["Bleeding"]
   }
 ]

@@ -4,6 +4,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
@@ -59,7 +60,7 @@ public class GraveManager implements Updatable {
 			timeSinceLastUpdate = 0f;
 
 			for (Entity deceased : settlerTracker.getDead()) {
-				if (deceased.getLocationComponent().getContainerEntity() == null && !hasCorpseHaulingJob(deceased)) {
+				if (deceased.getLocationComponent().getContainerEntity() == null && !hasCorpseHaulingJob(deceased) && isUnallocated(deceased)) {
 					Entity deceasedContainer = findAvailableDeceasedContainer();
 
 					if (deceasedContainer == null) {
@@ -71,6 +72,11 @@ public class GraveManager implements Updatable {
 				}
 			}
 		}
+	}
+
+	private boolean isUnallocated(Entity deceased) {
+		ItemAllocationComponent itemAllocationComponent = deceased.getComponent(ItemAllocationComponent.class);
+		return  itemAllocationComponent == null || itemAllocationComponent.getNumUnallocated() > 0;
 	}
 
 	private boolean hasCorpseHaulingJob(Entity deceased) {

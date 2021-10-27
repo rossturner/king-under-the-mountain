@@ -46,7 +46,8 @@
     "i18nKey": "STOCKPILE.GROUP.FOOD",
     "colorCode": "#7cb167",
     "iconName": "fruit-bowl",
-    "sortOrder": 7
+    "sortOrder": 7,
+    "includesCreatureCorpses": true
   },
   {
     "name": "WEAPONS",

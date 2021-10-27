@@ -223,10 +223,20 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 			parentHappinessComponent.add(CARRIED_DEAD_BODY);
 		}
 
+		ItemAllocationComponent itemAllocationComponent = entityToPickUp.getComponent(ItemAllocationComponent.class);
+		if (itemAllocationComponent != null) {
+			itemAllocationComponent.cancelAll();
+		}
 
 		HaulingComponent haulingComponent = parent.parentEntity.getOrCreateComponent(HaulingComponent.class);
 		haulingComponent.setHauledEntity(entityToPickUp, parent.messageDispatcher, parent.parentEntity);
 		completionType = SUCCESS;
+
+		MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldPosition());
+		if (currentTile.getRoomTile() != null && currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class) != null) {
+			StockpileComponent stockpileComponent = currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class);
+			stockpileComponent.itemOrCreaturePickedUp(currentTile);
+		}
 	}
 
 	private void pickUpItemEntity(GameContext gameContext, MapTile currentTile, Entity entityToPickUp, ItemAllocation itemAllocation) {
@@ -266,17 +276,13 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 				clonedItem = inventoryEntry.entity;
 			}
 
-			if (itemAllocation != null) {
-				entityToPickUp.getOrCreateComponent(ItemAllocationComponent.class).cancelAllocationAndDecrementQuantity(itemAllocation);
-			} else {
-				targetItemAttributes.setQuantity(targetItemAttributes.getQuantity() - quantityToPick);
-			}
+			entityToPickUp.getComponent(ItemAllocationComponent.class).cancel(itemAllocation);
+			targetItemAttributes.setQuantity(targetItemAttributes.getQuantity() - quantityToPick);
 
 			if (currentTile.getRoomTile() != null && currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class) != null) {
 				StockpileComponent stockpileComponent = currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class);
-				stockpileComponent.itemPickedUp(currentTile);
+				stockpileComponent.itemOrCreaturePickedUp(currentTile);
 			}
-
 
 			if (targetItemAttributes.getQuantity() <= 0) {
 				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entityToPickUp);

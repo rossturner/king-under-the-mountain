@@ -7,11 +7,13 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.AssetDisposable;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
+import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -22,6 +24,7 @@ import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.misc.Destructible;
+import technology.rocketjump.undermount.settlement.CreatureTracker;
 import technology.rocketjump.undermount.settlement.FurnitureTracker;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.settlement.SettlerTracker;
@@ -53,6 +56,7 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 	private final FurnitureTracker furnitureTracker;
 	private final ItemTracker itemTracker;
 	private final SettlerTracker settlerTracker;
+	private final CreatureTracker creatureTracker;
 	private final ConstantsRepo constantsRepo;
 
 	@Inject
@@ -60,7 +64,7 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 					   PlantEntityAttributesFactory plantEntityAttributesFactory, PlantEntityFactory plantEntityFactory,
 					   ItemTypeDictionary itemTypeDictionary, ItemEntityFactory itemEntityFactory,
 					   MessageDispatcher messageDispatcher, FurnitureTracker furnitureTracker,
-					   ItemTracker itemTracker, SettlerTracker settlerTracker, ConstantsRepo constantsRepo) {
+					   ItemTracker itemTracker, SettlerTracker settlerTracker, CreatureTracker creatureTracker, ConstantsRepo constantsRepo) {
 		this.settlerEntityFactory = settlerEntityFactory;
 		this.settlerCreatureAttributesFactory = settlerCreatureAttributesFactory;
 		this.plantEntityAttributesFactory = plantEntityAttributesFactory;
@@ -71,6 +75,7 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 		this.furnitureTracker = furnitureTracker;
 		this.itemTracker = itemTracker;
 		this.settlerTracker = settlerTracker;
+		this.creatureTracker = creatureTracker;
 		this.constantsRepo = constantsRepo;
 	}
 
@@ -281,6 +286,15 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 								itemTracker.itemAdded(haulingComponent.getHauledEntity());
 							}
 						}
+					} else if (entity.getBehaviourComponent() instanceof CorpseBehaviour) {
+						CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+						if (attributes.getRace().equals(gameContext.getSettlementState().getSettlerRace())) {
+							settlerTracker.settlerDied(entity);
+						} else {
+							creatureTracker.creatureDied(entity);
+						}
+					} else {
+						creatureTracker.creatureAdded(entity);
 					}
 					break;
 			}

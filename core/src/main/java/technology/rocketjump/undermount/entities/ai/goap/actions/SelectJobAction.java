@@ -126,7 +126,7 @@ public class SelectJobAction extends Action implements JobAssignmentCallback, In
 		if (job.getCraftingRecipe() != null) {
 			return job.getCraftingRecipe().getCraftingType().isUsesWorkstationTool();
 		} else {
-			return false;
+			return job.getType().isUsesWorkstationTool();
 		}
 	}
 

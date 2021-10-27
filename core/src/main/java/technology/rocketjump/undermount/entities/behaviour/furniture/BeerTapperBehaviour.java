@@ -126,7 +126,7 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 				} else if (haulingJobs.isEmpty()) {
 					Entity itemInInventory = parentInventory.getInventoryEntries().iterator().next().entity;
 					itemInInventory.getComponent(ItemAllocationComponent.class).cancelAll(HELD_IN_INVENTORY);
-					messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(
 							itemInInventory, parentEntity, true, priority, job -> {
 						if (job != null) {
 							haulingJobs.add(job);
