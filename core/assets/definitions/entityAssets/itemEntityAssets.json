@@ -671,6 +671,483 @@
     }
   }
 }, {
+  "uniqueName" : "Carcass-Meat-Large-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Carcass-Meat-Large",
+  "minQuantity" : 1,
+  "maxQuantity" : 4,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "RedMeatLarge.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Carcass-Meat-Large-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Carcass-Meat-Large",
+  "minQuantity" : 1,
+  "maxQuantity" : 4,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "RedMeatLarge.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 40
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "RedMeatLarge.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 40
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "RedMeatLarge.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : 2.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : -40
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "RedMeatLarge.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 40
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "RedMeatLarge.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 40
+      } ]
+    }
+  }
+}, {
+  "uniqueName" : "Carcass-Meat-Medium-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Carcass-Meat-Medium",
+  "minQuantity" : 1,
+  "maxQuantity" : 6,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "RedMeatMedium.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Carcass-Meat-Medium-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Carcass-Meat-Medium",
+  "minQuantity" : 1,
+  "maxQuantity" : 6,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "RedMeatMedium.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 60
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "RedMeatMedium.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 60
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "RedMeatMedium.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : 2.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : -60
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "RedMeatMedium.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 60
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "RedMeatMedium.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : -0.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 60
+      } ]
+    }
+  }
+}, {
+  "uniqueName" : "Carcass-Meat-Small-Ground",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Carcass-Meat-Small",
+  "minQuantity" : 1,
+  "maxQuantity" : 10,
+  "itemPlacements" : [ "ON_GROUND" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "RedMeatSmall.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 1.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Carcass-Meat-Small-Carried",
+  "type" : "ITEM_BASE_LAYER",
+  "itemTypeName" : "Carcass-Meat-Small",
+  "minQuantity" : 1,
+  "maxQuantity" : 10,
+  "itemPlacements" : [ "BEING_CARRIED" ],
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "RedMeatSmall.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 1.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "RedMeatSmall.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 1.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "RedMeatSmall.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 1.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : 2.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : -100
+      } ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "RedMeatSmall.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 1.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_RIGHT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    },
+    "UP_LEFT" : {
+      "filename" : "RedMeatSmall.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : 1.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ {
+        "type" : "CREATURE_LEFT_HAND",
+        "offsetPixels" : {
+          "x" : -6.0,
+          "y" : -6.0,
+          "zero" : false,
+          "unit" : false
+        },
+        "overrideRenderLayer" : 100
+      } ]
+    }
+  }
+}, {
   "uniqueName" : "Carcass-Perch-Raw-Pile01",
   "type" : "ITEM_BASE_LAYER",
   "itemTypeName" : "Carcass-Perch-Raw",

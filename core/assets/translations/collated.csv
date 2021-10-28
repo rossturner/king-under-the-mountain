@@ -1,6 +1,7 @@
 KEY,ENGLISH,NOTES,GERMAN,FRENCH,ITALIAN,SPANISH,PORTUGUESE,PORTUGUESE BR,POLISH,RUSSIAN,TURKISH,DANISH,DUTCH,SWEDISH,NORWEGIAN,HUNGARIAN,FINNISH,JAPANESE,SIMPLIFIED CHINESE,KOREAN
 
 ACTION.DRINK_FROM_RIVER,from river,,,,,,,,,,,,,,,,,,,
+ACTION.JOB.BUTCHER_CREATURE,Butchering,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CLEAR_GROUND,Clearing {{targetPlant}},,Entfernt {{plantDescription}},Arrache: {{plantDescription}},Sta rimuovendo: {{plantDescription}},Eliminando {{plantDescription}},Limpar {{plantDescription}},Retirando {{targetPlant}},,Расчищает: {{plantDescription}},{{plantDescription}} temizleniyor,Rydder {{targetPlant},,Rensa {{plantDescription}},,,,{{targetPlant}} をクリアしています,清除 {{targetPlant}},{{대상 플랜트}} 지우기
 ACTION.JOB.CONSTRUCT_FLOORING,Laying floor,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_FURNITURE,{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},,,,{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}},{{profession.verb}} {{targetDescription}}
@@ -71,6 +72,9 @@ CARCASS.CARP.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
 CARCASS.CARP.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
 CARCASS.CARP.RAW,Carp,,,,,,,,,,,,,,,,,,,
 CARCASS.GROUP,Corpses,,,,,,,,,,,,,,,,,,,
+CARCASS.MEAT.LARGE,Meat (large),,,,,,,,,,,,,,,,,,,
+CARCASS.MEAT.MEDIUM,Meat (medium),,,,,,,,,,,,,,,,,,,
+CARCASS.MEAT.SMALL,Meat (small),,,,,,,,,,,,,,,,,,,
 CARCASS.PERCH.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
 CARCASS.PERCH.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
 CARCASS.PERCH.RAW,Perch,,,,,,,,,,,,,,,,,,,
@@ -629,9 +633,12 @@ MATERIAL_TYPE.VITRIOL.NOUN,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,�
 MATERIAL_TYPE.WOOD.ADJECTIVE,Wooden,,Holz,en bois,di legno,De madera,De madeira,de madeira,,(дерево),Tahtadan,Træ,,Trä-,,,,木製,木制的,나무
 MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерево,Tahta,Træ,,Trä,,,,木材,木,나무
 
+MEAT.BOAR_MEAT,Boar,,,,,,,,,,,,,,,,,,,
 MEAT.CARP_MEAT.NOUN,Carp,,,,,,,,,,,,,,,,,,,
 MEAT.CARP_MEAT.PLURAL,Carp,,,,,,,,,,,,,,,,,,,
+MEAT.DEER_MEAT,Deer,,,,,,,,,,,,,,,,,,,
 MEAT.DWARF_FLESH,Dwarf flesh,,,,,,,,,,,,,,,,,,,
+MEAT.FOX_MEAT,Fox,,,,,,,,,,,,,,,,,,,
 MEAT.PERCH_MEAT.NOUN,Perch,,,,,,,,,,,,,,,,,,,
 MEAT.PERCH_MEAT.PLURAL,Perch,,,,,,,,,,,,,,,,,,,
 MEAT.PIKE_MEAT.NOUN,Pike,,,,,,,,,,,,,,,,,,,

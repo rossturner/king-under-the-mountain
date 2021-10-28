@@ -329,7 +329,6 @@ public class ItemEntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 
-
 			haulingAllocation = new HaulingAllocation();
 			haulingAllocation.setSourcePositionType(FLOOR); // May be overridden below
 			haulingAllocation.setTargetPosition(null);

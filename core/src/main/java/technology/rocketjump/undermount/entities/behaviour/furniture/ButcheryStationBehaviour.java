@@ -9,12 +9,14 @@ import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.*;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestCorpseMessage;
+import technology.rocketjump.undermount.messaging.types.RequestHaulingMessage;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
@@ -29,7 +31,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
 public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prioritisable {
 
-	private List<Job> incomingHaulingJobs = new ArrayList<>();
+	private List<Job> haulingJobs = new ArrayList<>();
 	private Job butcheryJob;
 
 	private Profession requiredProfession = null;
@@ -45,7 +47,7 @@ public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prio
 	@Override
 	public void setPriority(JobPriority jobPriority) {
 		super.setPriority(jobPriority);
-		for (Job incomingHaulingJob : incomingHaulingJobs) {
+		for (Job incomingHaulingJob : haulingJobs) {
 			incomingHaulingJob.setJobPriority(jobPriority);
 		}
 		if (butcheryJob != null) {
@@ -56,13 +58,13 @@ public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prio
 	@Override
 	public void infrequentUpdate(GameContext gameContext) {
 		super.infrequentUpdate(gameContext);
-		incomingHaulingJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
+		haulingJobs.removeIf(job -> job.getJobState().equals(JobState.REMOVED));
 		if (butcheryJob != null && butcheryJob.getJobState().equals(JobState.REMOVED)) {
 			butcheryJob = null;
 		}
 
 		if (parentEntity.isOnFire()) {
-			incomingHaulingJobs.forEach(job -> messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job));
+			haulingJobs.forEach(job -> messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job));
 			if (butcheryJob != null) {
 				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, butcheryJob);
 			}
@@ -71,19 +73,29 @@ public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prio
 
 		InventoryComponent inventoryComponent = parentEntity.getOrCreateComponent(InventoryComponent.class);
 
-		if (incomingHaulingJobs.isEmpty() && inventoryComponent.isEmpty()) {
+		if (haulingJobs.isEmpty() && inventoryComponent.isEmpty()) {
 			// Try to create new incoming hauling assignment
 			messageDispatcher.dispatchMessage(MessageType.FIND_BUTCHERABLE_UNALLOCATED_CORPSE, new RequestCorpseMessage(
 					parentEntity, parentEntity.getLocationComponent().getWorldOrParentPosition(), entity -> {
-					if (entity != null) {
-						createIncomingHaulingJob(entity);
-					}
+				if (entity != null) {
+					createIncomingHaulingJob(entity);
+				}
 			}));
 		}
 
-		// TODO haul out items from inventory
+		// empty out item-type entities
+		for (InventoryComponent.InventoryEntry inventoryEntry : inventoryComponent.getInventoryEntries()) {
+			if (inventoryEntry.entity.getType().equals(EntityType.ITEM)) {
+				ItemAllocationComponent itemAllocationComponent = inventoryEntry.entity.getComponent(ItemAllocationComponent.class);
+				if (itemAllocationComponent.getNumUnallocated() > 0) {
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(
+							inventoryEntry.entity, parentEntity, true, priority, job -> haulingJobs.add(job)
+					));
+				}
+			}
+		}
 
-		if (!inventoryComponent.isEmpty() && butcheryJob == null) {
+		if (!inventoryComponent.isEmpty() && butcheryJob == null && haulingJobs.isEmpty()) {
 			createButcheryJob(gameContext);
 		}
 
@@ -125,7 +137,7 @@ public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prio
 			haulingJob.setRequiredProfession(requiredProfession);
 		}
 
-		incomingHaulingJobs.add(haulingJob);
+		haulingJobs.add(haulingJob);
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, haulingJob);
 	}
 
@@ -166,9 +178,9 @@ public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prio
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
 
-		if (!incomingHaulingJobs.isEmpty()) {
+		if (!haulingJobs.isEmpty()) {
 			JSONArray incomingHaulingJobsJson = new JSONArray();
-			for (Job haulingJob : incomingHaulingJobs) {
+			for (Job haulingJob : haulingJobs) {
 				haulingJob.writeTo(savedGameStateHolder);
 				incomingHaulingJobsJson.add(haulingJob.getJobId());
 			}
@@ -199,7 +211,7 @@ public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prio
 				if (job == null) {
 					throw new InvalidSaveException("Could not find job by ID " + jobId);
 				} else {
-					incomingHaulingJobs.add(job);
+					haulingJobs.add(job);
 				}
 			}
 		}

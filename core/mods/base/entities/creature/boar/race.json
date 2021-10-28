@@ -51,6 +51,11 @@
   },
 
   "features": {
+    "meat": {
+      "itemTypeName": "Carcass-Meat-Medium",
+      "materialName": "Boar Meat",
+      "quantity": 3
+    },
     "skin": {
       "damageReduction": {
         "STABBING": 1,

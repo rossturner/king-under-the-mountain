@@ -52,10 +52,17 @@
         "CRUSHING" : 1
       }
     },
+    "meat" : {
+      "itemTypeName" : "Carcass-Meat-Medium",
+      "materialName" : "Boar Meat",
+      "quantity" : 3
+    },
     "bones" : {
       "materialName" : "Bone"
     },
-    "blood" : { }
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
   }
 }, {
   "name" : "Deer",
@@ -103,10 +110,17 @@
     "skin" : {
       "damageReduction" : { }
     },
+    "meat" : {
+      "itemTypeName" : "Carcass-Meat-Medium",
+      "materialName" : "Deer Meat",
+      "quantity" : 2
+    },
     "bones" : {
       "materialName" : "Bone"
     },
-    "blood" : { }
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
   }
 }, {
   "name" : "Dwarf",
@@ -171,7 +185,9 @@
     "bones" : {
       "materialName" : "Bone"
     },
-    "blood" : { }
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
   }
 }, {
   "name" : "Fox",
@@ -211,9 +227,16 @@
     "skin" : {
       "damageReduction" : { }
     },
+    "meat" : {
+      "itemTypeName" : "Carcass-Meat-Small",
+      "materialName" : "Fox Meat",
+      "quantity" : 2
+    },
     "bones" : {
       "materialName" : "Bone"
     },
-    "blood" : { }
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
   }
 } ]

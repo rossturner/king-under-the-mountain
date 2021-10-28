@@ -309,6 +309,7 @@
   },
   {
     "name": "BUTCHER_CREATURE",
+    "overrideI18nKey": "ACTION.JOB.BUTCHER_CREATURE",
     "requiredProfessionName": "CHEF",
     "usesWorkstationTool": true,
     "workOnJobParticleEffectNames": ["Bleeding"]

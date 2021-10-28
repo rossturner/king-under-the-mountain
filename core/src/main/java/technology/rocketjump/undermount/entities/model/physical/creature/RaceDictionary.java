@@ -8,6 +8,7 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
 import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviourDictionary;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
+import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.plant.SpeciesColor;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 
@@ -23,15 +24,17 @@ import static technology.rocketjump.undermount.entities.model.physical.plant.Pla
 public class RaceDictionary {
 
 	private final GameMaterialDictionary gameMaterialDictionary;
+	private final ItemTypeDictionary itemTypeDictionary;
 	private final BodyStructureDictionary bodyStructureDictionary;
 	private final CreatureBehaviourDictionary creatureBehaviourDictionary;
 	private final ScheduleDictionary scheduleDictionary;
 	private final Map<String, Race> byName = new HashMap<>();
 
 	@Inject
-	public RaceDictionary(GameMaterialDictionary gameMaterialDictionary, BodyStructureDictionary bodyStructureDictionary,
+	public RaceDictionary(GameMaterialDictionary gameMaterialDictionary, ItemTypeDictionary itemTypeDictionary, BodyStructureDictionary bodyStructureDictionary,
 						  CreatureBehaviourDictionary creatureBehaviourDictionary, ScheduleDictionary scheduleDictionary) throws IOException {
 		this.gameMaterialDictionary = gameMaterialDictionary;
+		this.itemTypeDictionary = itemTypeDictionary;
 		this.bodyStructureDictionary = bodyStructureDictionary;
 		this.creatureBehaviourDictionary = creatureBehaviourDictionary;
 		this.scheduleDictionary = scheduleDictionary;
@@ -60,6 +63,19 @@ public class RaceDictionary {
 		race.setBodyStructure(bodyStructureDictionary.getByName(race.getBodyStructureName()));
 		if (race.getBodyStructure() == null) {
 			throw new RuntimeException(format("Could not find body structure with name %s for race %s", race.getBodyStructureName(), race.getName()));
+		}
+
+		if (race.getFeatures().getMeat() != null) {
+			race.getFeatures().getMeat().setItemType(itemTypeDictionary.getByName(race.getFeatures().getMeat().getItemTypeName()));
+			if (race.getFeatures().getMeat().getItemType() == null) {
+				Logger.error("Could not find item type " + race.getFeatures().getMeat().getItemTypeName() +
+						" for meat as part of race " + race.getName());
+			}
+			race.getFeatures().getMeat().setMaterial(gameMaterialDictionary.getByName(race.getFeatures().getMeat().getMaterialName()));
+			if (race.getFeatures().getMeat().getMaterial() == null) {
+				Logger.error("Could not find material " + race.getFeatures().getMeat().getMaterialName() +
+						" for meat as part of race " + race.getName());
+			}
 		}
 
 		if (race.getFeatures().getBones() != null) {

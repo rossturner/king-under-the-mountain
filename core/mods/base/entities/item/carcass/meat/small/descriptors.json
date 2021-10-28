@@ -1,0 +1,118 @@
+[
+  {
+    "uniqueName": "Carcass-Meat-Small-Ground",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Meat-Small",
+    "itemPlacements": [
+      "ON_GROUND"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 10,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "RedMeatSmall.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 1.0
+        }
+      }
+    }
+  },
+  {
+    "uniqueName": "Carcass-Meat-Small-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Carcass-Meat-Small",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 10,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "RedMeatSmall.png",
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 1.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "RedMeatSmall.png",
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 1.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "RedMeatSmall.png",
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": -100,
+            "offsetPixels": {
+              "x": 2,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 1.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "RedMeatSmall.png",
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_RIGHT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 1.0
+        }
+      },
+      "UP_LEFT": {
+        "filename": "RedMeatSmall.png",
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "overrideRenderLayer": 100,
+            "offsetPixels": {
+              "x": -6,
+              "y": -6
+            }
+          }
+        ],
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 1.0
+        }
+      }
+    }
+  }
+]

@@ -48,6 +48,11 @@
   },
 
   "features": {
+    "meat": {
+      "itemTypeName": "Carcass-Meat-Medium",
+      "materialName": "Deer Meat",
+      "quantity": 2
+    },
     "skin": {
       "damageReduction": {
       }

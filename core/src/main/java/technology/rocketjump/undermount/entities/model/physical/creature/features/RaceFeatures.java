@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class RaceFeatures {
 
 	private SkinFeature skin;
+	private MeatFeature meat;
 	private BonesFeature bones;
 	private BloodFeature blood;
 
@@ -31,5 +32,13 @@ public class RaceFeatures {
 
 	public void setBlood(BloodFeature blood) {
 		this.blood = blood;
+	}
+
+	public MeatFeature getMeat() {
+		return meat;
+	}
+
+	public void setMeat(MeatFeature meat) {
+		this.meat = meat;
 	}
 }

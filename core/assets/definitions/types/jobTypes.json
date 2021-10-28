@@ -413,6 +413,7 @@
   "accessedFromAdjacentTile" : false
 }, {
   "name" : "BUTCHER_CREATURE",
+  "overrideI18nKey" : "ACTION.JOB.BUTCHER_CREATURE",
   "removeJobWhenAssignmentCancelled" : false,
   "haulItemWhileWorking" : false,
   "requiresWeapon" : false,

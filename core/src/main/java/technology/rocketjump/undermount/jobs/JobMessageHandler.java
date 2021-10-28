@@ -34,8 +34,10 @@ import technology.rocketjump.undermount.entities.factories.PlantEntityAttributes
 import technology.rocketjump.undermount.entities.factories.PlantEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.features.MeatFeature;
 import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
@@ -962,6 +964,32 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				Entity targetEntity = gameContext.getEntities().get(jobCompletedMessage.getJob().getTargetId());
 				if (targetEntity != null) {
 					targetEntity.setDesignation(null);
+				}
+				break;
+			}
+			case "BUTCHER_CREATURE": {
+				Entity furnitureEntity = entityStore.getById(completedJob.getTargetId());
+				if (furnitureEntity != null) {
+					InventoryComponent inventoryComponent = furnitureEntity.getComponent(InventoryComponent.class);
+					Optional<InventoryComponent.InventoryEntry> creatureInventoryEntity = inventoryComponent.getInventoryEntries().stream()
+							.filter(e -> e.entity.getType().equals(CREATURE))
+							.findAny();
+
+					if (creatureInventoryEntity.isPresent()) {
+						CreatureEntityAttributes attributes = (CreatureEntityAttributes) creatureInventoryEntity.get().entity.getPhysicalEntityComponent().getAttributes();
+
+						MeatFeature meatFeature = attributes.getRace().getFeatures().getMeat();
+						if (meatFeature != null) {
+							ItemEntityAttributes meatItemAttributes = itemEntityAttributesFactory.createItemAttributes(meatFeature.getItemType(), meatFeature.getQuantity(), meatFeature.getMaterial());
+							Entity meatItem = itemEntityFactory.create(meatItemAttributes, null, true, gameContext);
+							inventoryComponent.add(meatItem, furnitureEntity, messageDispatcher, gameContext.getGameClock());
+							meatItem.getComponent(ItemAllocationComponent.class).cancelAll(HELD_IN_INVENTORY);
+						}
+
+						// TODO create items for bone and hide
+
+						messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, creatureInventoryEntity.get().entity);
+					}
 				}
 				break;
 			}

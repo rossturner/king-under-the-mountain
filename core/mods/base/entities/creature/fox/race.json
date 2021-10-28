@@ -39,6 +39,11 @@
   },
 
   "features": {
+    "meat": {
+      "itemTypeName": "Carcass-Meat-Small",
+      "materialName": "Fox Meat",
+      "quantity": 2
+    },
     "skin": {
       "damageReduction": {
       }
