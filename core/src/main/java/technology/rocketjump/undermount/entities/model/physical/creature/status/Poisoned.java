@@ -25,4 +25,9 @@ public class Poisoned extends StatusEffect {
 		return gameContext.getRandom().nextFloat() < CHANCE_TO_REMOVE_ON_TICK;
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.POISONED";
+	}
+
 }

@@ -84,6 +84,11 @@ public class OnFireStatus extends StatusEffect {
 	}
 
 	@Override
+	public String getI18Key() {
+		return "STATUS.ON_FIRE";
+	}
+
+	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		super.writeTo(asJson, savedGameStateHolder);
 

@@ -23,12 +23,13 @@ public class MoveInRangeOfTargetAction extends GoToLocationAction {
 
 	@Override
 	protected Vector2 selectDestination(GameContext gameContext) {
-		if (parent.getAssignedJob() == null || parent.getAssignedJob().getTargetId() == null) {
+		Long targetId = getTargetId();
+		if (targetId == null) {
 			Logger.error("Was expecting a target for " + this.getSimpleName());
 			return null;
 		}
 
-		Entity targetEntity = gameContext.getEntities().get(parent.getAssignedJob().getTargetId());
+		Entity targetEntity = gameContext.getEntities().get(targetId);
 		if (targetEntity != null) {
 			return targetEntity.getLocationComponent().getWorldOrParentPosition();
 		} else {
@@ -36,13 +37,24 @@ public class MoveInRangeOfTargetAction extends GoToLocationAction {
 		}
 	}
 
+	private Long getTargetId() {
+		if (parent.getAssignedJob() != null && parent.getAssignedJob().getTargetId() != null) {
+			return parent.getAssignedJob().getTargetId();
+		}
+
+		if (parent.getRelevantMemory() != null) {
+			return parent.getRelevantMemory().getRelatedEntityId();
+		}
+
+		return null;
+	}
 
 	@Override
 	protected void checkForCompletion(GameContext gameContext) {
 		super.checkForCompletion(gameContext);
 
 		if (completionType == null) {
-			Entity targetEntity = gameContext.getEntities().get(parent.getAssignedJob().getTargetId());
+			Entity targetEntity = gameContext.getEntities().get(getTargetId());
 			if (targetEntity != null) {
 
 				ItemType equippedWeaponType = getEquippedWeaponItemType(parent.parentEntity);

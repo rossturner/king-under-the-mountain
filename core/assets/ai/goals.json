@@ -5,6 +5,7 @@
     "UnassignJob" : { }
   },
   "selectors" : [ ],
+  "interruptedByCombat" : false,
   "initialActions" : [ "UnassignJob" ]
 }, {
   "i18nDescription" : "GOAL.ADD_TO_INVENTORY.DESCRIPTION",
@@ -38,6 +39,24 @@
   } ],
   "initialActions" : [ "RememberRequiredItem" ]
 }, {
+  "i18nDescription" : "GOAL.COMBAT.DESCRIPTION",
+  "name" : "Attack aggressor goal",
+  "actionRelationships" : {
+    "EquipWeapon" : { },
+    "MoveInRangeOfTarget" : {
+      "fail" : [ "UnequipWeapon" ],
+      "pass" : [ "AttackTarget" ]
+    },
+    "UnequipWeapon" : { },
+    "AttackTarget" : {
+      "fail" : [ "MoveInRangeOfTarget" ],
+      "pass" : [ "UnequipWeapon" ]
+    }
+  },
+  "selectors" : [ ],
+  "interruptedByCombat" : false,
+  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ]
+}, {
   "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
   "name" : "Douse self goal",
   "actionRelationships" : {
@@ -52,6 +71,7 @@
     }
   },
   "selectors" : [ ],
+  "interruptedByCombat" : false,
   "initialActions" : [ "GoToDrinkLocation", "DouseSelf" ]
 }, {
   "i18nDescription" : "GOAL.DRINK.DESCRIPTION",
@@ -256,6 +276,15 @@
   "selectors" : [ ],
   "initialActions" : [ "LocateLiquidContainer" ]
 }, {
+  "i18nDescription" : "GOAL.FLEE_FROM_AGGRESSOR.DESCRIPTION",
+  "name" : "Flee from aggressor goal",
+  "actionRelationships" : {
+    "GoToLocationAwayFromAggressor" : { }
+  },
+  "selectors" : [ ],
+  "interruptedByCombat" : false,
+  "initialActions" : [ "GoToLocationAwayFromAggressor" ]
+}, {
   "i18nDescription" : "GOAL.HAULING.DESCRIPTION",
   "name" : "Haul item goal",
   "actionRelationships" : {
@@ -307,6 +336,7 @@
     }
   },
   "selectors" : [ ],
+  "interruptedByCombat" : false,
   "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ]
 }, {
   "i18nDescription" : "GOAL.IDLE.DESCRIPTION",

@@ -40,4 +40,9 @@ public class AlcoholWithdrawl extends StatusEffect {
         // As this does not have a nextStage property, need to remove this when applied for X hours
         return timeApplied > this.hoursUntilNextStage;
     }
+
+    @Override
+    public String getI18Key() {
+        return "STATUS.ALCOHOL_WITHDRAWL";
+    }
 }

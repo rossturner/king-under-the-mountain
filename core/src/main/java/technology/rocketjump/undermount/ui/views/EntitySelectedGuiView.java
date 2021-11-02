@@ -24,6 +24,7 @@ import technology.rocketjump.undermount.entities.model.physical.creature.Conscio
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.StatusEffect;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ExampleItemDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -96,6 +97,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 	private final Table weaponsTable;
 	private final Table needsTable;
 	private final Table happinessTable;
+	private final Table injuriesTable;
 	private final Table inventoryTable;
 
 	private final Table upperRow;
@@ -174,6 +176,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 		weaponsTable = new Table(uiSkin);
 		needsTable = new Table(uiSkin);
 		happinessTable = new Table(uiSkin);
+		injuriesTable = new Table(uiSkin);
 		inventoryTable = new Table(uiSkin);
 
 		upperRow = new Table(uiSkin);
@@ -222,10 +225,9 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				}
 
 				if (entity.getType().equals(CREATURE)) {
-					CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-					for (I18nText damageDescription : attributes.getBody().getDamageDescriptions(i18nTranslator)) {
-						entityDescriptionTable.add(new I18nTextWidget(damageDescription, uiSkin, messageDispatcher)).left().row();
-					}
+					populateInjuriesTable(entity);
+				} else {
+					injuriesTable.clearChildren();
 				}
 
 
@@ -335,7 +337,11 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 
 			entityDescriptionTable.row();
 
-			outerTable.add(entityDescriptionTable);
+			outerTable.add(entityDescriptionTable).top();
+
+			if (injuriesTable.hasChildren() && !(entity.getBehaviourComponent() instanceof SettlerBehaviour)) {
+				outerTable.add(injuriesTable).padLeft(5);
+			}
 
 			if (entity.getBehaviourComponent() != null && entity.getBehaviourComponent() instanceof CraftingStationBehaviour) {
 				outerTable.add(viewCraftingButton);
@@ -394,6 +400,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			populateWeaponsTable(entity);
 			populateNeedsTable(needsTable, entity, needLabels, uiSkin);
 			populateHappinessTable(entity);
+			populateInjuriesTable(entity);
 
 			upperRow.add(nameTable).top().padRight(5);
 			upperRow.add(professionsTable);
@@ -402,6 +409,7 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 			lowerRow.add(needsTable).top().padRight(5);
 			lowerRow.add(inventoryTable).top().padRight(5);
 			lowerRow.add(happinessTable).top().padRight(5);
+			lowerRow.add(injuriesTable).top().padRight(5);
 		}
 
 		entityDescriptionTable.add(upperRow).left().row();
@@ -461,12 +469,6 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				nameTable.add(label).left().row();
 			}
 		}
-
-		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-		for (I18nText damageDescription : attributes.getBody().getDamageDescriptions(i18nTranslator)) {
-			nameTable.add(new I18nTextWidget(damageDescription, uiSkin, messageDispatcher)).left().row();
-		}
-
 	}
 
 	private void populateProfessionTable(Entity entity) {
@@ -658,6 +660,22 @@ public class EntitySelectedGuiView implements GuiView, GameContextAware {
 				String statuses = "Status: " + statusComponent.getAll().stream().map(s -> s.getClass().getSimpleName()).collect(Collectors.joining(", "));
 				happinessTable.add(new Label(statuses, uiSkin)).left().row();
 			}
+		}
+	}
+
+	private void populateInjuriesTable(Entity entity) {
+		injuriesTable.clearChildren();
+
+		StatusComponent statusComponent = entity.getComponent(StatusComponent.class);
+		for (StatusEffect statusEffect : statusComponent.getAll()) {
+			if (statusEffect.getI18Key() != null) {
+				injuriesTable.add(i18nWidgetFactory.createLabel(statusEffect.getI18Key())).left().row();
+			}
+		}
+
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+		for (I18nText damageDescription : attributes.getBody().getDamageDescriptions(i18nTranslator)) {
+			injuriesTable.add(new I18nTextWidget(damageDescription, uiSkin, messageDispatcher)).left().row();
 		}
 	}
 

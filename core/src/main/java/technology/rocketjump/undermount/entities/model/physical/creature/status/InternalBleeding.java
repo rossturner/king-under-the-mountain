@@ -27,4 +27,9 @@ public class InternalBleeding extends StatusEffect {
 		return false;
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.INTERNAL_BLEEDING";
+	}
+
 }

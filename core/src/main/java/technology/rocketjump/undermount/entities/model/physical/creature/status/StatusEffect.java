@@ -45,6 +45,8 @@ public abstract class StatusEffect implements ChildPersistable {
 
 	public abstract boolean checkForRemoval(GameContext gameContext);
 
+	public abstract String getI18Key();
+
 	public void onRemoval(GameContext gameContext, MessageDispatcher messageDispatcher) {
 
 	}

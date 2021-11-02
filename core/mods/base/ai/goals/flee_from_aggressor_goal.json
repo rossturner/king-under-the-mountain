@@ -1,0 +1,10 @@
+{
+  "name": "Flee from aggressor goal",
+  "i18nDescription": "GOAL.FLEE_FROM_AGGRESSOR.DESCRIPTION",
+  "interruptedByCombat": false,
+  "selectors": [],
+  "initialActions": ["GoToLocationAwayFromAggressor"],
+  "actionRelationships": {
+    "GoToLocationAwayFromAggressor": {}
+  }
+}

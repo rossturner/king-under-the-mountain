@@ -42,7 +42,8 @@
   "behaviour": {
     "behaviourName": "Settler",
     "scheduleName": "Default Settler Schedule",
-    "needs": ["FOOD", "DRINK", "SLEEP"]
+    "needs": ["FOOD", "DRINK", "SLEEP"],
+    "aggressionResponse": "FLEE"
   },
 
   "genders": {

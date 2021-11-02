@@ -1,11 +1,13 @@
 package technology.rocketjump.undermount.entities.ai.goap.actions;
 
 import com.alibaba.fastjson.JSONObject;
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.SpecialGoal;
 import technology.rocketjump.undermount.entities.ai.goap.SwitchGoalException;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.WeaponSelectionComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -27,10 +29,12 @@ import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
 import java.util.Optional;
 
+import static technology.rocketjump.undermount.entities.ai.goap.actions.IdleAction.MAX_SEPARATION_FROM_CREATURE_GROUP;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.location.MoveInRangeOfTargetAction.hasLineOfSightBetween;
 import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
+import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 import static technology.rocketjump.undermount.ui.views.EntitySelectedGuiView.hasSelectedWeaponAndAmmoInInventory;
 
 public class AttackTargetAction extends Action {
@@ -56,7 +60,7 @@ public class AttackTargetAction extends Action {
 
 	@Override
 	public CompletionType isCompleted(GameContext gameContext) throws SwitchGoalException {
-		Entity targetEntity = gameContext.getEntities().get(parent.getAssignedJob().getTargetId());
+		Entity targetEntity = gameContext.getEntities().get(getTargetId());
 		if (targetEntity == null) {
 			completionType = CompletionType.SUCCESS;
 		} else if (targetEntity.getType().equals(CREATURE)) {
@@ -88,7 +92,7 @@ public class AttackTargetAction extends Action {
 				initialCheck(gameContext);
 				break;
 			case AIMING:
-				Entity targetEntity = gameContext.getEntities().get(parent.getAssignedJob().getTargetId());
+				Entity targetEntity = gameContext.getEntities().get(getTargetId());
 				Vector2 vectorToTarget = targetEntity.getLocationComponent().getWorldOrParentPosition().cpy()
 						.sub(parent.parentEntity.getLocationComponent().getWorldPosition());
 				parent.parentEntity.getLocationComponent().setFacing(vectorToTarget);
@@ -110,8 +114,20 @@ public class AttackTargetAction extends Action {
 		}
 	}
 
+	private Long getTargetId() {
+		if (parent.getAssignedJob() != null && parent.getAssignedJob().getTargetId() != null) {
+			return parent.getAssignedJob().getTargetId();
+		}
+
+		if (parent.getRelevantMemory() != null) {
+			return parent.getRelevantMemory().getRelatedEntityId();
+		}
+
+		return null;
+	}
+
 	private void attack(GameContext gameContext) {
-		Entity targetEntity = gameContext.getEntities().get(parent.getAssignedJob().getTargetId());
+		Entity targetEntity = gameContext.getEntities().get(getTargetId());
 		if (targetEntity == null) {
 			completionType = CompletionType.FAILURE;
 			return;
@@ -119,7 +135,8 @@ public class AttackTargetAction extends Action {
 
 		ItemType equippedWeaponType = getEquippedWeaponItemType(parent.parentEntity);
 
-		if (!inRange(targetEntity, 0.5f + (equippedWeaponType.getWeaponInfo().getRange() * EXTRA_RANGE_FOR_ATTACK_MULTIPLIER))) {
+		float distanceToTarget = distanceTo(targetEntity);
+		if (!(distanceToTarget <= 0.5f + (equippedWeaponType.getWeaponInfo().getRange() * EXTRA_RANGE_FOR_ATTACK_MULTIPLIER))) {
 			completionType = CompletionType.FAILURE;
 			return;
 		}
@@ -141,13 +158,14 @@ public class AttackTargetAction extends Action {
 	}
 
 	private void initialCheck(GameContext gameContext) throws SwitchGoalException {
-		if (parent.getAssignedJob() == null || parent.getAssignedJob().getTargetId() == null) {
+		Long targetId = getTargetId();
+		if (targetId == null) {
 			Logger.error("No target for " + getSimpleName());
 			completionType = CompletionType.FAILURE;
 			return;
 		}
 
-		Entity targetEntity = gameContext.getEntities().get(parent.getAssignedJob().getTargetId());
+		Entity targetEntity = gameContext.getEntities().get(targetId);
 		if (targetEntity == null) {
 			completionType = CompletionType.FAILURE;
 			return;
@@ -164,9 +182,22 @@ public class AttackTargetAction extends Action {
 			throw new SwitchGoalException(SpecialGoal.ABANDON_JOB);
 		}
 
-		WeaponInfo equippedWeaponInfo = getEquippedWeaponItemType(parent.parentEntity).getWeaponInfo();
+		if (parent.parentEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+			CreatureBehaviour creatureBehaviour = (CreatureBehaviour) parent.parentEntity.getBehaviourComponent();
+			if (creatureBehaviour.getCreatureGroup() != null) {
+				GridPoint2 homeLocation = creatureBehaviour.getCreatureGroup().getHomeLocation();
+				float distanceFromHomeLocation = parent.parentEntity.getLocationComponent().getWorldOrParentPosition().dst(toVector(homeLocation));
+				if (distanceFromHomeLocation > (MAX_SEPARATION_FROM_CREATURE_GROUP * 2)) {
+					// when more than double from home, count as successful (i.e. have chased away opponent)
+					completionType = CompletionType.SUCCESS;
+					return;
+				}
+			}
+		}
 
-		if (!inRange(targetEntity, equippedWeaponInfo.getRange())) {
+		WeaponInfo equippedWeaponInfo = getEquippedWeaponItemType(parent.parentEntity).getWeaponInfo();
+		float distanceToTarget = distanceTo(targetEntity);
+		if (distanceToTarget > equippedWeaponInfo.getRange()) {
 			completionType = CompletionType.FAILURE;
 			return;
 		}
@@ -181,9 +212,8 @@ public class AttackTargetAction extends Action {
 		state = AttackTargetActionState.AIMING;
 	}
 
-	private boolean inRange(Entity targetEntity, float range) {
-		float distanceToTarget = parent.parentEntity.getLocationComponent().getWorldOrParentPosition().dst(targetEntity.getLocationComponent().getWorldOrParentPosition());
-		return distanceToTarget <= range;
+	private float distanceTo(Entity targetEntity) {
+		return parent.parentEntity.getLocationComponent().getWorldOrParentPosition().dst(targetEntity.getLocationComponent().getWorldOrParentPosition());
 	}
 
 	public static ItemType getEquippedWeaponItemType(Entity entity) {

@@ -27,6 +27,7 @@ public class Memory implements ChildPersistable {
 	private GameMaterial relatedMaterial;
 	private String relatedGoalName;
 	private AmmoType relatedAmmoType;
+	private Long relatedEntityId;
 
 	public Memory() {
 
@@ -97,6 +98,14 @@ public class Memory implements ChildPersistable {
 		this.relatedAmmoType = relatedAmmoType;
 	}
 
+	public void setRelatedEntityId(Long relatedEntityId) {
+		this.relatedEntityId = relatedEntityId;
+	}
+
+	public long getRelatedEntityId() {
+		return relatedEntityId;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("type", type.name());
@@ -114,6 +123,9 @@ public class Memory implements ChildPersistable {
 		}
 		if (relatedGoalName != null) {
 			asJson.put("relatedGoalName", relatedGoalName);
+		}
+		if (relatedEntityId != null) {
+			asJson.put("relatedEntityId", relatedEntityId);
 		}
 	}
 
@@ -147,6 +159,9 @@ public class Memory implements ChildPersistable {
 			}
 		}
 
+		this.relatedEntityId = asJson.getLong("relatedEntityId");
+
 		this.relatedGoalName = asJson.getString("relatedGoalName");
 	}
+
 }

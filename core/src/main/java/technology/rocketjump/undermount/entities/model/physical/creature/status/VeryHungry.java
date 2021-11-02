@@ -31,4 +31,9 @@ public class VeryHungry extends StatusEffect {
 		}
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.VERY_HUNGRY";
+	}
+
 }

@@ -18,4 +18,9 @@ public class TemporaryBlinded extends StatusEffect {
 		return false;
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.TEMPORARILY_BLINDED";
+	}
+
 }

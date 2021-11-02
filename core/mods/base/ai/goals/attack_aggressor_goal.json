@@ -1,0 +1,19 @@
+{
+  "name": "Attack aggressor goal",
+  "i18nDescription": "GOAL.COMBAT.DESCRIPTION",
+  "interruptedByCombat": false,
+  "selectors": [],
+  "initialActions": ["EquipWeapon", "MoveInRangeOfTarget"],
+  "actionRelationships": {
+    "EquipWeapon": {},
+    "MoveInRangeOfTarget": {
+      "pass": ["AttackTarget"],
+      "fail": ["UnequipWeapon"]
+    },
+    "AttackTarget": {
+      "pass": ["UnequipWeapon"],
+      "fail": ["MoveInRangeOfTarget"]
+    },
+    "UnequipWeapon": {}
+  }
+}

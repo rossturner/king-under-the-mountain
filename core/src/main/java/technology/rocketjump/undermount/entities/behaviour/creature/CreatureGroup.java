@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.behaviour.creature;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.math.GridPoint2;
+import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -24,6 +25,8 @@ public class CreatureGroup implements Persistable {
 	private long groupId;
 	private GridPoint2 homeLocation;
 	private double lastUpdateGameTime;
+
+	private final MemoryComponent sharedMemoryComponent = new MemoryComponent();
 
 	public long getGroupId() {
 		return groupId;
@@ -52,6 +55,10 @@ public class CreatureGroup implements Persistable {
 		}
 	}
 
+	public MemoryComponent getSharedMemoryComponent() {
+		return sharedMemoryComponent;
+	}
+
 	/**
 	 * This moves the home location by one tile, orthogonally, randomly
 	 */
@@ -78,6 +85,10 @@ public class CreatureGroup implements Persistable {
 		asJson.put("groupId", groupId);
 		asJson.put("home", JSONUtils.toJSON(homeLocation));
 
+		JSONObject memoryJson = new JSONObject(true);
+		sharedMemoryComponent.writeTo(memoryJson, savedGameStateHolder);
+		asJson.put("memories", memoryJson);
+
 		savedGameStateHolder.creatureGroupJson.add(asJson);
 		savedGameStateHolder.creatureGroups.put(groupId, this);
 	}
@@ -86,6 +97,9 @@ public class CreatureGroup implements Persistable {
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		this.groupId = asJson.getLong("groupId");
 		this.homeLocation = JSONUtils.gridPoint2(asJson.getJSONObject("home"));
+
+		JSONObject memoryJson = asJson.getJSONObject("memories");
+		sharedMemoryComponent.readFrom(memoryJson, savedGameStateHolder, relatedStores);
 
 		savedGameStateHolder.creatureGroups.put(groupId, this);
 	}

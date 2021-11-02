@@ -9,9 +9,12 @@ import com.google.inject.Singleton;
 import org.apache.commons.lang3.EnumUtils;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement;
+import technology.rocketjump.undermount.entities.ai.memory.Memory;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.items.ProjectileBehaviour;
+import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -158,6 +161,13 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 			}
 
 			// TODO reduce by armour damage reduction
+
+			if (attackMessage.attackerEntity.getType().equals(EntityType.CREATURE)) {
+				MemoryComponent memoryComponent = attackMessage.defenderEntity.getOrCreateComponent(MemoryComponent.class);
+				Memory memory = new Memory(MemoryType.ATTACKED_BY_CREATURE, gameContext.getGameClock());
+				memory.setRelatedEntityId(attackMessage.attackerEntity.getId());
+				memoryComponent.add(memory, gameContext.getGameClock());
+			}
 
 			if (damageAmount <= 0) {
 				return;

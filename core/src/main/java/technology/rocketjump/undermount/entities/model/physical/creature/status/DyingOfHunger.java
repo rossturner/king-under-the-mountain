@@ -28,4 +28,9 @@ public class DyingOfHunger extends StatusEffect {
 		}
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.DYING_OF_HUNGER";
+	}
+
 }

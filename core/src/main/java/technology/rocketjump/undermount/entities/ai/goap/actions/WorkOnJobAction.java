@@ -151,10 +151,8 @@ public class WorkOnJobAction extends Action {
 
 	@Override
 	public void actionInterrupted(GameContext gameContext) {
-		if (furnitureInUseNotified) {
-
-		}
 		completionType = CompletionType.FAILURE;
+		update(0f, gameContext); // to clear sound and furniture in use
 	}
 
 	private Optional<Entity> getTargetFurniture(Job assignedJob, GameContext gameContext) {

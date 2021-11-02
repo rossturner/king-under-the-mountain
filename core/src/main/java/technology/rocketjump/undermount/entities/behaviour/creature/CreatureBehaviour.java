@@ -2,11 +2,15 @@ package technology.rocketjump.undermount.entities.behaviour.creature;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.entities.ai.goap.*;
+import technology.rocketjump.undermount.entities.ai.memory.Memory;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.AggressionResponse;
 import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -21,6 +25,7 @@ import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.entities.ai.goap.SpecialGoal.IDLE;
@@ -105,9 +110,18 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		}
 	}
 
+	public AssignedGoal getCurrentGoal() {
+		return currentGoal;
+	}
+
 	private AssignedGoal selectNextGoal(GameContext gameContext) {
 		if (parentEntity.isOnFire()) {
 			return onFireGoal(gameContext);
+		}
+
+		Optional<Memory> attackedMemory = getMemoryOfAttackedByCreature(parentEntity, creatureGroup, gameContext);
+		if (attackedMemory.isPresent()) {
+			return attackedByCreatureResponse(attackedMemory.get(), gameContext);
 		}
 
 		Schedule schedule = ((CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes()).getRace().getBehaviour().getSchedule();
@@ -119,11 +133,49 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		return new AssignedGoal(nextGoal.getGoal(), parentEntity, messageDispatcher);
 	}
 
+	public static Optional<Memory> getMemoryOfAttackedByCreature(Entity entity, CreatureGroup creatureGroup, GameContext gameContext) {
+		MemoryComponent memoryComponent = entity.getOrCreateComponent(MemoryComponent.class);
+		Optional<Memory> attackedMemory = memoryComponent.getShortTermMemories(gameContext.getGameClock())
+				.stream().filter(m -> m.getType().equals(MemoryType.ATTACKED_BY_CREATURE)).findAny();
+		if (attackedMemory.isEmpty() && creatureGroup != null) {
+			attackedMemory = creatureGroup.getSharedMemoryComponent().getShortTermMemories(gameContext.getGameClock())
+					.stream().filter(m -> m.getType().equals(MemoryType.ATTACKED_BY_CREATURE)).findAny();
+		}
+		return attackedMemory;
+	}
+
 	private AssignedGoal onFireGoal(GameContext gameContext) {
 		if (gameContext.getRandom().nextBoolean()) {
 			return new AssignedGoal(ROLL_ON_FLOOR.getInstance(), parentEntity, messageDispatcher);
 		}
 		return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
+	}
+
+	protected AssignedGoal attackedByCreatureResponse(Memory attackedByCreatureMemory, GameContext gameContext) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		AggressionResponse aggressionResponse = attributes.getRace().getBehaviour().getAggressionResponse();
+		if (aggressionResponse == null || aggressionResponse.equals(AggressionResponse.MIXED)) {
+			if (gameContext.getRandom().nextBoolean()) {
+				aggressionResponse = AggressionResponse.ATTACK;
+			} else {
+				aggressionResponse = AggressionResponse.FLEE;
+			}
+		}
+
+		Goal goal;
+		switch (aggressionResponse) {
+			case ATTACK:
+				goal = SpecialGoal.ATTACK_AGGRESSOR.getInstance();
+				break;
+			case FLEE:
+				goal = SpecialGoal.FLEE_FROM_AGGRESSOR.getInstance();
+				break;
+			default:
+				throw new NotImplementedException("No goal speified for aggression response: " + aggressionResponse.name());
+		}
+		AssignedGoal assignedGoal = new AssignedGoal(goal, parentEntity, messageDispatcher);
+		assignedGoal.setRelevantMemory(attackedByCreatureMemory);
+		return assignedGoal;
 	}
 
 	@Override

@@ -14,7 +14,9 @@ public enum SpecialGoal {
 	DOUSE_SELF("Douse self goal"),
 	EXTINGUISH_FIRE("Extinguish fire goal"),
 	HUNT_CREATURE("Hunt creature goal"),
-	ABANDON_JOB("Abandon job goal");
+	ABANDON_JOB("Abandon job goal"),
+	ATTACK_AGGRESSOR("Attack aggressor goal"),
+	FLEE_FROM_AGGRESSOR("Flee from aggressor goal");
 
 	public final String goalName;
 	Goal goalInstance;

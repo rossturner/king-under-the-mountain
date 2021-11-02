@@ -31,4 +31,9 @@ public class MovementImpaired extends StatusEffect {
 		return noSignificantDamage;
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.MOVEMENT_IMPAIRED";
+	}
+
 }

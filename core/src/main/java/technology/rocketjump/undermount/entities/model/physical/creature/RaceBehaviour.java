@@ -21,8 +21,8 @@ public class RaceBehaviour {
 	private Schedule schedule;
 
 	private List<EntityNeed> needs = new ArrayList<>();
-
 	private RaceBehaviourGroup group;
+	private AggressionResponse aggressionResponse;
 
 	public String getBehaviourName() {
 		return behaviourName;
@@ -70,5 +70,13 @@ public class RaceBehaviour {
 
 	public void setNeeds(List<EntityNeed> needs) {
 		this.needs = needs;
+	}
+
+	public AggressionResponse getAggressionResponse() {
+		return aggressionResponse;
+	}
+
+	public void setAggressionResponse(AggressionResponse aggressionResponse) {
+		this.aggressionResponse = aggressionResponse;
 	}
 }

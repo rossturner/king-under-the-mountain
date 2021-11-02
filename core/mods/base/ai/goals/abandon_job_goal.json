@@ -1,6 +1,7 @@
 {
   "name": "Abandon job goal",
   "i18nDescription": "GOAL.ABANDON_JOB.DESCRIPTION",
+  "interruptedByCombat": false,
   "selectors": [],
   "initialActions": ["UnassignJob"],
   "actionRelationships": {

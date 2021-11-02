@@ -1,6 +1,7 @@
 {
   "name": "Hunt creature goal",
   "i18nDescription": "GOAL.COMBAT.DESCRIPTION",
+  "interruptedByCombat": false,
   "selectors": [],
   "initialActions": ["EquipWeapon", "MoveInRangeOfTarget"],
   "actionRelationships": {

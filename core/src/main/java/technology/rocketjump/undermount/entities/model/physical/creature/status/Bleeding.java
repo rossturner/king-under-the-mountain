@@ -43,6 +43,11 @@ public class Bleeding extends StatusEffect implements ParticleRequestMessage.Par
 	}
 
 	@Override
+	public String getI18Key() {
+		return "STATUS.BLEEDING";
+	}
+
+	@Override
 	public void particleCreated(ParticleEffectInstance instance) {
 		this.particleEffectInstance = instance;
 	}

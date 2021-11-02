@@ -28,4 +28,9 @@ public class Exhausted extends StatusEffect {
 		}
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.EXHAUSTED";
+	}
+
 }

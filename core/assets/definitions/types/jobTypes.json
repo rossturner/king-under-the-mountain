@@ -404,7 +404,7 @@
   "accessedFromAdjacentTile" : true
 }, {
   "name" : "HUNT_CREATURE",
-  "removeJobWhenAssignmentCancelled" : false,
+  "removeJobWhenAssignmentCancelled" : true,
   "haulItemWhileWorking" : false,
   "requiresWeapon" : true,
   "usesWorkstationTool" : false,

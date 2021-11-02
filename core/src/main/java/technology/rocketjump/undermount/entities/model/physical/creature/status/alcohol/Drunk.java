@@ -21,6 +21,11 @@ public class Drunk extends StatusEffect {
         return alreadyAlcoholDependent();
     }
 
+    @Override
+    public String getI18Key() {
+        return "STATUS.DRUNK";
+    }
+
     private boolean alreadyAlcoholDependent() {
         return parentEntity.getComponent(StatusComponent.class).contains(AlcoholDependent.class);
     }

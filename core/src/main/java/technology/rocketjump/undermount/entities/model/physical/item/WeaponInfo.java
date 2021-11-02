@@ -18,8 +18,8 @@ public class WeaponInfo {
 		UNARMED.setRange(0.5f);
 		UNARMED.setDamageType(CombatDamageType.CRUSHING);
 		UNARMED.setModifiedByStrength(true);
-		UNARMED.setMinDamage(0);
-		UNARMED.setMaxDamage(2);
+		UNARMED.setMinDamage(1);
+		UNARMED.setMaxDamage(5);
 	}
 
 	public float getRange() {

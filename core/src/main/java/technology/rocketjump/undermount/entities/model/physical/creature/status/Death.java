@@ -27,6 +27,11 @@ public class Death extends StatusEffect {
 		return false;
 	}
 
+	@Override
+	public String getI18Key() {
+		return "STATUS.DEATH";
+	}
+
 	public void setDeathReason(DeathReason deathReason) {
 		this.deathReason = deathReason;
 	}

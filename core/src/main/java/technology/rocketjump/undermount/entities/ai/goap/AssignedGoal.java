@@ -10,7 +10,9 @@ import technology.rocketjump.undermount.entities.ai.goap.actions.ActionTransitio
 import technology.rocketjump.undermount.entities.ai.goap.actions.InitialisableAction;
 import technology.rocketjump.undermount.entities.ai.goap.actions.UnassignFurnitureAction;
 import technology.rocketjump.undermount.entities.ai.memory.Memory;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
+import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
@@ -107,7 +109,12 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 
 		Action currentAction = actionQueue.peek();
 
-		// TODO Introduce INTERRUPTED completion type, which will still perform actions to unassign and clear up state, but will not perform long-running actions
+		if (goal.interrupedByCombat) {
+			MemoryComponent memoryComponent = parentEntity.getOrCreateComponent(MemoryComponent.class);
+			if (memoryComponent.getShortTermMemories(gameContext.getGameClock()).stream().anyMatch(m -> m.getType().equals(MemoryType.ATTACKED_BY_CREATURE))) {
+				setInterrupted(true);
+			}
+		}
 
 		Action.CompletionType actionCompletion = currentAction.isCompleted(gameContext);
 		if (actionCompletion == null) {

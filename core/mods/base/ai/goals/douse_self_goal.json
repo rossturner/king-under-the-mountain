@@ -1,6 +1,7 @@
 {
   "name": "Douse self goal",
   "i18nDescription": "GOAL.ON_FIRE.DESCRIPTION",
+  "interruptedByCombat": false,
   "selectors": [],
   "initialActions": ["GoToDrinkLocation", "DouseSelf"],
   "actionRelationships": {

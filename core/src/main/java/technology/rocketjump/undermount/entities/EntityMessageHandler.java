@@ -352,7 +352,6 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							}
 						}
 					}
-					return true;
 				}
 				return true;
 			}
@@ -757,6 +756,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		entityStore.changeBehaviour(deceased, corpseBehaviour, messageDispatcher);
 
 		Vector2 deceasedPosition = deceased.getLocationComponent().getWorldOrParentPosition();
+
 		if (originalBehaviour instanceof SettlerBehaviour) {
 			Notification deathNotification = new Notification(NotificationType.DEATH, deceasedPosition);
 			deathNotification.addTextReplacement("character", i18nTranslator.getDescription(deceased));

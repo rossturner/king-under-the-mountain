@@ -32,4 +32,9 @@ public class AlcoholDependent extends StatusEffect {
         // Only removed by time expiry to next stage
         return false;
     }
+
+    @Override
+    public String getI18Key() {
+        return null;
+    }
 }

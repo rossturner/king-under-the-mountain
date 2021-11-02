@@ -11,10 +11,7 @@ import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableD
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.creature.Sanity;
+import technology.rocketjump.undermount.entities.model.physical.creature.*;
 import technology.rocketjump.undermount.entities.model.physical.creature.status.Blinded;
 import technology.rocketjump.undermount.entities.model.physical.creature.status.TemporaryBlinded;
 import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
@@ -42,6 +39,7 @@ import java.util.Random;
 
 import static technology.rocketjump.undermount.entities.ItemEntityMessageHandler.findStockpileAllocation;
 import static technology.rocketjump.undermount.entities.ai.goap.SpecialGoal.*;
+import static technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour.getMemoryOfAttackedByCreature;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.DUE_TO_BE_HAULED;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SAW_DEAD_BODY;
@@ -141,6 +139,12 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 			return onFireGoal(gameContext);
 		}
 
+		// FIXME these are static due to re-use from CreatureBehaviour
+		Optional<Memory> attackedMemory = getMemoryOfAttackedByCreature(parentEntity, null, gameContext);
+		if (attackedMemory.isPresent()) {
+			return attackedByCreatureResponse(attackedMemory.get(), gameContext);
+		}
+
 		// (Override) if we're hauling an item, need to place it
 		if (parentEntity.getComponent(HaulingComponent.class) != null) {
 			Entity hauledEntity = parentEntity.getComponent(HaulingComponent.class).getHauledEntity();
@@ -228,6 +232,33 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 			return new AssignedGoal(ROLL_ON_FLOOR.getInstance(), parentEntity, messageDispatcher);
 		}
 		return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
+	}
+
+	protected AssignedGoal attackedByCreatureResponse(Memory attackedByCreatureMemory, GameContext gameContext) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		AggressionResponse aggressionResponse = attributes.getRace().getBehaviour().getAggressionResponse();
+		if (aggressionResponse == null || aggressionResponse.equals(AggressionResponse.MIXED)) {
+			if (gameContext.getRandom().nextBoolean()) {
+				aggressionResponse = AggressionResponse.ATTACK;
+			} else {
+				aggressionResponse = AggressionResponse.FLEE;
+			}
+		}
+
+		Goal goal;
+		switch (aggressionResponse) {
+			case ATTACK:
+				goal = SpecialGoal.ATTACK_AGGRESSOR.getInstance();
+				break;
+			case FLEE:
+				goal = SpecialGoal.FLEE_FROM_AGGRESSOR.getInstance();
+				break;
+			default:
+				throw new NotImplementedException("No goal speified for aggression response: " + aggressionResponse.name());
+		}
+		AssignedGoal assignedGoal = new AssignedGoal(goal, parentEntity, messageDispatcher);
+		assignedGoal.setRelevantMemory(attackedByCreatureMemory);
+		return assignedGoal;
 	}
 
 	@Override
