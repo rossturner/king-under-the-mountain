@@ -12,6 +12,8 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import java.util.HashMap;
 import java.util.Map;
 
+import static technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel.Bruised;
+import static technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel.None;
 import static technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel.NONE;
 
 public class BodyPartDamage implements ChildPersistable {
@@ -37,6 +39,18 @@ public class BodyPartDamage implements ChildPersistable {
 
 	public Map<BodyPartOrgan, OrganDamageLevel> getOrganDamage() {
 		return organDamage;
+	}
+
+	public void healOneLevel() {
+		switch (damageLevel) {
+			case BrokenBones:
+			case Bleeding:
+				this.damageLevel = Bruised;
+				break;
+			case Bruised:
+				this.damageLevel = None;
+				break;
+		}
 	}
 
 	@Override

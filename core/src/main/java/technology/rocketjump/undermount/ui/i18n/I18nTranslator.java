@@ -275,6 +275,15 @@ public class I18nTranslator implements I18nUpdatable {
 				}
 			}
 
+			if (currentGoal.getRelevantMemory() != null) {
+				if (currentGoal.getRelevantMemory().getRelatedEntityId() != null) {
+					Entity relatedEntity = gameContext.getEntities().get(currentGoal.getRelevantMemory().getRelatedEntityId());
+					if (relatedEntity != null) {
+						replacements.put("targetDescription", getDescription(relatedEntity));
+					}
+				}
+			}
+
 			if (entity.getLocationComponent().getContainerEntity() != null) {
 				replacements.put("containerDescription", getDescription(entity.getLocationComponent().getContainerEntity()));
 			} else if (entity.getLocationComponent().getWorldPosition() != null) {

@@ -115,7 +115,7 @@ public class SleepInBedAction extends SleepOnFloorAction {
 	@Override
 	public void actionInterrupted(GameContext gameContext) {
 		if (isAsleep()) {
-			changeToAwake();
+			changeToAwake(gameContext);
 			getOutOfBed(gameContext);
 		}
 		completionType = SUCCESS;

@@ -350,10 +350,12 @@ GEM.TURQUOISE.TOOLTIP,A blue-green mineral often used in decorations. It is thou
 
 GOAL.ABANDON_JOB.DESCRIPTION,Abandoning task,,,,,,,,,,,,,,,,,,,
 GOAL.ADD_TO_INVENTORY.DESCRIPTION,Collecting {{targetDescription}},,Sammelt {{targetDescription}},Collecte: {{targetDescription}},Sta raccogliendo: {{targetDescription}},Recogiendo {{targetDescription}},A recolher {{targetDescription}},Coletando {{targetDescription}},,Собирает: {{targetDescription}}," {{targetDescription}} toplanıyor",Indsamler {{targetDescription}},,Samla {{targetDescription}},,,,{{targetDescription}} を収集しています,收集 {{targetDescription}},{{대상 설명}} 수집하는 중
+GOAL.COMBAT.DESCRIPTION,Attacking {{targetDescription}},,,,,,,,,,,,,,,,,,,
 GOAL.DRINK.DESCRIPTION,Drinking {{targetDescription}},,Trinkt {{targetZoneMaterial}},Boire {{targetZoneMaterial}},Bere {{targetZoneMaterial}},Beber {{targetZoneMaterial}},Beber {{targetZoneMaterial}},,,Питьевая {{targetZoneМатериал}}," {{targetZoneMaterial}} içiliyor",Drikker {{targetZoneMaterial}},,Dricka {{targetZoneMaterial}},,,,{{targetZoneMaterial}} を飲む,饮用 {{targetZoneMaterial}},마시는 {{대상 지역 재료}}
 GOAL.DUMP_LIQUID.DESCRIPTION,Dumping contents of {{targetDescription}},,,,,,,,,,,,,,,,,,,
 GOAL.EAT.DESCRIPTION,Eating {{targetDescription}},,Isst {{targetDescription}},Mange {{targetDescription}},Mangiare {{targetDescription}},Comer {{targetDescription}},Comer {{targetDescription}},,,Едят {{targetDescription}},{{targetDescription}} yeniliyor,Spise {{targetDescription}},,Äta {{targetDescription}},,,,{{targetDescription}} を食べる,吃 {{targetDescription}},{{대상 설명}} 먹는 것
 GOAL.EXTINGUISH_FIRE.DESCRIPTION,Putting out a fire,,,,,,,,,,,,,,,,,,,
+GOAL.FLEE_FROM_AGGRESSOR.DESCRIPTION,Fleeing from {{targetDescription}},,,,,,,,,,,,,,,,,,,
 GOAL.HAULING.DESCRIPTION,Hauling {{targetDescription}},,Transportiert {{itemDescription}},Transporte: {{itemDescription}},Sta trasportando: {{itemDescription}},Transportando {{itemDescription}},Carregar {{itemDescription}},Transportando {{targetDescription}},,Переносит: {{itemDescription}},{{itemDescription}} taşınıyor,Hauling {{targetDescription}},,Släpa {{itemDescription}},,,,運搬 {{targetDescription}},拖运 {{targetDescription}},운반 {{대상 설명}}
 GOAL.IDLE.DESCRIPTION,Idle,,Untätig,Libre,Non sta facendo niente,Descansando,Inativo,À toa,,Бездельничает,Boşta,- Itomgang,,Inaktiv,,,,アイドル,闲置,유휴 상태
 GOAL.ON_FIRE.DESCRIPTION,On fire!,,,,,,,,,,,,,,,,,,,

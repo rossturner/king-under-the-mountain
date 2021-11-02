@@ -32,9 +32,11 @@ public abstract class StatusEffect implements ChildPersistable {
 
 		if (checkForRemoval(gameContext)) {
 			messageDispatcher.dispatchMessage(MessageType.REMOVE_STATUS, new StatusMessage(parentEntity, this.getClass(), null));
-		} else if (nextStage != null && hoursUntilNextStage != null && timeApplied > hoursUntilNextStage) {
+		} else if (hoursUntilNextStage != null && timeApplied > hoursUntilNextStage) {
 			messageDispatcher.dispatchMessage(MessageType.REMOVE_STATUS, new StatusMessage(parentEntity, this.getClass(), null));
-			messageDispatcher.dispatchMessage(MessageType.APPLY_STATUS, new StatusMessage(parentEntity, nextStage, deathReason));
+			if (nextStage != null) {
+				messageDispatcher.dispatchMessage(MessageType.APPLY_STATUS, new StatusMessage(parentEntity, nextStage, deathReason));
+			}
 		} else {
 			applyOngoingEffect(gameContext, messageDispatcher);
 		}

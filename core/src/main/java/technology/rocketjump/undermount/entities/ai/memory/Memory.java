@@ -102,7 +102,7 @@ public class Memory implements ChildPersistable {
 		this.relatedEntityId = relatedEntityId;
 	}
 
-	public long getRelatedEntityId() {
+	public Long getRelatedEntityId() {
 		return relatedEntityId;
 	}
 

@@ -353,6 +353,8 @@ GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},,,,,,,,,,,,,
 GOAL.ON_FIRE.DESCRIPTION,,On fire!,,,,,,,,,,,,,
 GOAL.EXTINGUISH_FIRE.DESCRIPTION,,Putting out a fire,,,,,,,,,,,,,
 GOAL.ABANDON_JOB.DESCRIPTION,,Abandoning task,,,,,,,,,,,,,
+GOAL.COMBAT.DESCRIPTION,,Attacking {{targetDescription}},,,,,,,,,,,,,
+GOAL.FLEE_FROM_AGGRESSOR.DESCRIPTION,,Fleeing from {{targetDescription}},,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 GUI.ADD_REMOVE_TILES,Heading to describe adding or removing an area of a zone/room,Add/remove tiles,Ajouter/retirer des cases,Añadir/eliminar baldosas,Felder hinzufügen/entfernen,Aggiungi/Rimuovi caselle,Adicionar/remover áreas,Adicionar/remover mosaicos,Добавление/удаление квадратов,Dodaj/usuń kafelki,,,,,
 GUI.ADD_TILES,This should be as short as possible,Add tiles,Ajouter des cases,Añadir baldosas,Felder hinzufügen,Aggiungi caselle,Adicionar áreas,Adicionar mosaicos,Добавить квадраты,Dodaj kafelki,Tegels toevoegen,Lägg till paneler,Legg til felter,Mezők hozzáadása,Lisää ruutuja

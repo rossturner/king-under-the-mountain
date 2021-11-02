@@ -23,7 +23,8 @@ public class MovementImpaired extends StatusEffect {
 	public boolean checkForRemoval(GameContext gameContext) {
 		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 		boolean noSignificantDamage = attributes.getBody().getAllDamage()
-				.stream().noneMatch(d -> d.getDamageLevel().equals(BodyPartDamageLevel.BrokenBones) || d.getDamageLevel().equals(BodyPartDamageLevel.Destroyed));
+				.stream().noneMatch(e -> e.getValue().getDamageLevel().equals(BodyPartDamageLevel.BrokenBones) ||
+						e.getValue().getDamageLevel().equals(BodyPartDamageLevel.Destroyed));
 
 		if (noSignificantDamage) {
 			parentEntity.getBehaviourComponent().getSteeringComponent().setMovementImpaired(false);

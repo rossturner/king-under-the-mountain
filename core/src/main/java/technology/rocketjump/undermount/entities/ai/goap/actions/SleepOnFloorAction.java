@@ -11,6 +11,11 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPart;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamage;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartOrgan;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel;
 import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -20,15 +25,23 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.*;
 import static technology.rocketjump.undermount.entities.ai.goap.EntityNeed.DRINK;
 import static technology.rocketjump.undermount.entities.ai.goap.EntityNeed.FOOD;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.*;
+import static technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent.MAX_NEED_VALUE;
 import static technology.rocketjump.undermount.mapping.tile.roof.TileRoofState.OPEN;
 
 public class SleepOnFloorAction extends Action {
+	private static final float CHANCE_TO_HEAL_ORGAN_DAMAGE = 0.1f;
+	private static final float CHANCE_TO_HEAL_BODY_DAMAGE = 0.4f;
+
 	public SleepOnFloorAction(AssignedGoal parent) {
 		super(parent);
 	}
@@ -95,17 +108,17 @@ public class SleepOnFloorAction extends Action {
 				}
 			}
 
-			changeToAwake();
+			changeToAwake(gameContext);
 			completionType = SUCCESS;
 		} else if ((needsComponent.has(FOOD) && needsComponent.getValue(FOOD) <= 0.0)
 				|| (needsComponent.has(DRINK) && needsComponent.getValue(DRINK) <= 0.0)) {
 			// Currently starving or dehydrated so wake up after sleep at 30%
 			if (needsComponent.getValue(EntityNeed.SLEEP) >= 30.0) {
-				changeToAwake();
+				changeToAwake(gameContext);
 				completionType = SUCCESS;
 			}
 		} else if (parent.parentEntity.isOnFire()) {
-			changeToAwake();
+			changeToAwake(gameContext);
 			completionType = SUCCESS;
 		}
 	}
@@ -152,7 +165,7 @@ public class SleepOnFloorAction extends Action {
 		}
 	}
 
-	protected void changeToAwake() {
+	protected void changeToAwake(GameContext gameContext) {
 		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
 
 		// Stop rotation
@@ -163,5 +176,36 @@ public class SleepOnFloorAction extends Action {
 			parent.messageDispatcher.dispatchMessage(MessageType.SETTLER_WOKE_UP);
 		}
 		parent.messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, parent.parentEntity);
+
+		// Heal damage if this was a restful sleep
+		Double sleepNeed = parent.parentEntity.getComponent(NeedsComponent.class).getValue(EntityNeed.SLEEP);
+		if (sleepNeed > MAX_NEED_VALUE / 2) {
+			for (Map.Entry<BodyPart, BodyPartDamage> entry : new ArrayList<>(attributes.getBody().getAllDamage())) {
+				if (entry.getValue().getDamageLevel().equals(BodyPartDamageLevel.Destroyed)) {
+					continue;
+				}
+
+				Iterator<Map.Entry<BodyPartOrgan, OrganDamageLevel>> organDamageIterator = entry.getValue().getOrganDamage().entrySet().iterator();
+				while (organDamageIterator.hasNext()) {
+					Map.Entry<BodyPartOrgan, OrganDamageLevel> organDamageLevelEntry = organDamageIterator.next();
+					if (!organDamageLevelEntry.getValue().equals(OrganDamageLevel.DESTROYED)) {
+						if (gameContext.getRandom().nextFloat() < CHANCE_TO_HEAL_ORGAN_DAMAGE) {
+							organDamageIterator.remove();
+						}
+					}
+				}
+
+				if (!entry.getValue().getDamageLevel().equals(BodyPartDamageLevel.None)) {
+					if (gameContext.getRandom().nextFloat() < CHANCE_TO_HEAL_BODY_DAMAGE) {
+						entry.getValue().healOneLevel();
+					}
+				}
+
+				if (entry.getValue().getDamageLevel().equals(BodyPartDamageLevel.None) && entry.getValue().getOrganDamage().isEmpty()) {
+					attributes.getBody().clearDamage(entry.getKey());
+				}
+
+			}
+		}
 	}
 }

@@ -103,8 +103,8 @@ public class Body implements ChildPersistable {
 		}
 	}
 
-	public Collection<BodyPartDamage> getAllDamage() {
-		return damageMap.values();
+	public Set<Map.Entry<BodyPart, BodyPartDamage>> getAllDamage() {
+		return damageMap.entrySet();
 	}
 
 	public BodyPartDamage getDamage(BodyPart bodyPart) {
@@ -173,5 +173,9 @@ public class Body implements ChildPersistable {
 				damageMap.put(new BodyPart(partDefinition, discriminator), damage);
 			}
 		}
+	}
+
+	public void clearDamage(BodyPart bodyPart) {
+		damageMap.remove(bodyPart);
 	}
 }
