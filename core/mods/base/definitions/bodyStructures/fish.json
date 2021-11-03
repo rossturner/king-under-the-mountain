@@ -1,0 +1,34 @@
+{
+  "name": "Fish",
+  "rootPartName": "Torso",
+  "partDefinitions": [
+    {
+      "name": "Head",
+      "size": 0.3,
+      "bones": ["SMALL"],
+      "organs": [
+        {
+          "type": "Brain",
+          "relativeSize": 0.2
+        },
+        {
+          "type": "Eye",
+          "discriminator": "Left",
+          "relativeSize": 0.05
+        },
+        {
+          "type": "Eye",
+          "discriminator": "Right",
+          "relativeSize": 0.05
+        }
+      ]
+    },
+    {
+      "name": "Torso",
+      "size": 1.0,
+      "bones": ["SMALL", "SMALL"],
+      "organs": [],
+      "childParts": ["Head"]
+    }
+  ]
+}

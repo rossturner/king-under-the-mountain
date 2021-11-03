@@ -68,19 +68,16 @@ BODY_STRUCTURE.TORSO,Chest,,,,,,,,,,,,,,,,,,,
 
 BONE.BONE,Bone,,,,,,,,,,,,,,,,,,,
 
-CARCASS.CARP.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
-CARCASS.CARP.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
-CARCASS.CARP.RAW,Carp,,,,,,,,,,,,,,,,,,,
+CARCASS.CARP.PREPARED.NOUN,Carp fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.CARP.PREPARED.PLURAL,Carp fillets,,,,,,,,,,,,,,,,,,,
 CARCASS.GROUP,Corpses,,,,,,,,,,,,,,,,,,,
 CARCASS.MEAT.LARGE,Meat (large),,,,,,,,,,,,,,,,,,,
 CARCASS.MEAT.MEDIUM,Meat (medium),,,,,,,,,,,,,,,,,,,
 CARCASS.MEAT.SMALL,Meat (small),,,,,,,,,,,,,,,,,,,
-CARCASS.PERCH.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
-CARCASS.PERCH.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
-CARCASS.PERCH.RAW,Perch,,,,,,,,,,,,,,,,,,,
-CARCASS.PIKE.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
-CARCASS.PIKE.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
-CARCASS.PIKE.RAW,Pike,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.NOUN,Perch fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.PLURAL,Perch fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.NOUN,Pike fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.PLURAL,Pike fillets,,,,,,,,,,,,,,,,,,,
 
 CLOTH.HEMP-LINEN,Hemp,,,,,,,,,,,,,,,,,,,
 
@@ -932,6 +929,7 @@ QUOTA.FIXED_AMOUNT,in total,,,,,,,,,,toplamda,,,,,,,,,
 QUOTA.PER_SETTLER,per settler,,,,,,,,,,vatandaş başına,,,,,,,,,
 
 RACE.BOAR.NOUN,Wild boar,,,,,,,,,,,,,,,,,,,
+RACE.CARP.NOUN,Carp,,,,,,,,,,,,,,,,,,,
 RACE.DEER.FEMALE_NOUN,Doe,,,,,,,,,,,,,,,,,,,
 RACE.DEER.MALE_NOUN,Stag,,,,,,,,,,,,,,,,,,,
 RACE.DEER.TOOLTIP,A deer is a non-threatening herbivore which will flee at any sign of danger,,,,,,,,,,,,,,,,,,,
@@ -944,6 +942,8 @@ RACE.DWARF.MALE_PLURAL,Dwarves,,Zwerge,Nains,Nani,Enanos,Anões,Anões,,Гном
 RACE.DWARF.TOOLTIP,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,,"Zwerge sind kleine und stämmige, humanoide Wesen. Sie sind Meister im Umgang mit Stein und Metall. Die meisten Zwerge misstrauen dem Himmel und ziehen es vor unterirdisch zu leben.",Les nains sont des humanoïdes courts et trapus. Ils sont maîtres de travailler avec la pierre et le métal. La plupart des nains se méfient du ciel et préfèrent rester sous terre.,I nani sono umanoidi corti e tozzosi. Sono maestri nel lavorare con la pietra e il metallo. La maggior parte dei nani diffidano del cielo e preferiscono rimanere sottoterra.,Los enanos son humanoides cortos y gruesos. Son maestros de trabajar con piedra y metal. La mayoría de los enanos desconfían del cielo y prefieren permanecer bajo tierra.,Os anões são humanóides curtos e cheios. Eles são mestres de trabalhar com pedra e metal. A maioria dos anões desconfia do céu e prefere ficar no subsolo.,,,Гномы короткие и гуманоиды. Они мастера работы с камнем и металлом. Большинство гномов не доверяют небу и предпочитают оставаться под землей.,Cüceler kısa ve tıkmaz insansı yaratıklardır. Taş ve metal ustasılardır. Cücelerin büyük bir çoğunluğu gök yüzüne güvenmezler ve yer altında kalmayı tercih ederler.,Dværge er korte og tætne humanoider. De er mestre i at arbejde med sten og metal. De fleste dværge mistillid til himlen og foretrækker at forblive under jorden.,,Dvärgar är korta och slitna humanoider. De är mästare på att arbeta med sten och metall. De flesta dvärgar misstror himlen och föredrar att stanna under jorden.,,,,ドワーフは短く、ひっそりとしたヒューマノイドです。 彼らは石と金属を扱う巨匠です。 ほとんどのドワーフは空を不信にし、地下に滞在することを好む。,矮人是短而矮胖的人形。 他们是石头和金属工作的主人。 大多数矮人不信任天空，宁愿留在地下。,드워프는 짧고 땅딸막 한 휴머노이드입니다. 그들은 돌과 금속으로 일하는 주인입니다. 대부분의 드워프는 하늘을 불신하고 지하에 머물 것을 선호합니다.
 RACE.FOX.FEMALE_NOUN,Vixen,,,,,,,,,,,,,,,,,,,
 RACE.FOX.MALE_NOUN,Fox,,,,,,,,,,,,,,,,,,,
+RACE.PERCH.NOUN,Perch,,,,,,,,,,,,,,,,,,,
+RACE.PIKE.NOUN,Pike,,,,,,,,,,,,,,,,,,,
 
 RESOURCE.CRUSHED.VITRIOL.NOUN,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,Витриол,Vitriol,Vitriol,,Vitriol,,,,ヴィトリオール,维特里奥尔,비트리올
 RESOURCE.CRUSHED.VITRIOL.PLURAL,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,Витриол,Vitriol,Vitriol,,Vitriol,,,,ヴィトリオール,维特里奥尔,비트리올

@@ -1,0 +1,49 @@
+{
+  "name": "Carp",
+  "i18nKey": "RACE.CARP",
+
+  "minStrength": 1.0,
+  "maxStrength": 2.0,
+
+  "bodyStructureName": "Fish",
+
+  "bodyShapes": [
+    {
+      "value": "AVERAGE"
+    }
+  ],
+
+  "colors": {
+  },
+
+  "behaviour": {
+    "behaviourName": "SolitaryAnimal"
+  },
+
+  "genders": {
+    "MALE": {
+      "weighting": 0.5
+    },
+    "FEMALE": {
+      "weighting": 0.5
+    }
+  },
+
+  "features": {
+    "meat": {
+      "itemTypeName": "Carcass-Carp-Prepared",
+      "materialName": "Carp Meat",
+      "quantity": 1
+    },
+    "skin": {
+      "damageReduction": {
+      }
+    },
+    "bones": {
+      "materialName": "Bone"
+    },
+    "blood": {
+
+    }
+  }
+}

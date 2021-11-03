@@ -115,6 +115,9 @@ public class CorpseBehaviour implements BehaviourComponent, SelectableDescriptio
 	}
 
 	public void setOriginalSkinColor(Color originalSkinColor) {
+		if (originalSkinColor == null) {
+			originalSkinColor = Color.WHITE;
+		}
 		this.originalSkinColor = originalSkinColor;
 	}
 

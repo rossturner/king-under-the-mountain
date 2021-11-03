@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.behaviour.creature;
 
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
+import com.badlogic.gdx.math.RandomXS128;
 import org.apache.commons.lang3.NotImplementedException;
 import technology.rocketjump.undermount.entities.ai.goap.*;
 import technology.rocketjump.undermount.entities.ai.memory.Memory;
@@ -155,7 +156,7 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
 		AggressionResponse aggressionResponse = attributes.getRace().getBehaviour().getAggressionResponse();
 		if (aggressionResponse == null || aggressionResponse.equals(AggressionResponse.MIXED)) {
-			if (gameContext.getRandom().nextBoolean()) {
+			if (new RandomXS128(attributes.getSeed()).nextBoolean()) {
 				aggressionResponse = AggressionResponse.ATTACK;
 			} else {
 				aggressionResponse = AggressionResponse.FLEE;
@@ -171,7 +172,7 @@ public abstract class CreatureBehaviour implements BehaviourComponent, Destructi
 				goal = SpecialGoal.FLEE_FROM_AGGRESSOR.getInstance();
 				break;
 			default:
-				throw new NotImplementedException("No goal speified for aggression response: " + aggressionResponse.name());
+				throw new NotImplementedException("No goal specified for aggression response: " + aggressionResponse.name());
 		}
 		AssignedGoal assignedGoal = new AssignedGoal(goal, parentEntity, messageDispatcher);
 		assignedGoal.setRelevantMemory(attackedByCreatureMemory);

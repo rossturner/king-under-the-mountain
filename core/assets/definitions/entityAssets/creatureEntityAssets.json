@@ -3119,6 +3119,852 @@
     }
   }
 }, {
+  "uniqueName" : "Fox-Body-Awake",
+  "type" : "CREATURE_BODY",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousness" : "AWAKE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -4.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.5,
+          "y" : 4.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.5,
+          "y" : 4.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 2.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 2.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -2.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 2.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 2.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.5,
+          "y" : 6.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackBaseColour.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -5.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 5.5,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 5.5,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-Markings-Awake",
+  "type" : "BODY_CLOTHING",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousness" : "AWAKE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -5.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.5,
+        "y" : -3.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : -3.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -7.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackMarkingsPlaceOntop.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -5.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-BodyOutline-Awake",
+  "type" : "BODY_OUTLINE",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousness" : "AWAKE",
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -4.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.5,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -2.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -6.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackLines.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -5.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-Body-Sleep",
+  "type" : "CREATURE_BODY",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 0.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 1.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : -1.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : -1.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -11.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -11.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 1.0,
+          "y" : 11.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackBaseColourS.png",
+      "coloringLayer" : "SKIN_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -4.0,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ {
+        "type" : "BODY_CLOTHING",
+        "offsetPixels" : {
+          "x" : 4.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      }, {
+        "type" : "BODY_OUTLINE",
+        "offsetPixels" : {
+          "x" : 4.0,
+          "y" : 15.0,
+          "zero" : false,
+          "unit" : false
+        }
+      } ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-Markings-Sleep",
+  "type" : "BODY_CLOTHING",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.5,
+        "y" : -23.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 6.5,
+        "y" : -20.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -6.5,
+        "y" : -20.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -15.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -15.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackMarkingsPlaceOntopS.png",
+      "coloringLayer" : "MARKING_COLOR",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -4.0,
+        "y" : -24.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
+  "uniqueName" : "Fox-BodyOutline-Sleep",
+  "type" : "BODY_OUTLINE",
+  "raceName" : "Fox",
+  "bodyShape" : "AVERAGE",
+  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
+  "tags" : { },
+  "spriteDescriptors" : {
+    "DOWN" : {
+      "filename" : "FoxFrontLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -0.5,
+        "y" : -15.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_RIGHT" : {
+      "filename" : "FoxFrontSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -10.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "DOWN_LEFT" : {
+      "filename" : "FoxFrontSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : 0.0,
+        "y" : -10.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_RIGHT" : {
+      "filename" : "FoxBackSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -10.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : true,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP_LEFT" : {
+      "filename" : "FoxBackSideLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -1.0,
+        "y" : -10.5,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    },
+    "UP" : {
+      "filename" : "FoxBackLinesS.png",
+      "isAnimated" : false,
+      "scale" : 1.0,
+      "offsetPixels" : {
+        "x" : -4.0,
+        "y" : -13.0,
+        "zero" : false,
+        "unit" : false
+      },
+      "flipX" : false,
+      "flipY" : false,
+      "childAssets" : [ ],
+      "attachmentPoints" : [ ],
+      "parentEntityAssets" : [ ]
+    }
+  }
+}, {
   "uniqueName" : "Dwarf-Beard01-Color",
   "type" : "CREATURE_BEARD",
   "raceName" : "Dwarf",
@@ -21298,651 +22144,123 @@
     }
   }
 }, {
-  "uniqueName" : "Fox-Body-Awake",
+  "uniqueName" : "Carp-Dead",
   "type" : "CREATURE_BODY",
-  "raceName" : "Fox",
+  "raceName" : "Carp",
   "bodyShape" : "AVERAGE",
-  "consciousness" : "AWAKE",
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "FoxFrontBaseColour.png",
-      "coloringLayer" : "SKIN_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -4.5,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 0.5,
-          "y" : 4.5,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 0.5,
-          "y" : 4.5,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "DOWN_RIGHT" : {
-      "filename" : "FoxFrontSideBaseColour.png",
-      "coloringLayer" : "SKIN_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -2.5,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : true,
-      "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 2.5,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 2.5,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "DOWN_LEFT" : {
-      "filename" : "FoxFrontSideBaseColour.png",
-      "coloringLayer" : "SKIN_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -2.5,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 2.5,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 2.5,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP_RIGHT" : {
-      "filename" : "FoxBackSideBaseColour.png",
-      "coloringLayer" : "SKIN_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -6.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : true,
-      "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 0.5,
-          "y" : 6.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 0.5,
-          "y" : 6.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP_LEFT" : {
-      "filename" : "FoxBackSideBaseColour.png",
-      "coloringLayer" : "SKIN_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -6.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 0.5,
-          "y" : 6.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 0.5,
-          "y" : 6.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP" : {
-      "filename" : "FoxBackBaseColour.png",
-      "coloringLayer" : "SKIN_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -5.5,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 5.5,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 5.5,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    }
-  }
-}, {
-  "uniqueName" : "Fox-Markings-Awake",
-  "type" : "BODY_CLOTHING",
-  "raceName" : "Fox",
-  "bodyShape" : "AVERAGE",
-  "consciousness" : "AWAKE",
-  "tags" : { },
-  "spriteDescriptors" : {
-    "DOWN" : {
-      "filename" : "FoxFrontMarkingsPlaceOntop.png",
-      "coloringLayer" : "MARKING_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -5.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "DOWN_RIGHT" : {
-      "filename" : "FoxFrontSideMarkingsPlaceOntop.png",
-      "coloringLayer" : "MARKING_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 1.5,
-        "y" : -3.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : true,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "DOWN_LEFT" : {
-      "filename" : "FoxFrontSideMarkingsPlaceOntop.png",
-      "coloringLayer" : "MARKING_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -1.5,
-        "y" : -3.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP_RIGHT" : {
-      "filename" : "FoxBackSideMarkingsPlaceOntop.png",
-      "coloringLayer" : "MARKING_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -7.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : true,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP_LEFT" : {
-      "filename" : "FoxBackSideMarkingsPlaceOntop.png",
-      "coloringLayer" : "MARKING_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -7.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP" : {
-      "filename" : "FoxBackMarkingsPlaceOntop.png",
-      "coloringLayer" : "MARKING_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -5.5,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    }
-  }
-}, {
-  "uniqueName" : "Fox-BodyOutline-Awake",
-  "type" : "BODY_OUTLINE",
-  "raceName" : "Fox",
-  "bodyShape" : "AVERAGE",
-  "consciousness" : "AWAKE",
-  "tags" : { },
-  "spriteDescriptors" : {
-    "DOWN" : {
-      "filename" : "FoxFrontLines.png",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -4.5,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "DOWN_RIGHT" : {
-      "filename" : "FoxFrontSideLines.png",
+      "filename" : "Carp.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : 0.5,
-        "y" : -2.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : true,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "DOWN_LEFT" : {
-      "filename" : "FoxFrontSideLines.png",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -2.0,
+        "y" : -0.5,
         "zero" : false,
         "unit" : false
       },
       "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP_RIGHT" : {
-      "filename" : "FoxBackSideLines.png",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -6.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : true,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP_LEFT" : {
-      "filename" : "FoxBackSideLines.png",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -6.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    },
-    "UP" : {
-      "filename" : "FoxBackLines.png",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -5.5,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ ],
-      "attachmentPoints" : [ ],
-      "parentEntityAssets" : [ ]
-    }
-  }
-}, {
-  "uniqueName" : "Fox-Body-Sleep",
-  "type" : "CREATURE_BODY",
-  "raceName" : "Fox",
-  "bodyShape" : "AVERAGE",
-  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
-  "tags" : { },
-  "spriteDescriptors" : {
-    "DOWN" : {
-      "filename" : "FoxFrontBaseColourS.png",
-      "coloringLayer" : "SKIN_COLOR",
-      "isAnimated" : false,
-      "scale" : 1.0,
-      "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -15.0,
-        "zero" : false,
-        "unit" : false
-      },
-      "flipX" : false,
-      "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 0.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "FoxFrontSideBaseColourS.png",
-      "coloringLayer" : "SKIN_COLOR",
+      "filename" : "Carp.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 1.0,
-        "y" : -15.0,
+        "x" : 0.5,
+        "y" : -0.5,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : true,
+      "flipX" : false,
       "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 1.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 1.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
+      "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "FoxFrontSideBaseColourS.png",
-      "coloringLayer" : "SKIN_COLOR",
+      "filename" : "Carp.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 1.0,
-        "y" : -15.0,
+        "x" : 0.5,
+        "y" : -0.5,
         "zero" : false,
         "unit" : false
       },
       "flipX" : false,
       "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : -1.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : -1.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
+      "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "FoxBackSideBaseColourS.png",
-      "coloringLayer" : "SKIN_COLOR",
+      "filename" : "Carp.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -1.0,
-        "y" : -11.0,
+        "x" : 0.5,
+        "y" : -0.5,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : true,
+      "flipX" : false,
       "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 1.0,
-          "y" : 11.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 1.0,
-          "y" : 11.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
+      "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "FoxBackSideBaseColourS.png",
-      "coloringLayer" : "SKIN_COLOR",
+      "filename" : "Carp.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -1.0,
-        "y" : -11.0,
+        "x" : 0.5,
+        "y" : -0.5,
         "zero" : false,
         "unit" : false
       },
       "flipX" : false,
       "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 1.0,
-          "y" : 11.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 1.0,
-          "y" : 11.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
+      "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "FoxBackBaseColourS.png",
-      "coloringLayer" : "SKIN_COLOR",
+      "filename" : "Carp.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -4.0,
-        "y" : -15.0,
+        "x" : 0.5,
+        "y" : -0.5,
         "zero" : false,
         "unit" : false
       },
       "flipX" : false,
       "flipY" : false,
-      "childAssets" : [ {
-        "type" : "BODY_CLOTHING",
-        "offsetPixels" : {
-          "x" : 4.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      }, {
-        "type" : "BODY_OUTLINE",
-        "offsetPixels" : {
-          "x" : 4.0,
-          "y" : 15.0,
-          "zero" : false,
-          "unit" : false
-        }
-      } ],
+      "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     }
   }
 }, {
-  "uniqueName" : "Fox-Markings-Sleep",
-  "type" : "BODY_CLOTHING",
-  "raceName" : "Fox",
+  "uniqueName" : "Perch-Dead",
+  "type" : "CREATURE_BODY",
+  "raceName" : "Perch",
   "bodyShape" : "AVERAGE",
-  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "FoxFrontMarkingsPlaceOntopS.png",
-      "coloringLayer" : "MARKING_COLOR",
+      "filename" : "Perch.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
         "x" : -1.5,
-        "y" : -23.0,
+        "y" : -2.0,
         "zero" : false,
         "unit" : false
       },
@@ -21953,30 +22271,28 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "FoxFrontSideMarkingsPlaceOntopS.png",
-      "coloringLayer" : "MARKING_COLOR",
+      "filename" : "Perch.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 6.5,
-        "y" : -20.0,
+        "x" : -1.5,
+        "y" : -2.0,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : true,
+      "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "FoxFrontSideMarkingsPlaceOntopS.png",
-      "coloringLayer" : "MARKING_COLOR",
+      "filename" : "Perch.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -6.5,
-        "y" : -20.0,
+        "x" : -1.5,
+        "y" : -2.0,
         "zero" : false,
         "unit" : false
       },
@@ -21987,30 +22303,28 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "FoxBackSideMarkingsPlaceOntopS.png",
-      "coloringLayer" : "MARKING_COLOR",
+      "filename" : "Perch.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -1.0,
-        "y" : -15.5,
+        "x" : -1.5,
+        "y" : -2.0,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : true,
+      "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "FoxBackSideMarkingsPlaceOntopS.png",
-      "coloringLayer" : "MARKING_COLOR",
+      "filename" : "Perch.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -1.0,
-        "y" : -15.5,
+        "x" : -1.5,
+        "y" : -2.0,
         "zero" : false,
         "unit" : false
       },
@@ -22021,13 +22335,12 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "FoxBackMarkingsPlaceOntopS.png",
-      "coloringLayer" : "MARKING_COLOR",
+      "filename" : "Perch.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -4.0,
-        "y" : -24.5,
+        "x" : -1.5,
+        "y" : -2.0,
         "zero" : false,
         "unit" : false
       },
@@ -22039,20 +22352,19 @@
     }
   }
 }, {
-  "uniqueName" : "Fox-BodyOutline-Sleep",
-  "type" : "BODY_OUTLINE",
-  "raceName" : "Fox",
+  "uniqueName" : "Pike-Dead",
+  "type" : "CREATURE_BODY",
+  "raceName" : "Pike",
   "bodyShape" : "AVERAGE",
-  "consciousnessList" : [ "SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD" ],
   "tags" : { },
   "spriteDescriptors" : {
     "DOWN" : {
-      "filename" : "FoxFrontLinesS.png",
+      "filename" : "Pike.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -0.5,
-        "y" : -15.0,
+        "x" : -1.5,
+        "y" : 3.5,
         "zero" : false,
         "unit" : false
       },
@@ -22063,28 +22375,28 @@
       "parentEntityAssets" : [ ]
     },
     "DOWN_RIGHT" : {
-      "filename" : "FoxFrontSideLinesS.png",
+      "filename" : "Pike.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -10.0,
+        "x" : -1.5,
+        "y" : 3.5,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : true,
+      "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "DOWN_LEFT" : {
-      "filename" : "FoxFrontSideLinesS.png",
+      "filename" : "Pike.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : 0.0,
-        "y" : -10.0,
+        "x" : -1.5,
+        "y" : 3.5,
         "zero" : false,
         "unit" : false
       },
@@ -22095,28 +22407,28 @@
       "parentEntityAssets" : [ ]
     },
     "UP_RIGHT" : {
-      "filename" : "FoxBackSideLinesS.png",
+      "filename" : "Pike.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -1.0,
-        "y" : -10.5,
+        "x" : -1.5,
+        "y" : 3.5,
         "zero" : false,
         "unit" : false
       },
-      "flipX" : true,
+      "flipX" : false,
       "flipY" : false,
       "childAssets" : [ ],
       "attachmentPoints" : [ ],
       "parentEntityAssets" : [ ]
     },
     "UP_LEFT" : {
-      "filename" : "FoxBackSideLinesS.png",
+      "filename" : "Pike.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -1.0,
-        "y" : -10.5,
+        "x" : -1.5,
+        "y" : 3.5,
         "zero" : false,
         "unit" : false
       },
@@ -22127,12 +22439,12 @@
       "parentEntityAssets" : [ ]
     },
     "UP" : {
-      "filename" : "FoxBackLinesS.png",
+      "filename" : "Pike.png",
       "isAnimated" : false,
       "scale" : 1.0,
       "offsetPixels" : {
-        "x" : -4.0,
-        "y" : -13.0,
+        "x" : -1.5,
+        "y" : 3.5,
         "zero" : false,
         "unit" : false
       },

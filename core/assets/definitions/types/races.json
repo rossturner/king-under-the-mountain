@@ -125,6 +125,57 @@
     }
   }
 }, {
+  "name" : "Fox",
+  "i18nKey" : "RACE.FOX",
+  "minStrength" : 4.0,
+  "maxStrength" : 10.0,
+  "bodyStructureName" : "pawed-quadruped",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "SKIN_COLOR" : {
+      "swatch" : "fox-skin-swatch.png",
+      "hidden" : false
+    },
+    "MARKING_COLOR" : {
+      "swatch" : "fox-markings-swatch.png",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "behaviourName" : "SolitaryAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ],
+    "aggressionResponse" : "MIXED"
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Meat-Small",
+      "materialName" : "Fox Meat",
+      "quantity" : 2
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
   "name" : "Dwarf",
   "i18nKey" : "RACE.DWARF",
   "minStrength" : 7.0,
@@ -193,29 +244,18 @@
     }
   }
 }, {
-  "name" : "Fox",
-  "i18nKey" : "RACE.FOX",
-  "minStrength" : 4.0,
-  "maxStrength" : 10.0,
-  "bodyStructureName" : "pawed-quadruped",
+  "name" : "Carp",
+  "i18nKey" : "RACE.CARP",
+  "minStrength" : 1.0,
+  "maxStrength" : 2.0,
+  "bodyStructureName" : "Fish",
   "bodyShapes" : [ {
     "value" : "AVERAGE"
   } ],
-  "colors" : {
-    "SKIN_COLOR" : {
-      "swatch" : "fox-skin-swatch.png",
-      "hidden" : false
-    },
-    "MARKING_COLOR" : {
-      "swatch" : "fox-markings-swatch.png",
-      "hidden" : false
-    }
-  },
+  "colors" : { },
   "behaviour" : {
     "behaviourName" : "SolitaryAnimal",
-    "scheduleName" : "Diurnal animal",
-    "needs" : [ "SLEEP" ],
-    "aggressionResponse" : "MIXED"
+    "needs" : [ ]
   },
   "genders" : {
     "MALE" : {
@@ -232,9 +272,89 @@
       "damageReduction" : { }
     },
     "meat" : {
-      "itemTypeName" : "Carcass-Meat-Small",
-      "materialName" : "Fox Meat",
-      "quantity" : 2
+      "itemTypeName" : "Carcass-Carp-Prepared",
+      "materialName" : "Carp Meat",
+      "quantity" : 1
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Perch",
+  "i18nKey" : "RACE.PERCH",
+  "minStrength" : 1.0,
+  "maxStrength" : 2.0,
+  "bodyStructureName" : "Fish",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : { },
+  "behaviour" : {
+    "behaviourName" : "SolitaryAnimal",
+    "needs" : [ ]
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Perch-Prepared",
+      "materialName" : "Perch Meat",
+      "quantity" : 1
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Pike",
+  "i18nKey" : "RACE.PIKE",
+  "minStrength" : 1.0,
+  "maxStrength" : 2.0,
+  "bodyStructureName" : "Fish",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : { },
+  "behaviour" : {
+    "behaviourName" : "SolitaryAnimal",
+    "needs" : [ ]
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Pike-Prepared",
+      "materialName" : "Pike Meat",
+      "quantity" : 1
     },
     "bones" : {
       "materialName" : "Bone"

@@ -10,20 +10,7 @@
   "deconstructMechanismJobType": "DECONSTRUCT_MECHANISM",
 
   "fishingJobType": "FISHING",
-  "fishAvailable": [
-    {
-      "itemTypeName": "Carcass-Carp-Raw",
-      "materialName": "Carp Meat"
-    },
-    {
-      "itemTypeName": "Carcass-Perch-Raw",
-      "materialName": "Perch Meat"
-    },
-    {
-      "itemTypeName": "Carcass-Pike-Raw",
-      "materialName": "Pike Meat"
-    }
-  ],
+  "fishAvailable": ["Carp", "Pike", "Perch"],
 
   "mushroomShockTimeHours": 24.0,
   "numAnnualFish": 120

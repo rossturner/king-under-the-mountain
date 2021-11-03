@@ -159,17 +159,19 @@ public class EntityStore implements GameContextAware, AssetDisposable {
 	public void changeBehaviour(Entity entity, BehaviourComponent newBehaviour, MessageDispatcher messageDispatcher) {
 		if (entity != null) {
 			BehaviourComponent oldBehaviour = entity.getBehaviourComponent();
-			if (oldBehaviour.isJobAssignable()) {
-				jobAssignableEntities.remove(entity.getId());
-			}
-			if (oldBehaviour.isUpdateEveryFrame()) {
-				updateEveryFrameEntities.remove(entity.getId());
-			}
-			if (oldBehaviour.isUpdateInfrequently()) {
-				updateInfrequentlyEntities.remove(entity);
-			}
-			if (oldBehaviour instanceof Destructible) {
-				((Destructible)oldBehaviour).destroy(entity, messageDispatcher, gameContext);
+			if (oldBehaviour != null) {
+				if (oldBehaviour.isJobAssignable()) {
+					jobAssignableEntities.remove(entity.getId());
+				}
+				if (oldBehaviour.isUpdateEveryFrame()) {
+					updateEveryFrameEntities.remove(entity.getId());
+				}
+				if (oldBehaviour.isUpdateInfrequently()) {
+					updateInfrequentlyEntities.remove(entity);
+				}
+				if (oldBehaviour instanceof Destructible) {
+					((Destructible)oldBehaviour).destroy(entity, messageDispatcher, gameContext);
+				}
 			}
 
 			entity.replaceBehaviourComponent(newBehaviour);

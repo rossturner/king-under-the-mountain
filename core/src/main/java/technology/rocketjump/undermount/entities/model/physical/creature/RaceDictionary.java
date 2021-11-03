@@ -98,16 +98,17 @@ public class RaceDictionary {
 			}
 		}
 
-		if (race.getBehaviour() == null) {
-			throw new RuntimeException("Behaviour section does not exist for " + race.getName());
+		if (race.getBehaviour().getBehaviourName() != null) {
+			race.getBehaviour().setBehaviourClass(creatureBehaviourDictionary.getByName(race.getBehaviour().getBehaviourName()));
+			if (race.getBehaviour().getBehaviourClass() == null) {
+				Logger.error(String.format("Could not find behaviour with name %s for race %s", race.getBehaviour().getBehaviourName(), race.getName()));
+			}
 		}
-		race.getBehaviour().setBehaviourClass(creatureBehaviourDictionary.getByName(race.getBehaviour().getBehaviourName()));
-		if (race.getBehaviour().getBehaviourClass() == null) {
-			Logger.error(String.format("Could not find behaviour with name %s for race %s", race.getBehaviour().getBehaviourName(), race.getName()));
-		}
-		race.getBehaviour().setSchedule(scheduleDictionary.getByName(race.getBehaviour().getScheduleName()));
-		if (race.getBehaviour().getSchedule() == null) {
-			Logger.error(String.format("Could not find scheudle %s for race %s", race.getBehaviour().getBehaviourName(), race.getName()));
+		if (race.getBehaviour().getScheduleName() != null) {
+			race.getBehaviour().setSchedule(scheduleDictionary.getByName(race.getBehaviour().getScheduleName()));
+			if (race.getBehaviour().getSchedule() == null) {
+				Logger.error(String.format("Could not find scheudle %s for race %s", race.getBehaviour().getBehaviourName(), race.getName()));
+			}
 		}
 
 	}

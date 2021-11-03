@@ -1,0 +1,52 @@
+[
+  {
+    "uniqueName": "Perch-Dead",
+    "type": "CREATURE_BODY",
+    "raceName": "Perch",
+    "bodyShape": "AVERAGE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Perch.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Perch.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Perch.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Perch.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Perch.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      },
+      "UP": {
+        "filename": "Perch.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": -2.0
+        }
+      }
+    }
+  }
+]

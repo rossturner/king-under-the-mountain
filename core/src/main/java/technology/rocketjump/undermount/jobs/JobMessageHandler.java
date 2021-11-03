@@ -28,15 +28,10 @@ import technology.rocketjump.undermount.entities.components.furniture.Decoration
 import technology.rocketjump.undermount.entities.components.furniture.HarvestableEntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
-import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
-import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
-import technology.rocketjump.undermount.entities.factories.PlantEntityAttributesFactory;
-import technology.rocketjump.undermount.entities.factories.PlantEntityFactory;
+import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
-import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.*;
 import technology.rocketjump.undermount.entities.model.physical.creature.features.MeatFeature;
 import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
@@ -45,7 +40,6 @@ import technology.rocketjump.undermount.entities.model.physical.furniture.Furnit
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
-import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.model.physical.plant.*;
 import technology.rocketjump.undermount.entities.tags.DeceasedContainerTag;
 import technology.rocketjump.undermount.entities.tags.ReplacementDeconstructionResourcesTag;
@@ -64,7 +58,6 @@ import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
-import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -98,6 +91,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final JobStore jobStore;
 	private final ItemEntityFactory itemEntityFactory;
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
+	private final CreatureEntityAttributesFactory creatureEntityAttributesFactory;
+	private final CreatureEntityFactory creatureEntityFactory;
 	private final JobFactory jobFactory;
 	private final EntityStore entityStore;
 	private final PlantEntityAttributesFactory plantEntityAttributesFactory;
@@ -112,24 +107,26 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final DesignationDictionary designationDictionary;
 	private final ParticleEffectType leafExplosionParticleEffectType;
 	private final GameInteractionStateContainer gameInteractionStateContainer;
-	private final List<ItemTypeWithMaterial> fishAvailable;
+	private final List<Race> fishRacesAvailable;
 	private GameContext gameContext;
 	private ParticleEffectType deconstructParticleEffect;
 
 	@Inject
 	public JobMessageHandler(MessageDispatcher messageDispatcher, JobStore jobStore,
 							 ItemEntityFactory itemEntityFactory, ItemEntityAttributesFactory itemEntityAttributesFactory,
-							 JobFactory jobFactory, EntityStore entityStore, PlantEntityAttributesFactory plantEntityAttributesFactory,
+							 CreatureEntityAttributesFactory creatureEntityAttributesFactory, CreatureEntityFactory creatureEntityFactory, JobFactory jobFactory, EntityStore entityStore, PlantEntityAttributesFactory plantEntityAttributesFactory,
 							 PlantEntityFactory plantEntityFactory, PlantSpeciesDictionary plantSpeciesDictionary,
 							 FurnitureTypeDictionary furnitureTypeDictionary, DynamicMaterialFactory dynamicMaterialFactory,
 							 ItemTypeDictionary itemTypeDictionary, JobTypeDictionary jobTypeDictionary,
 							 DesignationDictionary designationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary,
-							 GameInteractionStateContainer gameInteractionStateContainer, GameMaterialDictionary materialDictionary,
+							 GameInteractionStateContainer gameInteractionStateContainer, RaceDictionary raceDictionary,
 							 ConstantsRepo constantsRepo) {
 		this.messageDispatcher = messageDispatcher;
 		this.jobStore = jobStore;
 		this.itemEntityFactory = itemEntityFactory;
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
+		this.creatureEntityAttributesFactory = creatureEntityAttributesFactory;
+		this.creatureEntityFactory = creatureEntityFactory;
 		this.jobFactory = jobFactory;
 		this.entityStore = entityStore;
 		this.plantEntityAttributesFactory = plantEntityAttributesFactory;
@@ -146,8 +143,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		this.leafExplosionParticleEffectType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
 		this.deconstructParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above"); // MODDING expose this
 		this.gameInteractionStateContainer = gameInteractionStateContainer;
-		constantsRepo.initialise(itemTypeDictionary, materialDictionary);
-		this.fishAvailable = constantsRepo.getSettlementConstants().getFishAvailable();
+		constantsRepo.initialise(raceDictionary);
+		this.fishRacesAvailable = constantsRepo.getSettlementConstants().getFishRacesAvailable();
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
 		messageDispatcher.addListener(this, MessageType.REMOVE_DESIGNATION);
@@ -948,14 +945,16 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				break;
 			}
 			case "FISHING": {
-				ItemTypeWithMaterial fishType = fishAvailable.get(gameContext.getRandom().nextInt(fishAvailable.size()));
+				Race fishType = fishRacesAvailable.get(gameContext.getRandom().nextInt(fishRacesAvailable.size()));
 				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
 
-				ItemEntityAttributes fishItemAttributes = itemEntityAttributesFactory.createItemAttributes(fishType.getItemType(), 1, fishType.getMaterial());
-				Entity fishItemEntity = itemEntityFactory.create(fishItemAttributes, jobCompletedMessage.getJob().getJobLocation(), true, gameContext);
+				CreatureEntityAttributes fishAttributes = creatureEntityAttributesFactory.create(fishType);
+				Entity fishEntity = creatureEntityFactory.create(fishAttributes, null, new Vector2(), gameContext);
+				messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(fishEntity, DeathReason.SUFFOCATION));
+				fishEntity.getLocationComponent().setRotation(0);
 
-				InventoryComponent inventoryComponent = completedByEntity.getComponent(InventoryComponent.class);
-				inventoryComponent.add(fishItemEntity, completedByEntity, messageDispatcher, gameContext.getGameClock());
+				HaulingComponent haulingComponent = completedByEntity.getOrCreateComponent(HaulingComponent.class);
+				haulingComponent.setHauledEntity(fishEntity, messageDispatcher, completedByEntity);
 
 				messageDispatcher.dispatchMessage(MessageType.FISH_HARVESTED_FROM_RIVER);
 				break;

@@ -32,7 +32,7 @@ public class Race {
 
 	private Map<ColoringLayer, SpeciesColor> colors = new EnumMap<>(ColoringLayer.class);
 
-	private RaceBehaviour behaviour;
+	private RaceBehaviour behaviour = new RaceBehaviour();
 
 	private Map<Gender, RaceGenderDescriptor> genders = new EnumMap<>(Gender.class);
 
