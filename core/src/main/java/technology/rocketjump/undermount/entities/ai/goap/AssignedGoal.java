@@ -13,6 +13,7 @@ import technology.rocketjump.undermount.entities.ai.memory.Memory;
 import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
 import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
@@ -25,10 +26,7 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
@@ -39,6 +37,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
  */
 public class AssignedGoal implements ChildPersistable, Destructible {
 
+	private static final Double MIN_NEED_BEFORE_GOAL_INTERRUPTED = 0.12;
 	public Entity parentEntity;
 	public MessageDispatcher messageDispatcher;
 
@@ -113,6 +112,17 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 			MemoryComponent memoryComponent = parentEntity.getOrCreateComponent(MemoryComponent.class);
 			if (memoryComponent.getShortTermMemories(gameContext.getGameClock()).stream().anyMatch(m -> m.getType().equals(MemoryType.ATTACKED_BY_CREATURE))) {
 				setInterrupted(true);
+			}
+		}
+		if (goal.interruptedByLowNeeds) {
+			NeedsComponent needsComponent = parentEntity.getComponent(NeedsComponent.class);
+			if (needsComponent != null) {
+				for (Map.Entry<EntityNeed, Double> entry : needsComponent.getAll()) {
+					if (entry.getValue() < MIN_NEED_BEFORE_GOAL_INTERRUPTED) {
+						setInterrupted(true);
+						break;
+					}
+				}
 			}
 		}
 

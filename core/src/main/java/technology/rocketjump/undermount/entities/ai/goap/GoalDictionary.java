@@ -63,7 +63,11 @@ public class GoalDictionary {
 		if (interruptedByCombat == null) {
 			interruptedByCombat = true;
 		}
-		Goal goal = new Goal(goalJson.getString("name"), goalJson.getString("i18nDescription"), goalJson.getDouble("expiryHours"), interruptedByCombat);
+		Boolean interruptedByLowNeeds = goalJson.getBoolean("interruptedByLowNeeds");
+		if (interruptedByLowNeeds == null) {
+			interruptedByLowNeeds = false;
+		}
+		Goal goal = new Goal(goalJson.getString("name"), goalJson.getString("i18nDescription"), goalJson.getDouble("expiryHours"), interruptedByCombat, interruptedByLowNeeds);
 
 		List<GoalSelector> selectors = objectMapper.readValue(goalJson.getJSONArray("selectors").toJSONString(),
 				objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, GoalSelector.class));

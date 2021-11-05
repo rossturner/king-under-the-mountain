@@ -9,7 +9,6 @@ import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.entities.EntityStore;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.actions.Action;
-import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
@@ -112,7 +111,8 @@ public class I18nTranslator implements I18nUpdatable {
 		}
 		switch (entity.getType()) {
 			case CREATURE:
-				if (entity.getBehaviourComponent() instanceof SettlerBehaviour) {
+				CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+				if (attributes.getRace().getName().equals("Dwarf")) { // TODO Replace this with sapient race or something
 					return getSettlerDescription(entity, (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());
 				} else {
 					return getCreatureDescription(entity, (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes());

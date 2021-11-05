@@ -2,6 +2,7 @@
   "name": "Add to inventory goal",
   "expiryHours": 12,
   "i18nDescription": "GOAL.ADD_TO_INVENTORY.DESCRIPTION",
+  "interruptedByLowNeeds": true,
   "selectors": [
     {
       "conditions": [

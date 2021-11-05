@@ -18,10 +18,7 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.ai.goap.EntityNeed.*;
 import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
@@ -142,5 +139,9 @@ public class NeedsComponent implements EntityComponent {
 
 	public boolean has(EntityNeed need) {
 		return needValues.containsKey(need);
+	}
+
+	public Set<Map.Entry<EntityNeed, Double>> getAll() {
+		return needValues.entrySet();
 	}
 }

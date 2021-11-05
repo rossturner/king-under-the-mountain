@@ -99,7 +99,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 				map = mapFactory.create(worldSeed.seed, worldSeed.mapWidth, worldSeed.mapHeight, gameContext);
 			} catch (InvalidMapGenerationException e) {
 				Logger.warn("Invalid map generated: " + e.getMessage());
-				worldSeed = newGameSeed(newGameMessage.seed);
+				worldSeed = newGameSeed(new RandomXS128(newGameMessage.seed).nextLong());
 				Logger.info("Retrying generation with new seed: " + worldSeed);
 			}
 		}

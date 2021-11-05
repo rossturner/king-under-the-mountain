@@ -37,7 +37,8 @@
     } ],
     "priority" : "JOB_NORMAL"
   } ],
-  "initialActions" : [ "RememberRequiredItem" ]
+  "initialActions" : [ "RememberRequiredItem" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.COMBAT.DESCRIPTION",
   "name" : "Attack aggressor goal",
@@ -55,7 +56,8 @@
   },
   "selectors" : [ ],
   "interruptedByCombat" : false,
-  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ]
+  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
   "name" : "Douse self goal",
@@ -308,7 +310,8 @@
     "UnassignJob" : { }
   },
   "selectors" : [ ],
-  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.COMBAT.DESCRIPTION",
   "name" : "Hunt creature goal",
@@ -337,7 +340,8 @@
   },
   "selectors" : [ ],
   "interruptedByCombat" : false,
-  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ]
+  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.IDLE.DESCRIPTION",
   "name" : "Idle goal",
@@ -345,7 +349,8 @@
     "Idle" : { }
   },
   "selectors" : [ ],
-  "initialActions" : [ "Idle" ]
+  "initialActions" : [ "Idle" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.TRANSFER_LIQUID.DESCRIPTION",
   "name" : "Move liquid in item goal",
@@ -420,7 +425,8 @@
     }
   },
   "selectors" : [ ],
-  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
   "name" : "Roll on floor goal",
@@ -499,7 +505,8 @@
     "FaceTowardsLocation" : { }
   },
   "selectors" : [ ],
-  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "ACTION.SELECT_JOB.DESCRIPTION",
   "name" : "Work on job goal",
@@ -544,5 +551,6 @@
     } ],
     "priority" : "LOWEST"
   } ],
-  "initialActions" : [ "SelectJob" ]
+  "initialActions" : [ "SelectJob" ],
+  "interruptedByLowNeeds" : true
 } ]

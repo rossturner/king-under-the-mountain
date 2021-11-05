@@ -1,6 +1,7 @@
 {
   "name": "Attack aggressor goal",
   "i18nDescription": "GOAL.COMBAT.DESCRIPTION",
+  "interruptedByLowNeeds": true,
   "interruptedByCombat": false,
   "selectors": [],
   "initialActions": ["EquipWeapon", "MoveInRangeOfTarget"],

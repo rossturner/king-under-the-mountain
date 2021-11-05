@@ -66,9 +66,9 @@ public class GoalQueueTest {
 
 	@Test
 	public void popNextGoal_returnsPriorityOrder() {
-		goalQueue.add(new QueuedGoal(new Goal("first", "i18nDescription", null, interrupedByCombat), NOURISHMENT, WANT_NORMAL, mockClock));
-		goalQueue.add(new QueuedGoal(new Goal("other", "i18nDescription", null, interrupedByCombat), NOURISHMENT, WANT_URGENT, mockClock));
-		goalQueue.add(new QueuedGoal(new Goal("yet another", "i18nDescription", null, interrupedByCombat), NOURISHMENT, WANT_NORMAL, mockClock));
+		goalQueue.add(new QueuedGoal(new Goal("first", "i18nDescription", null, false, false), NOURISHMENT, WANT_NORMAL, mockClock));
+		goalQueue.add(new QueuedGoal(new Goal("other", "i18nDescription", null, false, false), NOURISHMENT, WANT_URGENT, mockClock));
+		goalQueue.add(new QueuedGoal(new Goal("yet another", "i18nDescription", null, false, false), NOURISHMENT, WANT_NORMAL, mockClock));
 
 		QueuedGoal result = goalQueue.popNextGoal(asList(NOURISHMENT));
 
@@ -78,9 +78,9 @@ public class GoalQueueTest {
 
 	@Test
 	public void goalsWithSamePriority_returnedInInsertionOrder() {
-		Goal first = new Goal("first", null, null, interrupedByCombat);
-		Goal third = new Goal("third", null, null, interrupedByCombat);
-		Goal second = new Goal("second", null, null, interrupedByCombat);
+		Goal first = new Goal("first", null, null, false, false);
+		Goal third = new Goal("third", null, null, false, false);
+		Goal second = new Goal("second", null, null, false, false);
 
 		goalQueue.add(new QueuedGoal(first, ScheduleCategory.WORK, JOB_NORMAL, mockClock));
 		goalQueue.add(new QueuedGoal(second, ScheduleCategory.WORK, JOB_NORMAL, mockClock));
@@ -99,8 +99,8 @@ public class GoalQueueTest {
 	public void goalsWithExpiredTime_areRemoved() {
 		when(mockClock.getCurrentGameTime()).thenReturn(10.0);
 
-		Goal first = new Goal("first", null, 1.0, interrupedByCombat);
-		Goal second = new Goal("second", null, null, interrupedByCombat);
+		Goal first = new Goal("first", null, 1.0, false, false);
+		Goal second = new Goal("second", null, null, false, false);
 
 		goalQueue.add(new QueuedGoal(first, ScheduleCategory.WORK, JOB_NORMAL, mockClock));
 		goalQueue.add(new QueuedGoal(second, ScheduleCategory.WORK, JOB_NORMAL, mockClock));
