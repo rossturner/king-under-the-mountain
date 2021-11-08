@@ -51,23 +51,23 @@ public class AudioMessageHandler implements Telegraph {
 				return true;
 			}
 			case MessageType.REQUEST_SOUND: {
-				return handle ((RequestSoundMessage)msg.extraInfo);
+				return handle((RequestSoundMessage) msg.extraInfo);
 			}
-			case MessageType.REQUEST_STOP_SOUND_LOOP : {
-				return handle ((RequestSoundStopMessage)msg.extraInfo);
+			case MessageType.REQUEST_STOP_SOUND_LOOP: {
+				return handle((RequestSoundStopMessage) msg.extraInfo);
 			}
 			case MessageType.GUI_CHANGE_SOUND_EFFECT_VOLUME: {
-				Float newVolume = (Float)msg.extraInfo;
+				Float newVolume = (Float) msg.extraInfo;
 				soundEffectManager.setVolume(newVolume);
 				return true;
 			}
 			case MessageType.GUI_CHANGE_AMBIENT_EFFECT_VOLUME: {
-				Float newVolume = (Float)msg.extraInfo;
+				Float newVolume = (Float) msg.extraInfo;
 				ambientSoundManager.setGlobalVolumeModifier(newVolume);
 				return true;
 			}
 			case MessageType.AMBIENCE_UPDATE: {
-				return handle((AmbienceMessage)msg.extraInfo);
+				return handle((AmbienceMessage) msg.extraInfo);
 			}
 			case MessageType.AMBIENCE_PAUSE: {
 				Boolean paused = (Boolean) msg.extraInfo;
@@ -75,7 +75,7 @@ public class AudioMessageHandler implements Telegraph {
 				return true;
 			}
 			case MessageType.REQUEST_SOUND_ASSET: {
-				return handle((RequestSoundAssetMessage)msg.extraInfo);
+				return handle((RequestSoundAssetMessage) msg.extraInfo);
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());

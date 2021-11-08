@@ -30,10 +30,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.CombatAttackMessage;
-import technology.rocketjump.undermount.messaging.types.CreatureDamagedMessage;
-import technology.rocketjump.undermount.messaging.types.CreatureDeathMessage;
-import technology.rocketjump.undermount.messaging.types.CreatureOrganDamagedMessage;
+import technology.rocketjump.undermount.messaging.types.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,12 +97,34 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 			// create ongoing effect of arrow moving towards target with rotation set
 			if (attackMessage.ammoAttributes != null) {
 				createProjectile(attackMessage);
+				if (attackMessage.weaponItemType.getWeaponInfo().getFireWeaponSoundAsset() != null) {
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(
+						attackMessage.weaponItemType.getWeaponInfo().getFireWeaponSoundAsset(), attackMessage.attackerEntity
+					));
+				}
 			}
 		} else {
 			// is a melee attack
 			boolean attackHits = gameContext.getRandom().nextFloat() < getChanceToHitWithAttack(attackMessage.attackerEntity);
 			if (attackHits) {
 				applyAttackDamage(attackMessage);
+			}
+			triggerHitOrMissSound(attackMessage, attackHits);
+		}
+	}
+
+	private void triggerHitOrMissSound(CombatAttackMessage attackMessage, boolean attackHits) {
+		if (attackHits) {
+			if (attackMessage.weaponItemType.getWeaponInfo().getWeaponHitSoundAsset() != null) {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(
+						attackMessage.weaponItemType.getWeaponInfo().getWeaponHitSoundAsset(), attackMessage.defenderEntity
+				));
+			}
+		} else {
+			if (attackMessage.weaponItemType.getWeaponInfo().getWeaponMissSoundAsset() != null) {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(
+						attackMessage.weaponItemType.getWeaponInfo().getWeaponMissSoundAsset(), attackMessage.defenderEntity
+				));
 			}
 		}
 	}
@@ -115,6 +134,7 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 		if (attackHits) {
 			applyAttackDamage(attackMessage);
 		}
+		triggerHitOrMissSound(attackMessage, attackHits);
 	}
 
 	private void createProjectile(CombatAttackMessage attackMessage) {
@@ -203,6 +223,11 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 					}
 				}
 			}
+
+			Vector2 knockbackVector = attackMessage.defenderEntity.getLocationComponent().getWorldOrParentPosition().cpy().sub(
+					attackMessage.attackerEntity.getLocationComponent().getWorldOrParentPosition()
+			).nor().scl(damageAmount/4f);
+			attackMessage.defenderEntity.getBehaviourComponent().getSteeringComponent().setKnockback(knockbackVector);
 		} else {
 			Logger.warn("TODO: Damage application to non-creature entities");
 		}

@@ -461,7 +461,8 @@ public class InWorldUIRenderer {
 			if (entityWithDesignation.isPresent()) {
 				Entity entity = entityWithDesignation.get();
 				Designation designation = entity.getDesignation();
-				if (jobStore.getByType(designation.getCreatesJobType()).stream().anyMatch(j -> j.getTargetId() == entity.getId())) {
+				if (jobStore.getByType(designation.getCreatesJobType()).stream().anyMatch(j -> j.getTargetId() == entity.getId() &&
+						j.getAssignedToEntityId() != null)) {
 					if (!blinkState) {
 						return;
 					}

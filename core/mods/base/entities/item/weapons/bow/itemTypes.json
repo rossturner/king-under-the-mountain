@@ -13,6 +13,9 @@
     "modifiedByStrength": false,
     "minDamage": 2,
     "maxDamage": 8,
-    "requiresAmmoType": "ARROWS"
+    "requiresAmmoType": "ARROWS",
+    "fireWeaponSoundAssetName": "SFX_Hunting_Attack_Bow",
+    "weaponHitSoundAssetName": "SFX_Hunting_Impact_Stabbing_Bow",
+    "weaponMissSoundAssetName": "SFX_Hunting_Miss_Bow"
   }
 }]

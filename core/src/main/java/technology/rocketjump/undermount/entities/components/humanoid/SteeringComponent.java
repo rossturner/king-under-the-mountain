@@ -24,6 +24,7 @@ import static technology.rocketjump.undermount.entities.model.physical.creature.
 public class SteeringComponent implements ChildPersistable {
 
 	private static final float ROTATION_MULTIPLIER = 1.5f; // for quicker turning speed
+	private static final float KNOCKBACK_DISTANCE_PER_SECOND = 8f;
 	private LocationComponent locationComponent;
 	private MessageDispatcher messageDispatcher;
 	private Entity parentEntity;
@@ -38,6 +39,7 @@ public class SteeringComponent implements ChildPersistable {
 	private static float DEFAULT_PAUSE_TIME = 0.9f;
 	private boolean isSlowed;
 	private boolean movementImpaired;
+	private Vector2 knockback;
 
 	public SteeringComponent() {
 
@@ -182,6 +184,19 @@ public class SteeringComponent implements ChildPersistable {
 
 		// TODO Adjust position for nudges by other entities
 
+		if (knockback != null) {
+			float knockbackDistanceThisFrame = deltaTime * KNOCKBACK_DISTANCE_PER_SECOND;
+			if (knockbackDistanceThisFrame > knockback.len()) {
+				locationComponent.setWorldPosition(newPosition.cpy().add(knockback), false);
+				knockback = null;
+			} else {
+				Vector2 knockbackThisFrame = knockback.cpy().nor().scl(knockbackDistanceThisFrame);
+				locationComponent.setWorldPosition(newPosition.cpy().add(knockbackThisFrame), false);
+				knockback.sub(knockbackThisFrame);
+			}
+		}
+
+
 		if (currentTile != null && !currentTile.hasWall()) {
 			repelFromImpassableCollisions(deltaTime, currentTile);
 		}
@@ -300,6 +315,14 @@ public class SteeringComponent implements ChildPersistable {
 		return movementImpaired;
 	}
 
+	public void setKnockback(Vector2 knockback) {
+		this.knockback = knockback;
+	}
+
+	public Vector2 getKnockback() {
+		return knockback;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		if (destination != null) {
@@ -311,6 +334,9 @@ public class SteeringComponent implements ChildPersistable {
 		if (movementImpaired) {
 			asJson.put("movementImpaired", true);
 		}
+		if (knockback != null) {
+			asJson.put("knockback", JSONUtils.toJSON(knockback));
+		}
 	}
 
 	@Override
@@ -318,6 +344,7 @@ public class SteeringComponent implements ChildPersistable {
 		this.destination = JSONUtils.vector2(asJson.getJSONObject("destination"));
 		this.nextWaypoint = JSONUtils.vector2(asJson.getJSONObject("destination"));
 		this.movementImpaired = asJson.getBooleanValue("movementImpaired");
+		this.knockback = JSONUtils.vector2(asJson.getJSONObject("knockback"));
 	}
 
 }
