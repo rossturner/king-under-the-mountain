@@ -1,0 +1,94 @@
+{
+  "name": "Humanoid",
+  "rootPartName": "Torso",
+  "partDefinitions": [
+    {
+      "name": "Head",
+      "size": 0.3,
+      "bones": ["SKULL"],
+      "organs": [
+        {
+          "type": "Brain",
+          "relativeSize": 0.35
+        },
+        {
+          "type": "Eye",
+          "discriminator": "Left",
+          "relativeSize": 0.05
+        },
+        {
+          "type": "Eye",
+          "discriminator": "Right",
+          "relativeSize": 0.05
+        }
+      ]
+    },
+    {
+      "name": "Torso",
+      "size": 1.0,
+      "bones": ["MEDIUM", "MEDIUM"],
+      "organs": [
+        {
+          "type": "Heart",
+          "relativeSize": 0.1
+        },
+        {
+          "type": "Lung",
+          "discriminator": "Left",
+          "relativeSize": 0.25
+        },
+        {
+          "type": "Lung",
+          "discriminator": "Right",
+          "relativeSize": 0.3
+        }
+      ],
+      "childParts": ["Head", "Abdomen", "Right-Arm", "Left-Arm"]
+    },
+    {
+      "name": "Arm",
+      "size": 0.2,
+      "bones": ["MEDIUM"],
+      "childParts": ["Hand"]
+    },
+    {
+      "name": "Hand",
+      "size": 0.04,
+      "bones": ["SMALL"],
+      "function": "GRASP"
+    },
+    {
+      "name": "Abdomen",
+      "size": 0.3,
+      "organs": [
+        {
+          "type": "Kidney",
+          "discriminator": "Left",
+          "relativeSize": 0.05
+        },
+        {
+          "type": "Kidney",
+          "discriminator": "Right",
+          "relativeSize": 0.05
+        },
+        {
+          "type": "Intestines",
+          "relativeSize": 0.4
+        }
+      ],
+      "childParts": ["Left-Leg", "Right-Leg"]
+    },
+    {
+      "name": "Leg",
+      "size": 0.2,
+      "bones": ["MEDIUM"],
+      "childParts": ["Foot"]
+    },
+    {
+      "name": "Foot",
+      "size": 0.02,
+      "bones": ["SMALL"],
+      "function": "FOOT"
+    }
+  ]
+}

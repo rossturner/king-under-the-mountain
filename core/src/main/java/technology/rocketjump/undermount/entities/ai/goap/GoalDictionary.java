@@ -59,7 +59,15 @@ public class GoalDictionary {
 	private ObjectMapper objectMapper = new ObjectMapper();
 
 	private Goal parseGoal(JSONObject goalJson) throws IOException {
-		Goal goal = new Goal(goalJson.getString("name"), goalJson.getString("i18nDescription"), goalJson.getDouble("expiryHours"));
+		Boolean interruptedByCombat = goalJson.getBoolean("interruptedByCombat");
+		if (interruptedByCombat == null) {
+			interruptedByCombat = true;
+		}
+		Boolean interruptedByLowNeeds = goalJson.getBoolean("interruptedByLowNeeds");
+		if (interruptedByLowNeeds == null) {
+			interruptedByLowNeeds = false;
+		}
+		Goal goal = new Goal(goalJson.getString("name"), goalJson.getString("i18nDescription"), goalJson.getDouble("expiryHours"), interruptedByCombat, interruptedByLowNeeds);
 
 		List<GoalSelector> selectors = objectMapper.readValue(goalJson.getJSONArray("selectors").toJSONString(),
 				objectMapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, GoalSelector.class));

@@ -21,11 +21,14 @@ import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
-import technology.rocketjump.undermount.entities.factories.*;
+import technology.rocketjump.undermount.entities.factories.FurnitureEntityFactory;
+import technology.rocketjump.undermount.entities.factories.SettlerEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -43,7 +46,7 @@ import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
-import static technology.rocketjump.undermount.assets.viewer.CharacterViewApplication.createItemEntity;
+import static technology.rocketjump.undermount.assets.viewer.CreatureViewerApplication.createItemEntity;
 
 /**
  * This class is to be used from a separate desktop launcher for checking (and reloading) plant asset definitions
@@ -167,16 +170,13 @@ public class FurnitureViewerApplication extends ApplicationAdapter {
 	private Entity createHumanoidEntity(Injector injector) {
 		Random random = new RandomXS128();
 
-		Color skinColor = new SkinColorFactory().randomSkinColor(random);
-		Color hairColor = new HairColorFactory().randomHairColor(random);
-		Color accessoryColor = new AccessoryColorFactory(gameMaterialDictionary).randomAccessoryColor(random);
-
-		HumanoidEntityAttributes attributes = new HumanoidEntityAttributes(random.nextLong(), hairColor, skinColor, accessoryColor, GameMaterial.NULL_MATERIAL);
+		Race race = injector.getInstance(RaceDictionary.class).getByName("Dwarf");
+		CreatureEntityAttributes attributes = new CreatureEntityAttributes(race, random.nextLong());
 		Vector2 facing = new Vector2(0, 0f);
-		HumanoidEntityFactory humanoidEntityFactory = injector.getInstance(HumanoidEntityFactory.class);
+		SettlerEntityFactory settlerEntityFactory = injector.getInstance(SettlerEntityFactory.class);
 		GameContext gameContext = new GameContext();
 		gameContext.setRandom(random);
-		return humanoidEntityFactory.create(attributes, null, facing, null, null, gameContext);
+		return settlerEntityFactory.create(attributes, null, facing, null, null, gameContext);
 	}
 
 	private static final Color MAIN_TILE_COLOR = new Color(0f, 0f, 1f, 0.3f);

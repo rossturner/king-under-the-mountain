@@ -17,6 +17,14 @@
     "particleEffectNames": ["Wood shavings"]
   },
   {
+    "name": "FLETCHING",
+    "i18nKey": "CRAFTING_TYPE.FLETCHING",
+    "professionRequiredName": "CARPENTER",
+    "defaultItemTypeName": "Tool-Plane",
+    "usesWorkstationTool": true,
+    "particleEffectNames": ["Wood shavings"]
+  },
+  {
     "name": "STONEMASONRY",
     "i18nKey": "CRAFTING_TYPE.STONEMASONRY",
     "professionRequiredName": "STONEMASON",
@@ -88,13 +96,6 @@
     "i18nKey": "CRAFTING_TYPE.BAKING",
     "professionRequiredName": "CHEF",
     "defaultItemTypeName": "Tool-Rolling-Pin",
-    "usesWorkstationTool": true
-  },
-  {
-    "name": "FOOD_PREPARATION",
-    "i18nKey": "CRAFTING_TYPE.FOOD_PREPARATION",
-    "professionRequiredName": "CHEF",
-    "defaultItemTypeName": "Tool-Kitchen-Knife",
     "usesWorkstationTool": true
   }
 ]

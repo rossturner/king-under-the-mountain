@@ -1,6 +1,7 @@
 {
   "name": "Haul item goal",
   "i18nDescription": "GOAL.HAULING.DESCRIPTION",
+  "interruptedByLowNeeds": true,
   "selectors": [],
   "initialActions": ["GoToLocation", "PickUpEntity"],
   "actionRelationships": {

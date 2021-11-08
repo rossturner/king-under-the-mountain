@@ -3,8 +3,8 @@ package technology.rocketjump.undermount.entities.factories;
 import org.junit.Before;
 import org.junit.Test;
 import technology.rocketjump.undermount.entities.factories.names.NorseNameGenerator;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidName;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.HumanoidName;
 
 import java.io.File;
 

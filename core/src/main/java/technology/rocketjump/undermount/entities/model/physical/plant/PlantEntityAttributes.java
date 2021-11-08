@@ -56,8 +56,8 @@ public class PlantEntityAttributes implements EntityAttributes {
 		boolean assetUpdateRequired = false;
 		PlantSpeciesGrowthStage currentGrowthStage = species.getGrowthStages().get(this.growthStageCursor);
 		float progress = growthStageProgress;
-		for (Map.Entry<ColoringLayer, PlantSpeciesColor> colorEntry : species.getDefaultColors().entrySet()) {
-			PlantSpeciesColor colorToUse = colorEntry.getValue();
+		for (Map.Entry<ColoringLayer, SpeciesColor> colorEntry : species.getDefaultColors().entrySet()) {
+			SpeciesColor colorToUse = colorEntry.getValue();
 
 			if (currentGrowthStage.getColors().containsKey(colorEntry.getKey())) {
 				colorToUse = currentGrowthStage.getColors().get(colorEntry.getKey());
@@ -226,7 +226,7 @@ public class PlantEntityAttributes implements EntityAttributes {
 
 	public void setBurned(GameMaterial burnedMaterial, Color burnedColor) {
 		this.burnedMaterial = burnedMaterial;
-		for (Map.Entry<ColoringLayer, PlantSpeciesColor> colorEntry : species.getDefaultColors().entrySet()) {
+		for (Map.Entry<ColoringLayer, SpeciesColor> colorEntry : species.getDefaultColors().entrySet()) {
 			if (colorEntry.getKey().equals(ColoringLayer.BRANCHES_COLOR)) {
 				actualColors.put(colorEntry.getKey(), burnedColor);
 			} else {

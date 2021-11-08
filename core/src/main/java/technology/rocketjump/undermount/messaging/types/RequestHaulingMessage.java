@@ -6,7 +6,7 @@ import technology.rocketjump.undermount.jobs.model.Profession;
 
 public class RequestHaulingMessage {
 
-	public final Entity itemToBeMoved;
+	public final Entity entityToBeMoved;
 	public final Entity requestingEntity;
 	public final boolean forceHaulingEvenWithoutStockpile;
 	public final JobCreatedCallback callback;
@@ -14,16 +14,16 @@ public class RequestHaulingMessage {
 
 	private Profession specificProfessionRequired;
 
-	public RequestHaulingMessage(Entity itemToBeMoved, Entity requestingEntity, boolean forceHaulingEvenWithoutStockpile, JobPriority jobPriority, JobCreatedCallback callback) {
-		this.itemToBeMoved = itemToBeMoved;
+	public RequestHaulingMessage(Entity entityToBeMoved, Entity requestingEntity, boolean forceHaulingEvenWithoutStockpile, JobPriority jobPriority, JobCreatedCallback callback) {
+		this.entityToBeMoved = entityToBeMoved;
 		this.requestingEntity = requestingEntity;
 		this.forceHaulingEvenWithoutStockpile = forceHaulingEvenWithoutStockpile;
 		this.callback = callback;
 		this.jobPriority = jobPriority;
 	}
 
-	public Entity getItemToBeMoved() {
-		return itemToBeMoved;
+	public Entity getEntityToBeMoved() {
+		return entityToBeMoved;
 	}
 
 	public boolean forceHaulingEvenWithoutStockpile() {

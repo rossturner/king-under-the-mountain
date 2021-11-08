@@ -5,7 +5,7 @@ import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.actions.nourishment.ConsumeLiquidFromContainerAction;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -26,9 +26,7 @@ public class DouseSelfAction extends ConsumeLiquidFromContainerAction {
 	protected void effectsOfDrinkConsumption(GameMaterial consumedLiquid, LiquidAllocation liquidAllocation, GameContext gameContext) {
 		if (consumedLiquid.isQuenchesThirst()) {
 			StatusComponent statusComponent = parent.parentEntity.getComponent(StatusComponent.class);
-			if (statusComponent != null) {
-				statusComponent.remove(OnFireStatus.class);
-			}
+			statusComponent.remove(OnFireStatus.class);
 
 			parent.messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND_ASSET, new RequestSoundAssetMessage("WaterSizzle", (soundAsset) -> {
 				if (soundAsset != null) {

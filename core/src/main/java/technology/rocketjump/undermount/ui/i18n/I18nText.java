@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import technology.rocketjump.undermount.ui.widgets.tooltips.I18nTextElement;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This class represents an already-translated string split into parts, with each part potentially having tooltip text (also translated)
@@ -104,6 +105,12 @@ public class I18nText implements I18nString {
 	}
 
 	public I18nText tidy() {
+		if (textElements.size() > 1 && textElements.stream().allMatch(e -> e.getTooltipI18nKey() == null)) {
+			// no tooltips, merge all text together
+			String combinedText = textElements.stream().map(I18nTextElement::getText).collect(Collectors.joining());
+			this.textElements = List.of(new I18nTextElement(combinedText, null));
+		}
+
 		boolean initialCapitalised = false;
 		boolean previousEndedWithSpace = false;
 		ListIterator<I18nTextElement> iterator = textElements.listIterator();
@@ -240,7 +247,7 @@ public class I18nText implements I18nString {
 	}
 
 	public boolean isEmpty() {
-		return textElements.isEmpty();
+		return textElements.isEmpty() || textElements.stream().allMatch(e -> e.getText().isEmpty());
 	}
 
 	@Override

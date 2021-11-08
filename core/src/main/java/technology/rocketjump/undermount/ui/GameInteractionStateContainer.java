@@ -27,6 +27,7 @@ import technology.rocketjump.undermount.mapping.MapMessageHandler;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.model.WallPlacementMode;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -191,7 +192,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 					if (tile == null) {
 						continue;
 					}
-					if (interactionMode.designationCheck.shouldDesignationApply(tile)) {
+					if (interactionMode.tileDesignationCheck.shouldDesignationApply(tile)) {
 						GameMaterialType requiredFloorMaterialType = interactionMode.getRoomType().getRequiredFloorMaterialType();
 						if (requiredFloorMaterialType == null || tile.getFloor().getMaterial().getMaterialType().equals(requiredFloorMaterialType)) {
 							GridPoint2 position = new GridPoint2(x, y);
@@ -280,7 +281,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 						}
 
 						bridgeTiles.add(tile);
-						if (!interactionMode.designationCheck.shouldDesignationApply(tile)) {
+						if (!interactionMode.tileDesignationCheck.shouldDesignationApply(tile)) {
 							validBridgePlacement = false;
 						}
 					}
@@ -335,14 +336,16 @@ public class GameInteractionStateContainer implements GameContextAware {
 			virtualDoorPlacement = isDoorPlacementValid(map, tilePosition);
 		} else {
 			// Catch-all for other draggable interactions
-			if (dragging && interactionMode.designationCheck != null) {
+			if (dragging && interactionMode.tileDesignationCheck != null) {
 				for (int x = minX; x <= maxX; x++) {
 					for (int y = minY; y <= maxY; y++) {
 						MapTile tile = map.getTile(x, y);
 						if (tile == null) {
 							continue;
 						}
-						if (interactionMode.designationCheck.shouldDesignationApply(tile)) {
+						if (interactionMode.entityDesignationCheck != null) {
+							tileSelected = tile.getEntities().stream().anyMatch(e -> interactionMode.entityDesignationCheck.shouldDesignationApply(e));
+						} else if (interactionMode.tileDesignationCheck.shouldDesignationApply(tile)) {
 							tileSelected = true;
 						}
 					}
@@ -564,7 +567,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 		boolean oneTileNotRiverEdge = false;
 		for (GridPoint2 positionToCheck : positionsToCheck) {
 			MapTile tileToCheck = map.getTile(positionToCheck);
-			if (tileToCheck == null || !tileToCheck.isEmptyExceptItemsAndPlants()) {
+			if (tileToCheck == null || !tileToCheck.isEmptyExceptItemsAndPlants() || !tileToCheck.getExploration().equals(TileExploration.EXPLORED)) {
 				return false;
 			}
 			if (attributes.getFurnitureType().getRequiredFloorMaterialType() != null &&

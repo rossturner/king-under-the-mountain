@@ -34,7 +34,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_LEFT_HAND",
+            "type": "CREATURE_LEFT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": 26,
@@ -42,7 +42,7 @@
             }
           },
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -20,
@@ -61,7 +61,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -20,
@@ -80,7 +80,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_LEFT_HAND",
+            "type": "CREATURE_LEFT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": 20,
@@ -99,7 +99,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_LEFT_HAND",
+            "type": "CREATURE_LEFT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": 22,
@@ -107,7 +107,7 @@
             }
           },
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -22,
@@ -126,7 +126,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_LEFT_HAND",
+            "type": "CREATURE_LEFT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -12,
@@ -145,7 +145,7 @@
         },
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": 12,

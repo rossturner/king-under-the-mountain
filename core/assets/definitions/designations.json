@@ -14,6 +14,7 @@
     "a" : 0.4
   },
   "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false,
   "createsJobTypeName" : "MINING"
 }, {
   "designationName" : "CHOP_WOOD",
@@ -31,6 +32,7 @@
     "a" : 0.4
   },
   "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false,
   "createsJobTypeName" : "LOGGING"
 }, {
   "designationName" : "HARVEST",
@@ -48,6 +50,7 @@
     "a" : 0.4
   },
   "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false,
   "createsJobTypeName" : "HARVESTING"
 }, {
   "designationName" : "CLEAR_GROUND",
@@ -65,6 +68,7 @@
     "a" : 0.4
   },
   "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false,
   "createsJobTypeName" : "CLEAR_GROUND"
 }, {
   "designationName" : "REMOVE_ROOMS",
@@ -81,7 +85,8 @@
     "b" : 0.2,
     "a" : 0.3
   },
-  "defaultJobPriority" : "NORMAL"
+  "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false
 }, {
   "designationName" : "REMOVE_CONSTRUCTIONS",
   "iconName" : "block",
@@ -97,7 +102,8 @@
     "b" : 0.2,
     "a" : 0.3
   },
-  "defaultJobPriority" : "NORMAL"
+  "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false
 }, {
   "designationName" : "DECONSTRUCT",
   "iconName" : "demolish",
@@ -113,7 +119,8 @@
     "b" : 0.18,
     "a" : 0.3
   },
-  "defaultJobPriority" : "NORMAL"
+  "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false
 }, {
   "designationName" : "FLOORING",
   "iconName" : "floorboards",
@@ -130,7 +137,26 @@
     "a" : 0.4
   },
   "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false,
   "createsJobTypeName" : "CONSTRUCT_FLOORING"
+}, {
+  "designationName" : "HUNT_CREATURE",
+  "iconName" : "crosshair-arrow",
+  "selectionColor" : {
+    "r" : 1.0,
+    "g" : 1.0,
+    "b" : 0.6,
+    "a" : 0.4
+  },
+  "designationColor" : {
+    "r" : 1.0,
+    "g" : 0.3,
+    "b" : 0.3,
+    "a" : 0.4
+  },
+  "defaultJobPriority" : "HIGHER",
+  "appliesToEntities" : true,
+  "createsJobTypeName" : "HUNT_CREATURE"
 }, {
   "designationName" : "EXTINGUISH_FLAMES",
   "iconName" : "water-splash",
@@ -147,6 +173,7 @@
     "a" : 0.4
   },
   "defaultJobPriority" : "HIGHEST",
+  "appliesToEntities" : false,
   "createsJobTypeName" : "EXTINGUISH_FLAMES"
 }, {
   "designationName" : "DIG_CHANNEL",
@@ -164,5 +191,6 @@
     "a" : 0.4
   },
   "defaultJobPriority" : "NORMAL",
+  "appliesToEntities" : false,
   "createsJobTypeName" : "DIG_CHANNEL"
 } ]

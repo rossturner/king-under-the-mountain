@@ -6,8 +6,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
+import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
+import technology.rocketjump.undermount.rendering.utils.HexColors;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,23 +24,27 @@ public class ImageButtonFactory {
 	private final NinePatch buttonNinePatch;
 
 	private Map<String, ImageButton> byIconName = new HashMap<>();
+	private final Map<Long, ImageButton> entityButtonsByEntityId = new HashMap<>();
+	private final Map<Long, ImageButton> ghostButtonsByEntityId = new HashMap<>();
+	private final EntityRenderer entityRenderer;
 
 	@Inject
-	public ImageButtonFactory(TextureAtlasRepository textureAtlasRepository, ProfessionDictionary professionDictionary) {
+	public ImageButtonFactory(TextureAtlasRepository textureAtlasRepository, ProfessionDictionary professionDictionary, EntityRenderer entityRenderer) {
 		this.textureAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
+		this.entityRenderer = entityRenderer;
 		this.buttonNinePatch = textureAtlas.createPatch("button");
 
 		for (Profession profession : professionDictionary.getAll()) {
-			profession.setImageButton(create(profession.getIcon()));
+			profession.setImageButton(getOrCreate(profession.getIcon()));
 		}
-		NULL_PROFESSION.setImageButton(create(NULL_PROFESSION.getIcon()));
+		NULL_PROFESSION.setImageButton(getOrCreate(NULL_PROFESSION.getIcon()));
 	}
 
-	public ImageButton create(String iconName) {
-		return create(iconName,false);
+	public ImageButton getOrCreate(String iconName) {
+		return getOrCreate(iconName, false);
 	}
 
-	public ImageButton create(String iconName, boolean halfSize) {
+	public ImageButton getOrCreate(String iconName, boolean halfSize) {
 
 		return byIconName.computeIfAbsent(iconName, (i) -> {
 			Sprite iconSprite = this.textureAtlas.createSprite(iconName);
@@ -45,6 +52,18 @@ public class ImageButtonFactory {
 				throw new RuntimeException("Could not find UI sprite with name " + iconName);
 			}
 			return new ImageButton(iconSprite, buttonNinePatch, halfSize);
+		});
+	}
+
+	public ImageButton getOrCreate(Entity entity) {
+		return entityButtonsByEntityId.computeIfAbsent(entity.getId(), a -> new ImageButton(new EntityDrawable(entity, entityRenderer), buttonNinePatch, false));
+	}
+
+	public ImageButton getOrCreateGhostButton(Entity entity) {
+		return ghostButtonsByEntityId.computeIfAbsent(entity.getId(), a -> {
+			EntityDrawable entityDrawable = new EntityDrawable(entity, entityRenderer);
+			entityDrawable.setOverrideColor(HexColors.get("#D4534C88"));
+			return new ImageButton(entityDrawable, buttonNinePatch, false);
 		});
 	}
 

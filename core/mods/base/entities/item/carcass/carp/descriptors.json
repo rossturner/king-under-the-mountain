@@ -1,62 +1,5 @@
 [
   {
-    "uniqueName": "Carcass-Carp-Raw-Pile01",
-    "type": "ITEM_BASE_LAYER",
-    "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": [
-      "ON_GROUND"
-    ],
-    "minQuantity": 1,
-    "maxQuantity": 2,
-    "spriteDescriptors": {
-      "DOWN": {
-        "filename": "Carp.png",
-        "offsetPixels": {
-          "x": 0.5,
-          "y": -0.5
-        }
-      }
-    }
-  },
-  {
-    "uniqueName": "Carcass-Carp-Raw-Pile02",
-    "type": "ITEM_BASE_LAYER",
-    "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": [
-      "ON_GROUND"
-    ],
-    "minQuantity": 3,
-    "maxQuantity": 7,
-    "spriteDescriptors": {
-      "DOWN": {
-        "filename": "CarpMedium.png",
-        "offsetPixels": {
-          "x": 0.0,
-          "y": -1.5
-        }
-      }
-    }
-  },
-  {
-    "uniqueName": "Carcass-Carp-Raw-Pile03",
-    "type": "ITEM_BASE_LAYER",
-    "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": [
-      "ON_GROUND"
-    ],
-    "minQuantity": 8,
-    "maxQuantity": 16,
-    "spriteDescriptors": {
-      "DOWN": {
-        "filename": "CarpLarge.png",
-        "offsetPixels": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      }
-    }
-  },
-  {
     "uniqueName": "Carcass-Carp-Prepared-Pile",
     "type": "ITEM_BASE_LAYER",
     "itemTypeName": "Carcass-Carp-Prepared",
@@ -76,346 +19,6 @@
     }
   },
   {
-    "uniqueName": "Carcass-Carp-Raw-Carried-1",
-    "type": "ITEM_BASE_LAYER",
-    "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": [
-      "BEING_CARRIED"
-    ],
-    "minQuantity": 1,
-    "maxQuantity": 2,
-    "spriteDescriptors": {
-      "DOWN": {
-        "filename": "Carp.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -6,
-              "y": -6
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": -0.5
-        }
-      },
-      "DOWN_RIGHT": {
-        "filename": "Carp.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -6,
-              "y": -6
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": -0.5
-        }
-      },
-      "DOWN_LEFT": {
-        "filename": "Carp.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": -100,
-            "offsetPixels": {
-              "x": 2,
-              "y": -6
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": -0.5
-        }
-      },
-      "UP_RIGHT": {
-        "filename": "Carp.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -6,
-              "y": -6
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": -0.5
-        }
-      }
-    }
-  },
-  {
-    "uniqueName": "Carcass-Carp-Raw-Carried-2",
-    "type": "ITEM_BASE_LAYER",
-    "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": [
-      "BEING_CARRIED"
-    ],
-    "minQuantity": 3,
-    "maxQuantity": 7,
-    "spriteDescriptors": {
-      "DOWN": {
-        "filename": "CarpMedium.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 26,
-              "y": 0
-            }
-          },
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -20,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.0,
-          "y": -1.5
-        }
-      },
-      "DOWN_RIGHT": {
-        "filename": "CarpMedium.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -20,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.0,
-          "y": -1.5
-        }
-      },
-      "DOWN_LEFT": {
-        "filename": "CarpMedium.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 20,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.0,
-          "y": -1.5
-        }
-      },
-      "UP": {
-        "filename": "CarpMedium.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 22,
-              "y": 0
-            }
-          },
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -22,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.0,
-          "y": -1.5
-        }
-      },
-      "UP_LEFT": {
-        "filename": "CarpMedium.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -12,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.0,
-          "y": -1.5
-        }
-      },
-      "UP_RIGHT": {
-        "filename": "CarpMedium.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 12,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.0,
-          "y": -1.5
-        }
-      }
-    }
-  },
-  {
-    "uniqueName": "Carcass-Carp-Raw-Carried-3",
-    "type": "ITEM_BASE_LAYER",
-    "itemTypeName": "Carcass-Carp-Raw",
-    "itemPlacements": [
-      "BEING_CARRIED"
-    ],
-    "minQuantity": 8,
-    "maxQuantity": 16,
-    "spriteDescriptors": {
-      "DOWN": {
-        "filename": "CarpLarge.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 26,
-              "y": 0
-            }
-          },
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -20,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      "DOWN_RIGHT": {
-        "filename": "CarpLarge.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -20,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      "DOWN_LEFT": {
-        "filename": "CarpLarge.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 20,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      "UP": {
-        "filename": "CarpLarge.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 22,
-              "y": 0
-            }
-          },
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -22,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      "UP_LEFT": {
-        "filename": "CarpLarge.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_LEFT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": -12,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      "UP_RIGHT": {
-        "filename": "CarpLarge.png",
-        "parentEntityAssets": [
-          {
-            "type": "HUMANOID_RIGHT_HAND",
-            "overrideRenderLayer": 100,
-            "offsetPixels": {
-              "x": 12,
-              "y": 0
-            }
-          }
-        ],
-        "offsetPixels": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      }
-    }
-  },
-  {
     "uniqueName": "Carcass-Carp-Prepared-Carried-1",
     "type": "ITEM_BASE_LAYER",
     "itemTypeName": "Carcass-Carp-Prepared",
@@ -429,7 +32,7 @@
         "filename": "CarpFillet.png",
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -6,
@@ -446,7 +49,7 @@
         "filename": "CarpFillet.png",
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -6,
@@ -463,7 +66,7 @@
         "filename": "CarpFillet.png",
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": -100,
             "offsetPixels": {
               "x": 2,
@@ -480,7 +83,7 @@
         "filename": "CarpFillet.png",
         "parentEntityAssets": [
           {
-            "type": "HUMANOID_RIGHT_HAND",
+            "type": "CREATURE_RIGHT_HAND",
             "overrideRenderLayer": 100,
             "offsetPixels": {
               "x": -6,

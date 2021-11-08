@@ -1,0 +1,54 @@
+[{
+  "uniqueName": "Dwarf-Male-Average-Carpenter-Clothing",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "AVERAGE",
+  "gender": "MALE",
+  "profession": "CARPENTER",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Average-Carpenter-Clothing-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Average-Carpenter-Clothing-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Average-Carpenter-Clothing-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Average-Carpenter-Clothing-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Average-Carpenter-Clothing-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Average-Carpenter-Clothing-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    }
+  }
+}]

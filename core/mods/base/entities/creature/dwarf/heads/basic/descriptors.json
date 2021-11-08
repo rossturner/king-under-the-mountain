@@ -1,0 +1,232 @@
+[{
+  "uniqueName": "Basic dwarf head",
+  "type": "CREATURE_HEAD",
+  "raceName": "Dwarf",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "basic dwarf head.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "CREATURE_EYES",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "type": "CREATURE_HAIR",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_HELMET",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_BEARD",
+          "offsetPixels": {
+            "x": 0,
+            "y": -13
+          }
+        },
+        {
+          "type": "CREATURE_EYEBROWS",
+          "offsetPixels": {
+            "x": 0,
+            "y": 6
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "basic dwarf head.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "CREATURE_EYES",
+          "offsetPixels": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "type": "CREATURE_HAIR",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_HELMET",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_BEARD",
+          "offsetPixels": {
+            "x": 9,
+            "y": -14
+          }
+        },
+        {
+          "type": "CREATURE_EYEBROWS",
+          "offsetPixels": {
+            "x": 3,
+            "y": 6
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "basic dwarf head.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "CREATURE_EYES",
+          "offsetPixels": {
+            "x": -5,
+            "y": 0
+          }
+        },
+        {
+          "type": "CREATURE_HAIR",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_HELMET",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_BEARD",
+          "offsetPixels": {
+            "x": -9,
+            "y": -14
+          }
+        },
+        {
+          "type": "CREATURE_EYEBROWS",
+          "offsetPixels": {
+            "x": -3,
+            "y": 6
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "basic dwarf head.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "CREATURE_HAIR",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_HELMET",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_EYEBROWS",
+          "offsetPixels": {
+            "x": 3,
+            "y": 6
+          }
+        },
+        {
+          "type": "CREATURE_BEARD",
+          "offsetPixels": {
+            "x": 9,
+            "y": -14
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "basic dwarf head.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "CREATURE_HAIR",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_HELMET",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_EYEBROWS",
+          "offsetPixels": {
+            "x": -3,
+            "y": 6
+          }
+        },
+        {
+          "type": "CREATURE_BEARD",
+          "offsetPixels": {
+            "x": -9,
+            "y": -14
+          }
+        }
+      ]
+    },
+    "UP": {
+      "filename": "basic dwarf head.png",
+      "coloringLayer": "SKIN_COLOR",
+      "childAssets": [
+        {
+          "type": "CREATURE_HAIR",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_HELMET",
+          "offsetPixels": {
+            "x": 0,
+            "y": 13
+          }
+        },
+        {
+          "type": "CREATURE_EYEBROWS",
+          "offsetPixels": {
+            "x": 0,
+            "y": 6
+          }
+        },
+        {
+          "type": "CREATURE_BEARD",
+          "offsetPixels": {
+            "x": 0,
+            "y": -14
+          }
+        }
+      ]
+    }
+  }
+}]

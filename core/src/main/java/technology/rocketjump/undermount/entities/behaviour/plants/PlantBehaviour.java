@@ -269,7 +269,7 @@ public class PlantBehaviour implements BehaviourComponent, SelectableDescription
 	private void checkToRemoveForaging(PlantSpeciesGrowthStage currentGrowthStage, PlantSpeciesGrowthStage nextGrowthStage, MapTile parentEntityTile) {
 		if (currentGrowthStage.getHarvestType() != null && nextGrowthStage.getHarvestType() == null) {
 			if (parentEntityTile.getDesignation() != null && parentEntityTile.getDesignation().getDesignationName().equals("HARVEST")) {
-				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(parentEntityTile, parentEntityTile.getDesignation()));
+				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(parentEntityTile));
 			}
 		}
 	}

@@ -1,0 +1,52 @@
+[
+  {
+    "uniqueName": "Pike-Dead",
+    "type": "CREATURE_BODY",
+    "raceName": "Pike",
+    "bodyShape": "AVERAGE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Pike.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Pike.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Pike.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Pike.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Pike.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      },
+      "UP": {
+        "filename": "Pike.png",
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 3.5
+        }
+      }
+    }
+  }
+]

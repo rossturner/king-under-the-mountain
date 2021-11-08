@@ -3,7 +3,7 @@ package technology.rocketjump.undermount.entities.ai.goap.actions;
 import com.alibaba.fastjson.JSONObject;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -45,8 +45,10 @@ public class EquipItemForJobFromInventoryAction extends Action {
 	}
 
 	@Override
-	public boolean isApplicable() {
+	public boolean isApplicable(GameContext gameContext) {
 		if (parent.getAssignedJob() != null && parent.getAssignedJob().getCraftingRecipe() != null && parent.getAssignedJob().getCraftingRecipe().getCraftingType().isUsesWorkstationTool()) {
+			return false;
+		} else if (parent.getAssignedJob() != null && parent.getAssignedJob().getType().isUsesWorkstationTool()) {
 			return false;
 		} else if (parent.getAssignedJob() != null && parent.getAssignedJob().getRequiredItemType() != null) {
 			return parent.getAssignedJob().getRequiredItemType().isEquippedWhileWorkingOnJob();

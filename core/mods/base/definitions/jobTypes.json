@@ -300,5 +300,19 @@
     "switchToSpecialGoal": "EXTINGUISH_FIRE",
     "removeJobWhenAssignmentCancelled": false,
     "onCompletionSoundAssetName": "WaterSizzle"
+  },
+  {
+    "name": "HUNT_CREATURE",
+    "switchToSpecialGoal": "HUNT_CREATURE",
+    "requiredProfessionName": "HUNTER",
+    "removeJobWhenAssignmentCancelled": true,
+    "requiresWeapon": true
+  },
+  {
+    "name": "BUTCHER_CREATURE",
+    "overrideI18nKey": "ACTION.JOB.BUTCHER_CREATURE",
+    "requiredProfessionName": "CHEF",
+    "usesWorkstationTool": true,
+    "workOnJobParticleEffectNames": ["Bleeding"]
   }
 ]

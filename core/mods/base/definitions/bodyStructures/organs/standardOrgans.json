@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Brain",
+    "function": "Consciousness",
+    "damage": {
+      "finalInstance": {
+        "LIGHT": "DEAD",
+        "HEAVY": "DEAD",
+        "DESTROYED": "DEAD"
+      },
+      "other": {
+        "LIGHT": "STUNNED"
+      }
+    }
+  },
+  {
+    "name": "Eye",
+    "function": "Sight",
+    "damage": {
+      "finalInstance": {
+        "LIGHT": "STUNNED",
+        "HEAVY": "BLEEDING",
+        "DESTROYED": "BLINDED"
+      },
+      "other": {
+        "LIGHT": "STUNNED",
+        "HEAVY": "BLEEDING",
+        "DESTROYED": "VISION_IMPAIRED"
+      }
+    }
+  },
+  {
+    "name": "Heart",
+    "function": "BloodCirculation",
+    "damage": {
+      "finalInstance": {
+        "LIGHT": "INTERNAL_BLEEDING",
+        "HEAVY": "DEAD",
+        "DESTROYED": "DEAD"
+      },
+      "other": {
+        "LIGHT": "BLEEDING",
+        "HEAVY": "INTERNAL_BLEEDING",
+        "DESTROYED": "INTERNAL_BLEEDING"
+      }
+    }
+  },
+  {
+    "name": "Lung",
+    "function": "Breathing",
+    "damage": {
+      "finalInstance": {
+        "LIGHT": "BLEEDING",
+        "HEAVY": "INTERNAL_BLEEDING",
+        "DESTROYED": "SUFFOCATION"
+      },
+      "other": {
+        "LIGHT": "BLEEDING",
+        "HEAVY": "INTERNAL_BLEEDING",
+        "DESTROYED": "INTERNAL_BLEEDING"
+      }
+    }
+  },
+  {
+    "name": "Kidney",
+    "function": "BloodCirculation",
+    "damage": {
+      "finalInstance": {
+        "LIGHT": "BLEEDING",
+        "HEAVY": "INTERNAL_BLEEDING",
+        "DESTROYED": "DEAD"
+      },
+      "other": {
+        "LIGHT": "BLEEDING",
+        "HEAVY": "BLEEDING",
+        "DESTROYED": "INTERNAL_BLEEDING"
+      }
+    }
+  },
+  {
+    "name": "Intestines",
+    "function": "BloodCirculation",
+    "damage": {
+      "finalInstance": {
+        "LIGHT": "BLEEDING",
+        "HEAVY": "INTERNAL_BLEEDING",
+        "DESTROYED": "DEAD"
+      },
+      "other": {
+      }
+    }
+  }
+]

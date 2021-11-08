@@ -1,0 +1,366 @@
+[ {
+  "name" : "Boar",
+  "i18nKey" : "RACE.BOAR",
+  "minStrength" : 8.0,
+  "maxStrength" : 15.0,
+  "bodyStructureName" : "hooved-quadruped",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "SKIN_COLOR" : {
+      "swatch" : "boar-skin-swatch.png",
+      "hidden" : false
+    },
+    "BONE_COLOR" : {
+      "colorCode" : "#fbfbf9",
+      "hidden" : false
+    },
+    "HAIR_COLOR" : {
+      "swatch" : "boar-hair-swatch.png",
+      "hidden" : false
+    },
+    "MISC_COLOR_1" : {
+      "colorCode" : "#aa8c9a",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "behaviourName" : "HerdAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ],
+    "group" : {
+      "minSize" : 2,
+      "maxSize" : 5
+    },
+    "aggressionResponse" : "ATTACK"
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : {
+        "STABBING" : 1,
+        "SLASHING" : 1,
+        "CRUSHING" : 1
+      }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Meat-Medium",
+      "materialName" : "Boar Meat",
+      "quantity" : 3
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Deer",
+  "i18nKey" : "RACE.DEER",
+  "minStrength" : 5.0,
+  "maxStrength" : 12.0,
+  "bodyStructureName" : "hooved-quadruped",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "SKIN_COLOR" : {
+      "swatch" : "deer-skin-swatch.png",
+      "hidden" : false
+    },
+    "MARKING_COLOR" : {
+      "swatch" : "deer-markings-swatch.png",
+      "hidden" : false
+    },
+    "HAIR_COLOR" : {
+      "swatch" : "deer-antlers-swatch.png",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "behaviourName" : "HerdAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ],
+    "group" : {
+      "minSize" : 2,
+      "maxSize" : 4
+    },
+    "aggressionResponse" : "FLEE"
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Meat-Medium",
+      "materialName" : "Deer Meat",
+      "quantity" : 2
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Fox",
+  "i18nKey" : "RACE.FOX",
+  "minStrength" : 4.0,
+  "maxStrength" : 10.0,
+  "bodyStructureName" : "pawed-quadruped",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "SKIN_COLOR" : {
+      "swatch" : "fox-skin-swatch.png",
+      "hidden" : false
+    },
+    "MARKING_COLOR" : {
+      "swatch" : "fox-markings-swatch.png",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "behaviourName" : "SolitaryAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ],
+    "aggressionResponse" : "MIXED"
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Meat-Small",
+      "materialName" : "Fox Meat",
+      "quantity" : 2
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Dwarf",
+  "i18nKey" : "RACE.DWARF",
+  "minStrength" : 7.0,
+  "maxStrength" : 19.0,
+  "bodyStructureName" : "Humanoid",
+  "bodyShapes" : [ {
+    "value" : "FAT",
+    "maxStrength" : 10.0
+  }, {
+    "value" : "STRONG",
+    "minStrength" : 14.5
+  }, {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "HAIR_COLOR" : {
+      "colorChart" : "dwarf-hair-swatch.png",
+      "hidden" : false
+    },
+    "SKIN_COLOR" : {
+      "colorChart" : "dwarf-skin-swatch.png",
+      "hidden" : false
+    },
+    "EYE_COLOR" : {
+      "colorCode" : "#000000",
+      "hidden" : false
+    },
+    "ACCESSORY_COLOR" : {
+      "colorChart" : "dwarf-accessory-swatch.png",
+      "hidden" : false
+    },
+    "BONE_COLOR" : {
+      "colorCode" : "#fbfbf9",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "behaviourName" : "Settler",
+    "scheduleName" : "Default Settler Schedule",
+    "needs" : [ "FOOD", "DRINK", "SLEEP" ],
+    "aggressionResponse" : "FLEE"
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.6
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : {
+        "STABBING" : 1,
+        "SLASHING" : 2,
+        "CRUSHING" : 2
+      }
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Carp",
+  "i18nKey" : "RACE.CARP",
+  "minStrength" : 1.0,
+  "maxStrength" : 2.0,
+  "bodyStructureName" : "Fish",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : { },
+  "behaviour" : {
+    "behaviourName" : "Fish",
+    "needs" : [ ]
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Carp-Prepared",
+      "materialName" : "Carp Meat",
+      "quantity" : 1
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Perch",
+  "i18nKey" : "RACE.PERCH",
+  "minStrength" : 1.0,
+  "maxStrength" : 2.0,
+  "bodyStructureName" : "Fish",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : { },
+  "behaviour" : {
+    "behaviourName" : "Fish",
+    "needs" : [ ]
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Perch-Prepared",
+      "materialName" : "Perch Meat",
+      "quantity" : 1
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
+  "name" : "Pike",
+  "i18nKey" : "RACE.PIKE",
+  "minStrength" : 1.0,
+  "maxStrength" : 2.0,
+  "bodyStructureName" : "Fish",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : { },
+  "behaviour" : {
+    "behaviourName" : "Fish",
+    "needs" : [ ]
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : { }
+    },
+    "meat" : {
+      "itemTypeName" : "Carcass-Pike-Prepared",
+      "materialName" : "Pike Meat",
+      "quantity" : 1
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+} ]

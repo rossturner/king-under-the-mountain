@@ -22,7 +22,7 @@ public class UnassignJobAction extends Action {
 	}
 
 	@Override
-	public boolean isApplicable() {
+	public boolean isApplicable(GameContext gameContext) {
 		return parent.getAssignedJob() != null;
 	}
 

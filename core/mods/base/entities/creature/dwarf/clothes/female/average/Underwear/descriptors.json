@@ -1,0 +1,55 @@
+[{
+  "uniqueName": "Dwarf-Female-Average-Underwear",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "AVERAGE",
+  "gender": "FEMALE",
+  "profession": "VILLAGER",
+  "sanity": "BROKEN",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Average-Underwear-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Average-Underwear-F34.png",
+      "offsetPixels": {
+        "x": -1,
+        "y": 6
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Average-Underwear-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 1,
+        "y": 6
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Average-Underwear-B34.png",
+      "offsetPixels": {
+        "x": -1,
+        "y": 6
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Average-Underwear-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 1,
+        "y": 6
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Average-Underwear-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      }
+    }
+  }
+}]

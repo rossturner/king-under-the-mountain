@@ -115,7 +115,7 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable, Gam
 		containerTable.center();
 //		containerTable.setDebug(true);
 
-		scrollBackgroundImage = Boolean.parseBoolean(userPreferences.getPreference(MAIN_MENU_BACKGROUND_SCROLLING, "true"));
+		scrollBackgroundImage = Boolean.parseBoolean(userPreferences.getPreference(MAIN_MENU_BACKGROUND_SCROLLING, "false"));
 
 		String savedScale = userPreferences.getPreference(UI_SCALE, DEFAULT_UI_SCALE);
 		ScreenViewport viewport = new ScreenViewport();

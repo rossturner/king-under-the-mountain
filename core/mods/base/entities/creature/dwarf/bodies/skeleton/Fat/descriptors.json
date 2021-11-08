@@ -1,0 +1,119 @@
+[{
+  "uniqueName": "Dwarf-Skeleton-Fat",
+  "type": "CREATURE_BODY",
+  "raceName": "Dwarf",
+  "bodyShape": "FAT",
+  "gender": "NONE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf Skeleton Body Fat Down.png",
+      "coloringLayer": "BONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      },
+      "childAssets": [
+        {
+          "type": "CREATURE_HEAD",
+          "specificAssetName": "Dwarf-Skull",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf Skeleton Body Fat Down-Right.png",
+      "coloringLayer": "BONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      },
+      "childAssets": [
+        {
+          "type": "CREATURE_HEAD",
+          "specificAssetName": "Dwarf-Skull",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf Skeleton Body Fat Down-Right.png",
+      "flipX": true,
+      "coloringLayer": "BONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      },
+      "childAssets": [
+        {
+          "type": "CREATURE_HEAD",
+          "specificAssetName": "Dwarf-Skull",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf Skeleton Body Fat Up-Right.png",
+      "coloringLayer": "BONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      },
+      "childAssets": [
+        {
+          "type": "CREATURE_HEAD",
+          "specificAssetName": "Dwarf-Skull",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf Skeleton Body Fat Up-Right.png",
+      "flipX": true,
+      "coloringLayer": "BONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      },
+      "childAssets": [
+        {
+          "type": "CREATURE_HEAD",
+          "specificAssetName": "Dwarf-Skull",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Dwarf Skeleton Body Fat Up.png",
+      "coloringLayer": "BONE_COLOR",
+      "offsetPixels": {
+        "x": 0,
+        "y": 6
+      },
+      "childAssets": [
+        {
+          "type": "CREATURE_HEAD",
+          "specificAssetName": "Dwarf-Skull",
+          "offsetPixels": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  }
+}]

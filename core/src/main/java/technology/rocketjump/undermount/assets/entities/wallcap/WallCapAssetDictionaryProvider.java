@@ -19,7 +19,7 @@ import java.util.List;
 
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.DIFFUSE_ENTITIES;
 import static technology.rocketjump.undermount.assets.TextureAtlasRepository.TextureAtlasType.NORMAL_ENTITIES;
-import static technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionaryProvider.addSprite;
+import static technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionaryProvider.addSprite;
 
 @Singleton
 public class WallCapAssetDictionaryProvider implements Provider<WallCapAssetDictionary> {

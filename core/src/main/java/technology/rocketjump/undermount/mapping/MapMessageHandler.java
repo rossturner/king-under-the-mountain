@@ -30,7 +30,7 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.*;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
 import technology.rocketjump.undermount.mapping.tile.layout.WallLayout;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoof;
@@ -287,21 +287,40 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 				if (tile != null) {
 					if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.REMOVE_DESIGNATIONS)) {
 						if (tile.getDesignation() != null) {
-							messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
+							messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile));
 						}
-					} else if (interactionStateContainer.getInteractionMode().designationCheck != null &&
+						for (Entity entity : tile.getEntities()) {
+							if (entity.getDesignation() != null) {
+								messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(entity));
+							}
+						}
+					} else if (interactionStateContainer.getInteractionMode().tileDesignationCheck != null &&
 							interactionStateContainer.getInteractionMode().getDesignationToApply() != null) {
 
-						if (interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(tile)) {
+						if (interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(tile)) {
 							if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.REMOVE_ROOMS)) {
 								roomTilesToRemove.add(tile.getTilePosition());
 							} else {
-								TileDesignation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
+								Designation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
 								if (tile.getDesignation() != null) {
-									messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
+									messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile));
 								}
 								tile.setDesignation(designationToApply);
 								messageDispatcher.dispatchMessage(MessageType.DESIGNATION_APPLIED, new ApplyDesignationMessage(tile, designationToApply, interactionStateContainer.getInteractionMode()));
+							}
+						}
+					} else if (interactionStateContainer.getInteractionMode().entityDesignationCheck != null &&
+							interactionStateContainer.getInteractionMode().getDesignationToApply() != null) {
+						if (tile.getExploration().equals(TileExploration.EXPLORED)) {
+							for (Entity entity : tile.getEntities()) {
+								if (interactionStateContainer.getInteractionMode().entityDesignationCheck.shouldDesignationApply(entity)) {
+									Designation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
+									if (entity.getDesignation() != null) {
+										messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(entity));
+									}
+									entity.setDesignation(designationToApply);
+									messageDispatcher.dispatchMessage(MessageType.DESIGNATION_APPLIED, new ApplyDesignationMessage(entity, designationToApply, interactionStateContainer.getInteractionMode()));
+								}
 							}
 						}
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.SET_JOB_PRIORITY)) {
@@ -323,7 +342,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 						}
 
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_ROOFING)) {
-						if (interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(tile)) {
+						if (interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(tile)) {
 							messageDispatcher.dispatchMessage(MessageType.ROOF_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, true));
 						}
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_ROOFING)) {
@@ -333,7 +352,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 						messageDispatcher.dispatchMessage(MessageType.ROOF_DECONSTRUCTION_QUEUE_CHANGE, new TileDeconstructionQueueMessage(tile, true));
 
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_PIPING)) {
-						if (interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(tile)) {
+						if (interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(tile)) {
 							messageDispatcher.dispatchMessage(MessageType.PIPE_CONSTRUCTION_QUEUE_CHANGE, new TileConstructionQueueMessage(tile, true));
 						}
 					} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.CANCEL_PIPING)) {
@@ -638,9 +657,9 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			}
 
 			tile.setWall(null, tile.getRoof());
-			TileDesignation tileDesignation = tile.getDesignation();
-			if (tileDesignation != null) {
-				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile, tile.getDesignation()));
+			Designation designation = tile.getDesignation();
+			if (designation != null) {
+				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile));
 			}
 			tile.getFloor().setMaterial(floorMaterial);
 			for (MapVertex vertex : gameContext.getAreaMap().getVertexNeighboursOfCell(tile).values()) {

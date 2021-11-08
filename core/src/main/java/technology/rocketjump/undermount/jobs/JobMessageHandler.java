@@ -13,11 +13,11 @@ import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.cooking.model.CookingRecipe;
 import technology.rocketjump.undermount.doors.Doorway;
 import technology.rocketjump.undermount.entities.EntityStore;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.effects.FireEffectBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.InnoculationLogBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.OnJobCompletion;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.plants.FallingTreeBehaviour;
 import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
@@ -28,22 +28,18 @@ import technology.rocketjump.undermount.entities.components.furniture.Decoration
 import technology.rocketjump.undermount.entities.components.furniture.HarvestableEntityComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
-import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
-import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
-import technology.rocketjump.undermount.entities.factories.PlantEntityAttributesFactory;
-import technology.rocketjump.undermount.entities.factories.PlantEntityFactory;
+import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.*;
+import technology.rocketjump.undermount.entities.model.physical.creature.features.MeatFeature;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
-import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
 import technology.rocketjump.undermount.entities.model.physical.plant.*;
 import technology.rocketjump.undermount.entities.tags.DeceasedContainerTag;
 import technology.rocketjump.undermount.entities.tags.ReplacementDeconstructionResourcesTag;
@@ -56,13 +52,12 @@ import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileNeighbours;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
+import technology.rocketjump.undermount.mapping.tile.designation.DesignationDictionary;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.underground.UnderTile;
 import technology.rocketjump.undermount.mapping.tile.wall.Wall;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
-import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -83,6 +78,7 @@ import static technology.rocketjump.undermount.entities.behaviour.furniture.Inno
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.materials.model.GameMaterial.NULL_MATERIAL;
+import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.ROOM;
 
 /**
@@ -95,6 +91,8 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final JobStore jobStore;
 	private final ItemEntityFactory itemEntityFactory;
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
+	private final CreatureEntityAttributesFactory creatureEntityAttributesFactory;
+	private final CreatureEntityFactory creatureEntityFactory;
 	private final JobFactory jobFactory;
 	private final EntityStore entityStore;
 	private final PlantEntityAttributesFactory plantEntityAttributesFactory;
@@ -106,27 +104,29 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	private final JobType haulingJobType;
 	private final JobType miningJobType;
 	private final JobType constructFlooringJobType;
-	private final TileDesignationDictionary tileDesignationDictionary;
+	private final DesignationDictionary designationDictionary;
 	private final ParticleEffectType leafExplosionParticleEffectType;
 	private final GameInteractionStateContainer gameInteractionStateContainer;
-	private final List<ItemTypeWithMaterial> fishAvailable;
+	private final List<Race> fishRacesAvailable;
 	private GameContext gameContext;
 	private ParticleEffectType deconstructParticleEffect;
 
 	@Inject
 	public JobMessageHandler(MessageDispatcher messageDispatcher, JobStore jobStore,
 							 ItemEntityFactory itemEntityFactory, ItemEntityAttributesFactory itemEntityAttributesFactory,
-							 JobFactory jobFactory, EntityStore entityStore, PlantEntityAttributesFactory plantEntityAttributesFactory,
+							 CreatureEntityAttributesFactory creatureEntityAttributesFactory, CreatureEntityFactory creatureEntityFactory, JobFactory jobFactory, EntityStore entityStore, PlantEntityAttributesFactory plantEntityAttributesFactory,
 							 PlantEntityFactory plantEntityFactory, PlantSpeciesDictionary plantSpeciesDictionary,
 							 FurnitureTypeDictionary furnitureTypeDictionary, DynamicMaterialFactory dynamicMaterialFactory,
 							 ItemTypeDictionary itemTypeDictionary, JobTypeDictionary jobTypeDictionary,
-							 TileDesignationDictionary tileDesignationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary,
-							 GameInteractionStateContainer gameInteractionStateContainer, GameMaterialDictionary materialDictionary,
+							 DesignationDictionary designationDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary,
+							 GameInteractionStateContainer gameInteractionStateContainer, RaceDictionary raceDictionary,
 							 ConstantsRepo constantsRepo) {
 		this.messageDispatcher = messageDispatcher;
 		this.jobStore = jobStore;
 		this.itemEntityFactory = itemEntityFactory;
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
+		this.creatureEntityAttributesFactory = creatureEntityAttributesFactory;
+		this.creatureEntityFactory = creatureEntityFactory;
 		this.jobFactory = jobFactory;
 		this.entityStore = entityStore;
 		this.plantEntityAttributesFactory = plantEntityAttributesFactory;
@@ -138,13 +138,13 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		haulingJobType = jobTypeDictionary.getByName("HAULING");
 		miningJobType = jobTypeDictionary.getByName("MINING");
 		constructFlooringJobType = jobTypeDictionary.getByName("CONSTRUCT_FLOORING");
-		this.tileDesignationDictionary = tileDesignationDictionary;
+		this.designationDictionary = designationDictionary;
 
 		this.leafExplosionParticleEffectType = particleEffectTypeDictionary.getByName("Leaf explosion"); // MODDING expose this
 		this.deconstructParticleEffect = particleEffectTypeDictionary.getByName("Dust cloud above"); // MODDING expose this
 		this.gameInteractionStateContainer = gameInteractionStateContainer;
-		constantsRepo.initialise(itemTypeDictionary, materialDictionary);
-		this.fishAvailable = constantsRepo.getSettlementConstants().getFishAvailable();
+		constantsRepo.initialise(raceDictionary);
+		this.fishRacesAvailable = constantsRepo.getSettlementConstants().getFishRacesAvailable();
 
 		messageDispatcher.addListener(this, MessageType.DESIGNATION_APPLIED);
 		messageDispatcher.addListener(this, MessageType.REMOVE_DESIGNATION);
@@ -194,6 +194,11 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					if (cancelledJob.getType().isRemoveJobWhenAssignmentCancelled()) {
 						jobStore.remove(cancelledJob);
 					} else {
+						JobTarget targetOfJob = cancelledJob.getTargetOfJob(gameContext);
+						if (targetOfJob.getEntity() != null) {
+							// May need to update location for entities as they can move around
+							cancelledJob.setJobLocation(toGridPoint(targetOfJob.getEntity().getLocationComponent().getWorldOrParentPosition()));
+						}
 						jobStore.switchState(cancelledJob, JobState.POTENTIALLY_ACCESSIBLE);
 					}
 				}
@@ -940,16 +945,51 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				break;
 			}
 			case "FISHING": {
-				ItemTypeWithMaterial fishType = fishAvailable.get(gameContext.getRandom().nextInt(fishAvailable.size()));
+				Race fishType = fishRacesAvailable.get(gameContext.getRandom().nextInt(fishRacesAvailable.size()));
 				Entity completedByEntity = jobCompletedMessage.getCompletedByEntity();
 
-				ItemEntityAttributes fishItemAttributes = itemEntityAttributesFactory.createItemAttributes(fishType.getItemType(), 1, fishType.getMaterial());
-				Entity fishItemEntity = itemEntityFactory.create(fishItemAttributes, jobCompletedMessage.getJob().getJobLocation(), true, gameContext);
+				CreatureEntityAttributes fishAttributes = creatureEntityAttributesFactory.create(fishType);
+				Entity fishEntity = creatureEntityFactory.create(fishAttributes, null, new Vector2(), gameContext);
+				messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(fishEntity, DeathReason.SUFFOCATION));
+				fishEntity.getLocationComponent().setRotation(0);
 
-				InventoryComponent inventoryComponent = completedByEntity.getComponent(InventoryComponent.class);
-				inventoryComponent.add(fishItemEntity, completedByEntity, messageDispatcher, gameContext.getGameClock());
+				HaulingComponent haulingComponent = completedByEntity.getOrCreateComponent(HaulingComponent.class);
+				haulingComponent.setHauledEntity(fishEntity, messageDispatcher, completedByEntity);
 
 				messageDispatcher.dispatchMessage(MessageType.FISH_HARVESTED_FROM_RIVER);
+				break;
+			}
+			case "HUNT_CREATURE": {
+				Entity targetEntity = gameContext.getEntities().get(jobCompletedMessage.getJob().getTargetId());
+				if (targetEntity != null) {
+					targetEntity.setDesignation(null);
+				}
+				break;
+			}
+			case "BUTCHER_CREATURE": {
+				Entity furnitureEntity = entityStore.getById(completedJob.getTargetId());
+				if (furnitureEntity != null) {
+					InventoryComponent inventoryComponent = furnitureEntity.getComponent(InventoryComponent.class);
+					Optional<InventoryComponent.InventoryEntry> creatureInventoryEntity = inventoryComponent.getInventoryEntries().stream()
+							.filter(e -> e.entity.getType().equals(CREATURE))
+							.findAny();
+
+					if (creatureInventoryEntity.isPresent()) {
+						CreatureEntityAttributes attributes = (CreatureEntityAttributes) creatureInventoryEntity.get().entity.getPhysicalEntityComponent().getAttributes();
+
+						MeatFeature meatFeature = attributes.getRace().getFeatures().getMeat();
+						if (meatFeature != null) {
+							ItemEntityAttributes meatItemAttributes = itemEntityAttributesFactory.createItemAttributes(meatFeature.getItemType(), meatFeature.getQuantity(), meatFeature.getMaterial());
+							Entity meatItem = itemEntityFactory.create(meatItemAttributes, null, true, gameContext);
+							inventoryComponent.add(meatItem, furnitureEntity, messageDispatcher, gameContext.getGameClock());
+							meatItem.getComponent(ItemAllocationComponent.class).cancelAll(HELD_IN_INVENTORY);
+						}
+
+						// TODO create items for bone and hide
+
+						messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, creatureInventoryEntity.get().entity);
+					}
+				}
 				break;
 			}
 			default: {
@@ -982,7 +1022,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			JobType removalJobType = attributes.getSpecies().getPlantType().getRemovalJobType();
 			if (targetTile.getDesignation() == null) {
 				// show this as a designation to help player understanding
-				TileDesignation designationToApply = getMatchingTileDesignation(removalJobType);
+				Designation designationToApply = getMatchingTileDesignation(removalJobType);
 				if (designationToApply != null) {
 					targetTile.setDesignation(designationToApply);
 				}
@@ -1126,8 +1166,17 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				newJob.setRequiredProfession(floorTypeToPlace.getCraftingType().getProfessionRequired());
 			}
 
-			newJob.setJobLocation(applyDesignationMessage.getTargetTile().getTilePosition());
-			newJob.setJobState(calculateNewJobState(jobType, applyDesignationMessage.getTargetTile()));
+			GridPoint2 targetLocation;
+			MapTile targetTile = applyDesignationMessage.getTargetTile();
+			if (applyDesignationMessage.getTargetEntity() != null) {
+				targetLocation = toGridPoint(applyDesignationMessage.getTargetEntity().getLocationComponent().getWorldOrParentPosition());
+				targetTile = gameContext.getAreaMap().getTile(targetLocation);
+				newJob.setTargetId(applyDesignationMessage.getTargetEntity().getId());
+			} else {
+				targetLocation = applyDesignationMessage.getTargetTile().getTilePosition();
+			}
+			newJob.setJobLocation(targetLocation);
+			newJob.setJobState(calculateNewJobState(jobType, targetTile));
 			newJob.setJobPriority(applyDesignationMessage.getDesignationToApply().getDefaultJobPriority());
 
 			jobStore.add(newJob);
@@ -1138,9 +1187,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				if (applyDesignationMessage.getTargetTile().hasConstruction()) {
 					messageDispatcher.dispatchMessage(MessageType.CANCEL_CONSTRUCTION, applyDesignationMessage.getTargetTile().getConstruction());
 				}
-				TileDesignation designation = applyDesignationMessage.getTargetTile().getDesignation();
+				Designation designation = applyDesignationMessage.getTargetTile().getDesignation();
 				if (designation != null) {
-					messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(applyDesignationMessage.getTargetTile(), designation));
+					messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(applyDesignationMessage.getTargetTile()));
 				}
 				break;
 			case DECONSTRUCT:
@@ -1176,15 +1225,27 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	private boolean handle(RemoveDesignationMessage removeDesignationMessage) {
-		List<Job> jobsToRemove = new ArrayList<>(jobStore.getJobsAtLocation(removeDesignationMessage.getTargetTile().getTilePosition()));
+		if (removeDesignationMessage.getTargetTile() != null) {
+			List<Job> jobsToRemove = new ArrayList<>(jobStore.getJobsAtLocation(removeDesignationMessage.getTargetTile().getTilePosition()));
 
-		for (Job job : jobsToRemove) {
-			if (job.getAssignedToEntityId() != null) {
-				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
+			for (Job job : jobsToRemove) {
+				if (job.getAssignedToEntityId() != null) {
+					messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
+				}
+				jobStore.remove(job);
 			}
-			jobStore.remove(job);
+			removeDesignationMessage.getTargetTile().setDesignation(null);
+		} else if (removeDesignationMessage.getTargetEntity() != null) {
+			Designation designation = removeDesignationMessage.getTargetEntity().getDesignation();
+			if (designation != null) {
+				jobStore.getByType(designation.getCreatesJobType()).stream()
+						.filter(j -> j.getTargetId() == removeDesignationMessage.getTargetEntity().getId())
+						.collect(Collectors.toList())
+						.forEach(jobStore::remove);
+
+				removeDesignationMessage.getTargetEntity().setDesignation(null);
+			}
 		}
-		removeDesignationMessage.getTargetTile().setDesignation(null);
 		return true;
 	}
 
@@ -1193,10 +1254,10 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		return true;
 	}
 
-	private TileDesignation getMatchingTileDesignation(JobType jobType) {
-		for (TileDesignation tileDesignation : tileDesignationDictionary.getAll()) {
-			if (jobType.equals(tileDesignation.getCreatesJobType())) {
-				return tileDesignation;
+	private Designation getMatchingTileDesignation(JobType jobType) {
+		for (Designation designation : designationDictionary.getAll()) {
+			if (jobType.equals(designation.getCreatesJobType())) {
+				return designation;
 			}
 		}
 		return null;
@@ -1264,8 +1325,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				.filter(j -> {
 					Entity itemEntity = gameContext.getEntities().get(j.getTargetId());
 					if (itemEntity != null) {
-						ItemEntityAttributes attributes = (ItemEntityAttributes) itemEntity.getPhysicalEntityComponent().getAttributes();
-						return !stockpileComponent.canHold(attributes);
+						return !stockpileComponent.canHold(itemEntity);
 					} else {
 						return false;
 					}

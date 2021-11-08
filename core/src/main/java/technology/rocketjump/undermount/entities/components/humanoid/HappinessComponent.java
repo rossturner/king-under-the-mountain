@@ -152,7 +152,9 @@ public class HappinessComponent implements InfrequentlyUpdatableComponent {
 		SLEEPING_IN_SNOW(-40, 4),
 
 		DRANK_ALCOHOL(40, 8),
-		ALCOHOL_WITHDRAWAL(-30, 0.5);
+		ALCOHOL_WITHDRAWAL(-30, 0.5),
+
+		BLEEDING(-5, 0.3);
 
 		public final int modifierAmount;
 		private final double hoursToExpiry;

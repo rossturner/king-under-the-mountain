@@ -18,7 +18,6 @@ import technology.rocketjump.undermount.constants.ConstantsRepo;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
 import technology.rocketjump.undermount.entities.EntityStore;
 import technology.rocketjump.undermount.entities.ai.goap.GoalDictionary;
-import technology.rocketjump.undermount.entities.ai.goap.ScheduleDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureCategoryDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
@@ -26,9 +25,10 @@ import technology.rocketjump.undermount.entities.factories.*;
 import technology.rocketjump.undermount.entities.factories.names.NorseNameGenerator;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.*;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
@@ -102,11 +102,7 @@ public class I18NTranslatorTest {
 	@Mock
 	private GoalDictionary mockGoalDictionary;
 	@Mock
-	private ScheduleDictionary mockScheduleDictionary;
-	@Mock
 	private RoomStore mockRoomStore;
-	@Mock
-	private HairColorFactory mockColorFactory;
 	@Mock
 	private JobTypeDictionary mockJobTypeDictionary;
 	@Mock
@@ -123,6 +119,8 @@ public class I18NTranslatorTest {
 	private TwitchDataStore mockTwitchDataStore;
 	@Mock
 	private GameMaterialDictionary mockMaterialDictionary;
+	@Mock
+	private RaceDictionary mockRaceDictionary;
 
 	@Before
 	public void setup() throws IOException {
@@ -150,16 +148,16 @@ public class I18NTranslatorTest {
 	@Test
 	public void describeHumanoid() throws IOException {
 		NorseNameGenerator nameGenerator = new NorseNameGenerator();
-		HumanoidEntityAttributes attributes = new HumanoidEntityAttributesFactory(
-				new HairColorFactory(), new SkinColorFactory(), new AccessoryColorFactory(gameMaterialDictionary), new DwarvenNameGenerator(new NorseNameGenerator()),
-				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary).create(new GameContext());
+		CreatureEntityAttributes attributes = new SettlerCreatureAttributesFactory(
+				new DwarvenNameGenerator(new NorseNameGenerator()),
+				mockUserPreferences, mockTwitchDataStore, mockMaterialDictionary, mockRaceDictionary).create(new GameContext());
 		attributes.setName(nameGenerator.create(88L, Gender.MALE));
 
 		Profession profession = new Profession();
 		profession.setI18nKey("PROFESSION.BLACKSMITH");
-		Entity entity = new HumanoidEntityFactory(
+		Entity entity = new SettlerEntityFactory(
 				mockMessageDispatcher, new ProfessionDictionary(), mockEntityAssetUpdater,
-				mockGoalDictionary, mockScheduleDictionary, mockRoomStore).create(attributes, null, new Vector2(), profession, profession, mockGameContext);
+				mockGoalDictionary, mockRoomStore).create(attributes, null, new Vector2(), profession, profession, mockGameContext);
 
 		I18nText description = translator.getDescription(entity);
 
@@ -224,7 +222,7 @@ public class I18NTranslatorTest {
 	@Test
 	public void describeFurniture() throws IOException {
 		FurnitureEntityAttributes attributes = new FurnitureEntityAttributesFactory(new FurnitureTypeDictionary(new FurnitureCategoryDictionary(), new FurnitureLayoutDictionary(),
-				itemTypeDictionary), mockColorFactory).byName("STONEMASON_WORKBENCH", gameMaterialDictionary.getByName("Granite"));
+				itemTypeDictionary)).byName("STONEMASON_WORKBENCH", gameMaterialDictionary.getByName("Granite"));
 		Entity entity = new FurnitureEntityFactory(mockMessageDispatcher, mockEntityAssetUpdater).create(attributes, new GridPoint2(), null, mockGameContext);
 		I18nText description = translator.getDescription(entity);
 
@@ -234,7 +232,7 @@ public class I18NTranslatorTest {
 	@Test
 	public void describeDoor() throws IOException {
 		FurnitureEntityAttributes attributes = new FurnitureEntityAttributesFactory(new FurnitureTypeDictionary(new FurnitureCategoryDictionary(), new FurnitureLayoutDictionary(),
-				itemTypeDictionary), mockColorFactory).byName("SINGLE_DOOR", gameMaterialDictionary.getByName("Oak"));
+				itemTypeDictionary)).byName("SINGLE_DOOR", gameMaterialDictionary.getByName("Oak"));
 		Entity entity = new FurnitureEntityFactory(mockMessageDispatcher, mockEntityAssetUpdater).create(attributes, new GridPoint2(), null, mockGameContext);
 		I18nText description = translator.getDescription(entity);
 
@@ -245,7 +243,7 @@ public class I18NTranslatorTest {
 	public void describeFurnitureConstruction() throws IOException {
 		GameMaterial material = gameMaterialDictionary.getByName("Oak");
 		FurnitureEntityAttributes attributes = new FurnitureEntityAttributesFactory(new FurnitureTypeDictionary(new FurnitureCategoryDictionary(), new FurnitureLayoutDictionary(),
-				itemTypeDictionary), mockColorFactory).byName("STONEMASON_WORKBENCH", material);
+				itemTypeDictionary)).byName("STONEMASON_WORKBENCH", material);
 		Entity furnitureEntity = new FurnitureEntityFactory(mockMessageDispatcher, mockEntityAssetUpdater).create(attributes, new GridPoint2(), null, mockGameContext);
 
 		FurnitureConstruction construction = new FurnitureConstruction(furnitureEntity);

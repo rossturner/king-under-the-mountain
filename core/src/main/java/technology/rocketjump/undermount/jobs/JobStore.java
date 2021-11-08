@@ -5,7 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
@@ -74,6 +74,12 @@ public class JobStore implements Updatable {
 		byType.get(jobToRemove.getType()).remove(jobToRemove);
 		getJobsAtLocation(jobToRemove.getJobLocation()).remove(jobToRemove);
 		jobToRemove.setJobState(JobState.REMOVED);
+		if (jobToRemove.getAssignedToEntityId() != null) {
+			Entity assignedEntity = gameContext.getEntities().get(jobToRemove.getAssignedToEntityId());
+			if (assignedEntity != null && assignedEntity.getBehaviourComponent() instanceof SettlerBehaviour) {
+				((SettlerBehaviour)assignedEntity.getBehaviourComponent()).getCurrentGoal().setInterrupted(true);
+			}
+		}
 		jobToRemove.setAssignedToEntityId(-1L);
 		if (jobToRemove.getHaulingAllocation() != null) {
 			byRelatedHaulingAllocationId.remove(jobToRemove.getHaulingAllocation().getHaulingAllocationId());

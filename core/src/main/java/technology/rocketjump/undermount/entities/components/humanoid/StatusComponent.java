@@ -6,7 +6,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.InfrequentlyUpdatableComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.StatusEffect;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;

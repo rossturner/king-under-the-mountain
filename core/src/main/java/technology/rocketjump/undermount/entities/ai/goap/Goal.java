@@ -18,16 +18,20 @@ public class Goal {
 	public final String i18nDescription;
 	public final Double expiryHours;
 	public final long goalId;
+	public final boolean interrupedByCombat;
+	public final boolean interruptedByLowNeeds;
 
 	private List<GoalSelector> selectors = new LinkedList<>();
 
 	private final List<Class<? extends Action>> initialActions = new ArrayList<>();
 	private final Map<Class<? extends Action>, ActionTransitions> actionTransitionsMap = new HashMap<>();
 
-	public Goal(String name, String i18nDescription, Double expiryHours) {
+	public Goal(String name, String i18nDescription, Double expiryHours, boolean interruptedByCombat, boolean interruptedByLowNeeds) {
 		this.name = name;
 		this.i18nDescription = i18nDescription;
 		this.expiryHours = expiryHours;
+		this.interrupedByCombat = interruptedByCombat;
+		this.interruptedByLowNeeds = interruptedByLowNeeds;
 		this.goalId = SequentialIdGenerator.nextId();
 	}
 

@@ -87,6 +87,15 @@ public class GameClock implements Persistable {
 		}
 	}
 
+	public void forceYearChange(MessageDispatcher messageDispatcher) {
+		dayOfSeason = 1;
+		if (!currentSeason.equals(Season.SPRING)) {
+			currentSeason = Season.SPRING;
+		}
+		currentYear++;
+		messageDispatcher.dispatchMessage(MessageType.YEAR_ELAPSED);
+	}
+
 	public double getGameTimeInHours() {
 		return timeOfDay;
 	}

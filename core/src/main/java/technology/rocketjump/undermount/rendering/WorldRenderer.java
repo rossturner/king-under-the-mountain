@@ -151,7 +151,7 @@ public class WorldRenderer implements Disposable {
 					}
 				});
 				for (Entity entity : mapTile.getEntities()) {
-					if (entity.getType().equals(EntityType.HUMANOID)) {
+					if (entity.getType().equals(EntityType.CREATURE)) {
 						settlerLocations.add(toGridPoint(entity.getLocationComponent().getWorldOrParentPosition()));
 					}
 				}

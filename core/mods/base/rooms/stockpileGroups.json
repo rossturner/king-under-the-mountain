@@ -46,6 +46,14 @@
     "i18nKey": "STOCKPILE.GROUP.FOOD",
     "colorCode": "#7cb167",
     "iconName": "fruit-bowl",
-    "sortOrder": 7
+    "sortOrder": 7,
+    "includesCreatureCorpses": true
+  },
+  {
+    "name": "WEAPONS",
+    "i18nKey": "STOCKPILE.GROUP.WEAPONS",
+    "colorCode": "#7a6ede",
+    "iconName": "crossed-swords",
+    "sortOrder": 8
   }
 ]

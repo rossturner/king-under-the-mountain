@@ -21,7 +21,7 @@ public class FurnitureEntityAttributesFactory {
 	private Array<Color> lightColors = new Array<>();
 
 	@Inject
-	public FurnitureEntityAttributesFactory(FurnitureTypeDictionary furnitureTypeDictionary, HairColorFactory hairColorFactory) {
+	public FurnitureEntityAttributesFactory(FurnitureTypeDictionary furnitureTypeDictionary) {
 		this.furnitureTypeDictionary = furnitureTypeDictionary;
 
 		lightColors.add(Color.WHITE);

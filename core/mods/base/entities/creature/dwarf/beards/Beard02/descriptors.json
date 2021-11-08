@@ -1,0 +1,148 @@
+[{
+  "uniqueName": "Dwarf-Beard02-Color",
+  "type": "CREATURE_BEARD",
+  "raceName": "Dwarf",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Beard02-Color-F.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": 2
+      },
+      "childAssets": [
+        {
+          "type": "BEARD_ACCESSORY",
+          "specificAssetName": "Dwarf-Beard02-Accessory",
+          "offsetPixels": {
+            "x": 0,
+            "y": -6
+          }
+        },
+        {
+          "type": "BEARD_OUTLINE",
+          "specificAssetName": "Dwarf-Beard02-Outline"
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Beard02-Color-F34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": -7,
+        "y": 2
+      },
+      "childAssets": [
+        {
+          "type": "BEARD_ACCESSORY",
+          "specificAssetName": "Dwarf-Beard02-Accessory",
+          "offsetPixels": {
+            "x": 8,
+            "y": -6
+          }
+        },
+        {
+          "type": "BEARD_OUTLINE",
+          "specificAssetName": "Dwarf-Beard02-Outline"
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Beard02-Color-F34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 7,
+        "y": 2
+      },
+      "childAssets": [
+        {
+          "type": "BEARD_ACCESSORY",
+          "specificAssetName": "Dwarf-Beard02-Accessory",
+          "offsetPixels": {
+            "x": -8,
+            "y": -6
+          }
+        },
+        {
+          "type": "BEARD_OUTLINE",
+          "specificAssetName": "Dwarf-Beard02-Outline"
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Beard02-Color-F34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": -7,
+        "y": 2
+      },
+      "childAssets": [
+        {
+          "type": "BEARD_ACCESSORY",
+          "specificAssetName": "Dwarf-Beard02-Accessory",
+          "offsetPixels": {
+            "x": 8,
+            "y": -6
+          }
+        },
+        {
+          "type": "BEARD_OUTLINE",
+          "specificAssetName": "Dwarf-Beard02-Outline"
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Beard02-Color-F34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 7,
+        "y": 2
+      },
+      "childAssets": [
+        {
+          "type": "BEARD_ACCESSORY",
+          "specificAssetName": "Dwarf-Beard02-Accessory",
+          "offsetPixels": {
+            "x": -8,
+            "y": -6
+          }
+        },
+        {
+          "type": "BEARD_OUTLINE",
+          "specificAssetName": "Dwarf-Beard02-Outline"
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Dwarf-Beard02-Color-F.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 0,
+        "y": 2
+      },
+      "childAssets": [
+        {
+          "type": "BEARD_ACCESSORY",
+          "specificAssetName": "Dwarf-Beard02-Accessory",
+          "offsetPixels": {
+            "x": 0,
+            "y": -6
+          }
+        },
+        {
+          "type": "BEARD_OUTLINE",
+          "specificAssetName": "Dwarf-Beard02-Outline"
+        }
+      ]
+    }
+  }
+}]

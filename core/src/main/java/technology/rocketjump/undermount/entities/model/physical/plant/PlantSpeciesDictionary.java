@@ -10,6 +10,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
@@ -26,7 +27,8 @@ import java.util.Map;
 @Singleton
 public class PlantSpeciesDictionary {
 
-	public static final String COLOR_SWATCH_ASSET_PATH = "assets/definitions/plantColorSwatches/";
+	public static final String PLANT_COLOR_SWATCH_ASSET_PATH = "assets/definitions/plantColorSwatches/";
+	public static final String CREATURE_COLOR_SWATCH_ASSET_PATH = "assets/definitions/creatureColorSwatches/";
 	private final GameMaterialDictionary materialDictionary;
 	private final ItemTypeDictionary itemTypeDictionary;
 	private Map<String, PlantSpecies> byName = new HashMap<>();
@@ -83,31 +85,8 @@ public class PlantSpeciesDictionary {
 
 	private void initialiseTransientFields(PlantSpecies plantSpecies) {
 		if (Gdx.graphics != null) { // This should only be null in headless tests
-			for (PlantSpeciesColor plantSpeciesColor : plantSpecies.getAllColorObjects()) {
-				plantSpeciesColor.setSpecificColor(HexColors.get(plantSpeciesColor.getColorCode()));
-
-				if (plantSpeciesColor.getSwatch() != null) {
-					Pixmap swatchPixmap = new Pixmap(new FileHandle(COLOR_SWATCH_ASSET_PATH + plantSpeciesColor.getSwatch()));
-					for (int y = 0; y < swatchPixmap.getHeight(); y++) {
-						for (int x = 0; x < swatchPixmap.getWidth(); x++) {
-							plantSpeciesColor.getSwatchColors().add(new Color(swatchPixmap.getPixel(x, y)));
-						}
-					}
-					swatchPixmap.dispose();
-				}
-
-				if (plantSpeciesColor.getTransitionSwatch() != null) {
-					Pixmap transitionPixmap = new Pixmap(new FileHandle(COLOR_SWATCH_ASSET_PATH + plantSpeciesColor.getTransitionSwatch()));
-
-					for (int row = 0; row < transitionPixmap.getHeight(); row++) {
-						Array<Color> colorRow = new Array<>();
-						for (int index = 0; index < transitionPixmap.getWidth(); index++) {
-							colorRow.add(new Color(transitionPixmap.getPixel(index, row)));
-						}
-						plantSpeciesColor.getTransitionColors().add(colorRow);
-					}
-					transitionPixmap.dispose();
-				}
+			for (SpeciesColor speciesColor : plantSpecies.getAllColorObjects()) {
+				initialiseSpeciesColor(EntityType.PLANT, speciesColor);
 			}
 		}
 
@@ -154,6 +133,48 @@ public class PlantSpeciesDictionary {
 					plantSpecies.getSeed().setSeedItemType(seedItemType);
 				}
 			}
+		}
+	}
+
+	public static void initialiseSpeciesColor(EntityType entityType, SpeciesColor speciesColor) {
+		speciesColor.setSpecificColor(HexColors.get(speciesColor.getColorCode()));
+
+		String basePath = PLANT_COLOR_SWATCH_ASSET_PATH;
+		if (entityType.equals(EntityType.CREATURE)) {
+			basePath = CREATURE_COLOR_SWATCH_ASSET_PATH;
+		}
+
+		if (speciesColor.getSwatch() != null) {
+			Pixmap swatchPixmap = new Pixmap(new FileHandle(basePath + speciesColor.getSwatch()));
+			for (int y = 0; y < swatchPixmap.getHeight(); y++) {
+				for (int x = 0; x < swatchPixmap.getWidth(); x++) {
+					speciesColor.getSwatchColors().add(new Color(swatchPixmap.getPixel(x, y)));
+				}
+			}
+			swatchPixmap.dispose();
+		}
+
+		if (speciesColor.getColorChart() != null) {
+			Pixmap swatchPixmap = new Pixmap(new FileHandle(basePath + speciesColor.getColorChart()));
+			for (int y = 0; y < swatchPixmap.getHeight(); y++) {
+				for (int x = 0; x < swatchPixmap.getWidth(); x++) {
+					speciesColor.getSwatchColors().add(new Color(swatchPixmap.getPixel(x, y)));
+				}
+			}
+			swatchPixmap.dispose();
+		}
+
+		if (speciesColor.getTransitionSwatch() != null) {
+			Pixmap transitionPixmap = new Pixmap(new FileHandle(basePath + speciesColor.getTransitionSwatch()));
+
+			for (int row = 0; row < transitionPixmap.getHeight(); row++) {
+				Array<Color> colorRow = new Array<>();
+				for (int index = 0; index < transitionPixmap.getWidth(); index++) {
+					colorRow.add(new Color(transitionPixmap.getPixel(index, row)));
+				}
+				speciesColor.getTransitionColors().add(colorRow);
+			}
+			transitionPixmap.dispose();
 		}
 	}
 

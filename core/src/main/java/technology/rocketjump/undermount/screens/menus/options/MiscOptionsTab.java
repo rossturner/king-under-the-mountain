@@ -88,7 +88,7 @@ public class MiscOptionsTab implements OptionsTab, Telegraph, GameContextAware {
 
 		mainMenuScrollingCheckbox = i18NWidgetFactory.createCheckbox("GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING");
 		mainMenuScrollingCheckbox.setProgrammaticChangeEvents(false); // Used so that message triggered below does not loop endlessly
-		mainMenuScrollingCheckbox.setChecked(Boolean.parseBoolean(userPreferences.getPreference(MAIN_MENU_BACKGROUND_SCROLLING, "true")));
+		mainMenuScrollingCheckbox.setChecked(Boolean.parseBoolean(userPreferences.getPreference(MAIN_MENU_BACKGROUND_SCROLLING, "false")));
 		mainMenuScrollingCheckbox.addListener((event) -> {
 			if (event instanceof ChangeListener.ChangeEvent) {
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));

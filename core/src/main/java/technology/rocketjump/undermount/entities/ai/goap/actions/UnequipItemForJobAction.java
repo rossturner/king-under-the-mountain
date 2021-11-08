@@ -7,7 +7,7 @@ import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -32,7 +32,7 @@ public class UnequipItemForJobAction extends Action {
 		EquippedItemComponent equippedItemComponent = parent.parentEntity.getOrCreateComponent(EquippedItemComponent.class);
 		Entity currentItem = equippedItemComponent.clearEquippedItem();
 		if (currentItem != null) {
-			if (new EquipItemForJobFromFurnitureAction(parent).isApplicable()) {
+			if (new EquipItemForJobFromFurnitureAction(parent).isApplicable(gameContext)) {
 				unequipItemToFurniture(currentItem, gameContext);
 			} else {
 				unequipItemToInventory(currentItem, gameContext);

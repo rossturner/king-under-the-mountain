@@ -20,6 +20,8 @@ public class JobType {
 	private boolean isAccessedFromAdjacentTile;
 	private boolean removeJobWhenAssignmentCancelled;
 	private boolean haulItemWhileWorking;
+	private boolean requiresWeapon;
+	private boolean usesWorkstationTool;
 	private SpecialGoal switchToSpecialGoal;
 	private Float defaultTimeToCompleteJob;
 	private Float mightStartFire;
@@ -191,5 +193,21 @@ public class JobType {
 
 	public void setMightStartFire(Float mightStartFire) {
 		this.mightStartFire = mightStartFire;
+	}
+
+	public boolean isRequiresWeapon() {
+		return requiresWeapon;
+	}
+
+	public void setRequiresWeapon(boolean requiresWeapon) {
+		this.requiresWeapon = requiresWeapon;
+	}
+
+	public boolean isUsesWorkstationTool() {
+		return usesWorkstationTool;
+	}
+
+	public void setUsesWorkstationTool(boolean usesWorkstationTool) {
+		this.usesWorkstationTool = usesWorkstationTool;
 	}
 }

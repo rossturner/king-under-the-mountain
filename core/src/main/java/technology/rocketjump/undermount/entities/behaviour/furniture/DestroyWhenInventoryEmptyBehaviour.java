@@ -22,7 +22,7 @@ public class DestroyWhenInventoryEmptyBehaviour extends FurnitureBehaviour imple
 				if (entry.entity.getType().equals(EntityType.ITEM)) {
 					ItemAllocationComponent itemAllocationComponent = entry.entity.getOrCreateComponent(ItemAllocationComponent.class);
 					if (itemAllocationComponent.getNumUnallocated() > 0) {
-						messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entry.entity, parentEntity, false, priority, null));
+						messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(entry.entity, parentEntity, false, priority, null));
 					}
 				} else {
 					Logger.warn("To be implemented: Handle non-item type inventory items in " + this.getClass().getSimpleName());

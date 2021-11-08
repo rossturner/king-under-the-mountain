@@ -9,8 +9,8 @@ import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.pmw.tinylog.Logger;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidName;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.HumanoidName;
 
 import java.io.File;
 import java.io.IOException;

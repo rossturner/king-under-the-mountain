@@ -6,7 +6,6 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
-import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
@@ -14,14 +13,15 @@ import technology.rocketjump.undermount.entities.components.humanoid.StatusCompo
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.OnFireStatus;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemHoldPosition;
 import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.misc.Destructible;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
@@ -31,7 +31,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
 import java.util.*;
 
-import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOID;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 
@@ -47,6 +47,7 @@ public class Entity implements Persistable, Disposable {
 	private final EntityComponentMap componentMap = new EntityComponentMap();
 	private Set<Tag> tags = new LinkedHashSet<>();
 	private double lastUpdateGameTime;
+	private Designation designation;
 
 	public static final Entity NULL_ENTITY = new Entity();
 
@@ -152,14 +153,14 @@ public class Entity implements Persistable, Disposable {
 	public List<AttachedEntity> getAttachedEntities() {
 		attachedEntities.clear(); // Avoiding new instance on each call, is this a good idea or bad idea?
 
-		if (type.equals(EntityType.HUMANOID)) {
+		if (type.equals(EntityType.CREATURE)) {
 			HaulingComponent haulingComponent = getComponent(HaulingComponent.class);
 			if (haulingComponent != null && haulingComponent.getHauledEntity() != null) {
 				Entity hauledEntity = haulingComponent.getHauledEntity();
 				if (hauledEntity.getType().equals(ITEM)) {
 					ItemEntityAttributes attributes = (ItemEntityAttributes) hauledEntity.getPhysicalEntityComponent().getAttributes();
 					attachedEntities.add(new AttachedEntity(hauledEntity, attributes.getItemType().getHoldPosition()));
-				} else if (hauledEntity.getType().equals(HUMANOID)) {
+				} else if (hauledEntity.getType().equals(CREATURE)) {
 					attachedEntities.add(new AttachedEntity(hauledEntity, ItemHoldPosition.IN_FRONT));
 				}
 			} else {
@@ -192,8 +193,6 @@ public class Entity implements Persistable, Disposable {
 			if (inventoryComponent != null) {
 				workspaceItems.clear();
 
-
-
 				for (InventoryComponent.InventoryEntry inventoryItem : inventoryComponent.getInventoryEntries()) {
 					if (inventoryItem.getPreferredPosition() != null) {
 						workspaceItems.put(inventoryItem.getPreferredPosition(), new AttachedEntity(inventoryItem.entity, inventoryItem.getPreferredPosition()));
@@ -207,8 +206,8 @@ public class Entity implements Persistable, Disposable {
 						}
 						// Else no space to add/display item
 					}
-					attachedEntities.addAll(workspaceItems.values());
 				}
+				attachedEntities.addAll(workspaceItems.values());
 			}
 		}
 
@@ -303,10 +302,6 @@ public class Entity implements Persistable, Disposable {
 
 	public <T extends EntityComponent> T getOrCreateComponent(Class<T> classType) {
 		T component = componentMap.get(classType);
-		if (classType.getSimpleName().contains("ItemAllocation") && !this.type.equals(ITEM)) {
-			// TEMP remove me
-			Logger.error("Creating invalid component");
-		}
 		if (component == null) {
 			try {
 				component = classType.getDeclaredConstructor().newInstance();
@@ -397,6 +392,10 @@ public class Entity implements Persistable, Disposable {
 			asJson.put("tags", tagsJson);
 		}
 
+		if (designation != null) {
+			asJson.put("designation", designation.getDesignationName());
+		}
+
 		savedGameStateHolder.entitiesJson.add(asJson);
 		savedGameStateHolder.entities.put(id, this);
 	}
@@ -450,6 +449,13 @@ public class Entity implements Persistable, Disposable {
 			}
 		}
 
+		String designationName = asJson.getString("designation");
+		if (designationName != null) {
+			this.designation = relatedStores.designationDictionary.getByName(designationName);
+			if (this.designation == null) {
+				throw new InvalidSaveException("Could not find designation with name " + designationName);
+			}
+		}
 	}
 
 	public <T> T getTag(Class<T> tagClass) {
@@ -470,5 +476,13 @@ public class Entity implements Persistable, Disposable {
 
 	public List<EntityComponent> getAllComponents() {
 		return componentMap.values();
+	}
+
+	public Designation getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
 	}
 }

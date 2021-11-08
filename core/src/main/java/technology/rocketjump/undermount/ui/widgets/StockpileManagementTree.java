@@ -6,6 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
@@ -30,7 +32,8 @@ public class StockpileManagementTree extends Table {
 
 	public StockpileManagementTree(Skin uiSkin, MessageDispatcher messageDispatcher, StockpileComponent stockpileComponent,
 								   StockpileComponentUpdater stockpileComponentUpdater, StockpileGroupDictionary stockpileGroupDictionary,
-								   I18nTranslator i18nTranslator, ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary) {
+								   I18nTranslator i18nTranslator, ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary,
+								   RaceDictionary raceDictionary, Race settlerRace) {
 		this.uiSkin = uiSkin;
 		this.stockpileComponent = stockpileComponent;
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
@@ -48,6 +51,46 @@ public class StockpileManagementTree extends Table {
 
 			boolean allItemsDisabled = true;
 			boolean allItemsEnabled = true;
+
+			if (stockpileGroup.isIncludesCreatureCorpses()) {
+				StockpileTreeNode corpseGroupNode = new StockpileTreeNode();
+				corpseGroupNode.setValue(new StockpileTreeValue("Corpse group"));
+				createCheckbox(corpseGroupNode, "CARCASS.GROUP");
+				groupNode.add(corpseGroupNode);
+
+				if (stockpileComponent.isAcceptingCorpses()) {
+					allItemsDisabled = false;
+				} else {
+					allItemsEnabled = false;
+				}
+
+				boolean allRacesEnabled = true;
+				boolean allRacesDisabled = true;
+
+				for (Race race : raceDictionary.getAll()) {
+					if (race.equals(settlerRace)) {
+						continue;
+					}
+					StockpileTreeNode raceNode = new StockpileTreeNode();
+					raceNode.setValue(new StockpileTreeValue(race));
+					createCheckbox(raceNode, race.getI18nKey());
+					corpseGroupNode.add(raceNode);
+
+					if (stockpileComponent.isEnabled(race)) {
+						allRacesDisabled = false;
+					} else {
+						allRacesEnabled = false;
+					}
+				}
+
+				if (!allRacesDisabled && !allRacesEnabled) {
+					groupNode.setExpanded(true);
+					// setting these to cascade expansion up to parent
+					allItemsEnabled = false;
+					allItemsDisabled = false;
+				}
+
+			}
 
 			for (ItemType itemType : itemTypeDictionary.getByStockpileGroup(stockpileGroup)) {
 				StockpileTreeNode itemTypeNode = new StockpileTreeNode();
@@ -115,6 +158,10 @@ public class StockpileManagementTree extends Table {
 			node.getActor().setChecked(stockpileComponent.isEnabled(node.getValue().itemType));
 		} else if (node.getValue().isMaterial()) {
 			node.getActor().setChecked(stockpileComponent.isEnabled(node.getValue().material, node.getValue().itemType));
+		} else if (node.getValue().isCorpseGroup) {
+			node.getActor().setChecked(stockpileComponent.isAcceptingCorpses());
+		} else if (node.getValue().isRace()) {
+			node.getActor().setChecked(stockpileComponent.isEnabled(node.getValue().race));
 		}
  	}
 
@@ -151,8 +198,13 @@ public class StockpileManagementTree extends Table {
 				} else if (value.isMaterial()) {
 					stockpileComponentUpdater.toggleMaterial(stockpileComponent, value.itemType, value.material, node.getActor().isChecked(), true);
 					messageDispatcher.dispatchMessage(MessageType.STOCKPILE_SETTING_UPDATED, stockpileComponent.getParent());
+				} else if (value.isCorpseGroup) {
+					stockpileComponentUpdater.toggleCorpseGroup(stockpileComponent, node.getActor().isChecked(), node.getParent().getValue().group, true, true);
+					messageDispatcher.dispatchMessage(MessageType.STOCKPILE_SETTING_UPDATED, stockpileComponent.getParent());
+				} else if (value.isRace()) {
+					stockpileComponentUpdater.toggleRaceCorpse(stockpileComponent, value.race, node.getParent().getParent().getValue().group, node.getActor().isChecked(), true);
+					messageDispatcher.dispatchMessage(MessageType.STOCKPILE_SETTING_UPDATED, stockpileComponent.getParent());
 				}
-
 
 				StockpileTreeNode parent = node.getParent();
 				while (parent != null) {
@@ -183,35 +235,63 @@ public class StockpileManagementTree extends Table {
 		public final StockpileGroup group;
 		public final ItemType itemType;
 		public final GameMaterial material;
+		public final boolean isCorpseGroup;
+		public final Race race;
 
 		public StockpileTreeValue(StockpileGroup group) {
 			this.group = group;
 			this.itemType = null;
 			this.material = null;
+			this.isCorpseGroup = false;
+			this.race = null;
 		}
 
 		public StockpileTreeValue(ItemType itemType) {
 			this.group = null;
 			this.itemType = itemType;
 			this.material = null;
+			this.isCorpseGroup = false;
+			this.race = null;
 		}
 
 		public StockpileTreeValue(GameMaterial material, ItemType itemType) {
 			this.group = null;
 			this.itemType = itemType;
 			this.material = material;
+			this.isCorpseGroup = false;
+			this.race = null;
+		}
+
+		public StockpileTreeValue(String unused) {
+			this.group = null;
+			this.itemType = null;
+			this.material = null;
+			this.isCorpseGroup = true;
+			this.race = null;
+		}
+
+		public StockpileTreeValue(Race race) {
+			this.group = null;
+			this.itemType = null;
+			this.material = null;
+			this.isCorpseGroup = false;
+			this.race = race;
 		}
 
 		public boolean isGroup() {
-			return itemType == null;
+			return group != null;
 		}
 
 		public boolean isItemType() {
-			return group == null && material == null;
+			return itemType != null && material == null;
 		}
 
 		public boolean isMaterial() {
 			return material != null;
+		}
+
+		public boolean isRace() {
+			return race != null;
 		}
 	}
 

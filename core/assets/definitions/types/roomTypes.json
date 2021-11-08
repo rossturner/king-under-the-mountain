@@ -108,4 +108,11 @@
   "tags" : {
     "GRAVEYARD_BEHAVIOUR" : [ ]
   }
+}, {
+  "roomName" : "ARMOURY",
+  "i18nKey" : "ROOMS.ARMOURY",
+  "colorCode" : "#e17151",
+  "iconName" : "crossed-swords",
+  "furnitureNames" : [ "FLETCHERS_WORKBENCH" ],
+  "tags" : { }
 } ]

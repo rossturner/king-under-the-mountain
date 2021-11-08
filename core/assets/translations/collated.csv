@@ -1,5 +1,7 @@
 KEY,ENGLISH,NOTES,GERMAN,FRENCH,ITALIAN,SPANISH,PORTUGUESE,PORTUGUESE BR,POLISH,RUSSIAN,TURKISH,DANISH,DUTCH,SWEDISH,NORWEGIAN,HUNGARIAN,FINNISH,JAPANESE,SIMPLIFIED CHINESE,KOREAN
 
+ACTION.DRINK_FROM_RIVER,from river,,,,,,,,,,,,,,,,,,,
+ACTION.JOB.BUTCHER_CREATURE,Butchering,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CLEAR_GROUND,Clearing {{targetPlant}},,Entfernt {{plantDescription}},Arrache: {{plantDescription}},Sta rimuovendo: {{plantDescription}},Eliminando {{plantDescription}},Limpar {{plantDescription}},Retirando {{targetPlant}},,Расчищает: {{plantDescription}},{{plantDescription}} temizleniyor,Rydder {{targetPlant},,Rensa {{plantDescription}},,,,{{targetPlant}} をクリアしています,清除 {{targetPlant}},{{대상 플랜트}} 지우기
 ACTION.JOB.CONSTRUCT_FLOORING,Laying floor,,,,,,,,,,,,,,,,,,,
 ACTION.JOB.CONSTRUCT_FURNITURE,{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}},,{{profession.verb}} {{targetDescription}},,,,{{profession.verb}} {{targetDescription}},{{专业. 动词}} {{profession.verb}},{{profession.verb}} {{targetDescription}}
@@ -25,23 +27,57 @@ ACTION.JOB.REMOVE_PESTS_FROM_CROP,Removing pests from {{targetPlant}},,Entfernt 
 ACTION.JOB.SHOVELLING,Shovelling {{targetDescription}},,Schaufelt {{targetDescription}},Pelle {{targetDescription}},Spalatura {{targetDescription}},Pala {{targetDescription}},Pás {{targetDescription}},,,Лопата {{targetDescription}},{{targetDescription}} kürekle kaldırılıyor,Graver {{targetDescription}},,Skovning {{targetDescription},,,,シャベルで掘る {{targetDescription}},铲 {{targetDescription}},삽질 {{targetDescription}}
 ACTION.JOB.TILLING,Tilling the earth,,Bestellt das Feld,Laboure la terre,Sta arando il terreno,Labrando la tierra,A lavrar a terra,Lavrando a terra,,Обрабатывает землю,Toprak belleniyor.,Pløjer jorden,,Jordbearbetning,,,,地球のティリング,耕地,지구를 경작
 ACTION.JOB.TRANSFER_LIQUID,Filling {{targetDescription}},,Füllt {{targetDescription}},Rempli: {{targetDescription}},Sta riempiendo: {{targetDescription}},Llenando {{targetDescription}},A encher {{targetDescription}},Enchendo {{targetDescription}},,Заполняет: {{targetDescription}},{{targetDescription}} dolduruluyor.,Fylder {{targetDescription}},,Fyllning {{targetDescription},,,,充填 {{targetDescription}},填写 {{targetDescription}},{{대상 설명}} 을 (를) 채우는 중입니다.
+ACTION.KNOCKED_UNCONSCIOUS,Knocked unconscious,,,,,,,,,,,,,,,,,,,
 ACTION.MALTING.VERB,Malting,,Mälzen,,,,,,,,Çimlendiriliyor,,,,,,,,,
 ACTION.PREPARATION.VERB,Preparing,,Bereitet vor,Préparation,Mi sto preparando,Preparándose,Preparando,,,Готовится,Hazırlanıyor,Forbereder,,Förbereder,,,,準備中,准备,준비 중
 ACTION.SELECT_JOB.DESCRIPTION,Looking for work to do,,Sucht Arbeit,Cherche quoi faire,Sta cercando qualcosa da fare,Buscando qué hacer,À procura de trabalho,Procurando o que fazer,,Ищет работу,Yapacak iş arıyor,Leder efter arbejde at lave,,Söker efter arbete,,,,やるべき仕事を探しています,寻找工作要做,할 일을 찾고 있습니다.
 ACTION.SLEEP_IN_BED.DESCRIPTION,,,Schläft in {{containerDescription}},Dors: {{containerDescription}},Sta dormendo in: {{containerDescription}},Durmiendo en {{containerDescription}},A dormir em {{containerDescription}},Dormindo em {{containerDescription}},,Спит в: {{containerDescription}},{{containerDescription}} içinde uyuyor.,Sover i {{containerDescription}},,Sova i {{ContainerDescription},,,,{{containerDescription}} でスリープ中,睡在 {{containerDescription}},{{containerDescription}} 에서 휴면 중
 ACTION.SLEEP_ON_FLOOR.DESCRIPTION,Sleeping on {{tileDescription}},,Schläft auf {{tileDescription}},Dors: {{tileDescription}},Sta dormendo su: {{tileDescription}},Durmiendo sobre {{tileDescription}},A dormir em {{tileDescription}},Dormindo em {{tileDescription}},,Спит на: {{tileDescription}},{{tileDescription}} üzerinde uyuyor.,Sover på {{tileDescription}},,Sova på {{TileDescription},,,,{{tileDescription}} でスリープ中,睡在 {{tileDescription}},{{tileDescription}} 에서 일시 정지 중
+ACTION.STUNNED,Stunned,,,,,,,,,,,,,,,,,,,
 
 ASHES.NOUN,Ash,,,,,,,,,,,,,,,,,,,
 
-CARCASS.CARP.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
-CARCASS.CARP.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
-CARCASS.CARP.RAW,Carp,,,,,,,,,,,,,,,,,,,
-CARCASS.PERCH.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
-CARCASS.PERCH.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
-CARCASS.PERCH.RAW,Perch,,,,,,,,,,,,,,,,,,,
-CARCASS.PIKE.PREPARED.NOUN,Fillet,,,,,,,,,,,,,,,,,,,
-CARCASS.PIKE.PREPARED.PLURAL,Fillets,,,,,,,,,,,,,,,,,,,
-CARCASS.PIKE.RAW,Pike,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ABDOMEN,Abdomen,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ARM,Arm,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DAMAGE.BLEEDING,Bleeding,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DAMAGE.BROKENBONES,Broken,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DAMAGE.BRUISED,Bruised,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DAMAGE.DESTROYED,Destroyed,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DISCRIMINATOR.BACKLEFT,Rear left,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DISCRIMINATOR.BACKRIGHT,Rear right,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DISCRIMINATOR.FRONTLEFT,Front left,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DISCRIMINATOR.FRONTRIGHT,Front right,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DISCRIMINATOR.LEFT,Left,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.DISCRIMINATOR.RIGHT,Right,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.FOOT,Foot,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.HAND,Hand,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.HEAD,Head,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.HOOF,Hoof,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.LEG,Leg,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN.BRAIN,Brain,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN.EYE,Eye,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN.HEART,Heart,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN.INTESTINES,Intestines,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN.KIDNEY,Kidney,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN.LUNG,Lung,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN_DAMAGE.DESTROYED,Destroyed,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN_DAMAGE.HEAVY,Heavy damage to,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.ORGAN_DAMAGE.LIGHT,Light damage to,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.PAW,Paw,,,,,,,,,,,,,,,,,,,
+BODY_STRUCTURE.TORSO,Chest,,,,,,,,,,,,,,,,,,,
+
+BONE.BONE,Bone,,,,,,,,,,,,,,,,,,,
+
+CARCASS.CARP.PREPARED.NOUN,Carp fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.CARP.PREPARED.PLURAL,Carp fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.GROUP,Corpses,,,,,,,,,,,,,,,,,,,
+CARCASS.MEAT.LARGE,Meat (large),,,,,,,,,,,,,,,,,,,
+CARCASS.MEAT.MEDIUM,Meat (medium),,,,,,,,,,,,,,,,,,,
+CARCASS.MEAT.SMALL,Meat (small),,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.NOUN,Perch fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PERCH.PREPARED.PLURAL,Perch fillets,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.NOUN,Pike fillet,,,,,,,,,,,,,,,,,,,
+CARCASS.PIKE.PREPARED.PLURAL,Pike fillets,,,,,,,,,,,,,,,,,,,
 
 CLOTH.HEMP-LINEN,Hemp,,,,,,,,,,,,,,,,,,,
 
@@ -63,7 +99,7 @@ CRAFTING_TYPE.BLACKSMITHING,Blacksmithing,,Schmieden,,,,,,,,Demirci,,,,,,,,,
 CRAFTING_TYPE.CARPENTRY,Carpentry,,Schreinern,,,,,,,,Marangoz,,,,,,,,,
 CRAFTING_TYPE.COKE_OVEN_BAKING,Coke baking,,Verkoken,,,,,,,,Fırıncılık,,,,,,,,,
 CRAFTING_TYPE.FERMENTING,Fermenting,,Gären,,,,,,,,Fermantasyon,,,,,,,,,
-CRAFTING_TYPE.FOOD_PREPARATION,Food preparation,,,,,,,,,,,,,,,,,,,
+CRAFTING_TYPE.FLETCHING,Fletching,,,,,,,,,,,,,,,,,,,
 CRAFTING_TYPE.MALTING,Malting,,Mälzen,,,,,,,,Çimlendirme,,,,,,,,,
 CRAFTING_TYPE.MALT_MASHING,Malt mashing,,Maischen,,,,,,,,Mayşeleme,,,,,,,,,
 CRAFTING_TYPE.MILLING,Milling,,Mahlen,,,,,,,,Frzeleme,,,,,,,,,
@@ -73,6 +109,12 @@ CRAFTING_TYPE.STONEMASONRY,Stonemasonry,,Stein bearbeiten,,,,,,,,Taş Ustası,,,
 CRAFTING_TYPE.WEAVING,Weaving,,,,,,,,,,,,,,,,,,,
 CRAFTING_TYPE.WOODCUTTING,Woodcutting,,Holz hacken,,,,,,,,Doğramacı,,,,,,,,,
 CRAFTING_TYPE.WORT_BREWING,Brewing,,Brauen,,,,,,,,Mayalama,,,,,,,,,
+
+CREATURE.DAMAGE.DESCRIPTION_A,{{damageType}} {{bodyPart}},,,,,,,,,,,,,,,,,,,
+CREATURE.DAMAGE.DESCRIPTION_B,{{damageType}} {{discriminator}} {{bodyPart}},,,,,,,,,,,,,,,,,,,
+CREATURE.DESCRIPTION,{{gender.adjective}} {{race.noun}},,,,,,,,,,,,,,,,,,,
+CREATURE.STATUS.BLINDED,Blinded,,,,,,,,,,,,,,,,,,,
+CREATURE.STATUS.DEAD,Dead,,,,,,,,,,,,,,,,,,,
 
 CROP.AFFLICTED_BY_PESTS,Afflicted by pests,,Von Schädlingen befallen,Infesté de nuisibles,Infestato dai parassiti,Infestado por plaga,Atacado por pragas,Infestação de pragas,,Поражено вредителями,Böceklenmiş,Ramt af skadedyr,,Pådrabbad av skadedjur,,,,害虫に苦められている,受害虫影响,해충에 의해 고통
 CROP.AFFLICTED_BY_PESTS.TOOLTIP,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,,"Diese Pflanze ist von einer hohen Anzahl an Blattläusen und anderen Insekten befallen, die von einem {{PROFESSION.FARMER}} entfernt werden müssen bevor sie wieder gedeihen kann. Die Pflanze kann sterben wenn die Schädlinge nicht rechtzeitig entfernt werden!",Cette culture a été contaminée par un nombre excessif de pucerons et d'autres insectes qui doivent être enlevés par un {{PROFESSIONN.FARMER}} avant de pouvoir prospérer à nouveau. Ne pas enlever les nuisibles à temps pourrait signifier que cette récolte va mourir!,Questa coltura è stata afflitta da un numero eccessivo di afidi e altri insetti che devono essere rimossi da un {{PROFESSION.FARMER}} prima che possa prosperare nuovamente. Non rimuovere i parassiti in tempo potrebbe significare che questo raccolto muore!,Este cultivo ha sido afectado por un número excesivo de áfidos y otros insectos que necesitan ser removidos por un {{PROFESSION.FARMER}} antes de que pueda florecer de nuevo. No eliminar las plagas a tiempo podría significar que esta cosecha muere!,Esta cultura foi aflita por um número excessivo de pulgões e outros insetos que precisam ser removidos por um {{PROFISSION.FARMER}} antes que possa florescer novamente. Não remover as pragas no tempo pode significar que esta colheita morre!,,,"Эта культура страдает от чрезмерного количества тлей и других насекомых, которые необходимо удалить {{PROFESSION.FARMER}}, прежде чем она сможет снова процветать. Неудаление вредителей во времени может означать, что эта культура умирает!",Bu bitki aşırı böceklenmiş veya zararlı otlarla sarılmış. Tekrar mahsül verebilmesi için önce {{PROFESSION.FARMER}} tarafından temizlenmesi gerekiyor. Dikkat! Hastallığın temizlenmemesi bitkinin ölmesi demek olabilir!,"Denne afgrød er ramt af en stor mængde bladlus og andre insekter, som skal fjernes af {{PROFESSION.FARMER}} før den kan blomstre igen. Hvis ikke, kan planten dø efter tilstrækkelig tid!",,Denna gröda har drabbats av ett alltför stort antal bladlöss och andra insekter som måste avlägsnas av en {{PROFER.FARMER}} innan den kan blomstra igen. Att inte ta bort skadedjur i tid kan innebära att denna gröda dör!,,,,この作物は、それが再び繁栄する前に {{PROFESSION.FARMER}} によって除去する必要があるアブラムシや他の昆虫の過剰な数によって苦しんでいます。 時間内に害虫を除去しないことは、この作物が死ぬことを意味する可能性があります!,这种作物受到了大量蚜虫和其他昆虫的影响，这些昆虫需要通过 {{PROFESSION.FARMER}} 去除才能再次繁荣。 不去除害虫的时间可能意味着这种作物死亡！,"이 작물은 지나치게 많은 진딧물과 다른 곤충에 시달렸으며, 다시 번성하기 전에 {{PROFESSION.FARMER}} 에 의해 제거되어야 합니다. 시간에 해충을 제거하지 않는이 작물이 죽는 것을 의미 할 수있다!"
@@ -84,12 +126,15 @@ CROP.MOISTURE_STATE.NEEDS_WATERING.TOOLTIP,You can irrigate your crops with a ch
 CROP.MOISTURE_STATE.WATERED,This plant has been watered recently and is growing quickly,,,,,,,,,,,,,,,,,,,
 
 DEATH_REASON.BURNING,Burning,,,,,,,,,,,,,,,,,,,
+DEATH_REASON.CRITICAL_ORGAN_DAMAGE,Critical organ damage,,,,,,,,,,,,,,,,,,,
 DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,Falling debris,,Fallende Trümmer,Débris tombant,Detriti che cadono,Desechos que caen,Detritos caindo,,,Падающий мусор,Heyelan,Faldene vragrester,,Fallande skräp,,,,落下残骸,落碎片,떨어지는 파편
 DEATH_REASON.DEHYDRATION,Dehydration,,Verdurstet,Déshydratation,Disidratazione,Deshidratación,Desidratação,,,Обезвоживание,Sıvı Kaybı,Dehydrering,,Uttorkning,,,,脱水,脱水,탈수
 DEATH_REASON.EXHAUSTION,Exhaustion,,Erschöpfung,Épuisement,Stanchezza,Agotamiento,Exaustão,,,Исчерпение,Yorgunluk,Udmattelse,,Utmattning,,,,疲労します,疲惫,피로
 DEATH_REASON.FOOD_POISONING,Food poisoning,,Lebensmittelvergiftung,Intoxication alimentaire,Intossicazione alimentare,Intoxicación alimentaria,Intoxicação alimentar,,,Пищевое отравление,Besin zehirlenmesi,Madforgiftning,,Matförgiftning,,,,食中毒,食物中毒,식중독
 DEATH_REASON.FROZEN,Exposure to freezing weather,,,,,,,,,,,,,,,,,,,
+DEATH_REASON.INTERNAL_BLEEDING,Internal bleeding,,,,,,,,,,,,,,,,,,,
 DEATH_REASON.STARVATION,Starvation,,Verhungert,Famine,La fame,La inanición,Inanição,,,Голод,Açlık,Sult,,Svält,,,,飢餓,饥饿,기아
+DEATH_REASON.SUFFOCATION,Suffocation,,,,,,,,,,,,,,,,,,,
 DEATH_REASON.UNKNOWN,Mysterious circumstances,,Mysteriöse Umstände,Circonstances mystérieuses,Circostanze misteriose,Circunstancias misteriosas,Circunstâncias misteriosas,,,Таинственные обстоятельства,Gizemli koşullar,Mystiske omstændigheder,,Mystiska omständigheter,,,,神秘的な状況,神秘情境,신비한 상황
 
 EARTH.DIRT,Dirt,,Erde,Terre,Sporcizia,Suciedad,Sujeira,,,Грязь,Toprak,Jord,,Smuts,,,,土,污垢,먼지
@@ -163,6 +208,8 @@ FURNITURE.FEASTING_TABLE,Feasting table,,Festtafel,Table de banquet,Tavolo da ba
 FURNITURE.FEASTING_TABLE.TOOLTIP,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.",,Mit platzierten {{FURNITURE.CHAIR}} können deine Siedler ihre Mahlzeiten an diesem Tisch genießen.,"Avec un {{FURNITURE.CHAIR}} en place, vos colons pourront profiter de leurs repas à cette table.","Con un {{FURNITURE.CHAIR}} in atto, i tuoi coloni potranno gustare i loro pasti a questo tavolo.","Con un {{Furniture.CHAIR}} en su lugar, sus colonos disfrutarán de sus comidas en esta mesa.","Com um {{FURNITURE.CHAIR}} no lugar, seus colonos irão desfrutar de suas refeições nesta mesa.",,,"С {{FURNITURE.CHAIR}}, ваши поселенцы будут наслаждаться трапезой за этим столом.",{{FURNITURE.CHAIR}} ile beraber vatandaşların yemeklerinin tadını masada çıkaracaklar,"Med en {{FURNITURE.CHAR}} til stede, vil dine beboer nyde deres måltid ved bordet",,"Med en {{Furniture.COOR}} på plats, kommer dina nybyggare njuta av sina måltider vid detta bord.",,,,{{FURNITURE.CHAIR}} を配置すると、入植者はこのテーブルで食事を楽しむことができます。,随着 {{{家具 .CAR}} 到位，您的定居者将在此餐桌上享用他们的餐点。,"{{FURNITURE.CHAIR}} 이 자리에 있으면, 이주민들은 이 테이블에서 식사를 즐길 수 있습니다."
 FURNITURE.FERMENTATION_TANK,Fermentation tank,,Gärtank,,,,,,,,Fermantasyon tankı,,,,,,,,,
 FURNITURE.FERMENTATION_TANK.TOOLTIP,This is where {{LIQUID.HOPPED_WORT}} is fermented into {{LIQUID.BEER}}.,,Hier wird {{LIQUID.HOPPED_WORT}} zu {{LIQUID.BEER}} gegärt.,,,,,,,,{{LIQUID.HOPPED_WORT}} un {{LIQUID.BEER}}ya dönüştüğü yer.,,,,,,,,,
+FURNITURE.FLETCHERS_WORKBENCH,Fletcher's workbench,,,,,,,,,,,,,,,,,,,
+FURNITURE.FLETCHERS_WORKBENCH.TOOTIP,This is a crafting station for ranged weapons and ammunition,,,,,,,,,,,,,,,,,,,
 FURNITURE.FLOUR_MILL,Gristmill,,Getreidemühle,Moulin à grains,Gristmill,Molino de Gristmill,Moinho de Gristill,,,Гристмилл,Un Değirmeni,Kværn,,Gristmill,,,,グリストミル,格斯米尔,그리스트밀
 FURNITURE.FLOUR_MILL.TOOLTIP,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,,“Die Getreidemühle mahlt {{VEGETABLE.WHEAT}} zu {{RESOURCE.FLOUR.SACK.NOUN}},Le moulin à grains broie {{Vegetable.WHEAT}} en {{RESOURCE.FLOUR.SACK.NOUN}} afin qu'il puisse être utilisé par un {{PROFESSION.CHEF}}.,Il mulino macina {{VEGETALE.WHEAT}} in {{RESOURCE.FLOUR.SACK.NOUN}} in modo che possa essere utilizzato da un {{PROFESSION.CHEF}}.,La molinillo muele {{VEGETADABLE WHEIGH}} en {{RESOURCE.FloUR.SACK.NOUN}} para que pueda ser utilizada por un {{PROFESSION.CHEF}}.,A moagem de moagem {{VEGETABLE.WORT}} em {{RESOURCE.FLOUR.SACK.NOUN}} para que possa ser usada por um {{PROFISSION.CHEF}}.,,,"Мельница измельчает {{VEGETABLE.WHEAT}} в {{RESOURCE.FLOUR.SACK.NOUN}}, чтобы ее можно было использовать {{PROFESSION.CHEF}}.",Un değirmeni {{VEGETABLE.WHEAT}} nı öğüterek {{PROFESSION.CHEF}} tarafından kullanılabilecek {{RESOURCE.FLOUR.SACK.NOUN}} elde eder.,Kværnen maler {{VEGETABLE.WHEAT}} til {{RESOURCE.FLOUR.SACK.NOUN}} så det kan bruges af en {{PROFESSION.CHEF}}.,,Gristmill malar {{VEETABL.VETE}} i {{RESOURCE.FLOUR.SACK.NOUN}} så att den kan användas av en {{PROCESTI.CHEF}}.,,,,このグリスミルは {{野菜.小麦}} を {{リソース.フローアー.サック.ノウン}} に粉砕し、{{PROFESSION.CHEF}} が使用できるようにします。,水晶磨坊将 {{{蔬菜. 小麦}} 研磨成 {{资源. 面粉. 沙克. 名词}}，以便 {{专业. 厨师}} 可以使用它。,분쇄기는 {{VEGETABLE.WHEAT}} 을 (를) {{RESOURCE.FLOUR.SACK.NOUN}} 로 갈아서 {{PROFESSION.CHEF}} 가 사용할 수 있도록 합니다.
 FURNITURE.FORGE,Forge,,Schmiede,Forge,Forgia,Falsificar,Forjar,,,Кузница,Demirhane,Smedeværksted,,Smida,,,,鍛冶だ,伪造,대장간
@@ -298,11 +345,14 @@ GEM.TURQUOISE.ADJECTIVE,Turquoise,,Türkis,en turquoise,di turchese,De turquesa,
 GEM.TURQUOISE.NOUN,Turquoise,,Türkis,Turquoise,Turchese,Turquesa,Turquesa,de turquesa,,Бирюза,Turkuaz,Turkis,,Turkos,,,,ターコイズ,绿松石,청록색
 GEM.TURQUOISE.TOOLTIP,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,,"Ein blaugrünes Mineral, das häufig in Dekorationen verwendet wird. Man nimmt an, dass es dem Träger Glück bringt. Es ist oft mit dem Element Erde durchdringen.",Un minéral bleu-vert souvent utilisé dans les décorations. On pense qu'il porte bonne chance au porteur. Il est souvent infusé avec l'élément de la terre.,Un minerale blu-verde spesso usato nelle decorazioni. Si pensa che porti fortuna al portatore. È spesso infuso con l'elemento della terra.,Un mineral azul-verde a menudo utilizado en decoraciones. Se cree que trae buena suerte al portador. A menudo se infunde con el elemento de la tierra.,Um mineral azul-verde freqüentemente usado em decorações. Pensa-se que trará boa sorte ao portador. Muitas vezes é infundido com o elemento da terra.,,,"Сине-зеленый минерал часто используется в декорациях. Считается, что это принесет удачу носителю. Он часто вливается с элементом земли.",Mavi-yeşil renge sahip genellikle dekorasyonda kullanılan bir mineral. Taşıyıcısına iyi şans getirdiğine inanılır. Genellikle toprak elementi ile birleiştirilir.,"Et blågrønt mineral, der ofte bruges i dekorationer. Det menes at bringe held og lykke til bæreren. Det er ofte infunderet med jordens element.",,Ett blågrönt mineral som ofta används i dekorationer. Det är tänkt att bringa lycka till bäraren. Det är ofta infunderat med jordens element.,,,,装飾によく使用される青緑色の鉱物。 運び手には幸運をもたらすと考えられています。 それはしばしば地球の要素を注入されます。,蓝绿色矿物经常用于装饰品。 它被认为是给持有人带来好运。 它经常注入地球的元素。,장식에 자주 사용되는 푸른 녹색 미네랄. 그것은 무기명에게 행운을 가져다 줄 것으로 생각된다. 그것은 종종 지구의 요소로 주입됩니다.
 
+GOAL.ABANDON_JOB.DESCRIPTION,Abandoning task,,,,,,,,,,,,,,,,,,,
 GOAL.ADD_TO_INVENTORY.DESCRIPTION,Collecting {{targetDescription}},,Sammelt {{targetDescription}},Collecte: {{targetDescription}},Sta raccogliendo: {{targetDescription}},Recogiendo {{targetDescription}},A recolher {{targetDescription}},Coletando {{targetDescription}},,Собирает: {{targetDescription}}," {{targetDescription}} toplanıyor",Indsamler {{targetDescription}},,Samla {{targetDescription}},,,,{{targetDescription}} を収集しています,收集 {{targetDescription}},{{대상 설명}} 수집하는 중
+GOAL.COMBAT.DESCRIPTION,Attacking {{targetDescription}},,,,,,,,,,,,,,,,,,,
 GOAL.DRINK.DESCRIPTION,Drinking {{targetDescription}},,Trinkt {{targetZoneMaterial}},Boire {{targetZoneMaterial}},Bere {{targetZoneMaterial}},Beber {{targetZoneMaterial}},Beber {{targetZoneMaterial}},,,Питьевая {{targetZoneМатериал}}," {{targetZoneMaterial}} içiliyor",Drikker {{targetZoneMaterial}},,Dricka {{targetZoneMaterial}},,,,{{targetZoneMaterial}} を飲む,饮用 {{targetZoneMaterial}},마시는 {{대상 지역 재료}}
 GOAL.DUMP_LIQUID.DESCRIPTION,Dumping contents of {{targetDescription}},,,,,,,,,,,,,,,,,,,
 GOAL.EAT.DESCRIPTION,Eating {{targetDescription}},,Isst {{targetDescription}},Mange {{targetDescription}},Mangiare {{targetDescription}},Comer {{targetDescription}},Comer {{targetDescription}},,,Едят {{targetDescription}},{{targetDescription}} yeniliyor,Spise {{targetDescription}},,Äta {{targetDescription}},,,,{{targetDescription}} を食べる,吃 {{targetDescription}},{{대상 설명}} 먹는 것
 GOAL.EXTINGUISH_FIRE.DESCRIPTION,Putting out a fire,,,,,,,,,,,,,,,,,,,
+GOAL.FLEE_FROM_AGGRESSOR.DESCRIPTION,Fleeing from {{targetDescription}},,,,,,,,,,,,,,,,,,,
 GOAL.HAULING.DESCRIPTION,Hauling {{targetDescription}},,Transportiert {{itemDescription}},Transporte: {{itemDescription}},Sta trasportando: {{itemDescription}},Transportando {{itemDescription}},Carregar {{itemDescription}},Transportando {{targetDescription}},,Переносит: {{itemDescription}},{{itemDescription}} taşınıyor,Hauling {{targetDescription}},,Släpa {{itemDescription}},,,,運搬 {{targetDescription}},拖运 {{targetDescription}},운반 {{대상 설명}}
 GOAL.IDLE.DESCRIPTION,Idle,,Untätig,Libre,Non sta facendo niente,Descansando,Inativo,À toa,,Бездельничает,Boşta,- Itomgang,,Inaktiv,,,,アイドル,闲置,유휴 상태
 GOAL.ON_FIRE.DESCRIPTION,On fire!,,,,,,,,,,,,,,,,,,,
@@ -327,6 +377,7 @@ GUI.BUILD_FURNITURE,Furniture,,Möbel,Meubles,Suppellettili,Muebles,Mobília,Mob
 GUI.BUILD_LABEL,Build,,Bauen,"Construire ",Costruisci,"Construir ","Construir ",Construir,,Построить,İnşa Et,Byg,,Bygg,,,,ビルド,建立,빌드
 GUI.CANCEL_LABEL,Cancel,,Abbrechen,"Annuler ",Annulla,"Cancelar ","Cancelar ",Cancelar,,Отмена,İptal,Aflys,,"Avbryt ",,,,キャンセルします,取消,취소
 GUI.CHANGE_PROFESSION_LABEL,Change profession,,Beruf wechseln,Changer de profession,Cambia professione,Cambiar profesión,Mudar de profissão,,,Сменить профессию,Meslek Değiştir,Skift erhverv,,Byt yrke,,,,職業を変える,变革行业,직업 변경
+GUI.CHANGE_WEAPON_LABEL,Select weapon,,,,,,,,,,,,,,,,,,,
 GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,Maintaining,,Beibehalten,,,,,,,,Sabit Düzey,,,,,,,,,
 GUI.CRAFTING_MANAGEMENT.TITLE,Crafting,,Handwerk,,,,,,,,Üretim,,,,,,,,,
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,Current total: {{quantity}},,Gesamt: {{quantity}},,,,,,,,Anlık toplam: {{quantity}},,,,,,,,,
@@ -423,6 +474,8 @@ GUI.ORDERS.DIG_CHANNELS.TOOLTIP,This order is used to dig channels in the ground
 GUI.ORDERS.EXTINGUISH_FLAMES,Extinguish,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.EXTINGUISH_FLAMES.TOOLTIP,This order is used to extinguish fires that are currently burning.,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.HARVEST_PLANTS,Harvest,,Ernten,"Récolter ",Raccogli,Cosechar,Colher,Colher,,Собирать,Hasat,Høst,,Skörda,,,,収穫,收获,수확
+GUI.ORDERS.HUNT,Hunt,,,,,,,,,,,,,,,,,,,
+GUI.ORDERS.HUNT.TOOLTIP,This order is used to select animals to be hunted.,,,,,,,,,,,,,,,,,,,
 GUI.ORDERS.MINE,Mine,,Graben,Miner,Scava,Excavar,Escavar,Minerar,,Добывать,Kaz,Mine,,Gräva,,,,採掘,我的,내
 GUI.ORDERS_LABEL,Orders,,Aufträge,"Ordres ",Ordini,"Pedidos ","Encomendas ",Ordens,,Приказы,Emirler,Ordrer,,Order,,,,注文,命令,주문
 GUI.PLACE_BRIDGE.HINT,A bridge must cover both sides of the river and be at least 3x3 tiles in size,,Eine Brücke muss beide Seiten des Flusses bedecken und mindestens 3x3 Felder gross sein,Un pont doit couvrir les deux côtés de la rivière et avoir au moins 3x3 tuiles de taille,Un ponte deve coprire entrambi i lati del fiume e avere dimensioni di almeno 3x3 piastrelle,Un puente debe cubrir ambos lados del río y tener al menos 3x3 azulejos de tamaño,Uma ponte deve cobrir ambos os lados do rio e ter pelo menos 3x3 telhas de tamanho,,,Мост должен покрывать обе стороны реки и иметь размер не менее 3x3 плитки,Köpri nehirin iki tarafınıda kaplamalı ve en az 3x3 karo olmalı.,En bro skal dække begge sider af floden og være mindst 3x3 fliser i størrelse,,En bro måste täcka båda sidor av floden och vara minst 3x3 plattor i storlek,,,,橋は川の両側を覆い、少なくとも3x3タイルのサイズでなければなりません,桥梁必须覆盖河流两侧，大小至少为 3x3 的瓷砖,다리는 강 양쪽을 덮어야 하며 크기는 3x3 이상이어야 합니다.
@@ -449,6 +502,7 @@ GUI.ZONES_LABEL,Zones,,Zonen,Zones,Zone,Zonas,Áreas,Zonas,,Зоны,Bölgeler,Z
 
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWAL,Going sober,,,,,,,,,,Ayılıyor,,,,,,,,,
 HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,Ate a nicely prepared meal,,Hat eine gute Mahlzeit gegessen,A mangé un repas cuisiné,Mangiato un pasto ben preparato,Comí una comida bien preparada,Comi uma refeição bem preparada,,,Ели красиво приготовленную еду,Güzel hazırlanmış bir yemek yedi,Spiste et pænt tilberedt måltid,,Åt en fint tillagad måltid,,,,きれいに準備された食事を食べた,吃了一顿精心准备的餐,멋지게 준비된 식사를 먹었다.
+HAPPINESS_MODIFIER.BLEEDING,Bleeding profusely,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,Carried a dead body,,Trug einen toten Körper,A porté un cadavre,Portava un cadavere.,Llevaba un cadáver.,Carregava um cadáver,,,У него труп,Bir ceset taşıdı,Brevet et lig,,Bär en död kropp,,,,死体を運んだ,带着一具尸体,시체를 운반한
 HAPPINESS_MODIFIER.CAUGHT_IN_RAIN,Caught outside in the rain,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.DRANK_ALCOHOL,Under the effects of alcohol,,Unter Alkoholeinfluss,,,,,,,,Alkolün etksii altında,,,,,,,,,
@@ -501,6 +555,9 @@ HINT.TOOL_DEPLETED.PLANE1,Your settlement no longer has a {{TOOL.PLANE}} availab
 HINT.TOOL_DEPLETED.PLANE2,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,,,,,,,,,,Yeni baltalar {{FURNITURE.FORGE}} da üretilebilir. {{FURNITURE.CARPENTRY_WORKBENCH}} den {{RESOURCE.PLANKS.NOUN}},,,,,,,,,
 HINT.TOOL_DEPLETED.SAW1,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,,,,,,,,,,Yerleşke {{FURNITURE.WOODCUTTERS_BENCH}} ve  {{FURNITURE.CARPENTRY_WORKBENCH}} inşa etmek için gerekli olan {{TOOL.SAW}} a sahip değil.,,,,,,,,,
 HINT.TOOL_DEPLETED.SAW2,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",,,,,,,,,,Yeni baltalar {{FURNITURE.FORGE}} da üretilebilir. Eğer {{FURNITURE.FORGE}} yok ise {{FURNITURE.WOODCUTTERS_BENCH}} veya {{FURNITURE.CARPENTRY_WORKBENCH}} dan kurtulman gerekebilir.,,,,,,,,,
+HINT.WEAPON_SELECTION.1,Use this view to select a type of weapon that the settler will keep in their inventory in case of combat.,,,,,,,,,,,,,,,,,,,
+HINT.WEAPON_SELECTION.2,It is strongly recommended you assign a ranged weapon such as a {{WEAPON.BOW}} or {{WEAPON.CROSSBOW}} to those settlers assigned as a {{PROFESSION.HUNTER}}.,,,,,,,,,,,,,,,,,,,
+HINT.WEAPON_SELECTION.3,Weapons which you do not have available are displayed in red.,,,,,,,,,,,,,,,,,,,
 HINT.WELCOME.INTRO,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this area to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!",,"Willkommen in der Welt von König unter dem Berg! Dies ist eine frühe Alpha-Version des Spiels mit vielen weiteren Features und Gameplay-Elementen, die noch implementiert werden müssen. Eure unerschrockene Bande von Zwergensiedlern haben diesen Ort gewählt, um eine neue Kolonie ihres Königreichs zu gründen. Geben Sie Nahrung, Schutz und Wohlstand und wer weiß, vielleicht wird dies eines Tages die Hauptstadt eines eigenen Königreichs sein!","Bienvenue dans le monde du Roi sous la Montagne! Il s'agit d'une version alpha précoce du jeu avec beaucoup plus de fonctionnalités et d'éléments de gameplay encore à mettre en œuvre. Votre bande intrépide de colons nains a choisi cet endroit pour fonder une nouvelle colonie de leur royaume. Fournir de la nourriture, du logement et de la prospérité et qui sait, peut-être un jour ce sera la capitale d'un royaume à lui seul!","Benvenuti nel mondo di Re sotto la Montagna! Questa è una prima versione alfa del gioco con molte altre caratteristiche ed elementi di gioco ancora da implementare. La tua intrepida banda di coloni nani ha scelto questo luogo per fondare una nuova colonia del loro regno. Fornire cibo, riparo e prosperità e chissà, forse un giorno questa sarà la capitale di un regno a sé stante!","¡Bienvenido al mundo de King under the Mountain! Esta es una versión alfa temprana del juego con muchas más características y elementos de juego aún por implementarse. Su intrépida banda de colonos enanos ha elegido este lugar para fundar una nueva colonia de su reino. Proporcionar comida, refugio y prosperidad y quién sabe, tal vez algún día esta será la capital de un reino propio!","Bem-vindo ao mundo do Rei sob a Montanha! Esta é uma versão alfa inicial do jogo com muitos mais recursos e elementos de jogabilidade ainda por implementar. Seu grupo intrépido de colonos anões escolheu este local para fundar uma nova colônia do reino deles. Proporcionar comida, abrigo e prosperidade e quem sabe, talvez um dia esta seja a capital de um reino próprio!",,,"Добро пожаловать в мир короля под горой! Это ранняя альфа-версия игры с еще большим количеством функций и элементов геймплея, которые еще предстоит реализовать. Ваша бесстрашная группа гномов выбрала это место, чтобы найти новую колонию своего королевства. Обеспечьте пищу, кров и процветание и кто знает, может быть, однажды это станет столицей собственного королевства!","King Under The Mountain’a hoşgeldiniz. Bu versiyon daha birçok özellik ve öğeler eklenecek olan erken alfa sürümüdür. Cesur Cücelerden oluşan vatandaşlarınız krallığınız için yeni bir koloni kurmak için burayı seçti. Onlara yemek, kalacak yer ve refah sağla, kim bilir belki bir gün burası bir kendi krallığının başkenti olur!","Velkommen til kongens verden under bjerget! Dette er en tidlig alpha version af spillet med mange flere funktioner og gameplay elementer, der stadig skal implementeres. Jeres frygtløse bande af dværge bosættere har valgt dette sted for at finde en ny koloni af deres rige. Giv mad, husly og velstand, og hvem ved, måske en dag vil dette være hovedstaden i et kongerige af sit eget!",,"Välkommen till kungens värld under berget! Detta är en tidig alfa-version av spelet med många fler funktioner och spelelement som fortfarande återstår att implementera. Ert orädda band av dvärgbosättare har valt den här platsen för att hitta en ny koloni i sitt kungarike. Ge mat, skydd och välstånd och vem vet, kanske en dag kommer detta att vara huvudstad i ett eget rike!",,,,,欢迎来到山下王的世界！ 这是游戏的早期 alpha 版本，还有更多的功能和游戏元素有待实现。 你们勇敢的矮人定居者们选择了这个位置，找到了他们王国的新殖民地。 提供食物，住所和繁荣，谁知道，也许有一天，这将是自己的王国的首都！,"산 아래 왕의 세계에 오신 것을 환영합니다! 이것은 더 많은 기능과 게임 플레이 요소가 여전히 구현 될 게임의 초기 알파 버전입니다. 당신의 용맹 한 드워프 정착민들이 그들의 왕국의 새로운 식민지를 발견하기 위해이 위치를 선택했습니다. 음식, 피난처와 번영을 제공하고 누가 알고, 어쩌면 언젠가는 자신의 왕국의 수도가 될 것입니다!"
 HINT.WELCOME.NEXT_STEPS,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",,TEXT,TEXTE,TESTO,TEXTO,TEXTO,,,ТЕКСТ,"Temel presip eğitimi için ""Eğitim"" , eğitimi geçmek ve sadece oynarken ipuçlarını görmek için  ""Sadece İpuçlarına"" veya tüm yardımları kapatmak için ""Tüm İpuçlarını Devredışı Bırak"" a tıklayın.",TEKST,,TEXT,,,,,文本,텍스트를 입력합니다
 HINT.WELCOME.PRE_SPAWN,"Start the game by selecting a location on the map with enough space, and clicking the '{{GUI.EMBARK.START}}' button.",,,,,,,,,,,,,,,,,,,
@@ -575,9 +632,12 @@ MATERIAL_TYPE.VITRIOL.NOUN,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,�
 MATERIAL_TYPE.WOOD.ADJECTIVE,Wooden,,Holz,en bois,di legno,De madera,De madeira,de madeira,,(дерево),Tahtadan,Træ,,Trä-,,,,木製,木制的,나무
 MATERIAL_TYPE.WOOD.NOUN,Wood,,Holz,Bois,Legno,Madera,Madeira,Madeira,,Дерево,Tahta,Træ,,Trä,,,,木材,木,나무
 
+MEAT.BOAR_MEAT,Boar,,,,,,,,,,,,,,,,,,,
 MEAT.CARP_MEAT.NOUN,Carp,,,,,,,,,,,,,,,,,,,
 MEAT.CARP_MEAT.PLURAL,Carp,,,,,,,,,,,,,,,,,,,
+MEAT.DEER_MEAT,Deer,,,,,,,,,,,,,,,,,,,
 MEAT.DWARF_FLESH,Dwarf flesh,,,,,,,,,,,,,,,,,,,
+MEAT.FOX_MEAT,Fox,,,,,,,,,,,,,,,,,,,
 MEAT.PERCH_MEAT.NOUN,Perch,,,,,,,,,,,,,,,,,,,
 MEAT.PERCH_MEAT.PLURAL,Perch,,,,,,,,,,,,,,,,,,,
 MEAT.PIKE_MEAT.NOUN,Pike,,,,,,,,,,,,,,,,,,,
@@ -868,6 +928,11 @@ PROFESSION.WOODCUTTER.VERB,Chopping,,Fällt,Coupe,Sta tagliando,Talando,Cortar l
 QUOTA.FIXED_AMOUNT,in total,,,,,,,,,,toplamda,,,,,,,,,
 QUOTA.PER_SETTLER,per settler,,,,,,,,,,vatandaş başına,,,,,,,,,
 
+RACE.BOAR.NOUN,Wild boar,,,,,,,,,,,,,,,,,,,
+RACE.CARP.NOUN,Carp,,,,,,,,,,,,,,,,,,,
+RACE.DEER.FEMALE_NOUN,Doe,,,,,,,,,,,,,,,,,,,
+RACE.DEER.MALE_NOUN,Stag,,,,,,,,,,,,,,,,,,,
+RACE.DEER.TOOLTIP,A deer is a non-threatening herbivore which will flee at any sign of danger,,,,,,,,,,,,,,,,,,,
 RACE.DWARF.FEMALE_ADJECTIVE,Dwarven,,zwergische,Naine,nana,Enana,De anã,Enânica,,Гномий,Cüce,Dværgen,,Dvärg-,,,,ドワーフ,矮人,드워프
 RACE.DWARF.FEMALE_NOUN,Dwarf,,Zwergin,Naine,Nana,Enana,Anã,Anã,,Гномка,Cüce,Dværg,,Dvärg,,,,ドワーフ,矮人,드워프
 RACE.DWARF.FEMALE_PLURAL,Dwarves,,Zwerge,Naines,Nane,Enanas,Anãs,Anãs,,Гномы,Cüceler,Dværge,,Dvärgar,,,,ドワーフ,矮人,드워프
@@ -875,6 +940,10 @@ RACE.DWARF.MALE_ADJECTIVE,Dwarven,,zwergischer,Nain,nano,Enano,De anão,Enânico
 RACE.DWARF.MALE_NOUN,Dwarf,,Zwerg,Nain,Nano,Enano,Anão,Anão,,Гном,Cüce,Dværg,,Dvärg,,,,ドワーフ,矮人,드워프
 RACE.DWARF.MALE_PLURAL,Dwarves,,Zwerge,Nains,Nani,Enanos,Anões,Anões,,Гномы,Cüce,Dværge,,Dvärgar,,,,ドワーフ,矮人,드워프
 RACE.DWARF.TOOLTIP,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,,"Zwerge sind kleine und stämmige, humanoide Wesen. Sie sind Meister im Umgang mit Stein und Metall. Die meisten Zwerge misstrauen dem Himmel und ziehen es vor unterirdisch zu leben.",Les nains sont des humanoïdes courts et trapus. Ils sont maîtres de travailler avec la pierre et le métal. La plupart des nains se méfient du ciel et préfèrent rester sous terre.,I nani sono umanoidi corti e tozzosi. Sono maestri nel lavorare con la pietra e il metallo. La maggior parte dei nani diffidano del cielo e preferiscono rimanere sottoterra.,Los enanos son humanoides cortos y gruesos. Son maestros de trabajar con piedra y metal. La mayoría de los enanos desconfían del cielo y prefieren permanecer bajo tierra.,Os anões são humanóides curtos e cheios. Eles são mestres de trabalhar com pedra e metal. A maioria dos anões desconfia do céu e prefere ficar no subsolo.,,,Гномы короткие и гуманоиды. Они мастера работы с камнем и металлом. Большинство гномов не доверяют небу и предпочитают оставаться под землей.,Cüceler kısa ve tıkmaz insansı yaratıklardır. Taş ve metal ustasılardır. Cücelerin büyük bir çoğunluğu gök yüzüne güvenmezler ve yer altında kalmayı tercih ederler.,Dværge er korte og tætne humanoider. De er mestre i at arbejde med sten og metal. De fleste dværge mistillid til himlen og foretrækker at forblive under jorden.,,Dvärgar är korta och slitna humanoider. De är mästare på att arbeta med sten och metall. De flesta dvärgar misstror himlen och föredrar att stanna under jorden.,,,,ドワーフは短く、ひっそりとしたヒューマノイドです。 彼らは石と金属を扱う巨匠です。 ほとんどのドワーフは空を不信にし、地下に滞在することを好む。,矮人是短而矮胖的人形。 他们是石头和金属工作的主人。 大多数矮人不信任天空，宁愿留在地下。,드워프는 짧고 땅딸막 한 휴머노이드입니다. 그들은 돌과 금속으로 일하는 주인입니다. 대부분의 드워프는 하늘을 불신하고 지하에 머물 것을 선호합니다.
+RACE.FOX.FEMALE_NOUN,Vixen,,,,,,,,,,,,,,,,,,,
+RACE.FOX.MALE_NOUN,Fox,,,,,,,,,,,,,,,,,,,
+RACE.PERCH.NOUN,Perch,,,,,,,,,,,,,,,,,,,
+RACE.PIKE.NOUN,Pike,,,,,,,,,,,,,,,,,,,
 
 RESOURCE.CRUSHED.VITRIOL.NOUN,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,Витриол,Vitriol,Vitriol,,Vitriol,,,,ヴィトリオール,维特里奥尔,비트리올
 RESOURCE.CRUSHED.VITRIOL.PLURAL,Vitriol,,Vitriol,Vitriol,Vitriolo,Vitriol,Vitriol,,,Витриол,Vitriol,Vitriol,,Vitriol,,,,ヴィトリオール,维特里奥尔,비트리올
@@ -933,6 +1002,8 @@ RESOURCE.STONE.UNREFINED.TOOLTIP,A huge piece of stone that must be chiselled in
 RESOURCE.WHEAT.SACK.NOUN,Wheat (sack),,,,,,,,,,,,,,,,,,,
 RESOURCE.WHEAT.SACK.PLURAL,Wheat (sack),,,,,,,,,,,,,,,,,,,
 
+ROOMS.ARMOURY,Armoury,,,,,,,,,,,,,,,,,,,
+ROOMS.ARMOURY.TOOLTIP,Weapons and armour are created here,,,,,,,,,,,,,,,,,,,
 ROOMS.BEDROOM,Bedroom,,Schlafzimmer,Chambre,Camera da letto,Dormitorio,Quarto,Dormitório,,Спальня,Yatakodası,Soveværelset,,Sovrummet,,,,寝室,卧室,침실
 ROOMS.BEDROOM.TOOLTIP,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",,Ein Platz für Ihre Siedler zum Schlafen. Sie bevorzugen individuelle Schlafzimmer mit einer Größe von mindestens 9 Fliesen und vorzugsweise mindestens 13 Fliesen.,"Un endroit où vos colons peuvent dormir. Ils préfèrent avoir des chambres individuelles qui ont au moins 9 tuiles de taille, ou de préférence au moins 13 tuiles de taille.","Un posto dove dormire i tuoi Settler. Preferiscono avere camere singole di almeno 9 piastrelle di dimensioni, e preferibilmente di almeno 13 piastrelle di dimensioni.","Un lugar para que sus colonos duerman. Prefieren tener habitaciones individuales que tengan al menos 9 azulejos de tamaño, y preferiblemente al menos 13 azulejos de tamaño.","Um lugar para seus colonos dormirem. Eles preferem ter quartos individuais com pelo menos 9 azulejos de tamanho e, de preferência, pelo menos, 13 azulejos de tamanho.",,,Место для ночлега ваших поселенцев. Они предпочитают иметь отдельные спальни размером не менее 9 плиток и предпочтительно не менее 13 плиток.,"Vatandaşlarının uyuması için bir alan. Vatandaşlar en az 9, tercihen 13 karo dan oluşan tek kişilik odalarda kalmayı tercih ederler.","Et sted, hvor dine bosættere kan sove. De foretrækker at have individuelle soveværelser, der er mindst 9 fliser i størrelse, og helst mindst 13 fliser i størrelse.",,"En plats för dina nybyggare att sova. De föredrar att ha individuella sovrum som är minst 9 plattor i storlek, och helst minst 13 plattor i storlek.",,,,あなたの入植者が眠る場所。 彼らは、少なくとも9タイルのサイズで、好ましくは少なくとも13タイルのサイズの個々の寝室を有することを好む。,你的工人睡觉的地方。 他们更喜欢拥有至少 9 个瓷砖大小的单独卧室，最好至少 13 个瓷砖大小。,"당신의 정착민을위한 장소. 그들은 크기가 최소 9 개의 타일, 바람직하게는 적어도 13 개의 타일 크기의 개별 침실을 선호합니다."
 ROOMS.BREWERY,Brewery,,,,,,,,,,Birahane,,,,,,,,,
@@ -1017,6 +1088,23 @@ SEED.WHEAT_SEED.TOOLTIP,"A cereal grain generally used for the production of bre
 
 SHRUB.DESCRIPTION,Bush,,Büsche,Arbuste,Cespuglio,Arbusto,Arbusto,Arbusto,,Куст,Çalı,- Bush,,Buske,,,,ブッシュ,布什,부시
 
+STATUS.ALCOHOL_WITHDRAWL,Alcohol withdrawl,,,,,,,,,,,,,,,,,,,
+STATUS.BLEEDING,Bleeding,,,,,,,,,,,,,,,,,,,
+STATUS.BLINDED,Blind,,,,,,,,,,,,,,,,,,,
+STATUS.DEATH,Dead,,,,,,,,,,,,,,,,,,,
+STATUS.DRUNK,Drunk,,,,,,,,,,,,,,,,,,,
+STATUS.DYING_OF_HUNGER,Dying of hunger,,,,,,,,,,,,,,,,,,,
+STATUS.DYING_OF_THIRST,Dying of thirst,,,,,,,,,,,,,,,,,,,
+STATUS.EXHAUSTED,Exhausted,,,,,,,,,,,,,,,,,,,
+STATUS.INTERNAL_BLEEDING,Internal bleeding,,,,,,,,,,,,,,,,,,,
+STATUS.KNOCKED_UNCONSCIOUS,Unconscious,,,,,,,,,,,,,,,,,,,
+STATUS.MOVEMENT_IMPAIRED,Impaired movement,,,,,,,,,,,,,,,,,,,
+STATUS.ON_FIRE,On fire,,,,,,,,,,,,,,,,,,,
+STATUS.POISONED,Poisoned,,,,,,,,,,,,,,,,,,,
+STATUS.TEMPORARILY_BLINDED,Temporarily blinded,,,,,,,,,,,,,,,,,,,
+STATUS.VERY_HUNGRY,Very hungry,,,,,,,,,,,,,,,,,,,
+STATUS.VERY_THIRSTY,Very thirsty,,,,,,,,,,,,,,,,,,,
+
 STOCKPILE.GROUP.FOOD,Food,,,,,,,,,,,,,,,,,,,
 STOCKPILE.GROUP.FOOD.TOOLTIP,Stores harvested fruit and vegetables which can expire.,,,,,,,,,,,,,,,,,,,
 STOCKPILE.GROUP.FUEL,Fuel,,,,,,,,,,,,,,,,,,,
@@ -1027,6 +1115,8 @@ STOCKPILE.GROUP.RAW_MATERIALS,Raw materials,,,,,,,,,,,,,,,,,,,
 STOCKPILE.GROUP.SEEDS,Seeds,,,,,,,,,,,,,,,,,,,
 STOCKPILE.GROUP.TOOLS,Tools,,Werkzeuglager,Outils,Attrezzi,Herramientas,Ferramentas,Ferramentas,,Инструменты,,,,,,,,,,
 STOCKPILE.GROUP.TOOLS.TOOLTIP,Stores tools required for working on jobs.,,,,,,,,,,,,,,,,,,,
+STOCKPILE.GROUP.WEAPONS,Weapons,,,,,,,,,,,,,,,,,,,
+STOCKPILE.GROUP.WEAPONS.TOOLTIP,Stores harvested fruit and vegetables which can expire.,,,,,,,,,,,,,,,,,,,
 
 STONE.BASALT.ADJECTIVE,Basalt,,Basalt,en basalte,di basalto,De basalto,De basalto,de basalto,,(базальт),Bazalt,Basalt,,Basalt-,,,,玄武岩,玄武岩,현무암
 STONE.BASALT.NOUN,Basalt,,Basalt,Basalte,Basalto,Basalto,Basalto,de basalto,,Базальт,Bazalt,Basalt,,Basalt,,,,玄武岩,玄武岩,현무암
@@ -1193,6 +1283,13 @@ WALL.ORE.NOUN,Ore,,Erz,Or,Parete,Muro,Minério,Minério,,Руда,Cevher,Malm,,M
 WALL.ROUGH_STONE.NOUN,Rock wall,,Steinwand,Mur de pierre,Parete di roccia,Muro rocoso,Muro de pedra,Parede de rocha,,Каменная стена,Taş duvar,Rock væg,,Stenmur,,,,ロックウォール,石牆,바위 벽
 WALL.STONE_BLOCK.NOUN,Smooth stone wall,,Glatte Steinwand,Paroi lisse,Parete di pietra liscia,Muro pulido,Muro de pedra suave,Parede de rocha polida,,Стена из гладкого камня,Pürüssüz taş duvar,Glat stenvæg,,Slät stenmur,,,,滑らかな石の壁。,光滑石墙,부드러운 석재 벽
 WALL.WOODEN.NOUN,Wood wall,,Holzwand,Mur en bois,Parete di legno,Muro de madera,Muro de madeira,Parede de madeira,,Деревянная стена,Tahta duvar,Træ væg,,Trävägg,,,,木造壁,木墙,나무 벽
+
+WEAPON.BONE.ARROWS.NOUN,Arrow,,,,,,,,,,,,,,,,,,,
+WEAPON.BONE.ARROWS.PLURAL,Arrows,,,,,,,,,,,,,,,,,,,
+WEAPON.BOW,Bow,,,,,,,,,,,,,,,,,,,
+WEAPON.METAL.ARROWS.NOUN,Arrow,,,,,,,,,,,,,,,,,,,
+WEAPON.METAL.ARROWS.PLURAL,Arrows,,,,,,,,,,,,,,,,,,,
+WEAPON.UNARMED,Unarmed,,,,,,,,,,,,,,,,,,,
 
 WEATHER.TYPE.CLOUDY,Cloudy & grey,,,,,,,,,,,,,,,,,,,
 WEATHER.TYPE.COLD_WINDS,Cold winds,,,,,,,,,,,,,,,,,,,

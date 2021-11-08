@@ -23,10 +23,7 @@ import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.rooms.RoomStore;
-import technology.rocketjump.undermount.settlement.FurnitureTracker;
-import technology.rocketjump.undermount.settlement.ItemTracker;
-import technology.rocketjump.undermount.settlement.OngoingEffectTracker;
-import technology.rocketjump.undermount.settlement.SettlerTracker;
+import technology.rocketjump.undermount.settlement.*;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
 import static org.mockito.Mockito.verify;
@@ -80,13 +77,15 @@ public class EntityMessageHandlerTest {
 	private OngoingEffectTracker mockOngoingEffectTracker;
 	@Mock
 	private GameMaterialDictionary mockMaterialDictionary;
+	@Mock
+	private CreatureTracker mockCreatureTracker;
 
 	@Before
 	public void setUp() throws Exception {
 		messageDispatcher = new MessageDispatcher();
 
 		entityMessageHandler = new EntityMessageHandler(messageDispatcher, mockAssetUpdater, mockJobFactory,
-				mockEntityStore, mockItemTracker, mockFurnitureTracker, mockSettlerTracker, mockOngoingEffectTracker, mockRoomStore,
+				mockEntityStore, mockItemTracker, mockFurnitureTracker, mockSettlerTracker, mockCreatureTracker, mockOngoingEffectTracker, mockRoomStore,
 				mockItemEntityAttributesFactory, mockItemEntityFactory, mockItemTypeDictionary, mockI18nTranslator, mockJobStore,
 				mockMaterialDictionary, mockSoundAssetDictionary, mockParticleEffectDictionary);
 
@@ -102,7 +101,7 @@ public class EntityMessageHandlerTest {
 		Vector2 entityWorldPosition = new Vector2(0.5f, 0.5f);
 		when(mockEntity.getId()).thenReturn(TARGET_ENTITY_ID);
 		when(mockEntity.getLocationComponent()).thenReturn(mockLocationComponent);
-		when(mockEntity.getType()).thenReturn(EntityType.HUMANOID);
+		when(mockEntity.getType()).thenReturn(EntityType.CREATURE);
 		when(mockLocationComponent.getWorldPosition()).thenReturn(entityWorldPosition);
 		when(mockAreaMap.getTile(entityWorldPosition)).thenReturn(mockTile);
 		when(mockEntityStore.getById(TARGET_ENTITY_ID)).thenReturn(mockEntity);

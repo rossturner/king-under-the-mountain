@@ -1,0 +1,102 @@
+[
+  {
+    "uniqueName": "Weapon-Bow-Being-Carried",
+    "type": "ITEM_BASE_LAYER",
+    "itemTypeName": "Weapon-Bow",
+    "itemPlacements": [
+      "BEING_CARRIED"
+    ],
+    "minQuantity": 1,
+    "maxQuantity": 1,
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Bow-B.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 2.5,
+          "y": 6.0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "offsetPixels": {
+              "x": 0,
+              "y": -6
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "Bow-F34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 1.5,
+          "y": 6.0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "offsetPixels": {
+              "x": 0,
+              "y": -6
+            }
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "Bow-F34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -1.5,
+          "y": 6.0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "offsetPixels": {
+              "x": 0,
+              "y": -6
+            },
+            "overrideRenderLayer": 100
+          }
+        ]
+      },
+      "UP": {
+        "filename": "Bow-B.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 2.5,
+          "y": 0.0
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Bow-B34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "offsetPixels": {
+          "x": 1.0,
+          "y": 0.0
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Bow-B34.png",
+        "coloringLayer": "WOOD_COLOR",
+        "flipX": true,
+        "offsetPixels": {
+          "x": -1.0,
+          "y": 0.0
+        },
+        "parentEntityAssets": [
+          {
+            "type": "CREATURE_LEFT_HAND",
+            "offsetPixels": {
+              "x": 0,
+              "y": -6
+            }
+          }
+        ]
+      }
+    }
+  }
+]

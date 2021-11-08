@@ -9,9 +9,9 @@ import technology.rocketjump.undermount.assets.entities.model.EntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
@@ -81,8 +81,8 @@ public class PhysicalEntityComponent implements EntityComponent {
 
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
-		if (attributes instanceof HumanoidEntityAttributes) {
-			asJson.put("entityType", HUMANOID.name());
+		if (attributes instanceof CreatureEntityAttributes) {
+			asJson.put("entityType", CREATURE.name());
 		} else if (attributes instanceof ItemEntityAttributes) {
 			asJson.put("entityType", ITEM.name());
 		} else  if (attributes instanceof FurnitureEntityAttributes) {
@@ -114,7 +114,6 @@ public class PhysicalEntityComponent implements EntityComponent {
 		if (animationProgress != 0f) {
 			asJson.put("animation", animationProgress);
 		}
-
 	}
 
 	@Override
@@ -125,8 +124,8 @@ public class PhysicalEntityComponent implements EntityComponent {
 		}
 
 		switch (entityType) {
-			case HUMANOID:
-				attributes = new HumanoidEntityAttributes();
+			case CREATURE:
+				attributes = new CreatureEntityAttributes();
 				break;
 			case ITEM:
 				attributes = new ItemEntityAttributes();

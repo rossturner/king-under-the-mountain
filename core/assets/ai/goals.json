@@ -1,4 +1,13 @@
 [ {
+  "i18nDescription" : "GOAL.ABANDON_JOB.DESCRIPTION",
+  "name" : "Abandon job goal",
+  "actionRelationships" : {
+    "UnassignJob" : { }
+  },
+  "selectors" : [ ],
+  "interruptedByCombat" : false,
+  "initialActions" : [ "UnassignJob" ]
+}, {
   "i18nDescription" : "GOAL.ADD_TO_INVENTORY.DESCRIPTION",
   "expiryHours" : 12,
   "name" : "Add to inventory goal",
@@ -21,14 +30,34 @@
     "ForgetRelevantMemory" : { }
   },
   "selectors" : [ {
-    "scheduleCategory" : "WORK",
+    "scheduleCategory" : "ANY",
     "conditions" : [ {
       "memoryType" : "LACKING_REQUIRED_ITEM",
       "type" : "MEMORY"
     } ],
     "priority" : "JOB_NORMAL"
   } ],
-  "initialActions" : [ "RememberRequiredItem" ]
+  "initialActions" : [ "RememberRequiredItem" ],
+  "interruptedByLowNeeds" : true
+}, {
+  "i18nDescription" : "GOAL.COMBAT.DESCRIPTION",
+  "name" : "Attack aggressor goal",
+  "actionRelationships" : {
+    "EquipWeapon" : { },
+    "MoveInRangeOfTarget" : {
+      "fail" : [ "UnequipWeapon" ],
+      "pass" : [ "AttackTarget" ]
+    },
+    "UnequipWeapon" : { },
+    "AttackTarget" : {
+      "fail" : [ "MoveInRangeOfTarget" ],
+      "pass" : [ "UnequipWeapon" ]
+    }
+  },
+  "selectors" : [ ],
+  "interruptedByCombat" : false,
+  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
   "name" : "Douse self goal",
@@ -44,6 +73,7 @@
     }
   },
   "selectors" : [ ],
+  "interruptedByCombat" : false,
   "initialActions" : [ "GoToDrinkLocation", "DouseSelf" ]
 }, {
   "i18nDescription" : "GOAL.DRINK.DESCRIPTION",
@@ -248,6 +278,15 @@
   "selectors" : [ ],
   "initialActions" : [ "LocateLiquidContainer" ]
 }, {
+  "i18nDescription" : "GOAL.FLEE_FROM_AGGRESSOR.DESCRIPTION",
+  "name" : "Flee from aggressor goal",
+  "actionRelationships" : {
+    "GoToLocationAwayFromAggressor" : { }
+  },
+  "selectors" : [ ],
+  "interruptedByCombat" : false,
+  "initialActions" : [ "GoToLocationAwayFromAggressor" ]
+}, {
   "i18nDescription" : "GOAL.HAULING.DESCRIPTION",
   "name" : "Haul item goal",
   "actionRelationships" : {
@@ -271,7 +310,38 @@
     "UnassignJob" : { }
   },
   "selectors" : [ ],
-  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ],
+  "interruptedByLowNeeds" : true
+}, {
+  "i18nDescription" : "GOAL.COMBAT.DESCRIPTION",
+  "name" : "Hunt creature goal",
+  "actionRelationships" : {
+    "EquipWeapon" : { },
+    "DeliverKillingBlow" : { },
+    "MoveInRangeOfTarget" : {
+      "fail" : [ "UnassignJob" ],
+      "pass" : [ "AttackTarget" ]
+    },
+    "UnequipWeapon" : { },
+    "AttackTarget" : {
+      "fail" : [ "MoveInRangeOfTarget" ],
+      "pass" : [ "GoToCombatTarget", "DeliverKillingBlow", "JobCompleted" ]
+    },
+    "GoToCombatTarget" : { },
+    "JobCompleted" : {
+      "fail" : [ "UnequipWeapon" ],
+      "pass" : [ "UnequipWeapon", "PickUpEntity" ]
+    },
+    "PickUpEntity" : { },
+    "UnassignJob" : {
+      "fail" : [ "UnequipWeapon" ],
+      "pass" : [ "UnequipWeapon" ]
+    }
+  },
+  "selectors" : [ ],
+  "interruptedByCombat" : false,
+  "initialActions" : [ "EquipWeapon", "MoveInRangeOfTarget" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.IDLE.DESCRIPTION",
   "name" : "Idle goal",
@@ -279,7 +349,8 @@
     "Idle" : { }
   },
   "selectors" : [ ],
-  "initialActions" : [ "Idle" ]
+  "initialActions" : [ "Idle" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.TRANSFER_LIQUID.DESCRIPTION",
   "name" : "Move liquid in item goal",
@@ -354,7 +425,8 @@
     }
   },
   "selectors" : [ ],
-  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "GOAL.ON_FIRE.DESCRIPTION",
   "name" : "Roll on floor goal",
@@ -433,7 +505,8 @@
     "FaceTowardsLocation" : { }
   },
   "selectors" : [ ],
-  "initialActions" : [ "GoToLocation", "PickUpEntity" ]
+  "initialActions" : [ "GoToLocation", "PickUpEntity" ],
+  "interruptedByLowNeeds" : true
 }, {
   "i18nDescription" : "ACTION.SELECT_JOB.DESCRIPTION",
   "name" : "Work on job goal",
@@ -478,5 +551,6 @@
     } ],
     "priority" : "LOWEST"
   } ],
-  "initialActions" : [ "SelectJob" ]
+  "initialActions" : [ "SelectJob" ],
+  "interruptedByLowNeeds" : true
 } ]

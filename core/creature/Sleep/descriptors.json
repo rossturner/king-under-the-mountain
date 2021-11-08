@@ -1,0 +1,255 @@
+[
+  {
+    "uniqueName": "Replace-Body-Sleep",
+    "type": "CREATURE_BODY",
+    "raceName": "Replace",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ReplaceColourBodyFrontS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "ReplaceColourBodyFrontSideS.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "ReplaceColourBodyFrontSideS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "ReplaceColourBodyBackSideS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "ReplaceColourBodyBackSideS.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      },
+      "UP": {
+        "filename": "ReplaceColourBodyBackS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_CLOTHING"
+          },
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          },
+          {
+            "type": "HAIR_OUTLINE"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Replace-Markings-Sleep",
+    "type": "BODY_CLOTHING",
+    "raceName": "Replace",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ReplaceColourMarkingsFrontS.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "ReplaceColourMarkingsFrontSideS.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "ReplaceColourMarkingsFrontSideS.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "ReplaceColourMarkingsBackSideS.png",
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "ReplaceColourMarkingsBackSideS.png",
+        "flipX": true,
+        "coloringLayer": "MARKING_COLOR"
+      },
+      "UP": {
+        "filename": "ReplaceColourMarkingsBackS.png",
+        "coloringLayer": "MARKING_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Replace-BodyOutline-Sleep",
+    "type": "BODY_OUTLINE",
+    "raceName": "Replace",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ReplaceLinesBodyFrontS.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "ReplaceLinesBodyFrontSideS.png",
+        "flipX": true
+      },
+      "DOWN_LEFT": {
+        "filename": "ReplaceLinesBodyFrontSideS.png"
+      },
+      "UP_RIGHT": {
+        "filename": "ReplaceLinesBodyBackSideS.png"
+      },
+      "UP_LEFT": {
+        "filename": "ReplaceLinesBodyBackSideS.png",
+        "flipX": true
+      },
+      "UP": {
+        "filename": "ReplaceLinesBodyBackS.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Replace-Antlers-Sleep",
+    "type": "CREATURE_HAIR",
+    "raceName": "Replace",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ReplaceColourAntlersFrontS.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "ReplaceColourAntlersFrontSideS.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "ReplaceColourAntlersFrontSideS.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "ReplaceColourAntlersBackSideS.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "ReplaceColourAntlersBackSideS.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP": {
+        "filename": "ReplaceColourAntlersBackS.png",
+        "coloringLayer": "HAIR_COLOR"
+      }
+    }
+  },
+  {
+    "uniqueName": "Replace-AntlersOutline-Sleep",
+    "type": "HAIR_OUTLINE",
+    "raceName": "Replace",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ReplaceLinesAntlersFrontS.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "ReplaceLinesAntlersFrontSideS.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "ReplaceLinesAntlersFrontSideS.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_RIGHT": {
+        "filename": "ReplaceLinesAntlersBackSideS.png",
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP_LEFT": {
+        "filename": "ReplaceLinesAntlersBackSideS.png",
+        "flipX": true,
+        "coloringLayer": "HAIR_COLOR"
+      },
+      "UP": {
+        "filename": "ReplaceLinesAntlersBackS.png",
+        "coloringLayer": "HAIR_COLOR"
+      }
+    }
+  }
+]

@@ -1,3 +1,21 @@
+Alpha 8
+
+- Reworked HUMANOID entities into more generic CREATURE entity type
+- Added "Race" type for creatures containing new data
+- Definitions of body structure and organs for different races
+- Dwarven body shape (fat/average/strong) is now based on a strength stat, determined by a strength distribution described as part of the race
+- Added non-settler creature behaviour, to represent wild animals at this stage
+- Added the following wild animals:
+    - Deer
+    - Fox
+    - Wild boar
+- Added Armory zone for crafting of weapons (and later armour), alongside weapons stockpile type
+- Settler can now have a type of weapon assigned for them to keep hold of for combat
+- (Re-)added the hunter profession, along with a hunting order and designation on entities (as opposed to a static location)
+- Added a simple form of combat for hunting
+- Ability for stockpile groups to hold corpses, only enabled for "Food" group currently
+- Changed fish from items to creatures for butchery station to work consistently
+
 Alpha 7.0.4
 
 - Furniture placements on top of irrigation channels no longer show as valid

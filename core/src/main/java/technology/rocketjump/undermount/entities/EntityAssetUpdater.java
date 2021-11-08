@@ -2,11 +2,13 @@ package technology.rocketjump.undermount.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.assets.entities.EntityAssetTypeDictionary;
+import technology.rocketjump.undermount.assets.entities.creature.CreatureEntityAssetDictionary;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.furniture.FurnitureEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.furniture.model.FurnitureEntityAsset;
-import technology.rocketjump.undermount.assets.entities.humanoid.HumanoidEntityAssetDictionary;
-import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
 import technology.rocketjump.undermount.assets.entities.item.ItemEntityAssetDictionary;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAsset;
 import technology.rocketjump.undermount.assets.entities.mechanism.MechanismEntityAssetDictionary;
@@ -19,13 +21,13 @@ import technology.rocketjump.undermount.entities.components.humanoid.Professions
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.AttachedEntity;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectAttributes;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
@@ -34,6 +36,8 @@ import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeci
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.entities.tags.Tag;
 import technology.rocketjump.undermount.entities.tags.TagProcessor;
+import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -42,9 +46,10 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class EntityAssetUpdater {
+@Singleton
+public class EntityAssetUpdater implements GameContextAware {
 
-	private final HumanoidEntityAssetDictionary humanoidEntityAssetDictionary;
+	private final CreatureEntityAssetDictionary creatureEntityAssetDictionary;
 	private final ItemEntityAssetDictionary itemEntityAssetDictionary;
 	private final FurnitureEntityAssetDictionary furnitureEntityAssetDictionary;
 	private final PlantEntityAssetDictionary plantEntityAssetDictionary;
@@ -59,22 +64,24 @@ public class EntityAssetUpdater {
 	public final EntityAssetType ITEM_LIQUID_LAYER;
 	public final EntityAssetType ITEM_COVER_LAYER;
 	public final EntityAssetType FURNITURE_BASE_LAYER;
-	public final EntityAssetType HUMANOID_BODY;
-	public final EntityAssetType HUMANOID_HAIR;
-	public final EntityAssetType HUMANOID_EYEBROWS;
-	public final EntityAssetType HUMANOID_BEARD;
-	public final EntityAssetType HUMANOID_LEFT_HAND;
-	public final EntityAssetType HUMANOID_RIGHT_HAND;
-	public final EntityAssetType HUMANOID_HEAD;
+	public final EntityAssetType CREATURE_BODY;
+	public final EntityAssetType CREATURE_HAIR;
+	public final EntityAssetType HAIR_OUTLINE;
+	public final EntityAssetType CREATURE_EYEBROWS;
+	public final EntityAssetType CREATURE_BEARD;
+	public final EntityAssetType CREATURE_LEFT_HAND;
+	public final EntityAssetType CREATURE_RIGHT_HAND;
+	public final EntityAssetType CREATURE_HEAD;
 	public final EntityAssetType FURNITURE_LIQUID_LAYER;
 	public final EntityAssetType FURNITURE_COVER_LAYER;
 	public final EntityAssetType MECHANISM_BASE_LAYER;
+	private GameContext gameContext;
 
 	@Inject
 	public EntityAssetUpdater(ItemEntityAssetDictionary itemEntityAssetDictionary, FurnitureEntityAssetDictionary furnitureEntityAssetDictionary,
 							  PlantEntityAssetDictionary plantEntityAssetDictionary, MechanismEntityAssetDictionary mechanismEntityAssetDictionary,
 							  EntityAssetTypeDictionary entityAssetTypeDictionary,
-							  ProfessionDictionary professionDictionary, HumanoidEntityAssetDictionary humanoidEntityAssetDictionary,
+							  ProfessionDictionary professionDictionary, CreatureEntityAssetDictionary creatureEntityAssetDictionary,
 							  TagProcessor tagProcessor) {
 		this.itemEntityAssetDictionary = itemEntityAssetDictionary;
 		this.plantEntityAssetDictionary = plantEntityAssetDictionary;
@@ -82,7 +89,7 @@ public class EntityAssetUpdater {
 		this.mechanismEntityAssetDictionary = mechanismEntityAssetDictionary;
 
 		this.defaultProfession = professionDictionary.getByName("VILLAGER");
-		HUMANOID_BODY = entityAssetTypeDictionary.getByName("HUMANOID_BODY");
+		CREATURE_BODY = entityAssetTypeDictionary.getByName("CREATURE_BODY");
 
 		branchAssetType = entityAssetTypeDictionary.getByName("PLANT_BRANCHES");
 		leafAssetType = entityAssetTypeDictionary.getByName("PLANT_LEAVES");
@@ -96,24 +103,25 @@ public class EntityAssetUpdater {
 		FURNITURE_LIQUID_LAYER = entityAssetTypeDictionary.getByName("FURNITURE_LIQUID_LAYER");
 		FURNITURE_COVER_LAYER = entityAssetTypeDictionary.getByName("FURNITURE_COVER_LAYER");
 
-		HUMANOID_HEAD = entityAssetTypeDictionary.getByName("HUMANOID_HEAD");
-		HUMANOID_HAIR = entityAssetTypeDictionary.getByName("HUMANOID_HAIR");
-		HUMANOID_EYEBROWS = entityAssetTypeDictionary.getByName("HUMANOID_EYEBROWS");
-		HUMANOID_BEARD = entityAssetTypeDictionary.getByName("HUMANOID_BEARD");
+		CREATURE_HEAD = entityAssetTypeDictionary.getByName("CREATURE_HEAD");
+		CREATURE_HAIR = entityAssetTypeDictionary.getByName("CREATURE_HAIR");
+		HAIR_OUTLINE = entityAssetTypeDictionary.getByName("HAIR_OUTLINE");
+		CREATURE_EYEBROWS = entityAssetTypeDictionary.getByName("CREATURE_EYEBROWS");
+		CREATURE_BEARD = entityAssetTypeDictionary.getByName("CREATURE_BEARD");
 
-		HUMANOID_LEFT_HAND = entityAssetTypeDictionary.getByName("HUMANOID_LEFT_HAND");
-		HUMANOID_RIGHT_HAND = entityAssetTypeDictionary.getByName("HUMANOID_RIGHT_HAND");
+		CREATURE_LEFT_HAND = entityAssetTypeDictionary.getByName("CREATURE_LEFT_HAND");
+		CREATURE_RIGHT_HAND = entityAssetTypeDictionary.getByName("CREATURE_RIGHT_HAND");
 
 		MECHANISM_BASE_LAYER = entityAssetTypeDictionary.getByName("MECHANISM_BASE_LAYER");
 
-		this.humanoidEntityAssetDictionary = humanoidEntityAssetDictionary;
+		this.creatureEntityAssetDictionary = creatureEntityAssetDictionary;
 		this.tagProcessor = tagProcessor;
 	}
 
 	public void updateEntityAssets(Entity entity) {
 		switch (entity.getType()) {
-			case HUMANOID:
-				updateHumanoidAssets(entity);
+			case CREATURE:
+				updateCreatureAssets(entity);
 				break;
 			case ITEM:
 				updateItemAssets(entity);
@@ -135,8 +143,8 @@ public class EntityAssetUpdater {
 		}
 	}
 
-	private void updateHumanoidAssets(Entity entity) {
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+	private void updateCreatureAssets(Entity entity) {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		ProfessionsComponent professionsComponent = entity.getComponent(ProfessionsComponent.class);
 		Profession primaryProfession = defaultProfession;
 		if (professionsComponent != null) {
@@ -144,39 +152,46 @@ public class EntityAssetUpdater {
 		}
 
 
-		HumanoidEntityAsset baseAsset;
-		if (entity.getLocationComponent().getContainerEntity() == null) {
-			baseAsset = humanoidEntityAssetDictionary.getMatching(HUMANOID_BODY, attributes, primaryProfession);
-		} else {
+		CreatureEntityAsset baseAsset;
+		if (gameContext != null && entity.getLocationComponent().getContainerEntity() != null &&
+				attributes.getRace().equals(gameContext.getSettlementState().getSettlerRace())) {
 			// Only show head and above when inside a container
-			baseAsset = humanoidEntityAssetDictionary.getMatching(HUMANOID_HEAD, attributes, primaryProfession);
+			baseAsset = creatureEntityAssetDictionary.getMatching(CREATURE_HEAD, attributes, primaryProfession);
+		} else {
+			baseAsset = creatureEntityAssetDictionary.getMatching(CREATURE_BODY, attributes, primaryProfession);
 		}
 
+		entity.getPhysicalEntityComponent().getTypeMap().clear();
 		entity.getPhysicalEntityComponent().setBaseAsset(baseAsset);
-		entity.getPhysicalEntityComponent().getTypeMap().put(baseAsset.getType(), baseAsset);
-		addOtherHumanoidAssetTypes(baseAsset.getType(), entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+		if (baseAsset == null) {
+			Logger.error("Base asset is null for " + attributes.toString());
+		} else {
+			entity.getPhysicalEntityComponent().getTypeMap().put(baseAsset.getType(), baseAsset);
+			addOtherCreatureAssetTypes(baseAsset.getType(), entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+		}
 
 		// Some gender-specific stuff that should be extracted elsewhere
 		if (!attributes.getHasHair()) {
-			entity.getPhysicalEntityComponent().getTypeMap().remove(HUMANOID_HAIR);
+			entity.getPhysicalEntityComponent().getTypeMap().remove(CREATURE_HAIR);
+			entity.getPhysicalEntityComponent().getTypeMap().remove(HAIR_OUTLINE);
 		}
 		if (attributes.getGender().equals(Gender.FEMALE)) {
-			entity.getPhysicalEntityComponent().getTypeMap().remove(HUMANOID_EYEBROWS);
-			entity.getPhysicalEntityComponent().getTypeMap().remove(HUMANOID_BEARD);
+			entity.getPhysicalEntityComponent().getTypeMap().remove(CREATURE_EYEBROWS);
+			entity.getPhysicalEntityComponent().getTypeMap().remove(CREATURE_BEARD);
 		}
 
 		if (entity.getLocationComponent().getContainerEntity() == null) {
-			addOtherHumanoidAssetTypes(HUMANOID_LEFT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
-			addOtherHumanoidAssetTypes(HUMANOID_RIGHT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+			addOtherCreatureAssetTypes(CREATURE_LEFT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
+			addOtherCreatureAssetTypes(CREATURE_RIGHT_HAND, entity.getPhysicalEntityComponent(), attributes, primaryProfession);
 		}
 
 		// Tag processing
 		processTags(entity);
 	}
 
-	private void addOtherHumanoidAssetTypes(EntityAssetType assetType, PhysicalEntityComponent physicalComponent, HumanoidEntityAttributes attributes,
+	private void addOtherCreatureAssetTypes(EntityAssetType assetType, PhysicalEntityComponent physicalComponent, CreatureEntityAttributes attributes,
 											Profession primaryProfession) {
-		HumanoidEntityAsset asset = humanoidEntityAssetDictionary.getMatching(assetType, attributes, primaryProfession);
+		CreatureEntityAsset asset = creatureEntityAssetDictionary.getMatching(assetType, attributes, primaryProfession);
 
 		if (asset != null && asset.getType() != null) {
 			physicalComponent.getTypeMap().put(asset.getType(), asset);
@@ -195,7 +210,7 @@ public class EntityAssetUpdater {
 			}
 
 			for (EntityAssetType attachedType : attachedTypes) {
-				addOtherHumanoidAssetTypes(attachedType, physicalComponent, attributes, primaryProfession);
+				addOtherCreatureAssetTypes(attachedType, physicalComponent, attributes, primaryProfession);
 			}
 		}
 	}
@@ -396,5 +411,15 @@ public class EntityAssetUpdater {
 
 	private boolean shouldShowLiquidLayer(GameMaterial material) {
 		return !material.isAlcoholic() && (material.isEdible() || material.isQuenchesThirst());
+	}
+
+	@Override
+	public void onContextChange(GameContext gameContext) {
+		this.gameContext = gameContext;
+	}
+
+	@Override
+	public void clearContextRelatedState() {
+
 	}
 }

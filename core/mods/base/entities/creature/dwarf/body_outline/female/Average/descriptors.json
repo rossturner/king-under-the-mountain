@@ -1,0 +1,29 @@
+[{
+  "uniqueName": "Dwarf-Female-Average-Outline",
+  "type": "BODY_OUTLINE",
+  "raceName": "Dwarf",
+  "bodyShape": "AVERAGE",
+  "gender": "FEMALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Average-Outline-F.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Average-Outline-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Average-Outline-F34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Average-Outline-B34.png"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Average-Outline-B34.png",
+      "flipX": true
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Average-Outline-B.png"
+    }
+  }
+}]

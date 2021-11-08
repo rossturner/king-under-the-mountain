@@ -9,8 +9,8 @@ import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.Poisoned;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.Poisoned;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -66,7 +66,6 @@ public class ConsumeFoodAction extends Action {
 				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
 			} else {
 				placeFoodBackIntoInventory(gameContext, targetEntity);
-
 			}
 
 			GameMaterial primaryMaterial = itemEntityAttributes.getMaterial(itemEntityAttributes.getItemType().getPrimaryMaterialType());

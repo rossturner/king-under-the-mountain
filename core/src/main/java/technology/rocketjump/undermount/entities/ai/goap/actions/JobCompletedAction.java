@@ -28,12 +28,13 @@ public class JobCompletedAction extends Action {
 		if (parent.getAssignedJob() != null) {
 			parent.messageDispatcher.dispatchMessage(MessageType.JOB_COMPLETED,
 					new JobCompletedMessage(parent.getAssignedJob(), parent.parentEntity.getComponent(ProfessionsComponent.class), parent.parentEntity));
+			parent.setInterrupted(false); // Kind of a hack to ignore that the above marks the goal as interrupted
 		}
 		completionType = SUCCESS;
 	}
 
 	@Override
-	public boolean isApplicable() {
+	public boolean isApplicable(GameContext gameContext) {
 		return parent.getAssignedJob() != null;
 	}
 

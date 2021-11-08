@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import technology.rocketjump.undermount.entities.EntityAssetUpdater;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.SettlerFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -87,7 +87,7 @@ public class AssignedGoalTest {
 			));
 			settlerBehaviour.update(1, gameContext);
 
-			String description = i18nTranslator.getCurrentGoalDescription(entity, gameContext).toString();
+			String description = i18nTranslator.getCurrentGoalDescription(entity, ((SettlerBehaviour) entity.getBehaviourComponent()).getCurrentGoal(), gameContext).toString();
 
 			System.out.println("Goal: " + goal.name + ", description: " + description);
 		}
@@ -96,7 +96,8 @@ public class AssignedGoalTest {
 	}
 
 	private SettlerBehaviour resetSettlerBehaviour() {
-		SettlerBehaviour settlerBehaviour = new SettlerBehaviour(goalDictionary, scheduleDictionary, roomStore);
+		SettlerBehaviour settlerBehaviour = new SettlerBehaviour();
+		settlerBehaviour.constructWith(goalDictionary, roomStore);
 		settlerBehaviour.init(entity, mockMessageDispatcher, gameContext);
 		entity.replaceBehaviourComponent(settlerBehaviour);
 		return settlerBehaviour;

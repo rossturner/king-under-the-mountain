@@ -8,7 +8,7 @@ import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -34,8 +34,8 @@ import static technology.rocketjump.undermount.entities.components.humanoid.Happ
 @Singleton
 public class SettlerFactory {
 
-	private final HumanoidEntityAttributesFactory attributesFactory;
-	private final HumanoidEntityFactory entityFactory;
+	private final SettlerCreatureAttributesFactory settlerAttributesFactory;
+	private final SettlerEntityFactory entityFactory;
 	private final ItemTypeDictionary itemTypeDictionary; // Needed to ensure order of JobType initialisation
 	private final PlantSpeciesDictionary plantSpeciesDictionary;
 	private final ItemEntityFactory itemEntityFactory;
@@ -45,11 +45,11 @@ public class SettlerFactory {
 	private Map<Profession, Set<ItemType>> professionItemMapping = new HashMap<>();
 
 	@Inject
-	public SettlerFactory(HumanoidEntityAttributesFactory attributesFactory, HumanoidEntityFactory entityFactory,
+	public SettlerFactory(SettlerCreatureAttributesFactory settlerAttributesFactory, SettlerEntityFactory entityFactory,
 						  ItemTypeDictionary itemTypeDictionary, CraftingTypeDictionary craftingTypeDictionary,
 						  PlantSpeciesDictionary plantSpeciesDictionary, ItemEntityFactory itemEntityFactory, MessageDispatcher messageDispatcher,
 						  JobTypeDictionary jobTypeDictionary, GameMaterialDictionary materialDictionary) {
-		this.attributesFactory = attributesFactory;
+		this.settlerAttributesFactory = settlerAttributesFactory;
 		this.entityFactory = entityFactory;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.plantSpeciesDictionary = plantSpeciesDictionary;
@@ -74,7 +74,7 @@ public class SettlerFactory {
 	}
 
 	public Entity create(Vector2 worldPosition, Vector2 facing, Profession primaryProfession, Profession secondaryProfession, GameContext gameContext) {
-		HumanoidEntityAttributes attributes = attributesFactory.create(gameContext);
+		CreatureEntityAttributes attributes = settlerAttributesFactory.create(gameContext);
 
 		Entity entity = entityFactory.create(attributes, worldPosition, facing, primaryProfession, secondaryProfession, gameContext);
 

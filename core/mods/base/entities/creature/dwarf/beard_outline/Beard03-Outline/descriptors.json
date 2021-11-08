@@ -1,0 +1,28 @@
+[{
+  "uniqueName": "Dwarf-Beard03-Outline",
+  "type": "BEARD_OUTLINE",
+  "raceName": "Dwarf",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Beard03-Outline-F.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Beard03-Outline-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Beard03-Outline-F34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Beard03-Outline-F34.png"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Beard03-Outline-F34.png",
+      "flipX": true
+    },
+    "UP": {
+      "filename": "Dwarf-Beard03-Outline-F.png"
+    }
+  }
+}]

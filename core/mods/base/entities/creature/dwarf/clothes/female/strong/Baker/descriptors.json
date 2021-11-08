@@ -1,0 +1,54 @@
+[{
+  "uniqueName": "Dwarf-Female-Strong-Baker-Clothing",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "STRONG",
+  "gender": "FEMALE",
+  "profession": "CHEF",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Strong-Baker-Clothing-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Strong-Baker-Clothing-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Strong-Baker-Clothing-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Strong-Baker-Clothing-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Strong-Baker-Clothing-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Strong-Baker-Clothing-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

@@ -8,23 +8,23 @@ import technology.rocketjump.undermount.assets.entities.furniture.model.DoorStat
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.NullMapTile;
 import technology.rocketjump.undermount.messaging.MessageType;
-import technology.rocketjump.undermount.messaging.types.EntityMessage;
 import technology.rocketjump.undermount.persistence.JSONUtils;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
 
 public class SteeringComponent implements ChildPersistable {
 
 	private static final float ROTATION_MULTIPLIER = 1.5f; // for quicker turning speed
+	private static final float KNOCKBACK_DISTANCE_PER_SECOND = 8f;
 	private LocationComponent locationComponent;
 	private MessageDispatcher messageDispatcher;
 	private Entity parentEntity;
@@ -38,6 +38,8 @@ public class SteeringComponent implements ChildPersistable {
 	private float pauseTime = 0;
 	private static float DEFAULT_PAUSE_TIME = 0.9f;
 	private boolean isSlowed;
+	private boolean movementImpaired;
+	private Vector2 knockback;
 
 	public SteeringComponent() {
 
@@ -70,6 +72,7 @@ public class SteeringComponent implements ChildPersistable {
 		}
 
 		boolean updateFacing = true;
+
 		if (nextWaypoint == null) {
 			updateFacing = false;
 			if (currentVelocity.len2() > 0.5f) {
@@ -83,7 +86,7 @@ public class SteeringComponent implements ChildPersistable {
 			if (nextTile.hasDoorway()) {
 				DoorState doorState = nextTile.getDoorway().getDoorState();
 				if (!doorState.equals(DoorState.OPEN)) {
-					messageDispatcher.dispatchMessage(MessageType.REQUEST_DOOR_OPEN, new EntityMessage(nextTile.getDoorway().getDoorEntity().getId()));
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_DOOR_OPEN, nextTile.getDoorway().getDoorEntity());
 					waitingForDoorToOpen = true;
 				}
 			}
@@ -120,8 +123,8 @@ public class SteeringComponent implements ChildPersistable {
 			}
 
 			for (Entity otherEntity : tileNearPosition.getEntities()) {
-				if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.HUMANOID)) {
-					if (!AWAKE.equals(((HumanoidEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
+				if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.CREATURE)) {
+					if (!AWAKE.equals(((CreatureEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
 						continue;
 					}
 					Vector2 separation = currentPosition.cpy().sub(otherEntity.getLocationComponent().getWorldPosition());
@@ -153,7 +156,7 @@ public class SteeringComponent implements ChildPersistable {
 
 		steeringOutputForce.add(entityAvoidanceForce.limit(1f));
 
-		if (isSlowed) {
+		if (isSlowed || movementImpaired) {
 			maxSpeed *= 0.5f;
 		}
 
@@ -180,6 +183,19 @@ public class SteeringComponent implements ChildPersistable {
 		locationComponent.setWorldPosition(newPosition, updateFacing);
 
 		// TODO Adjust position for nudges by other entities
+
+		if (knockback != null) {
+			float knockbackDistanceThisFrame = deltaTime * KNOCKBACK_DISTANCE_PER_SECOND;
+			if (knockbackDistanceThisFrame > knockback.len()) {
+				locationComponent.setWorldPosition(newPosition.cpy().add(knockback), false);
+				knockback = null;
+			} else {
+				Vector2 knockbackThisFrame = knockback.cpy().nor().scl(knockbackDistanceThisFrame);
+				locationComponent.setWorldPosition(newPosition.cpy().add(knockbackThisFrame), false);
+				knockback.sub(knockbackThisFrame);
+			}
+		}
+
 
 		if (currentTile != null && !currentTile.hasWall()) {
 			repelFromImpassableCollisions(deltaTime, currentTile);
@@ -255,8 +271,8 @@ public class SteeringComponent implements ChildPersistable {
 				}
 
 				for (Entity otherEntity : tileNearPosition.getEntities()) {
-					if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.HUMANOID)) {
-						if (!AWAKE.equals(((HumanoidEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
+					if (otherEntity.getId() != parentEntity.getId() && otherEntity.getType().equals(EntityType.CREATURE)) {
+						if (!AWAKE.equals(((CreatureEntityAttributes)otherEntity.getPhysicalEntityComponent().getAttributes()).getConsciousness())) {
 							continue;
 						}
 
@@ -291,6 +307,22 @@ public class SteeringComponent implements ChildPersistable {
 		return isSlowed;
 	}
 
+	public void setMovementImpaired(boolean movementImpaired) {
+		this.movementImpaired = movementImpaired;
+	}
+
+	public boolean getMovementImpaired() {
+		return movementImpaired;
+	}
+
+	public void setKnockback(Vector2 knockback) {
+		this.knockback = knockback;
+	}
+
+	public Vector2 getKnockback() {
+		return knockback;
+	}
+
 	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		if (destination != null) {
@@ -299,11 +331,20 @@ public class SteeringComponent implements ChildPersistable {
 		if (nextWaypoint != null) {
 			asJson.put("nextWaypoint", JSONUtils.toJSON(nextWaypoint));
 		}
+		if (movementImpaired) {
+			asJson.put("movementImpaired", true);
+		}
+		if (knockback != null) {
+			asJson.put("knockback", JSONUtils.toJSON(knockback));
+		}
 	}
 
 	@Override
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		this.destination = JSONUtils.vector2(asJson.getJSONObject("destination"));
 		this.nextWaypoint = JSONUtils.vector2(asJson.getJSONObject("destination"));
+		this.movementImpaired = asJson.getBooleanValue("movementImpaired");
+		this.knockback = JSONUtils.vector2(asJson.getJSONObject("knockback"));
 	}
+
 }

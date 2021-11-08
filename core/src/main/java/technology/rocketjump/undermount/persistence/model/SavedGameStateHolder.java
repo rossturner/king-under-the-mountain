@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.GridPoint2;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.entities.SequentialIdGenerator;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureGroup;
 import technology.rocketjump.undermount.entities.components.ItemAllocation;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -44,6 +45,7 @@ public class SavedGameStateHolder {
 	public final Map<Long, HaulingAllocation> haulingAllocations = new HashMap<>();
 	public final Map<Long, Job> jobs = new HashMap<>();
 	public final Map<Long, JobRequestMessage> jobRequests = new TreeMap<>();
+	public final Map<Long, CreatureGroup> creatureGroups = new HashMap<>();
 	public final Map<Long, Entity> entities = new HashMap<>();
 	public final Map<Long, Bridge> bridges = new HashMap<>();
 	public final Map<Long, Construction> constructions = new HashMap<>();
@@ -68,6 +70,7 @@ public class SavedGameStateHolder {
 	public final JSONArray haulingAllocationsJson;
 	public final JSONArray jobsJson;
 	public final JSONArray jobRequestsJson;
+	public final JSONArray creatureGroupJson;
 	public final JSONArray entitiesJson;
 	public final JSONArray entityIdsToLoad;
 	public final JSONArray bridgesJson;
@@ -93,6 +96,7 @@ public class SavedGameStateHolder {
 		haulingAllocationsJson = new JSONArray();
 		jobsJson = new JSONArray();
 		jobRequestsJson = new JSONArray();
+		creatureGroupJson = new JSONArray();
 		entitiesJson = new JSONArray();
 		entityIdsToLoad = new JSONArray();
 		bridgesJson = new JSONArray();
@@ -119,6 +123,7 @@ public class SavedGameStateHolder {
 		haulingAllocationsJson = combined.getJSONArray("haulingAllocations");
 		jobsJson = combined.getJSONArray("jobs");
 		jobRequestsJson = combined.getJSONArray("jobRequests");
+		creatureGroupJson = combined.getJSONArray("creatureGroups");
 		entitiesJson = combined.getJSONArray("entities");
 		entityIdsToLoad = combined.getJSONArray("entitiesToLoad");
 		bridgesJson = combined.getJSONArray("bridges");
@@ -149,6 +154,7 @@ public class SavedGameStateHolder {
 		combined.put("haulingAllocations", haulingAllocationsJson);
 		combined.put("jobs", jobsJson);
 		combined.put("jobRequests", jobRequestsJson);
+		combined.put("creatureGroups", creatureGroupJson);
 		combined.put("entities", entitiesJson);
 		combined.put("entitiesToLoad", entityIdsToLoad);
 		combined.put("bridges", bridgesJson);
@@ -193,6 +199,7 @@ public class SavedGameStateHolder {
 		convertJsonToInstances(jobsJson, Job.class, relatedStores);
 		convertJsonToInstances(jobRequestsJson, JobRequestMessage.class, relatedStores);
 		convertJsonToInstances(productionAssignmentsJson, ProductionAssignment.class, relatedStores);
+		convertJsonToInstances(creatureGroupJson, CreatureGroup.class, relatedStores);
 		convertJsonToInstances(entitiesJson, Entity.class, relatedStores);
 		convertJsonToInstances(bridgesJson, Bridge.class, relatedStores);
 

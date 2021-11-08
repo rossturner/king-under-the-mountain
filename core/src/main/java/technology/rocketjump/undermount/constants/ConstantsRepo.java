@@ -7,11 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.FileUtils;
-import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
-import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeWithMaterial;
+import org.pmw.tinylog.Logger;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
-import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,15 +39,13 @@ public class ConstantsRepo implements GameContextAware {
 		this.settlementConstants = objectMapper.readValue(rawFileContents, SettlementConstants.class);
 	}
 
-	public void initialise(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary) {
-		for (ItemTypeWithMaterial fishType : this.settlementConstants.getFishAvailable()) {
-			fishType.setItemType(itemTypeDictionary.getByName(fishType.getItemTypeName()));
-			if (fishType.getItemType() == null) {
-				throw new RuntimeException("Can not find item type with name " + fishType.getItemTypeName());
-			}
-			fishType.setMaterial(gameMaterialDictionary.getByName(fishType.getMaterialName()));
-			if (fishType.getMaterial() == null) {
-				throw new RuntimeException("Can not find material with name " + fishType.getMaterialName());
+	public void initialise(RaceDictionary raceDictionary) {
+		for (String fishRaceName : this.settlementConstants.getFishAvailable()) {
+			Race fishRace = raceDictionary.getByName(fishRaceName);
+			if (fishRace == null) {
+				Logger.error("Can not find fish race by name " + fishRaceName);
+			} else {
+				this.settlementConstants.getFishRacesAvailable().add(fishRace);
 			}
 		}
 	}

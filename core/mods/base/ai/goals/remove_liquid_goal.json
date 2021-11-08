@@ -1,6 +1,7 @@
 {
   "name": "Remove liquid goal",
   "i18nDescription": "GOAL.TRANSFER_LIQUID.DESCRIPTION",
+  "interruptedByLowNeeds": true,
   "selectors": [],
   "initialActions": ["GoToLocation", "PickUpEntity"],
   "actionRelationships": {

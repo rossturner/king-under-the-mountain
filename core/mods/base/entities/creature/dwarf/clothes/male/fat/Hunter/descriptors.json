@@ -1,0 +1,34 @@
+[{
+  "uniqueName": "Dwarf-Male-Fat-Hunter-Clothing",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "FAT",
+  "gender": "MALE",
+  "profession": "HUNTER",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Fat-Hunter-Clothing-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Fat-Hunter-Clothing-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Fat-Hunter-Clothing-F34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Fat-Hunter-Clothing-B34.png"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Fat-Hunter-Clothing-B34.png",
+      "flipX": true
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Fat-Hunter-Clothing-B.png"
+    }
+  }
+}]

@@ -23,7 +23,7 @@ import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.WallPlacementMode;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.designation.DesignationDictionary;
 import technology.rocketjump.undermount.mapping.tile.roof.RoofConstructionState;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
@@ -65,7 +65,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 
 	@Inject
 	public GuiMessageHandler(MessageDispatcher messageDispatcher, GameInteractionStateContainer interactionStateContainer,
-							 TileDesignationDictionary tileDesignationDictionary, WallTypeDictionary wallTypeDictionary,
+							 DesignationDictionary designationDictionary, WallTypeDictionary wallTypeDictionary,
 							 FurnitureEntityAttributesFactory furnitureEntityAttributesFactory, FurnitureEntityFactory furnitureEntityFactory,
 							 FurnitureSelectionGuiView furnitureSelectionGuiView, BridgeTypeDictionary bridgeTypeDictionary,
 							 FloorTypeDictionary floorTypeDictionary) {
@@ -111,7 +111,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 		}
 
 
-		tileDesignationDictionary.init();
+		designationDictionary.init();
 	}
 
 	@Override
@@ -330,7 +330,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 				}
 			} else if (interactionStateContainer.getInteractionMode().equals(GameInteractionMode.DESIGNATE_MECHANISMS)) {
 				MapTile cursorTile = gameContext.getAreaMap().getTile(mouseChangeMessage.getWorldPosition());
-				if (cursorTile != null && interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(cursorTile)) {
+				if (cursorTile != null && interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(cursorTile)) {
 					messageDispatcher.dispatchMessage(MessageType.MECHANISM_CONSTRUCTION_ADDED, new MechanismPlacementMessage(
 							cursorTile, interactionStateContainer.getMechanismTypeToPlace()
 					));
@@ -354,7 +354,7 @@ public class GuiMessageHandler implements Telegraph, GameContextAware {
 					if (tile == null) {
 						continue;
 					}
-					if (PLACE_ROOM.designationCheck.shouldDesignationApply(tile)) {
+					if (PLACE_ROOM.tileDesignationCheck.shouldDesignationApply(tile)) {
 						GridPoint2 position = new GridPoint2(x, y);
 						RoomTile newRoomTile = new RoomTile();
 						newRoomTile.setRoom(interactionStateContainer.virtualRoom);

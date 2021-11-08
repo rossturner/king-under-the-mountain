@@ -8,7 +8,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
@@ -170,9 +170,9 @@ public class RoofingMessageHandler implements Telegraph, GameContextAware {
 			MapMessageHandler.markAsOutside(tile, gameContext, outdoorLightProcessor);
 
 			for (Entity entity : tile.getEntities()) {
-				if (entity.getType().equals(EntityType.HUMANOID)) {
+				if (entity.getType().equals(EntityType.CREATURE)) {
 					if (gameContext.getRandom().nextFloat() < CHANCE_OF_DEATH_FROM_ROOF_DEBRIS) {
-						messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(entity, DeathReason.CRUSHED_BY_FALLING_DEBRIS));
+						messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(entity, DeathReason.CRUSHED_BY_FALLING_DEBRIS));
 					}
 				}
 			}

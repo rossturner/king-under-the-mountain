@@ -1,0 +1,49 @@
+{
+  "name": "Perch",
+  "i18nKey": "RACE.PERCH",
+
+  "minStrength": 1.0,
+  "maxStrength": 2.0,
+
+  "bodyStructureName": "Fish",
+
+  "bodyShapes": [
+    {
+      "value": "AVERAGE"
+    }
+  ],
+
+  "colors": {
+  },
+
+  "behaviour": {
+    "behaviourName": "Fish"
+  },
+
+  "genders": {
+    "MALE": {
+      "weighting": 0.5
+    },
+    "FEMALE": {
+      "weighting": 0.5
+    }
+  },
+
+  "features": {
+    "meat": {
+      "itemTypeName": "Carcass-Perch-Prepared",
+      "materialName": "Perch Meat",
+      "quantity": 1
+    },
+    "skin": {
+      "damageReduction": {
+      }
+    },
+    "bones": {
+      "materialName": "Bone"
+    },
+    "blood": {
+
+    }
+  }
+}

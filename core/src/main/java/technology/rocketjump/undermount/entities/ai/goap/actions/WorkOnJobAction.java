@@ -6,7 +6,7 @@ import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
 import technology.rocketjump.undermount.entities.tags.ItemUsageSoundTag;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
@@ -151,10 +151,8 @@ public class WorkOnJobAction extends Action {
 
 	@Override
 	public void actionInterrupted(GameContext gameContext) {
-		if (furnitureInUseNotified) {
-
-		}
 		completionType = CompletionType.FAILURE;
+		update(0f, gameContext); // to clear sound and furniture in use
 	}
 
 	private Optional<Entity> getTargetFurniture(Job assignedJob, GameContext gameContext) {

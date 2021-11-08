@@ -177,6 +177,7 @@ public class SpriteCropper {
 				for (String direction : spriteDescriptors.keySet()) {
 					JsonObject directionJson = spriteDescriptors.getAsJsonObject(direction);
 
+					boolean isFlipX = directionJson.has("flipX") && directionJson.get("flipX").getAsBoolean();
 					String filename = directionJson.get("filename").getAsString();
 					System.out.println("Processing descriptors for " + filename);
 					Vector2 newOffset = newOffsets.get(filename);
@@ -184,6 +185,10 @@ public class SpriteCropper {
 						JsonObject originalOffset = directionJson.getAsJsonObject("offsetPixels");
 						if (originalOffset == null) {
 							originalOffset = new JsonObject();
+						}
+						if (isFlipX) {
+							newOffset = newOffset.cpy();
+							newOffset.x = 0-newOffset.x;
 						}
 						Vector2 replacementOffset = newOffset.cpy().add(
 							originalOffset.get("x") == null ? 0f : originalOffset.get("x").getAsFloat(),

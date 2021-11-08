@@ -1,0 +1,45 @@
+{
+  "uniqueName": "Dwarf-Female-Fat-Clothing02",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "FAT",
+  "gender": "FEMALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Fat-Clothing02-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Clothing02-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Fat-Clothing02-F34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Clothing02-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Fat-Clothing02-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Fat-Clothing02-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}

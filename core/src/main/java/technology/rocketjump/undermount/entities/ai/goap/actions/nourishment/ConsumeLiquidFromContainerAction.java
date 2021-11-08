@@ -14,7 +14,7 @@ import technology.rocketjump.undermount.entities.components.humanoid.NeedsCompon
 import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.alcohol.Drunk;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.alcohol.Drunk;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;

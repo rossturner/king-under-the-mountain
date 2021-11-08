@@ -12,8 +12,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureGroup;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.Prioritisable;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.humanoid.SteeringComponent;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -28,7 +30,7 @@ import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.MapVertex;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.mapping.tile.underground.TileLiquidFlow;
 import technology.rocketjump.undermount.messaging.types.DoorwayPlacementMessage;
@@ -38,6 +40,7 @@ import technology.rocketjump.undermount.rendering.RenderMode;
 import technology.rocketjump.undermount.rendering.RenderingOptions;
 import technology.rocketjump.undermount.rendering.RoomRenderer;
 import technology.rocketjump.undermount.rendering.TerrainRenderer;
+import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.rendering.custom_libgdx.CustomShaderSpriteBatch;
 import technology.rocketjump.undermount.rendering.entities.EntityRenderer;
 import technology.rocketjump.undermount.rendering.mechanisms.MechanismsViewModeRenderer;
@@ -51,6 +54,7 @@ import technology.rocketjump.undermount.zones.Zone;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
@@ -134,7 +138,8 @@ public class InWorldUIRenderer {
 		GridPoint2 maxDraggingTile = new GridPoint2(MathUtils.floor(maxDraggingPoint.x), MathUtils.floor(maxDraggingPoint.y));
 
 		if (interactionStateContainer.isDragging() && (
-				interactionStateContainer.getInteractionMode().designationCheck != null ||
+				interactionStateContainer.getInteractionMode().tileDesignationCheck != null ||
+						interactionStateContainer.getInteractionMode().entityDesignationCheck != null ||
 						interactionStateContainer.getInteractionMode().equals(SET_JOB_PRIORITY)
 		)) {
 			drawDragAreaOutline(minDraggingPoint, maxDraggingPoint);
@@ -157,6 +162,10 @@ public class InWorldUIRenderer {
 			Selectable selectable = interactionStateContainer.getSelectable();
 			if (selectable != null) {
 				selectableOutlineRenderer.render(selectable, shapeRenderer);
+
+				if (GlobalSettings.DEV_MODE) {
+					showCreatureGroupLocation(gameContext, selectable);
+				}
 			}
 		} else if (interactionStateContainer.getInteractionMode().equals(PLACE_FURNITURE)) {
 			Color furnitureColor = VALID_PLACEMENT_COLOR;
@@ -230,7 +239,7 @@ public class InWorldUIRenderer {
 						} else if (interactionStateContainer.getInteractionMode().designationName != null) { // Is a designation
 							// This is within dragging area
 							if (shouldHighlight(mapTile)) {
-								TileDesignation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
+								Designation designationToApply = interactionStateContainer.getInteractionMode().getDesignationToApply();
 								spriteBatch.setColor(designationToApply.getSelectionColor());
 								spriteBatch.draw(designationToApply.getIconSprite(), x, y, 1, 1);
 							} else {
@@ -291,7 +300,7 @@ public class InWorldUIRenderer {
 
 					if (renderingOptions.debug().isShowPathfindingSlowdown()) {
 						for (Entity entity : mapTile.getEntities()) {
-							if (entity.getType().equals(EntityType.HUMANOID)) {
+							if (entity.getType().equals(EntityType.CREATURE)) {
 								Vector2 location = entity.getLocationComponent().getWorldPosition();
 								Vector2 velocity = entity.getLocationComponent().getLinearVelocity();
 
@@ -356,7 +365,6 @@ public class InWorldUIRenderer {
 							}
 						}
 					}
-
 
 					if (renderingOptions.debug().isShowZones()) {
 						if (!mapTile.getZones().isEmpty()) {
@@ -436,7 +444,7 @@ public class InWorldUIRenderer {
 
 	private void renderExistingDesignation(int x, int y, MapTile mapTile) {
 		if (mapTile.getDesignation() != null) {
-			TileDesignation designation = mapTile.getDesignation();
+			Designation designation = mapTile.getDesignation();
 			for (Job job : jobStore.getJobsAtLocation(mapTile.getTilePosition())) {
 				if (job.getAssignedToEntityId() != null) {
 					// There is an assigned job at the location of this designation, so lets skip rendering it if blink is off
@@ -448,6 +456,22 @@ public class InWorldUIRenderer {
 
 			spriteBatch.setColor(designation.getDesignationColor());
 			spriteBatch.draw(designation.getIconSprite(), x, y, 1, 1);
+		} else {
+			Optional<Entity> entityWithDesignation = mapTile.getEntities().stream().filter(e -> e.getDesignation() != null).findAny();
+			if (entityWithDesignation.isPresent()) {
+				Entity entity = entityWithDesignation.get();
+				Designation designation = entity.getDesignation();
+				if (jobStore.getByType(designation.getCreatesJobType()).stream().anyMatch(j -> j.getTargetId() == entity.getId() &&
+						j.getAssignedToEntityId() != null)) {
+					if (!blinkState) {
+						return;
+					}
+				}
+
+				spriteBatch.setColor(designation.getDesignationColor());
+				Vector2 entityPosition = entity.getLocationComponent().getWorldOrParentPosition();
+				spriteBatch.draw(designation.getIconSprite(), entityPosition.x - 0.5f, entityPosition.y - 0.5f, 1, 1);
+			}
 		}
 	}
 
@@ -458,10 +482,13 @@ public class InWorldUIRenderer {
 	}
 
 	private boolean shouldHighlight(MapTile mapTile) {
-		if (interactionStateContainer.getInteractionMode().designationCheck != null) {
-			return interactionStateContainer.getInteractionMode().designationCheck.shouldDesignationApply(mapTile);
+		if (interactionStateContainer.getInteractionMode().tileDesignationCheck != null) {
+			return interactionStateContainer.getInteractionMode().tileDesignationCheck.shouldDesignationApply(mapTile);
+		} else if (interactionStateContainer.getInteractionMode().entityDesignationCheck != null) {
+			return mapTile.getEntities().stream().anyMatch(e -> interactionStateContainer.getInteractionMode().entityDesignationCheck.shouldDesignationApply(e));
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	private void drawDragAreaOutline(Vector2 minDraggingPoint, Vector2 maxDraggingPoint) {
@@ -472,4 +499,16 @@ public class InWorldUIRenderer {
 		shapeRenderer.end();
 	}
 
+
+	private void showCreatureGroupLocation(GameContext gameContext, Selectable selectable) {
+		if (selectable.type.equals(Selectable.SelectableType.ENTITY)) {
+			Entity selectedEntity = selectable.getEntity();
+			if (selectedEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+				CreatureGroup creatureGroup = ((CreatureBehaviour) selectedEntity.getBehaviourComponent()).getCreatureGroup();
+				if (creatureGroup != null) {
+					selectableOutlineRenderer.render(new Selectable(gameContext.getAreaMap().getTile(creatureGroup.getHomeLocation())), shapeRenderer);
+				}
+			}
+		}
+	}
 }

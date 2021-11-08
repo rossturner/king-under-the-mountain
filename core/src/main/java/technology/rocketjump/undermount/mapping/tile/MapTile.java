@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.doors.Doorway;
+import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
@@ -17,7 +18,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesType;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.mapping.tile.floor.FloorOverlap;
 import technology.rocketjump.undermount.mapping.tile.floor.OverlapLayout;
 import technology.rocketjump.undermount.mapping.tile.floor.TileFloor;
@@ -69,7 +70,7 @@ public class MapTile implements Persistable {
 	private final Deque<TileFloor> floors = new ArrayDeque<>();
 	private UnderTile underTile;
 
-	private TileDesignation designation = null;
+	private Designation designation = null;
 	private RoomTile roomTile = null;
 	private Set<Zone> zones = new HashSet<>();
 	private Construction construction = null;
@@ -324,11 +325,11 @@ public class MapTile implements Persistable {
 		return false;
 	}
 
-	public TileDesignation getDesignation() {
+	public Designation getDesignation() {
 		return designation;
 	}
 
-	public void setDesignation(TileDesignation designation) {
+	public void setDesignation(Designation designation) {
 		this.designation = designation;
 	}
 
@@ -384,6 +385,9 @@ public class MapTile implements Persistable {
 			if (entity.getType().equals(EntityType.ITEM) || entity.getType().equals(EntityType.PLANT) || entity.getType().equals(EntityType.FURNITURE)) {
 				return false;
 			}
+			if (entity.getType().equals(EntityType.CREATURE) && entity.getBehaviourComponent() instanceof CorpseBehaviour) {
+				return false;
+			}
 		}
 		return true;
 	}
@@ -411,6 +415,15 @@ public class MapTile implements Persistable {
 	public Entity getFirstItem() {
 		for (Entity entity : entities.values()) {
 			if (entity.getType().equals(EntityType.ITEM)) {
+				return entity;
+			}
+		}
+		return null;
+	}
+
+	public Entity getFirstCorpse() {
+		for (Entity entity : entities.values()) {
+			if (entity.getType().equals(EntityType.CREATURE) && entity.getBehaviourComponent() instanceof CorpseBehaviour) {
 				return entity;
 			}
 		}
@@ -606,7 +619,7 @@ public class MapTile implements Persistable {
 
 		String designationName = asJson.getString("designation");
 		if (designationName != null) {
-			this.designation = relatedStores.tileDesignationDictionary.getByName(designationName);
+			this.designation = relatedStores.designationDictionary.getByName(designationName);
 			if (this.designation == null) {
 				throw new InvalidSaveException("Could not find tile designation by name " + designationName);
 			}

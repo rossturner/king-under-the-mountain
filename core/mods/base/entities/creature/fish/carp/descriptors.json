@@ -1,0 +1,52 @@
+[
+  {
+    "uniqueName": "Carp-Dead",
+    "type": "CREATURE_BODY",
+    "raceName": "Carp",
+    "bodyShape": "AVERAGE",
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "Carp.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
+      },
+      "DOWN_RIGHT": {
+        "filename": "Carp.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
+      },
+      "DOWN_LEFT": {
+        "filename": "Carp.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
+      },
+      "UP_RIGHT": {
+        "filename": "Carp.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
+      },
+      "UP_LEFT": {
+        "filename": "Carp.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
+      },
+      "UP": {
+        "filename": "Carp.png",
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -0.5
+        }
+      }
+    }
+  }
+]

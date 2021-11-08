@@ -1,6 +1,6 @@
 package technology.rocketjump.undermount.ui.i18n;
 
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,0 +1,30 @@
+[{
+  "uniqueName": "Dwarf-Male-Average-Hunter-Clothing",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "AVERAGE",
+  "gender": "MALE",
+  "profession": "HUNTER",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Average-Hunter-Clothing-F.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Average-Hunter-Clothing-F34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Average-Hunter-Clothing-F34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Average-Hunter-Clothing-B34.png"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Average-Hunter-Clothing-B34.png",
+      "flipX": true
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Average-Hunter-Clothing-B.png"
+    }
+  }
+}]

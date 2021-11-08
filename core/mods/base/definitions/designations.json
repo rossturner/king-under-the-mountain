@@ -53,6 +53,15 @@
     "designationColor": { "r": 1, "g": 1, "b": 1, "a": 0.4 }
   },
   {
+    "designationName": "HUNT_CREATURE",
+    "iconName": "crosshair-arrow",
+    "createsJobTypeName": "HUNT_CREATURE",
+    "selectionColor": { "r": 1, "g": 1, "b": 0.6, "a": 0.4 },
+    "designationColor": { "r": 1, "g": 0.3, "b": 0.3, "a": 0.4 },
+    "defaultJobPriority": "HIGHER",
+    "appliesToEntities": true
+  },
+  {
     "designationName": "EXTINGUISH_FLAMES",
     "iconName": "water-splash",
     "createsJobTypeName": "EXTINGUISH_FLAMES",

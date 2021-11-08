@@ -176,7 +176,7 @@ public class ConstructionManager implements Updatable {
 							if (placedForConstructionAllocation != null) {
 								itemAllocationComponent.cancelAll(PLACED_FOR_CONSTRUCTION);
 							}
-							messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entity, entity, true, furnitureConstruction.getPriority(), null));
+							messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(entity, entity, true, furnitureConstruction.getPriority(), null));
 						} else {
 							furnitureConstruction.getPlacedItemAllocations().put(tileLocation, placedForConstructionAllocation);
 						}
@@ -201,7 +201,7 @@ public class ConstructionManager implements Updatable {
 							itemAllocationComponent.cancelAll(PLACED_FOR_CONSTRUCTION);
 						}
 						if (itemAllocationComponent.getNumUnallocated() > 0) {
-							messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(entity, entity, true, furnitureConstruction.getPriority(), null));
+							messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(entity, entity, true, furnitureConstruction.getPriority(), null));
 						}
 						somethingNeedsRemoving = true;
 					} else if (entity.getType().equals(EntityType.PLANT)) {

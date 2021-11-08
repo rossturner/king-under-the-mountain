@@ -1,0 +1,64 @@
+[{
+  "uniqueName": "Dwarf-HairFB",
+  "type": "CREATURE_HAIR",
+  "raceName": "Dwarf",
+  "gender": "FEMALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-HairFB-Color-FB.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1,
+      "offsetPixels": {
+        "x": 1,
+        "y": -15
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-HairFB-Color-FB34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1,
+      "offsetPixels": {
+        "x": 1,
+        "y": -15
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-HairFB-Color-FB34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1,
+      "offsetPixels": {
+        "x": -1,
+        "y": -15
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-HairFB-Color-FB34.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1,
+      "offsetPixels": {
+        "x": -1,
+        "y": -17
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-HairFB-Color-FB34.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1,
+      "offsetPixels": {
+        "x": 1,
+        "y": -17
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-HairFB-Color-FB.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1,
+      "offsetPixels": {
+        "x": 1,
+        "y": -17
+      }
+    }
+  }
+}]

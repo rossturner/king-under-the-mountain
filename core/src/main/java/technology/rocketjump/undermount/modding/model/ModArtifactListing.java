@@ -2,8 +2,8 @@ package technology.rocketjump.undermount.modding.model;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.assets.entities.creature.model.CreatureEntityAsset;
 import technology.rocketjump.undermount.assets.entities.furniture.model.FurnitureEntityAsset;
-import technology.rocketjump.undermount.assets.entities.humanoid.model.HumanoidEntityAsset;
 import technology.rocketjump.undermount.assets.entities.item.model.ItemEntityAsset;
 import technology.rocketjump.undermount.assets.entities.mechanism.model.MechanismEntityAsset;
 import technology.rocketjump.undermount.assets.entities.model.EntityAssetType;
@@ -19,6 +19,9 @@ import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.entities.ai.goap.Goal;
 import technology.rocketjump.undermount.entities.ai.goap.Schedule;
 import technology.rocketjump.undermount.entities.factories.names.NameWord;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructure;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDefinition;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureCategory;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
@@ -31,7 +34,7 @@ import technology.rocketjump.undermount.environment.model.WeatherType;
 import technology.rocketjump.undermount.jobs.model.CraftingType;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.jobs.model.Profession;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.modding.processing.*;
 import technology.rocketjump.undermount.modding.validation.*;
@@ -72,6 +75,14 @@ public class ModArtifactListing {
 				////////// definitions //////////
 				def("definitions/plantColorSwatches", null, COPY_ORIGINAL_FILES, PNG, null,
 						"entities/plant", "**/*-swatch.png", PNG, ADDITIVE, CopyFilesProcessor.class, UniqueFilenames.class),
+				def("definitions/creatureColorSwatches", null, COPY_ORIGINAL_FILES, PNG, null,
+						"entities/creature", "**/*-swatch.png", PNG, ADDITIVE, CopyFilesProcessor.class, UniqueFilenames.class),
+
+
+				def("definitions", "bodyStructures", SINGLE_FILE, JSON_ARRAY, BodyStructure.class,
+						"definitions/bodyStructures", "*.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions", "organs", SINGLE_FILE, JSON_ARRAY, OrganDefinition.class,
+						"definitions/bodyStructures/organs", "*.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 
 				def("definitions/entityAssets", "entityAssetTypes", SINGLE_FILE, JSON_MAP, EntityAssetType.class,
 						"entities", "entityAssetTypes", JSON_MAP, REPLACES_EXISTING, UntypedJsonProcessor.class),
@@ -80,8 +91,8 @@ public class ModArtifactListing {
 				def("definitions/entityAssets", "furnitureEntityAssets", SINGLE_FILE, JSON_ARRAY, FurnitureEntityAsset.class,
 						"entities/furniture", "**/descriptors", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
-				def("definitions/entityAssets", "humanoidEntityAssets", SINGLE_FILE, JSON_ARRAY, HumanoidEntityAsset.class,
-						"entities/humanoid", "**/descriptors", JSON_ARRAY, ADDITIVE,
+				def("definitions/entityAssets", "creatureEntityAssets", SINGLE_FILE, JSON_ARRAY, CreatureEntityAsset.class,
+						"entities/creature", "**/descriptors", JSON_ARRAY, ADDITIVE,
 						GenericClassTypeProcessor.class, ReferencedImagesExist.class, UniqueNames.class),
 				def("definitions/entityAssets", "itemEntityAssets", SINGLE_FILE, JSON_ARRAY, ItemEntityAsset.class,
 						"entities/item", "**/descriptors", JSON_ARRAY, ADDITIVE,
@@ -125,6 +136,8 @@ public class ModArtifactListing {
 						"rooms", "roomTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "stockpileGroups", SINGLE_FILE, JSON_ARRAY, StockpileGroup.class,
 						"rooms", "stockpileGroups.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
+				def("definitions/types", "races", SINGLE_FILE, JSON_ARRAY, Race.class,
+						"entities/creature", "**/race.json", JSON_OBJECT, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "furnitureCategories", SINGLE_FILE, JSON_ARRAY, FurnitureCategory.class,
 						"entities/furniture", "furnitureCategories.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions/types", "furnitureCategories", SINGLE_FILE, JSON_ARRAY, FurnitureCategory.class,
@@ -146,7 +159,7 @@ public class ModArtifactListing {
 						"definitions/materials", "*-materials.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "weatherTypes", SINGLE_FILE, JSON_ARRAY, WeatherType.class,
 						"definitions", "weatherTypes.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
-				def("definitions", "designations", SINGLE_FILE, JSON_ARRAY, TileDesignation.class,
+				def("definitions", "designations", SINGLE_FILE, JSON_ARRAY, Designation.class,
 						"definitions", "designations.json", JSON_ARRAY, ADDITIVE, GenericClassTypeProcessor.class),
 				def("definitions", "constants", SINGLE_FILE, JSON_OBJECT, null,
 						"definitions/constants", "**.json", JSON_KEY_VALUES, ADDITIVE, UntypedJsonProcessor.class),

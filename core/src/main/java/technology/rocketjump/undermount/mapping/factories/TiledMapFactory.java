@@ -16,7 +16,7 @@ import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.factories.SettlerFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.*;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpecies;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesDictionary;
@@ -63,6 +63,7 @@ public class TiledMapFactory {
 	private final List<PlantSpecies> crops = new ArrayList<>();
 	private final GameMaterialDictionary gameMaterialDictionary;
 	private final StockpileComponentUpdater stockpileComponentUpdater;
+	private final CreaturePopulator creaturePopulator;
 
 	@Inject
 	public TiledMapFactory(MapGenWrapper mapGenWrapper, ItemTypeDictionary itemTypeDictionary,
@@ -71,7 +72,7 @@ public class TiledMapFactory {
 						   RoomTypeDictionary roomTypeDictionary, EntityStore entityStore, SettlerFactory setterFactory,
 						   ItemEntityFactory itemEntityFactory, ItemEntityAttributesFactory itemEntityAttributesFactory,
 						   CookingRecipeDictionary cookingRecipeDictionary,
-						   StockpileComponentUpdater stockpileComponentUpdater) {
+						   StockpileComponentUpdater stockpileComponentUpdater, CreaturePopulator creaturePopulator) {
 		this.mapGenWrapper = mapGenWrapper;
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.materialDictionary = gameMaterialDictionary;
@@ -87,6 +88,7 @@ public class TiledMapFactory {
 		this.cookingRecipeDictionary = cookingRecipeDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.stockpileComponentUpdater = stockpileComponentUpdater;
+		this.creaturePopulator = creaturePopulator;
 		this.baseFloorMaterial = materialDictionary.getByName("Granite");
 
 		for (PlantSpecies plantSpecies : plantSpeciesDictionary.getAll()) {
@@ -176,6 +178,7 @@ public class TiledMapFactory {
 			}
 		}
 
+		creaturePopulator.initialiseMap(gameContext);
 	}
 
 	private void addStartingInventory(Deque<QuantifiedItemTypeWithMaterial> inventoryStartingItems, List<Entity> allSettlers, GameContext gameContext, MessageDispatcher messageDispatcher) {
@@ -267,7 +270,7 @@ public class TiledMapFactory {
 		}
 		List<Long> entitiesToRemove = new LinkedList<>();
 		for (Entity entity : tile.getEntities()) {
-			if (!entity.getType().equals(EntityType.HUMANOID)) {
+			if (!entity.getType().equals(EntityType.CREATURE)) {
 				entitiesToRemove.add(entity.getId());
 			}
 		}

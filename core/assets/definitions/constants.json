@@ -2,16 +2,7 @@
   "constructMechanismJobType" : "CONSTRUCT_MECHANISM",
   "numAnnualFish" : 120,
   "deconstructRoofingJobType" : "DECONSTRUCT_ROOFING",
-  "fishAvailable" : [ {
-    "materialName" : "Carp Meat",
-    "itemTypeName" : "Carcass-Carp-Raw"
-  }, {
-    "materialName" : "Perch Meat",
-    "itemTypeName" : "Carcass-Perch-Raw"
-  }, {
-    "materialName" : "Pike Meat",
-    "itemTypeName" : "Carcass-Pike-Raw"
-  } ],
+  "fishAvailable" : [ "Carp", "Pike", "Perch" ],
   "constructPipingJobType" : "CONSTRUCT_PIPING",
   "kitchenProfession" : "CHEF",
   "deconstructPipingJobType" : "DECONSTRUCT_PIPING",

@@ -13,29 +13,28 @@ import technology.rocketjump.undermount.assets.entities.item.model.ItemPlacement
 import technology.rocketjump.undermount.assets.entities.model.ColoringLayer;
 import technology.rocketjump.undermount.audio.model.SoundAsset;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
+import technology.rocketjump.undermount.entities.behaviour.creature.BrokenDwarfBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.*;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.BrokenDwarfBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.CorpseBehaviour;
-import technology.rocketjump.undermount.entities.behaviour.humanoids.SettlerBehaviour;
 import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.components.furniture.FurnitureParticleEffectsComponent;
 import technology.rocketjump.undermount.entities.components.furniture.PoweredFurnitureComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.HistoryComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
-import technology.rocketjump.undermount.entities.components.humanoid.StatusComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.*;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.*;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.Death;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.StatusEffect;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.*;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.Death;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -50,7 +49,7 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobState;
 import technology.rocketjump.undermount.jobs.model.JobTarget;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignation;
+import technology.rocketjump.undermount.mapping.tile.designation.Designation;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.materials.model.GameMaterialType;
@@ -64,10 +63,7 @@ import technology.rocketjump.undermount.rooms.Room;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.rooms.constructions.Construction;
-import technology.rocketjump.undermount.settlement.FurnitureTracker;
-import technology.rocketjump.undermount.settlement.ItemTracker;
-import technology.rocketjump.undermount.settlement.OngoingEffectTracker;
-import technology.rocketjump.undermount.settlement.SettlerTracker;
+import technology.rocketjump.undermount.settlement.*;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.settlement.notifications.NotificationType;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
@@ -80,13 +76,14 @@ import static technology.rocketjump.undermount.assets.entities.model.ColoringLay
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.CancelLiquidAllocationAction.cancelLiquidAllocation;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.SleepOnFloorAction.changeToConsciousnessOnFloor;
+import static technology.rocketjump.undermount.entities.ai.goap.actions.SleepOnFloorAction.showAsRotatedOnSide;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.AllocationState.CANCELLED;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HAULING;
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.model.EntityType.*;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.AWAKE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.DEAD;
 import static technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause.OXIDISED;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.AWAKE;
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness.DEAD;
 import static technology.rocketjump.undermount.jobs.JobMessageHandler.deconstructFurniture;
 import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PROFESSION;
 import static technology.rocketjump.undermount.messaging.MessageType.DESTROY_ENTITY;
@@ -105,6 +102,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	private final ItemTracker itemTracker;
 	private final FurnitureTracker furnitureTracker;
 	private final SettlerTracker settlerTracker;
+	private final CreatureTracker creatureTracker;
 	private final OngoingEffectTracker ongoingEffectTracker;
 	private final RoomStore roomStore;
 	private final ItemEntityAttributesFactory itemEntityAttributesFactory;
@@ -125,10 +123,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 	@Inject
 	public EntityMessageHandler(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater,
 								JobFactory jobFactory, EntityStore entityStore, ItemTracker itemTracker,
-								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, OngoingEffectTracker ongoingEffectTracker, RoomStore roomStore,
+								FurnitureTracker furnitureTracker, SettlerTracker settlerTracker, CreatureTracker creatureTracker,
+								OngoingEffectTracker ongoingEffectTracker, RoomStore roomStore,
 								ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory,
 								ItemTypeDictionary itemTypeDictionary, I18nTranslator i18nTranslator, JobStore jobStore,
-								GameMaterialDictionary materialDictionary, SoundAssetDictionary soundAssetDictionary, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
+								GameMaterialDictionary materialDictionary, SoundAssetDictionary soundAssetDictionary,
+								ParticleEffectTypeDictionary particleEffectTypeDictionary) {
 		this.messageDispatcher = messageDispatcher;
 		this.entityAssetUpdater = entityAssetUpdater;
 		this.jobFactory = jobFactory;
@@ -136,6 +136,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		this.itemTracker = itemTracker;
 		this.furnitureTracker = furnitureTracker;
 		this.settlerTracker = settlerTracker;
+		this.creatureTracker = creatureTracker;
 		this.ongoingEffectTracker = ongoingEffectTracker;
 		this.roomStore = roomStore;
 		this.itemEntityAttributesFactory = itemEntityAttributesFactory;
@@ -165,11 +166,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.REQUEST_FURNITURE_REMOVAL);
 		messageDispatcher.addListener(this, MessageType.HAULING_ALLOCATION_CANCELLED);
 		messageDispatcher.addListener(this, MessageType.CHANGE_PROFESSION);
+		messageDispatcher.addListener(this, MessageType.CHANGE_WEAPON_SELECTION);
 		messageDispatcher.addListener(this, MessageType.APPLY_STATUS);
 		messageDispatcher.addListener(this, MessageType.REMOVE_STATUS);
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_FURNITURE_TYPE);
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_ITEM_TYPE);
-		messageDispatcher.addListener(this, MessageType.HUMANOID_DEATH);
+		messageDispatcher.addListener(this, MessageType.CREATURE_DEATH);
 		messageDispatcher.addListener(this, MessageType.HUMANOID_INSANITY);
 		messageDispatcher.addListener(this, MessageType.LIQUID_SPLASH);
 		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
@@ -177,6 +179,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.FURNITURE_NO_LONGER_IN_USE);
 		messageDispatcher.addListener(this, MessageType.DAMAGE_FURNITURE);
 		messageDispatcher.addListener(this, MessageType.MATERIAL_OXIDISED);
+		messageDispatcher.addListener(this, MessageType.FIND_BUTCHERABLE_UNALLOCATED_CORPSE);
 	}
 
 	@Override
@@ -193,6 +196,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							itemTracker.itemAdded(inventoryEntry.entity);
 						}
 					}
+				} else if (createdEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+					creatureTracker.creatureAdded(createdEntity);
 				} else if (createdEntity.getType().equals(ITEM)) {
 					itemTracker.itemAdded(createdEntity);
 				} else if (createdEntity.getType().equals(EntityType.FURNITURE)) {
@@ -221,11 +226,13 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 						ongoingEffectTracker.entityRemoved(removedEntity);
 					} else if (removedEntity.getBehaviourComponent() instanceof SettlerBehaviour) {
 						settlerTracker.settlerRemoved(removedEntity);
-						HumanoidEntityAttributes humanoidAttributes = (HumanoidEntityAttributes) removedEntity.getPhysicalEntityComponent().getAttributes();
+						CreatureEntityAttributes humanoidAttributes = (CreatureEntityAttributes) removedEntity.getPhysicalEntityComponent().getAttributes();
 						if (!humanoidAttributes.getConsciousness().equals(DEAD)) {
 							// Destroying non-dead settler entity
-							handle(new HumanoidDeathMessage(removedEntity, DeathReason.UNKNOWN));
+							handle(new CreatureDeathMessage(removedEntity, DeathReason.UNKNOWN));
 						}
+					} else if (removedEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+						creatureTracker.creatureRemoved(removedEntity);
 					}
 
 					if (removedEntity.getLocationComponent().getWorldPosition() != null) {
@@ -345,7 +352,6 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							}
 						}
 					}
-					return true;
 				}
 				return true;
 			}
@@ -370,8 +376,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				return true;
 			}
 			case MessageType.REQUEST_DOOR_OPEN: {
-				EntityMessage entityMessage = (EntityMessage) msg.extraInfo;
-				Entity doorEntity = entityStore.getById(entityMessage.getEntityId());
+				Entity doorEntity = (Entity) msg.extraInfo;
 				DoorBehaviour doorBehaviour = (DoorBehaviour) doorEntity.getBehaviourComponent();
 				doorBehaviour.doorOpenRequested();
 				return true;
@@ -392,7 +397,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 							messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
 
 							// also apply designation to other tiles
-							TileDesignation deconstructDesignation = GameInteractionMode.DECONSTRUCT.getDesignationToApply();
+							Designation deconstructDesignation = GameInteractionMode.DECONSTRUCT.getDesignationToApply();
 							if (deconstructDesignation != null) {
 								Set<MapTile> locations = new HashSet<>();
 								locations.add(entityTile);
@@ -414,6 +419,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.CHANGE_PROFESSION:
 				return handle((ChangeProfessionMessage) msg.extraInfo);
+			case MessageType.CHANGE_WEAPON_SELECTION:
+				return handle((ChangeWeaponSelectionMessage) msg.extraInfo);
 			case MessageType.HAULING_ALLOCATION_CANCELLED: {
 				HaulingAllocation allocation = (HaulingAllocation) msg.extraInfo;
 
@@ -421,12 +428,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 					messageDispatcher.dispatchMessage(MessageType.LIQUID_ALLOCATION_CANCELLED, allocation.getLiquidAllocation());
 				}
 
-				if (allocation.getHauledEntityType().equals(HUMANOID)) {
+				if (allocation.getHauledEntityType().equals(CREATURE)) {
 					// Probably assigned to a piece of furniture somewhere
 					if (allocation.getTargetPositionType().equals(HaulingAllocation.AllocationPositionType.FURNITURE)) {
 						Entity targetFurniture = entityStore.getById(allocation.getTargetId());
 						if (targetFurniture == null) {
-							Logger.error("Could not find target furniture of cancelled hauling allocation for type " + HUMANOID);
+							Logger.error("Could not find target furniture of cancelled hauling allocation for type " + CREATURE);
 						} else {
 							((FurnitureEntityAttributes) targetFurniture.getPhysicalEntityComponent().getAttributes()).setAssignedToEntityId(null);
 						}
@@ -492,14 +499,16 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			}
 			case MessageType.APPLY_STATUS: {
 				StatusMessage message = (StatusMessage) msg.extraInfo;
-				try {
-					StatusEffect statusEffect = message.statusClass.getDeclaredConstructor().newInstance();
-					if (statusEffect instanceof Death) {
-						((Death) statusEffect).setDeathReason(message.deathReason);
+				if (message.statusClass != null) {
+					try {
+						StatusEffect statusEffect = message.statusClass.getDeclaredConstructor().newInstance();
+						if (statusEffect instanceof Death) {
+							((Death) statusEffect).setDeathReason(message.deathReason);
+						}
+						message.entity.getComponent(StatusComponent.class).apply(statusEffect);
+					} catch (ReflectiveOperationException e) {
+						Logger.error("Could not instantiate " + message.statusClass.getSimpleName() + " with expected constructor");
 					}
-					message.entity.getComponent(StatusComponent.class).apply(statusEffect);
-				} catch (ReflectiveOperationException e) {
-					Logger.error("Could not instantiate " + message.statusClass.getSimpleName() + " with expected constructor");
 				}
 				return true;
 			}
@@ -514,8 +523,8 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.TRANSFORM_ITEM_TYPE: {
 				return handle((TransformItemMessage) msg.extraInfo);
 			}
-			case MessageType.HUMANOID_DEATH: {
-				return handle((HumanoidDeathMessage) msg.extraInfo);
+			case MessageType.CREATURE_DEATH: {
+				return handle((CreatureDeathMessage) msg.extraInfo);
 			}
 			case MessageType.HUMANOID_INSANITY: {
 				return handleInsanity((Entity) msg.extraInfo);
@@ -557,9 +566,29 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.MATERIAL_OXIDISED: {
 				return handleMaterialOxidised((OxidisationMessage) msg.extraInfo);
 			}
+			case MessageType.FIND_BUTCHERABLE_UNALLOCATED_CORPSE: {
+				handleFindButcherableCorpse((RequestCorpseMessage) msg.extraInfo);
+				return true;
+			}
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
+	}
+
+	private boolean handle(ChangeWeaponSelectionMessage weaponSelectionMessage) {
+		WeaponSelectionComponent weaponSelectionComponent = weaponSelectionMessage.entity.getOrCreateComponent(WeaponSelectionComponent.class);
+		if (weaponSelectionComponent.getSelectedWeapon().isPresent()) {
+			// forget existing memory to find weapon of that type
+			MemoryComponent memoryComponent = weaponSelectionMessage.entity.getOrCreateComponent(MemoryComponent.class);
+			memoryComponent.getShortTermMemories(gameContext.getGameClock())
+					.removeIf(memory -> memory.getType().equals(MemoryType.LACKING_REQUIRED_ITEM) &&
+							memory.getRelatedItemType() != null &&
+							memory.getRelatedItemType().equals(weaponSelectionComponent.getSelectedWeapon().get()));
+		}
+
+		weaponSelectionComponent.setSelectedWeapon(weaponSelectionMessage.selectedWeaponType);
+
+		return true;
 	}
 
 	private boolean handle(ChangeProfessionMessage changeProfessionMessage) {
@@ -711,9 +740,9 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		return true;
 	}
 
-	private boolean handle(HumanoidDeathMessage deathMessage) {
+	private boolean handle(CreatureDeathMessage deathMessage) {
 		Entity deceased = deathMessage.deceased;
-		HumanoidEntityAttributes attributes = (HumanoidEntityAttributes) deceased.getPhysicalEntityComponent().getAttributes();
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) deceased.getPhysicalEntityComponent().getAttributes();
 		Consciousness previousConciousness = attributes.getConsciousness();
 		if (previousConciousness.equals(DEAD)) {
 			// Already dead! Doesn't need killing again
@@ -721,17 +750,23 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		}
 
 		attributes.setConsciousness(DEAD);
+		BehaviourComponent originalBehaviour = deceased.getBehaviourComponent();
 		CorpseBehaviour corpseBehaviour = new CorpseBehaviour();
 		corpseBehaviour.setOriginalSkinColor(attributes.getColor(SKIN_COLOR));
 		entityStore.changeBehaviour(deceased, corpseBehaviour, messageDispatcher);
 
 		Vector2 deceasedPosition = deceased.getLocationComponent().getWorldOrParentPosition();
-		Notification deathNotification = new Notification(NotificationType.DEATH, deceasedPosition);
-		deathNotification.addTextReplacement("character", i18nTranslator.getDescription(deceased));
-		deathNotification.addTextReplacement("reason", i18nTranslator.getTranslatedString(deathMessage.reason.getI18nKey()));
-		messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, deathNotification);
 
-		settlerTracker.settlerDied(deceased);
+		if (originalBehaviour instanceof SettlerBehaviour) {
+			Notification deathNotification = new Notification(NotificationType.DEATH, deceasedPosition);
+			deathNotification.addTextReplacement("character", i18nTranslator.getDescription(deceased));
+			deathNotification.addTextReplacement("reason", i18nTranslator.getTranslatedString(deathMessage.reason.getI18nKey()));
+			messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, deathNotification);
+
+			settlerTracker.settlerDied(deceased);
+		} else if (originalBehaviour instanceof CreatureBehaviour) {
+			creatureTracker.creatureDied(deceased);
+		}
 
 		dropEquippedItems(deceased, deceasedPosition);
 		deceased.removeComponent(NeedsComponent.class);
@@ -745,23 +780,25 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		} else {
 			messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, deceased);
 		}
+		showAsRotatedOnSide(deceased, gameContext);
 
 		// TODO check for game-over state
-		boolean allDead = true;
-		for (Entity settler : settlerTracker.getAll()) {
-			HumanoidEntityAttributes otherSettlerAttributes = (HumanoidEntityAttributes) settler.getPhysicalEntityComponent().getAttributes();
-			if (!otherSettlerAttributes.getConsciousness().equals(DEAD)) {
-				allDead = false;
-				break;
+		if (originalBehaviour instanceof SettlerBehaviour) {
+			boolean allDead = true;
+			for (Entity settler : settlerTracker.getAll()) {
+				CreatureEntityAttributes otherSettlerAttributes = (CreatureEntityAttributes) settler.getPhysicalEntityComponent().getAttributes();
+				if (!otherSettlerAttributes.getConsciousness().equals(DEAD)) {
+					allDead = false;
+					break;
+				}
+			}
+
+			if (allDead) {
+				Notification gameOverNotification = new Notification(NotificationType.GAME_OVER, null);
+				messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, gameOverNotification);
+				gameContext.getSettlementState().setGameState(GameState.GAME_OVER);
 			}
 		}
-
-		if (allDead) {
-			Notification gameOverNotification = new Notification(NotificationType.GAME_OVER, null);
-			messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, gameOverNotification);
-			gameContext.getSettlementState().setGameState(GameState.GAME_OVER);
-		}
-
 
 		return true;
 	}
@@ -946,6 +983,36 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 
 		return true;
+	}
+
+	private void handleFindButcherableCorpse(RequestCorpseMessage requestCorpseMessage) {
+		MapTile requesterTile = gameContext.getAreaMap().getTile(requestCorpseMessage.requesterPosition);
+		if (requesterTile == null) {
+			return;
+		}
+		int requesterRegionId = requesterTile.getRegionId();
+
+		Map<Float, Entity> eligibleCorpsesByDistance = new TreeMap<>();
+
+		for (Entity deadCreatureEntity : creatureTracker.getDead()) {
+			MapTile corpseTile = gameContext.getAreaMap().getTile(deadCreatureEntity.getLocationComponent().getWorldPosition());
+			if (corpseTile == null || corpseTile.getRegionId() != requesterRegionId) {
+				continue;
+			}
+
+			ItemAllocationComponent itemAllocationComponent = deadCreatureEntity.getComponent(ItemAllocationComponent.class);
+			if (itemAllocationComponent == null || itemAllocationComponent.getNumUnallocated() <= 0) {
+				continue;
+			}
+
+			// else this is unallocated and in same region
+			float distanceToCorpse = deadCreatureEntity.getLocationComponent().getWorldOrParentPosition().dst2(requestCorpseMessage.requesterPosition);
+			eligibleCorpsesByDistance.put(distanceToCorpse, deadCreatureEntity);
+		}
+
+		if (!eligibleCorpsesByDistance.isEmpty()) {
+			requestCorpseMessage.callback.corpseFound(eligibleCorpsesByDistance.values().iterator().next());
+		}
 	}
 
 	private void showNotificationOxidisationDestroyedSomething(Entity targetEntity) {

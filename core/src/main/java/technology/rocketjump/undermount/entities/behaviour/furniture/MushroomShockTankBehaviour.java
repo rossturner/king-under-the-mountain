@@ -114,7 +114,7 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 	}
 
 	private void haulItemOut(InventoryComponent.InventoryEntry inventoryEntry) {
-		messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(
+		messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(
 				inventoryEntry.entity, parentEntity, true, priority, job -> {
 					if (job != null) {
 						haulingJobs.add(job);

@@ -16,7 +16,7 @@ import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.ProfessionsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.RequestSoundMessage;
@@ -232,7 +232,7 @@ public class SettlerManagementScreen extends ManagementScreen {
 
 		switch (this.selectedSortOption) {
 			case BY_NAME:
-				livingSettlers.sort(Comparator.comparing(a -> ((HumanoidEntityAttributes)a.getPhysicalEntityComponent().getAttributes()).getName().toString()));
+				livingSettlers.sort(Comparator.comparing(a -> ((CreatureEntityAttributes)a.getPhysicalEntityComponent().getAttributes()).getName().toString()));
 				break;
 			case BY_UNHAPPINESS:
 				livingSettlers.sort(Comparator.comparingInt(o -> o.getComponent(HappinessComponent.class).getNetModifier()));

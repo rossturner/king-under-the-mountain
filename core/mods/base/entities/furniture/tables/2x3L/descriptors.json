@@ -2,7 +2,7 @@
   {
     "uniqueName": "table-2x3L-metal",
     "type": "BASE_LAYER",
-    "furnitureTypeNames": ["CARPENTRY_WORKBENCH"],
+    "furnitureTypeNames": ["CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH"],
     "furnitureLayoutName": "2x3L",
     "validMaterialTypes": ["METAL"],
     "spriteDescriptors": {
@@ -49,7 +49,7 @@
   {
     "uniqueName": "table-2x3L-stone",
     "type": "BASE_LAYER",
-    "furnitureTypeNames": ["CARPENTRY_WORKBENCH"],
+    "furnitureTypeNames": ["CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH"],
     "furnitureLayoutName": "2x3L",
     "validMaterialTypes": ["STONE"],
     "spriteDescriptors": {
@@ -96,7 +96,7 @@
   {
     "uniqueName": "table-2x3L-wood",
     "type": "BASE_LAYER",
-    "furnitureTypeNames": ["CARPENTRY_WORKBENCH"],
+    "furnitureTypeNames": ["CARPENTRY_WORKBENCH", "FLETCHERS_WORKBENCH"],
     "furnitureLayoutName": "2x3L",
     "validMaterialTypes": ["WOOD"],
     "spriteDescriptors": {

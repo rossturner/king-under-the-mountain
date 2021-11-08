@@ -16,6 +16,9 @@ import technology.rocketjump.undermount.entities.components.ComponentDictionary;
 import technology.rocketjump.undermount.entities.components.StatusEffectDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureLayoutDictionary;
 import technology.rocketjump.undermount.entities.dictionaries.furniture.FurnitureTypeDictionary;
+import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.BodyStructureDictionary;
+import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDefinitionDictionary;
 import technology.rocketjump.undermount.entities.model.physical.effect.OngoingEffectTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
 import technology.rocketjump.undermount.entities.model.physical.mechanism.MechanismTypeDictionary;
@@ -27,7 +30,7 @@ import technology.rocketjump.undermount.jobs.CraftingTypeDictionary;
 import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.jobs.JobTypeDictionary;
 import technology.rocketjump.undermount.jobs.ProfessionDictionary;
-import technology.rocketjump.undermount.mapping.tile.designation.TileDesignationDictionary;
+import technology.rocketjump.undermount.mapping.tile.designation.DesignationDictionary;
 import technology.rocketjump.undermount.materials.DynamicMaterialFactory;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
@@ -87,7 +90,7 @@ public class PersistenceTestHarness {
 	@Mock
 	protected RoomComponentDictionary mockRoomComponentDictionary;
 	@Mock
-	protected TileDesignationDictionary mockTileDesignationDictionary;
+	protected DesignationDictionary mockDesignationDictionary;
 	@Mock
 	protected StockpileGroupDictionary mockStockpileGroupDictionary;
 	@Mock
@@ -112,6 +115,12 @@ public class PersistenceTestHarness {
 	private DailyWeatherTypeDictionary mockDailyWeatherTypeDictionary;
 	@Mock
 	private MechanismTypeDictionary mockMechanismTypeDictionary;
+	@Mock
+	private BodyStructureDictionary mockBodyStructureDictionary;
+	@Mock
+	private RaceDictionary mockRaceDictionary;
+	@Mock
+	private OrganDefinitionDictionary mockOrganDefinitionDictionary;
 
 	@Before
 	public void setup() {
@@ -141,7 +150,7 @@ public class PersistenceTestHarness {
 				mockWallTypeDictionary,
 				mockRoomTypeDictionary,
 				mockRoomComponentDictionary,
-				mockTileDesignationDictionary,
+				mockDesignationDictionary,
 				mockStockpileGroupDictionary,
 				mockTagDictionary,
 				mockSoundAssetDictionary,
@@ -151,7 +160,10 @@ public class PersistenceTestHarness {
 				mockOngoingEffectTypeDictionary,
 				mockWeatherTypeDictionary,
 				mockDailyWeatherTypeDictionary,
-				mockMechanismTypeDictionary);
+				mockMechanismTypeDictionary,
+				mockBodyStructureDictionary,
+				mockOrganDefinitionDictionary,
+				mockRaceDictionary);
 
 	}
 

@@ -1,0 +1,55 @@
+[{
+  "uniqueName": "Dwarf-Female-Fat-Underwear",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "FAT",
+  "gender": "FEMALE",
+  "profession": "VILLAGER",
+  "sanity": "BROKEN",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Fat-Underwear-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 8
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Underwear-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 8
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Fat-Underwear-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 8
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Underwear-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 8
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Fat-Underwear-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 8
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Fat-Underwear-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 8
+      }
+    }
+  }
+}]

@@ -1,0 +1,53 @@
+{
+  "uniqueName": "Dwarf-Female-Strong-Clothing02",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "STRONG",
+  "gender": "FEMALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Strong-Clothing02-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Strong-Clothing02-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Strong-Clothing02-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Strong-Clothing02-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Strong-Clothing02-B34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Strong-Clothing02-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": -1
+      }
+    }
+  }
+}

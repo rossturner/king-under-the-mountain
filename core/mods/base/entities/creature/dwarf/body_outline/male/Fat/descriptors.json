@@ -1,0 +1,29 @@
+[{
+  "uniqueName": "Dwarf-Male-Fat-Outline",
+  "type": "BODY_OUTLINE",
+  "raceName": "Dwarf",
+  "bodyShape": "FAT",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Male-Fat-Outline-F+B.png"
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Male-Fat-Outline-F34+B34.png"
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Male-Fat-Outline-F34+B34.png",
+      "flipX": true
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Male-Fat-Outline-F34+B34.png"
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Male-Fat-Outline-F34+B34.png",
+      "flipX": true
+    },
+    "UP": {
+      "filename": "Dwarf-Male-Fat-Outline-F+B.png"
+    }
+  }
+}]

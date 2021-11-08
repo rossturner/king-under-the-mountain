@@ -1,0 +1,53 @@
+[{
+  "uniqueName": "Dwarf-Female-Fat-Miner-Clothing",
+  "type": "BODY_CLOTHING",
+  "raceName": "Dwarf",
+  "bodyShape": "FAT",
+  "gender": "FEMALE",
+  "profession": "MINER",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-Female-Fat-Miner-Clothing-F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Miner-Clothing-F34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-Female-Fat-Miner-Clothing-F34.png",
+      "flipX": true,
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-Female-Fat-Miner-Clothing-B34.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-Female-Fat-Miner-Clothing-B34F.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "UP": {
+      "filename": "Dwarf-Female-Fat-Miner-Clothing-B.png",
+      "offsetPixels": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}]

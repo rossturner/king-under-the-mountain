@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipe;
 import technology.rocketjump.undermount.crafting.model.CraftingRecipeMaterialSelection;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameState;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -62,6 +63,7 @@ public class SettlementState implements Persistable {
 	private Double nextImmigrationGameTime;
 	private int fishRemainingInRiver;
 	private GameState gameState;
+	private Race settlerRace;
 
 	public String getSettlementName() {
 		return settlementName;
@@ -485,4 +487,11 @@ public class SettlementState implements Persistable {
 		this.fishRemainingInRiver = asJson.getIntValue("fishRemaining");
 	}
 
+	public Race getSettlerRace() {
+		return settlerRace;
+	}
+
+	public void setSettlerRace(Race settlerRace) {
+		this.settlerRace = settlerRace;
+	}
 }

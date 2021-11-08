@@ -21,6 +21,7 @@ public class StockpileGroup {
 	private Color color = HexColors.POSITIVE_COLOR;
 	private String iconName;
 	private int sortOrder = 0;
+	private boolean includesCreatureCorpses;
 
 	public StockpileGroup() {
 
@@ -88,5 +89,13 @@ public class StockpileGroup {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
+	}
+
+	public boolean isIncludesCreatureCorpses() {
+		return includesCreatureCorpses;
+	}
+
+	public void setIncludesCreatureCorpses(boolean includesCreatureCorpses) {
+		this.includesCreatureCorpses = includesCreatureCorpses;
 	}
 }

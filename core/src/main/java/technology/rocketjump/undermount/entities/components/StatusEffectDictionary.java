@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.status.StatusEffect;
+import technology.rocketjump.undermount.entities.model.physical.creature.status.StatusEffect;
 
 import java.util.HashMap;
 import java.util.Map;

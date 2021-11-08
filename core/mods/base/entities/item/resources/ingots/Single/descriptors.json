@@ -15,7 +15,7 @@
       },
       "parentEntityAssets": [
         {
-          "type": "HUMANOID_LEFT_HAND",
+          "type": "CREATURE_LEFT_HAND",
           "overrideRenderLayer": 100,
           "offsetPixels": {
             "x": 8,
@@ -23,7 +23,7 @@
           }
         },
         {
-          "type": "HUMANOID_RIGHT_HAND",
+          "type": "CREATURE_RIGHT_HAND",
           "overrideRenderLayer": 100,
           "offsetPixels": {
             "x": -8,
@@ -41,7 +41,7 @@
       },
       "parentEntityAssets": [
         {
-          "type": "HUMANOID_RIGHT_HAND",
+          "type": "CREATURE_RIGHT_HAND",
           "overrideRenderLayer": 100,
           "offsetPixels": {
             "x": -8,
@@ -49,7 +49,7 @@
           }
         },
         {
-          "type": "HUMANOID_LEFT_HAND",
+          "type": "CREATURE_LEFT_HAND",
           "overrideRenderLayer": -100,
           "offsetPixels": {
             "x": 8,
@@ -67,7 +67,7 @@
       },
       "parentEntityAssets": [
         {
-          "type": "HUMANOID_LEFT_HAND",
+          "type": "CREATURE_LEFT_HAND",
           "overrideRenderLayer": 100,
           "offsetPixels": {
             "x": 8,
@@ -75,7 +75,7 @@
           }
         },
         {
-          "type": "HUMANOID_RIGHT_HAND",
+          "type": "CREATURE_RIGHT_HAND",
           "overrideRenderLayer": -100,
           "offsetPixels": {
             "x": -8,
@@ -93,7 +93,7 @@
       },
       "parentEntityAssets": [
         {
-          "type": "HUMANOID_RIGHT_HAND",
+          "type": "CREATURE_RIGHT_HAND",
           "offsetPixels": {
             "x": -8,
             "y": -8
@@ -110,7 +110,7 @@
       },
       "parentEntityAssets": [
         {
-          "type": "HUMANOID_LEFT_HAND",
+          "type": "CREATURE_LEFT_HAND",
           "offsetPixels": {
             "x": 8,
             "y": -8

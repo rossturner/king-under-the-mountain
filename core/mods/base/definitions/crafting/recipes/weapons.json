@@ -1,0 +1,43 @@
+[
+  {
+    "recipeName": "Fletch metal arrows",
+    "craftingTypeName": "FLETCHING",
+    "verbOverrideI18nKey": "CRAFTING_TYPE.FLETCHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Metal-Ingot",
+        "quantity": 1
+      },
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Weapon-Metal-Arrows",
+        "quantity": 10
+      }
+    ],
+    "materialTypesToCopyOver": ["METAL", "WOOD"],
+    "defaultTimeToCompleteCrafting": 5
+  },
+  {
+    "recipeName": "Craft wooden bow",
+    "craftingTypeName": "FLETCHING",
+    "input": [
+      {
+        "itemTypeName": "Resource-Planks",
+        "quantity": 1
+      }
+    ],
+    "output": [
+      {
+        "itemTypeName": "Weapon-Bow",
+        "quantity": 1
+      }
+    ],
+    "materialTypesToCopyOver": ["WOOD"],
+    "defaultTimeToCompleteCrafting": 8
+  }
+]

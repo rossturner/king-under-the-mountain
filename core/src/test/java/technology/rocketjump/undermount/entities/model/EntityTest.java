@@ -11,7 +11,7 @@ import technology.rocketjump.undermount.entities.components.BehaviourComponent;
 import technology.rocketjump.undermount.entities.model.physical.EntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.environment.GameClock;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -50,15 +50,15 @@ public class EntityTest {
 	public void testYDepthEntityComparator() {
 		LocationComponent backLocation = new LocationComponent();
 		backLocation.setWorldPosition(new Vector2(0f, 10f), false);
-		Entity back = new Entity(EntityType.HUMANOID, mockPhysicalComponent, mockBehaviourComponent, backLocation, mockMessageDispatcher, mockGameContext);
+		Entity back = new Entity(EntityType.CREATURE, mockPhysicalComponent, mockBehaviourComponent, backLocation, mockMessageDispatcher, mockGameContext);
 
 		LocationComponent middleLocation = new LocationComponent();
 		middleLocation.setWorldPosition(new Vector2(0f, 5f), false);
-		Entity middle = new Entity(EntityType.HUMANOID, mockPhysicalComponent, mockBehaviourComponent, middleLocation, mockMessageDispatcher, mockGameContext);
+		Entity middle = new Entity(EntityType.CREATURE, mockPhysicalComponent, mockBehaviourComponent, middleLocation, mockMessageDispatcher, mockGameContext);
 
 		LocationComponent frontLocation = new LocationComponent();
 		frontLocation.setWorldPosition(new Vector2(0f, 1f), false);
-		Entity front = new Entity(EntityType.HUMANOID, mockPhysicalComponent, mockBehaviourComponent, frontLocation, mockMessageDispatcher, mockGameContext);
+		Entity front = new Entity(EntityType.CREATURE, mockPhysicalComponent, mockBehaviourComponent, frontLocation, mockMessageDispatcher, mockGameContext);
 
 		List<Entity> testData = Arrays.asList(middle, back, front);
 		PriorityQueue<InWorldRenderable> renderingSort = new PriorityQueue<>(new InWorldRenderable.YDepthEntityComparator());

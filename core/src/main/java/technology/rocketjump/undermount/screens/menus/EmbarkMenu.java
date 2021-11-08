@@ -96,13 +96,13 @@ public class EmbarkMenu implements Menu, I18nUpdatable {
 
 		I18nLabel nameLabel = i18nWidgetFactory.createLabel("GUI.EMBARK.SETTLEMENT_NAME");
 		nameInput = new TextField("", uiSkin);
-		randomiseNameButton = imageButtonFactory.create("clockwise-rotation", true);
+		randomiseNameButton = imageButtonFactory.getOrCreate("clockwise-rotation", true);
 		randomiseNameButton.setAction(() -> nameInput.setText(settlementNameGenerator.create(random.nextLong())));
 
 
 		I18nLabel seedLabel = i18nWidgetFactory.createLabel("GUI.EMBARK.MAP_SEED");
 		seedInput = new TextField("", uiSkin);
-		randomiseSeedButton = imageButtonFactory.create("clockwise-rotation", true).clone();
+		randomiseSeedButton = imageButtonFactory.getOrCreate("clockwise-rotation", true).clone();
 		randomiseSeedButton.setAction(() -> seedInput.setText(String.valueOf(Math.abs(random.nextLong()))));
 
 		nameTable = new Table(uiSkin);

@@ -915,7 +915,7 @@
     } ]
   },
   "tags" : {
-    "CRAFTING_STATION_BEHAVIOUR" : [ "FOOD_PREPARATION", "PRODUCE_ITEM", "HAULING" ],
+    "BUTCHERY_STATION_BEHAVIOUR" : [ ],
     "DECORATION_FROM_INPUT" : [ "Tool-Kitchen-Knife" ]
   },
   "hiddenFromPlacementMenu" : false
@@ -1052,6 +1052,48 @@
   "tags" : {
     "CRAFTING_STATION_BEHAVIOUR" : [ "CARPENTRY", "CRAFT_ITEM", "HAULING" ],
     "DECORATION_FROM_INPUT" : [ "Tool-Plane", "Tool-Saw" ]
+  },
+  "hiddenFromPlacementMenu" : false
+}, {
+  "name" : "FLETCHERS_WORKBENCH",
+  "i18nKey" : "FURNITURE.FLETCHERS_WORKBENCH",
+  "categoryName" : "TABLE",
+  "defaultLayoutName" : "2x3L3R",
+  "colorCode" : "#8dd68a",
+  "iconName" : "bow-arrow",
+  "placeAnywhere" : false,
+  "autoConstructed" : false,
+  "requirements" : {
+    "STONE" : [ {
+      "itemTypeName" : "Resource-Stone-Block",
+      "quantity" : 4,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Plane",
+      "quantity" : 1,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Kitchen-Knife",
+      "quantity" : 1,
+      "liquid" : false
+    } ],
+    "WOOD" : [ {
+      "itemTypeName" : "Resource-Planks",
+      "quantity" : 4,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Plane",
+      "quantity" : 1,
+      "liquid" : false
+    }, {
+      "itemTypeName" : "Tool-Kitchen-Knife",
+      "quantity" : 1,
+      "liquid" : false
+    } ]
+  },
+  "tags" : {
+    "CRAFTING_STATION_BEHAVIOUR" : [ "FLETCHING", "CRAFT_ITEM", "HAULING" ],
+    "DECORATION_FROM_INPUT" : [ "Tool-Plane", "Tool-Kitchen-Knife" ]
   },
   "hiddenFromPlacementMenu" : false
 }, {

@@ -9,7 +9,7 @@ import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
@@ -126,7 +126,7 @@ public class BeerTapperBehaviour extends FurnitureBehaviour implements Destructi
 				} else if (haulingJobs.isEmpty()) {
 					Entity itemInInventory = parentInventory.getInventoryEntries().iterator().next().entity;
 					itemInInventory.getComponent(ItemAllocationComponent.class).cancelAll(HELD_IN_INVENTORY);
-					messageDispatcher.dispatchMessage(MessageType.REQUEST_ITEM_HAULING, new RequestHaulingMessage(
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(
 							itemInInventory, parentEntity, true, priority, job -> {
 						if (job != null) {
 							haulingJobs.add(job);

@@ -77,8 +77,8 @@ public class MessageType {
 	public static final int ENTITY_DO_NOT_TRACK = 327;
 	public static final int ITEM_PRIMARY_MATERIAL_CHANGED = 328;
 
-	public static final int ENTITY_FELL_ASLEEP = 330;
-	public static final int ENTITY_WOKE_UP = 331;
+	public static final int SETTLER_FELL_ASLEEP = 330;
+	public static final int SETTLER_WOKE_UP = 331;
 
 	public static final int PATHFINDING_REQUEST = 332;
 	public static final int CHANGE_PROFESSION = 333;
@@ -91,7 +91,7 @@ public class MessageType {
 
 	public static final int ITEM_CREATION_REQUEST = 338;
 	public static final int PLANT_CREATION_REQUEST = 339;
-	public static final int HUMANOID_DEATH = 340;
+	public static final int CREATURE_DEATH = 340;
 	public static final int HUMANOID_INSANITY = 341;
 	public static final int LIQUID_AMOUNT_CHANGED = 342;
 	public static final int TREE_SHED_LEAVES = 343;
@@ -99,6 +99,8 @@ public class MessageType {
 	public static final int FURNITURE_IN_USE = 345;
 	public static final int FURNITURE_NO_LONGER_IN_USE = 346;
 	public static final int MATERIAL_OXIDISED = 347;
+
+	public static final int CHANGE_WEAPON_SELECTION = 348;
 
 	// Assets and modding related messages
 	public static final int SHUTDOWN_IN_PROGRESS = 400;
@@ -132,10 +134,11 @@ public class MessageType {
 	public static final int PIPE_ADDED = 621;
 	public static final int FISH_HARVESTED_FROM_RIVER = 622;
 	public static final int STOCKPILE_SETTING_UPDATED = 623;
+	public static final int FIND_BUTCHERABLE_UNALLOCATED_CORPSE = 624;
 
 	// Item-specific messages
 	public static final int HAULING_ALLOCATION_CANCELLED = 700;
-	public static final int REQUEST_ITEM_HAULING = 702;
+	public static final int REQUEST_ENTITY_HAULING = 702;
 	public static final int REQUEST_HAULING_ALLOCATION = 703;
 	public static final int LOOKUP_ITEM_TYPE = 704;
 	public static final int LOOKUP_ITEM_TYPES_BY_TAG_CLASS = 705;
@@ -252,5 +255,12 @@ public class MessageType {
 	// Liquid flow messages
 	public static final int ADD_LIQUID_TO_FLOW = 1800;
 	public static final int LIQUID_REMOVED_FROM_FLOW = 1801;
+
+	// Combat messages
+	public static final int MAKE_ATTACK_WITH_WEAPON = 1900;
+	public static final int COMBAT_PROJECTILE_REACHED_TARGET = 1901;
+	public static final int APPLY_ATTACK_DAMAGE = 1902;
+	public static final int CREATURE_DAMAGE_APPLIED = 1903;
+	public static final int CREATURE_ORGAN_DAMAGE_APPLIED = 1904;
 
 }

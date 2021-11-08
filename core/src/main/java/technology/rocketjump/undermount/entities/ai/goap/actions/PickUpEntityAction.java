@@ -12,10 +12,10 @@ import technology.rocketjump.undermount.entities.components.*;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
+import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
+import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
@@ -200,14 +200,14 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 
 		if (entityToPickUp == null) {
 			completionType = FAILURE;
-		} else if (haulingAllocation.getHauledEntityType().equals(EntityType.HUMANOID)) {
-			pickUpHumanoidEntity(entityToPickUp, gameContext);
+		} else if (haulingAllocation.getHauledEntityType().equals(EntityType.CREATURE)) {
+			pickUpCreatureEntity(entityToPickUp, gameContext);
 		} else {
 			pickUpItemEntity(gameContext, currentTile, entityToPickUp, haulingAllocation.getItemAllocation());
 		}
 	}
 
-	private void pickUpHumanoidEntity(Entity entityToPickUp, GameContext gameContext) {
+	private void pickUpCreatureEntity(Entity entityToPickUp, GameContext gameContext) {
 		// Take inventory of entityToPickUp
 		InventoryComponent pickedUpEntityInventoryComponent = entityToPickUp.getOrCreateComponent(InventoryComponent.class);
 		InventoryComponent parentInventoryComponent = parent.parentEntity.getOrCreateComponent(InventoryComponent.class);
@@ -217,16 +217,26 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 			parentInventoryComponent.add(entry.entity, parent.parentEntity, parent.messageDispatcher, gameContext.getGameClock());
 		}
 
-		HumanoidEntityAttributes attributesOfEntityToPickUp = (HumanoidEntityAttributes) entityToPickUp.getPhysicalEntityComponent().getAttributes();
-		if (attributesOfEntityToPickUp.getConsciousness().equals(Consciousness.DEAD)) {
+		CreatureEntityAttributes attributesOfEntityToPickUp = (CreatureEntityAttributes) entityToPickUp.getPhysicalEntityComponent().getAttributes();
+		if (attributesOfEntityToPickUp.getConsciousness().equals(Consciousness.DEAD) && sameRace(attributesOfEntityToPickUp)) {
 			HappinessComponent parentHappinessComponent = parent.parentEntity.getOrCreateComponent(HappinessComponent.class);
 			parentHappinessComponent.add(CARRIED_DEAD_BODY);
 		}
 
+		ItemAllocationComponent itemAllocationComponent = entityToPickUp.getComponent(ItemAllocationComponent.class);
+		if (itemAllocationComponent != null) {
+			itemAllocationComponent.cancelAll();
+		}
 
 		HaulingComponent haulingComponent = parent.parentEntity.getOrCreateComponent(HaulingComponent.class);
 		haulingComponent.setHauledEntity(entityToPickUp, parent.messageDispatcher, parent.parentEntity);
 		completionType = SUCCESS;
+
+		MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldPosition());
+		if (currentTile.getRoomTile() != null && currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class) != null) {
+			StockpileComponent stockpileComponent = currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class);
+			stockpileComponent.itemOrCreaturePickedUp(currentTile);
+		}
 	}
 
 	private void pickUpItemEntity(GameContext gameContext, MapTile currentTile, Entity entityToPickUp, ItemAllocation itemAllocation) {
@@ -266,17 +276,13 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 				clonedItem = inventoryEntry.entity;
 			}
 
-			if (itemAllocation != null) {
-				entityToPickUp.getOrCreateComponent(ItemAllocationComponent.class).cancelAllocationAndDecrementQuantity(itemAllocation);
-			} else {
-				targetItemAttributes.setQuantity(targetItemAttributes.getQuantity() - quantityToPick);
-			}
+			entityToPickUp.getComponent(ItemAllocationComponent.class).cancel(itemAllocation);
+			targetItemAttributes.setQuantity(targetItemAttributes.getQuantity() - quantityToPick);
 
 			if (currentTile.getRoomTile() != null && currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class) != null) {
 				StockpileComponent stockpileComponent = currentTile.getRoomTile().getRoom().getComponent(StockpileComponent.class);
-				stockpileComponent.itemPickedUp(currentTile);
+				stockpileComponent.itemOrCreaturePickedUp(currentTile);
 			}
-
 
 			if (targetItemAttributes.getQuantity() <= 0) {
 				parent.messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entityToPickUp);
@@ -386,6 +392,10 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 	@Override
 	public void entityCreated(Entity entity) {
 		this.createdItem = entity;
+	}
+
+	private boolean sameRace(CreatureEntityAttributes targetCreature) {
+		return targetCreature.getRace().equals(((CreatureEntityAttributes)parent.parentEntity.getPhysicalEntityComponent().getAttributes()).getRace());
 	}
 
 	@Override

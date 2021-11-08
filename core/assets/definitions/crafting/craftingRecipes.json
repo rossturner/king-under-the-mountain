@@ -487,54 +487,6 @@
   "materialTypesToCopyOver" : [ "VEGETABLE" ],
   "defaultTimeToCompleteCrafting" : 6.0
 }, {
-  "recipeName" : "Prepare fish (carp)",
-  "verbOverrideI18nKey" : "ACTION.PREPARATION",
-  "craftingTypeName" : "FOOD_PREPARATION",
-  "input" : [ {
-    "itemTypeName" : "Carcass-Carp-Raw",
-    "quantity" : 1,
-    "materialName" : "Carp Meat"
-  } ],
-  "output" : [ {
-    "itemTypeName" : "Carcass-Carp-Prepared",
-    "quantity" : 2,
-    "materialName" : "Carp Meat"
-  } ],
-  "materialTypesToCopyOver" : [ "MEAT" ],
-  "defaultTimeToCompleteCrafting" : 6.0
-}, {
-  "recipeName" : "Prepare fish (perch)",
-  "verbOverrideI18nKey" : "ACTION.PREPARATION",
-  "craftingTypeName" : "FOOD_PREPARATION",
-  "input" : [ {
-    "itemTypeName" : "Carcass-Perch-Raw",
-    "quantity" : 1,
-    "materialName" : "Perch Meat"
-  } ],
-  "output" : [ {
-    "itemTypeName" : "Carcass-Perch-Prepared",
-    "quantity" : 2,
-    "materialName" : "Perch Meat"
-  } ],
-  "materialTypesToCopyOver" : [ "MEAT" ],
-  "defaultTimeToCompleteCrafting" : 6.0
-}, {
-  "recipeName" : "Prepare fish (pike)",
-  "verbOverrideI18nKey" : "ACTION.PREPARATION",
-  "craftingTypeName" : "FOOD_PREPARATION",
-  "input" : [ {
-    "itemTypeName" : "Carcass-Pike-Raw",
-    "quantity" : 1,
-    "materialName" : "Pike Meat"
-  } ],
-  "output" : [ {
-    "itemTypeName" : "Carcass-Pike-Prepared",
-    "quantity" : 2,
-    "materialName" : "Pike Meat"
-  } ],
-  "materialTypesToCopyOver" : [ "MEAT" ],
-  "defaultTimeToCompleteCrafting" : 6.0
-}, {
   "recipeName" : "Crush ore",
   "craftingTypeName" : "ORE_CRUSHING",
   "input" : [ {
@@ -773,4 +725,34 @@
     "materialName" : "Hemp-Linen"
   } ],
   "defaultTimeToCompleteCrafting" : 5.0
+}, {
+  "recipeName" : "Fletch metal arrows",
+  "verbOverrideI18nKey" : "CRAFTING_TYPE.FLETCHING",
+  "craftingTypeName" : "FLETCHING",
+  "input" : [ {
+    "itemTypeName" : "Resource-Metal-Ingot",
+    "quantity" : 1
+  }, {
+    "itemTypeName" : "Resource-Planks",
+    "quantity" : 1
+  } ],
+  "output" : [ {
+    "itemTypeName" : "Weapon-Metal-Arrows",
+    "quantity" : 10
+  } ],
+  "materialTypesToCopyOver" : [ "METAL", "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 5.0
+}, {
+  "recipeName" : "Craft wooden bow",
+  "craftingTypeName" : "FLETCHING",
+  "input" : [ {
+    "itemTypeName" : "Resource-Planks",
+    "quantity" : 1
+  } ],
+  "output" : [ {
+    "itemTypeName" : "Weapon-Bow",
+    "quantity" : 1
+  } ],
+  "materialTypesToCopyOver" : [ "WOOD" ],
+  "defaultTimeToCompleteCrafting" : 8.0
 } ]

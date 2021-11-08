@@ -1,0 +1,100 @@
+[{
+  "uniqueName": "Dwarf-HairA-Color",
+  "type": "CREATURE_HAIR",
+  "raceName": "Dwarf",
+  "gender": "MALE",
+  "spriteDescriptors": {
+    "DOWN": {
+      "filename": "Dwarf-HairA-Color-All.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 1,
+        "y": -1
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairA-Outline"
+        }
+      ]
+    },
+    "DOWN_RIGHT": {
+      "filename": "Dwarf-HairA-Color-All.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 1,
+        "y": -1
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairA-Outline"
+        }
+      ]
+    },
+    "DOWN_LEFT": {
+      "filename": "Dwarf-HairA-Color-All.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": -1,
+        "y": -1
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairA-Outline"
+        }
+      ]
+    },
+    "UP_RIGHT": {
+      "filename": "Dwarf-HairA-Color-All.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 1,
+        "y": -1
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairA-Outline"
+        }
+      ]
+    },
+    "UP_LEFT": {
+      "filename": "Dwarf-HairA-Color-All.png",
+      "flipX": true,
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": -1,
+        "y": -1
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairA-Outline"
+        }
+      ]
+    },
+    "UP": {
+      "filename": "Dwarf-HairA-Color-All.png",
+      "coloringLayer": "HAIR_COLOR",
+      "scale": 1.05,
+      "offsetPixels": {
+        "x": 1,
+        "y": -1
+      },
+      "childAssets": [
+        {
+          "type": "HAIR_OUTLINE",
+          "specificAssetName": "Dwarf-HairA-Outline"
+        }
+      ]
+    }
+  }
+}]

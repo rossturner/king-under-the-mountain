@@ -4,6 +4,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.furniture.ConstructedEntityComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
@@ -20,7 +21,7 @@ import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
 import static technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour.getAnyNavigableWorkspace;
-import static technology.rocketjump.undermount.entities.model.EntityType.HUMANOID;
+import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FLOOR;
 import static technology.rocketjump.undermount.rooms.HaulingAllocation.AllocationPositionType.FURNITURE;
@@ -59,7 +60,7 @@ public class GraveManager implements Updatable {
 			timeSinceLastUpdate = 0f;
 
 			for (Entity deceased : settlerTracker.getDead()) {
-				if (deceased.getLocationComponent().getContainerEntity() == null && !hasCorpseHaulingJob(deceased)) {
+				if (deceased.getLocationComponent().getContainerEntity() == null && !hasCorpseHaulingJob(deceased) && isUnallocated(deceased)) {
 					Entity deceasedContainer = findAvailableDeceasedContainer();
 
 					if (deceasedContainer == null) {
@@ -73,6 +74,11 @@ public class GraveManager implements Updatable {
 		}
 	}
 
+	private boolean isUnallocated(Entity deceased) {
+		ItemAllocationComponent itemAllocationComponent = deceased.getComponent(ItemAllocationComponent.class);
+		return  itemAllocationComponent == null || itemAllocationComponent.getNumUnallocated() > 0;
+	}
+
 	private boolean hasCorpseHaulingJob(Entity deceased) {
 		GridPoint2 location = toGridPoint(deceased.getLocationComponent().getWorldOrParentPosition());
 		if (location == null) {
@@ -81,7 +87,7 @@ public class GraveManager implements Updatable {
 		}
 
 		for (Job jobAtLocation : jobStore.getJobsAtLocation(location)) {
-			if (jobAtLocation.getType().equals(haulingJobType) && jobAtLocation.getHaulingAllocation().getHauledEntityType().equals(HUMANOID)) {
+			if (jobAtLocation.getType().equals(haulingJobType) && jobAtLocation.getHaulingAllocation().getHauledEntityType().equals(CREATURE)) {
 				return true;
 			}
 		}
@@ -118,7 +124,7 @@ public class GraveManager implements Updatable {
 		allocation.setSourcePosition(deceasedPosition);
 		allocation.setSourcePositionType(FLOOR);
 
-		allocation.setHauledEntityType(HUMANOID);
+		allocation.setHauledEntityType(CREATURE);
 		allocation.setHauledEntityId(deceased.getId());
 
 		allocation.setTargetId(deceasedContainer.getId());

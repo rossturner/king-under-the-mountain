@@ -1,4 +1,24 @@
 [ {
+  "name" : "Bleeding",
+  "particleFile" : "bleeding.p",
+  "shaderEffectWidth" : 0.0,
+  "shaderEffectHeight" : 0.0,
+  "scale" : 1.0,
+  "isLooping" : true,
+  "usesTargetMaterialAsTintColor" : true,
+  "isAffectedByLighting" : true,
+  "distanceFromParentEntityOrientation" : 0.0,
+  "offsetFromParentEntity" : {
+    "x" : 0.0,
+    "y" : 0.1,
+    "zero" : false,
+    "unit" : false
+  },
+  "renderBehindParent" : false,
+  "overrideYDepth" : false,
+  "attachedToParent" : false,
+  "unaffectedByPause" : false
+}, {
   "name" : "Progress bar",
   "customImplementation" : "ProgressBarEffect",
   "shaderEffectWidth" : 0.0,

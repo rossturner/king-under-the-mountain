@@ -10,7 +10,10 @@ import technology.rocketjump.undermount.entities.ai.goap.actions.ActionTransitio
 import technology.rocketjump.undermount.entities.ai.goap.actions.InitialisableAction;
 import technology.rocketjump.undermount.entities.ai.goap.actions.UnassignFurnitureAction;
 import technology.rocketjump.undermount.entities.ai.memory.Memory;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.components.LiquidAllocation;
+import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
@@ -23,10 +26,7 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.FAILURE;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
@@ -37,6 +37,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
  */
 public class AssignedGoal implements ChildPersistable, Destructible {
 
+	private static final Double MIN_NEED_BEFORE_GOAL_INTERRUPTED = 0.12;
 	public Entity parentEntity;
 	public MessageDispatcher messageDispatcher;
 
@@ -107,9 +108,25 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 
 		Action currentAction = actionQueue.peek();
 
-		// TODO Introduce INTERRUPTED completion type, which will still perform actions to unassign and clear up state, but will not perform long-running actions
+		if (goal.interrupedByCombat) {
+			MemoryComponent memoryComponent = parentEntity.getOrCreateComponent(MemoryComponent.class);
+			if (memoryComponent.getShortTermMemories(gameContext.getGameClock()).stream().anyMatch(m -> m.getType().equals(MemoryType.ATTACKED_BY_CREATURE))) {
+				setInterrupted(true);
+			}
+		}
+		if (goal.interruptedByLowNeeds) {
+			NeedsComponent needsComponent = parentEntity.getComponent(NeedsComponent.class);
+			if (needsComponent != null) {
+				for (Map.Entry<EntityNeed, Double> entry : needsComponent.getAll()) {
+					if (entry.getValue() < MIN_NEED_BEFORE_GOAL_INTERRUPTED) {
+						setInterrupted(true);
+						break;
+					}
+				}
+			}
+		}
 
-		Action.CompletionType actionCompletion = currentAction.isCompleted();
+		Action.CompletionType actionCompletion = currentAction.isCompleted(gameContext);
 		if (actionCompletion == null) {
 			if (this.interrupted && currentAction.isInterruptible()) {
 				currentAction.actionInterrupted(gameContext);
@@ -121,9 +138,9 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 			ActionTransitions transitions = goal.getAllTransitions().get(currentAction.getClass());
 			if (transitions != null) { // Might be null when extra actions added by code
 				if (actionCompletion.equals(SUCCESS)) {
-					addToQueue(transitions.onSuccess);
+					addToQueue(transitions.onSuccess, gameContext);
 				} else if (actionCompletion.equals(FAILURE)) {
-					addToQueue(transitions.onFailure);
+					addToQueue(transitions.onFailure, gameContext);
 				}
 			}
 		}
@@ -134,10 +151,10 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 		return actionQueue.peek();
 	}
 
-	private void addToQueue(List<Class<? extends Action>> actionTypeList) {
+	private void addToQueue(List<Class<? extends Action>> actionTypeList, GameContext gameContext) {
 		for (Class<? extends Action> actionType : actionTypeList) {
 			Action action = Action.newInstance(actionType, this);
-			if (action.isApplicable()) {
+			if (action.isApplicable(gameContext)) {
 				actionQueue.add(action);
 			}
 		}

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static java.util.Collections.emptyList;
+import static technology.rocketjump.undermount.entities.model.physical.item.ItemType.UNARMED_WEAPON;
 
 @Singleton
 public class ItemTypeDictionary {
@@ -25,7 +26,9 @@ public class ItemTypeDictionary {
 	private final ConstantsRepo constantsRepo;
 	private Map<String, ItemType> byName = new HashMap<>();
 	private List<ItemType> allTypesList = new ArrayList<>();
+	private List<ItemType> itemTypesWithWeaponInfo = new ArrayList<>();
 	private Map<CraftingType, List<ItemType>> byCraftingType = new HashMap<>();
+	private Map<AmmoType, List<ItemType>> byAmmoType = new HashMap<>();
 	private final Map<StockpileGroup, List<ItemType>> byStockpileGroup = new HashMap<>();
 	private final Map<Class<? extends Tag>, List<ItemType>> byTag = new HashMap<>();
 
@@ -87,8 +90,38 @@ public class ItemTypeDictionary {
 			byName.put(itemType.getItemTypeName(), itemType);
 			allTypesList.add(itemType);
 
+			if (itemType.getWeaponInfo() != null) {
+				if (itemType.getWeaponInfo().getFireWeaponSoundAssetName() != null) {
+					itemType.getWeaponInfo().setFireWeaponSoundAsset(soundAssetDictionary.getByName(itemType.getWeaponInfo().getFireWeaponSoundAssetName()));
+					if (itemType.getWeaponInfo().getFireWeaponSoundAsset() == null) {
+						Logger.error(String.format("Could not find sound asset with name %s for item type %s", itemType.getWeaponInfo().getFireWeaponSoundAssetName(), itemType.getItemTypeName()));
+					}
+				}
+
+				if (itemType.getWeaponInfo().getWeaponHitSoundAssetName() != null) {
+					itemType.getWeaponInfo().setWeaponHitSoundAsset(soundAssetDictionary.getByName(itemType.getWeaponInfo().getWeaponHitSoundAssetName()));
+					if (itemType.getWeaponInfo().getWeaponHitSoundAsset() == null) {
+						Logger.error(String.format("Could not find sound asset with name %s for item type %s", itemType.getWeaponInfo().getWeaponHitSoundAssetName(), itemType.getItemTypeName()));
+					}
+				}
+
+				if (itemType.getWeaponInfo().getWeaponMissSoundAssetName() != null) {
+					itemType.getWeaponInfo().setWeaponMissSoundAsset(soundAssetDictionary.getByName(itemType.getWeaponInfo().getWeaponMissSoundAssetName()));
+					if (itemType.getWeaponInfo().getWeaponMissSoundAsset() == null) {
+						Logger.error(String.format("Could not find sound asset with name %s for item type %s", itemType.getWeaponInfo().getWeaponMissSoundAssetName(), itemType.getItemTypeName()));
+					}
+				}
+
+				itemTypesWithWeaponInfo.add(itemType);
+			}
+			if (itemType.getIsAmmoType() != null) {
+				byAmmoType.computeIfAbsent(itemType.getIsAmmoType(), a -> new ArrayList<>()).add(itemType);
+			}
 		}
 
+		byName.put(UNARMED_WEAPON.getItemTypeName(), UNARMED_WEAPON);
+
+		itemTypesWithWeaponInfo.sort(Comparator.comparing(ItemType::getItemTypeName));
 
 		for (CraftingType craftingType : craftingTypeDictionary.getAll()) {
 			if (craftingType.getDefaultItemTypeName() != null) {
@@ -129,4 +162,13 @@ public class ItemTypeDictionary {
 			}
 		}
 	}
+
+	public List<ItemType> getAllWeapons() {
+		return itemTypesWithWeaponInfo;
+	}
+
+	public Collection<ItemType> getByAmmoType(AmmoType ammoType) {
+		return byAmmoType.getOrDefault(ammoType, List.of());
+	}
+
 }

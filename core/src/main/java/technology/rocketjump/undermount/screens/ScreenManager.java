@@ -99,7 +99,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 				map = mapFactory.create(worldSeed.seed, worldSeed.mapWidth, worldSeed.mapHeight, gameContext);
 			} catch (InvalidMapGenerationException e) {
 				Logger.warn("Invalid map generated: " + e.getMessage());
-				worldSeed = newGameSeed(newGameMessage.seed);
+				worldSeed = newGameSeed(new RandomXS128(newGameMessage.seed).nextLong());
 				Logger.info("Retrying generation with new seed: " + worldSeed);
 			}
 		}
@@ -110,7 +110,9 @@ public class ScreenManager implements Telegraph, GameContextAware {
 		}
 		// Trigger context change again for camera to be updated with map
 		gameContextRegister.setNewContext(gameContext);
-		gameContext.getAreaMap().setEmbarkPoint(null);
+		if (GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+			gameContext.getAreaMap().setEmbarkPoint(null);
+		}
 
 		mainGameScreen.show();
 	}

@@ -15,9 +15,9 @@ import technology.rocketjump.undermount.entities.components.humanoid.SteeringCom
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
+import technology.rocketjump.undermount.entities.model.physical.creature.HaulingComponent;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HaulingComponent;
 import technology.rocketjump.undermount.entities.planning.PathfindingCallback;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
@@ -81,7 +81,11 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			// Path found
 			followPath(gameContext);
 
-			checkForCompletion();
+			checkForCompletion(gameContext);
+
+			if (completionType != null) {
+				parent.parentEntity.getBehaviourComponent().getSteeringComponent().destinationReached();
+			}
 		}
 	}
 
@@ -118,7 +122,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 		}
 	}
 
-	private void checkForCompletion() {
+	protected void checkForCompletion(GameContext gameContext) {
 		if (path.getCount() == 0) {
 			completionType = FAILURE;
 		} else {
@@ -128,7 +132,6 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			boolean arrivedAtDestination = (Math.abs(worldPosition.x - destination.x) < DESTINATION_TOLERANCE &&
 					Math.abs(worldPosition.y - destination.y) < DESTINATION_TOLERANCE);
 			if (arrivedAtDestination) {
-				parent.parentEntity.getBehaviourComponent().getSteeringComponent().destinationReached();
 				completionType = SUCCESS;
 			}
 		}

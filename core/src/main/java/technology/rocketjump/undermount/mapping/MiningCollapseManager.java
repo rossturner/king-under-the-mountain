@@ -12,7 +12,7 @@ import technology.rocketjump.undermount.entities.ai.pathfinding.Map2DCollection;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDictionary;
@@ -25,7 +25,7 @@ import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.roof.TileRoofState;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.AddWallMessage;
-import technology.rocketjump.undermount.messaging.types.HumanoidDeathMessage;
+import technology.rocketjump.undermount.messaging.types.CreatureDeathMessage;
 import technology.rocketjump.undermount.messaging.types.ParticleRequestMessage;
 import technology.rocketjump.undermount.particles.ParticleEffectTypeDictionary;
 import technology.rocketjump.undermount.particles.model.ParticleEffectType;
@@ -266,8 +266,8 @@ public class MiningCollapseManager implements Telegraph, Updatable {
 		}
 
 		for (Entity entity : entitiesStruckByCollapse) {
-			if (entity.getType().equals(EntityType.HUMANOID)) {
-				messageDispatcher.dispatchMessage(MessageType.HUMANOID_DEATH, new HumanoidDeathMessage(entity, DeathReason.CRUSHED_BY_FALLING_DEBRIS));
+			if (entity.getType().equals(EntityType.CREATURE)) {
+				messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(entity, DeathReason.CRUSHED_BY_FALLING_DEBRIS));
 				MapTile deceasedTile = gameContext.getAreaMap().getTile(entity.getLocationComponent().getWorldOrParentPosition());
 				if (deceasedTile == null || deceasedTile.hasWall()) {
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, entity);

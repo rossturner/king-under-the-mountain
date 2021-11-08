@@ -3,7 +3,7 @@ package technology.rocketjump.undermount.entities.components.humanoid;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.DeathReason;
+import technology.rocketjump.undermount.entities.model.physical.creature.DeathReason;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.persistence.EnumParser;
 import technology.rocketjump.undermount.persistence.SavedGameDependentDictionaries;

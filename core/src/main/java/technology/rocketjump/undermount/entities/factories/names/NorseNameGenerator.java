@@ -4,8 +4,8 @@ import com.badlogic.gdx.math.RandomXS128;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.commons.io.IOUtils;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.Gender;
-import technology.rocketjump.undermount.entities.model.physical.humanoid.HumanoidName;
+import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.HumanoidName;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,7 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-import static technology.rocketjump.undermount.entities.model.physical.humanoid.Gender.MALE;
+import static technology.rocketjump.undermount.entities.model.physical.creature.Gender.MALE;
 
 /**
  * MODDING This should be one of several possible types of names (e.g. different nationalities)
