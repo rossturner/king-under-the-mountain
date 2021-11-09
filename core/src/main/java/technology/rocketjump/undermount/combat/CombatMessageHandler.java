@@ -26,6 +26,8 @@ import technology.rocketjump.undermount.entities.model.physical.creature.body.*;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageEffect;
 import technology.rocketjump.undermount.entities.model.physical.creature.body.organs.OrganDamageLevel;
 import technology.rocketjump.undermount.entities.model.physical.creature.status.*;
+import technology.rocketjump.undermount.entities.model.physical.furniture.EntityDestructionCause;
+import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
@@ -37,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static technology.rocketjump.undermount.entities.FireMessageHandler.blackenedColor;
 import static technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel.BrokenBones;
 import static technology.rocketjump.undermount.entities.model.physical.creature.body.BodyPartDamageLevel.Destroyed;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
@@ -46,6 +49,7 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 
 	private static final float NORMAL_CHANCE_TO_HIT = 0.7f;
 	private static final float CHANCE_TO_HIT_WHEN_BLINDED = 0.05f;
+	private static final int DAMAGE_TO_DESTROY_FURNITURE = 10;
 	private final MessageDispatcher messageDispatcher;
 	private final ItemEntityFactory itemEntityFactory;
 	private GameContext gameContext;
@@ -186,7 +190,7 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 				MemoryComponent memoryComponent = attackMessage.defenderEntity.getOrCreateComponent(MemoryComponent.class);
 				Memory memory = new Memory(MemoryType.ATTACKED_BY_CREATURE, gameContext.getGameClock());
 				memory.setRelatedEntityId(attackMessage.attackerEntity.getId());
-				memoryComponent.add(memory, gameContext.getGameClock());
+				memoryComponent.addShortTerm(memory, gameContext.getGameClock());
 			}
 
 			if (damageAmount <= 0) {
@@ -226,8 +230,18 @@ public class CombatMessageHandler implements Telegraph, GameContextAware {
 
 			Vector2 knockbackVector = attackMessage.defenderEntity.getLocationComponent().getWorldOrParentPosition().cpy().sub(
 					attackMessage.attackerEntity.getLocationComponent().getWorldOrParentPosition()
-			).nor().scl(damageAmount/4f);
+			).nor().scl(damageAmount / 4f);
 			attackMessage.defenderEntity.getBehaviourComponent().getSteeringComponent().setKnockback(knockbackVector);
+		} else if (attackMessage.defenderEntity.getType().equals(EntityType.FURNITURE)) {
+			FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) attackMessage.defenderEntity.getPhysicalEntityComponent().getAttributes();
+			attributes.setDamageAmount(attributes.getDamageAmount() + damageAmount);
+
+			if (attributes.getDamageAmount() > DAMAGE_TO_DESTROY_FURNITURE) {
+				messageDispatcher.dispatchMessage(MessageType.DAMAGE_FURNITURE, new FurnitureDamagedMessage(
+						attackMessage.defenderEntity, EntityDestructionCause.TANTRUM, null,
+						blackenedColor(gameContext.getRandom()), blackenedColor(gameContext.getRandom())
+				));
+			}
 		} else {
 			Logger.warn("TODO: Damage application to non-creature entities");
 		}

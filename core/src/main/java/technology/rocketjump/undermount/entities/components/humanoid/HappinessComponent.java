@@ -154,6 +154,9 @@ public class HappinessComponent implements InfrequentlyUpdatableComponent {
 		DRANK_ALCOHOL(40, 8),
 		ALCOHOL_WITHDRAWAL(-30, 0.5),
 
+		HAD_A_TANTRUM(100, 24.0),
+		CAUSE_BREAKDOWN(-180, 1.0),
+
 		BLEEDING(-5, 0.3);
 
 		public final int modifierAmount;

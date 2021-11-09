@@ -21,7 +21,7 @@ public class HerdAnimalBehaviour extends CreatureBehaviour {
 	protected AssignedGoal attackedByCreatureResponse(Memory attackedByCreatureMemory, GameContext gameContext) {
 		AssignedGoal assignedGoal = super.attackedByCreatureResponse(attackedByCreatureMemory, gameContext);
 		if (creatureGroup != null) {
-			creatureGroup.getSharedMemoryComponent().add(attackedByCreatureMemory, gameContext.getGameClock());
+			creatureGroup.getSharedMemoryComponent().addShortTerm(attackedByCreatureMemory, gameContext.getGameClock());
 		}
 		return assignedGoal;
 	}

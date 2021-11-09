@@ -5,14 +5,16 @@ import com.badlogic.gdx.math.Vector2;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
-import technology.rocketjump.undermount.misc.VectorUtils;
 
 import java.util.List;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.AttackTargetAction.getEquippedWeaponItemType;
+import static technology.rocketjump.undermount.misc.VectorUtils.getGridpointsBetween;
+import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 
 public class MoveInRangeOfTargetAction extends GoToLocationAction {
 
@@ -31,10 +33,33 @@ public class MoveInRangeOfTargetAction extends GoToLocationAction {
 
 		Entity targetEntity = gameContext.getEntities().get(targetId);
 		if (targetEntity != null) {
-			return targetEntity.getLocationComponent().getWorldOrParentPosition();
+			if (targetEntity.getType().equals(EntityType.FURNITURE)) {
+				return neatestTileToFurniture(targetEntity, parent.parentEntity, gameContext);
+			} else {
+				return targetEntity.getLocationComponent().getWorldOrParentPosition();
+			}
 		} else {
 			return null;
 		}
+	}
+
+	public static Vector2 neatestTileToFurniture(Entity targetFurniture, Entity parentEntity, GameContext gameContext) {
+		List<GridPoint2> gridpointsBetween = getGridpointsBetween(targetFurniture.getLocationComponent().getWorldPosition(), parentEntity.getLocationComponent().getWorldOrParentPosition());
+		for (GridPoint2 gridPoint : gridpointsBetween) {
+			MapTile tile = gameContext.getAreaMap().getTile(gridPoint);
+
+			if (tile.getEntities().stream().anyMatch(e -> e.equals(targetFurniture))) {
+				continue;
+			}
+
+			// Else this should be the nearest tile to the furniture
+			if (!tile.isNavigable()) {
+				return null;
+			}
+
+			return toVector(gridPoint);
+		}
+		return null;
 	}
 
 	private Long getTargetId() {
@@ -71,7 +96,7 @@ public class MoveInRangeOfTargetAction extends GoToLocationAction {
 	}
 
 	public static boolean hasLineOfSightBetween(Entity parentEntity, Entity targetEntity, GameContext gameContext) {
-		List<GridPoint2> locationsToCheck = VectorUtils.getGridpointsBetween(
+		List<GridPoint2> locationsToCheck = getGridpointsBetween(
 				parentEntity.getLocationComponent().getWorldOrParentPosition(),
 				targetEntity.getLocationComponent().getWorldOrParentPosition()
 		);

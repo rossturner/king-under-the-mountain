@@ -16,6 +16,8 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
 import technology.rocketjump.undermount.entities.factories.SettlerFactory;
@@ -247,6 +249,13 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 					} else {
 						messageDispatcher.dispatchMessage(MessageType.ADD_CHANNEL, tile.getTilePosition());
 					}
+				}
+				break;
+			}
+			case TRIGGER_BREAKDOWN: {
+				Optional<Entity> settler = tile.getEntities().stream().filter(e -> e.getBehaviourComponent() instanceof SettlerBehaviour).findAny();
+				if (settler.isPresent()) {
+					settler.get().getComponent(HappinessComponent.class).add(HappinessComponent.HappinessModifier.CAUSE_BREAKDOWN);
 				}
 				break;
 			}

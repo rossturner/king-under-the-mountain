@@ -101,6 +101,7 @@ public class MessageType {
 	public static final int MATERIAL_OXIDISED = 347;
 
 	public static final int CHANGE_WEAPON_SELECTION = 348;
+	public static final int SETTLER_TANTRUM = 349;
 
 	// Assets and modding related messages
 	public static final int SHUTDOWN_IN_PROGRESS = 400;

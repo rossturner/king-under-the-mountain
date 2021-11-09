@@ -21,7 +21,7 @@ public class Memory implements ChildPersistable {
 
 	private MemoryType type;
 	private double gameTimeMemoryOccurred;
-	private double expirationTime;
+	private Double expirationTime;
 
 	private ItemType relatedItemType;
 	private GameMaterial relatedMaterial;
@@ -36,7 +36,7 @@ public class Memory implements ChildPersistable {
 	public Memory(MemoryType type, GameClock gameClock) {
 		this.type = type;
 		this.gameTimeMemoryOccurred = gameClock.getCurrentGameTime();
-		this.expirationTime = gameClock.getCurrentGameTime() + type.shortTermMemoryDurationHours;
+		this.expirationTime = type.shortTermMemoryDurationHours == null ? null : gameClock.getCurrentGameTime() + type.shortTermMemoryDurationHours;
 	}
 
 	public MemoryType getType() {
@@ -47,7 +47,7 @@ public class Memory implements ChildPersistable {
 		return gameTimeMemoryOccurred;
 	}
 
-	public double getExpirationTime() {
+	public Double getExpirationTime() {
 		return expirationTime;
 	}
 
@@ -64,9 +64,7 @@ public class Memory implements ChildPersistable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Memory memory = (Memory) o;
-		return type == memory.type &&
-				Objects.equals(relatedItemType, memory.relatedItemType) &&
-				Objects.equals(relatedMaterial, memory.relatedMaterial);
+		return Double.compare(memory.gameTimeMemoryOccurred, gameTimeMemoryOccurred) == 0 && type == memory.type;
 	}
 
 	@Override
@@ -110,7 +108,9 @@ public class Memory implements ChildPersistable {
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("type", type.name());
 		asJson.put("occurred", gameTimeMemoryOccurred);
-		asJson.put("expiration", expirationTime);
+		if (expirationTime != null) {
+			asJson.put("expiration", expirationTime);
+		}
 
 		if (relatedItemType != null) {
 			asJson.put("relatedItemType", relatedItemType.getItemTypeName());
@@ -133,7 +133,7 @@ public class Memory implements ChildPersistable {
 	public void readFrom(JSONObject asJson, SavedGameStateHolder savedGameStateHolder, SavedGameDependentDictionaries relatedStores) throws InvalidSaveException {
 		this.type = EnumParser.getEnumValue(asJson, "type", MemoryType.class, null);
 		this.gameTimeMemoryOccurred = asJson.getDoubleValue("occurred");
-		this.expirationTime = asJson.getDoubleValue("expiration");
+		this.expirationTime = asJson.getDouble("expiration");
 
 		String relatedItemTypeName = asJson.getString("relatedItemType");
 		if (relatedItemTypeName != null) {

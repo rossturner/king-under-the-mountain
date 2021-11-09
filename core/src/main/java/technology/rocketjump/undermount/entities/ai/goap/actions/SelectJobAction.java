@@ -87,7 +87,7 @@ public class SelectJobAction extends Action implements JobAssignmentCallback, In
 						Memory itemRequiredMemory = new Memory(MemoryType.LACKING_REQUIRED_ITEM, gameContext.getGameClock());
 						itemRequiredMemory.setRelatedItemType(potentialJob.getRequiredItemType());
 						itemRequiredMemory.setRelatedMaterial(potentialJob.getRequiredItemMaterial()); // Might be null
-						parent.parentEntity.getComponent(MemoryComponent.class).add(itemRequiredMemory, gameContext.getGameClock());
+						parent.parentEntity.getComponent(MemoryComponent.class).addShortTerm(itemRequiredMemory, gameContext.getGameClock());
 						continue;
 					}
 				}

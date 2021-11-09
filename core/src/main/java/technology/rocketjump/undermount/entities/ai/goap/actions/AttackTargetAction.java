@@ -7,13 +7,17 @@ import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.ai.goap.SpecialGoal;
 import technology.rocketjump.undermount.entities.ai.goap.SwitchGoalException;
+import technology.rocketjump.undermount.entities.ai.memory.Memory;
+import technology.rocketjump.undermount.entities.ai.memory.MemoryType;
 import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.WeaponSelectionComponent;
+import technology.rocketjump.undermount.entities.components.humanoid.MemoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.EquippedItemComponent;
+import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
@@ -27,12 +31,14 @@ import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.rooms.HaulingAllocation;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.entities.ai.goap.actions.IdleAction.MAX_SEPARATION_FROM_CREATURE_GROUP;
 import static technology.rocketjump.undermount.entities.ai.goap.actions.location.MoveInRangeOfTargetAction.hasLineOfSightBetween;
-import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
-import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
+import static technology.rocketjump.undermount.entities.ai.goap.actions.location.MoveInRangeOfTargetAction.neatestTileToFurniture;
+import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.misc.VectorUtils.toVector;
 import static technology.rocketjump.undermount.ui.views.EntitySelectedGuiView.hasSelectedWeaponAndAmmoInInventory;
@@ -78,6 +84,11 @@ public class AttackTargetAction extends Action {
 				haulingAllocation.setHauledEntityType(CREATURE);
 				parent.setAssignedHaulingAllocation(haulingAllocation);
 			}
+		} else if (targetEntity.getType().equals(FURNITURE)) {
+			FurnitureEntityAttributes furnitureEntityAttributes = (FurnitureEntityAttributes) targetEntity.getPhysicalEntityComponent().getAttributes();
+			if (furnitureEntityAttributes.isDestroyed()) {
+				completionType = CompletionType.SUCCESS;
+			}
 		}
 
 		return super.isCompleted(gameContext);
@@ -89,7 +100,7 @@ public class AttackTargetAction extends Action {
 
 		switch (state) {
 			case INITIAL:
-				initialCheck(gameContext);
+ 				initialCheck(gameContext);
 				break;
 			case AIMING:
 				Entity targetEntity = gameContext.getEntities().get(getTargetId());
@@ -135,7 +146,7 @@ public class AttackTargetAction extends Action {
 
 		ItemType equippedWeaponType = getEquippedWeaponItemType(parent.parentEntity);
 
-		float distanceToTarget = distanceTo(targetEntity);
+		float distanceToTarget = distanceTo(targetEntity, gameContext);
 		if (!(distanceToTarget <= 0.5f + (equippedWeaponType.getWeaponInfo().getRange() * EXTRA_RANGE_FOR_ATTACK_MULTIPLIER))) {
 			completionType = CompletionType.FAILURE;
 			return;
@@ -196,7 +207,7 @@ public class AttackTargetAction extends Action {
 		}
 
 		WeaponInfo equippedWeaponInfo = getEquippedWeaponItemType(parent.parentEntity).getWeaponInfo();
-		float distanceToTarget = distanceTo(targetEntity);
+		float distanceToTarget = distanceTo(targetEntity, gameContext);
 		if (distanceToTarget > equippedWeaponInfo.getRange()) {
 			completionType = CompletionType.FAILURE;
 			return;
@@ -209,11 +220,22 @@ public class AttackTargetAction extends Action {
 			}
 		}
 
+		if (isATantrumWhichHasBeenOngoingAWhile(gameContext)) {
+			completionType = CompletionType.SUCCESS;
+			return;
+		}
+
 		state = AttackTargetActionState.AIMING;
 	}
 
-	private float distanceTo(Entity targetEntity) {
-		return parent.parentEntity.getLocationComponent().getWorldOrParentPosition().dst(targetEntity.getLocationComponent().getWorldOrParentPosition());
+	private float distanceTo(Entity targetEntity, GameContext gameContext) {
+		Vector2 targetLocation = targetEntity.getLocationComponent().getWorldOrParentPosition();
+		if (targetEntity.getType().equals(FURNITURE)) {
+			targetLocation = neatestTileToFurniture(targetEntity, parent.parentEntity, gameContext);
+			return targetLocation.dst(parent.parentEntity.getLocationComponent().getWorldOrParentPosition()) + 0.4f;
+		} else {
+			return targetLocation.dst(parent.parentEntity.getLocationComponent().getWorldOrParentPosition());
+		}
 	}
 
 	public static ItemType getEquippedWeaponItemType(Entity entity) {
@@ -269,6 +291,21 @@ public class AttackTargetAction extends Action {
 			return cloned;
 		}
 		return null;
+	}
+
+	private boolean isATantrumWhichHasBeenOngoingAWhile(GameContext gameContext) {
+		MemoryComponent memoryComponent = parent.parentEntity.getOrCreateComponent(MemoryComponent.class);
+		if (memoryComponent.getLongTermMemories().isEmpty()) {
+			return false;
+		}
+		List<Memory> tantrumMemories = memoryComponent.getLongTermMemories().stream().filter(m -> m.getType().equals(MemoryType.HAD_A_TANTRUM)).collect(Collectors.toList());
+		Memory mostRecentTantrum = tantrumMemories.isEmpty() ? null : tantrumMemories.get(tantrumMemories.size() - 1);
+		if (mostRecentTantrum == null) {
+			return false;
+		} else {
+			double timeSinceTantrum = gameContext.getGameClock().getCurrentGameTime() - mostRecentTantrum.getGameTimeMemoryOccurred();
+			return timeSinceTantrum > 1.0 && timeSinceTantrum < 1.5; // over an hour but less than 1.5 hours
+		}
 	}
 
 	@Override

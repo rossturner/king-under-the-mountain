@@ -27,7 +27,7 @@ public class RememberFailedGoalAction extends Action {
 		MemoryComponent memoryComponent = parent.parentEntity.getOrCreateComponent(MemoryComponent.class);
 		Memory failedGoalMemory = new Memory(MemoryType.FAILED_GOAL, gameContext.getGameClock());
 		failedGoalMemory.setRelatedGoalName(parent.goal.name);
-		memoryComponent.add(failedGoalMemory, gameContext.getGameClock());
+		memoryComponent.addShortTerm(failedGoalMemory, gameContext.getGameClock());
 		completionType = SUCCESS;
 	}
 

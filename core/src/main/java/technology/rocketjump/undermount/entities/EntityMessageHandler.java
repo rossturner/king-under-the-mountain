@@ -173,6 +173,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		messageDispatcher.addListener(this, MessageType.TRANSFORM_ITEM_TYPE);
 		messageDispatcher.addListener(this, MessageType.CREATURE_DEATH);
 		messageDispatcher.addListener(this, MessageType.HUMANOID_INSANITY);
+		messageDispatcher.addListener(this, MessageType.SETTLER_TANTRUM);
 		messageDispatcher.addListener(this, MessageType.LIQUID_SPLASH);
 		messageDispatcher.addListener(this, MessageType.TREE_SHED_LEAVES);
 		messageDispatcher.addListener(this, MessageType.FURNITURE_IN_USE);
@@ -529,6 +530,9 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			case MessageType.HUMANOID_INSANITY: {
 				return handleInsanity((Entity) msg.extraInfo);
 			}
+			case MessageType.SETTLER_TANTRUM: {
+				return handleSettlerTantrum((Entity) msg.extraInfo);
+			}
 			case MessageType.LIQUID_SPLASH: {
 				return handleLiquidSplash((LiquidSplashMessage) msg.extraInfo);
 			}
@@ -573,6 +577,12 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 			default:
 				throw new IllegalArgumentException("Unexpected message type " + msg.message + " received by " + this.toString() + ", " + msg.toString());
 		}
+	}
+
+	private boolean handleSettlerTantrum(Entity tantrumEntity) {
+		Notification tantrumNotification = new Notification(NotificationType.SETTLER_TANTRUM, tantrumEntity.getLocationComponent().getWorldOrParentPosition());
+		messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, tantrumNotification);
+		return true;
 	}
 
 	private boolean handle(ChangeWeaponSelectionMessage weaponSelectionMessage) {
