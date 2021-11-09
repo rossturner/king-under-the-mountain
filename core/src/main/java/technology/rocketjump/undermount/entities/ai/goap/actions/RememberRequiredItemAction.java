@@ -31,7 +31,7 @@ public class RememberRequiredItemAction extends Action {
 			completionType = CompletionType.FAILURE;
 		} else {
 			parent.setRelevantMemory(relevantMemory);
-			memoryComponent.remove(relevantMemory); // Need to remove memory so we're not always fixated on the oldest memory
+			memoryComponent.removeByType(relevantMemory.getType()); // Need to remove memory so we're not always fixated on the oldest memory
 			completionType = CompletionType.SUCCESS;
 		}
 	}

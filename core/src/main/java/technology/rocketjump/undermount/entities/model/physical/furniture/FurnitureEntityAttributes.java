@@ -29,6 +29,7 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 	private FurnitureLayout currentLayout;
 
 	private Long assignedToEntityId;
+	private int damageAmount;
 	private EntityDestructionCause destructionCause;
 
 	public FurnitureEntityAttributes() {
@@ -173,6 +174,14 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		return destructionCause != null;
 	}
 
+	public int getDamageAmount() {
+		return damageAmount;
+	}
+
+	public void setDamageAmount(int damageAmount) {
+		this.damageAmount = damageAmount;
+	}
+
 	public void setDestroyed(EntityDestructionCause cause) {
 		this.destructionCause = cause;
 	}
@@ -208,6 +217,9 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		}
 		if (assignedToEntityId != null) {
 			asJson.put("assignedToEntityId", assignedToEntityId);
+		}
+		if (damageAmount > 0) {
+			asJson.put("damage", damageAmount);
 		}
 		if (destructionCause != null) {
 			asJson.put("destructionCause", this.destructionCause);
@@ -265,6 +277,7 @@ public class FurnitureEntityAttributes implements EntityAttributes {
 		}
 		assignedToEntityId = asJson.getLong("assignedToEntityId");
 
+		damageAmount = asJson.getIntValue("damage");
 		destructionCause = EnumParser.getEnumValue(asJson, "destructionCause", EntityDestructionCause.class, null);
 	}
 

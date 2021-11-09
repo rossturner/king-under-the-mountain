@@ -33,8 +33,8 @@ public class MemoryComponentTest {
 		Memory first = new Memory(MemoryType.LACKING_REQUIRED_ITEM, mockClock);
 		Memory second = new Memory(MemoryType.LACKING_REQUIRED_ITEM, mockClock);
 
-		memoryComponent.add(first, mockClock);
-		memoryComponent.add(second, mockClock);
+		memoryComponent.addShortTerm(first, mockClock);
+		memoryComponent.addShortTerm(second, mockClock);
 
 		Deque<Memory> shortTermMemories = memoryComponent.getShortTermMemories(mockClock);
 		assertThat(shortTermMemories).hasSize(1);
@@ -45,12 +45,12 @@ public class MemoryComponentTest {
 	public void getShortTermMemories_removesExpiredMemories() {
 		Memory first = new Memory(MemoryType.LACKING_REQUIRED_ITEM, mockClock);
 
-		memoryComponent.add(first, mockClock);
+		memoryComponent.addShortTerm(first, mockClock);
 
 		when(mockClock.getCurrentGameTime()).thenReturn(100.0);
 		Memory second = new Memory(MemoryType.LACKING_REQUIRED_ITEM, mockClock);
 
-		memoryComponent.add(second, mockClock);
+		memoryComponent.addShortTerm(second, mockClock);
 
 		Deque<Memory> shortTermMemories = memoryComponent.getShortTermMemories(mockClock);
 		assertThat(shortTermMemories).hasSize(1);

@@ -14,6 +14,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.*;
 import technology.rocketjump.undermount.entities.model.physical.creature.status.Blinded;
 import technology.rocketjump.undermount.entities.model.physical.creature.status.TemporaryBlinded;
+import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.AmmoType;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemType;
@@ -32,10 +33,7 @@ import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 import static technology.rocketjump.undermount.entities.ItemEntityMessageHandler.findStockpileAllocation;
 import static technology.rocketjump.undermount.entities.ai.goap.SpecialGoal.*;
@@ -44,8 +42,7 @@ import static technology.rocketjump.undermount.entities.components.ItemAllocatio
 import static technology.rocketjump.undermount.entities.components.ItemAllocation.Purpose.HELD_IN_INVENTORY;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.SAW_DEAD_BODY;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.MIN_HAPPINESS_VALUE;
-import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
-import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
+import static technology.rocketjump.undermount.entities.model.EntityType.*;
 import static technology.rocketjump.undermount.entities.model.physical.creature.Consciousness.*;
 import static technology.rocketjump.undermount.environment.model.WeatherType.HappinessInteraction.STANDING;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
@@ -56,6 +53,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 
 	private static final float MAX_DISTANCE_TO_DOUSE_FIRE = 12f;
 	private static final float AMOUNT_REQUIRED_TO_DOUSE_FIRE = 0.5f;
+	private static final int MAX_TANTRUMS = 3;
 
 	protected MessageDispatcher messageDispatcher;
 	protected Entity parentEntity;
@@ -145,6 +143,8 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 			return attackedByCreatureResponse(attackedMemory.get(), gameContext);
 		}
 
+		MemoryComponent memoryComponent = parentEntity.getOrCreateComponent(MemoryComponent.class);
+
 		// (Override) if we're hauling an item, need to place it
 		if (parentEntity.getComponent(HaulingComponent.class) != null) {
 			Entity hauledEntity = parentEntity.getComponent(HaulingComponent.class).getHauledEntity();
@@ -153,7 +153,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 
 				HaulingAllocation stockpileAllocation = null;
 				// Special case - if recently attempted to place item and failed, just dump it instead
-				boolean recentlyFailedPlaceItemGoal = parentEntity.getOrCreateComponent(MemoryComponent.class)
+				boolean recentlyFailedPlaceItemGoal = memoryComponent
 						.getShortTermMemories(gameContext.getGameClock())
 						.stream()
 						.anyMatch(m -> m.getType().equals(MemoryType.FAILED_GOAL) && PLACE_ITEM.goalName.equals(m.getRelatedGoalName()));
@@ -190,6 +190,20 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 					assignedGoal.setAssignedHaulingAllocation(stockpileAllocation);
 					return assignedGoal;
 				}
+			}
+		}
+
+		Optional<Memory> breakdownMemory = memoryComponent.getShortTermMemories(gameContext.getGameClock())
+				.stream().filter(m -> m.getType().equals(MemoryType.ABOUT_TO_HAVE_A_BREAKDOWN)).findFirst();
+		if (breakdownMemory.isPresent()) {
+			memoryComponent.removeByType(MemoryType.ABOUT_TO_HAVE_A_BREAKDOWN);
+			long previousTantrums = memoryComponent.getLongTermMemories().stream().filter(m -> m.getType().equals(MemoryType.HAD_A_TANTRUM)).count();
+			if (previousTantrums < MAX_TANTRUMS) {
+				messageDispatcher.dispatchMessage(MessageType.SETTLER_TANTRUM, parentEntity);
+				return tantrumGoal(gameContext);
+			} else {
+				messageDispatcher.dispatchMessage(MessageType.HUMANOID_INSANITY, parentEntity);
+				return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
 			}
 		}
 
@@ -232,6 +246,65 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 			return new AssignedGoal(ROLL_ON_FLOOR.getInstance(), parentEntity, messageDispatcher);
 		}
 		return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
+	}
+
+	private AssignedGoal tantrumGoal(GameContext gameContext) {
+		GridPoint2 parentLocation = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldOrParentPosition()).getTilePosition();
+
+		Entity target = null;
+		List<CompassDirection> directions = new ArrayList<>(List.of(CompassDirection.values()));
+		Collections.shuffle(directions, gameContext.getRandom());
+
+		for (CompassDirection direction : directions) {
+			for (int distance = 1; distance < 6; distance++) {
+				MapTile tile = gameContext.getAreaMap().getTile(parentLocation.x + (direction.getXOffset() * distance),
+						parentLocation.y + (direction.getYOffset() * distance));
+				for (Entity entity : tile.getEntities()) {
+					if (entity.equals(parentEntity)) {
+						continue;
+					}
+
+					if (entity.getType().equals(CREATURE)) {
+						CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+						if (!attributes.getConsciousness().equals(DEAD) && !attributes.getConsciousness().equals(KNOCKED_UNCONSCIOUS)) {
+							target = entity;
+							break;
+						}
+					}
+					if (entity.getType().equals(FURNITURE)) {
+						FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+						if (!attributes.isDestroyed()) {
+							target = entity;
+							break;
+						}
+					}
+				}
+				if (target != null) {
+					break;
+				}
+				if (!tile.isNavigable()) {
+					break;
+				}
+			}
+			if (target != null) {
+				break;
+			}
+		}
+		// giving happiness buff even with no target found or else player gets multiple tantrum notifications until dead
+		parentEntity.getComponent(HappinessComponent.class).add(HappinessComponent.HappinessModifier.HAD_A_TANTRUM);
+		if (target == null) {
+			return new AssignedGoal(IDLE.getInstance(), parentEntity, messageDispatcher);
+		} else {
+			AssignedGoal assignedGoal = new AssignedGoal(ATTACK_AGGRESSOR.getInstance(), parentEntity, messageDispatcher);
+
+			Memory tantrumMemory = new Memory(MemoryType.HAD_A_TANTRUM, gameContext.getGameClock());
+			parentEntity.getComponent(MemoryComponent.class).addLongTerm(tantrumMemory);
+			tantrumMemory.setRelatedEntityId(target.getId());
+
+
+			assignedGoal.setRelevantMemory(tantrumMemory);
+			return assignedGoal;
+		}
 	}
 
 	protected AssignedGoal attackedByCreatureResponse(Memory attackedByCreatureMemory, GameContext gameContext) {
@@ -354,7 +427,14 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 
 		if (attributes.getSanity().equals(Sanity.SANE) && attributes.getConsciousness().equals(AWAKE) &&
 				happinessComponent.getNetModifier() <= MIN_HAPPINESS_VALUE) {
-			messageDispatcher.dispatchMessage(MessageType.HUMANOID_INSANITY, parentEntity);
+			MemoryComponent memoryComponent = parentEntity.getOrCreateComponent(MemoryComponent.class);
+			memoryComponent.addShortTerm(new Memory(MemoryType.ABOUT_TO_HAVE_A_BREAKDOWN, gameContext.getGameClock()), gameContext.getGameClock());
+
+			if (currentGoal != null) {
+				if (currentGoal.goal.interruptedByLowNeeds || currentGoal.goal.interrupedByCombat) {
+					currentGoal.setInterrupted(true);
+				}
+			}
 		}
 	}
 
@@ -379,7 +459,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 				Memory itemRequiredMemory = new Memory(MemoryType.LACKING_REQUIRED_ITEM, gameContext.getGameClock());
 				itemRequiredMemory.setRelatedItemType(weaponItemType);
 				// Should set required material at some point
-				parentEntity.getOrCreateComponent(MemoryComponent.class).add(itemRequiredMemory, gameContext.getGameClock());
+				parentEntity.getOrCreateComponent(MemoryComponent.class).addShortTerm(itemRequiredMemory, gameContext.getGameClock());
 			} else if (weaponItemType.getWeaponInfo() != null && weaponItemType.getWeaponInfo().getRequiresAmmoType() != null) {
 				// check for ammo
 				AmmoType requiredAmmoType = weaponItemType.getWeaponInfo().getRequiresAmmoType();
@@ -392,7 +472,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 					Memory itemRequiredMemory = new Memory(MemoryType.LACKING_REQUIRED_ITEM, gameContext.getGameClock());
 					itemRequiredMemory.setRelatedAmmoType(requiredAmmoType);
 					// Should set required material at some point
-					parentEntity.getOrCreateComponent(MemoryComponent.class).add(itemRequiredMemory, gameContext.getGameClock());
+					parentEntity.getOrCreateComponent(MemoryComponent.class).addShortTerm(itemRequiredMemory, gameContext.getGameClock());
 				}
 			}
 		}

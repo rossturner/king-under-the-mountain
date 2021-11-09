@@ -73,7 +73,6 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 
 	private GameContext gameContext;
 	private GameMaterial boneMaterial;
-	private Array<Color> blackenedColors = new Array<>();
 
 	@Inject
 	public FireMessageHandler(MessageDispatcher messageDispatcher, FloorTypeDictionary floorTypeDictionary,
@@ -90,9 +89,6 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		this.entityStore = entityStore;
 		this.furnitureTracker = furnitureTracker;
 
-		blackenedColors.add(HexColors.get("#605f5f"));
-		blackenedColors.add(HexColors.get("#45403e"));
-		blackenedColors.add(HexColors.get("#343231"));
 
 		messageDispatcher.addListener(this, MessageType.SPREAD_FIRE_FROM_LOCATION);
 		messageDispatcher.addListener(this, MessageType.SMALL_FIRE_STARTED);
@@ -296,7 +292,7 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 					CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 					CorpseBehaviour corpseBehaviour = (CorpseBehaviour) entity.getBehaviourComponent();
 					corpseBehaviour.setToFullyDecayed(attributes);
-					attributes.setBoneColor(blackenedColor());
+					attributes.setBoneColor(blackenedColor(gameContext.getRandom()));
 				}
 				break;
 			case ITEM:
@@ -309,12 +305,12 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 				break;
 			case PLANT:
 				PlantEntityAttributes plantEntityAttributes = (PlantEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-				plantEntityAttributes.setBurned(ashMaterial, blackenedColor());
+				plantEntityAttributes.setBurned(ashMaterial, blackenedColor(gameContext.getRandom()));
 				entityStore.changeBehaviour(entity, new BurnedEntityBehaviour(), messageDispatcher);
 				messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, entity);
 				break;
 			case FURNITURE:
-				Color blackenedColor = blackenedColor();
+				Color blackenedColor = blackenedColor(gameContext.getRandom());
 				messageDispatcher.dispatchMessage(MessageType.DAMAGE_FURNITURE, new FurnitureDamagedMessage(
 						entity, EntityDestructionCause.BURNED, ashMaterial, blackenedColor, blackenedColor
 				));
@@ -352,9 +348,15 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 		}
 	}
 
-	private Color blackenedColor() {
-		return ColorMixer.randomBlend(gameContext.getRandom(),
-				blackenedColors);
+	private static final Array<Color> blackenedColors = new Array<>();
+	static {
+		blackenedColors.add(HexColors.get("#605f5f"));
+		blackenedColors.add(HexColors.get("#45403e"));
+		blackenedColors.add(HexColors.get("#343231"));
+	}
+
+	public static Color blackenedColor(Random random) {
+		return ColorMixer.randomBlend(random, blackenedColors);
 	}
 
 	private void applyDesignation(MapTile targetTile, Designation extinguishFlamesDesignation) {

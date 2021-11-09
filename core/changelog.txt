@@ -1,6 +1,7 @@
 Alpha 8
 
 - Reworked HUMANOID entities into more generic CREATURE entity type
+- Settlers at very low happiness will now have several tantrums (attacking a nearby creature or furniture) before breaking and giving up on life
 - Added "Race" type for creatures containing new data
 - Definitions of body structure and organs for different races
 - Dwarven body shape (fat/average/strong) is now based on a strength stat, determined by a strength distribution described as part of the race

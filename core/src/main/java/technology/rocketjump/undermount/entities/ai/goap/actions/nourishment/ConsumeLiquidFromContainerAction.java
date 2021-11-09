@@ -107,7 +107,7 @@ public class ConsumeLiquidFromContainerAction extends Action {
 
 		if (consumedLiquid.isAlcoholic()) {
 			parent.parentEntity.getComponent(HappinessComponent.class).add(HappinessComponent.HappinessModifier.DRANK_ALCOHOL);
-			parent.parentEntity.getComponent(MemoryComponent.class).add(new Memory(MemoryType.CONSUMED_ALCOHOLIC_DRINK, gameContext.getGameClock()), gameContext.getGameClock());
+			parent.parentEntity.getComponent(MemoryComponent.class).addShortTerm(new Memory(MemoryType.CONSUMED_ALCOHOLIC_DRINK, gameContext.getGameClock()), gameContext.getGameClock());
 			parent.parentEntity.getComponent(StatusComponent.class).apply(new Drunk());
 		}
 

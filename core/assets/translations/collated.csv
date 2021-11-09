@@ -509,6 +509,7 @@ HAPPINESS_MODIFIER.DRANK_ALCOHOL,Under the effects of alcohol,,Unter Alkoholeinf
 HAPPINESS_MODIFIER.DRANK_FROM_RIVER,Drank river water,,Trank Flusswasser,A bu de l'eau de rivière,Bevuto acqua di fiume,Bebió agua de río,Bebeu água do rio,,,Пьянь речной воды,Nehir suyu içti,Drak floden vand,,Drack flod vatten,,,,飲料水,喝河水,마신 강 물
 HAPPINESS_MODIFIER.DYING_OF_HUNGER,Starving,,Am Verhungern,- Affamé,Morendo di fame,Muerto de hambre,Morrendo de fome,,,Голод,Açlıktan Ölüyor,Sulter,,Svältande,,,,飢えだ,饿死了,굶주린
 HAPPINESS_MODIFIER.DYING_OF_THIRST,Critically dehydrated,,Am Verdursten,Déshydraté de façon critique,Disidratati criticamente,Deshidratado críticamente,Criticamente desidratado,,,Критически обезвоженные,Tehlikeli seviyede susuz,Kritisk dehydreret,,Kritiskt uttorkad,,,,脱水症状,严重脱水,비판적으로 탈수
+HAPPINESS_MODIFIER.HAD_A_TANTRUM,Had a tantrum,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,Optimistic about new settlement,,Optimistisch wegen neuer Siedlung,Optimiste quant à la nouvelle colonisation,Ottimista sul nuovo insediamento,Optimistas sobre la nueva solución,Otimista sobre o novo assentamento,,,Оптимистичный подход к новому поселению,Yeni yerleşim yeri hakkında umutlu,Optimistisk om nye forlig,,Optimistiska om ny bosättning,,,,新しい和解について楽観的,对新结算持乐观态度,새로운 정착에 대한 낙관적
 HAPPINESS_MODIFIER.ON_FIRE,Was badly burned,,,,,,,,,,,,,,,,,,,
 HAPPINESS_MODIFIER.POISONED,Poisoned,,Vergiftet,Empoisonné,Avvelenato,Envenenado,Envenenado,,,Отравлен,Zehirlendi,Forgiftet,,Förgiftad,,,,毒殺されてる,中毒,중독
@@ -733,6 +734,8 @@ NOTIFICATION.ROOFING_COLLAPSE.DESCRIPTION,A roof has collapsed due to a lack of 
 NOTIFICATION.ROOFING_COLLAPSE.TITLE,Roof collapsed,,,,,,,,,,,,,,,,,,,
 NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,The gruelling hardship has proven to be too much to handle for {{character}}.,,Die zermürbende Not konnte von {{character}} nicht mehr ertragen werden.,La difficulté éprouvante s'est révélée trop difficile à gérer pour {{character}}.,L'estenuante difficoltà ha dimostrato di essere troppo da gestire per {{character}}.,La penuria agotadora ha demostrado ser demasiado difícil de manejar para {{character}}.,As dificuldades exaustivas provaram ser demais para lidar com {{character}}.,,,Ужасающие трудности оказались слишком сложными для {{character}}.,Meşakkatli ve zor yaşam {{character}} ağır geldi.,De opslidende trængsler har vist sig at være for meget til at klare for {{character}}.,,De hårda svårigheterna har visat sig vara för mycket att hantera för {{character}}.,,,,過激な苦難は、{{character}} を処理するには多すぎることが証明されています。,对于 {{character}} 来说，艰难的困难已被证明太多，无法处理。,이 지저분한 어려움은 {{character}} 을 (를) 처리하기에는 너무 많은 것으로 입증되었습니다.
 NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,Mental break,,Nervenzusammenbruch,Pause mentale,Pausa mentale,Descanso mental,Intervalo mental,,,Психический перерыв,Ruhsal Çöküntü,Mental pause,,Mental paus,,,,精神崩壊,精神破裂,정신 휴식
+NOTIFICATION.SETTLER_TANTRUM.DESCRIPTION,One of your settlers has become so unhappy that they are throwing a tantrum!,,,,,,,,,,,,,,,,,,,
+NOTIFICATION.SETTLER_TANTRUM.TITLE,Tantrum!,,,,,,,,,,,,,,,,,,,
 
 ORE.BAUXITE.ADJECTIVE,Bauxite,,Bauxit,Bauxite,Bauxite,Bauxita,Bauxita,,,Боксит,Boksit,- Bauxit,,Bauxit,,,,ボーキサイト,铝土矿,보크사이트
 ORE.BAUXITE.NOUN,Bauxite,,Bauxit,Bauxite,Bauxite,Bauxita,Bauxita,,,Боксит,Boksit,- Bauxit,,Bauxit,,,,ボーキサイト,铝土矿,보크사이트
