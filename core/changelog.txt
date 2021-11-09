@@ -17,6 +17,7 @@ Alpha 8
 - Ability for stockpile groups to hold corpses, only enabled for "Food" group currently
 - Changed fish from items to creatures for butchery station to work consistently
 - Corrected label on unpowered crafting stations (e.g. ore crusher) to show they are slowed but not disabled
+- Improved job selection so same-priority profession-required jobs are selected before closer jobs of the same priority not requiring a profession
 - Fix for crafting stations to use material selections from crafting management screen
 
 Alpha 7.0.4 - 28th September 2021

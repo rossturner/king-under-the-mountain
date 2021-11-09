@@ -14,10 +14,15 @@ import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.jobs.model.JobState;
+import technology.rocketjump.undermount.jobs.model.PotentialJob;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.types.JobRequestMessage;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class deals with dishing out jobs to entities requesting them
@@ -29,6 +34,7 @@ public class JobRequestHandler implements Updatable, Telegraph, Disposable {
 	private final JobStore jobStore;
 
 	private GameContext gameContext;
+	private Comparator<? super PotentialJob> potentialJobSorter = new PotentialJobSorter();
 
 	@Inject
 	public JobRequestHandler(MessageDispatcher messageDispatcher, JobStore jobStore) {
@@ -76,7 +82,7 @@ public class JobRequestHandler implements Updatable, Telegraph, Disposable {
 		Vector2 entityWorldPosition = jobRequestMessage.getRequestingEntity().getLocationComponent().getWorldPosition();
 		GridPoint2 requesterLocation = new GridPoint2((int)Math.floor(entityWorldPosition.x), (int)Math.floor(entityWorldPosition.y));
 
-		Map<JobPriority, List<Job>> jobsByPriority = new EnumMap<>(JobPriority.class);
+		List<PotentialJob> potentialJobs = new ArrayList<>();
 
 		for (ProfessionsComponent.QuantifiedProfession professionToFindJobFor : professionsComponent.getActiveProfessions()) {
 			Collection<Job> byProfession = jobStore.getCollectionByState(JobState.ASSIGNABLE).getByProfession(professionToFindJobFor.getProfession()).values();
@@ -84,33 +90,19 @@ public class JobRequestHandler implements Updatable, Telegraph, Disposable {
 				continue;
 			}
 
-			Map<Float, Job> jobsByDistance = new TreeMap<>();
-
-			for (Job currentJob : byProfession) {
-				if (currentJob.getAssignedToEntityId() == null) {
-					float distanceToJob = currentJob.getJobLocation().dst(requesterLocation);
-					jobsByDistance.put(distanceToJob, currentJob);
+			for (Job job : byProfession) {
+				if (job.getAssignedToEntityId() == null && !job.getJobPriority().equals(JobPriority.DISABLED)) {
+					float distanceToJob = job.getJobLocation().dst(requesterLocation);
+					potentialJobs.add(new PotentialJob(job, distanceToJob));
 				}
 			}
-
-			for (Job job : jobsByDistance.values()) {
-				jobsByPriority.computeIfAbsent(job.getJobPriority(), a -> new ArrayList<>()).add(job);
-			}
 		}
 
-		List<Job> potentialJobs = new ArrayList<>();
-		for (JobPriority jobPriority : JobPriority.values()) {
-			if (jobPriority.equals(JobPriority.DISABLED)) {
-				continue;
-			}
-			if (jobsByPriority.containsKey(jobPriority)) {
-				potentialJobs.addAll(jobsByPriority.get(jobPriority));
-			}
-		}
+		potentialJobs.sort(potentialJobSorter);
 
 		// FIXME Should maybe prioritise jobs that need equipment so they are worked on when a settler has the item,
 		// rather than picking up the item and then going and working on something else
-		jobRequestMessage.getCallback().jobCallback(potentialJobs, gameContext);
+		jobRequestMessage.getCallback().jobCallback(potentialJobs.stream().map(p -> p.job).collect(Collectors.toList()), gameContext);
 		return true;
 	}
 
