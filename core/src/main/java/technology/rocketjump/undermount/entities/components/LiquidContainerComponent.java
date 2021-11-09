@@ -41,6 +41,7 @@ import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 public class LiquidContainerComponent implements ParentDependentEntityComponent, Destructible {
 
 	private static final int MIN_CAPACITY_TO_CLASS_AS_HIGH_CAPACITY = 10;
+	private static final float SMALL_AMOUNT = 0.1f;
 	public static DecimalFormat oneDecimalFormat = new DecimalFormat("#.#");
 
 	private Entity parentEntity;
@@ -161,7 +162,7 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 	public void setLiquidQuantity(float liquidQuantity) {
 		float oldLiquidQuantity = this.liquidQuantity;
 		this.liquidQuantity = liquidQuantity;
-		if (liquidQuantity <= 0) {
+		if (liquidQuantity <= SMALL_AMOUNT) {
 			this.liquidQuantity = 0;
 			if (liquidContainerAccessZone != null) {
 				liquidContainerAccessZone.setActive(false);

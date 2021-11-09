@@ -396,14 +396,26 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				Logger.error("Not yet implemented: Material selection for liquid crafting inputs");
 			} else {
 				// Need to pick a material
-				messageDispatcher.dispatchMessage(MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE, new ItemMaterialSelectionMessage(
-						inputRequirement.getItemType(),
-						(gameMaterial) -> {
-							if (gameMaterial != null) {
-								inputRequirement.setMaterial(gameMaterial);
+
+				// Might be set by crafting management screen
+				CraftingRecipeMaterialSelection craftingRecipeMaterialSelection = gameContext.getSettlementState().craftingRecipeMaterialSelections.get(currentProductionAssignment.targetRecipe);
+				if (craftingRecipeMaterialSelection != null) {
+					craftingRecipeMaterialSelection.getSelection(inputRequirement).ifPresent(inputRequirement::setMaterial);
+				}
+
+				if (inputRequirement.getMaterial() == null) {
+					// Still null i.e.
+					messageDispatcher.dispatchMessage(MessageType.SELECT_AVAILABLE_MATERIAL_FOR_ITEM_TYPE, new ItemMaterialSelectionMessage(
+							inputRequirement.getItemType(),
+							(gameMaterial) -> {
+								if (gameMaterial != null) {
+									inputRequirement.setMaterial(gameMaterial);
+								}
 							}
-						}
-				));
+					));
+				}
+
+
 
 				if (inputRequirement.getMaterial() != null) {
 					currentProductionAssignment.getInputMaterialSelections().add(inputRequirement);

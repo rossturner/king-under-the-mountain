@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
+import technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.furniture.SelectableDescription;
 import technology.rocketjump.undermount.entities.components.EntityComponent;
 import technology.rocketjump.undermount.entities.components.ParentDependentEntityComponent;
@@ -121,7 +122,11 @@ public class PoweredFurnitureComponent implements ParentDependentEntityComponent
 				result.add(i18nTranslator.applyReplacements(word, Map.of("power", new I18nWord(String.valueOf(-powerAmount))), Gender.ANY));
 			} else {
 				// needs power grid
-				result.add(i18nTranslator.getTranslatedString("MECHANISM.FURNITURE.REQUIRES_POWER"));
+				if (parentEntity.getBehaviourComponent() instanceof CraftingStationBehaviour) {
+					result.add(i18nTranslator.getTranslatedString("MECHANISM.FURNITURE.CRAFTING_STATION_REQUIRES_POWER"));
+				} else {
+					result.add(i18nTranslator.getTranslatedString("MECHANISM.FURNITURE.REQUIRES_POWER"));
+				}
 			}
 		} else {
 			// producing power
