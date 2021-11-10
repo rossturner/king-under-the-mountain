@@ -180,6 +180,16 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 				}
 			}
 
+
+			boolean jobIsNavigable = gameContext.getAreaMap().getTile(craftingJob.getJobLocation()).isNavigable();
+			if (!jobIsNavigable) {
+				FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
+				if (navigableWorkspace != null) {
+					craftingJob.setJobLocation(navigableWorkspace.getAccessedFrom());
+					craftingJob.setSecondaryLocation(navigableWorkspace.getLocation());
+				}
+			}
+
 			return; // Waiting for entity to craft item with materials
 		}
 
