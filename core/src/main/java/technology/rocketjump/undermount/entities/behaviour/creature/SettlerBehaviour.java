@@ -259,31 +259,33 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 			for (int distance = 1; distance < 6; distance++) {
 				MapTile tile = gameContext.getAreaMap().getTile(parentLocation.x + (direction.getXOffset() * distance),
 						parentLocation.y + (direction.getYOffset() * distance));
-				for (Entity entity : tile.getEntities()) {
-					if (entity.equals(parentEntity)) {
-						continue;
-					}
+				if (tile != null) {
+					for (Entity entity : tile.getEntities()) {
+						if (entity.equals(parentEntity)) {
+							continue;
+						}
 
-					if (entity.getType().equals(CREATURE)) {
-						CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-						if (!attributes.getConsciousness().equals(DEAD) && !attributes.getConsciousness().equals(KNOCKED_UNCONSCIOUS)) {
-							target = entity;
-							break;
+						if (entity.getType().equals(CREATURE)) {
+							CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+							if (!attributes.getConsciousness().equals(DEAD) && !attributes.getConsciousness().equals(KNOCKED_UNCONSCIOUS)) {
+								target = entity;
+								break;
+							}
+						}
+						if (entity.getType().equals(FURNITURE)) {
+							FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
+							if (!attributes.isDestroyed()) {
+								target = entity;
+								break;
+							}
 						}
 					}
-					if (entity.getType().equals(FURNITURE)) {
-						FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-						if (!attributes.isDestroyed()) {
-							target = entity;
-							break;
-						}
+					if (target != null) {
+						break;
 					}
-				}
-				if (target != null) {
-					break;
-				}
-				if (!tile.isNavigable()) {
-					break;
+					if (!tile.isNavigable()) {
+						break;
+					}
 				}
 			}
 			if (target != null) {
