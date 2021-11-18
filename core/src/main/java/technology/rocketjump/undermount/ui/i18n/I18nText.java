@@ -34,7 +34,7 @@ public class I18nText implements I18nString {
 		} else {
 			this.textElements.add(new I18nTextElement(other.toString(), null));
 		}
-		return this.tidy();
+		return this.tidy(true);
 	}
 
 	@Override
@@ -104,8 +104,8 @@ public class I18nText implements I18nString {
 		}
 	}
 
-	public I18nText tidy() {
-		if (textElements.size() > 1 && textElements.stream().allMatch(e -> e.getTooltipI18nKey() == null)) {
+	public I18nText tidy(boolean firstInvocation) {
+		if (firstInvocation && textElements.size() > 1 && textElements.stream().allMatch(e -> e.getTooltipI18nKey() == null)) {
 			// no tooltips, merge all text together
 			String combinedText = textElements.stream().map(I18nTextElement::getText).collect(Collectors.joining());
 			textElements.clear();
@@ -151,7 +151,7 @@ public class I18nText implements I18nString {
 			if (newLineIndex != -1) {
 				insertLineBreakAt(newLineIndex, cursor, element);
 				// Rescursively call this
-				tidy();
+				tidy(false);
 				return this;
 			}
 		}

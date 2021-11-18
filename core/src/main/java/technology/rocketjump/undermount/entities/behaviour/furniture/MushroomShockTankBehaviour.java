@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.google.common.collect.Lists;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.components.LiquidContainerComponent;
@@ -139,6 +140,10 @@ public class MushroomShockTankBehaviour extends FillLiquidContainerBehaviour imp
 	}
 
 	private void attemptToAssignItemToSelf(GameContext gameContext) {
+		if (relatedItemTypes.get(1) == null || relatedJobTypes.isEmpty()) {
+			Logger.error("Missing related info in " +getClass().getSimpleName());
+			return;
+		}
 		ItemType targetItemType = relatedItemTypes.get(1);
 		messageDispatcher.dispatchMessage(MessageType.REQUEST_HAULING_ALLOCATION, new RequestHaulingAllocationMessage(
 				parentEntity, parentEntity.getLocationComponent().getWorldPosition(), targetItemType, null,

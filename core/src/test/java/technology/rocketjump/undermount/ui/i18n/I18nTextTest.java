@@ -35,7 +35,7 @@ public class I18nTextTest {
 		I18nText original = new I18nText("Hello {{replace}} me");
 
 		original.replace("{{replace}}", "", null);
-		original.tidy();
+		original.tidy(false);
 
 		assertThat(original.getElements()).hasSize(2);
 		assertThat(original.toString()).isEqualTo("Hello me");
@@ -150,7 +150,7 @@ public class I18nTextTest {
 		I18nText original = new I18nText("Here are\nsome words");
 		assertThat(original.getElements()).hasSize(1);
 
-		original.tidy();
+		original.tidy(false);
 
 		assertThat(original.toString()).isEqualTo("Here are\nsome words");
 		assertThat(original.getElements()).hasSize(3);

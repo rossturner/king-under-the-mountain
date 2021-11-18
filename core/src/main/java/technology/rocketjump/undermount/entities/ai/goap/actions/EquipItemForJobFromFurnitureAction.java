@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.entities.ai.goap.actions;
 
 import com.alibaba.fastjson.JSONObject;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.ai.goap.AssignedGoal;
 import technology.rocketjump.undermount.entities.components.furniture.DecorationInventoryComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
@@ -29,6 +30,11 @@ public class EquipItemForJobFromFurnitureAction extends Action {
 	public void update(float deltaTime, GameContext gameContext) {
 		// See if item is in inventory to equip
 		ItemType requiredItemType = parent.getAssignedJob().getRequiredItemType();
+		if (requiredItemType == null) {
+			Logger.error("No item type in " +getSimpleName());
+			completionType = FAILURE;
+			return;
+		}
 		GameMaterial requiredMaterial = parent.getAssignedJob().getRequiredItemMaterial();
 
 		getTargetFurniture(gameContext, parent)

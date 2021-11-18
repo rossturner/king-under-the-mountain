@@ -36,6 +36,7 @@ import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.C
 import static technology.rocketjump.undermount.entities.ai.goap.actions.Action.CompletionType.SUCCESS;
 import static technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent.HappinessModifier.*;
 import static technology.rocketjump.undermount.entities.components.humanoid.NeedsComponent.MAX_NEED_VALUE;
+import static technology.rocketjump.undermount.mapping.tile.MapTile.NULL_TILE;
 import static technology.rocketjump.undermount.mapping.tile.roof.TileRoofState.OPEN;
 
 public class SleepOnFloorAction extends Action {
@@ -83,6 +84,9 @@ public class SleepOnFloorAction extends Action {
 
 	protected void checkForWakingUp(GameContext gameContext) {
 		MapTile currentTile = gameContext.getAreaMap().getTile(parent.parentEntity.getLocationComponent().getWorldOrParentPosition());
+		if (currentTile == null) {
+			currentTile = NULL_TILE;
+		}
 		HappinessComponent happinessComponent = parent.parentEntity.getComponent(HappinessComponent.class);
 		if (OPEN.equals(currentTile.getRoof().getState()) && happinessComponent != null) {
 			happinessComponent.add(SLEPT_OUTSIDE);

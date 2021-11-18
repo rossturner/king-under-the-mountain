@@ -654,7 +654,7 @@ public class I18nTranslator implements I18nUpdatable {
 
 		}
 
-		return i18nText.tidy();
+		return i18nText.tidy(true);
 	}
 
 
@@ -694,7 +694,7 @@ public class I18nTranslator implements I18nUpdatable {
 			i18nText.replace(matcher.group(0), replacementText, replacement.hasTooltip() ? replacement.getKey() : null);
 		}
 
-		return i18nText.tidy();
+		return i18nText.tidy(true);
 	}
 
 	private int getQuantity(Map<String, I18nString> replacements) {

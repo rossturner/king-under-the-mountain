@@ -76,6 +76,8 @@ public class MapTile implements Persistable {
 	private Construction construction = null;
 	private TileExploration exploration = UNEXPLORED;
 
+	public static final MapTile NULL_TILE = new MapTile(-1L, 0, 0, FloorType.NULL_FLOOR, GameMaterial.NULL_MATERIAL);
+
 	public MapTile(long seed, int tileX, int tileY, FloorType floorType, GameMaterial floorMaterial) {
 		this.seed = seed;
 		this.tilePosition = new GridPoint2(tileX, tileY);

@@ -19,7 +19,7 @@ import technology.rocketjump.undermount.ui.widgets.I18nLabel;
 import technology.rocketjump.undermount.ui.widgets.I18nWidgetFactory;
 
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ALLOW_HINTS;
-import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.DISABLE_TUTORIAL;
+import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ENABLE_TUTORIAL;
 
 @Singleton
 public class GameplayOptionsTab implements OptionsTab, Telegraph {
@@ -31,6 +31,7 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 	private final I18nCheckbox treeTransparencyCheckbox;
 	private final I18nCheckbox pauseOnNotificationCheckbox;
 	private final I18nCheckbox enableHintsCheckbox;
+	private final I18nCheckbox enableTutorialCheckbox;
 	private final UserPreferences userPreferences;
 
 	@Inject
@@ -94,8 +95,19 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 		enableHintsCheckbox.addListener((event) -> {
 			if (event instanceof ChangeListener.ChangeEvent) {
 				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
-				userPreferences.setPreference(DISABLE_TUTORIAL, String.valueOf(!enableHintsCheckbox.isChecked()));
 				userPreferences.setPreference(ALLOW_HINTS, String.valueOf(enableHintsCheckbox.isChecked()));
+			}
+			return true;
+		});
+
+
+		enableTutorialCheckbox = i18NWidgetFactory.createCheckbox("GUI.OPTIONS.MISC.TUTORIAL_ENABLED");
+		enableTutorialCheckbox.setProgrammaticChangeEvents(false); // Used so that message triggered below does not loop endlessly
+		enableTutorialCheckbox.setChecked(Boolean.parseBoolean(userPreferences.getPreference(ENABLE_TUTORIAL, "true")));
+		enableTutorialCheckbox.addListener((event) -> {
+			if (event instanceof ChangeListener.ChangeEvent) {
+				messageDispatcher.dispatchMessage(MessageType.REQUEST_SOUND, new RequestSoundMessage(clickSoundAsset));
+				userPreferences.setPreference(ENABLE_TUTORIAL, String.valueOf(enableTutorialCheckbox.isChecked()));
 			}
 			return true;
 		});
@@ -119,6 +131,8 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 		menuTable.add(pauseOnNotificationCheckbox).colspan(2).left().pad(10).row();
 		menuTable.add(new Container<>()); // pad out 1 cell
 		menuTable.add(enableHintsCheckbox).colspan(2).left().pad(10).row();
+		menuTable.add(new Container<>()); // pad out 1 cell
+		menuTable.add(enableTutorialCheckbox).colspan(2).left().pad(10).row();
 
 	}
 

@@ -26,7 +26,7 @@ import technology.rocketjump.undermount.ui.views.GuiViewName;
 import technology.rocketjump.undermount.ui.views.HintGuiView;
 
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ALLOW_HINTS;
-import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.DISABLE_TUTORIAL;
+import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ENABLE_TUTORIAL;
 import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.*;
 
 @Singleton
@@ -118,7 +118,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 				return false; // Not main handler
 			}
 			case MessageType.SETTLEMENT_SPAWNED: {
-				if ((!Boolean.parseBoolean(userPreferences.getPreference(DISABLE_TUTORIAL, "false")))) {
+				if ((Boolean.parseBoolean(userPreferences.getPreference(ENABLE_TUTORIAL, "true")))) {
 					for (Hint hint : hintDictionary.getByTriggerType(ON_SETTLEMENT_SPAWNED)) {
 						if (canBeShown(hint)) {
 							show(hint);
@@ -174,7 +174,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 						}
 						break;
 					case DISABLE_TUTORIAL:
-						userPreferences.setPreference(DISABLE_TUTORIAL, "true");
+						userPreferences.setPreference(ENABLE_TUTORIAL, "false");
 						break;
 					case DISABLE_ALL_HINTS:
 						userPreferences.setPreference(ALLOW_HINTS, "false");
