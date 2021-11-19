@@ -4,31 +4,59 @@
     "type": "CREATURE_BODY",
     "raceName": "Elephant",
     "bodyShape": "AVERAGE",
-    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "consciousnessList": [
+      "SLEEPING",
+      "KNOCKED_UNCONSCIOUS",
+      "DEAD"
+    ],
     "spriteDescriptors": {
       "DOWN": {
         "filename": "ElephantFrontColourS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": 19.0
+            }
           },
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": -0.5,
+              "y": 19.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 0.5,
+          "y": -19.0
+        }
       },
       "DOWN_RIGHT": {
         "filename": "ElephantFrontSideColourS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 2.0,
+              "y": 17.5
+            }
           },
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": 2.0,
+              "y": 17.5
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -2.0,
+          "y": -17.5
+        }
       },
       "DOWN_LEFT": {
         "filename": "ElephantFrontSideColourS.png",
@@ -36,12 +64,24 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": -2.0,
+              "y": 17.5
+            }
           },
           {
-            "type": "CREATURE_HAIR"
+            "type": "CREATURE_HAIR",
+            "offsetPixels": {
+              "x": -2.0,
+              "y": 17.5
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 2.0,
+          "y": -17.5
+        }
       },
       "UP_RIGHT": {
         "filename": "ElephantBackSideColourS.png",
@@ -49,27 +89,51 @@
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": -3.0,
+              "y": 11.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": 3.0,
+          "y": -11.0
+        }
       },
       "UP_LEFT": {
         "filename": "ElephantBackSideColourS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 3.0,
+              "y": 11.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -3.0,
+          "y": -11.0
+        }
       },
       "UP": {
         "filename": "ElephantBackColourS.png",
         "coloringLayer": "SKIN_COLOR",
         "childAssets": [
           {
-            "type": "BODY_OUTLINE"
+            "type": "BODY_OUTLINE",
+            "offsetPixels": {
+              "x": 1.0,
+              "y": 16.0
+            }
           }
-        ]
+        ],
+        "offsetPixels": {
+          "x": -1.0,
+          "y": -16.0
+        }
       }
     }
   },
@@ -78,27 +142,55 @@
     "type": "BODY_OUTLINE",
     "raceName": "Elephant",
     "bodyShape": "AVERAGE",
-    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "consciousnessList": [
+      "SLEEPING",
+      "KNOCKED_UNCONSCIOUS",
+      "DEAD"
+    ],
     "spriteDescriptors": {
       "DOWN": {
-        "filename": "ElephantFrontLinesS.png"
+        "filename": "ElephantFrontLinesS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -18.0
+        }
       },
       "DOWN_RIGHT": {
-        "filename": "ElephantFrontSideLinesS.png"
+        "filename": "ElephantFrontSideLinesS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -17.0
+        }
       },
       "DOWN_LEFT": {
         "filename": "ElephantFrontSideLinesS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -17.0
+        }
       },
       "UP_RIGHT": {
         "filename": "ElephantBackSideLinesS.png",
-        "flipX": true
+        "flipX": true,
+        "offsetPixels": {
+          "x": 3.5,
+          "y": -9.5
+        }
       },
       "UP_LEFT": {
-        "filename": "ElephantBackSideLinesS.png"
+        "filename": "ElephantBackSideLinesS.png",
+        "offsetPixels": {
+          "x": -3.5,
+          "y": -9.5
+        }
       },
       "UP": {
-        "filename": "ElephantBackLinesS.png"
+        "filename": "ElephantBackLinesS.png",
+        "offsetPixels": {
+          "x": 0.0,
+          "y": -16.0
+        }
       }
     }
   },
@@ -107,20 +199,36 @@
     "type": "CREATURE_HAIR",
     "raceName": "Elephant",
     "bodyShape": "AVERAGE",
-    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "consciousnessList": [
+      "SLEEPING",
+      "KNOCKED_UNCONSCIOUS",
+      "DEAD"
+    ],
     "spriteDescriptors": {
       "DOWN": {
         "filename": "ElephantFrontTusksS.png",
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": 1.0,
+          "y": -28.5
+        }
       },
       "DOWN_RIGHT": {
         "filename": "ElephantFrontSideTusksS.png",
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": 35.5,
+          "y": -34.0
+        }
       },
       "DOWN_LEFT": {
         "filename": "ElephantFrontSideTusksS.png",
         "flipX": true,
-        "coloringLayer": "BONE_COLOR"
+        "coloringLayer": "BONE_COLOR",
+        "offsetPixels": {
+          "x": -35.5,
+          "y": -34.0
+        }
       }
     }
   }

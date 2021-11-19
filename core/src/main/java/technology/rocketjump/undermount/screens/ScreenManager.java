@@ -23,6 +23,7 @@ import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.async.ErrorType;
 import technology.rocketjump.undermount.messaging.types.StartNewGameMessage;
+import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameViewMode;
@@ -51,6 +52,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 	private final GameContextRegister gameContextRegister;
 	private final GameDialogDictionary dialogDictionary;
 	private final EntityStore entityStore;
+	private final UserPreferences userPreferences;
 
 	private GameScreen currentScreen;
 
@@ -62,7 +64,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 	public ScreenManager(GameScreenDictionary gameScreenDictionary, MessageDispatcher messageDispatcher, TiledMapFactory mapFactory,
 						 ProfessionDictionary professionDictionary, GameContextFactory gameContextFactory,
 						 GameContextRegister gameContextRegister, GameDialogDictionary dialogDictionary,
-						 EntityStore entityStore, MainGameScreen mainGameScreen, MainMenuScreen mainMenuScreen) {
+						 EntityStore entityStore, UserPreferences userPreferences, MainGameScreen mainGameScreen, MainMenuScreen mainMenuScreen) {
 		this.gameScreenDictionary = gameScreenDictionary;
 		this.messageDispatcher = messageDispatcher;
 		this.mapFactory = mapFactory;
@@ -71,6 +73,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 		this.gameContextRegister = gameContextRegister;
 		this.dialogDictionary = dialogDictionary;
 		this.entityStore = entityStore;
+		this.userPreferences = userPreferences;
 
 		this.mainGameScreen = mainGameScreen;
 		this.mainMenuScreen = mainMenuScreen;
@@ -105,16 +108,22 @@ public class ScreenManager implements Telegraph, GameContextAware {
 		}
 
 		mapFactory.preSelectSpawnStep(gameContext, messageDispatcher);
-		if (DEV_MODE && !GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+		boolean isChooseSpawnLocation = chooseSpawnLocation(userPreferences);
+		if (!isChooseSpawnLocation) {
 			mapFactory.postSelectSpawnStep(gameContext, messageDispatcher, buildProfessionList());
 		}
 		// Trigger context change again for camera to be updated with map
 		gameContextRegister.setNewContext(gameContext);
-		if (GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+		if (isChooseSpawnLocation) {
 			gameContext.getAreaMap().setEmbarkPoint(null);
 		}
 
 		mainGameScreen.show();
+	}
+
+	public static boolean chooseSpawnLocation(UserPreferences userPreferences) {
+		return (DEV_MODE && GlobalSettings.CHOOSE_SPAWN_LOCATION) ||
+				!Boolean.parseBoolean(userPreferences.getPreference(UserPreferences.PreferenceKey.ENABLE_TUTORIAL, "true"));
 	}
 
 	private static final boolean smallStart = true;
@@ -247,7 +256,6 @@ public class ScreenManager implements Telegraph, GameContextAware {
 				gameContext.getSettlementState().setGameState(GameState.NORMAL);
 				messageDispatcher.dispatchMessage(MessageType.SET_GAME_SPEED, GameSpeed.PAUSED);
 				messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_VIEW, GuiViewName.DEFAULT_MENU);
-				messageDispatcher.dispatchMessage(MessageType.SETTLEMENT_SPAWNED);
 				return true;
 			}
 			default:

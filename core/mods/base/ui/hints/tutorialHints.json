@@ -14,8 +14,9 @@
   },
 
   {
-    "hintId": "welcome",
+    "hintId": "ask-tutorial",
     "i18nKeys": [
+      "HINT.WELCOME.INTRO",
       "HINT.WELCOME.NEXT_STEPS"
     ],
     "actions": [

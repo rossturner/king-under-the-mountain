@@ -23,8 +23,10 @@
   },
 
   "behaviour": {
-    "type": "HerdAnimal",
-    "herd": {
+    "behaviourName": "HerdAnimal",
+    "scheduleName": "Diurnal animal",
+    "needs": ["SLEEP"],
+    "group": {
       "minSize": 3,
       "maxSize": 5
     },

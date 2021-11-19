@@ -125,6 +125,60 @@
     }
   }
 }, {
+  "name" : "Elephant",
+  "i18nKey" : "RACE.ELEPHANT",
+  "minStrength" : 9.0,
+  "maxStrength" : 21.0,
+  "bodyStructureName" : "pachyderm",
+  "bodyShapes" : [ {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "SKIN_COLOR" : {
+      "swatch" : "elephant-skin-swatch.png",
+      "hidden" : false
+    },
+    "BONE_COLOR" : {
+      "swatch" : "elephant-tusk-swatch.png",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "behaviourName" : "HerdAnimal",
+    "scheduleName" : "Diurnal animal",
+    "needs" : [ "SLEEP" ],
+    "group" : {
+      "minSize" : 3,
+      "maxSize" : 5
+    },
+    "aggressionResponse" : "ATTACK"
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : {
+        "STABBING" : 1,
+        "SLASHING" : 1,
+        "CRUSHING" : 1
+      }
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+}, {
   "name" : "Fox",
   "i18nKey" : "RACE.FOX",
   "minStrength" : 4.0,

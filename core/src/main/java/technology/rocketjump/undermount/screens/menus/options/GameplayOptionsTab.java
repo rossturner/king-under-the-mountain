@@ -144,6 +144,9 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 				if (changedKey.equals(UserPreferences.PreferenceKey.ALLOW_HINTS)) {
 					enableHintsCheckbox.setChecked(Boolean.parseBoolean(userPreferences.getPreference(ALLOW_HINTS, "true")));
 					return true;
+				} else if (changedKey.equals(ENABLE_TUTORIAL)) {
+					enableTutorialCheckbox.setChecked(Boolean.parseBoolean(userPreferences.getPreference(ENABLE_TUTORIAL, "true")));
+					return true;
 				} else {
 					return false;
 				}

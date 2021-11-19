@@ -108,8 +108,8 @@
   } ],
   "dismissable" : false
 }, {
-  "hintId" : "welcome",
-  "i18nKeys" : [ "HINT.WELCOME.NEXT_STEPS" ],
+  "hintId" : "ask-tutorial",
+  "i18nKeys" : [ "HINT.WELCOME.INTRO", "HINT.WELCOME.NEXT_STEPS" ],
   "progressDescriptors" : [ ],
   "actions" : [ {
     "type" : "SHOW_OTHER_HINT",

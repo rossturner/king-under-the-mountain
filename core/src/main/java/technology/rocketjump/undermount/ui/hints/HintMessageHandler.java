@@ -17,7 +17,6 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.Updatable;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.persistence.UserPreferences;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.settlement.ItemTracker;
 import technology.rocketjump.undermount.ui.hints.model.Hint;
 import technology.rocketjump.undermount.ui.hints.model.HintAction;
@@ -27,6 +26,7 @@ import technology.rocketjump.undermount.ui.views.HintGuiView;
 
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ALLOW_HINTS;
 import static technology.rocketjump.undermount.persistence.UserPreferences.PreferenceKey.ENABLE_TUTORIAL;
+import static technology.rocketjump.undermount.screens.ScreenManager.chooseSpawnLocation;
 import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.*;
 
 @Singleton
@@ -103,7 +103,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 	public boolean handleMessage(Telegram msg) {
 		switch (msg.message) {
 			case MessageType.START_NEW_GAME: {
-				if (GlobalSettings.DEV_MODE && !GlobalSettings.CHOOSE_SPAWN_LOCATION) {
+				if (!chooseSpawnLocation(userPreferences)) {
 					return false;
 				}
 				for (Hint hint : hintDictionary.getByTriggerType(ON_GAME_START)) {
@@ -175,6 +175,7 @@ public class HintMessageHandler implements Telegraph, Updatable {
 						break;
 					case DISABLE_TUTORIAL:
 						userPreferences.setPreference(ENABLE_TUTORIAL, "false");
+						messageDispatcher.dispatchMessage(MessageType.PREFERENCE_CHANGED, ENABLE_TUTORIAL);
 						break;
 					case DISABLE_ALL_HINTS:
 						userPreferences.setPreference(ALLOW_HINTS, "false");

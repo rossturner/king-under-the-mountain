@@ -20,8 +20,8 @@ import technology.rocketjump.undermount.mapping.model.MapEnvironment;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
+import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
-import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
 import technology.rocketjump.undermount.settlement.SettlementState;
 import technology.rocketjump.undermount.settlement.production.ProductionQuota;
 
@@ -29,6 +29,7 @@ import java.util.HashMap;
 
 import static technology.rocketjump.undermount.environment.WeatherManager.selectDailyWeather;
 import static technology.rocketjump.undermount.gamecontext.GameState.SELECT_SPAWN_LOCATION;
+import static technology.rocketjump.undermount.screens.ScreenManager.chooseSpawnLocation;
 
 @Singleton
 public class GameContextFactory {
@@ -40,16 +41,18 @@ public class GameContextFactory {
 	private final JSONObject itemProductionDefaultsJson;
 	private final JSONObject liquidProductionDefaultsJson;
 	private final SettlementConstants settlementConstants;
+	private final UserPreferences userPreferences;
 	private Race settlerRace;
 
 	@Inject
 	public GameContextFactory(ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary gameMaterialDictionary,
 							  WeatherTypeDictionary weatherTypeDictionary, DailyWeatherTypeDictionary dailyWeatherTypeDictionary,
-							  ConstantsRepo constantsRepo, RaceDictionary raceDictionary) {
+							  ConstantsRepo constantsRepo, UserPreferences userPreferences, RaceDictionary raceDictionary) {
 		this.itemTypeDictionary = itemTypeDictionary;
 		this.gameMaterialDictionary = gameMaterialDictionary;
 		this.weatherTypeDictionary = weatherTypeDictionary;
 		this.dailyWeatherTypeDictionary = dailyWeatherTypeDictionary;
+		this.userPreferences = userPreferences;
 		FileHandle itemProductionDefaultsFile = new FileHandle("assets/definitions/crafting/itemProductionDefaults.json");
 		itemProductionDefaultsJson = JSON.parseObject(itemProductionDefaultsFile.readString());
 		FileHandle liquidProductionDefaultsFile = new FileHandle("assets/definitions/crafting/liquidProductionDefaults.json");
@@ -62,17 +65,14 @@ public class GameContextFactory {
 		GameContext context = new GameContext();
 		context.getSettlementState().setSettlementName(settlementName);
 		context.getSettlementState().setSettlerRace(settlerRace);
-		if (GlobalSettings.DEV_MODE) {
-			if (GlobalSettings.CHOOSE_SPAWN_LOCATION) {
-				context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);
-				clock.setPaused(true);
-			} else {
-				context.getSettlementState().setGameState(GameState.NORMAL);
-			}
-		} else {
+
+		if (chooseSpawnLocation(userPreferences)) {
 			context.getSettlementState().setGameState(SELECT_SPAWN_LOCATION);
 			clock.setPaused(true);
+		} else {
+			context.getSettlementState().setGameState(GameState.NORMAL);
 		}
+
 		context.getSettlementState().setFishRemainingInRiver(settlementConstants.getNumAnnualFish());
 		context.setAreaMap(areaMap);
 		context.setRandom(new RandomXS128(worldSeed));

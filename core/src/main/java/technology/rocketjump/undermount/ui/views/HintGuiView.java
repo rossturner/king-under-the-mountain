@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 import static technology.rocketjump.undermount.ui.hints.model.HintAction.HintActionType.DISMISS;
+import static technology.rocketjump.undermount.ui.hints.model.HintTrigger.HintTriggerType.ON_SETTLEMENT_SPAWNED;
 
 @Singleton
 public class HintGuiView implements GuiView, GameContextAware {
@@ -151,6 +152,15 @@ public class HintGuiView implements GuiView, GameContextAware {
 		doUpdate();
 	}
 
+	public void dismissAllExceptOnStart() {
+		for (Hint hint : new ArrayList<>(displayedHints)) {
+			if (hint.getTriggers().stream().noneMatch(t -> t.getTriggerType().equals(ON_SETTLEMENT_SPAWNED))) {
+				remove(hint);
+			}
+		}
+		doUpdate();
+	}
+
 	private void remove(Hint hint) {
 		displayedHints.remove(hint);
 		gameContext.getSettlementState().getCurrentHints().remove(hint.getHintId());
@@ -183,7 +193,7 @@ public class HintGuiView implements GuiView, GameContextAware {
 
 	@Override
 	public void clearContextRelatedState() {
-		dismissAll();
+		dismissAllExceptOnStart();
 	}
 
 	private void buildProgressDescriptors(Hint hint, Table hintTable) throws HintProgressComplete {

@@ -179,6 +179,8 @@ public class TiledMapFactory {
 		}
 
 		creaturePopulator.initialiseMap(gameContext);
+
+		messageDispatcher.dispatchMessage(MessageType.SETTLEMENT_SPAWNED);
 	}
 
 	private void addStartingInventory(Deque<QuantifiedItemTypeWithMaterial> inventoryStartingItems, List<Entity> allSettlers, GameContext gameContext, MessageDispatcher messageDispatcher) {
