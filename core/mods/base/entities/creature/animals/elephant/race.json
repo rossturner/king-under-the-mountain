@@ -1,0 +1,60 @@
+{
+  "name": "Elephant",
+  "i18nKey": "RACE.ELEPHANT",
+
+  "minStrength": 9.0,
+  "maxStrength": 21.0,
+
+  "bodyStructureName": "pachyderm",
+
+  "bodyShapes": [
+    {
+      "value": "AVERAGE"
+    }
+  ],
+
+  "colors": {
+    "SKIN_COLOR": {
+      "swatch": "elephant-skin-swatch.png"
+    },
+    "BONE_COLOR": {
+      "swatch": "elephant-tusk-swatch.png"
+    }
+  },
+
+  "behaviour": {
+    "type": "HerdAnimal",
+    "herd": {
+      "minSize": 3,
+      "maxSize": 5
+    },
+    "aggressionResponse": "ATTACK"
+  },
+
+  "genders": {
+    "MALE": {
+      "weighting": 0.5,
+      "hasHair": 1
+    },
+    "FEMALE": {
+      "weighting": 0.5,
+      "hasHair": 1
+    }
+  },
+
+  "features": {
+    "skin": {
+      "damageReduction": {
+        "STABBING": 1,
+        "SLASHING": 1,
+        "CRUSHING": 1
+      }
+    },
+    "bones": {
+      "materialName": "Bone"
+    },
+    "blood": {
+
+    }
+  }
+}

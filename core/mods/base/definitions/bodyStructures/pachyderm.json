@@ -1,0 +1,67 @@
+{
+  "name": "pachyderm",
+  "rootPartName": "Torso",
+  "partDefinitions": [
+    {
+      "name": "Head",
+      "size": 0.2,
+      "bones": ["SKULL"],
+      "organs": [
+        {
+          "type": "Brain",
+          "relativeSize": 0.25
+        },
+        {
+          "type": "Eye",
+          "discriminator": "Left",
+          "relativeSize": 0.05
+        },
+        {
+          "type": "Eye",
+          "discriminator": "Right",
+          "relativeSize": 0.05
+        }
+      ],
+      "childParts": ["Trunk"]
+    },
+    {
+      "name": "Trunk",
+      "size": 0.15,
+      "bones": [],
+      "organs": []
+    },
+    {
+      "name": "Torso",
+      "size": 1.0,
+      "bones": ["LARGE", "LARGE"],
+      "organs": [
+        {
+          "type": "Heart",
+          "relativeSize": 0.2
+        },
+        {
+          "type": "Lung",
+          "discriminator": "Left",
+          "relativeSize": 0.25
+        },
+        {
+          "type": "Lung",
+          "discriminator": "Right",
+          "relativeSize": 0.3
+        }
+      ],
+      "childParts": ["Head", "FrontRight-Leg", "FrontLeft-Leg", "BackRight-Leg", "BackLeft-Leg"]
+    },
+    {
+      "name": "Leg",
+      "size": 0.3,
+      "bones": ["MEDIUM"],
+      "childParts": ["Foot"]
+    },
+    {
+      "name": "Foot",
+      "size": 0.01,
+      "function": "FOOT"
+    }
+  ]
+}

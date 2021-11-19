@@ -1,0 +1,127 @@
+[
+  {
+    "uniqueName": "Elephant-Body-Sleep",
+    "type": "CREATURE_BODY",
+    "raceName": "Elephant",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ElephantFrontColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          }
+        ]
+      },
+      "DOWN_RIGHT": {
+        "filename": "ElephantFrontSideColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          }
+        ]
+      },
+      "DOWN_LEFT": {
+        "filename": "ElephantFrontSideColourS.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          },
+          {
+            "type": "CREATURE_HAIR"
+          }
+        ]
+      },
+      "UP_RIGHT": {
+        "filename": "ElephantBackSideColourS.png",
+        "flipX": true,
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP_LEFT": {
+        "filename": "ElephantBackSideColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      },
+      "UP": {
+        "filename": "ElephantBackColourS.png",
+        "coloringLayer": "SKIN_COLOR",
+        "childAssets": [
+          {
+            "type": "BODY_OUTLINE"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "uniqueName": "Elephant-BodyOutline-Sleep",
+    "type": "BODY_OUTLINE",
+    "raceName": "Elephant",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ElephantFrontLinesS.png"
+      },
+      "DOWN_RIGHT": {
+        "filename": "ElephantFrontSideLinesS.png"
+      },
+      "DOWN_LEFT": {
+        "filename": "ElephantFrontSideLinesS.png",
+        "flipX": true
+      },
+      "UP_RIGHT": {
+        "filename": "ElephantBackSideLinesS.png",
+        "flipX": true
+      },
+      "UP_LEFT": {
+        "filename": "ElephantBackSideLinesS.png"
+      },
+      "UP": {
+        "filename": "ElephantBackLinesS.png"
+      }
+    }
+  },
+  {
+    "uniqueName": "Elephant-Tusks-Sleep",
+    "type": "CREATURE_HAIR",
+    "raceName": "Elephant",
+    "bodyShape": "AVERAGE",
+    "consciousnessList": ["SLEEPING", "KNOCKED_UNCONSCIOUS", "DEAD"],
+    "spriteDescriptors": {
+      "DOWN": {
+        "filename": "ElephantFrontTusksS.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "DOWN_RIGHT": {
+        "filename": "ElephantFrontSideTusksS.png",
+        "coloringLayer": "BONE_COLOR"
+      },
+      "DOWN_LEFT": {
+        "filename": "ElephantFrontSideTusksS.png",
+        "flipX": true,
+        "coloringLayer": "BONE_COLOR"
+      }
+    }
+  }
+]

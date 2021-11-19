@@ -447,9 +447,10 @@ GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.EXCLUSIVE_FULLSCREEN,Exclusive fullscreen,,,
 GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.WINDOWED,Windowed,,,,,,,,,,,,,,,,,,,
 GUI.OPTIONS.GRAPHICS.TITLE,"Graphics Options ",,"Grafikeinstellungen ","Options graphiques ","Opzioni grafiche ","Ajustes de vídeo ","Opções Gráficas ","Opções Gráficas ",,"Настройки графики ",Grafik Ayarları,Grafikindstillinger,,"Grafikinställningar ",,,,[グラフィックスオプション],图形选项,그래픽 옵션
 GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,Allow automatic crash reports,,Automatische Absturzberichte erlauben,Autoriser les rapports d'incident automatiques,Consenti rapporti di arresto anomalo automatico,Permitir informes de bloqueos automáticos,Permitir relatórios de falhas automáticos,,,Разрешить автоматические отчеты о сбоях,Otomatik çökme raporlarına izin ver.,Tillad automatiske nedbrudsrapporter,,Tillåt automatiska kraschrapporter,,,,自動クラッシュレポートを許可する,允许自动崩溃报告,자동 충돌 보고서 허용
-GUI.OPTIONS.MISC.HINTS_ENABLED,Show hints and tutorials in-game,,Zeige Hinweise und Tutorials im Spiel,,,,,,,,Oyun içinde ipucu ve öğreticilere izin ver.,,,,,,,,,
+GUI.OPTIONS.MISC.HINTS_ENABLED,Show hints in-game,,Zeige Hinweise und Tutorials im Spiel,,,,,,,,Oyun içinde ipucu ve öğreticilere izin ver.,,,,,,,,,
 GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING,Scroll the background on the main menu,,Scrolle den Hintergrund im Hauptmenü,,,,,,,,Ana ekrandaki arka planı kaydır.,,,,,,,,,
 GUI.OPTIONS.MISC.TITLE,Miscellaneous,,Verschiedenes,Divers,Varie,Misceláneo,Diversos,,,Разное,Çeşitli,Diverse,,Diverse,,,,[その他],杂项,기타
+GUI.OPTIONS.MISC.TUTORIAL_ENABLED,Ask to start the tutorial at game start,,,,,,,,,,,,,,,,,,,
 GUI.OPTIONS.TAB.AUDIO,Audio,,Audio,,,,,,,,Ses,,,,,,,,,
 GUI.OPTIONS.TAB.GAMEPLAY,Gameplay,,Gameplay,,,,,,,,Oynanış,,,,,,,,,
 GUI.OPTIONS.TAB.GRAPHICS,Graphics,,Graphik,,,,,,,,Grafikler,,,,,,,,,
