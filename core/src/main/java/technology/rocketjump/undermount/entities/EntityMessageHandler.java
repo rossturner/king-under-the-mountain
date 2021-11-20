@@ -581,6 +581,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 	private boolean handleSettlerTantrum(Entity tantrumEntity) {
 		Notification tantrumNotification = new Notification(NotificationType.SETTLER_TANTRUM, tantrumEntity.getLocationComponent().getWorldOrParentPosition());
+		tantrumNotification.addTextReplacement("character", i18nTranslator.getDescription(tantrumEntity));
 		messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, tantrumNotification);
 		return true;
 	}

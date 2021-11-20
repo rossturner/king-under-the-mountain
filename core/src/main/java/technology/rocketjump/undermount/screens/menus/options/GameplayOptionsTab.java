@@ -78,7 +78,7 @@ public class GameplayOptionsTab implements OptionsTab, Telegraph {
 		});
 
 		pauseOnNotificationCheckbox = i18NWidgetFactory.createCheckbox("GUI.OPTIONS.GAMEPLAY.PAUSE_ON_NOTIFICATION");
-		GlobalSettings.PAUSE_FOR_NOTIFICATIONS = Boolean.valueOf(userPreferences.getPreference(UserPreferences.PreferenceKey.PAUSE_FOR_NOTIFICATIONS, "false"));;
+		GlobalSettings.PAUSE_FOR_NOTIFICATIONS = Boolean.valueOf(userPreferences.getPreference(UserPreferences.PreferenceKey.PAUSE_FOR_NOTIFICATIONS, "true"));;
 		pauseOnNotificationCheckbox.setChecked(GlobalSettings.PAUSE_FOR_NOTIFICATIONS);
 		pauseOnNotificationCheckbox.addListener((event) -> {
 			if (event instanceof ChangeListener.ChangeEvent) {

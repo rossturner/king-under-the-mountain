@@ -57,15 +57,7 @@ public class JobFactory {
 			Bridge bridge = targetTile.getFloor().getBridge();
 			job.setRequiredProfession(bridge.getBridgeType().getCraftingType().getProfessionRequired());
 			job.setRequiredItemType(bridge.getBridgeType().getCraftingType().getDefaultItemType());
-		} else if (targetTile.hasFloor() && targetTile.getFloor().getFloorType().isConstructed()) {
-			CraftingType craftingType = targetTile.getFloor().getFloorType().getCraftingType();
-			job.setRequiredProfession(craftingType.getProfessionRequired());
-			job.setRequiredItemType(craftingType.getDefaultItemType());
-		} else if (targetTile.hasChannel()) {
-			Designation originalDesignation = GameInteractionMode.DESIGNATE_DIG_CHANNEL.getDesignationToApply();
-			job.setRequiredProfession(originalDesignation.getCreatesJobType().getRequiredProfession());
-			job.setRequiredItemType(originalDesignation.getCreatesJobType().getRequiredItemType());
-		} else {
+		} else if (targetTile.getEntities().stream().anyMatch(e -> e.getType().equals(EntityType.FURNITURE))) {
 			Entity targetFurniture = null;
 			for (Entity entity : targetTile.getEntities()) {
 				if (entity.getType().equals(EntityType.FURNITURE)) {
@@ -86,6 +78,16 @@ public class JobFactory {
 			job.setRequiredProfession(craftingType.getProfessionRequired());
 			// Not requiring an item so player doesn't get stuck needing an item to deconstruct furniture containing it
 			job.setTargetId(targetFurniture.getId());
+		} else if (targetTile.hasFloor() && targetTile.getFloor().getFloorType().isConstructed()) {
+			CraftingType craftingType = targetTile.getFloor().getFloorType().getCraftingType();
+			job.setRequiredProfession(craftingType.getProfessionRequired());
+			job.setRequiredItemType(craftingType.getDefaultItemType());
+		} else if (targetTile.hasChannel()) {
+			Designation originalDesignation = GameInteractionMode.DESIGNATE_DIG_CHANNEL.getDesignationToApply();
+			job.setRequiredProfession(originalDesignation.getCreatesJobType().getRequiredProfession());
+			job.setRequiredItemType(originalDesignation.getCreatesJobType().getRequiredItemType());
+		} else {
+			return null;
 		}
 		return job;
 	}

@@ -644,12 +644,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				} else if (targetTile.getFloor().hasBridge()) {
 					Bridge bridge = targetTile.getFloor().getBridge();
 					messageDispatcher.dispatchMessage(MessageType.DECONSTRUCT_BRIDGE, bridge);
-				} else if (targetTile.hasFloor() && targetTile.getFloor().getFloorType().isConstructed()) {
-					messageDispatcher.dispatchMessage(MessageType.UNDO_REPLACE_FLOOR, targetTile.getTilePosition());
-				} else if (targetTile.hasChannel()) {
-					messageDispatcher.dispatchMessage(MessageType.REMOVE_CHANNEL, targetTile.getTilePosition());
-				} else {
-					// Assuming we're deconstructing a furniture entity in the target tile
+				} else if (targetTile.getEntities().stream().anyMatch(e -> e.getType().equals(FURNITURE))) {
 					Entity targetEntity = null;
 					for (Entity entity : targetTile.getEntities()) {
 						if (entity.getType().equals(EntityType.FURNITURE)) {
@@ -663,7 +658,12 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 					} else {
 						deconstructFurniture(targetEntity, targetTile, messageDispatcher, gameContext, itemTypeDictionary, itemEntityAttributesFactory, itemEntityFactory, deconstructParticleEffect);
 					}
-
+				} else if (targetTile.hasFloor() && targetTile.getFloor().getFloorType().isConstructed()) {
+					messageDispatcher.dispatchMessage(MessageType.UNDO_REPLACE_FLOOR, targetTile.getTilePosition());
+				} else if (targetTile.hasChannel()) {
+					messageDispatcher.dispatchMessage(MessageType.REMOVE_CHANNEL, targetTile.getTilePosition());
+				} else {
+					Logger.error("Could not find entity to deconstruct in tile " + jobCompletedMessage.getJob().getJobLocation());
 				}
 				break;
 			case "MUSHROOM_INNOCULATION": {
@@ -1137,6 +1137,47 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 	}
 
 	private boolean handle(ApplyDesignationMessage applyDesignationMessage) {
+
+		switch (applyDesignationMessage.getInteractionMode()) {
+			case REMOVE_CONSTRUCTIONS:
+				if (applyDesignationMessage.getTargetTile().hasConstruction()) {
+					messageDispatcher.dispatchMessage(MessageType.CANCEL_CONSTRUCTION, applyDesignationMessage.getTargetTile().getConstruction());
+				}
+				Designation designation = applyDesignationMessage.getTargetTile().getDesignation();
+				if (designation != null) {
+					messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(applyDesignationMessage.getTargetTile()));
+				}
+				break;
+			case DECONSTRUCT:
+				// deconstruction also applies designation
+				Optional<Entity> optionalFurniture = applyDesignationMessage.getTargetTile().getEntities().stream().filter(e -> e.getType().equals(FURNITURE)).findAny();
+
+				if (optionalFurniture.isEmpty() && applyDesignationMessage.getTargetTile().hasDoorway()) {
+					optionalFurniture = Optional.of(applyDesignationMessage.getTargetTile().getDoorway().getDoorEntity());
+				}
+
+				if (optionalFurniture.isPresent()) {
+					ConstructedEntityComponent constructedEntityComponent = optionalFurniture.get().getComponent(ConstructedEntityComponent.class);
+					if (constructedEntityComponent != null && !constructedEntityComponent.isBeingDeconstructed()) {
+						messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_REMOVAL, optionalFurniture.get());
+					}
+					return true;
+				}
+
+				if ((applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) ||
+						applyDesignationMessage.getTargetTile().hasChannel() ||
+						(applyDesignationMessage.getTargetTile().hasFloor() && applyDesignationMessage.getTargetTile().getFloor().getFloorType().isConstructed())) {
+					Job deconstructionJob = jobFactory.deconstructionJob(applyDesignationMessage.getTargetTile());
+					messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
+				}
+
+				if (applyDesignationMessage.getTargetTile().getFloor().hasBridge()) {
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_BRIDGE_REMOVAL, applyDesignationMessage.getTargetTile().getFloor().getBridge());
+				}
+
+				break;
+		}
+
 		JobType jobType = applyDesignationMessage.getDesignationToApply().getCreatesJobType();
 		if (jobType != null) {
 			Job newJob = null;
@@ -1180,45 +1221,6 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 			newJob.setJobPriority(applyDesignationMessage.getDesignationToApply().getDefaultJobPriority());
 
 			jobStore.add(newJob);
-		}
-
-		switch (applyDesignationMessage.getInteractionMode()) {
-			case REMOVE_CONSTRUCTIONS:
-				if (applyDesignationMessage.getTargetTile().hasConstruction()) {
-					messageDispatcher.dispatchMessage(MessageType.CANCEL_CONSTRUCTION, applyDesignationMessage.getTargetTile().getConstruction());
-				}
-				Designation designation = applyDesignationMessage.getTargetTile().getDesignation();
-				if (designation != null) {
-					messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(applyDesignationMessage.getTargetTile()));
-				}
-				break;
-			case DECONSTRUCT:
-				// deconstruction also applies designation
-				Optional<Entity> optionalFurniture = applyDesignationMessage.getTargetTile().getEntities().stream().filter(e -> e.getType().equals(FURNITURE)).findAny();
-
-				if (optionalFurniture.isEmpty() && applyDesignationMessage.getTargetTile().hasDoorway()) {
-					optionalFurniture = Optional.of(applyDesignationMessage.getTargetTile().getDoorway().getDoorEntity());
-				}
-
-				if (optionalFurniture.isPresent()) {
-					ConstructedEntityComponent constructedEntityComponent = optionalFurniture.get().getComponent(ConstructedEntityComponent.class);
-					if (constructedEntityComponent != null && !constructedEntityComponent.isBeingDeconstructed()) {
-						messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_REMOVAL, optionalFurniture.get());
-					}
-				}
-
-				if ((applyDesignationMessage.getTargetTile().hasWall() && applyDesignationMessage.getTargetTile().getWall().getWallType().isConstructed()) ||
-						applyDesignationMessage.getTargetTile().hasChannel() ||
-						(applyDesignationMessage.getTargetTile().hasFloor() && applyDesignationMessage.getTargetTile().getFloor().getFloorType().isConstructed())) {
-					Job deconstructionJob = jobFactory.deconstructionJob(applyDesignationMessage.getTargetTile());
-					messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, deconstructionJob);
-				}
-
-				if (applyDesignationMessage.getTargetTile().getFloor().hasBridge()) {
-					messageDispatcher.dispatchMessage(MessageType.REQUEST_BRIDGE_REMOVAL, applyDesignationMessage.getTargetTile().getFloor().getBridge());
-				}
-
-				break;
 		}
 
 		return true;
