@@ -4,6 +4,7 @@
   "materialName": "Death Cap Mushroom",
   "maxGrowthSpeedVariance": 0.03,
   "occurenceWeight": 0.02,
+  "ignoresMoisture": true,
   "defaultColors": {
     "BRANCHES_COLOR": {
       "colorCode": "#423d3d"

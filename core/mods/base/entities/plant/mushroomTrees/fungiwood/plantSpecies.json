@@ -5,6 +5,7 @@
   "maxGrowthSpeedVariance": 0.5,
   "occurenceWeight": 0.01,
   "replacesOtherPlantsInRegion": 26,
+  "ignoresMoisture": true,
   "defaultColors": {
     "BRANCHES_COLOR": {
       "swatch": "fungiwood-branch-base-swatch.png"

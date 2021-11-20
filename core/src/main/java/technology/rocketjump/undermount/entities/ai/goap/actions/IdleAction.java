@@ -39,7 +39,7 @@ public class IdleAction extends Action {
 
 			Vector2 target = parent.parentEntity.getLocationComponent().getWorldPosition();
 			MapTile currentTile = gameContext.getAreaMap().getTile(target);
-			if (currentTile == null || !currentTile.isNavigable() || gameContext.getRandom().nextBoolean() || parent.parentEntity.isOnFire()) {
+			if (currentTile == null || !currentTile.isNavigable(currentTile) || gameContext.getRandom().nextBoolean() || parent.parentEntity.isOnFire()) {
 				// 50/50 go to a new location
 				target = pickRandomLocation(gameContext, parent.parentEntity);
 				if (target != null) {

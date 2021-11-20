@@ -101,13 +101,14 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 		}
 		Vector2 destination = path.get(path.getCount() - 1);
 		Vector2 nextPathNode = path.get(pathCursor);
+		MapTile currentTile = gameContext.getAreaMap().getTile(locationComponent.getWorldOrParentPosition());
 
 		steeringComponent.setDestination(destination);
 		steeringComponent.setNextWaypoint(nextPathNode);
 
 		MapTile nextTile = gameContext.getAreaMap().getTile(nextPathNode);
 		MapTile destinationTile = gameContext.getAreaMap().getTile(destination);
-		if (!nextTile.isNavigable() || !destinationTile.isNavigable()) {
+		if (!nextTile.isNavigable(currentTile) || !destinationTile.isNavigable(currentTile)) {
 			// The next tile is no longer navigable - a wall or something must have been placed there
 			completionType = FAILURE;
 			return;

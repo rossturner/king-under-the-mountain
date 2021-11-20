@@ -108,7 +108,7 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 
 		Action currentAction = actionQueue.peek();
 
-		if (goal.interrupedByCombat) {
+		if (goal.interruptedByCombat) {
 			MemoryComponent memoryComponent = parentEntity.getOrCreateComponent(MemoryComponent.class);
 			if (memoryComponent.getShortTermMemories(gameContext.getGameClock()).stream().anyMatch(m -> m.getType().equals(MemoryType.ATTACKED_BY_CREATURE))) {
 				setInterrupted(true);

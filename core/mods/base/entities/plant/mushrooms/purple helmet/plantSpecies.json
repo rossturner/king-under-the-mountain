@@ -4,6 +4,7 @@
   "materialName": "Purple Helmet Mushroom",
   "maxGrowthSpeedVariance": 0.03,
   "occurenceWeight": 2,
+  "ignoresMoisture": true,
   "defaultColors": {
     "BRANCHES_COLOR": {
       "colorCode": "#efe2df"

@@ -127,6 +127,19 @@ public class SleepOnFloorAction extends Action {
 		}
 	}
 
+	@Override
+	public void actionInterrupted(GameContext gameContext) {
+		if (isAsleep()) {
+			changeToAwake(gameContext);
+		}
+		super.actionInterrupted(gameContext);
+	}
+
+	protected boolean isAsleep() {
+		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
+		return attributes.getConsciousness().equals(Consciousness.SLEEPING);
+	}
+
 	protected void changeToSleeping(GameContext gameContext) {
 		changeToConsciousnessOnFloor(parent.parentEntity, Consciousness.SLEEPING, gameContext, parent.messageDispatcher);
 	}

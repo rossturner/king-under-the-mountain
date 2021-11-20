@@ -11,8 +11,6 @@ import technology.rocketjump.undermount.entities.components.furniture.SleepingPo
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
-import technology.rocketjump.undermount.entities.model.physical.creature.Consciousness;
-import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -211,9 +209,5 @@ public class SleepInBedAction extends SleepOnFloorAction {
 		return false;
 	}
 
-	private boolean isAsleep() {
-		CreatureEntityAttributes attributes = (CreatureEntityAttributes) parent.parentEntity.getPhysicalEntityComponent().getAttributes();
-		return attributes.getConsciousness().equals(Consciousness.SLEEPING);
-	}
 
 }

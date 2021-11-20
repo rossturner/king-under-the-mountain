@@ -32,6 +32,7 @@ import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 
+import java.util.Collections;
 import java.util.List;
 
 import static technology.rocketjump.undermount.entities.model.physical.plant.MoistureState.*;
@@ -112,7 +113,9 @@ public class PlantBehaviour implements BehaviourComponent, SelectableDescription
 			}
 		}
 
-		updateMoistureState(parentEntityTile, attributes, gameContext);
+		if (!species.isIgnoresMoisture()) {
+			updateMoistureState(parentEntityTile, attributes, gameContext);
+		}
 
 		PlantSpeciesGrowthStage growthStage = species.getGrowthStages().get(attributes.getGrowthStageCursor());
 		Season currentSeason = gameContext.getGameClock().getCurrentSeason();
@@ -362,6 +365,18 @@ public class PlantBehaviour implements BehaviourComponent, SelectableDescription
 	}
 
 	@Override
+	public List<I18nText> getDescription(I18nTranslator i18nTranslator, GameContext gameContext) {
+		PlantEntityAttributes attributes = (PlantEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
+		if (attributes.getSpecies().isIgnoresMoisture()) {
+			return Collections.emptyList();
+		} else {
+			return List.of(
+					i18nTranslator.getTranslatedString(attributes.getMoistureState().getI18nKey())
+			);
+		}
+	}
+
+	@Override
 	public void writeTo(JSONObject asJson, SavedGameStateHolder savedGameStateHolder) {
 		asJson.put("removePestsJobType", removePestsJobType.getName());
 		asJson.put("lastUpdateGameTime", lastUpdateGameTime);
@@ -388,13 +403,5 @@ public class PlantBehaviour implements BehaviourComponent, SelectableDescription
 		this.seasonPlantThinksItIs = EnumParser.getEnumValue(asJson, "season", Season.class, null);
 		this.lastUpdateDayNumber = asJson.getIntValue("lastUpdateDayNumber");
 		this.gameTimeToApplyPests = asJson.getDouble("gameTimeToApplyPests");
-	}
-
-	@Override
-	public List<I18nText> getDescription(I18nTranslator i18nTranslator, GameContext gameContext) {
-		PlantEntityAttributes attributes = (PlantEntityAttributes) parentEntity.getPhysicalEntityComponent().getAttributes();
-		return List.of(
-				i18nTranslator.getTranslatedString(attributes.getMoistureState().getI18nKey())
-		);
 	}
 }

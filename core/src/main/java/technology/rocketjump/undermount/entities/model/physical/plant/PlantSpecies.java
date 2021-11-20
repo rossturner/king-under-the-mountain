@@ -32,6 +32,8 @@ public class PlantSpecies {
 	@JsonIgnore
 	private GameMaterial material;
 
+	private boolean ignoresMoisture;
+
 	private Map<String, List<String>> tags = new HashMap<>();
 	@JsonIgnore
 	private List<Tag> processedTags = new ArrayList<>();
@@ -201,5 +203,13 @@ public class PlantSpecies {
 			}
 		}
 		return false;
+	}
+
+	public boolean isIgnoresMoisture() {
+		return ignoresMoisture;
+	}
+
+	public void setIgnoresMoisture(boolean ignoresMoisture) {
+		this.ignoresMoisture = ignoresMoisture;
 	}
 }

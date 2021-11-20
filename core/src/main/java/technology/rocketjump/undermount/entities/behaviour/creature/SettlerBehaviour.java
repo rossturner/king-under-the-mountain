@@ -433,7 +433,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 			memoryComponent.addShortTerm(new Memory(MemoryType.ABOUT_TO_HAVE_A_BREAKDOWN, gameContext.getGameClock()), gameContext.getGameClock());
 
 			if (currentGoal != null) {
-				if (currentGoal.goal.interruptedByLowNeeds || currentGoal.goal.interrupedByCombat) {
+				if (currentGoal.goal.interruptedByLowNeeds || currentGoal.goal.interruptedByCombat) {
 					currentGoal.setInterrupted(true);
 				}
 			}

@@ -4,6 +4,7 @@
   "materialName": "Sunglow Mushroom",
   "maxGrowthSpeedVariance": 0.03,
   "occurenceWeight": 0.15,
+  "ignoresMoisture": true,
   "defaultColors": {
     "BRANCHES_COLOR": {
       "colorCode": "#fffeed"

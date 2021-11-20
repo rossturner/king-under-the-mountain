@@ -4,6 +4,7 @@
   "materialName": "Syrup Powder Mushroom",
   "maxGrowthSpeedVariance": 0.03,
   "occurenceWeight": 0.1,
+  "ignoresMoisture": true,
   "defaultColors": {
     "BRANCHES_COLOR": {
       "swatch": "syrup-powder-base-swatch.png"

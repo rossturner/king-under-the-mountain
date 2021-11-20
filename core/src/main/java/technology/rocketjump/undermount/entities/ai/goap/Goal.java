@@ -18,7 +18,7 @@ public class Goal {
 	public final String i18nDescription;
 	public final Double expiryHours;
 	public final long goalId;
-	public final boolean interrupedByCombat;
+	public final boolean interruptedByCombat;
 	public final boolean interruptedByLowNeeds;
 
 	private List<GoalSelector> selectors = new LinkedList<>();
@@ -30,7 +30,7 @@ public class Goal {
 		this.name = name;
 		this.i18nDescription = i18nDescription;
 		this.expiryHours = expiryHours;
-		this.interrupedByCombat = interruptedByCombat;
+		this.interruptedByCombat = interruptedByCombat;
 		this.interruptedByLowNeeds = interruptedByLowNeeds;
 		this.goalId = SequentialIdGenerator.nextId();
 	}

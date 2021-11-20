@@ -4,6 +4,7 @@
   "materialName": "Rociomycota Mushroom",
   "maxGrowthSpeedVariance": 0.03,
   "occurenceWeight": 0.2,
+  "ignoresMoisture": true,
   "defaultColors": {
     "BRANCHES_COLOR": {
       "swatch": "rociomycota-base-swatch.png"

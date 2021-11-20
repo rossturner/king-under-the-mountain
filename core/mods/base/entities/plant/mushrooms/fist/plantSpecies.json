@@ -4,6 +4,7 @@
   "materialName": "Fist Mushroom",
   "maxGrowthSpeedVariance": 0.03,
   "occurenceWeight": 0.05,
+  "ignoresMoisture": true,
   "defaultColors": {
     "BRANCHES_COLOR": {
       "colorCode": "#4e4c4c"
