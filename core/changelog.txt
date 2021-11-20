@@ -1,4 +1,4 @@
-Alpha 8.1
+Alpha 8.1 - 20th November 2021
 
 - Added elephants as a wild animal (beware their great strength!)
 - The player's first settlement (before they're asked about the tutorial) will now auto-select a start location
@@ -9,6 +9,7 @@ Alpha 8.1
 - Added settler name to tantrum notification
 - Pause for notifications is now on by default
 - Corrected the way demolition works on tiles with both furniture and a constructed floor
+- Fix for a crash when a corpse is off the edge of the map somehow
 
 Alpha 8.0.2 - 18th November 2021
 

@@ -73,18 +73,20 @@ public class CorpseBehaviour implements BehaviourComponent, SelectableDescriptio
 		if (parentEntity.getLocationComponent().getWorldPosition() != null && itemAllocationComponent.getNumUnallocated() > 0) {
 			// Is unallocated
 			MapTile tile = gameContext.getAreaMap().getTile(parentEntity.getLocationComponent().getWorldPosition());
-			boolean inStockpile = false;
-			if (tile.getRoomTile() != null) {
-				Room room = tile.getRoomTile().getRoom();
-				StockpileComponent stockpileComponent = room.getComponent(StockpileComponent.class);
-				if (stockpileComponent != null && stockpileComponent.canHold(parentEntity)) {
-					inStockpile = true;
+			if (tile != null) {
+				boolean inStockpile = false;
+				if (tile.getRoomTile() != null) {
+					Room room = tile.getRoomTile().getRoom();
+					StockpileComponent stockpileComponent = room.getComponent(StockpileComponent.class);
+					if (stockpileComponent != null && stockpileComponent.canHold(parentEntity)) {
+						inStockpile = true;
+					}
 				}
-			}
 
-			if (!inStockpile) {
-				// Not in a stockpile and some unallocated, so see if we can be hauled to a stockpile
-				messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, JobPriority.NORMAL, null));
+				if (!inStockpile) {
+					// Not in a stockpile and some unallocated, so see if we can be hauled to a stockpile
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(parentEntity, parentEntity, false, JobPriority.NORMAL, null));
+				}
 			}
 		}
 
