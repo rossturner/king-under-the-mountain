@@ -139,6 +139,7 @@
     "plantingSeasons" : [ "SPRING", "SUMMER", "AUTUMN" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#f4b63d",
@@ -322,6 +323,7 @@
     "plantingSeasons" : [ "SPRING", "SUMMER", "AUTUMN" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#d2b989",
@@ -467,6 +469,7 @@
     "plantingSeasons" : [ "SPRING" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#566b4b",
@@ -617,6 +620,7 @@
     "plantingSeasons" : [ "SPRING" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#9f803c",
@@ -799,6 +803,7 @@
     "plantingSeasons" : [ "SPRING" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#86ba3d",
@@ -985,6 +990,7 @@
     "plantingSeasons" : [ "SPRING", "SUMMER", "AUTUMN" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#d2b989",
@@ -1171,6 +1177,7 @@
     "plantingSeasons" : [ "SPRING" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#3d8f3d",
@@ -1332,6 +1339,7 @@
     "plantingSeasons" : [ "SPRING", "AUTUMN" ]
   },
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#FFFFFF",
@@ -1405,6 +1413,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.2,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#fcf2f0",
@@ -1469,6 +1478,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.02,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#423d3d",
@@ -1533,6 +1543,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.4,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#f4f2bb",
@@ -1597,6 +1608,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.05,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#4e4c4c",
@@ -1662,6 +1674,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.2,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "transitionSwatch" : "rainbow-transition-swatch.png",
@@ -1726,6 +1739,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.3,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#185BBF",
@@ -1790,6 +1804,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 2.0,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#efe2df",
@@ -1854,6 +1869,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.2,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "rociomycota-base-swatch.png",
@@ -1918,6 +1934,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.15,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "colorCode" : "#fffeed",
@@ -1982,6 +1999,7 @@
     "plantingSeasons" : [ ]
   },
   "occurenceWeight" : 0.1,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "syrup-powder-base-swatch.png",
@@ -2058,6 +2076,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.01,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "barkshroom-branch-base-swatch.png",
@@ -2131,6 +2150,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.01,
+  "ignoresMoisture" : true,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "fungiwood-branch-base-swatch.png",
@@ -2254,6 +2274,7 @@
     "harvestedItems" : [ ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "loquat-branch-base-swatch.png",
@@ -2382,6 +2403,7 @@
     "harvestedItems" : [ ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "thimbleberry-branch-base-swatch.png",
@@ -2510,6 +2532,7 @@
     "harvestedItems" : [ ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "tamarillo-branch-base-swatch.png",
@@ -2638,6 +2661,7 @@
     "harvestedItems" : [ ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "dragonfruit-branch-base-swatch.png",
@@ -2750,6 +2774,7 @@
     "harvestedItems" : [ ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "breadfruit-branch-base-swatch.png",
@@ -2818,6 +2843,7 @@
     "harvestedItems" : [ ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "generic-shrub-b-branch-base-swatch.png",
@@ -2933,6 +2959,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "aspen-branch-base-swatch.png",
@@ -3041,6 +3068,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "baobab-branch-base-swatch.png",
@@ -3156,6 +3184,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "beech-branch-base-swatch.png",
@@ -3274,6 +3303,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "birch-branch-base-swatch.png",
@@ -3378,6 +3408,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "bull-oak-branch-base-swatch.png",
@@ -3471,6 +3502,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "fir-branch-base-swatch.png",
@@ -3584,6 +3616,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "ebony-branch-base-swatch.png",
@@ -3702,6 +3735,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "maple-branch-base-swatch.png",
@@ -3811,6 +3845,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "nuytsia-branch-base-swatch.png",
@@ -3927,6 +3962,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "oak-branch-base-swatch.png",
@@ -4045,6 +4081,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "pecan-branch-base-swatch.png",
@@ -4143,6 +4180,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "pine-branch-base-swatch.png",
@@ -4242,6 +4280,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "red-cedar-branch-base-swatch.png",
@@ -4365,6 +4404,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "red-emperor-branch-base-swatch.png",
@@ -4486,6 +4526,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "rosewood-branch-base-swatch.png",
@@ -4584,6 +4625,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "spruce-branch-base-swatch.png",
@@ -4677,6 +4719,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "star-pine-branch-base-swatch.png",
@@ -4790,6 +4833,7 @@
     } ]
   } ],
   "occurenceWeight" : 0.0,
+  "ignoresMoisture" : false,
   "tags" : { },
   "allColorObjects" : [ {
     "swatch" : "sycamore-branch-base-swatch.png",

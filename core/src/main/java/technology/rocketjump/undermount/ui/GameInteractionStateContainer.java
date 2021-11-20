@@ -571,7 +571,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 				return false;
 			}
 			if (attributes.getFurnitureType().getRequiredFloorMaterialType() != null &&
-					!tileToCheck.getFloor().getMaterial().getMaterialType().equals(attributes.getFurnitureType().getRequiredFloorMaterialType())) {
+					!tileToCheck.getAllFloors().getLast().getMaterial().getMaterialType().equals(attributes.getFurnitureType().getRequiredFloorMaterialType())) {
 				return false;
 			}
 			if (!attributes.getFurnitureType().isPlaceAnywhere()) {
