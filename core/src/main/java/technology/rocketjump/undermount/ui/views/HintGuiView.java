@@ -187,7 +187,12 @@ public class HintGuiView implements GuiView, GameContextAware {
 	public void onContextChange(GameContext gameContext) {
 		this.gameContext = gameContext;
 		for (String currentHintId : gameContext.getSettlementState().getCurrentHints()) {
-			this.displayedHints.add(hintDictionary.getById(currentHintId));
+			Hint hint = hintDictionary.getById(currentHintId);
+			if (hint == null) {
+				Logger.error("Could not find hint with ID " + currentHintId);
+			} else {
+				this.displayedHints.add(hint);
+			}
 		}
 	}
 

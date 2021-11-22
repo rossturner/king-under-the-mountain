@@ -192,7 +192,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 				if (createdEntity.getBehaviourComponent() instanceof SettlerBehaviour) {
 					settlerTracker.settlerAdded(createdEntity);
-					for (InventoryComponent.InventoryEntry inventoryEntry : createdEntity.getComponent(InventoryComponent.class).getInventoryEntries()) {
+					for (InventoryComponent.InventoryEntry inventoryEntry : createdEntity.getOrCreateComponent(InventoryComponent.class).getInventoryEntries()) {
 						if (inventoryEntry.entity.getType().equals(ITEM)) {
 							itemTracker.itemAdded(inventoryEntry.entity);
 						}

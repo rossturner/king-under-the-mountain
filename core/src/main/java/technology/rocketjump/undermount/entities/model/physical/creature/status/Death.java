@@ -12,7 +12,7 @@ public class Death extends StatusEffect {
 	private DeathReason deathReason;
 
 	public Death() {
-		super(null, 0.0, null);
+		super(null, null, null);
 	}
 
 	@Override
