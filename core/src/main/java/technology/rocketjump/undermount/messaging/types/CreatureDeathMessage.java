@@ -10,7 +10,11 @@ public class CreatureDeathMessage {
 
 	public CreatureDeathMessage(Entity deceased, DeathReason reason) {
 		this.deceased = deceased;
-		this.reason = reason;
+		if (reason == null) {
+			this.reason = DeathReason.UNKNOWN;
+		} else {
+			this.reason = reason;
+		}
 	}
 
 }

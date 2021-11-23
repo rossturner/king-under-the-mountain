@@ -45,6 +45,11 @@
   },
 
   "features": {
+    "meat": {
+      "itemTypeName": "Carcass-Meat-Large",
+      "materialName": "Elephant Meat",
+      "quantity": 4
+    },
     "skin": {
       "damageReduction": {
         "STABBING": 1,
