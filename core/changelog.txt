@@ -1,3 +1,7 @@
+Alpha 8.1.4
+
+- Fix for a crash when launching the game which may be on Windows 11 only, in an error trying to find the user directory
+
 Alpha 8.1.3 - 24th November 2021
 
 - Fix for a rare problem where mining could cause a pathfinding check to spiral out of control and eat all available memory

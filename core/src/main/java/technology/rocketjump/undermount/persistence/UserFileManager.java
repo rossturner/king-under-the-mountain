@@ -25,7 +25,7 @@ public class UserFileManager {
 		try {
 			File defaultDocsDir = FileSystemView.getFileSystemView().getDefaultDirectory();
 			userFileDirectoryForGame = initDirectory(defaultDocsDir.toPath().resolve("King under the Mountain").toFile());
-		} catch (IOException | SecurityException e) {
+		} catch (Exception e) {
 			// Couldn't write to user dir
 			Logger.error(e);
 			// Just write files local to game for now
