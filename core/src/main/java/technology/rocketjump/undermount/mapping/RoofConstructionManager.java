@@ -26,6 +26,7 @@ import static technology.rocketjump.undermount.mapping.tile.roof.RoofConstructio
 @Singleton
 public class RoofConstructionManager implements GameContextAware {
 
+	private static final int EXPLORED_TOO_MANY = 300;
 	private final MessageDispatcher messageDispatcher;
 	private GameContext gameContext;
 	private final int ROOF_SUPPORT_MAX_DISTANCE;
@@ -232,9 +233,13 @@ public class RoofConstructionManager implements GameContextAware {
 
 			explored.add(currentTile);
 
+			if (explored.size() > EXPLORED_TOO_MANY) {
+				return true;
+			}
+
 			for (CompassDirection direction : CompassDirection.CARDINAL_DIRECTIONS) {
 				MapTile nextTile = gameContext.getAreaMap().getTile(currentTile.getTilePosition().x + direction.getXOffset(), currentTile.getTilePosition().y + direction.getYOffset());
-				if (!explored.contains(nextTile) && !nextTile.getRoof().getState().equals(TileRoofState.OPEN)) {
+				if (!explored.contains(nextTile) && !frontier.contains(nextTile) && !nextTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 					frontier.add(nextTile);
 				}
 			}
