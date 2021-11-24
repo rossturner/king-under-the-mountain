@@ -17,7 +17,7 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = 'Alpha 8.1.4'
+    version = 'Alpha 8.1.5'
     ext {
         appName = 'undermount'
         gdxVersion = '1.9.10'
