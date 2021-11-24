@@ -1,16 +1,23 @@
 KEY,NOTES,ENGLISH,JAPANESE
 
+ACTION.DRINK_FROM_RIVER,,from river,
+ACTION.JOB.BUTCHER_CREATURE,,Butchering,
 ACTION.JOB.CLEAR_GROUND,E.g. “Clearing shrub”,Clearing {{targetPlant}},{{targetPlant}} をクリアしています
 ACTION.JOB.CONSTRUCT_FLOORING,,Laying floor,
 ACTION.JOB.CONSTRUCT_FURNITURE,E.g. “Crafting furniture”,{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
+ACTION.JOB.CONSTRUCT_MECHANISM,,Placing mechanisms,
+ACTION.JOB.CONSTRUCT_PIPING,,Placing pipe,
 ACTION.JOB.CONSTRUCT_ROOFING,,Constructing roof,
 ACTION.JOB.CREATE_GENERIC,,Producing {{targetDescription}},{{targetDescription}} を生成しています
 ACTION.JOB.DECONSTRUCT,E.g. “Removing stone wall” “Removing wooden wall”,Removing {{targetDescription}},{{targetDescription}} を削除しています
+ACTION.JOB.DECONSTRUCT_MECHANISM,,Removing mechanism,
+ACTION.JOB.DECONSTRUCT_PIPING,,Removing pipe,
 ACTION.JOB.DECONSTRUCT_ROOFING,,Removing roof,
 ACTION.JOB.DIGGING,,Digging {{targetDescription}},{{targetDescription}} を掘っています
 ACTION.JOB.DUMP_LIQUID_FROM_CONTAINER,For emptying the liquid contents out of a container,Emptying out contents of {{targetDescription}},
 ACTION.JOB.EXTINGUISH_FLAMES,,Putting out a fire,
 ACTION.JOB.FILL_GRAVE,For filling a grave with dirt,Filling {{targetDescription}},{{targetDescription}}を埋めています
+ACTION.JOB.FISHING,,Fishing,
 ACTION.JOB.GENERIC,"E.g. “Smelting iron ore”, “Crafting wooden planks”",{{profession.verb}} {{targetDescription}},{{profession.verb}} {{targetDescription}}
 ACTION.JOB.HARVESTING,,Harvesting {{targetPlant}},{{targetPlant}}を収穫しています
 ACTION.JOB.INNOCULATE_MUSHROOM_LOG,,Injecting mushroom spawn,キノコの胞子を注入
@@ -20,13 +27,58 @@ ACTION.JOB.REMOVE_PESTS_FROM_CROP,,Removing pests from {{targetPlant}},{{targetP
 ACTION.JOB.SHOVELLING,,Shovelling {{targetDescription}},シャベルで掘る {{targetDescription}}
 ACTION.JOB.TILLING,,Tilling the earth,地球のティリング
 ACTION.JOB.TRANSFER_LIQUID,For filling a container with a liquid,Filling {{targetDescription}},充填 {{targetDescription}}
+ACTION.KNOCKED_UNCONSCIOUS,,Knocked unconscious,
 ACTION.MALTING.VERB,,Malting,
 ACTION.PREPARATION.VERB,,Preparing,準備中
 ACTION.SELECT_JOB.DESCRIPTION,When looking for a job to work,Looking for work to do,やるべき仕事を探しています
-ACTION.SLEEP_IN_BED.DESCRIPTION,E.g. “Sleeping in wooden bed”,Sleeping in {{containerDescription}},{{containerDescription}} でスリープ中
 ACTION.SLEEP_ON_FLOOR.DESCRIPTION,E.g. “Sleeping on rough stone floor”,Sleeping on {{tileDescription}},{{tileDescription}} でスリープ中
+ACTION.STUNNED,,Stunned,
 
 ASHES.NOUN,,Ash,
+
+BODY_STRUCTURE.ABDOMEN,,Abdomen,
+BODY_STRUCTURE.ARM,,Arm,
+BODY_STRUCTURE.DAMAGE.BLEEDING,,Bleeding,
+BODY_STRUCTURE.DAMAGE.BROKENBONES,,Broken,
+BODY_STRUCTURE.DAMAGE.BRUISED,,Bruised,
+BODY_STRUCTURE.DAMAGE.DESTROYED,,Destroyed,
+BODY_STRUCTURE.DISCRIMINATOR.BACKLEFT,,Rear left,
+BODY_STRUCTURE.DISCRIMINATOR.BACKRIGHT,,Rear right,
+BODY_STRUCTURE.DISCRIMINATOR.FRONTLEFT,,Front left,
+BODY_STRUCTURE.DISCRIMINATOR.FRONTRIGHT,,Front right,
+BODY_STRUCTURE.DISCRIMINATOR.LEFT,,Left,
+BODY_STRUCTURE.DISCRIMINATOR.RIGHT,,Right,
+BODY_STRUCTURE.FOOT,,Foot,
+BODY_STRUCTURE.HAND,,Hand,
+BODY_STRUCTURE.HEAD,,Head,
+BODY_STRUCTURE.HOOF,,Hoof,
+BODY_STRUCTURE.LEG,,Leg,
+BODY_STRUCTURE.ORGAN.BRAIN,,Brain,
+BODY_STRUCTURE.ORGAN.EYE,,Eye,
+BODY_STRUCTURE.ORGAN.HEART,,Heart,
+BODY_STRUCTURE.ORGAN.INTESTINES,,Intestines,
+BODY_STRUCTURE.ORGAN.KIDNEY,,Kidney,
+BODY_STRUCTURE.ORGAN.LUNG,,Lung,
+BODY_STRUCTURE.ORGAN_DAMAGE.DESTROYED,,Destroyed,
+BODY_STRUCTURE.ORGAN_DAMAGE.HEAVY,,Heavy damage to,
+BODY_STRUCTURE.ORGAN_DAMAGE.LIGHT,,Light damage to,
+BODY_STRUCTURE.PAW,,Paw,
+BODY_STRUCTURE.TORSO,,Chest,
+
+BONE.BONE,,Bone,
+
+CARCASS.CARP.PREPARED.NOUN,,Carp fillet,
+CARCASS.CARP.PREPARED.PLURAL,,Carp fillets,
+CARCASS.GROUP,,Corpses,
+CARCASS.MEAT.LARGE,,Meat (large),
+CARCASS.MEAT.MEDIUM,,Meat (medium),
+CARCASS.MEAT.SMALL,,Meat (small),
+CARCASS.PERCH.PREPARED.NOUN,,Perch fillet,
+CARCASS.PERCH.PREPARED.PLURAL,,Perch fillets,
+CARCASS.PIKE.PREPARED.NOUN,,Pike fillet,
+CARCASS.PIKE.PREPARED.PLURAL,,Pike fillets,
+
+CLOTH.HEMP-LINEN,,Hemp,
 
 CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{furnitureType.noun}} の構築
 CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,{{quantity}} 件中 {{itemDescription}} 件が割り当てられました
@@ -39,33 +91,49 @@ CONSTRUCTION.STATUS.WAITING_FOR_RESOURCES,This is displayed while a construction
 COOKING.BREAD.DESCRIPTION,E.g. “Wheat bread”,{{materialDescription}} bread,{{materialDescription}}のパン
 COOKING.DUAL_INGREDIENT.DESCRIPTION,"E.g. “Tomato and potato”, to be used for for two ingredients together as below",{{materialOne}} and {{materialTwo}},{{materialOne}} と {{materialTwo}}
 COOKING.SOUP.DESCRIPTION,"E.g. “Tomato soup”, “Tomato and potato soup”, “Vegetable soup”",{{materialDescription}} soup,{{materialDescription}}のスープ
+COOKING.TRIPLE_INGREDIENT.DESCRIPTION,"E.g. “Fish, tomato and potato”, to be used for for three ingredients together as below","{{materialOne}}, {{materialTwo}} and {{materialThree}}",
 
 CRAFTING_TYPE.BAKING,,Baking,
 CRAFTING_TYPE.BLACKSMITHING,,Blacksmithing,
 CRAFTING_TYPE.CARPENTRY,,Carpentry,
 CRAFTING_TYPE.COKE_OVEN_BAKING,,Coke baking,
 CRAFTING_TYPE.FERMENTING,,Fermenting,
+CRAFTING_TYPE.FLETCHING,,Fletching,
 CRAFTING_TYPE.MALTING,,Malting,
 CRAFTING_TYPE.MALT_MASHING,,Malt mashing,
 CRAFTING_TYPE.MILLING,,Milling,
 CRAFTING_TYPE.ORE_CRUSHING,,Ore crushing,
 CRAFTING_TYPE.SMELTING,,Smelting,
 CRAFTING_TYPE.STONEMASONRY,,Stonemasonry,
+CRAFTING_TYPE.WEAVING,,Weaving,
 CRAFTING_TYPE.WOODCUTTING,,Woodcutting,
 CRAFTING_TYPE.WORT_BREWING,,Brewing,
+
+CREATURE.DAMAGE.DESCRIPTION_A,,{{damageType}} {{bodyPart}},
+CREATURE.DAMAGE.DESCRIPTION_B,,{{damageType}} {{discriminator}} {{bodyPart}},
+CREATURE.DESCRIPTION,,{{gender.adjective}} {{race.noun}},
+CREATURE.STATUS.BLINDED,,Blinded,
+CREATURE.STATUS.DEAD,,Dead,
 
 CROP.AFFLICTED_BY_PESTS,For when a crop plant is infested with insects and other pests and needs some work to remove them,Afflicted by pests,害虫に苦められている
 CROP.AFFLICTED_BY_PESTS.TOOLTIP,,This crop has been afflicted by an excessive number of aphids and other insects which need to be removed by a {{PROFESSION.FARMER}} before it can flourish again. Not removing the pests in time could mean that this crop dies!,この作物は、それが再び繁栄する前に {{PROFESSION.FARMER}} によって除去する必要があるアブラムシや他の昆虫の過剰な数によって苦しんでいます。 時間内に害虫を除去しないことは、この作物が死ぬことを意味する可能性があります!
 CROP.DESCRIPTION,,{{materialType.noun}} plant,{{materialType.noun}} 名詞
 CROP.HARVEST_PROGRESS,E.g. “Progress towards harvest: 30%”,Progress towards harvest: {{progress}}%,収穫に向けた進捗状況:{{progress}}%
+CROP.MOISTURE_STATE.DROUGHTED,,This plant has no access to water for a long time and has stopped growing,
+CROP.MOISTURE_STATE.NEEDS_WATERING,,This plant has not been watered and is growing slowly,
+CROP.MOISTURE_STATE.NEEDS_WATERING.TOOLTIP,,You can irrigate your crops with a channel containing water with 2 tiles.,
+CROP.MOISTURE_STATE.WATERED,,This plant has been watered recently and is growing quickly,
 
 DEATH_REASON.BURNING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Burning,
+DEATH_REASON.CRITICAL_ORGAN_DAMAGE,,Critical organ damage,
 DEATH_REASON.CRUSHED_BY_FALLING_DEBRIS,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Falling debris,落下残骸
 DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Dehydration,脱水
 DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,疲労します
 DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,食中毒
 DEATH_REASON.FROZEN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exposure to freezing weather,
+DEATH_REASON.INTERNAL_BLEEDING,,Internal bleeding,
 DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,飢餓
+DEATH_REASON.SUFFOCATION,,Suffocation,
 DEATH_REASON.UNKNOWN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Mysterious circumstances,神秘的な状況
 
 EARTH.DIRT,,Dirt,土
@@ -75,11 +143,18 @@ ENTITY.DESTRUCTION_DESCRIPTION.BURNED,,Destroyed by fire,
 ENTITY.DESTRUCTION_DESCRIPTION.OXIDISED,,Destroyed by prolonged exposure to rain,
 ENTITY.DESTRUCTION_DESCRIPTION.TANTRUM,,Destroyed in a tantrum,
 
+FLOOR.CHANNEL.DESCRIPTION,,Irrigation channel ({{state}}),
+FLOOR.CHANNEL.DESCRIPTION.TOOLTIP,,Irrigation channels provide access to water to crops within 2 tiles. Build a water pump and connect the channels to it using pipes.,
+FLOOR.CHANNEL.STATE.EMPTY,,Empty,
+FLOOR.CHANNEL.STATE.FULL,,Full,
+FLOOR.CHANNEL.STATE.PARTIALLY_FILLED,,Partially-filled,
 FLOOR.COBBLESTONE,,Cobblestone,石畳
 FLOOR.DESCRIPTION,,{{floorType.noun}},{{floorType.noun}}
 FLOOR.DIRT,,Dirt,土
 FLOOR.GRASS,,Grass,草
 FLOOR.GRAVEL,,Gravel,砂利
+FLOOR.PIPE.DESCRIPTION,,{{material}} pipe ({{state}}),
+FLOOR.POWER.DESCRIPTION,,{{entity}} - Power available: {{powerAmount}},
 FLOOR.RIVER,,River,川
 FLOOR.ROUGH_STONE,,Rough stone floor,粗い石造りの床
 FLOOR.SNOW,,Fallen snow,
@@ -110,6 +185,8 @@ FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloo
 FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,{{プロフェッショナル.ブラックスミス}} はこの手作業で操作する炉を使用して {{リソース.鉱石.くじ.多型}} と {{燃料.サック} を {材質.金属.調整可能} {リソース.金属.金属.多型} に変わります。
 FURNITURE.BREW_KETTLE,,Brew kettle,
 FURNITURE.BREW_KETTLE.TOOLTIP,,This is used to produce the final wort (unfermented beer) using {{VEGETABLE.HOPS}} and wort from the {{FURNITURE.MASH_TUN}}.,
+FURNITURE.BUTCHERY_WORKTOP,,Butchery worktop,
+FURNITURE.BUTCHERY_WORKTOP.TOOLTIP,,Fish and animal carcasses are prepared here into usable meat.,
 FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,大工ワークベンチ
 FURNITURE.CARPENTRY_WORKBENCH.TOOLTIP,,"Most wooden items and tools are produced here, such as {{PRODUCT.BUCKET.PLURAL}} and {{PRODUCT.BARREL.PLURAL}}.",{{PRODUCT.BUCKET.PLURAL}} や {{PRODUCT.BARREL.PLURAL} など、ほとんどの木製アイテムや道具がここで生産されています。
 FURNITURE.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,大釜だ
@@ -122,7 +199,7 @@ FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} i
 FURNITURE.DESCRIPTION,E.g. “Granite stonemason workbench”,{{materialType.adjective}} {{furnitureType.noun}},{{furnitureType.noun}}} {{materialType.adjective}}
 FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,進捗状況から完了まで:{{progress}}%
 FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,innoculation を完了するための進行状況:{{progress}}%
-FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,Used to display how long a mushroom log submerged in water needs to be “shocked” for,Progress to shock mushroom log: {{progress}}%,ショックキノコログへの進行状況:{{progress}}%
+FURNITURE.DESCRIPTION.SHOCKING_IN_PROGRESS,,Progress: {{progress}}%,ショックキノコログへの進行状況:{{progress}}%
 FURNITURE.DESCRIPTION.WAITING_FOR_ITEM,,Waiting for {{itemType.noun}},{{商品種別.名詞}} を待機しています
 FURNITURE.DESCRIPTION.WAITING_FOR_LIQUID,,Waiting to be filled,充填されるのを待っています
 FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mushroom spawn,キノコの産卵を注入するのを待っています
@@ -130,6 +207,8 @@ FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,ごちそ
 FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.",{{FURNITURE.CHAIR}} を配置すると、入植者はこのテーブルで食事を楽しむことができます。
 FURNITURE.FERMENTATION_TANK,,Fermentation tank,
 FURNITURE.FERMENTATION_TANK.TOOLTIP,,This is where {{LIQUID.HOPPED_WORT}} is fermented into {{LIQUID.BEER}}.,
+FURNITURE.FLETCHERS_WORKBENCH,,Fletcher's workbench,
+FURNITURE.FLETCHERS_WORKBENCH.TOOTIP,,This is a crafting station for ranged weapons and ammunition,
 FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,グリストミル
 FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,このグリスミルは {{野菜.小麦}} を {{リソース.フローアー.サック.ノウン}} に粉砕し、{{PROFESSION.CHEF}} が使用できるようにします。
 FURNITURE.FORGE,,Forge,鍛冶だ
@@ -141,6 +220,7 @@ FURNITURE.KITCHEN_WORKTOP.TOOLTIP,,An area to store ingredients for a {{PROFESSI
 FURNITURE.LANTERN,,Lantern,ランタン
 FURNITURE.LANTERN.TOOLTIP,,A lantern provides light – this does not currently have an in-game effect.,ランタンは光を提供します。これは現在、ゲーム内の効果はありません。
 FURNITURE.LARGE_TABLE,,Large table,大きなテーブル
+FURNITURE.LOOM,,Loom,
 FURNITURE.MALTING_STATION,,Malting station,
 FURNITURE.MALTING_STATION.TOOLTIP,,"Here brewers steep barley and then dry it out using a kiln to produce malt. ",
 FURNITURE.MASH_TUN,,Mash tun,
@@ -153,6 +233,8 @@ FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,鉱石破砕駅
 FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,生の {{リソース.ORE.REFINED.PLURAL}} は、{{FURNITURE.BLOOMERY_FURNACE} で使用できるように、より実行可能なサイズに粉砕されます。
 FURNITURE.PILLAR,A pillar used to support a roof,Pillar,柱
 FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas from collapsing. An area of 7x7 tiles that have been mined without any pillars or other supports in place will eventually collapse.,大きな掘り出し出しエリアが崩壊するのを止めるには、柱が必要です。 柱やその他の支柱なしで採掘された7x7タイルの面積は、最終的に崩壊するでしょう。
+FURNITURE.RETTING_TANK,,Retting tank,
+FURNITURE.RETTING_TANK.TOOLTIP,,This is used to process raw {{VEGETABLE.HEMP}} into hemp fibre that can be worked into useful materials.,
 FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,石棺だ
 FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,この精巧な石容器は、故人の入植者の最後の休息地です。
 FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,サービングテーブル
@@ -161,12 +243,22 @@ FURNITURE.SINGLE_BED,,Bed,ベッドです
 FURNITURE.SINGLE_BED.TOOLTIP,,"A bed is the best place for a comfortable night’s rest. ",ベッドは快適な夜の休息に最適な場所です。
 FURNITURE.SINGLE_DOOR,,Door,ドア
 FURNITURE.SINGLE_DOOR_FRAME,,Door frame,ドアフレーム
+FURNITURE.SLEEPING_SPOT,,Sleeping spot,
+FURNITURE.SLEEPING_SPOT.TOOLTIP,,Your settlers will use this space to sleep on the floor. Not very comfortable!,
 FURNITURE.SMALL_TABLE,,Small table,小さなテーブル
 FURNITURE.STONEMASON_WORKBENCH,,Stonemason workbench,ストーンメイソンワークベンチ
 FURNITURE.STONEMASON_WORKBENCH.TOOLTIP,,A {{PROFESSION.STONEMASON}} works here with {{MATERIAL_TYPE.STONE.ADJECTIVE}} resources.,{{プロフェッショナル.ストーンメイソン}} は、{{マテリアル_タイプ.ストーン.調整可能}} のリソースで動作します。
 FURNITURE.STOOL,,Stool,スツール
+FURNITURE.WATERWHEEL,,Water wheel,
+FURNITURE.WATERWHEEL.TOOLTIP,,Provides mechanical power to other contraptions via {{PRODUCT.STONE.GEAR.PLURAL}} and shafts. Must be built adjacent to a river.,
 FURNITURE.WATER_BARREL,,Water barrel,水バレル
 FURNITURE.WATER_BARREL.TOOLTIP,,"A water barrel is a place for your settlers to get a thirst-quenching drink, rather than having to find a natural water source like the river.",水筒は、川のような天然の水源を見つけるのではなく、あなたの入植者が喉の渇きを飲むための場所です。
+FURNITURE.WATER_PUMP,,Water pump,
+FURNITURE.WATER_PUMP.TOOLTIP,,Moves water from the river to a pipe system.,
+FURNITURE.WELL,,Well,
+FURNITURE.WELL.TOOLTIP,,"A well provides a source of water, but must be connected to a working pipe system.",
+FURNITURE.WINDMILL,,Windmill,
+FURNITURE.WINDMILL.TOOLTIP,,Provides mechanical power to other contraptions via {{PRODUCT.STONE.GEAR.PLURAL}} and shafts.,
 FURNITURE.WOODCUTTERS_BENCH,,Woodcutting bench,木材カッティングベンチ
 FURNITURE.WOODCUTTERS_BENCH.TOOLTIP,,A {{PROFESSION.WOODCUTTER}} works here to turn {{RESOURCE.LOGS.PLURAL}} into {{RESOURCE.PLANKS.PLURAL}}.,{{プロフェッショナル.ウッドカッター}} は {{リソース.LOGS.PLURAL}} を {リソース.PLANKS.PLURAL} に変えるためにここで働きます。
 
@@ -252,11 +344,14 @@ GEM.TURQUOISE.ADJECTIVE,,Turquoise,ターコイズ
 GEM.TURQUOISE.NOUN,,Turquoise,ターコイズ
 GEM.TURQUOISE.TOOLTIP,,A blue-green mineral often used in decorations. It is thought to bring good luck to the bearer. It is often infused with the element of earth.,装飾によく使用される青緑色の鉱物。 運び手には幸運をもたらすと考えられています。 それはしばしば地球の要素を注入されます。
 
+GOAL.ABANDON_JOB.DESCRIPTION,,Abandoning task,
 GOAL.ADD_TO_INVENTORY.DESCRIPTION,E.g. “Collecting bag of wheat seeds”,Collecting {{targetDescription}},{{targetDescription}} を収集しています
+GOAL.COMBAT.DESCRIPTION,,Attacking {{targetDescription}},
 GOAL.DRINK.DESCRIPTION,,Drinking {{targetDescription}},{{targetZoneMaterial}} を飲む
 GOAL.DUMP_LIQUID.DESCRIPTION,,Dumping contents of {{targetDescription}},
 GOAL.EAT.DESCRIPTION,,Eating {{targetDescription}},{{targetDescription}} を食べる
 GOAL.EXTINGUISH_FIRE.DESCRIPTION,,Putting out a fire,
+GOAL.FLEE_FROM_AGGRESSOR.DESCRIPTION,,Fleeing from {{targetDescription}},
 GOAL.HAULING.DESCRIPTION,E.g. “Hauling granite stone”,Hauling {{targetDescription}},運搬 {{targetDescription}}
 GOAL.IDLE.DESCRIPTION,When not doing anything,Idle,アイドル
 GOAL.ON_FIRE.DESCRIPTION,,On fire!,
@@ -270,15 +365,18 @@ GUI.BACK_LABEL,This should be as short as possible,Back,戻れ
 GUI.BUILD.BRIDGE,For building a bridge across a river,Bridge,ブリッジ
 GUI.BUILD.DOORS,Take from FURNITURE.SINGLE_DOOR,Doors,ドア
 GUI.BUILD.FLOOR,For building floorboards/stone slabs across the ground,Flooring,
+GUI.BUILD.PIPING,,Pipes,
+GUI.BUILD.POWER,,Power,
 GUI.BUILD.ROOFING,,Roofing,
 GUI.BUILD.WALLS,,Walls,壁
 GUI.BUILD.WALLS.LSHAPE,For building two walls in an L-shape,L-shape,L字型
-GUI.BUILD.WALLS.ROOM,For building 4 walls and a rof at once,Room,
+GUI.BUILD.WALLS.ROOM,For building 4 walls and a roof at once,Room,
 GUI.BUILD.WALLS.SINGLE,For building a single wall,Single,シングル
 GUI.BUILD_FURNITURE,This should be as short as possible,Furniture,家具
 GUI.BUILD_LABEL,This should be as short as possible,Build,ビルド
 GUI.CANCEL_LABEL,This should be as short as possible,Cancel,キャンセルします
 GUI.CHANGE_PROFESSION_LABEL,,Change profession,職業を変える
+GUI.CHANGE_WEAPON_LABEL,,Select weapon,
 GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,As in keeping a fixed number of items in stock,Maintaining,
 GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},
@@ -327,9 +425,12 @@ GUI.LOAD_GAME.TABLE.GAME_TIME,,World time,
 GUI.LOAD_GAME.TABLE.SETTLEMENT_NAME,,Name,
 GUI.LOAD_GAME.TABLE.VERSION,,Version,
 GUI.LOAD_GAME.TITLE,,Load Game,
+GUI.MAP_SEED.COPY_TO_CLIPBOARD,,Copy to clipboard,
+GUI.MAP_SEED_DISPLAY,,"Current map seed: ",
+GUI.MECHANISM.SHAFT.HORIZONTAL,,Horizontal,
+GUI.MECHANISM.SHAFT.VERTICAL,,Vertical,
 GUI.MINIMAP.LABEL,,Minimap,ミニマップ
 GUI.MUSIC_VOLUME,,Music volume:,音楽ボリューム:
-GUI.NEW_VERSION_AVAILABLE,,New version now available on Itch.io,新しいバージョンがItch.ioで利用可能になりました
 GUI.NEXT_LABEL,This should be as short as possible,Next,次はね
 GUI.NON_ROTATABLE_FURNITURE.HINT,,This furniture can not be rotated in this version of the game,この家具は、ゲームのこのバージョンで回転することはできません
 GUI.OK_LABEL,This should be as short as possible,Ok,OK
@@ -344,9 +445,10 @@ GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.EXCLUSIVE_FULLSCREEN,,Exclusive fullscreen,
 GUI.OPTIONS.GRAPHICS.FULLSCREENMODE.WINDOWED,,Windowed,
 GUI.OPTIONS.GRAPHICS.TITLE,,"Graphics Options ",[グラフィックスオプション]
 GUI.OPTIONS.MISC.CRASH_REPORTING_ENABLED,,Allow automatic crash reports,自動クラッシュレポートを許可する
-GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints and tutorials in-game,
+GUI.OPTIONS.MISC.HINTS_ENABLED,,Show hints in-game,
 GUI.OPTIONS.MISC.MAIN_MENU_BACKGROUND_SCROLLING,,Scroll the background on the main menu,
 GUI.OPTIONS.MISC.TITLE,,Miscellaneous,[その他]
+GUI.OPTIONS.MISC.TUTORIAL_ENABLED,,Ask to start the tutorial at game start,
 GUI.OPTIONS.TAB.AUDIO,,Audio,
 GUI.OPTIONS.TAB.GAMEPLAY,,Gameplay,
 GUI.OPTIONS.TAB.GRAPHICS,,Graphics,
@@ -366,9 +468,13 @@ GUI.OPTIONS.TWITCH.TITLE,,Twitch Integration,
 GUI.OPTIONS.TWITCH.VIEWERS_AS_SETTLERS,,Use viewers as settler names,
 GUI.ORDERS.CHOP_WOOD,This should be as short as possible,Chop,チョップ
 GUI.ORDERS.CLEAR_GROUND,This should be as short as possible,Clear,クリア
+GUI.ORDERS.DIG_CHANNELS,This should be as short as possible - used to dig channels in the ground for water to run through to irrigate crops,Irrigation,
+GUI.ORDERS.DIG_CHANNELS.TOOLTIP,,This order is used to dig channels in the ground.,
 GUI.ORDERS.EXTINGUISH_FLAMES,This should be as short as possible - used to put out fires by throwing buckets of water on them,Extinguish,
 GUI.ORDERS.EXTINGUISH_FLAMES.TOOLTIP,,This order is used to extinguish fires that are currently burning.,
 GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,収穫
+GUI.ORDERS.HUNT,This should be as short as possible - used to select animals to be hunted,Hunt,
+GUI.ORDERS.HUNT.TOOLTIP,,This order is used to select animals to be hunted.,
 GUI.ORDERS.MINE,This should be as short as possible,Mine,採掘
 GUI.ORDERS_LABEL,This should be as short as possible,Orders,注文
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,橋は川の両側を覆い、少なくとも3x3タイルのサイズでなければなりません
@@ -395,12 +501,14 @@ GUI.ZONES_LABEL,This should be as short as possible,Zones,ゾーン
 
 HAPPINESS_MODIFIER.ALCOHOL_WITHDRAWAL,,Going sober,
 HAPPINESS_MODIFIER.ATE_NICELY_PREPARED_FOOD,,Ate a nicely prepared meal,きれいに準備された食事を食べた
+HAPPINESS_MODIFIER.BLEEDING,,Bleeding profusely,
 HAPPINESS_MODIFIER.CARRIED_DEAD_BODY,,Carried a dead body,死体を運んだ
 HAPPINESS_MODIFIER.CAUGHT_IN_RAIN,,Caught outside in the rain,
 HAPPINESS_MODIFIER.DRANK_ALCOHOL,,Under the effects of alcohol,
 HAPPINESS_MODIFIER.DRANK_FROM_RIVER,,Drank river water,飲料水
 HAPPINESS_MODIFIER.DYING_OF_HUNGER,,Starving,飢えだ
 HAPPINESS_MODIFIER.DYING_OF_THIRST,,Critically dehydrated,脱水症状
+HAPPINESS_MODIFIER.HAD_A_TANTRUM,,Had a tantrum,
 HAPPINESS_MODIFIER.NEW_SETTLEMENT_OPTIMISM,,Optimistic about new settlement,新しい和解について楽観的
 HAPPINESS_MODIFIER.ON_FIRE,,Was badly burned,
 HAPPINESS_MODIFIER.POISONED,,Poisoned,毒殺されてる
@@ -422,6 +530,12 @@ HAPPINESS_MODIFIER.WORKED_IN_RAIN,,Working in the rain,
 
 HAULING.ASSIGNMENT.DESCRIPTION,,{{quantity}} assigned to {{targetDescription}},{{{itemDescription}} が {{targetDescription}} に割り当てられました
 
+HINT.BUILD_PIPES.1,,"You can use this view to lay pipes between liquid inputs and outputs, as well as irrigation channels.",
+HINT.BUILD_PIPES.2,,"These are placed below the ground, so make sure your settlers can access each tile from the side.",
+HINT.BUILD_PIPES.3,,Furniture with a liquid input or output display a blue or green icon indicating if they are an input or output to the network.,
+HINT.BUILD_POWER.1,,Use this view to link constructions that require power with mechanisms built from {{PRODUCT.STONE.GEAR.PLURAL}} and shafts.,
+HINT.BUILD_POWER.2,,"These are placed below the ground, so make sure your settlers can access each tile from the side.",
+HINT.BUILD_POWER.3,,Constructions which require or produce power will display a red or green icon indicating if they are an input or output to the network.,
 HINT.BUILD_ROOFING.1,,"This view allows you to see which tiles are outside with no roof above them (light blue), and those which have had a roof built overhead (dark brown).",
 HINT.BUILD_ROOFING.2,,"You can use the {{GUI.ROOFING.ADD}} and {{GUI.CANCEL_LABEL}} options to queue up roofing to be constructed, and {{GUI.DECONSTRUCT_LABEL}} to remove any existing roof tiles.",
 HINT.BUILD_ROOFING.3,,A roof can only be constructed within 3 tiles of a wall or {{FURNITURE.PILLAR}}.,
@@ -430,8 +544,6 @@ HINT.BUTTON.DISMISS,,Dismiss,
 HINT.BUTTON.HINTS_ONLY,,Hints only,
 HINT.BUTTON.NEXT,,Next,
 HINT.BUTTON.TUTORIAL,,Tutorial,
-HINT.FIRE_ENCOUNTERED.1,,A fire has started! Extinguish it quickly before it spreads.,
-HINT.FIRE_ENCOUNTERED.2,,You can use the {{GUI.ORDERS.EXTINGUISH_FLAMES}} order to douse the flames with water. Any settlers on fire will attempt to put themselves out.,
 HINT.OPEN_PRIORITY_MENU.1,,"You can use this menu to change the priority of jobs and tasks, so that higher priority jobs will be assigned before lower priority jobs.",
 HINT.OPEN_PRIORITY_MENU.2,,"While the Priority menu is open, the priority icons are shown in the game world where there is a job or task to be performed, or where a room or item of furniture may create jobs in the future.",
 HINT.PROGRESS.HEADER,,Progress:,
@@ -443,6 +555,9 @@ HINT.TOOL_DEPLETED.PLANE1,,Your settlement no longer has a {{TOOL.PLANE}} availa
 HINT.TOOL_DEPLETED.PLANE2,,More planes can be crafted at the {{FURNITURE.CARPENTRY_WORKBENCH}} from a {{RESOURCE.PLANKS.NOUN}}.,
 HINT.TOOL_DEPLETED.SAW1,,Your settlement no longer has a {{TOOL.SAW}} available. This is required to build a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.,
 HINT.TOOL_DEPLETED.SAW2,,"More saws can be crafted at the {{FURNITURE.FORGE}}. If you do not have a {{FURNITURE.FORGE}} up and running, you may need to remove a {{FURNITURE.WOODCUTTERS_BENCH}} or {{FURNITURE.CARPENTRY_WORKBENCH}}.",
+HINT.WEAPON_SELECTION.1,,Use this view to select a type of weapon that the settler will keep in their inventory in case of combat.,
+HINT.WEAPON_SELECTION.2,,It is strongly recommended you assign a ranged weapon such as a {{WEAPON.BOW}} or {{WEAPON.CROSSBOW}} to those settlers assigned as a {{PROFESSION.HUNTER}}.,
+HINT.WEAPON_SELECTION.3,,Weapons which you do not have available are displayed in red.,
 HINT.WELCOME.INTRO,,"Welcome to the world of King under the Mountain! This is an early alpha version of the game with many more features and gameplay elements still to be implemented. Your intrepid band of dwarven settlers have chosen this area to found a new colony of their kingdom. Provide food, shelter and prosperity for them and who knows, maybe one day this will be the capital of a kingdom of its own!",
 HINT.WELCOME.NEXT_STEPS,,"Click “Tutorial” to be guided through the basics, “Hints only” to skip the tutorial but be provided with info as you play, or “Disable all hints” to stop showing these messages.",
 HINT.WELCOME.PRE_SPAWN,,"Start the game by selecting a location on the map with enough space, and clicking the '{{GUI.EMBARK.START}}' button.",
@@ -496,6 +611,8 @@ MATERIAL,Used for specifying which material something is made out of,Material,[�
 
 MATERIAL_TYPE,,Type,タイプ
 MATERIAL_TYPE.ANY,For allowing any kind of material to be used,Any,任意です
+MATERIAL_TYPE.CLOTH.ADJECTIVE,," ",
+MATERIAL_TYPE.CLOTH.NOUN,," ",
 MATERIAL_TYPE.EARTH.ADJECTIVE,,Earthen,土だ
 MATERIAL_TYPE.EARTH.NOUN,,Earth,地球
 MATERIAL_TYPE.FOODSTUFF.NOUN,,Food,フード
@@ -504,6 +621,8 @@ MATERIAL_TYPE.METAL.ADJECTIVE,,Metallic,メタリック
 MATERIAL_TYPE.METAL.NOUN,,Metal,金属
 MATERIAL_TYPE.ORE.NOUN,This is only used as a noun,Ore,鉱石
 MATERIAL_TYPE.OTHER.NOUN,This isn't actually used in-game yet so won't be combined with other words,Other,その他の
+MATERIAL_TYPE.ROPE.ADJECTIVE,," ",
+MATERIAL_TYPE.ROPE.NOUN,," ",
 MATERIAL_TYPE.SEED.NOUN,For saying something is “made up of seed”,Seed,シード
 MATERIAL_TYPE.STONE.ADJECTIVE,,,
 MATERIAL_TYPE.STONE.NOUN,,Stone,ストーン
@@ -512,6 +631,32 @@ MATERIAL_TYPE.VITRIOL.ADJECTIVE,,Vitriol of,硫酸ドデシルナトリウム
 MATERIAL_TYPE.VITRIOL.NOUN,,Vitriol,ヴィトリオール
 MATERIAL_TYPE.WOOD.ADJECTIVE,,Wooden,木製
 MATERIAL_TYPE.WOOD.NOUN,,Wood,木材
+
+MEAT.BOAR_MEAT,,Boar,
+MEAT.CARP_MEAT.NOUN,,Carp,
+MEAT.CARP_MEAT.PLURAL,,Carp,
+MEAT.DEER_MEAT,,Deer,
+MEAT.DWARF_FLESH,,Dwarf flesh,
+MEAT.ELEPHANT_MEAT,,Elephant,
+MEAT.FOX_MEAT,,Fox,
+MEAT.PERCH_MEAT.NOUN,,Perch,
+MEAT.PERCH_MEAT.PLURAL,,Perch,
+MEAT.PIKE_MEAT.NOUN,,Pike,
+MEAT.PIKE_MEAT.PLURAL,,Pike,
+
+MECHANISM.FURNITURE.CONSUMING_POWER,,Working - consuming {{power}} power,
+MECHANISM.FURNITURE.CRAFTING_STATION_REQUIRES_POWER,,Working very slowly - not enough power,
+MECHANISM.FURNITURE.CRAFTING_STATION_REQUIRES_POWER.TOOLTIP,,This furniture requires an underground power connection to a power-producer such as a {{FURNITURE.WINDMILL}} or {{FURNITURE.WATERWHEEL}}.,
+MECHANISM.FURNITURE.PRODUCING_POWER,,Working - producing {{power}} power,
+MECHANISM.FURNITURE.REQUIRES_OUTSIDE_PLACEMENT,,This must be outside to function correctly,
+MECHANISM.FURNITURE.REQUIRES_POWER,,Disabled - not enough power,
+MECHANISM.FURNITURE.REQUIRES_POWER.TOOLTIP,,This furniture requires an underground power connection to a power-producer such as a {{FURNITURE.WINDMILL}} or {{FURNITURE.WATERWHEEL}}.,
+MECHANISM.FURNITURE.REQUIRES_POWER_GRID,,Disabled - connect to an underground power connection,
+MECHANISM.FURNITURE.REQUIRES_POWER_GRID.TOOLTIP,,This furniture requires an underground power connection - see the {{GUI.BUILD.POWER}} option in the {{GUI.BUILD_LABEL}} menu.,
+MECHANISM.STONE.GEAR.NOUN,,Gear assembly,
+MECHANISM.STONE.GEAR.TOOLTIP,,This contraption links up mechanical power in all 4 directions.,
+MECHANISM.WOODEN.SHAFT.NOUN,,Shaft,
+MECHANISM.WOODEN.SHAFT.TOOLTIP,,A wooden shaft links mechanical power in 2 directions.,
 
 MENU.CONTINUE_GAME,,Continue game,ゲームを続ける
 MENU.LOAD_GAME,,Load game,
@@ -577,6 +722,8 @@ NOTIFICATION.DEATH.SHORT_DESCRIPTION,,Died due to {{reason}},{{reason}} によ�
 NOTIFICATION.DEATH.TITLE,,Settler death,セトラー・デス
 NOTIFICATION.FIRE_STARTED.DESCRIPTION,,A fire has broken out in your settlement!,
 NOTIFICATION.FIRE_STARTED.TITLE,,Fire!,
+NOTIFICATION.FISH_EXHAUSTED.DESCRIPTION,,You have over-fished the river to such an extent that there are no more fish left. You will have to wait until the spawning season next spring for the fish to return.,
+NOTIFICATION.FISH_EXHAUSTED.TITLE,,Fish depopulated,
 NOTIFICATION.GAME_OVER.DESCRIPTION,,All things must come to an end. Your settlement lies abandoned.,すべてのものは終わらなければならない。 あなたの和解は捨てられています。
 NOTIFICATION.GAME_OVER.TITLE,,Game Over,ゲームオーバー
 NOTIFICATION.IMMIGRANTS_ARRIVED.DESCRIPTION,,The prosperity of your settlement has attracted a number of new immigrants to boost your population.,あなたの和解の繁栄は、あなたの人口を高めるために新しい移民の数を集めています。
@@ -589,6 +736,8 @@ NOTIFICATION.ROOFING_COLLAPSE.DESCRIPTION,,A roof has collapsed due to a lack of
 NOTIFICATION.ROOFING_COLLAPSE.TITLE,,Roof collapsed,
 NOTIFICATION.SETTLER_MENTAL_BREAK.DESCRIPTION,,The gruelling hardship has proven to be too much to handle for {{character}}.,過激な苦難は、{{character}} を処理するには多すぎることが証明されています。
 NOTIFICATION.SETTLER_MENTAL_BREAK.TITLE,,Mental break,精神崩壊
+NOTIFICATION.SETTLER_TANTRUM.DESCRIPTION,,{{character}} has become so unhappy that they are throwing a tantrum!,
+NOTIFICATION.SETTLER_TANTRUM.TITLE,,Tantrum!,
 
 ORE.BAUXITE.ADJECTIVE,,Bauxite,ボーキサイト
 ORE.BAUXITE.NOUN,,Bauxite,ボーキサイト
@@ -692,6 +841,8 @@ PRODUCT.BUCKET.PLURAL,,Buckets,バケツ
 PRODUCT.BUCKET.TOOLTIP,,A small container used to move liquids around by hand.,手で液体を動かすために使用される小さな容器。
 PRODUCT.CAULDRON,A large metal pot for cooking (common with Halloween),Cauldron,大釜だ
 PRODUCT.CAULDRON.TOOLTIP,,"Used by a {{PROFESSION.CHEF}} to prepare soup in a {{ROOMS.KITCHEN}}, where it is then moved to a {{ROOMS.FEASTING_HALL}}.",{{PROFESSION.CHEF}} が {{部屋.キッチン}} のスープを準備するために使用し、その後 {{部屋.FEASTING_HALL}} に移動します。
+PRODUCT.LINEN.NOUN,,Linen,
+PRODUCT.LINEN.PLURAL,,Linen,
 PRODUCT.LIQUID.TANK,,Tank,
 PRODUCT.LIQUID.TANK.TOOLTIP,,"This is a metal container used to store liquids, which must be crafted at the {{FURNITURE.FORGE}}.",
 PRODUCT.MILLSTONE,,Millstone,ミルストーン
@@ -699,6 +850,20 @@ PRODUCT.MILLSTONE.TOOLTIP,,Two large stone discs that are ground together to mil
 PRODUCT.RATION.NOUN,,Ration,[レイション
 PRODUCT.RATION.PLURAL,,Rations,「連合
 PRODUCT.RATION.TOOLTIP,,"These will last a long time to feed your settlers, but you will need other sources of food as a priority.",これらはあなたの入植者を養うために長い時間がかかりますが、優先事項として他の食糧源が必要になります。
+PRODUCT.ROPE.NOUN,,Rope,
+PRODUCT.ROPE.PLURAL,,Ropes,
+PRODUCT.STONE.GEAR.NOUN,,Gear,
+PRODUCT.STONE.GEAR.PLURAL,,Gears,
+PRODUCT.STONE.GEAR.TOOLTIP,,Used in the construction of mechanisms.,
+PRODUCT.STONE.PIPE.NOUN,,Pipe,
+PRODUCT.STONE.PIPE.PLURAL,,Pipes,
+PRODUCT.STONE.PIPE.TOOLTIP,,Used for liquids to flow between tiles underground.,
+PRODUCT.WOODEN.SHAFT.HORIZONTAL.NOUN,,Horizontal shaft,
+PRODUCT.WOODEN.SHAFT.HORIZONTAL.PLURAL,,Horizontal shafts,
+PRODUCT.WOODEN.SHAFT.HORIZONTAL.TOOLTIP,,Used to connect mechanisms which produce and require power.,
+PRODUCT.WOODEN.SHAFT.VERTICAL.NOUN,,Vertical shaft,
+PRODUCT.WOODEN.SHAFT.VERTICAL.PLURAL,,Vertical shafts,
+PRODUCT.WOODEN.SHAFT.VERTICAL.TOOLTIP,,Used to connect mechanisms which produce and require power.,
 
 PROFESSION.BAKER.VERB,,Baking,ベーキング
 PROFESSION.BLACKSMITH.FEMALE_NOUN,,Blacksmith,鍛冶屋
@@ -768,6 +933,11 @@ PROFESSION.WOODCUTTER.VERB,,Chopping,チョッピング
 QUOTA.FIXED_AMOUNT,,in total,
 QUOTA.PER_SETTLER,,per settler,
 
+RACE.BOAR.NOUN,,Wild boar,
+RACE.CARP.NOUN,,Carp,
+RACE.DEER.FEMALE_NOUN,,Doe,
+RACE.DEER.MALE_NOUN,,Stag,
+RACE.DEER.TOOLTIP,,A deer is a non-threatening herbivore which will flee at any sign of danger,
 RACE.DWARF.FEMALE_ADJECTIVE,,Dwarven,ドワーフ
 RACE.DWARF.FEMALE_NOUN,,Dwarf,ドワーフ
 RACE.DWARF.FEMALE_PLURAL,,Dwarves,ドワーフ
@@ -775,6 +945,11 @@ RACE.DWARF.MALE_ADJECTIVE,,Dwarven,ドワーフ
 RACE.DWARF.MALE_NOUN,The male and female forms are only for languages that need them,Dwarf,ドワーフ
 RACE.DWARF.MALE_PLURAL,Note that I'm going with Tolkein's spelling of “dwarves” rather than “dwarfs”,Dwarves,ドワーフ
 RACE.DWARF.TOOLTIP,,Dwarves are short and stocky humanoids. They are masters of working with stone and metal. Most dwarves distrust the sky and prefer to stay underground.,ドワーフは短く、ひっそりとしたヒューマノイドです。 彼らは石と金属を扱う巨匠です。 ほとんどのドワーフは空を不信にし、地下に滞在することを好む。
+RACE.ELEPHANT.NOUN,,Elephant,
+RACE.FOX.FEMALE_NOUN,,Vixen,
+RACE.FOX.MALE_NOUN,,Fox,
+RACE.PERCH.NOUN,,Perch,
+RACE.PIKE.NOUN,,Pike,
 
 RESOURCE.CRUSHED.VITRIOL.NOUN,,Vitriol,ヴィトリオール
 RESOURCE.CRUSHED.VITRIOL.PLURAL,,Vitriol,ヴィトリオール
@@ -790,6 +965,10 @@ RESOURCE.GEMS.UNREFINED.PLURAL,,Uncut gems,カットされていない宝石
 RESOURCE.GEMS.UNREFINED.TOOLTIP,,A hunk of rock containing gems ready to be cut and polished.,カットして研磨する準備ができている宝石を含む岩の塊です。
 RESOURCE.GRAIN.SACK.NOUN,,Grain (sack),
 RESOURCE.GRAIN.SACK.PLURAL,,Grain (sack),
+RESOURCE.HEMP.BUNDLE.NOUN,,Hemp bundle,
+RESOURCE.HEMP.BUNDLE.PLURAL,,Hemp bundles,
+RESOURCE.HEMP.FIBRE.BUNDLE.NOUN,,Hemp fibre bundle,
+RESOURCE.HEMP.FIBRE.BUNDLE.PLURAL,,Hemp fibre bundles,
 RESOURCE.LOGS.NOUN,,Log,[ログ]
 RESOURCE.LOGS.PLURAL,,Logs,ログ
 RESOURCE.LOGS.TOOLTIP,,"Sections of a tree that are most commonly prepared into {{RESOURCE.PLANKS.PLURAL}}, but have other uses as well.",{{RESOURCE.PLANKS.PLURAL}} に最もよく準備されているが、他の用途もある、ツリーのセクション。
@@ -829,6 +1008,8 @@ RESOURCE.STONE.UNREFINED.TOOLTIP,,A huge piece of stone that must be chiselled i
 RESOURCE.WHEAT.SACK.NOUN,,Wheat (sack),
 RESOURCE.WHEAT.SACK.PLURAL,,Wheat (sack),
 
+ROOMS.ARMOURY,,Armoury,
+ROOMS.ARMOURY.TOOLTIP,,Weapons and armour are created here,
 ROOMS.BEDROOM,,Bedroom,寝室
 ROOMS.BEDROOM.TOOLTIP,,"A place for your settlers to sleep. They prefer to have individual bedrooms that are at least 9 tiles in size, and preferably at least 13 tiles in size.",あなたの入植者が眠る場所。 彼らは、少なくとも9タイルのサイズで、好ましくは少なくとも13タイルのサイズの個々の寝室を有することを好む。
 ROOMS.BREWERY,,Brewery,
@@ -861,6 +1042,10 @@ ROOMS.STOCKPILE,,Stockpile,
 ROOMS.STOCKPILE.TOOLTIP,,This area stores different kinds of items depending on settings.,
 ROOMS.STOCKPILES,,Stockpiles,備蓄だ
 ROOMS.STOCKPILES.TOOLTIP,,Unused items are placed in stockpiles for easy access.,未使用のアイテムは、簡単にアクセスできるように備蓄に置かれます。
+ROOMS.TEXTILE_WORKSHOP,,Textile workshop,
+ROOMS.TEXTILE_WORKSHOP.TOOLTIP,,Processes {{SEED.HEMP_SEED}} into textiles for a variety of uses.,
+
+ROPE.HEMP-ROPE,,Hemp,
 
 RUSTED_SCRAP.NOUN,,Scrap,
 RUSTED_SCRAP.TOOLTIP,,These are the remains of an item that has completed corroded due to rust.,
@@ -886,6 +1071,8 @@ SEED.FIST_SPAWN,,Fist,拳だ
 SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,メタリックな味の黒青のキノコ。 それは、闇の時代からバードのグループにちなんで命名されています。
 SEED.GLOW_SPAWN,,Glow,グロー
 SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,光を放り出し、季節によって色が変わる魔法のマッシュルーム。
+SEED.HEMP_SEED,,Hemp,
+SEED.HEMP_SEED.TOOLTIP,,Used to produce rope and fabric after it hsa been processed.,
 SEED.HOPS_SEED,,Hops,ホップ
 SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,ビールの風味に使われる花。 {{シーズンスプリング}} に植える必要があります。
 SEED.MILTONIA_SPAWN,,Miltonia,ミルトニア
@@ -907,6 +1094,23 @@ SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally us
 
 SHRUB.DESCRIPTION,Shrub or bush should do,Bush,ブッシュ
 
+STATUS.ALCOHOL_WITHDRAWL,,Alcohol withdrawl,
+STATUS.BLEEDING,,Bleeding,
+STATUS.BLINDED,,Blind,
+STATUS.DEATH,,Dead,
+STATUS.DRUNK,,Drunk,
+STATUS.DYING_OF_HUNGER,,Dying of hunger,
+STATUS.DYING_OF_THIRST,,Dying of thirst,
+STATUS.EXHAUSTED,,Exhausted,
+STATUS.INTERNAL_BLEEDING,,Internal bleeding,
+STATUS.KNOCKED_UNCONSCIOUS,,Unconscious,
+STATUS.MOVEMENT_IMPAIRED,,Impaired movement,
+STATUS.ON_FIRE,,On fire,
+STATUS.POISONED,,Poisoned,
+STATUS.TEMPORARILY_BLINDED,,Temporarily blinded,
+STATUS.VERY_HUNGRY,,Very hungry,
+STATUS.VERY_THIRSTY,,Very thirsty,
+
 STOCKPILE.GROUP.FOOD,,Food,
 STOCKPILE.GROUP.FOOD.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,
 STOCKPILE.GROUP.FUEL,,Fuel,
@@ -917,6 +1121,8 @@ STOCKPILE.GROUP.RAW_MATERIALS,,Raw materials,
 STOCKPILE.GROUP.SEEDS,,Seeds,
 STOCKPILE.GROUP.TOOLS,,Tools,
 STOCKPILE.GROUP.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,
+STOCKPILE.GROUP.WEAPONS,,Weapons,
+STOCKPILE.GROUP.WEAPONS.TOOLTIP,,Stores harvested fruit and vegetables which can expire.,
 
 STONE.BASALT.ADJECTIVE,,Basalt,玄武岩
 STONE.BASALT.NOUN,,Basalt,玄武岩
@@ -1034,6 +1240,11 @@ VEGETABLE.FIST_MUSHROOM.TOOLTIP,,A black-blue mushroom with a metallic taste. It
 VEGETABLE.GLOW_MUSHROOM,,Glow mushroom,グローマッシュルーム
 VEGETABLE.GLOW_MUSHROOM.PLURAL,,Glow mushrooms,グローマッシュルーム
 VEGETABLE.GLOW_MUSHROOM.TOOLTIP,,A magic-infused mushroom that gives off light and changes colour with the seasons.,光を放り出し、季節によって色が変わる魔法のマッシュルーム。
+VEGETABLE.HEMP,,Hemp,
+VEGETABLE.HEMP.PLURAL,,Hemp,
+VEGETABLE.HEMP.TOOLTIP,,This is processed at the {{ROOMS.TEXTILE_WORKSHOP}} to a useful material.,
+VEGETABLE.HEMP_FIBRE,,Hemp fibre,
+VEGETABLE.HEMP_FIBRE.PLURAL,,Hemp fibre,
 VEGETABLE.HOPS,,Hops,ホップ
 VEGETABLE.HOPS.PLURAL,,Hops,ホップ
 VEGETABLE.HOPS.TOOLTIP,,A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,ビールの風味に使われる花。 {{シーズンスプリング}} に植える必要があります。
@@ -1078,6 +1289,13 @@ WALL.ORE.NOUN,,Ore,鉱石
 WALL.ROUGH_STONE.NOUN,,Rock wall,ロックウォール
 WALL.STONE_BLOCK.NOUN,,Smooth stone wall,滑らかな石の壁。
 WALL.WOODEN.NOUN,,Wood wall,木造壁
+
+WEAPON.BONE.ARROWS.NOUN,,Arrow,
+WEAPON.BONE.ARROWS.PLURAL,,Arrows,
+WEAPON.BOW,,Bow,
+WEAPON.METAL.ARROWS.NOUN,,Arrow,
+WEAPON.METAL.ARROWS.PLURAL,,Arrows,
+WEAPON.UNARMED,,Unarmed,
 
 WEATHER.TYPE.CLOUDY,,Cloudy & grey,
 WEATHER.TYPE.COLD_WINDS,,Cold winds,
