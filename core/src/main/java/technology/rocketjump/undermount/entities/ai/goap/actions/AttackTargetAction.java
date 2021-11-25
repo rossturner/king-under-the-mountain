@@ -232,6 +232,9 @@ public class AttackTargetAction extends Action {
 		Vector2 targetLocation = targetEntity.getLocationComponent().getWorldOrParentPosition();
 		if (targetEntity.getType().equals(FURNITURE)) {
 			targetLocation = neatestTileToFurniture(targetEntity, parent.parentEntity, gameContext);
+			if (targetLocation == null) {
+				targetLocation = targetEntity.getLocationComponent().getWorldOrParentPosition();
+			}
 			return targetLocation.dst(parent.parentEntity.getLocationComponent().getWorldOrParentPosition()) + 0.4f;
 		} else {
 			return targetLocation.dst(parent.parentEntity.getLocationComponent().getWorldOrParentPosition());

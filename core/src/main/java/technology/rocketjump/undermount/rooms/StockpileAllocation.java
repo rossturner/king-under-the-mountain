@@ -45,7 +45,7 @@ public class StockpileAllocation implements ChildPersistable {
 				}
 			} else if (entity.getType().equals(EntityType.CREATURE) && entity.getBehaviourComponent() instanceof CorpseBehaviour) {
 				CreatureEntityAttributes attributes = (CreatureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
-				if (raceCorpse.equals(attributes.getRace())) {
+				if (raceCorpse != null && raceCorpse.equals(attributes.getRace())) {
 					quantityInTile += 1;
 				}
 			}

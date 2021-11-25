@@ -1,3 +1,19 @@
+Alpha 8.1.8 - 25th November 2021
+
+- Wild animals can no longer move through doors, sorry to the civilized elephants
+- Fix for a crash when a creature died in a stockpile but wasn't supposed to be in that stockpile (how inconsiderate of them)
+- Fix for a crash when having a tantrum against a piece of furniture you're standing on top of
+- Fix for a crash when trying to describe crafting that is happening at a piece of furniture that has been deleted
+- Allowed for special characters in settlement names to work with save files
+- Fix for a crash with empty liquid zones
+- Fix for a crash when wild animals get extremely tired (someone has an over-zealous hunter I think)
+- Fix for a crash when an item is somehow created with no material for its main type
+
+Alpha 8.1.7 - 24th November 2021
+
+- Fix for a crash when processing modified translation files
+- Completing the tutorial now disables the tutorial in future games, so you can choose where to place your settlement
+
 Alpha 8.1.6 - 24th November 2021
 
 - Updated Spanish translation provided by Harlmorl

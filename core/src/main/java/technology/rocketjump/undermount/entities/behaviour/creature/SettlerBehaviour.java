@@ -121,7 +121,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 			newGoal.setAssignedJob(currentGoal.getAssignedJob());
 			newGoal.setAssignedHaulingAllocation(currentGoal.getAssignedHaulingAllocation());
 			newGoal.setLiquidAllocation(currentGoal.getLiquidAllocation());
-			if (newGoal.getAssignedHaulingAllocation() == null) {
+			if (newGoal.getAssignedHaulingAllocation() == null && currentGoal.getAssignedJob() != null) {
 				newGoal.setAssignedHaulingAllocation(currentGoal.getAssignedJob().getHaulingAllocation());
 			}
 			currentGoal = newGoal;

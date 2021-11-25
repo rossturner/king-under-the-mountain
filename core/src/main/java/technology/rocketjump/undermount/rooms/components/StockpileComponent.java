@@ -274,7 +274,7 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 		if (itemAtPosition == null && corpseAtPosition == null) {
 			return true; // nothing here so can place allocation
 		} else if (corpseAtPosition != null) {
-			return allocationAtPosition.getRaceCorpse().equals(((CreatureEntityAttributes) corpseAtPosition.getPhysicalEntityComponent().getAttributes()).getRace());
+			return allocationAtPosition.getRaceCorpse() != null && allocationAtPosition.getRaceCorpse().equals(((CreatureEntityAttributes) corpseAtPosition.getPhysicalEntityComponent().getAttributes()).getRace());
 		} else {
 			ItemEntityAttributes attributes = (ItemEntityAttributes) itemAtPosition.getPhysicalEntityComponent().getAttributes();
 			return attributes.getItemType().equals(allocationAtPosition.getItemType()) &&

@@ -317,6 +317,13 @@
     "hintId": "tutorial_final",
     "i18nKeys": [
       "TUTORIAL.FINAL.A"
-    ]
+    ],
+    "actions": [
+      {
+        "type": "DISABLE_TUTORIAL",
+        "buttonTextI18nKey": "HINT.BUTTON.DISMISS"
+      }
+    ],
+    "dismissable": false
   }
 ]

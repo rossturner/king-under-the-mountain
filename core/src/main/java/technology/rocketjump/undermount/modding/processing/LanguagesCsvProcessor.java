@@ -71,9 +71,14 @@ public class LanguagesCsvProcessor extends ModArtifactProcessor {
 						}
 						key = key.toUpperCase();
 
-						String value = csvRecord.get(columnIndices.get(language.getLabelEn().toUpperCase()));
+						if (columnIndices.containsKey(language.getLabelEn().toUpperCase())) {
+							Integer index = columnIndices.get(language.getLabelEn().toUpperCase());
+							if (index != null) {
+								String value = csvRecord.get(index);
 
-						addValue(language, key, value, keysToLanguagesToValues);
+								addValue(language, key, value, keysToLanguagesToValues);
+							}
+						}
 					}
 
 					parsedCsv.close();

@@ -15,7 +15,11 @@ public class Exhausted extends StatusEffect {
 
 	@Override
 	public void applyOngoingEffect(GameContext gameContext, MessageDispatcher messageDispatcher) {
-		parentEntity.getComponent(HappinessComponent.class).add(HappinessComponent.HappinessModifier.VERY_TIRED);
+		HappinessComponent happinessComponent = parentEntity.getComponent(HappinessComponent.class);
+		if (happinessComponent != null) {
+			// Might be an animal with no happiness component
+			happinessComponent.add(HappinessComponent.HappinessModifier.VERY_TIRED);
+		}
 	}
 
 	@Override

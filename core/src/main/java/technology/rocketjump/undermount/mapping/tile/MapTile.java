@@ -10,6 +10,7 @@ import technology.rocketjump.undermount.assets.model.FloorType;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.doors.Doorway;
 import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
+import technology.rocketjump.undermount.entities.behaviour.creature.CreatureBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.EntityType;
 import technology.rocketjump.undermount.entities.model.physical.furniture.DoorwayEntityAttributes;
@@ -196,6 +197,10 @@ public class MapTile implements Persistable {
 			for (Entity entity : getEntities()) {
 				if (entity.getType().equals(EntityType.FURNITURE)) {
 					if (entity.getPhysicalEntityComponent().getAttributes() instanceof DoorwayEntityAttributes) {
+						if (entity.getBehaviourComponent() instanceof CreatureBehaviour) {
+							// creatures can't path through doors
+							return false;
+						}
 						continue;
 					}
 					FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();

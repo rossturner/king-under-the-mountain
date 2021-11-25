@@ -95,6 +95,10 @@ public class JobTarget {
 	public GameMaterial getTargetMaterial() {
 		switch (type) {
 			case CRAFTING_RECIPE: {
+				if (entity == null) {
+					// Might happen if entity is deleted?
+					return NULL_MATERIAL;
+				}
 				InventoryComponent craftingStationInventory = entity.getComponent(InventoryComponent.class);
 				if (craftingRecipe.getMaterialTypesToCopyOver() != null && !craftingRecipe.getMaterialTypesToCopyOver().isEmpty()) {
 					for (QuantifiedItemTypeWithMaterial requirement : craftingRecipe.getInput()) {

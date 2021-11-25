@@ -339,6 +339,9 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 				.filter(zone -> {
 					if (zone.getClassification().isConstructed()) {
 						// Check there is enough to requestAllocation
+						if (zone.isEmpty()) {
+							return false;
+						}
 						MapTile targetTile = gameContext.getAreaMap().getTile(zone.iterator().next().getTargetTile());
 						if (targetTile == null) {
 							return false;

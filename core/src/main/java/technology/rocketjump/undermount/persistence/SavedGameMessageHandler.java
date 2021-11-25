@@ -192,12 +192,13 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 		messageDispatcher.dispatchMessage(0.05f, MessageType.HIDE_AUTOSAVE_PROMPT);
 	}
 
-	public void save(String saveFileName, boolean asynchronous) throws Exception {
+	public void save(String settlementName, boolean asynchronous) throws Exception {
 		if (savingInProgress || disposed) {
 			return;
 		} else {
 			savingInProgress = true;
 		}
+		String saveFileName = toAlphanumeric(settlementName);
 		backgroundTaskManager.waitForOutstandingTasks();
 
 		SavedGameStateHolder stateHolder = new SavedGameStateHolder();
@@ -283,6 +284,16 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 		} else {
 			writeToDisk.call();
 		}
+	}
+
+	private String toAlphanumeric(String settlementName) {
+		StringBuilder result = new StringBuilder();
+		for (char c : settlementName.toCharArray()) {
+			if (Character.isLetterOrDigit(c)) {
+				result.append(c);
+			}
+		}
+		return result.toString();
 	}
 
 	private void writeJsonToFile(JSONObject json, File targetFile) throws IOException {

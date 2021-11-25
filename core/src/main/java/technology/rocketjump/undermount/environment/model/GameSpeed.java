@@ -5,8 +5,8 @@ public enum GameSpeed {
 	PAUSED("pause", 0),
 	NORMAL("play", 1),
 	SPEED2("speed2", 2),
-	SPEED3("speed3", 5),
-	SPEED4("speed4", 8),
+	SPEED3("speed3", 4),
+	SPEED4("speed4", 7),
 
 	VERY_SLOW(null, 0.25f),
 	SPEED5(null, 18);

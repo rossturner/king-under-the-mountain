@@ -316,7 +316,10 @@
   "hintId" : "tutorial_final",
   "i18nKeys" : [ "TUTORIAL.FINAL.A" ],
   "progressDescriptors" : [ ],
-  "actions" : [ ],
+  "actions" : [ {
+    "type" : "DISABLE_TUTORIAL",
+    "buttonTextI18nKey" : "HINT.BUTTON.DISMISS"
+  } ],
   "triggers" : [ ],
-  "dismissable" : true
+  "dismissable" : false
 } ]

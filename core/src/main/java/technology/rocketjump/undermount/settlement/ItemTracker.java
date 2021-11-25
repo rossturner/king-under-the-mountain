@@ -1,6 +1,7 @@
 package technology.rocketjump.undermount.settlement;
 
 import com.google.inject.Singleton;
+import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.components.ItemAllocationComponent;
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityAttributes;
@@ -40,6 +41,10 @@ public class ItemTracker implements GameContextAware {
 		ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 		ItemType itemType = attributes.getItemType();
 		GameMaterial material = attributes.getMaterial(itemType.getPrimaryMaterialType());
+		if (material == null) {
+			Logger.error("Attempting to track an item which does not have a material for its primary type");
+			return;
+		}
 		Map<GameMaterial, Map<Long, Entity>> materialsToEntities = itemTypesToMaterialsToEntitiesMap.computeIfAbsent(itemType, a -> new ConcurrentHashMap<>());
 		Map<Long, Entity> entityMap = materialsToEntities.computeIfAbsent(material, a -> new ConcurrentHashMap<>());
 		entityMap.put(entity.getId(), entity);
