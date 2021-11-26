@@ -1,3 +1,12 @@
+Alpha 8.1.9 - 26th November 2021
+
+- Fixed the game being stretched too large on Windows machines which have "Scale and layout" display setting set higher than 100%
+- Stockpiles now use the group they were placed with as part of their room name
+- By popular demand, you can now build furniture in stockpiles and farm plots, try not to put stuff that blocks tiles in there!
+- Improved construction description to only mention missing requirements when an item can't be found
+- Disabled Japanese, Chinese and Korean translations as these were machine generated and not fit for purpose (a Chinese translation is in development)
+- Updated Spanish translation
+
 Alpha 8.1.8 - 25th November 2021
 
 - Wild animals can no longer move through doors, sorry to the civilized elephants

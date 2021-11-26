@@ -28,6 +28,7 @@ import technology.rocketjump.undermount.ui.widgets.IconButtonFactory;
 import java.util.Collection;
 import java.util.List;
 
+import static technology.rocketjump.undermount.rooms.constructions.ConstructionState.SELECTING_MATERIALS;
 import static technology.rocketjump.undermount.ui.Selectable.SelectableType.CONSTRUCTION;
 
 @Singleton
@@ -89,16 +90,17 @@ public class ConstructionSelectedGuiView implements GuiView, GameContextAware {
 			descriptionTable.row();
 			descriptionTable.add(new I18nTextWidget(i18nTranslator.getConstructionStatusDescription(construction), uiSkin, messageDispatcher)).left();
 			descriptionTable.row();
-			List<HaulingAllocation> allocatedItems = construction.getIncomingHaulingAllocations();
-			for (QuantifiedItemTypeWithMaterial requirement : construction.getRequirements()) {
-				if (requirement.getMaterial() != null) {
-					int numberAllocated = getAllocationAmount(requirement.getItemType(), allocatedItems, construction.getPlacedItemAllocations().values());
-					descriptionTable.add(new I18nTextWidget(i18nTranslator.getItemAllocationDescription(numberAllocated, requirement), uiSkin, messageDispatcher)).left();
-					descriptionTable.row();
+			if (!construction.getState().equals(SELECTING_MATERIALS)) {
+				List<HaulingAllocation> allocatedItems = construction.getIncomingHaulingAllocations();
+				for (QuantifiedItemTypeWithMaterial requirement : construction.getRequirements()) {
+					if (requirement.getMaterial() != null) {
+						int numberAllocated = getAllocationAmount(requirement.getItemType(), allocatedItems, construction.getPlacedItemAllocations().values());
+						descriptionTable.add(new I18nTextWidget(i18nTranslator.getItemAllocationDescription(numberAllocated, requirement), uiSkin, messageDispatcher)).left();
+						descriptionTable.row();
+					}
 				}
 			}
 
-//			descriptionTable.row();
 		}
 	}
 

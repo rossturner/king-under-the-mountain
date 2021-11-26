@@ -580,15 +580,6 @@ public class GameInteractionStateContainer implements GameContextAware {
 				if (roomTile == null || !attributes.getFurnitureType().getValidRoomTypes().contains(roomTile.getRoom().getRoomType())) {
 					return false;
 				}
-			} else {
-				// If this is place-anywhere, disallow placement inside stockpiles and at river edge
-				RoomTile roomTile = tileToCheck.getRoomTile();
-				if (roomTile != null) {
-					if (roomTile.getRoom().getRoomType().getFurnitureNames().isEmpty()) {
-						// Room doesn't have any type of furniture specified, so is probably a type of room which doesn't want any furniture at all e.g. stockpile or farm plot
-						return false;
-					}
-				}
 			}
 
 			if (!isRiverEdge(tileToCheck)) {

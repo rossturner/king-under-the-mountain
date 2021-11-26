@@ -547,4 +547,8 @@ public class StockpileComponent extends RoomComponent implements SelectableDescr
 	public Room getParent() {
 		return parent;
 	}
+
+	public Set<StockpileGroup> getEnabledGroups() {
+		return enabledGroups;
+	}
 }

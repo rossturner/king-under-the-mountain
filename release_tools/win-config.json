@@ -6,7 +6,7 @@
 		"../desktop/build/libs/undermount-desktop.jar"
 	],
 	"mainclass": "technology.rocketjump.undermount.launcher.DesktopLauncher",
-	"vmargs": ["Xms1200m"],
+	"vmargs": ["Xms1200m", "-Dsun.java2d.dpiaware=true"],
 	"resources": [
 		"../core/seed.txt",
 		"../core/changelog.txt",

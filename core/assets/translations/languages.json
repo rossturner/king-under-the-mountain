@@ -148,7 +148,7 @@
   "icon" : "Japan",
   "fallback" : "en-gb",
   "filename" : "japanese.csv",
-  "enabled" : true,
+  "enabled" : false,
   "breakAfterLineLength" : 20,
   "fontName" : "NotoSansCJKjp-Bold.otf"
 }, {
@@ -158,7 +158,7 @@
   "icon" : "China",
   "fallback" : "en-gb",
   "filename" : "simplified-chinese.csv",
-  "enabled" : true,
+  "enabled" : false,
   "breakAfterLineLength" : 20,
   "fontName" : "NotoSansCJKjp-Bold.otf"
 }, {
@@ -168,7 +168,7 @@
   "icon" : "South-Korea",
   "fallback" : "en-gb",
   "filename" : "korean.csv",
-  "enabled" : true,
+  "enabled" : false,
   "breakAfterLineLength" : 20,
   "fontName" : "NotoSansCJKjp-Bold.otf"
 } ]

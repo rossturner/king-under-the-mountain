@@ -172,9 +172,9 @@ FUEL.SACK,,Fuel,Combustible
 FUEL.SACK.TOOLTIP,,"Fuel is required in the production of metal, both by the {{FURNITURE.BLOOMERY_FURNACE}} and the {{FURNITURE.FORGE}}.","Se requiere combustible en la producción de metal, tanto para la {{Furniture.BLOOMERY_FURENT}} como para la {{Furniture.FORGE}}."
 ,,,
 FURNITURE.BAKERS_WORKTOP,,Baker's worktop,Encimera de panadero
-FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,Un {{PROFESSION.CHEF}} trabaja aquí para convertir {{RESOURCE.FloUR.SACK.PLURAL}} en {{IngreDIENT.GRAST}}.
+FURNITURE.BAKERS_WORKTOP.TOOLTIP,,A {{PROFESSION.CHEF}} works here to turn {{RESOURCE.FLOUR.SACK.PLURAL}} into {{INGREDIENT.DOUGH}}.,Un {{PROFESSION.CHEF}} trabaja aquí para convertir {{RESOURCE.FLOUR.SACK.PLURAL}} en {{INGREDIENT.DOUGH}}.
 FURNITURE.BAKING_OVEN,For the baking of bread,Baker's oven,Horno de panadería
-FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,Un {{PROFESSION.CHEF}} hornea aquí con {{Ingredient.masa} preparada.
+FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using prepared {{INGREDIENT.DOUGH}}.,Un {{PROFESSION.CHEF}} hornea aquí con {{INGREDIENT.DOUGH}} preparada.
 FURNITURE.BEER_TAPPER,,Beer tapper,Grifo de cerveza
 FURNITURE.BEER_TAPPER.STATE.BEER_AVAILABLE,,Beer is available,Hay cerveza disponible
 FURNITURE.BEER_TAPPER.STATE.BEER_BARREL_INCOMING,,A beer barrel is on the way,El barril de cerveza está en camino
@@ -182,9 +182,9 @@ FURNITURE.BEER_TAPPER.STATE.BEER_EXHAUSTED,,The beer has all gone!,¡La cerveza 
 FURNITURE.BEER_TAPPER.STATE.IDLE,,Idle (no beer available),A la espera (no hay cerveza disponible)
 FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,Aqui es donde se sirve la {{LIQUID.BEER}}.
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,Horno de copela
-FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,Un {{PROFESSION.BLACKSMITH}} utiliza este horno manual para convertir {{RESOURCE.ORE.CLUSH.PLURAL}} y {{FUEL.SACK}} en {{RESOURCE.METAL.INTOT.PLURAL}} {{MATERIAL_TYPE.METAL.ADJECTIVE}}.
+FURNITURE.BLOOMERY_FURNACE.TOOLTIP,,A {{PROFESSION.BLACKSMITH}} uses this hand-operated furnace to turn {{RESOURCE.ORE.CRUSHED.PLURAL}} and {{FUEL.SACK}} into {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}}.,Un {{PROFESSION.BLACKSMITH}} utiliza este horno manual para convertir {{RESOURCE.ORE.CRUSHED.PLURAL}} y {{FUEL.SACK}} en {{RESOURCE.METAL.INGOT.PLURAL}} {{MATERIAL_TYPE.METAL.ADJECTIVE}}.
 FURNITURE.BREW_KETTLE,,Brew kettle,Olla de cocción
-FURNITURE.BREW_KETTLE.TOOLTIP,,This is used to produce the final wort (unfermented beer) using {{VEGETABLE.HOPS}} and wort from the {{FURNITURE.MASH_TUN}}.,Se usa para producir el mosto cervecero (cerveza sin fermentar) usando {{VEGETABLE.HOPS}} y mosto de malta del {{FURNITURE.MASH_TUN}}.
+FURNITURE.BREW_KETTLE.TOOLTIP,,This is used to produce the final wort (unfermented beer) using {{VEGETABLE.HOPS}} and wort from the {{FURNITURE.MASH_TUN}}.,Se usa para producir el mosto cervecero (cerveza sin fermentar) usando {{VEGETABLE.HOPS}} y mosto de malta de la {{FURNITURE.MASH_TUN}}.
 FURNITURE.BUTCHERY_WORKTOP,,Butchery worktop,Encimera de carnicero
 FURNITURE.BUTCHERY_WORKTOP.TOOLTIP,,Fish and animal carcasses are prepared here into usable meat.,Aquí se despiezan pescados y animales para obtener su carne
 FURNITURE.CARPENTRY_WORKBENCH,,Carpentry workbench,Mesa de trabajo de carpintero
@@ -195,7 +195,7 @@ FURNITURE.CHAIR,,Chair,Silla
 FURNITURE.CHARCOAL_CLAMP,,Charcoal clamp,Pira de carbón
 FURNITURE.CHARCOAL_CLAMP.TOOLTIP,,"This is a pile of {{RESOURCE.LOGS.PLURAL}} covered with {{MATERIAL_TYPE.EARTH}} and slowly burned to produce {{ORE.CHARCOAL.NOUN}}, which can then be used as {{FUEL.SACK}}.","Se trata de una pila de {{RESOURCE.LOGS.PLURAL}} cubierta con {{MATERIAL_TYPE.EARTH}} y que se quema lentamente para producir {{ORE.CHARCOAL.NOUN}}, que luego se puede utilizar como {{FUEL.SACK}}."
 FURNITURE.COKE_OVEN,,Coke oven,Horno de coque
-FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,Un horno de coque convierte {{ORE.BUTMINOUS_COAL.NOUN}} en {{ORE.COKE.NOUN}} para que pueda usarse como {{FUEL.SACK}}.
+FURNITURE.COKE_OVEN.TOOLTIP,,A coke oven converts {{ORE.BITUMINOUS_COAL.NOUN}} into {{ORE.COKE.NOUN}} so that it can be used as {{FUEL.SACK}}.,Un horno de coque convierte {{ORE.BITUMINOUS_COAL.NOUN}} en {{ORE.COKE.NOUN}} para que pueda usarse como {{FUEL.SACK}}.
 FURNITURE.DESCRIPTION,"E.g. ""Granite stonemason workbench""",{{materialType.adjective}} {{furnitureType.noun}},{{furnitureType.noun}} {{materialType.adjective}}
 FURNITURE.DESCRIPTION.GENERIC_PROGRESS,,Progress to completion: {{progress}}%,Progreso hasta la finalización: {{progress}}%
 FURNITURE.DESCRIPTION.MUSHROOM_INNOCULATION_IN_PROGRESS,,Progress to complete innoculation: {{progress}}%,Progreso para completar la inoculación: {{progress}}%
@@ -206,13 +206,13 @@ FURNITURE.DESCRIPTION.WAITING_FOR_MUSHROOM_SPAWN,,Waiting to be injected with mu
 FURNITURE.FEASTING_TABLE,A very large table for a feast,Feasting table,Mesa para banquetes
 FURNITURE.FEASTING_TABLE.TOOLTIP,,"With a {{FURNITURE.CHAIR}} in place, your settlers will enjoy their meals at this table.","Con una {{Furniture.CHAIR}} a su lado, tus colonos disfrutarán de sus comidas en esta mesa."
 FURNITURE.FERMENTATION_TANK,,Fermentation tank,Cuba de fermentación
-FURNITURE.FERMENTATION_TANK.TOOLTIP,,This is where {{LIQUID.HOPPED_WORT}} is fermented into {{LIQUID.BEER}}.,Aquí es donde se fermentan el {{LIQUID.HOPPED_WORT}} para producir {{LIQUID.BEER}}.
+FURNITURE.FERMENTATION_TANK.TOOLTIP,,This is where {{LIQUID.HOPPED_WORT}} is fermented into {{LIQUID.BEER}}.,Aquí es donde se fermenta el {{LIQUID.HOPPED_WORT}} para producir {{LIQUID.BEER}}.
 FURNITURE.FLETCHERS_WORKBENCH,,Fletcher's workbench,Mesa de emplumado de flechas
 FURNITURE.FLETCHERS_WORKBENCH.TOOTIP,,This is a crafting station for ranged weapons and ammunition,Esto es una mesa de trabajo para la fabricación de armas a distancia y munición
 FURNITURE.FLOUR_MILL,This is a table with a hand-operated flour mill stone on top,Gristmill,Molino de grano
-FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,El molinillo muele {{VEGETADABLE WHEIGH}} para obtener {{RESOURCE.FloUR.SACK.NOUN}} que puede ser utilizada por un {{PROFESSION.CHEF}}.
+FURNITURE.FLOUR_MILL.TOOLTIP,,The gristmill grinds {{VEGETABLE.WHEAT}} into {{RESOURCE.FLOUR.SACK.NOUN}} so that it can be used by a {{PROFESSION.CHEF}}.,El molinillo muele {{VEGETABLE.WHEAT}} para obtener {{RESOURCE.FLOUR.SACK.NOUN}} que puede ser utilizada por un {{PROFESSION.CHEF}}.
 FURNITURE.FORGE,,Forge,Forja
-FURNITURE.FORGE.TOOLTIP,,This is where a {{PROFESSION.BLACKSMITH}} works with {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} and {{FUEL.SACK}} to craft items and weapons.,Aquí es donde un {{PROFESSION.BLACKSMITH}} trabaja con {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} y {{FUEL.SACK}} para crear artículos y armas.
+FURNITURE.FORGE.TOOLTIP,,This is where a {{PROFESSION.BLACKSMITH}} works with {{MATERIAL_TYPE.METAL.ADJECTIVE}} {{RESOURCE.METAL.INGOT.PLURAL}} and {{FUEL.SACK}} to craft items and weapons.,Aquí es donde un {{PROFESSION.BLACKSMITH}} trabaja con {{RESOURCE.METAL.INGOT.PLURAL}} {{MATERIAL_TYPE.METAL.ADJECTIVE}} y {{FUEL.SACK}} para crear artículos y armas.
 FURNITURE.GRAVE,,Grave,Tumba
 FURNITURE.GRAVE.TOOLTIP,,A hastily-dug grave for deceased settlers that can only be placed in {{MATERIAL_TYPE.EARTH}}.,Una tumba excavada apresuradamente para colonos fallecidos que solo se puede colocar en {{MATERIAL_TYPE.EARTH}}.
 FURNITURE.KITCHEN_WORKTOP,Simple piece of furniture in a kitchen used to hold ingredients on top of it,Kitchen worktop,Encimera de cocina
@@ -228,17 +228,17 @@ FURNITURE.MASH_TUN.TOOLTIP,,This is used to produce wort (unfermented beer) from
 FURNITURE.MUSHROOM_LOG,,Mushroom log,Tronco de setas
 FURNITURE.MUSHROOM_LOG.TOOLTIP,,"A log that has been injected with {{INGREDIENT.MUSHROOM.SPAWN.PLURAL}} to produce several harvests of delicious, juicy mushrooms.",Un tronco que ha sido inoculado con {{Ingredient.MUSHROOM.SPAWN.PLURAL}} para producir varias cosechas de hongos deliciosos y jugosos.
 FURNITURE.MUSHROOM_SHOCK_TANK,This is a trough of water used to immerse mushroom logs in for a period of time,Shock tank,Tanque de choque
-FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to ""shock"" the mushroom colony and encourage it to grow mushrooms.","Después de la inoculación, se coloca un {{Furniture.MUSHROOM_LOG}} en este tanque para ""impactar"" a la colonia de hongos y animarla a cultivar hongos."
+FURNITURE.MUSHROOM_SHOCK_TANK.TOOLTIP,,"After innoculation, a {{FURNITURE.MUSHROOM_LOG}} is placed in this tank to ""shock"" the mushroom colony and encourage it to grow mushrooms.","Después de la inoculación, se coloca un {{Furniture.MUSHROOM_LOG}} en este tanque para ""impactar"" a la colonia de hongos y animarla a producir setas."
 FURNITURE.ORE_CRUSHING_STATION,,Ore crushing station,Estación de triturado de mineral
-FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,El {{RESOURCE.ORE.UNREFINED.PLURAL}} bruto se tritura a un tamaño más trabajable para que se pueda utilizar en la {{Furniture.BLOOMERY_FURNE}}.
+FURNITURE.ORE_CRUSHING_STATION.TOOLTIP,,Raw {{RESOURCE.ORE.UNREFINED.PLURAL}} is crushed to a more workable size so that it can be used in a {{FURNITURE.BLOOMERY_FURNACE}}.,Los {{RESOURCE.ORE.UNREFINED.PLURAL}} se tritura a un tamaño más trabajable para que se pueda utilizar en la {{FURNITURE.BLOOMERY_FURNE}}.
 FURNITURE.PILLAR,A pillar used to support a roof,Pillar,Pilar
 FURNITURE.PILLAR.TOOLTIP,,A pillar is required to stop large mined-out areas from collapsing. An area of 7x7 tiles that have been mined without any pillars or other supports in place will eventually collapse.,Se requiere un pilar para evitar el colapso de grandes áreas minadas. Un área de 7 x 7 casillas excavada sin pilares u otros soportes colapsará tarde o temprano.
 FURNITURE.RETTING_TANK,,Retting tank,Tanque de enriado
-FURNITURE.RETTING_TANK.TOOLTIP,,This is used to process raw {{VEGETABLE.HEMP}} into hemp fibre that can be worked into useful materials.,Se utiliza para procesar {VEGETABLE.HEMP}} bruto y obtener fibras de cáñamo que pueden ser trabajadas para crear materiales útiles.
+FURNITURE.RETTING_TANK.TOOLTIP,,This is used to process raw {{VEGETABLE.HEMP}} into hemp fibre that can be worked into useful materials.,Se utiliza para procesar {{VEGETABLE.HEMP}} bruto y obtener fibras de cáñamo que pueden ser trabajadas para crear materiales útiles.
 FURNITURE.SARCOPHAGUS,A stone tomb,Sarcophagus,Sarcófago
 FURNITURE.SARCOPHAGUS.TOOLTIP,,This elaborate stone container is the final resting place of a deceased settler.,Este elaborado recipiente de piedra es el lugar de descanso final de un colono fallecido.
 FURNITURE.SERVING_TABLE,A table used to hold food for serving,Serving table,Mesa para servir
-FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.,{{PRODUCT.BREAD.LOAF.PLURAL}} se colocan aquí para servir después de ser horneados en un {{Furniture.BAKING_Oven}}.
+FURNITURE.SERVING_TABLE.TOOLTIP,,{{PRODUCT.BREAD.LOAF.PLURAL}} are placed here for serving after being baked in a {{FURNITURE.BAKING_OVEN}}.,Las {{PRODUCT.BREAD.LOAF.PLURAL}} se colocarán aquí para ser servidas tras haber sido horneadas en un {{FURNITURE.BAKING_OVEN}}.
 FURNITURE.SINGLE_BED,,Bed,Cama
 FURNITURE.SINGLE_BED.TOOLTIP,,A bed is the best place for a comfortable night's rest. ,Una cama es el mejor lugar para una noche de descanso confortable.
 FURNITURE.SINGLE_DOOR,,Door,Puerta
@@ -409,7 +409,7 @@ GUI.EMBARK.DISCORD_LINK,,Click here to join our Discord community,Haz click aqu�
 GUI.EMBARK.MAP_SEED,,Map seed:,Semilla del mapa:
 GUI.EMBARK.SETTLEMENT_NAME,,Settlement name:,Nombre del asentamiento:
 GUI.EMBARK.START,,Begin!,¡Empezar!
-GUI.EMBARK.TITLE,,Embark Options,Opciones de embarque
+GUI.EMBARK.TITLE,,Embark Options,Opciones de inicio
 GUI.EMPTY_CONTAINER_LABEL,This should be as short as possible,Empty,Vacío
 GUI.EMPTY_CONTAINER_LABEL.BEING_ACTIONED,,Contents are being emptied.,Vaciando contenidos
 GUI.EMPTY_CONTAINER_LABEL.HINT,,Dump the contents of this container on the ground.,Vaciar el contenido en el suelo.
@@ -475,7 +475,7 @@ GUI.ORDERS.HARVEST_PLANTS,This should be as short as possible,Harvest,Cosechar
 GUI.ORDERS.HUNT,This should be as short as possible - used to select animals to be hunted,Hunt,Cazar
 GUI.ORDERS.HUNT.TOOLTIP,,This order is used to select animals to be hunted.,Esta orden se usa para seleccionar los animales a cazar
 GUI.ORDERS.MINE,This should be as short as possible,Mine,Excavar
-GUI.ORDERS_LABEL,This should be as short as possible,Orders,Pedidos 
+GUI.ORDERS_LABEL,This should be as short as possible,Orders,Órdenes 
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,Un puente debe cubrir ambos lados del río y tener al menos 3x3 casillas de tamaño
 GUI.PRIORITY_LABEL,This should be as short as possible,Priority,Prioridad
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,Eliminar
@@ -997,7 +997,7 @@ RESOURCE.PLANKS.PLURAL,,Planks,Tablas
 RESOURCE.PLANKS.TOOLTIP,,Sections of wood of a fixed size so they can be easily used in constructions and crafting.,Secciones de madera de tamaño fijo para que se puedan utilizar fácilmente en construcciones y manualidades.
 RESOURCE.SHOCKED.MUSHROOM.LOG.NOUN,,Mushroom log,Tronco de setas
 RESOURCE.SHOCKED.MUSHROOM.LOG.PLURAL,,Mushroom logs,Troncos de setas
-RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,"This mushroom-infused log has been ""shocked"" in water to encourage the mushrooms to develop and should produce a harvest soon.",Este tronco infundido con hongos ha sido ""chocado"" en el agua para alentar el desarrollo de los hongos y debería producir una cosecha pronto.
+RESOURCE.SHOCKED.MUSHROOM.LOG.TOOLTIP,,"This mushroom-infused log has been ""shocked"" in water to encourage the mushrooms to develop and should produce a harvest soon.",Este tronco infundido con hongos ha sido ""chocado"" en el agua para alentar el desarrollo de setas y debería producir una cosecha pronto.
 RESOURCE.STONE.BLOCK.NOUN,,Block,Bloque
 RESOURCE.STONE.BLOCK.PLURAL,,Blocks,Bloques
 RESOURCE.STONE.BLOCK.TOOLTIP,,Stone that has been shaped into a cube so that is can be easily used in construction or crafting.,Piedra que ha sido moldeada en un cubo para que se pueda utilizar fácilmente en la construcción o la artesanía.
@@ -1018,13 +1018,13 @@ ROOMS.BRIDGE.TOOLTIP,,Placed across the river to allow access to the other side.
 ROOMS.CARPENTRY_WORKSHOP,,Carpentry workshop,Taller de carpintería
 ROOMS.CARPENTRY_WORKSHOP.TOOLTIP,,This workshop produces most wooden tools and items.,Este taller produce la mayoría de herramientas y artículos de madera.
 ROOMS.COMPONENT.STOCKPILE.DESCRIPTION,,{{allocated}} of {{total}} spaces currently in use,{{allocated}} de {{total}} espacios actualmente en uso
-ROOMS.EARTHWORKS,,Earthworks,Movimiento de tierras
+ROOMS.EARTHWORKS,,Earthworks,Solar
 ROOMS.EARTHWORKS.TOOLTIP,,An outdoor area for large constructions.,Una zona exterior para grandes construcciones.
 ROOMS.FARM,,Farm plot,Huerto
 ROOMS.FARM.PLURAL,,Farm plots,Huertos
 ROOMS.FARM.TOOLTIP,,Grows crops using {{INGREDIENT.SEEDS.PLURAL}}. Must be placed on {{MATERIAL_TYPE.EARTH.NOUN}}.,Crece cultivos usando {{Ingredient.SEEDS.PLURAL}}. Debe colocarse en la {{MATERIAL_TYPE.EARTH.NOUN}}.
 ROOMS.FEASTING_HALL,,Feasting hall,Salón de banquetes 
-ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!","¡Un lugar para que los colonos se reúnan para comer, beber y alegrarse!"
+ROOMS.FEASTING_HALL.TOOLTIP,,"A place for settlers to gather to eat, drink and be merry!","¡Un lugar para que los colonos se reúnan para comer, beber y celebrar!"
 ROOMS.GRAVEYARD,,Graveyard,Cementerio
 ROOMS.GRAVEYARD.TOOLTIP,,Deceased settlers are laid to rest here.,Los colonos fallecidos descansan aquí.
 ROOMS.KITCHEN,,Kitchen,Cocina
@@ -1054,13 +1054,13 @@ SEASON.SPRING,,Spring,Primavera
 SEASON.SUMMER,,Summer,Verano
 SEASON.WINTER,,Winter,Invierno
 ,,,
-SEED.BARLEY_SEED,,Barley,de cebada
-SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un grano utilizado sólo en la producción de cerveza. Se puede plantar en {{SEASON.SPRING}}, {SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
+SEED.BARLEY_SEED,,Barley,Cebada
+SEED.BARLEY_SEED.TOOLTIP,{{VEGETABLE.BARLEY.TOOLTIP}},"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un grano utilizado sólo en la producción de cerveza. Se puede plantar en {{SEASON.SPRING}}, {{SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
 SEED.BERSERKER_MUSHROOM_SPAWN,,Berserker,Berserker
 SEED.BERSERKER_MUSHROOM_SPAWN.TOOLTIP,{{VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP}},A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,Un hongo con una caperuza rosa-roja que lleva manchas blancas. Tiene propiedades alucinógenas que los guerreros usan a veces para prepararse para la batalla.
-SEED.CARROT_SEED,,Carrot,de zanahoria
-SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un vegetal de raíz resistente que sobrevive a las heladas del {{SEASON.WINTER}}. Las zanahorias crecen rápidamente, pero solo producen una pequeña cosecha. Se puede plantar en {{SEASON.SPRING}}, {SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
-SEED.CORN_SEED,,Corn,de maíz
+SEED.CARROT_SEED,,Carrot,Zanahoria
+SEED.CARROT_SEED.TOOLTIP,{{VEGETABLE.CARROT.TOOLTIP}},"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un vegetal de raíz resistente que sobrevive a las heladas del {{SEASON.WINTER}}. Las zanahorias crecen rápidamente, pero solo producen una pequeña cosecha. Se puede plantar en {{SEASON.SPRING}}, {{SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
+SEED.CORN_SEED,,Corn,Maíz
 SEED.CORN_SEED.TOOLTIP,{{VEGETABLE.CORN.TOOLTIP}},"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.","Un grano de cereal también conocido como millo. Produce una cosecha abundante pero tarda alrededor de 2 temporadas en crecer y no puede sobrevivir al {{SEASON.WINTER}}, por lo que requiere plantarlo a principios de {SEASON.SPRING}}."
 SEED.DEATH_CAP_SPAWN,,Death cap,Sombrero de la muerte
 SEED.DEATH_CAP_SPAWN.TOOLTIP,{{VEGETABLE.DEATH_CAP_MUSHROOM.TOOLTIP}},"A very poisonous mushroom with a wide, flat cap. Eating even a tiny amount will almost certainly cause poisoning which can lead to death.","Un hongo muy venenoso con una caperuza ancha y plana. Comer, incluso una pequeña cantidad, casi seguramente causará un envenenamiento que podría acabar en la muerte."
@@ -1070,14 +1070,14 @@ SEED.FIST_SPAWN,,Fist,Puño
 SEED.FIST_SPAWN.TOOLTIP,{{VEGETABLE.FIST_MUSHROOM.TOOLTIP}},A black-blue mushroom with a metallic taste. It is named for a group of bards from the age of darkness.,Un hongo negro-azul con un sabor metálico. Se llama así por un grupo de bardos de la era de la oscuridad.
 SEED.GLOW_SPAWN,,Glow,Brillo
 SEED.GLOW_SPAWN.TOOLTIP,{{VEGETABLE.GLOW_MUSHROOM.TOOLTIP}},A magic-infused mushroom that gives off light and changes colour with the seasons.,Un hongo impregnado de magia que emite luz y cambia de color con las estaciones del año.
-SEED.HEMP_SEED,,Hemp,cáñamo
+SEED.HEMP_SEED,,Hemp,Cáñamo
 SEED.HEMP_SEED.TOOLTIP,,Used to produce rope and fabric after it has been processed.,Usado para producir cuerdas y telas una vez ha sido procesado.
-SEED.HOPS_SEED,,Hops,de lúpulo
+SEED.HOPS_SEED,,Hops,Lúpulo
 SEED.HOPS_SEED.TOOLTIP,{{VEGETABLE.HOPS.TOOLTIP}},A flower used for the flavouring of beer. Must be planted in {{SEASON.SPRING}}.,Una flor utilizada para dar sabor a la cerveza. Debe plantarse en {{SEASON.SPRING}}.
 SEED.MILTONIA_SPAWN,,Miltonia,Miltonia
 SEED.MILTONIA_SPAWN.TOOLTIP,{{VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP}},"Once thought to exist only in the Hudds region, it is now found throughout the world.","Una vez que se pensaba que existía sólo en la región de Hudds, ahora se encuentra en todo el mundo."
-SEED.POTATO_SEED,,Potato,de patata
-SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Una vegetal cuya raíz contiene almidón y que puede sobrevivir al {{SEASON.WINTER}} por lo que es una buena opción para la mayoría de los asentamientos. Se puede plantar en {{SEASON.SPRING}}, {SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
+SEED.POTATO_SEED,,Potato,Patata
+SEED.POTATO_SEED.TOOLTIP,{{VEGETABLE.POTATO.TOOLTIP}},"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Una vegetal cuya raíz contiene almidón y que puede sobrevivir al {{SEASON.WINTER}} por lo que es una buena opción para la mayoría de los asentamientos. Se puede plantar en {{SEASON.SPRING}}, {{SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
 SEED.PURPLE_HELMET_SPAWN,,Purple helmet,Casco morado
 SEED.PURPLE_HELMET_SPAWN.TOOLTIP,{{VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP}},"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Gorro Gordo, turbante regordete, casco hinchado; Este hongo legendario tiene muchos nombres. La leyenda sostiene que hace mucho tiempo, muchas comunidades de enanos subsistían únicamente de una cepa domesticada de este hongo."
 SEED.ROCIOMYCOTA_MUSHROOM_SPAWN,,Rociomycota,Rociomicota
@@ -1086,9 +1086,9 @@ SEED.SUNGLOW_SPAWN,,Sunglow,Brillosolar
 SEED.SUNGLOW_SPAWN.TOOLTIP,{{VEGETABLE.SUNGLOW_MUSHROOM.TOOLTIP}},A bright yellow mushroom which glows with the appearance of sunlight. It loses this glow the moment it is harvested.,Un hongo amarillo brillante que brilla con la apariencia de la luz solar. Pierde este resplandor en el momento en que se cosecha.
 SEED.SYRUP_POWDER_SPAWN,,Syrup powder,Jarabe en polvo
 SEED.SYRUP_POWDER_SPAWN.TOOLTIP,{{VEGETABLE.SYRUP_POWDER_MUSHROOM.TOOLTIP}},"A round orange/yellow mushroom with a white underside. It is said to have been used by mages long ago, but for what purpose, nobody knows.","Una seta redonda naranja/amarilla con una parte inferior blanca. Se dice que fue utilizado por los magos hace mucho tiempo, pero nadie sabe con qué propósito."
-SEED.TOMATO_SEED,,Tomato,de tomate
+SEED.TOMATO_SEED,,Tomato,Tomate
 SEED.TOMATO_SEED.TOOLTIP,{{VEGETABLE.TOMATO.TOOLTIP}},A plant which grows large red berries often used as a vegetable. Can only be planted in {{SEASON.SPRING}}.,"Una planta de grandes bayas rojas, a menudo utilizadas como vegetal. Solo se puede plantar en {{SEASON.SPRING}}."
-SEED.WHEAT_SEED,,Wheat,de trigo
+SEED.WHEAT_SEED,,Wheat,Trigo
 SEED.WHEAT_SEED.TOOLTIP,{{VEGETABLE.WHEAT.TOOLTIP}},"A cereal grain generally used for the production of bread. It can survive {{SEASON.WINTER}} but takes a while to grow, so it is either planted in {{SEASON.SPRING}} or {{SEASON.AUTUMN}}.","Un grano de cereal generalmente utilizado para la producción de pan. Puede sobrevivir al {{SEASON.WINTER}} pero tarda un tiempo en crecer, por lo que se planta en {{SEASON.SPRING}} u {{SEASON.AUTUMN}}."
 ,,,
 SHRUB.DESCRIPTION,Shrub or bush should do,Bush,Arbusto
@@ -1117,7 +1117,7 @@ STOCKPILE.GROUP.GRANARY,,Granary,Granero
 STOCKPILE.GROUP.GRANARY.TOOLTIP,,Stores grains and seeds which will not expire.,Almacena grano y semillas que no caducan.
 STOCKPILE.GROUP.PRODUCTS,,Products,Productos/Procesados
 STOCKPILE.GROUP.RAW_MATERIALS,,Raw materials,Materias primas
-STOCKPILE.GROUP.SEEDS,,Seeds,Semillas
+STOCKPILE.GROUP.SEEDS,,Seeds,Semillero
 STOCKPILE.GROUP.TOOLS,,Tools,Herramientas
 STOCKPILE.GROUP.TOOLS.TOOLTIP,,Stores tools required for working on jobs.,Almacena herramientas necesarias para la realización de tareas.
 STOCKPILE.GROUP.WEAPONS,,Weapons,Armas
@@ -1215,13 +1215,13 @@ TUTORIAL.TIME.D,,You can also click the speed icons to change the speed or pause
 ,,,
 VEGETABLE.BARLEY,,Barley,Cebada
 VEGETABLE.BARLEY.PLURAL,,Barley,Cebada
-VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un grano utilizado sólo en la producción de cerveza. Se puede plantar en {{SEASON.SPRING}}, {SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
+VEGETABLE.BARLEY.TOOLTIP,,"A grain used only in the production of beer. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un grano utilizado sólo en la producción de cerveza. Se puede plantar en {{SEASON.SPRING}}, {{SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
 VEGETABLE.BERSERKER_MUSHROOM,,Berserker mushroom,Setas Berserker
 VEGETABLE.BERSERKER_MUSHROOM.PLURAL,,Berserker mushrooms,Setas Berserker
 VEGETABLE.BERSERKER_MUSHROOM.TOOLTIP,,A mushroom with a pink-red cap bearing white spots. It has hallucinogenic properties which warriors sometimes use in preparation for battle.,Un hongo con una caperuza rosa-roja que lleva manchas blancas. Tiene propiedades alucinógenas que los guerreros usan a veces para prepararse para la batalla.
 VEGETABLE.CARROT,,Carrot,Zanahoria
 VEGETABLE.CARROT.PLURAL,,Carrots,Zanahorias
-VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un vegetal de raíz resistente que sobrevive a las heladas del {{SEASON.WINTER}}. Las zanahorias crecen rápidamente, pero solo producen una pequeña cosecha. Se pueden plantar en {{SEASON.SPRING}}, {SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
+VEGETABLE.CARROT.TOOLTIP,,"A hardy root vegetable that survives the {{SEASON.WINTER}} frost. Carrots grow quickly but only produce a small crop. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un vegetal de raíz resistente que sobrevive a las heladas del {{SEASON.WINTER}}. Las zanahorias crecen rápidamente, pero solo producen una pequeña cosecha. Se pueden plantar en {{SEASON.SPRING}}, {{SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
 VEGETABLE.CORN,,Sweetcorn,Maíz
 VEGETABLE.CORN.PLURAL,,Sweetcorn,Maíz
 VEGETABLE.CORN.TOOLTIP,,"A cereal grain also known as maize. It produces a bountiful crop but takes around 2 seasons to grow and can not survive {{SEASON.WINTER}}, so it requires planting in early {{SEASON.SPRING}}.","Un grano de cereal también conocido como millo. Produce una cosecha abundante pero tarda alrededor de 2 temporadas en crecer y no puede sobrevivir al {{SEASON.WINTER}}, por lo que requiere ser plantado a principios de {SEASON.SPRING}}."
@@ -1254,7 +1254,7 @@ VEGETABLE.MILTONIA_MUSHROOM.PLURAL,,Miltonia mushrooms,Setas Miltonia
 VEGETABLE.MILTONIA_MUSHROOM.TOOLTIP,,"Once thought to exist only in the Hudds region, it is now found throughout the world.","Una vez que se pensaba que existían sólo en la región de Hudds, ahora se encuentra en todo el mundo."
 VEGETABLE.POTATO,,Potato,Patata
 VEGETABLE.POTATO.PLURAL,,Potatoes,Patatas
-VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un vegetal con raíz almidonosa que puede sobrevivir al {{SEASON.WINTER}} por lo que es una buena opción para la mayoría de los asentamientos. Se puede plantar en {{SEASON.SPRING}}, {SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
+VEGETABLE.POTATO.TOOLTIP,,"A starchy root vegetable which can survive {{SEASON.WINTER}} making it a good choice for most settlements. Can be planted in {{SEASON.SPRING}}, {{SEASON.SUMMER}} or {{SEASON.AUTUMN}}.","Un vegetal con raíz almidonosa que puede sobrevivir al {{SEASON.WINTER}} por lo que es una buena opción para la mayoría de los asentamientos. Se puede plantar en {{SEASON.SPRING}}, {{SEASON.SUMMER}} u {{SEASON.AUTUMN}}."
 VEGETABLE.PURPLE_HELMET_MUSHROOM,,Purple helmet mushroom,Seta casco púrpura
 VEGETABLE.PURPLE_HELMET_MUSHROOM.PLURAL,,Purple helmet mushrooms,Setas casco púrpura
 VEGETABLE.PURPLE_HELMET_MUSHROOM.TOOLTIP,,"Fat Hat, Plump Turban, Puffy Helmet; This fabled mushroom goes by many names. Legend holds that long ago, many communities of dwarves subsisted entirely on a domesticated strain of this fungus.","Gorro Gordo, turbante regordete, casco hinchado; Este hongo legendario tiene muchos nombres. La leyenda sostiene que hace mucho tiempo, muchas comunidades de enanos subsistían únicamente de una cepa domesticada de este hongo."

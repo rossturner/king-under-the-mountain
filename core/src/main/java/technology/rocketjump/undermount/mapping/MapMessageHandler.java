@@ -48,6 +48,7 @@ import technology.rocketjump.undermount.rooms.components.StockpileComponent;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.zones.Zone;
 
 import java.util.*;
@@ -69,6 +70,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private final MechanismEntityAttributesFactory mechanismEntityAttributesFactory;
 	private final MechanismEntityFactory mechanismEntityFactory;
 	private final MechanismType pipeMechanismType;
+	private final I18nTranslator i18nTranslator;
 
 	private GameContext gameContext;
 
@@ -83,7 +85,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 							 RoofConstructionManager roofConstructionManager, ParticleEffectTypeDictionary particleEffectTypeDictionary,
 							 SoundAssetDictionary soundAssetDictionary, FloorTypeDictionary floorTypeDictionary,
 							 MechanismTypeDictionary mechanismTypeDictionary, MechanismEntityAttributesFactory mechanismEntityAttributesFactory,
-							 MechanismEntityFactory mechanismEntityFactory) {
+							 MechanismEntityFactory mechanismEntityFactory, I18nTranslator i18nTranslator) {
 		this.messageDispatcher = messageDispatcher;
 		this.outdoorLightProcessor = outdoorLightProcessor;
 		this.interactionStateContainer = interactionStateContainer;
@@ -99,6 +101,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		this.mechanismEntityAttributesFactory = mechanismEntityAttributesFactory;
 		this.mechanismEntityFactory = mechanismEntityFactory;
 		this.pipeMechanismType = mechanismTypeDictionary.getByName("Pipe");
+		this.i18nTranslator = i18nTranslator;
 
 		for (FloorType floorType : floorTypeDictionary.getAllDefinitions()) {
 			if (floorType.isConstructed()) {
@@ -237,6 +240,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			StockpileComponent stockpileComponent = newRoom.getComponent(StockpileComponent.class);
 			if (stockpileComponent != null) {
 				stockpileComponentUpdater.toggleGroup(stockpileComponent, roomPlacementMessage.stockpileGroup, true, true);
+				roomFactory.updateRoomNameForStockpileGroup(newRoom, roomPlacementMessage.stockpileGroup);
 			}
 			newRooms.add(newRoom);
 		}
