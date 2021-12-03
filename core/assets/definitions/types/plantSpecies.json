@@ -107,13 +107,15 @@
       "materialName" : "Barley",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Barley Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Decaying",
@@ -287,13 +289,15 @@
       "materialName" : "Carrot",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Carrot Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Decaying",
@@ -437,13 +441,15 @@
       "materialName" : "Hemp",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Hemp Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Decaying",
@@ -605,13 +611,15 @@
       "materialName" : "Hops",
       "quantity" : 4,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Hops Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -771,13 +779,15 @@
       "materialName" : "Corn",
       "quantity" : 3,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Corn Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Decaying",
@@ -954,13 +964,15 @@
       "materialName" : "Potato",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Potato Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Decaying",
@@ -1145,13 +1157,15 @@
       "materialName" : "Tomato",
       "quantity" : 3,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Tomato Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Decaying",
@@ -1307,13 +1321,15 @@
       "materialName" : "Wheat",
       "quantity" : 3,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Seeds",
       "materialName" : "Wheat Seed",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Decaying",
@@ -1398,13 +1414,15 @@
       "materialName" : "Berserker Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Berserker Mushroom Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1463,13 +1481,15 @@
       "materialName" : "Death Cap Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Death Cap Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1528,13 +1548,15 @@
       "materialName" : "Elfsbane Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Elfsbane Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1593,13 +1615,15 @@
       "materialName" : "Fist Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Fist Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1659,13 +1683,15 @@
       "materialName" : "Glow Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Glow Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1724,13 +1750,15 @@
       "materialName" : "Miltonia Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Miltonia Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1789,13 +1817,15 @@
       "materialName" : "Purple Helmet Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Purple Helmet Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1854,13 +1884,15 @@
       "materialName" : "Rociomycota Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Rociomycota Mushroom Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1919,13 +1951,15 @@
       "materialName" : "Sunglow Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Sunglow Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -1984,13 +2018,15 @@
       "materialName" : "Syrup Powder Mushroom",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     }, {
       "itemTypeName" : "Ingredient-Mushroom-Spawn",
       "materialName" : "Syrup Powder Spawn",
       "quantity" : 2,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   } ],
   "seed" : {
@@ -2072,7 +2108,8 @@
       "materialName" : "Barkshroom",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.01,
@@ -2146,7 +2183,8 @@
       "materialName" : "Fungiwood",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.01,
@@ -2236,7 +2274,8 @@
       "materialName" : "Loquat",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fruit decaying",
@@ -2257,7 +2296,8 @@
       "materialName" : "Loquat",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fallow",
@@ -2365,7 +2405,8 @@
       "materialName" : "Thimbleberry",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fruit decaying",
@@ -2386,7 +2427,8 @@
       "materialName" : "Thimbleberry",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fallow",
@@ -2494,7 +2536,8 @@
       "materialName" : "Tamarillo",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fruit decaying",
@@ -2515,7 +2558,8 @@
       "materialName" : "Tamarillo",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fallow",
@@ -2623,7 +2667,8 @@
       "materialName" : "Dragonfruit",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fruit decaying",
@@ -2644,7 +2689,8 @@
       "materialName" : "Dragonfruit",
       "quantity" : 1,
       "itemSize" : "AVERAGE",
-      "itemStyle" : "DEFAULT"
+      "itemStyle" : "DEFAULT",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Fallow",
@@ -2840,7 +2886,64 @@
     "showFruit" : false,
     "colors" : { },
     "onCompletion" : [ "DISPERSE_SEEDS" ],
-    "harvestedItems" : [ ]
+    "harvestType" : "FORAGING",
+    "harvestedItems" : [ {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Hops Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Barley Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Carrot Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Hemp Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Corn Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Potato Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Tomato Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    }, {
+      "itemTypeName" : "Ingredient-Seeds",
+      "materialName" : "Wheat Seed",
+      "quantity" : 1,
+      "itemSize" : "AVERAGE",
+      "itemStyle" : "DEFAULT",
+      "chance" : 0.0125
+    } ]
   } ],
   "occurenceWeight" : 0.0,
   "ignoresMoisture" : false,
@@ -2935,7 +3038,8 @@
       "materialName" : "Aspen",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -2955,7 +3059,8 @@
       "materialName" : "Aspen",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3044,7 +3149,8 @@
       "materialName" : "Baobab",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3064,7 +3170,8 @@
       "materialName" : "Baobab",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3160,7 +3267,8 @@
       "materialName" : "Beech",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3180,7 +3288,8 @@
       "materialName" : "Beech",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3279,7 +3388,8 @@
       "materialName" : "Birch",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3299,7 +3409,8 @@
       "materialName" : "Birch",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3384,7 +3495,8 @@
       "materialName" : "Ironwood",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3404,7 +3516,8 @@
       "materialName" : "Ironwood",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3478,7 +3591,8 @@
       "materialName" : "Fir",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3498,7 +3612,8 @@
       "materialName" : "Fir",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3592,7 +3707,8 @@
       "materialName" : "Ebony",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3612,7 +3728,8 @@
       "materialName" : "Ebony",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3711,7 +3828,8 @@
       "materialName" : "Maple",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3731,7 +3849,8 @@
       "materialName" : "Maple",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3821,7 +3940,8 @@
       "materialName" : "Nuytsia",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3841,7 +3961,8 @@
       "materialName" : "Nuytsia",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -3938,7 +4059,8 @@
       "materialName" : "Oak",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -3958,7 +4080,8 @@
       "materialName" : "Oak",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4057,7 +4180,8 @@
       "materialName" : "Pecan",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4077,7 +4201,8 @@
       "materialName" : "Pecan",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4156,7 +4281,8 @@
       "materialName" : "Pine",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4176,7 +4302,8 @@
       "materialName" : "Pine",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4256,7 +4383,8 @@
       "materialName" : "Red cedar",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4276,7 +4404,8 @@
       "materialName" : "Red cedar",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4380,7 +4509,8 @@
       "materialName" : "Red emperor",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4400,7 +4530,8 @@
       "materialName" : "Red emperor",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4502,7 +4633,8 @@
       "materialName" : "Rosewood",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4522,7 +4654,8 @@
       "materialName" : "Rosewood",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_2"
+      "itemStyle" : "STYLE_2",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4601,7 +4734,8 @@
       "materialName" : "Spruce",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4621,7 +4755,8 @@
       "materialName" : "Spruce",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4695,7 +4830,8 @@
       "materialName" : "Star pine",
       "quantity" : 2,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4715,7 +4851,8 @@
       "materialName" : "Star pine",
       "quantity" : 3,
       "itemSize" : "SMALL",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,
@@ -4809,7 +4946,8 @@
       "materialName" : "Sycamore",
       "quantity" : 2,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   }, {
     "name" : "Size 4",
@@ -4829,7 +4967,8 @@
       "materialName" : "Sycamore",
       "quantity" : 3,
       "itemSize" : "LARGE",
-      "itemStyle" : "STYLE_1"
+      "itemStyle" : "STYLE_1",
+      "chance" : 1.0
     } ]
   } ],
   "occurenceWeight" : 0.0,

@@ -19,6 +19,7 @@ public class PlantSpeciesItem implements ChildPersistable {
 	private int quantity = 1;
 	private ItemSize itemSize = ItemSize.AVERAGE;
 	private ItemStyle itemStyle = ItemStyle.DEFAULT;
+	private float chance = 1;
 
 	@JsonIgnore
 	private ItemType itemType;
@@ -108,5 +109,13 @@ public class PlantSpeciesItem implements ChildPersistable {
 		quantity = asJson.getIntValue("quantity");
 		itemSize = EnumParser.getEnumValue(asJson, "size", ItemSize.class, ItemSize.AVERAGE);
 		itemStyle = EnumParser.getEnumValue(asJson, "style", ItemStyle.class, ItemStyle.DEFAULT);
+	}
+
+	public float getChance() {
+		return chance;
+	}
+
+	public void setChance(float chance) {
+		this.chance = chance;
 	}
 }

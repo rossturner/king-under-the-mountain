@@ -417,7 +417,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						if (currentGrowthStage.getHarvestType() != null) {
 							if (!attributes.isBurned()) {
 								for (PlantSpeciesItem harvestedItem : currentGrowthStage.getHarvestedItems()) {
-									harvest(harvestedItem, targetEntity, completedByEntity, settlerBehaviour);
+									if (gameContext.getRandom().nextFloat() < harvestedItem.getChance()) {
+										harvest(harvestedItem, completedByEntity);
+									}
 								}
 							}
 
@@ -437,7 +439,9 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						HarvestableEntityComponent harvestableEntityComponent = targetEntity.getComponent(HarvestableEntityComponent.class);
 						if (harvestableEntityComponent != null) {
 							for (PlantSpeciesItem harvestedItem : harvestableEntityComponent.getAll()) {
-								harvest(harvestedItem, targetEntity, completedByEntity, settlerBehaviour);
+								if (gameContext.getRandom().nextFloat() < harvestedItem.getChance()) {
+									harvest(harvestedItem, completedByEntity);
+								}
 							}
 							harvestableEntityComponent.clear();
 							DecorationInventoryComponent decorationInventoryComponent = targetEntity.getComponent(DecorationInventoryComponent.class);
@@ -603,6 +607,20 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				}
 
 				if (targetEntity != null) {
+					if (targetEntity.getType().equals(PLANT)) {
+						PlantEntityAttributes attributes = (PlantEntityAttributes) targetEntity.getPhysicalEntityComponent().getAttributes();
+						PlantSpeciesGrowthStage currentGrowthStage = attributes.getSpecies().getGrowthStages().get(attributes.getGrowthStageCursor());
+						if (currentGrowthStage.getHarvestType() != null) {
+							if (!attributes.isBurned()) {
+								for (PlantSpeciesItem harvestedItem : currentGrowthStage.getHarvestedItems()) {
+									if (gameContext.getRandom().nextFloat() < harvestedItem.getChance()) {
+										harvest(harvestedItem, jobCompletedMessage.getCompletedByEntity());
+									}
+								}
+							}
+						}
+					}
+
 					messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleEffectType,
 							Optional.empty(), Optional.of(new JobTarget(targetEntity)), (p) -> {}));
 					messageDispatcher.dispatchMessage(MessageType.DESTROY_ENTITY, targetEntity);
@@ -1041,7 +1059,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 		return true;
 	}
 
-	private void harvest(PlantSpeciesItem harvestedItem, Entity targetEntity, Entity completedByEntity, SettlerBehaviour settlerBehaviour) {
+	private void harvest(PlantSpeciesItem harvestedItem, Entity completedByEntity) {
 		InventoryComponent inventoryComponent = completedByEntity.getComponent(InventoryComponent.class);
 		if (harvestedItem.getItemType() == null || harvestedItem.getMaterial() == null) {
 			Logger.error("Attempting to harvest unrecognised item");
@@ -1073,9 +1091,12 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				HaulingComponent haulingComponent = completedByEntity.getOrCreateComponent(HaulingComponent.class);
 				haulingComponent.setHauledEntity(inventoryEntry.entity, messageDispatcher, completedByEntity);
 			} else {
-				// Remove all other goals and set this inventory item to expired so it is immediately placed
-				settlerBehaviour.getGoalQueue().clear();
-				inventoryEntry.setLastUpdateGameTime(0 - harvestedItem.getItemType().getHoursInInventoryUntilUnused());
+				BehaviourComponent behaviourComponent = completedByEntity.getBehaviourComponent();
+				if (behaviourComponent instanceof SettlerBehaviour) {
+					// Remove all other goals and set this inventory item to expired so it is immediately placed
+					((SettlerBehaviour)behaviourComponent).getGoalQueue().clear();
+					inventoryEntry.setLastUpdateGameTime(0 - harvestedItem.getItemType().getHoursInInventoryUntilUnused());
+				}
 			}
 		}
 	}

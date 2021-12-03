@@ -447,6 +447,57 @@
         "nextGrowthStage": 1,
         "seasonsUntilComplete": 2.5,
         "tileHeight": 1,
+        "harvestType": "FORAGING",
+        "harvestedItems": [
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Hops Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          },
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Barley Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          },
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Carrot Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          },
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Hemp Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          },
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Corn Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          },
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Potato Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          },
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Tomato Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          },
+          {
+            "itemTypeName": "Ingredient-Seeds",
+            "materialName": "Wheat Seed",
+            "quantity": 1,
+            "chance": 0.0125
+          }
+        ],
         "onCompletion": ["DISPERSE_SEEDS"]
       }
     ]

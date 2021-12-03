@@ -156,6 +156,7 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 		AnalyticsManager.stopAnalytics();
 		messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
 		messageDispatcher.dispatchMessage(MessageType.SHUTDOWN_IN_PROGRESS);
+		Gdx.app.exit();
 	}
 
 	private void checkForSingleton(Class aClass) {
@@ -181,7 +182,7 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 			backgroundTaskManager.update(deltaTime);
 		} catch (Exception e) {
 			CrashHandler.logCrash(e);
-			throw e;
+			onExit();
 		}
 	}
 
