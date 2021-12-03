@@ -35,7 +35,7 @@ public class CopyFilesProcessor extends ModArtifactProcessor {
 					for (Path sourceFile : artifact.sourceFiles) {
 						String filename = sourceFile.getFileName().toString();
 						if (combined.containsKey(filename)) {
-							Logger.info("Replacing " + definition.classType.getSimpleName() + " " + filename);
+							Logger.info("Replacing " + (definition.classType == null ? "" : definition.classType.getSimpleName() + " ") + filename);
 						}
 						combined.put(filename, sourceFile);
 					}
