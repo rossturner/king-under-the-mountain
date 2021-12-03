@@ -26,6 +26,7 @@ import technology.rocketjump.undermount.rooms.RoomFactory;
 import technology.rocketjump.undermount.rooms.RoomStore;
 import technology.rocketjump.undermount.rooms.StockpileComponentUpdater;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
+import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.zones.Zone;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -65,6 +66,8 @@ public class MapMessageHandlerTest {
 	private MechanismEntityAttributesFactory mockMechanismEntityAttributesFactory;
 	@Mock
 	private MechanismEntityFactory mockMechanismEntityFactory;
+	@Mock
+	private I18nTranslator mockI18nTranslator;
 
 	@Test
 	public void removeWall_joinsRegions_keepsZones() {
@@ -148,7 +151,7 @@ public class MapMessageHandlerTest {
 		MapMessageHandler mapMessageHandler = new MapMessageHandler(mockMessageDispatcher, mockOutdoorLightProcessor,
 				mockInteractionStateContainer, mockRoomfactory, mockRoomStore, mockJobStore, mockStockpileComponentUpdater,
 				mockRoofConstructionManager, mockParticleEffectTypeDictionary, mockSoundAssetDictionary, mockFloorTypeDictionary,
-				mockMechanismTypeDictionary, mockMechanismEntityAttributesFactory, mockMechanismEntityFactory, i18nTranslator);
+				mockMechanismTypeDictionary, mockMechanismEntityAttributesFactory, mockMechanismEntityFactory, mockI18nTranslator);
 		GameContext gameContext = new GameContext();
 		gameContext.setAreaMap(map);
 		mapMessageHandler.onContextChange(gameContext);

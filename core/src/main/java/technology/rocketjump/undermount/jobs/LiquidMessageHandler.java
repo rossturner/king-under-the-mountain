@@ -372,7 +372,7 @@ public class LiquidMessageHandler implements GameContextAware, Telegraph {
 		for (Iterator<ZoneTile> iter = zone.iterator(); iter.hasNext(); ) {
 			ZoneTile zoneTile = iter.next();
 			MapTile accessibleTile = areaMap.getTile(zoneTile.getAccessLocation());
-			if (accessibleTile != null && accessibleTile.isNavigable()) {
+			if (accessibleTile != null && accessibleTile.isNavigable(null)) {
 				potentialTiles.add(zoneTile);
 			}
 		}

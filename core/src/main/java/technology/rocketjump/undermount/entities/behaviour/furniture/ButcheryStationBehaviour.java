@@ -100,7 +100,7 @@ public class ButcheryStationBehaviour extends FurnitureBehaviour implements Prio
 		}
 
 		if (butcheryJob != null) {
-			boolean butcheryJobIsNavigable = gameContext.getAreaMap().getTile(butcheryJob.getJobLocation()).isNavigable();
+			boolean butcheryJobIsNavigable = gameContext.getAreaMap().getTile(butcheryJob.getJobLocation()).isNavigable(null);
 			if (!butcheryJobIsNavigable) {
 				FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
 				if (navigableWorkspace != null) {

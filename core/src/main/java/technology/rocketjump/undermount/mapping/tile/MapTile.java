@@ -170,11 +170,11 @@ public class MapTile implements Persistable {
 		return this.wall != null;
 	}
 
-	public boolean isNavigable() {
-		return isNavigable(null);
+	public boolean isNavigable(Entity requestingEntity) {
+		return isNavigable(requestingEntity, null);
 	}
 
-	public boolean isNavigable(MapTile startingPoint) {
+	public boolean isNavigable(Entity requestingEntity, MapTile startingPoint) {
 		if (this.equals(startingPoint)) {
 			// Can always navigate if this tile is the starting point
 			return true;
@@ -194,13 +194,12 @@ public class MapTile implements Persistable {
 			if (getFloor().hasBridge() && !getFloor().isBridgeNavigable()) {
 				return false;
 			}
+			if (hasDoorway() && requestingEntity != null && requestingEntity.getBehaviourComponent() instanceof CreatureBehaviour) {
+				return false;
+			}
 			for (Entity entity : getEntities()) {
 				if (entity.getType().equals(EntityType.FURNITURE)) {
 					if (entity.getPhysicalEntityComponent().getAttributes() instanceof DoorwayEntityAttributes) {
-						if (entity.getBehaviourComponent() instanceof CreatureBehaviour) {
-							// creatures can't path through doors
-							return false;
-						}
 						continue;
 					}
 					FurnitureEntityAttributes attributes = (FurnitureEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();

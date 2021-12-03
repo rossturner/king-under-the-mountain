@@ -1,18 +1,21 @@
 package technology.rocketjump.undermount.messaging.types;
 
 import com.badlogic.gdx.math.Vector2;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.planning.PathfindingCallback;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 
 public class PathfindingRequestMessage {
 
+	private final Entity requestingEntity;
 	private final Vector2 origin;
 	private final Vector2 destination;
 	private final TiledMap map;
 	private final PathfindingCallback callback;
 	private final long relatedId; // This is used to match pathfinding requests to a certain entity or job ID
 
-	public PathfindingRequestMessage(Vector2 origin, Vector2 destination, TiledMap map, PathfindingCallback callback, long relatedId) {
+	public PathfindingRequestMessage(Entity requestingEntity, Vector2 origin, Vector2 destination, TiledMap map, PathfindingCallback callback, long relatedId) {
+		this.requestingEntity = requestingEntity;
 		this.origin = origin;
 		this.destination = destination;
 		this.map = map;
@@ -38,5 +41,9 @@ public class PathfindingRequestMessage {
 
 	public long getRelatedId() {
 		return relatedId;
+	}
+
+	public Entity getRequestingEntity() {
+		return requestingEntity;
 	}
 }

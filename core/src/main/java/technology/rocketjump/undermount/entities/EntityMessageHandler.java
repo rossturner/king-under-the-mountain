@@ -651,7 +651,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 				}
 
 				MapTile targetTile = gameContext.getAreaMap().getTile(targetTilePosition);
-				if (targetTile != null && targetTile.isNavigable()) {
+				if (targetTile != null && targetTile.isNavigable(null)) {
 
 					if (treeFallenMessage.getLeafColor().isPresent()) {
 						messageDispatcher.dispatchMessage(MessageType.PARTICLE_REQUEST, new ParticleRequestMessage(leafExplosionParticleType,

@@ -20,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemEntityA
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemType;
 import technology.rocketjump.undermount.entities.model.physical.item.QuantifiedItemTypeWithMaterial;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+import technology.rocketjump.undermount.jobs.model.JobPriority;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.materials.model.GameMaterial;
 import technology.rocketjump.undermount.messaging.MessageType;
@@ -332,7 +333,9 @@ public class PickUpEntityAction extends Action implements EntityCreatedCallback 
 					furnitureEntity.replaceBehaviourComponent(null);
 
 					messageDispatcher.dispatchMessage(MessageType.FURNITURE_PLACEMENT, furnitureEntity); // Queue up new construction of furnitureEntity
-					removeMaterialsFromRequirements(gameContext.getAreaMap().getTile(furnitureEntity.getLocationComponent().getWorldPosition()).getConstruction());
+					Construction construction = gameContext.getAreaMap().getTile(furnitureEntity.getLocationComponent().getWorldPosition()).getConstruction();
+					removeMaterialsFromRequirements(construction);
+					construction.setPriority(JobPriority.HIGHER, messageDispatcher);
 
 					parent.getAssignedHaulingAllocation().setHauledEntityId(createdItem.getId());
 

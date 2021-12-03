@@ -283,7 +283,7 @@ public class SettlerBehaviour implements BehaviourComponent, Destructible,
 					if (target != null) {
 						break;
 					}
-					if (!tile.isNavigable()) {
+					if (!tile.isNavigable(parentEntity)) {
 						break;
 					}
 				}

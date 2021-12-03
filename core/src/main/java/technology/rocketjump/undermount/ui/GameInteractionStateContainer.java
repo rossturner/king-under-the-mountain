@@ -251,7 +251,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 					if (tile == null) {
 						continue;
 					}
-					if (tile.isNavigable() && tile.isEmptyExceptEntities()) {
+					if (tile.isNavigable(null) && tile.isEmptyExceptEntities()) {
 						// Can place virtual wall construction here
 						WallConstruction wallConstruction = new WallConstruction(potentialLocation, wallTypeToPlace, selectedMaterial);
 						virtualWallConstructions.add(wallConstruction);
@@ -364,12 +364,12 @@ public class GameInteractionStateContainer implements GameContextAware {
 
 		for (MapTile mapTile : bridgeTiles) {
 			if (mapTile.getTileX() == minX && mapTile.getTileY() == minY) {
-				minCornerNavigable = mapTile.isNavigable();
+				minCornerNavigable = mapTile.isNavigable(null);
 				if (!minCornerNavigable) {
 					break;
 				}
 			} else if (mapTile.getTileX() == maxX && mapTile.getTileY() == maxY) {
-				maxCornerNavigable = mapTile.isNavigable();
+				maxCornerNavigable = mapTile.isNavigable(null);
 				if (!maxCornerNavigable) {
 					break;
 				}
@@ -597,7 +597,7 @@ public class GameInteractionStateContainer implements GameContextAware {
 			for (FurnitureLayout.Workspace workspace : attributes.getCurrentLayout().getWorkspaces()) {
 				GridPoint2 workspaceAccessedFrom = tilePosition.cpy().add(workspace.getAccessedFrom());
 				MapTile tile = map.getTile(workspaceAccessedFrom);
-				if (tile != null && tile.isNavigable()) {
+				if (tile != null && tile.isNavigable(null)) {
 					oneWorkspaceAccessible = true;
 					break;
 				}

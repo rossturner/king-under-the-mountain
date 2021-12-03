@@ -64,12 +64,12 @@ public class Memory implements ChildPersistable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Memory memory = (Memory) o;
-		return Double.compare(memory.gameTimeMemoryOccurred, gameTimeMemoryOccurred) == 0 && type == memory.type;
+		return type == memory.type && Objects.equals(relatedItemType, memory.relatedItemType) && Objects.equals(relatedMaterial, memory.relatedMaterial) && Objects.equals(relatedGoalName, memory.relatedGoalName) && relatedAmmoType == memory.relatedAmmoType && Objects.equals(relatedEntityId, memory.relatedEntityId);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(type);
+		return Objects.hash(type, relatedItemType, relatedMaterial, relatedGoalName, relatedAmmoType, relatedEntityId);
 	}
 
 	public GameMaterial getRelatedMaterial() {

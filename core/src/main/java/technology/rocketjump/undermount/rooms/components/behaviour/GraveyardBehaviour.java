@@ -119,7 +119,7 @@ public class GraveyardBehaviour extends RoomBehaviourComponent implements Priori
 			return;
 		}
 		for (Job existingJob : jobStore.getJobsAtLocation(graveConstruction.getPrimaryLocation())) {
-			if (existingJob != null && existingJob.getTargetId() == graveConstruction.getId()) {
+			if (existingJob != null && existingJob.getTargetId() != null && existingJob.getTargetId() == graveConstruction.getId()) {
 				return;
 			}
 		}

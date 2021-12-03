@@ -240,7 +240,7 @@ public class SteeringComponent implements ChildPersistable {
 		Vector2 currentPosition = locationComponent.getWorldPosition().cpy();
 		Vector2 adjustmentForce = new Vector2();
 		for (MapTile tileNearNewPosition : areaMap.getNearestTiles(currentPosition)) {
-			if (!tileNearNewPosition.isNavigable(currentTile) && !tileNearNewPosition.equals(currentTile)) {
+			if (!tileNearNewPosition.isNavigable(parentEntity, currentTile) && !tileNearNewPosition.equals(currentTile)) {
 				// if overlapping wall
 				Vector2 wallToPosition = currentPosition.cpy().sub(tileNearNewPosition.getWorldPositionOfCenter());
 

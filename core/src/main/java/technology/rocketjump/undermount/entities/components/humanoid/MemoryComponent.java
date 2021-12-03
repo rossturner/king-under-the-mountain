@@ -28,7 +28,7 @@ public class MemoryComponent implements EntityComponent {
 
 	public void addShortTerm(Memory memory, GameClock gameClock) {
 		purgeExpiredMemories(gameClock);
-		if (shortTermMemory.stream().noneMatch(m -> m.getType().equals(memory.getType()))) {
+		if (shortTermMemory.stream().noneMatch(m -> m.equals(memory))) {
 			shortTermMemory.addFirst(memory);
 			while (shortTermMemory.size() > SHORT_TERM_MEMORY_LIMIT) {
 				shortTermMemory.removeLast();

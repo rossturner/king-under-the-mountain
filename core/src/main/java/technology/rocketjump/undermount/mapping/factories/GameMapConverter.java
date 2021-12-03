@@ -254,7 +254,7 @@ public class GameMapConverter {
 					continue;
 				}
 
-				if (riverNeighbour.isNavigable() && !riverNeighbour.isWaterSource()) {
+				if (riverNeighbour.isNavigable(null) && !riverNeighbour.isWaterSource()) {
 					List<ZoneTile> zoneTiles = riverBorderTilesByRegion.computeIfAbsent(riverNeighbour.getRegionId(), x -> new ArrayList<>());
 					zoneTiles.add(new ZoneTile(riverNeighbour, targetMap.getTile(riverTile)));
 				}

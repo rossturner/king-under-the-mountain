@@ -739,7 +739,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 						} else if (entity.getType().equals(ITEM)) {
 							boolean entityMoved = false;
 							for (MapTile neighbourTile : gameContext.getAreaMap().getNeighbours(targetTile.getTilePosition()).values()) {
-								if (neighbourTile.isNavigable()) {
+								if (neighbourTile.isNavigable(null)) {
 									entity.getLocationComponent().setWorldPosition(neighbourTile.getWorldPositionOfCenter(), false);
 									entityMoved = true;
 									break;
@@ -1281,7 +1281,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 
 			TileNeighbours orthogonalNeighbours = gameContext.getAreaMap().getOrthogonalNeighbours(targetTile.getTileX(), targetTile.getTileY());
 			for (MapTile neighbourTile : orthogonalNeighbours.values()) {
-				if (neighbourTile.isNavigable()) {
+				if (neighbourTile.isNavigable(null)) {
 					neighbourIsAccessible = true;
 					break;
 				}
@@ -1293,7 +1293,7 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 				return JobState.INACCESSIBLE;
 			}
 		} else {
-			if (targetTile.isNavigable()) {
+			if (targetTile.isNavigable(null)) {
 				return JobState.POTENTIALLY_ACCESSIBLE;
 			} else {
 				return JobState.INACCESSIBLE;

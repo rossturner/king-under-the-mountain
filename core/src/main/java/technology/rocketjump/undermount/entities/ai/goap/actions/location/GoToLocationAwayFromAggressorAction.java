@@ -55,7 +55,7 @@ public class GoToLocationAwayFromAggressorAction extends GoToLocationAction {
 					targetTile.x - 2 + gameContext.getRandom().nextInt(5),
 					targetTile.y - 2 + gameContext.getRandom().nextInt(5)
 			);
-			if (possibleTile != null && possibleTile.getRegionId() == parentRegionId && possibleTile.isNavigable()) {
+			if (possibleTile != null && possibleTile.getRegionId() == parentRegionId && possibleTile.isNavigable(parent.parentEntity)) {
 				selectedTargetTile = possibleTile;
 				break;
 			}

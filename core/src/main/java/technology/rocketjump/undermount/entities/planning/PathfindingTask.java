@@ -5,6 +5,7 @@ import com.badlogic.gdx.ai.pfa.GraphPath;
 import com.badlogic.gdx.math.Vector2;
 import technology.rocketjump.undermount.entities.ai.pathfinding.Map2DCollection;
 import technology.rocketjump.undermount.entities.ai.pathfinding.MapPathfindingNode;
+import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.mapping.model.TiledMap;
 import technology.rocketjump.undermount.mapping.tile.CompassDirection;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -28,8 +29,10 @@ public class PathfindingTask implements Callable<BackgroundTaskResult> {
 	private final PriorityQueue<MapPathfindingNode> frontier = new PriorityQueue<>();
 	private final Map2DCollection<MapPathfindingNode> explored;
 	private final long relatedId;
+	private final Entity parentEntity;
 
 	public PathfindingTask(PathfindingRequestMessage requestMessage) {
+		this.parentEntity = requestMessage.getRequestingEntity();
 		this.callback = requestMessage.getCallback();
 		this.map = requestMessage.getMap();
 		this.explored = new Map2DCollection<>(map.getWidth());
@@ -132,31 +135,31 @@ public class PathfindingTask implements Callable<BackgroundTaskResult> {
 		for (Map.Entry<CompassDirection, MapTile> compassDirectionMapCellEntry : tileNeighbours.entrySet()) {
 			CompassDirection direction = compassDirectionMapCellEntry.getKey();
 			MapTile cellInDirection = compassDirectionMapCellEntry.getValue();
-			if (cellInDirection.isNavigable(originCell)) {
+			if (cellInDirection.isNavigable(parentEntity, originCell)) {
 				if (direction.isDiagonal()) {
 					// Needs both orthogonal neighbours to be navigable
 					// Assuming that if there is a diagonal neighbour, both the orthogonal neighbours must not be null
 					switch (direction) {
 						case NORTH_EAST: {
-							if (tileNeighbours.get(CompassDirection.NORTH).isNavigable(originCell) && tileNeighbours.get(CompassDirection.EAST).isNavigable(originCell)) {
+							if (tileNeighbours.get(CompassDirection.NORTH).isNavigable(parentEntity, originCell) && tileNeighbours.get(CompassDirection.EAST).isNavigable(parentEntity, originCell)) {
 								filtered.put(direction, cellInDirection);
 							}
 							break;
 						}
 						case NORTH_WEST: {
-							if (tileNeighbours.get(CompassDirection.NORTH).isNavigable(originCell) && tileNeighbours.get(CompassDirection.WEST).isNavigable(originCell)) {
+							if (tileNeighbours.get(CompassDirection.NORTH).isNavigable(parentEntity, originCell) && tileNeighbours.get(CompassDirection.WEST).isNavigable(parentEntity, originCell)) {
 								filtered.put(direction, cellInDirection);
 							}
 							break;
 						}
 						case SOUTH_WEST: {
-							if (tileNeighbours.get(CompassDirection.SOUTH).isNavigable(originCell) && tileNeighbours.get(CompassDirection.WEST).isNavigable(originCell)) {
+							if (tileNeighbours.get(CompassDirection.SOUTH).isNavigable(parentEntity, originCell) && tileNeighbours.get(CompassDirection.WEST).isNavigable(parentEntity, originCell)) {
 								filtered.put(direction, cellInDirection);
 							}
 							break;
 						}
 						case SOUTH_EAST: {
-							if (tileNeighbours.get(CompassDirection.SOUTH).isNavigable(originCell) && tileNeighbours.get(CompassDirection.EAST).isNavigable(originCell)) {
+							if (tileNeighbours.get(CompassDirection.SOUTH).isNavigable(parentEntity, originCell) && tileNeighbours.get(CompassDirection.EAST).isNavigable(parentEntity, originCell)) {
 								filtered.put(direction, cellInDirection);
 							}
 							break;

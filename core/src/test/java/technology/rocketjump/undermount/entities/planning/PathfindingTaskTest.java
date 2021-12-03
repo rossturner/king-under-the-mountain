@@ -35,7 +35,7 @@ public class PathfindingTaskTest implements PathfindingCallback {
 		Vector2 origin = new Vector2(0.5f, 1.5f);
 		Vector2 destination = new Vector2(2.5f, 1.5f);
 
-		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(origin, destination, map, this, 0L);
+		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(null, origin, destination, map, this, 0L);
 		PathfindingTask pathfindingTask = new PathfindingTask(requestMessage);
 		pathfindingTask.call();
 
@@ -67,7 +67,7 @@ public class PathfindingTaskTest implements PathfindingCallback {
 		Vector2 origin = new Vector2(0.5f, 2.5f);
 		Vector2 destination = new Vector2(4.5f, 2.5f);
 
-		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(origin, destination, map, this, 0L);
+		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(null, origin, destination, map, this, 0L);
 		PathfindingTask pathfindingTask = new PathfindingTask(requestMessage);
 		pathfindingTask.call();
 
@@ -93,7 +93,7 @@ public class PathfindingTaskTest implements PathfindingCallback {
 		// Destination is top-right corner blocked off by walls
 
 		long startTime = System.currentTimeMillis();
-		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(origin, destination, map, this, 0L);
+		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(null, origin, destination, map, this, 0L);
 		PathfindingTask pathfindingTask = new PathfindingTask(requestMessage);
 		pathfindingTask.call();
 		long endTime = System.currentTimeMillis();
@@ -114,7 +114,7 @@ public class PathfindingTaskTest implements PathfindingCallback {
 		// Destination is top-right corner blocked off by walls
 
 		long startTime = System.currentTimeMillis();
-		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(origin, destination, map, this, 0L);
+		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(null, origin, destination, map, this, 0L);
 		PathfindingTask pathfindingTask = new PathfindingTask(requestMessage);
 		pathfindingTask.call();
 		long endTime = System.currentTimeMillis();
@@ -130,7 +130,7 @@ public class PathfindingTaskTest implements PathfindingCallback {
 		Vector2 origin = new Vector2(1.5f, 1.5f);
 		Vector2 destination = new Vector2(2.5f, 2.5f);
 
-		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(origin, destination, map, this, 0L);
+		PathfindingRequestMessage requestMessage = new PathfindingRequestMessage(null, origin, destination, map, this, 0L);
 		PathfindingTask pathfindingTask = new PathfindingTask(requestMessage);
 		pathfindingTask.call();
 

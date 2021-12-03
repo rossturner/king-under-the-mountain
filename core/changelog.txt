@@ -1,3 +1,19 @@
+Alpha 8.1.11 - 3rd December 2021
+
+- Added elephant meat to list of valid ingredients for soup
+- Added Japanese translation, thanks for SPQR
+- Reduced length of time hemp requires to grow
+- Fix for a crash regarding roofing near the edge of the map
+- Fix for a crash when other jobs are on top of a grave location
+
+Alpha 8.1.10 - 26th November 2021
+
+- Fix for a problem where a dwarf requiring multiple items for different jobs would get stuck if the first was not available (thanks CptEric)
+- Iron and steel take a bit longer to transition to rusted when left out in the rain
+- Added hint about right-clicking to tutorial
+- Correctly showing translated strings for material selection while placing furniture
+- Re-placement of furniture after being picked up (e.g. kitchen cauldron) is now set to priority HIGHER
+
 Alpha 8.1.9 - 26th November 2021
 
 - Fixed the game being stretched too large on Windows machines which have "Scale and layout" display setting set higher than 100%

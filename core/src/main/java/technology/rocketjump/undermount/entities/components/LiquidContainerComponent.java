@@ -81,7 +81,7 @@ public class LiquidContainerComponent implements ParentDependentEntityComponent,
 					for (FurnitureLayout.Workspace workspace : attributes.getCurrentLayout().getWorkspaces()) {
 						GridPoint2 workspaceLocation = furniturePosition.cpy().add(workspace.getAccessedFrom());
 						MapTile workspaceTile = gameContext.getAreaMap().getTile(workspaceLocation);
-						if (workspaceTile != null && workspaceTile.isNavigable()) {
+						if (workspaceTile != null && workspaceTile.isNavigable(parentEntity)) {
 							liquidContainerAccessZone.add(workspaceTile, furnitureTile);
 						}
 					}

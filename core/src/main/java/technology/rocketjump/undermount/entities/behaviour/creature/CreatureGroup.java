@@ -68,7 +68,7 @@ public class CreatureGroup implements Persistable {
 
 		for (CompassDirection direction : directions) {
 			MapTile adjacentTile = gameContext.getAreaMap().getTile(homeLocation.x + direction.getXOffset(), homeLocation.y + direction.getYOffset());
-			if (adjacentTile != null && adjacentTile.isNavigable()) {
+			if (adjacentTile != null && adjacentTile.isNavigable(null) && !adjacentTile.hasDoorway()) {
 				this.homeLocation = adjacentTile.getTilePosition();
 				break;
 			}

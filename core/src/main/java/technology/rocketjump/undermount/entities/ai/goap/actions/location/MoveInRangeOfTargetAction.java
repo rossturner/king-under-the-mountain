@@ -53,7 +53,7 @@ public class MoveInRangeOfTargetAction extends GoToLocationAction {
 			}
 
 			// Else this should be the nearest tile to the furniture
-			if (!tile.isNavigable()) {
+			if (!tile.isNavigable(parentEntity)) {
 				return null;
 			}
 

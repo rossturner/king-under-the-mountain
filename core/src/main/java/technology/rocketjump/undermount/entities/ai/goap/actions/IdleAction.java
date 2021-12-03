@@ -39,7 +39,7 @@ public class IdleAction extends Action {
 
 			Vector2 target = parent.parentEntity.getLocationComponent().getWorldPosition();
 			MapTile currentTile = gameContext.getAreaMap().getTile(target);
-			if (currentTile == null || !currentTile.isNavigable(currentTile) || gameContext.getRandom().nextBoolean() || parent.parentEntity.isOnFire()) {
+			if (currentTile == null || !currentTile.isNavigable(parent.parentEntity, currentTile) || gameContext.getRandom().nextBoolean() || parent.parentEntity.isOnFire()) {
 				// 50/50 go to a new location
 				target = pickRandomLocation(gameContext, parent.parentEntity);
 				if (target != null) {
@@ -94,7 +94,7 @@ public class IdleAction extends Action {
 			MapTile randomCell = gameContext.getAreaMap().getTile(
 					(int)Math.floor(centralPosition.x) + (gameContext.getRandom().nextInt(13) - 6),
 					(int)Math.floor(centralPosition.y) + (gameContext.getRandom().nextInt(13) - 6));
-			if (randomCell != null && randomCell.isNavigable()) {
+			if (randomCell != null && randomCell.isNavigable(entity)) {
 				targetLocation = randomCell.getWorldPositionOfCenter();
 			}
 			if (targetLocation != null && entity.getBehaviourComponent() instanceof CreatureBehaviour) {

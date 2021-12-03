@@ -37,7 +37,7 @@ public class Zone implements Persistable {
 	}
 
 	public void add(MapTile accessTile, MapTile targetTile) {
-		if (accessTile.isNavigable()) {
+		if (accessTile.isNavigable(null)) {
 			zoneTiles.add(new ZoneTile(accessTile, targetTile));
 			accessTile.addToZone(this);
 			regionId = accessTile.getRegionId();
@@ -78,7 +78,7 @@ public class Zone implements Persistable {
 	public void recalculate(TiledMap map) {
 		for (ZoneTile zoneTile : new ArrayList<>(zoneTiles)) {
 			MapTile accessTile = map.getTile(zoneTile.getAccessLocation());
-			if (accessTile.isNavigable()) {
+			if (accessTile.isNavigable(null)) {
 				regionId = accessTile.getRegionId();
 			} else {
 				zoneTiles.remove(zoneTile);

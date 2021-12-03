@@ -181,7 +181,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			}
 
 
-			boolean jobIsNavigable = gameContext.getAreaMap().getTile(craftingJob.getJobLocation()).isNavigable();
+			boolean jobIsNavigable = gameContext.getAreaMap().getTile(craftingJob.getJobLocation()).isNavigable(null);
 			if (!jobIsNavigable) {
 				FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
 				if (navigableWorkspace != null) {
@@ -721,7 +721,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		for (FurnitureLayout.Workspace workspace : attributes.getCurrentLayout().getWorkspaces()) {
 			GridPoint2 accessedFromLocation = furniturePosition.cpy().add(workspace.getAccessedFrom());
 			MapTile accessedFromTile = areaMap.getTile(accessedFromLocation);
-			if (accessedFromTile != null && accessedFromTile.isNavigable()) {
+			if (accessedFromTile != null && accessedFromTile.isNavigable(null)) {
 				FurnitureLayout.Workspace worldPositionedWorkspace = new FurnitureLayout.Workspace();
 				worldPositionedWorkspace.setLocation(furniturePosition.cpy().add(workspace.getLocation()));
 				worldPositionedWorkspace.setAccessedFrom(furniturePosition.cpy().add(workspace.getAccessedFrom()));
@@ -750,7 +750,7 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 		for (FurnitureLayout.Workspace workspace : workspaces) {
 			GridPoint2 accessedFromLocation = furniturePosition.cpy().add(workspace.getAccessedFrom());
 			MapTile accessedFromTile = areaMap.getTile(accessedFromLocation);
-			if (accessedFromTile != null && accessedFromTile.isNavigable()) {
+			if (accessedFromTile != null && accessedFromTile.isNavigable(null)) {
 				FurnitureLayout.Workspace worldPositionedWorkspace = new FurnitureLayout.Workspace();
 				worldPositionedWorkspace.setLocation(furniturePosition.cpy().add(workspace.getLocation()));
 				worldPositionedWorkspace.setAccessedFrom(furniturePosition.cpy().add(workspace.getAccessedFrom()));

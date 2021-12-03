@@ -9,6 +9,10 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static technology.rocketjump.undermount.entities.ai.memory.MemoryType.LACKING_REQUIRED_ITEM;
 
 public class RememberRequiredItemAction extends Action {
@@ -20,7 +24,9 @@ public class RememberRequiredItemAction extends Action {
 	public void update(float deltaTime, GameContext gameContext) {
 		MemoryComponent memoryComponent = parent.parentEntity.getComponent(MemoryComponent.class);
 		Memory relevantMemory = null;
-		for (Memory memory : memoryComponent.getShortTermMemories(gameContext.getGameClock())) {
+		List<Memory> shortTermMemories = new ArrayList<>(memoryComponent.getShortTermMemories(gameContext.getGameClock()));
+		Collections.shuffle(shortTermMemories, gameContext.getRandom());
+		for (Memory memory : shortTermMemories) {
 			if (memory.getType().equals(LACKING_REQUIRED_ITEM)) {
 				relevantMemory = memory;
 				break;

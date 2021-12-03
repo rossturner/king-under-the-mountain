@@ -153,7 +153,7 @@ public class CreaturePopulator {
 			if (!randomTile.getExploration().equals(TileExploration.EXPLORED)) {
 				continue;
 			}
-			if (!randomTile.isNavigable() || !randomTile.getRoof().getState().equals(TileRoofState.OPEN)) {
+			if (!randomTile.isNavigable(null) || !randomTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 				continue;
 			}
 
@@ -185,7 +185,7 @@ public class CreaturePopulator {
 					centralPoint.getTileX() - radius + (gameContext.getRandom().nextInt((radius * 2) + 1)),
 					centralPoint.getTileY() - radius + (gameContext.getRandom().nextInt((radius * 2) + 1))
 			);
-			if (tileFound != null && (tileFound.getRegionId() != centralPoint.getRegionId() || !tileFound.isNavigable())) {
+			if (tileFound != null && (tileFound.getRegionId() != centralPoint.getRegionId() || !tileFound.isNavigable(null))) {
 				tileFound = null;
 			}
 		}

@@ -66,7 +66,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 				return;
 			}
 			PathfindingRequestMessage pathfindingRequestMessage = new PathfindingRequestMessage(
-					parent.parentEntity.getLocationComponent().getWorldPosition(),
+					parent.parentEntity, parent.parentEntity.getLocationComponent().getWorldPosition(),
 					destination, gameContext.getAreaMap(), this, parent.parentEntity.getId());
 
 			parent.messageDispatcher.dispatchMessage(MessageType.PATHFINDING_REQUEST, pathfindingRequestMessage);
@@ -108,7 +108,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 
 		MapTile nextTile = gameContext.getAreaMap().getTile(nextPathNode);
 		MapTile destinationTile = gameContext.getAreaMap().getTile(destination);
-		if (!nextTile.isNavigable(currentTile) || !destinationTile.isNavigable(currentTile)) {
+		if (!nextTile.isNavigable(parent.parentEntity, currentTile) || !destinationTile.isNavigable(parent.parentEntity, currentTile)) {
 			// The next tile is no longer navigable - a wall or something must have been placed there
 			completionType = FAILURE;
 			return;
@@ -246,7 +246,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			Array<GridPoint2> navigableTiles = new Array<>();
 
 			for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(assignedJob.getJobLocation().x, assignedJob.getJobLocation().y).values()) {
-				if (neighbourTile.isNavigable()) {
+				if (neighbourTile.isNavigable(parent.parentEntity)) {
 					navigableTiles.add(neighbourTile.getTilePosition());
 				}
 			}

@@ -111,7 +111,7 @@ public class GraveManager implements Updatable {
 
 		GridPoint2 deceasedPosition = toGridPoint(deceased.getLocationComponent().getWorldPosition());
 		MapTile deceasedTile = gameContext.getAreaMap().getTile(deceasedPosition);
-		if (deceasedTile == null || !deceasedTile.isNavigable()) {
+		if (deceasedTile == null || !deceasedTile.isNavigable(null)) {
 			// Skip while not navigable
 			return;
 		}

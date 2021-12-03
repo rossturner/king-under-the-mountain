@@ -290,8 +290,8 @@ public class FurnitureSelectionGuiView implements GuiView, FurnitureSelectedCall
 			Set<GameMaterial> materialsByItemType = itemTracker.getMaterialsByItemType(itemTypeForMaterialType);
 			if (materialsByItemType != null) {
 				for (GameMaterial gameMaterial : materialsByItemType) {
-					materialTypes.add(gameMaterial.getMaterialName());
-					currentMaterialNamesMap.put(gameMaterial.getMaterialName(), gameMaterial);
+					materialTypes.add(gameMaterial.getI18nValue().toString());
+					currentMaterialNamesMap.put(gameMaterial.getI18nValue().toString(), gameMaterial);
 				}
 			}
 		}

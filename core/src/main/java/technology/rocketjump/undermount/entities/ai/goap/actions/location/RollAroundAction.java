@@ -48,7 +48,7 @@ public class RollAroundAction extends Action {
 						parentTileLocation.x + direction.getXOffset(),
 						parentTileLocation.y + direction.getYOffset()
 				);
-				if (targetTile != null && targetTile.isNavigable()) {
+				if (targetTile != null && targetTile.isNavigable(parent.parentEntity)) {
 					targetTilePosition = targetTile.getTilePosition();
 					break;
 				}

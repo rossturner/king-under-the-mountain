@@ -239,7 +239,7 @@ public class RoofConstructionManager implements GameContextAware {
 
 			for (CompassDirection direction : CompassDirection.CARDINAL_DIRECTIONS) {
 				MapTile nextTile = gameContext.getAreaMap().getTile(currentTile.getTilePosition().x + direction.getXOffset(), currentTile.getTilePosition().y + direction.getYOffset());
-				if (!explored.contains(nextTile) && !frontier.contains(nextTile) && !nextTile.getRoof().getState().equals(TileRoofState.OPEN)) {
+				if (nextTile != null && !explored.contains(nextTile) && !frontier.contains(nextTile) && !nextTile.getRoof().getState().equals(TileRoofState.OPEN)) {
 					frontier.add(nextTile);
 				}
 			}

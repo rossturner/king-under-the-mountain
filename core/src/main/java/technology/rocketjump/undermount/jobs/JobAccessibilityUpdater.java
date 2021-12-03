@@ -81,7 +81,7 @@ public class JobAccessibilityUpdater implements Updatable {
 		if (potentiallyAccessibleJob.getType().isAccessedFromAdjacentTile()) {
 			TileNeighbours jobNeighbourTiles = gameContext.getAreaMap().getOrthogonalNeighbours(potentiallyAccessibleJob.getJobLocation().x, potentiallyAccessibleJob.getJobLocation().y);
 			for (CompassDirection compassDirection : jobNeighbourTiles.keySet()) {
-				if (!jobNeighbourTiles.get(compassDirection).isNavigable()) {
+				if (!jobNeighbourTiles.get(compassDirection).isNavigable(null)) {
 					jobNeighbourTiles.remove(compassDirection);
 				}
 			}
