@@ -113,6 +113,8 @@ public class GameMapConverter {
 					} else {
 						targetTile.setWall(new Wall(new WallLayout(0), roughStoneWallType, currentMaterial),
 								new TileRoof(TileRoofState.MOUNTAIN_ROOF, currentMaterial));
+						targetTile.getFloor().setFloorType(roughStoneFloorType);
+						targetTile.getFloor().setMaterial(currentMaterial);
 						if (sourceTile.getGem() != null) {
 							GemType gemType = sourceTile.getGem();
 							targetTile.getWall().changeOre(gemWallType, materialDictionary.getByName(gemType.getName()));

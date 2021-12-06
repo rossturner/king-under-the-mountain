@@ -2,8 +2,12 @@ Alpha 8.1.14
 
 - Decreased the speed at which food and drink needs decay (i.e. food and drink keeps a dwarf satisfied for longer)
 - Increased the length of time a dwarf can survive while very hungry or thirsty
+- Fix for corrupted save files that could occur when closing the game immediately after manually saving
 - Dwarves sleeping in beds should now correctly show only their head (was a problem with save files)
 - Dwarves now fall out of bed when they die (as they used to)
+- Fix for a weird interaction when adding and removing walls on top of grass.
+   - PLEASE NOTE this fix means that newly mined tiles on existing saves will show a dark (actuall granite) floor rather than the correct material.
+   - Unfortunately, you'll need to start a new game to fix this unintended side effect of the bugfix
 - Changed item production defaults so tools and items used in furniture are mostly fixed amount rather than per settler
 - A death notification for a broken dwarf now tells the player they had given up on life rather than dying to hunger or thirst
 - Death reason in notification is now in lowercase
@@ -12,6 +16,9 @@ Alpha 8.1.14
 - Fix for an issue where trees would grow into farm plots and block other jobs
 - Separated pathfinding timeout from game speed multiplier
 - Disabled particle effects at maximum camera zoom
+- Fixed some issues stopping mushroom shock tanks from working
+- Improved liquid flow so large irrigation systems will fill up correctly
+- Extended crash reporting and logging to include Error types as well as Exception types
 
 Alpha 8.1.13 - 3rd December 2021
 

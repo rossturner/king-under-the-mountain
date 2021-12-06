@@ -651,11 +651,6 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 	private boolean handleRemoveWall(GridPoint2 location) {
 		MapTile tile = gameContext.getAreaMap().getTile(location);
 		if (tile != null && tile.hasWall()) {
-			GameMaterial floorMaterial = tile.getWall().getMaterial();
-			if (tile.getRoof().getRoofMaterial() != null && !tile.getRoof().getRoofMaterial().equals(GameMaterial.NULL_MATERIAL)) {
-				floorMaterial = tile.getRoof().getRoofMaterial();
-			}
-
 			if (tile.getRoof().getState().equals(TileRoofState.MOUNTAIN_ROOF)) {
 				tile.getRoof().setState(TileRoofState.MINED);
 			}
@@ -665,7 +660,6 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 			if (designation != null) {
 				messageDispatcher.dispatchMessage(MessageType.REMOVE_DESIGNATION, new RemoveDesignationMessage(tile));
 			}
-			tile.getFloor().setMaterial(floorMaterial);
 			for (MapVertex vertex : gameContext.getAreaMap().getVertexNeighboursOfCell(tile).values()) {
 				outdoorLightProcessor.propagateLightFromMapVertex(gameContext.getAreaMap(), vertex, vertex.getOutsideLightAmount());
 			}

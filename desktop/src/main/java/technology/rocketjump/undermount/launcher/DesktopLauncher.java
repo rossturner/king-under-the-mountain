@@ -30,11 +30,10 @@ public class DesktopLauncher {
         try {
             forceUtf8();
             launchMainWindow();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             Logger.error(e);
             CrashHandler.logCrash(e);
             System.exit(-1);
-//            throw e;
         }
     }
 

@@ -193,6 +193,14 @@ public class SavedGameMessageHandler implements Telegraph, GameContextAware, Ass
 	}
 
 	public void save(String settlementName, boolean asynchronous) throws Exception {
+		if (savingInProgress && !asynchronous) {
+			// We are trying to quit while a background save is already in progress
+			while (savingInProgress) {
+				Logger.debug("Waiting for existing save process to finish");
+				Thread.sleep(50);
+			}
+			return;
+		}
 		if (savingInProgress || disposed) {
 			return;
 		} else {

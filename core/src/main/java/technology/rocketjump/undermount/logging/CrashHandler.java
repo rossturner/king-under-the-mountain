@@ -53,7 +53,7 @@ public class CrashHandler implements Telegraph {
 		}
 	}
 
-	public static void logCrash(Exception exception) {
+	public static void logCrash(Throwable exception) {
 		Logger.error(exception);
 		if (GlobalSettings.DEV_MODE || !reportingEnabled) {
 			return;

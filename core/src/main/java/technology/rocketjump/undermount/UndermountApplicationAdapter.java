@@ -146,24 +146,9 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 				localModRepository.setActiveMods(localModRepository.getActiveMods());
 			}
 
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			CrashHandler.logCrash(e);
-			throw e;
-		}
-	}
-
-	public void onExit() {
-		AnalyticsManager.stopAnalytics();
-		messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
-		messageDispatcher.dispatchMessage(MessageType.SHUTDOWN_IN_PROGRESS);
-		Gdx.app.exit();
-	}
-
-	private void checkForSingleton(Class aClass) {
-		if (!aClass.isInterface() && !Modifier.isAbstract(aClass.getModifiers()) && !(
-				aClass.isAnnotationPresent(javax.inject.Singleton.class) || aClass.isAnnotationPresent(com.google.inject.Singleton.class)
-		)) {
-			throw new ConfigurationException(Arrays.asList(new Message(aClass.getName() + " must be annotated with Singleton")));
+			Gdx.app.exit();
 		}
 	}
 
@@ -180,9 +165,24 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 			audioUpdater.update();
 			twitchTaskRunner.update(deltaTime);
 			backgroundTaskManager.update(deltaTime);
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			CrashHandler.logCrash(e);
 			onExit();
+		}
+	}
+
+	public void onExit() {
+		AnalyticsManager.stopAnalytics();
+		messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
+		messageDispatcher.dispatchMessage(MessageType.SHUTDOWN_IN_PROGRESS);
+		Gdx.app.exit();
+	}
+
+	private void checkForSingleton(Class aClass) {
+		if (!aClass.isInterface() && !Modifier.isAbstract(aClass.getModifiers()) && !(
+				aClass.isAnnotationPresent(javax.inject.Singleton.class) || aClass.isAnnotationPresent(com.google.inject.Singleton.class)
+		)) {
+			throw new ConfigurationException(Arrays.asList(new Message(aClass.getName() + " must be annotated with Singleton")));
 		}
 	}
 

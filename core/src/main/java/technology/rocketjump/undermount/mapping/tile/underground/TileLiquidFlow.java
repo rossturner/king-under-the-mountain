@@ -19,7 +19,7 @@ public class TileLiquidFlow implements ChildPersistable {
 
 	public static final int MAX_LIQUID_FLOW_PER_TILE = 7;
 	private static final int MAX_FLOW_DIRECTION_STORAGE = 50;
-	private static final float CHANCE_FULL_WATER_SPAWNS_MORE = 0.2f;
+	private static final float CHANCE_FULL_WATER_SPAWNS_MORE = 0.4f;
 
 	private GameMaterial liquidMaterial;
 	private int liquidAmount;
