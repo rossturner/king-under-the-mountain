@@ -114,6 +114,8 @@ public class SleepInBedAction extends SleepOnFloorAction {
 	public void actionInterrupted(GameContext gameContext) {
 		if (isAsleep()) {
 			changeToAwake(gameContext);
+		}
+		if (parent.parentEntity.getLocationComponent().getContainerEntity() != null) {
 			getOutOfBed(gameContext);
 		}
 		completionType = SUCCESS;

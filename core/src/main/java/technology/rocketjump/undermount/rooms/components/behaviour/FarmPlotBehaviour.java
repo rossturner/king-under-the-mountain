@@ -90,6 +90,7 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 	public void infrequentUpdate(GameContext gameContext, MessageDispatcher messageDispatcher) {
 		clearOutOfSeasonPlantingJobs(gameContext, messageDispatcher);
 		clearWrongCropPlantingJob();
+		clearUnnavigableJobs(gameContext);
 		clearCompletedJobs();
 
 		boolean allTilesTilled = allTilesTilled(gameContext);
@@ -100,6 +101,26 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 			}
 		}
 
+	}
+
+	private void clearUnnavigableJobs(GameContext gameContext) {
+		for (Job job : jobsByTiles.values()) {
+
+			boolean isNavigable;
+
+			if (job.getType().isAccessedFromAdjacentTile()) {
+				isNavigable = gameContext.getAreaMap().getOrthogonalNeighbours(job.getJobLocation().x, job.getJobLocation().y)
+						.values().stream()
+						.anyMatch(tile -> tile != null && tile.isNavigable(null));
+			} else {
+				MapTile tile = gameContext.getAreaMap().getTile(job.getJobLocation());
+				isNavigable = tile != null && tile.isNavigable(null);
+			}
+
+			if (!isNavigable) {
+				messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
+			}
+		}
 	}
 
 	@Override

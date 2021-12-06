@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.ai.goap.actions.location;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.pfa.DefaultGraphPath;
 import com.badlogic.gdx.ai.pfa.GraphPath;
 import com.badlogic.gdx.math.GridPoint2;
@@ -19,6 +20,7 @@ import technology.rocketjump.undermount.entities.model.physical.creature.Hauling
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.planning.PathfindingCallback;
+import technology.rocketjump.undermount.entities.planning.PathfindingTask;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
@@ -41,7 +43,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 
 	public static final float WAYPOINT_TOLERANCE = 0.5f;
 	public static final float DESTINATION_TOLERANCE = 0.15f;
-	public static final float MAX_TIME_TO_WAIT = 5f;
+	public static final float MAX_TIME_TO_WAIT = 8f;
 
 	protected boolean pathfindingRequested;
 	private GraphPath<Vector2> path;
@@ -49,6 +51,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 	private int pathCursor = 0;
 
 	protected Vector2 overrideLocation;
+	private transient PathfindingTask pathfindingTask;
 
 	public GoToLocationAction(AssignedGoal parent) {
 		super(parent);
@@ -57,6 +60,7 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 	@Override
 	public void update(float deltaTime, GameContext gameContext) {
 		if (!pathfindingRequested) {
+			pathfindingRequested = true;
 			Vector2 destination = selectDestination(gameContext);
 			if (destination == null) {
 				// Might have already set completionType to success for some cases e.g. going to own entity inventory
@@ -70,10 +74,9 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 					destination, gameContext.getAreaMap(), this, parent.parentEntity.getId());
 
 			parent.messageDispatcher.dispatchMessage(MessageType.PATHFINDING_REQUEST, pathfindingRequestMessage);
-			pathfindingRequested = true;
 		} else if (path == null) {
 			// Waiting for path
-			timeWaitingForPath += deltaTime;
+			timeWaitingForPath += Gdx.graphics.getDeltaTime(); // unmodified delta time
 			if (timeWaitingForPath > MAX_TIME_TO_WAIT) {
 				completionType = FAILURE;
 			}
@@ -270,6 +273,11 @@ public class GoToLocationAction extends Action implements PathfindingCallback {
 			// No path found / possible
 			completionType = FAILURE;
 		}
+	}
+
+	@Override
+	public void pathfindingStarted(PathfindingTask task) {
+		this.pathfindingTask = task;
 	}
 
 	@Override

@@ -50,13 +50,13 @@
     "fixedAmount": 15
   },
   "Product-Barrel": {
-    "fixedAmount": 6
+    "fixedAmount": 2
   },
   "Product-Bucket": {
     "perSettler": 0.2
   },
   "Product-Cauldron": {
-    "perSettler": 0.1
+    "fixedAmount": 2
   },
   "Resource-Flour-Sack": {
     "fixedAmount": 200
@@ -79,16 +79,16 @@
 
 
   "Tool-Axe": {
-    "perSettler": 0.15
+    "fixedAmount": 3
   },
   "Tool-Fishing-Rod": {
     "perSettler": 0.15
   },
   "Tool-Kitchen-Knife": {
-    "perSettler": 0.15
+    "fixedAmount": 2
   },
   "Tool-Large-Hammer": {
-    "perSettler": 0.15
+    "fixedAmount": 2
   },
   "Tool-Pickaxe": {
     "perSettler": 0.15
@@ -97,29 +97,29 @@
     "perSettler": 0.15
   },
   "Tool-Rolling-Pin": {
-    "perSettler": 0.15
+    "fixedAmount": 2
   },
   "Tool-Saw": {
-    "perSettler": 0.15
+    "fixedAmount": 2
   },
   "Tool-Small-Hammer": {
     "perSettler": 0.15
   },
   "Tool-Tongs": {
-    "perSettler": 0.15
+    "fixedAmount": 2
   },
   "Tool-Chisel": {
     "perSettler": 0.15
   },
 
   "Carcass-Carp-Prepared": {
-    "perSettler": 0.15
+    "fixedAmount": 100
   },
   "Carcass-Pike-Prepared": {
-    "perSettler": 0.15
+    "fixedAmount": 100
   },
   "Carcass-Perch-Prepared": {
-    "perSettler": 0.15
+    "fixedAmount": 100
   },
 
   "Weapon-Metal-Arrows": {

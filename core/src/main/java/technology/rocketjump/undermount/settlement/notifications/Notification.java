@@ -9,6 +9,7 @@ import technology.rocketjump.undermount.persistence.SavedGameDependentDictionari
 import technology.rocketjump.undermount.persistence.model.ChildPersistable;
 import technology.rocketjump.undermount.persistence.model.InvalidSaveException;
 import technology.rocketjump.undermount.persistence.model.SavedGameStateHolder;
+import technology.rocketjump.undermount.ui.i18n.I18nString;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
 import technology.rocketjump.undermount.ui.widgets.IconButton;
 
@@ -22,7 +23,7 @@ public class Notification implements ChildPersistable {
 	private NotificationType type;
 	private Vector2 worldPosition;
 	private IconButton iconButton;
-	private final Map<String, I18nText> textReplacements = new HashMap<>();
+	private final Map<String, I18nString> textReplacements = new HashMap<>();
 
 	public Notification() {
 
@@ -54,7 +55,7 @@ public class Notification implements ChildPersistable {
 		this.iconButton = iconButton;
 	}
 
-	public void addTextReplacement(String key, I18nText value) {
+	public void addTextReplacement(String key, I18nString value) {
 		textReplacements.put(key, value);
 	}
 
@@ -81,7 +82,7 @@ public class Notification implements ChildPersistable {
 
 		if (!textReplacements.isEmpty()) {
 			JSONObject replacementJson = new JSONObject(true);
-			for (Map.Entry<String, I18nText> entry : textReplacements.entrySet()) {
+			for (Map.Entry<String, I18nString> entry : textReplacements.entrySet()) {
 				replacementJson.put(entry.getKey(), entry.getValue().toString());
 			}
 			asJson.put("replacements", replacementJson);
@@ -105,7 +106,7 @@ public class Notification implements ChildPersistable {
 		}
 	}
 
-	public Set<Map.Entry<String, I18nText>> getTextReplacements() {
+	public Set<Map.Entry<String, I18nString>> getTextReplacements() {
 		return textReplacements.entrySet();
 	}
 }

@@ -10,7 +10,6 @@ import technology.rocketjump.undermount.entities.components.furniture.Harvestabl
 import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
-import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureLayout;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.plant.PlantSpeciesGrowthStage;
 import technology.rocketjump.undermount.gamecontext.GameContext;
@@ -36,7 +35,6 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Collections.emptyList;
-import static technology.rocketjump.undermount.entities.behaviour.furniture.CraftingStationBehaviour.getAnyNavigableWorkspace;
 import static technology.rocketjump.undermount.entities.behaviour.furniture.MushroomLogBehaviour.MushroomLogState.*;
 import static technology.rocketjump.undermount.misc.VectorUtils.toGridPoint;
 import static technology.rocketjump.undermount.ui.i18n.I18nTranslator.oneDecimalFormat;
@@ -148,12 +146,7 @@ public class MushroomLogBehaviour extends FurnitureBehaviour implements Destruct
 	private void createHarvestJob(GameContext gameContext) {
 		harvestJob = new Job(harvestJobType);
 		harvestJob.setJobPriority(priority);
-		FurnitureLayout.Workspace navigableWorkspace = getAnyNavigableWorkspace(parentEntity, gameContext.getAreaMap());
-		if (navigableWorkspace != null) {
-			harvestJob.setJobLocation(navigableWorkspace.getAccessedFrom());
-		} else {
-			harvestJob.setJobLocation(toGridPoint(parentEntity.getLocationComponent().getWorldOrParentPosition()));
-		}
+		harvestJob.setJobLocation(toGridPoint(parentEntity.getLocationComponent().getWorldOrParentPosition()));
 		harvestJob.setTargetId(parentEntity.getId());
 
 		messageDispatcher.dispatchMessage(MessageType.JOB_CREATED, harvestJob);

@@ -47,6 +47,7 @@ public class PathfindingTask implements Callable<BackgroundTaskResult> {
 
 	@Override
 	public BackgroundTaskResult call() throws Exception {
+		callback.pathfindingStarted(this);
 		GraphPath<Vector2> path = new VectorGraphPath<>();
 
 		if (originCell.getRegionId() != destinationCell.getRegionId() &&

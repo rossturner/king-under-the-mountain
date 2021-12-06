@@ -10,7 +10,7 @@ import technology.rocketjump.undermount.gamecontext.GameContext;
 public class VeryThirsty extends StatusEffect {
 
 	public VeryThirsty() {
-		super(DyingOfThirst.class, 12.0, DeathReason.DEHYDRATION);
+		super(DyingOfThirst.class, 18.0, DeathReason.DEHYDRATION);
 	}
 
 	@Override

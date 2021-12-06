@@ -80,9 +80,18 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 	@Override
 	public void destroy(Entity parentEntity, MessageDispatcher messageDispatcher, GameContext gameContext) {
 		Action currentAction = getCurrentAction();
-		if (currentAction != null) {
-			currentAction.actionInterrupted(gameContext);
+		while (currentAction != null) {
+			if (currentAction.isInterruptible()) {
+				currentAction.actionInterrupted(gameContext);
+			}
+			try {
+				checkForActionCompletionOrElseUpdate(currentAction, 0.1f, gameContext);
+			} catch (SwitchGoalException e) {
+				// Do nothing, stop here?
+			}
+			currentAction = getCurrentAction();
 		}
+
 		if (assignedJob != null) {
 			messageDispatcher.dispatchMessage(MessageType.JOB_ASSIGNMENT_CANCELLED, assignedJob);
 		}
@@ -126,6 +135,10 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 			}
 		}
 
+		checkForActionCompletionOrElseUpdate(currentAction, deltaTime, gameContext);
+	}
+
+	private void checkForActionCompletionOrElseUpdate(Action currentAction, float deltaTime, GameContext gameContext) throws SwitchGoalException {
 		Action.CompletionType actionCompletion = currentAction.isCompleted(gameContext);
 		if (actionCompletion == null) {
 			if (this.interrupted && currentAction.isInterruptible()) {
@@ -144,7 +157,6 @@ public class AssignedGoal implements ChildPersistable, Destructible {
 				}
 			}
 		}
-
 	}
 
 	public Action getCurrentAction() {

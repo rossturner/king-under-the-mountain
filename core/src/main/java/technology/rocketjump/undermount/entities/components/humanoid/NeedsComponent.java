@@ -31,8 +31,8 @@ public class NeedsComponent implements EntityComponent {
 
 	private static final double SLEEP_HOURS_TO_FULLY_RESTED = 12;
 	private static final double AWAKE_HOURS_UNTIL_UNCONSCIOUS = 30;
-	private static final double HOURS_TO_STARVING_FROM_FULL = 32;
-	private static final double HOURS_TO_DEHYDRATED_FROM_QUENCHED = 30;
+	private static final double HOURS_TO_STARVING_FROM_FULL = 46;
+	private static final double HOURS_TO_DEHYDRATED_FROM_QUENCHED = 40;
 
 	public NeedsComponent() {
 

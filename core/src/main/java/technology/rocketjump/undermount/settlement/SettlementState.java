@@ -283,6 +283,10 @@ public class SettlementState implements Persistable {
 
 		asJson.put("fishRemaining", fishRemainingInRiver);
 
+		if (settlerRace != null) {
+			asJson.put("settlerRace", settlerRace.getName());
+		}
+
 		savedGameStateHolder.setSettlementState(this);
 	}
 
@@ -483,6 +487,12 @@ public class SettlementState implements Persistable {
 				usedTwitchViewers.add(new TwitchViewer(o.toString()));
 			}
 		}
+
+		String settlerRaceName = asJson.getString("settlerRace");
+		if (settlerRaceName == null) {
+			settlerRaceName = "Dwarf";
+		}
+		this.settlerRace = relatedStores.raceDictionary.getByName(settlerRaceName);
 
 		this.fishRemainingInRiver = asJson.getIntValue("fishRemaining");
 	}

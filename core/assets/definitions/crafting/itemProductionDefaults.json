@@ -1,12 +1,15 @@
 {
   "Carcass-Carp-Prepared" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 100,
+    "perSettler" : 0.0
   },
   "Carcass-Perch-Prepared" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 100,
+    "perSettler" : 0.0
   },
   "Carcass-Pike-Prepared" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 100,
+    "perSettler" : 0.0
   },
   "Fuel-Sack" : {
     "fixedAmount" : 100,
@@ -23,7 +26,7 @@
     "perSettler" : 0.0
   },
   "Product-Barrel" : {
-    "fixedAmount" : 6,
+    "fixedAmount" : 2,
     "perSettler" : 0.0
   },
   "Product-Barrel-Hoops" : {
@@ -42,7 +45,8 @@
     "perSettler" : 0.2
   },
   "Product-Cauldron" : {
-    "perSettler" : 0.1
+    "fixedAmount" : 2,
+    "perSettler" : 0.0
   },
   "Product-Linen" : {
     "fixedAmount" : 6,
@@ -105,7 +109,8 @@
     "perSettler" : 0.0
   },
   "Tool-Axe" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 3,
+    "perSettler" : 0.0
   },
   "Tool-Chisel" : {
     "perSettler" : 0.15
@@ -114,10 +119,12 @@
     "perSettler" : 0.15
   },
   "Tool-Kitchen-Knife" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 2,
+    "perSettler" : 0.0
   },
   "Tool-Large-Hammer" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 2,
+    "perSettler" : 0.0
   },
   "Tool-Pickaxe" : {
     "perSettler" : 0.15
@@ -126,16 +133,19 @@
     "perSettler" : 0.15
   },
   "Tool-Rolling-Pin" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 2,
+    "perSettler" : 0.0
   },
   "Tool-Saw" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 2,
+    "perSettler" : 0.0
   },
   "Tool-Small-Hammer" : {
     "perSettler" : 0.15
   },
   "Tool-Tongs" : {
-    "perSettler" : 0.15
+    "fixedAmount" : 2,
+    "perSettler" : 0.0
   },
   "Weapon-Bow" : {
     "perSettler" : 0.1

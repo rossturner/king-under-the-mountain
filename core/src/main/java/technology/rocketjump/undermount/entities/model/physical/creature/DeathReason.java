@@ -12,6 +12,7 @@ public enum DeathReason {
 	INTERNAL_BLEEDING,
 	CRITICAL_ORGAN_DAMAGE,
 	SUFFOCATION,
+	GIVEN_UP_ON_LIFE,
 	UNKNOWN;
 
 	public String getI18nKey() {

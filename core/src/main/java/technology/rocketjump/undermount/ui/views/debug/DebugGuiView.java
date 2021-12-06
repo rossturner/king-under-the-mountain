@@ -17,6 +17,7 @@ import com.google.inject.Singleton;
 import org.pmw.tinylog.Logger;
 import technology.rocketjump.undermount.entities.behaviour.creature.CorpseBehaviour;
 import technology.rocketjump.undermount.entities.behaviour.creature.SettlerBehaviour;
+import technology.rocketjump.undermount.entities.components.InventoryComponent;
 import technology.rocketjump.undermount.entities.components.humanoid.HappinessComponent;
 import technology.rocketjump.undermount.entities.factories.ItemEntityAttributesFactory;
 import technology.rocketjump.undermount.entities.factories.ItemEntityFactory;
@@ -29,6 +30,7 @@ import technology.rocketjump.undermount.entities.model.physical.item.ItemTypeDic
 import technology.rocketjump.undermount.environment.WeatherManager;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 import technology.rocketjump.undermount.gamecontext.GameContextAware;
+import technology.rocketjump.undermount.jobs.JobStore;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
 import technology.rocketjump.undermount.mapping.tile.TileExploration;
 import technology.rocketjump.undermount.materials.GameMaterialDictionary;
@@ -50,8 +52,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static technology.rocketjump.undermount.assets.entities.model.EntityAssetOrientation.DOWN;
-import static technology.rocketjump.undermount.entities.model.EntityType.CREATURE;
-import static technology.rocketjump.undermount.entities.model.EntityType.ITEM;
+import static technology.rocketjump.undermount.entities.model.EntityType.*;
 
 /**
  * As this is intended for dev/debug use, it is not translatable or moddable
@@ -72,6 +73,7 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 	private final SettlerFactory settlerFactory;
 	private final WeatherManager weatherManager;
 	private final ImmigrationManager immigrationManager;
+	private final JobStore jobStore;
 	private Table layoutTable;
 	private GameContext gameContext;
 
@@ -85,7 +87,7 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 	public DebugGuiView(GuiSkinRepository guiSkinRepository, MessageDispatcher messageDispatcher,
 						ItemTypeDictionary itemTypeDictionary, GameMaterialDictionary materialDictionary,
 						ItemEntityAttributesFactory itemEntityAttributesFactory, ItemEntityFactory itemEntityFactory,
-						SettlerFactory settlerFactory, WeatherManager weatherManager, ImmigrationManager immigrationManager) {
+						SettlerFactory settlerFactory, WeatherManager weatherManager, ImmigrationManager immigrationManager, JobStore jobStore) {
 		this.messageDispatcher = messageDispatcher;
 		this.uiSkin = guiSkinRepository.getDefault();
 		this.itemTypeDictionary = itemTypeDictionary;
@@ -95,6 +97,7 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 		this.settlerFactory = settlerFactory;
 		this.weatherManager = weatherManager;
 		this.immigrationManager = immigrationManager;
+		this.jobStore = jobStore;
 
 		layoutTable = new Table(uiSkin);
 
@@ -211,6 +214,16 @@ public class DebugGuiView implements GuiView, GameContextAware, Telegraph {
 					if (entity.getType().equals(CREATURE) && !(entity.getBehaviourComponent() instanceof CorpseBehaviour)) {
 						messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(entity, DeathReason.UNKNOWN));
 						break;
+					}
+					if (entity.getType().equals(FURNITURE)) {
+						InventoryComponent inventoryComponent = entity.getComponent(InventoryComponent.class);
+						for (InventoryComponent.InventoryEntry inventoryEntry : inventoryComponent.getInventoryEntries()) {
+							if (inventoryEntry.entity.getType().equals(CREATURE) && !(inventoryEntry.entity.getBehaviourComponent() instanceof CorpseBehaviour)) {
+								messageDispatcher.dispatchMessage(MessageType.CREATURE_DEATH, new CreatureDeathMessage(inventoryEntry.entity, DeathReason.UNKNOWN));
+								break;
+							}
+						}
+
 					}
 				}
 				break;

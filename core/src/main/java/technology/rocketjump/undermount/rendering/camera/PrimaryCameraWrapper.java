@@ -347,4 +347,9 @@ public class PrimaryCameraWrapper implements GameContextAware, Persistable, Tele
 		xyzVelocity = new Vector3();
 		panSpeedMultiplier = 1f;
 	}
+
+	public boolean nearMaxZoom() {
+		return camera.zoom > (maxZoom * 0.97f);
+	}
+
 }

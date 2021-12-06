@@ -88,7 +88,7 @@ public class GameDialogDictionary implements I18nUpdatable {
 		I18nText title = translator.getTranslatedString(notification.getType().getI18nTitleKey());
 
 		Map<String, I18nString> replacements = new HashMap<>();
-		for (Map.Entry<String, I18nText> replacement : notification.getTextReplacements()) {
+		for (Map.Entry<String, I18nString> replacement : notification.getTextReplacements()) {
 			replacements.put(replacement.getKey(), replacement.getValue());
 		}
 		I18nText descriptionText = translator.getTranslatedWordWithReplacements(notification.getType().getI18nDescriptionKey(), replacements)

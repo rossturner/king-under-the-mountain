@@ -81,7 +81,7 @@ public class MainGameScreen implements GameContextAware, GameScreen, Telegraph {
 				!gameContext.getSettlementState().getGameState().equals(STARTING_SPAWN)) {
 			gameContext.getGameClock().update(multipliedDeltaTime, messageDispatcher);
 		}
-		particleEffectUpdater.update(multipliedDeltaTime, new TileBoundingBox(primaryCameraWrapper.getCamera(), gameContext.getAreaMap()));
+		particleEffectUpdater.update(multipliedDeltaTime, new TileBoundingBox(primaryCameraWrapper.getCamera(), gameContext.getAreaMap()), primaryCameraWrapper.nearMaxZoom());
 		primaryCameraWrapper.update(deltaTime);
 		gameUpdateRegister.update(multipliedDeltaTime, gameContext.getGameClock().isPaused());
 

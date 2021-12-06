@@ -36,7 +36,7 @@ public class MushroomLogBehaviourTag extends Tag {
 //				relatedItemTypes.add(itemType);
 //			}
 //			behaviourComponent.setRelatedItemTypes(relatedItemTypes);
-			behaviourComponent.setHarvestJobType(tagProcessingUtils.jobTypeDictionary.getByName("HARVESTING"));
+			behaviourComponent.setHarvestJobType(tagProcessingUtils.jobTypeDictionary.getByName("HARVEST_FROM_FURNITURE"));
 
 			behaviourComponent.init(entity, messageDispatcher, gameContext);
 

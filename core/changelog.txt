@@ -1,3 +1,18 @@
+Alpha 8.1.14
+
+- Decreased the speed at which food and drink needs decay (i.e. food and drink keeps a dwarf satisfied for longer)
+- Increased the length of time a dwarf can survive while very hungry or thirsty
+- Dwarves sleeping in beds should now correctly show only their head (was a problem with save files)
+- Dwarves now fall out of bed when they die (as they used to)
+- Changed item production defaults so tools and items used in furniture are mostly fixed amount rather than per settler
+- A death notification for a broken dwarf now tells the player they had given up on life rather than dying to hunger or thirst
+- Death reason in notification is now in lowercase
+- The camera now stops panning as a notification is shown
+- Increased length of time that most items are held in inventory for, so tools shouldn't be returned each morning
+- Fix for an issue where trees would grow into farm plots and block other jobs
+- Separated pathfinding timeout from game speed multiplier
+- Disabled particle effects at maximum camera zoom
+
 Alpha 8.1.13 - 3rd December 2021
 
 - Quick fix for length of seasons

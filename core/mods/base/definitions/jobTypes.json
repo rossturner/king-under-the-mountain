@@ -100,6 +100,13 @@
     "workOnJobParticleEffectNames": ["Small leaf explosion"]
   },
   {
+    "name": "HARVEST_FROM_FURNITURE",
+    "defaultTimeToCompleteJob": 4,
+    "overrideI18nKey": "ACTION.JOB.HARVESTING",
+    "activeSoundAssetName": "HarvestingCrops",
+    "accessedFromAdjacentTile": true
+  },
+  {
     "name": "CLEAR_GROUND",
     "defaultTimeToCompleteJob": 3,
     "overrideI18nKey": "ACTION.JOB.CLEAR_GROUND",

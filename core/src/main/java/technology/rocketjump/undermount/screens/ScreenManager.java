@@ -25,6 +25,7 @@ import technology.rocketjump.undermount.messaging.async.ErrorType;
 import technology.rocketjump.undermount.messaging.types.StartNewGameMessage;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.camera.GlobalSettings;
+import technology.rocketjump.undermount.rendering.camera.PrimaryCameraWrapper;
 import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameViewMode;
 import technology.rocketjump.undermount.ui.views.GuiViewName;
@@ -53,6 +54,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 	private final GameDialogDictionary dialogDictionary;
 	private final EntityStore entityStore;
 	private final UserPreferences userPreferences;
+	private final PrimaryCameraWrapper primaryCameraWrapper;
 
 	private GameScreen currentScreen;
 
@@ -64,7 +66,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 	public ScreenManager(GameScreenDictionary gameScreenDictionary, MessageDispatcher messageDispatcher, TiledMapFactory mapFactory,
 						 ProfessionDictionary professionDictionary, GameContextFactory gameContextFactory,
 						 GameContextRegister gameContextRegister, GameDialogDictionary dialogDictionary,
-						 EntityStore entityStore, UserPreferences userPreferences, MainGameScreen mainGameScreen, MainMenuScreen mainMenuScreen) {
+						 EntityStore entityStore, UserPreferences userPreferences, PrimaryCameraWrapper primaryCameraWrapper, MainGameScreen mainGameScreen, MainMenuScreen mainMenuScreen) {
 		this.gameScreenDictionary = gameScreenDictionary;
 		this.messageDispatcher = messageDispatcher;
 		this.mapFactory = mapFactory;
@@ -74,6 +76,7 @@ public class ScreenManager implements Telegraph, GameContextAware {
 		this.dialogDictionary = dialogDictionary;
 		this.entityStore = entityStore;
 		this.userPreferences = userPreferences;
+		this.primaryCameraWrapper = primaryCameraWrapper;
 
 		this.mainGameScreen = mainGameScreen;
 		this.mainMenuScreen = mainMenuScreen;
@@ -243,6 +246,8 @@ public class ScreenManager implements Telegraph, GameContextAware {
 			case MessageType.SHOW_DIALOG: {
 				GameDialog dialog = (GameDialog) msg.extraInfo;
 				currentScreen.showDialog(dialog);
+				primaryCameraWrapper.setMovementX(0);
+				primaryCameraWrapper.setMovementY(0);
 				return true;
 			}
 			case MessageType.NOTIFY_RESTART_REQUIRED: {

@@ -768,10 +768,15 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 
 		Vector2 deceasedPosition = deceased.getLocationComponent().getWorldOrParentPosition();
 
+		DeathReason deathReason = deathMessage.reason;
+		if (originalBehaviour instanceof BrokenDwarfBehaviour) {
+			deathReason = DeathReason.GIVEN_UP_ON_LIFE;
+		}
+
 		if (originalBehaviour instanceof SettlerBehaviour) {
 			Notification deathNotification = new Notification(NotificationType.DEATH, deceasedPosition);
 			deathNotification.addTextReplacement("character", i18nTranslator.getDescription(deceased));
-			deathNotification.addTextReplacement("reason", i18nTranslator.getTranslatedString(deathMessage.reason.getI18nKey()));
+			deathNotification.addTextReplacement("reason", i18nTranslator.getDictionary().getWord(deathReason.getI18nKey()));
 			messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, deathNotification);
 
 			settlerTracker.settlerDied(deceased);
@@ -783,7 +788,7 @@ public class EntityMessageHandler implements GameContextAware, Telegraph {
 		deceased.removeComponent(NeedsComponent.class);
 
 		HistoryComponent historyComponent = deceased.getOrCreateComponent(HistoryComponent.class);
-		historyComponent.setDeathReason(deathMessage.reason);
+		historyComponent.setDeathReason(deathReason);
 
 		// Rotate and change orientation of deceased
 		if (previousConciousness.equals(AWAKE)) {

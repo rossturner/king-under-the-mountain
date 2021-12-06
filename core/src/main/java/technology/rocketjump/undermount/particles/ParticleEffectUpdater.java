@@ -35,6 +35,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 
 	private TileBoundingBox currentBoundingBox;
 	private GameContext gameContext;
+	private boolean cameraIsAtMaxZoom;
 
 	@Inject
 	public ParticleEffectUpdater(ParticleEffectStore store, MessageDispatcher messageDispatcher, ParticleEffectTypeDictionary particleEffectTypeDictionary) {
@@ -47,8 +48,9 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 		messageDispatcher.addListener(this, MessageType.GET_PROGRESS_BAR_EFFECT_TYPE);
 	}
 
-	public void update(float deltaTime, TileBoundingBox boundingBox) {
+	public void update(float deltaTime, TileBoundingBox boundingBox, boolean cameraIsAtMaxZoom) {
 		this.currentBoundingBox = boundingBox;
+		this.cameraIsAtMaxZoom = cameraIsAtMaxZoom;
 
 		Iterator<ParticleEffectInstance> iterator = store.getIterator();
 
@@ -63,7 +65,7 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 				// Not yet implemented - updating effects not attached to an entity
 			}
 
-			if (!currentBoundingBox.contains(toGridPoint(instance.getWorldPosition()))) {
+			if (!insideBounds(instance.getWorldPosition())) {
 				store.remove(instance, iterator);
 				continue;
 			}
@@ -167,7 +169,9 @@ public class ParticleEffectUpdater implements Telegraph, GameContextAware {
 	}
 
 	private boolean insideBounds(Vector2 position) {
-		if (currentBoundingBox == null || position == null) {
+		if (cameraIsAtMaxZoom) {
+			return false;
+		} else if (currentBoundingBox == null || position == null) {
 			return false;
 		} else {
 			return currentBoundingBox.contains(toGridPoint(position));
