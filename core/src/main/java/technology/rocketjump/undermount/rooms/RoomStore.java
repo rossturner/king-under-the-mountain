@@ -103,6 +103,11 @@ public class RoomStore implements Updatable, GameContextAware {
 		return byName.get(roomName);
 	}
 
+	public void nameChanged(Room room, String originalName) {
+		byName.remove(originalName);
+		byName.put(room.getRoomName(), room);
+	}
+
 	public List<Room> getByComponent(Class<? extends RoomComponent> componentClass) {
 		return byComponent.getOrDefault(componentClass, Collections.emptyList());
 	}

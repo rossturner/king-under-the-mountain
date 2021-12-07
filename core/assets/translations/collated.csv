@@ -78,7 +78,10 @@ CARCASS.PERCH.PREPARED.PLURAL,Perch fillets,,Barschfilets,,,Filetes de perca,,,,
 CARCASS.PIKE.PREPARED.NOUN,Pike fillet,,Hechtfilet,,,Filete de lucio,,,,,,,,,,,,マスの切り身,,
 CARCASS.PIKE.PREPARED.PLURAL,Pike fillets,,Hechtfilets,,,Filetes de lucio,,,,,,,,,,,,マスの切り身,,
 
+CLOTH.BRONZED_HEMP,Hemp,,,,,,,,,,,,,,,,,,,
 CLOTH.HEMP-LINEN,Hemp,,,,,Cáñamo,,,,,,,,,,,,麻,,
+CLOTH.LIGHT_HEMP,Hemp,,,,,,,,,,,,,,,,,,,
+CLOTH.TOBACCO_CLOTH,Tobacco cloth,,,,,,,,,,,,,,,,,,,
 
 CONSTRUCTION.DESCRIPTION,Construction of {{materialType.adjective}} {{furnitureType.noun}},,Herstellung von {{furnitureType.noun}} aus {{materialType}},Construction: {{furnitureType.noun}} {{materialType.adjective}},Costruzione di: {{furnitureType.noun}} {{materialType.adjective}},Construcción de {{furnitureType.noun}} {{materialType.adjective}},Construção de {{materialType.adjective}} {{furnitureType.noun}},Fabricação de {{furnitureType.noun}} {{materialType.adjective}},,Строительство: {{furnitureType.noun}} {{materialType.adjective}},{{furnitureType.noun}}  {{materialType}} inşa ediliyor.,Bygning af {{materialType.adjective}} {{furnitureType.noun}},,Konstruktion av {{materialType.adjective}} {{furnitureType.noun}},,,,{{materialType.adjective}} {{furnitureType.noun}}を構築している,,
 CONSTRUCTION.ITEM_ALLOCATION,{{quantity}} of {{itemDescription}} allocated,,{{quantity}} von {{itemDescription}} zugewiesen,Assignation: {{quantity}}{{itemDescription}},Assegnazione di {{itemDescription}}: {{quantity}},Asignado: {{quantity}} de {{itemDescription}},{{quantity}} de {{itemDescription}} atribuídos,Alocação: {{quantity}} {{itemDescription}},,Распределено: {{quantity}} из {{itemDescription}},{{quantity}}  {{itemDescription}} atandı.,{{quantity}} af {{itemDescription}} allokeret,,{{kvantitet}} av {{itemDescription}} allokerade,,,,{{quantity}}/{{itemDescription}}が割り当てられている,,

@@ -759,7 +759,15 @@ public class JobMessageHandler implements GameContextAware, Telegraph {
 							boolean entityMoved = false;
 							for (MapTile neighbourTile : gameContext.getAreaMap().getNeighbours(targetTile.getTilePosition()).values()) {
 								if (neighbourTile.isNavigable(null)) {
+									GridPoint2 originalPosition = toGridPoint(entity.getLocationComponent().getWorldPosition());
 									entity.getLocationComponent().setWorldPosition(neighbourTile.getWorldPositionOfCenter(), false);
+
+									for (Job job : new ArrayList<>(jobStore.getJobsAtLocation(originalPosition))) {
+										if (job.getType().equals(haulingJobType)) {
+											messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, job);
+										}
+									}
+
 									entityMoved = true;
 									break;
 								}

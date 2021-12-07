@@ -37,10 +37,10 @@ public class RoomFactory implements GameContextAware, I18nUpdatable {
 		Room room = new Room(roomType);
 		I18nText translatedName = i18nTranslator.getTranslatedString(roomType.getI18nKey());
 		tagProcessor.apply(roomType.getProcessedTags(), room);
+		room.setRoomName(generateSequentialName(translatedName.toString(), null, 1));
 		if (!roomType.getRoomName().equals("VIRTUAL_PLACING_ROOM")) {
 			roomStore.add(room);
 		}
-		room.setRoomName(generateSequentialName(translatedName.toString(), null, 1));
 		return room;
 	}
 
@@ -54,7 +54,9 @@ public class RoomFactory implements GameContextAware, I18nUpdatable {
 				if (groupIterator.hasNext()) {
 					String translatedName =  i18nTranslator.getTranslatedString(newRoom.getRoomType().getI18nKey()).toString();
 					String groupTranslated = i18nTranslator.getTranslatedString(groupIterator.next().getI18nKey()).toString();
+					String originalName = newRoom.getRoomName();
 					newRoom.setRoomName(generateSequentialName(translatedName, groupTranslated, 1));
+					roomStore.nameChanged(newRoom, originalName);
 				}
 			}
 		}
@@ -99,7 +101,9 @@ public class RoomFactory implements GameContextAware, I18nUpdatable {
 						translatedStockpileGroup = i18nTranslator.getTranslatedString(group.getI18nKey()).toString();
 					}
 				}
+				String originalName = room.getRoomName();
 				room.setRoomName(generateSequentialName(translatedName.toString(), translatedStockpileGroup, 1));
+				roomStore.nameChanged(room, originalName);
 			}
 		}
 	}
@@ -107,7 +111,9 @@ public class RoomFactory implements GameContextAware, I18nUpdatable {
 	public void updateRoomNameForStockpileGroup(Room room, StockpileGroup stockpileGroup) {
 		String translatedName =  i18nTranslator.getTranslatedString(room.getRoomType().getI18nKey()).toString();
 		String groupTranslated = i18nTranslator.getTranslatedString(stockpileGroup.getI18nKey()).toString();
+		String originalName = room.getRoomName();
 		room.setRoomName(generateSequentialName(translatedName, groupTranslated, 1));
+		roomStore.nameChanged(room, originalName);
 	}
 
 	@Override

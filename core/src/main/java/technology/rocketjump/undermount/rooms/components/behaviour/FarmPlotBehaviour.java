@@ -156,16 +156,14 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 
 			Season currentSeason = gameContext.getGameClock().getCurrentSeason();
 			FarmPlotComponent farmPlotComponent = parent.getComponent(FarmPlotComponent.class);
-			if (allTilesTilled) {
-				if (farmPlotComponent.getSelectedCrop() != null && farmPlotComponent.getSelectedCrop().getSeed() != null &&
-						farmPlotComponent.getSelectedCrop().getSeed().getPlantingSeasons().contains(currentSeason) &&
-						!tileContainsCorrectCrop(tile, farmPlotComponent)) {
-					if (!jobsByTiles.containsKey(tile.getTilePosition())) {
-						plantSeedJob(tile, farmPlotComponent, messageDispatcher);
-					}
-				} else if (tileContainsCorrectCrop(tile, farmPlotComponent)) {
-					harvestCropIfApplicable(tile, messageDispatcher);
+			if (allTilesTilled && farmPlotComponent.getSelectedCrop() != null && farmPlotComponent.getSelectedCrop().getSeed() != null &&
+					farmPlotComponent.getSelectedCrop().getSeed().getPlantingSeasons().contains(currentSeason) &&
+					!tileContainsCorrectCrop(tile, farmPlotComponent)) {
+				if (!jobsByTiles.containsKey(tile.getTilePosition())) {
+					plantSeedJob(tile, farmPlotComponent, messageDispatcher);
 				}
+			} else if (tileContainsCorrectCrop(tile, farmPlotComponent)) {
+				harvestCropIfApplicable(tile, messageDispatcher);
 			}
 		}
 	}

@@ -2,6 +2,7 @@ package technology.rocketjump.undermount.entities.factories;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.GridPoint2;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -17,12 +18,16 @@ import technology.rocketjump.undermount.entities.model.physical.PhysicalEntityCo
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.gamecontext.GameContext;
 
+import java.util.Random;
+
 @Singleton
 public class FurnitureEntityFactory {
 
 	private static final float ITEM_RADIUS = 0.4f;
+	private static final float OFFSET_POSITION_EPSILON = 0.01f;
 	private final MessageDispatcher messageDispatcher;
 	private final EntityAssetUpdater entityAssetUpdater;
+	private final Random random = new RandomXS128();
 
 	@Inject
 	public FurnitureEntityFactory(MessageDispatcher messageDispatcher, EntityAssetUpdater entityAssetUpdater) {
@@ -51,7 +56,9 @@ public class FurnitureEntityFactory {
 
 	private LocationComponent createLocationComponent(GridPoint2 tilePosition) {
 		LocationComponent locationComponent = new LocationComponent();
-		Vector2 worldPosition = new Vector2(tilePosition.x + 0.5f, tilePosition.y + 0.5f);
+		Vector2 worldPosition = new Vector2(
+				tilePosition.x + 0.5f + (-OFFSET_POSITION_EPSILON + (2 * OFFSET_POSITION_EPSILON * random.nextFloat())),
+				tilePosition.y + 0.5f + (-OFFSET_POSITION_EPSILON + (2 * OFFSET_POSITION_EPSILON * random.nextFloat())));
 
 		locationComponent.setWorldPosition(worldPosition, false);
 		locationComponent.setFacing(EntityAssetOrientation.DOWN.toVector2().cpy());

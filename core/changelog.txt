@@ -1,3 +1,11 @@
+Alpha 8.1.15
+
+- Corrected numbering of stockpile zones
+- Harvestable crops will now be harvested even if all tiles in the farm plot are not yet tilled
+- Added small random offset to furniture position so adjacent looms do not flicker
+- Cancelling outstanding jobs when items are displaced by digging an irrigation channel
+- Added missing translations for cloth materials that could be generated with sleeping spots
+
 Alpha 8.1.14 - 6th December 2021
 
 - Decreased the speed at which food and drink needs decay (i.e. food and drink keeps a dwarf satisfied for longer)
