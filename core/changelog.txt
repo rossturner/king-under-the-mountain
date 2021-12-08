@@ -1,4 +1,4 @@
-Alpha 8.1.15
+Alpha 8.1.15 - 8th December 2021
 
 - Added Add and Remove tiles buttons to room selected view
 - Corrected numbering of stockpile zones
@@ -6,7 +6,6 @@ Alpha 8.1.15
 - Added small random offset to furniture position so adjacent looms do not flicker
 - Cancelling outstanding jobs when items are displaced by digging an irrigation channel
 - Added missing translations for cloth materials that could be generated with sleeping spots
-- Updated sleep goal to not be selected while the dwarf is hungry or thirsty
 - Fix for pathfinding related to fishing jobs near a bridge
 - Added Chinese (simplified) translation, translated by Howard Huang
 - Updated Italian and Japanese translations, thanks to AndyD and SPQR
