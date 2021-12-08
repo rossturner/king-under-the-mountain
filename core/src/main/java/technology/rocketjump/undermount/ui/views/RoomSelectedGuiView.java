@@ -32,6 +32,7 @@ import technology.rocketjump.undermount.rooms.StockpileGroupDictionary;
 import technology.rocketjump.undermount.rooms.components.FarmPlotComponent;
 import technology.rocketjump.undermount.rooms.components.RoomComponent;
 import technology.rocketjump.undermount.rooms.components.StockpileComponent;
+import technology.rocketjump.undermount.ui.GameInteractionMode;
 import technology.rocketjump.undermount.ui.GameInteractionStateContainer;
 import technology.rocketjump.undermount.ui.Selectable;
 import technology.rocketjump.undermount.ui.i18n.I18nText;
@@ -61,6 +62,8 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 	private final IconButton manageStockpileButton;
 	private final ItemTypeDictionary itemTypeDictionary;
 	private final RaceDictionary raceDictionary;
+	private final IconButton addTilesButton;
+	private final IconButton removeTilesButton;
 	private Table outerTable;
 	private Table descriptionTable;
 
@@ -185,6 +188,15 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 			doUpdate();
 		});
 
+		addTilesButton = iconButtonFactory.create("GUI.ADD_TILES", "expand", HexColors.POSITIVE_COLOR, ButtonStyle.SMALL);
+		addTilesButton.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.GUI_ROOM_TYPE_SELECTED, currentSelectable.getRoom().getRoomType());
+			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_INTERACTION_MODE, GameInteractionMode.PLACE_ROOM);
+		});
+
+		removeTilesButton = iconButtonFactory.create("GUI.REMOVE_TILES", "contract", HexColors.get("#d42828"), ButtonStyle.SMALL);
+		removeTilesButton.setAction(() -> messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_INTERACTION_MODE, GameInteractionMode.REMOVE_ROOMS));
+
 		priorityButtonDefinitions = new ArrayList<>();
 		// TODO might want to pull the below code out somewhere else
 		TextureAtlas guiTextureAtlas = textureAtlasRepository.get(TextureAtlasRepository.TextureAtlasType.GUI_TEXTURE_ATLAS);
@@ -247,6 +259,8 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 			if (requiresFurnitureButton) {
 				buttonsTable.add(furnitureButton).left().pad(4);
 			}
+			buttonsTable.add(addTilesButton).left().pad(4);
+			buttonsTable.add(removeTilesButton).left().pad(4);
 			buttonsTable.add(removeButton).left().pad(4).row();
 			outerTable.add(buttonsTable).left().row();
 

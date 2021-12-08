@@ -238,7 +238,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 		while (!roomTilesToPlace.isEmpty()) {
 			Room newRoom = roomFactory.create(roomPlacementMessage.getRoomType(), roomTilesToPlace);
 			StockpileComponent stockpileComponent = newRoom.getComponent(StockpileComponent.class);
-			if (stockpileComponent != null) {
+			if (stockpileComponent != null && roomPlacementMessage.stockpileGroup != null) {
 				stockpileComponentUpdater.toggleGroup(stockpileComponent, roomPlacementMessage.stockpileGroup, true, true);
 				roomFactory.updateRoomNameForStockpileGroup(newRoom, roomPlacementMessage.stockpileGroup);
 			}
@@ -247,7 +247,7 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 
 		for (Room newRoom : newRooms) {
 			long thisRoomId = newRoom.getRoomId();
-			Set<Long> roomsToMergeFrom = new HashSet<>();
+			Set<Long> roomsToMergeTo = new HashSet<>();
 			for (Map.Entry<GridPoint2, RoomTile> entry : newRoom.entrySet()) {
 				if (entry.getValue().isAtRoomEdge()) {
 					for (MapTile neighbourTile : gameContext.getAreaMap().getOrthogonalNeighbours(entry.getKey().x, entry.getKey().y).values()) {
@@ -255,20 +255,22 @@ public class MapMessageHandler implements Telegraph, GameContextAware {
 							Room neighbourRoom = neighbourTile.getRoomTile().getRoom();
 							if (neighbourRoom.getRoomId() != thisRoomId && neighbourRoom.getRoomType().equals(newRoom.getRoomType())) {
 								// Different room of same type
-								roomsToMergeFrom.add(neighbourRoom.getRoomId());
+								roomsToMergeTo.add(neighbourRoom.getRoomId());
 							}
 						}
 					}
 				}
 			}
 
-			if (!roomsToMergeFrom.isEmpty()) {
-				while (!roomsToMergeFrom.isEmpty()) {
-					long roomId = roomsToMergeFrom.iterator().next();
-					roomsToMergeFrom.remove(roomId);
-					Room roomToMergeFrom = roomStore.getById(roomId);
-					newRoom.mergeFrom(roomToMergeFrom);
-					roomStore.remove(roomToMergeFrom);
+			if (!roomsToMergeTo.isEmpty()) {
+				while (!roomsToMergeTo.isEmpty()) {
+					long roomId = roomsToMergeTo.iterator().next();
+					roomsToMergeTo.remove(roomId);
+					Room roomToMergeTo = roomStore.getById(roomId);
+
+					roomToMergeTo.mergeFrom(newRoom);
+					roomStore.remove(newRoom);
+					newRoom = roomToMergeTo;
 				}
 
 				// Update all tile layouts

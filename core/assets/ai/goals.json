@@ -471,6 +471,16 @@
       "type" : "NEED",
       "value" : 55,
       "operator" : "LESS_THAN_OR_EQUAL_TO"
+    }, {
+      "need" : "DRINK",
+      "type" : "NEED",
+      "value" : 20,
+      "operator" : "GREATER_THAN"
+    }, {
+      "need" : "FOOD",
+      "type" : "NEED",
+      "value" : 20,
+      "operator" : "GREATER_THAN"
     } ],
     "priority" : "WANT_NORMAL"
   } ],
