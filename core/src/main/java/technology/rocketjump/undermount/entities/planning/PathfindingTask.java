@@ -61,8 +61,7 @@ public class PathfindingTask implements Callable<BackgroundTaskResult> {
 			return BackgroundTaskResult.success();
 		}
 
-		if (!destinationCell.getRegionType().equals(MapTile.RegionType.GENERIC)) {
-			// Can't pathfind to a wall or river type tile currently, just short circuit rather than flood fill the map
+		if (!destinationCell.isNavigable(parentEntity)) {
 			callback.pathfindingComplete(path, relatedId);
 			return BackgroundTaskResult.success();
 		}

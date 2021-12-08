@@ -78,7 +78,10 @@ CARCASS.PERCH.PREPARED.PLURAL,,Perch fillets,
 CARCASS.PIKE.PREPARED.NOUN,,Pike fillet,
 CARCASS.PIKE.PREPARED.PLURAL,,Pike fillets,
 
+CLOTH.BRONZED_HEMP,,Hemp,
 CLOTH.HEMP-LINEN,,Hemp,
+CLOTH.LIGHT_HEMP,,Hemp,
+CLOTH.TOBACCO_CLOTH,,Tobacco cloth,
 
 CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{材料类型. 形容词}} {{家具. 名词}} 的构造
 CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,已分配 {{quantity}} {{itemDescription}}
@@ -131,6 +134,7 @@ DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEA
 DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,疲惫
 DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,食物中毒
 DEATH_REASON.FROZEN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exposure to freezing weather,
+DEATH_REASON.GIVEN_UP_ON_LIFE,,having given up on life,
 DEATH_REASON.INTERNAL_BLEEDING,,Internal bleeding,
 DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,饥饿
 DEATH_REASON.SUFFOCATION,,Suffocation,
@@ -1180,6 +1184,7 @@ TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{物质类型. �
 TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.",您的定居者有三个基本需求需要满足：食物、饮料和睡觉的地方。 虽然他们现在会抱怨它，但他们可以从附近的河流喝酒，睡在地上。 他们不能做的是魔法了一些食物从哪里（至少，不是没有一个法师！） 所以我们将重点放在食物上。
 TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.",每个春天你应该做的第一件事是确保有足够的作物种植在秋季的收获。 农业是一种可靠和可持续的食物来源，但您需要确保每年收获期间有足够的作物来养活您的人口。
 TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",遵循的一个很好的经验法则是确保您的人口中每个定居者都有 10 块庄稼播种。 目前有 7 个定居者在四处铣削，所以继续点击 “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”，并在草地区指定/拖出几个农场地块。
+TUTORIAL.1.D,,Use right-click to cancel and go back in menus.,
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.",没有别的事情可做，你的定居者将开始准备这些 {{ROOMS.FARM.PLURAL}}，通过耕作地球准备播种的种子。 这不需要任何特殊的工具或知识，所以每个人都应该参与。
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",这将准备播种的地块，但是在农民来种植相关种子之前，您需要选择在每个农场地上种植哪个作物。 你的定居者带来了一系列不同的种子。 您可以单击右上角的 “资源”，获取结算中所有商品的明细。
 TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GROUP.SEEDS}} (you can right-click to go back up to a previous menu) and designate an area to be used for seeds to be stored.",为了让你的农民真正获得这些种子，他们需要储存在一个矮人的库存中，而不是像现在那样储存在一个矮人的库存中。 点击 {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{储存储存 .粮仓}}（您可以右键单击返回到上一个菜单），并指定一个区域用作 {{储存 .粮仓}}，其中种子和谷物存储。

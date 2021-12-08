@@ -78,7 +78,10 @@ CARCASS.PERCH.PREPARED.PLURAL,,Perch fillets,
 CARCASS.PIKE.PREPARED.NOUN,,Pike fillet,
 CARCASS.PIKE.PREPARED.PLURAL,,Pike fillets,
 
+CLOTH.BRONZED_HEMP,,Hemp,
 CLOTH.HEMP-LINEN,,Hemp,
+CLOTH.LIGHT_HEMP,,Hemp,
+CLOTH.TOBACCO_CLOTH,,Tobacco cloth,
 
 CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{furnitureType.noun}} 의 건설
 CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,{{{항목 설명}} 의 {{quantity}} 이 (가) 할당되었습니다.
@@ -131,6 +134,7 @@ DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEA
 DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,피로
 DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,식중독
 DEATH_REASON.FROZEN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exposure to freezing weather,
+DEATH_REASON.GIVEN_UP_ON_LIFE,,having given up on life,
 DEATH_REASON.INTERNAL_BLEEDING,,Internal bleeding,
 DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,기아
 DEATH_REASON.SUFFOCATION,,Suffocation,
@@ -1180,6 +1184,7 @@ TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{{재료 유형.
 TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.","귀하의 정착민은 음식, 음료 및 수면 어딘가에 세 가지 기본 요구 사항을 충족해야합니다. 그들은 지금 그것에 대해 불평 할 것이지만, 그들은 근처의 강에서 마시고 지상에서 잠을 잘 수 있습니다. 그들이 할 수없는 것은 아무데도 음식을 마술 위로 올리는 것입니다 (적어도 마법사가 없으면!) 그래서 우리는 시작하는 음식에 초점을 맞출 것입니다."
 TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.",봄마다 가장 먼저해야 할 일은 가을에 수확을 위해 충분한 작물이 심어 졌는지 확인하는 것입니다. 농업은 신뢰할 수 있고 지속 가능한 식량 공급원이지만 매년 수확할 때마다 인구를 먹일 수 있는 충분한 작물이 있는지 확인해야 합니다.
 TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",따라야 할 엄지 손가락의 좋은 법칙은 인구의 각 정착민에 대해 10개의 작물 타일이 뿌려져 있는지 확인하는 것입니다. 현재 7명의 정착민들이 밀집하고 있으므로 “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”을 클릭하고 풀밭의 여러 농장을 지정/끕니다.
+TUTORIAL.1.D,,Use right-click to cancel and go back in menus.,
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.","할 일이 없으면, 당신의 정착민들은 씨를 뿌릴 준비를 위해 지구를 경작하여 {{ROOMS.FARM.PLURAL}} 을 준비하기 시작할 것입니다. 이것은 특별한 도구나 지식을 필요로하지 않으므로 모든 사람이 참여해야합니다."
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",이렇게하면 뿌릴 음모가 준비되지만 농부가 와서 관련 씨앗을 심기 전에 각 농장 음모에서 자랄 작물을 선택해야합니다. 당신의 정착민들은 그들과 함께 다른 씨앗을 선택했습니다. 오른쪽 위에 있는 “리소스”를 클릭하여 정산 내 모든 아이템에 대한 분석을 확인할 수 있습니다.
 TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GROUP.SEEDS}} (you can right-click to go back up to a previous menu) and designate an area to be used for seeds to be stored.","씨앗을 농부들이 실제로 사용할 수 있게 하려면, 현재 드워프의 인벤토리에 보관하는 것과 비교해서 비축해야 합니다. {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} (마우스 오른쪽 버튼을 클릭하여 이전 메뉴로 돌아갈 수 있음) 을 클릭하고 {{STOCKPILE.GRANARY}} 으로 사용할 영역을 지정합니다. 여기서 씨앗과 곡물이 저장됩니다."

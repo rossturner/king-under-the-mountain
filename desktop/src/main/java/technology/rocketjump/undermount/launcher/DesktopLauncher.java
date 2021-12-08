@@ -100,7 +100,8 @@ public class DesktopLauncher {
 			charset.set(null, null);
 			Charset.defaultCharset();
 		} catch (Exception e) {
-			Logger.error("Exception while attempting to force to UTF-8", e);
+			Logger.error("Exception while attempting to force to UTF-8");
+            Logger.error(e);
 		}
 	}
 

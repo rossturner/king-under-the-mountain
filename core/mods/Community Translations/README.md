@@ -72,8 +72,14 @@ This project is licensed under the Creative Commons Legal Code License - see the
 ### Spanish translation
 * Harlmorl
 
+### Italian translation
+* AndyD
+
 ### Danish translation
 * Mathias kiær
 
 ### Turkish translation
 * Fırat Gülmez
+
+### Japanese translation
+* SPQR

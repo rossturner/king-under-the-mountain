@@ -21,6 +21,18 @@
           "need": "SLEEP",
           "operator": "LESS_THAN_OR_EQUAL_TO",
           "value": 55
+        },
+        {
+          "type": "NEED",
+          "need": "DRINK",
+          "operator": "GREATER_THAN",
+          "value": 20
+        },
+        {
+          "type": "NEED",
+          "need": "FOOD",
+          "operator": "GREATER_THAN",
+          "value": 20
         }
       ],
       "priority": "WANT_NORMAL",
