@@ -83,3 +83,7 @@ This project is licensed under the Creative Commons Legal Code License - see the
 
 ### Japanese translation
 * SPQR
+
+### Chinese (simplified) translation
+* Howard Huang
+

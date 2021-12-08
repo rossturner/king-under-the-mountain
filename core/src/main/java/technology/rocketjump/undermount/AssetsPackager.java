@@ -100,7 +100,7 @@ public class AssetsPackager {
 			if (newChecksum != currentChecksums.get(artifactDefinition)) {
 				long start = System.currentTimeMillis();
 
-				List<ModLoadingException> modLoadExceptions = new ArrayList<>();
+				List<Exception> modLoadExceptions = new ArrayList<>();
 
 				ModArtifactProcessor processor = createProcessorInstance(artifactDefinition);
 
@@ -113,7 +113,7 @@ public class AssetsPackager {
 								try {
 									processor.apply(artifact, mod, assetDir);
 									validate(artifact, mod);
-								} catch (ModLoadingException e) {
+								} catch (Exception e) {
 									modLoadExceptions.add(e);
 								}
 								return artifact;

@@ -1,6 +1,6 @@
 package technology.rocketjump.undermount.modding.exception;
 
-public class ModLoadingException extends Throwable {
+public class ModLoadingException extends Exception {
 	public ModLoadingException(Exception e) {
 		super(e);
 	}
