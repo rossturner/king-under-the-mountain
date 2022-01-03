@@ -70,6 +70,9 @@ public class LanguagesCsvProcessor extends ModArtifactProcessor {
 							continue;
 						}
 						key = key.toUpperCase();
+						if (csvRecord.size() <= columnIndices.get(language.getLabelEn().toUpperCase())) {
+							throw new ModLoadingException(String.format("Not enough columns for language %s on line %s", language.getLabelEn(), csvRecord));
+						}
 
 						String value = csvRecord.get(columnIndices.get(language.getLabelEn().toUpperCase()));
 

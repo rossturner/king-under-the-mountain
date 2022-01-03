@@ -29,7 +29,11 @@ public class UserFileManager {
 			// Couldn't write to user dir
 			Logger.error(e);
 			// Just write files local to game for now
-			userFileDirectoryForGame = new File(".");
+			try {
+				userFileDirectoryForGame = new File(".").getCanonicalFile();
+			} catch (IOException ex) {
+				userFileDirectoryForGame = new File("");
+			}
 		}
 	}
 

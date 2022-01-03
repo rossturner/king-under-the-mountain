@@ -129,8 +129,10 @@ public class FishingManager implements Updatable, Telegraph {
 
 					if (!zoneHasExistingFishingJob) {
 						ZoneTile zoneTile = pickTileInZone(zone, gameContext.getRandom(), gameContext.getAreaMap());
-						createFishingJob(zoneTile);
-						break;
+						if (zoneTile != null) {
+							createFishingJob(zoneTile);
+							break;
+						}
 					}
 
 				}

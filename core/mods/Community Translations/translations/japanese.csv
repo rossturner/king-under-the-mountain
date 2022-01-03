@@ -78,10 +78,10 @@ CARCASS.PERCH.PREPARED.PLURAL,,Perch fillets,パーチの切り身
 CARCASS.PIKE.PREPARED.NOUN,,Pike fillet,マスの切り身
 CARCASS.PIKE.PREPARED.PLURAL,,Pike fillets,マスの切り身
 
-CLOTH.BRONZED_HEMP,,Hemp,
+CLOTH.BRONZED_HEMP,,Hemp,麻
 CLOTH.HEMP-LINEN,,Hemp,麻
-CLOTH.LIGHT_HEMP,,Hemp,
-CLOTH.TOBACCO_CLOTH,,Tobacco cloth,
+CLOTH.LIGHT_HEMP,,Hemp,麻
+CLOTH.TOBACCO_CLOTH,,Tobacco cloth,タバコの葉
 
 CONSTRUCTION.DESCRIPTION,E.g. “Construction of granite stonemason workbench”,Construction of {{materialType.adjective}} {{furnitureType.noun}},{{materialType.adjective}} {{furnitureType.noun}}(建築中)
 CONSTRUCTION.ITEM_ALLOCATION,E.g. “1 of 3 marble blocks allocated” (or assigned),{{quantity}} of {{itemDescription}} allocated,{{quantity}}/{{itemDescription}}が割り当てられている
@@ -134,7 +134,7 @@ DEATH_REASON.DEHYDRATION,These are used in conjunction with the NOTIFICATION.DEA
 DEATH_REASON.EXHAUSTION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exhaustion,極度の疲労
 DEATH_REASON.FOOD_POISONING,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Food poisoning,食中毒
 DEATH_REASON.FROZEN,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Exposure to freezing weather,低体温症
-DEATH_REASON.GIVEN_UP_ON_LIFE,,having given up on life,
+DEATH_REASON.GIVEN_UP_ON_LIFE,,having given up on life,生きることを諦めたこと
 DEATH_REASON.INTERNAL_BLEEDING,,Internal bleeding,出血多量
 DEATH_REASON.STARVATION,These are used in conjunction with the NOTIFICATION.DEATH.DESCRIPTION translation,Starvation,飢餓
 DEATH_REASON.SUFFOCATION,,Suffocation,窒息
@@ -182,7 +182,7 @@ FURNITURE.BAKING_OVEN.TOOLTIP,,A {{PROFESSION.CHEF}} bakes loaves here using pre
 FURNITURE.BEER_TAPPER,,Beer tapper,ビール注ぎ口
 FURNITURE.BEER_TAPPER.STATE.BEER_AVAILABLE,,Beer is available,ビールが利用可能
 FURNITURE.BEER_TAPPER.STATE.BEER_BARREL_INCOMING,,A beer barrel is on the way,ビール樽を輸送中
-FURNITURE.BEER_TAPPER.STATE.BEER_EXHAUSTED,,The beer has all gone!,ビールがなくなりました。
+FURNITURE.BEER_TAPPER.STATE.BEER_EXHAUSTED,,The beer has all gone!,ビールがなくなりました
 FURNITURE.BEER_TAPPER.STATE.IDLE,,Idle (no beer available),待機中(ビールがありません)
 FURNITURE.BEER_TAPPER.TOOLTIP,,This is where fermented {{LIQUID.BEER}} is served from.,発酵した{{LIQUID.BEER}}をグラスに注ぐ注ぎ口です。
 FURNITURE.BLOOMERY_FURNACE,A simple type of furnace to smelt metal from ore,Bloomery furnace,製錬所
@@ -384,7 +384,7 @@ GUI.CHANGE_WEAPON_LABEL,,Select weapon,武器を選択
 GUI.CRAFTING_MANAGEMENT.MAINTAINING_TEXT,As in keeping a fixed number of items in stock,Maintaining,生産目標
 GUI.CRAFTING_MANAGEMENT.TITLE,,Crafting,クラフト
 GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_ACTUAL,,Current total: {{quantity}},現在の所持数:{{quantity}}個
-GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),({{quantity}}個を入植者が持っている)
+GUI.CRAFTING_MANAGEMENT.TOTAL_QUANTITY_HINT,,({{quantity}} in total),(全体で{{quantity}}個)
 GUI.CROP_SELECTION,,Crop:,Crop:
 GUI.DATE_TIME_LABEL,"E.g. 09:20, day 4, spring","{{timeOfDay}}, day {{dayNumber}}, {{season}}, year {{year}}",{{year}}年目/{{season}}/{{dayNumber}}日目/{{timeOfDay}}
 GUI.DECONSTRUCT_LABEL,This should be as short as possible,Demolish,破壊
@@ -484,7 +484,7 @@ GUI.ORDERS_LABEL,This should be as short as possible,Orders,命令
 GUI.PLACE_BRIDGE.HINT,This is a longer label as a hint to the player,A bridge must cover both sides of the river and be at least 3x3 tiles in size,橋は川の両側を覆い、少なくとも3x3タイルのサイズでなければなりません
 GUI.PRIORITY_LABEL,This should be as short as possible,Priority,優先度
 GUI.REMOVE_LABEL,This should be as short as possible,Remove,除去
-GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,タイル除去
+GUI.REMOVE_TILES,This should be as short as possible,Remove tiles,タイル縮小
 GUI.RESOURCE_MANAGEMENT.TITLE,,Resources,資源
 GUI.RESOURCE_MANAGEMENT.UNALLOCATED_LABEL,,Available: {{count}},利用可能:{{count}}
 GUI.ROOFING.ADD,,Add,追加
@@ -796,7 +796,7 @@ ORE.THORIUM.NOUN,,Thorium,トリウム
 ORE.THORIUM.TOOLTIP,,A silvery metallic ore which turns black when exposed to air. It is strangely warm to the touch.,空気にさらされると黒くなる銀色の鉱石です。奇妙なことに、触ると暖かみを感じます。
 ORE.WOLFRAMITE.ADJECTIVE,,Wolframite,ウルフラマイトの
 ORE.WOLFRAMITE.NOUN,,Wolframite,ウルフラマイト
-ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,スズ鉱石の不純物として、精錬を妨げることから嫌われている物質です。通常の方法では、融点が高すぎて加工できません。
+ORE.WOLFRAMITE.TOOLTIP,,A metallic ore which complicates the smelting of tin. It has too high a melting point to be smelted with normal processes.,スズ鉱石の不純物として、精錬を妨げることから嫌われている物質です。融点がきわめて高く通常の方法では加工できません。
 
 OTHER.ASH,,Charred,炭化した
 OTHER.BRICK.NOUN,,Brick,レンガ
@@ -1039,7 +1039,7 @@ ROOMS.MASONRY_WORKSHOP.TOOLTIP,,This workshop produces most items made out of st
 ROOMS.METALWORKS,,Metalworks,金属加工所
 ROOMS.METALWORKS.TOOLTIP,,Metal ore is refined and used in crafting here.,金属の製錬、精錬、製作ができます。
 ROOMS.MUSHROOM_FARM,,Mushroom farm,キノコ農場
-ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,キノコを育て、収穫する場所です。{{INGREDIENT.MUSHROOM.SPAWN.NOUN}}や{{RESOURCE.LOGS.PLURAL}}を栽培のために置く必要があります。
+ROOMS.MUSHROOM_FARM.TOOLTIP,,Mushrooms can be grown using {{INGREDIENT.MUSHROOM.SPAWN.NOUN}} and wooden {{RESOURCE.LOGS.PLURAL}}.,キノコを育て、収穫する場所です。栽培には{{INGREDIENT.MUSHROOM.SPAWN.NOUN}}や{{RESOURCE.LOGS.PLURAL}}が必要です。
 ROOMS.SAWMILL,,Sawmill,製材所
 ROOMS.SAWMILL.TOOLTIP,,Wooden {{RESOURCE.LOGS.PLURAL}} are refined into {{RESOURCE.PLANKS.PLURAL}} here.,{{RESOURCE.LOGS.PLURAL}}を{{RESOURCE.PLANKS.PLURAL}}などの材料に加工する場所です。
 ROOMS.STOCKPILE,,Stockpile,保管場
@@ -1184,7 +1184,7 @@ TREE.DESCRIPTION,E.g. “Oak tree”,{{materialType.noun}} tree,{{materialType.n
 TUTORIAL.1.A,,"Your settlers have three basic needs to fulfil: food, drink and somewhere to sleep. Although they will complain about it for now, they can drink from the nearby river and sleep on the ground. What they can’t do is magic up some food from nowhere (at least, not without a mage around!) so we will focus on food to begin with.",あなたの入植者たちに最低限必要なのは食べ物、飲み物、そして寝る場所です。今のところ、彼らは文句を言いながらも、近くの川で水を飲み、地面で寝ることを受け入れます。 しかし、魔法を使ってどこからともなく食べ物を手に入れることはできません\n(少なくとも魔法使いがいなければ無理です！)ですので、まずは食べ物を確保することから始めましょう。
 TUTORIAL.1.B,,"The first thing you should do each spring is ensure that enough crops have been planted for the harvest in autumn. Farming is a reliable and sustainable food source, but you need to make sure you have enough crops to feed your population between each annual harvest.",春になったらあなたが最初にするべきことは、秋の収穫に向けて十分な量の作物が植えられているかどうかを確認することです。農業は信頼のおける持続可能な食料確保手段です。しかし収穫期からその次の収穫期までの間まで、彼らを食べさせるのに十分な作物を確保することを考えなければなりません。
 TUTORIAL.1.C,,"A good rule of thumb to follow is to ensure you have 10 tiles of crops being sown for each settler in your population. Currently there are 7 settlers milling around, so go ahead and click “{{GUI.ZONES_LABEL}}” > “{{ROOMS.FARM}}”, and designate / drag out several farm plots on a grassy area.",「{{GUI.ZONES_LABEL}}」>「{{ROOMS.FARM}}」をクリックし、\n指定/ドラッグして草地にいくつかの農地を作ってください。目安としては、入植者1人につき10タイル分の作物が欲しいところです。現在は7人の入植者がいるので、70タイルの広さの農地を作るとよいでしょう。
-TUTORIAL.1.D,,Use right-click to cancel and go back in menus.,
+TUTORIAL.1.D,,Use right-click to cancel and go back in menus.,右クリックでキャンセルし、メニューに戻ります。
 TUTORIAL.2.A,,"With nothing else to do, your settlers will start preparing these {{ROOMS.FARM.PLURAL}} by tilling the earth to be ready for seeds to be sown. This doesn’t require any special tools or knowledge so everyone should get involved.",他に何もすることがなければ、あなたの入植者たちはこの{{ROOMS.FARM.PLURAL}}の土を耕し、作物の種を蒔く準備を始めます。この作業には特別な道具や知識は必要ありませんので、全員で取り組みましょう。
 TUTORIAL.2.B,,"This prepares the plot to be sown, but you need to select which crop to grow on each farm plot before a farmer will come and plant the relevant seeds. Your settlers have brought with them a selection of different seeds. You can click “Resources” in the upper-right to get a breakdown of all the items in your settlement.",これで種蒔きの準備が整いました。しかし農夫に種を渡す前に、まずは育てる作物を選ぶ必要があります。入植者たちは、さまざまな作物の種を持ってきています。右上の「資源」をクリックすると、入植地にあるすべてのアイテムの内訳が表示されます。
 TUTORIAL.2.C,,"For the seeds to actually be available to your farmers, they need to be in a stockpile compared to being held in a dwarf’s inventory like they are currently. Click {{GUI.ZONES_LABEL}} > {{ROOMS.STOCKPILES}} > {{STOCKPILE.GROUP.SEEDS}} (you can right-click to go back up to a previous menu) and designate an area to be used for seeds to be stored.",種はいま、ドワーフのインベントリに入った状態です。これらを農夫の手に渡すには、保管場に置かれる必要があります。「{{GUI.ZONES_LABEL}}」>「{{ROOMS.STOCKPILES}}」>「{{STOCKPILE.GROUP.SEEDS}}」とクリックし種の保管場を作成してください。\n(右クリックで前のメニューに戻ることができます)
