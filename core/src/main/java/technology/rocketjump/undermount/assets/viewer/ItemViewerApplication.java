@@ -87,6 +87,7 @@ public class ItemViewerApplication extends ApplicationAdapter {
 		attributes.setMaterial(gameMaterialDictionary.getByName("Ruby"));
 		attributes.setMaterial(gameMaterialDictionary.getByName("Wheat Seed"));
 		attributes.setMaterial(gameMaterialDictionary.getByName("Wheat"));
+		attributes.setMaterial(gameMaterialDictionary.getByType(GameMaterialType.ROPE).get(0));
 
 		GameMaterial testMetal = new GameMaterial("Test metal material", -1L, GameMaterialType.METAL, "#DDDDDE",
 				null, null, null, false, false, false, false, false, null);
