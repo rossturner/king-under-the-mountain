@@ -330,7 +330,11 @@ public class FarmPlotBehaviour extends RoomBehaviourComponent implements JobCrea
 			PlantSpeciesGrowthStage currentGrowthStage = attributes.getSpecies().getGrowthStages().get(attributes.getGrowthStageCursor());
 			if (FARMING.equals(currentGrowthStage.getHarvestType())) {
 				Job harvestJob = new Job(harvestingJobType);
-				harvestJob.setJobPriority(priority);
+				if (priority.equals(JobPriority.NORMAL)) {
+					harvestJob.setJobPriority(JobPriority.HIGHER);
+				} else {
+					harvestJob.setJobPriority(priority);
+				}
 				harvestJob.setJobLocation(tile.getTilePosition());
 				harvestJob.setTargetId(plantInTile.getId());
 

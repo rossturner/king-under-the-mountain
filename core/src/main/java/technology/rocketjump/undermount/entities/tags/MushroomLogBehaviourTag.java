@@ -3,7 +3,10 @@ package technology.rocketjump.undermount.entities.tags;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import technology.rocketjump.undermount.entities.behaviour.furniture.MushroomLogBehaviour;
 import technology.rocketjump.undermount.entities.model.Entity;
+import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureType;
 import technology.rocketjump.undermount.gamecontext.GameContext;
+
+import java.util.List;
 
 public class MushroomLogBehaviourTag extends Tag {
 
@@ -36,6 +39,12 @@ public class MushroomLogBehaviourTag extends Tag {
 //				relatedItemTypes.add(itemType);
 //			}
 //			behaviourComponent.setRelatedItemTypes(relatedItemTypes);
+
+			FurnitureType relatedFurnitureType = tagProcessingUtils.furnitureTypeDictionary.getByName(args.get(0));
+			if (relatedFurnitureType != null) {
+				behaviourComponent.setRelatedFurnitureTypes(List.of(relatedFurnitureType));
+			}
+
 			behaviourComponent.setHarvestJobType(tagProcessingUtils.jobTypeDictionary.getByName("HARVEST_FROM_FURNITURE"));
 
 			behaviourComponent.init(entity, messageDispatcher, gameContext);

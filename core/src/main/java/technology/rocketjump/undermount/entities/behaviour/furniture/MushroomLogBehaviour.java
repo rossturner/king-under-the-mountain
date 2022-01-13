@@ -128,7 +128,16 @@ public class MushroomLogBehaviour extends FurnitureBehaviour implements Destruct
 					harvestJob = null;
 					if (totalMushroomsSpawned >= MAX_MUSHROOMS_TO_SPAWN) {
 						state = EXHAUSTED;
+						Entity clone = parentEntity.clone(messageDispatcher, gameContext);
 						messageDispatcher.dispatchMessage(MessageType.REQUEST_FURNITURE_REMOVAL, parentEntity);
+						if (!relatedFurnitureTypes.isEmpty()) {
+							FurnitureEntityAttributes cloneAttributes = (FurnitureEntityAttributes) clone.getPhysicalEntityComponent().getAttributes();
+							cloneAttributes.setFurnitureType(relatedFurnitureTypes.get(0));
+							cloneAttributes.setCurrentLayout(((FurnitureEntityAttributes)parentEntity.getPhysicalEntityComponent().getAttributes()).getCurrentLayout());
+							cloneAttributes.setPrimaryMaterialType(relatedFurnitureTypes.get(0).getRequirements().keySet().iterator().next());
+							messageDispatcher.dispatchMessage(MessageType.ENTITY_ASSET_UPDATE_REQUIRED, clone);
+							messageDispatcher.dispatchMessage(MessageType.FURNITURE_PLACEMENT, clone);
+						}
 					} else {
 						currentMushroomSpawnTime = 0;
 						state = SPAWNING;

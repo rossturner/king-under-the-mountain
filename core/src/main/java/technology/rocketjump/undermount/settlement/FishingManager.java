@@ -80,7 +80,7 @@ public class FishingManager implements Updatable, Telegraph {
 			}
 			case MessageType.CONSTRUCTION_COMPLETED: {
 				Construction construction = (Construction) msg.extraInfo;
-				if (construction.getConstructionType().equals(ConstructionType.BRIDGE_CONSTRUCTION)) {
+				if (construction != null && construction.getConstructionType().equals(ConstructionType.BRIDGE_CONSTRUCTION)) {
 					for (Map.Entry<GridPoint2, BridgeTile> bridgeEntry : ((BridgeConstruction) construction).getBridge().entrySet()) {
 						GridPoint2 bridgeLocation = bridgeEntry.getKey();
 						for (Job jobAtLocation : new ArrayList<>(jobStore.getJobsAtLocation(bridgeLocation))) {
