@@ -1,7 +1,10 @@
 Alpha 8.1.16
 
 - Added weaver profession for weaving crafting type (instead of farmers)
+- Fishing jobs no longer created where bridges exist
+- Fix for an issue with extending stockpiles picking up the most recently placed stockpile group setting
 - Fix for a crash when creating fishing jobs
+- Fix for a crash when attempting to create a bridge construction job but no items are currently placed
 - Japanese and Russian translations updated
 
 Alpha 8.1.15 - 8th December 2021

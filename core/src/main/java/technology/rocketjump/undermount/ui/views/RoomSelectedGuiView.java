@@ -190,6 +190,7 @@ public class RoomSelectedGuiView implements GuiView, GameContextAware {
 
 		addTilesButton = iconButtonFactory.create("GUI.ADD_TILES", "expand", HexColors.POSITIVE_COLOR, ButtonStyle.SMALL);
 		addTilesButton.setAction(() -> {
+			messageDispatcher.dispatchMessage(MessageType.GUI_STOCKPILE_GROUP_SELECTED, null);
 			messageDispatcher.dispatchMessage(MessageType.GUI_ROOM_TYPE_SELECTED, currentSelectable.getRoom().getRoomType());
 			messageDispatcher.dispatchMessage(MessageType.GUI_SWITCH_INTERACTION_MODE, GameInteractionMode.PLACE_ROOM);
 		});

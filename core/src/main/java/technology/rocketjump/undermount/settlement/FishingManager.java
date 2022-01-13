@@ -3,6 +3,7 @@ package technology.rocketjump.undermount.settlement;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.math.GridPoint2;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import technology.rocketjump.undermount.constants.ConstantsRepo;
@@ -18,17 +19,18 @@ import technology.rocketjump.undermount.jobs.model.Job;
 import technology.rocketjump.undermount.jobs.model.JobType;
 import technology.rocketjump.undermount.jobs.model.Profession;
 import technology.rocketjump.undermount.mapping.tile.MapTile;
+import technology.rocketjump.undermount.mapping.tile.floor.BridgeTile;
 import technology.rocketjump.undermount.messaging.MessageType;
+import technology.rocketjump.undermount.rooms.constructions.BridgeConstruction;
+import technology.rocketjump.undermount.rooms.constructions.Construction;
+import technology.rocketjump.undermount.rooms.constructions.ConstructionType;
 import technology.rocketjump.undermount.settlement.notifications.Notification;
 import technology.rocketjump.undermount.settlement.notifications.NotificationType;
 import technology.rocketjump.undermount.zones.Zone;
 import technology.rocketjump.undermount.zones.ZoneClassification;
 import technology.rocketjump.undermount.zones.ZoneTile;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import static technology.rocketjump.undermount.jobs.LiquidMessageHandler.pickTileInZone;
 
@@ -57,6 +59,7 @@ public class FishingManager implements Updatable, Telegraph {
 
 		messageDispatcher.addListener(this, MessageType.YEAR_ELAPSED);
 		messageDispatcher.addListener(this, MessageType.FISH_HARVESTED_FROM_RIVER);
+		messageDispatcher.addListener(this, MessageType.CONSTRUCTION_COMPLETED);
 	}
 
 	@Override
@@ -72,6 +75,20 @@ public class FishingManager implements Updatable, Telegraph {
 				if (gameContext.getSettlementState().getFishRemainingInRiver() <= 0) {
 					cancelAllOutstandingFishingJobs();
 					messageDispatcher.dispatchMessage(MessageType.POST_NOTIFICATION, new Notification(NotificationType.FISH_EXHAUSTED, null));
+				}
+				return true;
+			}
+			case MessageType.CONSTRUCTION_COMPLETED: {
+				Construction construction = (Construction) msg.extraInfo;
+				if (construction.getConstructionType().equals(ConstructionType.BRIDGE_CONSTRUCTION)) {
+					for (Map.Entry<GridPoint2, BridgeTile> bridgeEntry : ((BridgeConstruction) construction).getBridge().entrySet()) {
+						GridPoint2 bridgeLocation = bridgeEntry.getKey();
+						for (Job jobAtLocation : new ArrayList<>(jobStore.getJobsAtLocation(bridgeLocation))) {
+							if (jobAtLocation.getType().equals(fishingJobType)) {
+								messageDispatcher.dispatchMessage(MessageType.JOB_REMOVED, jobAtLocation);
+							}
+						}
+					}
 				}
 				return true;
 			}
@@ -130,8 +147,11 @@ public class FishingManager implements Updatable, Telegraph {
 					if (!zoneHasExistingFishingJob) {
 						ZoneTile zoneTile = pickTileInZone(zone, gameContext.getRandom(), gameContext.getAreaMap());
 						if (zoneTile != null) {
-							createFishingJob(zoneTile);
-							break;
+							MapTile targetTile = gameContext.getAreaMap().getTile(zoneTile.getTargetTile());
+							if (!targetTile.getFloor().hasBridge()) {
+								createFishingJob(zoneTile);
+								break;
+							}
 						}
 					}
 

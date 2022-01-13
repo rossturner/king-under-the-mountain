@@ -366,7 +366,10 @@ public class ConstructionManager implements Updatable {
 		CraftingType craftingType = bridgeConstruction.getBridge().getBridgeType().getCraftingType();
 		Job constructionJob = jobFactory.constructionJob(craftingType);
 		constructionJob.setJobPriority(bridgeConstruction.getPriority());
-		// TODO below was empty and caused a crash, but can't see how that would happen at the moment
+		if (bridgeConstruction.placedItemAllocations.isEmpty()) {
+			Logger.error("No placed item allocations when attempting to create bridge construction job");
+			return;
+		}
 		constructionJob.setJobLocation(bridgeConstruction.placedItemAllocations.keySet().iterator().next());
 		constructionJob.setWorkDoneSoFar(0);
 		constructionJob.setJobState(JobState.POTENTIALLY_ACCESSIBLE);
