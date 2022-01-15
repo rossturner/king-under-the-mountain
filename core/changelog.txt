@@ -1,8 +1,9 @@
-Alpha 8.1.16
+Alpha 8.1.16 - 15th January 2022
 
 - Added weaver profession for weaving crafting type (instead of farmers)
 - Fishing jobs no longer created where bridges exist
 - Exhausted mushroom logs now re-queue themselves to be constructed again
+- Crafting stations will now remove items which are not used as part of the current crafting assignment
 - Harvesting jobs now default to HIGHER priority if the farm plot is set to NORMAL priority
 - Fix for an issue with extending stockpiles picking up the most recently placed stockpile group setting
 - Fix for a crash when creating fishing jobs

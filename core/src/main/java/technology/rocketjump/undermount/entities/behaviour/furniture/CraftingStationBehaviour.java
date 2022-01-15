@@ -236,6 +236,20 @@ public class CraftingStationBehaviour extends FurnitureBehaviour
 			createMissingAllocationIfNeeded(inputRequirement, gameContext);
 		}
 
+		// Clear out items which are no longer required
+		InventoryComponent inventoryComponent = parentEntity.getComponent(InventoryComponent.class);
+		for (InventoryComponent.InventoryEntry entry : inventoryComponent.getInventoryEntries()) {
+			if (currentProductionAssignment.inputMaterialSelections.stream().noneMatch(requirement -> requirement.matches(entry.entity))) {
+				ItemAllocationComponent itemAllocationComponent = entry.entity.getOrCreateComponent(ItemAllocationComponent.class);
+				itemAllocationComponent.cancelAll(HELD_IN_INVENTORY);
+				if (itemAllocationComponent.getNumUnallocated() > 0) {
+					messageDispatcher.dispatchMessage(MessageType.REQUEST_ENTITY_HAULING, new RequestHaulingMessage(entry.entity, parentEntity, true, priority, job -> {
+						// Do nothing with job
+					}));
+				}
+			}
+		}
+
 	}
 
 	@Override
