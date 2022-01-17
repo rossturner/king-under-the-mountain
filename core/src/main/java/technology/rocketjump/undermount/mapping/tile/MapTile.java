@@ -370,7 +370,7 @@ public class MapTile implements Persistable {
 				ItemEntityAttributes attributes = (ItemEntityAttributes) entity.getPhysicalEntityComponent().getAttributes();
 				if (attributes.getItemType().equals(attributesToMatch.getItemType())) {
 					for (GameMaterialType gameMaterialType : attributes.getItemType().getMaterialTypes()) {
-						if (attributes.getMaterial(gameMaterialType).equals(attributesToMatch.getMaterial(gameMaterialType))) {
+						if (attributes.getMaterial(gameMaterialType) != null && attributes.getMaterial(gameMaterialType).equals(attributesToMatch.getMaterial(gameMaterialType))) {
 							return entity;
 						}
 					}
