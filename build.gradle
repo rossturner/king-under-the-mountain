@@ -17,7 +17,7 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = 'Alpha 8.1.17'
+    version = 'Alpha 8.1.18'
     ext {
         appName = 'undermount'
         gdxVersion = '1.9.10'
@@ -59,7 +59,6 @@ project(":desktop") {
         file('../release_tools/macosx_release').deleteDir()
     }
 
-
     task('packrWin', type: JavaExec, dependsOn: 'dist') {
         workingDir '../release_tools'
         main '-jar'
@@ -75,7 +74,6 @@ project(":desktop") {
         main '-jar'
         args=["packr.jar", "linux-config.json"]
     }
-
 
     task('iconWin', type: Exec, dependsOn: 'packrWin') {
         workingDir '../release_tools'

@@ -185,6 +185,10 @@ public class FireMessageHandler implements GameContextAware, Telegraph {
 
 
 	private void spreadFireFrom(Vector2 location, Set<Long> entityIdsToIgnore, int maxFiresToStart, boolean staticEntitiesOnly, int maxDistanceToSpreadFire) {
+		if (location == null) {
+			// Surprised this is happening, seems some ongoing effects have a null location
+			return;
+		}
 		GridPoint2 centre = toGridPoint(location);
 		int firesStarted = 0;
 		MapTile centreTile = gameContext.getAreaMap().getTile(centre);
