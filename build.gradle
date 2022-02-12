@@ -1,5 +1,7 @@
-if(JavaVersion.current() != JavaVersion.VERSION_11){
+if (JavaVersion.current() != JavaVersion.VERSION_11) {
     throw new GradleException("This build must be run with java 11, is currently " + JavaVersion.current())
+} else {
+    System.out.println("Java version: " + JavaVersion.current())
 }
 
 buildscript {
@@ -17,7 +19,7 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = 'Alpha 8.1.18'
+    version = 'Alpha 8.1.19'
     ext {
         appName = 'undermount'
         gdxVersion = '1.9.10'
