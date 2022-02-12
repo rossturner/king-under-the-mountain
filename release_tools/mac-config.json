@@ -1,12 +1,12 @@
 {
 	"platform": "mac",
-	"jdk": "jdks/mac_jdk-11.0.7+10",
+	"jdk": "jdks/OpenJDK17U-jdk_x64_mac_hotspot_17.0.2_8",
 	"executable": "King under the Mountain",
 	"classpath": [
 		"../desktop/build/libs/undermount-desktop.jar"
 	],
 	"mainclass": "technology.rocketjump.undermount.launcher.DesktopLauncher",
-	"vmargs": ["Xms1200m", "XstartOnFirstThread"],
+	"vmargs": ["Xms1200m", "-Dfile.encoding=UTF-8", "XstartOnFirstThread"],
 	"resources": [
 		"../core/seed.txt",
 		"../core/changelog.txt",

@@ -1,12 +1,12 @@
 {
 	"platform": "windows64",
-	"jdk": "jdks/win64_jdk-11.0.7+10.2",
+	"jdk": "jdks/OpenJDK17U-jdk_x64_windows_hotspot_17.0.2_8",
 	"executable": "King under the Mountain",
 	"classpath": [
 		"../desktop/build/libs/undermount-desktop.jar"
 	],
 	"mainclass": "technology.rocketjump.undermount.launcher.DesktopLauncher",
-	"vmargs": ["Xms1200m", "-Dsun.java2d.dpiaware=true"],
+	"vmargs": ["Xms1200m", "-Dfile.encoding=UTF-8", "-Dsun.java2d.dpiaware=true"],
 	"resources": [
 		"../core/seed.txt",
 		"../core/changelog.txt",

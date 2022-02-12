@@ -15,8 +15,6 @@ import technology.rocketjump.undermount.persistence.UserPreferences;
 import technology.rocketjump.undermount.rendering.camera.DisplaySettings;
 import technology.rocketjump.undermount.screens.menus.Resolution;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 
 import static technology.rocketjump.undermount.persistence.UserPreferences.FullscreenMode.BORDERLESS_FULLSCREEN;
@@ -28,7 +26,7 @@ public class DesktopLauncher {
 
     public static void main(String[] args) {
         try {
-            forceUtf8();
+            checkDefaultCharset();
             launchMainWindow();
         } catch (Throwable e) {
             Logger.error(e);
@@ -91,37 +89,8 @@ public class DesktopLauncher {
         return resolutionToUse;
     }
 
-	private static void forceUtf8() {
-		try {
-			disableAccessWarnings();
-			System.setProperty("file.encoding", "UTF-8");
-			Field charset = Charset.class.getDeclaredField("defaultCharset");
-			charset.setAccessible(true);
-			charset.set(null, null);
-			Charset.defaultCharset();
-		} catch (Exception e) {
-			Logger.error("Exception while attempting to force to UTF-8");
-            Logger.error(e);
-		}
+	private static void checkDefaultCharset() {
+        Logger.info("Default character set is " + Charset.defaultCharset().name());
 	}
 
-    @SuppressWarnings("unchecked")
-    public static void disableAccessWarnings() {
-        try {
-            Class unsafeClass = Class.forName("sun.misc.Unsafe");
-            Field field = unsafeClass.getDeclaredField("theUnsafe");
-            field.setAccessible(true);
-            Object unsafe = field.get(null);
-
-            Method putObjectVolatile = unsafeClass.getDeclaredMethod("putObjectVolatile", Object.class, long.class, Object.class);
-            Method staticFieldOffset = unsafeClass.getDeclaredMethod("staticFieldOffset", Field.class);
-
-            Class loggerClass = Class.forName("jdk.internal.module.IllegalAccessLogger");
-            Field loggerField = loggerClass.getDeclaredField("logger");
-            Long offset = (Long) staticFieldOffset.invoke(unsafe, loggerField);
-            putObjectVolatile.invoke(unsafe, loggerClass, offset, null);
-        } catch (Exception ignored) {
-        	// Do nothing
-        }
-    }
 }
