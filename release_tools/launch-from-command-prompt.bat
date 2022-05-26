@@ -1,0 +1,1 @@
+jre\bin\java -jar undermount-desktop.jar -Xms1200m -Dfile.encoding=UTF-8

@@ -12,7 +12,9 @@
 		"../core/changelog.txt",
 		"../core/assets",
 		"../core/mods",
-		"log.txt"
+		"log.txt",
+		"troubleshooting.txt"
 	],
+	"useZgcIfSupportedOs": true,
 	"output": "linux64_release"
 }

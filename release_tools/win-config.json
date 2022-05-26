@@ -12,8 +12,10 @@
 		"../core/changelog.txt",
 		"../core/assets",
 		"../core/mods",
-		"log.txt"
+		"log.txt",
+		"troubleshooting.txt",
+		"launch-from-command-prompt.bat"
 	],
-	"minimizejre": "soft",
+	"useZgcIfSupportedOs": true,
 	"output": "win64_release"
 }

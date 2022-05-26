@@ -1,0 +1,26 @@
+If the game isn't launching at all and there is nothing in the log.txt file, please try the following:
+
+Windows:
+Shift+Right-click on the directory this file is in and choose "Open command window here"
+Type in the following to command prompt:
+launch-from-command-prompt
+and press enter
+If that doesn't work, try the following command instead
+jre\bin\java -jar undermount-desktop.jar -Xms1200m -Dfile.encoding=UTF-8
+
+Mac:
+Open Terminal and navigate to the location of this file, which should be something like the following:
+~/Library/Application Support/Steam/SteamApps/common/King under the Mountain/
+Then execute the following command:
+./jre/bin/java -jar undermount-desktop.jar -Xms1200m -Dfile.encoding=UTF-8
+
+Linux:
+Open Console and navigate to the location of this file, which should be something like the following:
+~/.local/share/Steam/SteamApps/common/King under the Mountain/
+Then execute the following command:
+./jre/bin/java -jar undermount-desktop.jar -Xms1200m -Dfile.encoding=UTF-8
+
+
+All platforms:
+This should launch the game (or rather, fail to launch the game in the same way as the main executable) and display a stack trace/error report on the screen.
+Please copy and paste this either to the #bug-reports channel of our Discord server at https://discord.gg/dbAYYmN or by email to ross@kingunderthemounta.in

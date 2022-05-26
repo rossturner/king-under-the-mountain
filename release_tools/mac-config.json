@@ -6,14 +6,16 @@
 		"../desktop/build/libs/undermount-desktop.jar"
 	],
 	"mainclass": "technology.rocketjump.undermount.launcher.DesktopLauncher",
-	"vmargs": ["Xms1200m", "-Dfile.encoding=UTF-8", "XstartOnFirstThread"],
+	"vmargs": ["Xms1200m", "-Dfile.encoding=UTF-8"],
 	"resources": [
 		"../core/seed.txt",
 		"../core/changelog.txt",
 		"../core/assets",
 		"../core/mods",
-		"log.txt"
+		"log.txt",
+		"troubleshooting.txt"
 	],
+	"useZgcIfSupportedOs": true,
 	"icon": "icon/blacksmith.icns",
 	"output": "macosx_release"
 }
