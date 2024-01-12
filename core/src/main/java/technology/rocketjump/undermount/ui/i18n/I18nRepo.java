@@ -8,7 +8,6 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.io.FileUtils;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
-import technology.rocketjump.undermount.misc.AnalyticsManager;
 import technology.rocketjump.undermount.persistence.UserPreferences;
 
 import java.io.File;
@@ -151,7 +150,6 @@ public class I18nRepo {
 	public void setCurrentLanguage(LanguageType languageType) {
 		this.currentLanguageType = languageType;
 		currentLanguageDictionary = dictionaries.get(languageType.getCode());
-		AnalyticsManager.languageCode = languageType.getCode();
 	}
 
 

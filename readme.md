@@ -23,7 +23,7 @@ This process has already been run and this repository contains the output files,
 
 ## Building for release
 
-To package for release, you need to download AdoptOpen JDK releases from https://adoptopenjdk.net/releases.html)
+To package for release, you need to download AdoptOpen JDK releases from https://adoptopenjdk.net/releases.html
 for the packing process (packr.jar) to use. You will likely need to change the packr config files from
 OpenJDK17U-jdk_x64_windows_hotspot_17.0.2_8 to whatever version you have downloaded.
 

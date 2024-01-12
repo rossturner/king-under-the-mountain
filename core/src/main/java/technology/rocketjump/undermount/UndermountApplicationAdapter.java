@@ -27,7 +27,6 @@ import technology.rocketjump.undermount.messaging.InfoType;
 import technology.rocketjump.undermount.messaging.MessageType;
 import technology.rocketjump.undermount.messaging.async.BackgroundTaskManager;
 import technology.rocketjump.undermount.messaging.types.GameSaveMessage;
-import technology.rocketjump.undermount.misc.AnalyticsManager;
 import technology.rocketjump.undermount.misc.twitch.TwitchMessageHandler;
 import technology.rocketjump.undermount.misc.twitch.TwitchTaskRunner;
 import technology.rocketjump.undermount.modding.LocalModRepository;
@@ -136,7 +135,6 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 			messageDispatcher.dispatchMessage(MessageType.SWITCH_SCREEN, "MAIN_MENU");
 
 			messageDispatcher.dispatchMessage(MessageType.LANGUAGE_CHANGED);
-			AnalyticsManager.startAnalytics(userFileManager.readClientId());
 
 			LocalModRepository localModRepository = injector.getInstance(LocalModRepository.class);
 			List<ParsedMod> incompatibleMods = localModRepository.getIncompatibleMods();
@@ -172,7 +170,6 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 	}
 
 	public void onExit() {
-		AnalyticsManager.stopAnalytics();
 		messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
 		messageDispatcher.dispatchMessage(MessageType.SHUTDOWN_IN_PROGRESS);
 		Gdx.app.exit();

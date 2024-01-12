@@ -11,13 +11,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -37,7 +35,6 @@ import technology.rocketjump.undermount.ui.i18n.I18nTranslator;
 import technology.rocketjump.undermount.ui.i18n.I18nUpdatable;
 import technology.rocketjump.undermount.ui.skins.GuiSkinRepository;
 import technology.rocketjump.undermount.ui.widgets.GameDialog;
-import technology.rocketjump.undermount.ui.widgets.I18nTextButton;
 import technology.rocketjump.undermount.ui.widgets.I18nWidgetFactory;
 
 import java.util.ArrayList;
@@ -65,8 +62,6 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable, Gam
 	private final LoadGameMenu loadGameMenu;
 	private final PrivacyOptInMenu privacyOptInMenu;
 	private final Skin uiSkin;
-	private final I18nTextButton newVersionButton;
-	private final I18nTextButton viewRoadmapButton;
 	private SpriteBatch basicSpriteBatch = new SpriteBatch();
 
 	private OrthographicCamera camera = new OrthographicCamera();
@@ -131,21 +126,6 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable, Gam
 			versionText += " (DEV MODE ENABLED)";
 		}
 		versionTable.add(new Label(versionText, uiSkin)).left().pad(5);
-		newVersionButton = i18nWidgetFactory.createTextButton("GUI.NEW_VERSION_AVAILABLE");
-		newVersionButton.addListener(new ClickListener() {
-			@Override
-			public void clicked (InputEvent event, float x, float y) {
-				Gdx.net.openURI("https://rocketjumptechnology.itch.io/king-under-the-mountain");
-			}
-		});
-
-		viewRoadmapButton = i18nWidgetFactory.createTextButton("GUI.VIEW_ROADMAP");
-		viewRoadmapButton.addListener(new ClickListener() {
-			@Override
-			public void clicked (InputEvent event, float x, float y) {
-				Gdx.net.openURI("http://kingunderthemounta.in/roadmap/");
-			}
-		});
 
 		stage.addActor(versionTable);
 
@@ -396,8 +376,6 @@ public class MainMenuScreen implements Telegraph, GameScreen, I18nUpdatable, Gam
 			}
 			versionTable.add(twitchLabel).colspan(3).left().pad(5).row();
 		}
-
-		versionTable.add(viewRoadmapButton).colspan(3).left().pad(5).row();
 
 		String versionText = VERSION.toString();
 		if (GlobalSettings.DEV_MODE) {
