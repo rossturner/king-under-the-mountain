@@ -1,17 +1,10 @@
 # King under the Mountain
 
-Note this is a private repository for the game code and assets.
-
-## Setup
-
-Download and extract https://drive.google.com/file/d/1P1C5OzH_slQEUsJXPO43s8YLyXSHBFBQ/view?usp=sharing
-to release_tools/jdks (or alternatively download AdoptOpen JDK releases from https://adoptopenjdk.net/releases.html) 
-for the packing process (packr.jar) to use. 
-
+King under the Mountain was developed by Rocket Jump Technology, and has now been released as open-source under the very permissive MIT license.
 
 ## Build / Framework
 
-This is written in Java using [LibGDX](https://github.com/libgdx/libgdx/wiki)
+This game is written in Java using [LibGDX](https://github.com/libgdx/libgdx/wiki)
 
 LibGDX uses Gradle as a build tool, so you'll need to run `gradlew build` at least once (though not for general development).
 
@@ -28,4 +21,9 @@ This process has already been run and this repository contains the output files,
 
 `DesktopLauncher` is the game launcher. Run this with `./core` as the working directory.
 
+## Building for release
+
+To package for release, you need to download AdoptOpen JDK releases from https://adoptopenjdk.net/releases.html)
+for the packing process (packr.jar) to use. You will likely need to change the packr config files from
+OpenJDK17U-jdk_x64_windows_hotspot_17.0.2_8 to whatever version you have downloaded.
 
