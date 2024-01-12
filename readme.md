@@ -4,7 +4,7 @@ King under the Mountain was developed by Rocket Jump Technology, and has now bee
 
 ## Build / Framework
 
-This game is written in Java using [LibGDX](https://github.com/libgdx/libgdx/wiki)
+This game is written in Java (currently version 17) using [LibGDX](https://github.com/libgdx/libgdx/wiki)
 
 LibGDX uses Gradle as a build tool, so you'll need to run `gradlew build` at least once (though not for general development).
 
