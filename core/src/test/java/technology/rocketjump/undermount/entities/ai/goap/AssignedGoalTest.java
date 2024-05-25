@@ -4,6 +4,7 @@ import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.GdxNativesLoader;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.Before;
@@ -32,6 +33,9 @@ import static technology.rocketjump.undermount.jobs.ProfessionDictionary.NULL_PR
 
 @RunWith(MockitoJUnitRunner.class)
 public class AssignedGoalTest {
+	static {
+		GdxNativesLoader.load();
+	}
 
 	private GoalDictionary goalDictionary;
 	private I18nTranslator i18nTranslator;

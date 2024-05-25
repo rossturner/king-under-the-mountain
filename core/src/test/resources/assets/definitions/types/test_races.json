@@ -1,0 +1,69 @@
+[ {
+  "name" : "Dwarf",
+  "i18nKey" : "RACE.DWARF",
+  "minStrength" : 7.0,
+  "maxStrength" : 19.0,
+  "bodyStructureName" : "Humanoid",
+  "bodyShapes" : [ {
+    "value" : "FAT",
+    "maxStrength" : 10.0
+  }, {
+    "value" : "STRONG",
+    "minStrength" : 14.5
+  }, {
+    "value" : "AVERAGE"
+  } ],
+  "colors" : {
+    "HAIR_COLOR" : {
+      "colorChart" : "dwarf-hair-swatch.png",
+      "hidden" : false
+    },
+    "SKIN_COLOR" : {
+      "colorChart" : "dwarf-skin-swatch.png",
+      "hidden" : false
+    },
+    "EYE_COLOR" : {
+      "colorCode" : "#000000",
+      "hidden" : false
+    },
+    "ACCESSORY_COLOR" : {
+      "colorChart" : "dwarf-accessory-swatch.png",
+      "hidden" : false
+    },
+    "BONE_COLOR" : {
+      "colorCode" : "#fbfbf9",
+      "hidden" : false
+    }
+  },
+  "behaviour" : {
+    "behaviourName" : "Settler",
+    "scheduleName" : "Default Settler Schedule",
+    "needs" : [ "FOOD", "DRINK", "SLEEP" ],
+    "aggressionResponse" : "FLEE"
+  },
+  "genders" : {
+    "MALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 0.6
+    },
+    "FEMALE" : {
+      "weighting" : 0.5,
+      "hasHair" : 1.0
+    }
+  },
+  "features" : {
+    "skin" : {
+      "damageReduction" : {
+        "STABBING" : 1,
+        "SLASHING" : 2,
+        "CRUSHING" : 2
+      }
+    },
+    "bones" : {
+      "materialName" : "Bone"
+    },
+    "blood" : {
+      "colorCode" : "#e62d23"
+    }
+  }
+} ]

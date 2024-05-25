@@ -108,7 +108,7 @@ public class DynamicMaterialFactoryTest {
 		GameMaterial material = dynamicMaterialFactory.generate(materials("Tomato", "Carrot", "Potato"), GameMaterialType.LIQUID,
 				true, false, "COOKING.SOUP.DESCRIPTION");
 
-		assertThat(material.getI18nValue().toString()).isEqualTo("Vegetable soup");
+		assertThat(material.getI18nValue().toString()).isEqualTo("Carrot, potato and tomato soup");
 	}
 
 	public List<GameMaterial> materials(String... materialNames) {

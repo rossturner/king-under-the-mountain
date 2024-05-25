@@ -13,7 +13,7 @@ public class EdgeAtlasTest {
 	@Test
 	public void wallEdgeAtlas_shouldContainExpectedEntries() throws IOException {
 		WallEdgeAtlas wallEdgeAtlas = new WallEdgeAtlas(new File("assets/terrain/wallEdges.json"),
-				new File("assets/terrain/wallCapEdges.json"),
+				new File("assets/terrain/doorwayClosedEdges.json"),
 				new File("assets/terrain/doorwayEdges.json"));
 
 		WallEdgeDefinition originalDefinitions = wallEdgeAtlas.getForLayoutId(126);
