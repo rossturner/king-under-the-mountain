@@ -1,9 +1,3 @@
-if (JavaVersion.current() != JavaVersion.VERSION_17) {
-    throw new GradleException("This build must be run with java 17, is currently " + JavaVersion.current())
-} else {
-    System.out.println("Java version: " + JavaVersion.current())
-}
-
 buildscript {
     repositories {
         mavenCentral()
@@ -39,8 +33,11 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java-library"
-    sourceCompatibility = 17
-
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
 
     dependencies {
         implementation project(":core")
@@ -126,8 +123,11 @@ project(":desktop") {
 
 project(":core") {
     apply plugin: "java-library"
-    sourceCompatibility = 17
-
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
