@@ -1,6 +1,5 @@
 apply plugin: "java"
 
-sourceCompatibility = 11
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 project.ext.mainClassName = "technology.rocketjump.undermount.launcher.DesktopLauncher"
@@ -12,6 +11,10 @@ task run(dependsOn: classes, type: JavaExec) {
     standardInput = System.in
     workingDir = project.assetsDir
     ignoreExitValue = true
+
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 task dist(type: Jar) {
