@@ -45,7 +45,7 @@ public class LightProcessorTest {
 	@Before
 	public void setup() throws IOException {
 		lightProcessor = new LightProcessor(new TileLayoutAtlas(), new WallEdgeAtlas(new File("assets/terrain/wallEdges.json"),
-				new File("assets/terrain/wallCapEdges.json"),
+				new File("assets/terrain/doorwayClosedEdges.json"),
 				new File("assets/terrain/doorwayEdges.json")));
 
 		when(mockFloorType.isUseMaterialColor()).thenReturn(true);

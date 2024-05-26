@@ -5,12 +5,16 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 import technology.rocketjump.undermount.assets.TextureAtlasRepository;
 import technology.rocketjump.undermount.assets.model.WallType;
 import technology.rocketjump.undermount.audio.model.SoundAssetDictionary;
@@ -27,6 +31,7 @@ import technology.rocketjump.undermount.entities.model.Entity;
 import technology.rocketjump.undermount.entities.model.physical.LocationComponent;
 import technology.rocketjump.undermount.entities.model.physical.creature.CreatureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.creature.Gender;
+import technology.rocketjump.undermount.entities.model.physical.creature.Race;
 import technology.rocketjump.undermount.entities.model.physical.creature.RaceDictionary;
 import technology.rocketjump.undermount.entities.model.physical.furniture.FurnitureEntityAttributes;
 import technology.rocketjump.undermount.entities.model.physical.item.*;
@@ -56,6 +61,7 @@ import technology.rocketjump.undermount.rooms.constructions.FurnitureConstructio
 import technology.rocketjump.undermount.rooms.constructions.WallConstruction;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -143,6 +149,14 @@ public class I18NTranslatorTest {
 
 
 		when(mockGameContext.getRandom()).thenReturn(new RandomXS128());
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		URL raceListFile = I18NTranslatorTest.class.getResource("/assets/definitions/types/test_races.json");
+		List<Race> raceList = objectMapper.readValue(raceListFile, new TypeReference<List<Race>>() { });
+		when(mockRaceDictionary.getByName(any())).thenAnswer((Answer<Race>) invocationOnMock -> {
+			String raceName = invocationOnMock.getArgument(0);
+			return raceList.stream().filter(r -> Objects.equals(raceName, r.getName())).findFirst().get();
+		});
 	}
 
 	@Test

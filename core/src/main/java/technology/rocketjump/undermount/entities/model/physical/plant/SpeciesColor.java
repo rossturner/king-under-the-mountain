@@ -27,7 +27,7 @@ public class SpeciesColor {
 		Random random = new RandomXS128(seed);
 		if (swatch != null) {
 			return ColorMixer.randomBlend(random, swatchColors);
-		} else if (colorChart != null) {
+		} else if (colorChart != null && swatchColors.notEmpty()) {
 			return swatchColors.get(random.nextInt(swatchColors.size));
 		} else if (transitionSwatch != null) {
 			return ColorMixer.fromTransition(currentStageProgress, transitionColors, random);
@@ -42,7 +42,7 @@ public class SpeciesColor {
 		if (swatch != null) {
 			Random random = new RandomXS128(seed);
 			return ColorMixer.randomBlend(random, swatchColors);
-		} else if (colorChart != null) {
+		} else if (colorChart != null && swatchColors.notEmpty()) {
 			Random random = new RandomXS128(seed);
 			return swatchColors.get(random.nextInt(swatchColors.size));
 		} else if (hidden) {

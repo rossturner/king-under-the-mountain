@@ -87,7 +87,7 @@ public class StockpileComponentTest {
 		when(mockItem.getType()).thenReturn(EntityType.ITEM);
 		ItemAllocationComponent itemAllocationComponent = new ItemAllocationComponent();
 		itemAllocationComponent.init(mockItem, mockMessageDispatcher, null);
-		when(mockItem.getOrCreateComponent(ItemAllocationComponent.class)).thenReturn(itemAllocationComponent);
+		when(mockItem.getComponent(ItemAllocationComponent.class)).thenReturn(itemAllocationComponent);
 	}
 
 	@Test
