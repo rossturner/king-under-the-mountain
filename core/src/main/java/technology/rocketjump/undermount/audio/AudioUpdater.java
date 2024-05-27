@@ -27,4 +27,11 @@ public class AudioUpdater {
 		}
 	}
 
+	public void pause() {
+		musicJukebox.pauseMusic();
+	}
+
+	public void resume() {
+		musicJukebox.resumeMusic();
+	}
 }

@@ -82,6 +82,7 @@ public class UndermountLwjglApplication implements Application {
 				LwjglApplicationConfiguration.disableAudio = true;
 			}
 		}
+		addLifecycleListener(((UndermountApplicationAdapter)listener));
 		files = new LwjglFiles();
 		input = new LwjglInput();
 		net = new LwjglNet(config);
