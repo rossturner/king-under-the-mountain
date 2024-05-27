@@ -2,6 +2,7 @@ package technology.rocketjump.undermount;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.LifecycleListener;
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -53,7 +54,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-public class UndermountApplicationAdapter extends ApplicationAdapter {
+public class UndermountApplicationAdapter extends ApplicationAdapter implements LifecycleListener {
 
 	private GameRenderer gameRenderer;
 	private PrimaryCameraWrapper primaryCameraWrapper;
@@ -169,7 +170,18 @@ public class UndermountApplicationAdapter extends ApplicationAdapter {
 		}
 	}
 
+	@Override
+	public void pause() {
+		audioUpdater.pause();
+	}
+
+	@Override
+	public void resume() {
+		audioUpdater.resume();
+	}
+
 	public void onExit() {
+		// TODO perhaps this can be moved to the dispose() override?
 		messageDispatcher.dispatchMessage(MessageType.PERFORM_SAVE, new GameSaveMessage(false));
 		messageDispatcher.dispatchMessage(MessageType.SHUTDOWN_IN_PROGRESS);
 		Gdx.app.exit();

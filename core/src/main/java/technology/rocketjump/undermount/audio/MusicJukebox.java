@@ -27,6 +27,8 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 	private List<FileHandle> musicFileList = new ArrayList<>();
 	private Music currentTrack;
 	private boolean shutdown;
+	/** The entire application has been sent to the background; not speed=0. */
+	private boolean paused;
 
 	@Inject
 	public MusicJukebox(MessageDispatcher messageDispatcher, UserPreferences userPreferences) {
@@ -93,7 +95,7 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 
 	// Note: Not using Updatable interface as this should run on all screens
 	public void update() {
-		if (shutdown || stopped) {
+		if (shutdown || stopped || paused) {
 			return;
 		}
 
@@ -122,5 +124,21 @@ public class MusicJukebox implements Telegraph, AssetDisposable {
 			currentTrack = null;
 		}
 		this.shutdown = true;
+	}
+
+	public void pauseMusic() {
+		if (currentTrack != null) {
+			// Safe to call even it not playing; will do nothing
+			currentTrack.pause();
+		}
+		paused = true;
+	}
+
+	public void resumeMusic() {
+		if (currentTrack != null) {
+			// Safe to call even if already playing; will do nothing
+			currentTrack.play();
+		}
+		paused = false;
 	}
 }
